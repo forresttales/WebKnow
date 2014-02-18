@@ -1,0 +1,104 @@
+
+	#sign-page {
+		height: 800px;
+	}
+
+	#sign-page #sign-page-inner {
+	    width: 50%;
+	    margin: 0 auto;
+	}	
+
+	div .table-sign {
+		display: table;
+		background-color: #D1D1D1;
+		width: 600px;
+		border-radius: 10px;
+		/*border:2px solid #2B5226;*/
+		/*box-shadow: 1px 1px 10px #888888;*/
+		padding-top: 40px;
+		padding-bottom: 40px;
+		padding-left: 20px;
+	}
+
+	.input-sign {
+		font-family: Arial, Helvetica, sans-serif;
+		color: #404040;			
+		font-size: 16px;
+		width: 300px;
+		height: 24px;
+		border-style:solid;
+		border-radius: 6px;
+		background-color: #fff;
+		border-color: #478A3E;
+		border-width: 1px;
+		padding-left: 6px;
+	}
+
+	.input-sign:focus {
+		border-color: #478A3E;
+		color: #000;
+		-webkit-box-shadow: 0 0 10px #88E87B;
+		-moz-box-shadow: 0 0 10px #88E87B;
+		box-shadow: 0 0 10px #88E87B;
+	}
+		
+	.input-label-sign {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 16px;
+		width: 300px;
+		height: 18px;
+	}
+		
+	.input-sign-spacer {
+		height: 16px;
+	}
+		
+	div .cell-right-sign {
+		display: table-cell;
+		width: 40%;
+		text-align: left;
+		align: top;		
+	}
+
+	div .cell-left-sign {
+		display: table-cell;
+		width: 30%;	
+		align: top;
+		text-align: right;		
+		padding-right: 20px;
+	}
+	
+	div .cell-submit-sign {
+		display: table-cell;
+		width: 50%;
+		text-align: left;
+		align: top;		
+		padding-left: 0px;
+	}
+	
+	.sign-btn {
+	  	color: #D4F76A;
+	  	display: inline-block;
+	  	text-decoration: none; 
+	  	width: 308px;
+	  	height: 30px;
+	  	background: linear-gradient(#000, #000);
+	  	text-shadow: 1px 1px 1px #0E86B2; 
+	  	border-radius: 6px;
+	}
+
+	.sign-btn:focus {
+	  background: #CCC; 
+	  color: #5F7A2A;
+	  box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
+	}
+	
+	.sign-btn:hover { 
+	  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+	  inset 0 1.5em 1em rgba(255,255,255,0.3);
+	}
+	
+	.sign-btn:active { 
+	  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+	  inset 0 1.5em 1em rgba(0,0,0,0.3); 
+	}

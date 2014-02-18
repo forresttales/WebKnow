@@ -1,0 +1,283 @@
+<% provide(:title, 'Publisher Products') %>
+
+
+	<style>
+		
+		.form-display-col1 {
+			width: 200px;
+		}
+		.form-display-col2 {
+			width: 400px;
+		}
+		.form-display-separator {
+			height: 10px;
+		}
+		
+	</style>
+
+	<header>
+		<%= render 'share/backtotop' %>
+	</header>
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<%= render 'share/dir_publishers_left'%>
+				</div>
+				
+				<div class="col-midd">
+
+					<div style="text-align: left;">
+						<span class="normal pad-left-20">Publisher Products</span>
+					</div>
+
+					<div class="line-space-20"></div>
+					
+					<div>
+						<span class="normal pad-left-20">
+							<em>
+							<%= @publisher_product_name %>
+							</em>
+						</span>
+					</div>
+					
+					<div>
+						<span class="normal pad-left-20">
+							Product_id: <%= @publisher_product_id %>
+						</span>
+					</div>
+
+					<div class="line-space-20"></div>
+
+					<% if @has_product_logo %>
+						<div class="pad-left-20"><a id="render" href="/PublisherLogos/<%= @publisher_product_id %>"></a></div>		
+					<% else %>
+						<div class="pad-left-20">
+							<span class="normal">
+								<%= link_to 'Upload Logo Image', '/PublisherLogos/' + @publisher_product_id, :class => 'links' %>
+							</span>
+						</div>					
+					<% end %>
+
+					<div class="line-space-20"></div>
+
+					<% if @has_product_metadata %>
+						<div class="pad-left-20"><a id="render" class="links" href="/PublisherMetadata/<%= @publisher_product_id %>"><%= @product_metadata %></a></div>		
+					<% else %>
+						<div class="pad-left-20">
+							<span class="normal">
+								<%= link_to 'Upload Product Metadata', '/PublisherMetadata/' + @publisher_product_id, :class => 'links' %>
+							</span>
+						</div>					
+					<% end %>
+			
+					<div class="line-space-20"></div>
+			
+					<% if @publisher_product_descriptions.any? %>
+					 
+		                  <!-- 
+		                  -->					 		
+					 
+					 	<table>
+					 		<tr>
+					 			<td class="form-display-col1">
+					 				<span class="small pad-left-20">Created:</span>
+					 			</td>
+					 			<td class="form-display-col2">
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].created_at.to_s(:long) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Updated:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].updated_at.to_s(:long) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Type of Content or Curriculum:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].type_content %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Subject Category:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].subject_category %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">30 Word Description:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].word_description %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Product Name:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].name_product %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Core or Supplemental:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].core_supplemental %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Source URL:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].source_url %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Topic:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].topic %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Lesson Plan Subject:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].lesson_plan_subject %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Age Appropriate:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].age_appropriate %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Grade:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].grade %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Metadata:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].metadata %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Platform:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].platform %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Versions:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].versions %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Pricing Model:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_product_descriptions[0].pricing_model %></span>
+					 			</td>
+					 		</tr>
+					 	</table>
+						<div class="line-space-20"></div>
+						<div class="pad-left-20">
+							<span class="normal">
+								<%= button_to "Edit", {:action => 'edit', :id => @publisher_product_descriptions[0].id } %>
+							</span>
+						</div>
+						
+					<% else %>
+
+						<div>
+							<span class="pad-left-20">&laquo;<%= link_to 'Add Product Information', '/PublisherAddProductInformation', :class => 'links' %>&raquo;</span>
+						</div>
+			
+						<div class="line-space-20"></div>
+			
+						<div>
+							<span class="normal-red pad-left-20">No record for this product</span>
+						</div>
+				
+					<% end %>
+
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_publishers_right' %>
+				</div>												
+			</div>
+		</div>
+	</div>
+
+	<script>
+	  
+		$(window).load( function() {
+		//$(document).ready(function () {				
+	
+				var cnt = 1;
+				var cells = "";
+				
+				// alert(gon.image_name);
+	
+				if (gon.image_name !== '') {								
+					//cells += "</td><td style='width: 10px;'></td><td><img src='../images_publisher_product_logo/" + gon.image_name + "' alt='image'>";
+					cells += "<img src='../images_publisher_product_logo/" + gon.image_name + "' alt='image'>";
+
+					// var tbl = "<table><tr>" + cells + "</tr></table>";
+					var tbl = cells;
+
+					$( "#render" ).html( tbl);
+				}
+				else {
+					var tbl = "<table><tr><td><span class='normal-red pad-left-20'>No photo</span><td></tr></table>";
+					$( "#render" ).html( tbl);				
+				}
+		});
+	  
+	</script>		

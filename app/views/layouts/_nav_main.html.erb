@@ -1,0 +1,303 @@
+<style type="text/css" scoped>
+
+	/*@font-face {
+	  	font-family: 'msyhb';
+	  	src: url('/assets/msyhb.eot');	  
+	  	src: url('/assets/msyhb.ttf') format('truetype');
+	}
+	@font-face {
+		font-family: 'msyh';
+	    src: url('/assets/msyh.eot');	  		
+		src: url('/assets/msyh.ttf') format('truetype');
+	}
+	
+	@font-face {
+		font-family: digitgraphics;
+		src: url('/assets/digitgraphics.eot');
+	}
+
+	@font-face {
+		font-family: KlavikaExtraLight;
+		src: url('/assets/KlavikaWebDisplayExtraLight.eot');
+	}*/		
+	
+	
+	@import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans);
+	
+	#nav.navNormal #top-black-bar {
+	  font-family: 'Quattrocento Sans', sans-serif;
+	}
+	
+	#nav.navNormal #top-black-bar {
+		width: 100%;
+		
+		height: 55px;
+		
+		/*height: 55px;*/
+		/*background-color: black;*/		
+
+	  	font-family: 'Quattrocento Sans', sans-serif;
+		
+		font-size: 11pt;
+		
+		/*color: #ccc;*/
+		color: #fff;
+		
+		
+		/*font: normal 9pt KlavikaLight;*/
+				
+		/*font: normal 9pt msyhb;*/
+		
+		
+		margin-top: 7px;
+		z-index: 999;
+		overflow: hidden;
+		-webkit-transform: translate3d(0, 0, 0)
+	}
+	#nav.navNormal #top-black-bar a {
+		color: #fff;
+	}
+	
+	.nav-bar-black {
+		/*background-color: rgba(0, 0, 0, 0.9);*/
+		background-color: rgba( 65, 183, 55, 0.92);
+		/*background-color: #41B737;*/		
+		position: fixed;
+		top: -7px;
+	}
+     
+	#nav.navNormal #white-stripe-bar {
+		width: 100%;
+		height: 32px;
+		border-bottom: #FFFFFF 2px solid
+	}
+	
+     
+	#nav.navNormal .inner {
+		width: 970px;
+		position: relative;
+		margin: 0 auto
+	}
+     
+	#nav.navNormal .social {
+		float: right
+	}
+     
+</style>
+
+
+
+
+	<div id="nav" class="navNormal">
+	
+	    <div style="height: 60px;" id="top-black-bar-marker"></div>
+	    	    
+    	<!-- <div style="position: fixed; top: -7px; background-color: rgba(0, 0, 0, 0.9);" id="top-black-bar" class="outer"> -->
+
+    	<div id="top-black-bar" class="outer nav-bar-black">
+
+            
+	    	<div id="white-stripe-bar" class="outer">
+	            <div class="inner">
+	    
+	                <!-- <div id="s-icons" class="social">
+	                    <ul>
+	                        <li class="linkedin"><a href="http://www.linkedin.com/today/inc.com" target="_blank"></a></li>
+	                        <li class="twitter"><a href="http://www.twitter.com/inc" target="_blank"></a></li>
+	                        <li class="google"><a href="https://plus.google.com/+incmagazine" target="_blank"></a></li>
+	                        <li class="facebook"><a href="http://www.facebook.com/inc" target="_blank"></a></li>
+	                    </ul>
+	                </div> -->	    
+	    
+	    
+	                <div id="s-links" class="social">
+	                	<a href="/">Home</a> 
+	                </div>	          
+	          
+	            </div>
+	        </div>
+        
+			<div id="lower-bar">
+
+        		<div class="inner">
+        			<div id="member_container">
+            
+				        <div style="display: block;" id="welcome_loggedout">
+				        	
+				        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				        	
+				        	
+				        	<% if session[:username].nil? %>
+				        	<a style="font-family: msyh; font-size: 13px;" href="/Signup">Sign Up</a>
+				        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				        	<a style="font-family: msyh; font-size: 13px;" href="/Signin">Sign In</a>
+				        	<% else %>
+				        	<a style="font-family: msyh; font-size: 13px;" href="/Signout">Sign Out</a>
+				        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				        	
+        					<% if !( current_page?(controller: 'institutes', action: 'index') or %>
+        					      <% current_page?(controller: 'publishers', action: 'index') ) %>
+				        	
+				        	<a style="font-family: msyh; font-size: 13px;" href="<%= session[:profile] %>">My Profile</a>
+				        	<% end %>
+				        	
+				        	<% end %>
+				        	
+				        	
+				        </div>
+				        
+        			</div>
+
+        		</div>
+
+        	</div>
+
+            <div id="theajaxregpull" style="margin-top:-32px;"></div>
+        
+    	</div>
+    
+
+    	<div class="outer" id="above-nav">
+    		
+        	<!-- <div style="font-size: 60px;">Clyde</div> -->
+        	        	
+    	</div>
+    
+    	<div id="dropdown" class="outer launch panel">
+        	<div class="inner" style="margin-top:20px;">
+
+            	<!--LEFT HAND SUB NAVIGATION-->
+            	<div style="width:177px;height:205px;float:left;"><ul id="leftSubNav"></ul></div>
+            	<!--LEFT HAND SUB NAVIGATION-->
+            
+          	<!-- <div id="navContentContainer"><div class="ajaxloader"><img src="Entrepeneurs_files/ajax-loader.gif"></div></div> -->
+          	            
+        	</div> 
+        	<div id="bottombar" class="bottomnavbar" style="">
+            	<div id="bottombarinner" class="inner" style=""></div>
+        	</div>
+    	</div>
+    </div>	
+
+
+	<script>
+		
+			function dropdown() {
+				$('#dropdown').stop(true,true).slideDown(300); //Slide out the menu if it isn't opened.
+			}
+		
+			function subnav(color,ref) {
+				navAjaxContent.mouseenterSubChannel(ref); 
+				$('.subnavItem:not(ref)').css('color','#000000');
+				ref.style.color= color; 
+			}
+			
+			$(document).ready(function() {
+				// Populate the main navigation bar.
+				for (i=0;i<topMenu.length;i++) {$('#mainNav').append('<li>' + '<a href="' + application_url + topMenu[i].url + '" onclick="navAjaxContent.intentionIntercept(\''+topMenu[i].url+'\',\''+topMenu[i].thattype+'\','+topMenu[i].id+');if(this.timer)window.clearTimeout(this.timer);return false;" onmouseover="nav(&#39;' + i + '&#39;,this); this.style.color=&#39;' + topMenu[i].hovCol + '&#39;;" onmouseout="if(this.timer)window.clearTimeout(this.timer);" class="navItem">' + topMenu[i].title + '</a></li>')};
+		
+				//also populate the collapsed nav
+				for (i=0;i<topMenu.length;i++) {$('#slimNav').append('<li>' + '<a href="' + application_url + topMenu[i].url + '" onclick="navAjaxContent.intentionIntercept(\''+topMenu[i].url+'\',\''+topMenu[i].thattype+'\','+topMenu[i].id+');return false;">' + topMenu[i].title + '</a></li>')};
+		
+				// Various circumstances where the menu will fade out.	
+				//$('#nav').mouseleave(function() {$('#dropdown').fadeOut(300)});
+				$('#interrupt').mouseenter(function() {$('#dropdown').fadeOut(300)});
+				$('#above-nav').mouseenter(function() {$('#dropdown').slideUp(300)});
+		
+				// Clear menu colors when you fade out the menu.
+				$('#nav').mouseleave(function() {
+					$('.navItem').animate({
+						color:'#000000'
+					})
+				});
+				
+				$('#interrupt').mouseenter(function() {
+					$('.navItem').animate({
+						color:'#000000'
+					})
+				});
+					
+				$('#above-nav').mouseenter(function() {
+					$('.navItem').animate({
+						color:'#000000'
+					})
+				});
+				
+				$('.narrowNavigation').mouseleave(function() {
+					$('.navItem').animate({
+						color:'#000000'
+					})
+				});
+		
+				
+				// Fade-out rotation of 'line interrupt' feature images
+				//$('#interrupt-imgs').cycle();
+								
+			});	
+			
+			// $(document).ready(function() {
+				// if(name = getCookie('incun')) {
+					// name = getCookie('incun').replace("+"," ").replace("+"," ").replace("+"," ").replace("+"," ");
+					// $('#memberlink').html(name);
+					// $('#welcome').show();
+				// } else {
+					// $('#welcome_loggedout').show();
+				// }
+			// });
+		
+		
+		$(window).scroll(function(e){ 
+		  $el = $('#top-black-bar'); 
+		  $topmark = $('#top-black-bar-marker');
+		  $searchbar = $('#search-bar');
+		
+		  if ($(this).scrollTop() > $topmark.position().top+14 && $el.css('position') != 'fixed'){ 
+		     $topmark.css({'height':'60px'});
+		     $el.css({'position': 'fixed', 'top': '-7px','background-color': 'rgba(0,0,0,0.9);'}); 
+		     $('#login').fadeOut();
+		  } else if ($(this).scrollTop() < $topmark.position().top+14 && $el.css('position') == 'fixed'){
+		  	$topmark.css({'height':'0px'});
+		  	$el.css({'position': 'static', 'top': 'auto','background-color': 'black;'});
+		  	if($el.height()<100) {
+		  		$el.css({'height': '55px'});
+		  	}
+		  	$('#login').fadeOut();
+		  }
+		  if ($(this).scrollTop() > $topmark.position().top+170 && $el.height()<100) { 
+		 	$('#slimlogonav').css({'display': 'block'});
+		 	//$('#productnav').css({'display': 'none'});
+		  } else {
+		  	$('#slimlogonav').css({'display': 'none'});
+		  	//$('#productnav').css({'display': 'block'});
+		  	if($el.height()<100) {
+		  		hideslimnav();
+		  	}
+		  }
+		});
+		
+		function showslimnav() {
+			$('#top-black-bar').animate({'height': '70px'},100);
+			//$('#search-bar').animate({'margin-top': '7px'},100);
+		  	$('#slimlogonav').addClass('navselected');
+		  	$('#member_container').css({'display': 'none'});
+		  	$('#slimnavcontainer').css({'display': 'block'});
+		}
+		
+		function hideslimnav() {
+			$('#top-black-bar').css({'height': '55px'});
+			//$('#search-bar').animate({'margin-top': '0px'},100);
+		  	$('#slimlogonav').removeClass('navselected');
+		  	$('#slimnavcontainer').css({'display': 'none'});
+		  	$('#member_container').css({'display': 'block'});
+		}
+
+		
+	</script>
+
+
+
+

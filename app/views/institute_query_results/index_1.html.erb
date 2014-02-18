@@ -1,0 +1,113 @@
+<% provide(:title, 'Institute Search Results') %>
+
+
+	<header>
+		<%= render 'share/backtotop' %>
+	</header>
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<%= render 'share/dir_publishers_left'%>
+				</div>
+				
+				<div class="col-midd">
+
+					<div style="text-align: left;">
+						<span class="normal pad-left-20">Institute Query Results</span>
+					</div>
+
+					<div class="line-space-20"></div>
+					
+					<div>
+						<span class="normal pad-left-20">
+							<em>
+							<%= @institute_query_name %>
+							</em>
+						</span>
+					</div>
+					
+					<div>
+						<span class="normal pad-left-20">
+							Query_id: <%= @institute_query_id %>
+						</span>
+					</div>
+
+					<div class="line-space-20"></div>
+
+			
+					 <% if @institute_query_results.any? %>
+					 
+					 	<table>
+					 		<tr>
+					 			<td style="width: 100px;">
+					 				<span class="normal pad-left-20">Created:</span></div>
+					 			</td>
+					 			<td style="width: 500px;">
+					 				<span class="normal pad-left-20"><%= @institute_query_results[0].created_at.to_s(:long) %></span></div>
+					 			</td>
+					 		</tr>
+					 		<tr>
+					 			<td style="width: 100px;">
+					 				<span class="normal pad-left-20">Updated:</span></div>
+					 			</td>
+					 			<td style="width: 500px;">
+					 				<span class="normal pad-left-20"><%= @institute_query_results[0].updated_at.to_s(:long) %></span></div>
+					 			</td>
+					 		</tr>
+					 		<tr>
+					 			<td style="width: 100px;">
+					 				<span class="normal pad-left-20">Description:</span></div>
+					 			</td>
+					 			<td style="width: 500px;">
+					 				<span class="normal pad-left-20"><%= @institute_query_results[0].description %></span></div>
+					 			</td>
+					 		</tr>
+					 		<tr>
+					 			<td style="width: 100px;">
+					 				<span class="normal pad-left-20">Price:</span></div>
+					 			</td>
+					 			<td style="width: 500px;">
+					 				<span class="normal pad-left-20"><%= @institute_query_results[0].price %></span></div>
+					 			</td>
+					 		</tr>
+					 	</table>
+						<div class="line-space-20"></div>
+						<div class="pad-left-20">
+							<span class="normal">
+								<%= button_to "Edit", {:action => 'edit', :id => @institute_query_results[0].id } %>
+							</span>
+						</div>
+						
+					<% else %>
+
+						<div>
+							<span class="pad-left-20">&laquo;<%= link_to 'Add Search Description', '/InstituteAddQueryDetails', :class => 'links' %>&raquo;</span>
+						</div>
+			
+						<div class="line-space-20"></div>
+			
+						<div>
+							<span class="normal-red pad-left-20">No record for this search</span>
+						</div>
+				
+					<% end %>
+			
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_institutes_right' %>
+				</div>												
+			</div>
+		</div>
+	</div>
+
+	<script>
+	  
+		//$(window).load( function() {
+	
+		//});
+	  
+	</script>		

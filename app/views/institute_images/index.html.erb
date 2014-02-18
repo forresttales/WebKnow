@@ -1,0 +1,132 @@
+ <%= provide(:title, 'Institute Photos') %>
+ 
+ 				
+	<script type="text/javascript" src="/assets/entrepeneurs_jquery-1.js"></script> 		
+	
+	<script type="text/javascript" src="../scripts/jquery.tmpl.js"></script>
+	
+	<header>					
+		<%= render 'share/backtotop' %>
+	</header>		
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<%= render 'share/dir_institutes_left'%>
+				</div>
+				
+				<div class="col-midd">
+					<span class="normal pad-left-20">My Photos</span>
+					<div class="line-space-20"></div>
+					<span class="pad-left-20"><%= link_to 'New Photo', '/InstituteNewImage', :class => 'links' %></span>
+					<div class="line-space-20"></div>
+		 			 
+					<% if @institute_images.any? %>				
+			
+						<% for i in 0..(@institute_images.count - 1) %>
+			
+							<div id="<%= i %>" style="display: inline-block;"></div>
+							
+						<% end %>
+			
+					<% else %>
+			
+						<div>
+							<span class="normal-red pad-left-20">No photos</span>
+						</div>
+				
+					<% end %>
+				
+			
+					<% if @institute_images.any? %>
+				
+					<!-- <div style="height: 400px;"></div> -->
+			
+					<% for i in 0..(@institute_images.count - 1) %>
+			
+						 <!-- @institute_images[i].image_name --> 
+						<br>
+						
+					    <script id="imageTemplate_<%= i %>" type="text/x-jQuery-tmpl">
+					    	
+					    	<table style="margin-right: 30px; margin-left: 30px;">
+					    		<tr>
+					    			<td>
+					    				<img src="../images_institute/<%= @institute_images[i].image_name %>" alt="<%= @institute_images[i].image_name %>">
+					    			</td>
+					    		</tr>
+			
+								<% if @institute_images[i].primary %>
+					    		<tr>
+					    			<td>
+					    				<span class="normal">Primary</span>
+					    			</td>
+					    		</tr>
+								<% else %>
+					    		<tr>
+					    			<td>
+								    	<span class="normal">
+											 <%= button_to "Make Primary", {:action => 'set_primary', :id => @institute_images[i].id}, :method => :post, :class => 'delete-btn' %>								
+										</span>
+					    			</td>
+					    		</tr>
+					    		<% end %>
+					    		
+					    		<tr>
+					    			<td>
+								    	<span class="normal">
+										   	<% delete_msg = "Delete Image ID: " + @institute_images[i].id.to_s + " ?" %>
+											<%= button_to "Delete", {:action => 'destroy', :id => @institute_images[i].id}, :method => :delete, :confirm => delete_msg, :class => 'delete-btn' %>
+										</span>
+					    			</td>
+					    		</tr>
+			
+					    	</table>
+					        
+				    	</script>
+				    	
+					<% end %>
+			
+					<% end %>
+		 			 
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_institutes_right' %>
+				</div>				
+			</div>
+		</div>
+	</div>
+
+	<script>
+	  
+		//$(document).ready(function() {
+		$(window).load( function() {
+	
+			var cnt = gon.institute_images_count;
+
+			var id = 0;
+			var container = "";
+			var ref = "";
+
+			for( i = 0; i < cnt; i++) {
+				id = i;
+				container = "#" + id;
+				ref		  = "#imageTemplate_"  + id;
+			    $(ref).tmpl().appendTo(container);
+			}
+		});
+	  
+	</script>		
+		
+
+
+
+
+
+
+
+
+

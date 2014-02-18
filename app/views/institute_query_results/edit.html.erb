@@ -1,0 +1,88 @@
+<% @title = "Publisher Product Description Edit" %>
+
+
+	<script src="/assets/jquery.validate.js"></script>
+	<script type="text/javascript" src="/assets/entrepeneurs_jquery-1.js"></script>
+
+	<header>
+		<%= render 'share/backtotop' %>
+	</header>
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<%= render 'share/dir_publishers_left'%>
+				</div>
+				
+				<div class="col-midd">
+
+					<div style="text-align: left;">
+						<span class="normal pad-left-20">Publisher Products</span>
+					</div>
+
+					<div class="line-space-20"></div>
+
+					<div class="table-form" style="width: 600px;">
+						<div class="row">
+							<div class="cell-100percent" tabindex="1">
+								
+								 <!-- 
+								 :description
+								 :price 
+								 -->
+								 								
+								<!-- = render 'shared/error_messages', object: f.object -->			
+								<%= form_for(:publisher_product_description, :url => {:action => 'update', :id => @publisher_product_description.id}) do |f| %>
+								
+								<div class="input-form-spacer"></div>
+		
+								<div class="row">
+									<div class="cell-left-form">
+										<%= f.label(:description, 'Description', class: 'input-label-form') %>							
+									</div>
+									<div class="cell-right-form">
+										<%= f.text_field :description, :class => 'input-form', :tabindex => '1', :autofocus => true %>
+									</div>
+									<div class="cell-error" id="state_description"><p id="error_description"></p></div>      					   							 								      	
+								</div>
+
+								<div class="input-form-spacer"></div>
+		
+								<div class="row">
+									<div class="cell-left-form">
+										<%= f.label(:price, 'Price', class: 'input-label-form') %>							
+									</div>
+									<div class="cell-right-form">
+										<%= f.text_field :price, :class => 'input-form', :tabindex => '2', :autofocus => false %>	
+									</div>
+									<div class="cell-error" id="state_price"><p id="error_price"></p></div>      					   							 								      	
+								</div>
+		
+								<div class="input-form-spacer"></div>
+								<div class="input-form-spacer"></div>
+		
+								<div class="row">
+									<div style="width: 600px; text-align: center;">
+									<%= f.submit 'Submit', class: 'form-btn', :tabindex => '3' %>
+									</div>      					   							 	
+								</div>      		
+													
+								<% end %>
+								
+							</div>
+							
+						</div>
+						
+					</div>
+			
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_publishers_right' %>
+				</div>												
+			</div>
+		</div>
+	</div>
+

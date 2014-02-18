@@ -1,0 +1,135 @@
+﻿#page {
+  width:750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#subscribe-box  {
+float: right; 
+margin-left: 20px;
+}
+
+#subscribe-box .form {   
+	width: 255px;
+	height: 289px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px; /* border radius */
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box; /* prevents bg color from leaking outside the border */
+	background-color: #eaeaea; /* layer fill content */
+	-moz-box-shadow: 0 0 10px rgba(3,4,4,.35); /* drop shadow */
+	-webkit-box-shadow: 0 0 10px rgba(3,4,4,.35); /* drop shadow */
+	box-shadow: 0 0 10px rgba(3,4,4,.35); /* drop shadow */
+}
+
+#subscribe-box .label { 
+	height: 35px;
+    width: 240px;
+	background-color: #414141; /* layer fill content */
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0; /* border radius */
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box; /* prevents bg color from leaking outside the border */
+	-moz-box-shadow: 0 0 10px rgba(3,4,4,.35); /* drop shadow */
+	-webkit-box-shadow: 0 0 10px rgba(3,4,4,.35); /* drop shadow */
+	box-shadow: 0 0 10px rgba(3,4,4,.35); /* drop shadow */
+	}
+
+#subscribe-box h3 {  
+	color: #ebeff1; /* text color */
+	font-family: "Quattrocento Sans", sans-serif;
+	font-size: 15px;
+	margin:0;
+	padding-left: 15px;
+    padding-top: 15px;
+	}
+#subscribe-box img {
+  float:left;
+  position: relative;
+  left: 116px;
+}
+.services-ov {
+  width: 232px;
+	height: 27px;
+	border: 1px solid #999; /* stroke */
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px; /* border radius */
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box; /* prevents bg color from leaking outside the border */
+	background-color: #999; /* layer fill content */
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.services-ov a:link {color: #f2f2f2; /* text color */
+	font-family: "Quattrocento Sans", sans-serif;
+	font-size: 13px;
+	text-decoration: none;
+	padding: 5px 23px 8px;}
+.services-ov a:hover {color: #f2f2f2; text-decoration: none; background-color: #6a6a6a;}
+.services-ov a:active {color: #f2f2f2; text-decoration: none; background-color: #535353; /* layer fill content */
+	-moz-box-shadow: inset 1px 2px 0 rgba(3,4,4,.4); /* inner shadow */
+	-webkit-box-shadow: inset 1px 2px 0 rgba(3,4,4,.4); /* inner shadow */
+	box-shadow: inset 1px 2px 0 rgba(3,4,4,.4); /* inner shadow */}
+.services-ov a:visited {color: #f2f2f2; text-decoration: none;}
+
+.lc-landing p {
+	color: #333;
+	font-family: "Quattrocento";
+	font-size: 15px;
+	width: 600px;
+	}
+	
+p.lc-landing {
+	color: #333;
+	font-family: "Quattrocento";
+	font-size: 30px;
+	width: 600px;
+	}
+	
+.page-title {
+  font-size: 35px;
+  color: #808080;
+  margin-left: auto;
+  margin-right: auto;
+  width: 540px;
+}
+
+.sub-title {
+  font-size: 30px;
+  color: #34633A;
+  margin-left: auto;
+  margin-right: auto;
+  width: 450px;
+}
+
+.green-this {
+    color: #41b737;
+	font-style: bold;
+	}
+	
+.bold-close {	
+	color: #34633a;
+	size: 22px;
+	font-weight: bold;
+	}
+
+#bottom-graphic img {
+  bottom: 220px;
+  position: relative;
+  float:left;
+}
+
+.box-row {
+  background: url(lc-boxes.png) white repeat-x;
+  height: 59px;
+  margin-left: 440px;
+  margin-top: 30px;
+}

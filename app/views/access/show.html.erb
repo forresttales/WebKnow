@@ -1,0 +1,41 @@
+<h1>access show</h1>
+
+<div class="wrapper row3">
+  <div id="container" class="clear">
+  	
+  	<div>
+		<%= link_to "Return", home_path %>
+	</div>
+		
+  	<br />
+  	<br />
+  	<br />
+  	
+    <div id="content">
+      
+      <h2>Administration Login</h2>
+
+	  <%= form_tag(:action => 'attempt_login') do %>
+	  <table>
+	    <tr>
+	      <td><%= label_tag(:username) %></td>
+	      <td><%= text_field_tag(:username) %></td>
+	    </tr>
+	    <tr>
+	      <td><%= label_tag(:password) %></td>
+	      <td><%= password_field_tag(:password) %></td>
+	    </tr>
+	    <tr>
+	      <td>&nbsp;</td>
+	      <td><%= submit_tag("Log In") %></td>
+	    </tr>
+	  </table>
+	  <% end %>
+      
+    </div>
+    
+  </div>
+</div>
+
+
+<h1><%= link_to "<<< Cancel and return to previous page", :back %></h1>

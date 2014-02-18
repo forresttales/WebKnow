@@ -1,0 +1,845 @@
+
+
+/*.katbox-article {
+  border-left: none;
+}*/
+
+
+/*.katcolorbox_posit {
+    bottom: -30px;
+    position: absolute;
+}*/
+
+
+/*.katbox {
+    position: relative;
+    text-align: right;
+    width: 300px;
+}*/
+
+/*.katbox-article span {
+    padding-left: 0;
+	padding-right: 20px
+}*/
+
+/*.kk-headlines .h1 {
+     font-family: 'Quattrocento Sans', sans-serif;
+	 margin-top: 25px;
+}*/
+
+/*@import url(http://fonts.googleapis.com/css?family=Quattrocento);
+.kk-headlines .h2 {
+font-family: 'Quattrocento', serif;
+}*/
+
+
+
+/*.perspective {
+    border-top: 30px solid #808080;
+}*/
+
+/*.channel-article {
+  border-left: none;
+  text-align: right;
+}
+
+.channel-article span{
+  right: 0;
+  top: 0;
+  padding: 0;
+}
+
+.channel-article a {
+  top: -25px;
+  z-index: 2;
+  right: 40px;
+}*/
+
+/*.header {
+    float: right;
+    position: relative;
+    width: 930px;
+}*/
+
+/*.idea {
+  border-top: 30px solid #A6A6A6;
+}
+.idea span {
+  color: #000000;
+}
+.tactic {
+    border-top: 30px solid #214325;
+}*/
+
+/* Below are just color changes for the titles under the pictures */
+/*.thoughts_catbox {
+border-top: 27px solid #37633A;
+}
+.coffee_chat_catbox {
+border-top: 27px solid #3AAB48;
+}
+.idea_catbox  {
+border-top: 27px solid #A6A6A6;
+}
+.research_catbox  {
+border-top: 27px solid #808080;
+}
+.tactic_catbox {
+border-top: 27px solid #214325;
+}
+.people_catbox  {
+border-top: 27px solid #3AAB48;
+}*/
+
+
+.perspective {
+    border-top: 30px solid #808080;
+}
+/*.perspective_catbox  {
+border-top: 27px solid #808080;
+}*/
+
+/* End of color title section */
+
+
+
+
+
+/*.line-lead {
+   border-top: 5px solid #41B737;
+   padding-top: 5px;
+}*/
+
+
+/* Add in the color change for background */
+/*#kfooter {
+    background-color: #214025;
+}			*/
+
+
+
+
+
+
+
+
+
+/*** image ***/
+
+.img-cell-single {
+	position: absolute;
+	bottom: 0px;	
+}
+
+
+
+
+/*** layout ***/
+
+
+.jump {
+	width: 600px;
+}
+
+.kadjust {
+}
+
+
+.channel-article a:hover {
+	color: #fff;
+}
+.channel-article span:hover {
+	color: #fff;
+}
+
+.header {
+    float: right;
+    position: relative;
+    width: 930px;
+}
+
+.header a {
+	position: relative;
+	top: -15px;
+	font-family: msyhb;
+    font-size: 12px;
+    font-weight: 400;
+    color: #ddd;
+}
+/*.header {
+	width: 830px;
+	position: relative;
+	top: -20px;
+	float: right;
+}*/
+
+.header a:hover {
+	color: #fff;
+}
+.header span:hover {
+	color: #fff;
+}
+
+.catbox {
+	width: 240px;
+	position: relative;
+	top: -10px;
+	float: right;
+}
+.catbox_posit {
+	width: 240px;
+	top: -10px;
+	float: right;
+}
+.board .catcolorbox_posit {
+	position: absolute;
+	right: 0;
+	bottom: -22px;
+}
+.catbox_pos {
+	width: 240px;
+	top: -10px;
+	float: right;
+}
+.board .catcolorbox_pos {
+	position: absolute;
+	right: 0;
+	bottom: -11px;
+}
+
+
+.catbox-article {
+    border-left: 27px solid transparent;  
+    height: 0;  
+}
+.catbox-article span {
+	font-family: KlavikaBold;
+	text-transform: uppercase;
+	font-size: 9pt;	
+	color: #fff;
+	padding-left: 20px;
+	position: relative;
+	top: -20px;	
+}
+.catbox-article a {
+	
+}
+.catbox-article span:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+.channel-article {
+  border-left: none;
+  text-align: right;
+  top: -3px;
+}
+
+
+.channel-article a {
+  top: -25px;
+  z-index: 2;
+  right: 40px;
+}
+
+
+
+/*.channel-article {
+    border-left: 30px solid transparent;  
+    height: 0;  
+}*/
+
+.channel-article span{
+  right: 0;
+  top: 0;
+  padding: 0;
+}
+
+/*.channel-article span {
+	font-family: KlavikaBold;
+	text-transform: uppercase;
+	font-size: 9pt;	
+	color: #fff;
+	padding-left: 20px;
+	position: relative;
+	top: -25px;	
+}*/
+
+/*.channel-article a:hover {
+	color: #fff;
+}
+.channel-article span:hover {
+	color: #fff;
+}*/
+
+.channel-article-caption {
+	width: 600px;
+}
+
+.channel-article-header {
+    border-left: 30px solid transparent;  
+    height: 0;  
+}
+
+.channel-article-header span {
+	font-family: KlavikaBold;
+	text-transform: uppercase;
+	font-size: 9pt;	
+	color: #fff;
+	position: relative;
+	top: -25px;	
+	padding-left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.k-channel-article {
+    border-left: 30px solid transparent;  
+    height: 0;  
+}*/
+.k-channel-article {
+  	border-left: none;
+  	text-align: right;
+  	top: -4px;
+}
+.k-channel-article span {
+	font-family: KlavikaBold;
+	text-transform: uppercase;
+	font-size: 9pt;	
+	color: #fff;
+	padding-right: 20px;
+	position: relative;
+	top: -25px;	
+}
+.k-channel-article a:hover {
+	color: #fff;
+}
+.k-channel-article span:hover {
+	color: #fff;
+}
+
+.k-channel-article-caption {
+	width: 600px;
+}
+
+.k-channel-article-header {
+    border-left: 30px solid transparent;  
+    height: 0;  
+}
+
+.k-channel-article-header span {
+	font-family: KlavikaBold;
+	text-transform: uppercase;
+	font-size: 9pt;	
+	color: #fff;
+	position: relative;
+	top: -25px;	
+	padding-left: 20px;
+}
+
+
+.board {
+	margin: 0;
+	width: 100%;
+	font-size: 0px;
+	position: relative;
+	background-image: none
+}
+.board a {
+	color: #000
+}
+.board a:hover {
+	text-decoration: none
+}
+.board .rowfluid {
+	position: relative;
+	width: 970px;
+	margin: auto
+}
+.board .col_1 {
+	width: 33%;
+	margin-right: -1px;
+	border-right: solid 1px #e5e5e5
+}
+.board .col_2 {
+	width: 33.8%
+}
+.board .col_3 {
+	width: 33%;
+	margin-left: -1px;
+	border-left: solid 1px #e5e5e5
+}
+.board .b_container {
+	height: 200px
+}
+.board .b_container {
+	position: relative;
+	width: 300px
+}
+.board .col_2 .b_container {
+	width: 300px
+}
+
+.board .inner_cell {
+	margin-top: 13px;
+	background-color: #FFF;
+	height: 303px;
+	position: relative
+}
+.board .row_1 .inner_cell {
+	margin-top: 0px
+}
+.board .col_2 .inner_cell {
+	margin-left: 14px;
+	margin-right: 14px
+}
+.board .col_3 .inner_cell {
+	margin-left: 13px;
+	margin-right: 5px
+}
+.board .b_headline {
+	font-size: 20px;
+	line-height: 20px;
+	color: #000;
+	font-family: KlavikaBlack, Arial, sans-serif;
+	margin-top: 30px;
+	margin-left: 0px;
+	width: 290px;
+	position: relative
+}
+.board .catcolorbox {
+	background-color: #009cd8;
+	position: absolute;
+	color: #FFF;
+	font-size: 12px;
+	line-height: 27px;
+	font-family: KlavikaMedium, Arial, sans-serif;
+	display: inline-block;
+	right: 0;
+	width: 230px;
+	bottom: -15px;
+	padding-left: 10px;
+	padding-top: 1px;
+	padding-right: 10px;
+	overflow: hidden;
+	max-height: 28px;
+	text-overflow: ellipsis
+}
+.board .b_link:hover {
+	text-decoration: underline;
+}
+.board .container_space {
+	margin-bottom: -1px;
+	border-bottom: solid 1px #e5e5e5;
+	width: 100%;
+	text-align: center;
+	min-height: 121px
+}
+.board .container_space_1 {
+	margin-bottom: -1px;
+	border-bottom: solid 1px #e5e5e5;
+	width: 100%;
+	text-align: center;
+	min-height: 121px
+}
+
+.board .b_container_1 {
+	position: relative;
+	width: 300px;
+	height: 200px;	
+}
+.board .col_2 .b_container_1 {
+	width: 300px
+}
+.board .inner_cell_1 {
+	margin-top: 13px;
+	background-color: #FFF;
+	height: 303px;
+	position: relative
+}
+.board .col_1 .inner_cell_1 {
+	margin-left: 5px;
+	margin-right: 13px
+}
+.board .col_2 .inner_cell_1 {
+	margin-left: 14px;
+	margin-right: 14px
+}
+.board .col_3 .inner_cell_1 {
+	margin-left: 13px;
+	margin-right: 5px
+}
+
+
+
+
+
+
+
+.board .catcolorbox_1 {
+	position: absolute;
+	right: 0;
+	bottom: -15px;
+}
+.board .rowfluid.row_wideunit {
+	width: 100%;
+	background-color: #f5f5f5;
+	text-align: center;
+	padding-top: 14px;
+	padding-bottom: 15px;
+	margin-bottom: 25px
+}
+
+
+
+.board .pbyline {
+	line-height: 20px;
+	white-space: nowrap;
+	text-transform: uppercase;
+	font-family: KlavikaMedium, Arial, sans-serif;
+	font-size: 12px;
+	letter-spacing: 0px
+}
+.board .text_container {
+	border-top: solid 5px #F6861F;
+	background-color: #FFF;
+	display: table;
+	height: 295px
+}
+.board .text_container {
+	font-size: 34px;
+	line-height: 34px;
+	font-family: KlavikaExtraLight, Arial, sans-serif;
+	letter-spacing: -1px;
+	vertical-align: bottom;
+	display: table-cell
+}
+.text_box {
+	font-size: 34px;
+	line-height: 34px;
+	font-family: KlavikaExtraLight, Arial, sans-serif;
+	letter-spacing: -1px;
+	vertical-align: bottom;
+	display: table-cell
+}
+
+.board .text_container .text_cat {
+	left: 0;
+	top: 8px;
+	font-family: KlavikaMedium, Arial, sans-serif;
+	font-size: 12px;
+	position: absolute;@-moz-document url-prefix(){
+		top: 13px;
+	}
+}
+.board .b_portrait {
+	z-index: 3
+}
+.board .b_portrait.col_1, .board .b_portrait.col_2, .board .b_portrait.col_3 {
+	border-bottom: none
+}
+.board .b_portrait .b_container {
+	height: 521px
+}
+.board .col_1, .board .col_2, .board .col_3 {
+	position: relative;
+	display: inline-block;
+	margin-bottom: -1px;
+	border-bottom: solid 1px #e5e5e5;
+	height: 100%;
+	vertical-align: top
+}
+.board .col_1 .inner_cell {
+	margin-left: 5px;
+	margin-right: 13px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.k-governcell, .k-governcell-double {
+	position: relative;
+}
+.k-outercell, .k-outercell-double {
+	height: auto;	
+	position: relative;
+	vertical-align: top;
+}
+.k-outercell-double {
+	
+}
+.k-img {
+}
+.kol1 {
+	width: 955px;
+	position: relative;
+	display: inline-block;
+}
+.kol2 {
+	width: 472px;
+	position: relative;
+	display: inline-block;
+}
+.kol3 {
+	width: 315px;
+	position: relative;
+	display: inline-block;
+}
+.kol-619 {
+	width: 619px;
+	position: relative;
+	display: inline-block;
+}
+.ktop {
+	border-top: 1px solid #e5e5e5;
+}
+.kbottom {
+	border-bottom: 1px solid #e5e5e5;				
+}
+.kleft {
+	border-left: 1px solid #e5e5e5;
+}
+.kright {
+	border-right: 1px solid #e5e5e5;				
+}
+.k-cell-divider-horiz {
+	width: 326px;
+	height: 1px;
+	border-bottom: 1px solid #e5e5e5;	
+	position: relative;
+	right: -4px;
+	left: -4px;
+}
+.k-cell-divider {
+	border-right: 1px solid #e5e5e5;
+	width: 1px;
+	display: inline-block;
+}
+.k-inner-cell {
+	padding-top: 0px;
+	position: relative;
+	background-color: #FFF;	
+	height: auto;
+}
+.k-b-container {
+	position: relative;
+	padding-left: 4px;	
+	padding-top: 4px;
+	height: 184px;
+}
+.k-b-container-double {
+	position: relative;
+	padding-left: 4px;	
+	padding-top: 4px;
+	height: 184px;
+}
+.k-img-cell-single {
+	position: absolute;
+	bottom: 0px;	
+	
+	text-align: center;
+}
+.k-empty {
+	height: 0px;
+}
+
+
+
+
+
+/*.katbox {
+    position: relative;
+    text-align: right;
+    width: 300px;
+}*/
+
+
+.katbox {
+	width: 240px;
+	position: relative;
+	/*top: -10px;*/
+	top: 11px;
+	text-align: left;
+}
+
+
+
+
+.katbox_posit {
+	width: 240px;
+	top: -10px;
+	text-align: left;	
+}
+
+.katcolorbox_posit {
+/* delete the other styles for this css class*/
+    bottom: -30px;
+    position: absolute;
+}
+
+/*.katcolorbox_posit {
+	position: absolute;
+	right: 0;
+	bottom: -18px;
+}*/
+
+
+
+
+
+.katbox-article {
+  border-left: none;
+}
+/*.katbox-article {
+    border-left: 27px solid transparent;  
+    height: 0;      
+}*/
+.katbox-article span {
+/* add the below to this css class. You can also just delete padding-left:0; instead of making it 0*/
+    padding-left: 0;
+	padding-right: 20px
+}
+.katbox-article span {
+	font-family: KlavikaBold;
+	text-transform: uppercase;
+	font-size: 9pt;	
+	color: #fff;
+	padding-left: 20px;
+	position: relative;
+	top: -24px;	
+}
+.katbox-article span:hover {
+	text-decoration: underline;
+}
+
+
+
+
+
+.k-link-a:hover {
+	text-decoration: none;
+}
+.katbox-article span:hover {
+	color: #fff;
+}
+.k-b-headline {
+	font-size: 20px;
+	line-height: 20px;
+	color: #000;
+	font-family: KlavikaBlack, Arial, sans-serif;
+	margin-top: 30px;
+	margin-left: 0px;
+	width: 290px;
+	position: relative;
+	height: auto;
+}
+.k-b-headline-kol2 {
+	font-size: 20px;
+	line-height: 20px;
+	color: #000;
+	font-family: KlavikaBlack, Arial, sans-serif;
+	margin-top: 20px;
+	margin-left: 0px;
+	width: 400px;
+	position: relative;
+	height: auto;
+}
+.k-b-headline:hover {
+	text-decoration: none;
+}
+.katcolorbox {
+	background-color: #009cd8;
+	position: absolute;
+	color: #FFF;
+	font-size: 12px;
+	line-height: 27px;
+	font-family: KlavikaMedium, Arial, sans-serif;
+	display: inline-block;
+	right: 0;
+	width: 230px;
+	bottom: 0px;
+	padding-left: 10px;
+	padding-top: 1px;
+	padding-right: 10px;
+	overflow: hidden;
+	max-height: 28px;
+	text-overflow: ellipsis;
+}
+.k-b-link:hover {
+	text-decoration: underline;
+}
+.kbyline {
+	line-height: 16px;
+	white-space: nowrap;
+	text-transform: uppercase;
+	font-family: KlavikaMedium, Arial, sans-serif;
+	font-size: 12px;
+}
+.kbyline:hover {
+	text-decoration: underline;
+}
+
+.kpaper-text-wrapper {
+	text-align: left;
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 20px;
+	vertical-align: top;
+}
+.kpaper-text {
+	font-size: 20px;
+	line-height: 20px;
+	color: #000;
+	font-family: KlavikaMedium, Arial, sans-serif;
+}
+.kpaper-text h2 {
+	font-size: 16px;
+	line-height: 20px;
+	color: #000;
+	font-family: KlavikaMedium, Arial, sans-serif;
+}
+
+
+
+
+

@@ -1,0 +1,80 @@
+<% provide(:title, 'Institute Query Result') %>
+
+	<script type="text/javascript" src="../scripts/jquery.js"></script>	
+
+	<header>
+		<%= render 'share/backtotop' %>
+	</header>
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<%= render 'share/dir_institutes_left'%>
+				</div>
+				
+				<div class="col-midd">
+					<div class="line-space-20"></div>
+
+					<div style="text-align: left;">
+						<span class="normal pad-left-20">Product Details:</span>
+					</div>
+
+					<div class="line-space-20"></div>
+
+					<div id="render"></div>		
+
+					<div class="line-space-20"></div>
+
+				 	<table>
+				 		<tr>
+				 			<td>
+				 				<span class="small pad-left-20">Description:</span></div>
+				 			</td>
+				 			<td>
+				 				<span class="small pad-left-20"><%= @publisher_product_description.description %></span></div>
+				 			</td>
+				 		</tr>
+				 		<tr><td style="height: 10px;"></td><td></td></tr>					 		
+				 		<tr>
+				 			<td>
+				 				<span class="small pad-left-20">Price:</span></div>
+				 			</td>
+				 			<td>
+				 				<span class="small pad-left-20"><%= @publisher_product_description.price %></span></div>
+				 			</td>
+				 		</tr>
+				 	</table>
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_institutes_right' %>
+				</div>								
+			</div>
+		</div>
+	</div>
+
+	<script>
+	  
+		$(window).load( function() {
+		//$(document).ready(function () {				
+	
+				var cnt = 1;
+				var cells = "";
+				
+				// alert(gon.image_name);
+	
+				if (gon.image_name !== '') {								
+					cells += "</td><td style='width: 10px;'></td><td><img src='../images_publisher_product_logo/" + gon.image_name + "' alt='image'>";
+					var tbl = "<table><tr>" + cells + "</tr></table>";
+					$( "#render" ).html( tbl);
+				}
+				else {
+					var tbl = "<table><tr><td><span class='normal-red pad-left-20'>No photo</span><td></tr></table>";
+					$( "#render" ).html( tbl);				
+				}
+		});
+	  
+	</script>		
+

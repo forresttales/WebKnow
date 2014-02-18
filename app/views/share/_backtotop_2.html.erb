@@ -1,0 +1,115 @@
+
+	<style>
+	
+		/* back to top button */
+	
+		.back-to-top {
+			display: none;			
+		}
+		
+		div.inflow {
+		  	position: relative; 
+		  	margin-right: 4.5em;		  
+		}
+		div.positioner {position: absolute; right: 0;} /*may not be needed: see below*/
+		div.fixed {
+		  	width: 40px;
+		  	height: 60px; 
+		  	text-align: center;
+			padding-top: 22px;
+			padding-left: 4px;		  	
+		  	position: fixed; 
+		  	top: 500px; 
+		  	right: 0px;
+		  	margin-right: 50px;
+		  	z-index: 200;
+		}
+		div.fixed:hover {
+			/*background-color: rgba(252, 207, 235, 0.50);		*/		
+		}
+
+
+		/* back to top home */
+
+		.back-to {
+			display: none;		
+			color: rgba(196, 116, 12, 0.50);
+			color: #C4740C; /*#9C5800;*/
+			font-size: 16px;
+			font-family: KlavikaMedium;		
+		}
+		div.inflow-back-to {
+		  	position: relative;	  	
+		  	/*margin-left: -0.1em;*/		  			  
+		}
+		div.positioner-back-to {position: absolute; left: 0;}
+		div.fixed-back-to {
+			color: rgba(200, 200, 200, 0.60);
+			text-align: center;
+			padding-top: 10px;
+		  	width: 62px;
+		  	height: 32px; 
+		  	position: fixed; 
+		  	top: 160px; 
+		  	left: 0px;
+		  	margin-left: 30px;
+		  	z-index: 201;
+		}
+		div.fixed-back-to:hover {
+		}
+			
+	</style>
+
+
+  	<div class="inflow">
+    	<div class="positioner"><!-- might not be needed -->
+      		<a href="#" class="back-to-top">
+      			<div class="fixed">
+      				<img src="/assets/back-to-top-gray.png" />
+      			</div>
+      		</a>
+    	</div>
+  	</div>
+
+  	<div class="inflow-back-to">
+    	<div class="positioner-back-to">
+      		<div class="fixed-back-to">
+      			
+				<%= link_to '&laquo;'.html_safe + 'Back', :back, :class => "back-to" %> 
+      			
+      			<!-- <a href="/index" class="back-to">&laquo;Back</a>		 -->      			
+      		</div>
+    	</div>
+  	</div>
+  	
+
+    <script>
+                
+		//jQuery(document).ready(function() {
+			var offset_top = 220;
+			// var offset_hom = 0;			
+			var duration = 1000;
+			jQuery(window).scroll(function() {
+				if (jQuery(this).scrollTop() > offset_top) {
+					jQuery('.back-to-top').fadeIn(duration);
+				} else {
+					jQuery('.back-to-top').fadeOut(duration);
+				}
+				// if (jQuery(this).scrollTop() > offset_hom) {
+					// jQuery('.back-to').fadeIn(duration);					
+				// } else {
+					// jQuery('.back-to').fadeOut(duration);					
+				// }	
+			});
+			
+			jQuery('.back-to-top').click(function(event) {
+				event.preventDefault();
+				jQuery('html, body').animate({scrollTop: 0}, duration);
+				return false;
+			})
+			
+			jQuery('.back-to').fadeIn(duration);					
+			
+		//});
+		
+	</script>

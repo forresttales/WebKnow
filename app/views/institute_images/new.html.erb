@@ -1,0 +1,214 @@
+<% provide(:title, 'New Image') %>
+
+	<style>
+	
+		#signin-page {
+			height: 800px;
+		}
+	
+		#signin-page #signin-page-inner {
+		    width: 50%;
+		    margin: 0 auto;
+		}	
+
+		div .table-signin {
+			display: table;
+			background-color: #DEDB3C;
+			width: 700px;
+			border-radius: 20px;
+			border:2px solid #254520;
+			box-shadow: 1px 1px 10px #888888;
+			padding-top: 40px;
+			padding-bottom: 40px;
+			padding-left: 60px;
+		}
+	
+		.input-signin {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 300px;
+			height: 24px;
+			border-style:solid;
+			border-radius: 4px;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+			color: #ccc;
+		}
+	
+		.input-signin:focus {
+			border-color: #3949C4;
+			color: #000;
+			-webkit-box-shadow: 0 0 10px #3949C4;
+			-moz-box-shadow: 0 0 10px #3949C4;
+			box-shadow: 0 0 10px #3949C4;
+		}
+			
+		.input-label-signin {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 220px;
+			height: 18px;
+		}
+			
+		.input-signin-spacer {
+			height: 16px;
+		}
+			
+		div .cell-right-signin-admin {
+			display: table-cell;
+			width: 50%;
+			text-align: left;
+			align: top;		
+		}
+	
+		div .cell-left-signin-admin {
+			display: table-cell;
+			width: 30%;	
+			align: top;
+			text-align: right;		
+			padding-right: 20px;
+		}
+		
+		div .cell-submit-signin-admin {
+			display: table-cell;
+			width: 50%;
+			text-align: left;
+			align: top;		
+			padding-left: 0px;
+		}
+		
+		.signin-btn {
+		  
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 308px;
+		  	height: 30px;
+		  	background: linear-gradient(#000, #000);
+		  	text-shadow: 1px 1px 1px #0E86B2; 
+		  	border-radius: 6px;
+		}
+	
+		.signin-btn:focus {
+		  background: #CCC; 
+		  color: #5F7A2A;
+		  box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
+		}
+		
+		.signin-btn:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(255,255,255,0.3);
+		}
+		
+		.signin-btn:active { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(0,0,0,0.3); 
+		}
+		
+		
+		
+		div .error_label {
+		    display: none;
+			font-family: msyh;
+			font-size: 12px;
+			color: #851717;		    
+		}
+	
+		div .errors {
+			font-family: msyh;
+			font-size: 11px;
+			color: #851717;		    			
+		}
+	
+		.success {
+			color: #000D6E;
+			background-color: #fff;
+			
+			/*background: url("/assets/submit_form_tick.png") no-repeat 278px 5px;*/		
+	
+			/*background: url("/assets/submit_form_empty.png") no-repeat 278px 1px;		*/					
+		}		
+		
+		.error {
+			color: #851717;
+			background: url("/assets/submit_form_empty.png") no-repeat 218px 7px;		
+			border-color: #851717; 						
+		}
+	
+		.required {
+			color: orange;		
+			background: url("/assets/submit_form_asterisk_orange.png") no-repeat 218px 7px;
+		}
+		
+		div .cell-error-archive {
+			display: inline-block;
+			width: 20px;
+			height: 18px;
+			vertical-align: bottom;
+			text-align: left;
+			margin-left: 4px;
+		}
+		
+		.table-signin p {
+			font-family: msyh; 
+			font-size: 16px;
+			color: #005187;"
+		}
+		
+		.input-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 600px;
+			height: 24px;
+			border-style:solid;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+			color: #888;
+		}
+    	
+    	.submit-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+    		height: 24px;
+    	}
+
+		
+	</style>
+
+	<script src="/assets/jquery.validate.js"></script>
+
+
+	<div id="signin-page">
+		
+		<header>
+	
+			<div style="height: 200px;"></div>
+			
+		</header>
+		
+		
+		<div id="signin-page-inner">
+			
+			<div class="table-signin">
+				<div class="row">
+					
+					<div class="cell-100percent" tabindex="1">
+
+						<%= form_tag({action: :upload}, multipart: true) do %>
+							<%= file_field_tag 'upload_file', :class => 'input-upload' %> 
+							<%= submit_tag "Upload", :class => 'submit-upload' %> 
+						<% end %>
+
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>	
+		
+	</div>					
+					

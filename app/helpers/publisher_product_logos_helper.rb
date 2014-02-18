@@ -1,0 +1,2 @@
+module PublisherProductLogosHelper
+end

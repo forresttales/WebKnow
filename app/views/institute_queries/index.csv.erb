@@ -1,0 +1,5 @@
+name_type,salutation,name_first,name_last,name_title,institute,department,address_1,address_2,city,state,zip,country,phone,fax,phone_direct,phone_mobile,email,website
+<% @stores.each do |store| %>
+<%= store.name_type %>,<%= store.salutation %>,<%= store.name_first %>,<%= store.name_last %>,<%= store.name_title %>,<%= store.institute %>,<%= store.department %>,<%= store.address_1 %>,<%= store.address_2 %>,<%= store.city %>,<%= store.state %>,<%= store.zip %>,<%= store.country %>,<%= store.phone %>,<%= store.fax %>,<%= store.phone_direct %>,<%= store.phone_mobile %>,<%= store.email %>,<%= store.website %>
+<% end %>
+

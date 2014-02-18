@@ -1,0 +1,780 @@
+<% provide(:title, 'Join') %>
+
+<!-- <script src='js/jquery.min.js' type='text/javascript'></script> -->
+
+<!-- <script src="http://jquery.bassistance.de/validate/lib/jquery.js"></script> -->
+	
+	
+<!-- <script src="http://jquery.bassistance.de/validate/jquery.validate.js"></script> -->
+
+<!-- <script src="/assets/jquery.js"></script> -->
+<script src="/assets/jquery.validate.js"></script>
+
+<!-- <script src="//code.jquery.com/jquery-1.9.1.js"></script> -->
+
+  <!-- <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.4/jquery.validate.min.js"></script> -->
+  
+  
+
+
+	<!-- <div id="join_image" style="background: #F1F2E1 url('/assets/background_cambridge_garden.jpg') no-repeat right top;"> -->
+					
+					
+	<style>
+		
+	/* -- input form -- */
+	
+	
+	.form-signin {
+		
+		width: 620px;
+		height: auto;
+					
+		display: block;
+		
+		/*background-color:rgba(86, 133, 78, 0.97);*/
+		
+		
+		/*background-color: rgba(79, 92, 79, 0.97);*/
+
+		/*background-color: rgba(19, 59, 19, 0.97);*/
+
+		background-color: rgba(4, 26, 4, 0.96);
+
+
+		/*background-color:rgba(86, 133, 78, 0.75);*/
+		
+		/*-moz-box-shadow:5px 5px 40px #fff;
+		-webkit-box-shadow:5px 40px 5px #fff;
+		box-shadow:5px 5px 40px #CCAE37;*/
+		
+	    /*box-shadow: 0 0 30px #CCAE37;*/
+	   		   		    
+	    transition: box-shadow 3s ease-in-out;				
+			
+		border-top-left-radius: 10px;
+   		border-top-right-radius: 10px;		
+		border-bottom-left-radius: 10px;
+   		border-bottom-right-radius: 10px;
+   		
+		position: absolute;
+		text-align: center;			
+		top: 350px;			
+		padding-top: 30px;	   			   	
+		padding-bottom: 30px;	
+	}
+	
+	#joinClose {
+		right: 6px;
+		top: 6px;
+		position: absolute;
+		display: block
+	}
+	
+	/**:focus {
+		outline: none
+	}*/
+	
+	#loading {
+		background:url("/assets/icon_loading.gif") no-repeat center center;
+		height: 100px; width: 100px;
+		position: fixed; left: 47%; top: 50%; z-index: 1000;
+		margin: -25px 0 0 -25px;
+	}				
+				
+	
+	.input-form {
+		font-family: msyh;
+		font-size: 16px;
+		width: 240px;
+		height: 24px;
+		border-style:solid;
+		border-radius: 6px;
+		border-color: #13571F;
+		border-width: 2px;
+		padding-left: 6px;
+		
+		-webkit-transition: all 0.5s ease-in-out;
+		-moz-transition: all 0.5s ease-in-out;
+		-o-transition: all 0.5s ease-in-out;
+		-ms-transition: all 0.5s ease-in-out;
+		transition: all 0.5s ease-in-out;
+	}
+
+	.input-form:focus {
+		/*border-color: #97FF47;*/
+		
+		color: #fff;
+						
+		background: url("/assets/submit_form_empty.png") no-repeat 218px 7px;						
+				
+		-webkit-box-shadow: 0 0 25px #ccc;
+		-moz-box-shadow: 0 0 25px #ccc;
+		box-shadow: 0 0 25px #ccc;
+		-webkit-transform: scale(1.05);
+		-moz-transform: scale(1.05);
+		-webkit-transform: scale(1.05);
+		-moz-transform: scale(1.05);
+		-o-transform: scale(1.05);
+		-ms-transform: scale(1.05);
+		-webkit-transform: scale(1.05);
+		-moz-transform: scale(1.05);
+		-o-transform: scale(1.05);
+		-ms-transform: scale(1.05);
+		-webkit-transform: scale(1.05);
+		-moz-transform: scale(1.05);
+		-o-transform: scale(1.05);
+		-ms-transform: scale(1.05);
+		transform: scale(1.05);
+	}
+
+	div .error_label {
+	    display: none;
+		font-family: msyh;
+		font-size: 12px;
+		color: #851717;		    
+	}
+
+	div .errors {
+		font-family: msyh;
+		font-size: 11px;
+		color: #851717;		    			
+	}
+
+	/*.input-form:invalid {
+		color: #851717;
+		background: url("/assets/submit_form_cancel.png") no-repeat 216px 7px;									
+	}
+
+	.input-form:error {
+		color: #851717;
+		background: url("/assets/submit_form_cancel.png") no-repeat 216px 7px;									
+	}
+
+	.input-form:required {
+		color: orange;		
+		background: url("/assets/submit_form_asterisk_orange.png") no-repeat 218px 7px;
+	}
+
+	.input-form:success {
+		color: #ACDDE3;		
+		background: url("/assets/submit_form_tick.png") no-repeat 218px 5px;
+	}
+	
+	.input-form:valid {
+		color: #ACDDE3;		
+		background: url("/assets/submit_form_tick.png") no-repeat 218px 5px;
+	}*/	
+	
+	.input-label {
+		font-family: msyh;
+		font-size: 16px;
+		width: 220px;
+		height: 18px;
+	}
+
+	/*.input-label:focus {
+		color: #43B557;
+	}
+
+	.input-label:error {
+		color: #851717;
+	}
+
+	.input-label:required {
+		color: orange;		
+	}
+
+	.input-label:success {
+		color: orange;		
+	}*/		
+		
+		
+		
+		
+	.success {
+		color: #ACDDE3;		
+		background: url("/assets/submit_form_tick.png") no-repeat 218px 5px;		
+	}		
+	
+	.error {
+		color: #851717;
+		background: url("/assets/submit_form_empty.png") no-repeat 218px 7px;		
+		border-color: #851717; 						
+	}
+
+	.required {
+		color: orange;		
+		background: url("/assets/submit_form_asterisk_orange.png") no-repeat 218px 7px;
+	}
+	
+	/*.focus {
+		color: #fff;
+	}*/
+	
+	.error-label {
+		color: #851717;
+	}
+
+	.required-label {
+		color: orange;		
+	}
+	
+	.input-form-spacer {
+		height: 8px;
+	}
+
+	.input-search-1 {
+		background-color: white;
+		color: black;
+		font-family: Arial;
+		width: 200px;
+	}
+		
+		
+	</style>					
+					
+					
+					
+					
+	<div id="join_image">
+				
+	<header>					
+    	     	
+    	<div class="shadow" style="position: relative; z-index: +2;">
+    		
+    		<%= render 'layouts/flash_alert' %>
+    		
+			<div class="table-main">			
+				<div class="row">
+					<div class="cell-250">
+						<div class="table-main">
+							<div class="row">
+								<div class="cell-250" style="padding-left: 24px;">
+						  			<img src="../repository/image_learning_counsel.png" alt="image_learning_counsel.png" >
+						  		</div>
+							</div>
+							<div class="row">
+								<div class="cell-125" style="padding-left: 24px;">
+									<p style="font-family: msyh; font-size: 12px;">Research and Context for the<br>Shift to Digital Curriculum</p>
+						  		</div>
+							</div>							
+						</div>
+					</div>
+					<div class="cell-650">
+						<div class="table-main">
+							<div class="row">
+								<div class="cell-650">
+									
+									<img src="../repository/banner-1.png" alt="banner-1.png" width="630px" >
+									
+									<!-- <div id="main_header_adblock_1">									
+										<h3>Space Available</h3>
+									</div> -->									
+														
+								</div>			
+							</div>							
+						</div>
+					</div>
+					<div class="cell-100%">
+						<div class="table-main">
+							<div class="row">
+								<div class="cell-100percent">
+				 						<!-- link_to image_tag(“/assets/EdMatchUp_logo.png”, :class=>’′), :url =>{:controller=> ‘’,:action=>’’} -->															
+									<div id="edmatchuplogo">
+										<%= link_to image_tag("../repository/EdMatchUp_logo.png", :alt => 'EdMatchUp_logo.png'), '#' %>															
+									</div>							
+						  		</div>
+							</div>
+							<div class="row">
+								<div class="cell-100percent">
+									<div align="center">
+										<%= link_to image_tag("../repository/image_coming_soon_8k.png", :alt => 'image_coming_soon_8k.png'), '#' %>															
+									</div>							
+						  		</div>							
+							</div>
+						</div>
+					</div>
+				</div>					
+			</div>	
+			
+			<!-- <div style="height: 60px;"> -->
+								
+			<div class="table-white" style="height: 70px;">
+				<div class="row">
+					<div class="cell-100percent" style="padding: 4px 0px 0px 40px;">
+						<h2 style="font-family: msyh; color: #26B821;">Join our eNewsletter, get invitations to events, and get<br >
+							the first peek at EdMatchUp with Beta in 2014 !</h2>
+					</div>
+					<!-- <p>
+						<button class="btn blue small">Join</button>
+					</p>
+					<p>
+						<button class="btn blue small">Cancel</button>
+					</p> -->											
+				</div>
+				<div class="row">
+					<!-- <div align="right" style="margin-right: 6px; margin-bottom: 6px;">
+						<button href="users/create" id="btn3" class="btn blue small">Create Account</button>
+						<button id="btn1" class="btn blue small">Join</button>
+						<button id="btn2" class="btn blue small">Cancel</button>						
+					</div> -->					
+					
+				</div>
+				
+				<!-- <div class="row">
+					<div class="cell-100percent">
+						<div id="errorContainer">
+						    <p>Please correct the following errors and try again:</p>
+						    <ul />
+						</div>		
+					</div>
+				</div> -->				
+				
+			</div>
+		</div>	
+		
+		
+		<div id="loading"> </div>
+				
+	</header>		
+	
+	<section>
+
+		
+		<div id="form_signin" class="form-signin">
+			
+			<a id="joinClose" class="btn-joinClose" onclick="hideSignin();"><img src="/assets/submit_form_close.png" width="20" alt="" /></a>
+ 			
+ 			
+    		  <!-- form_for(@user, :id => "join_form", :url => {:controller => "users", :action => "create"}) do |f|  -->
+    		      		     		
+			  <%= form_for @user, :html => {:id => "form_join"} do |f| %> 
+			  			 
+			<!-- = render 'shared/error_messages', object: f.object -->
+			 <!-- hidden_field_tag :account_type, @account_type  -->
+			 	
+			<div class="errors">
+				<div class="row">
+					<div class="cell-left-signin" style="width: 190px;"></div>
+					<div class="cell-right-signin">
+						<p></p>
+					</div>
+				</div>
+			</div>			
+
+
+
+			<div class="error_label">
+				<div class="row">
+					<div class="cell-left-signin" style="width: 190px;"></div>
+					<div class="cell-right-signin" style="width: 300px;">
+						<p id="error_user_name_first"></p>
+					</div>
+				</div>
+			</div>			
+																		
+			<div class="row">
+				<div class="cell-left-signin">
+					<%= f.label(:name_first, "First Name", :class => 'input-label required-label', :id => 'label_user_name_first') %>
+				</div>
+				<div class="cell-right-signin">
+					<!-- <input type="text" id="name_first" name="user_name_first" placeholder="first name" class="input-form" /> -->
+					<!-- <label for="name" class="error_label" generated="true"></label>				 -->																
+					 <%= f.text_field(:name_first, :class => "input-form required", :placeholder => 'Firstname') %>					 
+				</div>   
+			</div>      		
+	
+			<div class="input-form-spacer"></div>
+
+			<div class="error_label">
+				<div class="row">
+					<div class="cell-left-signin" style="width: 190px;"></div>
+					<div class="cell-right-signin" style="width: 300px;">
+						<p id="error_user_name_last"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="cell-left-signin">
+					<%= f.label(:name_last, "Last Name", :class => 'input-label required-label', :id => 'label_user_name_last') %>
+				</div>
+				<div class="cell-right-signin">
+					<%= f.text_field(:name_last, :class => "input-form required", :placeholder => 'Lastname' ) %>
+				</div>      	
+			</div>      		
+		
+			<div class="input-form-spacer"></div>
+	
+				<div class="error_label">
+				<div class="row">
+					<div class="cell-left-signin" style="width: 190px;"></div>
+					<div class="cell-right-signin" style="width: 300px;">
+						<p id="error_user_email"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="cell-left-signin">
+					<%= f.label(:email, "Email", :class => 'input-label required-label', :id => 'label_user_email') %>
+				</div>
+				<div class="cell-right-signin">
+					<!-- <input type="email" id="email" name="email" placeholder="email@example.com" class="input-form" required /> -->					
+					<%= f.text_field(:email, :class => "input-form required", :placeholder => 'email@example' ) %>
+				</div>      	
+			</div>      		
+	
+			<div class="input-form-spacer"></div>
+			
+			<div class="error_label">
+				<div class="row">
+					<div class="cell-left-signin" style="width: 190px;"></div>
+					<div class="cell-right-signin" style="width: 300px;">
+						<p id="error_user_username"></p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="cell-left-signin">
+					<%= f.label(:username, "Username", :class => 'input-label required-label', :id => 'label_user_username') %>
+				</div>
+				<div class="cell-right-signin">
+					<%= f.text_field(:username, :class => "input-form required", :placeholder => 'username' ) %>
+				</div>      	
+			</div>
+	
+			<div class="input-form-spacer"></div>
+			
+			<div class="error_label">
+				<div class="row">
+					<div class="cell-left-signin" style="width: 190px;"></div>
+					<div class="cell-right-signin" style="width: 300px;">
+						<p id="error_user_password"></p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="cell-left-signin">
+					<%= f.label(:password, "Password", :class => 'input-label required-label', :id => 'label_user_password') %>
+				</div>
+				<div class="cell-right-signin">
+					<%= f.password_field(:password, :class => "input-form required" ) %>
+				</div>      	
+			</div>      		
+	
+			<div class="input-form-spacer"></div>
+	
+			<div class="error_label">
+				<div class="row">
+					<div class="cell-left-signin" style="width: 190px;"></div>
+					<div class="cell-right-signin" style="width: 300px;">
+						<p id="error_user_password_confirmation"></p>
+					</div>
+				</div>
+			</div>
+	
+			<div class="row">
+				<div class="cell-left-signin">
+					<%= f.label(:password_confirmation, "Confirmation", :class => 'input-label required-label', :id => 'label_user_password_confirmation') %>
+				</div>
+				<div class="cell-right-signin">
+					<%= f.password_field(:password_confirmation, :class => "input-form required" ) %>
+				</div>      	
+			</div>      		
+
+			<div class="input-form-spacer"></div>
+			<div class="input-form-spacer"></div>
+			<div class="input-form-spacer"></div>
+	
+			<div class="row">
+				<div class="cell-left-signin">
+				</div>
+				<div class="cell-submit-signin" style="padding-left: 0px;">
+					<%= f.submit "Submit", :class => 'btn styled' %>
+				</div>      	
+			</div>      		
+
+			<!-- <div class="space-150"></div> -->
+				
+		<!-- </div> -->
+		
+		<% end %>
+
+
+			<!-- <div class="space-150"></div> -->
+				
+		</div>		
+			
+
+
+		<div id="mainpage" class="shadow" style="background-color: #fff; height: 500px; position: relative; z-index: +1;"></div>
+
+
+
+	</section>
+	
+</div>
+
+
+
+	<script>
+	
+		function showSignin() {
+	
+			var a = $("#mainpage");
+			var b = $("#mainfooter");
+		
+			a.animate({
+				"top": "+=500px"
+			}, 1000, function(){ loadSignin(); });
+		
+			b.animate({
+				"top": "+=500px"
+			}, 1000);
+		}
+		
+		function hideSignin() {
+		
+			disableSignin();
+			
+			var a = $("#mainpage");
+			var b = $("#mainfooter");
+		
+			a.animate({
+				"top": "-=500px"
+			}, 1000);
+			
+			b.animate({
+				"top": "-=500px"
+			}, 1000);
+		}
+
+		function loadSignin() {
+			glowBoxGold();
+
+			$("#form_signin").fadeIn( "slow", function(){$("#form_signin").css({'boxShadow': '0 0 30px #0800FA'}) } );
+
+			setTimeout( function(){
+				glowBoxBlack();
+			}, 2500);
+			
+			setTimeout( function(){$("#user_name_first").focus();}, 1500);
+		}
+		
+		function disableSignin() {
+			$("#form_signin").fadeOut("slow");
+		}
+		
+		function centerSignin() {
+			var a = document.documentElement.clientWidth;
+			var b = $("#form_signin").width();
+			$("#form_signin").css({
+				left : a / 2 - b / 2				
+			})
+		}
+
+		function glowBoxGold() {
+			$("#form_signin").css({
+				'boxShadow': '0 0 30px #CCAE37'
+			})
+		}
+
+		function glowBoxBlack() {
+			$("#form_signin").css({
+				'boxShadow': '0 0 30px #000'
+			})
+		}
+
+		function glowBoxBlue() {
+			$("#form_signin").css({				
+				'boxShadow': '0 0 5px #ACDDE3'
+			})
+		}
+		
+		//var ec = $("user_name_first");
+
+		function formValidate() {
+						
+			$("#form_join").validate({
+			
+				submitHandler: function(form) {
+					form.submit();
+				},
+			
+				debug: true,
+				onkeyup: false,
+				focusCleanup: true,
+				// invalidClass: "error",
+				// validClass: "success",
+				
+				rules: {
+					'user[name_first]': {
+						required: true,
+						minlength: 1,						
+						maxlength: 30						
+					},
+					'user[name_last]': {
+						required: true,
+						minlength: 1,
+						maxlength: 30												
+					},
+					'user[username]': {
+						required: true,
+						minlength: 2,
+						maxlength: 15
+					},
+					'user[password]': {
+						required: true,
+						minlength: 4,
+						maxlength: 20
+					},
+					'user[password_confirmation]': {
+						equalTo: "#user_password"
+					},
+					'user[email]': {
+						required: true,
+						maxlength: 40,
+						email: true
+					}										
+				},
+				invalidHandler: function(event, validator) {
+					var errors = validator.numberOfInvalids();
+					if (errors) {
+						var message = errors == 1
+						? 'You missed 1 field'
+						: 'You missed ' + errors + ' fields';
+						$("div.errors p").html(message);
+						$("div.errors").show();
+					} else {
+						$("div.errors").hide();
+					}
+				},				
+				messages: {
+					'user[name_first]': {
+						required: "Please enter your first name or initial",
+						maxlength: "First name exceeds 30 characters"							
+					},
+					'user[name_last]': {
+						required: "Please enter your last name",
+						maxlength: "Last name exceeds 30 characters"							
+					},
+					'user[username]': {
+						required: "Please enter a username",
+						minlength: "Username at least 2 characters",
+						maxlength: "Username exceeds 15 characters"
+					},
+					'user[password]': {
+						required: "Please provide a password",
+						minlength: "Password at least 4 characters long",
+						maxlength: "Password exceeds 20 characters"
+					},
+					'user[password_confirmation]': {
+						equalTo: "Passwords must match"
+					},
+					'user[email]': {
+						required: "Please enter an email address",
+						maxlength: "Email address exceeds 40 characters",
+						email: "Please enter a valid email address"
+					}										
+				},
+				errorContainer: $("div .error_label"),				
+				errorPlacement: function(error, element) {
+					error.insertAfter('#error_' + element.attr('id'));
+					$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					//$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				},
+				// invalid: function(element) {
+					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// $('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');					
+				// },
+				// highlight: function(element) {
+					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				// unhighlight: function(element) {
+					// //$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				error: function(label) {
+					$('#' + label.attr('for')).removeClass('required').removeClass('success').addClass('error');
+					$('#label_' + label.attr('for')).removeClass('required-label').addClass('error-label');
+				},
+				success: function(label) {
+					$('#' + label.attr('for')).removeClass('required').removeClass('error').addClass('success');
+					$('#label_' + label.attr('for')).removeClass('error-label').addClass('required-label');
+				},				
+				focus: function(element) {
+				 	$('#' + element.attr('id')).removeClass('required').removeClass('error').removeClass('success').addClass('focus');
+				}
+			});
+			
+			$.validator.setDefaults({
+				
+				submitHandler: function() {
+					form.submit();
+				}
+				//$('#user_username');
+				
+				// submitHandler: function() { alert("submitted!"); }
+				// debug: true,
+				// onkeyup: false,
+				// focusCleanup: true,
+				// errorClass: "invalid",
+				// validClass: "success"
+			});
+		}
+
+		$(window).load( function() {
+		//$(document).ready(function(){
+			
+			$("#btn1").click(function(){
+				centerSignin();				
+				showSignin();
+			});
+			$("#btn2").click(function(){
+			  	hideSignin();
+			 });
+
+			var image = '../repository/background-image-proxy.jpeg';
+
+			//var image = '/assets/background_cambridge_garden.jpg';
+			
+			//var image = '/assets/join_form_welcome.png';
+			
+			//ImageProxy.mvc.jpeg
+			
+			img = $('<img />');
+			
+			img.bind('load', function() {
+			    $('#loading').fadeOut(1000);
+
+				setTimeout( function(){
+					centerSignin();
+					showSignin();
+					formValidate();
+				}, 1000);
+			});
+ 			
+			img.attr('src', image);
+ 			
+			$('#join_image').css({
+				//background: '#F1F2E1 url(' + image + ') no-repeat right top'
+				background: '#F1F2E1 url(' + image + ') repeat right top'
+				
+			})
+				
+			// $(window).bind("load", function() {
+			    // $('#loading').fadeOut(2000);
+			// });
+				
+			$("#form_signin").fadeOut();
+			
+		});
+	
+	</script>
+	
+	

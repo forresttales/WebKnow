@@ -1,0 +1,358 @@
+<% provide(:title, 'Create Login') %>
+
+
+	
+	<!-- <style>
+	
+		div .error_label {
+		    display: none;
+			font-family: msyh;
+			font-size: 12px;
+			color: #851717;		    
+		}
+	
+		div .errors {
+			font-family: msyh;
+			font-size: 11px;
+			color: #851717;		    			
+		}
+	
+		.success {
+			color: #181945;
+			background-color: #fff;
+		}		
+		
+		.error {
+			color: #851717;
+			background: url("/assets/submit_form_empty.png") no-repeat 218px 7px;		
+			border-color: #851717; 						
+		}
+	
+		.required {
+			color: orange;		
+			background: url("/assets/submit_form_asterisk_orange.png") no-repeat 218px 7px;
+		}
+		
+		div .cell-error {
+			display: inline-block;
+			width: 20px;
+			height: 18px;
+			vertical-align: bottom;
+			text-align: left;
+			margin-left: 4px;
+		}
+		
+		.table-signup p {
+			font-family: msyh; 
+			font-size: 16px;
+			/*color: #005187;*/
+
+			color: blue;
+
+		}
+		
+		.input-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 600px;
+			height: 24px;
+			border-style:solid;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+			color: #888;
+		}
+    	
+    	.submit-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+    		height: 24px;
+    	}
+		
+	</style> -->
+
+	
+	<script type="/assets/javascript" src="/assets/entrepeneurs_jquery-1.js"></script>
+	<script src="/assets/jquery.validate.js"></script>
+	<link href="/assets/custom_sign_form.css" rel="stylesheet">
+
+
+	<div id="sign-page">
+		
+		<header>
+	
+			<%= render 'share/backtotop' %>
+
+			<div style="height: 70px;"></div>
+			
+		</header>
+		
+		
+		<div id="sign-page-inner">
+			
+			<div style="text-align: left;">
+				<span style="font-family: msyh; font-size: 22px;"></span>
+			</div>
+	
+			<div style="height: 30px;"></div>
+
+			<div style="text-align: left;">
+				<span style="font-family: msyh; font-size: 22px;">Create Login</span>
+			</div>
+	
+			<div style="height: 30px;"></div>
+			
+			<div class="table-sign">
+				<div class="row">
+					
+					<div class="cell-100percent" tabindex="1">
+						
+				    	<%= form_for @user, :html => {:id => 'form_user_new' } do |f| %>	
+						<!-- = render 'shared/error_messages', object: f.object -->			
+
+						<div class="input-sign-spacer"></div>
+					
+						<div class="row">
+							<div class="cell-left-sign">
+								<%= f.label(:name_first, 'First Name', class: 'input-label-sign') %>							
+							</div>
+							<div class="cell-right-sign">
+								<%= f.text_field :name_first, :class => 'input-sign', :tabindex => '2', :autofocus => true %>	
+							</div>
+							<div class="cell-error" id="state_user_name_first"><p id="error_user_name_first"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-sign-spacer"></div>
+					
+						<div class="row">
+							<div class="cell-left-sign">
+								<%= f.label(:name_last, 'Last Name', class: 'input-label-sign') %>							
+							</div>
+							<div class="cell-right-sign">
+								<%= f.text_field :name_last, :class => 'input-sign', :tabindex => '3' %>	
+							</div>
+							<div class="cell-error" id="state_user_name_last"><p id="error_user_name_last"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-sign-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-sign">
+								<%= f.label(:email, 'Email', class: 'input-label-sign') %>							
+							</div>
+							<div class="cell-right-sign">
+								<%= f.text_field :email, :class => 'input-sign', :tabindex => '4' %>	
+							</div>      
+							<div class="cell-error" id="state_user_email"><p id="error_user_email"></p></div>      					   							 	
+						</div>
+
+						<div class="input-sign-spacer"></div>
+					
+						<div class="row">
+							<div class="cell-left-sign">
+								<%= f.label(:username, 'Username', class: 'input-label-sign') %>							
+							</div>
+							<div class="cell-right-sign">
+								<%= f.text_field :username, :class => 'input-sign', :tabindex => '5' %>	
+							</div>
+							<div class="cell-error" id="state_user_username"><p id="error_user_username"></p></div>      					   							 								      	
+						</div>
+						
+						<div class="input-sign-spacer"></div>
+						      		
+						<div class="row">
+							<div class="cell-left-sign">
+								<%= f.label(:password, 'Password', class: 'input-label-sign') %>					
+							</div>
+							<div class="cell-right-sign">
+								<%= f.password_field :password, class: 'input-sign', :tabindex => '6' %>
+							</div>
+							<div class="cell-error" id="state_user_password"><p id="error_user_password"></p></div>      					   							 	
+						</div>      		
+
+						<div class="input-sign-spacer"></div>
+						      		
+						<div class="row">
+							<div class="cell-left-sign">
+								<%= f.label(:password_confirmation, 'Confirm Password', class: 'input-label-sign') %>					
+							</div>
+							<div class="cell-right-sign">
+								<%= f.password_field :password_confirmation, class: 'input-sign', :tabindex => '7' %>
+							</div>     
+							<div class="cell-error" id="state_user_password_confirmation"><p id="error_user_password_confirmation"></p></div>      					   							 	
+						</div>      		
+
+						<div class="input-sign-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-sign">
+							</div>
+							<div class="cell-right-sign">
+								<%= f.submit 'Submit', class: 'sign-btn', :tabindex => '8' %>
+							</div>
+							<div class="cell-error"><p></p></div>      					   							 	
+						</div>      		
+											
+						<% end %>
+						
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>	
+		
+	</div>					
+					
+	<script>
+
+
+		function formValidate() {
+						
+			$("#form_user_new").validate({
+			
+				submitHandler: function(form) {
+					form.submit();
+				},
+			
+				debug: true,
+				onkeyup: false,
+				focusCleanup: true,
+				// invalidClass: "error",
+				// validClass: "success",
+				
+				rules: {
+					'user[name_first]': {
+						required: true,
+						minlength: 1,
+						maxlength: 50
+					},
+					'user[name_last]': {
+						required: true,
+						minlength: 1,
+						maxlength: 50
+					},
+					'user[email]': {
+						required: true,
+						maxlength: 100,
+						email: true
+					},															
+					'user[username]': {
+						required: true,
+						minlength: 1,
+						maxlength: 50
+					},
+					'user[password]': {
+						required: true,
+						minlength: 4,
+						maxlength: 50
+					},
+					'user[password_confirmation]': {
+						equalTo: "#user_password"
+					}
+				},
+				invalidHandler: function(event, validator) {
+					var errors = validator.numberOfInvalids();
+					if (errors) {
+						var message = errors == 1
+						? 'You missed 1 field'
+						: 'You missed ' + errors + ' fields';
+						$("div.errors p").html(message);
+						$("div.errors").show();
+					} else {
+						$("div.errors").hide();
+					}
+				},				
+				messages: {
+					'user[name_first]': {
+						required: "*",
+						minlength: "First Name at least 1 character",
+						maxlength: "First Name exceeds 50 characters"
+					},
+					'user[name_last]': {
+						required: "*",
+						minlength: "Last Name at least 1 character",
+						maxlength: "Last Name exceeds 50 characters"
+					},					
+					'user[username]': {
+						required: "*",
+						minlength: "Username at least 4 characters",
+						maxlength: "Username exceeds 50 characters"
+					},
+					'user[password]': {
+						required: "*",
+						minlength: "Password at least 4 characters long",
+						maxlength: "Password exceeds 20 characters"
+					},
+					'user[password_confirmation]': {
+						equalTo: "Passwords must match"
+					},
+					'user[email]': {
+						required: "*",
+						maxlength: "Email exceeds 100 characters",
+						email: "Please enter a valid email address"
+					}										
+				},
+				errorContainer: $("div .error_label"),				
+				errorPlacement: function(error, element) {
+					error.insertAfter('#error_' + element.attr('id'));
+					$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					//$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				},
+				// invalid: function(element) {
+					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// $('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');					
+				// },
+				// highlight: function(element) {
+					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				// unhighlight: function(element) {
+					// //$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				error: function(label) {
+					$('#' + label.attr('for')).removeClass('required').removeClass('success').addClass('error');
+					$('#label_' + label.attr('for')).removeClass('required-label').addClass('error-label');
+				},
+				success: function(label) {
+					$('#' + label.attr('for')).removeClass('required').removeClass('error').addClass('success');
+					$('#label_' + label.attr('for')).removeClass('error-label').addClass('required-label');
+					
+					$('#state_' + label.attr('for')).css ({			
+						background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+					});
+ 
+					$('#error_' + label.attr('for')).html("");
+				},				
+				focus: function(element) {
+				 	$('#' + element.attr('id')).removeClass('required').removeClass('error').removeClass('success').addClass('focus');
+				}
+			});
+			
+			// $.validator.setDefaults({
+				// 				
+				// submitHandler: function() {
+					// form.submit();
+				// }
+				//$('#user_username');
+				
+				// submitHandler: function() { alert("submitted!"); }
+				// debug: true,
+				// onkeyup: false,
+				// focusCleanup: true,
+				// errorClass: "invalid",
+				// validClass: "success"
+			// });
+		}
+
+		$(window).load( function() {
+		//$(document).ready(function(){
+
+			formValidate();
+
+		});
+	
+	</script>

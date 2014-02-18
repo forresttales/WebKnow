@@ -1,0 +1,113 @@
+ <%= provide(:title, 'Publisher Photos') %>
+ 
+ 				
+	<!-- <script type="text/javascript" src="/assets/entrepeneurs_jquery-1.js"></script> --> 		
+	
+	<!-- <script type="text/javascript" src="../scripts/jquery.tmpl.js"></script> -->
+	
+	
+	
+	
+	<header>					
+		<%= render 'share/backtotop' %>
+	</header>		
+
+	<div class="container">
+
+		<!-- <div style="height: 20px; width: 20px; background-color: red" onclick="callImage();"></div> -->
+		
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<%= render 'share/dir_publishers_left'%>
+				</div>
+				
+				<div class="col-midd">
+					<span class="normal pad-left-20">Product Logos</span>
+					<div class="line-space-20"></div>
+					<span class="pad-left-20"><%= link_to 'New Logo', '/PublisherNewLogo', :class => 'links' %></span>
+
+
+<!-- <div id="id_container"></div>
+<script type="text/template" id="cardTemplate">
+<div>
+    <a href="{0}">{1}</a>
+</div>
+</script> -->
+
+
+					<div class="line-space-20"></div>
+		 			 
+					<% if @publisher_product_logos.any? %>
+				
+					<!-- <div style="height: 400px;"></div> -->
+			
+						<% for i in 0..(@publisher_product_logos.count - 1) %>
+				
+							 <!-- @publisher_images[i].image_name --> 
+							<br>
+
+							<div id="image_container"></div>
+						    <script id="imageTemplate_<%= i %>" type="text/x-jQuery-tmpl">
+						    	
+						    	<table style="margin-right: 30px; margin-left: 30px;">
+						    		<tr>
+						    			<td>
+						    				<img src="../images_publisher_product_logo/<%= @publisher_product_logos[i].image_name %>" alt="<%= @publisher_product_logos[i].image_name %>">
+						    			</td>
+						    		</tr>
+						    		<tr>
+						    			<td>
+									    	<span class="normal">
+											   	<% delete_msg = "Delete Logo Image ID: " + @publisher_product_logos[i].id.to_s + " ?" %>
+												<%= button_to "Delete", {:action => 'destroy', :id => @publisher_product_logos[i].id}, :method => :delete, :confirm => delete_msg, :class => 'delete-btn' %>
+											</span>
+						    			</td>
+						    		</tr>
+				
+						    	</table>
+						        
+					    	</script>
+
+						<% end %>
+			
+					<% else %>
+			
+						<div>
+							<span class="normal-red pad-left-20">No logo images</span>
+						</div>
+
+					<% end %>
+		 			 
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_publishers_right' %>
+				</div>				
+			</div>
+		</div>		
+	</div>
+
+	<script>
+	  
+		//$(document).ready(function() {
+		$(window).load( function() {
+	
+			var cnt = gon.logos_count;
+
+			var container = "";
+			var ref = "";
+			var imageTemplate;
+			
+			for( i = 0; i < cnt; i++) {
+				container = "#imageTemplate_" + i;
+				imageTemplate = $(container).html();
+				ref = "#image_container";
+			    $(ref).append(imageTemplate);
+			}
+		});
+	  		  
+	</script>		
+		
+

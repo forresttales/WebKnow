@@ -1,0 +1,178 @@
+<% @title = "Institute Query Edit" %>
+
+
+	<script src="/assets/jquery.validate.js"></script>
+	<script type="text/javascript" src="/assets/entrepeneurs_jquery-1.js"></script>
+
+	<header>
+		<%= render 'share/backtotop' %>
+	</header>
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<%= render 'share/dir_institutes_left'%>
+				</div>
+				
+				<div class="col-midd">
+
+					<div style="text-align: left;">
+						<span class="normal pad-left-20">Institute Queries</span>
+					</div>
+
+					<div class="line-space-20"></div>
+					
+					<div>
+						<span class="normal pad-left-20">
+							<em>
+							<%= @institute_query.name_query %>
+							</em>
+						</span>
+					</div>
+					
+					<div>
+						<span class="normal pad-left-20">
+							Query Id: <%= @institute_query.id %>
+						</span>
+					</div>
+
+					<div class="line-space-20"></div>
+
+
+					<div class="line-space-20"></div>
+
+					<div class="table-form" style="width: 600px;">
+						<div class="row">
+							<div class="cell-100percent" tabindex="1">
+								
+								 <!-- 
+								 :description
+								 :price 
+								 -->
+								 								
+								<!-- = render 'shared/error_messages', object: f.object -->			
+								<%= form_for(:institute_query, :html => { :id => 'intitute-query'}, :url => {:action => 'update', :id => @institute_query.id}) do |f| %>
+								
+								<div class="input-form-spacer"></div>
+		
+								<div class="row">
+									<div class="cell-left-form">
+										<%= f.label(:name_query, 'Query', class: 'input-label-form') %>							
+									</div>
+									<div class="cell-right-form">
+										<%= f.text_field :name_query, :class => 'input-form', :tabindex => '1', :autofocus => true %>
+									</div>
+									<div class="cell-error" id="state_name_query"><p id="error_name_query"></p></div>      					   							 								      	
+								</div>
+
+		
+		
+								<div class="input-form-spacer"></div>
+		
+								<div class="row">
+									<div class="cell-left-form">
+										<%= f.label(:type_content_index, "Type of Content<br>or Curriculum".html_safe, class: 'input-label-form') %>							
+									</div>
+									<div class="cell-right-form">
+										
+								   		<%= f.select(:type_content_index,
+								   				[['-Select-', '0'],								   		
+								   				['App', '1'],
+								   				['Lesson Plan Document','2'],
+								   				['Digital Curriculum','3'],
+								   				['eBook','4'],
+								   				['Game','5'],
+								   				['Software - School Management','6'],
+								   				['Software - Other','7'],
+								   				['Online Course','8'],
+								   				['Tools','9'],
+								   				['Video','10']],
+								   				{}, 
+								   				{ :class => 'form-select', :id => 'select_type_content', :tabindex => '3' } ) %>
+
+									</div>
+									<div class="cell-error" id="state_type_content_index"><p id="error_type_content_index"></p></div>      					   							 								      	
+								</div>
+
+								<div class="input-form-spacer"></div>
+
+								<div class="row">
+									<div class="cell-left-form">
+										<%= f.label(:subject_category_index, 'Subject Category', class: 'input-label-form') %>							
+									</div>
+									<div class="cell-right-form">
+										
+								   		<%= f.select( :subject_category_index, 
+								   				[['-Select-', '0'],								   		
+								   				['Language Arts', '1'],
+								   				['Science','2'],
+								   				['Music & Drama','3'],
+								   				['Physical Educations','4'],
+								   				['Arts','5'],
+								   				['Professional Development','6'],
+								   				['Extra-Curricular','7']],
+								   				{}, 
+								   				{ :class => 'form-select', :tabindex => '4' } ) %>
+
+									</div>
+									<div class="cell-error" id="state_subject_category_index"><p id="error_subject_category_index"></p></div>      					   							 								      	
+								</div>
+
+								<div class="input-form-spacer"></div>
+		
+								<div class="row">
+									<div class="cell-left-form">
+										<%= f.label(:word_description, 'Descriptive Key Words', class: 'input-label-form') %>							
+									</div>
+									<div class="cell-right-form">
+										<%= f.text_field :word_description, :class => 'input-form', :tabindex => '5', :autofocus => false %>	
+									</div>
+									<div class="cell-error" id="state_word_description"><p id="error_word_description"></p></div>      					   							 								      	
+								</div>
+
+								<%= f.hidden_field :type_content %>
+								<%= f.hidden_field :subject_category %>
+
+								<div class="input-form-spacer"></div>
+								<div class="input-form-spacer"></div>
+		
+								<div class="row">
+									<div style="width: 600px; text-align: center;">
+									<%= f.submit 'Submit', :id => 'form-submit-edit', :class => 'form-btn', :tabindex => '6' %>
+									</div>      					   							 	
+								</div>      		
+													
+								<% end %>
+								
+							</div>
+							
+						</div>
+						
+					</div>
+			
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_institutes_right' %>
+				</div>												
+			</div>
+		</div>
+	</div>
+
+	<script>
+		
+		// $(document).ready(function () {				
+		// $(function() {
+		// $(window).load( function() {
+// 		
+			// $("#publisher-product").submit(function() {	
+// 				
+				// var hidden1 = "<" + "% f.hidden_field :type_content, :value => '" + $("#select_type_content").val() + "'%" + ">";
+				// $( "#render-select-type-content" ).html( hidden1 );				
+			    // return false;
+			// });
+		// });		
+		
+	</script>

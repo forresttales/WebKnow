@@ -1,0 +1,485 @@
+
+
+
+	<!-- 
+	#  id               :integer          not null, primary key
+	#  created_at       :datetime
+	#  updated_at       :datetime
+	#  name_first       :string(50)
+	#  name_last        :string(50)
+	#  name_title       :string(50)
+	#  institute        :string(100)
+	#  department       :string(100)
+	#  address_1        :string(100)
+	#  address_2        :string(100)
+	#  city             :string(50)
+	#  state 			:string(50)
+	#  zip              :string(50)
+	#  country          :string(100)
+	#  phone            :string(50)
+	#  fax              :string(50)
+	#  phone_direct     :string(50)
+	#  phone_mobile     :string(50)
+	#  email    		:string(100)
+	#  website    		:string(100)  
+	-->
+
+	<div class="main">
+	
+		<div id="scroll1" class="scrollbox-both" onscroll="scrollPos();">	
+			
+			<% if @stores.any? %>
+				
+				<%= hidden_field_tag :direction, params[:direction] %>
+				<%= hidden_field_tag :sort, params[:sort] %>	
+				<%= hidden_field_tag :pos, params[:pos] %>	
+				
+				<h5>Record Count: <%= @stores.count %></h5>
+				
+	   <!-- <table>
+	   
+	       <colgroup></colgroup>
+	       <colgroup class="slim"></colgroup>
+	       <colgroup class="slim"></colgroup>
+	   
+	    <thead>
+	       <tr>
+	           <th></th>
+	           <th></th>
+	           <th></th>
+	           <th></th>
+	           <th></th>
+	       </tr>
+	    </thead>
+	   
+    	<tbody>
+    		<tr>
+    			<td></td>
+    			<td></td>
+    			<td></td>
+    			<td></td>
+    			<td></td>
+    		</tr>
+    	</tbody>
+    </table> -->
+    
+    	<!-- <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script> -->
+    	
+    	
+    	    				
+				<table id="admin-events" title="Events" >    	  
+					  	
+			       <colgroup>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+			       </colgroup>
+
+				  <tr align="left">
+				    <th class="member-table" id="th_view" field="view" style="width: 50px"><div class="header-shift"><h4></h4></div></th>
+				    <th class="member-table" id="th_delete" field="delete" style="width: 50px;"><div class="header-shift"><h4></h4></div></th>
+				  	
+				    <th class="member-table" id="th_id" field="id" style="width: 50px"><div id="id" class="header-shift"><h4><%= sortable "id", "ID" %></div></th>
+				    <!-- <th field="created_at" width = "20">created_at</th>
+				    <th field="updated_at" width = "20">updated_at</th> -->    
+				    <th class="member-table" id="th_name_type" field="name_type" style="width: 100px"><div id="name_type" class="header-shift"><h4><%= sortable "name_type", "Type" %></h4></div></th>
+				    <th class="member-table" id="th_salutation" field="salutation" style="width: 100px"><div id="salutation" class="header-shift"><h4><%= sortable "salutation", "Salutation" %></h4></div></th>
+				    <th class="member-table" id="th_name_first" field="name_first" style="width: 100px"><div id="name_first" class="header-shift"><h4><%= sortable "name_first", "First Name" %></h4></div></th>
+				    <th class="member-table" id="th_name_last" field="name_last" style="width: 100px"><div id="name_last" class="header-shift"><h4><%= sortable "name_last", "Last Name" %></h4></div></th>
+				    <th class="member-table" id="th_name_title" field="name_title" style="width: 350px"><div id="" class="header-shift"><h4><%= sortable "name_title", "Title" %></h4></div></th>
+				    <th class="member-table" id="th_institute" field="institute" style="width: 350px"><div id="" class="header-shift"><h4><%= sortable "institute", "Institute" %></h4></div></th>
+				    <th class="member-table" id="th_department" field="department" style="width: 350px"><div id="" class="header-shift"><h4><%= sortable "department", "Department" %></h4></div></th>
+				    <th class="member-table" id="th_address_1" field="address_1" style="width: 200px"><div id="" class="header-shift"><h4><%= sortable "address_1", "Address 1" %></h4></div></th>
+				    <th class="member-table" id="th_address_2" field="address_2" style="width: 200px"><div id="" class="header-shift"><h4><%= sortable "address_2", "Address 2" %></h4></div></th>			    
+				    <th class="member-table" id="th_city" field="city" style="width: 200px"><div id="" class="header-shift"><h4><%= sortable "city", "City" %></h4></div></th>
+				    <th class="member-table" id="th_state" field="state" style="width: 100px"><div id="" class="header-shift"><h4><%= sortable "state", "State/Provence" %></h4></div></th>
+				    <th class="member-table" id="th_zip" field="zip" style="width: 150px"><div id="" class="header-shift"><h4><%= sortable "zip", "Zip/Postal Code" %></h4></div></th>			    
+				    <th class="member-table" id="th_country" field="country" style="width: 100px"><div id="" class="header-shift"><h4><%= sortable "country", "Country" %></h4></div></th>
+				    <th class="member-table" id="th_phone" field="phone" style="width: 200px"><div id="" class="header-shift"><h4><%= sortable "phone", "Phone" %></h4></div></th>
+				    <th class="member-table" id="th_fax" field="fax" style="width: 200px"><div id="" class="header-shift"><h4><%= sortable "fax", "Fax" %></h4></div></th>
+				    <th class="member-table" id="th_phone_direct" field="phone_direct" style="width: 200px"><div id="" class="header-shift"><h4><%= sortable "phone_direct", "Direct Phone" %></h4></div></th>
+				    <th class="member-table" id="th_phone_mobile" field="phone_mobile" style="width: 200px"><div id="" class="header-shift"><h4><%= sortable "phone_mobile", "Mobile Phone" %></h4></div></th>			    
+				    <th class="member-table" id="th_email" field="email" style="width: 300px"><div id="" class="header-shift"><h4><%= sortable "email", "Email" %></h4></div></th>
+				    <th class="member-table" id="th_website" field="website" style="width: 300px"><div id="" class="header-shift"><h4><%= sortable "website", "Website" %></h4></div></th>			    
+				  </tr>
+				<% @stores.each do |store| %>
+				  <tr align="left" class="tr-events">
+				  	
+				    <td><h5><%= link_to('View', {:action => 'show', :id => store.id, :class => 'member-table'}) %></h5></td>
+	
+				    <td>
+				    	<div style="position: relative; bottom: -2px">
+					    	<h5>
+							   	<% delete_msg = "Delete ID: " + store.id.to_s + " ?" %>
+								<%= button_to "Delete", {:action => 'destroy', :id => store.id}, :method => :delete, :confirm => delete_msg, :class => 'delete-btn' %>
+							</h5>
+						</div>
+					</td>
+				  	
+				  	
+				    <!-- <td>
+				    	<h5>
+							 <form action="/stores/20" class="button_to" method="post">
+							 	<div>
+							 		<input name="_method" type="hidden" value="delete" />
+							 		<input class="link" data-confirm="Delete ID: 20 ?" type="submit" value="Delete" />
+							 		<input name="authenticity_token" type="hidden" value="i4S3zKfk0QnFTvXLd+ww+JHaWoi9Ibg1kbzVTntFIrI=" />
+							 	</div>
+							 </form>
+						</h5>
+					</td>				  	 -->
+					
+					
+					
+									  	
+				  	
+				    <td><h5 class="member-table"><%= store.id %></h5></td>
+				    <!-- <td> store.created_at.strftime("%B %e, %Y") </td>
+				    <td> store.updated_at.strftime("%B %e, %Y") </td> -->    
+				    <td><h5 class="member-table"><%= store.name_type %></h5></td>
+				    <td><h5 class="member-table"><%= store.salutation %></h5></td>
+				    <td><h5 class="member-table"><%= store.name_first %></h5></td>
+				    <td><h5 class="member-table"><%= store.name_last %></h5></td>
+				    <td><h5 class="member-table"><%= store.name_title %></h5></td>
+				    <td><h5 class="member-table"><%= store.institute %></h5></td>
+				    <td><h5 class="member-table"><%= store.department %></h5></td>
+				    <td><h5 class="member-table"><%= store.address_1 %></h5></td>
+				    <td><h5 class="member-table"><%= store.address_2 %></h5></td>			    
+				    <td><h5 class="member-table"><%= store.city %></h5></td>
+				    <td><h5 class="member-table"><%= store.state %></h5></td>
+				    <td><h5 class="member-table"><%= store.zip %></h5></td>			    
+				    <td><h5 class="member-table"><%= store.country %></h5></td>
+				    <td><h5 class="member-table"><%= store.phone %></h5></td>
+				    <td><h5 class="member-table"><%= store.fax %></h5></td>
+				    <td><h5 class="member-table"><%= store.phone_direct %></h5></td>
+				    <td><h5 class="member-table"><%= store.phone_mobile %></h5></td>
+				    <td><h5 class="member-table"><%= store.email %></h5></td>
+				    <td><h5 class="member-table"><%= store.website %></h5></td>
+				    			      
+				  </tr>
+				<% end %>
+
+				<!-- number_to_currency(product.price) -->
+				
+				</table>			
+							
+				  <%= will_paginate @stores %>							
+							
+			<% else %>
+						
+				<h3>No record for Stores</h3>
+				
+			<% end %>
+			
+		</div>
+		
+	</div>
+
+   
+    <!-- <div id="myDiv" style="overflow: auto; height: 200px; width: 200px;" onscroll="scollPos();">
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        Place some large content here
+        
+    </div> -->
+    
+
+	<script>
+		
+        function scrollPos() {
+            // var div = document.getElementById("scroll1").scrollLeft;
+            // document.getElementById("pos").innerHTML = div;
+            
+            $("#pos").html($("#scroll1").scrollLeft());
+        }
+		
+		function moveScroll() {
+			
+			// alert('moveScroll');
+			
+			$("#scroll1").scrollLeft($("#pos").html());
+		}
+
+				
+				
+		$(function() {
+		
+			 // $('#loading').fadeOut(1000);
+				
+		
+			// img = $('<img />');
+//  			
+			// img.bind('loading_import', function() {
+// 				
+				// $('#join_image').css({
+					// visibility: 'visible'
+				// })
+// 				
+			    // $('#loading').fadeOut(1000);
+// 
+				// // // setTimeout( function(){
+					// // // centerSignin();
+					// // // showSignin();
+					// // // formValidate();
+				// // // }, 1000);
+			// });
+		
+		
+		
+			// $("#get-import").on('click', function() {
+			    // $.post({
+			    	// //type: "POST",
+			      	// url: "/stores/import"
+			    // });			
+			// });
+		
+		
+		
+		
+		
+		
+    		var $cols = $('colgroup');
+
+			$("table#admin-events tr:nth-child(even)").addClass('gray');
+			$("table#admin-events tr:nth-child(odd)").addClass('white');
+
+			// #  id           :integer			3  
+			// #  name_type    :string(50)		4
+			// #  salutation   :string(50)		5
+			// #  name_first   :string(50)		6
+			// #  name_last    :string(50)		7
+			// #  name_title   :string(50)		8
+			// #  institute    :string(100)		9
+			// #  department   :string(100)		10
+			// #  address_1    :string(100)		11
+			// #  address_2    :string(100)		12
+			// #  city         :string(50)		13
+			// #  state        :string(100)		14
+			// #  zip          :string(50)		15
+			// #  country      :string(100)		16
+			// #  phone        :string(50)		17
+			// #  fax          :string(50)		18
+			// #  phone_direct :string(50)		19
+			// #  phone_mobile :string(50)		20
+			// #  email        :string(100)		21
+			// #  website      :string(100)		22
+
+
+			var cell;
+			var cellIndex;
+			var row;
+			var rowIndex;
+			var header;
+			var cellTh;
+			var cellIndexTh;
+			
+			$("table#admin-events th").mouseover ( function () {
+
+				cellTh = $(this).closest('th');
+				cellIndexTh = cellTh[0].cellIndex;
+				cellIndexTh += 1;
+				
+				$("table#admin-events td:nth-child(" + cellIndexTh + ")").addClass('hover-col');
+				$(this).addClass('hover-col');
+				
+			}).mouseout ( function() {
+				
+				$("table#admin-events td:nth-child(" + cellIndexTh + ")").removeClass('hover-col');				
+				$(this).removeClass('hover-col');
+				
+			});
+			
+			$("table#admin-events td").mouseover ( function () {
+				
+				cell = $(this).closest('td');
+				cellIndex = cell[0].cellIndex;
+				cellIndex += 1;
+				row = cell.closest('tr');
+				rowIndex = row[0].rowIndex;
+				
+				switch(cellIndex)
+				{
+				case 1:
+					header = "th_view"	  
+				  break;
+				case 2:
+					header = "th_delete"	  
+				  break;
+				case 3:
+					header = "#th_id"	  
+				  break;
+				case 4:
+					header = "#th_name_type"	  
+				  break;				  
+				case 5:
+					header = "#th_salutation"	  
+				  break;
+				case 6:
+					header = "#th_name_first"	  
+				  break;
+				case 7:
+					header = "#th_name_last"	  
+				  break;
+				case 8:
+					header = "#th_name_title"	  
+				  break;
+				case 9:
+					header = "#th_institute"	  
+				  break;
+				case 10:
+					header = "#th_department"	  
+				  break;
+				case 11:
+					header = "#th_address_1"	  
+				  break;
+				case 12:
+					header = "#th_address_2"	  
+				  break;
+				case 13:
+					header = "#th_city"	  
+				  break;
+				case 14:
+					header = "#th_state"	  
+				  break;
+				case 15:
+					header = "#th_zip"	  
+				  break;
+				case 16:
+					header = "#th_country"	  
+				  break;
+				case 17:
+					header = "#th_phone"	  
+				  break;
+				case 18:
+					header = "#th_fax"	  
+				  break;
+				case 19:
+					header = "#th_phone_direct"	  
+				  break;
+				case 20:
+					header = "#th_phone_mobile"	  
+				  break;
+				case 21:
+					header = "#th_email"	  
+				  break;
+				case 22:
+					header = "#th_website"	  
+				  break;
+
+				default:
+					//
+				}				
+
+				$(header).addClass('hover-col');
+		
+				if (rowIndex % 2 === 0) {
+					$("table#admin-events td:nth-child(" + cellIndex + ")").addClass('hover-col');
+					row.removeClass('gray').addClass('hover-row');					
+				}
+				else {
+					$("table#admin-events td:nth-child(" + cellIndex + ")").addClass('hover-col');
+					row.removeClass('white').addClass('hover-row');										
+				}		
+			}).mouseout( function(){
+
+				$(header).removeClass('hover-col');
+				
+				if (rowIndex % 2 === 0) {
+					$("table#admin-events td:nth-child(" + cellIndex + ")").removeClass('hover-col');
+					row.removeClass('hover-row').addClass('gray');					
+				}
+				else {
+					$("table#admin-events td:nth-child(" + cellIndex + ")").removeClass('hover-col');
+					row.removeClass('hover-row').addClass('gray');					
+				}		
+			});
+			
+			var rowSelect = -1;			
+			
+			$("table#admin-events td").on('click', function () {
+	
+				cell = $(this).closest('td');
+				btn_delete = $(this).closest('form');
+				row = cell.closest('tr');
+				rowIndex = row[0].rowIndex;
+
+				if (rowSelect !== -1) {
+					$("table#admin-events tr").removeClass('row-select');
+				}
+				
+				rowSelect = rowIndex;
+				row.addClass('row-select');
+				btn_delete.removeClass('btn-color').addClass('btn-color-select');
+			});
+	
+	
+			
+			$(document).on('click', function(event) {
+				// alert(event.target);
+				elem = event.target.className;
+				if ((elem === 'hover-col') || (elem === 'delete-btn') || (elem === 'member-table')) {
+					//
+				}
+				else {
+					$("table#admin-events tr").removeClass('row-select');					
+				}
+			});
+		});
+
+		// $(document).on('click', function() {
+			// if ((rowSelect !== -1)) {
+				// //$("table#admin-events tr").removeClass('row-select');
+			// }
+			// rowSelect = -1;
+			// tableClicked = false;
+		// })
+
+		//$(document).ready(function () {
+			// $('*[data-confirm]').click(function(){
+				// // alert('delete clicked');				
+		    	// return confirm($(this).attr('data-confirm'));
+		  	// });
+		//});
+			
+	</script>
+
+

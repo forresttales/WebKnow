@@ -1,0 +1,399 @@
+<% provide(:title, 'Publishers New') %>
+
+	<style>
+	
+		#signup-page {
+			height: 800px;
+			font-family: Arial, Helvetica, sans-serif;			
+		}
+	
+		#signup-page #signup-page-inner {
+		    width: 50%;
+		    margin: 0 auto;
+		}	
+
+		div .table-signup {
+			display: table;
+			background-color: #DEDB3C;
+			width: 700px;
+			border-radius: 20px;
+			border:2px solid #254520;
+			box-shadow: 1px 1px 10px #888888;
+			padding-top: 40px;
+			padding-bottom: 40px;
+			padding-left: 60px;
+		}
+	
+		.input-signup {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 300px;
+			height: 24px;
+			border-style:solid;
+			border-radius: 4px;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+			color: #000;
+		}
+	
+		.input-signup:focus {
+			border-color: #3949C4;
+			color: #000;
+			-webkit-box-shadow: 0 0 10px #3949C4;
+			-moz-box-shadow: 0 0 10px #3949C4;
+			box-shadow: 0 0 10px #3949C4;
+		}
+			
+		.input-label-signup {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 220px;
+			height: 18px;
+		}
+			
+		.input-signup-spacer {
+			height: 16px;
+		}
+			
+		div .cell-right-signup {
+			display: table-cell;
+			width: 50%;
+			text-align: left;
+			align: top;		
+		}
+	
+		div .cell-left-signup {
+			display: table-cell;
+			width: 30%;	
+			align: top;
+			text-align: right;		
+			padding-right: 20px;
+		}
+		
+		div .cell-submit-signup {
+			display: table-cell;
+			width: 50%;
+			text-align: left;
+			align: top;		
+			padding-left: 0px;
+		}
+		
+		.signup-btn {
+		  
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 308px;
+		  	height: 30px;
+		  	background: linear-gradient(#000, #000);
+		  	text-shadow: 1px 1px 1px #0E86B2; 
+		  	border-radius: 6px;
+		}
+	
+		.signup-btn:focus {
+		  background: #CCC; 
+		  color: #5F7A2A;
+		  box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
+		}
+		
+		.signup-btn:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(255,255,255,0.3);
+		}
+		
+		.signup-btn:active { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(0,0,0,0.3); 
+		}
+		
+		
+		
+		div .error_label {
+		    display: none;
+			font-family: msyh;
+			font-size: 12px;
+			color: #851717;		    
+		}
+	
+		div .errors {
+			font-family: msyh;
+			font-size: 11px;
+			color: #851717;		    			
+		}
+	
+		.success {
+			color: #000D6E;
+			background-color: #fff;
+			
+			/*background: url("/assets/submit_form_tick.png") no-repeat 278px 5px;*/		
+	
+			/*background: url("/assets/submit_form_empty.png") no-repeat 278px 1px;		*/					
+		}		
+		
+		.error {
+			color: #851717;
+			background: url("/assets/submit_form_empty.png") no-repeat 218px 7px;		
+			border-color: #851717; 						
+		}
+	
+		.required {
+			color: orange;		
+			background: url("/assets/submit_form_asterisk_orange.png") no-repeat 218px 7px;
+		}
+		
+		div .cell-error {
+			display: inline-block;
+			width: 20px;
+			height: 18px;
+			vertical-align: bottom;
+			text-align: left;
+			margin-left: 4px;
+		}
+		
+		.table-signup p {
+			font-family: msyh; 
+			font-size: 16px;
+			color: #005187;
+		}
+		
+		.input-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 600px;
+			height: 24px;
+			border-style:solid;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+			color: #888;
+		}
+    	
+    	.submit-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+    		height: 24px;
+    	}
+
+		
+	</style>
+
+	<script src="/assets/jquery.validate.js"></script>
+	<script type="text/javascript" src="/assets/entrepeneurs_jquery-1.js"></script>
+
+	<div id="signup-page">
+		
+		<header>
+	
+			<%= render 'share/backtotop' %>
+
+			<div style="height: 70px;"></div>
+			
+		</header>
+		
+		
+		<div id="signup-page-inner">
+
+			<div style="text-align: left;">
+				<span style="font-family: msyh; font-size: 22px; color: green;">Username: <%= @username %></span>
+			</div>
+	
+			<div style="height: 30px;"></div>
+
+			<div style="font-size: 24px;">Publisher Profile - step 1</div>
+			
+			<div style="height: 50px;"></div>
+			
+			<div class="table-signup">
+				<div class="row">
+					
+					<div class="cell-100percent" tabindex="1">
+						
+						
+				    	<%= form_for @publisher, :html => {:id => 'form_publisher_new' } do |f| %>	
+						<!-- = render 'shared/error_messages', object: f.object -->			
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:name, 'Name', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :name, :class => 'input-signup', :tabindex => '2', :autofocus => true %>	
+							</div>
+							<div class="cell-error" id="state_name"><p id="error_name"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+							</div>
+							<div class="cell-right-signup">
+								<%= f.submit 'Submit', class: 'signup-btn', :tabindex => '4' %>
+							</div>
+							<div class="cell-error"><p></p></div>      					   							 	
+						</div>      		
+											
+						<% end %>
+						
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>	
+		
+	</div>					
+					
+	<script>
+
+
+		function formValidate() {
+						
+			$("#form_admin_new").validate({
+			
+				submitHandler: function(form) {
+					form.submit();
+				},
+			
+				debug: true,
+				onkeyup: false,
+				focusCleanup: true,
+				// invalidClass: "error",
+				// validClass: "success",
+				
+				rules: {
+					'admin_user[name_first]': {
+						required: true,
+						minlength: 1,						
+						maxlength: 30						
+					},
+					'admin_user[name_first]': {
+						required: true,
+						minlength: 1,
+						maxlength: 30												
+					},
+					'admin_user[email]': {
+						required: true,
+						maxlength: 100,
+						email: true
+					},															
+					'admin_user[username]': {
+						required: true,
+						minlength: 1,
+						maxlength: 30
+					},
+					'admin_user[password]': {
+						required: true,
+						minlength: 4,
+						maxlength: 50
+					},
+					'admin_user[password_confirmation]': {
+						equalTo: "#admin_user_password"
+					}
+				},
+				invalidHandler: function(event, validator) {
+					var errors = validator.numberOfInvalids();
+					if (errors) {
+						var message = errors == 1
+						? 'You missed 1 field'
+						: 'You missed ' + errors + ' fields';
+						$("div.errors p").html(message);
+						$("div.errors").show();
+					} else {
+						$("div.errors").hide();
+					}
+				},				
+				messages: {
+					'admin_user[name_first]': {
+						required: "*",
+						maxlength: "First name exceeds 30 characters"							
+					},
+					'admin_user[name_last]': {
+						required: "*",
+						maxlength: "Last name exceeds 30 characters"							
+					},
+					'admin_user[username]': {
+						required: "*",
+						minlength: "Username at least 2 characters",
+						maxlength: "Username exceeds 15 characters"
+					},
+					'admin_user[password]': {
+						required: "*",
+						minlength: "Password at least 4 characters long",
+						maxlength: "Password exceeds 20 characters"
+					},
+					'admin_user[password_confirmation]': {
+						equalTo: "Passwords must match"
+					},
+					'admin_user[email]': {
+						required: "*",
+						maxlength: "Email address exceeds 40 characters",
+						email: "Please enter a valid email address"
+					}										
+				},
+				errorContainer: $("div .error_label"),				
+				errorPlacement: function(error, element) {
+					error.insertAfter('#error_' + element.attr('id'));
+					$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					//$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				},
+				// invalid: function(element) {
+					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// $('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');					
+				// },
+				// highlight: function(element) {
+					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				// unhighlight: function(element) {
+					// //$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				error: function(label) {
+					$('#' + label.attr('for')).removeClass('required').removeClass('success').addClass('error');
+					$('#label_' + label.attr('for')).removeClass('required-label').addClass('error-label');
+				},
+				success: function(label) {
+					$('#' + label.attr('for')).removeClass('required').removeClass('error').addClass('success');
+					$('#label_' + label.attr('for')).removeClass('error-label').addClass('required-label');
+					
+					$('#state_' + label.attr('for')).css ({			
+						background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+					});
+ 
+					$('#error_' + label.attr('for')).html("");
+				},				
+				focus: function(element) {
+				 	$('#' + element.attr('id')).removeClass('required').removeClass('error').removeClass('success').addClass('focus');
+				}
+			});
+			
+			$.validator.setDefaults({
+				
+				submitHandler: function() {
+					form.submit();
+				}
+				//$('#user_username');
+				
+				// submitHandler: function() { alert("submitted!"); }
+				// debug: true,
+				// onkeyup: false,
+				// focusCleanup: true,
+				// errorClass: "invalid",
+				// validClass: "success"
+			});
+		}
+
+		$(window).load( function() {
+		//$(document).ready(function(){
+
+			// formValidate();
+
+		});
+	
+	</script>

@@ -1,0 +1,43 @@
+
+	@font-face {
+	  	font-family: 'msyh';
+	  	src: url('../fonts/yahei/msyh.ttf') format('truetype');
+		src: url('../fonts/yahei/msyh.eot');
+	}
+
+	@font-face {
+	  	font-family: 'msyhb';
+	  	src: url('../fonts/yahei/msyhb.ttf') format('truetype');
+		src: url('../fonts/yahei/msyhb.eot');
+	}
+
+
+	#bodykopy p {
+		font-family: msyh;
+		font-size: 16px;
+		color: #000;	
+	}
+	#bodykopy strong {
+		font-family: msyh;
+		font-size: 22px;
+		font-weight: bold;
+		color: #000;			
+	}
+	#bodykopy a {
+		font-family: msyh;
+		font-size: 16px;
+		color: #C4740C;			
+	}
+	#k-deck p {
+		font-family: KlavikaLight;
+		font-size: 18pt;
+		font-weight: 400;
+		line-height: 1.2em;
+		margin-top: 4px;
+		margin-bottom: 2px;
+		letter-spacing: -0.03em
+	}
+	
+
+
+

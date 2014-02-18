@@ -1,0 +1,66 @@
+
+		
+		@font-face {
+			font-family: KlavikaExtraLight;
+			src: url('..fonts/klavika/KlavikaWebDisplayExtraLight.eot');
+			src: url('..fonts/klavika/KlavikaWebDisplayExtraLight.eot?#iefix') format('embedded-opentype'), url('..fonts/klavika/KlavikaWebDisplayExtraLight.woff') format('woff');
+		}
+		@font-face {
+			font-family: KlavikaLight;
+			src: url('..fonts/klavika/KlavikaWebBasicLight.eot');
+			src: url('..fonts/klavika/KlavikaWebBasicLight.eot?#iefix') format('embedded-opentype'), url('..fonts/klavika/KlavikaWebBasicLight.woff') format('woff');
+		}
+		@font-face {
+			font-family: KlavikaRegular;
+			src: url('..fonts/klavika/KlavikaWebBasicRegular.eot');
+			src: url('..fonts/klavika/KlavikaWebBasicRegular.eot?#iefix') format('embedded-opentype'), url('..fonts/klavika/KlavikaWebBasicRegular.woff') format('woff');
+		}		
+		@font-face {
+			font-family: KlavikaMedium;
+			src: url('..fonts/klavika/KlavikaWebBasicMedium.eot');
+			src: url('..fonts/klavika/KlavikaWebBasicMedium.eot?#iefix') format('embedded-opentype'), url('..fonts/klavika/KlavikaWebBasicMedium.woff') format('woff');
+		}
+		@font-face {
+			font-family: KlavikaBold;
+			src: url('..fonts/klavika/KlavikaWebBasicBold.eot');
+			src: url('..fonts/klavika/KlavikaWebBasicBold.eot?#iefix') format('embedded-opentype'), url('..fonts/klavika/KlavikaWebBasicBold.woff') format('woff');
+		}
+		@font-face {
+			font-family: KlavikaBlack;
+			src: url('..fonts/klavika/KlavikaWebDisplayBlack.eot');
+			src: url('..fonts/klavika/KlavikaWebDisplayBlack.eot?#iefix') format('embedded-opentype'), url('..fonts/klavika/KlavikaWebDisplayBlack.woff') format('woff');
+		}
+	
+	
+		@import url(http://fonts.googleapis.com/css?family=Vollkorn:400italic,400);
+
+
+	/*#bodykopy p {
+		font-family: msyh;
+		font-size: 16px;
+		color: #000;	
+	}
+	#bodykopy strong {
+		font-family: msyh;
+		font-size: 22px;
+		font-weight: bold;
+		color: #000;			
+	}
+	#bodykopy a {
+		font-family: msyh;
+		font-size: 16px;
+		color: #C4740C;			
+	}
+	p#k-deck {
+		font-family: KlavikaLight;
+		font-size: 18pt;
+		font-weight: 400;
+		line-height: 1.2em;
+		margin-top: 4px;
+		margin-bottom: 2px;
+		letter-spacing: -0.03em
+	}*/
+	
+
+
+

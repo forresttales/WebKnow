@@ -1,0 +1,44 @@
+ <%= provide(:title, 'Admin User Photos') %>
+ 
+ 				
+		<script type="text/javascript" src="/assets/entrepeneurs_jquery-1.js"></script> 		
+		
+		<header>					
+
+			<%= render 'share/backtotop' %>
+			
+		</header>		
+
+		<div id="desc" style="visibility: hidden;"></div>
+		
+		
+		<div id="render"></div>
+
+
+<script>
+  
+  	var name_url = gon.info.name_url;
+	var name_file = gon.info.name_file;
+
+	var title = gon.info.linktitle;	
+	var description = gon.info.description;
+	
+	var strg = title + "\n" + description;
+
+	var get_file = "../" + name_url + "/" + name_file + ".htm";
+
+	//$(document).ready(function() {
+	$(window).load( function() {
+
+			$( "#desc" ).text( strg );
+
+			// $( "#desc" ).text( description );
+		
+			$.get( get_file, function( data ) {
+				$( "#render" ).html( data );
+			});
+		
+	});
+  
+</script>		
+		
