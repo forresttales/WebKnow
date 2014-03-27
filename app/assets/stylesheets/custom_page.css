@@ -1,0 +1,14 @@
+
+	.col-left-clean {
+		display: table-cell; width: 200px;	
+	}
+	.col-midd-clean {
+		display: table-cell; width: 600px;			
+		/*border-left: 2px #41B737 solid;
+		border-right: 2px #41B737 solid;*/
+		height: 800px;		
+	}
+	.col-right-clean {
+		display: table-cell; width: 200px;
+		padding-left: 20px;							
+	}

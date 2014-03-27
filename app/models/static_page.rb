@@ -20,6 +20,6 @@
 #  slug         :string(200)
 #
 
-class StaticPage < Archive
+class StaticPage < ActiveRecord::Base
     
 end

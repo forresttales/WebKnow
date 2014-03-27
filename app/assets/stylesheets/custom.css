@@ -2,33 +2,33 @@
 	
 	@font-face {
 		font-family: KlavikaExtraLight;
-		src: url('/assets/KlavikaWebDisplayExtraLight.eot');
-		src: url('/assets/KlavikaWebDisplayExtraLight.eot?#iefix') format('embedded-opentype'), url('/assets/KlavikaWebDisplayExtraLight.woff') format('woff');
+		src: url('../fonts/KlavikaWebDisplayExtraLight.eot');
+		src: url('../fonts/KlavikaWebDisplayExtraLight.eot?#iefix') format('embedded-opentype'), url('../fonts/KlavikaWebDisplayExtraLight.woff') format('woff');
 	}
 	@font-face {
 		font-family: KlavikaLight;
-		src: url('/assets/KlavikaWebBasicLight.eot');
-		src: url('/assets/KlavikaWebBasicLight.eot?#iefix') format('embedded-opentype'), url('/assets/KlavikaWebBasicLight.woff') format('woff');
+		src: url('../fonts/KlavikaWebBasicLight.eot');
+		src: url('../fonts/KlavikaWebBasicLight.eot?#iefix') format('embedded-opentype'), url('../fonts/KlavikaWebBasicLight.woff') format('woff');
 	}
 	@font-face {
 		font-family: KlavikaRegular;
-		src: url('/assets/KlavikaWebBasicRegular.eot');
-		src: url('/assets/KlavikaWebBasicRegular.eot?#iefix') format('embedded-opentype'), url('/assets/KlavikaWebBasicRegular.woff') format('woff');
+		src: url('../fonts/KlavikaWebBasicRegular.eot');
+		src: url('../fonts/KlavikaWebBasicRegular.eot?#iefix') format('embedded-opentype'), url('../fonts/KlavikaWebBasicRegular.woff') format('woff');
 	}		
 	@font-face {
 		font-family: KlavikaMedium;
-		src: url('/assets/KlavikaWebBasicMedium.eot');
-		src: url('/assets/KlavikaWebBasicMedium.eot?#iefix') format('embedded-opentype'), url('/assets/KlavikaWebBasicMedium.woff') format('woff');
+		src: url('../fonts/KlavikaWebBasicMedium.eot');
+		src: url('../fonts/KlavikaWebBasicMedium.eot?#iefix') format('embedded-opentype'), url('../fonts/KlavikaWebBasicMedium.woff') format('woff');
 	}
 	@font-face {
 		font-family: KlavikaBold;
-		src: url('/assets/KlavikaWebBasicBold.eot');
-		src: url('/assets/KlavikaWebBasicBold.eot?#iefix') format('embedded-opentype'), url('/assets/KlavikaWebBasicBold.woff') format('woff');
+		src: url('../fonts/KlavikaWebBasicBold.eot');
+		src: url('../fonts/KlavikaWebBasicBold.eot?#iefix') format('embedded-opentype'), url('../fonts/KlavikaWebBasicBold.woff') format('woff');
 	}
 	@font-face {
 		font-family: KlavikaBlack;
-		src: url('/assets/KlavikaWebDisplayBlack.eot');
-		src: url('/assets/KlavikaWebDisplayBlack.eot?#iefix') format('embedded-opentype'), url('/assets/KlavikaWebDisplayBlack.woff') format('woff');
+		src: url('../fonts/KlavikaWebDisplayBlack.eot');
+		src: url('../fonts/KlavikaWebDisplayBlack.eot?#iefix') format('embedded-opentype'), url('../fonts/KlavikaWebDisplayBlack.woff') format('woff');
 	}
 
 	@font-face {
@@ -36,14 +36,14 @@
 	  /*src: url('http://designlovr.com/examples/css3-buttons/fonts/Note_this.eot');
 	  src: local('Note this Regular'), local('Notethis'), url('http://designlovr.com/examples/css3-buttons/fonts/Note_this.ttf') format('truetype');*/
 	 	  
-	  src: url('/assets/Note_this.eot');
-	  src: local('Note this Regular'), local('Notethis'), url('/assets/Note_this.ttf') format('truetype');
+	  src: url('../fonts/Note_this.eot');
+	  src: local('Note this Regular'), local('Notethis'), url('../fonts/Note_this.ttf') format('truetype');
 	  
 	}
 	
 	@font-face {
 	  	font-family: 'bytes';
-	  	src: url('/assets/bytes.ttf') format('truetype');
+	  	src: url('../fonts/bytes.ttf') format('truetype');
 	  
 	  	/*font-weight: normal;
 	  	font-style: normal;*/	  
@@ -51,167 +51,167 @@
 	
 	@font-face {
 	  	font-family: 'BNEfG';
-	  	src: url('/assets/BNEfG98.ttf') format('truetype');
+	  	src: url('../fonts/BNEfG98.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'BNEG';
-	  	src: url('/assets/BNEG98.ttf') format('truetype');
+	  	src: url('../fonts/BNEG98.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'BNEnG';
-	  	src: url('/assets/BNEnG98.ttf') format('truetype');
+	  	src: url('../fonts/BNEnG98.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'BNEoG';
-	  	src: url('/assets/BNEoG98.ttf') format('truetype');
+	  	src: url('../fonts/BNEoG98.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'copyviol';
-	  	src: url('/assets/Copyviol.ttf') format('truetype');
+	  	src: url('../fonts/Copyviol.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'copyvlN';
-	  	src: url('/assets/CopyvlN.ttf') format('truetype');
+	  	src: url('../fonts/CopyvlN.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'crackdr2';
-	  	src: url('/assets/crackdr2.ttf') format('truetype');
+	  	src: url('../fonts/crackdr2.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'crkdownr';
-	  	src: url('/assets/crkdownr.ttf') format('truetype');
+	  	src: url('../fonts/crkdownr.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'crkdwno1';
-	  	src: url('/assets/crkdwno1.ttf') format('truetype');
+	  	src: url('../fonts/crkdwno1.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'crkdwno2';
-	  	src: url('/assets/BNEfG98.ttf') format('truetype');
+	  	src: url('../fonts/BNEfG98.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'forgotbi';
-	  	src: url('/assets/Forgotbi.ttf') format('truetype');
+	  	src: url('../fonts/Forgotbi.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'forgottb';
-	  	src: url('/assets/Forgottb.ttf') format('truetype');
+	  	src: url('../fonts/Forgottb.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'forgotte';
-	  	src: url('/assets/Forgotte.ttf') format('truetype');
+	  	src: url('../fonts/Forgotte.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'forgotti';
-	  	src: url('/assets/Forgotti.ttf') format('truetype');
+	  	src: url('../fonts/Forgotti.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'forgotts';
-	  	src: url('/assets/Forgotts.ttf') format('truetype');
+	  	src: url('../fonts/Forgotts.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'ffs';
-	  	src: url('/assets/ForgottenFuturistShadow.ttf') format('truetype');
+	  	src: url('../fonts/ForgottenFuturistShadow.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'excelsiorcomics';
-	  	src: url('/assets/excelsiorcomics.ttf') format('truetype');
+	  	src: url('../fonts/excelsiorcomics.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'exelsiorcomics3d';
-	  	src: url('/assets/exelsiorcomics3d.ttf') format('truetype');
+	  	src: url('../fonts/exelsiorcomics3d.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'exelsiorcomics3dital';
-	  	src: url('/assets/exelsiorcomics3dital.ttf') format('truetype');
+	  	src: url('../fonts/exelsiorcomics3dital.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'exelsiorcomicscond';
-	  	src: url('/assets/exelsiorcomicscond.ttf') format('truetype');
+	  	src: url('../fonts/exelsiorcomicscond.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'exelsiorcomicscondital';
-	  	src: url('/assets/exelsiorcomicscondital.ttf') format('truetype');
+	  	src: url('../fonts/exelsiorcomicscondital.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'excelsiorcomicsexpand';
-	  	src: url('/assets/excelsiorcomicsexpand.ttf') format('truetype');
+	  	src: url('../fonts/excelsiorcomicsexpand.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'excelsiorcomicsexpandital';
-	  	src: url('/assets/excelsiorcomicsexpandital.ttf') format('truetype');
+	  	src: url('../fonts/excelsiorcomicsexpandital.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'excelsiorcomicsital';
-	  	src: url('/assets/excelsiorcomicsital.ttf') format('truetype');
+	  	src: url('../fonts/excelsiorcomicsital.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'excelsiorcomicsleft';
-	  	src: url('/assets/excelsiorcomicsleft.ttf') format('truetype');
+	  	src: url('../fonts/excelsiorcomicsleft.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'AsSeenOnTV';
-	  	src: url('/assets/AsSeenOnTV.ttf') format('truetype');
+	  	src: url('../fonts/AsSeenOnTV.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'AsseenonTVSkew';
-	  	src: url('/assets/AsseenonTVSkew.ttf') format('truetype');
+	  	src: url('../fonts/AsseenonTVSkew.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'JuneBug';
-	  	src: url('/assets/JuneBug.ttf') format('truetype');
+	  	src: url('../fonts/JuneBug.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'Vollkorn-Italic';
-	  	src: url('/assets/Vollkorn-Italic.ttf') format('truetype');
+	  	src: url('../fonts/Vollkorn-Italic.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'JandaCheerfulScript';
-	  	src: url('/assets/JandaCheerfulScript.ttf') format('truetype');
+	  	src: url('../fonts/JandaCheerfulScript.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'second-breakfast';
-	  	src: url('/assets/second-breakfast.ttf') format('truetype');
+	  	src: url('../fonts/second-breakfast.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'msyh';
-	  	src: url('/assets/msyh.ttf') format('truetype');
+	  	src: url('../fonts/msyh.ttf') format('truetype');
 	}
 
 	@font-face {
 	  	font-family: 'msyhb';
-	  	src: url('/assets/msyhb.ttf') format('truetype');
+	  	src: url('../fonts/msyhb.ttf') format('truetype');
 	}
 
 

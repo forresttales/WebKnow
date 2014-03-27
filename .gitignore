@@ -14,3 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/test
+/public
+/config/database.yml
+/config/environments/production.rb
