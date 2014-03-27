@@ -15,6 +15,6 @@
 /log/*.log
 /tmp
 /test
-/public
+/public/assets
 /config/database.yml
-/config/environments/production.rb
+
