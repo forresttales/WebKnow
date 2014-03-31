@@ -1,0 +1,11 @@
+default:
+  #api_login_id: 445Uug5RKe
+  #api_transaction_key: 4U784vBjN9p4V9zY
+  # merchant_hash_value: 5QtNUh94uF29
+  api_login_id: 5QtNUh94uF29
+  api_transaction_key: 96V5n8d23LwyGjy6
+  merchant_hash_value: 5QtNUh94uF29
+
+#development: 
+#test: 
+#production: 

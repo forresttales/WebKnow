@@ -1,0 +1,2 @@
+module JournalposterpurchasesHelper
+end

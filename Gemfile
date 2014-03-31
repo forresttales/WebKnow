@@ -20,6 +20,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'json' 
+gem 'stripe'
+gem 'paypal-sdk-rest'
+gem 'authorize-net'
+gem 'rake', '~> 10.2.1'
+gem 'rack-ssl'
 
 group :doc do
   gem 'sdoc', require: false

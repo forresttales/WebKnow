@@ -1,8 +1,43 @@
 Webknow::Application.routes.draw do
 
+  get "journalposterpurchases/index"
+  get "journalposterpurchases/new"
+  get "journalposterpurchases/show"
+  get "journalposterpurchases/create"
+  get "journalposters/index"
+  get "journalposters/new"
+  get "journalposters/create"
+  get "journalposters/show"
   root to: 'static_pages#index'
 
   match '/', to: 'static_pages#index', via: 'get'
+  match '/Journal-Poster', to: 'static_pages#journalposter', via: 'get'
+
+  resources :charges
+  
+  match '/payments/payment', :to => 'payments#payment', :as => 'paymentspayment', :via => [:get]
+  match '/payments/relay_response', :to => 'payments#relay_response', :as => 'payments_relay_response', :via => [:post]
+  match '/payments/receipt', :to => 'payments#receipt', :as => 'payments_receipt', :via => [:get]
+  
+
+
+  get "paypals/index"
+
+  resources :paypals do
+    collection do
+      post :pay
+    end
+  end
+
+  resources :paypals
+
+
+
+  resources :journalposters
+
+  resources :journalposterpurchases
+
+
 
 
 

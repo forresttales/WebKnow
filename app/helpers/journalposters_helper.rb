@@ -1,0 +1,2 @@
+module JournalpostersHelper
+end
