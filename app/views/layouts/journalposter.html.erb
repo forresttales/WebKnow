@@ -7,75 +7,31 @@
 
     	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   		
-		<!-- <link rel="icon" type="image/png" href="/assets/image_fav_2.png" /> -->		
-		
 		<link rel="icon" type="image/png" href="/assets/logo-lc-round-fav.png" />
-  		
-		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Bubbler+One|Metrophobic' rel='stylesheet' type='text/css'>
-				  		
+  					  		
    		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>    		   		
-    	
-  		<%= include_gon %>
-    	
     	
 	  	<%= csrf_meta_tags %>
 	  	<%= render 'layouts/shim' %>  
 
+		<!-- <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Bubbler+One|Metrophobic' rel='stylesheet' type='text/css'> -->
+
 		<!-- <link href="css/custom-theme/jquery-ui-1.10.3.custom.css" rel="stylesheet">
 		<script src="js/jquery-1.9.1.js"></script>
 		<script src="js/jquery-ui-1.10.3.custom.js"></script> -->
-		
-		<script>
-	
-	      // window.onload = function() {
-	          // var a = document.getElementById("mylink");
-	// 
-	          	// a.onclick = function() {
-	//           		
-	            // return false;
-	          // }
-	        // }	
-			
-			// jQuery.ajaxSetup({ 
-			  // 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-			// })
-	 		
-			// function getMsg(){
-				// msg = getSelected();
-				// //msg = "msg";
-				// alert(msg);
-				// var p = document.getElementById("view_message");
-				// p.innerHTML = "<em>" + msg  + "</em>";
-	 			
-			// }
-	
-			// $(function() {
-				// $( "#button" ).button();
-			// });
-			
-			
-		</script>
+
+  		<%= include_gon %>
 		                		
     </head>
     
 	<body>
 		
-		 <!-- if !session[:admin] 	 -->		
-			<%= render 'layouts/nav_main' %>
-		 <!-- else 
-			 render 'layouts/header_admin' 			
-		 end  -->
-		 		
-		<!-- <div style="width: 1200px; margin-right: auto; margin-left: auto; background: #fff;"> -->
-									
-			<%= yield %> 
+		<%= render 'layouts/nav_main' %>
+								
+		<%= yield %> 
 
-			<%= render 'layouts/footer' %>
-			
-		<!-- </div> -->
-		
-		
+		<%= render 'layouts/footer' %>
 		
 		<%= debug(params) if Rails.env.development? %>
 		

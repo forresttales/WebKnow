@@ -4,14 +4,22 @@ Webknow::Application.routes.draw do
   get "journalposterpurchases/new"
   get "journalposterpurchases/show"
   get "journalposterpurchases/create"
-  get "journalposters/index"
-  get "journalposters/new"
-  get "journalposters/create"
-  get "journalposters/show"
   root to: 'static_pages#index'
 
+
+  match '/Advertise', to: 'static_pages#advertise', via: 'get'
+
+
+  # get "journalposters/index"
+  #get "journalposters/new"
+  #get "journalposters/create"
+  #get "journalposters/show"
+  match '/Journal-Poster', to: 'journalposters#index', via: 'get'
+  resources :journalposters
+  
+
   match '/', to: 'static_pages#index', via: 'get'
-  match '/Journal-Poster', to: 'static_pages#journalposter', via: 'get'
+  # match '/Journal-Poster', to: 'static_pages#journalposter', via: 'get'
 
   resources :charges
   

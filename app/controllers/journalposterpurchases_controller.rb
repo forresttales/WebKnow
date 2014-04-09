@@ -7,6 +7,8 @@ class JournalposterpurchasesController < ApplicationController
 
 
   def new
+    
+    
   end
 
 

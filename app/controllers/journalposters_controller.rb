@@ -3,6 +3,17 @@ class JournalpostersController < ApplicationController
   layout 'journalposter'
   
   def index
+    
+    # session[:username].nil?
+    gon.profile = ''
+    if !session[:profile].nil?
+      if session[:profile] == "/Publishers"
+        gon.profile = "publisher"
+      end
+    # else
+      # render text: 'nil'
+    end
+    
   end
 
 
