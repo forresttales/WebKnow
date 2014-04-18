@@ -85,6 +85,7 @@ module SessionsHelper
     session[:student_id] = nil
     session[:teacher_id] = nil
         
+    session[:poster] = nil        
         
     # session[:return_to] = nil    
     

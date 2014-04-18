@@ -2,18 +2,17 @@
 
 	<div class="container">
 
-		<div>Show the filled out form and selected options here for final approval</div>
+		<div><%= @jp.poster_text %></div>
 	
 		<div style="height: 30px;"></div>
 	
 		<table>
 			<tr>
 				<td>
-					<%= link_to 'Authorize.net', paymentspayment_path %>
+					<%= link_to 'Pay online', paymentspayment_path %>
 				</td>
-				<td style="width: 50px;"></td>
+				<!-- <td style="width: 50px;"></td>
 				<td>
-					<!-- (c) 2005, 2014. Authorize.Net is a registered trademark of CyberSource Corporation --> 
 					<div class="AuthorizeNetSeal"> 
 						<script type="text/javascript" language="javascript">var ANS_customer_id="2ce1d520-8781-492b-bf4e-6bb66cdb77fd";</script>
 						<script type="text/javascript" language="javascript" src="//verify.authorize.net/anetseal/seal.js" ></script>
@@ -23,12 +22,14 @@
 				<td style="width: 50px;"></td>
 				<td>
 					<span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=P1hRsTCDgbUVDzeqOtTuQpa40RPj0n9n2wWuC8c2R0naY95O6fHW9luLdYH"></script></span>
-				</td>
+				</td> -->
 			</tr>
 	
 		</table>
 
 	</div>
+
+					<!-- (c) 2005, 2014. Authorize.Net is a registered trademark of CyberSource Corporation --> 
 
 				<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 				<input type="hidden" name="cmd" value="_s-xclick">

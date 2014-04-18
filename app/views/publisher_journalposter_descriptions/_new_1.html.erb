@@ -1,0 +1,386 @@
+
+	<!-- <script type="text/javascript" src="../scripts/jquery-1.9.1.min.js"></script> -->
+	<!-- <script type="text/javascript" src="../scripts/jquery-1.9.1.js"></script> -->
+	<!-- <script type="text/javascript" src="/assets/jquery-1.9.1.js"></script> -->
+
+	<style>
+		
+		.journal-box-steps {
+			width:1000px;
+			/*height: 400px;*/
+			padding: 4px;
+			position: relative;
+			vertical-align: top;
+ 			margin: 0 auto;			
+		}
+		.journal-txt-title-steps {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 26px;
+	    	color: #214025;
+	    	font-weight: 800;
+		}
+		.journal-txt-title-steps-sub {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 20px;
+	    	color: #214025;
+	    	font-weight: 800;
+		}
+		.journal-box-steps ul li {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 18px;
+	    	color: #222;
+	    	font-weight: 800;
+		}
+		.journal-txt-steps-sub {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 1.0em;
+	    	color: #214025;
+	    	font-weight: 800;
+		}
+		div.journal-steps-info {
+			width: 200px;
+			text-align: left;
+			margin-left: 70px;	
+		}
+		div.journal-arrow-container {
+			height: 124px;
+			width: 130px;
+			margin-left: 110px;
+		}
+		div.journal-arrow-green {
+			height: 114px;
+			width:100px;
+			margin-top: 10px;
+			background: url("/assets/arrow-green-w100-h104.png") no-repeat 0px 0px;						
+			/*background-image: url("/assets/arrow-green-w100-h104.png");*/						
+		}
+		div.journal-arrow-gray {
+			height: 114px;
+			width:100px;
+			margin-top: 10px;
+			background: url("/assets/arrow-gray-w100-h104.png") no-repeat 0px 0px;						
+			/*background-image: url("/assets/arrow-green-w100-h104.png");*/						
+		}
+		.journal-arrow-green:hover {
+			height: 124px;
+			width:119px;	
+			margin-top: 0px;		
+			margin-left: 10px;
+			cursor: pointer;
+			/*-webkit-transition: all 0.5s ease-in-out;
+			-moz-transition: all 0.5s ease-in-out;
+			-o-transition: all 0.5s ease-in-out;
+			-ms-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;*/
+			background: url("/assets/arrow-hovergreen-w119-h124.png") no-repeat 0px 0px;						
+		}
+ 		.link-arrow-enable {
+ 			
+ 		}		
+ 		.link-arrow-disable {
+ 			disable;
+ 		}	
+ 				
+		/*input[type=checkbox] {
+		    display:none;
+		}					
+		input[type=radio] {
+		    display:none;
+		}*/			
+ 				
+		input[type=submit] {
+		    display:none;
+		}			
+ 				
+	</style>
+
+
+			<div class="journal-table">
+				<div class="journal-row">
+					<div class="journal-cell" style="width: 1000px;">
+						<div class="journal-txt3">
+							Categories 1
+						</div>				
+						<div class="journal-space-table-1"></div>        		
+						<div>
+							<!-- <img src="../journal_poster/projects-w703-h446.png" alt="projects-w703-h446.png" width="695px"> -->		                    	
+		        		</div>
+		        		
+<!-- 
+#  publisher_journalposter_id :integer
+#  publisher_id               :integer
+#  created_at                 :datetime
+#  updated_at                 :datetime
+#  poster                     :integer
+#  poster_text                :string(255)
+#  logo                       :string(255)
+#  word_descr                 :text
+#  tag_line                   :text
+#  headline                   :string(255)
+#  screen_shot                :string(255)
+#  main_sales_phone           :string(255)
+#  curriculum_resources       :integer			x
+#  curriculum_resources_text  :string(255)		x
+#  teacher_tools              :integer
+#  teacher_tools_text         :string(255)
+#  school_operations          :integer
+#  school_operations_text     :string(255)
+#  content                    :integer
+#  content_text               :string(255)
+#  prof_learning              :integer
+#  prof_learning_text         :string(255)
+#  cent21_learning            :integer			x
+#  cent21_learning_text       :string(255)		x
+#  language                   :integer			x
+#  language_text              :string(255)		x
+#  math                       :integer
+#  math_text                  :string(255)
+#  science                    :integer
+#  science_text               :string(255)
+#  social_studies             :integer
+#  social_studies_text        :string(255)
+#  special_ed                 :integer
+#  special_ed_text            :string(255)
+#  assmt_testing              :integer
+#  assmt_testing_text         :string(255)
+#  collaboration              :integer
+#  collaboration_text         :string(255)
+#  classroom_resp             :integer
+#  classroom_resp_text        :string(255)
+#  grading_atten              :integer
+#  grading_atten_text         :string(255)
+#  lesson_planning            :integer
+#  lesson_planning_text       :string(255)
+#  pres_tools                 :integer
+#  pres_tools_text            :string(255)
+#  lecture_capture            :integer
+#  lecture_capture_text       :string(255)
+#  plag_checks                :integer
+#  plag_checks_text           :string(255)
+#  learning_mgmt_systs        :integer
+#  learning_mgmt_systs_text   :string(255)
+#  student_info_systs         :integer
+#  student_info_systs_text    :string(255)
+#  web_filtering              :integer
+#  web_filtering_text         :string(255)
+#  device_mgmt                :integer
+#  device_mgmt_text           :string(255)
+#  virtual_dist_ed            :integer
+#  virtual_dist_ed_text       :string(255)
+#  testing_systs              :integer
+#  testing_systs_text         :string(255)
+#  unique_tech                :integer
+#  unique_tech_text           :string(255)
+#  apps                       :integer
+#  apps_text                  :string(255)
+#  digit_textbooks            :integer
+#  digit_textbooks_text       :string(255)
+#  games                      :integer
+#  games_text                 :string(255)
+#  study_tools                :integer
+#  study_tools_text           :string(255)
+#  video                      :integer
+#  video_text                 :string(255)
+#  dictionaries               :integer
+#  dictionaries_text          :string(255)
+#  directories                :integer
+#  directories_text           :string(255)
+#  subscrip_sites             :integer
+#  subscrip_sites_text        :string(255)
+#  ebook_game_creat           :integer
+#  ebook_game_creat_text      :string(255)
+#  digit_story_poster         :integer
+#  digit_story_poster_text    :string(255)
+#  courseware                 :integer
+#  courseware_text            :string(255)
+#  talent_mgmt                :integer
+#  talent_mgmt_text           :string(255)
+#  prof_devel_systems         :integer
+#  prof_devel_systems_text    :string(255)
+#  instr_design               :integer
+#  instr_design_text          :string(255)
+#  other_diy                  :integer
+#  other_diy_text             :string(255) 
+-->		        		
+
+						<%= form_for( @publisher_journalposter_description, :html => {:id => "form_publisher_journalposter_description"}) do |f| %>
+						
+		        		<table>
+							<tr>
+								<td>
+									<div id="cb_curriculum_resources" class="cb-button cb-valign"></div>							
+									<%= f.check_box :curriculum_resources %>
+								</td>
+								<td>
+									<label id="label_curriculum_resources" class="input-label required-label label_cb" for="curriculum_resources" onclick="cb_set('curriculum_resources');" tabindex="2">Curriculum Resources</label>
+								</td>		
+								<td class="cb-margin"></td>									
+								<td class="cb-col-2">
+									<span></span>
+								</td>
+								<td class="cb-margin-2"></td>
+								<td id="opt_cent21_learning" class="cb-col-2" style="width: 500px;">
+									<div style="display: inline-block; width: 40px;"></div>						
+									<div id="cb_cent21_learning" class="cb-button"></div>
+									<%= f.check_box :cent21_learning %>
+									<label id="label_cent21_learning" class="input-label required-label" for="cent21_learning" onclick="cb_set('cent21_learning');" tabindex="3">
+										<span class="sessions">21st Century Learning</span>
+									</label>
+
+									<div style="display: inline-block; width: 40px;"></div>						
+									<div id="cb_language" class="cb-button"></div>
+									<%= f.check_box :language %>
+									<label id="label_language" class="input-label required-label" for="language" onclick="cb_set('language');" tabindex="4">
+										<span class="sessions">Language</span>
+									</label>
+
+
+								</td>									
+							</tr>
+		        		</table>
+
+		        		<table>
+							<tr>
+								<td>
+									<div class="journal-arrow-container">
+										<!-- <a id="link-arrow-1" href="#"> -->
+											<div id="arrow-1" class="journal-arrow-green"></div>
+										<!-- </a> -->
+									</div>
+									
+		        					<%= f.submit '', :id => 'submit_id', :tabindex => '' %>
+								</td>									
+							</tr>
+		        		</table>
+		        		
+		        		<% end %>
+		        		
+		        		
+		        		
+		        		
+		        		
+					</div>
+				</div>
+			</div>
+
+
+	<script>
+		
+		function cb_set(cntrl) {
+
+			//alert('cb_curriculum_resources');
+						
+			// var cb = "#publisher_journalposter_description_curriculum_resources";
+			// var sb = "#cb_curriculum_resources";
+
+			var cb = "#publisher_journalposter_description_" + cntrl;
+			var sb = "#cb_" + cntrl;;
+
+			if($(cb).is(':checked')) {
+				$(cb).prop('checked', false);
+				$(sb).removeClass("cb-background");				
+				// $(rd).css ({			
+					// visibility: 'hidden'
+				// });							
+			}
+			else {
+				$(cb).prop('checked', true);
+				$(sb).addClass("cb-background");
+				// $(rd).css ({			
+					// visibility: 'visible'
+				// });
+			}
+			
+			//validateCurriculumResources();			
+		}
+
+
+		// function validateCurriculumResources() {
+// 
+			// var isChecked = false;
+			// var cb;
+			// for (var i = 1; i < 16; i++ ) {
+				// cb = "#reg_event_city_workshop_" + i;
+				// if($(cb).is(':checked')) {
+					// isChecked = true;
+				// }
+			// }
+// 			
+			// if ( !isChecked ) {
+				// if (validatorCalled ) {
+					// $("#border_city_workshop").css ({
+						// 'border-color' : '#851717'
+					// });
+// 					
+					// $('#error_reg_event_city_workshop').html("*<br>Please select an option");
+				// }
+// 	
+				// $("#state_reg_event_city_workshop").css ({			
+					// background: 'url("/assets/submit_form_empty.png") no-repeat 0px 5px'
+				// });				
+			// }
+			// else {								
+				// $("#border_city_workshop").css ({
+					// 'border-color' : '#005C9E'
+				// });
+// 				
+				// $('#error_reg_event_city_workshop').html("");
+// 				
+				// $("#state_reg_event_city_workshop").css ({			
+					// background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+				// });
+			// }
+// 
+			// return isChecked;
+		// }
+
+
+
+		// function enableArrow() {
+			// $("#arrow-1").removeClass("journal-arrow-gray").addClass("journal-arrow-green");			
+		// }
+
+		//$(window).load( function() {
+		$(document).ready(function(){
+				
+			$('#cb_curriculum_resources').on('click', function() {
+				//alert('cb clicked');
+				cb_set('curriculum_resources');
+			});
+			
+    		$('#label_curriculum_resources').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#label_curriculum_resources').click();
+    		});				
+
+			$('#cb_cent21_learning').on('click', function() {
+				//alert('cb clicked');
+				cb_set("cent21_learning");
+			});
+			
+    		$('#label_cent21_learning').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#label_cent21_learning').click();
+    		});				
+
+			$('#cb_language').on('click', function() {
+				//alert('cb clicked');
+				cb_set("language");
+			});
+			
+    		$('#label_language').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#label_language').click();
+    		});				
+
+
+
+			$('#arrow-1').on('click', function() {
+				$('#submit_id').click();
+			});
+			
+		});
+		
+		
+	</script>				
+

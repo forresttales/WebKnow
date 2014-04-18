@@ -1,0 +1,202 @@
+<% provide(:title, 'Publisher Journal Posters') %>
+
+
+	<style>
+		
+		.form-display-col1 {
+			width: 200px;
+		}
+		.form-display-col2 {
+			width: 400px;
+		}
+		.form-display-separator {
+			height: 10px;
+		}
+		
+	</style>
+
+	<header>
+		<%= render 'share/backtotop' %>
+	</header>
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<%= render 'share/dir_publishers_left'%>
+				</div>
+				
+				<div class="col-midd">
+
+					<div style="text-align: left;">
+						<span class="normal pad-left-20">Publisher Journal Posters</span>
+					</div>
+
+					<div class="line-space-20"></div>
+					
+					<div>
+						<span class="normal pad-left-20">
+							Publisher Journal Poster Name: 
+							<em>
+							<%= @publisher_journalposter_name %>
+							</em>
+						</span>
+					</div>
+					
+					<div>
+						<span class="normal pad-left-20">
+							Journal Poster ID: <%= @publisher_journalposter_id %>
+						</span>
+					</div>
+
+					<div class="line-space-20"></div>
+
+					<% if @has_journalposter_logo %>
+						<div class="pad-left-20"><a id="render" href="/PublisherLogos/<%= @publisher_journalposter_id %>"></a></div>		
+					<% else %>
+						<div class="pad-left-20">
+							<span class="normal">
+								<%= link_to 'Upload Logo Image', '/PublisherLogos/' + @publisher_journalposter_id, :class => 'links' %>
+							</span>
+						</div>					
+					<% end %>
+
+					<div class="line-space-20"></div>
+
+					<% if @has_journalposter_metadata %>
+						<div class="pad-left-20"><a id="render" class="links" href="/PublisherMetadata/<%= @publisher_journalposter_id %>"><%= @journalposter_metadata %></a></div>		
+					<% else %>
+						<div class="pad-left-20">
+							<span class="normal">
+								<%= link_to 'Upload Journal Poster Metadata', '/PublisherMetadata/' + @publisher_journalposter_id, :class => 'links' %>
+							</span>
+						</div>					
+					<% end %>
+			
+					<div class="line-space-20"></div>
+			
+					<% if @publisher_journalposter_descriptions.any? %>
+					 
+		                  <!-- 
+		                  -->					 		
+					 
+					 	<table>
+					 		<tr>
+					 			<td class="form-display-col1">
+					 				<span class="small pad-left-20">Created:</span>
+					 			</td>
+					 			<td class="form-display-col2">
+					 				<span class="small pad-left-20"><%= @publisher_journalposter_descriptions[0].created_at.to_s(:long) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Updated:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_journalposter_descriptions[0].updated_at.to_s(:long) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Poster:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= @publisher_journalposter_descriptions[0].poster_text %></span>
+					 			</td>
+					 		</tr>
+
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Curriculum Resources:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].curriculum_resources) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">21st Century Learning:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].cent21_learning) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Language:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].language) %></span>
+					 			</td>
+					 		</tr>
+
+					 	</table>
+						<div class="line-space-20"></div>
+						<div class="pad-left-20">
+							<span class="normal">								
+								<%= button_to "Edit", {:controller => 'publisher_journalposters', :action => 'edit', :id => @publisher_journalposter_descriptions[0].publisher_journalposter_id } %>
+							</span>
+						</div>
+				    	<div>
+					    	<h5>
+							   	<% delete_all_msg = "Delete all records and reset index in Publisher Journal Poster Descriptions?" %>
+								<%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long' %>
+							</h5>
+						</div>
+						
+					<% else %>
+
+						<div>
+							<span class="pad-left-20">&laquo;<%= link_to 'Add Journal Poster Information', '/PublisherAddJournalPosterInformation', :class => 'links' %>&raquo;</span>
+						</div>
+			
+						<div class="line-space-20"></div>
+			
+						<div>
+							<span class="normal-red pad-left-20">No record for this journalposter</span>
+						</div>
+				
+					<% end %>
+
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_publishers_right' %>
+				</div>												
+			</div>
+		</div>
+	</div>
+
+	<script>
+	  
+		$(window).load( function() {
+		//$(document).ready(function () {				
+	
+				var cnt = 1;
+				var cells = "";
+				
+				// alert(gon.image_name);
+	
+				if (gon.image_name !== '') {								
+					//cells += "</td><td style='width: 10px;'></td><td><img src='../images_publisher_journalposter_logo/" + gon.image_name + "' alt='image'>";
+					cells += "<img src='../images_publisher_journalposter_logo/" + gon.image_name + "' alt='image'>";
+
+					// var tbl = "<table><tr>" + cells + "</tr></table>";
+					var tbl = cells;
+
+					$( "#render" ).html( tbl);
+				}
+				else {
+					var tbl = "<table><tr><td><span class='normal-red pad-left-20'>No photo</span><td></tr></table>";
+					$( "#render" ).html( tbl);				
+				}
+		});
+	  
+	</script>		

@@ -1,7 +1,10 @@
 
-	<style>
+	<!-- css
+	custom_profile.css -->
 	
-		.fontfam {
+	<style>
+
+		/*.fontfam {
 			font-family: JuneBug;
 		}
 		.gold {
@@ -19,8 +22,24 @@
 		.green {
 			color: green;	
 			font-size: 60px;			
+		}*/	
+
+		.col-left-full-page {
+			display: table-cell; width: 0px;	
+		}
+		.col-midd-full-page {
+			display: table-cell; 
+			width: 1000px;			
+			/*border-left: 2px #41B737 solid;
+			border-right: 2px #41B737 solid;*/
+		}
+		.col-right-full-page {
+			display: table-cell; width: 0px;
+		}
+		.col-full-page-center {
+			text-align: center;
 		}	
-			
+				
 	</style>
 
 	<header>
@@ -28,32 +47,31 @@
 	</header>
 
 	<div class="container">
+		
+		<div style="height: 70px;"></div>
+		
 		<div class="table-profile">
 			<div class="row-profile">
 				
-				<div class="col-left-clean">
+				<div class="col-left-full-page">
 				</div>
 				
-				<div class="col-midd-clean">
-					
-					<div style="height: 40px;"></div>
-			
-					<div style="text-align: center;">
+				<div class="col-midd-full-page col-full-page-center">
+											
+					<img src="../assets_knowstory/knowstory-icon-2-w634-h212.png" alt="knowstory-icon-2-w634-h212.png">
 						
-						<img src="../images_site/tree-1-w400-h400.png" alt="tree-1-w400-h400.png">
-						
-						<!-- <div class="fontfam">
-							<span class="red">Happy </span><span class="blue"> Birthday </span><span class="gold"> !</span>
-							<div style="height: 80px;"></div>
-							<span class="green">KnowStory</span>
-						</div> -->
-					</div>
+					<!-- <div class="fontfam">
+						<span class="red">Happy </span><span class="blue"> Birthday </span><span class="gold"> !</span>
+						<div style="height: 80px;"></div>
+						<span class="green">KnowStory</span>
+					</div> -->
 								
 				</div>
 				
-				<div class="col-right-clean">
+				<div class="col-right-full-page">
 				</div>
 												
 			</div>
 		</div>
 	</div>
+

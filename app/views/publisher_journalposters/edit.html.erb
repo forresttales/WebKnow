@@ -1,0 +1,851 @@
+<% provide(:title, 'Publishers Edit Journal Poster') %>
+
+	<!-- <script type="text/javascript" src="../scripts/jquery-1.4.1.min.js"></script> -->
+	
+	<script type="text/javascript" src="../scripts/jquery-1.9.1.js"></script>
+	<!-- <script src="/assets/jquery.validate.js"></script> -->
+	<link href="/assets/custom_sign_form.css" rel="stylesheet">
+	
+	<style>
+	
+		@import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans);
+		@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400,400italic,700,700italic);
+		/*@import url(http://www.google.com/fonts#QuickUsePlace:quickUse/Family:Istok+Web);*/
+		
+		
+		.journal-container {
+			position: relative;
+			margin: 0 auto;
+			clear: both;
+			width: 1000px;
+			background-color: #fff;
+			min-height: 800px;
+		}
+		div .journal-table {
+			display: table;
+			width: 1000px;
+		}
+		div .journal-table-1 {
+			display: table;
+			width: 750px;
+		}
+		div .journal-table-2 {
+			display: table;
+			width: 700px;
+		}
+		div .journal-row {
+			display: table-row;
+			align: top;
+		}
+		div .journal-cell {
+			display: table-cell;
+			verticle-align: top;
+		}
+		.journal-box-free {
+			width: 200px;
+			height: 330px;
+			border: 6px solid #ddd;
+			border-radius: 6px;
+			padding-top: 10px;
+			padding-right: 6px;
+			padding-left: 10px;
+			padding-bottom: 6px;
+			position: relative;
+			vertical-align: top;
+		}
+		.journal-box {
+			width: 150px;
+			height: 330px;
+			border: 1px solid #000;
+			padding-top: 10px;
+			padding-right: 6px;
+			padding-left: 10px;
+			padding-bottom: 6px;
+			position: relative;
+			vertical-align: top;
+		}
+		.bk-color-1 {
+			background-color: #F6F2FA;
+		}
+		.bk-color-2 {
+			background-color: #EBDEFA;			
+		}
+		.bk-color-3 {
+			background-color: #DEC7FC;			
+		}
+		.bk-color-4 {
+			background-color: #C59DFC;						
+		}		
+		.journal-box-signup {
+			width:240px;
+			height: 134px;
+			padding: 0px;
+			position: relative;
+			vertical-align: top;
+ 			margin: 0 auto;			
+			border-width: 4px;
+			border-style: solid;
+			border-color: #808080;		
+		}
+		.journal-box-signup:hover {
+			border-color: #C4740C;			
+		}
+		.journal-box-signup a div div {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 20px;
+	    	font-weight: 600;
+			color: #214025;										
+		}
+		.journal-box-signup:hover a div div {
+			border-color: #C4740C;			
+			color: #C4740C;
+		}
+		.journal-link-signup {
+			width: 340px;
+			heigh: 144px;
+			background-color: #fff;
+		}		
+		.journal-link-signup:hover {
+			text-decoration: none;			
+		}		
+		.journal-space-table-1 {
+			height: 10px;
+		}
+		.journal-space-page-1 {
+			height: 10px;
+		}		
+		.journal-txt-title-light {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 50px;
+	    	color: #41B737;
+	    	font-weight: 800;
+		}
+		.journal-txt-title-dark {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 26px;
+	    	color: #214025;
+	    	font-weight: 800;
+		}
+		.journal-txt-title-dark-sub {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 16px;
+	    	color: #214025;
+	    	font-weight: 400;
+		}
+		.journal-txt-title-1 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 18px;
+	    	color: #1A9624;
+	    	text-shadow: 1px 1px #333;
+	    	font-weight: 800;
+	    	line-height: 1em;
+		}
+		.journal-txt-title-2 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 18px;
+	    	color: #C96333;
+	    	text-shadow: 1px 1px #333;
+	    	font-weight: 800;
+	    	line-height: 1em;
+		}
+		.journal-txt-title-3 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 18px;
+	    	color: #F6F9F9;
+	    	text-shadow: 1px 1px #333;
+	    	font-weight: 800;
+	    	line-height: 1em;
+		}
+		.journal-txt-title-4 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 18px;
+	    	color: #FFCC00;
+	    	text-shadow: 1px 1px #333;
+	    	font-weight: 800;
+	    	line-height: 1em;
+		}
+		.journal-txt1 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 12px;
+	    	color: #111;
+	    	font-weight: 800;
+	    	line-height: .8em;
+		}				
+		.journal-txt2 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 12px;
+	    	color: #222;
+	    	font-weight: 200;
+	    	line-height: .8em;		    	
+		}	
+		.journal-txt3 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 20px;
+	    	color: #214025;
+	    	font-weight: 600;
+		}	
+		.journal-txt4 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 22px;
+	    	font-weight: 600;
+		}	
+		.journal-container p {
+		  	/*font-family: 'Quattrocento Sans', sans-serif;*/
+	  		font-family: 'Roboto Condensed', sans-serif;
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+		    font-size: 18px;
+		    color: #222;
+		    font-weight: 200;
+		    line-height: 1.1em;		    				
+		}
+		.journal-links {
+	    	color: #C4740C;
+	    	font-weight: 200;
+		}
+		a.journal-links-large {
+	    	color: #C4740C;
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 20px;	    	
+	    	font-weight: 200;
+		}
+		.journal-title-center {
+			text-align: center;
+		}
+ 		.journal-price-1 {
+ 			position: absolute;
+ 			bottom: 20px; 
+ 			left: 62px;
+ 		}
+ 		.journal-price-2 {
+ 			position: absolute;
+ 			bottom: 20px; 
+ 			left: 64px;
+ 		}
+ 		.journal-price-3 {
+ 			position: absolute;
+ 			bottom: 20px; 
+ 			left: 58px;
+ 		}
+		.journal-banner-1 {
+			background-color: #41B737;
+			width: 1000px;
+			height: 40px;
+	  		font-family: 'Roboto Condensed', sans-serif;
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+		    font-size: 26px;
+		    color: #fff;
+		    font-weight: 600;
+		    text-shadow: 1px 1px #34922C;
+		    padding-top: 10px;
+		}
+		.journal-tab-1 {
+			width: 200px;
+			height: 30px;
+	  		font-family: 'Roboto Condensed', sans-serif;
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+		    font-size: 20px;
+		    color: #ddd;
+		    font-weight: 400;
+		    text-shadow: 1px 1px #34922C;
+		    padding-left: 20px;
+		    padding-top: 8px;
+		    margin-left: 40px;
+		    position: relative;
+			z-index: 100;			
+			background: #b4e391; /* Old browsers */
+			background: -moz-linear-gradient(top,  #b4e391 0%, #41b737 50%, #b4e391 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4e391), color-stop(50%,#41b737), color-stop(100%,#b4e391)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  #b4e391 0%,#41b737 50%,#b4e391 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  #b4e391 0%,#41b737 50%,#b4e391 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  #b4e391 0%,#41b737 50%,#b4e391 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  #b4e391 0%,#41b737 50%,#b4e391 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=0 ); /* IE6-9 */
+      		/*background: -moz-linear-gradient(center bottom, #214025, #41B737, #214025);*/ 
+		}
+		.journal-tab-2 {
+			width: 200px;
+			height: 30px;
+	  		font-family: 'Roboto Condensed', sans-serif;
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+		    font-size: 20px;
+		    color: #ddd;
+		    font-weight: 400;
+		    text-shadow: 1px 1px #34922C;
+		    padding-left: 20px;
+		    padding-top: 8px;
+		    margin-left: 40px;
+		    position: relative;
+			z-index: 100;			
+			background: #e2e2e2; /* Old browsers */
+			background: -moz-linear-gradient(top,  #e2e2e2 0%, #808080 50%, #e2e2e2 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e2e2e2), color-stop(50%,#808080), color-stop(100%,#e2e2e2)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  #e2e2e2 0%,#808080 50%,#e2e2e2 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  #e2e2e2 0%,#808080 50%,#e2e2e2 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  #e2e2e2 0%,#808080 50%,#e2e2e2 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  #e2e2e2 0%,#808080 50%,#e2e2e2 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#e2e2e2',GradientType=0 ); /* IE6-9 */
+		}
+		.journal-tab-3 {
+			width: 200px;
+			height: 30px;
+	  		font-family: 'Roboto Condensed', sans-serif;
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+		    font-size: 20px;
+		    color: #ddd;
+		    font-weight: 400;
+		    text-shadow: 1px 1px #34922C;
+		    padding-left: 20px;
+		    padding-top: 8px;
+		    margin-left: 40px;
+		    position: relative;
+			z-index: 100;			
+			background: #d7e6fa; /* Old browsers */
+			background: -moz-linear-gradient(top,  #d7e6fa 0%, #5281bf 50%, #d7e6fa 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d7e6fa), color-stop(50%,#5281bf), color-stop(100%,#d7e6fa)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  #d7e6fa 0%,#5281bf 50%,#d7e6fa 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  #d7e6fa 0%,#5281bf 50%,#d7e6fa 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  #d7e6fa 0%,#5281bf 50%,#d7e6fa 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  #d7e6fa 0%,#5281bf 50%,#d7e6fa 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d7e6fa', endColorstr='#d7e6fa',GradientType=0 ); /* IE6-9 */
+		}
+		.journal-tab-1-no-background {
+			width: 134px;
+			height: 30px;
+	  		font-family: 'Roboto Condensed', sans-serif;
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+		    font-size: 20px;
+		    color: #ddd;
+		    font-weight: 400;
+		    text-shadow: 1px 1px #34922C;
+		    padding-left: 10px;
+		    padding-top: 8px;
+		    margin-left: 40px;
+		    position: relative;
+			z-index: 100;			
+			background: #fff;
+		}		
+		hr.ln-1 {
+		    display: block;
+		    height: 1px;
+		    width: 750px;
+		    border: 0;
+		    border-top: 2px solid #ccc;
+		    margin: 1em 0;
+		    padding: 0;
+		    position: relative;
+		    top: -36px;
+			z-index: 1;					    
+		} 				
+		hr.ln-2 {
+		    display: block;
+		    height: 1px;
+		    width: 100%;
+		    border: 0;
+		    border-top: 2px solid #ccc;
+		    margin: 1em 0;
+		    padding: 0;
+		    position: relative;
+		    top: -36px;
+			z-index: 1;					    
+		} 				
+		.journal-tab-container {
+			width: 100%;
+			height: 50px;
+		}
+		.journal-pin-1 {
+			position: relative;
+			top: -282px;
+			left: 150px;
+		}
+		ul.journal-txt5 li {
+	  		font-family: 'Roboto Condensed', sans-serif;
+		    font-size: 16px;
+		    color: #222;
+		    font-weight: 200;
+		    line-height: 1.1em;		 
+		    padding-top: 10px;
+			list-style-type: none;		       				
+			background-image: url('../journal_poster/pin-black-w15-h24.png');
+			background-repeat: no-repeat;
+			background-position: 0px 7px;
+			padding-left: 20px; 			
+		}	
+		ul.journal-txt6 li {
+	  		font-family: 'Roboto Condensed', sans-serif;
+		    font-size: 16px;
+		    color: #111;
+		    font-weight: 200;
+		    line-height: 1.1em;		 
+		    padding-top: 10px;
+			list-style-type: none;		       				
+			background-image: url('../journal_poster/pin-white-w15-h24.png');
+			background-repeat: no-repeat;
+			background-position: 0px 7px;
+			padding-left: 20px; 			
+		}	
+		.journal-txt5 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 16px;
+	    	font-weight: 400;
+	    	color: #333;
+		}	
+		.journal-txt-title-light-small {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 30px;
+	    	color: #41B737;
+	    	font-weight: 800;
+		}		
+		.journal-digit-container {
+			position: relative;
+			width: 100px;
+			height: 36px;
+			margin-left: 38px;
+			padding-top: 2px;
+			text-align: center;
+			border-left: 1px solid #000;
+			border-right: 1px solid #000;
+			border-bottom: 1px solid #000;
+		}
+		.journal-digit-container-full {
+			width: 180px;
+			height: 36px;
+			padding-top: 2px;
+			text-align: center;
+			border-left: 1px solid #000;
+			border-right: 1px solid #000;
+			border-bottom: 1px solid #000;
+			border-top: 1px solid #000;
+		}
+		.journal-digit {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 40px;
+	    	color: #E500FA;
+	    	font-weight: 800;
+		}
+		.journal-digit-txt-1 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 18px;
+	    	color: #1A9624;
+	    	margin-left: 6px;
+	    	text-shadow: 1px 1px #333;
+	    	font-weight: 800;
+	    	line-height: 1em;
+			position: relative;
+			top: -13px;	    	
+		}
+		.journal-digit-txt-2 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 18px;
+	    	color: #C96333;
+	    	margin-left: 6px;
+	    	text-shadow: 1px 1px #333;
+	    	font-weight: 800;
+	    	line-height: 1em;
+			position: relative;
+			top: -13px;	    	
+		}
+		.journal-digit-txt-3 {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 18px;
+	    	color: #F6F9F9;
+	    	margin-left: 6px;
+	    	text-shadow: 1px 1px #333;
+	    	font-weight: 800;
+	    	line-height: 1em;
+			position: relative;
+			top: -13px;	    	
+		}
+		.journal-link-pdf {
+			box-shadow: 4px 4px 20px #888888;
+			width: 200px;
+			height: 259px;
+			margin-left: 18px;
+		}
+		.journal-link-pdf:hover {
+			box-shadow: 4px 4px 20px #786011;
+		}
+		
+		.rd-button {
+			width: 18px;
+			height: 18px; 
+			border-style: solid; 
+			border-width: 2px; 
+			border-color: #005C9E; 
+			border-radius: 18px;		
+			margin-bottom: -4px;
+			display: inline-block;
+			margin-right: 0px;
+		}
+	
+		.rd-background {
+			background-image: url("/assets/radio_tick.png");		
+			background-repeat: no-repeat;
+			background-position: 1px 1px;
+		}	
+		
+		
+	</style>
+
+
+	<style>
+		
+		.journal-box-steps {
+			width:1000px;
+			/*height: 400px;*/
+			padding: 4px;
+			position: relative;
+			vertical-align: top;
+ 			margin: 0 auto;			
+		}
+		.journal-txt-title-steps {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 26px;
+	    	color: #214025;
+	    	font-weight: 800;
+		}
+		.journal-txt-title-steps-sub {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 20px;
+	    	color: #214025;
+	    	font-weight: 800;
+		}
+		.journal-box-steps ul li {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 18px;
+	    	color: #222;
+	    	font-weight: 800;
+		}
+		.journal-txt-steps-sub {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 1.0em;
+	    	color: #214025;
+	    	font-weight: 800;
+		}
+		div.journal-steps-info {
+			width: 200px;
+			text-align: left;
+			margin-left: 70px;	
+		}
+		div.journal-arrow-container {
+			height: 124px;
+			width: 130px;
+			margin-left: 110px;
+		}
+		div.journal-arrow-green {
+			height: 114px;
+			width:100px;
+			margin-top: 10px;
+			background: url("/assets/arrow-green-w100-h104.png") no-repeat 0px 0px;						
+			/*background-image: url("/assets/arrow-green-w100-h104.png");*/						
+		}
+		div.journal-arrow-gray {
+			height: 114px;
+			width:100px;
+			margin-top: 10px;
+			background: url("/assets/arrow-gray-w100-h104.png") no-repeat 0px 0px;						
+			/*background-image: url("/assets/arrow-green-w100-h104.png");*/						
+		}
+		.journal-arrow-green:hover {
+			height: 124px;
+			width:119px;	
+			margin-top: 0px;		
+			margin-left: 10px;
+			cursor: pointer;
+			/*-webkit-transition: all 0.5s ease-in-out;
+			-moz-transition: all 0.5s ease-in-out;
+			-o-transition: all 0.5s ease-in-out;
+			-ms-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;*/
+			background: url("/assets/arrow-hovergreen-w119-h124.png") no-repeat 0px 0px;						
+		}
+ 		.link-arrow-enable {
+ 			
+ 		}		
+ 		.link-arrow-disable {
+ 			disable;
+ 		}	
+ 				
+		/*input[type=checkbox] {
+		    display:none;
+		}					
+		input[type=radio] {
+		    display:none;
+		}*/			
+ 				
+		input[type=submit] {
+		    display:none;
+		}			
+ 				
+	</style>
+
+<!-- journal-box-steps
+journal-txt-title-steps
+journal-txt-title-steps-sub
+journal-arrow-container
+link-arrow-1
+link-arrow-2
+link-arrow-3 -->
+
+	<div class="journal-container">
+
+		<header>				
+			<%= render 'share/backtotop' %>
+		</header>		
+		
+		<section>
+			
+			<div style="height: 30px;"></div>
+
+			<!-- <span class="pad-left-20">&laquo;<%= link_to 'Back', '/PublisherCreateJournalPoster', :class => 'links' %>&raquo;</span> -->
+
+			<div class="journal-space-page-1"></div>
+			<div class="journal-table">
+				<div class="journal-row">
+					<div class="journal-cell" style="width: 1000px;">
+						<div style="text-align: center;">
+							<div class="journal-txt3">
+								Choose your level of sponsorship and which posters.
+							</div>
+						</div>
+							
+						<%= form_for( @publisher_journalposter, :html => {:id => "form_publisher_journalposter"}) do |f| %> 
+						
+						<div class="journal-space-table-1"></div>
+						<div class="journal-table-2" style="position: relative; margin: 0 auto;">
+							<div class="journal-row">
+								<div class="journal-cell" style="width: 187.5px">
+									<div class="journal-box bk-color-1">
+										<div class="journal-title-center">
+											<span class="journal-txt-title-1">FREE</span>
+										</div>
+										<div class="journal-space-table-1"></div>	
+										<div>
+											<span class="journal-txt1">Free Online Poster Pin</span><span class="journal-txt2">(Listing with any poster, any subject)</span>
+										</div>
+										<div class="journal-space-table-1"></div>	
+										<div>
+											<span class="journal-txt2">&ndash; Logo</span>
+										</div>
+										<div class="journal-space-table-1"></div>							
+										<div>
+											<span class="journal-txt2">&ndash; Tag Line</span>
+										</div>
+										<div class="journal-space-table-1"></div>								
+										<div>
+											<span class="journal-txt2">&ndash; URL (and link)</span>
+										</div>
+										<div class="journal-space-table-1"></div>							
+										<div>
+											<span class="journal-txt2">&ndash; 30 Word Description</span>
+										</div>	
+									</div>
+									<div class="journal-digit-container bk-color-1">
+										<span class="journal-digit">1</span>
+										<%= f.radio_button(:poster, '1') %>
+
+									</div>
+								</div>
+								<div class="journal-cell" style="width: 187.5px">
+									<div class="journal-box bk-color-2">
+										<div class="journal-title-center">
+											<span class="journal-txt-title-2">PINNED</span>
+										</div>
+										<div class="journal-space-table-1"></div>	
+										<div>
+											<span class="journal-txt1">Print Poster Pin + Online Listing</span>
+										</div>
+										<div class="journal-space-table-1"></div>
+										<div>
+											<span class="journal-txt2">Print Poster – 5500 print/mailed copies</span>
+										</div>	
+										<div class="journal-space-table-1"></div>	
+										<div>
+											<span class="journal-txt2">&ndash; Logo</span>
+										</div>
+										<div class="journal-space-table-1"></div>							
+										<div>
+											<span class="journal-txt2">&ndash; Tag Line</span>
+										</div>
+										<div class="journal-space-table-1"></div>								
+										<div>
+											<span class="journal-txt2">&ndash; URL (and link)</span>
+										</div>
+										<div class="journal-space-table-1"></div>							
+										<div>
+											<span class="journal-txt2">&ndash; 30 Word Description</span>
+										</div>	
+										<div class="journal-space-table-1"></div>							
+										<div>
+											<span class="journal-txt2">Note: limited spots, sign up today!</span>
+										</div>	
+										<div class="journal-space-table-1"></div>							
+										<div class="journal-price-1">
+											<strong><span class="journal-txt1">$300.00</span></strong>
+										</div>	
+									</div>
+									<div class="journal-digit-container bk-color-2">
+										<span class="journal-digit">2</span>
+										<%= f.radio_button(:poster, '2') %>
+									</div>										
+								</div>
+								<div class="journal-cell" style="width: 187.5px">
+									<div class="journal-box bk-color-3">
+										<div class="journal-title-center">
+											<span class="journal-txt-title-3">SMALL AD BOX</span>
+										</div>
+										<div class="journal-space-table-1"></div>
+										<div>
+											<span class="journal-txt1">Poster Pin AND Poster Anchor with 3’x3’ custom ad box on border + Online Listing</span>
+										</div>
+										<div class="journal-space-table-1"></div>
+										<div>
+											<span class="journal-txt2">Print Poster – 5500 print/mailed copies</span>
+										</div>	
+										<div class="journal-space-table-1"></div>	
+										<div>
+											<span class="journal-txt2">&ndash; Logo</span>
+										</div>
+										<div class="journal-space-table-1"></div>							
+										<div>
+											<span class="journal-txt2">&ndash; Tag Line</span>
+										</div>
+										<div class="journal-space-table-1"></div>								
+										<div>
+											<span class="journal-txt2">&ndash; URL (and link)</span>
+										</div>
+										<div class="journal-space-table-1"></div>							
+										<div>
+											<span class="journal-txt2">&ndash; 30 Word Description</span>
+										</div>	
+										<div class="journal-space-table-1"></div>							
+										<div>
+											<span class="journal-txt2">Note: limited spots, sign up today!</span>
+										</div>	
+										<div class="journal-space-table-1"></div>			
+										<div class="journal-price-2">
+											<strong><span class="journal-txt1">$750.00</span></strong>
+										</div>	
+									</div>
+									<div class="journal-digit-container bk-color-3">
+										<span class="journal-digit">3</span>
+										<%= f.radio_button(:poster, '3') %>
+									</div>										
+								</div>
+								<div class="journal-cell" style="width: 187.5px">
+									<div class="journal-box bk-color-4">
+										<div class="journal-title-center">
+											<span class="journal-txt-title-4">BACK COVER</span>
+										</div>
+										<div class="journal-space-table-1"></div>
+										<div>
+											<span class="journal-txt1">Back Cover of Journal side AND Poster Pin & Poster Anchor + Online Listing</span>
+										</div>
+										<div class="journal-space-table-1"></div>
+										<div>
+											<span class="journal-txt2">Print Poster – 5500 print/mailed copies</span>
+										</div>	
+										
+										<div class="journal-space-table-1"></div>	
+										<div>
+											<span class="journal-txt2">&ndash; Great, Terrific and now extra Awesome with a full page on the back cover</span>
+										</div>
+										<div class="journal-space-table-1"></div>							
+										<div>
+											<span class="journal-txt2">ONE per poster</span>
+										</div>	
+										<div class="journal-space-table-1"></div>			
+										<div class="journal-price-3">
+											<strong><span class="journal-txt1">$5000.00</span></strong>
+										</div>	
+									</div>
+									<div class="journal-digit-container bk-color-4">
+										<span class="journal-digit">4</span>
+										<%= f.radio_button(:poster, '4') %>
+									</div>																					
+								</div>
+							</div>
+						</div>
+						<div style="height: 30px;"></div>
+						<div class="journal-table-2" style="position: relative; margin: 0 auto;">
+							<div class="journal-row">							
+								<div class="journal-cell">
+									<div class="journal-arrow-container">
+										<!-- <a id="link-arrow-1" href="#"> -->
+											<div id="arrow-1" class="journal-arrow-green"></div>
+										<!-- </a> -->
+									</div>
+									
+									<%= f.submit '', :id => 'submit_id', :tabindex => '' %>
+								</div>
+							</div>
+						</div>
+						
+						<% end %>
+							
+					</div>
+				</div>
+			</div>
+			
+			<!-- <div class="journal-table">
+				<div class="journal-row">
+					<div class="journal-cell" style="width: 1000px;">
+						<div class="journal-arrow-container">
+							<a id="link-arrow-1" href="#"><div id="arrow-1" class="journal-arrow-gray"></div></a>
+						</div>
+					</div>
+				</div>
+			</div> -->			
+			
+			<!-- <div style="height: 60px;"></div>
+			
+				<div class="journal-box-steps">
+
+		        	<div style="text-align: center;">
+						<span class="journal-txt-title-steps">
+							Welcome! 
+						</span>
+					</div>
+		        	<div style="text-align: center;">
+						<span class="journal-txt-title-steps-sub">
+							Get pinned on the poster in several quick and easy steps
+						</span>
+					</div>
+					<div class="journal-space-page-1"></div>	
+					<div class="journal-space-page-1"></div>						
+
+					<div class="table" style="width: 1000px; text-align: center;">
+						<div class="row" style="height: 150px;">
+							<div class="cell-400">
+							</div>
+							<div class="cell-400">
+								<div class="journal-arrow-container">
+									<a id="link-arrow-1" href="#"><div id="arrow-2"></div></a>
+								</div>
+							</div>
+							<div class="cell-400">
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+
+			<div style="height: 160px;"></div> -->
+
+		</section>
+	</div>			
+
+	<script>
+		
+				
+		$(window).load( function() {
+		//$(document).ready(function() {
+			
+			$('#arrow-1').on('click', function() {
+				$('#submit_id').click();
+			});
+		});
+
+		
+	</script>
+

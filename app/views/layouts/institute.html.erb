@@ -7,7 +7,7 @@
 
     	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   		
-		<link rel="icon" type="image/png" href="/assets/logo-lc-round-fav.png" />
+		<link rel="icon" type="image/png" href="/assets/knowstory-icon-fav.png" />
   		
    		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>    		   		
     	
@@ -16,26 +16,16 @@
 	  	<%= csrf_meta_tags %>
 	  	<%= render 'layouts/shim' %>  
 
-		<!-- <script type="text/javascript" src="/assets/entrepeneurs_jquery-1.js"></script> -->
-		
-		<!-- <link href="css/custom-theme/jquery-ui-1.10.3.custom.css" rel="stylesheet">
-		<script src="js/jquery-1.9.1.js"></script>
-		<script src="js/jquery-ui-1.10.3.custom.js"></script> -->
-		
     </head>
     
 	<body>
 		
-			<%= render 'layouts/header' %>
-		 		
-		<!-- <div style="width: 1200px; margin-right: auto; margin-left: auto; background: #fff;"> -->
-									
-			<%= yield %> 
+		<%= render 'layouts/header' %>
+								
+		<%= yield %> 
 
-			<%= render 'layouts/footer' %>
+		<%= render 'layouts/footer' %>
 			
-		<!-- </div> -->
-		
 		<%= debug(params) if Rails.env.development? %>
 		
 	</body>

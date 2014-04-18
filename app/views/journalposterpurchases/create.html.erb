@@ -1,2 +1,12 @@
-<h1>Journalposterpurchases#create</h1>
-<p>Find me in app/views/journalposterpurchases/create.html.erb</p>
+
+<div style="height: 100px"></div>
+
+<h1>Journalposterpurchases</h1>
+
+<span>Your Journal Poster preferences were </span><%= session[:jp_saved] %>
+
+<div style="height: 100px"></div>
+
+<div><%= @jp.poster_text %></div>
+
+<%= link_to('Edit', {:action => 'edit', :id => @jp.id }, :class => 'links' ) %>

@@ -1,9 +1,9 @@
 Webknow::Application.routes.draw do
 
-  get "journalposterpurchases/index"
-  get "journalposterpurchases/new"
-  get "journalposterpurchases/show"
-  get "journalposterpurchases/create"
+  # get "journalposterpurchases/index"
+  # get "journalposterpurchases/new"
+  # get "journalposterpurchases/show"
+  # get "journalposterpurchases/create"
   root to: 'static_pages#index'
 
 
@@ -17,6 +17,15 @@ Webknow::Application.routes.draw do
   match '/Journal-Poster', to: 'journalposters#index', via: 'get'
   resources :journalposters
   
+
+
+  match '/Journal-Poster-New', to: 'journalposterpurchases#new', via: 'get'
+  match '/JournalPoster/:id', to: 'journalposterpurchases#index', via: 'get'
+  match '/Journal-Poster-Selections/:id', to: 'journalposterpurchases#show', via: 'get'
+  match '/Journal-Poster-Update/:id', to: 'journalposterpurchases#update', via: 'post'
+  resources :journalposterpurchases
+
+
 
   match '/', to: 'static_pages#index', via: 'get'
   # match '/Journal-Poster', to: 'static_pages#journalposter', via: 'get'
@@ -183,6 +192,57 @@ Webknow::Application.routes.draw do
 
   resources :publisher_product_metadatatags
 
+
+
+  # get "publisher_journalposters/index"
+  get "publisher_journalposters/show"
+  match '/PublisherJournalPosters', to: 'publisher_journalposters#index', via: 'get'
+  match '/publisher_journalposters/upload', to: 'publisher_journalposters#upload', via: 'post'
+  match '/PublisherCreateJournalPoster', to: 'publisher_journalposters#new', via: 'get'
+  match "/publisher_journalposters/:id/edit" => "publisher_journalposters#edit", via: 'post'
+  match "/publisher_journalposters/:id" => "publisher_journalposters#update", via: 'get'
+
+  resources :publisher_journalposters do
+    collection do
+      post :dbdelete
+    end
+  end
+
+  resources :publisher_journalposters
+
+
+  # get "publisher_journalposter_descriptions/edit"
+  get "publisher_journalposter_descriptions/show"
+  match '/PublisherJournalPosterDescription', to: 'publisher_journalposter_descriptions#index', via: 'get'
+  match '/publisher_journalposter_descriptions/upload', to: 'publisher_journalposter_descriptions#upload', via: 'post'
+  match '/Publisher-JournalPoster-New', to: 'publisher_journalposter_descriptions#new', via: 'get'
+  match "/publisher_journalposter_descriptions/:id/edit" => "publisher_journalposter_descriptions#edit", via: 'post'
+  match "/publisher_journalposter_descriptions/:id" => "publisher_journalposter_descriptions#update", via: 'post'
+
+  resources :publisher_journalposter_descriptions do
+    collection do
+      post :dbdelete
+    end
+  end
+
+  resources :publisher_journalposter_descriptions
+
+
+  # get "journalposterpurchases/show"
+  # match '/JournalPoster', to: 'journalposterpurchases#index', via: 'get'
+  # # match '/journalposterpurchases/upload', to: 'journalposterpurchases#upload', via: 'post'
+  # match '/JournalPoster-New', to: 'journalposterpurchases#new', via: 'get'
+  # match "/JournalPoster-Edit/:id/edit" => "journalposterpurchases#edit", via: 'post'
+  # match "/JournalPoster-Update/:id" => "journalposterpurchases#update", via: 'post'
+# 
+  # resources :journalposterpurchases
+
+
+  # match '/Journal-Poster-New', to: 'journalposterpurchases#new', via: 'get'
+  # match '/JournalPoster/:id', to: 'journalposterpurchases#index', via: 'get'
+  # match '/Journal-Poster-Selections/:id', to: 'journalposterpurchases#show', via: 'get'
+  # match '/Journal-Poster-Update/:id', to: 'journalposterpurchases#update', via: 'post'
+  # resources :journalposterpurchases
 
 
 

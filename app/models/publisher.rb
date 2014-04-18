@@ -47,7 +47,8 @@ class Publisher < ActiveRecord::Base
     has_many :publisher_profiles
     has_many :publisher_settings
     has_many :publisher_products
-    
+    has_many :journalposterpurchases
+      
     
     
 end
