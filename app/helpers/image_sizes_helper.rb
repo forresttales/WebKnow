@@ -1,0 +1,2 @@
+module ImageSizesHelper
+end

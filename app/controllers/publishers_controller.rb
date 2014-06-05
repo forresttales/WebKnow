@@ -3,7 +3,11 @@ class PublishersController < ApplicationController
   layout 'publisher'
 
   #before_filter :confirm_logged_in
-  
+
+  before_filter :force_http
+
+    
+
   def index
     @publisher = Publisher.where(["user_id = ?", session[:user_id]]).first       
     @username = session[:username]
@@ -13,14 +17,30 @@ class PublishersController < ApplicationController
     
     session[:publisher_id] = publisher.id
     
-    publisher_image = PublisherImage.where("publisher_images.publisher_id = ? AND publisher_images.primary = ?", session[:publisher_id], true)       
+    # @publisher_profile_images = PublisherProfileImage.where("publisher_profile_image.publisher_id = ? AND publisher_profile_image.primary = ?", session[:publisher_id], true)       
+    # @publisher_profile_images = PublisherProfileImage.where("publisher_id = ? AND primary = ?", session[:publisher_id], true)  
+    @publisher_profile_images = PublisherProfileImage.where("publisher_id = ?", session[:publisher_id])     
 
-    if publisher_image.count > 0
-      image_name = publisher_image[0].image_name
-      gon.image_name = image_name
+    # @publisher_profile_image_has_profile_image = false
+    # if publisher_profile_images.any?
+      # @publisher_profile_image_has_profile_image = true
+    # end
+
+
+    # if publisher_profile_image.count > 0
+      # image_name = publisher_image[0].image_name
+      # gon.image_name = image_name
+    # else
+      # gon.image_name = ''
+    # end
+    
+    publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", session[:publisher_id])
+    if publisher_journalposters.any?
+      session[:publisher_has_journalposter] = true
     else
-      gon.image_name = ''
-    end
+      session[:publisher_has_journalposter] = false
+    end        
+    
     
   end
   

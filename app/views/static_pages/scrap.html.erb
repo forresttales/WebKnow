@@ -1,0 +1,105 @@
+
+
+
+<!-- 
+4306054024126039 
+-->
+
+				    				<% if ( publisher_journalposter.poster == 1) %>
+		
+					    				<% if (!publisher_journalposter.has_journalposter_logo) %>
+					    				<br>
+					    				<span class="jp-missing">* no logo</span>
+		        						<% end %>
+		
+									<% end %>
+		
+				    				<% if ( publisher_journalposter.poster == 2) %>
+
+					    				<% if (publisher_journalposter.has_purchase) %>
+					    				<br>
+					    				<span class="jp-purchased">Purchased on: <%= publisher_journalposter.purchase_date.strftime("%B %d, %Y") %></span>				    				
+					    				<% else %>
+					    				<br>
+					    				<span class="jp-not-purchased">* not purchased</span>
+		        						<% end %>
+		
+					    				<% if (!publisher_journalposter.has_journalposter_logo) %>
+					    				<br>
+					    				<span class="jp-missing">* no logo</span>
+		        						<% end %>
+
+									<% end %>
+		
+				    				<% if ( publisher_journalposter.poster == 3) %>
+		
+					    				<% if (publisher_journalposter.has_purchase) %>
+					    				<br>
+					    				<span class="jp-purchased">Purchased on: <%= publisher_journalposter.purchase_date.strftime("%B %d, %Y") %></span>				    				
+					    				<% else %>
+					    				<br>
+					    				<span class="jp-not-purchased">* not purchased</span>
+		        						<% end %>
+
+					    				<% if (!publisher_journalposter.has_journalposter_logo) %>
+					    				<br>
+					    				<span class="jp-missing">* no logo</span>
+		        						<% end %>
+
+					    				<% if (!publisher_journalposter.has_journalposter_prodshot) %>
+					    				<br>
+					    				<span class="jp-missing">* no product/screen shot</span>
+		        						<% end %>
+		
+									<% end %>
+		  							
+				    				<% if ( publisher_journalposter.poster == 4) %>
+		
+					    				<% if (publisher_journalposter.has_purchase) %>
+					    				<br>
+					    				<span class="jp-purchased">Purchased on: <%= publisher_journalposter.purchase_date.strftime("%B %d, %Y") %></span>				    				
+					    				<% else %>
+					    				<br>
+					    				<span class="jp-not-purchased">* not purchased</span>
+		        						<% end %>
+
+					    				<% if (!publisher_journalposter.has_journalposter_logo) %>
+					    				<br>
+					    				<span class="jp-missing">* no logo</span>
+		        						<% end %>
+
+					    				<% if (!publisher_journalposter.has_journalposter_prodshot) %>
+					    				<br>
+					    				<span class="jp-missing">* no product/screen shot</span>
+		        						<% end %>
+		
+									<% end %>
+
+
+
+
+
+
+
+					    				<% if ( publisher_journalposter.poster == 1) %>
+			
+										<% end %>
+
+					    				<% if ((publisher_journalposter.poster == 2) %>
+										<%	|| (publisher_journalposter.poster == 3) %>
+										<%	|| (publisher_journalposter.poster == 4) %>
+
+						    				<% if (publisher_journalposter.has_purchase) %>
+						    				<% else %>
+			        						<span class="jp-cell-list-link">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+						    				<span><%= link_to 'Purchase', new_publisher_journalposter_purchase_path( :publisher_journalposter_purchase => {:id => publisher_journalposter.id, :poster => 3 }), :class => 'jp-cell-list-link' %></span>
+											<span class="jp-cell-list-link">&nbsp;&nbsp;&nbsp;|</span>	        						
+			        						<div style="display: inline-block;">
+									    	<span>
+											   	<% delete_msg = "Delete this Journal Poster Pin?" %>
+												<%= button_to "Delete", {:action => 'destroy', :id => publisher_journalposter.id}, :method => :delete, data: { confirm: delete_msg }, :class => 'jp-btn' %>
+											</span>
+											</div>
+			        						<% end %>
+			
+										<% end %>

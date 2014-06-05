@@ -1,0 +1,436 @@
+<% provide(:title, 'Journal Posters 1') %>
+
+	
+	<style>
+		
+		.container-journalposter {
+			/*width: 1200px;*/
+			min-height: 900px;
+		}
+		.journalposter-background {
+			width: 1000px;
+			margin: 0 auto;				
+			height: 710px;
+			background: #F1F2E1 url(../journal_poster/poster-map-unpop-w1000-h710.png) no-repeat right top;
+		}
+		span.jp-title {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: #D98D2D;
+		}
+		span.jp-title-sub {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 18px;
+			color: #A9D996;
+		}
+		.jp-table {
+			display: table;
+			padding-left: 4px;
+			position: relative;
+		}
+		.jp-row {
+			display: table-row;
+			height: 100px;
+		}
+		.jp-cell {
+			display: table-cell;
+			width: 100px;	
+		}
+		.boxtemp-red-bottom-right {
+			border-bottom: 1px solid red;
+			border-right: 1px solid red;			
+		}
+		.pin-img {
+			width: 76px;
+			/*margin: 0 auto;*/				
+			height: 40px;
+			/*background: #F1F2E1 url(../journal_poster/poster-pin-free-w76-h40-2.png) no-repeat right top;*/
+			background: url(../journal_poster/poster-pin-free-w76-h40-2.png) no-repeat right top;
+			box-shadow: 4px 4px 20px #000;	
+		}
+		/*.img-pin:hover {
+			width: 180px;
+			height: 70px;
+			background: #ACDDE3;
+		}*/
+
+		.jp-header {
+			width: 1000px;
+			text-align: left;
+			margin: 0 auto;
+			padding-left: 6px;
+		}
+		.absolute_position {
+			position: absolute;	
+		}
+		.pin-expand {
+			width: 280px;
+			height: 70px;
+			background-color: #ACDDE3;
+			box-shadow: 4px 4px 20px #000;	
+			/*position: relative;
+			top: -110px;
+			left: 40px;*/
+		}
+		.display-off {
+			display: none;
+		}
+		.pin {
+		}
+		.pin a {
+			text-decoration: none;
+		}
+		.hover-info-img {
+			display: inline-block;			
+		}
+		.hover-info-text {
+			display: inline-block;
+			line-height: 0.7em;				
+			vertical-align: top;		
+			padding-top: 4px;
+			padding-left: 2px;
+		}
+		.hover-info-text span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			color: #333;
+		}
+		.hover-info-text a {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			color: #333;
+		}
+		.hover-info-text a:hover {
+			text-decoration: underline;
+		}
+		.adblock {
+			height: 200px;
+			width: 800px;
+			padding-left: 10px;
+			padding-top: 10px;
+			vertical-align: top;
+	    	/*cursor: pointer;*/
+	    	background-color: #fff;
+	    	border: solid 4px #aaa;
+	    	border-radius: 4px;
+	    	position: relative;
+		}
+		.adblock-img {
+			display: inline-block;	
+			width: 250px;
+			height 150px;
+			position: absolute;
+			top: 4px;
+			left: 4px;		
+			border: solid 1px #aaa;
+		}
+		.adblock-text-container {
+			position: absolute;
+			top: 4px;
+			left: 254px;
+			width: 534px;
+			height: 150px;
+			border: solid 1px red;
+		}
+		.adblock-bottom-container {
+			position: absolute;
+			bottom: 4px;
+			left: 4px;
+			width: 786px;
+			height: 26px;
+			/*border: solid 1px blue;*/
+		}
+		/*.adblock-text a {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			color: #333;
+		}
+		.adblock-text a:hover {
+			text-decoration: underline;
+		}*/
+		.adblock-txtarea {
+			position: relative;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 14px;
+			padding-left: 6px;
+			padding-right: 6px;
+			padding-top: 2px;
+			/*border: solid 1px #478A3E;*/
+			border: solid 1px #aaa;
+			background-color: #fff;
+			resize: none;	
+			height: 80px;
+			width: 520px;
+		}
+		.adblock-bottom-text {
+			position: relative;
+			text-align: right;
+			padding-right: 10px;
+			padding-left: 4px;			
+		}
+		.adblock-bottom-text span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: #333;
+		}
+		.adblock-bottom-text a {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: #333;
+		}
+		.adblock-text-inner-1 {
+			position: relative;
+			display: block;
+			width: 534px;
+			height: 30px;
+			padding-right: 4px;
+			padding-left: 8px;			
+			/*border: solid 1px brown;*/
+		}
+		.adblock-text-inner-2 {
+			position: relative;
+			display: block;
+			width: 534px;
+			height: 88px;
+			/*border: solid 1px black;*/
+		}
+		.adblock-text-inner-2a {
+			display: inline-block;
+			width: 200px;
+			height: 30px;
+			border: solid 1px black;
+		}
+		.adblock-text-inner-2a span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: #333;
+		}
+		.adblock-text-inner-2b {
+			display: inline-block;
+			width: 200px;
+			height: 30px;
+			border: solid 1px black;
+		}
+		.adblock-text-inner-2b span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: #333;
+		}
+
+		
+	</style>
+
+	<!-- 
+	poster-pin-free-w76-h40.png
+	poster-map-w1301-h870.png
+	poster-pin-premium-w106-h106.png
+	poster-map-unpop-w1000-h710	
+	-->
+
+	<%= render 'share/backtotop_2' %>
+
+	<%= render 'share/nav_journalposter' %>
+
+
+
+	<div class="container-journalposter">
+		
+		<div class="jpmap-table">
+			<div class="jpmap-row">
+				<div class="jpmap-col1">
+				</div>
+				
+				<div class="jpmap-co2">
+				
+					<div style="height: 70px;"></div>
+			
+					<div class="jp-header">
+						<span class="jp-title">Journal Poster 1</span>
+					</div>
+					
+					<div style="height: 20px;"></div>
+			
+					<div id="journalposter_background" class="journalposter-background">
+						
+						<div class="jp-table">
+			
+			
+							<!-- <#% if (@journal1posters.count > 0) %#>
+								<div><#%= @journal1posters.count %#></div>
+								<#% for i in 0..(@journal1posters.count - 1) %#>
+									<div><#%= @journal1posters[i][0][0] %#></div>
+								<#% end %#>
+							<#% else %#>
+									<div>No positions available</div>
+							<#% end %#> -->
+
+<!-- 
+[a_jpp_section_3.pop, tag_line, url, id_div, "Math Country", publisher_journalposter_logos_any, publisher_journalposter_logo, word_descr] 
+	0[0,1]				1		2		3		   4						5									6				  7
+-->
+
+							<% for i in 0..(@journal1posters.count - 1) %>
+
+								<div id="<%= @journal1posters[i][3] %>" class="absolute_position pin" style="top: <%= @journal1posters[i][0][1] %>px; left: <%= @journal1posters[i][0][0] %>px;">
+									<a href="#">
+										
+										<div id="<%= @journal1posters[i][3] %>a" class="pin-img"></div>
+										
+										<div id="<%= @journal1posters[i][3] %>b" class="pin-expand display-off">
+											
+											<% if @journal1posters[i][5] %>
+											<div class="hover-info-img">
+												<figure>
+													<img height="70px" alt="logo not appearing" src="<%= @journal1posters[i][6] %>" />
+													<!-- <figcaption>
+													</figcaption> -->
+												</figure>
+											</div>
+											<% end %>
+											<div class="hover-info-text">
+												<span><%= @journal1posters[i][4] %></span><br>
+												<span><%= @journal1posters[i][1] %></span><br>
+												<a href="http://<%= @journal1posters[i][2] %>"><%= @journal1posters[i][2] %></a>
+											</div>
+																						
+										</div>
+									</a>
+								</div>
+						
+							<% end %>
+
+						</div>
+					</div>
+			
+					<div style="height: 30px;"></div>
+
+					<div style="width: 1000px; margin: 0 auto; text-align: left;">
+						<% for i in 0..(@journal1posters.count - 1) %>
+							<div class="adblock">
+								<% if @journal1posters[i][5] %>
+								<div class="adblock-img">
+									<figure>
+										<img alt="logo not appearing" src="<%= @journal1posters[i][6] %>" />
+										<!-- <figcaption>
+										</figcaption> -->
+									</figure>
+								</div>
+								<% end %>
+								<div class="adblock-text-container">
+									<div class="adblock-text-inner-1">
+										<textarea class="adblock-txtarea" cols="28" disabled="disabled"><%= @journal1posters[i][7] %></textarea>
+									</div>
+									<div class="adblock-text-inner-2">
+										<div class="adblock-text-inner-2a">
+											<!-- <span><#%= @journal1posters[i][4] %#></span><br> -->
+											<span><%= @journal1posters[i][1] %></span>
+										</div>
+										<div class="adblock-text-inner-2b">
+											text-inner-2b
+										</div>
+									</div>
+								</div>
+								<div class="adblock-bottom-container">
+									<div class="adblock-bottom-text">
+										<a href="http://<%= @journal1posters[i][2] %>"><%= @journal1posters[i][2] %></a>
+									</div>
+								</div>
+							</div>
+							<div style="height: 20px;"></div>
+							
+						<% end %>
+					</div>
+
+					<div style="height: 30px;"></div>
+
+
+					<!-- a_jp.push([a_jpp_area_1.pop, tag_line, url, id_div, "Math", publisher_journalposter_logos_any, publisher_journalposter_logo]) -->
+					<div style="width: 1000px; margin: 0 auto; text-align: left;">
+						<% for i in 0..(@journal1posters.count - 1) %>
+							<div>
+								x: <%= @journal1posters[i][0][0] %>&nbsp;&nbsp;&nbsp; 
+								y: <%= @journal1posters[i][0][1] %>
+							</div>
+							<div> 
+								tag_line: <%= @journal1posters[i][1] %> 
+								url: <%= @journal1posters[i][2] %> 
+								id_div: <%= @journal1posters[i][3] %>
+							</div>
+							<div> 
+								Section: <%= @journal1posters[i][4] %> 
+							</div>
+							<div> 
+								has_logo: <%= @journal1posters[i][5] %>
+							</div>
+							<div>
+								logo: <%= @journal1posters[i][6] %>
+							</div>
+							<div style="height:20px;"></div>
+						<% end %>
+					</div>
+
+					<div style="height: 100px;"></div>
+					
+					<div style="width: 200px; margin: 0 auto;">
+				    	<h5>
+						   	<% delete_all_msg = "Delete all records and reset index in Journal1posterPositions?" %>
+							<%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long' %>
+						</h5>
+					</div>
+		
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<script>
+			
+			// var offset_top = 0;
+			// jQuery(window).scroll(function() {
+				// offset_top = $(window).scrollTop()
+				// $('#eventstabs').css('top', offset_top);
+			// });
+
+  			var id = 0;
+  			var ida  = "";
+  			var idb  = "";
+		
+			// $(window).load( function() {
+			$(document).ready(function(){
+				
+				$(".pin").hover (
+			  		function() {
+			  			// alert($(this).attr('id'));
+			  			id = $(this).attr('id');
+			  			ida  = "#" + id + "a";
+			  			idb  = "#" + id + "b";
+  						$(ida).addClass('display-off');
+  						$(idb).removeClass('display-off');  						
+					}, function() {
+  						$(ida).removeClass('display-off');
+  						$(idb).addClass('display-off');  						
+					}
+				);
+				
+				
+				// $("#tab1").addClass("active");
+				
+				
+			});
+		
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,17 +4,84 @@ Webknow::Application.routes.draw do
   # get "journalposterpurchases/new"
   # get "journalposterpurchases/show"
   # get "journalposterpurchases/create"
-  root to: 'static_pages#index'
+  
+  root to: 'users#new'
+  match '/', to: 'users#new', via: 'get'
+  match '/Choose-Profile', to: 'users#index', via: 'get'
+  # match '/Signup', to: 'users#new', via: 'get'
+  
+  resources :users do
+    collection do
+      post :dbdelete
+    end
+  end
+  
+  resources :users
+  
+  
+  resources :sessions, only: [:new, :create, :destroy]
 
+  match '/Signin', to: 'sessions#new', via: 'get'
+  match '/Signout', to: 'sessions#destroy', via: 'get'
+
+
+  match '/id:id', to: 'profiles#index', via: 'get'  
+
+
+
+  
+  # root to: 'static_pages#index'
+
+
+  match '/Map-1-Available-Poster-Pins', to: 'journal1poster_positions#index', via: 'get'
+
+
+  match '/Journal-Posters-1', to: 'journal1posters#index', via: 'get'
+  
+  resources :journal1posters do
+    collection do
+      post :dbdelete
+    end
+  end
+  
+  resources :journal1posters
+
+
+
+  match '/Journal-Posters-2', to: 'journal2posters#index', via: 'get'
+  resources :journal2posters
+
+
+
+  match '/Journal-Posters-3', to: 'journal3posters#index', via: 'get'
+  resources :journal3posters
+
+
+
+  match '/Journal-Posters-4', to: 'journal4posters#index', via: 'get'
+  resources :journal4posters
+
+
+
+  match '/Journal-Posters-5', to: 'journal5posters#index', via: 'get'
+  resources :journal5posters
+
+
+  
+  # scope :constraints => { :protocol => "https", :subdomain => "secure" } do
+    # :publisher_journalposter_purchases #, : ...
+  # end
 
   match '/Advertise', to: 'static_pages#advertise', via: 'get'
 
+  match '/test-image', to: 'static_pages#test-image', via: 'get'
 
   # get "journalposters/index"
   #get "journalposters/new"
   #get "journalposters/create"
   #get "journalposters/show"
-  match '/Journal-Poster', to: 'journalposters#index', via: 'get'
+  match '/Journal-Poster-Start', to: 'journalposters#index', via: 'get'
+  match '/Journal-Poster-About', to: 'journalposters#journal_poster_about', via: 'get'
   resources :journalposters
   
 
@@ -27,14 +94,14 @@ Webknow::Application.routes.draw do
 
 
 
-  match '/', to: 'static_pages#index', via: 'get'
+  # match '/', to: 'static_pages#index', via: 'get'
   # match '/Journal-Poster', to: 'static_pages#journalposter', via: 'get'
 
   resources :charges
   
-  match '/payments/payment', :to => 'payments#payment', :as => 'paymentspayment', :via => [:get]
-  match '/payments/relay_response', :to => 'payments#relay_response', :as => 'payments_relay_response', :via => [:post]
-  match '/payments/receipt', :to => 'payments#receipt', :as => 'payments_receipt', :via => [:get]
+  # match '/payments/payment', :to => 'payments#payment', :as => 'paymentspayment', :via => [:get]
+  # match '/payments/relay_response', :to => 'payments#relay_response', :as => 'payments_relay_response', :via => [:post]
+  # match '/payments/receipt', :to => 'payments#receipt', :as => 'payments_receipt', :via => [:get]
   
 
 
@@ -58,22 +125,14 @@ Webknow::Application.routes.draw do
 
 
 
-  match '/Signup', to: 'users#new', via: 'get'
-
-  resources :sessions, only: [:new, :create, :destroy]
-
-  match '/Signin', to: 'sessions#new', via: 'get'
-  match '/Signout', to: 'sessions#destroy', via: 'get'
 
 
-  match '/users/show', to: 'users#show', via: 'get'
 
 
   match '/institutes/home', to: 'institutes#index', via: 'get'
   match '/publishers/home', to: 'publishers#index', via: 'get'
 
 
-  resources :users
 
 
 
@@ -97,20 +156,33 @@ Webknow::Application.routes.draw do
 
   resources :publishers
 
-  
-  #get "publisher_images/index"
-  get "publisher_images/show"
-  match '/PublisherImages', to: 'publisher_images#index', via: 'get'
-  match '/publisher_images/upload', to: 'publisher_images#upload', via: 'post'
-  match '/PublisherNewImage', to: 'publisher_images#new', via: 'get'
-  match "/publisher_images/:id/edit" => "publisher_images#edit", via: 'post'
-  match "/publisher_images/:id" => "publisher_images#update", via: 'get'
 
-  resources :publisher_images do
-    collection { post :set_primary }
+
+  match '/PublisherProfilePhotos', to: 'publisher_profile_images#index', via: 'get'
+  match '/PublisherProfileNewPhoto', to: 'publisher_profile_images#new', via: 'get'
+
+  resources :publisher_profile_images do
+    collection do
+      post :dbdelete
+    end
   end
 
-  resources :publisher_images
+  resources :publisher_profile_images
+
+
+
+  
+  # #get "publisher_images/index"
+  # get "publisher_images/show"
+  # match '/PublisherImages', to: 'publisher_images#index', via: 'get'
+  # match '/publisher_images/upload', to: 'publisher_images#upload', via: 'post'
+  # match '/PublisherNewImage', to: 'publisher_images#new', via: 'get'
+  # match "/publisher_images/:id/edit" => "publisher_images#edit", via: 'post'
+  # match "/publisher_images/:id" => "publisher_images#update", via: 'get'
+  # resources :publisher_images do
+    # collection { post :set_primary }
+  # end
+  # resources :publisher_images
 
 
 
@@ -226,6 +298,52 @@ Webknow::Application.routes.draw do
   end
 
   resources :publisher_journalposter_descriptions
+
+
+
+  #get "publisher_images/index"
+  # get "publisher_journalposter_logos/show"
+  # match '/PublisherJournalPosterLogos/:id', to: 'publisher_journalposter_logos#index', via: 'get'
+  # match '/publisher_journalposter_logos/upload', to: 'publisher_journalposter_logos#upload', via: 'post'
+  # match '/PublisherNewJournalPosterLogo', to: 'publisher_journalposter_logos#new', via: 'get'
+  # match "/publisher_journalposter_logos/:id/edit" => "publisher_journalposter_logos#edit", via: 'post'
+  # match "/publisher_journalposter_logos/:id" => "publisher_journalposter_logos#update", via: 'get'
+  # match '/publisher_journalposter_logos_resize', to: 'publisher_journalposter_logos#resize', via: 'post'
+
+  # resources :publisher_journalposter_logos do
+    # collection { post :set_primary }
+  # end
+
+  resources :publisher_journalposter_logos
+
+  resources :publisher_journalposter_prodshots
+
+
+  # match '/payments/payment', :to => 'payments#payment', :as => 'paymentspayment', :via => [:get]
+  match '/publisher_journalposter_purchases/relay_response', :to => 'publisher_journalposter_purchases#relay_response', :as => 'publisher_journalposter_purchases_relay_response', :via => [:post]
+  match '/publisher_journalposter_purchases/receipt', :to => 'publisher_journalposter_purchases#receipt', :as => 'publisher_journalposter_purchases_receipt', :via => [:get]
+  match '/Journalposter-Purchase', :to => 'publisher_journalposter_purchases#new', :via => [:get]
+
+  resources :publisher_journalposter_purchases
+
+
+
+  resources :image_sizes do
+    collection do
+      post :dbdelete
+    end
+  end
+
+  resources :image_sizes
+
+
+
+
+
+
+
+
+
 
 
   # get "journalposterpurchases/show"
@@ -348,8 +466,12 @@ Webknow::Application.routes.draw do
 
   
   
+
+  match "/Gallery" => "galleries#index", via: 'get'
   
-  
+  resources :galleries
+  resources :paintings
+
   
   
   

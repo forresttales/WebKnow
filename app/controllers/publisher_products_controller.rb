@@ -6,6 +6,9 @@ class PublisherProductsController < ApplicationController
   
   helper_method :sort_column, :sort_direction
 
+  before_filter :force_http
+
+    
   
   def index
     

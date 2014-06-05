@@ -10,7 +10,6 @@
 #  poster                     :integer
 #  poster_text                :string(255)
 #  logo                       :string(255)
-#  word_descr                 :text
 #  tag_line                   :text
 #  headline                   :string(255)
 #  screen_shot                :string(255)
@@ -97,6 +96,8 @@
 #  instr_design_text          :string(255)
 #  other_diy                  :integer
 #  other_diy_text             :string(255)
+#  word_descr                 :text
+#  url                        :string(255)
 #
 
 class PublisherJournalposterDescription < ActiveRecord::Base
@@ -111,7 +112,8 @@ class PublisherJournalposterDescription < ActiveRecord::Base
                   :tag_line,               
                   :headline,                  
                   :screen_shot,              
-                  :main_sales_phone,           
+                  :main_sales_phone,
+                  :url,
                   :curriculum_resources,       
                   :curriculum_resources_text,  
                   :teacher_tools,             
@@ -198,8 +200,7 @@ class PublisherJournalposterDescription < ActiveRecord::Base
 
 
 
-  belongs_to :publisher
-  has_one :publisher_journalposter_description
+  belongs_to :publisher_journalposter
   
 
   def self.dbdelete

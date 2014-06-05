@@ -4,6 +4,10 @@ class PublisherProductDescriptionsController < ApplicationController
   
   @@publisher_product_id = nil
   
+  before_filter :force_http
+
+    
+  
   def index
 
     @@publisher_product_id = params[:id]

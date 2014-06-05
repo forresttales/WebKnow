@@ -9,12 +9,19 @@
 #  created_at                 :datetime
 #  updated_at                 :datetime
 #  journalposter_logo         :string(255)
-#  has_journalposter_logo     :boolean
 #  journalposter_metadata     :string(255)
-#  has_journalposter_metadata :boolean
-#  has_purchase               :boolean
 #  poster                     :integer
 #  poster_text                :string(255)
+#  has_journalposter_logo     :boolean          default(FALSE)
+#  has_journalposter_prodshot :boolean          default(FALSE)
+#  has_journalposter_metadata :boolean          default(FALSE)
+#  has_purchase               :boolean          default(FALSE)
+#  purchase_date              :datetime
+#  poster_type                :integer          default(0)
+#  poster_coord_id            :integer          default(0)
+#  id_map                     :integer          default(0)
+#  area                       :integer          default(0)
+#  area_pos                   :integer          default(0)
 #
 
 class PublisherJournalposter < ActiveRecord::Base
@@ -25,19 +32,28 @@ class PublisherJournalposter < ActiveRecord::Base
                   :has_description,
                   :journalposter_logo,
                   :has_journalposter_logo,
+                  :has_journalposter_prodshot,
                   :journalposter_metadata,
                   :has_journalposter_metadata,
                   :has_purchase,
+                  :purchase_date,
                   :poster,
                   :poster_text,
+                  :poster_type, #integer 1 to 5
+                  :id_map,
+                  :area,
+                  :area_pos,
+                  :poster_coord_id,
                   :created_at,
                   :updated_at 
   
   
   belongs_to :publisher
   has_one :publisher_journalposter_description
-  has_one :publisher_journalposter_logo
+  has_many :publisher_journalposter_logos
+  has_many :publisher_journalposter_prodshots
   has_one :publisher_journalposter_metadatatag
+  has_one :publisher_journalposter_purchase
   
   
   def self.dbdelete

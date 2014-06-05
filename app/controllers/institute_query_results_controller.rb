@@ -6,6 +6,9 @@ class InstituteQueryResultsController < ApplicationController
   
   helper_method :sort_column, :sort_direction
   
+  before_filter :force_http
+  
+  
   @@institute_query_id = nil
   
   def index

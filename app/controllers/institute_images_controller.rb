@@ -2,6 +2,9 @@ class InstituteImagesController < ApplicationController
 
   layout 'institute'
 
+  before_filter :force_http
+
+
   
   def index
     

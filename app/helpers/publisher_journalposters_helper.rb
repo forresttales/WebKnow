@@ -8,4 +8,12 @@ module PublisherJournalpostersHelper
       end
     end
 
+    def tf(x)
+      if x == true
+        return "Yes"
+      else
+        return "No"
+      end
+    end
+
 end

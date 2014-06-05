@@ -1,0 +1,106 @@
+
+
+	<style>
+		
+		div.journal-arrow-container {
+			height: 124px;
+			width: 130px;
+			margin: 0 auto;
+		}
+		div.journal-arrow-green {
+			height: 114px;
+			width:100px;
+			margin-top: 10px;
+			background: url("/assets/arrow-green-w100-h104.png") no-repeat 0px 0px;						
+			/*background-image: url("/assets/arrow-green-w100-h104.png");*/		
+		}
+		div.journal-arrow-gray {
+			height: 114px;
+			width:100px;
+			margin-top: 10px;
+			background: url("/assets/arrow-gray-w100-h104.png") no-repeat 0px 0px;						
+			/*background-image: url("/assets/arrow-green-w100-h104.png");*/						
+		}
+		.journal-arrow-green:hover {
+			height: 124px;
+			width:119px;	
+			margin-top: 0px;		
+			margin-left: 10px;
+			cursor: pointer;
+			/*-webkit-transition: all 0.5s ease-in-out;
+			-moz-transition: all 0.5s ease-in-out;
+			-o-transition: all 0.5s ease-in-out;
+			-ms-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;*/
+			background: url("/assets/arrow-hovergreen-w119-h124.png") no-repeat 0px 0px;						
+		}
+ 		.link-arrow-enable {
+ 			
+ 		}		
+ 		.link-arrow-disable {
+ 			disable;
+ 		}	
+		
+		input[type=submit] {
+		    display:none;
+		}			
+		
+	</style>
+
+
+
+	<span>Publisher Journal Poster Purchase 1</span>
+	
+	<div style="height: 50px;"></div>
+	
+	<p><%= @msg %></p>
+	
+	<div style="height: 50px;"></div>
+	
+	
+	<%= form_for( @publisher_journalposter_purchase, :html => {:id => "form_publisher_journalposter_purchase"}) do |f| %>
+	
+	
+		<div style="width: 100%;">
+			<div class="journal-arrow-container">
+				<!-- <a id="link-arrow-1" href="#"> -->
+					<div id="arrow-1" class="journal-arrow-green"></div>
+				<!-- </a> -->
+			</div>
+			<%= f.submit '', :id => 'submit_id', :tabindex => '' %>
+		</div>
+
+	<% end %>
+
+	<script>
+		
+		$(window).load( function() {
+		//$(document).ready(function(){
+
+			$('#arrow-1').on('click', function() {
+				$('#submit_id').click();
+			});
+
+
+			// profile = gon.profile			
+			// if (profile == "publisher") {
+				// $("#arrow-1").addClass("journal-arrow-gray");			
+				// $("#arrow-2").addClass("journal-arrow-green");			
+				// $("#arrow-3").addClass("journal-arrow-green");							
+				// $("#link-arrow-1").removeAttr("link-arrow-disable");	
+				// $("#link-arrow-2").addAttr("href");		
+				// $("#link-arrow-3").addAttr("href");		
+			// } 
+			// else {
+				// $("#arrow-1").addClass("journal-arrow-green");			
+				// $("#arrow-2").addClass("journal-arrow-gray");			
+				// $("#arrow-3").addClass("journal-arrow-gray");							
+				// $("#link-arrow-1").addAttr("link-arrow-disable");	
+				// $("#link-arrow-2").removeAttr("href");		
+				// $("#link-arrow-3").removeAttr("href");		
+			// } 
+
+		});
+
+		
+	</script>

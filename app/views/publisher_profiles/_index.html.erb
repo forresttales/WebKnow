@@ -1,0 +1,135 @@
+
+
+					<div style="height: 30px;"></div>
+
+					<div class="pad-left-20">
+						<span class="jp-title">title</span>
+					</div>
+					<div style="height: 10px;"></div>
+					<div class="pad-left-20">
+						<span class="jp-title-sub">title-sub</span>
+					</div>
+					
+					<div style="height: 30px;"></div>
+			
+    				<!-- 
+    				:id, 
+                    :user_id,    
+                    :name, 
+                    :address, 
+                    :city, 
+                    :state, 
+                    :country, 
+                    :zip,
+                    :phone, 
+                    :url, 
+                    :description, 
+                    :company_contact_name_first, 
+                    :company_contact_name_last,
+                    :company_contact_phone, 
+                    :company_contact_email, 
+                    :created_at, 
+                    :updated_at 
+                    -->
+			
+  				  	<!-- 
+  				  	:id, 
+                  	:name_first,
+                  	:name_last,
+                  	:email, 
+                  	:username, 
+                  	:account_type, 
+                  	:has_account, 
+                  	:password, 
+                  	:password_confirmation, 
+                  	:bd_month,
+                  	:bd_day,
+                  	:bd_year,
+                  	:gender,
+                  	:created_at, 
+                  	:updated_at 
+                  	-->
+			
+					<div class="line-space-20"></div>
+
+					<% if !@user.nil? %>
+
+						<div class="pad-left-20">
+							<div class="jp-table-descr">
+								<div class="row">
+									<div class="jp-col-left">
+										<span class="form-text-index">User ID:</span>
+									</div>
+									<div class="jp-col-right">
+										<span class="form-text-index"><%= @user.id %></span>							
+									</div>
+								</div>
+								<div class="input-form-spacer-jp"></div>        
+								<div class="row">
+									<div class="jp-col-left">
+										<span class="form-text-index">First Name:</span>
+									</div>
+									<div class="jp-col-right">
+										<span class="form-text-index"><%= @user.name_first %></span>							
+									</div>
+								</div>
+								<div class="input-form-spacer-jp"></div>        
+								<div class="row">
+									<div class="jp-col-left">
+										<span class="form-text-index">Last Name:</span>
+									</div>
+									<div class="jp-col-right">
+										<span class="form-text-index"><%= @user.name_last %></span>							
+									</div>
+								</div>
+								<div class="input-form-spacer-jp"></div>        
+								<div class="row">
+									<div class="jp-col-left">
+										<span class="form-text-index">Email:</span>
+									</div>
+									<div class="jp-col-right">
+										<span class="form-text-index"><%= @user.email %></span>							
+									</div>
+								</div>
+								<div class="input-form-spacer-jp"></div>        
+								<div class="row">
+									<div class="jp-col-left">
+										<span class="form-text-index">Username:</span>
+									</div>
+									<div class="jp-col-right">
+										<span class="form-text-index"><%= @user.username %></span>							
+									</div>
+								</div>
+								<div class="input-form-spacer-jp"></div>        
+								<div class="row">
+									<div class="jp-col-left">
+										<span class="form-text-index">Birthday Month:</span>
+									</div>
+									<div class="jp-col-right">
+										<span class="form-text-index"><%= @user.bd_month %></span>							
+									</div>
+								</div>
+								<div class="input-form-spacer-jp"></div>        
+								<div class="row">
+									<div class="jp-col-left">
+										<span class="form-text-index">Birthday Day:</span>
+									</div>
+									<div class="jp-col-right">
+										<span class="form-text-index"><%= @user.bd_day %></span>							
+									</div>
+								</div>
+								<div class="input-form-spacer-jp"></div>        
+								<div class="row">
+									<div class="jp-col-left">
+										<span class="form-text-index">Birthday Year:</span>
+									</div>
+									<div class="jp-col-right">
+										<span class="form-text-index"><%= @user.bd_year %></span>							
+									</div>
+								</div>
+								
+							</div>
+						</div>
+
+					<% end %>
+

@@ -2,7 +2,9 @@ class PublisherSettingsController < ApplicationController
   
   layout 'publisher'
 
-  
+  before_filter :force_http
+
+    
   def index
     @publisher_settings = PublisherSetting.where("publisher_id = ?", session[:publisher_id])       
   end

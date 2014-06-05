@@ -1,0 +1,2 @@
+module PublisherProfileImagesHelper
+end

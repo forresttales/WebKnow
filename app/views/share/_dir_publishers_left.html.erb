@@ -1,12 +1,82 @@
-<div style="height: 14px;"></div>
-<%= link_to 'My Home', '/Publishers', :class => 'links' %>
-<div style="height: 14px;"></div>
-<%= link_to 'My Profile', '/PublisherProfiles', :class => 'links' %>
-<div style="height: 14px;"></div>
-<%= link_to 'My Photos', '/PublisherImages', :class => 'links' %>
-<div style="height: 14px;"></div>
-<%= link_to 'My Settings', '/PublisherSettings', :class => 'links' %>
-<div style="height: 14px;"></div>
-<%= link_to 'My Products', '/PublisherProducts', :class => 'links' %>
-<div style="height: 14px;"></div>
-<%= link_to 'My Journal Posters', '/PublisherJournalPosters', :class => 'links' %>
+
+	<style>
+
+		.profile-links-left {
+			
+		}	
+		.profile-links-left ul {
+			
+		}
+		.profile-links-left ul li {
+			height: 20px;
+			width: 100%;
+			background-color: #fff;
+			list-style: none;						
+		}	
+		.profile-links-left ul li a {
+			height: 20px;
+			width: 100%;			
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: #9F6720;    		
+		}	
+		.profile-links-left ul li:hover {
+			background-color: #ddd;			
+			cursor: pointer;
+		}	
+
+	</style>
+	
+	<div class="profile-links-left">
+	<ul>
+		<li id="profile-links-left-1">
+			<a id="profile-links-left-1-a" href="/Publishers">My Home</a>
+		</li>
+		<li id="profile-links-left-2">
+			<a id="profile-links-left-2-a" href="/PublisherProfiles">My Profile</a>
+		</li>	
+		<li id="profile-links-left-3">
+			<a id="profile-links-left-3-a" href="/PublisherProfilePhotos">My Photos</a>
+		</li>	
+		<li id="profile-links-left-4">
+			<a id="profile-links-left-4-a" href="/PublisherSettings">My Settings</a>
+		</li>	
+		<li id="profile-links-left-5">
+			<a id="profile-links-left-5-a" href="/PublisherProducts">My Products</a>
+		</li>	
+		<% if session[:publisher_has_journalposter] %>
+		<li id="profile-links-left-6">
+			<a id="profile-links-left-6-a" href="/PublisherJournalPosters">My Journal Posters</a>
+		</li>	
+		<% end %>
+	</ul>
+	</div>
+
+	<script>
+		
+		$(window).load( function() {
+		//$(document).ready(function(){
+
+			$('li#profile-links-left-1').on('click', function() {
+				window.location = document.getElementById('profile-links-left-1-a').href;
+			});
+			$('li#profile-links-left-2').on('click', function() {
+				window.location = document.getElementById('profile-links-left-2-a').href;				
+			});
+			$('li#profile-links-left-3').on('click', function() {
+				window.location = document.getElementById('profile-links-left-3-a').href;				
+			});
+			$('li#profile-links-left-4').on('click', function() {
+				window.location = document.getElementById('profile-links-left-4-a').href;				
+			});
+			$('li#profile-links-left-5').on('click', function() {
+				window.location = document.getElementById('profile-links-left-5-a').href;				
+			});
+			$('li#profile-links-left-6').on('click', function() {
+				window.location = document.getElementById('profile-links-left-6-a').href;				
+			});
+
+		});
+		
+	</script>
+	

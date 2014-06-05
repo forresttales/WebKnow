@@ -6,38 +6,36 @@ module SessionsHelper
     user.update_attribute(:remember_token, User.encrypt(remember_token))
     self.current_user = user
     
-    
     session[:username] = user.username
     session[:user_id] = user.id
     session[:signed_in] = true
 
-    if user.has_account    
-      session[:has_account] = user.has_account
+    # if user.has_account    
+      # session[:has_account] = user.has_account
       session[:account_type] = user.account_type    
       
       account_type = session[:account_type] 
-      case account_type  
-        when "institute"
-          session[:profile] = "/Institutes"          
-        when "publisher"
+      case user.account_type.to_s  
+        when "0"
+          session[:profile] = "/Students"          
+        when "1"
+          session[:profile] = "/Teachers"          
+        when "2"
           session[:profile] = "/Publishers"          
-        when "recruiter"
-          # session[:profile] = "/Recruiters"          
-          redirect_to(:controller => 'recruiters', :action => 'index')          
-        when "teacher"
-          # session[:profile] = "/Teachers"          
-          redirect_to(:controller => 'teachers', :action => 'index')          
-        when "student"
-          # session[:profile] = "/Students"                      
-          redirect_to(:controller => 'students', :action => 'index')          
+        when "3"
+          session[:profile] = "/Institutes"          
+        when "4"
+          session[:profile] = "/Recruiters"          
+          # redirect_to(:controller => 'students', :action => 'index')          
         else
+          session[:profile] = "/Signup"
           #        
       end
       
       # session[:profile] = "/" + user.account_type + "s/home"
-    else
-      session[:profile] = "users/show"      
-    end
+    # else
+      # session[:profile] = "/Signup"      
+    # end
 
     
   end
@@ -59,10 +57,17 @@ module SessionsHelper
     user == current_user
   end
 
+  def already_signed_in
+    if signed_in?
+      redirect_to session[:profile]
+    end
+  end
+
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: "Please sign in"
+      redirect_to '/'
+      # redirect_to signin_url, notice: "Please sign in"
     end
   end
 
@@ -86,6 +91,8 @@ module SessionsHelper
     session[:teacher_id] = nil
         
     session[:poster] = nil        
+    session[:publisher_journalposter_id] = nil
+    session[:publisher_has_journalposter] = nil
         
     # session[:return_to] = nil    
     
@@ -103,35 +110,31 @@ module SessionsHelper
   def redirect_back_or(default)
     # redirect_to(session[:return_to] || default)
     # session.delete(:return_to)
+  end
 
-    controller_action = ":controller => 'users', :action => 'show'"
-    
-    if session[:has_account]
 
-      account_type = session[:account_type] 
+  def redirect_to_profile_type(profile_type)
 
-      case account_type  
-        when "institute"
-          redirect_to '/Institutes'          
-        when "publisher"
-          redirect_to '/Publishers'          
+      case profile_type.to_s
+        when "0"
+          # redirect_to '/Institutes'          
+        when "1"
+          # redirect_to '/Publishers'          
           # redirect_to(:controller => 'publishers', :action => 'index')          
-        when "recruiter"
-          redirect_to(:controller => 'recruiters', :action => 'index')          
-        when "teacher"
-          redirect_to(:controller => 'teachers', :action => 'index')          
-        when "student"
-          redirect_to(:controller => 'students', :action => 'index')          
+        when "2"
+          redirect_to "/Publishers"
+          # redirect_to(:controller => 'recruiters', :action => 'index')          
+        when "3"
+          # redirect_to(:controller => 'teachers', :action => 'index')          
+        when "4"
+          # redirect_to(:controller => 'students', :action => 'index')          
         else
           #        
       end
-       
-    else
-      redirect_to(:controller => 'users', :action => 'show')      
-    end
-    
     
   end
+
+
 
   def store_location
     session[:return_to] = request.url

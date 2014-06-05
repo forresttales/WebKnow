@@ -1,77 +1,629 @@
 
-	<!-- css
-	custom_profile.css -->
-	
 	<style>
-
-		/*.fontfam {
-			font-family: JuneBug;
+	
+		@font-face {
+			font-family: 'msyh';
+		    src: url('../fonts/msyh.eot');	  		
+			src: url('../fonts/msyh.ttf') format('truetype');
 		}
-		.gold {
-			color: gold;
-			font-size: 40px;
+	
+		/*body, ul, li {
+			font-size:14px; 
+			font-family:Arial, Helvetica, sans-serif;
+			line-height:21px;
+			text-align:left;
+		}*/
+		
+		.menu-home {
+			list-style:none;
+			width:100%;
+			margin: 0px auto;
+			height:40px;
+			padding:0px 0px 0px 0px;
+			-moz-border-radius: 0px;
+			-webkit-border-radius: 0px;
+			border-radius: 0px;
+			background-color: rgba( 65, 183, 55, 0.92);
+			/*-moz-box-shadow:inset 0px 0px 1px #edf9ff;
+			-webkit-box-shadow:inset 0px 0px 1px #edf9ff;
+			box-shadow:inset 0px 0px 1px #edf9ff;*/
 		}
-		.red {
+		
+		.menu-home li.with_sub {
+			float:left;
+			display:block;
+			text-align:center;
+			position:relative;
+			padding: 12px 10px 8px 10px;
+			margin-right:30px;
+			margin-top:7px;
+			border:none;
+		}
+		.menu-home li.with_sub:hover {
+			border: 1px solid #777777;
+			padding: 12px 9px 4px 9px;
+			background: #F4F4F4;
+			background: -moz-linear-gradient(top, #F4F4F4, #EEEEEE);
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#EEEEEE));
+			-moz-border-radius: 5px 5px 0px 0px;
+			-webkit-border-radius: 5px 5px 0px 0px;
+			border-radius: 5px 5px 0px 0px;
+		}
+		.menu-home li.with_sub a {
+			font-family: msyh, Arial, Helvetica, sans-serif;			
+			font-size: 14px;		
+			color: #EEEEEE;
+			display:block;
+			outline:0;
+			text-decoration:none;
+			/*text-shadow: 1px 1px 1px #000;*/
+		}
+		.menu-home li.with_sub:hover a {
+			color:#161616;
+			text-shadow: 1px 1px 1px #ffffff;
+		}
+		
+		.menu-home li.icon {
+			float:left;
+			display:block;
+			text-align:center;
+			position:relative;
+			padding: 6px 4px 0px 0px;
+			margin-right:0px;
+			margin-top:0px;
+			border:none;
+			background: #fff;		
+		}
+		.menu-home li.icon:hover {
+			float:left;
+			display:block;
+			text-align:center;
+			position:relative;
+			padding: 6px 4px 0px 0px;
+			margin-right:0px;
+			margin-top:0px;
+			border:none;
+			background: #fff;		
+		}
+		.menu-home li.icon a {
+			color: #fff;
+			text-shadow: 1px 1px 1px #ffffff;		
+		}
+		.menu-home li.icon:hover a {
 			color: red;
-			font-size: 40px;			
+			text-shadow: 1px 1px 1px #ffffff;		
 		}
-		.blue {
-			color: blue;	
-			font-size: 40px;			
-		}	
-		.green {
-			color: green;	
-			font-size: 60px;			
-		}*/	
+	
+		.menu-home li.text {
+			display:block;
+			text-align:center;
+			position:relative;
+			padding: 12px 10px 8px 10px;
+			margin-right:30px;
+			margin-top:7px;
+			border:none;
+		}
+		.menu-home li.text:hover {
+			border: none;
+			padding: 12px 10px 8px 10px;		
+			
+			-moz-border-radius: 0px;
+			-webkit-border-radius: 0px;
+			border-radius: 0px;
+			/*background-color: rgba( 65, 183, 55, 0.92);*/
+			
+			/*background: #F4F4F4;
+			background: -moz-linear-gradient(top, #F4F4F4, #EEEEEE);
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#EEEEEE));
+			-moz-border-radius: 5px 5px 0px 0px;
+			-webkit-border-radius: 5px 5px 0px 0px;
+			border-radius: 5px 5px 0px 0px;*/
+	
+		}
+		.menu-home li.text a {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;		
+			color: #fff;
+			display:block;
+			outline:0;
+			/*background-color: rgba( 65, 183, 55, 0.92);*/
+			
+			/*text-decoration:none;*/
+			/*text-shadow: 1px 1px 1px #000;*/
+		}
+		.menu-home li.text:hover a {
+			/*color:#161616;
+			text-shadow: 1px 1px 1px #ffffff;*/
+		}
+		
+		.menu-home li .drop {
+			padding-right:21px;
+			background:url("img/drop.png") no-repeat right 8px;
+		}
+		.menu-home li:hover .drop {
+			background:url("img/drop.png") no-repeat right 7px;
+		}
+		
+		.dropdown_1column, 
+		.dropdown_2columns, 
+		.dropdown_3columns, 
+		.dropdown_4columns,
+		.dropdown_5columns {
+			margin:4px auto;
+			float:left;
+			position:absolute;
+			left:-999em; /* Hides the drop down */
+			text-align:left;
+			padding:10px 5px 10px 5px;
+			border:1px solid #777777;
+			border-top:none;
+			
+			/* Gradient background */
+			background:#F4F4F4;
+			background: -moz-linear-gradient(top, #EEEEEE, #BBBBBB);
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEEEEE), to(#BBBBBB));
+		
+			/* Rounded Corners */
+			-moz-border-radius: 0px 5px 5px 5px;
+			-webkit-border-radius: 0px 5px 5px 5px;
+			border-radius: 0px 5px 5px 5px;
+			z-index: 100;
+		}
+		
+		.dropdown_1column {width: 140px;}
+		.dropdown_2columns {width: 280px;}
+		.dropdown_3columns {width: 420px;}
+		.dropdown_4columns {width: 560px;}
+		.dropdown_5columns {width: 700px;}
+		
+		.menu-home li:hover .dropdown_1column, 
+		.menu-home li:hover .dropdown_2columns, 
+		.menu-home li:hover .dropdown_3columns,
+		.menu-home li:hover .dropdown_4columns,
+		.menu-home li:hover .dropdown_5columns {
+			left:-1px;
+			top:auto;
+		}
+		
+		.col_1,
+		.col_2,
+		.col_3,
+		.col_4,
+		.col_5 {
+			display:inline;
+			float: left;
+			position: relative;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		.col_1 {width:130px;}
+		.col_2 {width:270px;}
+		.col_3 {width:410px;}
+		.col_4 {width:550px;}
+		.col_5 {width:690px;}
+		
+		.menu-home .menu_right {
+			float:right;
+			padding-right: 15px;
+			margin-right:0px;
+		}
+		.menu-home li .align_right {
+			-moz-border-radius: 5px 0px 5px 5px;
+		    -webkit-border-radius: 5px 0px 5px 5px;
+		    border-radius: 5px 0px 5px 5px;
+		}
+		.menu-home li:hover .align_right {
+			left:auto;
+			right:-1px;
+			top:auto;
+		}
+		.menu-home p, .menu-home h2, .menu-home h3, .menu-home ul li {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			line-height:21px;
+			font-size:12px;
+			text-align:left;
+			text-shadow: 1px 1px 1px #FFFFFF;
+		}
+		.menu-home h2 {
+			font-size:21px;
+			font-weight:400;
+			letter-spacing:-1px;
+			margin:7px 0 14px 0;
+			padding-bottom:14px;
+			border-bottom:1px solid #666666;
+		}
+		.menu-home h3 {
+			font-size:14px;
+			margin:7px 0 14px 0;
+			padding-bottom:7px;
+			border-bottom:1px solid #888888;
+		}
+		.menu-home p {
+			line-height:18px;
+			margin:0 0 10px 0;
+		}
+		.menu-home li:hover div a {
+			font-size:12px;
+			color:#015b86;
+		}
+		.menu-home li:hover div a:hover {
+			color:#029feb;
+		}
+		.strong {
+			font-weight:bold;
+		}
+		.italic {
+			font-style:italic;
+		}
+		.imgshadow {
+			background:#FFFFFF;
+			padding:4px;
+			border:1px solid #777777;
+			margin-top:5px;
+			-moz-box-shadow:0px 0px 5px #666666;
+			-webkit-box-shadow:0px 0px 5px #666666;
+			box-shadow:0px 0px 5px #666666;
+		}
+		.img_left {
+			width:auto;
+			float:left;
+			margin:5px 15px 5px 5px;
+		}
+		.menu-home li .black_box {
+			background-color:#333333;
+			color: #eeeeee;
+			text-shadow: 1px 1px 1px #000;
+			padding:4px 6px 4px 6px;
+			-moz-border-radius: 5px;
+		    -webkit-border-radius: 5px;
+		    border-radius: 5px;
+			-webkit-box-shadow:inset 0 0 3px #000000;
+			-moz-box-shadow:inset 0 0 3px #000000;
+			box-shadow:inset 0 0 3px #000000;
+		}
+		.menu-home li ul {
+			list-style:none;
+			padding:0;
+			margin:0 0 12px 0;
+		}
+		.menu-home li ul li {
+			font-size:12px;
+			line-height:24px;
+			position:relative;
+			text-shadow: 1px 1px 1px #ffffff;
+			padding:0;
+			margin:0;
+			float:none;
+			text-align:left;
+			width:130px;
+		}
+		.menu-home li ul li:hover {
+			background:none;
+			border:none;
+			padding:0;
+			margin:0;
+		}
+		.menu-home li .greybox li {
+			background:#F4F4F4;
+			border:1px solid #bbbbbb;
+			margin:0px 0px 4px 0px;
+			padding:4px 6px 4px 6px;
+			width:116px;
+			-moz-border-radius: 5px;
+		    -webkit-border-radius: 5px;
+		    -khtml-border-radius: 5px;
+		    border-radius: 5px;
+		}
+		.menu-home li .greybox li:hover {
+			background:#ffffff;
+			border:1px solid #aaaaaa;
+			padding:4px 6px 4px 6px;
+			margin:0px 0px 4px 0px;
+		}
+		.nav-ks-home {
+			width: 680px;
+			/*height: 1px;*/
+			/*background-color: rgba( 65, 183, 55, 0.92);*/
+			/*background-color: #41B737;*/		
+			position: relative;
+			/*top: 0px;*/
+			/*line-height:21px;*/
+			/*z-index: 999;*/
+		}
+		.nav-ks-home .signin-text {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			color: #fff;
+		}
+	
+		/*
+		#D98D2D	knowstory logo orange
+		#96C785 knowstory logo green dark 
+		#A9D996 knowstory logo green light
+		#214025 footer green
+		background-color: rgba( 65, 183, 55, 0.92); nav green
+		background-color: #41B737;	nav green		
+		*/ 
 
-		.col-left-full-page {
-			display: table-cell; width: 0px;	
+		.container {
+			width: 1200px;
+			min-height: 1000px;
 		}
-		.col-midd-full-page {
-			display: table-cell; 
-			width: 1000px;			
-			/*border-left: 2px #41B737 solid;
-			border-right: 2px #41B737 solid;*/
+		/*input[type=checkbox] {
+		    display:none;
+		}*/			
+		.signin-btn-home {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #11520B;
+			height: 24px;
+			width:76px;
+			background-color: #D98D2D;
+			border: 2px solid #11520B;
+	    	border-radius: 12px;			
+			margin-top: 10px;
+			padding-bottom: 1px;
+			/*background: url("/assets/arrow-green-w100-h104.png") no-repeat 0px 0px;*/						
 		}
-		.col-right-full-page {
-			display: table-cell; width: 0px;
+		.signin-btn-home:hover {
+			color: #fff;
+			background-color: #E3AC66;
+			text-shadow: 1px 1px #34922C;
+			cursor: pointer;
 		}
-		.col-full-page-center {
-			text-align: center;
-		}	
-				
+		.table-ks-home {
+			display: table;
+		}				
+		.row-ks-home {
+			display: table-row;
+			vertical-align: top;
+		}				
+		.cell-ks-home-1 {
+			display: table-cell;
+			vertical-align: top;
+			width: 520px;
+		}				
+		.cell-ks-home-2 {
+			display: table-cell;
+			vertical-align: top;
+			width: 680px;
+		}				
+		.nav-ks-home ul.ul-1 {
+			padding-top: 1px;
+		}
+		.nav-ks-home ul.ul-2 {
+			width: 100%; 
+			height: 2px; 
+			background-color: #D98D2D;
+		}
+		.nav-ks-home ul.ul-3 {
+		 	text-align: center; 
+		 	padding-top: 10px;	
+		}
+		.cell-ks-home-1-3 {
+			display: table-cell;
+			vertical-align: top;
+			width: 400px;
+			/*height: 430px;*/
+			padding: 4px;
+			border: 2px solid #49853F;
+			background-color: #A5E5B4;
+		}				
+		.cell-ks-home-2-3 {
+			display: table-cell;
+			vertical-align: top;
+			/*width: 412px;*/
+			padding-top: 2px;
+			border-top: 2px solid #49853F;			
+			border-bottom: 2px solid #49853F;		
+			background-color: #49853F; 	
+		}				
+		.cell-ks-home-3-3 {
+			display: table-cell;
+			vertical-align: top;
+			width: 388px;
+			border: 2px solid #49853F;						
+		}				
+		span.title-home-dark {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 24px;
+			color: #11520B;
+			font-weight: 700;
+			/*color: #D98D2D;*/
+		}
+		span.title-home-dark-2 {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: #49853F;
+		}
+		p.title-home-dark-2 {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 18px;
+			color: #49853F;
+		}
+		p.title-home-gray {
+			/*font-family: msyh, Arial, Helvetica, sans-serif;*/
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: #666;
+		}
+		.cell-right-home {
+			text-align: right;	
+		}
+		.cell-ks-home-3-3a {
+			background-color: #D98D2D;
+		}
+		.cell-ks-home-3-3b {
+			background-color: #A5E5B4;
+		}
+		span.title-home-dark-3 {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: #11520B;
+			font-weight: 700;
+		}
+		span.title-home-dark-4 {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			color: #11520B;
+			font-weight: 400;
+			/*color: #D98D2D;*/
+		}
+		
 	</style>
 
 	<header>
 		<%= render 'share/backtotop' %>
 	</header>
 
-	<div class="container">
+	<div class="container" style="min-height: 1000px;">
+
+
+		<div class="table-ks-home">
+			<div class="row-ks-home">
+				<div class="cell-ks-home-1">
+					<div style="height: 50px;"></div>
+					<img src="../assets_knowstory/knowstory-icon-2-w634-h212.png" alt="knowstory-icon-2-w634-h212.png" width="500px">
+				</div>
+				<div class="cell-ks-home-2">
+					<div style="height: 50px;"></div>
+					<div id="nav_ks_home" class="nav-ks-home">
+						<ul class="menu-home ul-1">
+							
+							    <%= form_for(:session, url: sessions_path) do |f| %>	
+							<li class="menu_right">					
+								<%= f.label(:username, 'Email Address', class: 'signin-text') %>
+								<%= f.text_field :username, class: '', :autofocus => false %>
+								&nbsp;
+								<%= f.label(:password, 'Password', class: 'signin-text') %>
+								<%= f.password_field :password, class: '' %>
+								<%= f.submit "Sign In", class: 'signin-btn-home' %>
+							</li>
+								<% end %>
+						</ul>
+						<ul class="ul-2"></ul>
+						<ul class="menu-home ul-3">
+							<li>
+								&nbsp;
+								<a href="#" class="signin-text">Students</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="#" class="signin-text">Publisher</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="#" class="signin-text">School or District</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="#" class="signin-text">Teacher</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="#" class="signin-text">Recruiter</a>
+								&nbsp;&nbsp;
+							</li>
+						</ul>
+
+						<div style="height: 30px;"></div>
+						<div class="cell-right-home">
+							<span class="title-home-dark">Get started&#8212;It's free.</span>
+							<!-- <br><span class="title-home-dark-2">Get started&#8212;It's free.</span> -->
+						</div>				
+						<div style="height: 20px;"></div>
+						<div class="cell-right-home">
+							<span class="title-home-dark-2">Join as a student, teacher, school, college</span><br>
+							<span class="title-home-dark-2">recruiter or curriculum publisher.</span><br>
+							<span class="title-home-dark-2">Free directory searches, profiles and sharing.</span>
+						</div>				
+
+					</div>
+					<div style="clear: both;"></div>
+					
+				</div>
+			</div>
+			<!-- <div class="row-ks-home">
+				<div class="cell-ks-home-1">
+				</div>				
+				<div class="cell-ks-home-2 cell-right-home">
+					<span class="title-home-dark">Get started&#8212;It's free.</span>
+				</div>				
+			</div> -->			
+
+		</div>
 		
 		<div style="height: 70px;"></div>
 		
-		<div class="table-profile">
-			<div class="row-profile">
-				
-				<div class="col-left-full-page">
+		<div class="table-ks-home">
+			<div class="row-ks-home">
+				<div class="cell-ks-home-1-3">
+					<br>
+					<p class="title-home-dark-2">Student?</p>
+					<p class="title-home-gray">
+						Share comments, photos, classes, and favorite learning
+						content while charting your current and future learning.
+						Keep up your education history and get personalized
+						recommendations for learning games or content to study.
+						You can open access to college recruiters after 13 years old.
+					</p>
+					<br>
+					<p class="title-home-dark-2">Publisher?</p>
+					<p class="title-home-gray">
+						Post a profile of your company and each of your products so
+						they can be found by students, teachers and schools.
+					</p>
+					<br>
+					<p class="title-home-dark-2">School or District?</p>
+					<p class="title-home-gray">
+						Use the system to get a gap analysis of what you are missing
+						in digital curriculum for any grade or subject, link with other
+						schools, post publisher request for proposals, and keep track
+						of inventory.
+					</p>
+					<br>
+					<p class="title-home-dark-2">Teacher?</p>
+					<p class="title-home-gray">
+						Get ongoing classroom digital content and professional
+						development recommendations. See analysis of how much lesson
+						time used on digital learning, and connect with students.
+					</p>
+					<br>
+					<p class="title-home-dark-2">Recruiter?</p>
+					<p class="title-home-gray">
+						Promote your institution and seek links with college-interested students. Search
+						student interests and see public student profiles.
+					</p>
+
 				</div>
-				
-				<div class="col-midd-full-page col-full-page-center">
-											
-					<img src="../assets_knowstory/knowstory-icon-2-w634-h212.png" alt="knowstory-icon-2-w634-h212.png">
+				<div class="cell-ks-home-2-3">
+					<img src="../assets_knowstory/maze-w1340-h1418.jpg" alt="maze-w1340-h1418.jpg" height="414px">
+				</div>
+				<div class="cell-ks-home-3-3">
+					<div class="cell-ks-home-3-3a">
+						<span class="title-home-dark-3">Sign Up</span><br>
+						<span class="title-home-dark-4">It's free and always will be.</span><br>
+					</div>
+					<div class="cell-ks-home-3-3b">
 						
-					<!-- <div class="fontfam">
-						<span class="red">Happy </span><span class="blue"> Birthday </span><span class="gold"> !</span>
-						<div style="height: 80px;"></div>
-						<span class="green">KnowStory</span>
-					</div> -->
-								
+					</div>
 				</div>
 				
-				<div class="col-right-full-page">
-				</div>
-												
 			</div>
 		</div>
+		
+		<!-- 
+		#nav_ks_home
+		.menu-home
+		.nav-ks-home
+		.icon
+		.with_sub
+		.drop
+		.dropdown_2columns
+		.col_2
+		.col_1
+		.menu_right
+		.text 
+		-->
+						
+					
+				
+				
+											
+		
+						
+								
 	</div>
 

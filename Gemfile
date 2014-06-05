@@ -25,6 +25,9 @@ gem 'paypal-sdk-rest'
 gem 'authorize-net'
 gem 'rake', '~> 10.2.1'
 gem 'rack-ssl'
+gem "mini_magick"
+gem "carrierwave"
+gem 'recaptcha'
 
 group :doc do
   gem 'sdoc', require: false

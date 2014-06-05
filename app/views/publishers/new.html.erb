@@ -210,6 +210,22 @@
 					
 					<div class="cell-100percent" tabindex="1">
 						
+    				<!-- 
+    				:user_id, 
+                    :name, 
+                    :address, 
+                    :city, 
+                    :state, 
+                    :country, 
+                    :zip,
+                    :phone, 
+                    :url, 
+                    :description, 
+                    :company_contact_name_first, 
+                    :company_contact_name_last,
+                    :company_contact_phone, 
+                    :company_contact_email 
+                    --> 
 						
 				    	<%= form_for @publisher, :html => {:id => 'form_publisher_new' } do |f| %>	
 						<!-- = render 'shared/error_messages', object: f.object -->			
@@ -218,12 +234,144 @@
 
 						<div class="row">
 							<div class="cell-left-signup">
-								<%= f.label(:name, 'Name', class: 'input-signup-label') %>							
+								<%= f.label(:name, 'Company Name', class: 'input-signup-label') %>							
 							</div>
 							<div class="cell-right-signup">
 								<%= f.text_field :name, :class => 'input-signup', :tabindex => '2', :autofocus => true %>	
 							</div>
 							<div class="cell-error" id="state_name"><p id="error_name"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:address, 'Street Address', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :address, :class => 'input-signup', :tabindex => '2', :autofocus => false %>	
+							</div>
+							<div class="cell-error" id="state_address"><p id="error_address"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:city, 'City', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :city, :class => 'input-signup', :tabindex => '2', :autofocus => false %>	
+							</div>
+							<div class="cell-error" id="state_city"><p id="error_city"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:state, 'State', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :state, :class => 'input-signup', :tabindex => '2', :autofocus => false %>	
+							</div>
+							<div class="cell-error" id="state_state"><p id="error_state"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:, '', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :, :class => 'input-signup', :tabindex => '2', :autofocus => false %>	
+							</div>
+							<div class="cell-error" id="state_"><p id="error_"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:, '', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :, :class => 'input-signup', :tabindex => '2', :autofocus => false %>	
+							</div>
+							<div class="cell-error" id="state_"><p id="error_"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:, '', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :, :class => 'input-signup', :tabindex => '2', :autofocus => false %>	
+							</div>
+							<div class="cell-error" id="state_"><p id="error_"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:, '', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :, :class => 'input-signup', :tabindex => '2', :autofocus => false %>	
+							</div>
+							<div class="cell-error" id="state_"><p id="error_"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:, '', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :, :class => 'input-signup', :tabindex => '2', :autofocus => false %>	
+							</div>
+							<div class="cell-error" id="state_"><p id="error_"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:, '', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :, :class => 'input-signup', :tabindex => '2', :autofocus => false %>	
+							</div>
+							<div class="cell-error" id="state_"><p id="error_"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:, '', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :, :class => 'input-signup', :tabindex => '2', :autofocus => false %>	
+							</div>
+							<div class="cell-error" id="state_"><p id="error_"></p></div>      					   							 								      	
+						</div>
+
+						<div class="input-signup-spacer"></div>
+
+						<div class="row">
+							<div class="cell-left-signup">
+								<%= f.label(:, '', class: 'input-signup-label') %>							
+							</div>
+							<div class="cell-right-signup">
+								<%= f.text_field :, :class => 'input-signup', :tabindex => '2', :autofocus => false %>	
+							</div>
+							<div class="cell-error" id="state_"><p id="error_"></p></div>      					   							 								      	
 						</div>
 
 						<div class="input-signup-spacer"></div>

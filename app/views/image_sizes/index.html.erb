@@ -1,0 +1,49 @@
+ <%= provide(:title, 'Image Size index') %>
+	
+	
+	<style>
+		
+		span.jp-title {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: #D98D2D;
+		}
+		span.jp-title-sub {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 18px;
+			color: #A9D996;
+		}
+		
+	</style>
+	
+	<header>					
+		<%= render 'share/backtotop' %>
+	</header>		
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<%= render 'share/dir_publishers_left'%>
+				</div>
+				
+				<div class="col-midd">
+					<div class="pad-left-20">
+						<span class="jp-title">Image Size</span>
+					</div>
+					
+					<div style="height: 30px;"></div>
+					
+					<div class="pad-left-20">					
+						<span><%= link_to'New', new_image_size_path %></span>
+					</div>
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_publishers_right' %>
+				</div>				
+			</div>
+		</div>		
+	</div>
+

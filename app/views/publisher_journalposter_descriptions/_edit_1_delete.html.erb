@@ -1,0 +1,2395 @@
+
+	<!-- <script type="text/javascript" src="../scripts/jquery-1.9.1.min.js"></script> -->
+	<!-- <script type="text/javascript" src="../scripts/jquery-1.9.1.js"></script> -->
+	<!-- <script type="text/javascript" src="/assets/jquery-1.9.1.js"></script> -->
+
+
+<!-- 
+#  publisher_journalposter_id :integer
+#  publisher_id               :integer
+#  created_at                 :datetime
+#  updated_at                 :datetime
+#  poster                     :integer
+#  poster_text                :string(255)
+#  logo                       :string(255)
+#  word_descr                 :text
+#  tag_line                   :text
+#  headline                   :string(255)
+#  screen_shot                :string(255)
+#  main_sales_phone           :string(255)
+#  curriculum_resources       :integer			x
+#  curriculum_resources_text  :string(255)		x
+#  teacher_tools              :integer
+#  teacher_tools_text         :string(255)
+#  school_operations          :integer
+#  school_operations_text     :string(255)
+#  content                    :integer
+#  content_text               :string(255)
+#  prof_learning              :integer
+#  prof_learning_text         :string(255)
+#  cent21_learning            :integer			x
+#  cent21_learning_text       :string(255)		x
+#  language                   :integer			x
+#  language_text              :string(255)		x
+#  math                       :integer
+#  math_text                  :string(255)
+#  science                    :integer
+#  science_text               :string(255)
+#  social_studies             :integer
+#  social_studies_text        :string(255)
+#  special_ed                 :integer
+#  special_ed_text            :string(255)
+#  assmt_testing              :integer
+#  assmt_testing_text         :string(255)
+#  collaboration              :integer
+#  collaboration_text         :string(255)
+#  classroom_resp             :integer
+#  classroom_resp_text        :string(255)
+#  grading_atten              :integer
+#  grading_atten_text         :string(255)
+#  lesson_planning            :integer
+#  lesson_planning_text       :string(255)
+#  pres_tools                 :integer
+#  pres_tools_text            :string(255)
+#  lecture_capture            :integer
+#  lecture_capture_text       :string(255)
+#  plag_checks                :integer
+#  plag_checks_text           :string(255)
+#  learning_mgmt_systs        :integer
+#  learning_mgmt_systs_text   :string(255)
+#  student_info_systs         :integer
+#  student_info_systs_text    :string(255)
+#  web_filtering              :integer
+#  web_filtering_text         :string(255)
+#  device_mgmt                :integer
+#  device_mgmt_text           :string(255)
+#  virtual_dist_ed            :integer
+#  virtual_dist_ed_text       :string(255)
+#  testing_systs              :integer
+#  testing_systs_text         :string(255)
+#  unique_tech                :integer
+#  unique_tech_text           :string(255)
+#  apps                       :integer
+#  apps_text                  :string(255)
+#  digit_textbooks            :integer
+#  digit_textbooks_text       :string(255)
+#  games                      :integer
+#  games_text                 :string(255)
+#  study_tools                :integer
+#  study_tools_text           :string(255)
+#  video                      :integer
+#  video_text                 :string(255)
+#  dictionaries               :integer
+#  dictionaries_text          :string(255)
+#  directories                :integer
+#  directories_text           :string(255)
+#  subscrip_sites             :integer
+#  subscrip_sites_text        :string(255)
+#  ebook_game_creat           :integer
+#  ebook_game_creat_text      :string(255)
+#  digit_story_poster         :integer
+#  digit_story_poster_text    :string(255)
+#  courseware                 :integer
+#  courseware_text            :string(255)
+#  talent_mgmt                :integer
+#  talent_mgmt_text           :string(255)
+#  prof_devel_systems         :integer
+#  prof_devel_systems_text    :string(255)
+#  instr_design               :integer
+#  instr_design_text          :string(255)
+#  other_diy                  :integer
+#  other_diy_text             :string(255) 
+-->		        		
+
+	<style>
+		
+		/*@import url(http://www.google.com/fonts#QuickUsePlace:quickUse/Family:Istok+Web);*/
+		
+		.journal-box-steps {
+			width:1000px;
+			/*height: 400px;*/
+			padding: 4px;
+			position: relative;
+			vertical-align: top;
+ 			margin: 0 auto;			
+		}
+		.journal-txt-title-steps {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 26px;
+	    	color: #214025;
+	    	font-weight: 800;
+		}
+		.journal-txt-title-steps-sub {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 20px;
+	    	color: #214025;
+	    	font-weight: 800;
+		}
+		.journal-box-steps ul li {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 18px;
+	    	color: #222;
+	    	font-weight: 800;
+		}
+		.journal-txt-steps-sub {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 1.0em;
+	    	color: #214025;
+	    	font-weight: 800;
+		}
+		div.journal-steps-info {
+			width: 200px;
+			text-align: left;
+			margin-left: 70px;	
+		}
+		div.journal-arrow-container {
+			height: 124px;
+			width: 130px;
+			margin: 0 auto;
+		}
+		div.journal-arrow-green {
+			height: 114px;
+			width:100px;
+			margin-top: 10px;
+			background: url("/assets/arrow-green-w100-h104.png") no-repeat 0px 0px;						
+			/*background-image: url("/assets/arrow-green-w100-h104.png");*/		
+		}
+		div.journal-arrow-gray {
+			height: 114px;
+			width:100px;
+			margin-top: 10px;
+			background: url("/assets/arrow-gray-w100-h104.png") no-repeat 0px 0px;						
+			/*background-image: url("/assets/arrow-green-w100-h104.png");*/						
+		}
+		.journal-arrow-green:hover {
+			height: 124px;
+			width:119px;	
+			margin-top: 0px;		
+			margin-left: 10px;
+			cursor: pointer;
+			/*-webkit-transition: all 0.5s ease-in-out;
+			-moz-transition: all 0.5s ease-in-out;
+			-o-transition: all 0.5s ease-in-out;
+			-ms-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;*/
+			background: url("/assets/arrow-hovergreen-w119-h124.png") no-repeat 0px 0px;						
+		}
+ 		.link-arrow-enable {
+ 			
+ 		}		
+ 		.link-arrow-disable {
+ 			disable;
+ 		}	
+ 				
+		/*input[type=checkbox] {
+		    display:none;
+		}					
+		input[type=radio] {
+		    display:none;
+		}*/			
+ 				
+		input[type=submit] {
+		    display:none;
+		}			
+
+		/*.jp-cell-1 {
+			width: 20px;
+			height: 18px;	
+			margin-bottom: 0px;
+		} 	
+		.jp-cell-2 {
+			width: 190px;
+		}*/ 	
+		.jp-cell-1 {
+			float:right;
+			width: 20px;
+			height: 18px;	
+			margin-bottom: 0px;
+			margin-left: 4px;
+		} 	
+		td.jp-cell {
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+	  		/*font-family: 'Quattrocento Sans', sans-serif;*/
+			font-family:Arial, Helvetica, sans-serif;	  		
+	        font-size: 12px;
+	    	color: #214025;
+	    	font-weight: 400;			
+	    	line-height: 1.2em
+		}
+		
+		td.jp-cell {
+			height: 56px;
+			width: 114px;
+			padding-left: 4px;
+			padding-top: 4px;
+			vertical-align: top;
+	    	cursor: pointer;
+	    	background-color: #fff;
+		}
+		td.jp-cell:hover {
+	    	background-color: #eee;	    	
+		}
+		td.jp-cell-disabled {
+			height: 56px;
+			width: 120px;
+			padding-left: 4px;
+			padding-top: 4px;
+			vertical-align: top;
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+	  		/*font-family: 'Quattrocento Sans', sans-serif;*/
+	  		font-family:Arial, Helvetica, sans-serif;
+	        font-size: 13px;
+	    	color: #aaa;
+	    	font-weight: 400;
+		}
+		td.jp-cell-empty {
+			height: 56px;
+			width: 120px;
+	    	background-color: #fff;
+		}
+
+
+		/*.jp-cell-enabled {
+	    	color: #214025;
+		}
+		.jp-cell-disabled {
+	    	color: #aaa;
+		}*/		
+		.jp-cell-border-top {
+			border-top:#000000 solid 1px;				
+		}					
+		.jp-cell-border-bottom {
+			border-bottom:#000000 solid 1px;				
+		}					
+		.jp-cell-border-left {
+			border-left:#000000 solid 1px;				
+		}					
+		.jp-cell-border-right {
+			border-right:#000000 solid 1px;				
+		}					
+					
+		input[type=checkbox] {
+		    display:none;
+		}			
+		input[type=radio] {
+		    display:none;
+		}			
+		.journal-cb-button {
+			width: 16px;
+			height: 17px; 
+			border-style: solid; 
+			border-width: 2px; 
+			border-radius: 4px;		
+			/*margin-bottom: -8px;*/
+			/*display: inline-block;*/
+			margin-right: 0px;
+			/*vertical-align: top;*/
+		}
+		.journal-cb-button-enabled {
+			border-color: #308954; 
+		}
+		.journal-cb-button-disabled {
+			border-color: #ccc; 
+		}
+	
+		.journal-cb-background {
+			background-image: url("/assets/checkbox_tick_5.png");		
+			background-repeat: no-repeat;
+			background-position: 0px 0px;
+		}	
+		.journal-cb-background-disabled {
+			background-image: url("/assets/checkbox_tick_6.png");		
+			background-repeat: no-repeat;
+			background-position: 0px 0px;
+		}	
+		.journal-cb-spacer {
+			height: 0px;
+		}
+
+
+
+
+
+
+		div .table-form-jp {
+			display: table;
+			background-color: #fff;
+			border-radius: 0px;
+			padding-top: 40px;
+			padding-bottom: 40px;
+			padding-left: 0px;
+		}
+		.input-form-jp {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 14px;
+			width: 400px;
+			height: 22px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+		}
+		.input-form-jp:focus {
+			border-color: #3949C4;
+			color: #000;
+			-webkit-box-shadow: 0 0 10px #3949C4;
+			-moz-box-shadow: 0 0 10px #3949C4;
+			box-shadow: 0 0 10px #3949C4;
+		}
+		.input-form-short-jp {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 14px;
+			width: 100px;
+			height: 22px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+			margin-right: 300px;
+		}
+		.input-form-short-jp:focus {
+			border-color: #3949C4;
+			color: #000;
+			-webkit-box-shadow: 0 0 10px #3949C4;
+			-moz-box-shadow: 0 0 10px #3949C4;
+			box-shadow: 0 0 10px #3949C4;
+		}
+		.input-form-word-description-jp {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 14px;
+			width: 400px;
+			height: 70px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+		}		
+		.input-form-word-description-jp:focus {		
+			border-color: #3949C4;
+			color: #000;
+			-webkit-box-shadow: 0 0 10px #3949C4;
+			-moz-box-shadow: 0 0 10px #3949C4;
+			box-shadow: 0 0 10px #3949C4;
+		}
+		.input-form-metadata-jp {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 14px;
+			width: 400px;
+			height: 200px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+		}		
+		.input-form-word-metadata-jp:focus {		
+			border-color: #3949C4;
+			color: #000;
+			-webkit-box-shadow: 0 0 10px #3949C4;
+			-moz-box-shadow: 0 0 10px #3949C4;
+			box-shadow: 0 0 10px #3949C4;
+		}
+		.input-label-form-jp {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #000;    		
+			height: 16px;
+		}
+		.input-label-form-area-jp {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #000;    		
+			height: 16px;
+			position: relative;
+			top: -50px;
+		}
+		.input-form-spacer-jp {
+			height: 16px;
+		}
+		div .cell-right-form-jp {
+			display: table-cell;
+			width: 380px;
+			text-align: left;
+			align: top;		
+			padding-right: 10px;
+		}
+		div .cell-left-form-jp {
+			display: table-cell;
+			width: 220px;
+			align: top;
+			text-align: right;		
+			padding-right: 10px;
+		}
+		div .cell-submit-form-jp {
+			display: table-cell;
+			/*width: 50%;*/
+			text-align: left;
+			align: top;		
+			padding-left: 0px;
+		}
+		.form-btn-jp {
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 200px;
+		  	height: 30px;
+		  	background: linear-gradient(#000, #000);
+		  	text-shadow: 1px 1px 1px #0E86B2; 
+		  	border-radius: 6px;
+		}
+		.form-btn-jp:focus {
+		  background: #CCC; 
+		  color: #5F7A2A;
+		  box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
+		}
+		.form-btn-jp:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(255,255,255,0.3);
+		}
+		.form-btn-jp:active { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(0,0,0,0.3); 
+		}
+		.form-select-jp {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 14px;
+			width: 408px;
+			height: 22px;
+			border-style:solid;
+			border-radius: 4px;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+		}
+	
+		
+	</style>
+
+
+			<div class="journal-table">
+				<div class="journal-row">
+					<div class="journal-cell pad-left-20" style="width: 800px;">
+						<div class="journal-txt3">
+							Categories 1
+						</div>				
+						<div class="journal-space-table-1"></div>        		
+						<div class="journal-space-table-1"></div>        		
+						<div class="journal-space-table-1"></div>        		
+
+						<%= form_for( @publisher_journalposter_description, :html => {:id => "form_publisher_journalposter_description"}) do |f| %>
+						
+							<!-- 
+							cent21_learning            
+							language                  
+							math                      
+							science                   
+							social_studies           
+							special_ed 
+							-->
+
+			        		<table>
+								<tr>
+									<td id="label_curriculum_resources" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_curriculum_resources" class="journal-cb-button journal-cb-button-enabled"></div>							
+											<%= f.check_box :curriculum_resources %>
+										</div>
+										Curriculum Resources
+									</td>
+									<td id="label_teacher_tools" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_teacher_tools" class="journal-cb-button journal-cb-button-enabled"></div>							
+											<%= f.check_box :teacher_tools %>
+										</div>
+										Digital Teacher Tools
+									</td>
+									<td id="label_school_operations" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_school_operations" class="journal-cb-button journal-cb-button-enabled"></div>							
+											<%= f.check_box :school_operations %>
+										</div>
+										Digital School Operations
+									</td>
+									<td id="label_content" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_content" class="journal-cb-button journal-cb-button-enabled"></div>							
+											<%= f.check_box :content %>
+										</div>
+										Digital Content
+									</td>
+									<td id="label_prof_learning" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-right">
+										<div class="jp-cell-1">
+											<div id="cb_prof_learning" class="journal-cb-button journal-cb-button-enabled"></div>							
+											<%= f.check_box :prof_learning %>
+										</div>
+										Professional Learning and DIY Digital Content
+									</td>
+								</tr>
+								<tr class="journal-cb-spacer"></tr>
+								<tr>
+									<td id="label_cent21_learning" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_cent21_learning" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :cent21_learning %>
+										</div>
+										21st Century Learning
+									</td>
+									<td id="label_assmt_testing" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_assmt_testing" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :assmt_testing %>
+										</div>
+										Assessment / Testing
+									</td>
+									<td id="label_learning_mgmt_systs" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_learning_mgmt_systs" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :learning_mgmt_systs %>
+										</div>
+										Learning Management Systems
+									</td>
+									<td id="label_apps" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_apps" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :apps %>
+										</div>
+										Apps
+									</td>
+									<td id="label_subscrip_sites" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-right">
+										<div class="jp-cell-1">
+											<div id="cb_subscrip_sites" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :subscrip_sites %>
+										</div>
+										Subscription Sites
+									</td>
+								</tr>
+								<tr class="journal-cb-spacer"></tr>
+								<tr>
+									<td id="label_language" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_language" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :language %>
+										</div>
+										Language
+									</td>
+									<td id="label_collaboration" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_collaboration" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :collaboration %>
+										</div>
+										Collaboration
+									</td>
+									<td id="label_student_info_systs" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_student_info_systs" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :student_info_systs %>
+										</div>
+										Student Information Systems
+									</td>
+									<td id="label_digit_textbooks" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_digit_textbooks" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :digit_textbooks %>
+										</div>
+										Digital Textbooks/eBooks
+									</td>
+									<td id="label_ebook_game_creat" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-right">
+										<div class="jp-cell-1">
+											<div id="cb_ebook_game_creat" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :ebook_game_creat %>
+										</div>
+										eBook Creation/Game Creation
+									</td>
+								</tr>
+								<tr class="journal-cb-spacer"></tr>
+								<tr>
+									<td id="label_math" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_math" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :math %>
+										</div>
+										Math
+									</td>
+									<td id="label_classroom_resp" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_classroom_resp" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :classroom_resp %>
+										</div>
+										Classroom Response
+									</td>
+									<td id="label_web_filtering" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_web_filtering" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :web_filtering %>
+										</div>
+										Web Filtering
+									</td>
+									<td id="label_games" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_games" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :games %>
+										</div>
+										Games
+									</td>
+									<td id="label_digit_story_poster" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-right">
+										<div class="jp-cell-1">
+											<div id="cb_digit_story_poster" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :digit_story_poster %>
+										</div>
+										Digital Storytelling / PosterBoarding
+									</td>
+								</tr>
+								<tr class="journal-cb-spacer"></tr>
+								<tr>
+									<td id="label_science" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_science" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :science %>
+										</div>
+										Science
+									</td>
+									<td id="label_grading_atten" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_grading_atten" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :grading_atten %>
+										</div>
+										Grading / Attendance
+									</td>
+									<td id="label_device_mgmt" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_device_mgmt" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :device_mgmt %>
+										</div>
+										Device Managment
+									</td>
+									<td id="label_study_tools" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_study_tools" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :study_tools %>
+										</div>
+										Study Tools
+									</td>
+									<td id="label_courseware" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-right">
+										<div class="jp-cell-1">
+											<div id="cb_courseware" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :courseware %>
+										</div>
+										Courseware
+									</td>
+								</tr>
+								<tr class="journal-cb-spacer"></tr>
+								<tr>
+									<td id="label_social_studies" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_social_studies" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :social_studies %>
+										</div>
+										Social Studies
+									</td>
+									<td id="label_lesson_planning" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_lesson_planning" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :lesson_planning %>
+										</div>
+										Lesson Planning
+									</td>
+									<td id="label_virtual_dist_ed" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_virtual_dist_ed" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :virtual_dist_ed %>
+										</div>
+										Virtual Schools and Distance Education
+									</td>
+									<td id="label_video" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_video" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :video %>
+										</div>
+										Video
+									</td>
+									<td id="label_talent_mgmt" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-right">
+										<div class="jp-cell-1">
+											<div id="cb_talent_mgmt" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :talent_mgmt %>
+										</div>
+										Talent Management
+									</td>
+								</tr>
+								<tr class="journal-cb-spacer"></tr>
+								<tr>
+									<td id="label_special_ed" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-bottom">
+										<div class="jp-cell-1">
+											<div id="cb_special_ed" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :special_ed %>
+										</div>
+										Special Education
+									</td>
+									<td id="label_pres_tools" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-bottom">
+										<div class="jp-cell-1">
+											<div id="cb_pres_tools" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :pres_tools %>
+										</div>
+										Presentation Tools
+									</td>
+									<td id="label_testing_systs" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_testing_systs" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :testing_systs %>
+										</div>
+										Testing Systems
+									</td>
+									<td id="label_dictionaries" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_dictionaries" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :dictionaries %>
+										</div>
+										Dictionaries
+									</td>
+									<td id="label_prof_devel_systems" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-right">
+										<div class="jp-cell-1">
+											<div id="cb_prof_devel_systems" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :prof_devel_systems %>
+										</div>
+										Professional Developement Systems
+									</td>
+								</tr>
+								<tr class="journal-cb-spacer"></tr>
+								<tr>
+									<td class="jp-cell-empty jp-cell-border-left jp-cell-border-top jp-cell-border-bottom">
+										<div class="jp-cell-1">
+										</div>
+									</td>
+									<td id="label_lecture_capture" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_lecture_capture" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :lecture_capture %>
+										</div>
+										Lecture Capture
+									</td>
+									<td id="label_unique_tech" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_unique_tech" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :unique_tech %>
+										</div>
+										Unique Tech
+									</td>
+									<td id="label_directories" class="jp-cell jp-cell-border-left jp-cell-border-top">
+										<div class="jp-cell-1">
+											<div id="cb_directories" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :directories %>
+										</div>
+										Directories
+									</td>
+									<td id="label_instr_design" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-right">
+										<div class="jp-cell-1">
+											<div id="cb_instr_design" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :instr_design %>
+										</div>
+										Instructional Design
+									</td>
+								</tr>
+								<tr class="journal-cb-spacer"></tr>
+								<tr>
+									<td class="jp-cell-empty jp-cell-border-left jp-cell-border-top jp-cell-border-bottom">
+										<div class="jp-cell-1">
+										</div>
+									</td>
+									<td id="label_plag_checks" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-bottom">
+										<div class="jp-cell-1">
+											<div id="cb_plag_checks" class="journal-cb-button journal-cb-button-disabled"></div>
+											<%= f.check_box :plag_checks %>
+										</div>
+										Plagiarism Checks
+									</td>
+									<td class="jp-cell-empty jp-cell-border-left jp-cell-border-top jp-cell-border-bottom">
+										<div class="jp-cell-1">
+										</div>
+									</td>
+									<td class="jp-cell-empty jp-cell-border-left jp-cell-border-top jp-cell-border-bottom">
+										<div class="jp-cell-1">
+										</div>
+									</td>
+									<td id="label_other_diy" class="jp-cell jp-cell-border-left jp-cell-border-top jp-cell-border-right jp-cell-border-bottom">
+										<div class="jp-cell-1">
+											<div id="cb_other_diy" class="journal-cb-button journal-cb-button-disabled"></div>							
+											<%= f.check_box :other_diy %>
+										</div>
+										Other DIY
+									</td>
+								</tr>
+			        		</table>
+			        		
+							<!-- 
+							assmt_testing		learning_mgmt_systs		apps				subscrip_sites            
+							collaboration		student_info_systs		digit_textbooks     ebook_game_creat        
+							classroom_resp     	web_filtering      		games				digit_story_poster
+							grading_atten       device_mgmt     		study_tools			courseware
+							lesson_planning     virtual_dist_ed     	video				talent_mgmt
+							pres_tools          testing_systs     		dictionaries		prof_devel_systems
+							lecture_capture     unique_tech     		directories			instr_design
+							plag_checks              										other_diy
+							-->
+
+							<!-- 
+							assmt_testing            
+							collaboration             
+							classroom_resp           
+							grading_atten            
+							lesson_planning          
+							pres_tools               
+							lecture_capture          
+							plag_checks              
+							-->
+
+							<!-- 
+							learning_mgmt_systs       
+							student_info_systs       
+							web_filtering            
+							device_mgmt               
+							virtual_dist_ed           
+							testing_systs              
+							unique_tech                
+							-->
+	
+							<!-- 
+							apps                       
+							digit_textbooks           
+							games                    
+							study_tools              
+							video                    
+							dictionaries            
+							directories                
+							-->
+	
+							<!-- 
+							subscrip_sites             
+							ebook_game_creat        
+							digit_story_poster         
+							courseware               
+							talent_mgmt               
+							prof_devel_systems       
+							instr_design              
+							other_diy                 
+							-->
+
+							<div style="clear: both;"></div>
+
+							<div class="journal-space-table-1"></div>        		
+	
+							<div class="table-form-jp" style="width: 600px;">
+								<div class="row">
+									<div class="cell-left-form-jp">
+										<%= f.label(:tag_line, 'Tag Line', class: 'input-label-form-jp') %>							
+									</div>
+									<div class="cell-right-form-jp">
+										<%= f.text_field :tag_line, :class => 'input-form-jp', :tabindex => '', :autofocus => false %>	
+									</div>
+									<div class="cell-error" id="state_publisher_journalposter_descriptions_tag_line"><p id="error_publisher_journalposter_descriptions_tag_line"></p></div>      					   							 								      	
+								</div>
+								<div class="input-form-spacer-jp"></div>        		
+								<div class="row">
+									<div class="cell-left-form-jp">
+										<%= f.label(:url, 'Company URL', class: 'input-label-form-jp') %>							
+									</div>
+									<div class="cell-right-form-jp">
+										<%= f.text_field :url, :class => 'input-form-jp', :tabindex => '', :autofocus => false %>	
+									</div>
+									<div class="cell-error" id="state_publisher_journalposter_descriptions_url"><p id="error_publisher_journalposter_descriptions_url"></p></div>      					   							 								      	
+								</div>
+								<div class="input-form-spacer-jp"></div>        		
+								<div class="row">
+									<div class="cell-left-form-jp">
+										<%= f.label(:word_descr, '30 Word Description', class: 'input-label-form-area-jp') %>							
+									</div>
+									<div class="cell-right-form-jp">
+										<%= f.text_area :word_descr, :class => 'input-form-word-description-jp', :tabindex => '', :autofocus => false %>	
+									</div>
+									<div class="cell-error" id="state_publisher_journalposter_descriptions_word_descr"><p id="error_publisher_journalposter_descriptions_word_descr"></p></div>      					   							 								      	
+								</div>
+							</div>
+	
+							<div class="input-form-spacer-jp"></div>        		
+
+							<!-- 
+							curriculum_resources
+							teacher_tools             
+							school_operations        
+							content                   
+							prof_learning             
+							-->
+	
+							<div style="width: 100%;">
+								<div class="journal-arrow-container">
+									<!-- <a id="link-arrow-1" href="#"> -->
+										<div id="arrow-1" class="journal-arrow-green"></div>
+									<!-- </a> -->
+								</div>
+	        					<%= f.submit '', :id => 'submit_id', :tabindex => '' %>
+	    					</div>
+
+		        		<% end %>
+		        		
+					</div>
+				</div>
+			</div>
+
+			<div style="height: 100px;"></div>
+			
+	<script>
+			
+		function cb_set(cntrl) {
+
+			var cb = "#publisher_journalposter_description_" + cntrl;
+			var sb = "#cb_" + cntrl;;
+
+			if($(cb).is(':checked')) {
+				$(cb).prop('checked', false);
+				$(sb).removeClass("journal-cb-background");
+				
+				// curriculum_resources
+				// teacher_tools             
+				// school_operations        
+				// content                   
+				// prof_learning             
+				
+				switch (cntrl)
+				{
+				  case 'curriculum_resources':
+				  	columnOneUnset();
+				  	break;
+				  case 'teacher_tools':
+				  	columnTwoUnset();
+				  	break;
+				  case 'school_operations':
+				  	columnThreeUnset();
+				  	break;
+				  case 'content':
+				  	columnFourUnset();
+				  	break;
+				  case 'prof_learning':
+				  	columnFiveUnset();
+				  	break;
+	
+				  default:
+				  //
+				}
+				
+				// $(rd).css ({			
+					// visibility: 'hidden'
+				// });							
+			}
+			else {
+				$(cb).prop('checked', true);
+				$(sb).addClass("journal-cb-background");
+
+				switch (cntrl)
+				{
+				  case 'curriculum_resources':
+				  	columnOneSet();
+				  	break;
+				  case 'teacher_tools':
+				  	columnTwoSet();
+				  	break;
+				  case 'school_operations':
+				  	columnThreeSet();
+				  	break;
+				  case 'content':
+				  	columnFourSet();
+				  	break;
+				  case 'prof_learning':
+				  	columnFiveSet();
+				  	break;
+				  default:
+				  //
+				}
+
+			}
+			
+			//validateCurriculumResources();			
+		}
+
+		function cb_set_init(cntrl) {
+
+			var cb = "#publisher_journalposter_description_" + cntrl;
+			var sb = "#cb_" + cntrl;;
+
+			if($(cb).is(':checked')) {
+				
+				// curriculum_resources
+				// teacher_tools             
+				// school_operations        
+				// content                   
+				// prof_learning             
+				
+				switch (cntrl)
+				{
+				  case 'curriculum_resources':
+				  	columnOneSet();
+				  	break;
+				  case 'teacher_tools':
+				  	columnTwoSet();
+				  	break;
+				  case 'school_operations':
+				  	columnThreeSet();
+				  	break;
+				  case 'content':
+				  	columnFourSet();
+				  	break;
+				  case 'prof_learning':
+				  	columnFiveSet();
+				  	break;
+				  default:
+				  //
+				}				
+			}
+			else {
+
+				switch (cntrl)
+				{
+				  case 'curriculum_resources':
+				  	columnOneUnset();
+				  	break;
+				  case 'teacher_tools':
+				  	columnTwoUnset();
+				  	break;
+				  case 'school_operations':
+				  	columnThreeUnset();
+				  	break;
+				  case 'content':
+				  	columnFourUnset();
+				  	break;
+				  case 'prof_learning':
+				  	columnFiveUnset();
+				  	break;
+	
+				  default:
+				  //
+				}
+			}
+		}
+
+
+
+
+		function columnOneUnset() {
+			$("#cb_cent21_learning").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_cent21_learning").attr("disabled", true);		
+			$("#label_cent21_learning").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_cent21_learning").hasClass("journal-cb-background")) {
+				$("#cb_cent21_learning").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_language").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_language").attr("disabled", true);		
+			$("#label_language").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_language").hasClass("journal-cb-background")) {
+				$("#cb_language").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}					
+
+			$("#cb_math").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_math").attr("disabled", true);		
+			$("#label_math").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_math").hasClass("journal-cb-background")) {
+				$("#cb_math").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_science").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_science").attr("disabled", true);		
+			$("#label_science").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_science").hasClass("journal-cb-background")) {
+				$("#cb_science").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+		
+			$("#cb_social_studies").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_social_studies").attr("disabled", true);		
+			$("#label_social_studies").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_social_studies").hasClass("journal-cb-background")) {
+				$("#cb_social_studies").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_special_ed").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_special_ed").attr("disabled", true);		
+			$("#label_special_ed").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_special_ed").hasClass("journal-cb-background")) {
+				$("#cb_special_ed").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}					
+		}
+		
+		function columnOneSet() {
+			$("#cb_cent21_learning").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_cent21_learning").attr("disabled", false);		
+			$("#label_cent21_learning").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_cent21_learning").hasClass("journal-cb-background-disabled")) {
+				$("#cb_cent21_learning").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_language").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_language").attr("disabled", false);		
+			$("#label_language").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_language").hasClass("journal-cb-background-disabled")) {
+				$("#cb_language").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+
+			$("#cb_math").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_math").attr("disabled", false);		
+			$("#label_math").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_math").hasClass("journal-cb-background-disabled")) {
+				$("#cb_math").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_science").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_science").attr("disabled", false);		
+			$("#label_science").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_science").hasClass("journal-cb-background-disabled")) {
+				$("#cb_science").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_social_studies").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_social_studies").attr("disabled", false);		
+			$("#label_social_studies").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_social_studies").hasClass("journal-cb-background-disabled")) {
+				$("#cb_social_studies").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_special_ed").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_special_ed").attr("disabled", false);		
+			$("#label_special_ed").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_special_ed").hasClass("journal-cb-background-disabled")) {
+				$("#cb_special_ed").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+		}	
+			
+		// assmt_testing            
+		// collaboration             
+		// classroom_resp           
+		// grading_atten            
+		// lesson_planning          
+		// pres_tools               
+		// lecture_capture          
+		// plag_checks              
+			
+			
+		function columnTwoUnset() {
+			$("#cb_assmt_testing").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_assmt_testing").attr("disabled", true);		
+			$("#label_assmt_testing").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_assmt_testing").hasClass("journal-cb-background")) {
+				$("#cb_assmt_testing").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_collaboration").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_collaboration").attr("disabled", true);		
+			$("#label_collaboration").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_collaboration").hasClass("journal-cb-background")) {
+				$("#cb_collaboration").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}					
+
+			$("#cb_classroom_resp").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_classroom_resp").attr("disabled", true);		
+			$("#label_classroom_resp").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_classroom_resp").hasClass("journal-cb-background")) {
+				$("#cb_classroom_resp").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_grading_atten").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_grading_atten").attr("disabled", true);		
+			$("#label_grading_atten").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_grading_atten").hasClass("journal-cb-background")) {
+				$("#cb_grading_atten").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+		
+			$("#cb_lesson_planning").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_lesson_planning").attr("disabled", true);		
+			$("#label_lesson_planning").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_lesson_planning").hasClass("journal-cb-background")) {
+				$("#cb_lesson_planning").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_pres_tools").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_pres_tools").attr("disabled", true);		
+			$("#label_pres_tools").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_pres_tools").hasClass("journal-cb-background")) {
+				$("#cb_pres_tools").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}					
+
+			$("#cb_lecture_capture").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_lecture_capture").attr("disabled", true);		
+			$("#label_lecture_capture").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_lecture_capture").hasClass("journal-cb-background")) {
+				$("#cb_lecture_capture").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}					
+
+			$("#cb_plag_checks").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_plag_checks").attr("disabled", true);		
+			$("#label_plag_checks").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_plag_checks").hasClass("journal-cb-background")) {
+				$("#cb_plag_checks").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}					
+		}
+		function columnTwoSet() {
+			$("#cb_assmt_testing").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_assmt_testing").attr("disabled", false);		
+			$("#label_assmt_testing").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_assmt_testing").hasClass("journal-cb-background-disabled")) {
+				$("#cb_assmt_testing").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_collaboration").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_collaboration").attr("disabled", false);		
+			$("#label_collaboration").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_collaboration").hasClass("journal-cb-background-disabled")) {
+				$("#cb_collaboration").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+
+			$("#cb_classroom_resp").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_classroom_resp").attr("disabled", false);		
+			$("#label_classroom_resp").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_classroom_resp").hasClass("journal-cb-background-disabled")) {
+				$("#cb_classroom_resp").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_grading_atten").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_grading_atten").attr("disabled", false);		
+			$("#label_grading_atten").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_grading_atten").hasClass("journal-cb-background-disabled")) {
+				$("#cb_grading_atten").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_lesson_planning").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_lesson_planning").attr("disabled", false);		
+			$("#label_lesson_planning").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_lesson_planning").hasClass("journal-cb-background-disabled")) {
+				$("#cb_lesson_planning").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_pres_tools").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_pres_tools").attr("disabled", false);		
+			$("#label_pres_tools").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_pres_tools").hasClass("journal-cb-background-disabled")) {
+				$("#cb_pres_tools").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+
+			$("#cb_lecture_capture").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_lecture_capture").attr("disabled", false);		
+			$("#label_lecture_capture").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_lecture_capture").hasClass("journal-cb-background-disabled")) {
+				$("#cb_lecture_capture").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+
+			$("#cb_plag_checks").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_plag_checks").attr("disabled", false);		
+			$("#label_plag_checks").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_plag_checks").hasClass("journal-cb-background-disabled")) {
+				$("#cb_plag_checks").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+
+			// $("#cb_").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			// $("#publisher_journalposter_description_").attr("disabled", false);		
+			// $("#label_").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			// if ($("#cb_").hasClass("journal-cb-background-disabled")) {
+				// $("#cb_").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			// }					
+
+			
+		}
+
+		// learning_mgmt_systs       
+		// student_info_systs       
+		// web_filtering            
+		// device_mgmt               
+		// virtual_dist_ed           
+		// testing_systs              
+		// unique_tech                
+
+		function columnThreeUnset() {
+			$("#cb_learning_mgmt_systs").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_learning_mgmt_systs").attr("disabled", true);		
+			$("#label_learning_mgmt_systs").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_learning_mgmt_systs").hasClass("journal-cb-background")) {
+				$("#cb_learning_mgmt_systs").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_student_info_systs").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_student_info_systs").attr("disabled", true);		
+			$("#label_student_info_systs").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_student_info_systs").hasClass("journal-cb-background")) {
+				$("#cb_student_info_systs").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}					
+
+			$("#cb_web_filtering").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_web_filtering").attr("disabled", true);		
+			$("#label_web_filtering").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_web_filtering").hasClass("journal-cb-background")) {
+				$("#cb_web_filtering").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_device_mgmt").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_device_mgmt").attr("disabled", true);		
+			$("#label_device_mgmt").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_device_mgmt").hasClass("journal-cb-background")) {
+				$("#cb_device_mgmt").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+		
+			$("#cb_virtual_dist_ed").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_virtual_dist_ed").attr("disabled", true);		
+			$("#label_virtual_dist_ed").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_virtual_dist_ed").hasClass("journal-cb-background")) {
+				$("#cb_virtual_dist_ed").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_testing_systs").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_testing_systs").attr("disabled", true);		
+			$("#label_testing_systs").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_testing_systs").hasClass("journal-cb-background")) {
+				$("#cb_testing_systs").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_unique_tech").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_unique_tech").attr("disabled", true);		
+			$("#label_unique_tech").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_unique_tech").hasClass("journal-cb-background")) {
+				$("#cb_unique_tech").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}					
+		}
+		
+		function columnThreeSet() {
+			$("#cb_learning_mgmt_systs").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_learning_mgmt_systs").attr("disabled", false);		
+			$("#label_learning_mgmt_systs").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_learning_mgmt_systs").hasClass("journal-cb-background-disabled")) {
+				$("#cb_learning_mgmt_systs").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_student_info_systs").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_student_info_systs").attr("disabled", false);		
+			$("#label_student_info_systs").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_student_info_systs").hasClass("journal-cb-background-disabled")) {
+				$("#cb_student_info_systs").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+
+			$("#cb_web_filtering").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_web_filtering").attr("disabled", false);		
+			$("#label_web_filtering").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_web_filtering").hasClass("journal-cb-background-disabled")) {
+				$("#cb_web_filtering").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_device_mgmt").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_device_mgmt").attr("disabled", false);		
+			$("#label_device_mgmt").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_device_mgmt").hasClass("journal-cb-background-disabled")) {
+				$("#cb_device_mgmt").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_virtual_dist_ed").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_virtual_dist_ed").attr("disabled", false);		
+			$("#label_virtual_dist_ed").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_virtual_dist_ed").hasClass("journal-cb-background-disabled")) {
+				$("#cb_virtual_dist_ed").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_testing_systs").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_testing_systs").attr("disabled", false);		
+			$("#label_testing_systs").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_testing_systs").hasClass("journal-cb-background-disabled")) {
+				$("#cb_testing_systs").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}
+			
+			$("#cb_unique_tech").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_unique_tech").attr("disabled", false);		
+			$("#label_unique_tech").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_unique_tech").hasClass("journal-cb-background-disabled")) {
+				$("#cb_unique_tech").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+		}	
+		
+		// apps                       
+		// digit_textbooks           
+		// games                    
+		// study_tools              
+		// video                    
+		// dictionaries            
+		// directories                
+		
+
+		function columnFourUnset() {
+			$("#cb_apps").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_apps").attr("disabled", true);		
+			$("#label_apps").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_apps").hasClass("journal-cb-background")) {
+				$("#cb_apps").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_digit_textbooks").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_digit_textbooks").attr("disabled", true);		
+			$("#label_digit_textbooks").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_digit_textbooks").hasClass("journal-cb-background")) {
+				$("#cb_digit_textbooks").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}					
+
+			$("#cb_games").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_games").attr("disabled", true);		
+			$("#label_games").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_games").hasClass("journal-cb-background")) {
+				$("#cb_games").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_study_tools").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_study_tools").attr("disabled", true);		
+			$("#label_study_tools").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_study_tools").hasClass("journal-cb-background")) {
+				$("#cb_study_tools").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+		
+			$("#cb_video").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_video").attr("disabled", true);		
+			$("#label_video").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_video").hasClass("journal-cb-background")) {
+				$("#cb_video").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_dictionaries").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_dictionaries").attr("disabled", true);		
+			$("#label_dictionaries").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_dictionaries").hasClass("journal-cb-background")) {
+				$("#cb_dictionaries").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}	
+			
+			$("#cb_directories").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_directories").attr("disabled", true);		
+			$("#label_directories").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_directories").hasClass("journal-cb-background")) {
+				$("#cb_directories").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}															
+		}
+		
+		function columnFourSet() {
+			$("#cb_apps").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_apps").attr("disabled", false);		
+			$("#label_apps").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_apps").hasClass("journal-cb-background-disabled")) {
+				$("#cb_apps").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_digit_textbooks").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_digit_textbooks").attr("disabled", false);		
+			$("#label_digit_textbooks").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_digit_textbooks").hasClass("journal-cb-background-disabled")) {
+				$("#cb_digit_textbooks").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+
+			$("#cb_games").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_games").attr("disabled", false);		
+			$("#label_games").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_games").hasClass("journal-cb-background-disabled")) {
+				$("#cb_games").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_study_tools").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_study_tools").attr("disabled", false);		
+			$("#label_study_tools").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_study_tools").hasClass("journal-cb-background-disabled")) {
+				$("#cb_study_tools").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_video").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_video").attr("disabled", false);		
+			$("#label_video").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_video").hasClass("journal-cb-background-disabled")) {
+				$("#cb_video").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_dictionaries").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_dictionaries").attr("disabled", false);		
+			$("#label_dictionaries").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_dictionaries").hasClass("journal-cb-background-disabled")) {
+				$("#cb_dictionaries").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}				
+			
+			$("#cb_directories").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_directories").attr("disabled", false);		
+			$("#label_directories").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_directories").hasClass("journal-cb-background-disabled")) {
+				$("#cb_directories").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+		}	
+
+		// subscrip_sites             
+		// ebook_game_creat        
+		// digit_story_poster         
+		// courseware               
+		// talent_mgmt               
+		// prof_devel_systems       
+		// instr_design              
+		// other_diy                 
+
+		function columnFiveUnset() {
+			$("#cb_subscrip_sites").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_subscrip_sites").attr("disabled", true);		
+			$("#label_subscrip_sites").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_subscrip_sites").hasClass("journal-cb-background")) {
+				$("#cb_subscrip_sites").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_ebook_game_creat").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_ebook_game_creat").attr("disabled", true);		
+			$("#label_ebook_game_creat").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_ebook_game_creat").hasClass("journal-cb-background")) {
+				$("#cb_ebook_game_creat").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}					
+
+			$("#cb_digit_story_poster").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_digit_story_poster").attr("disabled", true);		
+			$("#label_digit_story_poster").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_digit_story_poster").hasClass("journal-cb-background")) {
+				$("#cb_digit_story_poster").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_courseware").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_courseware").attr("disabled", true);		
+			$("#label_courseware").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_courseware").hasClass("journal-cb-background")) {
+				$("#cb_courseware").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+		
+			$("#cb_talent_mgmt").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_talent_mgmt").attr("disabled", true);		
+			$("#label_talent_mgmt").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_talent_mgmt").hasClass("journal-cb-background")) {
+				$("#cb_talent_mgmt").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}		
+			
+			$("#cb_prof_devel_systems").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_prof_devel_systems").attr("disabled", true);		
+			$("#label_prof_devel_systems").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_prof_devel_systems").hasClass("journal-cb-background")) {
+				$("#cb_prof_devel_systems").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}			
+			
+			$("#cb_instr_design").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_instr_design").attr("disabled", true);		
+			$("#label_instr_design").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_instr_design").hasClass("journal-cb-background")) {
+				$("#cb_instr_design").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}					
+
+			$("#cb_other_diy").removeClass("journal-cb-button-enabled").addClass("journal-cb-button-disabled");		
+			$("#publisher_journalposter_description_other_diy").attr("disabled", true);		
+			$("#label_other_diy").removeClass('jp-cell').addClass('jp-cell-disabled');		
+			if ($("#cb_other_diy").hasClass("journal-cb-background")) {
+				$("#cb_other_diy").removeClass("journal-cb-background").addClass("journal-cb-background-disabled");
+			}													
+		}
+		
+		function columnFiveSet() {
+			$("#cb_subscrip_sites").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_subscrip_sites").attr("disabled", false);		
+			$("#label_subscrip_sites").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_subscrip_sites").hasClass("journal-cb-background-disabled")) {
+				$("#cb_subscrip_sites").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_ebook_game_creat").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_ebook_game_creat").attr("disabled", false);		
+			$("#label_ebook_game_creat").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_ebook_game_creat").hasClass("journal-cb-background-disabled")) {
+				$("#cb_ebook_game_creat").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+
+			$("#cb_digit_story_poster").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_digit_story_poster").attr("disabled", false);		
+			$("#label_digit_story_poster").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_digit_story_poster").hasClass("journal-cb-background-disabled")) {
+				$("#cb_digit_story_poster").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_courseware").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_courseware").attr("disabled", false);		
+			$("#label_courseware").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_courseware").hasClass("journal-cb-background-disabled")) {
+				$("#cb_courseware").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_talent_mgmt").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_talent_mgmt").attr("disabled", false);		
+			$("#label_talent_mgmt").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_talent_mgmt").hasClass("journal-cb-background-disabled")) {
+				$("#cb_talent_mgmt").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}		
+
+			$("#cb_prof_devel_systems").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_prof_devel_systems").attr("disabled", false);		
+			$("#label_prof_devel_systems").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_prof_devel_systems").hasClass("journal-cb-background-disabled")) {
+				$("#cb_prof_devel_systems").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}
+
+			$("#cb_instr_design").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_instr_design").attr("disabled", false);		
+			$("#label_instr_design").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_instr_design").hasClass("journal-cb-background-disabled")) {
+				$("#cb_instr_design").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+			
+			$("#cb_other_diy").removeClass("journal-cb-button-disabled").addClass("journal-cb-button-enabled");				
+			$("#publisher_journalposter_description_other_diy").attr("disabled", false);		
+			$("#label_other_diy").removeClass('jp-cell-disabled').addClass('jp-cell');		
+			if ($("#cb_other_diy").hasClass("journal-cb-background-disabled")) {
+				$("#cb_other_diy").removeClass("journal-cb-background-disabled").addClass("journal-cb-background");
+			}					
+		}	
+				
+
+		// function validateCurriculumResources() {
+// 
+			// var isChecked = false;
+			// var cb;
+			// for (var i = 1; i < 16; i++ ) {
+				// cb = "#reg_event_city_workshop_" + i;
+				// if($(cb).is(':checked')) {
+					// isChecked = true;
+				// }
+			// }
+// 			
+			// if ( !isChecked ) {
+				// if (validatorCalled ) {
+					// $("#border_city_workshop").css ({
+						// 'border-color' : '#851717'
+					// });
+// 					
+					// $('#error_reg_event_city_workshop').html("*<br>Please select an option");
+				// }
+// 	
+				// $("#state_reg_event_city_workshop").css ({			
+					// background: 'url("/assets/submit_form_empty.png") no-repeat 0px 5px'
+				// });				
+			// }
+			// else {								
+				// $("#border_city_workshop").css ({
+					// 'border-color' : '#005C9E'
+				// });
+// 				
+				// $('#error_reg_event_city_workshop').html("");
+// 				
+				// $("#state_reg_event_city_workshop").css ({			
+					// background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+				// });
+			// }
+// 
+			// return isChecked;
+		// }
+
+
+
+		// function enableArrow() {
+			// $("#arrow-1").removeClass("journal-arrow-gray").addClass("journal-arrow-green");			
+		// }
+
+
+		// $('#jp-option-1').on('click', function() {
+			// cb_set('curriculum_resources');
+		// });
+
+
+		function cb_init(cntrl, val) {
+			var cb = "#publisher_journalposter_description_" + cntrl;
+			var sb = "#cb_" + cntrl;;
+			if(val == 0) {
+				$(cb).prop('checked', false);
+				$(sb).removeClass("journal-cb-background");				
+			}
+			else {
+				$(cb).prop('checked', true);
+				$(sb).addClass("journal-cb-background");
+			}
+		}
+
+		function page_init() {
+
+			// curriculum_resources
+			// cent21_learning
+			// language
+			// math
+			// science
+			// social_studies
+			// special_ed				
+				
+			cb_init('curriculum_resources', gon.publisher_journalposter_description.curriculum_resources)
+			cb_init('cent21_learning', gon.publisher_journalposter_description.cent21_learning)
+			cb_init('language', gon.publisher_journalposter_description.language)
+			cb_init('math', gon.publisher_journalposter_description.math)
+			cb_init('science', gon.publisher_journalposter_description.science)
+			cb_init('social_studies', gon.publisher_journalposter_description.social_studies)
+			cb_init('special_ed', gon.publisher_journalposter_description.special_ed)
+				
+			// teacher_tools             
+			// assmt_testing            
+			// collaboration             
+			// classroom_resp           
+			// grading_atten            
+			// lesson_planning          
+			// pres_tools               
+			// lecture_capture          
+			// plag_checks              
+				
+			cb_init('teacher_tools', gon.publisher_journalposter_description.teacher_tools)
+			cb_init('assmt_testing', gon.publisher_journalposter_description.assmt_testing)
+			cb_init('collaboration', gon.publisher_journalposter_description.collaboration)
+			cb_init('classroom_resp', gon.publisher_journalposter_description.classroom_resp)
+			cb_init('grading_atten', gon.publisher_journalposter_description.grading_atten)
+			cb_init('lesson_planning', gon.publisher_journalposter_description.lesson_planning)
+			cb_init('pres_tools', gon.publisher_journalposter_description.pres_tools)
+			cb_init('lecture_capture', gon.publisher_journalposter_description.lecture_capture)
+			cb_init('plag_checks', gon.publisher_journalposter_description.plag_checks)
+
+			// school_operations        
+			// learning_mgmt_systs       
+			// student_info_systs       
+			// web_filtering            
+			// device_mgmt               
+			// virtual_dist_ed           
+			// testing_systs              
+			// unique_tech                
+
+			cb_init('school_operations', gon.publisher_journalposter_description.school_operations)
+			cb_init('learning_mgmt_systs', gon.publisher_journalposter_description.learning_mgmt_systs)
+			cb_init('student_info_systs', gon.publisher_journalposter_description.student_info_systs)
+			cb_init('web_filtering', gon.publisher_journalposter_description.web_filtering)
+			cb_init('device_mgmt', gon.publisher_journalposter_description.device_mgmt)
+			cb_init('virtual_dist_ed', gon.publisher_journalposter_description.virtual_dist_ed)
+			cb_init('testing_systs', gon.publisher_journalposter_description.testing_systs)
+			cb_init('unique_tech', gon.publisher_journalposter_description.unique_tech)
+
+			// content                    
+			// apps                       
+			// digit_textbooks           
+			// games                    
+			// study_tools              
+			// video                    
+			// dictionaries            
+			// directories                
+
+			cb_init('content', gon.publisher_journalposter_description.content)
+			cb_init('apps', gon.publisher_journalposter_description.apps)
+			cb_init('digit_textbooks', gon.publisher_journalposter_description.digit_textbooks)
+			cb_init('games', gon.publisher_journalposter_description.games)
+			cb_init('study_tools', gon.publisher_journalposter_description.study_tools)
+			cb_init('video', gon.publisher_journalposter_description.video)
+			cb_init('dictionaries', gon.publisher_journalposter_description.dictionaries)
+			cb_init('directories', gon.publisher_journalposter_description.directories)
+
+ 			// prof_learning             
+			// subscrip_sites             
+			// ebook_game_creat        
+			// digit_story_poster         
+			// courseware               
+			// talent_mgmt               
+			// prof_devel_systems       
+			// instr_design              
+			// other_diy                 
+
+			cb_init('prof_learning', gon.publisher_journalposter_description.prof_learning)
+			cb_init('subscrip_sites', gon.publisher_journalposter_description.subscrip_sites)
+			cb_init('ebook_game_creat', gon.publisher_journalposter_description.ebook_game_creat)
+			cb_init('digit_story_poster', gon.publisher_journalposter_description.digit_story_poster)
+			cb_init('courseware', gon.publisher_journalposter_description.courseware)
+			cb_init('talent_mgmt', gon.publisher_journalposter_description.talent_mgmt)
+			cb_init('prof_devel_systems', gon.publisher_journalposter_description.prof_devel_systems)
+			cb_init('instr_design', gon.publisher_journalposter_description.instr_design)
+			cb_init('other_diy', gon.publisher_journalposter_description.other_diy)
+
+			// curriculum_resources
+			// teacher_tools             
+			// school_operations        
+			// content                   
+			// prof_learning             
+
+			cb_set_init('curriculum_resources');
+			cb_set_init('teacher_tools');
+			cb_set_init('school_operations');
+			cb_set_init('content');
+			cb_set_init('prof_learning');
+		}
+
+		$(window).load( function() {
+		//$(document).ready(function(){
+				
+			page_init();				
+
+				
+			// curriculum_resources
+			// cent21_learning
+			// language
+			// math
+			// science
+			// social_studies
+			// special_ed				
+
+			$('td#label_curriculum_resources').on('click', function() {
+				cb_set('curriculum_resources');
+			});
+			$('td#label_curriculum_resources').keypress(function(e){
+	  			if(e.keyCode==13)
+	  			$('td#label_curriculum_resources').click();
+			});				
+
+			$('td#label_cent21_learning').on('click', function() {
+				if ($("#label_cent21_learning").hasClass("jp-cell")) {		
+					cb_set('cent21_learning');
+				}
+			});
+			$('td#label_cent21_learning').keypress(function(e){
+				if ($("#label_cent21_learning").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_cent21_learning').click();
+	  			}
+			});				
+
+			$('td#label_language').on('click', function() {
+				if ($("#label_language").hasClass("jp-cell")) {		
+					cb_set('language');
+				}
+			});
+			$('td#label_language').keypress(function(e){
+				if ($("#label_").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_language').click();
+	  			}
+			});				
+
+			$('td#label_math').on('click', function() {
+				if ($("#label_math").hasClass("jp-cell")) {		
+					cb_set('math');
+				}
+			});
+			$('td#label_math').keypress(function(e){
+				if ($("#label_math").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_math').click();
+	  			}
+			});				
+
+			$('td#label_science').on('click', function() {
+				if ($("#label_science").hasClass("jp-cell")) {		
+					cb_set('science');
+				}
+			});
+			$('td#label_science').keypress(function(e){
+				if ($("#label_science").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_science').click();
+	  			}
+			});				
+
+			$('td#label_social_studies').on('click', function() {
+				if ($("#label_social_studies").hasClass("jp-cell")) {		
+					cb_set('social_studies');
+				}
+			});
+			$('td#label_social_studies').keypress(function(e){
+				if ($("#label_social_studies").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_social_studies').click();
+	  			}
+			});				
+
+			$('td#label_special_ed').on('click', function() {
+				if ($("#label_special_ed").hasClass("jp-cell")) {		
+					cb_set('special_ed');
+				}
+			});
+			$('td#label_special_ed').keypress(function(e){
+				if ($("#label_special_ed").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_special_ed').click();
+	  			}
+			});				
+
+
+
+
+			// $('td#label_').on('click', function() {
+				// cb_set('');
+			// });
+			// $('td#label_').keypress(function(e){
+	  			// if(e.keyCode==13)
+	  			// $('td#label_').click();
+			// });				
+
+			// $('td#label_').on('click', function() {
+				// if ($("#label_").hasClass("jp-cell")) {		
+					// cb_set('');
+				// }
+			// });
+			// $('td#label_cent21_learning').keypress(function(e){
+				// if ($("#label_").hasClass("jp-cell")) {
+	  				// if(e.keyCode==13)
+	  				// $('td#label_').click();
+	  			// }
+			// });				
+
+
+
+
+				
+
+			
+			// teacher_tools             
+			// assmt_testing            
+			// collaboration             
+			// classroom_resp           
+			// grading_atten            
+			// lesson_planning          
+			// pres_tools               
+			// lecture_capture          
+			// plag_checks              
+
+			$('td#label_teacher_tools').on('click', function() {
+				cb_set('teacher_tools');
+			});
+			$('td#label_teacher_tools').keypress(function(e){
+	  			if(e.keyCode==13)
+	  			$('td#label_teacher_tools').click();
+			});				
+
+			$('td#label_assmt_testing').on('click', function() {
+				if ($("#label_assmt_testing").hasClass("jp-cell")) {		
+					cb_set('assmt_testing');
+				}
+			});
+			$('td#label_assmt_testing').keypress(function(e){
+				if ($("#label_assmt_testing").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_assmt_testing').click();
+	  			}
+			});				
+
+			$('td#label_collaboration').on('click', function() {
+				if ($("#label_collaboration").hasClass("jp-cell")) {		
+					cb_set('collaboration');
+				}
+			});
+			$('td#label_collaboration').keypress(function(e){
+				if ($("#label_collaboration").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_collaboration').click();
+	  			}
+			});				
+
+			$('td#label_classroom_resp').on('click', function() {
+				if ($("#label_classroom_resp").hasClass("jp-cell")) {		
+					cb_set('classroom_resp');
+				}
+			});
+			$('td#label_classroom_resp').keypress(function(e){
+				if ($("#label_classroom_resp").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_classroom_resp').click();
+	  			}
+			});				
+
+			$('td#label_grading_atten').on('click', function() {
+				if ($("#label_grading_atten").hasClass("jp-cell")) {		
+					cb_set('grading_atten');
+				}
+			});
+			$('td#label_grading_atten').keypress(function(e){
+				if ($("#label_grading_atten").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_grading_atten').click();
+	  			}
+			});				
+
+			$('td#label_lesson_planning').on('click', function() {
+				if ($("#label_lesson_planning").hasClass("jp-cell")) {		
+					cb_set('lesson_planning');
+				}
+			});
+			$('td#label_lesson_planning').keypress(function(e){
+				if ($("#label_lesson_planning").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_lesson_planning').click();
+	  			}
+			});				
+
+			$('td#label_pres_tools').on('click', function() {
+				if ($("#label_pres_tools").hasClass("jp-cell")) {		
+					cb_set('pres_tools');
+				}
+			});
+			$('td#label_pres_tools').keypress(function(e){
+				if ($("#label_pres_tools").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_pres_tools').click();
+	  			}
+			});				
+
+			$('td#label_lecture_capture').on('click', function() {
+				if ($("#label_lecture_capture").hasClass("jp-cell")) {		
+					cb_set('lecture_capture');
+				}
+			});
+			$('td#label_lecture_capture').keypress(function(e){
+				if ($("#label_lecture_capture").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_lecture_capture').click();
+	  			}
+			});				
+
+			$('td#label_plag_checks').on('click', function() {
+				if ($("#label_plag_checks").hasClass("jp-cell")) {		
+					cb_set('plag_checks');
+				}
+			});
+			$('td#label_plag_checks').keypress(function(e){
+				if ($("#label_plag_checks").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_plag_checks').click();
+	  			}
+			});				
+
+
+			// school_operations        
+			// learning_mgmt_systs       
+			// student_info_systs       
+			// web_filtering            
+			// device_mgmt               
+			// virtual_dist_ed           
+			// testing_systs              
+			// unique_tech                
+
+			$('td#label_school_operations').on('click', function() {
+				cb_set('school_operations');
+			});
+			$('td#label_school_operations').keypress(function(e){
+	  			if(e.keyCode==13)
+	  			$('td#label_school_operations').click();
+			});				
+
+			$('td#label_learning_mgmt_systs').on('click', function() {
+				if ($("#label_learning_mgmt_systs").hasClass("jp-cell")) {		
+					cb_set('learning_mgmt_systs');
+				}
+			});
+			$('td#label_learning_mgmt_systs').keypress(function(e){
+				if ($("#label_learning_mgmt_systs").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_learning_mgmt_systs').click();
+	  			}
+			});				
+
+			$('td#label_student_info_systs').on('click', function() {
+				if ($("#label_student_info_systs").hasClass("jp-cell")) {		
+					cb_set('student_info_systs');
+				}
+			});
+			$('td#label_student_info_systs').keypress(function(e){
+				if ($("#label_student_info_systs").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_student_info_systs').click();
+	  			}
+			});				
+
+			$('td#label_web_filtering').on('click', function() {
+				if ($("#label_web_filtering").hasClass("jp-cell")) {		
+					cb_set('web_filtering');
+				}
+			});
+			$('td#label_web_filtering').keypress(function(e){
+				if ($("#label_web_filtering").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_web_filtering').click();
+	  			}
+			});				
+
+			$('td#label_device_mgmt').on('click', function() {
+				if ($("#label_device_mgmt").hasClass("jp-cell")) {		
+					cb_set('device_mgmt');
+				}
+			});
+			$('td#label_device_mgmt').keypress(function(e){
+				if ($("#label_device_mgmt").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_device_mgmt').click();
+	  			}
+			});				
+
+			$('td#label_virtual_dist_ed').on('click', function() {
+				if ($("#label_virtual_dist_ed").hasClass("jp-cell")) {		
+					cb_set('virtual_dist_ed');
+				}
+			});
+			$('td#label_virtual_dist_ed').keypress(function(e){
+				if ($("#label_virtual_dist_ed").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_virtual_dist_ed').click();
+	  			}
+			});				
+
+			$('td#label_testing_systs').on('click', function() {
+				if ($("#label_testing_systs").hasClass("jp-cell")) {		
+					cb_set('testing_systs');
+				}
+			});
+			$('td#label_testing_systs').keypress(function(e){
+				if ($("#label_testing_systs").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_testing_systs').click();
+	  			}
+			});				
+
+			$('td#label_unique_tech').on('click', function() {
+				if ($("#label_unique_tech").hasClass("jp-cell")) {		
+					cb_set('unique_tech');
+				}
+			});
+			$('td#label_unique_tech').keypress(function(e){
+				if ($("#label_unique_tech").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_unique_tech').click();
+	  			}
+			});				
+
+
+			// content                    
+			// apps                       
+			// digit_textbooks           
+			// games                    
+			// study_tools              
+			// video                    
+			// dictionaries            
+			// directories                
+
+			$('td#label_content').on('click', function() {
+				cb_set('content');
+			});
+			$('td#label_content').keypress(function(e){
+	  			if(e.keyCode==13)
+	  			$('td#label_content').click();
+			});				
+
+			$('td#label_apps').on('click', function() {
+				if ($("#label_apps").hasClass("jp-cell")) {		
+					cb_set('apps');
+				}
+			});
+			$('td#label_apps').keypress(function(e){
+				if ($("#label_apps").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_apps').click();
+	  			}
+			});				
+
+			$('td#label_digit_textbooks').on('click', function() {
+				if ($("#label_digit_textbooks").hasClass("jp-cell")) {		
+					cb_set('digit_textbooks');
+				}
+			});
+			$('td#label_digit_textbooks').keypress(function(e){
+				if ($("#label_digit_textbooks").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_digit_textbooks').click();
+	  			}
+			});				
+
+			$('td#label_games').on('click', function() {
+				if ($("#label_games").hasClass("jp-cell")) {		
+					cb_set('games');
+				}
+			});
+			$('td#label_games').keypress(function(e){
+				if ($("#label_games").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_games').click();
+	  			}
+			});				
+
+			$('td#label_study_tools').on('click', function() {
+				if ($("#label_study_tools").hasClass("jp-cell")) {		
+					cb_set('study_tools');
+				}
+			});
+			$('td#label_study_tools').keypress(function(e){
+				if ($("#label_study_tools").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_study_tools').click();
+	  			}
+			});				
+
+			$('td#label_video').on('click', function() {
+				if ($("#label_video").hasClass("jp-cell")) {		
+					cb_set('video');
+				}
+			});
+			$('td#label_video').keypress(function(e){
+				if ($("#label_video").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_video').click();
+	  			}
+			});				
+
+			$('td#label_dictionaries').on('click', function() {
+				if ($("#label_dictionaries").hasClass("jp-cell")) {		
+					cb_set('dictionaries');
+				}
+			});
+			$('td#label_dictionaries').keypress(function(e){
+				if ($("#label_dictionaries").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_dictionaries').click();
+	  			}
+			});				
+
+			$('td#label_directories').on('click', function() {
+				if ($("#label_directories").hasClass("jp-cell")) {		
+					cb_set('directories');
+				}
+			});
+			$('td#label_directories').keypress(function(e){
+				if ($("#label_directories").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_directories').click();
+	  			}
+			});				
+
+ 
+ 			// prof_learning             
+			// subscrip_sites             
+			// ebook_game_creat        
+			// digit_story_poster         
+			// courseware               
+			// talent_mgmt               
+			// prof_devel_systems       
+			// instr_design              
+			// other_diy                 
+
+			$('td#label_prof_learning').on('click', function() {
+				cb_set('prof_learning');
+			});
+			$('td#label_prof_learning').keypress(function(e){
+	  			if(e.keyCode==13)
+	  			$('td#label_prof_learning').click();
+			});				
+
+			$('td#label_subscrip_sites').on('click', function() {
+				if ($("#label_subscrip_sites").hasClass("jp-cell")) {		
+					cb_set('subscrip_sites');
+				}
+			});
+			$('td#label_subscrip_sites').keypress(function(e){
+				if ($("#label_subscrip_sites").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_subscrip_sites').click();
+	  			}
+			});				
+
+			$('td#label_ebook_game_creat').on('click', function() {
+				if ($("#label_ebook_game_creat").hasClass("jp-cell")) {		
+					cb_set('ebook_game_creat');
+				}
+			});
+			$('td#label_ebook_game_creat').keypress(function(e){
+				if ($("#label_ebook_game_creat").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_ebook_game_creat').click();
+	  			}
+			});				
+
+			$('td#label_digit_story_poster').on('click', function() {
+				if ($("#label_digit_story_poster").hasClass("jp-cell")) {		
+					cb_set('digit_story_poster');
+				}
+			});
+			$('td#label_digit_story_poster').keypress(function(e){
+				if ($("#label_digit_story_poster").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_digit_story_poster').click();
+	  			}
+			});				
+
+			$('td#label_courseware').on('click', function() {
+				if ($("#label_courseware").hasClass("jp-cell")) {		
+					cb_set('courseware');
+				}
+			});
+			$('td#label_courseware').keypress(function(e){
+				if ($("#label_courseware").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_courseware').click();
+	  			}
+			});				
+
+			$('td#label_talent_mgmt').on('click', function() {
+				if ($("#label_talent_mgmt").hasClass("jp-cell")) {		
+					cb_set('talent_mgmt');
+				}
+			});
+			$('td#label_talent_mgmt').keypress(function(e){
+				if ($("#label_talent_mgmt").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_talent_mgmt').click();
+	  			}
+			});				
+
+			$('td#label_prof_devel_systems').on('click', function() {
+				if ($("#label_prof_devel_systems").hasClass("jp-cell")) {		
+					cb_set('prof_devel_systems');
+				}
+			});
+			$('td#label_prof_devel_systems').keypress(function(e){
+				if ($("#label_prof_devel_systems").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_prof_devel_systems').click();
+	  			}
+			});				
+
+			$('td#label_instr_design').on('click', function() {
+				if ($("#label_instr_design").hasClass("jp-cell")) {		
+					cb_set('instr_design');
+				}
+			});
+			$('td#label_instr_design').keypress(function(e){
+				if ($("#label_instr_design").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_instr_design').click();
+	  			}
+			});				
+
+			$('td#label_other_diy').on('click', function() {
+				if ($("#label_other_diy").hasClass("jp-cell")) {		
+					cb_set('other_diy');
+				}
+			});
+			$('td#label_other_diy').keypress(function(e){
+				if ($("#label_other_diy").hasClass("jp-cell")) {
+	  				if(e.keyCode==13)
+	  				$('td#label_other_diy').click();
+	  			}
+			});				
+
+
+
+
+
+
+
+			$('#arrow-1').on('click', function() {
+				$('#submit_id').click();
+			});
+			
+		});
+		
+		
+	</script>				

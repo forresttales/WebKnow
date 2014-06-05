@@ -1,0 +1,2 @@
+module PublisherJournalposterPurchasesHelper
+end

@@ -1,13 +1,12 @@
 <% provide(:title, 'Publisher Journal Posters') %>
 
-
 	<style>
 		
 		.form-display-col1 {
-			width: 200px;
+			width: 100px;
 		}
 		.form-display-col2 {
-			width: 400px;
+			width: 140px;
 		}
 		.form-display-separator {
 			height: 10px;
@@ -15,101 +14,328 @@
 		
 	</style>
 
-	<header>
+	<style>
+		
+		@import url(http://www.google.com/fonts#QuickUsePlace:quickUse/Family:Istok+Web);
+		
+		.jp-showcell-1 {
+			width: 90px;
+		} 	
+
+		td.jp-showcell {
+			height: 40px;
+			width: 100px;
+			padding-left: 4px;
+			padding-top: 4px;
+			vertical-align: top;
+	  		font-family: 'QuickUsePlace', sans-serif;
+	  		/*font-family: 'Quattrocento Sans', sans-serif;*/
+	        font-size: 10px;
+	    	color: #214025;
+	    	font-weight: 200;
+		}
+		td.jp-showcell-empty {
+			height: 60px;
+			width: 200px;
+	    	background-color: #fff;
+		}
+		.jp-cell-border-top {
+			border-top:#000000 solid 1px;				
+		}					
+		.jp-cell-border-bottom {
+			border-bottom:#000000 solid 1px;				
+		}					
+		.jp-cell-border-left {
+			border-left:#000000 solid 1px;				
+		}					
+		.jp-cell-border-right {
+			border-right:#000000 solid 1px;				
+		}					
+		.jp-showcell-background-0 {
+			background-color: #fff;
+		}
+		.jp-showcell-background-1 {
+			background-color: #ddd;
+		}
+		span.jp-title {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: #D98D2D;
+		}
+		span.jp-title-sub {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 18px;
+			color: #A9D996;
+		}
+		.jp-btn {
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 50px;
+		  	height: 20px;
+		  	background: inherit;
+		  	border-width: 0px;
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 13px;
+	    	color: #9F6720;
+	    	font-weight: 400;					  	
+		}
+		.jp-btn:focus {
+		}
+		.jp-btn:hover { 
+		  	text-decoration: underline;
+		  	cursor: pointer; 
+		}
+		.jp-btn:active { 
+		  	text-decoration: underline; 
+		}
+		.txtarea {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 14px;
+			padding-left: 6px;
+			padding-right: 6px;
+			padding-top: 2px;
+			/*border: solid 1px #478A3E;*/
+			border: solid 1px #aaa;
+			background-color: #fff;
+			resize: none;	
+			height: 70px;
+			width: 400px;
+		}
+		.form-text-index {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 14px;
+		}
+		.input-form-spacer-jp {
+			height: 16px;
+		}
+		.jp-table-descr {
+			display: table; 
+			width: 560px;	
+		}
+ 		div .jp-col-right {
+			display: table-cell;
+			width: 410px;
+			text-align: left;
+			align: top;		
+		}
+		div .jp-col-left {
+			display: table-cell;
+			width: 180px;
+			align: top;
+			text-align: left;		
+		}
+		.jp-col-right span {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #000;    		
+			height: 16px;
+		}
+		.jp-col-left span {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #000;    		
+			height: 16px;
+		}
+		.jp-textarea {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #000;    		
+			height: 16px;
+			position: relative;
+			top: -48px;
+		}
+		
+	</style>
+
+	<header>				
 		<%= render 'share/backtotop' %>
-	</header>
+	</header>		
 
 	<div class="container">
 		<div class="table-profile">
 			<div class="row-profile">
-				
 				<div class="col-left">
 					<%= render 'share/dir_publishers_left'%>
 				</div>
 				
 				<div class="col-midd">
 
-					<div style="text-align: left;">
-						<span class="normal pad-left-20">Publisher Journal Posters</span>
-					</div>
-
-					<div class="line-space-20"></div>
-					
-					<div>
-						<span class="normal pad-left-20">
-							Publisher Journal Poster Name: 
-							<em>
-							<%= @publisher_journalposter_name %>
-							</em>
-						</span>
-					</div>
-					
-					<div>
-						<span class="normal pad-left-20">
-							Journal Poster ID: <%= @publisher_journalposter_id %>
-						</span>
-					</div>
-
-					<div class="line-space-20"></div>
-
-					<% if @has_journalposter_logo %>
-						<div class="pad-left-20"><a id="render" href="/PublisherLogos/<%= @publisher_journalposter_id %>"></a></div>		
-					<% else %>
-						<div class="pad-left-20">
-							<span class="normal">
-								<%= link_to 'Upload Logo Image', '/PublisherLogos/' + @publisher_journalposter_id, :class => 'links' %>
-							</span>
-						</div>					
+					<% case @publisher_journalposter.poster.to_s %>
+					<% 	when "1" %>
+					<%= 	render 'publisher_journalposter_descriptions/index_1' %>
+					<% 	when "2" %>
+					<%=		render 'publisher_journalposter_descriptions/index_2' %>
+					<% 	when "3" %>
+					<%=		render 'publisher_journalposter_descriptions/index_3' %>
+					<% 	when "4" %>
+					<%=		render 'publisher_journalposter_descriptions/index_4' %>
+					<% 	else %>
 					<% end %>
 
-					<div class="line-space-20"></div>
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_publishers_right_bare' %>
+				</div>												
+			</div>
+		</div>
+	</div>
 
-					<% if @has_journalposter_metadata %>
-						<div class="pad-left-20"><a id="render" class="links" href="/PublisherMetadata/<%= @publisher_journalposter_id %>"><%= @journalposter_metadata %></a></div>		
-					<% else %>
-						<div class="pad-left-20">
-							<span class="normal">
-								<%= link_to 'Upload Journal Poster Metadata', '/PublisherMetadata/' + @publisher_journalposter_id, :class => 'links' %>
-							</span>
-						</div>					
-					<% end %>
-			
-					<div class="line-space-20"></div>
-			
-					<% if @publisher_journalposter_descriptions.any? %>
-					 
-		                  <!-- 
-		                  -->					 		
-					 
+
+	<script>
+		
+		
+		// alert('out of load');
+		
+		//label_curriculum_resources
+		function cb_init(cntrl, val) {
+			var sb = "#label_" + cntrl;;
+			if(val == 0) {
+				$(sb).addClass("jp-showcell-background-0");				
+			}
+			else {
+				$(sb).addClass("jp-showcell-background-1");				
+			}
+		}
+		
+		$(window).load( function() {
+		//$(document).ready(function(){
+				
+			// var cnt = 1;
+			// var cells = "";
+			// if (gon.image_name !== '') {								
+				// cells += "<img src='../images_publisher_journalposter_logo/" + gon.image_name + "' alt='image'>";
+				// var tbl = cells;
+				// $( "#render_publisher_journalposter_logo" ).html( tbl);
+			// }
+			// else {
+				// var tbl = "<table><tr><td><span class='normal-red pad-left-20'>No logo</span><td></tr></table>";
+				// $( "#render_publisher_journalposter_logo" ).html( tbl);				
+			// }
+				
+				
+			// curriculum_resources
+			// cent21_learning
+			// language
+			// math
+			// science
+			// social_studies
+			// special_ed				
+				
+			cb_init('curriculum_resources', gon.publisher_journalposter_description.curriculum_resources)
+			cb_init('cent21_learning', gon.publisher_journalposter_description.cent21_learning)
+			cb_init('language', gon.publisher_journalposter_description.language)
+			cb_init('math', gon.publisher_journalposter_description.math)
+			cb_init('science', gon.publisher_journalposter_description.science)
+			cb_init('social_studies', gon.publisher_journalposter_description.social_studies)
+			cb_init('special_ed', gon.publisher_journalposter_description.special_ed)
+
+				
+			// teacher_tools             
+			// assmt_testing            
+			// collaboration             
+			// classroom_resp           
+			// grading_atten            
+			// lesson_planning          
+			// pres_tools               
+			// lecture_capture          
+			// plag_checks              
+				
+			cb_init('teacher_tools', gon.publisher_journalposter_description.teacher_tools)
+			cb_init('assmt_testing', gon.publisher_journalposter_description.assmt_testing)
+			cb_init('collaboration', gon.publisher_journalposter_description.collaboration)
+			cb_init('classroom_resp', gon.publisher_journalposter_description.classroom_resp)
+			cb_init('grading_atten', gon.publisher_journalposter_description.grading_atten)
+			cb_init('lesson_planning', gon.publisher_journalposter_description.lesson_planning)
+			cb_init('pres_tools', gon.publisher_journalposter_description.pres_tools)
+			cb_init('lecture_capture', gon.publisher_journalposter_description.lecture_capture)
+			cb_init('plag_checks', gon.publisher_journalposter_description.plag_checks)
+
+
+			// school_operations        
+			// learning_mgmt_systs       
+			// student_info_systs       
+			// web_filtering            
+			// device_mgmt               
+			// virtual_dist_ed           
+			// testing_systs              
+			// unique_tech                
+
+			cb_init('school_operations', gon.publisher_journalposter_description.school_operations)
+			cb_init('learning_mgmt_systs', gon.publisher_journalposter_description.learning_mgmt_systs)
+			cb_init('student_info_systs', gon.publisher_journalposter_description.student_info_systs)
+			cb_init('web_filtering', gon.publisher_journalposter_description.web_filtering)
+			cb_init('device_mgmt', gon.publisher_journalposter_description.device_mgmt)
+			cb_init('virtual_dist_ed', gon.publisher_journalposter_description.virtual_dist_ed)
+			cb_init('testing_systs', gon.publisher_journalposter_description.testing_systs)
+			cb_init('unique_tech', gon.publisher_journalposter_description.unique_tech)
+
+
+			// content                    
+			// apps                       
+			// digit_textbooks           
+			// games                    
+			// study_tools              
+			// video                    
+			// dictionaries            
+			// directories                
+
+			cb_init('content', gon.publisher_journalposter_description.content)
+			cb_init('apps', gon.publisher_journalposter_description.apps)
+			cb_init('digit_textbooks', gon.publisher_journalposter_description.digit_textbooks)
+			cb_init('games', gon.publisher_journalposter_description.games)
+			cb_init('study_tools', gon.publisher_journalposter_description.study_tools)
+			cb_init('video', gon.publisher_journalposter_description.video)
+			cb_init('dictionaries', gon.publisher_journalposter_description.dictionaries)
+			cb_init('directories', gon.publisher_journalposter_description.directories)
+
+
+ 			// prof_learning             
+			// subscrip_sites             
+			// ebook_game_creat        
+			// digit_story_poster         
+			// courseware               
+			// talent_mgmt               
+			// prof_devel_systems       
+			// instr_design              
+			// other_diy                 
+
+			cb_init('prof_learning', gon.publisher_journalposter_description.prof_learning)
+			cb_init('subscrip_sites', gon.publisher_journalposter_description.subscrip_sites)
+			cb_init('ebook_game_creat', gon.publisher_journalposter_description.ebook_game_creat)
+			cb_init('digit_story_poster', gon.publisher_journalposter_description.digit_story_poster)
+			cb_init('courseware', gon.publisher_journalposter_description.courseware)
+			cb_init('talent_mgmt', gon.publisher_journalposter_description.talent_mgmt)
+			cb_init('prof_devel_systems', gon.publisher_journalposter_description.prof_devel_systems)
+			cb_init('instr_design', gon.publisher_journalposter_description.instr_design)
+			cb_init('other_diy', gon.publisher_journalposter_description.other_diy)
+		
+		
+		});		
+		
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false %>						
+						<div style="height: 20px;"></div>
+											 	
 					 	<table>
-					 		<tr>
-					 			<td class="form-display-col1">
-					 				<span class="small pad-left-20">Created:</span>
-					 			</td>
-					 			<td class="form-display-col2">
-					 				<span class="small pad-left-20"><%= @publisher_journalposter_descriptions[0].created_at.to_s(:long) %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Updated:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_journalposter_descriptions[0].updated_at.to_s(:long) %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Poster:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_journalposter_descriptions[0].poster_text %></span>
-					 			</td>
-					 		</tr>
-
-					 		<tr><td class="form-display-separator"></td><td></td></tr>
 					 		<tr>
 					 			<td>
 					 				<span class="small pad-left-20">Curriculum Resources:</span>
@@ -136,67 +362,409 @@
 					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].language) %></span>
 					 			</td>
 					 		</tr>
-
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Math:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].math) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Science:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].science) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Social Studies:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].social_studies) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Special Education:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].special_ed) %></span>
+					 			</td>
+					 		</tr>					 		
 					 	</table>
-						<div class="line-space-20"></div>
-						<div class="pad-left-20">
-							<span class="normal">								
-								<%= button_to "Edit", {:controller => 'publisher_journalposters', :action => 'edit', :id => @publisher_journalposter_descriptions[0].publisher_journalposter_id } %>
-							</span>
-						</div>
-				    	<div>
-					    	<h5>
-							   	<% delete_all_msg = "Delete all records and reset index in Publisher Journal Poster Descriptions?" %>
-								<%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long' %>
-							</h5>
-						</div>
-						
-					<% else %>
 
-						<div>
-							<span class="pad-left-20">&laquo;<%= link_to 'Add Journal Poster Information', '/PublisherAddJournalPosterInformation', :class => 'links' %>&raquo;</span>
-						</div>
-			
-						<div class="line-space-20"></div>
-			
-						<div>
-							<span class="normal-red pad-left-20">No record for this journalposter</span>
-						</div>
-				
-					<% end %>
 
-				</div>
-				
-				<div class="col-right">
-					<%= render 'share/dir_publishers_right' %>
-				</div>												
-			</div>
-		</div>
-	</div>
+						<!-- 
+						teacher_tools             
+						assmt_testing            
+						collaboration             
+						classroom_resp           
+						grading_atten            
+						lesson_planning          
+						pres_tools               
+						lecture_capture          
+						plag_checks 
+						-->              
 
-	<script>
-	  
-		$(window).load( function() {
-		//$(document).ready(function () {				
-	
-				var cnt = 1;
-				var cells = "";
-				
-				// alert(gon.image_name);
-	
-				if (gon.image_name !== '') {								
-					//cells += "</td><td style='width: 10px;'></td><td><img src='../images_publisher_journalposter_logo/" + gon.image_name + "' alt='image'>";
-					cells += "<img src='../images_publisher_journalposter_logo/" + gon.image_name + "' alt='image'>";
+						<div style="height: 20px;"></div>					 	
+					 	<table>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Digital Teacher Tools:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].teacher_tools) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Assessment/Testing:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].assmt_testing) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Collaboration:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].collaboration) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Classroom Response:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].classroom_resp) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Grading/Attendance:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].grading_atten) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Lesson Planning:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].lesson_planning) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Presentation Tools:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].pres_tools) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Lecture Capture:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].lecture_capture) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Plagiarism Checks:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].plag_checks) %></span>
+					 			</td>
+					 		</tr>
+					 	</table>
 
-					// var tbl = "<table><tr>" + cells + "</tr></table>";
-					var tbl = cells;
 
-					$( "#render" ).html( tbl);
-				}
-				else {
-					var tbl = "<table><tr><td><span class='normal-red pad-left-20'>No photo</span><td></tr></table>";
-					$( "#render" ).html( tbl);				
-				}
-		});
-	  
-	</script>		
+						<!-- 
+						school_operations        
+						learning_mgmt_systs       
+						student_info_systs       
+						web_filtering            
+						device_mgmt               
+						virtual_dist_ed           
+						testing_systs              
+						unique_tech                
+						-->              
+
+						<div style="height: 20px;"></div>					 	
+					 	<table>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Digital School Operations:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].school_operations) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Learning Management Systems:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].learning_mgmt_systs) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Student Information Systems:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].student_info_systs) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Web Filtering:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].web_filtering) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Device Management:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].device_mgmt) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Virtual Schools and Distance Education:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].virtual_dist_ed) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Testing Systems:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].testing_systs) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Unique Tech:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].unique_tech) %></span>
+					 			</td>
+					 		</tr>
+					 	</table>
+
+
+						<!-- 
+						content                    
+						apps                       
+						digit_textbooks           
+						games                    
+						study_tools              
+						video                    
+						dictionaries            
+						directories                
+						-->              
+
+						<div style="height: 20px;"></div>					 	
+					 	<table>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Digital Content:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].content) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Apps:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].apps) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Digital Textbooks/eBooks:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].digit_textbooks) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Games:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].games) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Study Tools:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].study_tools) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Video:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].video) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Dictionaries:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].dictionaries) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Directories:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].directories) %></span>
+					 			</td>
+					 		</tr>
+					 	</table>
+
+
+						<!-- 
+						prof_learning             
+						subscrip_sites             
+						ebook_game_creat        
+						digit_story_poster         
+						courseware               
+						talent_mgmt               
+						prof_devel_systems       
+						instr_design              
+						other_diy                   	
+						-->              
+
+						<div style="height: 20px;"></div>					 	
+					 	<table>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Professional Learning and DIY Digital Content:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].prof_learning) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Subscription sites:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].subscrip_sites) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">eBook creation/Game creation:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].ebook_game_creat) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Digital Storytelling/PosterBoarding:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].digit_story_poster) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Courseware:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].courseware) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Talent Management:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].talent_mgmt) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Professional Development Systems:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].prof_devel_systems) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Instructional Design:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].instr_design) %></span>
+					 			</td>
+					 		</tr>
+					 		<tr><td class="form-display-separator"></td><td></td></tr>
+					 		<tr>
+					 			<td>
+					 				<span class="small pad-left-20">Other DIY:</span>
+					 			</td>
+					 			<td>
+					 				<span class="small pad-left-20"><%= yn(@publisher_journalposter_descriptions[0].other_diy) %></span>
+					 			</td>
+					 		</tr>
+					 	</table>
+<% end %>

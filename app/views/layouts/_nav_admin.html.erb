@@ -1,0 +1,218 @@
+
+<style>
+
+	@font-face {
+	  	font-family: 'msyhb';
+	  	src: url('/assets/msyhb.eot');	  
+	  	src: url('/assets/msyhb.ttf') format('truetype');
+	}
+	@font-face {
+		font-family: 'msyh';
+	    src: url('/assets/msyh.eot');	  		
+		src: url('/assets/msyh.ttf') format('truetype');
+	}
+	
+	@font-face {
+		font-family: digitgraphics;
+		src: url('/assets/digitgraphics.eot');
+	}
+
+	@font-face {
+		font-family: KlavikaExtraLight;
+		src: url('/assets/KlavikaWebDisplayExtraLight.eot');
+	}
+		
+	nav {
+		font-family: msyh;
+		position: relative;
+		z-index: +10;
+		height: 38px;
+		/*background-color: rgba( 65, 183, 55, 0.92);*/        
+	}
+
+ 	/*
+ 	202631 -> 203121 -> 49704B -> 375239 -> 4F7551
+	3e464f -> 3E4F4B -> 627A75 -> 50635F -> 496962 -> 49695A
+	67717c -> 6F7C67 -> 95A38B -> 829179
+	444f5e -> 4F5E44 -> 879E75 -> 67785A
+	*/	
+
+	nav a:hover {
+	text-decoration: none;
+	}
+	nav ul {
+		padding-left: 0px;
+		margin-top: 0px;
+		border-radius: 0px;  
+		list-style: none;
+		position: relative;
+		display: inline-table;		
+	}
+	nav li {
+		float: left;		
+		display: inline;
+	}
+	nav ul:after {
+		content: "";
+		clear: both;
+		display: block;
+	}
+	nav ul li:hover {
+      /*background: -moz-linear-gradient(center bottom, #202631 10%, #3e464f 95%, #67717c 96%, #444f5e 99%);*/ 
+	}
+	nav ul li:hover a {
+		color: #BFFAB9;
+	}
+	nav ul li a {
+		display: block;
+		padding: 9px 9px;
+		color: #fff;
+		text-decoration: none;
+		font-size: 20px;
+	}
+	nav ul ul {
+		display: none;
+	}
+	/*nav ul li:active a {		
+		background: #56854E; 
+		background: linear-gradient(top, #56854E 0%, #254520 100%);  
+		background: -moz-linear-gradient(top, #56854E 0%, #254520 100%); 
+		background: -webkit-linear-gradient(top, #56854E 0%,#254520 100%);		
+      	background: -moz-linear-gradient(center bottom, #4F7551 10%, #49695A 95%, #829179 96%, #67785A 99%);      
+        background: -moz-linear-gradient(center bottom, #202631 10%, #3e464f 95%, #67717c 96%, #444f5e 99%);		
+		color:#F0F56E;
+		outline: none;
+	}*/	
+	nav ul ul {
+		background-color:rgba(0, 0, 0, 0.6);
+		-moz-box-shadow:2px 2px 20px rgba(0,0,0,.8);
+		-webkit-box-shadow:2px 20px 2px rgba(0,0,0,.8);
+		box-shadow:2px 2px 20px rgba(0,0,0,.8);
+		border-bottom-left-radius: 10px;
+   		border-bottom-right-radius: 10px;
+		position: absolute;
+	}
+	nav a:active {
+		background-color:rgba(0, 0, 0, 0.6);
+		-moz-box-shadow:2px 2px 20px rgba(0,0,0,.8);
+		-webkit-box-shadow:2px 20px 2px rgba(0,0,0,.8);
+		box-shadow:2px 2px 20px rgba(0,0,0,.8);
+		color:#F0F56E;
+		outline: none;
+	}
+	nav ul ul li:first-child {
+		float: none; 
+		position: relative;
+	}
+	nav ul ul li {
+		float: none; 
+		position: relative;
+	}
+	nav ul ul li a {
+		padding: 10px 20px;
+		border-bottom-left-radius: 0px;
+   		border-bottom-right-radius: 0px;
+	}
+	nav ul ul li:last-child a {
+		padding: 10px 20px;
+		border-bottom-left-radius: 10px;
+   		border-bottom-right-radius: 10px;
+	}
+	nav ul ul li a:hover {
+		background-color:rgba(0, 0, 0, 0.4);
+		color: #2AF707;
+	}
+	/*nav ul ul li a:active {
+		background-color:rgba(0, 0, 0, 0.4);
+		color:#F0F56E;
+		outline: none;
+	}*/
+	nav ul ul ul {
+		position: absolute;
+		left: 100%; top:0;
+	}
+	nav p {
+		padding: 14px 30px 0px 0px; 
+		color: orange;
+		font-size: 16px;
+		float: right;
+	}
+	
+	/*.extendfull, .extendleft
+	{
+		margin-left: -3000px;
+		padding-left: 3000px;
+	}
+	.extendfull, .extendright
+	{
+		margin-right: -3000px;
+		padding-right: 3000px;
+	}	*/
+     
+</style>
+
+	<!-- <nav style="position: fixed; width: 100%;"> -->	 	
+	<nav style="width: 100%;">	 	
+		<div id="topNav">
+			
+			<ul style="width: 100%; padding-left: 8%;">
+				<!-- <li><a href="/index">Home</a></li>
+				<li><a href="/edmatchups">EdMatchUp</a>
+					<ul>
+						<li><a href="/edmatchups">
+								<img src="/assets/image_ed_flow_chart_small.png" style="width: auto;">
+							</a>
+						</li>
+					</ul>					
+				</li> -->
+				<li><a href="/admin_users/index">Database</a>
+					<ul>
+						<li><a style="font-family: msyh; font-size: 13px;" href="#">Sign Up</a></li>
+					</ul>					
+				</li>
+								
+				<li><a href="#">Articles</a>
+					<ul>
+						<li>
+						</li>
+					</ul>
+				</li>
+
+	        	<% if session[:username].nil? %>
+	        	<li><a style="font-family: msyh; font-size: 13px;" href="/Signup">Sign Up</a></li>
+	        	<li><a style="font-family: msyh; font-size: 13px;" href="/Signin">Sign In</a></li>
+
+	        	<% else %>
+	        	<li><a style="font-family: msyh; font-size: 13px;" href="/Signout">Sign Out</a></li>
+	        	
+					<% if !( current_page?(controller: 'institutes', action: 'index') or %>
+					      <% current_page?(controller: 'publishers', action: 'index') ) %>
+		        	
+		        	<li><a style="font-family: msyh; font-size: 13px;" href="<%= session[:profile] %>">My Profile</a></li>
+		        	<% end %>
+	        	
+	        	<% end %>
+
+				
+			</ul>
+			
+		</div>
+	</nav>
+
+    <script>
+      
+        (function($){  
+            var nav = $("#topNav");  
+            nav.find("li").each(function() {  
+                if ($(this).find("ul").length > 0) {  
+                    $(this).mouseenter(function() {  
+                        $(this).find("ul").stop(true, true).slideDown(300);  
+                    });  
+                    $(this).mouseleave(function() {  
+                        $(this).find("ul").stop(true, true).slideUp(300);  
+                    });  
+                }  
+            });  
+        })(jQuery);
+          
+    </script>  

@@ -2,6 +2,8 @@ class InstituteProfilesController < ApplicationController
 
   layout 'institute'
 
+  before_filter :force_http
+  
   
   def index
     @institute_profiles = InstituteProfile.where("institute_id = ?", session[:institute_id])       

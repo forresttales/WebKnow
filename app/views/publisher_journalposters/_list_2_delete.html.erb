@@ -1,0 +1,195 @@
+
+	<div style="display: inline-block;">
+			
+	<% if @publisher_journalposters.any? %>
+		
+		<% @publisher_journalposters.each do |publisher_journalposter| %>
+		
+			<div style="height: 30px;"></div>
+		
+		  	<div class="jp-cell-list">
+
+		  		<table>
+		  			<tr>
+		  				<td>
+		  					<table>
+		  						<tr>
+		  							<td>
+		  								
+										<% if publisher_journalposter.has_journalposter_logo %>
+											<!-- <div class="pad-left-20"><a id="render_publisher_journalposter_logo" href="/PublisherJournalPosterLogos/= @publisher_journalposters[0].id.to_s "></a></div> -->
+					
+											<div>
+											   <% for publisher_journalposter_logo in publisher_journalposter.publisher_journalposter_logos %> 
+											   		<div>
+											       		
+											       		
+														<ul class="grid cs-style-3">
+															<li>
+																<figure>
+																	<img alt="logo not appearing" src="<%= publisher_journalposter_logo.image_url(:logo) if publisher_journalposter_logo.image? %>" />
+																	<figcaption>
+																		
+																		<span><%= link_to('Edit', {:controller => 'publisher_journalposter_descriptions', :action => 'index', :id => publisher_journalposter.id}, :class => 'jp-cell-list-link') %></span>
+										        						<!-- <span>= link_to "edit", edit_publisher_journalposter_logo_path(publisher_journalposter_logo) </span> -->
+																		<!-- <h3>$$$</h3>
+																		<span>Эрик</span>
+																		<a href="">Классно!</a> -->
+										        						<!-- <span>= link_to "remove", publisher_journalposter_logo, :confirm => 'Delete this logo?', :method => :delete </span> -->
+																	</figcaption>
+																</figure>
+															</li>
+														</ul>
+											       		
+														<!-- <a href="#">
+															<div class="cycle-slideshow slider-border-1"
+															    data-cycle-fx=scrollHorz
+															    data-cycle-timeout=2000
+															    >
+															    <div class="cycle-overlay"></div> -->
+															    <!-- <img alt="logo not appearing" src="= publisher_journalposter_logo.image_url(:logo) if publisher_journalposter_logo.image? " data-cycle-title="Title" data-cycle-desc="Description"/> -->
+															<!-- </div>										
+														</a> -->
+											       		
+													</div>
+											   <% end %> 
+											</div>
+																	
+										<% else %>
+											<% if @publisher_journalposters.any? %>
+											<div class="pad-left-20">
+												<span class="normal">
+													 <!-- link_to 'Upload Logo Image', '/PublisherJournalPosterLogos/' + @publisher_journalposters[0].id.to_s, :class => 'links' --> 
+													<%= link_to "Add a Logo", new_publisher_journalposter_logo_path(:publisher_id => @publisher_journalposters[0].publisher_id, :publisher_journalposter_id => @publisher_journalposters[0].id) %>
+												</span>
+											</div>	
+											<% end %>				
+										<% end %>
+										
+									</td>
+								</tr>
+							</table>
+		  				</td>
+		  				<td style="width: 20px;"></td>
+		  				<td>
+		  					<table>
+		  						<tr>
+					  				<td>
+									    <span class="jp-cell-list-text-1">ID:</span>
+									</td>
+					  				<td>
+									    <span class="jp-cell-list-text-1"><%= publisher_journalposter.id %></span>
+									</td>
+								</tr>
+								<tr>
+					  				<td>
+									    <span class="jp-cell-list-text-1">Created:</span>
+									</td>
+									<td>
+									    <span class="jp-cell-list-text-1"><%= publisher_journalposter.created_at.to_s(:long) %></span><br>
+									</td>
+								</tr>
+								<tr>
+					  				<td>
+									    <span class="jp-cell-list-text-1">Updated:</span>
+									</td>
+									<td>
+								    	<span class="jp-cell-list-text-1"><%= publisher_journalposter.updated_at.to_s(:long) %></span><br>
+									</td>
+								</tr>
+								<tr>
+					  				<td>
+									    <span class="jp-cell-list-text-1">50 Word Description:</span>
+									</td>
+									<td>
+									    <span class="jp-cell-list-text-1"><%= yn(publisher_journalposter.has_description) %></span><br>
+									</td>
+								</tr>
+								<tr>
+					  				<td>
+									    <span class="jp-cell-list-text-1">Logo:</span>
+									</td>
+									<td>
+									    <span class="jp-cell-list-text-1"><%= tf(publisher_journalposter.has_journalposter_logo) %></span><br>
+									</td>
+								</tr>
+								<tr>
+					  				<td>
+									    <span class="jp-cell-list-text-1">Product Shot:</span>
+									</td>
+									<td>
+									    <span class="jp-cell-list-text-1"><%= tf(publisher_journalposter.has_journalposter_prodshot) %></span><br>
+									</td>
+								</tr>
+								<tr>
+					  				<td>
+									    <span class="jp-cell-list-text-1">Metadata:</span>
+									</td>
+									<td>
+									    <span class="jp-cell-list-text-1"><%= yn(publisher_journalposter.has_journalposter_metadata) %></span><br>
+									</td>
+								</tr>
+								<tr>
+					  				<td>
+									    <span class="jp-cell-list-text-1">Purchased:</span>
+									</td>
+									<td>
+									    <span class="jp-cell-list-text-1"><%= yn(publisher_journalposter.has_purchase) %></span><br>
+									</td>
+								</tr>
+								<tr>
+					  				<td>
+									    <span class="jp-cell-list-text-1">Poster:</span>
+									</td>
+									<td>
+									    <span class="jp-cell-list-text-1"><%= publisher_journalposter.poster %></span><br>
+									</td>
+								</tr>
+					  			<tr>
+					  				<table>
+					  					<tr>
+					  						<td style="width: 30%;"></td>
+							  				<td>
+							    				<span><%= link_to('View', {:controller => 'publisher_journalposter_descriptions', :action => 'index', :id => publisher_journalposter.id}, :class => 'jp-cell-list-link') %></span>
+							  				</td>
+							  				<td style="width: 8px;"></td>
+							  				<td>
+				        						<span class="jp-cell-list-link">|</span>
+							  				</td>
+							  				<td style="width: 8px;"></td>
+							  				<td>
+							    				<span><%= link_to('Purchase', {:controller => 'publisher_journalposter_purchases', :action => 'index', :id => publisher_journalposter.id}, :class => 'jp-cell-list-link') %></span>
+							  				</td>
+							  				<td style="width: 8px;"></td>
+							  				<td>
+				        						<span class="jp-cell-list-link">|</span>
+							  				</td>
+							  				<td style="width: 2px;"></td>
+							  				<td style="padding-top: 2px;">
+										    	<span>
+												   	<% delete_msg = "Delete ID: " + publisher_journalposter.id.to_s + " ?" %>
+													<%= button_to "Delete", {:action => 'destroy', :id => publisher_journalposter.id}, :method => :delete, data: { confirm: delete_msg }, :class => 'jp-cell-list-delete-btn' %>
+												</span>
+							  				</td>
+							  			</tr>
+							  		</table>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			    
+			</div>
+		<% end %>
+
+		<!-- number_to_currency(journalposter.price) -->
+		
+					
+	<% else %>
+				
+		<h3>No record for Publisher Journal Posters</h3>
+		
+	<% end %>
+			
+	</div>
+	

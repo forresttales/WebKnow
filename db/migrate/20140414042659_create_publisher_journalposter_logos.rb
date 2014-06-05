@@ -4,7 +4,7 @@ class CreatePublisherJournalposterLogos < ActiveRecord::Migration
 
       t.integer "publisher_id"
       t.integer "publisher_journalposter_id"
-      t.string "image_name", :limit => 255
+      t.string "image", :limit => 255
 
       t.timestamps
     end

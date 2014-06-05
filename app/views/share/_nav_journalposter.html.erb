@@ -1,0 +1,246 @@
+
+<style>
+
+	#nav_jp {
+		list-style:none;
+		width:1000px;
+		margin: 0 auto;
+		height:54px;
+		text-align: center;
+	}
+	#nav_jp li {
+		display:block;
+		text-align:center;
+		position:relative;
+		padding: 20px 10px 0px 10px;
+		margin-right:0px;
+		margin-top:0px;
+		border:none;
+		height: 54px;
+		width: 20%;
+		float:left;		
+	}
+	#nav_jp li a {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 14px;		
+		display:block;
+		outline:0;
+		text-decoration:none;
+	}
+	#nav_jp li a:hover {
+		color: #fff;
+	}
+	.nav-ks-jp {
+		width: 1000px;
+		margin: 0 auto;
+		position: relative;
+		top: 0px;
+		z-index: 90;
+	  	box-shadow: 3px 3px 10px #000;
+	}
+	#adjust_fix {
+		height: 0px;
+		width: 100%;
+	}
+	.nav-cell-text-color-0 {
+		color: #fff;
+		font-weight: 200;		
+	}
+	.nav-cell-text-color-1 {
+		color: #D3FF87; 
+		font-weight: 700;
+		text-shadow: 2px 2px #888;
+	}
+	.nav-cell-color-0 {
+		background-color: #41B737;
+	}
+	.nav-cell-color-1 {
+		background-color: #3B39B7; 
+	}
+	.nav-cell-color-2 {
+		background-color: #B737AD; 
+	}
+	.nav-cell-color-3 {
+		background-color: #B75900;
+	}
+	.nav-cell-color-4 {
+		background-color:#6813B7; 
+	}
+	.nav-cell-color-5 {
+		background-color:#07B7B7; 
+	}
+	.jp-nav-item {
+		z-index: 10;
+	}
+	.jp-nav-item:focus, .jp-nav-item:hover, .jp-nav-item:active {
+		outline: 0;
+	}
+	.jp-nav-item-selected {
+	  	box-shadow: inset 0 1px 1px rgba(0,0,0,0.2), 
+	  	inset 0 1.5em 1em rgba(0,0,0,0.6);
+	}
+	.jp-nav-item-notselected {
+	  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+	  	inset 0 1.5em 1em rgba(255,255,255,0.6);
+	}
+	.jp-nav-item-hover {
+	  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+	  	inset 0 1.5em 1em rgba(255,255,255,0.6),
+	  	3px 3px 10px #000;
+	  	cursor: pointer;
+		z-index: 11;		
+		-webkit-transform: scale(1.02);
+		-moz-transform: scale(1.02);
+		-webkit-transform: scale(1.02);
+		-moz-transform: scale(1.02);
+		-o-transform: scale(1.02);
+		-ms-transform: scale(1.02);
+		-webkit-transform: scale(1.02);
+		-moz-transform: scale(1.02);
+		-o-transform: scale(1.02);
+		-ms-transform: scale(1.02);
+		-webkit-transform: scale(1.02);
+		-moz-transform: scale(1.02);
+		-o-transform: scale(1.02);
+		-ms-transform: scale(1.02);
+		transform: scale(1.02);
+	}
+
+	/*
+	#3B39B7 blue
+	#B737AD bright violet-red
+	#6813B7 deep purple
+	#B75900 bright pumpkin
+	#07B7B7 light blue
+	*/
+	
+	/*
+	#D98D2D	knowstory logo orange
+	#96C785 knowstory logo green dark 
+	#A9D996 knowstory logo green light
+	#214025 footer green
+	background-color: rgba( 65, 183, 55, 0.92); nav green
+	background-color: #41B737;	nav green		
+	*/ 
+
+
+</style>
+
+
+	<div id="nav_ks_jp" class="nav-ks-jp">
+		<ul id="nav_jp" tabindex="0">
+        	<li id="li_1" class="nav-cell-color-1 jp-nav-item" tabindex="1"><a id="a_1" href="/Journal-Posters-1">Journal Poster 1</a></li>
+        	<li id="li_2" class="nav-cell-color-2 jp-nav-item" tabindex="2"><a id="a_2" href="/Journal-Posters-2">Journal Poster 2</a></li>
+        	<li id="li_3" class="nav-cell-color-5 jp-nav-item" tabindex="3"><a id="a_3" href="/Journal-Posters-3">Journal Poster 3</a></li>
+        	<li id="li_4" class="nav-cell-color-3 jp-nav-item" tabindex="4"><a id="a_4" href="/Journal-Posters-4">Journal Poster 4</a></li>
+        	<li id="li_5" class="nav-cell-color-4 jp-nav-item" tabindex="5"><a id="a_5" href="/Journal-Posters-5">Journal Poster 5</a></li>
+		</ul>
+	</div>
+	<div style="clear: both;">
+	<div id="adjust_fix"></div>
+
+	<script>
+		
+		$(window).scroll(function(e){ 
+			$el = $('#nav_ks_jp'); 
+
+			if ($(this).scrollTop() > 56 && $el.css('position') == 'relative') {
+		    	$el.css({'position': 'fixed', 'top': '6px', 'width': '1000px', 'left': '50%', 'margin-left': '-500px'});
+		    	$('#adjust_fix').css({'height': '54px'}); 		      
+		  	} 
+		  	else if ($(this).scrollTop() <  54 && $el.css('position') == 'fixed'){
+		     	// $el.css({'position': 'relative', 'top': '-3px'}); 
+		     	$el.css({'position': 'relative', 'top': '0px'}); 
+
+		     	$('#adjust_fix').css({'height': '0px'}); 		      
+		  	}
+		});
+		
+		function elem_select( id ) {
+			var li_id = "";
+			var a_id = "";
+			for( var i = 1; i < 6; i++) {
+				li_id = "#li_" + i.toString();
+				a_id = "#a_" + i.toString();
+				if ( i.toString() == id ) {
+					$(li_id).removeClass('jp-nav-item-notselected').addClass('jp-nav-item-selected');
+					// window.location = $(a_id).attr("href");
+					// $(a_id).removeClass('nav-cell-text-color-1').addClass('nav-cell-text-color-0');					
+				}
+				else {
+					$(li_id).removeClass('jp-nav-item-selected').addClass('jp-nav-item-notselected');
+				}	
+			}		
+		}
+		
+		function elem_focus( id ) {
+			var a_id = "";
+			for( var i = 1; i < 6; i++) {
+				a_id = "#a_" + i.toString();
+				if ( i.toString() == id ) {
+					$(a_id).removeClass('nav-cell-text-color-0').addClass('nav-cell-text-color-1');
+				}
+				else {
+					$(a_id).removeClass('nav-cell-text-color-1').addClass('nav-cell-text-color-0');
+				}	
+			}			
+		}
+		
+		function init() {
+			var a_id = "";
+			for( var i = 1; i < 6; i++) {
+				a_id = "#a_" + i.toString();
+				$(a_id).addClass('nav-cell-text-color-0');				
+			}						
+		}
+
+		function new_tab( elem ) {
+			var link = elem;
+		  	var target = link.attr("target");
+		  	if($.trim(target).length > 0)
+		  	{
+		    	window.open(link.attr("href"), target);
+		  	}
+		  	else
+		  	{
+		     	window.location = link.attr("href");
+		  	}
+		  	event.preventDefault();			
+		}		
+
+		$("#a_1").click( function(event) { new_tab($(this)); });
+		$("#a_2").click( function(event) { new_tab($(this)); });
+		$("#a_3").click( function(event) { new_tab($(this)); });
+		$("#a_4").click( function(event) { new_tab($(this)); });
+		$("#a_5").click( function(event) { new_tab($(this)); });
+
+
+		$(document).ready(function() {
+		// $(window).load( function() {
+			
+			init();
+			elem_select( gon.selected );
+
+		  	$("li.jp-nav-item-notselected").hover(
+		  		function() {
+					$(this).removeClass('jp-nav-item-notselected').addClass('jp-nav-item-hover');
+				}, function() {
+					$(this).removeClass('jp-nav-item-hover').addClass('jp-nav-item-notselected');
+				}
+		  	);		  
+
+			$('li').focus( function() {
+				elem_focus( $(this).attr('id').slice(3) );
+		  	});
+		  	
+		  	var id = "";
+			$('li').on('click', function() {
+				id = $(this).attr('id').slice(3).toString();
+				elem_select( id );
+				$( '#a_' + id ).trigger('click');
+		  	});
+			
+		});	
+		
+		
+	</script>

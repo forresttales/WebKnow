@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    #user = User.find_by(email: params[:session][:email].downcase)
-    user = User.find_by(username: params[:session][:username])
+    user = User.find_by(email: params[:session][:email].downcase)
+    # user = User.find_by(username: params[:session][:username])
     
     # user.nil?
     
@@ -18,8 +18,9 @@ class SessionsController < ApplicationController
       
       #flash[:success] = 'Logged In'
       
-      redirect_back_or user
+      redirect_to_profile_type(user.account_type)
        
+      # redirect_to '/Publishers'
       
     else
       flash.now[:error] = 'Invalid email/password combination'

@@ -1,0 +1,2 @@
+class ImageIdentsController < ApplicationController
+end

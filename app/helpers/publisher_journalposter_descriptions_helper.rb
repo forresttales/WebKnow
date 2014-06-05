@@ -8,4 +8,5 @@ module PublisherJournalposterDescriptionsHelper
       end
     end
   
+      
 end

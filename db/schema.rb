@@ -11,10 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416050532) do
+ActiveRecord::Schema.define(version: 20140604171115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_users", force: true do |t|
+    t.string   "name_first"
+    t.string   "name_last"
+    t.string   "username"
+    t.string   "email"
+    t.string   "password"
+    t.string   "password_digest"
+    t.string   "remember_token"
+    t.string   "hashed_password"
+    t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bd_years", force: true do |t|
+    t.integer  "year",       default: 0
+    t.string   "year_text"
+    t.integer  "year_value", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "galleries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "image_idents", force: true do |t|
+    t.string   "assigned_text"
+    t.integer  "assigned_digit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "assigned_text_1"
+    t.string   "assigned_text_2"
+  end
+
+  create_table "image_sizes", force: true do |t|
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
 
   create_table "institute_images", force: true do |t|
     t.integer  "institute_id"
@@ -96,6 +140,145 @@ ActiveRecord::Schema.define(version: 20140416050532) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "journal1poster_positions", force: true do |t|
+    t.integer  "id_map"
+    t.integer  "pos_x",        default: 0
+    t.integer  "pos_y",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "section",      default: 0
+    t.string   "section_text"
+    t.integer  "section_pos",  default: 0
+  end
+
+  add_index "journal1poster_positions", ["id_map"], name: "index_journal1poster_positions_on_id_map", using: :btree
+
+  create_table "journal1posters", force: true do |t|
+    t.integer  "id_user"
+    t.integer  "publisher_id"
+    t.integer  "publisher_journalposter_id"
+    t.string   "url"
+    t.string   "main_sales_phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "pos_map",                    default: 0
+  end
+
+  add_index "journal1posters", ["publisher_journalposter_id"], name: "index_journal1posters_on_publisher_journalposter_id", using: :btree
+
+  create_table "journal2poster_positions", force: true do |t|
+    t.integer  "id_map"
+    t.integer  "pos_x",        default: 0
+    t.integer  "pos_y",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "section",      default: 0
+    t.string   "section_text"
+    t.integer  "section_pos",  default: 0
+  end
+
+  add_index "journal2poster_positions", ["id_map"], name: "index_journal2poster_positions_on_id_map", using: :btree
+
+  create_table "journal2posters", force: true do |t|
+    t.integer  "id_user"
+    t.integer  "publisher_id"
+    t.integer  "publisher_journalposter_id"
+    t.string   "url"
+    t.string   "main_sales_phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "pos_map",                    default: 0
+  end
+
+  add_index "journal2posters", ["publisher_journalposter_id"], name: "index_journal2posters_on_publisher_journalposter_id", using: :btree
+
+  create_table "journal3poster_positions", force: true do |t|
+    t.integer  "id_map"
+    t.integer  "pos_x",        default: 0
+    t.integer  "pos_y",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "section",      default: 0
+    t.string   "section_text"
+    t.integer  "section_pos",  default: 0
+  end
+
+  add_index "journal3poster_positions", ["id_map"], name: "index_journal3poster_positions_on_id_map", using: :btree
+
+  create_table "journal3posters", force: true do |t|
+    t.integer  "id_user"
+    t.integer  "publisher_id"
+    t.integer  "publisher_journalposter_id"
+    t.string   "url"
+    t.string   "main_sales_phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "pos_map",                    default: 0
+  end
+
+  add_index "journal3posters", ["publisher_journalposter_id"], name: "index_journal3posters_on_publisher_journalposter_id", using: :btree
+
+  create_table "journal4poster_positions", force: true do |t|
+    t.integer  "id_map"
+    t.integer  "pos_x",        default: 0
+    t.integer  "pos_y",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "section",      default: 0
+    t.string   "section_text"
+    t.integer  "section_pos",  default: 0
+  end
+
+  add_index "journal4poster_positions", ["id_map"], name: "index_journal4poster_positions_on_id_map", using: :btree
+
+  create_table "journal4posters", force: true do |t|
+    t.integer  "id_user"
+    t.integer  "publisher_id"
+    t.integer  "publisher_journalposter_id"
+    t.string   "url"
+    t.string   "main_sales_phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "pos_map",                    default: 0
+  end
+
+  add_index "journal4posters", ["publisher_journalposter_id"], name: "index_journal4posters_on_publisher_journalposter_id", using: :btree
+
+  create_table "journal5poster_positions", force: true do |t|
+    t.integer  "id_map"
+    t.integer  "pos_x",        default: 0
+    t.integer  "pos_y",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "section",      default: 0
+    t.string   "section_text"
+    t.integer  "section_pos",  default: 0
+  end
+
+  add_index "journal5poster_positions", ["id_map"], name: "index_journal5poster_positions_on_id_map", using: :btree
+
+  create_table "journal5posters", force: true do |t|
+    t.integer  "id_user"
+    t.integer  "publisher_id"
+    t.integer  "publisher_journalposter_id"
+    t.string   "url"
+    t.string   "main_sales_phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "pos_map",                    default: 0
+  end
+
+  add_index "journal5posters", ["publisher_id"], name: "index_journal5posters_on_publisher_id", using: :btree
+  add_index "journal5posters", ["publisher_journalposter_id"], name: "index_journal5posters_on_publisher_journalposter_id", using: :btree
+
+  create_table "journalposter_sections", force: true do |t|
+    t.integer  "id_map"
+    t.integer  "section",      default: 0
+    t.string   "section_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "journalposterpurchases", force: true do |t|
@@ -204,6 +387,21 @@ ActiveRecord::Schema.define(version: 20140416050532) do
     t.decimal  "price",       precision: 5, scale: 2
   end
 
+  create_table "log_available_posters", force: true do |t|
+    t.integer  "id_map"
+    t.boolean  "closed",     default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "paintings", force: true do |t|
+    t.integer  "gallery_id"
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "publisher_images", force: true do |t|
     t.integer  "publisher_id"
     t.string   "image_name",   limit: 100
@@ -222,7 +420,6 @@ ActiveRecord::Schema.define(version: 20140416050532) do
     t.integer  "poster"
     t.string   "poster_text"
     t.string   "logo"
-    t.text     "word_descr"
     t.text     "tag_line"
     t.string   "headline"
     t.string   "screen_shot"
@@ -309,21 +506,61 @@ ActiveRecord::Schema.define(version: 20140416050532) do
     t.string   "instr_design_text"
     t.integer  "other_diy"
     t.string   "other_diy_text"
+    t.text     "word_descr"
+    t.string   "url"
   end
+
+  add_index "publisher_journalposter_descriptions", ["publisher_journalposter_id"], name: "publisher_id_journalposter_id", unique: true, using: :btree
 
   create_table "publisher_journalposter_logos", force: true do |t|
     t.integer  "publisher_id"
     t.integer  "publisher_journalposter_id"
-    t.string   "image_name"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "publisher_journalposter_logos", ["publisher_journalposter_id"], name: "publisher_id_journalposter_logo_id", unique: true, using: :btree
 
   create_table "publisher_journalposter_metadatatags", force: true do |t|
     t.integer  "publisher_id"
     t.integer  "publisher_journalposter_id"
     t.string   "name_metadata"
     t.text     "text_metadata"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "publisher_journalposter_positions", force: true do |t|
+    t.integer  "id_map"
+    t.integer  "pos_map",    default: 0
+    t.integer  "pos_x",      default: 0
+    t.integer  "pos_y",      default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_journalposter_positions", ["id_map"], name: "index_publisher_journalposter_positions_on_id_map", using: :btree
+
+  create_table "publisher_journalposter_prodshots", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_journalposter_id"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_journalposter_prodshots", ["publisher_journalposter_id"], name: "publisher_id_journalposter_prodshot_id", unique: true, using: :btree
+
+  create_table "publisher_journalposter_purchases", force: true do |t|
+    t.integer  "id_user"
+    t.integer  "publisher_id"
+    t.integer  "publisher_journalposter_id"
+    t.text     "message"
+    t.integer  "price"
+    t.integer  "price_owed"
+    t.integer  "price_paid"
+    t.integer  "price_refund"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -335,13 +572,22 @@ ActiveRecord::Schema.define(version: 20140416050532) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "journalposter_logo"
-    t.boolean  "has_journalposter_logo"
     t.string   "journalposter_metadata"
-    t.boolean  "has_journalposter_metadata"
-    t.boolean  "has_purchase"
     t.integer  "poster"
     t.string   "poster_text"
+    t.boolean  "has_journalposter_logo",     default: false
+    t.boolean  "has_journalposter_prodshot", default: false
+    t.boolean  "has_journalposter_metadata", default: false
+    t.boolean  "has_purchase",               default: false
+    t.datetime "purchase_date"
+    t.integer  "poster_type",                default: 0
+    t.integer  "poster_coord_id",            default: 0
+    t.integer  "id_map",                     default: 0
+    t.integer  "area",                       default: 0
+    t.integer  "area_pos",                   default: 0
   end
+
+  add_index "publisher_journalposters", ["publisher_id"], name: "index_publisher_journalposters_on_publisher_id", using: :btree
 
   create_table "publisher_product_descriptions", force: true do |t|
     t.integer  "publisher_product_id"
@@ -412,6 +658,20 @@ ActiveRecord::Schema.define(version: 20140416050532) do
 
   add_index "publisher_products", ["publisher_id"], name: "index_publisher_products_on_publisher_id", using: :btree
 
+  create_table "publisher_profile_images", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "publisher_id"
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",      default: false
+    t.integer  "order",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_profile_images", ["publisher_id"], name: "index_publisher_profile_images_on_publisher_id", unique: true, using: :btree
+  add_index "publisher_profile_images", ["user_id"], name: "index_publisher_profile_images_on_user_id", unique: true, using: :btree
+
   create_table "publisher_profiles", force: true do |t|
     t.integer  "publisher_id"
     t.string   "name_logo",    limit: 100
@@ -453,14 +713,19 @@ ActiveRecord::Schema.define(version: 20140416050532) do
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",           limit: 50, default: ""
-    t.string   "username",        limit: 50
+    t.string   "email",             limit: 50, default: ""
+    t.string   "username",          limit: 50
     t.string   "password_digest"
     t.string   "remember_token"
-    t.string   "account_type",    limit: 50
-    t.boolean  "has_account",                default: false
-    t.string   "name_first",      limit: 50
-    t.string   "name_last",       limit: 50
+    t.boolean  "has_account",                  default: false
+    t.string   "name_first",        limit: 50
+    t.string   "name_last",         limit: 50
+    t.integer  "bd_day",                       default: 0
+    t.integer  "bd_month",                     default: 0
+    t.integer  "bd_year",                      default: 0
+    t.integer  "gender",                       default: 0
+    t.integer  "account_type",                 default: 0
+    t.string   "account_type_text"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree

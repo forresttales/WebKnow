@@ -23,8 +23,8 @@
 
 class Publisher < ActiveRecord::Base
   
-    attr_accessible :id, 
-                    :user_id,    
+    attr_accessor :id, :created_at, :updated_at
+    attr_accessible :user_id, 
                     :name, 
                     :address, 
                     :city, 
@@ -37,17 +37,16 @@ class Publisher < ActiveRecord::Base
                     :company_contact_name_first, 
                     :company_contact_name_last,
                     :company_contact_phone, 
-                    :company_contact_email, 
-                    :created_at, 
-                    :updated_at
+                    :company_contact_email 
   
     belongs_to :user  
     
-    has_many :publisher_images
+    has_many :publisher_profile_images
     has_many :publisher_profiles
     has_many :publisher_settings
     has_many :publisher_products
     has_many :journalposterpurchases
+    
       
     
     

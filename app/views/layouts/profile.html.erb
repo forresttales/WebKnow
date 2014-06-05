@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="utf-8">
+								    	
+  		<title><%= full_title(yield(:title)) %></title> 
+
+    	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  		
+		<link rel="icon" type="image/png" href="/assets/knowstory-icon-fav.png" />
+  		
+   		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>    		   		
+    	
+  		<%= include_gon %>
+    	
+	  	<%= csrf_meta_tags %>
+	  	<%= render 'layouts/shim' %>  
+		
+		<link href="/assets/profile_publisher.css" rel="stylesheet">
+		<link href="/assets/custom_form.css" rel="stylesheet">
+
+    </head>
+    
+	<body>
+		
+		<%= render 'layouts/nav_main' %>
+	 		
+		<%= yield %> 
+
+		<%= render 'layouts/footer' %>
+			
+		<%= debug(params) if Rails.env.development? %>
+		
+	</body>
+	
+</html>

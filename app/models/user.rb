@@ -2,28 +2,29 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  created_at      :datetime
-#  updated_at      :datetime
-#  email           :string(50)       default("")
-#  username        :string(50)
-#  password_digest :string(255)
-#  remember_token  :string(255)
-#  account_type    :string(50)
-#  has_account     :boolean          default(FALSE)
-#  name_first      :string(50)
-#  name_last       :string(50)
-#
-
-#  admin           :boolean          default(FALSE)
-#  name_first      :string(50)
-#  name_last       :string(50)
-#
+#  id                :integer          not null, primary key
+#  name_first        :string(50)
+#  name_last         :string(50)
+#  email             :string(50)       default("")
+#  username          :string(50)
+#  password_digest   :string(255)
+#  remember_token    :string(255)
+#  has_account       :boolean          default(FALSE)
+#  name_first        :string(50)
+#  name_last         :string(50)
+#  bd_day            :integer          default(0)
+#  bd_month          :integer          default(0)
+#  bd_year           :integer          default(0)
+#  gender            :integer          default(0)
+#  account_type      :integer          default(0)
+#  account_type_text :string(255)
+#  admin             :boolean          default(FALSE)
+#  created_at        :datetime
+#  updated_at        :datetime
 
 class User < ActiveRecord::Base
   
-  attr_accessible :id, 
-                  :name_first,
+  attr_accessible :name_first,
                   :name_last,
                   :email, 
                   :username, 
@@ -31,8 +32,12 @@ class User < ActiveRecord::Base
                   :has_account, 
                   :password, 
                   :password_confirmation, 
-                  :created_at, 
-                  :updated_at
+                  :bd_month,
+                  :bd_day,
+                  :bd_year,
+                  :gender,
+                  :account_type,
+                  :account_type_text
   
   
   
@@ -87,6 +92,16 @@ class User < ActiveRecord::Base
     # def unfollow!(other_user)
       # relationships.find_by(followed_id: other_user.id).destroy!
     # end
+  
+  
+  def self.dbdelete
+      self.connection.execute("DELETE FROM users")
+  end
+  
+  def self.dbclear
+      self.connection.execute("ALTER SEQUENCE users_id_seq RESTART WITH 1")
+  end
+
   
     private
   

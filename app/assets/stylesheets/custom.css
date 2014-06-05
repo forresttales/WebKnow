@@ -214,6 +214,30 @@
 	  	src: url('../fonts/msyhb.ttf') format('truetype');
 	}
 
+	@font-face {
+	  	font-family: 'msyhb';
+	  	src: url('../fonts/msyhb.ttf') format('truetype');
+	}
+
+	@font-face {
+	  	font-family: 'QuattrocentoSans-Regular';
+	  	src: url('../fonts/QuattrocentoSans-Regular.ttf') format('truetype');
+	}
+
+	@font-face {
+	  	font-family: 'QuattrocentoSans-Italic';
+	  	src: url('../fonts/QuattrocentoSans-Italic.ttf') format('truetype');
+	}
+
+	@font-face {
+	  	font-family: 'QuattrocentoSans-Bold';
+	  	src: url('../fonts/QuattrocentoSans-Bold.ttf') format('truetype');
+	}
+
+	@font-face {
+	  	font-family: 'QuattrocentoSans-BoldItalic';
+	  	src: url('../fonts/QuattrocentoSans-BoldItalic.ttf') format('truetype');
+	}
 
 	/* fonts */
 

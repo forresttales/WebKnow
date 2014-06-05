@@ -1,0 +1,324 @@
+
+
+	<!-- 
+
+	-->
+
+	<div class="main">
+	
+		<div id="scroll1" class="scrollbox-both" onscroll="scrollPos();">	
+			
+			<% if @publisher_journalposters.any? %>
+				
+				<%= hidden_field_tag :direction, params[:direction] %>
+				<%= hidden_field_tag :sort, params[:sort] %>	
+				<%= hidden_field_tag :pos, params[:pos] %>	
+				
+				<h5>Record Count: <%= @publisher_journalposters.count %></h5>
+				
+				<table id="listtable" title="Publisher Products" >    	  
+					  	
+			       <colgroup>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+				       <col class="member-table"></col>
+			       </colgroup>
+
+				  <tr align="left">
+				    <th class="member-table" id="th_view" field="view" style="width: 50px"><div class="header-shift"><h4></h4></div></th>
+				    <th class="member-table" id="th_delete" field="delete" style="width: 50px;"><div class="header-shift"><h4></h4></div></th>
+
+				    <th class="member-table" id="th_id" field="id" style="width: 50px"><div id="id" class="header-shift"><h4><%= sortable "id", "ID" %></div></th>
+				    <th class="member-table" id="th_created_at" field="created_at" style="width: 100px"><div id="created_at" class="header-shift"><h4><%= sortable "created_at", "Created" %></h4></div></th>
+				    <th class="member-table" id="th_updated_at" field="updated_at" style="width: 100px"><div id="updated_at" class="header-shift"><h4><%= sortable "updated_at", "Updated" %></h4></div></th>
+				    <th class="member-table" id="th_name_journalposter" field="name_journalposter" style="width: 100px"><div id="name_journalposter" class="header-shift"><h4><%= sortable "name_journalposter", "Name" %></h4></div></th>
+				    <th class="member-table" id="th_has_description" field="has_description" style="width: 100px"><div id="has_description" class="header-shift"><h4><%= sortable "has_description", "Has Description" %></h4></div></th>
+				    <th class="member-table" id="th_has_journalposter_logo" field="has_journalposter_logo" style="width: 100px"><div id="has_journalposter_logo" class="header-shift"><h4><%= sortable "has_journalposter_logo", "Has Product Logo" %></h4></div></th>
+				    <th class="member-table" id="th_has_journalposter_metadata" field="has_journalposter_metadata" style="width: 100px"><div id="has_journalposter_metadata" class="header-shift"><h4><%= sortable "has_journalposter_metadata", "Has Product Metadata" %></h4></div></th>
+				    <th class="member-table" id="th_has_purchase" field="has_purchase" style="width: 100px"><div id="has_purchase" class="header-shift"><h4><%= sortable "has_purchase", "Has Purchase" %></h4></div></th>
+				    <th class="member-table" id="th_poster" field="poster" style="width: 100px"><div id="poster" class="header-shift"><h4><%= sortable "poster", "Poster" %></h4></div></th>
+				  </tr>
+				<% @publisher_journalposters.each do |publisher_journalposter| %>
+				  <tr align="left" class="tr-events">
+				  	
+				    <td><h5><%= link_to('View', {:controller => 'publisher_journalposter_descriptions', :action => 'index', :id => publisher_journalposter.id, :class => 'member-table'}) %></h5></td>
+	
+				    <td>
+				    	<div style="position: relative; bottom: -2px">
+					    	<h5>
+							   	<% delete_msg = "Delete ID: " + publisher_journalposter.id.to_s + " ?" %>
+								<%= button_to "Delete", {:action => 'destroy', :id => publisher_journalposter.id}, :method => :delete, data: { confirm: delete_msg }, :class => 'delete-btn' %>
+							</h5>
+						</div>
+					</td>
+
+				    <td><h5 class="member-table"><%= publisher_journalposter.id %></h5></td>
+				    <td><h5 class="member-table"><%= publisher_journalposter.created_at %></h5></td>
+				    <td><h5 class="member-table"><%= publisher_journalposter.updated_at %></h5></td>
+				    <td><h5 class="member-table"><%= publisher_journalposter.name_journalposter %></h5></td>
+				    <td><h5 class="member-table"><%= yn(publisher_journalposter.has_description) %></h5></td>
+				    <td><h5 class="member-table"><%= yn(publisher_journalposter.has_journalposter_logo) %></h5></td>
+				    <td><h5 class="member-table"><%= yn(publisher_journalposter.has_journalposter_metadata) %></h5></td>
+				    <td><h5 class="member-table"><%= yn(publisher_journalposter.has_purchase) %></h5></td>
+				    <td><h5 class="member-table"><%= publisher_journalposter.poster %></h5></td>
+				    
+				  </tr>
+				<% end %>
+
+				<!-- number_to_currency(journalposter.price) -->
+				
+				</table>			
+							
+				  <%= will_paginate @publisher_journalposters %>							
+							
+			<% else %>
+						
+				<h3>No record for Publisher Journal Posters</h3>
+				
+			<% end %>
+			
+		</div>
+		
+	</div>
+
+
+	<script>
+		
+        function scrollPos() {
+            // var div = document.getElementById("scroll1").scrollLeft;
+            // document.getElementById("pos").innerHTML = div;
+            
+            $("#pos").html($("#scroll1").scrollLeft());
+        }
+		
+		function moveScroll() {
+			
+			// alert('moveScroll');
+			
+			$("#scroll1").scrollLeft($("#pos").html());
+		}
+
+				
+		// $(window).load( function() {
+			// alert('load');
+		// });				
+				
+				
+		$(document).ready(function () {				
+		// $(function() {
+		// $(window).load( function() {
+			
+			 // $('#loading').fadeOut(1000);
+				
+		
+			// img = $('<img />');
+//  			
+			// img.bind('loading_import', function() {
+// 				
+				// $('#join_image').css({
+					// visibility: 'visible'
+				// })
+// 				
+			    // $('#loading').fadeOut(1000);
+// 
+				// // // setTimeout( function(){
+					// // // centerSignin();
+					// // // showSignin();
+					// // // formValidate();
+				// // // }, 1000);
+			// });
+		
+		
+		
+			// $("#get-import").on('click', function() {
+			    // $.post({
+			    	// //type: "POST",
+			      	// url: "/stores/import"
+			    // });			
+			// });
+		
+		
+		
+		
+		
+		
+    		var $cols = $('colgroup');
+
+			$("table#listtable tr:nth-child(even)").addClass('gray');
+			$("table#listtable tr:nth-child(odd)").addClass('white');
+
+			// #  id           :integer			3  
+			// #  name_type    :string(50)		4
+			// #  salutation   :string(50)		5
+			// #  name_first   :string(50)		6
+			// #  name_last    :string(50)		7
+			// #  name_title   :string(50)		8
+			// #  institute    :string(100)		9
+			// #  department   :string(100)		10
+			// #  address_1    :string(100)		11
+			// #  address_2    :string(100)		12
+			// #  city         :string(50)		13
+			// #  state        :string(100)		14
+			// #  zip          :string(50)		15
+			// #  country      :string(100)		16
+			// #  phone        :string(50)		17
+			// #  fax          :string(50)		18
+			// #  phone_direct :string(50)		19
+			// #  phone_mobile :string(50)		20
+			// #  email        :string(100)		21
+			// #  website      :string(100)		22
+
+
+			var cell;
+			var cellIndex;
+			var row;
+			var rowIndex;
+			var header;
+			var cellTh;
+			var cellIndexTh;
+			
+			$("table#listtable th").mouseover ( function () {
+
+				cellTh = $(this).closest('th');
+				cellIndexTh = cellTh[0].cellIndex;
+				cellIndexTh += 1;
+				
+				$("table#listtable td:nth-child(" + cellIndexTh + ")").addClass('hover-col');
+				$(this).addClass('hover-col');
+				
+			}).mouseout ( function() {
+				
+				$("table#listtable td:nth-child(" + cellIndexTh + ")").removeClass('hover-col');				
+				$(this).removeClass('hover-col');
+				
+			});
+			
+			$("table#listtable td").mouseover ( function () {
+				
+				cell = $(this).closest('td');
+				cellIndex = cell[0].cellIndex;
+				cellIndex += 1;
+				row = cell.closest('tr');
+				rowIndex = row[0].rowIndex;
+				
+				switch(cellIndex)
+				{
+				case 1:
+					header = "th_view";
+				  break;
+				case 2:
+					header = "th_delete";	  
+				  break;
+				case 3:
+					header = "#th_id"; 
+				  break;
+				case 4:
+					header = "#th_created_at"; 
+				  break;
+				case 5:
+					header = "#th_updated_at"; 
+				  break;				  
+				case 6:
+					header = "#th_name_journalposter";	  
+				  break;				  
+				case 7:
+					header = "#th_has_description";	  
+				  break;
+				case 8:
+					header = "#th_has_journalposter_logo";	  
+				  break;
+				case 9:
+					header = "#th_has_journalposter_metadata";	  
+				  break;
+				case 9:
+					header = "#th_has_purchase";	  
+				  break;
+				case 10:
+					header = "#th_poster";	  
+				  break;
+
+				default:
+					//
+				}				
+
+				$(header).addClass('hover-col');
+		
+				if (rowIndex % 2 === 0) {
+					$("table#listtable td:nth-child(" + cellIndex + ")").addClass('hover-col');
+					row.removeClass('gray').addClass('hover-row');					
+				}
+				else {
+					$("table#listtable td:nth-child(" + cellIndex + ")").addClass('hover-col');
+					row.removeClass('white').addClass('hover-row');										
+				}		
+			}).mouseout( function(){
+
+				$(header).removeClass('hover-col');
+				
+				if (rowIndex % 2 === 0) {
+					$("table#listtable td:nth-child(" + cellIndex + ")").removeClass('hover-col');
+					row.removeClass('hover-row').addClass('gray');					
+				}
+				else {
+					$("table#listtable td:nth-child(" + cellIndex + ")").removeClass('hover-col');
+					row.removeClass('hover-row').addClass('gray');					
+				}		
+			});
+			
+			var rowSelect = -1;			
+			
+			$("table#listtable td").on('click', function () {
+	
+				cell = $(this).closest('td');
+				btn_delete = $(this).closest('form');
+				row = cell.closest('tr');
+				rowIndex = row[0].rowIndex;
+
+				if (rowSelect !== -1) {
+					$("table#listtable tr").removeClass('row-select');
+				}
+				
+				rowSelect = rowIndex;
+				row.addClass('row-select');
+				btn_delete.removeClass('btn-color').addClass('btn-color-select');
+			});
+	
+	
+			
+			$(document).on('click', function(event) {
+				// alert(event.target);
+				elem = event.target.className;
+				if ((elem === 'hover-col') || (elem === 'delete-btn') || (elem === 'member-table')) {
+					//
+				}
+				else {
+					$("table#listtable tr").removeClass('row-select');					
+				}
+			});
+		});
+
+		// $(document).on('click', function() {
+			// if ((rowSelect !== -1)) {
+				// //$("table#listtable tr").removeClass('row-select');
+			// }
+			// rowSelect = -1;
+			// tableClicked = false;
+		// })
+
+		//$(document).ready(function () {
+			// $('*[data-confirm]').click(function(){
+				// // alert('delete clicked');				
+		    	// return confirm($(this).attr('data-confirm'));
+		  	// });
+		//});
+			
+	</script>
+
+

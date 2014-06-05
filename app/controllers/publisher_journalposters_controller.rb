@@ -6,12 +6,24 @@ class PublisherJournalpostersController < ApplicationController
   
   helper_method :sort_column, :sort_direction
 
+  before_filter :force_http
+
   
   def index
+    @publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", session[:publisher_id]).order(sort_column + " " + sort_direction)
     
-    @publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", session[:publisher_id]).order(sort_column + " " + sort_direction).paginate(:per_page => 200, :page => params[:page])
+    if !@publisher_journalposters.any?
+      session[:publisher_has_journalposter] = false
+    
+    end
+    
+    if !session[:publisher_has_journalposter]
+      redirect_to '/Publishers'
+    end
+    
     
   end
+
   
   def new
     
@@ -64,6 +76,7 @@ class PublisherJournalpostersController < ApplicationController
     
   end
   
+  
   def update
     
     session[:poster] = params[:publisher_journalposter][:poster]
@@ -112,21 +125,28 @@ class PublisherJournalpostersController < ApplicationController
   end
 
 
-
-
-
-
-
-
-
-
   def dbdelete
 
       PublisherJournalposter.dbdelete
       PublisherJournalposter.dbclear
+
+      PublisherJournalposterDescription.dbdelete      
+      PublisherJournalposterDescription.dbclear
       
-      PublisherJournalposterDescription.connection.execute("DELETE FROM publisher_journalposter_descriptions")      
-      PublisherJournalposterDescription.connection.execute("ALTER SEQUENCE publisher_journalposter_descriptions_id_seq RESTART WITH 1")
+      PublisherJournalposterLogo.dbdelete
+      PublisherJournalposterLogo.dbclear
+
+      PublisherJournalposterProdshot.dbdelete
+      PublisherJournalposterProdshot.dbclear
+
+      PublisherJournalposterPurchase.dbdelete
+      PublisherJournalposterPurchase.dbclear
+      
+      # ImageIdent.dbdelete
+      # ImageIdent.dbclear
+      
+      # PublisherJournalposterDescription.connection.execute("DELETE FROM publisher_journalposter_descriptions")      
+      # PublisherJournalposterDescription.connection.execute("ALTER SEQUENCE publisher_journalposter_descriptions_id_seq RESTART WITH 1")
       
       respond_to do |format|
         format.js { redirect_to(:action => 'index', :form => :js ) }
@@ -137,31 +157,77 @@ class PublisherJournalpostersController < ApplicationController
 
 
   def delete
-    # @contact = Contact.find(params[:id])
+    # @publisher_journalposter = PublisherJournalposter.find_by_id(params[:id])
   end
 
 
   def destroy
 
-    publisher_journalposter = PublisherJournalposter.find(params[:id])
-    
-    # render text: publisher_journalposter.publisher_id.to_s
-    
-    publisher_journalposter_descriptions = PublisherJournalposterDescription.where("publisher_journalposter_id = ?", publisher_journalposter.id)
-    
-    # store = Store.find(params[:id])
-    if publisher_journalposter.delete
+    # PublisherJournalposter
 
-      if publisher_journalposter_descriptions[0].delete
-        # @@delete = true
-        redirect_to '/PublisherJournalposters'
-      else 
-        render text: 'Publisher Product Description Delete failed'
+    # :id                                 **
+    # :publisher_id                       **
+    # :name_journalposter
+    # :has_description
+    # :journalposter_logo                 *
+    # :has_journalposter_logo             *
+    # :journalposter_metadata
+    # :has_journalposter_metadata
+    # :has_purchase
+    # :poster
+    # :poster_text
+    # :created_at
+    # :updated_at 
+
+
+    # PublisherJournalposterDescription
+    
+    # :id                                 **
+    # :publisher_journalposter_id         **
+    # :publisher_id                       **
+    # :poster                    
+    # :poster_text               
+    # :logo                               *
+
+    
+    # PublisherJournalposterLogo
+
+    # :id                                 **
+    # :publisher_id                       **
+    # :publisher_journalposter_id         **
+    # :image_name                         *
+    # :created_at
+    # :updated_at 
+
+    publisher_journalposter = PublisherJournalposter.find(params[:id])
+    publisher_journalposter_descriptions = PublisherJournalposterDescription.where("publisher_journalposter_id = ?", publisher_journalposter.id)
+
+    if publisher_journalposter.has_journalposter_logo
+      publisher_journalposter_logos = PublisherJournalposterLogo.where("publisher_journalposter_id = ?", publisher_journalposter.id)
+      if publisher_journalposter_logos[0].destroy
+        # 
+      else
+        render text: 'publisher_journalposter_logo destroy failed'
       end
       
     else
-      render text: 'Publisher Product Delete failed'
+      # 
     end
+      
+    if publisher_journalposter_descriptions[0].delete
+      
+      if publisher_journalposter.delete
+        redirect_to '/PublisherJournalPosters'
+        # redirect_to :action => 'index'
+      else
+        render text: 'publisher_journalposter delete failed'
+      end
+      
+    else 
+      render text: 'publisher_journalposter_descriptions delete failed'
+    end
+      
+
      
   end
 
@@ -199,9 +265,11 @@ class PublisherJournalpostersController < ApplicationController
                                                 :name_journalposter,
                                                 :journalposter_logo,
                                                 :has_journalposter_logo,
+                                                :has_journalposter_prodshot,
                                                 :journalposter_metadata,
                                                 :has_journalposter_metadata,
                                                 :has_purchase,
+                                                :purchase_date,
                                                 :poster,
                                                 :poster_text                                                
                                               )
