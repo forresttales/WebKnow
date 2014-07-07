@@ -1,0 +1,2 @@
+module ProfileStudentsHelper
+end

@@ -11,6 +11,26 @@ class ApplicationController < ActionController::Base
     end
   end  
 
+  # def user_profile_image_nav
+#     
+    # user_profile_images = UserProfileImage.where("user_id = ?", current_user.id)     
+# 
+    # if user_profile_images.any?
+      # user_profile_image = @user_profile_images[0]
+    # else
+      # user_profile_image = nil
+    # end      
+# 
+    # return user_profile_image
+  # end
+
+
+  # private
+    # def current_user
+      # @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+    # end
+    # helper_method :current_user
+
   
   # protected
 #   

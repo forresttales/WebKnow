@@ -1,0 +1,2 @@
+module ProfileInstitutesHelper
+end

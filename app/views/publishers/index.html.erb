@@ -77,6 +77,13 @@
 		    font-size: 14px;
 			font-weight: 400;					  	
 		}
+		span a {
+			text-align: right;
+			color: #888;
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 14px;
+			font-weight: 400;					  	
+		}
 		.profile-cs-style-3 figure {
 			/*border: solid 1px #000;*/
 			overflow: hidden;
@@ -88,10 +95,11 @@
 		}
 		.no-touch .profile-cs-style-3 figure:hover img,
 		.profile-cs-style-3 figure.cs-hover img {
-			-webkit-transform: translateY(0px);
+			/*-webkit-transform: translateY(0px);
 			-moz-transform: translateY(0px);
 			-ms-transform: translateY(0px);
-			transform: translateY(0px);
+			transform: translateY(0px);*/
+			
 			/*-webkit-transform: translateY(-6px);
 			-moz-transform: translateY(-6px);
 			-ms-transform: translateY(-6px);
@@ -147,60 +155,66 @@
 	<div class="container">
 		<div class="table-profile">
 			<div class="row-profile">
-				
 				<div class="col-left">
-					<%= render 'share/dir_publishers_left'%>
-				</div>
-				
-				<div class="col-midd">
-			
-					<div class="line-space-80"></div>
-			
-					<div style="text-align: left;">
-						<span class="normal pad-left-20">My Home</span>
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>
+						<div class="row-profile">
+							<div class="col-left">
+								<%= render 'share/dir_publishers_left'%>
+							</div>
+						</div>
 					</div>
-					
-					<!-- <div id="render"></div> -->
-					
-					<div style="height: 30px;"></div>
-						
-				   	<div class="pad-left-20">
-				   		<div class="table">
-				   			<div class="row">
-								<div id="profile_image">
+				</div>
+				<div class="col-midd">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-midd-600">
 								
+								<div style="text-align: left;">
+									<span class="normal pad-left-20">Home</span>
+								</div>
+					
+								<div style="height: 30px;"></div>
+
+								<div id="profile_image" class="pad-left-20">
 								
 								<% if @publisher_profile_images.any? %>   				
 								
 									<% for publisher_profile_image in @publisher_profile_images %>
 					   				<div class="cell-180">
-											<ul class="profile-grid profile-cs-style-3">
-												<li>
-													<figure>
-														<img id="id_image" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:profile) if publisher_profile_image.image? %>" width="250px" />
-					
-														<figcaption>
-															<span><%= link_to "Delete", publisher_profile_image, :confirm => 'Delete this logo?', :method => :delete, :params => {:publisher_profile_image_id => publisher_profile_image.id} %></span>
-							        						<!-- <span>= link_to "edit", edit_publisher_profile_image_path(publisher_profile_image) </span> -->
-														</figcaption>
-													</figure>
-												</li>
-											</ul>
-									        <!-- image_tag publisher_profile_image.image_url(:logo) if publisher_profile_image.image?  -->
+										<ul class="profile-grid profile-cs-style-3">
+											<li>
+												<figure>
+													<img id="id_image" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_500_500) if publisher_profile_image.image? %>"  width="250px" />
+				
+													<figcaption>
+														<!-- <span><#%= link_to "Crop/Center small images", { :action => :crop, :controller => 'publisher_profile_images', :params => { :id => publisher_profile_image.id  } } %#></span> -->
+														<span><%= link_to "Crop/Center small images", '/Photo-Crop-Center/' + publisher_profile_image.id.to_s %></span>
+														<br>
+														<span><%= link_to "Delete", publisher_profile_image, :confirm => 'Delete this photo?', :method => :delete, :params => {:publisher_profile_image_id => publisher_profile_image.id} %></span>
+						        						<!-- <span>= link_to "edit", edit_publisher_profile_image_path(publisher_profile_image) </span> -->
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
 						   			</div>
 						   			<div class="cell-400">
-										<span><%= link_to '&laquo; Delete image &raquo;'.html_safe, publisher_profile_image, :confirm => 'Delete this photo?', :method => :delete, :params => {:publisher_profile_image_id => publisher_profile_image.id}, :class => 'links' %></span>						   				
-										<br>
-										
 						   			</div>
 									<% end %>
 
 								<% else %>
 
 					   				<div class="cell-180">
-										<ul class="grid cs-style-3">
+										<!-- <ul class="grid cs-style-3"> -->
+										<ul class="profile-grid profile-cs-style-3">
 											<li>
-												<figure>
+												<figure style="border: 1px solid #000;">
+													<!-- <img alt="logo not appearing" src="../images_avatar/avatar_generic_1_w250_h310.png" /> -->
 													<img alt="logo not appearing" src="../journal_poster/logo_journalposter_generic.jpg" />
 													<figcaption>
 														<span><%= link_to "Add a photo", new_publisher_profile_image_path(:publisher_id => @publisher_id) %></span>											
@@ -210,22 +224,37 @@
 										</ul>
 						   			</div>
 						   			<div class="cell-400">
-										<span><%= link_to '&laquo; Add a photo &raquo;'.html_safe, new_publisher_profile_image_path(:publisher_id => @publisher_id), :class => 'links' %></span>
+						   				<span><%= link_to "Add a photo", new_publisher_profile_image_path(:publisher_id => @publisher_id) %></span>
 						   			</div>
 								
 								<% end %>
 								
 								</div>
-					   		</div>
-					   	</div> 
-					</div>
-					
-							
 								
+
+								<div style="height: 100px;"></div>								
+						    	<div style="width: 100%; text-align: center;">
+							    	<h5>
+									   	<% delete_all_msg = "Delete all records and reset index in Publishers?" %>
+										<%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long', :remote => true %>
+									</h5>
+								</div>
+								
+							</div>
+						</div>
+					</div>					
 				</div>
-				
 				<div class="col-right">
-					<%= render 'share/dir_publishers_right' %>
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-right">
+								<%= render 'share/dir_publishers_right' %>
+							</div>
+						</div>
+					</div>										
 				</div>								
 			</div>
 		</div>

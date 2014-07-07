@@ -96,7 +96,8 @@ config.action_mailer.smtp_settings = {
   :enable_starttls_auto => true  }
 
 
-config.action_mailer.default_url_options = { :host => 'localhost:8000' }  
+# config.action_mailer.default_url_options = { :host => 'localhost:8000' }  
+config.action_mailer.default_url_options = { :host => 'knowstory.com' }  
 
 
 

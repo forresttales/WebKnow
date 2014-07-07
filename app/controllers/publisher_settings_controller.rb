@@ -6,17 +6,20 @@ class PublisherSettingsController < ApplicationController
 
     
   def index
-    @publisher_settings = PublisherSetting.where("publisher_id = ?", session[:publisher_id])       
+    publisher = Publisher.where("user_id = ?", current_user.id).first
+    @publisher_id = publisher.id
+    
+    @publisher_settings = PublisherSetting.where("publisher_id = ?", publisher.id)       
   end
   
 
   private
 
-    def publisher__settings_params
+    def publisher_settings_params
       params.require(:publisher_settings).permit(      
-                                                :publisher_id, 
-                                                :background
-                                              )
+                                                  :publisher_id, 
+                                                  :background
+                                                )
                                         
     end
 

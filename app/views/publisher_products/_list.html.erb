@@ -1,342 +1,205 @@
 
 
-	<!-- 
+			<!-- <div id="pos2"></div> -->
 
-	-->
-
-	<div class="main">
-	
-		<div id="scroll1" class="scrollbox-both" onscroll="scrollPos();">	
-			
 			<% if @publisher_products.any? %>
-				
-				<%= hidden_field_tag :direction, params[:direction] %>
-				<%= hidden_field_tag :sort, params[:sort] %>	
-				<%= hidden_field_tag :pos, params[:pos] %>	
-				
-				<h5>Record Count: <%= @publisher_products.count %></h5>
-				
-				<table id="listtable" title="Publisher Products" >    	  
-					  	
-			       <colgroup>
-				       <col class="member-table"></col>
-				       <col class="member-table"></col>
-				       
-				       <col class="member-table"></col>
-				       <col class="member-table"></col>
-				       <col class="member-table"></col>
-				       <col class="member-table"></col>
-				       <col class="member-table"></col>
-				       <col class="member-table"></col>
-				       <col class="member-table"></col>
-			       </colgroup>
 
-				  <tr align="left">
-				    <th class="member-table" id="th_view" field="view" style="width: 50px"><div class="header-shift"><h4></h4></div></th>
-				    <th class="member-table" id="th_delete" field="delete" style="width: 50px;"><div class="header-shift"><h4></h4></div></th>
+		
+			<!-- <#%= hidden_field_tag :direction, params[:direction] %#>
+			<#%= hidden_field_tag :sort, params[:sort] %#>	
+			<#%= hidden_field_tag :pos, params[:pos] %#> -->	
 
-				    <th class="member-table" id="th_id" field="id" style="width: 50px"><div id="id" class="header-shift"><h4><%= sortable "id", "ID" %></div></th>
-				    <th class="member-table" id="th_created_at" field="created_at" style="width: 100px"><div id="created_at" class="header-shift"><h4><%= sortable "created_at", "Created" %></h4></div></th>
-				    <th class="member-table" id="th_updated_at" field="updated_at" style="width: 100px"><div id="updated_at" class="header-shift"><h4><%= sortable "updated_at", "Updated" %></h4></div></th>
-				    <th class="member-table" id="th_name_product" field="name_product" style="width: 100px"><div id="name_product" class="header-shift"><h4><%= sortable "name_product", "Name" %></h4></div></th>
-				    <th class="member-table" id="th_has_description" field="has_description" style="width: 100px"><div id="has_description" class="header-shift"><h4><%= sortable "has_description", "Has Description" %></h4></div></th>
-				    <th class="member-table" id="th_has_product_logo" field="has_product_logo" style="width: 100px"><div id="has_product_logo" class="header-shift"><h4><%= sortable "has_product_logo", "Has Product Logo" %></h4></div></th>
-				    <th class="member-table" id="th_has_product_metadata" field="has_product_metadata" style="width: 100px"><div id="has_product_metadata" class="header-shift"><h4><%= sortable "has_product_metadata", "Has Product Metadata" %></h4></div></th>
-				  </tr>
+				<!-- <div class="publisher-product-list-top-border"></div> -->
+
+				<div id="scroll1" class="product-listbox">	
+
 				<% @publisher_products.each do |publisher_product| %>
-				  <tr align="left" class="tr-events">
-				  	
-				    <td><h5><%= link_to('View', {:controller => 'publisher_product_descriptions', :action => 'index', :id => publisher_product.id, :class => 'member-table'}) %></h5></td>
-	
-				    <td>
-				    	<div style="position: relative; bottom: -2px">
-					    	<h5>
-							   	<% delete_msg = "Delete ID: " + publisher_product.id.to_s + " ?" %>
-								<%= button_to "Delete", {:action => 'destroy', :id => publisher_product.id}, :method => :delete, data: { confirm: delete_msg }, :class => 'delete-btn' %>
-							</h5>
-						</div>
-					</td>
 
-				    <td><h5 class="member-table"><%= publisher_product.id %></h5></td>
-				    <td><h5 class="member-table"><%= publisher_product.created_at %></h5></td>
-				    <td><h5 class="member-table"><%= publisher_product.updated_at %></h5></td>
-				    <td><h5 class="member-table"><%= publisher_product.name_product %></h5></td>
-				    <td><h5 class="member-table"><%= yesno(publisher_product.has_description) %></h5></td>
-				    <td><h5 class="member-table"><%= yesno(publisher_product.has_product_logo) %></h5></td>
-				    <td><h5 class="member-table"><%= yesno(publisher_product.has_product_metadata) %></h5></td>
-				  </tr>
+					<%= link_to publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" do %>
+						<!-- <#%= link_to ("/id" + publisher.id.to_s).html_safe, class: "" do %#> -->
+						<div class="publisher-products-list-1">
+							<!-- <a href="<#%= ("/publisher-id" + publisher.id.to_s).html_safe %#>" style="height: 65px;"> -->
+							<div class="publisher-products-list-2-left">
+								<div class="div-img">
+									<ul class="publisher-product-list-grid publisher-product-list-caption">
+										<li>
+											<figure>
+												<%= publisher_product_logo_for publisher_product %>
+												<figcaption>
+													<span class="publisher-product-list-span"><%= link_to "Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %></span>
+													<!-- <span><#%= link_to "Edit", { :action => :crop, :id => publisher_product.id } %#></span> -->
+												</figcaption>
+											</figure>
+										</li>
+									<ul>
+								</div>
+								<div class="helper"></div>								
+							</div>
+
+							<div class="publisher-products-list-3">
+								
+								<div>
+									<div class="publisher-products-list-4">
+										<span class="publisher-products-span-1">Product ID: <%= publisher_product.id %></span>
+									</div>
+								</div>
+
+								<div>
+									<div class="publisher-products-list-4">
+										<span class="publisher-products-span-1"><%= publisher_product_name_product_for publisher_product %></span>
+									</div>
+								</div>
+									
+								<div>									
+									<div class="publisher-products-list-4">
+										<div style="height: 40px;"></div>
+									</div>
+								</div>
+									
+								<div style="position: relative;">									
+									<div class="publisher-products-list-4" style="text-align: right;">
+										<span class="publisher-products-span-1"><%= link_to "View/Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %></span>
+								    	<!-- <span>
+										   	<#% delete_msg = "Delete this Journal Poster Pin?" %#>
+											<#%= button_to "Delete", {:action => 'destroy', :id => publisher_journalposter.id}, :method => :delete, data: { confirm: delete_msg }, :class => 'jp-btn' %#>
+										</span> -->
+									</div>
+								</div>
+								
+							</div>
+							
+							<div class="publisher-products-list-2-right">
+								<div class="helper"></div>
+								<div class="div-img">
+									<ul class="publisher-product-list-grid publisher-product-list-caption">
+										<li>
+											<figure>
+												<%= publisher_product_image_for publisher_product %>
+												<figcaption>
+													<span class="publisher-product-list-span"><%= link_to "Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %></span>
+													<!-- <span><#%= link_to "Edit", { :action => :crop, :id => publisher_product.id } %#></span> -->
+												</figcaption>
+											</figure>
+										</li>
+									<ul>
+								</div>
+							</div>
+							
+							
+						</div>
+						
+					<% end %>
+					
 				<% end %>
 
-				<!-- number_to_currency(product.price) -->
-				
-				</table>			
-							
-				  <%= will_paginate @publisher_products %>							
-							
-			<% else %>
-						
-				<h3>No record for Publisher Products</h3>
-				
-			<% end %>
-			
-		</div>
-		
-	</div>
+				</div>
 
-   
-    <!-- <div id="myDiv" style="overflow: auto; height: 200px; width: 200px;" onscroll="scollPos();">
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        Place some large content here
-        
-    </div> -->
-    
+				<!-- <div id="im_bottom_sh" style="display: block;"></div> -->					
+				<div class="publisher-product-utility-bar-footer">
+					<div style="height: 4px;"></div>
+					<div style="width: 100%; text-align: center;">
+						<span><%= will_paginate @publisher_products %></span>
+					</div>
+				</div>
+				
+			<% else %>
+				<!-- <div class="" style="color: red; padding-left: 20px;">
+					<h3>No record for Publisher Products</h3>
+				</div> -->
+			<% end %>
+
+	<script src="/assets/jquery.mousewheel.js"></script>
 
 	<script>
 		
-        function scrollPos() {
-            // var div = document.getElementById("scroll1").scrollLeft;
-            // document.getElementById("pos").innerHTML = div;
-            
-            $("#pos").html($("#scroll1").scrollLeft());
-        }
-		
-		function moveScroll() {
-			
-			// alert('moveScroll');
-			
-			$("#scroll1").scrollLeft($("#pos").html());
+        // function scrollPos() {
+            // $("#pos1").html($("#scroll1").scrollLeft());
+            // // $("#pos2").html($("#scroll1").scrollTop());
+            // $("#scroll2").scrollLeft($("#scroll1").scrollLeft());
+            // // $("#scroll2").scrollLeft(100);
+        // }
+		// function moveScroll() {
+			// $("#scroll1").scrollLeft($("#pos1").html());
+			// $("#scroll2").scrollLeft($("#pos1").html());			
+		// }
+				
+		function body_resize() {
+			var wh = window.innerHeight;
+			var sh = 0;
+			if(wh > 604) {
+				sh = wh-388;
+				$("#scroll1").css({
+					'height': sh
+				});			
+			}
 		}
 
+		// function init_page() {
+			// var wh = window.innerHeight;
+			// var sh = wh-388;
+			// $("#scroll1").css({
+				// 'height': sh
+			// });			
+		// }
 				
-		// $(window).load( function() {
-			// alert('load');
-		// });				
-				
-				
-		$(document).ready(function () {				
-		// $(function() {
-		// $(window).load( function() {
+		// $(window).load(function() {
+		$(document).ready(function() {			
+      	// $(function() {
+
+			body_resize();
+
+	        $('#scroll1').bind('mousewheel', function(event) {
+	          event.preventDefault();
+	          var scrollTop = this.scrollTop;
+	          this.scrollTop = (scrollTop + ((event.deltaY * event.deltaFactor) * -0.7));
+	          //console.log(event.deltaY, event.deltaFactor, event.originalEvent.deltaMode, event.originalEvent.wheelDelta);
+	        });
+
+
+			// $('#scroll1').bind('mousewheel DOMMouseScroll', function(event) {
+			  // event.preventDefault();
+			  // var delta = event.wheelDelta || -event.detail;
+			  // $(this).css({'top': $(this).position().top + (delta > 0 ? '+=40' : '-=40')});
+			// }); 
+
+			 // //Firefox
+			 // $('#scroll1').bind('DOMMouseScroll', function(e){
+			     // if(e.originalEvent.detail > 0) {
+			         // //scroll down
+			         // console.log('Down');
+			     // }else {
+			         // //scroll up
+			         // console.log('Up');
+			     // }
+			     // //prevent page fom scrolling
+			     // return false;
+			 // });
+			 // //IE, Opera, Safari
+			 // $('#scroll1').bind('mousewheel', function(e){
+			     // if(e.originalEvent.wheelDelta < 0) {
+			         // //scroll down
+			         // console.log('Down');
+			     // }else {
+			         // //scroll up
+			         // console.log('Up');
+			     // }
+			     // //prevent page fom scrolling
+			     // return false;
+			 // });				
 			
-			 // $('#loading').fadeOut(1000);
+		});				
 				
-		
-			// img = $('<img />');
-//  			
-			// img.bind('loading_import', function() {
-// 				
-				// $('#join_image').css({
-					// visibility: 'visible'
-				// })
-// 				
-			    // $('#loading').fadeOut(1000);
-// 
-				// // // setTimeout( function(){
-					// // // centerSignin();
-					// // // showSignin();
-					// // // formValidate();
-				// // // }, 1000);
-			// });
-		
-		
-		
-			// $("#get-import").on('click', function() {
-			    // $.post({
-			    	// //type: "POST",
-			      	// url: "/stores/import"
-			    // });			
-			// });
-		
-		
-		
-		
-		
-		
-    		var $cols = $('colgroup');
-
-			$("table#listtable tr:nth-child(even)").addClass('gray');
-			$("table#listtable tr:nth-child(odd)").addClass('white');
-
-			// #  id           :integer			3  
-			// #  name_type    :string(50)		4
-			// #  salutation   :string(50)		5
-			// #  name_first   :string(50)		6
-			// #  name_last    :string(50)		7
-			// #  name_title   :string(50)		8
-			// #  institute    :string(100)		9
-			// #  department   :string(100)		10
-			// #  address_1    :string(100)		11
-			// #  address_2    :string(100)		12
-			// #  city         :string(50)		13
-			// #  state        :string(100)		14
-			// #  zip          :string(50)		15
-			// #  country      :string(100)		16
-			// #  phone        :string(50)		17
-			// #  fax          :string(50)		18
-			// #  phone_direct :string(50)		19
-			// #  phone_mobile :string(50)		20
-			// #  email        :string(100)		21
-			// #  website      :string(100)		22
-
-
-			var cell;
-			var cellIndex;
-			var row;
-			var rowIndex;
-			var header;
-			var cellTh;
-			var cellIndexTh;
-			
-			$("table#listtable th").mouseover ( function () {
-
-				cellTh = $(this).closest('th');
-				cellIndexTh = cellTh[0].cellIndex;
-				cellIndexTh += 1;
 				
-				$("table#listtable td:nth-child(" + cellIndexTh + ")").addClass('hover-col');
-				$(this).addClass('hover-col');
-				
-			}).mouseout ( function() {
-				
-				$("table#listtable td:nth-child(" + cellIndexTh + ")").removeClass('hover-col');				
-				$(this).removeClass('hover-col');
-				
-			});
-			
-			$("table#listtable td").mouseover ( function () {
-				
-				cell = $(this).closest('td');
-				cellIndex = cell[0].cellIndex;
-				cellIndex += 1;
-				row = cell.closest('tr');
-				rowIndex = row[0].rowIndex;
-				
-				switch(cellIndex)
-				{
-				case 1:
-					header = "th_view";
-				  break;
-				case 2:
-					header = "th_delete";	  
-				  break;
-				case 3:
-					header = "#th_id"; 
-				  break;
-				case 4:
-					header = "#th_created_at"; 
-				  break;
-				case 5:
-					header = "#th_updated_at"; 
-				  break;				  
-				case 6:
-					header = "#th_name_product";	  
-				  break;				  
-				case 7:
-					header = "#th_has_description";	  
-				  break;
-				case 8:
-					header = "#th_has_product_logo";	  
-				  break;
-				case 9:
-					header = "#th_has_product_metadata";	  
-				  break;
-
-				default:
-					//
-				}				
-
-				$(header).addClass('hover-col');
-		
-				if (rowIndex % 2 === 0) {
-					$("table#listtable td:nth-child(" + cellIndex + ")").addClass('hover-col');
-					row.removeClass('gray').addClass('hover-row');					
-				}
-				else {
-					$("table#listtable td:nth-child(" + cellIndex + ")").addClass('hover-col');
-					row.removeClass('white').addClass('hover-row');										
-				}		
-			}).mouseout( function(){
-
-				$(header).removeClass('hover-col');
-				
-				if (rowIndex % 2 === 0) {
-					$("table#listtable td:nth-child(" + cellIndex + ")").removeClass('hover-col');
-					row.removeClass('hover-row').addClass('gray');					
-				}
-				else {
-					$("table#listtable td:nth-child(" + cellIndex + ")").removeClass('hover-col');
-					row.removeClass('hover-row').addClass('gray');					
-				}		
-			});
-			
-			var rowSelect = -1;			
-			
-			$("table#listtable td").on('click', function () {
-	
-				cell = $(this).closest('td');
-				btn_delete = $(this).closest('form');
-				row = cell.closest('tr');
-				rowIndex = row[0].rowIndex;
-
-				if (rowSelect !== -1) {
-					$("table#listtable tr").removeClass('row-select');
-				}
-				
-				rowSelect = rowIndex;
-				row.addClass('row-select');
-				btn_delete.removeClass('btn-color').addClass('btn-color-select');
-			});
-	
-	
-			
-			$(document).on('click', function(event) {
-				// alert(event.target);
-				elem = event.target.className;
-				if ((elem === 'hover-col') || (elem === 'delete-btn') || (elem === 'member-table')) {
-					//
-				}
-				else {
-					$("table#listtable tr").removeClass('row-select');					
-				}
-			});
-		});
-
-		// $(document).on('click', function() {
-			// if ((rowSelect !== -1)) {
-				// //$("table#listtable tr").removeClass('row-select');
+		// $(document).on('click', function(mtablet) {
+			// // alert(mtablet.target);
+			// elem = mtablet.target.className;
+			// if ((elem === 'hover-col') || (elem === 'delete-btn') || (elem === 'member-table')) {
+				// //
 			// }
-			// rowSelect = -1;
-			// tableClicked = false;
-		// })
-
-		//$(document).ready(function () {
-			// $('*[data-confirm]').click(function(){
-				// // alert('delete clicked');				
-		    	// return confirm($(this).attr('data-confirm'));
-		  	// });
-		//});
-			
+			// else {
+				// $("table.tbltablets tr").removeClass('row-select');					
+			// }
+		// });
+				
 	</script>
-
 

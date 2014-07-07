@@ -2,7 +2,17 @@ module SessionsHelper
     
   def sign_in(user)
     remember_token = User.new_remember_token
-    cookies.permanent[:remember_token] = remember_token
+    
+    Rails.logger.info params[:remember_me]
+    
+    if params[:remember_me].to_s == "1"
+      cookies.permanent[:remember_token] = remember_token
+      # cookies.permanent[:auth_token] = user.auth_token
+    else
+      cookies[:remember_token] = remember_token
+      # cookies[:auth_token] = user.auth_token
+    end
+    # cookies.permanent[:remember_token] = remember_token
     user.update_attribute(:remember_token, User.encrypt(remember_token))
     self.current_user = user
     
@@ -13,24 +23,32 @@ module SessionsHelper
     # if user.has_account    
       # session[:has_account] = user.has_account
       session[:account_type] = user.account_type    
-      
       account_type = session[:account_type] 
+
       case user.account_type.to_s  
         when "0"
-          session[:profile] = "/Students"          
+          session[:profile] = "/Student"
+          account_type = "Student"
         when "1"
-          session[:profile] = "/Teachers"          
+          session[:profile] = "/Teacher"          
+          account_type = "Teacher"
         when "2"
-          session[:profile] = "/Publishers"          
+          session[:profile] = "/Publisher"          
+          account_type = "Publisher"
         when "3"
-          session[:profile] = "/Institutes"          
+          session[:profile] = "/Institute"          
+          account_type = "School"
         when "4"
-          session[:profile] = "/Recruiters"          
+          session[:profile] = "/Recruiter"          
+          account_type = "Recruiter"
           # redirect_to(:controller => 'students', :action => 'index')          
         else
           session[:profile] = "/Signup"
+          account_type = ""          
           #        
       end
+
+      # self.current_user_account_type = user
       
       # session[:profile] = "/" + user.account_type + "s/home"
     # else
@@ -94,6 +112,8 @@ module SessionsHelper
     session[:publisher_journalposter_id] = nil
     session[:publisher_has_journalposter] = nil
         
+    #cookies.delete(:remember_token)        
+        
     # session[:return_to] = nil    
     
     # if user.admin
@@ -122,7 +142,7 @@ module SessionsHelper
           # redirect_to '/Publishers'          
           # redirect_to(:controller => 'publishers', :action => 'index')          
         when "2"
-          redirect_to "/Publishers"
+          redirect_to "/Publisher"
           # redirect_to(:controller => 'recruiters', :action => 'index')          
         when "3"
           # redirect_to(:controller => 'teachers', :action => 'index')          
@@ -139,4 +159,34 @@ module SessionsHelper
   def store_location
     session[:return_to] = request.url
   end  
+  
+  
+  def user_profile_image_nav
+    user_profile_image_nav = UserProfileImage.where("user_id = ?", current_user.id).first     
+  end
+
+  
+  def current_user_account_type
+      account_type = ""
+      case current_user.account_type.to_s  
+        when "0"
+          account_type = "Student"          
+        when "1"
+          account_type = "Teacher"          
+        when "2"
+          account_type = "Publisher"          
+        when "3"
+          account_type = "School"          
+        when "4"
+          account_type = "Recruiter"          
+          # redirect_to(:controller => 'students', :action => 'index')          
+        else
+          account_type = ""
+      end
+    
+    @current_user_account_type = account_type
+  end
+
+  
+  
 end

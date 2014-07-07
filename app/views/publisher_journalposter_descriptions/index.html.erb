@@ -1,5 +1,6 @@
 <% provide(:title, 'Publisher Journal Posters') %>
 
+
 	<style>
 		
 		.form-display-col1 {
@@ -74,10 +75,11 @@
 		  	height: 20px;
 		  	background: inherit;
 		  	border-width: 0px;
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 13px;
+	  		/*font-family: 'Quattrocento Sans', sans-serif;*/
+	  		font-family: Arial, Helvetica, sans-serif;
+	        font-size: 14px;
 	    	color: #9F6720;
-	    	font-weight: 400;					  	
+	    	font-weight: 200;					  	
 		}
 		.jp-btn:focus {
 		}
@@ -149,6 +151,66 @@
 		
 	</style>
 
+ 	<style>
+ 		
+		.image-grid figcaption.figcaption-1 {
+			text-align: right;			
+			padding-top: 5px;
+			padding-right: 10px;
+			/*padding-left: 0px;
+			padding-bottom: 0px;*/
+
+			background: #000;
+			/*color: #fff;*/
+		}
+		.image-grid figcaption.figcaption-1 a {
+			text-align: right;
+			color: #fff;
+			font-family: Arial, Helvetica, sans-serif;
+		    font-size: 13px;
+			font-weight: 200;					  	
+		}
+		.image-grid-caption-height-30 figcaption {
+			height: 30px;
+		}
+		.image-grid-caption-height-50 figcaption {
+			height: 50px;
+		}
+		div.image-grid-text-1-container {
+			width: 100%;
+			text-align: left;
+		}
+		div.image-grid-text-1-container span,
+		div.image-grid-text-1-container a {
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 14px;
+			font-weight: 200;
+			color: #888;								  	
+		}
+		.figure-box-500 {
+			width: 500px; 
+			height: 500px; 
+			border: 1px solid #888;
+		}
+		.figure-box-200 {
+			width: 200px; 
+			height: 200px; 
+			border: 1px solid #888;
+		}
+		.figure-box-100 {
+			width: 100px; 
+			height: 100px; 
+			border: 1px solid #888;
+		}
+		.figure-box-50 {
+			width: 50px; 
+			height: 50px; 
+			border: 1px solid #888;
+		}
+
+ 	</style>
+	
+	
 	<header>				
 		<%= render 'share/backtotop' %>
 	</header>		
@@ -157,35 +219,71 @@
 		<div class="table-profile">
 			<div class="row-profile">
 				<div class="col-left">
-					<%= render 'share/dir_publishers_left'%>
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>
+						<div class="row-profile">
+							<div class="col-left">
+								<%= render 'share/dir_publishers_left'%>
+							</div>
+						</div>
+					</div>
 				</div>
-				
 				<div class="col-midd">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-midd-600">
+								
+								<!-- <div class="line-space-20"></div>
+								<div class="pad-left-20">
+									<span class="jp-title">Journal Posters</span>
+								</div>
+								<div class="line-space-20"></div>
+								<ul class="jp-edit-instr">
+									<li>Free Online Journal Poster Pins may be edited/changed at any time after they are created.</li>
+									<li>Purchased options must be edited/changed before the cutoff date: </li>						
+								</ul> -->
+								
 
-					<% case @publisher_journalposter.poster.to_s %>
-					<% 	when "1" %>
-					<%= 	render 'publisher_journalposter_descriptions/index_1' %>
-					<% 	when "2" %>
-					<%=		render 'publisher_journalposter_descriptions/index_2' %>
-					<% 	when "3" %>
-					<%=		render 'publisher_journalposter_descriptions/index_3' %>
-					<% 	when "4" %>
-					<%=		render 'publisher_journalposter_descriptions/index_4' %>
-					<% 	else %>
-					<% end %>
-
+								<% case @publisher_journalposter.poster.to_s %>
+								<% 	when "1" %>
+								<%= 	render 'publisher_journalposter_descriptions/index_1' %>
+								<% 	when "2" %>
+								<%=		render 'publisher_journalposter_descriptions/index_2' %>
+								<% 	when "3" %>
+								<%=		render 'publisher_journalposter_descriptions/index_3' %>
+								<% 	when "4" %>
+								<%=		render 'publisher_journalposter_descriptions/index_4' %>
+								<% 	else %>
+								<% end %>
+								
+								
+							</div>
+						</div>
+					</div>					
 				</div>
-				
 				<div class="col-right">
-					<%= render 'share/dir_publishers_right_bare' %>
-				</div>												
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-right">
+								<%= render 'share/dir_publishers_right_bare' %>
+							</div>
+						</div>
+					</div>										
+				</div>								
 			</div>
 		</div>
 	</div>
 
 
 	<script>
-		
 		
 		// alert('out of load');
 		

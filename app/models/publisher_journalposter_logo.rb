@@ -12,10 +12,16 @@
 
 class PublisherJournalposterLogo < ActiveRecord::Base
   
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  
   attr_accessible :id,
                   :publisher_id,
                   :publisher_journalposter_id,
                   :image,
+                  :crop_x,
+                  :crop_y,
+                  :crop_w,
+                  :crop_h,                  
                   :created_at,
                   :updated_at 
   
@@ -24,7 +30,7 @@ class PublisherJournalposterLogo < ActiveRecord::Base
   #belongs_to :gallery
   #mount_uploader :image, ImageUploader
 
-  mount_uploader :image, PublisherJournalposterUploader
+  mount_uploader :image, PublisherJournalposterLogoUploader
   
   belongs_to :publisher_journalposter
   

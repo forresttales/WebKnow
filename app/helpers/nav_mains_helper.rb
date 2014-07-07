@@ -1,0 +1,2 @@
+module NavMainsHelper
+end

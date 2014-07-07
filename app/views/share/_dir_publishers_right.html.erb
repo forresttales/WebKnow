@@ -37,30 +37,26 @@
 	
 	
 	<div style="text-align: left;">
-		<div style="height: 20px;"></div>
-		<span class="normal"><%= session[:username] %></span>
-
 		<% if !session[:publisher_has_journalposter] %>
-		<div style="height: 100px;"></div>
-		<div style="padding-left: 16px;">
-			<span class="right-title">Journal Posters</span>
+		<div style="padding-left: 0px;">
+			<span class="right-title">Posters</span>
 		</div>
-		<div style="height: 10px;"></div>
-		<div style="padding-left: 16px;">
+		<div style="height: 20px;"></div>
+		<div style="padding-left: 0px;">
 			<a href="/PublisherCreateJournalPoster" class="no-underline"><span class="right-title-sub">Start here...</span></a>
 		</div>
-		<div style="height: 10px;"></div>
+		<!-- <div style="height: 10px;"></div>
 		<div class="jp-start-img-1">
 			<a href="/PublisherCreateJournalPoster"><img src="../journal_poster/poster-pin-free-w474-h248.png" alt="poster-pin-free-w474-h248.png" width="180px"></a>
-		</div>
-		<div style="height: 50px;"></div>
-		<div style="padding-left: 16px;">
+		</div> -->
+		<div style="height: 20px;"></div>
+		<div style="padding-left: 0px;">
 			<a href="/PublisherCreateJournalPoster" class="no-underline"><span class="right-title-sub">Learn more...</span></a>
 		</div>
-		<div style="height: 20px;"></div>
+		<!-- <div style="height: 20px;"></div>
 		<div class="jp-start-img-2">
 			<a href="/Journal-Poster-About"><img src="../journal_poster/poster-pin-premium-w475-h475.png" alt="poster-pin-premium-w475-h475.png" width="180px"></a>
-		</div>
+		</div> -->
 		<% end %>
 	</div>
 	

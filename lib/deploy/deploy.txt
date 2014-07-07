@@ -1,0 +1,102 @@
+
+
+Thurs June 19
+1
+user_profile_images_controller.rb
+
+2
+public/images_avatar			folder
+
+user_public_images/index
+publishers/index
+user_profile_images/new
+_dir_publishers_left.html.erb
+_nav_main.html.erb
+
+Friday June 20
+1
+publisher.rb
+2
+routes
+publisher_journalposter_logo_uploader.rb
+publisher_journalposter_prodshot_uploader.rb
+publisher_journalposter_logos_controller.rb
+publisher_journalposter_descriptions/_index_1.html.erb
+publisher_journalposter_logos/index.html.erb
+publisher_journalposters/_list.html.erb
+user_profile_images.js.coffee
+3
+publisher_product_controller -> All
+publisher_product_logos -> All
+publisher_product_descriptions -> All
+_dir_publishers_left.html.erb
+
+Monday June 23
+1
+sessions_helper								x
+users_controller							x			
+publisher_profile_images -> All				x
+publishers_controller						x
+routes										x
+_dir_publishers_left						x
+publisher_products/_list					x
+publisher_product_descptions/_index			x
+publisher_product_logo_uploader				x
+db migrate									x		
+2
+publisher_profile_images/index
+publisher_journalposter_logos/index
+publisher_profile_uploader
+publisher_profile_images_controller
+publisher_profile_images/crop
+
+Tuesday June 24
+1
+jquery_image_overlay.css
+publisher_profile_images/index
+publisher_profile_images/crop
+publisher_profile_uploader
+publishers/index
+routes
+
+Wednesday June 25
+1
+members -> All
+routes
+2
+publisher_profiles_controller
+publisher_profiles/_index
+publisher_journalposter_descriptions/_edit_1
+profiles_controller
+3
+publisher_ads/index
+
+Monday June 30
+1
+publisher_journalposter_images -> All with db migrate
+jquery_image_overlay.css
+publisher_profile_images/index
+publisher_product_images -> All
+share/_dir_publishers_left
+routes
+publisher_journalposters_controller
+publisher_journalposter_descriptions -> controller, view folder
+2
+publisher_products
+publisher_product_images
+
+Thurs July 3
+1
+routes
+publisher_products_descriptions/_index
+publisher_products_descriptions_controller
+
+
+
+
+
+
+
+
+
+

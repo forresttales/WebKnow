@@ -24,7 +24,7 @@ class PublisherJournalposterProdshot < ActiveRecord::Base
   #belongs_to :gallery
   #mount_uploader :image, ImageUploader
 
-  mount_uploader :image, PublisherJournalposterUploader
+  mount_uploader :image, PublisherJournalposterProdshotUploader
   
   belongs_to :publisher_journalposter
   

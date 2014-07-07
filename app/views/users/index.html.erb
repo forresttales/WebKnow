@@ -1,120 +1,122 @@
-<% provide(:title, 'Choose your profile') %>
-
-
-	<script type="text/javascript" src="/assets/entrepeneurs_jquery-1.js"></script>
+<% provide(:title, 'Members') %>
 
 
 	<style>
-		#sign-up {
-		background-color: #F8F8F8;
-	    border: 1px solid #41B737;
-	    border-radius: 8px 8px 0 0;
-	    box-shadow: 0 4px 4px #CCCCCC;
-	    display: table-cell;
-	    padding: 8px;
-		width:600px;
+		
+		.users-table {
+			display:table;
+			width: 100%;
+			border-top: 0px; 
+			border-collapse: collapse;
+		}
+		.users-row-top {
+			display: table-row;
+			height: 2px;
+		  	border-bottom: 1px solid #ccc;			
+		}
+		.users-cell-top-image {
+			display:table-cell;
+			height: 2px;
+			/*width: 500px;*/
+		  	border-bottom: 1px solid #ccc;
+		}
+		.users-cell-top {
+			display:table-cell;
+			height: 2px;
+			/*width: 70px;*/
+		  	border-bottom: 1px solid #ccc;
+		}
+		.users-row {
+			display: table-row;
+			height: 68px;
+		  	border-bottom: 1px solid #ccc;			
+		}
+		.users-cell-image {
+			display:table-cell;
+		  	overflow: auto;
+		  	width: 70px;			
+			height: 100%;
+		  	padding: 8px 0 0 10px;
+		  	border-bottom: 1px solid #ccc;
+		}
+		.users-cell {
+			display:table-cell;
+		  	overflow: auto;
+		  	width: 500px;			
+			height: 100%;
+		  	padding: 8px 0;
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 200;
+		  	font-color: #888;
+			font-size: 13px;
+			border-bottom: 1px solid #ccc;
+			vertical-align: top;
+		}
+		.users-cell span.user-name a {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #5628E1;
+			font-size: 14px;
+		}
+		.users-cell-top div {
+			height: 100%;
+			padding: 0 0 0 10px;
+		}
+		.users-cell div {
+			height: 100%;
 		}
 		
-		.profile-hover {
-		text-decoration: none;
-		color: #49853f;
-		padding:10px;
-		}
-		
-		div.profile-hover:hover {
-		background: #CDCDCD;
-		border: 1px solid #41b737;
-		border-radius: 3px 3px 3px 3px;
-		color: #49853f;
-		padding: 10px;
-		text-decoration: none;
-		}
-		
-		a.profile-type:link, a.profile-type:hover, a.profile-type:active, a.profile-type:visited {
-		text-decoration:none; color:#cb7508; float:right; margin-right: 100px; margin-left: 75px;
-		}
-		span.title { text-transform:uppercase; text-decoration:underline; font-weight:bold;}
-		.select { float: right; }
 	</style>
 
-
-	<link rel="stylesheet" href="/assets/colorbox.css" />
-	<!-- <link rel="stylesheet" href="/assets/home.css" /> -->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
-	<script src="/assets/jquery.colorbox.js"></script>
-	<script>
-		$(document).ready(function(){
-			//Examples of how to assign the Colorbox event to elements
-			$(".group1").colorbox({rel:'group1'});
-			$(".group2").colorbox({rel:'group2', transition:"fade"});
-			$(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
-			$(".group4").colorbox({rel:'group4', slideshow:true});
-			$(".ajax").colorbox();
-			$(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
-			$(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
-			$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
-			$(".inline").colorbox({inline:true, width:"50%"});
-			$(".callbacks").colorbox({
-				onOpen:function(){ alert('onOpen: colorbox is about to open'); },
-				onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
-				onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
-				onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
-				onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
-			});
-
-			$('.non-retina').colorbox({rel:'group5', transition:'none'})
-			$('.retina').colorbox({rel:'group5', transition:'none', retinaImage:true, retinaUrl:true});
-			
-			//Example of preserving a JavaScript event for inline calls.
-			$("#click").click(function(){ 
-				$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
-				return false;
-			});
-		});
-	</script>
-
-
-
 	<header>
+		<%= render 'layouts/nav_main' %>
 		<%= render 'share/backtotop' %>
 	</header>
 
-	<div class="container" style="min-height: 1000px;">
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<%= render 'share/dir_publishers_left'%>
+				</div>
+				
+				<div class="col-midd">
+					<div class="line-space-20"></div>
+			
+					<div style="text-align: left;">
+						<span class="normal" style="padding-left: 10px;">Members</span>
+					</div>
 
-		<div id="sign-up">
-			<h2 style="color: #11520B;">Choose Profile Type - Which are you?</h2>
-			<div class="profile-hover"><span class="title">Student?</span> <a class='inline profile-type' href="#inline_student">(About Profile Type) </a><a class="select" href="/students/new"> Select</a></div>
-			<div class="profile-hover"><span class="title">Teacher?</span> <a class='inline profile-type' href="#inline_teacher">(About Profile Type) </a><a class="select" href="/teachers/new"> Select</a></div>
-			<div class="profile-hover"><span class="title">Publisher?</span> <a class='inline profile-type' href="#inline_publisher">(About Profile Type) </a><a class="select" href="/PublishersNew"> Select</a></div>
-			<div class="profile-hover"><span class="title">School or District?</span> <a class='inline profile-type' href="#inline_school">(About Profile Type) </a><a class="select" href="/InstitutesNew"> Select</a></div>
-			<div class="profile-hover"><span class="title">Recruiter?</span> <a class='inline profile-type' href="#inline_recruiter">(About Profile Type) </a><a class="select" href="/recruiters/new"> Select</a></div>
+					<div class="line-space-20"></div>
+
+					<div>
+						<%= will_paginate %>
+						
+						<div class="users-table">
+							<div class="users-row-top">
+								<div class="users-cell-top-image"></div>
+								<div class="users-cell-top"></div>
+							</div>
+						  	<%= render @users %>
+						</div>
+						
+						<%= will_paginate %>
+					</div>
+					
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_publishers_right' %>
+				</div>								
+			</div>
 		</div>
-
-		<div style='display:none'>
-			<div id='inline_student' style='padding:10px; background:#fff;'>
-			<h2 style="color: #49853F;">Student Profile</h2>
-			<p>Share comments, photos, classes, and favorite learning content while charting your current and future learning. Keep up your education history and get personalized recommendations for learning games or content to study. You can open access to college recruiters after 13 years old.</p>
-			</div>
-			
-			<div id='inline_teacher' style='padding:10px; background:#fff;'>
-			<h2 style="color: #49853F;">Teacher Profile</h2>
-			<p>Get ongoing classroom digital content and professional development recommendations. See analysis of how much lesson time used on digital learning, and connect with students.</p>
-			</div>
-			
-			<div id='inline_publisher' style='padding:10px; background:#fff;'>
-			<h2 style="color: #49853F;">Publisher Profile</h2>
-			<p>Post a profile of your company and each of your products so they can be found by students, teachers and schools.</p>
-			</div>
-			
-			<div id='inline_school' style='padding:10px; background:#fff;'>
-			<h2 style="color: #49853F;">School or District Profile</h2>
-			<p>Use the system to get a gap analysis of what you are missing in digital curriculum for any grade or subject, link with other schools, post publisher request for proposals, and keep track of inventory.</p>
-			</div>
-			
-			<div id='inline_recruiter' style='padding:10px; background:#fff;'>
-			<h2 style="color: #49853F;">Recruiter Profile</h2>
-			<p>Promote your institution and seek links with college-interested students. Search student interests and see public student profiles.</p>
-			</div>
-		</div>
-
 	</div>
+
+	<script>
+	  
+		//$(window).load( function() {
+	
+		//});
+	  
+	</script>		

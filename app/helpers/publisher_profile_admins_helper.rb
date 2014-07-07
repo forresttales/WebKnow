@@ -1,0 +1,2 @@
+module PublisherProfileAdminsHelper
+end

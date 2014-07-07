@@ -1,0 +1,51 @@
+
+	
+
+			<!-- <div class="line-space-20">test</div> -->
+
+			<% if @publishers.any? %>
+		
+			<!-- <#%= hidden_field_tag :direction, params[:direction] %#>
+			<#%= hidden_field_tag :sort, params[:sort] %#>	
+			<#%= hidden_field_tag :pos, params[:pos] %#> -->	
+
+				<div class="utility-bar lighter">
+					<div style="padding-left: 10px; padding-top: 10px;">
+						<span>Record Count: <%= @publishers.count %></span>
+					</div>
+				</div>
+				
+				<% @publishers.each do |publisher| %>
+
+					<%= link_to ("/publisher-id" + publisher.id.to_s).html_safe, class: "" do %>
+						<div class="publishers-row">
+							<!-- <a href="<#%= ("/publisher-id" + publisher.id.to_s).html_safe %#>" style="height: 65px;"> -->
+								<div class="publishers-cell-image">
+									<div>
+										<%= publisher_avatar_for publisher %>
+										<!-- <#%= link_to (publisher_avatar_for publisher), ("/publisher-id" + publisher.id.to_s).html_safe %#> -->
+									</div>
+								</div>
+								<div class="publishers-cell">
+									<div>
+										<span class="publisher-name">
+											<%= publisher.name %>
+											<!-- <#%= link_to publisher.name, ("/publisher-id" + publisher.id.to_s).html_safe %#> -->
+										</span>
+									</div>
+								</div>
+							<!-- </a> -->
+						</div>
+					<% end %>
+
+				<% end %>
+					
+				<%= will_paginate @publishers %>
+		
+			<% else %>
+				<div class="row" style="color: red;">
+					<h3>No record for Publishers</h3>
+				</div>
+			<% end %>
+
+

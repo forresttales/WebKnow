@@ -1,4 +1,4 @@
-<% provide(:title, 'Journal Posters 3') %>
+<% provide(:title, 'Digital School Operations') %>
 
 	
 	<style>
@@ -10,8 +10,8 @@
 		.journalposter-background {
 			width: 1000px;
 			margin: 0 auto;				
-			height: 710px;
-			/*background: #F1F2E1 url(../journal_poster/poster-map-unpop-w1000-h710.png) no-repeat right top;*/
+			height: 667px;
+			background: #F1F2E1 url(../journal_poster/maps/map-3-school-operations-w1000-h667.png) no-repeat right top;
 		}
 		span.jp-title {
 			font-family: Arial, Helvetica, sans-serif;
@@ -26,6 +26,7 @@
 		.jp-table {
 			display: table;
 			padding-left: 4px;
+			position: relative;
 		}
 		.jp-row {
 			display: table-row;
@@ -39,181 +40,380 @@
 			border-bottom: 1px solid red;
 			border-right: 1px solid red;			
 		}
-		.img-pin {
+		.pin-img {
+			width: 76px;
+			/*margin: 0 auto;*/				
+			height: 40px;
+			/*background: #F1F2E1 url(../journal_poster/poster-pin-free-w76-h40-2.png) no-repeat right top;*/
+			background: url(../journal_poster/poster-pin-free-w76-h40-2.png) no-repeat right top;
 			box-shadow: 4px 4px 20px #000;	
 		}
+		/*.img-pin:hover {
+			width: 180px;
+			height: 70px;
+			background: #ACDDE3;
+		}*/
+
 		.jp-header {
 			width: 1000px;
 			text-align: left;
 			margin: 0 auto;
 			padding-left: 6px;
 		}
+		.absolute_position {
+			position: absolute;	
+		}
+		.pin-expand {
+			width: 280px;
+			height: 70px;
+			background-color: #ACDDE3;
+			box-shadow: 4px 4px 20px #000;	
+			/*position: relative;
+			top: -110px;
+			left: 40px;*/
+		}
+		.display-off {
+			display: none;
+		}
+		.pin {
+			z-index: 1;
+		}
+		.pin:hover {
+			z-index: 2;
+		}		
+		.pin a {
+			text-decoration: none;
+		}
+		.hover-info-img {
+			display: inline-block;			
+		}
+		.hover-info-text {
+			display: inline-block;
+			line-height: 0.7em;				
+			vertical-align: top;		
+			padding-top: 4px;
+			padding-left: 2px;
+		}
+		.hover-info-text span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			color: #333;
+		}
+		.hover-info-text a {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			color: #333;
+		}
+		.hover-info-text a:hover {
+			text-decoration: underline;
+		}
+
+		/*
+		adlabel										
+		adlabel-img									
+		adlabel-txtarea								
+		adlabel-table-1								
+		adlabel-table-1-row-1						
+		adlabel-table-1-row-1-col-1					
+		adlabel-table-1-row-1-col-2					
+		adlabel-table-1-a							
+		adlabel-table-1-a-row-1						
+		adlabel-table-1-a-row-1-col-1				
+		adlabel-table-1-b							
+		adlabel-table-1-b-row-1						
+		adlabel-table-1-b-row-1-col-1				
+		adlabel-table-1-b-row-1-col-1 span			
+		adlabel-table-2
+		adlabel-table-2-row-1
+		adlabel-table-2-row-1-col-1
+		adlabel-table-2-row-1-col-1 a 
+		*/ 
+
+		.adlabel {
+			height: 140px;
+			width: 600px;
+			padding: 4px;
+			vertical-align: top;
+	    	/*cursor: pointer;*/
+	    	background-color: #fff;
+	    	border: solid 4px #aaa;
+	    	border-radius: 4px;
+	    	position: relative;
+		}
+		.adlabel-img {
+			width: 200px;
+			height 100px;
+			border: solid 1px #aaa;
+		}
+		.adlabel-txtarea {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 14px;
+			padding-left: 6px;
+			padding-right: 6px;
+			padding-top: 2px;
+			/*border: solid 1px #478A3E;*/
+			border: solid 1px #aaa;
+			background-color: #fff;
+			resize: none;	
+			height: 70px;
+			width: 388px;
+		}
+		.adlabel-table-1 {
+			display: table;
+			/*border: solid 1px #blue;*/
+		}
+		.adlabel-table-1-row-1 {
+			display: table-row;			
+		}
+		.adlabel-table-1-row-1-col-1 {
+			display: table-cell;			
+			width: 204px;
+			height: 100px;
+			border: solid 1px blue;
+		}
+		.adlabel-table-1-row-1-col-2 {
+			display: table-cell;			
+			width: 388px;
+			height: 100px;
+			vertical-align: top;
+			border: solid 1px red;
+		}
+		.adlabel-table-1-a {
+			display: table;
+			/*border: solid 1px #green;*/
+		}
+		.adlabel-table-1-a-row-1 {
+			display: table-row;
+			/*border: solid 1px #green;*/
+		}
+		.adlabel-table-1-a-row-1-col-1 {
+			display: table-cell;
+			/*border: solid 1px #green;*/
+		}
+		.adlabel-table-1-b {
+			display: table;			
+			/*border: solid 1px #brown;*/
+		}
+		.adlabel-table-1-b-row-1 {
+			display: table-row;			
+		}
+		.adlabel-table-1-b-row-1-col-1 {
+			display: table-cell;	
+			width: 388px;
+			height: 20px;
+			padding: 6px;
+			vertical-align: bottom;
+			border: solid 1px orange;		
+		}
+		.adlabel-table-1-b span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			color: blue;			
+		}
+		.adlabel-table-2 {
+			display: table;
+			/*border: solid 1px #blue;*/
+		}
+		.adlabel-table-2-row-1 {
+			display: table-row;			
+		}
+		.adlabel-table-2-row-1-col-1 {
+			display: table-cell;			
+			width: 592px;
+			height: 20px;
+			vertical-align: top;
+			text-align: right;
+			padding-right: 2px;
+			border: solid 1px brown;
+		}
+		.adlabel-table-2-row-1-col-1 a {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			color: brown;									
+		}
 
 
+
+
+		/*
+		adblock
+		adblock-img-1
+		adblock-img-2
+		adblock-table-1
+		adblock-table-1-row-1
+		adblock-table-1-row-1-col-1
+		adblock-table-1-row-1-col-1 span
+		adblock-table-2
+		adblock-table-2-row-1
+		adblock-table-2-row-1-col-1
+		adblock-table-2-row-1-col-1 span
+		adblock-table-1
+		adblock-table-1-row-1
+		adblock-table-1-row-1-col-1
+		adblock-table-1-row-1-col-1 a
+		*/ 
+
+
+		.adblock {
+			height: 320px;
+			width: 320px;
+			vertical-align: top;
+	    	/*cursor: pointer;*/
+	    	background-color: #fff;
+	    	border: solid 4px #aaa;
+	    	border-radius: 4px;
+	    	position: relative;
+			display: inline-block;	    	
+		}
+		.adblock-table-1 {
+			display: table;
+		}
+		.adblock-table-1-row-1 {
+			display: table-row;			
+		}
+		.adblock-table-1-row-1-col-1 {
+			display: table-cell;			
+			width: 310px;
+			height: 30px;
+			padding: 4px;
+			text-align: center;
+			border: solid 1px blue;
+		}
+		.adblock-table-1-row-1-col-1 span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: blue;									
+		}
+		.adblock-table-2 {
+			display: table;
+		}
+		.adblock-table-2-row-1 {
+			display: table-row;			
+		}
+		.adblock-table-2-row-1-col-1 {
+			display: table-cell;			
+			width: 310px;
+			height: 140px;
+			vertical-align: top;
+			position: relative;
+			border: solid 1px red;
+		}
+		.adblock-table-2-row-1-col-1 p {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			color: brown;									
+		}
+		.adblock-table-3 {
+			display: table;
+		}
+		.adblock-table-3-row-1 {
+			display: table-row;
+		}
+		.adblock-table-3-row-1-col-1 {
+			display: table-cell;
+			width: 310px;
+			height: 70px;
+			vertical-align: top;
+			position: relative;
+			border: solid 1px blue;
+		}
+		.adblock-table-3-row-1-col-1 span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			color: brown;									
+		}
+		.adblock-table-4 {
+			display: table;
+		}
+		.adblock-table-4-row-1 {
+			display: table-row;
+		}
+		.adblock-table-4-row-1-col-1 {
+			display: table-cell;
+			width: 310px;
+			height: 30px;
+			padding: 4px;
+			text-align: center;
+			border: solid 1px blue;
+		}
+		.adblock-table-4-row-1-col-1 a {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			color: blue;									
+		}
+		.adblock-table-2a {
+			display: table;			
+		}	
+		.adblock-table-2a-row-1 {
+			display: table-row;
+		}	
+		.adblock-table-2a-row-1-col-1 {
+			display: table-cell;
+			vertical-align: top;
+			width: 160px;
+			height: 140px;
+		}	
+		.adblock-table-2a-row-1-col-2 {
+			display: table-cell;
+			vertical-align: top;
+			width: 140px;
+			height: 140px;			
+			text-align: right;
+		}	
+		.adblock-table-3a {
+			display: table;			
+		}	
+		.adblock-table-3a-row-1 {
+			display: table-row;
+		}	
+		.adblock-table-3a-row-1-col-1 {
+			display: table-cell;
+			vertical-align: top;
+			width: 140px;
+			height: 110px;
+		}	
+		.adblock-table-3a-row-1-col-2 {
+			display: table-cell;
+			vertical-align: top;
+			width: 160px;
+			height: 110px;			
+			text-align: left;
+			padding-top: 4px;
+		}	
+		
+			
 	</style>
-
-	<!-- 
-	poster-pin-free-w76-h40.png
-	poster-map-w1301-h870.png
-	poster-pin-premium-w106-h106.png
-	poster-map-unpop-w1000-h710	
-	-->
 
 	<%= render 'share/backtotop_2' %>
 
 	<%= render 'share/nav_journalposter' %>
 
-
 	<div class="container-journalposter">
 		
-		<div style="height: 30px;"></div>
-
-		<div class="jp-header">
-			<span class="jp-title">Journal Poster 3</span>
-		</div>
-		
-		<div style="height: 20px;"></div>
-
-		<div id="journalposter_background" class="journalposter-background">
-			<div class="jp-table">
-
-				<div class="jp-row">
-					<div id="r1c1" class="jp-cell"></div>
-					<div id="r1c2" class="jp-cell"></div>
-					<div id="r1c3" class="jp-cell"></div>
-					<div id="r1c4" class="jp-cell"></div>
-					<div id="r1c5" class="jp-cell"></div>
-					<div id="r1c6" class="jp-cell"></div>
-					<div id="r1c7" class="jp-cell"></div>
-					<div id="r1c8" class="jp-cell"></div>
-					<div id="r1c9" class="jp-cell"></div>
-					<div id="r1c10" class="jp-cell"></div>
-					<div id="r1c11" class="jp-cell"></div>
-					<div id="r1c12" class="jp-cell"></div>
-					<div id="r1c13" class="jp-cell"></div>
-					<div id="r1c14" class="jp-cell"></div>
+		<div class="jpmap-table">
+			<div class="jpmap-row">
+				<div class="jpmap-col1">
 				</div>
-
-				<!-- <div class="jp-row">
-					<div id="r1c1" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c2" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c3" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c4" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c5" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c6" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c7" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c8" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c9" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c10" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c11" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c12" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c13" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r1c14" class="jp-cell boxtemp-red-bottom-right"></div>
-				</div> -->
-				<!-- <div class="jp-row">
-					<div id="r2c1" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c2" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c3" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c4" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c5" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c6" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c7" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c8" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c9" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c10" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c11" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c12" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c13" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r2c14" class="jp-cell boxtemp-red-bottom-right"></div>
-				</div>
-				<div class="jp-row">
-					<div id="r3c1" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c2" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c3" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c4" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c5" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c6" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c7" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c8" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c9" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c10" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c11" class="jp-cell boxtemp-red-bottom-right">
-						<a href="#"><img class="img-pin" src="../journal_poster/poster-pin-free-w76-h40.png" alt="poster-pin-free-w76-h40.png"></a>						
-					</div>
-					<div id="r3c12" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c13" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r3c14" class="jp-cell boxtemp-red-bottom-right"></div>
-				</div>
-				<div class="jp-row">
-					<div id="r4c1" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c2" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c3" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c4" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c5" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c6" class="jp-cell boxtemp-red-bottom-right">
-						<a href="#"><img class="img-pin" src="../journal_poster/poster-pin-free-w76-h40.png" alt="poster-pin-free-w76-h40.png"></a>						
-					</div>
-					<div id="r4c7" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c8" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c9" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c10" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c11" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c12" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c13" class="jp-cell boxtemp-red-bottom-right"></div>
-					<div id="r4c14" class="jp-cell boxtemp-red-bottom-right">
-						<a href="#"><img class="img-pin" src="../journal_poster/poster-pin-premium-w106-h106.png" alt="poster-pin-premium-w106-h106.png"></a>						
-					</div>
-				</div> -->
 				
+				<div class="jpmap-co2">
+				
+					<div style="height: 70px;"></div>
+			
+					<!-- <div class="jp-header">
+						<span class="jp-title">Digital School Operations</span>
+					</div>
+					<div style="height: 20px;"></div> -->
+			
+					<div id="journalposter_background" class="journalposter-background">
+						<div class="jp-table">
+						</div>
+					</div>
+
+				</div>
 			</div>
-			
 		</div>
 
-		<div style="height: 300px;"></div>
-		
 	</div>
-
-
-	<script>
-			
-			// var offset_top = 0;
-			// jQuery(window).scroll(function() {
-				// offset_top = $(window).scrollTop()
-				// $('#eventstabs').css('top', offset_top);
-			// });
-		
-			$(window).load( function() {
-			//$(document).ready(function(){
-				$("#tab1").addClass("active");
-				
-				var image = '../journal_poster/poster-map-unpop-w1000-h710.png';
-				// img = $('<img />');
-				// img.bind('load', function() {
-					// // setTimeout( function(){
-						// // centerSignin();
-						// // showSignin();
-						// // formValidate();
-					// // }, 500);
-				// });
-				// img.attr('src', image);
-				$('#journalposter_background').css({
-					background: '#000 url(' + image + ') no-repeat right top'
-					// background: '#F1F2E1 url(' + image + ') repeat right top'
-				});
-				
-				
-			});
-		
-	</script>
-
-
-
-
-
-
-
-
-
-
 
 

@@ -1,7 +1,9 @@
 # encoding: utf-8
 class PublisherProfileUploader < CarrierWave::Uploader::Base
 
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
+  
 
   storage :file
   # storage :fog
@@ -16,29 +18,80 @@ class PublisherProfileUploader < CarrierWave::Uploader::Base
   end
 
 
-  version :profile do
-    
+  version :image do    
   end
 
-  version :profile_50_50 do
+  version :image_34_34 do
+    # process :resize_to_fill => [34, 34, gravity = ::Magick::CenterGravity]
+    process :resize_to_limit => [34, 34]
+  end
+
+  version :image_50_50 do
+    # process :resize_to_fill => [50, 50, gravity = ::Magick::CenterGravity]
     process :resize_to_limit => [50, 50]
   end
 
-  version :profile_100_100 do
+  version :image_100_100 do
+    # process :resize_to_fill => [100, 100, gravity = ::Magick::CenterGravity]
     process :resize_to_limit => [100, 100]
   end
 
-  version :profile_300_300 do
-    process :resize_to_limit => [300, 300]
+  version :image_200_200 do
+    # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
+    process :resize_to_limit => [200, 200]
   end
 
-  version :profile_400_400 do
-    process :resize_to_limit => [400, 400]
+  version :image_500_500 do
+    process :resize_to_limit => [500, 500]
+    # process :quality => 100
+
+    # manipulate! do |img, index, options|
+      # options[:write] = {
+        # :quality => 50,
+        # :depth => 8
+      # }
+      # img
+    # end    
+
+      # image.write do |img|
+        # self.quality = 50
+        # self.depth = 8
+      # end
+    
   end
 
-  version :profile_600_600 do
-    process :resize_to_limit => [600, 600]
-  end
+  # def reprocess(x,y,w,h)
+    # manipulate! do |img|
+      # img.crop(x.to_i, y.to_i, w.to_i, h.to_i, true) 
+      # end
+    # resize_to_limit(180,180)  
+  # end
+
+  
+  def crop
+    # # return unless model.cropping?
+    # # if model.crop_x.present?
+      # # resize_to_limit(600, 600)
+      # manipulate! do |img|
+        # # img.crop("#{model.crop_w}x#{model.crop_h}+#{model.crop_x}+#{model.crop_y}")
+        # x = model.crop_x.to_i
+        # y = model.crop_y.to_i
+        # w = model.crop_w.to_i
+        # h = model.crop_h.to_i
+        # img.crop!(x, y, w, h)
+        # # x = 0
+        # # y = 162
+        # # w = 600
+        # # h = 600
+        # # resize_to_limit(600, 600)
+        # # # img.crop(x, y, w, h)
+        # # img.crop "#{w}x#{h}+#{x}+#{y}"
+        # # img
+        # # img.crop("#{model.crop_w}x#{model.crop_h}+#{model.crop_x}+#{model.crop_y}")
+      # end
+    # # end
+  end  
+
 
 
   protected

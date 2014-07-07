@@ -1,0 +1,305 @@
+
+		#page {
+			min-height: 1300px;
+		}
+		#page #page-inner {
+		    width: 100%;
+		    margin: 0 auto;
+		}	
+    	#page span {
+    		font-family:Arial, Helvetica, sans-serif;
+    		font-size: 16px;
+    		color: black;    		
+    	}		
+		div.table-page {
+			/*display: table;*/
+			background-color: #E3DDCF;
+			width: 1200px;
+			/*height: 600px;*/
+			border-radius: 0px;
+			padding-top: 20px;
+			padding-bottom: 40px;
+			padding-left: 10px;
+			padding-right: 10px;			
+		}
+		table.table-layout-fixed {
+			/*display: table;*/
+			table-layout: fixed;
+			width: 1200px;
+		}
+		.table-page p {
+			font-family: msyh; 
+			font-size: 16px;
+			color: #005187;
+		}
+		#import.btn {
+		  	width: 70px;
+		  	height: 20px;			
+		}    	   
+		.page-btn {
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	background: linear-gradient(#000, #000);
+		  	text-shadow: 1px 1px 1px #0E86B2; 
+		  	border-radius: 4px;
+		}
+		.page-btn:focus {
+		  background: #CCC; 
+		  color: #5F7A2A;
+		  box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
+		}
+		.page-btn:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(255,255,255,0.3);
+		}
+		.page-btn:active { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(0,0,0,0.3); 
+		}
+    	#tablets {
+    		font-family:Arial, Helvetica, sans-serif;
+    		font-size: 20px;
+    		color: black;
+    		height: 400px;
+    	}
+    	.links {
+    		font-family:Arial, Helvetica, sans-serif;
+    		font-size: 13px;
+    		color: brown;    		
+    	}
+    	#tablets h1 {
+    		font-size: 22px;
+    	}
+    	#tablets h2 {
+    		font-size: 18px;
+    	}
+    	#tablets h4 {
+    		font-size: 16px;
+    		font-weight: 600;
+    	}    	
+    	#tablets h5 {
+    		font-size: 12px;
+    	}    	    	
+    	#tablets p {
+    		font-size: 12px;
+    	}
+    	/*.main h5 {
+    		font-size: 12px;
+    	}*/
+		.input-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 600px;
+			height: 24px;
+			border-style:solid;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+			color: #888;
+		}
+    	.submit-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+    		height: 24px;
+    	}
+    	#tbltablets {
+    		width: 10000px; 
+    	}
+    	table#tbltablets th {
+    		padding-left: 0px;
+    	}    	    	
+    	table#tbltablets tr {
+    		height: 20px;
+    	}    	
+    	table#tbltablets td {
+    		vertical-align: bottom;    		
+    		padding-top: 0px;
+    		padding-bottom: 4px;       		    		    		
+    	}
+    	.gray {
+			background: #CCC			    		
+    	}
+    	.white {
+			background: #fff    		
+    	}
+    	.hover-col {
+    		background-color: rgba(0, 0, 0, 0.1);
+    	}
+		.hover-row {
+			background-color: #FAC0C1;
+		}
+		.row-select {
+			color: #fff;			
+			background-color: brown;
+		}
+		.btn-color-select {
+			color: #fff;	
+		}
+		.btn-color {
+		  	color: #A31C1C;			
+		}
+		.delete-btn {
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 50px;
+		  	height: 20px;
+		  	background: inherit;
+		  	border-width: 0px;
+			color: #486996; /*#9DD5ED*/		  	
+		}
+		.delete-btn:focus {
+		}
+		.delete-btn:hover { 
+		  	text-decoration: underline; 
+		}
+		.delete-btn:active { 
+		  	text-decoration: underline; 
+		}
+		.header-shift {
+			padding-left: 0px;
+		}    	    	
+		.reset-db-btn {
+		  	width: 300px;
+		  	height: 26px;
+		}
+		#loading {
+			background:url("/assets/icon_loading.gif") no-repeat center center;
+			height: 100px; width: 100px;
+			position: fixed; left: 47%; top: 50%; z-index: 1000;
+			margin: -25px 0 0 -25px;
+			visibility: hidden;
+		}				
+		#tablets .scrollbox-both {
+	 		height:330px;
+	 		width:1200px;
+	 		overflow:scroll;
+	 		/*border:1px solid #651375;*/		
+		}
+
+
+
+		.tablebox-header {
+	 		height:16px;
+	 		width:1200px;
+	 		border-bottom:1px solid #651375;
+	 		overflow: hidden;			 				
+		}
+		
+		.tablebox {
+	 		height:400px;
+	 		width:1200px;
+	 		border-color: #fff;
+	 		overflow: auto;		
+	 		border: none;
+		}
+		/*.tablebox-2 {
+	 		height:16px;
+	 		width:1200px;
+	 		border-bottom:1px solid #651375;
+	 		overflow: hidden;		
+		}*/
+		/*.table-header-shadow {
+	 		height:16px;
+	 		width:1200px;			
+		}*/
+		table.tbltablets {
+			width: 15410px;
+		}
+    	table.tbltablets th {
+    		padding-left: 0px;
+    	}    	    	
+    	table.tbltablets tr {
+    		height: 20px;
+    	}    	
+    	table.tbltablets td {
+    		vertical-align: bottom;    		
+    		padding-top: 0px;
+    		padding-bottom: 4px;       		    		    		
+    	}
+
+
+		.search_text {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 12px; 
+			background-color: #336C91;
+			color: #fff;
+			width: 200px;
+			height: 16px;	
+			margin-bottom: 6px;
+		}
+		.reset-db-btn-long {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			background-color: #000;
+			color: #05FCFC;
+		  	width: 300px;
+		  	height: 20px;
+			padding-top: 1px;
+		  	position: relative;
+		  	top: 0px;
+		  	margin-right: 2px;
+		}
+		.search-text-btn {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			background-color: #000;
+			color: #05FCFC;
+		  	width: 100px;
+		  	height: 20px;
+			padding-top: 1px;
+		  	position: relative;
+		  	top: 0px;
+			margin-bottom: 4px;		  	
+		}
+		.search-by-state-btn {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px; 
+			background-color: #336C91;
+			color: #fff;
+		  	width: 150px;
+		  	height: 20px;
+		}
+		.search-by-col-btn {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px; 
+			background-color: #336C91;
+			color: #fff;
+		  	width: 150px;
+		  	height: 20px;
+			margin-bottom: 4px;		  			  	
+		}
+		.search-by-tab-btn {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px; 
+			background-color: #336C91;
+			color: #fff;
+		  	width: 150px;
+		  	height: 20px;
+			margin-bottom: 4px;		  			  	
+		}
+		.exec-sql-btn {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			background-color: #000;
+			color: #05FCFC;
+		  	width: 150px;
+		  	height: 20px;
+			padding-top: 1px;
+		  	position: relative;
+		  	top: -1px;
+		}
+		.sql-text-box {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			background-color: #000;
+			color: #05FCFC;
+		  	width: 600px;
+		  	height: 100px;
+		}
+    	.bar {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+    		font-size: 14px;
+    		font-weight: 400;
+    	}

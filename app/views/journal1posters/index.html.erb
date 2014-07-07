@@ -1,4 +1,4 @@
-<% provide(:title, 'Journal Posters 1') %>
+<% provide(:title, 'Digital Curriculum') %>
 
 	
 	<style>
@@ -10,8 +10,8 @@
 		.journalposter-background {
 			width: 1000px;
 			margin: 0 auto;				
-			height: 710px;
-			background: #F1F2E1 url(../journal_poster/poster-map-unpop-w1000-h710.png) no-repeat right top;
+			height: 667px;
+			background: #F1F2E1 url(../journal_poster/maps/map-1-digital-curriculum-w1000-h667.png) no-repeat right top;
 		}
 		span.jp-title {
 			font-family: Arial, Helvetica, sans-serif;
@@ -393,9 +393,10 @@
 	poster-map-unpop-w1000-h710	
 	-->
 
+
 	<%= render 'share/backtotop_2' %>
 
-	<%= render 'share/nav_journalposter' %>
+	<%= render 'share/nav_journalposter' %>		
 
 
 
@@ -410,11 +411,10 @@
 				
 					<div style="height: 70px;"></div>
 			
-					<div class="jp-header">
-						<span class="jp-title">Journal Poster 1</span>
+					<!-- <div class="jp-header">
+						<span class="jp-title">Poster 1</span>
 					</div>
-					
-					<div style="height: 20px;"></div>
+					<div style="height: 20px;"></div> -->
 			
 					<div id="journalposter_background" class="journalposter-background">
 						
@@ -623,39 +623,28 @@
 
 
 	<script>
-			
-			// var offset_top = 0;
-			// jQuery(window).scroll(function() {
-				// offset_top = $(window).scrollTop()
-				// $('#eventstabs').css('top', offset_top);
-			// });
 
-  			var id = 0;
-  			var ida  = "";
-  			var idb  = "";
-		
-			// $(window).load( function() {
-			$(document).ready(function(){
-				
-				$(".pin").hover (
-			  		function() {
-			  			// alert($(this).attr('id'));
-			  			id = $(this).attr('id');
-			  			ida  = "#" + id + "a";
-			  			idb  = "#" + id + "b";
-  						$(ida).addClass('display-off');
-  						$(idb).removeClass('display-off');  						
-					}, function() {
-  						$(ida).removeClass('display-off');
-  						$(idb).addClass('display-off');  						
-					}
-				);
-				
-				
-				// $("#tab1").addClass("active");
-				
-				
-			});
+		var id = 0;
+		var ida  = "";
+		var idb  = "";
+		// $(window).load( function() {
+		$(document).ready(function(){
+			
+			$(".pin").hover (
+		  		function() {
+		  			// alert($(this).attr('id'));
+		  			id = $(this).attr('id');
+		  			ida  = "#" + id + "a";
+		  			idb  = "#" + id + "b";
+					$(ida).addClass('display-off');
+					$(idb).removeClass('display-off');  						
+				}, function() {
+					$(ida).removeClass('display-off');
+					$(idb).addClass('display-off');  						
+				}
+			);
+			// $("#tab1").addClass("active");
+		});
 		
 	</script>
 

@@ -1,30 +1,10 @@
  <%= provide(:title, 'Publisher Photos') %>
  
  
- 	<style>
+
+ 
+  	<style>
  		
-		*, *:after, *:before {
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-		}
-		.clearfix:before, .clearfix:after { content: " "; display: table; }
-		.clearfix:after { clear: both; }
-		a {
-			color: #888;
-			text-decoration: none;
-		}
-		a:hover,
-		a:active {
-			color: #333;
-		}
-		.profile-grid {
-			padding: 0px 0px 0px 0px;
-			/*max-width: 1300px;*/
-			margin: 0 auto;
-			list-style: none;
-			/*text-align: center;*/
-		}
 		.profile-grid li {
 			display: inline-block;
 			width: 250px;
@@ -34,112 +14,84 @@
 			position: relative;
 			text-align: center;
 		}
-		.profile-grid figure {
-			margin: 0;
-			position: relative;
+		.profile-grid-small li {
+			display: inline-block;
 			/*height: 300px;*/
-			/*padding-left: 6px;*/
-			padding-top: 0px;	
-			background-color: #fff;
-		}
-		.profile-grid figure img {
-			max-width: 100%;
-			display: block;
-			position: relative;
-		}
-		.profile-grid figcaption {
-			position: absolute;
-			top: 0;
-			left: 0;
-			padding: 10px;
-			/*background: #2c3f52;*/
-			background: #000;
-			color: #ed4e6e;
-		}
-		/*.profile-grid figcaption h3 {
 			margin: 0;
-			padding: 0;
-			color: #fff;
-		}*/
-		/*.profile-grid figcaption span:before {
-			content: '';
-		}*/
-		.profile-grid figcaption {
-			text-align: right;
+			padding: 0px 0px 0px 0px;
+			position: relative;
+			text-align: center;
 		}
-		.profile-grid figcaption span a {
-			text-align: right;
-			/*padding: 5px 10px;*/
-			/*border-radius: 2px;*/
-			/*display: inline-block;*/
-			/*background: #ed4e6e;*/
-			color: #fff;
+		span.grid-span, span.grid-span a {
+			color: #888;
 			font-family: 'Quattrocento Sans', sans-serif;
 		    font-size: 14px;
 			font-weight: 400;					  	
+		}		
+		.dimension-text {
+			color: #888;
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 14px;
+			font-weight: 400;					  	
+			text-align: left;			
 		}
-		.profile-cs-style-3 figure {
-			/*border: solid 1px #000;*/
-			overflow: hidden;
-		}
-		.profile-cs-style-3 figure img {
-			-webkit-transition: -webkit-transform 0.2s;
-			-moz-transition: -moz-transform 0.2s;
-			transition: transform 0.2s;
-		}
-		.no-touch .profile-cs-style-3 figure:hover img,
-		.profile-cs-style-3 figure.cs-hover img {
-			-webkit-transform: translateY(0px);
-			-moz-transform: translateY(0px);
-			-ms-transform: translateY(0px);
-			transform: translateY(0px);
-			/*-webkit-transform: translateY(-6px);
-			-moz-transform: translateY(-6px);
-			-ms-transform: translateY(-6px);
-			transform: translateY(-6px);*/
-		}
-		.profile-cs-style-3 figcaption {
-			height: 50px;
-			width: 100%;
-			top: auto;
-			bottom: 0;
-			opacity: 0;
-			-webkit-transform: translateY(100%);
-			-moz-transform: translateY(100%);
-			-ms-transform: translateY(100%);
-			transform: translateY(100%);
-			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
-			-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
-			transition: transform 0.4s, opacity 0.1s 0.3s;
-		}
-		.no-touch .profile-cs-style-3 figure:hover figcaption,
-		.profile-cs-style-3 figure.cs-hover figcaption {
-			opacity: .8;
-			-webkit-transform: translateY(0px);
-			-moz-transform: translateY(0px);
-			-ms-transform: translateY(0px);
-			transform: translateY(0px);
-			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
-			-moz-transition: -moz-transform 0.4s, opacity 0.1s;
-			transition: transform 0.4s, opacity 0.1s;
-		}
-		/*.profile-cs-style-3 figcaption a {
-			position: absolute;
-			bottom: 20px;
-			right: 20px;
-		}*/
-		@media screen and (max-width: 31.5em) {
-			.profile-grid {
-				padding: 0px 0px 0px 0px;
-			}
-			.profile-grid li {
-				width: 100%;
-				min-width: 30px;
-			}
-		}
+ 		.grid-cell-1 {
+ 			display:table-cell;
+ 			vertical-align: top;
+ 		}
+ 		.grid-cell-2 {
+ 			display:table-cell;
+ 			vertical-align: top;
+ 			padding: 10px 0 0 10px;
+ 		}
  		
  	</style>
- 
+
+
+ 	<style>
+ 		
+		.image-grid-caption-height figcaption {
+			height: 50px;
+		}
+		div.image-grid-text-1-container {
+			width: 100%;
+			text-align: left;
+		}
+		div.image-grid-text-1-container span,
+		div.image-grid-text-1-container a {
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 14px;
+			font-weight: 200;
+			color: #888;								  	
+		}
+		.figure-box-500 {
+			width: 500px; 
+			height: 500px; 
+			border: 1px solid #888;
+		}
+		.figure-box-200 {
+			width: 200px; 
+			height: 200px; 
+			border: 1px solid #888;
+		}
+		.figure-box-100 {
+			width: 100px; 
+			height: 100px; 
+			border: 1px solid #888;
+		}
+		.figure-box-50 {
+			width: 50px; 
+			height: 50px; 
+			border: 1px solid #888;
+		}
+		.figure-box-34 {
+			width: 34px; 
+			height: 34px; 
+			border: 1px solid #888;
+		}
+
+ 	</style>
+
  
 	<header>
 		<%= render 'share/backtotop' %>
@@ -148,90 +100,258 @@
 	<div class="container">
 		<div class="table-profile">
 			<div class="row-profile">
-				
 				<div class="col-left">
-					<%= render 'share/dir_publishers_left'%>
-				</div>
-				
-				<div class="col-midd">
-			
-					<div class="line-space-80"></div>
-			
-					<div style="text-align: left;">
-						<span class="normal pad-left-20">My Photos</span>
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>
+						<div class="row-profile">
+							<div class="col-left">
+								<%= render 'share/dir_publishers_left'%>
+							</div>
+						</div>
 					</div>
-					
-					<div style="height: 30px;"></div>
-						
-				   	<div class="pad-left-20">
-				   		<div class="table">
-				   			<div class="row">
-								<div id="profile_image">
+				</div>
+				<div class="col-midd">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-midd-600">
+			
+								<div style="text-align: left;">
+									<span class="normal pad-left-20">Company Logos and Images</span>
+								</div>
+								<!-- <div style="text-align: left;">
+									<span class="normal pad-left-20">Publisher ID: <#%= @publisher_id %#></span>
+								</div> -->
 								
+								<div style="height: 30px;"></div>
+							   				
+								<div id="profile_image" class="pad-left-20">
 								
 								<% if @publisher_profile_images.any? %>   				
 								
 									<% for publisher_profile_image in @publisher_profile_images %>
-					   				<div class="cell-180">
-											<ul class="profile-grid profile-cs-style-3">
-												<li>
-													<figure>
-														<img id="id_image" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:profile) if publisher_profile_image.image? %>" width="250px" />
-					
+					   				<div class="">
+					   					
+										<ul class="image-grid image-grid-caption image-grid-caption-height">
+											<li>
+												<div class="image-grid-text-1-container">
+													<span>500 x 500 Max</span>
+												</div>
+												<figure class="figure-box-500">
+													<img id="id_image" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_500_500) if publisher_profile_image.image? %>" />
+													<figcaption>
+														<span><%= link_to "Crop/Center", { :action => :crop, :id => publisher_profile_image.id } %></span>
+														<!-- <span><#%= link_to "Crop/Center", '/Publisher-Photo-Crop-and-Center', :id => publisher_profile_image.id %#></span> -->
+														<br>
+														<span><%= link_to "Delete", publisher_profile_image, :confirm => 'Delete this image?', :method => :delete, :params => {:publisher_profile_image_id => publisher_profile_image.id} %></span>
+						        						<!-- <span>= link_to "edit", edit_publisher_profile_image_path(publisher_profile_image) </span> -->
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+								        
+							   			<div class="image-grid-text-1-container">
+											<span><%= link_to "Crop/Center", { :action => :crop, :id => publisher_profile_image.id } %></span>
+											&nbsp;&nbsp;&nbsp;&nbsp;
+											<span><%= link_to "Delete", publisher_profile_image, :confirm => 'Delete this logo?', :method => :delete, :params => {:publisher_profile_image_id => publisher_profile_image.id} %></span>
+											<!-- <span><#%= link_to '&laquo; Delete &raquo;'.html_safe, publisher_profile_image, :confirm => 'Delete this photo?', :method => :delete, :params => {:publisher_profile_image_id => publisher_profile_image.id}, :class => 'links' %#></span> -->						   				
+							   			</div>
+										
+										<div style="height: 30px;"></div>								        
+										
+										<ul class="image-grid image-grid-caption">
+											<li>
+									   			<div class="image-grid-text-1-container">
+													<span>200 x 200</span>
+									   			</div>
+												<figure class="figure-box-200">
+													<img id="id_image_200_200" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_200_200) if publisher_profile_image.image? %>" />
+												</figure>
+											</li>
+										</ul>
+										
+										<div style="height: 30px;"></div>
+																				
+										<ul class="image-grid image-grid-caption">
+											<li>
+									   			<div class="image-grid-text-1-container">
+													<span>100 x 100</span>
+									   			</div>
+												<figure class="figure-box-100">
+													<img id="id_image_100_100" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_100_100) if publisher_profile_image.image? %>" />
+												</figure>
+											</li>
+										</ul>
+										
+										<div style="height: 30px;"></div>
+
+										<ul class="image-grid image-grid-caption">
+											<li>
+									   			<div class="image-grid-text-1-container">
+													<span>50 x 50</span>
+									   			</div>
+												<figure class="figure-box-50">
+													<img id="id_image_50_50" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_50_50) if publisher_profile_image.image? %>" />
+												</figure>
+											</li>
+										</ul>
+
+										<div style="height: 30px;"></div>
+
+										<ul class="image-grid image-grid-caption">
+											<li>
+									   			<div class="image-grid-text-1-container">
+													<span>34 x 34</span>
+									   			</div>
+												<figure class="figure-box-34">
+													<img id="id_image_34_34" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_34_34) if publisher_profile_image.image? %>" />
+												</figure>
+											</li>
+										</ul>
+										
+						   			</div>
+									
+									
+									
+									
+									
+<% if false %>									
+					   				<div class="">
+					   					
+										<ul class="grid-5 cs-style-5">
+											<li>
+												<div class="dimension-text">500 x 500 Max</div>
+												<figure style="width: 500px; height: 500px;">
+													<!-- <div style="width: 600px; height: 600px; border: 1px solid red; vertical-align: bottom;"> -->
+														<img id="id_image" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_500_500) if publisher_profile_image.image? %>" />
 														<figcaption>
+															<span><%= link_to "Crop/Center", { :action => :crop, :id => publisher_profile_image.id } %></span>
+															<!-- <span><#%= link_to "Crop/Center", '/Publisher-Photo-Crop-and-Center', :id => publisher_profile_image.id %#></span> -->
+															<br>
 															<span><%= link_to "Delete", publisher_profile_image, :confirm => 'Delete this logo?', :method => :delete, :params => {:publisher_profile_image_id => publisher_profile_image.id} %></span>
 							        						<!-- <span>= link_to "edit", edit_publisher_profile_image_path(publisher_profile_image) </span> -->
 														</figcaption>
-													</figure>
-												</li>
-											</ul>
-									        <!-- image_tag publisher_profile_image.image_url(:logo) if publisher_profile_image.image?  -->
-						   			</div>
-						   			<div class="cell-400">
-										<span><%= link_to '&laquo; Delete image &raquo;'.html_safe, publisher_profile_image, :confirm => 'Delete this photo?', :method => :delete, :params => {:publisher_profile_image_id => publisher_profile_image.id}, :class => 'links' %></span>						   				
-										<br>
+													<!-- </div> -->
+												</figure>
+											</li>
+										</ul>
+								        <!-- image_tag publisher_profile_image.image_url(:logo) if publisher_profile_image.image?  -->
+								        
+										<ul style="height: 30px; list-style: none;">
+											<li>
+									   			<div>
+													<span class="grid-span"><%= link_to "Crop/Center", { :action => :crop, :id => publisher_profile_image.id } %></span>
+													&nbsp;&nbsp;&nbsp;&nbsp;
+													<span class="grid-span"><%= link_to "Delete", publisher_profile_image, :confirm => 'Delete this logo?', :method => :delete, :params => {:publisher_profile_image_id => publisher_profile_image.id} %></span>
+													<!-- <span><#%= link_to '&laquo; Delete &raquo;'.html_safe, publisher_profile_image, :confirm => 'Delete this photo?', :method => :delete, :params => {:publisher_profile_image_id => publisher_profile_image.id}, :class => 'links' %#></span> -->						   				
+									   			</div>
+											</li>
+										</ul>
+								        
+										<ul style="height: 30px; list-style: none;"><li></li></ul>
 										
+										<!-- 
+										[50, 50]
+										[250, 150]
+										[140, 100]
+										[200, 70] 
+										-->
+										
+										<ul class="grid cs-style-4">
+											<li>
+												<div class="dimension-text">200 x 200</div>
+												<figure>
+													<img id="id_image_200_200" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_200_200) if publisher_profile_image.image? %>" />
+												</figure>
+											</li>
+										</ul>
+										<ul style="height: 30px; list-style: none;"><li></li></ul>
+										<ul class="grid cs-style-4">
+											<li>
+												<div class="dimension-text">100 x 100</div>
+												<figure>
+													<img id="id_image_100_100" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_100_100) if publisher_profile_image.image? %>" />
+												</figure>
+											</li>
+										</ul>
+										<ul style="height: 30px; list-style: none;"><li></li></ul>											
+										<ul class="grid cs-style-4">
+											<li>
+												<div class="dimension-text">50 x 50</div>
+												<figure>
+													<img id="id_image_50_50" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_50_50) if publisher_profile_image.image? %>" />
+												</figure>
+											</li>
+										</ul>
+										<ul style="height: 30px; list-style: none;"><li></li></ul>											
+										<ul class="grid cs-style-4">
+											<li>
+												<div class="dimension-text">34 x 34</div>
+												<figure>
+													<img id="id_image_34_34" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_34_34) if publisher_profile_image.image? %>" />
+												</figure>
+											</li>
+										</ul>
 						   			</div>
+<% end %>						   			
+						   			
+						   			
+						   			
 									<% end %>
 
 								<% else %>
 
 					   				<div class="cell-180">
-										<ul class="grid cs-style-3">
+										<ul class="profile-grid profile-cs-style-3">
 											<li>
-												<figure>
+												<figure style="border: 1px solid #000;">
 													<img alt="logo not appearing" src="../journal_poster/logo_journalposter_generic.jpg" />
 													<figcaption>
-														<span><%= link_to "Add a photo", new_publisher_profile_image_path(:publisher_id => @publisher_id) %></span>											
+														<span><%= link_to "Add a photo", new_publisher_profile_image_path(:publisher_id => @publisher_id) %></span>	
 													</figcaption>
 												</figure>
 											</li>
 										</ul>
 						   			</div>
 						   			<div class="cell-400">
-										<span><%= link_to '&laquo; Add a photo &raquo;'.html_safe, new_publisher_profile_image_path(:publisher_id => @publisher_id), :class => 'links' %></span>
+						   				<span class="grid-span"><%= link_to "Add a photo", new_publisher_profile_image_path(:publisher_id => @publisher_id) %></span>
 						   			</div>
+						   			<!-- <div class="cell-400">
+										<span><#%= link_to '&laquo; Add a photo &raquo;'.html_safe, new_publisher_profile_image_path(:publisher_id => @publisher_id), :class => 'links' %#></span>
+						   			</div> -->
 								
 								<% end %>
 								
 								</div>
-					   		</div>
-					   	</div> 
-					</div>
-					
-					<div style="height: 200px;"></div>
-					
-			    	<div style="width: 100%; text-align: center;">
-				    	<h5>
-						   	<% delete_all_msg = "Delete all records and reset index in Publisher Profile Images?" %>
-							<%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long', :remote => true %>
-						</h5>
-					</div>
-					
-				</div>
+								
+								<div style="height: 200px;"></div>
+								
+						    	<div style="width: 100%; text-align: center;">
+							    	<h5>
+									   	<% delete_all_msg = "Delete all records and reset index in publisher_profile_images?" %>
+										<%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long' %>
+									</h5>
+								</div>
 				
+							</div>
+						</div>
+					</div>					
+				</div>
 				<div class="col-right">
-					<%= render 'share/dir_publishers_right' %>
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-right">
+								<%= render 'share/dir_publishers_right' %>
+							</div>
+						</div>
+					</div>										
 				</div>								
 			</div>
 		</div>

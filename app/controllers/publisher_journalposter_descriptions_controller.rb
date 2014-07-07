@@ -11,22 +11,25 @@ class PublisherJournalposterDescriptionsController < ApplicationController
   
   def index
 
-    @@publisher_journalposter_id = params[:id]
-    session[:publisher_journalposter_id] = params[:id]
+    # @@publisher_journalposter_id = params[:id]
+    # session[:publisher_journalposter_id] = params[:id]
 
-    @publisher_journalposter_descriptions = PublisherJournalposterDescription.where("publisher_journalposter_id = ?", @@publisher_journalposter_id)
+    @publisher_journalposter_id = params[:publisher_journalposter_id]
+    @publisher_id = params[:publisher_id]
+
+    @publisher_journalposter_description = PublisherJournalposterDescription.where("publisher_journalposter_id = ?", @publisher_journalposter_id).first
     
-    if @publisher_journalposter_descriptions.any?
+    if @publisher_journalposter_description
       session[:publisher_has_journalposter] = true
     end
     
-    @publisher_journalposter = PublisherJournalposter.find(@@publisher_journalposter_id)
-    # @publisher_journalposter_name = @publisher_journalposter.name_journalposter
-    # @publisher_journalposter_has_description = @publisher_journalposter.has_description
-    @publisher_journalposter_id = @@publisher_journalposter_id
+    @publisher_journalposter = PublisherJournalposter.find(@publisher_journalposter_id)
+    # # @publisher_journalposter_name = @publisher_journalposter.name_journalposter
+    # # @publisher_journalposter_has_description = @publisher_journalposter.has_description
+    # @publisher_journalposter_id = @@publisher_journalposter_id
     
-    @publisher_journalposter_has_journalposter_logo = @publisher_journalposter.has_journalposter_logo
-    @publisher_journalposter_has_journalposter_prodshot = @publisher_journalposter.has_journalposter_prodshot
+    # @publisher_journalposter_has_journalposter_image = @publisher_journalposter.has_journalposter_image
+    # @publisher_journalposter_has_journalposter_prodshot = @publisher_journalposter.has_journalposter_prodshot
 
     # if @publisher_journalposter_has_journalposter_logo
       # gon.image_name = @publisher_journalposter.journalposter_logo
@@ -34,16 +37,17 @@ class PublisherJournalposterDescriptionsController < ApplicationController
       # gon.image_name = ''
     # end
 
-    @has_journalposter_metadata = @publisher_journalposter.has_journalposter_metadata
+    # @has_journalposter_metadata = @publisher_journalposter.has_journalposter_metadata
     
-    gon.publisher_journalposter_description = @publisher_journalposter_descriptions[0]       
+    # gon.publisher_journalposter_description = @publisher_journalposter_descriptions[0]       
+    gon.publisher_journalposter_description = @publisher_journalposter_description       
 
-    @journalposter_metadata = ''
-    if @has_journalposter_metadata
-      @journalposter_metadata = @publisher_journalposter.journalposter_metadata
-    end
+    # @journalposter_metadata = ''
+    # if @has_journalposter_metadata
+      # @journalposter_metadata = @publisher_journalposter.journalposter_metadata
+    # end
 
-    @publisher_journalposter_logos = PublisherJournalposterLogo.where("publisher_journalposter_id = ?", @@publisher_journalposter_id)
+    @publisher_journalposter_image = PublisherJournalposterImage.where("publisher_journalposter_id = ?", @publisher_journalposter_id).first
 
     # if @publisher_journalposter_logos.any?
       # @publisher_journalposter_logo_id = @publisher_journalposter_logos[0].id
@@ -62,16 +66,17 @@ class PublisherJournalposterDescriptionsController < ApplicationController
   
   def new
     
-    if !(session[:username].nil? or session[:publisher_id].nil?)
-      # @username = session[:username]
+    # if !(session[:username].nil? or session[:publisher_id].nil?)
+      # # @username = session[:username]
       @publisher_journalposter_description = PublisherJournalposterDescription.new
-    else
-      render text: 'failed sessions'
-    end
+    # else
+      # render text: 'failed sessions'
+    # end
     
   end
 
-  
+
+
   def create
 
     id_map = 1
@@ -91,10 +96,14 @@ class PublisherJournalposterDescriptionsController < ApplicationController
 
     publisher_journalposter_description.poster = session[:poster]
     
+    publisher = Publisher.where("user_id = ?", current_user.id).first
+    publisher_id = publisher.id
+    
     h_new = Hash.new
     h_new[:poster] = session[:poster]
-    h_new[:publisher_id] = session[:publisher_id]
-    
+    # h_new[:publisher_id] = session[:publisher_id]
+    h_new[:publisher_id] = publisher.id
+
     h_new[:id_map] = id_map
     
     
@@ -230,14 +239,15 @@ class PublisherJournalposterDescriptionsController < ApplicationController
     end 
 
     
-    publisher_journalposter_description.publisher_id = session[:publisher_id]
+    publisher_journalposter_description.publisher_id = publisher.id
     
     if publisher_journalposter.save      
-      @@publisher_journalposter_id = publisher_journalposter.id
-      publisher_journalposter_description.publisher_journalposter_id = @@publisher_journalposter_id 
+      publisher_journalposter_id = publisher_journalposter.id
+      publisher_journalposter_description.publisher_journalposter_id = publisher_journalposter_id 
       if publisher_journalposter_description.save
-        log_available_posters(id_map)
-        redirect_to '/PublisherJournalPosterDescription?id=' + @@publisher_journalposter_id.to_s
+        # log_available_posters(id_map)
+        redirect_to :action => "index", :params => { :publisher_id => publisher_id.to_s, :publisher_journalposter_id => publisher_journalposter_id.to_s }
+        # redirect_to '/PublisherJournalPosterDescription?id=' + @@publisher_journalposter_id.to_s
       else
         render text: 'Save Publisher Journalposter Description failed'
       end

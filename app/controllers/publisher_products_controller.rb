@@ -1,9 +1,7 @@
 class PublisherProductsController < ApplicationController
   
-  layout 'publisher'
+  layout 'publisher_product'
 
-  require 'csv'
-  
   helper_method :sort_column, :sort_direction
 
   before_filter :force_http
@@ -11,36 +9,81 @@ class PublisherProductsController < ApplicationController
     
   
   def index
+
+    publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    @publisher_id = publisher.id
     
-    @publisher_products = PublisherProduct.where("publisher_id = ?", session[:publisher_id]).order(sort_column + " " + sort_direction).paginate(:per_page => 200, :page => params[:page])
+    # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction) # .paginate(:per_page => 200, :page => params[:page])
+    # @publisher_product_images = PublisherProductImage.where("publisher_product_id = ?", @publisher_product.id)
+    
+    # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).paginate(:per_page => 6, page: params[:page])
+    @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).paginate(page: params[:page])
+    
+    
     
   end
   
+  
   def new
     
-    if !(session[:username].nil? or session[:publisher_id].nil?)
-      # @username = session[:username]
+    # if !(session[:username].nil? or session[:publisher_id].nil?)
+      # # @username = session[:username]
       @publisher_product = PublisherProduct.new
-    else
-      render text: 'failed sessions'
-    end
+    # else
+      # render text: 'failed sessions'
+    # end
     
   end
 
   
   def create
-    publisher_product = PublisherProduct.new(publisher_product_params)
-    publisher_product.publisher_id = session[:publisher_id]
+    publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    h_product = Hash.new
+    h_product[:publisher_id] = publisher.id
+    publisher_product = PublisherProduct.new(h_product)
+
+    # publisher_product.publisher_id = publisher.id
     # user = User.find(session[:user_id])
 
     #if user.update_columns( :has_account => true, :account_type => "publisher")      
       if publisher_product.save
-        
+        h_description = Hash.new
+        h_description[:publisher_id] = publisher.id
+        h_description[:publisher_product_id] = publisher_product.id
+        publisher_product_description = PublisherProductDescription.new(h_description)
+        if publisher_product_description.save
+
+          redirect_to(:controller => 'publisher_product_descriptions', 
+                      :action => 'index', 
+                      :params => {:publisher_id => publisher.id, 
+                                  :publisher_product_id => publisher_product.id,
+                                  :publisher_product_description_id => publisher_product_description.id
+                                 })
+
+          # h_image = Hash.new
+          # h_image[:publisher_id] = publisher.id
+          # h_image[:publisher_product_id] = publisher_product.id
+          # publisher_product_image = PublisherProductImage.new(h_image)
+          # if publisher_product_image.save
+            # redirect_to(:controller => 'publisher_product_descriptions', 
+                        # :action => 'index', 
+                        # :params => {:publisher_id => publisher.id, 
+                                    # :publisher_product_id => publisher_product.id,
+                                    # :publisher_product_description_id => publisher_product_description.id,
+                                    # :publisher_product_image_id => publisher_product_image.id })        
+          # else
+            # render text: 'save publisher_product_image failed'
+          # end
+        else
+          render text: 'save publisher_product_description failed'
+        end
+                  
         # session[:has_account] = true
-        
-        redirect_to(:action => 'index')
+        # redirect_to(:action => 'index')
+
+
       else
-        render text: 'save publisher failed'
+        render text: 'save publisher_product failed'
         #render("new")
       end
     #else
@@ -77,6 +120,32 @@ class PublisherProductsController < ApplicationController
       render text: 'Publisher Product Delete failed'
     end
      
+  end
+
+
+
+  def dbdelete
+
+      PublisherProduct.dbdelete
+      PublisherProduct.dbclear
+
+      PublisherProductDescription.dbdelete
+      PublisherProductDescription.dbclear
+
+      PublisherProductImage.dbdelete
+      PublisherProductImage.dbclear
+
+      PublisherProductLogo.dbdelete
+      PublisherProductLogo.dbclear
+      
+      redirect_to '/Publisher-Products'
+            
+      # respond_to do |format|
+        # # format.html
+        # # format.js { redirect_to(:action => 'index', :form => :js ) }
+        # format.js { redirect_to('/Publishers') }
+      # end
+
   end
 
 

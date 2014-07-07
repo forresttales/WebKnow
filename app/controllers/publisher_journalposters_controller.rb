@@ -2,7 +2,7 @@ class PublisherJournalpostersController < ApplicationController
   
   layout 'publisher'
 
-  require 'csv'
+  # require 'csv'
   
   helper_method :sort_column, :sort_direction
 
@@ -10,15 +10,29 @@ class PublisherJournalpostersController < ApplicationController
 
   
   def index
-    @publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", session[:publisher_id]).order(sort_column + " " + sort_direction)
     
+    publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    @publisher_id = publisher.id
+    
+    # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction) # .paginate(:per_page => 200, :page => params[:page])
+    # @publisher_product_images = PublisherProductImage.where("publisher_product_id = ?", @publisher_product.id)
+    
+    @publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", @publisher_id).paginate(page: params[:page])
+
+    
+    # publisher = Publisher.where("user_id = ?", current_user.id).first
+    # if !publisher.nil?
+      # # @publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", session[:publisher_id]).order(sort_column + " " + sort_direction)
+      # @publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", publisher.id).order(sort_column + " " + sort_direction)
+    # end
+
     if !@publisher_journalposters.any?
       session[:publisher_has_journalposter] = false
-    
+    # else
+      # session[:publisher_has_journalposter] = true
     end
-    
     if !session[:publisher_has_journalposter]
-      redirect_to '/Publishers'
+      redirect_to '/Publisher'
     end
     
     
@@ -27,12 +41,12 @@ class PublisherJournalpostersController < ApplicationController
   
   def new
     
-    if !(session[:username].nil? or session[:publisher_id].nil?)
-      # @username = session[:username]
+    # if !(session[:username].nil? or session[:publisher_id].nil?)
+      # # @username = session[:username]
       @publisher_journalposter = PublisherJournalposter.new
-    else
-      render text: 'failed sessions'
-    end
+    # else
+      # render text: 'failed sessions'
+    # end
     
   end
 
@@ -133,11 +147,14 @@ class PublisherJournalpostersController < ApplicationController
       PublisherJournalposterDescription.dbdelete      
       PublisherJournalposterDescription.dbclear
       
-      PublisherJournalposterLogo.dbdelete
-      PublisherJournalposterLogo.dbclear
+      PublisherJournalposterImage.dbdelete
+      PublisherJournalposterImage.dbclear
 
-      PublisherJournalposterProdshot.dbdelete
-      PublisherJournalposterProdshot.dbclear
+      # PublisherJournalposterLogo.dbdelete
+      # PublisherJournalposterLogo.dbclear
+
+      # PublisherJournalposterProdshot.dbdelete
+      # PublisherJournalposterProdshot.dbclear
 
       PublisherJournalposterPurchase.dbdelete
       PublisherJournalposterPurchase.dbclear

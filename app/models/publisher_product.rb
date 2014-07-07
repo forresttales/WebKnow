@@ -35,13 +35,15 @@ class PublisherProduct < ActiveRecord::Base
 
 
 
-  # def self.dbdelete
-      # self.connection.execute("DELETE FROM stores")
-  # end
-   
-  # def self.dbclear
-      # self.connection.execute("ALTER SEQUENCE stores_id_seq RESTART WITH 1")
-  # end
+
+  def self.dbdelete
+      self.connection.execute("DELETE FROM publisher_products")
+  end
+  
+  def self.dbclear
+      self.connection.execute("ALTER SEQUENCE publisher_products_id_seq RESTART WITH 1")
+  end
+
 
 
   def self.import(file)

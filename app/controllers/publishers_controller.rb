@@ -9,17 +9,37 @@ class PublishersController < ApplicationController
     
 
   def index
-    @publisher = Publisher.where(["user_id = ?", session[:user_id]]).first       
-    @username = session[:username]
     
-    publisher = @publisher
+    # publisher = Publisher.find(1)
+    # if publisher.nil?
+      # render text: 'nil'
+    # else
+      # render text: publisher.id
+    # end
+    publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    @publisher_id = publisher.id
+    # publishers = Publisher.where("user_id = 1")
+    # publisher = publishers[0]
+    
+    # render text: publisher.id
+    
+    # @publisher = publisher       
+    # @username = current_user.username
+    
     # @admin_user_profile = AdminUserProfile.find(session[:admin_user_id])    
     
-    session[:publisher_id] = publisher.id
+    # session[:publisher_id] = publisher.id
     
     # @publisher_profile_images = PublisherProfileImage.where("publisher_profile_image.publisher_id = ? AND publisher_profile_image.primary = ?", session[:publisher_id], true)       
     # @publisher_profile_images = PublisherProfileImage.where("publisher_id = ? AND primary = ?", session[:publisher_id], true)  
-    @publisher_profile_images = PublisherProfileImage.where("publisher_id = ?", session[:publisher_id])     
+    # @publisher_profile_images = PublisherProfileImage.where("publisher_id = ?", session[:publisher_id])     
+    @publisher_profile_images = PublisherProfileImage.where("user_id = ?", current_user.id)     
+
+    # if @user_profile_images.any?
+      # @user_profile_image_nav = @user_profile_images[0]
+    # else
+      # @user_profile_image_nav = nil
+    # end      
 
     # @publisher_profile_image_has_profile_image = false
     # if publisher_profile_images.any?
@@ -34,7 +54,7 @@ class PublishersController < ApplicationController
       # gon.image_name = ''
     # end
     
-    publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", session[:publisher_id])
+    publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", publisher.id)
     if publisher_journalposters.any?
       session[:publisher_has_journalposter] = true
     else
@@ -109,6 +129,7 @@ class PublishersController < ApplicationController
   
 
   def edit
+    # publisher = User.where("user_id = ?", current_user.id)
     @publisher = Publisher.find(params[:id])
   end
   
@@ -139,10 +160,27 @@ class PublishersController < ApplicationController
   end
   
   
+  def dbdelete
+
+      Publisher.dbdelete
+      Publisher.dbclear
+      
+      respond_to do |format|
+        # format.html
+        # format.js { redirect_to(:action => 'index', :form => :js ) }
+        format.js { redirect_to('/Publishers') }
+        
+      end
+
+  end
+  
+  
+  
   private
 
     def publisher_params
       params.require(:publisher).permit(
+                                        :user_id,
                                         :name, 
                                         :address, 
                                         :city, 

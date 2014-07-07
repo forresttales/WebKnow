@@ -1,7 +1,7 @@
 
 
 					<div class="pad-left-20">
-						<span class="jp-title">Journal Poster</span>
+						<span class="jp-title">Publisher Poster</span>
 					</div>
 					<div style="height: 10px;"></div>
 					<div class="pad-left-20">
@@ -14,47 +14,57 @@
 				   		<div class="table">
 				   			<div class="row">
 								
-								<% if @publisher_journalposter_has_journalposter_logo %>   				
+								<% if @publisher_journalposter_image %>   				
 								
-									<% for publisher_journalposter_logo in @publisher_journalposter.publisher_journalposter_logos %>
-					   				<div class="cell-180">
-											<ul class="grid cs-style-3">
-												<li>
-													<figure>
-														<img alt="logo not appearing" src="<%= publisher_journalposter_logo.image_url(:logo) if publisher_journalposter_logo.image? %>" />
-					
-														<figcaption>
-															<span><%= link_to "Delete", publisher_journalposter_logo, :confirm => 'Delete this logo?', :method => :delete, :params => {:publisher_journalposter_id => @publisher_journalposter.id} %></span>
-							        						<!-- <span>= link_to "edit", edit_publisher_journalposter_logo_path(publisher_journalposter_logo) </span> -->
-														</figcaption>
-													</figure>
-												</li>
-											</ul>
-									        <!-- image_tag publisher_journalposter_logo.image_url(:logo) if publisher_journalposter_logo.image?  -->
+									<!-- <#% for publisher_journalposter_image in @publisher_journalposter.publisher_journalposter_logos %#> -->
+					   				<div class="">
+										<ul class="image-grid image-grid-caption image-grid-caption-height-50">
+											<li>
+												<figure class="figure-box-200">
+													<img alt="logo not appearing" src="<%= @publisher_journalposter_image.image_url(:image_200_200) if @publisher_journalposter_image.image? %>" />
+													<figcaption class="figcaption-1">
+														<!-- <span><#%= link_to "Delete", publisher_journalposter_logo, :confirm => 'Delete this logo?', :method => :delete, :params => {:publisher_journalposter_id => @publisher_journalposter.id} %#></span> -->
+						        						<!-- <span><#%= link_to "edit", edit_publisher_journalposter_logo_path(publisher_journalposter_logo) %#></span> -->
+						        						<span><%= link_to "Edit", publisher_journalposter_images_path(:publisher_id => @publisher_journalposter.publisher_id, :publisher_journalposter_id => @publisher_journalposter.id) %></span>
+														<br>
+														<span><%= link_to "Delete", destroy_image_publisher_journalposter_images_path( :publisher_id => @publisher_id, :publisher_journalposter_id => @publisher_journalposter_id, :publisher_journalposter_image_id => @publisher_journalposter_image.id, :descr => 1 ), :confirm => 'Delete this image?', :method => :post %></span>
+						        						
+						        						<!-- <span><#%= link_to "Manage", publisher_journalposter_logo_path(publisher_journalposter_logo) %#></span> -->
+														<!-- <span><#%= link_to "Manage", manage_publisher_journalposter_logos_path(@publisher_journalposter.id) %#></span> -->
+														<!-- <span><#%= link_to "Manage", :controller => 'publisher_journalposter_logos', :action => 'manage', :method => 'put' %#></span> -->
+						        						
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+								        <!-- image_tag publisher_journalposter_logo.image_url(:logo) if publisher_journalposter_logo.image?  -->
 						   			</div>
-						   			<div class="cell-400">
-										<span><%= link_to '&laquo; Delete image &raquo;'.html_safe, publisher_journalposter_logo, :confirm => 'Delete this logo?', :method => :delete, :params => {:publisher_journalposter_id => @publisher_journalposter.id}, :class => 'links' %></span>						   				
-										<br>
-										
+						   			
+						   			<div class="image-grid-text-1-container">
+										<!-- <span><#%= link_to "Crop/Center", { :controller => 'publisher_journalposter_images', :action => :crop, :id => @publisher_journalposter_image.id } %#></span> -->
+										<span><%= link_to "Edit", publisher_journalposter_images_path(:publisher_id => @publisher_journalposter.publisher_id, :publisher_journalposter_id => @publisher_journalposter.id) %></span>
+										&nbsp;&nbsp;&nbsp;&nbsp;
+						   				<span><%= link_to "Delete", destroy_image_publisher_journalposter_images_path( :publisher_id => @publisher_id, :publisher_journalposter_id => @publisher_journalposter_id, :publisher_journalposter_image_id => @publisher_journalposter_image.id, :descr => 1 ), :confirm => 'Delete this image?', :method => :post %></span>
+										<!-- <span><#%= link_to '&laquo; Delete &raquo;'.html_safe, publisher_product_image, :confirm => 'Delete this photo?', :method => :delete, :params => {:publisher_product_image_id => publisher_product_image.id}, :class => 'links' %#></span> -->						   				
 						   			</div>
-									<% end %>
+									<!-- <#% end %#> -->
 
 								<% else %>
 
-					   				<div class="cell-180">
-										<ul class="grid cs-style-3">
+					   				<div class="">
+										<ul class="image-grid image-grid-caption image-grid-caption-height-50">
 											<li>
-												<figure>
-													<img alt="logo not appearing" src="../journal_poster/logo_journalposter_generic.jpg" />
-													<figcaption>
-														<span><%= link_to "Add a Logo", new_publisher_journalposter_logo_path(:publisher_id => @publisher_journalposter.publisher_id, :publisher_journalposter_id => @publisher_journalposter.id) %></span>											
+												<figure class="figure-box-200">
+													<img alt="logo not appearing" src="../images_publisher_journalposter/image_journalposter_generic_1_w200_h200.png" />
+													<figcaption class="figcaption-1">
+														<span><%= link_to "Add an image logo", new_publisher_journalposter_image_path(:publisher_id => @publisher_journalposter.publisher_id, :publisher_journalposter_id => @publisher_journalposter.id, :descr => 1) %></span>											
 													</figcaption>
 												</figure>
 											</li>
 										</ul>
 						   			</div>
-						   			<div class="cell-400">
-										<span><%= link_to '&laquo; Add a Logo &raquo;'.html_safe, new_publisher_journalposter_logo_path(:publisher_id => @publisher_journalposter.publisher_id, :publisher_journalposter_id => @publisher_journalposter.id), :class => 'links' %></span>
+						   			<div class="image-grid-text-1-container">
+										<span><%= link_to 'Add an image logo', new_publisher_journalposter_image_path(:publisher_id => @publisher_journalposter.publisher_id, :publisher_journalposter_id => @publisher_journalposter.id, :descr => 1), :class => '' %></span>
 						   			</div>
 								
 								<% end %>
@@ -65,11 +75,11 @@
 			
 					<div class="line-space-20"></div>
 			
-					<% if @publisher_journalposter_descriptions.any? %>
+					<% if @publisher_journalposter_description %>
 					 
 						<div class="pad-left-20">
 							<span class="normal">								
-								<%= button_to "&laquo; Edit &raquo;".html_safe, {:controller => 'publisher_journalposter_descriptions', :action => 'edit', :id => @publisher_journalposter_descriptions[0].publisher_journalposter_id }, :class => 'jp-btn' %>
+								<%= button_to "&laquo; Edit &raquo;".html_safe, {:controller => 'publisher_journalposter_descriptions', :action => 'edit', :id => @publisher_journalposter_id }, :class => 'jp-btn' %>
 							</span>
 						</div>
 					 
@@ -389,7 +399,7 @@ other_diy
 										<span class="form-text-index">Tag Line:</span>
 									</div>
 									<div class="jp-col-right">
-										<span class="form-text-index"><%= @publisher_journalposter_descriptions[0].tag_line %></span>							
+										<span class="form-text-index"><%= @publisher_journalposter_description.tag_line %></span>							
 									</div>
 								</div>
 								<div class="input-form-spacer-jp"></div>        
@@ -398,7 +408,7 @@ other_diy
 										<span class="form-text-index">Company URL:</span>
 									</div>
 									<div class="jp-col-right">
-										<span class="form-text-index"><%= @publisher_journalposter_descriptions[0].url %></span>							
+										<span class="form-text-index"><%= @publisher_journalposter_description.url %></span>							
 									</div>
 								</div>
 								<div class="input-form-spacer-jp"></div>        		
@@ -407,7 +417,7 @@ other_diy
 										<div class="jp-textarea"><span>30 Word Description:</div></span>
 									</div>
 									<div class="jp-col-right">
-										<textarea class="txtarea" cols="28" disabled="disabled"><%= @publisher_journalposter_descriptions[0].word_descr %></textarea>
+										<textarea class="txtarea" cols="28" disabled="disabled"><%= @publisher_journalposter_description.word_descr %></textarea>
 									</div>
 								</div>
 							</div>
@@ -421,7 +431,7 @@ other_diy
 					 				<span class="small pad-left-20">Created:</span>
 					 			</td>
 					 			<td class="form-display-col2">
-					 				<span class="small pad-left-20"><%= @publisher_journalposter_descriptions[0].created_at.strftime("%B %d, %Y") %></span>
+					 				<span class="small pad-left-20"><%= @publisher_journalposter_description.created_at.strftime("%B %d, %Y") %></span>
 					 			</td>
 					 		</tr>
 					 		<!-- <tr><td class="form-display-separator"></td><td></td></tr> -->
@@ -430,7 +440,7 @@ other_diy
 					 				<span class="small pad-left-20">Updated:</span>
 					 			</td>
 					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_journalposter_descriptions[0].updated_at.strftime("%B %d, %Y") %></span>
+					 				<span class="small pad-left-20"><%= @publisher_journalposter_description.updated_at.strftime("%B %d, %Y") %></span>
 					 			</td>
 					 		</tr>
 					 		

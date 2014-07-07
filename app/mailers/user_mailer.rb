@@ -11,4 +11,19 @@ class UserMailer < ActionMailer::Base
     #mail(:to => recipient.email_address_with_name, :bcc => ["bcc@example.com", "Order Watcher <watcher@example.com>"])    
     
   end  
+
+
+  def password_reset(user)
+    @user = user
+
+    # mail :to => user.email, :subject => "Password Reset"
+    
+    mail(:to => user.email, :subject => 'Password Reset') do |format|
+      format.html #{ render layout: 'my_layout' }
+      #format.text
+    end
+    
+  end
+
+
 end

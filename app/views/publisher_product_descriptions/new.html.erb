@@ -2,7 +2,7 @@
 
 
 	<script src="/assets/jquery.validate.js"></script>
-	<script type="text/javascript" src="/assets/entrepeneurs_jquery-1.js"></script>
+	<script type="text/javascript" src="/assets/jquery.js"></script>
 
     <style>
     	
@@ -61,6 +61,8 @@
 				</div>
 				
 				<div class="col-midd">
+
+					<div class="line-space-20"></div>
 
 					<div style="text-align: left;">
 						<span class="normal pad-left-20">Publisher Products</span>
@@ -560,6 +562,14 @@
 		//$(document).ready(function(){
 
 			// formValidate();
+			
+    		$('#select_type_content_index').keypress(function(e){
+      			if(e.keyCode==13) {
+      				// alert('key');
+      				$('#select_type_content_index').click();
+      			}
+    		});				
+			
 
 		});
 	

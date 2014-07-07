@@ -37,11 +37,11 @@ class ProfilesController < ApplicationController
     @user = User.find_by_id(id)
     # else
     
-    publishers = Publisher.where("user_id = ?", id)
-    @publisher = publishers[0]
+    @publisher = Publisher.where("user_id = ?", id).first
+    # @publisher = publishers[0]
     @publisher_profile_images = PublisherProfileImage.where("publisher_id = ?", @publisher.id)     
     
-    
+    @user_profile_images = UserProfileImage.where("user_id = ?", id)    
     
     if @user.nil?
       redirect_to :action => 'new'

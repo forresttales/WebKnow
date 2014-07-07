@@ -4,6 +4,8 @@
 		margin-left: auto;
 		margin-right: auto;
 		min-height: 900px;
+		position: relative;
+		top: -4px;
 	}
 	.table-profile {
 		display: table;
@@ -26,6 +28,10 @@
 		border-right: 2px #DCE3DF solid;
 		/*height: 800px;*/		
 	}
+	.col-midd-600 {
+		display: table-cell; 
+		width: 600px;			
+	}
 	.col-right {
 		display: table-cell; 
 		width: 200px;
@@ -36,6 +42,9 @@
 		width: 800px;			
 		border-left: 2px #DCE3DF solid;
 		border-right: 2px #DCE3DF solid;
+	}
+	.col-gen {
+		display: table-cell; 		
 	}
 	.links {
 		font-family:Arial, Helvetica, sans-serif;

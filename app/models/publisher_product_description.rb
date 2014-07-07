@@ -2,33 +2,34 @@
 #
 # Table name: publisher_product_descriptions
 #
-#  id                     :integer          not null, primary key
-#  publisher_product_id   :integer
-#  publisher_id           :integer
-#  description            :string(1000)
-#  price                  :decimal(8, 2)
-#  created_at             :datetime
-#  updated_at             :datetime
-#  type_content           :string(50)
-#  subject_category       :string(50)
-#  type_content_index     :integer
-#  subject_category_index :integer
-#  name_product           :string(100)
-#  core_supplemental      :string(50)
-#  source_url             :string(300)
-#  topic                  :string(200)
-#  lesson_plan_subject    :string(300)
-#  word_description       :text
-#  age_appropriate        :string(50)
-#  age_appropriate_index  :integer
-#  grade                  :string(50)
-#  grade_index            :integer
-#  metadata               :text
-#  platform               :string(50)
-#  platform_index         :integer
-#  versions               :string(300)
-#  pricing_model          :string(50)
-#  pricing_model_index    :integer
+#  id                      :integer          not null, primary key
+#  publisher_product_id    :integer
+#  publisher_id            :integer
+#  price                   :decimal(8, 2)
+#  created_at              :datetime
+#  updated_at              :datetime
+#  word_description        :text
+#  metadata                :text
+#  name_product            :string(255)
+#  description             :text
+#  type_content            :string(255)
+#  type_content_index      :integer          default(0)
+#  subject_category        :string(255)
+#  subject_category_index  :integer          default(0)
+#  core_supplemental       :string(255)
+#  core_supplemental_index :integer          default(0)
+#  source_url              :string(255)
+#  topic                   :string(255)
+#  lesson_plan_subject     :string(255)
+#  age_appropriate         :string(255)
+#  age_appropriate_index   :integer          default(0)
+#  grade                   :string(255)
+#  grade_index             :integer          default(0)
+#  platform                :string(255)
+#  platform_index          :integer          default(0)
+#  versions                :string(255)
+#  pricing_model           :string(255)
+#  pricing_model_index     :integer          default(0)
 #
 
 class PublisherProductDescription < ActiveRecord::Base
@@ -37,33 +38,42 @@ class PublisherProductDescription < ActiveRecord::Base
                   :publisher_product_id,
                   :publisher_id,
                   :description,
-                  :price,
-                  :type_content_index,
-                  :subject_category_index,                  
-                  :type_content,
-                  :subject_category,
-                  :word_description,
                   :name_product,
+                  :type_content_index,
+                  :type_content,
+                  :subject_category_index,                  
+                  :subject_category,
+                  :core_supplemental_index, 
                   :core_supplemental, 
-                  :source_url, 
-                  :topic,
+                  :age_appropriate_index, 
+                  :age_appropriate, 
+                  :grade_index, 
+                  :grade, 
+                  :platform_index,
+                  :platform, 
+                  :pricing_model_index,
+                  :pricing_model, 
+                  :metadata,  
+                  :price,
                   :lesson_plan_subject, 
                   :word_description, 
-                  :age_appropriate, 
-                  :age_appropriate_index, 
-                  :grade, 
-                  :grade_index, 
-                  :metadata,  
-                  :platform, 
-                  :platform_index,
                   :versions, 
-                  :pricing_model, 
-                  :pricing_model_index, 
+                  :source_url, 
+                  :topic,
                   :created_at,
                   :updated_at 
   
   
   belongs_to :publisher_product
+
+
+  def self.dbdelete
+      self.connection.execute("DELETE FROM publisher_product_descriptions")
+  end
+  
+  def self.dbclear
+      self.connection.execute("ALTER SEQUENCE publisher_product_descriptions_id_seq RESTART WITH 1")
+  end
 
   
 end

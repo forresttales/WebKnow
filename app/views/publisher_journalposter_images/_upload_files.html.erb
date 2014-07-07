@@ -1,0 +1,64 @@
+
+
+    <style>
+    	
+    	.main {
+    		font-family:Arial, Helvetica, sans-serif;
+    		font-size: 20px;
+    		color: black;
+    		min-height: 700px;
+    	}
+    	
+    	.links {
+    		font-family:Arial, Helvetica, sans-serif;
+    		font-size: 16px;
+    		color: brown;    		
+    	}
+    	
+    	h1 {
+    		font-size: 22px;
+    	}
+    	p {
+    		font-size: 16px;
+    	}
+    	
+		.input-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 600px;
+			height: 24px;
+			border-style:solid;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+			color: #888;
+		}
+    	
+    	.submit-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+    		height: 24px;
+    	}
+    	
+    </style>
+
+
+	<div class="main">
+	
+		<div>	
+
+			<div style="height: 120px;"></div>
+			
+			<h1>Upload</h1>
+
+			<div style="height: 50px;"></div>
+
+			<%= form_tag({action: :upload}, multipart: true) do %>
+				<%= file_field_tag 'upload_file', :class => 'input-upload' %> 
+				<%= submit_tag "Upload", :class => 'submit-upload' %> 
+			<% end %>
+			
+		</div>
+		
+	</div>

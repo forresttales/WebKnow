@@ -1,0 +1,407 @@
+<% provide(:title, 'Publisher Profile') %>
+
+
+	<style>
+		
+		@import url(http://www.google.com/fonts#QuickUsePlace:quickUse/Family:Istok+Web);
+		
+		.jp-showcell-1 {
+			width: 90px;
+		} 	
+
+		td.jp-showcell {
+			height: 40px;
+			width: 100px;
+			padding-left: 4px;
+			padding-top: 4px;
+			vertical-align: top;
+	  		font-family: 'QuickUsePlace', sans-serif;
+	  		/*font-family: 'Quattrocento Sans', sans-serif;*/
+	        font-size: 10px;
+	    	color: #214025;
+	    	font-weight: 200;
+		}
+		td.jp-showcell-empty {
+			height: 60px;
+			width: 200px;
+	    	background-color: #fff;
+		}
+		.jp-cell-border-top {
+			border-top:#000000 solid 1px;				
+		}					
+		.jp-cell-border-bottom {
+			border-bottom:#000000 solid 1px;				
+		}					
+		.jp-cell-border-left {
+			border-left:#000000 solid 1px;				
+		}					
+		.jp-cell-border-right {
+			border-right:#000000 solid 1px;				
+		}					
+		.jp-showcell-background-0 {
+			background-color: #fff;
+		}
+		.jp-showcell-background-1 {
+			background-color: #ddd;
+		}
+		span.jp-title {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: #D98D2D;
+		}
+		span.jp-title-sub {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 18px;
+			color: #A9D996;
+		}
+		.jp-btn {
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 50px;
+		  	height: 20px;
+		  	background: inherit;
+		  	border-width: 0px;
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 13px;
+	    	color: #9F6720;
+	    	font-weight: 400;					  	
+		}
+		.jp-btn:focus {
+		}
+		.jp-btn:hover { 
+		  	text-decoration: underline;
+		  	cursor: pointer; 
+		}
+		.jp-btn:active { 
+		  	text-decoration: underline; 
+		}
+		.txtarea {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 14px;
+			padding-left: 6px;
+			padding-right: 6px;
+			padding-top: 2px;
+			/*border: solid 1px #478A3E;*/
+			border: solid 1px #aaa;
+			background-color: #fff;
+			resize: none;	
+			height: 70px;
+			width: 400px;
+		}
+		.form-text-index {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 14px;
+		}
+		.input-form-spacer-jp {
+			height: 16px;
+		}
+		.jp-table-descr {
+			display: table; 
+			width: 560px;	
+		}
+ 		div .jp-col-right {
+			display: table-cell;
+			width: 410px;
+			text-align: left;
+			align: top;		
+		}
+		div .jp-col-left {
+			display: table-cell;
+			width: 180px;
+			align: top;
+			text-align: left;		
+		}
+		.jp-col-right span {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #000;    		
+			height: 16px;
+		}
+		.jp-col-left span {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #000;    		
+			height: 16px;
+		}
+		.jp-textarea {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #000;    		
+			height: 16px;
+			position: relative;
+			top: -48px;
+		}
+		
+	</style>
+
+ 	<style>
+ 		
+		*, *:after, *:before {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.clearfix:before, .clearfix:after { content: " "; display: table; }
+		.clearfix:after { clear: both; }
+		a {
+			color: #888;
+			text-decoration: none;
+		}
+		a:hover,
+		a:active {
+			color: #333;
+		}
+		.profile-grid {
+			padding: 0px 0px 0px 0px;
+			/*max-width: 1300px;*/
+			margin: 0 auto;
+			list-style: none;
+			/*text-align: center;*/
+		}
+		.profile-grid li {
+			display: inline-block;
+			/*width: 250px;*/
+			/*height: 300px;*/
+			margin: 0;
+			padding: 0px 0px 0px 0px;
+			position: relative;
+			text-align: center;
+		}
+		.profile-grid figure {
+			margin: 0;
+			position: relative;
+			/*height: 300px;*/
+			/*padding-left: 6px;*/
+			padding-top: 0px;	
+			background-color: #fff;
+		}
+		.profile-grid figure img {
+			max-width: 100%;
+			display: block;
+			position: relative;
+		}
+		.profile-grid figcaption {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 10px;
+			/*background: #2c3f52;*/
+			background: #000;
+			color: #ed4e6e;
+		}
+		/*.profile-grid figcaption h3 {
+			margin: 0;
+			padding: 0;
+			color: #fff;
+		}*/
+		/*.profile-grid figcaption span:before {
+			content: '';
+		}*/
+		.profile-grid figcaption {
+			text-align: right;
+		}
+		.profile-grid figcaption span a {
+			text-align: right;
+			/*padding: 5px 10px;*/
+			/*border-radius: 2px;*/
+			/*display: inline-block;*/
+			/*background: #ed4e6e;*/
+			color: #fff;
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 14px;
+			font-weight: 400;					  	
+		}
+		.profile-grid-caption figure {
+			/*border: solid 1px #000;*/
+			overflow: hidden;
+		}
+		.profile-grid-caption figure img {
+			/*-webkit-transition: -webkit-transform 0.2s;
+			-moz-transition: -moz-transform 0.2s;
+			transition: transform 0.2s;*/
+		}
+		.no-touch .profile-grid-caption figure:hover img,
+		.profile-grid-caption figure.cs-hover img {
+			/*-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			-ms-transform: translateY(0px);
+			transform: translateY(0px);*/
+			/*-webkit-transform: translateY(-6px);
+			-moz-transform: translateY(-6px);
+			-ms-transform: translateY(-6px);
+			transform: translateY(-6px);*/
+		}
+		.profile-grid-caption figcaption {
+			/*height: 50px;*/
+			width: 100%;
+			top: auto;
+			bottom: 0;
+			opacity: 0;
+			-webkit-transform: translateY(100%);
+			-moz-transform: translateY(100%);
+			-ms-transform: translateY(100%);
+			transform: translateY(100%);
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+			transition: transform 0.4s, opacity 0.1s 0.3s;
+		}
+		.no-touch .profile-grid-caption figure:hover figcaption,
+		.profile-grid-caption figure.cs-hover figcaption {
+			opacity: .8;
+			-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			-ms-transform: translateY(0px);
+			transform: translateY(0px);
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+			transition: transform 0.4s, opacity 0.1s;
+		}
+		/*.profile-grid-caption figcaption a {
+			position: absolute;
+			bottom: 20px;
+			right: 20px;
+		}*/
+		@media screen and (max-width: 31.5em) {
+			.profile-grid {
+				padding: 0px 0px 0px 0px;
+			}
+			.profile-grid li {
+				width: 100%;
+				min-width: 30px;
+			}
+		}
+ 		
+ 	</style>
+
+ 	<style>
+ 		
+		.profile-grid figcaption.figcaption-1 {
+			text-align: right;			
+			padding-top: 5px;
+			padding-right: 10px;
+			/*padding-left: 0px;
+			padding-bottom: 0px;*/
+
+			background: #000;
+			/*color: #fff;*/
+		}
+		.profile-grid figcaption.figcaption-1 a {
+			text-align: right;
+			color: #fff;
+			font-family: Arial, Helvetica, sans-serif;
+		    font-size: 13px;
+			font-weight: 200;					  	
+		}
+		.profile-grid-caption-height-30 figcaption {
+			height: 30px;
+		}
+		.profile-grid-caption-height-50 figcaption {
+			height: 50px;
+		}
+		div.profile-grid-text-1-container {
+			width: 100%;
+			text-align: left;
+		}
+		div.profile-grid-text-1-container span,
+		div.profile-grid-text-1-container a {
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 14px;
+			font-weight: 200;
+			color: #888;								  	
+		}
+		.figure-box-500 {
+			width: 500px; 
+			height: 500px; 
+			border: 1px solid #888;
+		}
+		.figure-box-250 {
+			width: 250px; 
+			/*height: 250px;*/
+			/*border: 1px solid #888;*/
+		}
+		.figure-box-200 {
+			width: 200px; 
+			height: 200px; 
+			border: 1px solid #888;
+		}
+		.figure-box-100 {
+			width: 100px; 
+			height: 100px; 
+			border: 1px solid #888;
+		}
+		.figure-box-50 {
+			width: 50px; 
+			height: 50px; 
+			border: 1px solid #888;
+		}
+		/*.profile-grid li {
+			width: 250px;
+			height: 150px;
+		}*/
+
+ 	</style>
+
+
+	<header>
+		<%= render 'share/backtotop' %>
+	</header>
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<!-- <#%= render 'share/dir_publishers_left'%#> -->
+				</div>
+				
+				<div class="col-midd">
+					<div class="line-space-20"></div>
+			
+					<div style="text-align: left;">
+						<span class="normal pad-left-20">Story - Public - Publisher Admin Profile</span>
+					</div>
+			
+    				<!-- :id, 
+                    :user_id,    
+                    :name, 
+                    :address, 
+                    :city, 
+                    :state, 
+                    :country, 
+                    :zip,
+                    :phone, 
+                    :url, 
+                    :description, 
+                    :company_contact_name_first, 
+                    :company_contact_name_last,
+                    :company_contact_phone, 
+                    :company_contact_email, 
+                    :created_at, 
+                    :updated_at -->
+                    
+					<!-- <#% case @publisher_journalposter.poster.to_s %#>
+					<#% 	when "1" %#> -->
+					<%= 	render 'profile_users/index_users' %>
+					<!-- <#% 	else %#>
+					<#% end %#> -->
+                    
+                    
+					
+				</div>
+				
+				<div class="col-right">
+					<!-- <#%= render 'share/dir_publishers_right' %#> -->
+				</div>								
+			</div>
+		</div>
+	</div>
+
+	<script>
+	  
+		//$(window).load( function() {
+	
+		//});
+	  
+	</script>		

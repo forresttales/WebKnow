@@ -1,4 +1,4 @@
-<% provide(:title, 'New Publisher Photo') %>
+<% provide(:title, 'New Publisher Profile Image') %>
 
 
 	<!-- <script type="text/javascript" src="../scripts/jquery-1.9.1.js"></script> -->
@@ -6,6 +6,12 @@
 	<!-- <link href="/assets/custom_sign_form.css" rel="stylesheet"> -->
 
 	<style>
+
+		*, *:after, *:before {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
 
 		input[type=file] {
 			font-family: Arial, Helvetica, sans-serif;
@@ -51,64 +57,76 @@
 		<div class="table-profile">
 			<div class="row-profile">
 				<div class="col-left">
-					<%= render 'share/dir_publishers_left'%>
-				</div>
-				
-				<div class="col-midd">
-
-					<!-- <div id="btn_multipart_browse" class="btn-multipart-browse"></div>
-					<div>
-						<div class="cell-left-form-jp">
-							<label class="input-label-form-jp" for="publisher_journalposter_description_tag_line">Tag Line</label>							
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
 						</div>
-						<div class="cell-right-form-jp">
-							<input class="input-form-jp" id="input_browse" name="publisher_journalposter_logo[input_browse]" tabindex="40" type="text" value="" />	
+						<div class="row-profile">
+							<div class="col-left">
+								<%= render 'share/dir_publishers_left'%>
+							</div>
 						</div>
-					</div>								
-					<div id="btn_multipart_submit" class="btn-multipart-submit"></div> -->
-								
-					<div class="pad-left-20">
-					<%= form_for @publisher_profile_image, :html => {:multipart => true} do |f| %>
-					   <!-- f.error_messages  -->
-					   <!-- f.hidden_field :publisher_id  -->
-					   <!-- f.hidden_field :publisher_journalposter_id  -->
-					  <!-- <p>
-					     f.label :name 
-					     <br />
-					     f.text_field :name 
-					  </p> -->
-					  <p>
-					    <%= f.file_field :image %>
-					  </p>
-					  <br>
-					  <!-- <p>
-					     f.label :remote_image_url, "or image URL" 
-					     <br />
-					     f.text_field :remote_image_url 
-					  </p> -->
-					  <p><%= f.submit :class => 'btn-submit', :value => 'Upload Photo'%></p>
-					<% end %>
 					</div>
-					
 				</div>
-				
+				<div class="col-midd">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-midd-600">
+								
+								<div style="text-align: left;">
+									<span class="normal pad-left-20">New Publisher Profile Image</span>
+								</div>
+					
+								<div style="height: 30px;"></div>
+
+								<div class="pad-left-20">
+									<%= form_for @publisher_profile_image, :html => {:multipart => true} do |f| %>
+									   <!-- f.error_messages  -->
+									   <!-- f.hidden_field :publisher_id  -->
+									   <!-- f.hidden_field :publisher_journalposter_id  -->
+									  <!-- <p>
+									     f.label :name 
+									     <br />
+									     f.text_field :name 
+									  </p> -->
+									  <p>
+									    <%= f.file_field :image %>
+									  </p>
+									  <!-- <input id="publisher_profile_image_publisher_id" name="publisher_profile_image[publisher_id]" type="hidden" value="<#%= @publisher_id %#>" /> -->
+									  <br>
+									  <!-- <p>
+									     f.label :remote_image_url, "or image URL" 
+									     <br />
+									     f.text_field :remote_image_url 
+									  </p> -->
+									  <%= f.hidden_field 'publisher_id', :value => @publisher_id %>
+									  <p><%= f.submit :class => 'btn-submit', :value => 'Upload Photo' %></p>
+									<% end %>
+								</div>
+
+							</div>
+						</div>
+					</div>					
+				</div>
 				<div class="col-right">
-					<%= render 'share/dir_publishers_right_bare' %>
-				</div>												
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-right">
+								<%= render 'share/dir_publishers_right' %>
+							</div>
+						</div>
+					</div>										
+				</div>								
 			</div>
 		</div>
 	</div>
 
-		<!-- <form accept-charset="UTF-8" action="/publisher_journalposter_logos" class="new_publisher_journalposter_logo" enctype="multipart/form-data" id="new_publisher_journalposter_logo" method="post">
-			<div style="margin:0;padding:0;display:inline">
-				<input name="utf8" type="hidden" value="&#x2713;" />
-				<input name="authenticity_token" type="hidden" value="7ji3tzZndMKZUVnyXqsgxn8TrXqiMQVortzGyQ6GnPg=" />
-			</div>
-		  <p>
-		    <input id="publisher_journalposter_logo_image" name="publisher_journalposter_logo[image]" type="file" class="multipart-field" />
-		  </p>
-		  <p><input name="commit" type="submit" value="Create Publisher journalposter logo" /></p>
-		</form> -->
 
 	<!-- <script>
 		

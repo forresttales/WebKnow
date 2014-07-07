@@ -50,9 +50,9 @@ class PublisherJournalposter < ActiveRecord::Base
   
   belongs_to :publisher
   has_one :publisher_journalposter_description
-  has_many :publisher_journalposter_logos
+  has_many :publisher_journalposter_images
   has_many :publisher_journalposter_prodshots
-  has_one :publisher_journalposter_metadatatag
+  # has_one :publisher_journalposter_metadatatag
   has_one :publisher_journalposter_purchase
   
   

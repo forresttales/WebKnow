@@ -1,0 +1,653 @@
+<!-- <link rel="stylesheet" href="menu.css" type="text/css" media="screen" /> -->
+
+<!-- <script type="text/javascript" src="/assets/jquery-1.9.1.js"></script> --> 		
+<script type="text/javascript" src="/assets/jquery.js"></script>
+
+<style>
+
+	@font-face {
+		font-family: 'msyh';
+	    src: url('../fonts/msyh.eot');	  		
+		src: url('../fonts/msyh.ttf') format('truetype');
+	}
+
+	/*body, ul, li {
+		font-size:14px; 
+		font-family:Arial, Helvetica, sans-serif;
+		line-height:21px;
+		text-align:left;
+	}*/
+	
+	#menu {
+		list-style:none;
+		width:1000px;
+		margin: 0px auto;
+		/*height:54px;*/
+		padding:0px 0px 0px 0px;
+		/*-moz-border-radius: 0px;
+		-webkit-border-radius: 0px;
+		border-radius: 0px;*/
+		background-color: rgba( 65, 183, 55, 0.92);
+		/*-moz-box-shadow:inset 0px 0px 1px #edf9ff;
+		-webkit-box-shadow:inset 0px 0px 1px #edf9ff;
+		box-shadow:inset 0px 0px 1px #edf9ff;*/
+	    border-radius: 0px 0px 6px 6px;
+	    height: 50px;
+	}
+	/*#menu li.with_sub_right {
+		float:right;
+	}
+	#menu li.with_sub_left {
+		float:right;
+	}*/	
+	/*#menu li.with_sub {
+		display:block;
+		text-align:center;
+		position:relative;
+		padding: 6px 10px 8px 10px;
+		margin-right:4px;
+		margin-top:13px;
+		border:none;
+	}
+	#menu li.with_sub:hover {
+	    border: 1px solid #41B737;
+		padding: 6px 9px 4px 9px;
+		background: none repeat scroll 0 0 #F8F8F8;
+		-moz-border-radius: 5px 5px 0px 0px;
+		-webkit-border-radius: 5px 5px 0px 0px;
+		border-radius: 5px 5px 0px 0px;
+	}*/
+	/*#menu li.with_sub a {
+		font-family: msyh; 
+		font-size: 14px;		
+		color: #EEEEEE;
+		display:block;
+		outline:0;
+		text-decoration:none;
+		text-shadow: 1px 1px 1px #000;
+	}*/
+	/*#menu li.with_sub:hover a {
+		color:#161616;
+	}*/
+	/*#menu li.with_sub:hover a.menu-title {
+		color: #41B737;
+	}*/
+	#menu li.without_sub_right {
+		float:right;
+	}
+	#menu li.without_sub_left {
+		float:right;
+	}	
+	#menu li.without_sub {
+		display:block;
+		text-align:center;
+		position:relative;
+		padding: 6px 10px 8px 10px;
+		margin-right:4px;
+		margin-top:13px;
+		border:none;
+	}
+	#menu li.without_sub:hover {
+		/*border: 1px solid #777777;*/
+	    border: 1px solid #41B737;
+		padding: 6px 9px 6px 9px;
+		background: none repeat scroll 0 0 #F8F8F8;
+		/*background: #F4F4F4;
+		background: -moz-linear-gradient(top, #F4F4F4, #EEEEEE);
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#EEEEEE));*/
+		-moz-border-radius: 5px 5px 5px 5px;
+		-webkit-border-radius: 5px 5px 5px 5px;
+		border-radius: 5px 5px 5px 5px;
+	}
+	#menu li.without_sub a {
+		font-family: msyh; 
+		font-size: 14px;		
+		color: #EEEEEE;
+		display:block;
+		outline:0;
+		text-decoration:none;
+		/*text-shadow: 1px 1px 1px #000;*/
+	}
+	#menu li.without_sub:hover a {
+		color:#161616;
+		/*text-shadow: 1px 1px 1px #ffffff;*/
+	}
+	#menu li.without_sub:hover a.menu-title {
+		color: #41B737;
+	}
+	#menu li.icon {
+		float:left;
+		display:block;
+		text-align:center;
+		position:relative;
+		margin-right:0px;
+		margin-top:0px;
+		margin-left: 0px;
+		background: #fff;
+	    /*border-bottom: 2px solid rgba(65, 183, 55, 0.92);*/
+	    /*border-left: 2px solid rgba(65, 183, 55, 0.92);*/
+	    /*border-radius: 0 0 0 6px;*/
+	    /*border-right: 2px solid rgba(65, 183, 55, 0.92);*/
+	    /*bottom: 8px;
+	    left: 5px;
+	    position: relative;*/
+	}
+	#menu li.icon img {
+	    border-bottom: 2px solid rgba(65, 183, 55, 0.92);
+	    border-left: 2px solid rgba(65, 183, 55, 0.92);
+	    border-radius: 0 0 0 6px;
+	    border-right: 2px solid rgba(65, 183, 55, 0.92);
+	    /*bottom: 8px;
+	    left: 5px;
+	    position: relative;*/
+	}
+	/*#menu li.icon:hover {
+		float:left;
+		display:block;
+		text-align:center;
+		position:relative;
+		padding: 6px 4px 0px 0px;
+		margin-right:0px;
+		margin-top:0px;
+		border:none;
+		background: #fff;		
+	}*/
+	#menu li.icon a {
+		color: #fff;
+		text-shadow: 1px 1px 1px #ffffff;		
+	}
+	#menu li.icon:hover a {
+		color: red;
+		text-shadow: 1px 1px 1px #ffffff;		
+	}
+	#menu li.text {
+		display:block;
+		text-align:center;
+		position:relative;
+		padding: 12px 10px 8px 10px;
+		margin-right:0px;
+		margin-top:7px;
+		border:none;
+	}
+	#menu li.text:hover {
+		border: none;
+		padding: 12px 10px 8px 10px;		
+		-moz-border-radius: 0px;
+		-webkit-border-radius: 0px;
+		border-radius: 0px;
+		/*background-color: rgba( 65, 183, 55, 0.92);*/
+		/*background: #F4F4F4;
+		background: -moz-linear-gradient(top, #F4F4F4, #EEEEEE);
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#EEEEEE));
+		-moz-border-radius: 5px 5px 0px 0px;
+		-webkit-border-radius: 5px 5px 0px 0px;
+		border-radius: 5px 5px 0px 0px;*/
+
+	}
+	#menu li.text a {
+		font-family: msyh; 
+		font-size: 14px;		
+		color: #fff;
+		display:block;
+		outline:0;
+		/*background-color: rgba( 65, 183, 55, 0.92);*/
+		/*text-decoration:none;*/
+		/*text-shadow: 1px 1px 1px #000;*/
+	}
+	#menu li.text:hover a {
+	}
+	.dropdown_1column, 
+	.dropdown_2columns, 
+	.dropdown_3columns, 
+	.dropdown_4columns,
+	.dropdown_5columns {
+		margin:4px auto;
+		float:left;
+		position:absolute;
+		left:-999em; /* Hides the drop down */
+		text-align:left;
+		padding:12px 0px 2px 0px;
+		/*background:#F4F4F4;
+		background: -moz-linear-gradient(top, #EEEEEE, #BBBBBB);
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEEEEE), to(#BBBBBB));*/
+		background: none repeat scroll 0 0 #F8F8F8;
+	    border: 1px solid #41B737;
+	    border-top:none;
+		box-shadow: 0 4px 4px #CCCCCC;
+		-moz-border-radius: 0px 5px 5px 5px;
+		-webkit-border-radius: 0px 5px 5px 5px;
+		border-radius: 0px 5px 5px 5px;
+		z-index: 100;
+	}
+	.dropdown_1column {width: 110px;}
+	.dropdown_2columns {width: 280px;}
+	.dropdown_3columns {width: 420px;}
+	.dropdown_4columns {width: 560px;}
+	.dropdown_5columns {width: 700px;}
+	/*#menu li:hover .dropdown_1column, 
+	#menu li:hover .dropdown_2columns, 
+	#menu li:hover .dropdown_3columns,
+	#menu li:hover .dropdown_4columns,
+	#menu li:hover .dropdown_5columns {
+		left:-1px;
+		top:auto;
+	}*/
+	.col_1,
+	.col_2,
+	.col_3,
+	.col_4,
+	.col_5 {
+		display:inline;
+		float: left;
+		position: relative;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	.col_1 {width:100px;}
+	.col_2 {width:270px;}
+	.col_3 {width:410px;}
+	.col_4 {width:550px;}
+	.col_5 {width:690px;}
+	#menu .menu_right {
+		float:right;
+		margin-right:0px;
+	}
+	#menu li .align_right {
+		/* Rounded Corners */
+		-moz-border-radius: 5px 0px 5px 5px;
+	    -webkit-border-radius: 5px 0px 5px 5px;
+	    border-radius: 5px 0px 5px 5px;
+	}
+	#menu li:hover .align_right {
+		left:auto;
+		right:-1px;
+		top:auto;
+	}
+	#menu p, #menu h2, #menu h3, #menu ul li {
+		text-align:left;
+		/*text-shadow: 1px 1px 1px #FFFFFF;*/
+	}
+	#menu h2 {
+		font-size:21px;
+		font-weight:400;
+		letter-spacing:-1px;
+		margin:7px 0 14px 0;
+		padding-bottom:14px;
+		border-bottom:1px solid #666666;
+	}
+	#menu h3 {
+		font-family: Arial, Helvetica, sans-serif;
+		/*line-height: 21px;*/
+		font-size: 14px;
+	}
+	#menu p {
+		line-height:18px;
+		margin:0 0 10px 0;
+	}
+	#menu div.separator_line {
+		height: 1px;
+		width: 100%;
+		border-bottom: 1px solid silver;
+	}
+	#menu div.separator_line_container {
+		width: 100%;
+		padding: 0px 5% 6px 4%;
+		margin: 2px 0px 3px 0px;		
+		/*text-align: center;*/
+	}
+	#menu li:hover div a {
+		font-size:12px;
+		color:#015b86;
+	}
+	#menu li:hover div a:hover {
+		color:#029feb;
+	}
+	.strong {
+		font-weight:bold;
+	}
+	.italic {
+		font-style:italic;
+	}
+
+	.imgshadow {
+		background:#FFFFFF;
+		padding:4px;
+		border:1px solid #777777;
+		margin-top:5px;
+		-moz-box-shadow:0px 0px 5px #666666;
+		-webkit-box-shadow:0px 0px 5px #666666;
+		box-shadow:0px 0px 5px #666666;
+	}
+	.img_left {
+		width:auto;
+		float:left;
+		margin:5px 15px 5px 5px;
+	}
+	#menu li .black_box {
+		background-color:#333333;
+		color: #eeeeee;
+		text-shadow: 1px 1px 1px #000;
+		padding:4px 6px 4px 6px;
+		-moz-border-radius: 5px;
+	    -webkit-border-radius: 5px;
+	    border-radius: 5px;
+		-webkit-box-shadow:inset 0 0 3px #000000;
+		-moz-box-shadow:inset 0 0 3px #000000;
+		box-shadow:inset 0 0 3px #000000;
+	}
+	#menu li ul {
+		list-style:none;
+		padding:0;
+		margin:0 0 12px 0;
+	}
+	#menu li ul li {
+		font-size:12px;
+		line-height:24px;
+		position:relative;
+		text-shadow: 1px 1px 1px #ffffff;
+		padding:0;
+		margin:0;
+		float:none;
+		text-align:left;
+		width:130px;
+	}
+	#menu li ul li:hover {
+		background:none;
+		border:none;
+		padding:0;
+		margin:0;
+	}
+	#menu li .greybox li {
+		background:#F4F4F4;
+		border:1px solid #bbbbbb;
+		margin:0px 0px 4px 0px;
+		padding:4px 6px 4px 6px;
+		width:116px;
+	
+		-moz-border-radius: 5px;
+	    -webkit-border-radius: 5px;
+	    -khtml-border-radius: 5px;
+	    border-radius: 5px;
+	}
+	#menu li .greybox li:hover {
+		background:#ffffff;
+		border:1px solid #aaaaaa;
+		padding:4px 6px 4px 6px;
+		margin:0px 0px 4px 0px;
+	}
+	.nav-ks {
+		width: 100%;
+		/*height: 1px;*/
+		/*background-color: rgba( 65, 183, 55, 0.92);*/
+		/*background-color: #41B737;*/		
+		position: relative;
+		/*top: 0px;*/
+		/*line-height:21px;*/
+		text-align:left;		
+		/*z-index: 999;*/
+	}
+
+	/*#menu li .drop {
+		width: 0; 
+		height: 0; 
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 5px solid #fff;
+	}
+	#menu li:hover .drop {
+		width: 0; 
+		height: 0; 
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 5px solid transparent;
+	}*/
+		
+		
+	#menu li#with_sub_1 {
+		font-family: msyh; 
+		font-size: 14px;		
+		color: #EEEEEE;		
+		display:block;
+		text-align:center;
+		position:relative;
+		padding: 6px 10px 8px 10px;
+		margin-right:4px;
+		margin-top:13px;
+		border:none;
+		float: right;
+		/*text-shadow: 1px 1px 1px #000;*/
+	}
+	#menu li#with_sub_1:hover {
+		color: #41B737;		
+	    border: 1px solid #41B737;
+		padding: 6px 9px 6px 9px;
+		background: none repeat scroll 0 0 #F8F8F8;
+		-moz-border-radius: 5px 5px 5px 5px;
+		-webkit-border-radius: 5px 5px 5px 5px;
+		border-radius: 5px 5px 5px 5px;
+		cursor: pointer;
+	}
+	/*#menu li#with_sub a {
+		font-family: msyh; 
+		font-size: 14px;		
+		color: #EEEEEE;
+		display:block;
+		outline:0;
+		text-decoration:none;
+		text-shadow: 1px 1px 1px #000;
+	}*/
+	#menu li div.drop-container {
+		display: inline-block;
+	}
+
+	#menu li div.display-none {
+		display: none;
+	}
+	#menu li .dropdown-caret-down {
+		width: 0; 
+		height: 0; 
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 5px solid silver;
+	}
+	#menu li .dropdown-caret-up {
+		width: 0; 
+		height: 0; 
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-bottom: 5px solid silver;
+	}
+	
+	/*
+	#D98D2D	knowstory logo orange
+	#96C785 knowstory logo green dark 
+	#A9D996 knowstory logo green light
+	#214025 footer green
+	background-color: rgba( 65, 183, 55, 0.92); nav green
+	background-color: #41B737;	nav green		
+	*/ 
+
+	
+</style>
+
+
+<!-- <div style="height: 60px;" id="top-black-bar-marker"></div> -->	    
+	<div id="nav_ks_marker" class="nav-bar-ks"></div>
+
+	<div id="nav_ks" class="nav-ks">
+		<ul id="menu">
+		    <li class="icon">
+		    	<a href="/">
+		    		<img src="/assets/knowstory-icon-2-w150-h50.png" alt="knowstory-icon-2-w150-h50.png" height="50px">
+		    	</a>
+		    </li>
+
+		    <!-- <li class="with_sub" style="margin-left: 20px;"><a href="#" class="drop">Advertise</a>
+		        <div class="dropdown_2columns">
+		            <div class="col_2">
+		            	<a href="/Journal-Poster-About">
+		                	<h2>Journal Poster</h2>
+		                </a>
+		            </div>
+		            <div class="col_2">
+		            	<a href="/Journal-Posters-1">
+		                	<h2>See who's on our posters</h2>
+		                </a>
+		            </div>
+		            <div class="col_1">
+						<p class="strong">Get your Journal Poster Pin-up</p>
+		            </div>
+		            <div class="col_1">
+		                <a href="/Journal-Poster-Start">
+		                	<img src="/assets/logo-pin-w161-h77.png" width="125" alt="logo-pin-w161-h77.png" />
+		                </a>
+		            </div>
+		        </div>
+		    </li> -->
+		
+		    
+          <% if signed_in? %>
+
+		    <li class="with_sub_right" style="margin-left: 20px;" id="with_sub_1">
+		    	<div class="menu-title" id="dropdown_1">
+		    		<%= current_user.username %>
+		    		<div class="drop-container">
+		    			<div class="drop" id="dropdown_1_caret"></div>
+		    		</div>
+		    	</div>
+		    	
+		        <div class="dropdown_1column align_right display-none" id="dropdown_1_menu">
+		            <div class="col_1">
+						<a href="/id1">
+							<h3>My page</h3>
+						</a>
+		            </div>
+		            <div class="col_1">
+		            	<div class="separator_line_container"><div class="separator_line"></div></div>
+		            </div>
+		            <div class="col_1">
+						<a href="/Signout">
+							<h3>Sign out</h3>
+						</a>
+		            </div>
+		        </div>
+		    </li>
+
+        	<!-- <li class="menu_right text"><a href="/Signout">Sign Out</a></li> -->
+			<!-- <#% if !( current_page?(controller: 'institutes', action: 'index') or %#>
+			      <#% current_page?(controller: 'publishers', action: 'index') ) %#>
+        	<li class="menu_right text"><a href="<%= session[:profile] %>">My Profile</a></li>
+        	<#% end %#> -->
+          
+            <!-- <li class="menu_right text"></li> -->
+            
+		    <li class="without_sub without_sub_right" style="margin-left: 20px;">
+            	<%= link_to "Members", "/Members", class: "menu-title" %>
+			</li>            
+            
+            <!-- <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><#%= link_to "Profile", current_user %#></li>
+                <li><#%= link_to "Settings", edit_user_path(current_user) %#></li>
+                <li class="divider"></li>
+                <li>
+                  <#%= link_to "Sign out", signout_path, method: "delete" %#>
+                </li>
+              </ul>
+            </li> -->
+          <% else %>
+        	<!-- <li class="menu_right text"><a href="/Signup">Sign Up</a></li>
+        	<li class="menu_right text"><a href="/Signin">Sign In</a></li> -->
+          <% end %>
+		    
+		    
+		</ul>
+	</div>
+	<div style="clear: both;">
+
+	<script>
+		
+		
+		function open_dropdown_1() {
+			$("#dropdown_1_menu").removeClass("display-none");
+			$("#dropdown_1_caret").removeClass("dropdown-caret-down").addClass("dropdown-caret-up");
+		}
+		function close_dropdown_1() {
+			$("#dropdown_1_menu").addClass("display-none");
+			$("#dropdown_1_caret").removeClass("dropdown-caret-up").addClass("dropdown-caret-down");
+		}
+		
+		function init() {
+			// $("#dropdown_1_menu").css({ 'display':'none' });
+			$("#dropdown_1_menu").addClass("display-none");
+			$("#dropdown_1_caret").addClass("dropdown-caret-down");
+		}
+		
+		$(document).ready(function() {
+		//$(window).load(function() {
+			
+			init();
+			
+			$("#dropdown_1").on('click', function() {
+				if( $("#dropdown_1_caret").hasClass("dropdown-caret-down") ) {
+					open_dropdown_1();
+				}
+				else {
+					close_dropdown_1();
+				}				
+			});
+
+			var dropdown_1_mouseover = false;
+			var dropdown_1_menu_mouseover = false;
+			$("#dropdown_1").mouseover ( function () {
+				dropdown_1_mouseover = true;
+			}).mouseleave ( function() {
+				dropdown_1_mouseover = false;
+				if(!dropdown_1_mouseover && !dropdown_1_menu_mouseover && $("#dropdown_1_menu").hasClass("display-none") ) {
+					close_dropdown_1();
+				}				
+			});			
+			$("#dropdown_1_menu").mouseover ( function () {
+				dropdown_1_menu_mouseover = true;
+			}).mouseleave ( function() {
+				dropdown_1_menu_mouseover = false;
+				if(!dropdown_1_mouseover && !dropdown_1_menu_mouseover ) {
+					close_dropdown_1();
+				}
+			});
+			
+			// $("#dropdown_1_menu").on('blur', function() {
+				// alert('blur');
+			// });
+			
+			// $(document).on('click', function(elem) {
+				// alert(elem.target);
+				// elem = mtab1let.target.className;
+				// if ((elem === 'hover-col') || (elem === 'delete-btn') || (elem === 'member-table')) {
+					// //
+				// }
+				// else {
+					// $("table.tbltablets tr").removeClass('row-select');					
+				// }
+			// });
+			
+			
+			
+		});	
+// 		
+		// $(window).scroll(function(e){ 
+		  // $el = $('#nav_ks'); 
+		  // $topmark = $('#nav_ks_marker');
+// 
+// 
+		  // if ($(this).scrollTop() > $topmark.position().top){ 
+		     // $el.css({'top': '4px'}); 
+		  // } else {
+		  	// $el.css({'top': '0'});
+		  // }
+		// });
+		
+	</script>

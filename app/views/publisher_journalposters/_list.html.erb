@@ -1,4 +1,97 @@
 
+
+
+			<% if @publisher_journalposters.any? %>
+		
+			<!-- <#%= hidden_field_tag :direction, params[:direction] %#>
+			<#%= hidden_field_tag :sort, params[:sort] %#>	
+			<#%= hidden_field_tag :pos, params[:pos] %#> -->	
+
+				<div class="publisher-journalposter-utility-bar light">
+					<div style="padding-left: 10px; padding-top: 10px;">
+						<span>Record Count: <%= @publisher_journalposters.count %></span>
+					</div>
+				</div>
+				<!-- <div class="publisher-journalposter-list-top-border"></div> -->
+
+				<% @publisher_journalposters.each do |publisher_journalposter| %>
+
+					<%= link_to publisher_journalposter_descriptions_path(:publisher_id => @publisher_id, :publisher_journalposter_id => publisher_journalposter.id), class: "" do %>
+						<!-- <#%= link_to ("/id" + publisher.id.to_s).html_safe, class: "" do %#> -->
+						<div class="publisher-journalposters-list-1">
+							<!-- <a href="<#%= ("/publisher-id" + publisher.id.to_s).html_safe %#>" style="height: 65px;"> -->
+							<div class="publisher-journalposters-list-2">
+								<ul class="image-grid image-grid-caption image-grid-caption-height-30">
+									<li>
+										<figure class="figure-box-100">
+											<%= publisher_journalposter_image_for publisher_journalposter %>
+											<figcaption class="figcaption-1">
+												<span class="publisher-journalposter-list-span"><%= link_to "Edit", publisher_journalposter_descriptions_path(:publisher_id => @publisher_id, :publisher_journalposter_id => publisher_journalposter.id), class: "" %></span>
+												<!-- <span class="publisher-journalposter-list-span"><#%= link_to('Edit', {:controller => 'publisher_journalposter_descriptions', :action => 'index', :id => publisher_journalposter.id}) %#></span> -->
+												<!-- <span class="publisher-journalposter-list-span"><#%= link_to "Edit", publisher_journalposter_descriptions_path(:publisher_id => @publisher_id, :publisher_journalposter_id => publisher_journalposter.id), class: "" %#></span> -->
+												<!-- <span><#%= link_to "Edit", { :action => :crop, :id => publisher_journalposter.id } %#></span> -->
+											</figcaption>
+										</figure>
+									</li>
+								<ul>
+							</div>
+							<div class="publisher-journalposters-list-3">
+								
+								<div class="publisher-journalposters-list-4">
+									<span class="publisher-journalposters-span-1">Poster ID: </span>
+								</div>
+								<div class="publisher-journalposters-list-5">
+									<span class="publisher-journalposters-span-1">
+										<%= publisher_journalposter.id %>
+									</span>
+								</div>
+
+								<!-- <div class="publisher-journalposters-list-4">
+									<span class="publisher-journalposters-span-1">Product Name: </span>
+								</div>
+								<div class="publisher-journalposters-list-5">
+									<span class="publisher-journalposters-span-1">
+										<#%= publisher_journalposter_name_journalposter_for publisher_journalposter %#>
+									</span>
+								</div> -->
+								<div class="publisher-journalposters-list-4">
+									<div style="height: 60px;"></div>
+								</div>
+								<div class="publisher-journalposters-list-5">
+								</div>
+								<div class="publisher-journalposters-list-4">
+								</div>
+								<div class="publisher-journalposters-list-5" style="text-align: right;">
+									<span class="publisher-journalposters-span-1"><%= link_to "View/Edit", publisher_journalposter_descriptions_path(:publisher_id => @publisher_id, :publisher_journalposter_id => publisher_journalposter.id), class: "" %></span>
+									<!-- <span class="publisher-journalposters-span-1"><#%= link_to('View/Edit', {:controller => 'publisher_journalposter_descriptions', :action => 'index', :id => publisher_journalposter.id}) %#></span> -->
+
+							    	<!-- <span>
+									   	<#% delete_msg = "Delete this Journal Poster Pin?" %#>
+										<#%= button_to "Delete", {:action => 'destroy', :id => publisher_journalposter.id}, :method => :delete, data: { confirm: delete_msg }, :class => 'jp-btn' %#>
+									</span> -->
+								</div>
+								
+							</div>
+						</div>
+						
+					<% end %>
+					
+				<% end %>
+					
+				<%= will_paginate @publisher_journalposters %>
+		
+			<% else %>
+				<div class="" style="color: red; padding-left: 20px;">
+					<h3>No record for Publisher Posters</h3>
+				</div>
+			<% end %>
+
+
+
+	
+
+
+<% if false %>
 	<div style="display: inline-block;">
 			
 	<% if @publisher_journalposters.any? %>
@@ -22,10 +115,10 @@
 											<div>
 											   <% for publisher_journalposter_logo in publisher_journalposter.publisher_journalposter_logos %> 
 											   		<div>
-														<ul class="grid cs-style-3">
+														<ul class="grid cs-style-4">
 															<li>
 																<figure>
-																	<img alt="logo not appearing" src="<%= publisher_journalposter_logo.image_url(:logo) if publisher_journalposter_logo.image? %>" />
+																	<img alt="logo not appearing" src="<%= publisher_journalposter_logo.image_url(:image_200_200) if publisher_journalposter_logo.image? %>" />
 																	<figcaption>
 																		<span><%= link_to('Edit', {:controller => 'publisher_journalposter_descriptions', :action => 'index', :id => publisher_journalposter.id}) %></span>
 																	</figcaption>
@@ -189,3 +282,4 @@
 			
 	</div>
 	
+<% end %>	

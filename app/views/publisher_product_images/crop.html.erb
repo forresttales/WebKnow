@@ -1,0 +1,132 @@
+
+ <%= provide(:title, 'Crop and Center') %>
+
+	<script src="../jcrop/js/jquery.Jcrop.js"></script>
+	<script type="text/javascript">
+	  jQuery(function($){
+	
+	    // How easy is this??
+	    $('#target').Jcrop();
+	
+	  });
+	</script>
+	<link rel="stylesheet" href="../jcrop/css/jquery.Jcrop.css" type="text/css" />
+
+ 
+	<header>
+		<%= render 'share/backtotop' %>
+	</header>
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				<div class="col-left">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>
+						<div class="row-profile">
+							<div class="col-left">
+								<%= render 'share/dir_publishers_left'%>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-midd">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-midd-600">
+			
+								<div style="text-align: left;">
+									<span class="normal pad-left-20">Publisher Product Logo Images</span>
+								</div>
+
+								<div style="height: 20px;"></div>
+								
+					   			<div class="pad-left-20">
+					   				<span><%= link_to "&laquo; Return to Product Description".html_safe, publisher_product_descriptions_path( :publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id ), class: 'links' %></span>
+					   			</div>
+								
+								<div style="height: 20px;"></div>
+							   	
+							   				
+								<div id="profile_image" class="pad-left-20">
+								
+									<!-- <#% if @publisher_profile_images.any? %#>   				
+										<#% for publisher_profile_image in @publisher_profile_images %#> -->
+								
+											<%= image_tag @publisher_product_image.image_url(:image_500_500), id: "cropbox" %>
+								
+											<h4>Preview</h4>
+											<div style="width:100px; height:100px; overflow:hidden">
+											  <%= image_tag @publisher_product_image.image_url(:image_500_500), :id => "preview" %>
+											</div>
+
+											<!-- form_for :publisher, @publisher, :url => { :action => :prompt_publisher } do |f| -->
+											<!-- <#%= form_for @profile_image, :url => { :action => :crop_commit } do |f| %#> -->
+											<!-- <#%= form_for @profile_image, :url => { :controller => 'publisher_profile_images', :action => 'crop_commit' } do |f| %#> -->
+											<%= form_tag( crop_commit_publisher_product_images_path ) do %>
+											<!-- <#%= form_for @publisher_profile_image, :url => '/Crop-Center-Commit' do |f| %#> -->
+											<!-- <#%= form_for @publisher_profile_image do |f| %#> -->
+											  	<!-- <#% %w[x y w h].each do |attribute| %#> -->
+											  	<!-- text_field_tag(name, value = nil, options = {}) -->
+											  	<!-- <#%= text_field_tag( "crop_#{attribute}", nil, options = {}) %#> -->  
+											  	<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x" %>
+											  	<%= text_field_tag :crop_y, params["crop_y"], id: "id_crop_y" %>
+											  	<%= text_field_tag :crop_w, params["crop_w"], id: "id_crop_w" %>
+											  	<%= text_field_tag :crop_h, params["crop_h"], id: "id_crop_h" %>
+												<%= hidden_field_tag "image_id", @publisher_product_image.id %>
+											    <!-- <#%= f.text_field "crop_#{attribute}" %#> -->
+											  	<!-- <#% end %#> -->
+											  <!-- <div class="actions"> -->
+											    <%= submit_tag "Save" %>
+											  <!-- </div> -->
+											<% end %>
+
+
+										<!-- <#% end %#>
+									<#% end %#> -->
+	
+	
+								
+								
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="col-right">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-right">
+								<%= render 'share/dir_publishers_right' %>
+							</div>
+						</div>
+					</div>										
+				</div>								
+			</div>
+		</div>
+	</div>
+					
+
+	<!-- <script>
+	  
+		$(window).load( function() {
+		//$(document).ready(function () {
+			
+			var h = $("#id_image").height();
+			$(".profile-grid figure").css({
+				height : h
+			})
+						
+		});
+	  
+	</script> -->		
+
+

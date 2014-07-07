@@ -2,29 +2,38 @@
 #
 # Table name: users
 #
-#  id                :integer          not null, primary key
-#  name_first        :string(50)
-#  name_last         :string(50)
-#  email             :string(50)       default("")
-#  username          :string(50)
-#  password_digest   :string(255)
-#  remember_token    :string(255)
-#  has_account       :boolean          default(FALSE)
-#  name_first        :string(50)
-#  name_last         :string(50)
-#  bd_day            :integer          default(0)
-#  bd_month          :integer          default(0)
-#  bd_year           :integer          default(0)
-#  gender            :integer          default(0)
-#  account_type      :integer          default(0)
-#  account_type_text :string(255)
-#  admin             :boolean          default(FALSE)
-#  created_at        :datetime
-#  updated_at        :datetime
+#  id                     :integer          not null, primary key
+#  created_at             :datetime
+#  updated_at             :datetime
+#  email                  :string(50)       default("")
+#  username               :string(50)
+#  password_digest        :string(255)
+#  remember_token         :string(255)
+#  has_account            :boolean          default(FALSE)
+#  name_first             :string(50)
+#  name_last              :string(50)
+#  bd_day                 :integer          default(0)
+#  bd_month               :integer          default(0)
+#  bd_year                :integer          default(0)
+#  gender                 :integer          default(0)
+#  account_type           :integer          default(0)
+#  account_type_text      :string(255)
+#  bd_month_text          :string(255)
+#  gender_text            :string(255)
+#  auth_token             :string(255)
+#  password_reset_token   :string(255)
+#  password_reset_sent_at :datetime
+#  avatar                 :string(255)
+#
 
 class User < ActiveRecord::Base
   
-  attr_accessible :name_first,
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  
+  # attr_accessor   :id
+  
+  attr_accessible :id,
+                  :name_first,
                   :name_last,
                   :email, 
                   :username, 
@@ -33,9 +42,11 @@ class User < ActiveRecord::Base
                   :password, 
                   :password_confirmation, 
                   :bd_month,
+                  :bd_month_text,
                   :bd_day,
                   :bd_year,
                   :gender,
+                  :gender_text,
                   :account_type,
                   :account_type_text
   
@@ -46,7 +57,7 @@ class User < ActiveRecord::Base
   has_one :recruiter, dependent: :destroy
   has_one :student, dependent: :destroy
   has_one :teacher, dependent: :destroy
-  
+  has_many :user_profile_images  
   
   # has_many :microposts, dependent: :destroy
   # has_many :relationships, foreign_key: "follower_id", dependent: :destroy
@@ -58,23 +69,40 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
   before_create :create_remember_token
-  validates :username, presence: true, length: { maximum: 50 }
+  # validates :username, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: 4 }
+  # validates :password, length: { minimum: 4 }
     
+  # has_secure_password
+  # validates_presence_of :password, :on => :create
+  # before_create { generate_token(:auth_token) }
+
     
-    def User.new_remember_token
-      SecureRandom.urlsafe_base64
-    end
+  def User.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def User.encrypt(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
+    
+
   
-    def User.encrypt(token)
-      Digest::SHA1.hexdigest(token.to_s)
-    end
-    
-    
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
+  end
     
     
     # def feed

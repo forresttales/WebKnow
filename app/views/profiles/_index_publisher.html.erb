@@ -156,6 +156,49 @@
 								<div id="profile_image">
 								
 								
+								<% if @user_profile_images.any? %>   				
+								
+									<% for user_profile_image in @user_profile_images %>
+					   				<div class="cell-180">
+										<ul class="profile-grid profile-cs-style-3">
+											<li>
+												<figure>
+													<img id="id_image" alt="photo not appearing" src="<%= user_profile_image.image_url(:profile_600_600) if user_profile_image.image? %>"  width="250px" />
+													<figcaption>
+														<span><%= link_to "Options", "#" %></span>
+														<br>
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+						   			</div>
+						   			<div class="cell-400">
+						   			</div>
+									<% end %>
+
+								<% else %>
+
+					   				<div class="cell-180">
+										<!-- <ul class="grid cs-style-3"> -->
+										<ul class="profile-grid profile-cs-style-3">
+											<li>
+												<figure>
+													<img alt="logo not appearing" src="../images_avatar/avatar_generic_1_w250_h310.png" />
+													<figcaption>
+														<span><%= link_to "Options", "#" %></span>											
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+						   			</div>
+						   			<div class="cell-400">
+						   				<!-- <span><#%= link_to "Add a photo", new_user_profile_image_path(:user_id => current_user.id) %#></span> -->
+						   			</div>
+								
+								<% end %>
+								
+								
+<% if false %>								
 								<% if @publisher_profile_images.any? %>   				
 								
 									<% for publisher_profile_image in @publisher_profile_images %>
@@ -200,7 +243,7 @@
 						   			</div>
 								
 								<% end %>
-								
+<% end %>								
 								</div>
 					   		</div>
 					   	</div> 

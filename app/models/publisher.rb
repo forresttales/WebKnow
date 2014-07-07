@@ -8,7 +8,6 @@
 #  city                       :string(100)
 #  state                      :string(50)
 #  country                    :string(100)
-#  zip                        :integer
 #  phone                      :string(100)
 #  url                        :string(100)
 #  description                :text
@@ -19,12 +18,17 @@
 #  created_at                 :datetime
 #  updated_at                 :datetime
 #  user_id                    :integer
+#  zip                        :string(255)
 #
 
 class Publisher < ActiveRecord::Base
   
-    attr_accessor :id, :created_at, :updated_at
-    attr_accessible :user_id, 
+    attr_accessor :created_at, :updated_at
+
+    # attr_accessor :id, :user_id, :created_at, :updated_at
+
+    attr_accessible :id,
+                    :user_id, 
                     :name, 
                     :address, 
                     :city, 
@@ -40,14 +44,24 @@ class Publisher < ActiveRecord::Base
                     :company_contact_email 
   
     belongs_to :user  
+
+    has_one :publisher_profile
+    has_one :publisher_setting
+    has_one :publisher_admin_setting
     
     has_many :publisher_profile_images
-    has_many :publisher_profiles
-    has_many :publisher_settings
     has_many :publisher_products
     has_many :journalposterpurchases
     
       
+    
+  def self.dbdelete
+      self.connection.execute("DELETE FROM publishers")
+  end
+  
+  def self.dbclear
+      self.connection.execute("ALTER SEQUENCE publishers_id_seq RESTART WITH 1")
+  end
     
     
 end

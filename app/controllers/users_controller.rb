@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  require 'RMagick'
+
   layout 'user'
 
   before_action :already_signed_in, only: [:new]
@@ -17,7 +19,17 @@ class UsersController < ApplicationController
 
 
 
+
+  def test_rmagick
+    image = Magick::Image.new(110, 30){ self.background_color = 'white' }
+    image.write('/tmp/test.jpg')
+  end
+
+
   def index
+    
+    @users = User.paginate(page: params[:page])
+    
   end
 
 
@@ -39,7 +51,6 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     
     account_type = params[:user][:account_type]
-    
     case account_type
     when "0"
       user.account_type_text = "student"
@@ -55,6 +66,45 @@ class UsersController < ApplicationController
       # 
     end
     
+    bd_month = params[:user][:bd_month]
+    case bd_month
+    when "1"
+      user.bd_month_text = "January"
+    when "2"
+      user.bd_month_text = "February"
+    when "3"
+      user.bd_month_text = "March"
+    when "4"
+      user.bd_month_text = "April"
+    when "5"
+      user.bd_month_text = "May"
+    when "6"
+      user.bd_month_text = "June"
+    when "7"
+      user.bd_month_text = "July"
+    when "8"
+      user.bd_month_text = "August"
+    when "9"
+      user.bd_month_text = "September"
+    when "10"
+      user.bd_month_text = "October"
+    when "11"
+      user.bd_month_text = "November"
+    when "12"
+      user.bd_month_text = "December"
+    else
+      # 
+    end
+
+    gender = params[:user][:gender]
+    case gender
+    when "0"
+      user.gender_text = "Male"
+    when "1"
+      user.gender_text = "Female"
+    else
+      # 
+    end
     
     if user.save
         sign_in user
@@ -64,24 +114,24 @@ class UsersController < ApplicationController
         # mail = UserMailer.welcome_email(@user)
         # mail.deliver
  
-        case account_type
-        when "0"
-          # redirect_to(:controller => 'students', :action => 'new')
-        when "1"
-          # redirect_to(:controller => 'teachers', :action => 'new')
-        when "2"
-          # redirect_to '/Publishers'
-        when "3"
-          # redirect_to(:controller => 'institutes', :action => 'new')
-        when "4"
-          # redirect_to(:controller => 'recruiters', :action => 'new')
-        else
-          # alert error redirect
-        end
+        # case account_type
+        # when "0"
+          # # redirect_to(:controller => 'students', :action => 'new')
+        # when "1"
+          # # redirect_to(:controller => 'teachers', :action => 'new')
+        # when "2"
+          # # redirect_to '/Publishers'
+        # when "3"
+          # # redirect_to(:controller => 'institutes', :action => 'new')
+        # when "4"
+          # # redirect_to(:controller => 'recruiters', :action => 'new')
+        # else
+          # # alert error redirect
+        # end
       
     else
       # flash.now[:notice] = "Password Creation Failed"
-      # render 'new'
+      render 'new'
     end
 
     h_new = Hash.new
@@ -94,7 +144,7 @@ class UsersController < ApplicationController
         when "1"
           # redirect_to(:controller => 'teachers', :action => 'new')
         when "2"
-          redirect_to '/Publishers'
+          redirect_to '/Publisher'
         when "3"
           # redirect_to(:controller => 'institutes', :action => 'new')
         when "4"
@@ -156,6 +206,7 @@ class UsersController < ApplicationController
                                     :bd_day,
                                     :bd_year,
                                     :gender,
+                                    :gender_text,
                                     :account_type,
                                     :account_type_text,
                                   )

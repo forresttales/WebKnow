@@ -1,7 +1,9 @@
 # encoding: utf-8
 class PublisherJournalposterUploader < CarrierWave::Uploader::Base
 
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
+  
 
   storage :file
   # storage :fog

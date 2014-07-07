@@ -1,0 +1,195 @@
+
+
+					<div style="height: 30px;"></div>
+
+					<div class="pad-left-20">
+						<span class="jp-title">title</span>
+					</div>
+					<div style="height: 10px;"></div>
+					<div class="pad-left-20">
+						<span class="jp-title-sub">title-sub</span>
+					</div>
+					
+					<div style="height: 30px;"></div>
+			
+    				<!-- 
+    				:id, 
+                    :user_id,    
+                    :name, 
+                    :address, 
+                    :city, 
+                    :state, 
+                    :country, 
+                    :zip,
+                    :phone, 
+                    :url, 
+                    :description, 
+                    :company_contact_name_first, 
+                    :company_contact_name_last,
+                    :company_contact_phone, 
+                    :company_contact_email, 
+                    :created_at, 
+                    :updated_at 
+                    -->
+			
+  				  	<!-- 
+  				  	:id, 
+                  	:name_first,
+                  	:name_last,
+                  	:email, 
+                  	:username, 
+                  	:account_type, 
+                  	:has_account, 
+                  	:password, 
+                  	:password_confirmation, 
+                  	:bd_month,
+                  	:bd_day,
+                  	:bd_year,
+                  	:gender,
+                  	:created_at, 
+                  	:updated_at 
+                  	-->
+			
+					<div class="line-space-20"></div>
+
+					<% if !@user.nil? %>
+
+						<div class="pad-left-20">
+							<div class="box-profile-general">
+								<div style="display: inline-block;">
+									<span class="box-profile-text">User ID:</span>	
+								</div>
+								<div style="display: inline-block;">
+									<span class="box-profile-text"><%= @user.id %></span>							
+								</div>
+							</div>
+							<div class="box-profile-space"></div>
+							<div class="box-profile-general" style="width: 520px;">
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<span class="box-profile-text">First Name:</span>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<span class="box-profile-text"><%= @user.name_first %></span>
+										</div>
+										<div class="form-home-profile-cell-3">
+											<div id="render0"></div>
+										</div>								
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile-dark" for="user_find_learning_things">New</label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<input class="input-home-profile-short" id="user_name_first" name="user[name_first]" tabindex="" type="text" />
+										</div>
+										<div class="form-home-profile-cell-3">
+											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
+											<div id="submit_name_first" class="submit-btn-home-profile">Change</div>
+										</div>								
+									</div>							
+								</div>								
+							</div>
+							<div class="box-profile-space"></div>
+							<div class="box-profile-general">
+								<span class="box-profile-text">Last Name:</span>
+								<span class="box-profile-text"><%= @user.name_last %></span>							
+							</div>
+							<div class="box-profile-space"></div>
+							<div class="box-profile-general">
+								<span class="box-profile-text">Email:</span>
+								<span class="box-profile-text"><%= @user.email %></span>							
+							</div>
+							<div class="box-profile-space"></div>
+							<div class="box-profile-general">
+								<span class="box-profile-text">Username:</span>
+								<span class="box-profile-text"><%= @user.username %></span>							
+							</div>
+							<div class="box-profile-space"></div>
+							<div class="box-profile-general">
+								<span class="box-profile-text">Birthday Month:</span>
+								<span class="box-profile-text"><%= @user.bd_month %></span>							
+							</div>
+							<div class="box-profile-space"></div>
+							<div class="box-profile-general">
+								<span class="box-profile-text">Birthday Day:</span>
+								<span class="box-profile-text"><%= @user.bd_day %></span>							
+							</div>
+							<div class="box-profile-space"></div>
+							<div class="box-profile-general">
+								<span class="box-profile-text">Birthday Year:</span>
+								<span class="box-profile-text"><%= @user.bd_year %></span>							
+							</div>
+						</div>
+
+					<% end %>
+
+
+					<%= form_for( @user, :html => {:id => "form_profile_edit"}) do |f| %>
+							<%= csrf_meta_tag %>
+							<%= hidden_field_tag(:id, @user.id) %>
+        					<%= f.submit 'Submit', :id => 'submit_id', :tabindex => '6' %>
+	        		<% end %>
+
+	<script>
+
+		$(window).load( function() {
+		//$(document).ready(function(){
+	
+			$("#submit_name_first").on('click', function() {
+				$('#submit_id').click();
+			});
+    		$("#submit_name_first").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_name_first").click();
+    		});				
+			$("#form_profile_edit").on('submit', function(e) {
+			// $("#submit_name_first").on('click', function() {
+				  e.preventDefault();
+
+			  	// var obj_list = ""; 
+				// for( i = 0; i < len; i++ ) {
+					// if( i == (len - 1)) {
+						// obj_list += '{"pos_x":' + a_coord_list[i][0] + ',"pos_y":' + a_coord_list[i][1] + ',"section":"' + a_coord_list[i][2] + '","section_pos":' + a_coord_list[i][4] + ',"section_text":"' + a_coord_list[i][5] + '"}';      
+					// }
+					// else {
+						// obj_list += '{"pos_x":' + a_coord_list[i][0] + ',"pos_y":' + a_coord_list[i][1] + ',"section":"' + a_coord_list[i][2] + '","section_pos":' + a_coord_list[i][4] + ',"section_text":"' + a_coord_list[i][5] + '"},';      
+					// }
+				// }
+			  	// var obj = '{ "journal1poster_position": [' +  obj_list + '] }'                  
+
+				var obj = '{}'
+
+			  	$.ajax({
+			    	type: 'POST',
+			    	// data : JSON.stringify(obj),
+			    	data : obj,
+			    	// url: '/publisher_profiles/update_name_first',			    	
+			    	url: '/publisher_profiles/update',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	                	// 200:function() { alert("200"); },
+	                	// 202:function() { alert("202"); }
+	            	},
+	            	success: function(data) {
+						// $("#render0").html("<#%= escape_javascript(render("publisher_profiles/test")) %#>");	            		
+						// $("#render0").html("<#%= @user.name_first %#>");	            		
+	            		if (data.url) {
+							window.location.href = data.url;
+						}
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+			  
+			  	return false;
+				
+			});
+	
+	
+		});
+	  
+	</script>		
