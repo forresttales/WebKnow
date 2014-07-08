@@ -24,7 +24,6 @@ class PublisherProductDescriptionsController < ApplicationController
     @publisher_product_image = PublisherProductImage.where(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id).first
     @publisher_product_logo = PublisherProductLogo.where(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id).first
     
-    
     @b_name_product = true                # 1
     @b_description = true                 # 2
     @b_type_content_index = true          # 3
@@ -41,22 +40,6 @@ class PublisherProductDescriptionsController < ApplicationController
     @b_lesson_plan_subject = true         # 14
     @b_word_description = true            # 15
     
-    # @b_name_product = true                # 1
-    # @b_description = true                 # 2
-    # @b_type_content_index = true          # 3
-    # @b_core_supplemental_index = true     # 4
-    # @b_source_url = true                  # 5
-    # @b_subject_category_index = true      # 6
-    # @b_age_appropriate_index = true       # 7
-    # @b_grade_index = true                 # 8
-    # @b_platform_index = true              # 9
-    # @b_pricing_model_index = true         # 10
-    gon.b_price = true                      # 11
-    # @b_versions = true                    # 12
-    # @b_topic = true                       # 13
-    # @b_lesson_plan_subject = true         # 14
-    # @b_word_description = true            # 15
-
     # 1 name_product
     if (@publisher_product_description.name_product.blank?) or (@publisher_product_description.name_product.empty?) or (@publisher_product_description.name_product.nil?)
       @b_name_product = false
@@ -118,20 +101,12 @@ class PublisherProductDescriptionsController < ApplicationController
       @b_word_description = false
     end
 
-
-
-    # render text: @publisher_product_description.id
-
-    # @b_name_product = true
-    # if (@publisher_product_description.name_product.blank?) or (@publisher_product_description.name_product.empty?) or (@publisher_product_description.name_product.nil?)
-      # @b_name_product = false
-    # end
-    
-    # @address_states = AddressState.order("state_value ASC").all
-    # gon.publisher_state = @publisher.state
+    gon.updated = @publisher_product_description.updated_at.to_s(:long)
+    # gon.updated = "clyde"
     
     
   end
+
   
   #1 name_product  
   def update_name_product
@@ -171,7 +146,8 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :name_product => publisher_product_description_updated.name_product } }
+      format.json { render :json => { :name_product => publisher_product_description_updated.name_product,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }
@@ -217,7 +193,9 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :description => publisher_product_description_updated.description } }
+      format.json { render :json => { :description => publisher_product_description_updated.description,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+      
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }
@@ -287,7 +265,9 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :type_content_index => publisher_product_description_updated.type_content_index } }
+      format.json { render :json => { :type_content_index => publisher_product_description_updated.type_content_index,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+      
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }
@@ -341,7 +321,9 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :core_supplemental_index => publisher_product_description_updated.core_supplemental_index } }
+      format.json { render :json => { :core_supplemental_index => publisher_product_description_updated.core_supplemental_index,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+      
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }
@@ -385,7 +367,9 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :source_url => publisher_product_description_updated.source_url } }
+      format.json { render :json => { :source_url => publisher_product_description_updated.source_url,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+      
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }
@@ -458,7 +442,9 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :subject_category_index => publisher_product_description_updated.subject_category_index } }
+      format.json { render :json => { :subject_category_index => publisher_product_description_updated.subject_category_index,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+      
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }
@@ -523,7 +509,9 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :age_appropriate_index => publisher_product_description_updated.age_appropriate_index } }
+      format.json { render :json => { :age_appropriate_index => publisher_product_description_updated.age_appropriate_index,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+      
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }
@@ -588,7 +576,9 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :grade_index => publisher_product_description_updated.grade_index } }
+      format.json { render :json => { :grade_index => publisher_product_description_updated.grade_index,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+      
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }
@@ -664,7 +654,9 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :platform_index => publisher_product_description_updated.platform_index } }
+      format.json { render :json => { :platform_index => publisher_product_description_updated.platform_index,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+      
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }
@@ -723,7 +715,9 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :pricing_model_index => publisher_product_description_updated.pricing_model_index } }
+      format.json { render :json => { :pricing_model_index => publisher_product_description_updated.pricing_model_index,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+      
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }
@@ -764,7 +758,8 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :price => publisher_product_description_updated.price.to_s } }
+      format.json { render :json => { :price => publisher_product_description_updated.price.to_s,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }      
     end
     
   end  
@@ -801,7 +796,8 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :versions => publisher_product_description_updated.versions } }
+      format.json { render :json => { :versions => publisher_product_description_updated.versions,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }      
     end
     
   end  
@@ -840,7 +836,8 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :topic => publisher_product_description_updated.topic } }
+      format.json { render :json => { :topic => publisher_product_description_updated.topic,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }      
     end
     
   end  
@@ -878,7 +875,8 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :lesson_plan_subject => publisher_product_description_updated.lesson_plan_subject } }
+      format.json { render :json => { :lesson_plan_subject => publisher_product_description_updated.lesson_plan_subject,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }      
     end
     
   end  
@@ -921,7 +919,8 @@ class PublisherProductDescriptionsController < ApplicationController
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :word_description => publisher_product_description_updated.word_description } }
+      format.json { render :json => { :word_description => publisher_product_description_updated.word_description,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }      
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }

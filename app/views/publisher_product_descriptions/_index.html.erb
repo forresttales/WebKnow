@@ -1,4 +1,112 @@
 
+
+
+	<script id="dropdown-data1-selected" type="text/x-dot-template">
+		<!-- {{=it.label}}<div class="down-caret">&#9660;</div> -->
+		{{=it.label}}
+	</script>
+	<script id="dropdown-data1" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-1" id="dropdown1" tabindex="16">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div id="dropdown1_selected" class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data2-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data2" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-2" id="dropdown2" tabindex="19">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data3-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data3" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-3" id="dropdown3" tabindex="25">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data4-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data4" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-4" id="dropdown4" tabindex="28">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data5-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data5" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-5" id="dropdown5" tabindex="31">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data6-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data6" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-6" id="dropdown6" tabindex="34">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data7-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data7" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-7" id="dropdown7" tabindex="37">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
 					<div style="text-align: left;">
 						<span class="normal pad-left-20">Publisher Products</span>
 					</div>
@@ -116,31 +224,17 @@
 					</div>
 			
 					<div class="line-space-20"></div>
+					<div class="line-space-20"></div>
 
-				   	<!-- <div class="pad-left-20">
-				   		<div class="table">
-				   			<div class="row">
-					   		</div>
-					   	</div> 
-					</div>
-					<div class="line-space-20"></div> -->
-
-<% if false %>
-					<% if @has_product_metadata %>
-						<div class="pad-left-20"><a id="render" class="links" href="/PublisherMetadata/<%= @publisher_product_id %>"><%= @product_metadata %></a></div>		
-					<% else %>
+					<!-- <#% if @has_product_metadata %#>
+						<div class="pad-left-20"><a id="render" class="links" href="/PublisherMetadata/<#%= @publisher_product_id %#>"><#%= @product_metadata %#></a></div>		
+					<#% else %#>
 						<div class="pad-left-20">
 							<span class="normal">
-								<%= link_to 'Upload Product Metadata', '/PublisherMetadata/' + @publisher_product_id.to_s, :class => 'links' %>
+								<#%= link_to 'Upload Product Metadata', '/PublisherMetadata/' + @publisher_product_id.to_s, :class => 'links' %#>
 							</span>
 						</div>					
-					<% end %>
-			
-					<div class="line-space-20"></div>
-<% end %>
-			
-			
-
+					<#% end %#> -->
 
 					<% if !@publisher_product_description.nil? %>
 
@@ -169,7 +263,27 @@
 										</div>
 										<div class="form-home-profile-cell-3b">
 										</div>								
-									</div>									
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1b">
+											<span class="input-label-catagory">Created:</span>
+										</div>
+										<div class="form-home-profile-cell-2b">
+											<span class="input-label-catagory"><%= @publisher_product_description.created_at.to_s(:long) %></span>
+										</div>
+										<div class="form-home-profile-cell-3b">
+										</div>								
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1b">
+											<span class="input-label-catagory">Updated:</span>
+										</div>
+										<div class="form-home-profile-cell-2b">
+											<span class="input-label-catagory" id="render_name_product_update"></span>
+										</div>
+										<div class="form-home-profile-cell-3b">
+										</div>								
+									</div>
 								</div>
 
 								<div class="box-profile-space"></div>								
@@ -202,9 +316,10 @@
 										</div>
 										<div class="form-home-profile-cell-3">
 										</div>								
-									</div>							
+									</div>
 								</div>
 								
+								<div id="focus_12" style="height: 0px;" tabindex="12"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Product Description</span>
@@ -229,9 +344,9 @@
 										</div>
 										<div class="form-home-profile-cell-2-textarea">
 											<% if @b_description %>
-											<textarea class="input-home-profile-textarea" id="publisher_product_description_description" name="publisher_product_description[description]" tabindex="12" type="text" value="" placeholder="" onkeyup="countChar_1(this)" ><%= @publisher_product_description.description %></textarea>
+											<textarea class="input-home-profile-textarea" id="publisher_product_description_description" name="publisher_product_description[description]" tabindex="13" type="text" value="" placeholder="" onkeyup="countChar_1(this)" ><%= @publisher_product_description.description %></textarea>
 											<% else %>
-											<textarea class="input-home-profile-textarea" id="publisher_product_description_description" name="publisher_product_description[description]" tabindex="12" type= value="text" placeholder="Product Description" onkeyup="countChar(this)" ></textarea>
+											<textarea class="input-home-profile-textarea" id="publisher_product_description_description" name="publisher_product_description[description]" tabindex="13" type= value="text" placeholder="Product Description" onkeyup="countChar(this)" ></textarea>
 											<% end %>
 										</div>
 										<div id="render_description_2" class="render-1" style="width: 60px;"></div>
@@ -241,7 +356,7 @@
 										</div>
 										<div class="form-home-profile-cell-2-textarea">
 											<div style="height:4px;"></div>
-											<div id="submit_description" class="btn-submit-home-profile" tabindex="13">Submit</div>
+											<div id="submit_description" class="btn-submit-home-profile" tabindex="14">Submit</div>
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<!-- <div id="submit_description" class="submit-btn-home-profile" tabindex="13" style="display: inline-block">Submit</div> -->
 											<div style="display: inline-block; width: 210px;"></div>
@@ -252,6 +367,7 @@
 									</div>							
 								</div>
 								
+								<div id="focus_15" style="height: 0px;" tabindex="15"></div>								
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Content Type</span>
@@ -266,14 +382,40 @@
 										<div class="form-home-profile-cell-2c">
 											<!-- <#% if @b_type_content_index %#> -->
 											
-											<!-- <select class="sparkbox-custom">
-											    <option value="the_googs">Chrome</option>
-											    <option value="the_faris">Safari</option>
-											    <option value="foxfire">Firefox</option>
-											    <option value="the_splora">IE 9</option>
-											</select> -->
 											
-									   		<%= select_tag("publisher_product_description_type_content_index", options_for_select(
+	
+											<!-- <select id="user_bd_month" name="user[bd_month]" data-template="#dropdown-data1" tabindex="">
+												<option value="0">-Month-</option>
+												<option value="1">Jan</option>
+												<option value="2">Feb</option>
+												<option value="3">Mar</option>
+												<option value="4">Apr</option>
+												<option value="5">May</option>
+												<option value="6">Jun</option>
+												<option value="7">Jul</option>
+												<option value="8">Aug</option>
+												<option value="9">Sep</option>
+												<option value="10">Oct</option>
+												<option value="11">Nov</option>
+												<option value="12">Dec</option>
+											</select> -->		
+
+											<div id="test1" onclick="select_click()">
+											<select id="publisher_product_description_type_content_index" name="publisher_product_description_type_content_index" data-template="#dropdown-data1">
+												<option value="0">-Select-</option>
+												<option value="1">App</option>
+												<option value="2">Lesson Plan Document</option>
+												<option value="3">Digital Curriculum</option>
+												<option value="4">eBook</option>
+												<option value="5">Game</option>
+												<option value="6">Software-School Management</option>
+												<option value="7">Software-Other</option>
+												<option value="8">Online Course</option>
+												<option value="9">Tools</option>
+												<option value="10">Video</option>
+											</select>
+											</div>										
+									   		<!-- <#%= select_tag("publisher_product_description_type_content_index", options_for_select(
 									   				[['-Select-','0'],
 									   				['App','1'],
 									   				['Lesson Plan Document','2'],
@@ -285,9 +427,8 @@
 									   				['Online Course','8'],
 									   				['Tools','9'],
 									   				['Video','10']], 
-									   				@publisher_product_description.type_content_index), 
-									   				:class => 'sparkbox-custom',
-									   				:html => { :tabindex => '14' }) %>
+									   				@publisher_product_description.type_content_index ),
+									   				:class => 'sparkbox-custom' ) %#> -->
 											
 											<!-- <select id="publisher_product_description_type_content_index" name="publisher_product_description[type_content_index]" data-template="#dropdown-data3" value="<%= @publisher_product_description.type_content_index %>" tabindex="">
 												<option value="0">-Content Type-</option>
@@ -318,12 +459,7 @@
 											</select> -->		
 											<!-- <#% end %#> -->
 										</div>
-										<!-- <div class="form-home-profile-cell-3c"> -->
-											<% if !@b_type_content_index %>
-											<div id="render_type_content_index" class="render-1"></div>
-											<% end %>
-											<!-- <div id="render_2_type_content_index" class="render-2"></div> -->
-										<!-- </div> -->	
+										<div id="render_type_content_index" class="render-1"></div>
 									</div>
 									<div class="form-home-profile-row">
 										<div class="form-home-profile-cell-1c">
@@ -331,14 +467,14 @@
 										<div class="form-home-profile-cell-2c">
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
-											<div id="submit_type_content_index" class="btn-submit-home-profile" tabindex="15">Submit</div>
+											<div id="submit_type_content_index" class="btn-submit-home-profile" tabindex="17">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3c">
 										</div>								
 									</div>							
 								</div>
 
-
+								<div id="focus_18" style="height: 0px;" tabindex="18"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Core or Supplemental</span>
@@ -361,14 +497,20 @@
 									   				:tabindex => '16',
 									   				:html => {}) %#> -->
 											
-									   		<%= select_tag("publisher_product_description_core_supplemental_index", options_for_select(
+											<select id="publisher_product_description_core_supplemental_index" name="publisher_product_description[core_supplemental_index]" data-template="#dropdown-data2">
+												<option value="0">-Select-</option>
+												<option value="1">Core</option>
+												<option value="2">Supplemental</option>
+											</select>
+											
+									   		<!-- <#%= select_tag("publisher_product_description_core_supplemental_index", options_for_select(
 									   				[['-Select-','0'],
 									   				['Core','1'],
 									   				['Supplemental','2']], 
 									   				@publisher_product_description.core_supplemental_index), 
 									   				:class => 'sparkbox-custom',
 									   				:tabindex => '16', 
-									   				:html => {}) %>
+									   				:html => {}) %#> -->
 											
 										</div>
 										<div id="render_core_supplemental_index" class="render-1"></div>
@@ -379,13 +521,14 @@
 										<div class="form-home-profile-cell-2c">
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
-											<div id="submit_core_supplemental_index" class="btn-submit-home-profile" tabindex="17">Submit</div>
+											<div id="submit_core_supplemental_index" class="btn-submit-home-profile" tabindex="20">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3c">
 										</div>								
 									</div>							
 								</div>
 
+								<div id="focus_21" style="height: 0px;" tabindex="21"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Source URL</span>
@@ -399,9 +542,9 @@
 										</div>
 										<div class="form-home-profile-cell-2">
 											<% if @b_source_url %>
-											<input class="input-home-profile-short" id="publisher_product_description_source_url" name="publisher_product_description[source_url]" tabindex="18" type="text" value="<%= @publisher_product_description.source_url %>" placeholder="" />
+											<input class="input-home-profile-short" id="publisher_product_description_source_url" name="publisher_product_description[source_url]" tabindex="22" type="text" value="<%= @publisher_product_description.source_url %>" placeholder="" />
 											<% else %>
-											<input class="input-home-profile-short" id="publisher_product_description_source_url" name="publisher_product_description[source_url]" tabindex="18" type="text" value="" placeholder="www.MyCompany.com" />
+											<input class="input-home-profile-short" id="publisher_product_description_source_url" name="publisher_product_description[source_url]" tabindex="22" type="text" value="" placeholder="www.MyCompany.com" />
 											<% end %>
 										</div>
 										<div id="render_source_url" class="render-1"></div>
@@ -412,13 +555,14 @@
 										<div class="form-home-profile-cell-2">
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
-											<div id="submit_source_url" class="btn-submit-home-profile" tabindex="19">Submit</div>
+											<div id="submit_source_url" class="btn-submit-home-profile" tabindex="23">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3">
 										</div>								
 									</div>							
 								</div>
 
+								<div id="focus_24" style="height: 0px;" tabindex="24"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Subject Category</span>
@@ -432,7 +576,18 @@
 										</div>		
 										<div class="form-home-profile-cell-2c">
 											
-									   		<%= select_tag("publisher_product_description_subject_category_index", options_for_select(
+											<select id="publisher_product_description_subject_category_index" name="publisher_product_description[subject_category_index]" data-template="#dropdown-data3">
+												<option value="0">-Select-</option>
+												<option value="1">Language Arts</option>
+												<option value="2">Science</option>
+												<option value="3">Music & Drama</option>
+												<option value="4">Physical Education</option>
+												<option value="5">Arts</option>
+												<option value="6">Professional Development</option>
+												<option value="7">Extra-Curricular</option>
+											</select>
+											
+									   		<!-- <#%= select_tag("publisher_product_description_subject_category_index", options_for_select(
 									   				[['-Select-','0'],
 									   				['Language Arts', '1'],
 									   				['Science','2'],
@@ -444,7 +599,7 @@
 									   				@publisher_product_description.subject_category_index), 
 									   				:class => 'sparkbox-custom', 
 									   				:tabindex => "20",
-									   				:html => {}) %>
+									   				:html => {}) %#> -->
 											
 										</div>
 										<div id="render_subject_category_index" class="render-1"></div>
@@ -455,13 +610,14 @@
 										<div class="form-home-profile-cell-2c">
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
-											<div id="submit_subject_category_index" class="btn-submit-home-profile" tabindex="21">Submit</div>
+											<div id="submit_subject_category_index" class="btn-submit-home-profile" tabindex="26">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3c">
 										</div>								
 									</div>							
 								</div>
 
+								<div id="focus_27" style="height: 0px;" tabindex="27"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Age Appropriate</span>
@@ -475,7 +631,15 @@
 										</div>		
 										<div class="form-home-profile-cell-2c">
 											
-									   		<%= select_tag("publisher_product_description_age_appropriate_index", options_for_select(
+											<select id="publisher_product_description_age_appropriate_index" name="publisher_product_description[age_appropriate_index]" data-template="#dropdown-data4">
+												<option value="0">-Select-</option>
+												<option value="1">2 to 5</option>
+												<option value="2">5 to 10</option>
+												<option value="3">10 to 15</option>
+												<option value="4">15 50 18</option>
+											</select>
+											
+									   		<!-- <#%= select_tag("publisher_product_description_age_appropriate_index", options_for_select(
 									   				[['-Select-','0'],
 									   				['2 to 5', '1'],
 									   				['5 to 10','2'],
@@ -484,7 +648,7 @@
 									   				@publisher_product_description.age_appropriate_index), 
 									   				:class => 'sparkbox-custom', 
 									   				:tabindex => "22",
-									   				:html => {}) %>
+									   				:html => {}) %#> -->
 											
 										</div>
 										<div id="render_age_appropriate_index" class="render-1"></div>
@@ -495,13 +659,14 @@
 										<div class="form-home-profile-cell-2c">
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
-											<div id="submit_age_appropriate_index" class="btn-submit-home-profile" tabindex="23">Submit</div>
+											<div id="submit_age_appropriate_index" class="btn-submit-home-profile" tabindex="29">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3c">
 										</div>								
 									</div>							
 								</div>
 
+								<div id="focus_30" style="height: 0px;" tabindex="30"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Grade</span>
@@ -515,7 +680,16 @@
 										</div>		
 										<div class="form-home-profile-cell-2c">
 											
-									   		<%= select_tag("publisher_product_description_grade_index", options_for_select(
+											<select id="publisher_product_description_grade_index" name="publisher_product_description[grade_index]" data-template="#dropdown-data5">
+												<option value="0">-Select-</option>
+												<option value="1">Grade 1</option>
+												<option value="2">Grade 2</option>
+												<option value="3">Grade 3</option>
+												<option value="4">Grade 4</option>
+
+											</select>
+											
+									   		<!-- <#%= select_tag("publisher_product_description_grade_index", options_for_select(
 									   				[['-Select-','0'],
 									   				['grade 1', '1'],
 									   				['grade 2','2'],
@@ -524,7 +698,7 @@
 									   				@publisher_product_description.grade_index), 
 									   				:class => 'sparkbox-custom', 
 									   				:tabindex => "24",
-									   				:html => {}) %>
+									   				:html => {}) %#> -->
 											
 										</div>
 										<div id="render_grade_index" class="render-1"></div>
@@ -535,13 +709,14 @@
 										<div class="form-home-profile-cell-2c">
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
-											<div id="submit_grade_index" class="btn-submit-home-profile" tabindex="25">Submit</div>
+											<div id="submit_grade_index" class="btn-submit-home-profile" tabindex="32">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3c">
 										</div>								
 									</div>							
 								</div>
 
+								<div id="focus_33" style="height: 0px;" tabindex="33"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Platform</span>
@@ -555,7 +730,19 @@
 										</div>		
 										<div class="form-home-profile-cell-2c">
 											
-									   		<%= select_tag("publisher_product_description_platform_index", options_for_select(
+											<select id="publisher_product_description_platform_index" name="publisher_product_description[platform_index]" data-template="#dropdown-data6">
+												<option value="0">-Select-</option>
+												<option value="1">Apple iOS</option>
+												<option value="2">Kindle Android</option>
+												<option value="3">Google Android</option>
+												<option value="4">Linux</option>
+												<option value="5">Microsoft</option>
+												<option value="6">HTML</option>
+												<option value="7">Nook</option>
+												<option value="8">Other</option>
+											</select>
+											
+									   		<!-- <#%= select_tag("publisher_product_description_platform_index", options_for_select(
 									   				[['-Select-','0'],
 									   				['Apple iOS', '1'],
 									   				['Kindle Android','2'],
@@ -568,7 +755,7 @@
 									   				@publisher_product_description.platform_index), 
 									   				:class => 'sparkbox-custom',
 									   				:tabindex => "26",
-									   				:html => {}) %>
+									   				:html => {}) %#> -->
 											
 										</div>
 										<div id="render_platform_index" class="render-1"></div>
@@ -579,13 +766,14 @@
 										<div class="form-home-profile-cell-2c">
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
-											<div id="submit_platform_index" class="btn-submit-home-profile" tabindex="27">Submit</div>
+											<div id="submit_platform_index" class="btn-submit-home-profile" tabindex="35">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3c">
 										</div>								
 									</div>							
 								</div>
 
+								<div id="focus_36" style="height: 0px;" tabindex="36"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Pricing Model</span>
@@ -599,14 +787,20 @@
 										</div>		
 										<div class="form-home-profile-cell-2c">
 											
-									   		<%= select_tag("publisher_product_description_pricing_model_index", options_for_select(
+											<select id="publisher_product_description_pricing_model_index" name="publisher_product_description[pricing_model_index]" data-template="#dropdown-data7">
+												<option value="0">-Select-</option>
+												<option value="1">Free</option>
+												<option value="2">Premium</option>
+											</select>
+											
+									   		<!-- <#%= select_tag("publisher_product_description_pricing_model_index", options_for_select(
 									   				[['-Select-','0'],
 									   				['Free', '1'],
 									   				['Premium','2']],
 									   				@publisher_product_description.pricing_model_index), 
 									   				:class => 'sparkbox-custom',
 									   				:tabindex => "28", 
-									   				:html => {}) %>
+									   				:html => {}) %#> -->
 											
 										</div>
 										<div id="render_pricing_model_index" class="render-1"></div>
@@ -617,13 +811,14 @@
 										<div class="form-home-profile-cell-2c">
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
-											<div id="submit_pricing_model_index" class="btn-submit-home-profile" tabindex="29">Submit</div>
+											<div id="submit_pricing_model_index" class="btn-submit-home-profile" tabindex="38">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3c">
 										</div>								
 									</div>							
 								</div>
 
+								<div id="focus_39" style="height: 0px;" tabindex="39"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Price</span>
@@ -638,9 +833,9 @@
 										</div>
 										<div class="form-home-profile-cell-2">
 											<% if @b_price %>
-											<input class="input-home-profile-short" id="publisher_product_description_price" name="publisher_product_description[price]" tabindex="30" type="text" value="<%= @publisher_product_description.price %>" placeholder="" />
+											<input class="input-home-profile-short" id="publisher_product_description_price" name="publisher_product_description[price]" tabindex="40" type="text" value="<%= @publisher_product_description.price %>" placeholder="" />
 											<% else %>
-											<input class="input-home-profile-short" id="publisher_product_description_price" name="publisher_product_description[price]" tabindex="30" type="text" value="" placeholder="Price" />
+											<input class="input-home-profile-short" id="publisher_product_description_price" name="publisher_product_description[price]" tabindex="40" type="text" value="" placeholder="Price" />
 											<% end %>
 										</div>
 										<div id="render_price" class="render-1"></div>
@@ -651,7 +846,7 @@
 										<div class="form-home-profile-cell-2">
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
-											<div id="submit_price" class="btn-submit-home-profile" tabindex="31">Submit</div>
+											<div id="submit_price" class="btn-submit-home-profile" tabindex="41">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3">
 										</div>								
@@ -672,7 +867,7 @@
 							$("#render_2_price").removeClass("cb-affirm").addClass("display-none");
 						} -->							
 
-
+								<div id="focus_42" style="height: 0px;" tabindex="42"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Versions</span>
@@ -686,9 +881,9 @@
 										</div>
 										<div class="form-home-profile-cell-2">
 											<% if @b_versions %>
-											<input class="input-home-profile-short" id="publisher_product_description_versions" name="publisher_product_description[versions]" tabindex="32" type="text" value="<%= @publisher_product_description.versions %>" placeholder="" />
+											<input class="input-home-profile-short" id="publisher_product_description_versions" name="publisher_product_description[versions]" tabindex="43" type="text" value="<%= @publisher_product_description.versions %>" placeholder="" />
 											<% else %>
-											<input class="input-home-profile-short" id="publisher_product_description_versions" name="publisher_product_description[versions]" tabindex="32" type="text" value="" placeholder="Versions" />
+											<input class="input-home-profile-short" id="publisher_product_description_versions" name="publisher_product_description[versions]" tabindex="43" type="text" value="" placeholder="Versions" />
 											<% end %>
 										</div>
 										<div id="render_versions" class="render-1"></div>
@@ -699,14 +894,14 @@
 										<div class="form-home-profile-cell-2">
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
-											<div id="submit_versions" class="btn-submit-home-profile" tabindex="33">Submit</div>
+											<div id="submit_versions" class="btn-submit-home-profile" tabindex="44">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3">
 										</div>								
 									</div>							
 								</div>
 
-
+								<div id="focus_45" style="height: 0px;" tabindex="45"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Topic</span>
@@ -720,9 +915,9 @@
 										</div>
 										<div class="form-home-profile-cell-2">
 											<% if @b_topic %>
-											<input class="input-home-profile-short" id="publisher_product_description_topic" name="publisher_product_description[topic]" tabindex="34" type="text" value="<%= @publisher_product_description.topic %>" placeholder="" />
+											<input class="input-home-profile-short" id="publisher_product_description_topic" name="publisher_product_description[topic]" tabindex="46" type="text" value="<%= @publisher_product_description.topic %>" placeholder="" />
 											<% else %>
-											<input class="input-home-profile-short" id="publisher_product_description_topic" name="publisher_product_description[topic]" tabindex="34" type="text" value="" placeholder="Topic" />
+											<input class="input-home-profile-short" id="publisher_product_description_topic" name="publisher_product_description[topic]" tabindex="46" type="text" value="" placeholder="Topic" />
 											<% end %>
 										</div>
 										<div id="render_topic" class="render-1"></div>
@@ -733,13 +928,48 @@
 										<div class="form-home-profile-cell-2">
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
-											<div id="submit_topic" class="btn-submit-home-profile" tabindex="35">Submit</div>
+											<div id="submit_topic" class="btn-submit-home-profile" tabindex="47">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3">
 										</div>								
 									</div>							
 								</div>
 
+								<div id="focus_48" style="height: 0px;" tabindex="45"></div>
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<span class="input-label-catagory">Lesson Plan Subject</span>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<div class="box-profile-space"></div>
+								
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_name">Lesson Plan Subject</label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_topic %>
+											<input class="input-home-profile-short" id="publisher_product_description_lesson_plan_subject" name="publisher_product_description[lesson_plan_subject]" tabindex="49" type="text" value="<%= @publisher_product_description.lesson_plan_subject %>" placeholder="" />
+											<% else %>
+											<input class="input-home-profile-short" id="publisher_product_description_lesson_plan_subject" name="publisher_product_description[lesson_plan_subject]" tabindex="49" type="text" value="" placeholder="Lesson Plan Subject" />
+											<% end %>
+										</div>
+										<div id="render_lesson_plan_subject" class="render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
+											<div style="height:4px;"></div>
+											<div id="submit_lesson_plan_subject" class="btn-submit-home-profile" tabindex="50">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div id="focus_51" style="height: 0px;" tabindex="48"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
 								<span class="input-label-catagory">Additional Description</span>
@@ -764,9 +994,9 @@
 										</div>
 										<div class="form-home-profile-cell-2-textarea">
 											<% if @b_word_description %>
-											<textarea class="input-home-profile-textarea" id="publisher_product_description_word_description" name="publisher_product_description[word_description]" tabindex="36" type="text" value="" placeholder="" onkeyup="countChar_2(this)" ><%= @publisher_product_description.word_description %></textarea>
+											<textarea class="input-home-profile-textarea" id="publisher_product_description_word_description" name="publisher_product_description[word_description]" tabindex="52" type="text" value="" placeholder="" onkeyup="countChar_2(this)" ><%= @publisher_product_description.word_description %></textarea>
 											<% else %>
-											<textarea class="input-home-profile-textarea" id="publisher_product_description_word_description" name="publisher_product_description[word_description]" tabindex="36" type= value="text" placeholder="Product Description" onkeyup="countChar(this)" ></textarea>
+											<textarea class="input-home-profile-textarea" id="publisher_product_description_word_description" name="publisher_product_description[word_description]" tabindex="52" type= value="text" placeholder="Product Description" onkeyup="countChar(this)" ></textarea>
 											<% end %>
 										</div>
 										<div id="render_word_description_2" class="render-1" style="width: 60px;"></div>
@@ -776,7 +1006,7 @@
 										</div>
 										<div class="form-home-profile-cell-2-textarea">
 											<div style="height:4px;"></div>
-											<div id="submit_word_description" class="btn-submit-home-profile" tabindex="37">Submit</div>
+											<div id="submit_word_description" class="btn-submit-home-profile" tabindex="53">Submit</div>
 											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<!-- <div id="submit_description" class="submit-btn-home-profile" tabindex="13" style="display: inline-block">Submit</div> -->
 											<div style="display: inline-block; width: 210px;"></div>
@@ -803,11 +1033,11 @@
 
 	<script>
 
-		$(function(){
-		    $('.sparkbox-custom').sbCustomSelect();
-		});
+		// $(function(){
+		    // $('.sparkbox-custom').sbCustomSelect();
+		// });
 	  
-
+		
 		function countChar_1(val) {
 	    	var len = val.value.length;
 	        if (len > 150) {
@@ -826,21 +1056,60 @@
 	      	}
 		}
 
-		// function validate_Name(s) {
-			// val b = false;
-			// if s.length > 0 {
-				// b = true;
-			// }
-			// else {
-// 				
-			// }
-			// return b;
-		// }
+		function set_updated(s_updated) {
+			// alert(s_updated);
+			$("#render_name_product_update").html(s_updated);
+		}
+		
 
-
-
+		$('#publisher_product_description_type_content_index option[value=<%= @publisher_product_description.type_content_index %>]').attr('selected', 'selected');
+		$('#publisher_product_description_core_supplemental_index option[value=<%= @publisher_product_description.core_supplemental_index %>]').attr('selected', 'selected');
+		$('#publisher_product_description_subject_category_index option[value=<%= @publisher_product_description.subject_category_index %>]').attr('selected', 'selected');
+		$('#publisher_product_description_age_appropriate_index option[value=<%= @publisher_product_description.age_appropriate_index %>]').attr('selected', 'selected');
+		$('#publisher_product_description_grade_index option[value=<%= @publisher_product_description.grade_index %>]').attr('selected', 'selected');
+		$('#publisher_product_description_platform_index option[value=<%= @publisher_product_description.platform_index %>]').attr('selected', 'selected');
+		$('#publisher_product_description_pricing_model_index option[value=<%= @publisher_product_description.pricing_model_index %>]').attr('selected', 'selected');
+		
+		
 		$(window).load( function() {
-		//$(document).ready(function(){
+		// $(document).ready(function(){
+
+			// $('select').dropdown();	
+			$('select').dropdown({
+			    'changed': function(data) {
+			        // selectStatus1();
+			        // selectStatus2();	
+			    }
+			});	    
+
+			// $('.profile-dropdown').on('click', function() {
+				// $('.profile-dropdown .selected').click();
+			// });
+
+    		// $(".profile-dropdown .select").click(function(event) {
+    			// alert(event.target.id);
+    			// // $('#dropdown1 .selected').click();
+        		// // var trg = '#' + event.target.id + ' .selected';
+        		// // $(trg).click();
+    		// });
+
+			// $('#dropdown1').on('click', function(event) {
+				// event.preventDefault();
+				// $("#publisher_product_description_type_content_index").click();
+				// // alert(event.target.id);
+			// });
+
+			// $(document).on('click', function(event) {
+				// // $('#dropdown-data1-selected u li').click();
+				// alert(event.target.id);
+				// // alert(event.target.name);
+			// });
+
+
+			// var s_updated = <#%= @publisher_product_description.updated_at.to_s(:long) %#>; 
+			set_updated(gon.updated);			
+			// set_updated("123");			
+
 
 			if(<%= @b_name_product %>) {
 				$("#render_name_product").html("");
@@ -848,96 +1117,89 @@
 			else {
 				$("#render_name_product").html("* entry required");
 			}
-
 			if(<%= @b_description %>) {
 				$("#render_description_1").html("");
 			}
 			else {
 				$("#render_description_1").html("* entry required");
 			}
-
 			if(<%= @b_type_content_index %>) {
 				$("#render_type_content_index").html("");
 			}
 			else {
 				$("#render_type_content_index").html("* entry required");
 			}
-
 			if(<%= @b_core_supplemental_index %>) {
 				$("#render_core_supplemental_index").html("");
 			}
 			else {
 				$("#render_core_supplemental_index").html("* entry required");
 			}
-
 			if(<%= @b_source_url %>) {
 				$("#render_source_url").html("");
 			}
 			else {
 				$("#render_source_url").html("* entry required");
 			}
-
+			if(<%= @b_subject_category_index %>) {
+				$("#render_subject_category_index").html("");
+			}
+			else {
+				$("#render_subject_category_index").html("* entry required");
+			}	
 			if(<%= @b_age_appropriate_index %>) {
 				$("#render_age_appropriate_index").html("");
 			}
 			else {
 				$("#render_age_appropriate_index").html("* entry required");
 			}
-
 			if(<%= @b_grade_index %>) {
 				$("#render_grade_index").html("");
 			}
 			else {
 				$("#render_grade_index").html("* entry required");
 			}
-
 			if(<%= @b_platform_index %>) {
 				$("#render_platform_index").html("");
 			}
 			else {
 				$("#render_platform_index").html("* entry required");
 			}
-			
 			if(<%= @b_pricing_model_index %>) {
 				$("#render_pricing_model_index").html("");
 			}
 			else {
 				$("#render_pricing_model_index").html("* entry required");
 			}
-			
 			if(<%= @b_price %>) {
 				$("#render_price").html("");
 			}
 			else {
 				$("#render_price").html("* entry required");
 			}
-			
 			if(<%= @b_versions %>) {
 				$("#render_versions").html("");
 			}
 			else {
 				$("#render_versions").html("* entry required");
 			}
-			
 			if(<%= @b_topic %>) {
 				$("#render_topic").html("");
 			}
 			else {
 				$("#render_topic").html("* entry required");
 			}
-			
 			if(<%= @b_lesson_plan_subject %>) {
 				$("#render_lesson_plan_subject").html("");
 			}
 			else {
 				$("#render_lesson_plan_subject").html("* entry required");
 			}
-			
 			if(<%= @b_word_description %>) {
-				$("#render_word_description").html("");
+				$("#render_word_description_1").html("");
 			}
 			else {
-				$("#render_word_description").html("* entry required");
+				$("#render_word_description_1").html("* entry required");
 			}
 
 
@@ -962,9 +1224,9 @@
       			if(e.keyCode==13)
       			$("#submit_source_url").click();
     		});				
-    		$("#submit_price").keypress(function(e){
+    		$("#submit_subject_category_index").keypress(function(e){
       			if(e.keyCode==13)
-      			$("#submit_price").click();
+      			$("#submit_subject_category_index").click();
     		});				
     		$("#submit_age_appropriate_index").keypress(function(e){
       			if(e.keyCode==13)
@@ -981,6 +1243,10 @@
     		$("#submit_pricing_model_index").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_pricing_model_index").click();
+    		});				
+    		$("#submit_price").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_price").click();
     		});				
     		$("#submit_versions").keypress(function(e){
       			if(e.keyCode==13)
@@ -1000,33 +1266,83 @@
     		});				
 
 
-    		
-    						
-    		// $("#submit_company_contact_email").keypress(function(e){
+
+    		// $("#publisher_product_description_name_product").keypress(function(e){
       			// if(e.keyCode==13)
-      			// $("#submit_company_contact_email").click();
+      			// $("#publisher_product_description_name_product").click();
+    		// });
+    		// $("#publisher_product_description_description").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_description").click();
+    		// });				
+    		$("#publisher_product_description_type_content_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_type_content_index").click();
+    		});				
+    		$("#publisher_product_description_core_supplemental_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_core_supplemental_index").click();
+    		});				
+    		// $("#publisher_product_description_source_url").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_source_url").click();
+    		// });	
+    		$("#publisher_product_description_subject_category_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_subject_category_index").click();
+    		});				
+    		$("#publisher_product_description_age_appropriate_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_age_appropriate_index").click();
+    		});				
+    		$("#publisher_product_description_grade_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_grade_index").click();
+    		});				
+    		$("#publisher_product_description_platform_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_platform_index").click();
+    		});				
+    		$("#publisher_product_description_pricing_model_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_pricing_model_index").click();
+    		});				
+    		// $("#publisher_product_description_price").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_price").click();
+    		// });				
+    		// $("#publisher_product_description_versions").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_versions").click();
+    		// });				
+    		// $("#publisher_product_description_topic").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_topic").click();
+    		// });				
+    		// $("#publisher_product_description_lesson_plan_subject").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_lesson_plan_subject").click();
+    		// });				
+    		// $("#publisher_product_description_word_description").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_word_description").click();
     		// });				
 
 
-			$("#submit_name_product").on('click', function() {
 
-			  	// var obj_list = ""; 
+			$("#submit_name_product").on('click', function() {
 				var input_publisher_product_description_name_product = $("#publisher_product_description_name_product").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "name_product":"' + input_publisher_product_description_name_product + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
 			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_name_product',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
@@ -1047,7 +1363,9 @@
 							$("#render_name_product").html("* entry required");
 							$("#render_name_product").removeClass("cb-affirm");														
 						}							
-						$( "#box_profile_general" ).focus();													
+						$("#focus_12").focus();
+						set_updated(data.updated);	
+						//$("#box_profile_general").focus();												
 	            		// if (data.url) { window.location.href = data.url; }
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
@@ -1057,31 +1375,22 @@
 			
 
 			$("#submit_description").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_description = $("#publisher_product_description_description").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "description":"' + input_publisher_product_description_description + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_description',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
 						if (data.description.length > 0) {      		
@@ -1094,7 +1403,8 @@
 							$("#render_description_1").html("* entry required");
 							$("#render_description_2").removeClass("cb-affirm");
 						}							
-						$( "#box_profile_general" ).focus();													
+						$("#focus_15").focus();
+						set_updated(data.updated);													
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1102,31 +1412,22 @@
 			});
 
 			$("#submit_type_content_index").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_type_content_index = $("#publisher_product_description_type_content_index").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "type_content_index":"' + input_publisher_product_description_type_content_index + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_type_content_index',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
 						if (data.type_content_index == '0') {						
@@ -1137,8 +1438,8 @@
 							$("#render_type_content_index").html("");
 							$("#render_type_content_index").addClass("cb-affirm");
 						}
-						
-						$( "#box_profile_general" ).focus();													
+						$("#focus_18").focus();
+						set_updated(data.updated);												
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1147,52 +1448,34 @@
 
 
 			$("#submit_core_supplemental_index").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_core_supplemental_index = $("#publisher_product_description_core_supplemental_index").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "core_supplemental_index":"' + input_publisher_product_description_core_supplemental_index + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_core_supplemental_index',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
-	            		
 						if (data.core_supplemental_index == '0') {						
+							$("#render_core_supplemental_index").removeClass("cb-affirm");
 							$("#render_core_supplemental_index").html("* entry required");
-							$("#render_1_core_supplemental_index").removeClass("display-none");														
-							$("#render_2_core_supplemental_index").removeClass("cb-affirm").addClass("display-none");
 						}
 						else {
-							// $("#publisher_core_supplemental_index").val( data.core_supplemental_index );
 							$("#render_core_supplemental_index").html("");
-							$("#render_1_core_supplemental_index").addClass("display-none");							
-							$("#render_2_core_supplemental_index").addClass("cb-affirm").removeClass("display-none");
+							$("#render_core_supplemental_index").addClass("cb-affirm");
 						}
-						
-						$( "#box_profile_general" ).focus();													
-						// $("#render0").html(gon.name_first);	            		
-	            	  	// alert("success"); 
-	            		// if (data.url) {
-							// window.location.href = data.url;
-						// }
+						$("#focus_21").focus();
+						set_updated(data.updated);												
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1200,55 +1483,36 @@
 			});
 
 			$("#submit_source_url").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_source_url = $("#publisher_product_description_source_url").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "source_url":"' + input_publisher_product_description_source_url + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_source_url',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
-						// $("#render0").html("<#%= escape_javascript(render("publisher_profiles/test")) %#>");	            		
-						// $("#render0").html("<#%= @user_updated_name_first %#>");	            		
-						
 						if (data.source_url.length > 0) {      		
 							$("#publisher_product_description_source_url").attr("value", data.source_url);
 							$("#render_source_url").html("");
-							$("#render_1_source_url").addClass("display-none");							
-							$("#render_2_source_url").addClass("cb-affirm").removeClass("display-none");
+							$("#render_source_url").addClass("cb-affirm");
 						}
 						else {
 							$("#publisher_product_description_source_url").attr("value", "");
+							$("#render_source_url").removeClass("cb-affirm");
 							$("#render_source_url").html("* entry required");
-							$("#render_1_source_url").removeClass("display-none");														
-							$("#render_2_source_url").removeClass("cb-affirm").addClass("display-none");
 						}							
-						
-						$( "#box_profile_general" ).focus();													
-						// $("#render0").html(gon.name_first);	            		
-	            	  	// alert("success"); 
-	            		// if (data.url) {
-							// window.location.href = data.url;
-						// }
+						$("#focus_24").focus();	
+						set_updated(data.updated);												
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1257,51 +1521,35 @@
 
 
 			$("#submit_subject_category_index").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_subject_category_index = $("#publisher_product_description_subject_category_index").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "subject_category_index":"' + input_publisher_product_description_subject_category_index + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_subject_category_index',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
-	            		
+	            		// alert(data.subject_category_index);
 						if (data.subject_category_index == '0') {						
+							$("#render_subject_category_index").removeClass("cb-affirm");
 							$("#render_subject_category_index").html("* entry required");
-							$("#render_1_subject_category_index").removeClass("display-none");														
-							$("#render_2_subject_category_index").removeClass("cb-affirm").addClass("display-none");
 						}
 						else {
 							$("#render_subject_category_index").html("");
-							$("#render_1_subject_category_index").addClass("display-none");							
-							$("#render_2_subject_category_index").addClass("cb-affirm").removeClass("display-none");
+							$("#render_subject_category_index").addClass("cb-affirm");
 						}
-						
-						$( "#box_profile_general" ).focus();													
-						// $("#render0").html(gon.name_first);	            		
-	            	  	// alert("success"); 
-	            		// if (data.url) {
-							// window.location.href = data.url;
-						// }
+						$("#focus_27").focus();	
+						set_updated(data.updated);												
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1310,51 +1558,34 @@
 
 
 			$("#submit_age_appropriate_index").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_age_appropriate_index = $("#publisher_product_description_age_appropriate_index").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "age_appropriate_index":"' + input_publisher_product_description_age_appropriate_index + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_age_appropriate_index',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
-	            		
 						if (data.age_appropriate_index == '0') {						
+							$("#render_age_appropriate_index").removeClass("cb-affirm");
 							$("#render_age_appropriate_index").html("* entry required");
-							$("#render_1_age_appropriate_index").removeClass("display-none");														
-							$("#render_2_age_appropriate_index").removeClass("cb-affirm").addClass("display-none");
 						}
 						else {
 							$("#render_age_appropriate_index").html("");
-							$("#render_1_age_appropriate_index").addClass("display-none");							
-							$("#render_2_age_appropriate_index").addClass("cb-affirm").removeClass("display-none");
+							$("#render_age_appropriate_index").addClass("cb-affirm");
 						}
-						
-						$( "#box_profile_general" ).focus();													
-						// $("#render0").html(gon.name_first);	            		
-	            	  	// alert("success"); 
-	            		// if (data.url) {
-							// window.location.href = data.url;
-						// }
+						$("#focus_30").focus();
+						set_updated(data.updated);													
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1363,51 +1594,34 @@
 
 
 			$("#submit_grade_index").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_grade_index = $("#publisher_product_description_grade_index").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "grade_index":"' + input_publisher_product_description_grade_index + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_grade_index',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
-	            		
 						if (data.grade_index == '0') {						
+							$("#render_grade_index").removeClass("cb-affirm");
 							$("#render_grade_index").html("* entry required");
-							$("#render_1_grade_index").removeClass("display-none");														
-							$("#render_2_grade_index").removeClass("cb-affirm").addClass("display-none");
 						}
 						else {
 							$("#render_grade_index").html("");
-							$("#render_1_grade_index").addClass("display-none");							
-							$("#render_2_grade_index").addClass("cb-affirm").removeClass("display-none");
+							$("#render_grade_index").addClass("cb-affirm");
 						}
-						
-						$( "#box_profile_general" ).focus();													
-						// $("#render0").html(gon.name_first);	            		
-	            	  	// alert("success"); 
-	            		// if (data.url) {
-							// window.location.href = data.url;
-						// }
+						$("#focus_33").focus();
+						set_updated(data.updated);													
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1416,51 +1630,34 @@
 
 
 			$("#submit_platform_index").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_platform_index = $("#publisher_product_description_platform_index").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "platform_index":"' + input_publisher_product_description_platform_index + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_platform_index',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
-	            		
 						if (data.platform_index == '0') {						
+							$("#render_platform_index").removeClass("cb-affirm");
 							$("#render_platform_index").html("* entry required");
-							$("#render_1_platform_index").removeClass("display-none");														
-							$("#render_2_platform_index").removeClass("cb-affirm").addClass("display-none");
 						}
 						else {
 							$("#render_platform_index").html("");
-							$("#render_1_platform_index").addClass("display-none");							
-							$("#render_2_platform_index").addClass("cb-affirm").removeClass("display-none");
+							$("#render_platform_index").addClass("cb-affirm");
 						}
-						
-						$( "#box_profile_general" ).focus();													
-						// $("#render0").html(gon.name_first);	            		
-	            	  	// alert("success"); 
-	            		// if (data.url) {
-							// window.location.href = data.url;
-						// }
+						$("#focus_36").focus();
+						set_updated(data.updated);													
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1469,51 +1666,34 @@
 
 
 			$("#submit_pricing_model_index").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_pricing_model_index = $("#publisher_product_description_pricing_model_index").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "pricing_model_index":"' + input_publisher_product_description_pricing_model_index + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_pricing_model_index',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
-	            		
 						if (data.pricing_model_index == '0') {						
+							$("#render_pricing_model_index").removeClass("cb-affirm");
 							$("#render_pricing_model_index").html("* entry required");
-							$("#render_1_pricing_model_index").removeClass("display-none");														
-							$("#render_2_pricing_model_index").removeClass("cb-affirm").addClass("display-none");
 						}
 						else {
 							$("#render_pricing_model_index").html("");
-							$("#render_1_pricing_model_index").addClass("display-none");							
-							$("#render_2_pricing_model_index").addClass("cb-affirm").removeClass("display-none");
+							$("#render_pricing_model_index").addClass("cb-affirm");
 						}
-						
-						$( "#box_profile_general" ).focus();													
-						// $("#render0").html(gon.name_first);	            		
-	            	  	// alert("success"); 
-	            		// if (data.url) {
-							// window.location.href = data.url;
-						// }
+						$("#focus_39").focus();
+						set_updated(data.updated);													
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1522,62 +1702,37 @@
 
 
 			$("#submit_price").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_price = $("#publisher_product_description_price").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "price":"' + input_publisher_product_description_price + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_price',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
-						// $("#render0").html("<#%= escape_javascript(render("publisher_profiles/test")) %#>");	            		
-						// $("#render0").html("<#%= @user_updated_name_first %#>");	            		
-						// alert('data');
 						// var data_price = parceFloat(data.price);
 						if (data.price.toString().length > 0) {      	
 							$("#publisher_product_description_price").attr("value", data.price);
-							// $("#render_price").html("");
-							//$("#render_1_price").addClass("display-hidden");
-							// $("#render_1_price").html("");
 							$("#render_price").html("");							
 							$("#render_price").addClass("cb-affirm");
-							// $("#render_2_price").addClass("cb-affirm").removeClass("display-none");
 						}
 						else {
 							$("#publisher_product_description_price").attr("value", "");
-							// $("#render_price").html("* entry required");
-							// $("#render_1_price").removeClass("display-hidden");
-							// $("#render_1_price").html("* entry required");
 							$("#render_price").removeClass("cb-affirm");
 							$("#render_price").html("* entry required");																												
-							// $("#render_2_price").removeClass("cb-affirm").addClass("display-none");
 						}							
-						
-						$( "#box_profile_general" ).focus();													
-						// $("#render0").html(gon.name_first);	            		
-	            	  	// alert("success"); 
-	            		// if (data.url) {
-							// window.location.href = data.url;
-						// }
+						$("#focus_42").focus();
+						set_updated(data.updated);													
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1586,57 +1741,36 @@
 
 
 			$("#submit_versions").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_versions = $("#publisher_product_description_versions").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "versions":"' + input_publisher_product_description_versions + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_versions',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
-						// $("#render0").html("<#%= escape_javascript(render("publisher_profiles/test")) %#>");	            		
-						// $("#render0").html("<#%= @user_updated_name_first %#>");	            		
-						
 						if (data.versions.length > 0) {      		
 							$("#publisher_product_description_versions").attr("value", data.versions);
-							// $("#render_versions").html("");
-							$("#render_1_versions").addClass("display-none");
-							$("#render_1_versions").html("");							
-							$("#render_2_versions").addClass("cb-affirm").removeClass("display-none");
+							$("#render_versions").html("");							
+							$("#render_versions").addClass("cb-affirm");
 						}
 						else {
 							$("#publisher_product_description_versions").attr("value", "");
-							// $("#render_versions").html("* entry required");
-							$("#render_1_versions").removeClass("display-none");
-							$("#render_1_versions").html("* entry required");														
-							$("#render_2_versions").removeClass("cb-affirm").addClass("display-none");
+							$("#render_versions").removeClass("cb-affirm");
+							$("#render_versions").html("* entry required");														
 						}							
-						
-						$( "#box_profile_general" ).focus();													
-						// $("#render0").html(gon.name_first);	            		
-	            	  	// alert("success"); 
-	            		// if (data.url) {
-							// window.location.href = data.url;
-						// }
+						$("#focus_45").focus();
+						set_updated(data.updated);													
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1645,112 +1779,111 @@
 
 
 			$("#submit_topic").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_topic = $("#publisher_product_description_topic").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "topic":"' + input_publisher_product_description_topic + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_topic',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
-						// $("#render0").html("<#%= escape_javascript(render("publisher_profiles/test")) %#>");	            		
-						// $("#render0").html("<#%= @user_updated_name_first %#>");	            		
-						
 						if (data.topic.length > 0) {      		
 							$("#publisher_product_description_topic").attr("value", data.topic);
 							$("#render_topic").html("");
-							$("#render_1_topic").addClass("display-none");							
-							$("#render_2_topic").addClass("cb-affirm").removeClass("display-none");
+							$("#render_topic").addClass("cb-affirm");
 						}
 						else {
 							$("#publisher_product_description_topic").attr("value", "");
+							$("#render_topic").removeClass("cb-affirm");
 							$("#render_topic").html("* entry required");
-							$("#render_1_topic").removeClass("display-none");														
-							$("#render_2_topic").removeClass("cb-affirm").addClass("display-none");
 						}							
-						
-						$( "#box_profile_general" ).focus();													
-						// $("#render0").html(gon.name_first);	            		
-	            	  	// alert("success"); 
-	            		// if (data.url) {
-							// window.location.href = data.url;
-						// }
+						$("#focus_48").focus();
+						set_updated(data.updated);													
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
 		  		return false;
 			});
 	
+
+			$("#submit_lesson_plan_subject").on('click', function() {
+				var input_publisher_product_description_lesson_plan_subject = $("#publisher_product_description_lesson_plan_subject").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "lesson_plan_subject":"' + input_publisher_product_description_lesson_plan_subject + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_lesson_plan_subject',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.lesson_plan_subject.length > 0) {      		
+							$("#publisher_product_description_lesson_plan_subject").attr("value", data.lesson_plan_subject);
+							$("#render_lesson_plan_subject").html("");
+							$("#render_lesson_plan_subject").addClass("cb-affirm");
+						}
+						else {
+							$("#publisher_product_description_lesson_plan_subject").attr("value", "");
+							$("#render_lesson_plan_subject").removeClass("cb-affirm");
+							$("#render_lesson_plan_subject").html("* entry required");
+						}							
+						$("#focus_51").focus();
+						set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
 	
 			$("#submit_word_description").on('click', function() {
-
-			  	// var obj_list = ""; 
 				var input_publisher_product_description_word_description = $("#publisher_product_description_word_description").val();
 				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
 							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 							   ', "publisher_id":' + <%= @publisher_id %> + 
 							   ', "word_description":"' + input_publisher_product_description_word_description + 
 							   '"}';      
-				// var obj = '{' + input_name_first + '}';
 			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
 			  	$.ajax({
 			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
 			    	data : obj,
-			    	// url: '/Update-FirstName',
 			    	url: '/publisher_product_descriptions/update_word_description',			    	
-			    	// dataType: "js",
-			    	// contentType: "application/js",
 			    	dataType: "json",
 			    	contentType: "application/json",
 			    	processData: false,
 			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
 	            	},
 	            	success: function(data) {
-						// $("#render0").html("<#%= escape_javascript(render("publisher_profiles/test")) %#>");	            		
-						// $("#render0").html("<#%= @user_updated_name_first %#>");	            		
-						
 						if (data.word_description.length > 0) {      		
 							$("#publisher_product_description_word_description").attr("value", data.word_description);
-							$("#render_word_description").html("");
-							$("#render_1_word_description").addClass("display-none");							
-							$("#render_2_word_description").addClass("cb-affirm").removeClass("display-none");
+							$("#render_word_description_1").html("");
+							$("#render_word_description_2").addClass("cb-affirm");
 						}
 						else {
 							$("#publisher_product_description_word_description").attr("value", "");
-							$("#render_word_description").html("* entry required");
-							$("#render_1_word_description").removeClass("display-none");														
-							$("#render_2_word_description").removeClass("cb-affirm").addClass("display-none");
+							$("#render_word_description_1").html("* entry required");
+							$("#render_word_description_2").removeClass("cb-affirm");
 						}							
-						
-						$( "#box_profile_general" ).focus();													
-						// $("#render0").html(gon.name_first);	            		
-	            	  	// alert("success"); 
-	            		// if (data.url) {
-							// window.location.href = data.url;
-						// }
+						$("#box_profile_general").focus();	
+						set_updated(data.updated);												
 	            	},
 	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
 			  	});
@@ -1766,175 +1899,5 @@
 	</script>		
 
 
-<% if false %>			
-					<% if @publisher_product_description %>
-					 
-		                  <!-- 
-		                  -->					 		
-					 
-					 	<table>
-					 		<tr>
-					 			<td class="form-display-col1">
-					 				<span class="small pad-left-20">Created:</span>
-					 			</td>
-					 			<td class="form-display-col2">
-					 				<span class="small pad-left-20"><%= @publisher_product_description.created_at.to_s(:long) %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Updated:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.updated_at.to_s(:long) %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Type of Content or Curriculum:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.type_content %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Subject Category:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.subject_category %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">30 Word Description:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.word_description %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Product Name:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.name_product %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Core or Supplemental:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.core_supplemental %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Source URL:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.source_url %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Topic:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.topic %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Lesson Plan Subject:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.lesson_plan_subject %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Age Appropriate:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.age_appropriate %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Grade:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.grade %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Metadata:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.metadata %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Platform:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.platform %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Versions:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.versions %></span>
-					 			</td>
-					 		</tr>
-					 		<tr><td class="form-display-separator"></td><td></td></tr>					 		
-					 		<tr>
-					 			<td>
-					 				<span class="small pad-left-20">Pricing Model:</span>
-					 			</td>
-					 			<td>
-					 				<span class="small pad-left-20"><%= @publisher_product_description.pricing_model %></span>
-					 			</td>
-					 		</tr>
-					 	</table>
-						<div class="line-space-20"></div>
-						<div class="pad-left-20">
-							<span class="normal">
-								<%= button_to "Edit", {:action => 'edit', :id => @publisher_product_description.id } %>
-							</span>
-						</div>
-						
-					<% else %>
 
-						<div>
-							<span class="pad-left-20">&laquo;<%= link_to 'Add Product Information', new_publisher_product_description_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id), :class => 'links' %>&raquo;</span>
-						</div>
-			
-						<div class="line-space-20"></div>
-			
-						<div>
-							<span class="normal-red pad-left-20">No record for this product</span>
-						</div>
-				
-					<% end %>
-<% end %>
+
