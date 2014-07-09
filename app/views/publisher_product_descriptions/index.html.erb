@@ -1,6 +1,9 @@
 <% provide(:title, 'Publisher Products') %>
 
 
+  	<link rel="stylesheet" href="/assets/chosen.css">
+  	<script src="/assets/chosen.jquery.js" type="text/javascript"></script>
+
 
 	<style>
 		
@@ -212,29 +215,24 @@
 	<style>
 		
 		.input-home-profile {
-			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-family: Arial, Helvetica, sans-serif;
 			color: #888;
 			font-weight: 600;
 			font-size: 13px;
-			width: 260px;
+			width: 380px;
 			height: 24px;
 			border-style:solid;
 			border-radius: 0px;
 			background-color: #fff;
-			/*border-color: #478A3E;*/
-			border-color: #1F7C82;
+			border-color: #478A3E;
 			border-width: 1px;
-			padding-left: 0px;
+			padding-left: 4px;
 		}
 		.input-home-profile:focus,
 		.input-home-profile:active {
 			border-color: #478A3E;
 			color: #11520B;
-			/*color: #185C61;*/
 			font-weight: 600;
-			/*-webkit-box-shadow: 0 0 10px #88E87B;
-			-moz-box-shadow: 0 0 10px #88E87B;
-			box-shadow: 0 0 10px #88E87B;*/
 			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
 			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
 			        box-shadow: inset 0 0 1px 1px #3DC8D1;
@@ -246,14 +244,16 @@
 			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
 			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
 			        box-shadow: inset 0 0 1px 1px #3DC8D1;
-		}
+		}		
 		.input-home-profile:hover {
 			-webkit-box-shadow: inset 0 0 1px 1px #185C61;
 			   -moz-box-shadow: inset 0 0 1px 1px #185C61;
 			        box-shadow: inset 0 0 1px 1px #185C61;
 		}
+		
+		
 		.input-home-profile-short {
-			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-family: Arial, Helvetica, sans-serif;
 			color: #888;
 			font-weight: 600;
 			font-size: 13px;
@@ -297,9 +297,8 @@
 			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
 			        box-shadow: inset 0 0 1px 1px #3DC8D1;
 		}*/
-
 		.input-home-profile-exp {
-			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-family: Arial, Helvetica, sans-serif;
 			color: #404040;			
 			font-size: 16px;
 			width: 100px;
@@ -331,23 +330,25 @@
 			   -moz-box-shadow: inset 0 0 1px 1px #185C61;
 			        box-shadow: inset 0 0 1px 1px #185C61;
 		}*/
-		.input-label-catagory {
-			font-family: msyh, Arial, Helvetica, sans-serif;
+		.input-label-category {
+			font-family: Arial, Helvetica, sans-serif;
 			font-size: 14px;
-			/*color: #41B737;*/
 			color: #1F7C82;
 			width: 160px;
 			height: 18px;
 		}
+		.input-label-category:focus {
+			text-shadow: 1px 1px #aaa;
+		}
 		.input-label-home-profile {
-			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-family: Arial, Helvetica, sans-serif;
 			font-size: 14px;
 			color: #888;
 			width: 160px;
 			height: 18px;
 		}
 		.input-label-home-profile-a {
-			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-family: Arial, Helvetica, sans-serif;
 			font-size: 14px;
 			color: #F69010;
 		}
@@ -358,42 +359,6 @@
 			color: #F69010;
 			text-shadow: 1px 1px #34922C;
 		}
-		.signin-btn-home-profile {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #11520B;
-			height: 24px;
-			width:76px;
-			/*background-color: #D98D2D;*/
-			background-color: #F69010;			
-			border: 2px solid #11520B;
-	    	/*border-radius: 12px;*/
-	    	border-radius: 0 12px 0 12px;			
-			margin-top: 10px;
-			padding-bottom: 1px;
-			/*background: url("/assets/arrow-green-w100-h104.png") no-repeat 0px 0px;*/						
-		}
-		.signin-btn-home-profile:hover {
-			color: #fff;
-			background-color: #E3AC66;
-			text-shadow: 1px 1px #34922C;
-			cursor: pointer;
-		}
-		.signin-btn-home-profile:focus {
-			text-shadow: 1px 1px #34922C;			
-			box-shadow: 0 0 14px #eee;
-			outline: none;
-		}
-		.signin-btn-home-profile:select {
-			text-shadow: 1px 1px #34922C;						
-			box-shadow: 0 0 14px #eee;
-			outline: none;
-		}
-		.sign-btn-home-profile:select {
-			background: #CCC; 
-			color: #5F7A2A;
-		  	box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
-		}		
 		.space-home-profile {
 			height: 6px;
 		}
@@ -420,145 +385,31 @@
 		}
 		.form-home-profile-cell-1 {
 			display: table-cell;
-			width: 110px;
+			width: 90px;
 		}
 		.form-home-profile-cell-2 {
 			display: table-cell;
-			width: 240px;
-		}
-		.form-home-profile-cell-3 {
-			display: table-cell;
-			width: 180px;
-			height:16px;
+			width: 380px;
+			text-align: right;
 		}
 		.form-home-profile-cell-2a {
 			display: table-cell;
-			width: 310px;
-		}
-		.form-home-profile-cell-3a {
-			display: table-cell;
-			width: 110px;
-		}
-		.form-home-profile-cell-1-textarea {
-			display: table-cell;
-			width: 110px;
-		}
-		.form-home-profile-cell-2-textarea {
-			display: table-cell;
-			width: 350px;
-		}
-		.form-home-profile-cell-3-textarea {
+			width: 380px;
+		}		
+		.form-home-profile-cell-3 {
 			display: table-cell;
 			width: 60px;
-		}		
-		.form-home-profile-cell-1c {
-			display: table-cell;
-			width: 180px;
+			height:16px;
 		}
-		.form-home-profile-cell-2c {
-			display: table-cell;
-			width: 210px;
-		}
-		.form-home-profile-cell-3c {
-			display: table-cell;
-			width: 100px;
-		}		
 		.form-home-profile-cell-submit {
 			display: table-cell;
 			width: 500px;
 			text-align: center;
 		}
-		.form-home-profile-table-bd {
-			display: table;
-		}
-		.form-home-profile-row-bd {
-			display: table-row;
-		}
-		.form-home-profile-cell-bd-space {
-			display: table-cell;
-			width: 30px;
-		}
-		.form-home-profile-cell-bd {
-			display: table-cell;
-			width: 70px;
-		}
-		.form-home-profile-cell-month {
-			display: table-cell;
-			/*width: 104px;*/
-			width: 60px;
-		}
-		.form-home-profile-cell-day {
-			display: table-cell;
-			/*width: 84px;*/
-			width: 60px;
-		}
-		.form-home-profile-cell-year {
-			display: table-cell;
-			/*width: 110px;*/
-			width: 70px;			
-		}		
-		.form-home-profile-cell-bd-why {
-			display: table-cell;
-			width: 90px;
-			padding-left: 20px;
-		}		
-		.form-home-profile-table-gender {
-			display: table;
-		}
-		.form-home-profile-row-gender {
-			display: table-row;
-		}
-		.form-home-profile-cell-gender-space {
-			display: table-cell;
-			width: 30px;
-		}
-		.form-home-profile-cell-gender-1 {
-			display: table-cell;
-			width: 110px;
-		}		
-		.form-home-profile-cell-gender-2 {
-			display: table-cell;
-			width: 80px;
-		}		
-		.form-home-profile-cell-gender-3 {
-			display: table-cell;
-			width: 70px;
-			text-align: center;
-		}		
-		.form-home-profile-cell-gender-4 {
-			display: table-cell;
-			width: 70px;
-			text-align: center;			
-		}		
-		.form-home-profile-cell-gender-5 {
-			display: table-cell;
-			width: 100px;
-			padding-left: 20px;			
-		}		
 		.form-home-profile-cell-account-type {
 			display: table-cell;
 			width: 60px;
 		}		
-		/*.form-home-profile-table-gender {
-			display: table;
-		}
-		.form-home-profile-row-gender {
-			display: table-row;
-		}
-		.form-home-profile-cell-gender-1 {
-			display: table-cell;
-			width: 110px;			
-		}		
-		.form-home-profile-cell-gender-2 {
-			display: table-cell;
-		}
-		.form-home-profile-cell-gender-3 {
-			display: table-cell;
-		}
-		.form-home-profile-cell-gender-4 {
-			display: table-cell;
-		}*/
-		
 		.form-home-profile-cell-account-type-1 {
 			display: table-cell;
 			width: 70px;
@@ -566,64 +417,6 @@
 		.form-home-profile-row-space {
 			height: 4px;
 		}
-		/*.signup-btn-home-profile {
-		    background-color: #41B737;
-		    border: 3px groove #11520B;
-		    border-radius: 6px 6px 6px 6px;
-		    color: #FFFFFF;
-		    font-family: msyh,Arial,Helvetica,sans-serif;
-		    font-size: 14px;
-		    font-weight: bold;
-		    height: 35px;
-		    letter-spacing: 1.5px;
-		    width: 260px;
-		}
-		.signup-btn-home-profile:hover {
-			color: #fff;
-			background-color: #E3AC66;
-			text-shadow: 1px 1px #34922C;
-			cursor: pointer;
-		}
-		.signup-btn-home-profile:focus {
-			box-shadow: 0 0 10px #29731F;
-			text-shadow: 1px 1px #34922C;
-			outline: none;
-		}*/
-		/*.submit-btn-home-profile {
-		    background-color: #F69010;
-		    border-radius: 0 12px 0 12px;
-		    text-align: center;
-		    padding-bottom: 2px;
-		}*/
-		/*.submit-btn-home-profile {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #11520B;
-			height: 24px;
-			width:80px;*/
-			/*background-color: #D98D2D;*/
-			/*border: 2px solid #11520B;*/
-	    	/*border-radius: 12px;*/			
-			/*margin-top: 10px;
-			padding-top: 5px;
-			margin-left: 0px;
-		    background-color: #F69010;
-		    border-radius: 0 12px 0 12px;
-		}*/
-		/*.submit-btn-home-profile:hover {
-			color: #fff;
-			background-color: #E3AC66;
-			text-shadow: 1px 1px #34922C;
-			cursor: pointer;
-		}
-		.submit-btn-home-profile:focus {
-			box-shadow: 0 0 10px #29731F;
-			text-shadow: 1px 1px #34922C;			
-			outline: none;
-		}
-		.submit-btn-home-profile-password {
-			padding-top: 0px;			
-		}*/	
 			
 	</style>
 
@@ -667,14 +460,21 @@
 	<style>
 		
 		/*checkbox_tick_1.png*/
-		.cb-affirm {
+		.check-affirm {
 			background-color: #F8F8F8;
-		    /*border: 1px solid #41B737;*/
 			background-image: url("/assets/checkbox_tick_1.png");		
 			background-repeat: no-repeat;
-			background-position: 0px 0px;
+			background-position: 8px 0px;
 			top: 0px;
 		}	
+		.check-required {
+			background-color: #F8F8F8;
+			/*background-image: url("/assets/submit_form_asterisk_orange.png");*/
+			background-image: url("/assets/red_star_7.png");		
+			background-repeat: no-repeat;
+			background-position: 4px 0px;
+			top: 0px;			
+		}
 		.display-none {
 			display: none;
 		}
@@ -689,18 +489,18 @@
 		.render-1 {
 			/*width: 180px;*/
 			height: 16px;
-			display: table-cell;
+			/*display: table-cell;*/
 			font-family:Arial, Helvetica, sans-serif;
 			font-size: 14px;
 			color: #910303;    				
-			position: relative;
+			/*position: relative;*/
 		}
-		.render-2 {
+		/*.render-2 {
 			width: 30px;
 			height: 16px;
 			display: table-cell;
 			position: relative;	
-		}
+		}*/
 		.btn-submit-home-profile {
 			font-family:Arial, Helvetica, sans-serif;
 			font-size: 14px;		
@@ -836,6 +636,8 @@
 			width: 50px;
 			height: 15px;
 			display: inline-block;
+			margin-right: 244px;
+			text-align: left;
 		}
 		
 	</style>
@@ -902,11 +704,11 @@
 			/*font-family: Arial, Helvetica, sans-serif;
 			color: #404040;			
 			font-size: 14px;*/
-			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-family: Arial, Helvetica, sans-serif;
 			color: #888;
 			font-weight: 600;
 			font-size: 13px;
-			width: 340px;
+			width: 380px;
 			height: 120px;
 			border-style: solid;
 			border-radius: 0px;
@@ -971,37 +773,37 @@
 	<style>
 		
 		.profile-dropdown-1 {
-			width: 240px;
+			width: 380px;
 			z-index: 2;
 		}
 		.profile-dropdown-2 {
-			width: 240px;
+			width: 380px;
 			z-index: 1;
 		}
 		.profile-dropdown-3 {
-			width: 240px;
+			width: 380px;
 			z-index: 5;
 		}
 		.profile-dropdown-4 {
-			width: 240px;
+			width: 380px;
 			z-index: 4;
 		}
 		.profile-dropdown-5 {
-			width: 240px;
+			width: 380px;
 			z-index: 3;
 		}
 		.profile-dropdown-6 {
-			width: 240px;
+			width: 380px;
 			z-index: 2;
 		}
 		.profile-dropdown-7 {
-			width: 240px;
+			width: 380px;
 			z-index: 1;
 		}
 
 		.profile-dropdown {
 			background: #1F7C82 url('/assets/arrow_dropdown_2_white.png') no-repeat 98% 50%;
-			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-family: Arial, Helvetica, sans-serif;
 			font-size: 13px;
 			color: #fff;
 	    	border-radius: 0px;			
@@ -1014,16 +816,25 @@
 			outline: none;
 		}
 		.profile-dropdown:focus {
-			-webkit-box-shadow: inset 0 0 2px 2px #3DC8D1;
+			/*-webkit-box-shadow: inset 0 0 2px 2px #3DC8D1;
 			   -moz-box-shadow: inset 0 0 2px 2px #3DC8D1;
-			        box-shadow: inset 0 0 2px 2px #3DC8D1;
+			        box-shadow: inset 0 0 2px 2px #3DC8D1;*/
+			-webkit-box-shadow: 0 0 2px 2px #3DC8D1;
+			   -moz-box-shadow: 0 0 2px 2px #3DC8D1;
+			        box-shadow: 0 0 2px 2px #3DC8D1;
+			        
+		}
+		.profile-dropdown:focus:hover {
+			-webkit-box-shadow: 0 0 2px 2px #3DC8D1;
+			   -moz-box-shadow: 0 0 2px 2px #3DC8D1;
+			        box-shadow: 0 0 2px 2px #3DC8D1;
+			        
 		}
 		.profile-dropdown:hover {
-			-webkit-box-shadow: inset 0 0 2px 2px #185C61;
-			   -moz-box-shadow: inset 0 0 2px 2px #185C61;
-			        box-shadow: inset 0 0 2px 2px #185C61;
+			-webkit-box-shadow: 0 0 2px 2px #185C61;
+			   -moz-box-shadow: 0 0 2px 2px #185C61;
+			        box-shadow: 0 0 2px 2px #185C61;			        
 		}
-		
 		.profile-dropdown > .selected {
 		}
 		.profile-dropdown:focus {

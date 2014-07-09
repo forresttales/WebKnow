@@ -246,40 +246,40 @@
 								<div class="form-home-profile-table">						
 									<div class="form-home-profile-row">
 										<div class="form-home-profile-cell-1b">
-											<span class="input-label-catagory">Publisher Product ID:</span>
+											<span class="input-label-category">Publisher Product ID:</span>
 										</div>
 										<div class="form-home-profile-cell-2b">
-											<span class="input-label-catagory"><%= @publisher_product_id %></span>
+											<span class="input-label-category"><%= @publisher_product_id %></span>
 										</div>
 										<div class="form-home-profile-cell-3b">
 										</div>								
 									</div>
 									<div class="form-home-profile-row">
 										<div class="form-home-profile-cell-1b">
-											<span class="input-label-catagory">Publisher Product Description ID:</span>
+											<span class="input-label-category">Publisher Product Description ID:</span>
 										</div>
 										<div class="form-home-profile-cell-2b">
-											<span class="input-label-catagory"><%= @publisher_product_description_id %></span>
+											<span class="input-label-category"><%= @publisher_product_description_id %></span>
 										</div>
 										<div class="form-home-profile-cell-3b">
 										</div>								
 									</div>
 									<div class="form-home-profile-row">
 										<div class="form-home-profile-cell-1b">
-											<span class="input-label-catagory">Created:</span>
+											<span class="input-label-category">Created:</span>
 										</div>
 										<div class="form-home-profile-cell-2b">
-											<span class="input-label-catagory"><%= @publisher_product_description.created_at.to_s(:long) %></span>
+											<span class="input-label-category"><%= @publisher_product_description.created_at.to_s(:long) %></span>
 										</div>
 										<div class="form-home-profile-cell-3b">
 										</div>								
 									</div>
 									<div class="form-home-profile-row">
 										<div class="form-home-profile-cell-1b">
-											<span class="input-label-catagory">Updated:</span>
+											<span class="input-label-category">Updated:</span>
 										</div>
 										<div class="form-home-profile-cell-2b">
-											<span class="input-label-catagory" id="render_name_product_update"></span>
+											<span class="input-label-category" id="render_name_product_update"></span>
 										</div>
 										<div class="form-home-profile-cell-3b">
 										</div>								
@@ -288,29 +288,28 @@
 
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Product Name</span>
 								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span class="input-label-category" tabindex="9" autofocus>Product Name</span>
 								<div class="box-profile-space"></div>
 								
 								<div class="form-home-profile-table">						
 									<div class="form-home-profile-row">
 										<div class="form-home-profile-cell-1">
-											<label class="input-label-home-profile" for="publisher_name">Product Name</label>
+											<label class="input-label-home-profile" for=""></label>
 										</div>
 										<div class="form-home-profile-cell-2">
 											<% if @b_name_product %>
-											<input class="input-home-profile-short" id="publisher_product_description_name_product" name="publisher_product_description[name_product]" tabindex="10" type="text" value="<%= @publisher_product_description.name_product %>" placeholder="" />
+											<input class="input-home-profile" id="publisher_product_description_name_product" name="publisher_product_description[name_product]" tabindex="10" type="text" value="<%= @publisher_product_description.name_product %>" placeholder="" />
 											<% else %>
-											<input class="input-home-profile-short" id="publisher_product_description_name_product" name="publisher_product_description[name_product]" tabindex="10" type="text" value="" placeholder="Product Name" />
+											<input class="input-home-profile" id="publisher_product_description_name_product" name="publisher_product_description[name_product]" tabindex="10" type="text" value="" placeholder="Product Name" />
 											<% end %>
 										</div>
-										<div id="render_name_product" class="render-1"></div>
+										<div id="render_name_product" class="form-home-profile-cell-3 render-1"></div>
 									</div>							
 									<div class="form-home-profile-row">
 										<div class="form-home-profile-cell-1">
 										</div>
 										<div class="form-home-profile-cell-2">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
 											<div id="submit_name_product" class="btn-submit-home-profile" tabindex="11">Submit</div>
 										</div>
@@ -319,88 +318,84 @@
 									</div>
 								</div>
 								
-								<div id="focus_12" style="height: 0px;" tabindex="12"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Product Description</span>
 								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_42" tabindex="42" class="input-label-category">Versions</span>
+								<div class="box-profile-space"></div>
+								
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for=""></label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_versions %>
+											<input class="input-home-profile" id="publisher_product_description_versions" name="publisher_product_description[versions]" tabindex="43" type="text" value="<%= @publisher_product_description.versions %>" placeholder="" />
+											<% else %>
+											<input class="input-home-profile" id="publisher_product_description_versions" name="publisher_product_description[versions]" tabindex="43" type="text" value="" placeholder="Versions" />
+											<% end %>
+										</div>
+										<div id="render_versions" class="form-home-profile-cell-3 render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<div style="height:4px;"></div>
+											<div id="submit_versions" class="btn-submit-home-profile" tabindex="44">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_12" tabindex="12" class="input-label-category">Product Description</span>
 								<div class="box-profile-space"></div>
 								
 								<div class="form-home-profile-table">			
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1-textarea">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile-textarea" for=""></label>
 										</div>
-										<!-- <div class="form-home-profile-cell-2-textarea">
-											<div id="render_1_description" class="render-1"><span id="render_description" class="profile-label-text-no-entry">* entry required</span></div>
-										</div> -->
-										<div id="render_description_1" class="render-1" style="width: 350px;"></div>										
-										<div class="form-home-profile-cell-3-textarea">
-										</div>										
-									</div>							
-
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1-textarea">
-											<label class="input-label-home-profile-textarea" for="publisher_name">Description</label>
-										</div>
-										<div class="form-home-profile-cell-2-textarea">
+										<div class="form-home-profile-cell-2">
 											<% if @b_description %>
 											<textarea class="input-home-profile-textarea" id="publisher_product_description_description" name="publisher_product_description[description]" tabindex="13" type="text" value="" placeholder="" onkeyup="countChar_1(this)" ><%= @publisher_product_description.description %></textarea>
 											<% else %>
 											<textarea class="input-home-profile-textarea" id="publisher_product_description_description" name="publisher_product_description[description]" tabindex="13" type= value="text" placeholder="Product Description" onkeyup="countChar(this)" ></textarea>
 											<% end %>
 										</div>
-										<div id="render_description_2" class="render-1" style="width: 60px;"></div>
+										<div id="render_description" class="form-home-profile-cell-3 render-1"></div>
 									</div>							
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1-textarea">
+										<div class="form-home-profile-cell-1">
 										</div>
-										<div class="form-home-profile-cell-2-textarea">
+										<div class="form-home-profile-cell-2">
 											<div style="height:4px;"></div>
+											<div id="char_num_1" class="char-num">count</div>
 											<div id="submit_description" class="btn-submit-home-profile" tabindex="14">Submit</div>
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
-											<!-- <div id="submit_description" class="submit-btn-home-profile" tabindex="13" style="display: inline-block">Submit</div> -->
-											<div style="display: inline-block; width: 210px;"></div>
-											<div id="char_num_1" class="char-num" style="display: inline-block">count</div>
 										</div>
-										<div class="form-home-profile-cell-3-textarea">
+										<div class="form-home-profile-cell-3">
 										</div>								
 									</div>							
 								</div>
 								
-								<div id="focus_15" style="height: 0px;" tabindex="15"></div>								
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Content Type</span>
 								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_15" tabindex="15" class="input-label-category">Content Type</span>
 								<div class="box-profile-space"></div>
 
 								<div class="form-home-profile-table">			
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
-											<label class="input-label-home-profile" for="publisher_state">Content Type</label>
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
 										</div>		
-										<div class="form-home-profile-cell-2c">
-											<!-- <#% if @b_type_content_index %#> -->
-											
-											
-	
-											<!-- <select id="user_bd_month" name="user[bd_month]" data-template="#dropdown-data1" tabindex="">
-												<option value="0">-Month-</option>
-												<option value="1">Jan</option>
-												<option value="2">Feb</option>
-												<option value="3">Mar</option>
-												<option value="4">Apr</option>
-												<option value="5">May</option>
-												<option value="6">Jun</option>
-												<option value="7">Jul</option>
-												<option value="8">Aug</option>
-												<option value="9">Sep</option>
-												<option value="10">Oct</option>
-												<option value="11">Nov</option>
-												<option value="12">Dec</option>
-											</select> -->		
+										<div class="form-home-profile-cell-2a">
 
-											<div id="test1" onclick="select_click()">
 											<select id="publisher_product_description_type_content_index" name="publisher_product_description_type_content_index" data-template="#dropdown-data1">
 												<option value="0">-Select-</option>
 												<option value="1">App</option>
@@ -414,7 +409,6 @@
 												<option value="9">Tools</option>
 												<option value="10">Video</option>
 											</select>
-											</div>										
 									   		<!-- <#%= select_tag("publisher_product_description_type_content_index", options_for_select(
 									   				[['-Select-','0'],
 									   				['App','1'],
@@ -429,153 +423,65 @@
 									   				['Video','10']], 
 									   				@publisher_product_description.type_content_index ),
 									   				:class => 'sparkbox-custom' ) %#> -->
-											
-											<!-- <select id="publisher_product_description_type_content_index" name="publisher_product_description[type_content_index]" data-template="#dropdown-data3" value="<%= @publisher_product_description.type_content_index %>" tabindex="">
-												<option value="0">-Content Type-</option>
-												<option value="1" selected>App</option>
-												<option value="2">Lesson Plan Document</option>
-												<option value="3">Digital Curriculum</option>
-												<option value="4">eBook</option>
-												<option value="5">Game</option>
-												<option value="6">Software-School Management</option>
-												<option value="7">Software-Other</option>
-												<option value="8">Online Course</option>
-												<option value="9">Tools</option>
-												<option value="10">Video</option>
-											</select> -->		
-											<!-- <#% else %#> -->
-											<!-- <select id="publisher_product_description_type_content_index" name="publisher_product_description[type_content_index]" data-template="#dropdown-data3" value="" tabindex="">
-												<option value="0">-Content Type-</option>
-												<option value="1">App</option>
-												<option value="2">Lesson Plan Document</option>
-												<option value="3">Digital Curriculum</option>
-												<option value="4">eBook</option>
-												<option value="5">Game</option>
-												<option value="6">Software-School Management</option>
-												<option value="7">Software-Other</option>
-												<option value="8">Online Course</option>
-												<option value="9">Tools</option>
-												<option value="10">Video</option>
-											</select> -->		
-											<!-- <#% end %#> -->
 										</div>
-										<div id="render_type_content_index" class="render-1"></div>
+										<div id="render_type_content_index" class="form-home-profile-cell-3 render-1"></div>
 									</div>
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
+										<div class="form-home-profile-cell-1">
 										</div>
-										<div class="form-home-profile-cell-2c">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
+										<div class="form-home-profile-cell-2a">
 											<div style="height:4px;"></div>
 											<div id="submit_type_content_index" class="btn-submit-home-profile" tabindex="17">Submit</div>
-										</div>
-										<div class="form-home-profile-cell-3c">
-										</div>								
-									</div>							
-								</div>
-
-								<div id="focus_18" style="height: 0px;" tabindex="18"></div>
-								<div class="box-profile-space"></div>								
-								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Core or Supplemental</span>
-								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
-								<div class="box-profile-space"></div>
-
-								<div class="form-home-profile-table">			
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
-											<label class="input-label-home-profile" for="publisher_state">Core or Supplemental</label>
-										</div>		
-										<div class="form-home-profile-cell-2c">
-											
-									   		<!-- <#%= select_tag("publisher_product_description_core_supplemental_index", options_for_select(
-									   				[['-Core or Supplemental-','0'],
-									   				['Core','1'],
-									   				['Supplemental','2']], 
-									   				@publisher_product_description.core_supplemental_index), 
-									   				:class => 'sparkbox-custom', 
-									   				:tabindex => '16',
-									   				:html => {}) %#> -->
-											
-											<select id="publisher_product_description_core_supplemental_index" name="publisher_product_description[core_supplemental_index]" data-template="#dropdown-data2">
-												<option value="0">-Select-</option>
-												<option value="1">Core</option>
-												<option value="2">Supplemental</option>
-											</select>
-											
-									   		<!-- <#%= select_tag("publisher_product_description_core_supplemental_index", options_for_select(
-									   				[['-Select-','0'],
-									   				['Core','1'],
-									   				['Supplemental','2']], 
-									   				@publisher_product_description.core_supplemental_index), 
-									   				:class => 'sparkbox-custom',
-									   				:tabindex => '16', 
-									   				:html => {}) %#> -->
-											
-										</div>
-										<div id="render_core_supplemental_index" class="render-1"></div>
-									</div>
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
-										</div>
-										<div class="form-home-profile-cell-2c">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
-											<div style="height:4px;"></div>
-											<div id="submit_core_supplemental_index" class="btn-submit-home-profile" tabindex="20">Submit</div>
-										</div>
-										<div class="form-home-profile-cell-3c">
-										</div>								
-									</div>							
-								</div>
-
-								<div id="focus_21" style="height: 0px;" tabindex="21"></div>
-								<div class="box-profile-space"></div>								
-								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Source URL</span>
-								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
-								<div class="box-profile-space"></div>
-								
-								<div class="form-home-profile-table">						
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1">
-											<label class="input-label-home-profile" for="publisher_name">Source URL</label>
-										</div>
-										<div class="form-home-profile-cell-2">
-											<% if @b_source_url %>
-											<input class="input-home-profile-short" id="publisher_product_description_source_url" name="publisher_product_description[source_url]" tabindex="22" type="text" value="<%= @publisher_product_description.source_url %>" placeholder="" />
-											<% else %>
-											<input class="input-home-profile-short" id="publisher_product_description_source_url" name="publisher_product_description[source_url]" tabindex="22" type="text" value="" placeholder="www.MyCompany.com" />
-											<% end %>
-										</div>
-										<div id="render_source_url" class="render-1"></div>
-									</div>							
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1">
-										</div>
-										<div class="form-home-profile-cell-2">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
-											<div style="height:4px;"></div>
-											<div id="submit_source_url" class="btn-submit-home-profile" tabindex="23">Submit</div>
 										</div>
 										<div class="form-home-profile-cell-3">
 										</div>								
 									</div>							
 								</div>
 
-								<div id="focus_24" style="height: 0px;" tabindex="24"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Subject Category</span>
 								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_18" tabindex="18" class="input-label-category">Core or Supplemental</span>
 								<div class="box-profile-space"></div>
 
 								<div class="form-home-profile-table">			
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
-											<label class="input-label-home-profile" for="publisher_state">Subject Category</label>
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
 										</div>		
-										<div class="form-home-profile-cell-2c">
-											
+										<div class="form-home-profile-cell-2a">
+											<select id="publisher_product_description_core_supplemental_index" name="publisher_product_description[core_supplemental_index]" data-template="#dropdown-data2">
+												<option value="0">-Select-</option>
+												<option value="1">Core</option>
+												<option value="2">Supplemental</option>
+											</select>
+										</div>
+										<div id="render_core_supplemental_index" class="form-home-profile-cell-3 render-1"></div>
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2a">
+											<div style="height:4px;"></div>
+											<div id="submit_core_supplemental_index" class="btn-submit-home-profile" tabindex="20">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_24" tabindex="24" class="input-label-category">Subject Category</span>
+								<div class="box-profile-space"></div>
+
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
+										</div>		
+										<div class="form-home-profile-cell-2a">
 											<select id="publisher_product_description_subject_category_index" name="publisher_product_description[subject_category_index]" data-template="#dropdown-data3">
 												<option value="0">-Select-</option>
 												<option value="1">Language Arts</option>
@@ -586,100 +492,89 @@
 												<option value="6">Professional Development</option>
 												<option value="7">Extra-Curricular</option>
 											</select>
-											
-									   		<!-- <#%= select_tag("publisher_product_description_subject_category_index", options_for_select(
-									   				[['-Select-','0'],
-									   				['Language Arts', '1'],
-									   				['Science','2'],
-									   				['Music & Drama','3'],
-									   				['Physical Educations','4'],
-									   				['Arts','5'],
-									   				['Professional Development','6'],
-									   				['Extra-Curricular','7']],
-									   				@publisher_product_description.subject_category_index), 
-									   				:class => 'sparkbox-custom', 
-									   				:tabindex => "20",
-									   				:html => {}) %#> -->
-											
 										</div>
-										<div id="render_subject_category_index" class="render-1"></div>
+										<div id="render_subject_category_index" class="form-home-profile-cell-3 render-1"></div>
 									</div>
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
+										<div class="form-home-profile-cell-1">
 										</div>
-										<div class="form-home-profile-cell-2c">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
+										<div class="form-home-profile-cell-2a">
 											<div style="height:4px;"></div>
 											<div id="submit_subject_category_index" class="btn-submit-home-profile" tabindex="26">Submit</div>
 										</div>
-										<div class="form-home-profile-cell-3c">
+										<div class="form-home-profile-cell-3">
 										</div>								
 									</div>							
 								</div>
 
-								<div id="focus_27" style="height: 0px;" tabindex="27"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Age Appropriate</span>
 								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_27" tabindex="27" class="input-label-category">Age Appropriate</span>
 								<div class="box-profile-space"></div>
 
 								<div class="form-home-profile-table">			
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
-											<label class="input-label-home-profile" for="publisher_state">Age Appropriate</label>
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
 										</div>		
-										<div class="form-home-profile-cell-2c">
+										<div class="form-home-profile-cell-2a">
 											
-											<select id="publisher_product_description_age_appropriate_index" name="publisher_product_description[age_appropriate_index]" data-template="#dropdown-data4">
+							          		<select id="publisher_product_description_age_appropriate_index" name="publisher_product_description[age_appropriate_index]" data-placeholder="-Select-" class="chosen-select" multiple style="width:380px;" tabindex="">
+							            		<option value="0">-Select-</option>
+												<option value="1">2 to 5</option>
+												<option value="2">5 to 10</option>
+												<option value="3">10 to 15</option>
+												<option value="4">15 50 18</option>
+							          		</select>
+											
+										  	<script type="text/javascript">
+										    	var config = {
+										      	'.chosen-select'           : {},
+										      	'.chosen-select-deselect'  : {allow_single_deselect:true},
+										      	'.chosen-select-no-single' : {disable_search_threshold:10},
+										      	'.chosen-select-no-results': {no_results_text:'-nothing found-'},
+										      	'.chosen-select-width'     : {width:"95%"}
+										    	}
+										    	for (var selector in config) {
+										      		$(selector).chosen(config[selector]);
+										    	}
+										  	</script>
+											
+											<!-- <select id="publisher_product_description_age_appropriate_index" name="publisher_product_description[age_appropriate_index]" data-template="#dropdown-data4">
 												<option value="0">-Select-</option>
 												<option value="1">2 to 5</option>
 												<option value="2">5 to 10</option>
 												<option value="3">10 to 15</option>
 												<option value="4">15 50 18</option>
-											</select>
-											
-									   		<!-- <#%= select_tag("publisher_product_description_age_appropriate_index", options_for_select(
-									   				[['-Select-','0'],
-									   				['2 to 5', '1'],
-									   				['5 to 10','2'],
-									   				['10 to 15','3'],
-									   				['15 to 18','4']],
-									   				@publisher_product_description.age_appropriate_index), 
-									   				:class => 'sparkbox-custom', 
-									   				:tabindex => "22",
-									   				:html => {}) %#> -->
-											
+											</select> -->
 										</div>
-										<div id="render_age_appropriate_index" class="render-1"></div>
+										<div id="render_age_appropriate_index" class="form-home-profile-cell-3 render-1"></div>
 									</div>
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
+										<div class="form-home-profile-cell-1">
 										</div>
-										<div class="form-home-profile-cell-2c">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
+										<div class="form-home-profile-cell-2a">
 											<div style="height:4px;"></div>
 											<div id="submit_age_appropriate_index" class="btn-submit-home-profile" tabindex="29">Submit</div>
 										</div>
-										<div class="form-home-profile-cell-3c">
+										<div class="form-home-profile-cell-3">
 										</div>								
 									</div>							
 								</div>
 
-								<div id="focus_30" style="height: 0px;" tabindex="30"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Grade</span>
 								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_30" tabindex="30" class="input-label-category">Grade</span>
 								<div class="box-profile-space"></div>
 
 								<div class="form-home-profile-table">			
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
-											<label class="input-label-home-profile" for="publisher_state">Grade</label>
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
 										</div>		
-										<div class="form-home-profile-cell-2c">
-											
+										<div class="form-home-profile-cell-2a">
 											<select id="publisher_product_description_grade_index" name="publisher_product_description[grade_index]" data-template="#dropdown-data5">
 												<option value="0">-Select-</option>
 												<option value="1">Grade 1</option>
@@ -688,48 +583,33 @@
 												<option value="4">Grade 4</option>
 
 											</select>
-											
-									   		<!-- <#%= select_tag("publisher_product_description_grade_index", options_for_select(
-									   				[['-Select-','0'],
-									   				['grade 1', '1'],
-									   				['grade 2','2'],
-									   				['grade 3','3'],
-									   				['grade 4','4']],
-									   				@publisher_product_description.grade_index), 
-									   				:class => 'sparkbox-custom', 
-									   				:tabindex => "24",
-									   				:html => {}) %#> -->
-											
 										</div>
-										<div id="render_grade_index" class="render-1"></div>
+										<div id="render_grade_index" class="form-home-profile-cell-3 render-1"></div>
 									</div>
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
+										<div class="form-home-profile-cell-1">
 										</div>
-										<div class="form-home-profile-cell-2c">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
+										<div class="form-home-profile-cell-2a">
 											<div style="height:4px;"></div>
 											<div id="submit_grade_index" class="btn-submit-home-profile" tabindex="32">Submit</div>
 										</div>
-										<div class="form-home-profile-cell-3c">
+										<div class="form-home-profile-cell-3">
 										</div>								
 									</div>							
 								</div>
 
-								<div id="focus_33" style="height: 0px;" tabindex="33"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Platform</span>
 								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_33" tabindex="33" class="input-label-category">Platform</span>
 								<div class="box-profile-space"></div>
 
 								<div class="form-home-profile-table">			
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
-											<label class="input-label-home-profile" for="publisher_state">Platform</label>
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
 										</div>		
-										<div class="form-home-profile-cell-2c">
-											
+										<div class="form-home-profile-cell-2a">
 											<select id="publisher_product_description_platform_index" name="publisher_product_description[platform_index]" data-template="#dropdown-data6">
 												<option value="0">-Select-</option>
 												<option value="1">Apple iOS</option>
@@ -741,192 +621,45 @@
 												<option value="7">Nook</option>
 												<option value="8">Other</option>
 											</select>
-											
-									   		<!-- <#%= select_tag("publisher_product_description_platform_index", options_for_select(
-									   				[['-Select-','0'],
-									   				['Apple iOS', '1'],
-									   				['Kindle Android','2'],
-									   				['Google Android','3'],
-									   				['Linux','4'],
-									   				['Microsoft','5'],
-									   				['HTML','6'],
-									   				['Nook','7'],								   				
-									   				['Other','8']],
-									   				@publisher_product_description.platform_index), 
-									   				:class => 'sparkbox-custom',
-									   				:tabindex => "26",
-									   				:html => {}) %#> -->
-											
 										</div>
-										<div id="render_platform_index" class="render-1"></div>
+										<div id="render_platform_index" class="form-home-profile-cell-3 render-1"></div>
 									</div>
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
+										<div class="form-home-profile-cell-1">
 										</div>
-										<div class="form-home-profile-cell-2c">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
+										<div class="form-home-profile-cell-2a">
 											<div style="height:4px;"></div>
 											<div id="submit_platform_index" class="btn-submit-home-profile" tabindex="35">Submit</div>
 										</div>
-										<div class="form-home-profile-cell-3c">
-										</div>								
-									</div>							
-								</div>
-
-								<div id="focus_36" style="height: 0px;" tabindex="36"></div>
-								<div class="box-profile-space"></div>								
-								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Pricing Model</span>
-								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
-								<div class="box-profile-space"></div>
-
-								<div class="form-home-profile-table">			
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
-											<label class="input-label-home-profile" for="publisher_state">Pricing Model</label>
-										</div>		
-										<div class="form-home-profile-cell-2c">
-											
-											<select id="publisher_product_description_pricing_model_index" name="publisher_product_description[pricing_model_index]" data-template="#dropdown-data7">
-												<option value="0">-Select-</option>
-												<option value="1">Free</option>
-												<option value="2">Premium</option>
-											</select>
-											
-									   		<!-- <#%= select_tag("publisher_product_description_pricing_model_index", options_for_select(
-									   				[['-Select-','0'],
-									   				['Free', '1'],
-									   				['Premium','2']],
-									   				@publisher_product_description.pricing_model_index), 
-									   				:class => 'sparkbox-custom',
-									   				:tabindex => "28", 
-									   				:html => {}) %#> -->
-											
-										</div>
-										<div id="render_pricing_model_index" class="render-1"></div>
-									</div>
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1c">
-										</div>
-										<div class="form-home-profile-cell-2c">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
-											<div style="height:4px;"></div>
-											<div id="submit_pricing_model_index" class="btn-submit-home-profile" tabindex="38">Submit</div>
-										</div>
-										<div class="form-home-profile-cell-3c">
-										</div>								
-									</div>							
-								</div>
-
-								<div id="focus_39" style="height: 0px;" tabindex="39"></div>
-								<div class="box-profile-space"></div>								
-								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Price</span>
-								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
-								<div class="box-profile-space"></div>
-								
-								<div class="form-home-profile-table">						
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1">
-											<label class="input-label-home-profile" for="publisher_name">Price</label>
-											<!-- <div style="display: inline-block; float: right;"><span class="input-label-home-profile">$</span></div> -->
-										</div>
-										<div class="form-home-profile-cell-2">
-											<% if @b_price %>
-											<input class="input-home-profile-short" id="publisher_product_description_price" name="publisher_product_description[price]" tabindex="40" type="text" value="<%= @publisher_product_description.price %>" placeholder="" />
-											<% else %>
-											<input class="input-home-profile-short" id="publisher_product_description_price" name="publisher_product_description[price]" tabindex="40" type="text" value="" placeholder="Price" />
-											<% end %>
-										</div>
-										<div id="render_price" class="render-1"></div>
-									</div>							
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1">
-										</div>
-										<div class="form-home-profile-cell-2">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
-											<div style="height:4px;"></div>
-											<div id="submit_price" class="btn-submit-home-profile" tabindex="41">Submit</div>
-										</div>
-										<div class="form-home-profile-cell-3">
-										</div>								
-									</div>							
-								</div>
-								<div style="clear:both;"></div>
-								
-						<!-- if (data.price.length > 0) {      		
-							$("#publisher_product_description_price").attr("value", data.price);
-							$("#render_price").html("");
-							$("#render_1_price").addClass("display-none");							
-							$("#render_2_price").addClass("cb-affirm").removeClass("display-none");
-						}
-						else {
-							$("#publisher_product_description_price").attr("value", "");
-							$("#render_price").html("* entry required");
-							$("#render_1_price").removeClass("display-none");														
-							$("#render_2_price").removeClass("cb-affirm").addClass("display-none");
-						} -->							
-
-								<div id="focus_42" style="height: 0px;" tabindex="42"></div>
-								<div class="box-profile-space"></div>								
-								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Versions</span>
-								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
-								<div class="box-profile-space"></div>
-								
-								<div class="form-home-profile-table">						
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1">
-											<label class="input-label-home-profile" for="publisher_name">Versions</label>
-										</div>
-										<div class="form-home-profile-cell-2">
-											<% if @b_versions %>
-											<input class="input-home-profile-short" id="publisher_product_description_versions" name="publisher_product_description[versions]" tabindex="43" type="text" value="<%= @publisher_product_description.versions %>" placeholder="" />
-											<% else %>
-											<input class="input-home-profile-short" id="publisher_product_description_versions" name="publisher_product_description[versions]" tabindex="43" type="text" value="" placeholder="Versions" />
-											<% end %>
-										</div>
-										<div id="render_versions" class="render-1"></div>
-									</div>							
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1">
-										</div>
-										<div class="form-home-profile-cell-2">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
-											<div style="height:4px;"></div>
-											<div id="submit_versions" class="btn-submit-home-profile" tabindex="44">Submit</div>
-										</div>
 										<div class="form-home-profile-cell-3">
 										</div>								
 									</div>							
 								</div>
 
-								<div id="focus_45" style="height: 0px;" tabindex="45"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Topic</span>
 								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_45" tabindex="45" class="input-label-category">Topic</span>
 								<div class="box-profile-space"></div>
 								
 								<div class="form-home-profile-table">						
 									<div class="form-home-profile-row">
 										<div class="form-home-profile-cell-1">
-											<label class="input-label-home-profile" for="publisher_name">Topic</label>
+											<label class="input-label-home-profile" for=""></label>
 										</div>
 										<div class="form-home-profile-cell-2">
 											<% if @b_topic %>
-											<input class="input-home-profile-short" id="publisher_product_description_topic" name="publisher_product_description[topic]" tabindex="46" type="text" value="<%= @publisher_product_description.topic %>" placeholder="" />
+											<input class="input-home-profile" id="publisher_product_description_topic" name="publisher_product_description[topic]" tabindex="46" type="text" value="<%= @publisher_product_description.topic %>" placeholder="" />
 											<% else %>
-											<input class="input-home-profile-short" id="publisher_product_description_topic" name="publisher_product_description[topic]" tabindex="46" type="text" value="" placeholder="Topic" />
+											<input class="input-home-profile" id="publisher_product_description_topic" name="publisher_product_description[topic]" tabindex="46" type="text" value="" placeholder="Topic" />
 											<% end %>
 										</div>
-										<div id="render_topic" class="render-1"></div>
+										<div id="render_topic" class="form-home-profile-cell-3 render-1"></div>
 									</div>							
 									<div class="form-home-profile-row">
 										<div class="form-home-profile-cell-1">
 										</div>
 										<div class="form-home-profile-cell-2">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
 											<div id="submit_topic" class="btn-submit-home-profile" tabindex="47">Submit</div>
 										</div>
@@ -935,32 +668,30 @@
 									</div>							
 								</div>
 
-								<div id="focus_48" style="height: 0px;" tabindex="45"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Lesson Plan Subject</span>
 								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_48" tabindex="48" class="input-label-category">Lesson Plan Subject</span>
 								<div class="box-profile-space"></div>
 								
 								<div class="form-home-profile-table">						
 									<div class="form-home-profile-row">
 										<div class="form-home-profile-cell-1">
-											<label class="input-label-home-profile" for="publisher_name">Lesson Plan Subject</label>
+											<label class="input-label-home-profile" for=""></label>
 										</div>
 										<div class="form-home-profile-cell-2">
 											<% if @b_topic %>
-											<input class="input-home-profile-short" id="publisher_product_description_lesson_plan_subject" name="publisher_product_description[lesson_plan_subject]" tabindex="49" type="text" value="<%= @publisher_product_description.lesson_plan_subject %>" placeholder="" />
+											<input class="input-home-profile" id="publisher_product_description_lesson_plan_subject" name="publisher_product_description[lesson_plan_subject]" tabindex="49" type="text" value="<%= @publisher_product_description.lesson_plan_subject %>" placeholder="" />
 											<% else %>
-											<input class="input-home-profile-short" id="publisher_product_description_lesson_plan_subject" name="publisher_product_description[lesson_plan_subject]" tabindex="49" type="text" value="" placeholder="Lesson Plan Subject" />
+											<input class="input-home-profile" id="publisher_product_description_lesson_plan_subject" name="publisher_product_description[lesson_plan_subject]" tabindex="49" type="text" value="" placeholder="Lesson Plan Subject" />
 											<% end %>
 										</div>
-										<div id="render_lesson_plan_subject" class="render-1"></div>
+										<div id="render_lesson_plan_subject" class="form-home-profile-cell-3 render-1"></div>
 									</div>							
 									<div class="form-home-profile-row">
 										<div class="form-home-profile-cell-1">
 										</div>
 										<div class="form-home-profile-cell-2">
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
 											<div style="height:4px;"></div>
 											<div id="submit_lesson_plan_subject" class="btn-submit-home-profile" tabindex="50">Submit</div>
 										</div>
@@ -969,50 +700,131 @@
 									</div>							
 								</div>
 
-								<div id="focus_51" style="height: 0px;" tabindex="48"></div>
 								<div class="box-profile-space"></div>								
 								<div class="box-profile-space"></div>
-								<span class="input-label-catagory">Additional Description</span>
 								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_51" tabindex="51" class="input-label-category">Additional Description</span>
 								<div class="box-profile-space"></div>
 
 								<div class="form-home-profile-table">			
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1-textarea">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile-textarea" for=""></label>
 										</div>
-										<!-- <div class="form-home-profile-cell-2-textarea">
-											<div id="render_1_description" class="render-1"><span id="render_description" class="profile-label-text-no-entry">* entry required</span></div>
-										</div> -->
-										<div id="render_word_description_1" class="render-1" style="width: 350px;"></div>										
-										<div class="form-home-profile-cell-3-textarea">
-										</div>										
-									</div>							
-
-									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1-textarea">
-											<label class="input-label-home-profile-textarea" for="publisher_name">Description</label>
-										</div>
-										<div class="form-home-profile-cell-2-textarea">
+										<div class="form-home-profile-cell-2">
 											<% if @b_word_description %>
-											<textarea class="input-home-profile-textarea" id="publisher_product_description_word_description" name="publisher_product_description[word_description]" tabindex="52" type="text" value="" placeholder="" onkeyup="countChar_2(this)" ><%= @publisher_product_description.word_description %></textarea>
+											<textarea class="input-home-profile-textarea" id="publisher_product_description_word_description" name="publisher_product_description[word_description]" tabindex="52" type="text" value="" placeholder="" onkeyup="countChar_1(this)" ><%= @publisher_product_description.word_description %></textarea>
 											<% else %>
 											<textarea class="input-home-profile-textarea" id="publisher_product_description_word_description" name="publisher_product_description[word_description]" tabindex="52" type= value="text" placeholder="Product Description" onkeyup="countChar(this)" ></textarea>
 											<% end %>
 										</div>
-										<div id="render_word_description_2" class="render-1" style="width: 60px;"></div>
+										<div id="render_word_description" class="form-home-profile-cell-3 render-1"></div>
 									</div>							
 									<div class="form-home-profile-row">
-										<div class="form-home-profile-cell-1-textarea">
+										<div class="form-home-profile-cell-1">
 										</div>
-										<div class="form-home-profile-cell-2-textarea">
+										<div class="form-home-profile-cell-2">
 											<div style="height:4px;"></div>
+											<div id="char_num_1" class="char-num">count</div>
 											<div id="submit_word_description" class="btn-submit-home-profile" tabindex="53">Submit</div>
-											<!-- <input class="submit-btn-home-profile" name="submit-name-first" tabindex="" type="button" value="Change" /> -->
-											<!-- <div id="submit_description" class="submit-btn-home-profile" tabindex="13" style="display: inline-block">Submit</div> -->
-											<div style="display: inline-block; width: 210px;"></div>
-											<div id="char_num_2" class="char-num" style="display: inline-block">count</div>
 										</div>
-										<div class="form-home-profile-cell-3-textarea">
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+								
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_21" tabindex="21" class="input-label-category">Source URL</span>
+								<div class="box-profile-space"></div>
+								
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for=""></label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_source_url %>
+											<input class="input-home-profile" id="publisher_product_description_source_url" name="publisher_product_description[source_url]" tabindex="22" type="text" value="<%= @publisher_product_description.source_url %>" placeholder="" />
+											<% else %>
+											<input class="input-home-profile" id="publisher_product_description_source_url" name="publisher_product_description[source_url]" tabindex="22" type="text" value="" placeholder="www.MyCompany.com" />
+											<% end %>
+										</div>
+										<div id="render_source_url" class="render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<div style="height:4px;"></div>
+											<div id="submit_source_url" class="btn-submit-home-profile" tabindex="23">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+								
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_36" tabindex="36" class="input-label-category">Pricing Model</span>
+								<div class="box-profile-space"></div>
+
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
+										</div>		
+										<div class="form-home-profile-cell-2a">
+											<select id="publisher_product_description_pricing_model_index" name="publisher_product_description[pricing_model_index]" data-template="#dropdown-data7">
+												<option value="0">-Select-</option>
+												<option value="1">Free</option>
+												<option value="2">Premium</option>
+											</select>
+										</div>
+										<div id="render_pricing_model_index" class="form-home-profile-cell-3 render-1"></div>
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2a">
+											<div style="height:4px;"></div>
+											<div id="submit_pricing_model_index" class="btn-submit-home-profile" tabindex="38">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_39" tabindex="39" class="input-label-category">Price</span>
+								<div class="box-profile-space"></div>
+								
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for=""></label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_price %>
+											<input class="input-home-profile" id="publisher_product_description_price" name="publisher_product_description[price]" tabindex="40" type="text" value="<%= @publisher_product_description.price %>" placeholder="" />
+											<% else %>
+											<input class="input-home-profile" id="publisher_product_description_price" name="publisher_product_description[price]" tabindex="40" type="text" value="" placeholder="Price" />
+											<% end %>
+										</div>
+										<div id="render_price" class="form-home-profile-cell-3 render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<div style="height:4px;"></div>
+											<div id="submit_price" class="btn-submit-home-profile" tabindex="41">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
 										</div>								
 									</div>							
 								</div>
@@ -1115,91 +927,91 @@
 				$("#render_name_product").html("");
 			}
 			else {
-				$("#render_name_product").html("* entry required");
+				$("#render_name_product").addClass("check-required");
 			}
 			if(<%= @b_description %>) {
 				$("#render_description_1").html("");
 			}
 			else {
-				$("#render_description_1").html("* entry required");
+				$("#render_description_1").addClass("check-required");
 			}
 			if(<%= @b_type_content_index %>) {
 				$("#render_type_content_index").html("");
 			}
 			else {
-				$("#render_type_content_index").html("* entry required");
+				$("#render_type_content_index").addClass("check-required");
 			}
 			if(<%= @b_core_supplemental_index %>) {
 				$("#render_core_supplemental_index").html("");
 			}
 			else {
-				$("#render_core_supplemental_index").html("* entry required");
+				$("#render_core_supplemental_index").addClass("check-required");
 			}
 			if(<%= @b_source_url %>) {
 				$("#render_source_url").html("");
 			}
 			else {
-				$("#render_source_url").html("* entry required");
+				$("#render_source_url").addClass("check-required");
 			}
 			if(<%= @b_subject_category_index %>) {
 				$("#render_subject_category_index").html("");
 			}
 			else {
-				$("#render_subject_category_index").html("* entry required");
+				$("#render_subject_category_index").addClass("check-required");
 			}	
 			if(<%= @b_age_appropriate_index %>) {
 				$("#render_age_appropriate_index").html("");
 			}
 			else {
-				$("#render_age_appropriate_index").html("* entry required");
+				$("#render_age_appropriate_index").addClass("check-required");
 			}
 			if(<%= @b_grade_index %>) {
 				$("#render_grade_index").html("");
 			}
 			else {
-				$("#render_grade_index").html("* entry required");
+				$("#render_grade_index").addClass("check-required");
 			}
 			if(<%= @b_platform_index %>) {
 				$("#render_platform_index").html("");
 			}
 			else {
-				$("#render_platform_index").html("* entry required");
+				$("#render_platform_index").addClass("check-required");
 			}
 			if(<%= @b_pricing_model_index %>) {
 				$("#render_pricing_model_index").html("");
 			}
 			else {
-				$("#render_pricing_model_index").html("* entry required");
+				$("#render_pricing_model_index").addClass("check-required");
 			}
 			if(<%= @b_price %>) {
 				$("#render_price").html("");
 			}
 			else {
-				$("#render_price").html("* entry required");
+				$("#render_price").addClass("check-required");
 			}
 			if(<%= @b_versions %>) {
 				$("#render_versions").html("");
 			}
 			else {
-				$("#render_versions").html("* entry required");
+				$("#render_versions").addClass("check-required");
 			}
 			if(<%= @b_topic %>) {
 				$("#render_topic").html("");
 			}
 			else {
-				$("#render_topic").html("* entry required");
+				$("#render_topic").addClass("check-required");
 			}
 			if(<%= @b_lesson_plan_subject %>) {
 				$("#render_lesson_plan_subject").html("");
 			}
 			else {
-				$("#render_lesson_plan_subject").html("* entry required");
+				$("#render_lesson_plan_subject").addClass("check-required");
 			}
 			if(<%= @b_word_description %>) {
 				$("#render_word_description_1").html("");
 			}
 			else {
-				$("#render_word_description_1").html("* entry required");
+				$("#render_word_description_1").addClass("check-required");
 			}
 
 
@@ -1355,13 +1167,13 @@
 						// $("#render0").html("<#%= escape_javascript(render("publisher_profiles/test")) %#>");	            		
 						if (data.name_product.length > 0) {      		
 							$("#publisher_product_description_name_product").attr("value", data.name_product);
-							$("#render_name_product").html("");
-							$("#render_name_product").addClass("cb-affirm");							
+							$("#render_name_product").removeClass("check-required");
+							$("#render_name_product").addClass("check-affirm");							
 						}
 						else {
 							$("#publisher_product_description_name_product").attr("value", "");
-							$("#render_name_product").html("* entry required");
-							$("#render_name_product").removeClass("cb-affirm");														
+							$("#render_name_product").addClass("check-required");
+							$("#render_name_product").removeClass("check-affirm");														
 						}							
 						$("#focus_12").focus();
 						set_updated(data.updated);	
@@ -1395,13 +1207,13 @@
 	            	success: function(data) {
 						if (data.description.length > 0) {      		
 							$("#publisher_product_description_description").attr("value", data.description);
-							$("#render_description_1").html("");
-							$("#render_description_2").addClass("cb-affirm");
+							$("#render_description").removeClass("check-required");
+							$("#render_description").addClass("check-affirm");
 						}
 						else {
 							$("#publisher_product_description_description").attr("value", "");
-							$("#render_description_1").html("* entry required");
-							$("#render_description_2").removeClass("cb-affirm");
+							$("#render_description").addClass("check-required");
+							$("#render_description").removeClass("check-affirm");
 						}							
 						$("#focus_15").focus();
 						set_updated(data.updated);													
@@ -1431,12 +1243,12 @@
 	            	},
 	            	success: function(data) {
 						if (data.type_content_index == '0') {						
-							$("#render_type_content_index").removeClass("cb-affirm");
-							$("#render_type_content_index").html("* entry required");
+							$("#render_type_content_index").removeClass("check-affirm");
+							$("#render_type_content_index").addClass("check-required");
 						}
 						else {
-							$("#render_type_content_index").html("");
-							$("#render_type_content_index").addClass("cb-affirm");
+							$("#render_type_content_index").removeClass("check-required");
+							$("#render_type_content_index").addClass("check-affirm");
 						}
 						$("#focus_18").focus();
 						set_updated(data.updated);												
@@ -1467,12 +1279,12 @@
 	            	},
 	            	success: function(data) {
 						if (data.core_supplemental_index == '0') {						
-							$("#render_core_supplemental_index").removeClass("cb-affirm");
-							$("#render_core_supplemental_index").html("* entry required");
+							$("#render_core_supplemental_index").removeClass("check-affirm");
+							$("#render_core_supplemental_index").addClass("check-required");
 						}
 						else {
-							$("#render_core_supplemental_index").html("");
-							$("#render_core_supplemental_index").addClass("cb-affirm");
+							$("#render_core_supplemental_index").removeClass("check-required");
+							$("#render_core_supplemental_index").addClass("check-affirm");
 						}
 						$("#focus_21").focus();
 						set_updated(data.updated);												
@@ -1503,13 +1315,13 @@
 	            	success: function(data) {
 						if (data.source_url.length > 0) {      		
 							$("#publisher_product_description_source_url").attr("value", data.source_url);
-							$("#render_source_url").html("");
-							$("#render_source_url").addClass("cb-affirm");
+							$("#render_source_url").removeClass("check-required");
+							$("#render_source_url").addClass("check-affirm");
 						}
 						else {
 							$("#publisher_product_description_source_url").attr("value", "");
-							$("#render_source_url").removeClass("cb-affirm");
-							$("#render_source_url").html("* entry required");
+							$("#render_source_url").removeClass("check-affirm");
+							$("#render_source_url").addClass("check-required");
 						}							
 						$("#focus_24").focus();	
 						set_updated(data.updated);												
@@ -1541,12 +1353,12 @@
 	            	success: function(data) {
 	            		// alert(data.subject_category_index);
 						if (data.subject_category_index == '0') {						
-							$("#render_subject_category_index").removeClass("cb-affirm");
-							$("#render_subject_category_index").html("* entry required");
+							$("#render_subject_category_index").removeClass("check-affirm");
+							$("#render_subject_category_index").addClass("check-required");
 						}
 						else {
-							$("#render_subject_category_index").html("");
-							$("#render_subject_category_index").addClass("cb-affirm");
+							$("#render_subject_category_index").removeClass("check-required");
+							$("#render_subject_category_index").addClass("check-affirm");
 						}
 						$("#focus_27").focus();	
 						set_updated(data.updated);												
@@ -1577,12 +1389,12 @@
 	            	},
 	            	success: function(data) {
 						if (data.age_appropriate_index == '0') {						
-							$("#render_age_appropriate_index").removeClass("cb-affirm");
-							$("#render_age_appropriate_index").html("* entry required");
+							$("#render_age_appropriate_index").removeClass("check-affirm");
+							$("#render_age_appropriate_index").addClass("check-required");
 						}
 						else {
-							$("#render_age_appropriate_index").html("");
-							$("#render_age_appropriate_index").addClass("cb-affirm");
+							$("#render_age_appropriate_index").removeClass("check-required");
+							$("#render_age_appropriate_index").addClass("check-affirm");
 						}
 						$("#focus_30").focus();
 						set_updated(data.updated);													
@@ -1613,12 +1425,12 @@
 	            	},
 	            	success: function(data) {
 						if (data.grade_index == '0') {						
-							$("#render_grade_index").removeClass("cb-affirm");
-							$("#render_grade_index").html("* entry required");
+							$("#render_grade_index").removeClass("check-affirm");
+							$("#render_grade_index").addClass("check-required");
 						}
 						else {
-							$("#render_grade_index").html("");
-							$("#render_grade_index").addClass("cb-affirm");
+							$("#render_grade_index").removeClass("check-required");
+							$("#render_grade_index").addClass("check-affirm");
 						}
 						$("#focus_33").focus();
 						set_updated(data.updated);													
@@ -1649,12 +1461,12 @@
 	            	},
 	            	success: function(data) {
 						if (data.platform_index == '0') {						
-							$("#render_platform_index").removeClass("cb-affirm");
-							$("#render_platform_index").html("* entry required");
+							$("#render_platform_index").removeClass("check-affirm");
+							$("#render_platform_index").addClass("check-required");
 						}
 						else {
-							$("#render_platform_index").html("");
-							$("#render_platform_index").addClass("cb-affirm");
+							$("#render_platform_index").removeClass("check-required");
+							$("#render_platform_index").addClass("check-affirm");
 						}
 						$("#focus_36").focus();
 						set_updated(data.updated);													
@@ -1685,12 +1497,12 @@
 	            	},
 	            	success: function(data) {
 						if (data.pricing_model_index == '0') {						
-							$("#render_pricing_model_index").removeClass("cb-affirm");
-							$("#render_pricing_model_index").html("* entry required");
+							$("#render_pricing_model_index").removeClass("check-affirm");
+							$("#render_pricing_model_index").addClass("check-required");
 						}
 						else {
-							$("#render_pricing_model_index").html("");
-							$("#render_pricing_model_index").addClass("cb-affirm");
+							$("#render_pricing_model_index").removeClass("check-required");
+							$("#render_pricing_model_index").addClass("check-affirm");
 						}
 						$("#focus_39").focus();
 						set_updated(data.updated);													
@@ -1723,13 +1535,13 @@
 						// var data_price = parceFloat(data.price);
 						if (data.price.toString().length > 0) {      	
 							$("#publisher_product_description_price").attr("value", data.price);
-							$("#render_price").html("");							
-							$("#render_price").addClass("cb-affirm");
+							$("#render_price").removeClass("check-required");		
+							$("#render_price").addClass("check-affirm");
 						}
 						else {
 							$("#publisher_product_description_price").attr("value", "");
-							$("#render_price").removeClass("cb-affirm");
-							$("#render_price").html("* entry required");																												
+							$("#render_price").removeClass("check-affirm");
+							$("#render_price").addClass("check-required");																												
 						}							
 						$("#focus_42").focus();
 						set_updated(data.updated);													
@@ -1761,13 +1573,13 @@
 	            	success: function(data) {
 						if (data.versions.length > 0) {      		
 							$("#publisher_product_description_versions").attr("value", data.versions);
-							$("#render_versions").html("");							
-							$("#render_versions").addClass("cb-affirm");
+							$("#render_versions").removeClass("check-required");						
+							$("#render_versions").addClass("check-affirm");
 						}
 						else {
 							$("#publisher_product_description_versions").attr("value", "");
-							$("#render_versions").removeClass("cb-affirm");
-							$("#render_versions").html("* entry required");														
+							$("#render_versions").removeClass("check-affirm");
+							$("#render_versions").addClass("check-required");														
 						}							
 						$("#focus_45").focus();
 						set_updated(data.updated);													
@@ -1799,13 +1611,13 @@
 	            	success: function(data) {
 						if (data.topic.length > 0) {      		
 							$("#publisher_product_description_topic").attr("value", data.topic);
-							$("#render_topic").html("");
-							$("#render_topic").addClass("cb-affirm");
+							$("#render_topic").removeClass("check-required");
+							$("#render_topic").addClass("check-affirm");
 						}
 						else {
 							$("#publisher_product_description_topic").attr("value", "");
-							$("#render_topic").removeClass("cb-affirm");
-							$("#render_topic").html("* entry required");
+							$("#render_topic").removeClass("check-affirm");
+							$("#render_topic").addClass("check-required");
 						}							
 						$("#focus_48").focus();
 						set_updated(data.updated);													
@@ -1837,13 +1649,13 @@
 	            	success: function(data) {
 						if (data.lesson_plan_subject.length > 0) {      		
 							$("#publisher_product_description_lesson_plan_subject").attr("value", data.lesson_plan_subject);
-							$("#render_lesson_plan_subject").html("");
-							$("#render_lesson_plan_subject").addClass("cb-affirm");
+							$("#render_lesson_plan_subject").removeClass("check-required");
+							$("#render_lesson_plan_subject").addClass("check-affirm");
 						}
 						else {
 							$("#publisher_product_description_lesson_plan_subject").attr("value", "");
-							$("#render_lesson_plan_subject").removeClass("cb-affirm");
-							$("#render_lesson_plan_subject").html("* entry required");
+							$("#render_lesson_plan_subject").removeClass("check-affirm");
+							$("#render_lesson_plan_subject").addClass("check-required");
 						}							
 						$("#focus_51").focus();
 						set_updated(data.updated);													
@@ -1874,13 +1686,13 @@
 	            	success: function(data) {
 						if (data.word_description.length > 0) {      		
 							$("#publisher_product_description_word_description").attr("value", data.word_description);
-							$("#render_word_description_1").html("");
-							$("#render_word_description_2").addClass("cb-affirm");
+							$("#render_word_description_1").removeClass("check-required");
+							$("#render_word_description_2").addClass("check-affirm");
 						}
 						else {
 							$("#publisher_product_description_word_description").attr("value", "");
-							$("#render_word_description_1").html("* entry required");
-							$("#render_word_description_2").removeClass("cb-affirm");
+							$("#render_word_description_1").addClass("check-required");
+							$("#render_word_description_2").removeClass("check-affirm");
 						}							
 						$("#box_profile_general").focus();	
 						set_updated(data.updated);												
