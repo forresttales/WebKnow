@@ -1,28 +1,64 @@
 class PublisherProductDescriptionsController < ApplicationController
 
-  respond_to :html, :js, :json  
-
-  layout 'publisher'
-  
-  # @@publisher_product_id = nil
-  # @@publisher_id = nil
-    
   before_filter :force_http
 
+  layout 'publisher'
+
+  respond_to :html, :js, :json  
+
+  helper_method :sort_column, :sort_direction, :yesno
+
+  @@publisher_product_id = nil
+  # @@publisher_id = nil
     
   
-  def index
+  def show_description
+    
+    # render text: 'show_description'
+    
+    @@publisher_product_id = params[:publisher_product_id]
+    redirect_to :action => :index
+    # render text: params[:publisher_product_id]
 
-    @publisher_product_id = params[:publisher_product_id]
-    @publisher_id = params[:publisher_id]
+  end
+  
+  
+  
+  # def index
+    # # render text: params[:publisher_product_id]
+    # render text: 'publisher_product_descriptions index'
+#     
+  # end
+  
+  
+  
+  def index
+    # render text: 'id = ' + @@id.to_s
+
+    # @publisher_product_id = params[:publisher_product_id]
+    # @publisher_id = params[:publisher_id]
 
     # s =  "publisher_product_image_id = " + @publisher_product_image_id.to_s + " publisher_product_description_id = " + @publisher_product_description_id.to_s + " publisher_product_id = " + @publisher_product_id.to_s + " publisher_id = " + @publisher_id.to_s 
     # render text: s 
-
-    @publisher_product_description = PublisherProductDescription.where("publisher_product_id = ?", @publisher_product_id).first
+    publisher_product = PublisherProduct.find(@@publisher_product_id)
+    @publisher_product_id = publisher_product.id
+    @publisher_id = publisher_product.publisher_id    
+    @publisher_product_description = PublisherProductDescription.where("publisher_product_id = ?", publisher_product.id).first
+    # @publisher_product_description = current_user.publisher.publisher_products.publisher_product_description
     @publisher_product_description_id = @publisher_product_description.id
-    @publisher_product_image = PublisherProductImage.where(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id).first
-    @publisher_product_logo = PublisherProductLogo.where(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id).first
+    # @publisher_product_image = PublisherProductImage.where(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id).first
+    # @publisher_product_logo = PublisherProductLogo.where(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id).first
+    # @publisher_product_appropriate_age = PublisherProductAppropriateAge.where("publisher_product_id = ?", @publisher_product_id).first
+    @publisher_product_image = publisher_product.publisher_product_image
+    @publisher_product_logo = publisher_product.publisher_product_logo
+    @publisher_product_appropriate_age = publisher_product.publisher_product_appropriate_age
+
+    # @publisher_product_core_literacy_standard = PublisherProductCoreLiteracyStandard.where("publisher_product_id = ?", @publisher_product_id).first
+    # @publisher_product_core_math_standard = PublisherProductCoreMathStandard.where("publisher_product_id = ?", @publisher_product_id).first
+
+    # @core_literacy_standards = CoreLiteracyStandard.all
+    @core_literacy_standards = CoreLiteracyStandard.order(sort_column + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+    # @core_math_standards = CoreMathStandard.all
     
     @b_name_product = true                # 1
     @b_description = true                 # 2
@@ -30,7 +66,7 @@ class PublisherProductDescriptionsController < ApplicationController
     @b_core_supplemental_index = true     # 4
     @b_source_url = true                  # 5
     @b_subject_category_index = true      # 6
-    @b_age_appropriate_index = true       # 7
+    @b_age_appropriate_index = false      # 7
     @b_grade_index = true                 # 8
     @b_platform_index = true              # 9
     @b_pricing_model_index = true         # 10
@@ -39,6 +75,9 @@ class PublisherProductDescriptionsController < ApplicationController
     @b_topic = true                       # 13
     @b_lesson_plan_subject = true         # 14
     @b_word_description = true            # 15
+
+    @b_core_literacy_standard = true      # 16
+    @b_core_math_standard = true          # 17
     
     # 1 name_product
     if (@publisher_product_description.name_product.blank?) or (@publisher_product_description.name_product.empty?) or (@publisher_product_description.name_product.nil?)
@@ -65,9 +104,9 @@ class PublisherProductDescriptionsController < ApplicationController
       @b_subject_category_index = false
     end
     # 7 age_appropriate_index
-    if (@publisher_product_description.age_appropriate_index.blank?) or (@publisher_product_description.age_appropriate_index.nil?) or (@publisher_product_description.age_appropriate_index == 0)
-      @b_age_appropriate_index = false
-    end
+    # if (@publisher_product_description.age_appropriate_index.blank?) or (@publisher_product_description.age_appropriate_index.nil?) or (@publisher_product_description.age_appropriate_index == 0)
+      # @b_age_appropriate_index = false
+    # end
     # 8 grade_index
     if (@publisher_product_description.grade_index.blank?) or (@publisher_product_description.grade_index.nil?) or (@publisher_product_description.grade_index == 0)
       @b_grade_index = false
@@ -101,13 +140,90 @@ class PublisherProductDescriptionsController < ApplicationController
       @b_word_description = false
     end
 
+    # 16 core_literacy_standard
+    if (@publisher_product_description.core_literacy_standard.blank?) or (@publisher_product_description.core_literacy_standard.empty?) or (@publisher_product_description.core_literacy_standard.nil?)
+      @b_core_literacy_standard = false
+    end
+    # 16 core_math_standard
+    if (@publisher_product_description.core_math_standard.blank?) or (@publisher_product_description.core_math_standard.empty?) or (@publisher_product_description.core_math_standard.nil?)
+      @b_core_math_standard = false
+    end
+
+
+
+    # 7 age_appropriate_index
+    gon.age_appropriate = []    
+    if (@publisher_product_appropriate_age.age_appropriate_1 or
+        @publisher_product_appropriate_age.age_appropriate_2 or
+        @publisher_product_appropriate_age.age_appropriate_3 or
+        @publisher_product_appropriate_age.age_appropriate_4 or
+        @publisher_product_appropriate_age.age_appropriate_5 or
+        @publisher_product_appropriate_age.age_appropriate_6 or
+        @publisher_product_appropriate_age.age_appropriate_7 or
+        @publisher_product_appropriate_age.age_appropriate_8 or
+        @publisher_product_appropriate_age.age_appropriate_9 or
+        @publisher_product_appropriate_age.age_appropriate_10 or
+        @publisher_product_appropriate_age.age_appropriate_11 or
+        @publisher_product_appropriate_age.age_appropriate_12 or
+        @publisher_product_appropriate_age.age_appropriate_13 or
+        @publisher_product_appropriate_age.age_appropriate_14 or
+        @publisher_product_appropriate_age.age_appropriate_15 or
+        @publisher_product_appropriate_age.age_appropriate_16 or
+        @publisher_product_appropriate_age.age_appropriate_17 or
+        @publisher_product_appropriate_age.age_appropriate_adult)
+        
+        @b_age_appropriate_index = true
+        
+        gon.age_appropriate[1] = @publisher_product_appropriate_age.age_appropriate_1
+        gon.age_appropriate[2] = @publisher_product_appropriate_age.age_appropriate_2
+        gon.age_appropriate[3] = @publisher_product_appropriate_age.age_appropriate_3
+        gon.age_appropriate[4] = @publisher_product_appropriate_age.age_appropriate_4
+        gon.age_appropriate[5] = @publisher_product_appropriate_age.age_appropriate_5
+        gon.age_appropriate[6] = @publisher_product_appropriate_age.age_appropriate_6
+        gon.age_appropriate[7] = @publisher_product_appropriate_age.age_appropriate_7
+        gon.age_appropriate[8] = @publisher_product_appropriate_age.age_appropriate_8 
+        gon.age_appropriate[9] = @publisher_product_appropriate_age.age_appropriate_9 
+        gon.age_appropriate[10] = @publisher_product_appropriate_age.age_appropriate_10 
+        gon.age_appropriate[11] = @publisher_product_appropriate_age.age_appropriate_11 
+        gon.age_appropriate[12] = @publisher_product_appropriate_age.age_appropriate_12 
+        gon.age_appropriate[13] = @publisher_product_appropriate_age.age_appropriate_13 
+        gon.age_appropriate[14] = @publisher_product_appropriate_age.age_appropriate_14 
+        gon.age_appropriate[15] = @publisher_product_appropriate_age.age_appropriate_15 
+        gon.age_appropriate[16] = @publisher_product_appropriate_age.age_appropriate_16 
+        gon.age_appropriate[17] = @publisher_product_appropriate_age.age_appropriate_17 
+        gon.age_appropriate[18] = @publisher_product_appropriate_age.age_appropriate_adult
+        
+    end
+
     gon.updated = @publisher_product_description.updated_at.to_s(:long)
-    # gon.updated = "clyde"
+
+    gon.core_literacy_standard = []
+    if (@publisher_product_description.core_literacy_standard.blank?) or (@publisher_product_description.core_literacy_standard.empty?) or (@publisher_product_description.core_literacy_standard.nil?)
+      #
+    else
+      core_literacy_standard = @publisher_product_description.core_literacy_standard
+      ar_core_literacy_standard = Array.new
+      ar_core_literacy_standard = core_literacy_standard.split(',')    
+      i = 0
+      ar_core_literacy_standard.each do |standard|    
+        gon.core_literacy_standard[i] = standard
+        i += 1
+      end
+    end
+
+    # render text: gon.core_literacy_standard
     
+  end
+  
+  
+  def show
+
+    render text: 'publisher_product_descriptions show'
+
     
   end
 
-  
+
   #1 name_product  
   def update_name_product
 
@@ -467,51 +583,175 @@ class PublisherProductDescriptionsController < ApplicationController
     publisher_product_id = h_obj[:publisher_product_id]
     publisher_product_description_id = h_obj[:publisher_product_description_id]
     age_appropriate_index = h_obj[:age_appropriate_index]
+    
+    ar_age_appropriate = Array.new
+    ar_age_appropriate = age_appropriate_index.split(',')
+    len = ar_age_appropriate.length
 
-    # ['2 to 5', '1'],
-    # ['5 to 10','2'],
-    # ['10 to 15','3'],
-    # ['15 to 18','4']],
-
-    age_appropriate = ""
-    case age_appropriate_index.to_s  
-      when "1"
-        age_appropriate = "2 to 5"
-      when "2"
-        age_appropriate = "5 to 10"
-      when "3"
-        age_appropriate = "10 to 15"
-      when "4"
-        age_appropriate = "15 to 18"
-      else
-        #        
+    h_update = Hash.new
+    h_update[:age_appropriate_1] = false
+    h_update[:age_appropriate_2] = false
+    h_update[:age_appropriate_3] = false
+    h_update[:age_appropriate_4] = false
+    h_update[:age_appropriate_5] = false
+    h_update[:age_appropriate_6] = false
+    h_update[:age_appropriate_7] = false
+    h_update[:age_appropriate_8] = false
+    h_update[:age_appropriate_9] = false
+    h_update[:age_appropriate_10] = false
+    h_update[:age_appropriate_11] = false
+    h_update[:age_appropriate_12] = false
+    h_update[:age_appropriate_13] = false
+    h_update[:age_appropriate_14] = false
+    h_update[:age_appropriate_15] = false
+    h_update[:age_appropriate_16] = false
+    h_update[:age_appropriate_17] = false
+    h_update[:age_appropriate_18] = false
+    
+    ar_age_appropriate.each do |age|
+      
+      case age.to_s  
+        when "1"
+          h_update[:age_appropriate_1] = true
+        when "2"
+          h_update[:age_appropriate_2] = true
+        when "3"
+          h_update[:age_appropriate_3] = true
+        when "4"
+          h_update[:age_appropriate_4] = true
+        when "5"
+          h_update[:age_appropriate_5] = true
+        when "6"
+          h_update[:age_appropriate_6] = true
+        when "7"
+          h_update[:age_appropriate_7] = true
+        when "8"
+          h_update[:age_appropriate_8] = true
+        when "9"
+          h_update[:age_appropriate_9] = true
+        when "10"
+          h_update[:age_appropriate_10] = true
+        when "11"
+          h_update[:age_appropriate_11] = true
+        when "12"
+          h_update[:age_appropriate_12] = true
+        when "13"
+          h_update[:age_appropriate_13] = true
+        when "14"
+          h_update[:age_appropriate_14] = true
+        when "15"
+          h_update[:age_appropriate_15] = true
+        when "16"
+          h_update[:age_appropriate_16] = true
+        when "17"
+          h_update[:age_appropriate_17] = true
+        when "18"
+          h_update[:age_appropriate_18] = true
+        else
+          #        
+      end
+      
     end
-
-    publisher_product_description = PublisherProductDescription.find(publisher_product_description_id)
 
     # @info1 = Rails.logger.info "clyde in update_name_first"
     # @info2 = Rails.logger.info h_obj
 
-    h_update = Hash.new
+    # h_update = Hash.new
+
     h_update[:publisher_id] = publisher_id
     h_update[:publisher_product_id] = publisher_product_id
-    h_update[:age_appropriate_index] = age_appropriate_index
-    h_update[:age_appropriate] = age_appropriate
+    h_update[:publisher_product_description_id] = publisher_product_description_id
 
-    if publisher_product_description.update_attributes(h_update)
+    publisher_product_appropriate_age = PublisherProductAppropriateAge.where("publisher_product_id = ?", publisher_product_id).first
+
+    if publisher_product_appropriate_age.update_attributes(h_update)
       #
     else
       # Rails.logger.info(@user.errors.messages.inspect)
     end
 
-    publisher_product_description = nil
-    publisher_product_description_updated = PublisherProductDescription.find(publisher_product_description_id)
+    publisher_product_appropriate_age_id = publisher_product_appropriate_age.id
+    publisher_product_appropriate_age = nil
+    publisher_product_appropriate_age_updated = PublisherProductAppropriateAge.find(publisher_product_appropriate_age_id)
+    
+    gon.age_appropriate = []
+    
+    gon.age_appropriate[1] = publisher_product_appropriate_age_updated.age_appropriate_1
+    gon.age_appropriate[2] = publisher_product_appropriate_age_updated.age_appropriate_2
+    gon.age_appropriate[3] = publisher_product_appropriate_age_updated.age_appropriate_3
+    gon.age_appropriate[4] = publisher_product_appropriate_age_updated.age_appropriate_4
+    gon.age_appropriate[5] = publisher_product_appropriate_age_updated.age_appropriate_5
+    gon.age_appropriate[6] = publisher_product_appropriate_age_updated.age_appropriate_6
+    gon.age_appropriate[7] = publisher_product_appropriate_age_updated.age_appropriate_7
+    gon.age_appropriate[8] = publisher_product_appropriate_age_updated.age_appropriate_8 
+    gon.age_appropriate[9] = publisher_product_appropriate_age_updated.age_appropriate_9 
+    gon.age_appropriate[10] = publisher_product_appropriate_age_updated.age_appropriate_10 
+    gon.age_appropriate[11] = publisher_product_appropriate_age_updated.age_appropriate_11 
+    gon.age_appropriate[12] = publisher_product_appropriate_age_updated.age_appropriate_12 
+    gon.age_appropriate[13] = publisher_product_appropriate_age_updated.age_appropriate_13 
+    gon.age_appropriate[14] = publisher_product_appropriate_age_updated.age_appropriate_14 
+    gon.age_appropriate[15] = publisher_product_appropriate_age_updated.age_appropriate_15 
+    gon.age_appropriate[16] = publisher_product_appropriate_age_updated.age_appropriate_16 
+    gon.age_appropriate[17] = publisher_product_appropriate_age_updated.age_appropriate_17 
+    gon.age_appropriate[18] = publisher_product_appropriate_age_updated.age_appropriate_adult
+
+    b_has_age_appropriate = false
+    
+    if (publisher_product_appropriate_age_updated.age_appropriate_1 or
+        publisher_product_appropriate_age_updated.age_appropriate_2 or
+        publisher_product_appropriate_age_updated.age_appropriate_3 or
+        publisher_product_appropriate_age_updated.age_appropriate_4 or
+        publisher_product_appropriate_age_updated.age_appropriate_5 or
+        publisher_product_appropriate_age_updated.age_appropriate_6 or
+        publisher_product_appropriate_age_updated.age_appropriate_7 or
+        publisher_product_appropriate_age_updated.age_appropriate_8 or
+        publisher_product_appropriate_age_updated.age_appropriate_9 or
+        publisher_product_appropriate_age_updated.age_appropriate_10 or
+        publisher_product_appropriate_age_updated.age_appropriate_11 or
+        publisher_product_appropriate_age_updated.age_appropriate_12 or
+        publisher_product_appropriate_age_updated.age_appropriate_13 or
+        publisher_product_appropriate_age_updated.age_appropriate_14 or
+        publisher_product_appropriate_age_updated.age_appropriate_15 or
+        publisher_product_appropriate_age_updated.age_appropriate_16 or
+        publisher_product_appropriate_age_updated.age_appropriate_17 or
+        publisher_product_appropriate_age_updated.age_appropriate_adult)
+        
+        b_has_age_appropriate = true
+        
+        
+        # h_updated[1] = publisher_product_appropriate_age_updated.age_appropriate_1
+        # h_updated[2] = publisher_product_appropriate_age_updated.age_appropriate_2
+        # h_updated[3] = publisher_product_appropriate_age_updated.age_appropriate_3
+        # h_updated[4] = publisher_product_appropriate_age_updated.age_appropriate_4
+        # h_updated[5] = publisher_product_appropriate_age_updated.age_appropriate_5
+        # h_updated[6] = publisher_product_appropriate_age_updated.age_appropriate_6
+        # h_updated[7] = publisher_product_appropriate_age_updated.age_appropriate_7
+        # h_updated[8] = publisher_product_appropriate_age_updated.age_appropriate_8 
+        # h_updated[9] = publisher_product_appropriate_age_updated.age_appropriate_9 
+        # h_updated[10] = publisher_product_appropriate_age_updated.age_appropriate_10 
+        # h_updated[11] = publisher_product_appropriate_age_updated.age_appropriate_11 
+        # h_updated[12] = publisher_product_appropriate_age_updated.age_appropriate_12 
+        # h_updated[13] = publisher_product_appropriate_age_updated.age_appropriate_13 
+        # h_updated[14] = publisher_product_appropriate_age_updated.age_appropriate_14 
+        # h_updated[15] = publisher_product_appropriate_age_updated.age_appropriate_15 
+        # h_updated[16] = publisher_product_appropriate_age_updated.age_appropriate_16 
+        # h_updated[17] = publisher_product_appropriate_age_updated.age_appropriate_17 
+        # h_updated[18] = publisher_product_appropriate_age_updated.age_appropriate_adult
+        
+        
+    end
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :age_appropriate_index => publisher_product_description_updated.age_appropriate_index,
-                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
-      
+      # format.json { render :json => { :age_appropriate_index => publisher_product_description_updated.age_appropriate_index,
+                                      # :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+
+      format.json { render :json => { :b_has_age_appropriate => b_has_age_appropriate,
+                                      # :h_updated => h_updated,
+                                      :g_updated => gon.age_appropriate,
+                                      :updated => publisher_product_appropriate_age_updated.updated_at.to_s(:long) } }
+
+            
       # format.json { render :partial => "publisher_profiles/test" }
       # format.json { render :json => { :url => '/PublisherProfiles' } }
       # format.json { render :json => @journal1poster_position }
@@ -929,24 +1169,107 @@ class PublisherProductDescriptionsController < ApplicationController
   end  
     
   
-  
-  
-  
-  def show
+  #7 core_literacy_standard
+  def update_core_literacy_standard
+
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_id = h_obj[:publisher_id]
+    publisher_product_id = h_obj[:publisher_product_id]
+    # publisher_product_description_id = h_obj[:publisher_product_description_id]
+    core_literacy_standard = h_obj[:core_literacy_standard]
     
-    # @publisher_product_desciptions = PublisherProductDescription.find(params[:id])
-    @publisher_product_descriptions = PublisherProductDescription.where("id = ?", params[:id])
+    # ar_core_literacy_standard = Array.new
+    # ar_core_literacy_standard = core_literacy_standard.split(',')
+    # len = ar_core_literacy_standard.length
+
+    h_update = Hash.new
+    h_update[:core_literacy_standard] = core_literacy_standard 
+
     
+    # ar_core_literacy_standard.each do |standard|
+      # case standard.to_s  
+        # when "1"
+          # h_update[:core_literacy_standard_1] = true
+        # else
+          # #        
+      # end
+    # end
+
+    # @info1 = Rails.logger.info "clyde in update_name_first"
+    # @info2 = Rails.logger.info h_obj
+
+    # h_update = Hash.new
+
+    h_update[:publisher_id] = publisher_id
+    h_update[:publisher_product_id] = publisher_product_id
+    # h_update[:publisher_product_description_id] = publisher_product_description_id
+
+    # publisher_product_core_literacy_standard = PublisherProductCoreLiteracyStandard.where("publisher_product_id = ?", publisher_product_id).first
+    publisher_product_description = PublisherProductDescription.where("publisher_product_id = ?", publisher_product_id).first
+
+    if publisher_product_description.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
+
+    publisher_product_description_id = publisher_product_description.id
+    publisher_product_description = nil
+    publisher_product_description_updated = PublisherProductDescription.find(publisher_product_description_id)
+    
+    
+    
+    gon.core_literacy_standard = []
+    if (publisher_product_description_updated.core_literacy_standard.blank?) or (publisher_product_description_updated.core_literacy_standard.empty?) or (publisher_product_description_updated.core_literacy_standard.nil?)
+      #
+    else
+      core_literacy_standard = publisher_product_description_updated.core_literacy_standard
+      ar_core_literacy_standard = Array.new
+      ar_core_literacy_standard = core_literacy_standard.split(',')    
+      i = 0
+      ar_core_literacy_standard.each do |standard|    
+        gon.core_literacy_standard[i] = standard
+        i += 1
+      end
+    end
+    
+    # gon.core_literacy_standard[1] = publisher_product_core_literacy_standard_updated.core_literacy_standard_1
+
+    b_has_core_literacy_standard = false
+    
+    if (publisher_product_description_updated.core_literacy_standard.blank?) or (publisher_product_description_updated.core_literacy_standard.empty?) or (publisher_product_description_updated.core_literacy_standard.nil?)
+      #
+    else
+      b_has_core_literacy_standard = true
+    end
+    
+    
+    # if (publisher_product_core_literacy_standard_updated.core_literacy_standard_1 or
+        # publisher_product_core_literacy_standard_updated.core_literacy_standard_2 or
+        # publisher_product_core_literacy_standard_updated.core_literacy_standard_3)
+        # b_has_core_literacy_standard = true
+    # end
+    
+    respond_to do |format|
+      format.html {}
+
+      format.json { render :json => { :b_has_core_literacy_standard => b_has_core_literacy_standard,
+                                      :g_updated => gon.core_literacy_standard,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+
+    end
+
+  
   end
-  
-  
+
+
+
   def new
-      
-    @@publisher_product_id = params[:publisher_product_id]
-    @@publisher_id = params[:publisher_id]
-      
-    @publisher_product_description = PublisherProductDescription.new
-    
   end
 
   
@@ -1002,12 +1325,25 @@ class PublisherProductDescriptionsController < ApplicationController
                                                             :platform_index,
                                                             :versions, 
                                                             :pricing_model, 
-                                                            :pricing_model_index 
+                                                            :pricing_model_index,
+                                                            :core_literacy_standard,
+                                                            :core_math_standard
                                                            )
 
     end
     
     
+    def sort_column
+      CoreLiteracyStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+    def yesno(x)
+      x == 1 ? "Yes" : "No"
+    end
     
     
       

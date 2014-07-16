@@ -1,0 +1,353 @@
+// Place all the styles related to the Landing_page controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {  
+  margin: 0;
+}
+
+h1 {font-size:35px; font-weight: bold; line-height: 1.5em;}
+h2 {font-size: 25px; font-weight: bold; ine-height: 1em; margin: 7px 0;}
+
+
+// Responsive CSS
+
+/*
+/* Smaller than 960 
+  @media only screen and (max-width: 959px) {
+    .wrap, .top-bar, .hcontainer {width: 768px; }
+  }
+
+  /* Tablet Portrait - 960 
+  @media only screen and (min-width: 768px) and (max-width: 959px) {
+
+  }
+
+  /* Mobile 
+  @media only screen and (max-width: 767px) {
+    .wrap, .top-bar, .hcontainer {width: 300px;}
+  }
+
+  /* Mobile Landscape 
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+    .wrap, .top-bar, .hcontainer { width: 420px; }
+  }
+
+  /* Mobile Portrait 
+  @media only screen and (max-width: 479px) {
+    
+  }
+
+// End responsivenessness
+*/
+
+
+// variables, etc.
+
+  $dgreen: #11520b; //dark green
+  $ksgreen: #41b737; // knowstory green
+  $kso: #F69010; // know story orange
+  $ksdshade: #3d8138; //know story green darker shade
+  $ksblue: #1f7c82; //know story blue - as from the products page
+
+// End Variables, etc.
+
+
+/*Top Nav Bar*/
+.nav-ks {
+  margin-top: -10px;
+}
+
+#top-bar {
+  background: #FFFFFF;
+  list-style:none;
+  width:960px;
+  margin: 0px auto;
+
+  a.sign {color: $dgreen; text-decoration: none; float:right; font-size: 19px;
+    &:hover {color: $ksgreen; text-decoration: underline;}
+  }
+
+}
+
+/*Page Content*/
+
+.center /*Used to center any div that has this class*/ {
+  width: 960px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.wrap {
+  /*border-bottom: 1px solid #e5e5e5;*/
+  
+}
+.wrap1 {border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 150px;
+  margin-bottom: 80px;
+  }
+
+.kso {color: $kso;}
+
+.top-container {
+  background: $ksdshade;
+  width: 100%;
+  min-width: 980px;
+  //height: 350px;
+  text-shadow: 0 5px 0 rgba(0, 0, 0, 0.1);
+  padding-bottom: 5px;
+  .und {text-decoration:underline; font-size: 1.3em;}
+}
+
+.ks-logo {
+  margin-top: 15px;
+  background: #cef0cb;
+  border: 2px solid $dgreen;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 3px 3px 3px $dgreen;
+}
+
+.hcontainer {
+  text-align: center;
+  width: 960px;
+  word-wrap: break-word;
+  h1, h2 { font-weight: bold; color: #FFFFFF; margin: 10px 0 10px;}
+  ul {margin: 10px auto; width: 750px;}
+  li.offer {
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 25px;
+    margin: 15px 0;
+  }
+}
+
+.sign-button{
+  margin:45px 0;
+  p {color: #FFF; font-size: 18px; margin-top: 25px;}
+}
+
+.sign-button-link, a.sign-button-link:visited {
+  border-radius: 6px;
+  border: 1px solid #b1ccaf;
+  line-height: 1.33;
+  color: #FFF;
+  background: transparent;
+  font-size: 22px;
+  padding: 15px 65px;
+  text-decoration: none;
+  &:hover {background: #FFF; text-decoration: underline; color: $ksdshade;}
+}
+
+.container2 {
+  margin-top: 50px;
+  /*border: 1px solid $ksgreen;
+  box-shadow: 3px 3px 3px grey;
+  height: 800px;*/
+  text-align: center;
+  h1,h2 {color: $ksdshade;}
+  p {color: $dgreen; font-size: 22px;}
+  .which {margin-top: 100px;}
+}
+
+.profiles {
+  list-style: none outside none;
+  padding: 0;
+  margin: 0px 0 0; 
+  width: 960px;
+    li {display: inline; margin: 0 10px;}
+    a {
+      position: relative;
+      display: inline-block;
+      width: 170px;
+      height: 130px;
+      margin:15px 0px;
+      color: #355b34;
+      text-decoration: none;
+      font-size: 22px;
+      border: 1px solid #355b34;
+      border-radius: 6px;
+      box-shadow: 3px 3px 3px #CCC;
+      &:visited, &:active {text-decoration: none; color: #355b34;}
+    }   
+}
+profiles {width: 960px;}
+
+.student /*The icon and hover attributes for the link*/ {
+  background:url("/assets/profile_icons/student2.png") no-repeat; 
+  background-position: center top;
+  span {position: absolute; bottom: 20px; left: 50px;}
+  &:hover {
+    color: #FFF !important; 
+      background: url("/assets/profile_icons/student3.png") no-repeat center top #355b34;
+    }
+   
+ }
+
+.teacher /*The icon and hover attributes for the link*/ {
+  background:url("/assets/profile_icons/teacher2.png") no-repeat; 
+  background-position: center top;
+  span {position: absolute; bottom: 20px; left: 50px;}
+  &:hover {
+    color: #FFF !important; 
+      background: url("/assets/profile_icons/teacher3.png") no-repeat center top #355b34;
+    }
+   
+ }
+
+ .publisher /*The icon and hover attributes for the link*/ {
+  background:url("/assets/profile_icons/publisher2.png") no-repeat; 
+  background-position: center top;
+  span {position: absolute; bottom: 20px; left: 50px;}
+  &:hover {
+    color: #FFF !important; 
+      background: url("/assets/profile_icons/publisher3.png") no-repeat center top #355b34;
+    }
+   
+ }
+
+.school /*The icon and hover attributes for the link*/ {
+  background:url("/assets/profile_icons/school2.png") no-repeat; 
+  background-position: center top;
+  span {position: absolute; bottom: 20px; left: 8px;}
+  &:hover {
+    color: #FFF !important; 
+      background: url("/assets/profile_icons/school3.png") no-repeat center top #355b34;
+    }
+   
+ }
+
+ .recruiter /*The icon and hover attributes for the link*/ {
+  background:url("/assets/profile_icons/recruiter2.png") no-repeat; 
+  background-position: center top;
+  span {position: absolute; bottom: 20px; left: 8px;}
+  &:hover {
+    color: #FFF !important; 
+      background: url("/assets/profile_icons/recruiter3.png") no-repeat center top #355b34;
+    }
+   
+ }
+
+// Profile containers
+
+// Profile Nav style
+
+#landing-nav {
+  background: $ksdshade;
+  clear: both;
+  min-width: 980px;
+  ul {
+  list-style: none outside none;
+  margin: 0 auto;
+  width: 960px;
+  font-size: 18px;
+  color: #FFF;
+  padding: 20px 0;
+  }
+  li { display: inline;}
+
+  .item a {border-right: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 0 0 rgba(255, 255, 255, 0.11);}
+  .first a {border-left: 1px solid rgba(0, 0, 0, 0.3);}
+  .title {margin-right: 80px; font-size: 22px; font-weight: bold; letter-spacing: 1px;}
+
+  li a {color: #FFF; text-decoration: none; padding: 24px 25px 22px;
+    &:hover {color: $ksdshade; background: #FFF; text-decoration: underline;}
+    &:active, &:visited {text-decoration: none;}
+  }
+  /*.selected {color: $ksdshade; background: #FFF; text-decoration: none;}*/
+}
+
+ .container3 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+ }
+ 
+ .container3 p {font-size: 18px; margin: 10px 0;}
+ 
+ // .odd p {
+  // font-size: 18px;
+  // margin 10px 0;
+ // }
+
+// For changing background on each relevent section for landing_nav based on location of page
+ #student .first a, #teacher .tcur a, #publisher .pcur a,
+ #school .scur a, #recruiter .last a {
+  background: #FFF; 
+  color: $ksdshade; 
+  text-decoration: none;
+ }
+
+// For the sign up buttons in each profile section
+
+ .sign-button-2{
+  margin:45px 0;
+}
+
+.sign-button-link-2, a.sign-button-link-2:visited {
+  border-radius: 6px;
+  border: 1px solid #b1ccaf;
+  line-height: 1.33;
+  color: $ksdshade;
+  background: transparent;
+  font-size: 22px;
+  padding: 15px 65px;
+  text-decoration: none;
+  &:hover {background: $ksdshade; text-decoration: underline; color: #FFF;}
+}
+
+// For alignment of font and images in profile sections
+ .odd { margin-bottom: 130px;
+  h1, h2, p {color: $dgreen;}
+  .pub-link {color: $kso; text-decoration: none; font-weight: bold;
+    &:hover, &:active {color: $kso; text-decoration: underline;}
+    &:visited {color: $kso; text-decoration: none;}
+  }
+  .profile-image {float:left; margin-right: 30px; margin-bottom: 40px;}
+   .sign-button-2 {margin-left: 635px;}
+ }
+
+  .even { margin-bottom: 130px;
+  h1, h2, p {color: $dgreen;}
+  .profile-image {float:right; margin-left: 30px; margin-bottom: 40px;}
+  .sign-button-2 {margin-left: 125px;}
+ }
+
+#school, #recruiter {clear: both;}
+
+ 
+//sign up box
+
+  #sign-up {
+    height: 450px;
+    width: 960px;
+    border:1px solid $dgreen;
+    box-shadow: 1px 1px 1px 1px #CCC;
+    margin: 0 auto;
+  }
+
+
+
+ //footer
+
+ #landing-footer {
+  background: $ksdshade;
+  clear:both;
+  border-bottom: 7px solid $ksdshade;
+  margin-top: 100px;
+  ul {
+  list-style: none outside none;
+  margin: 0 auto;
+  width: 960px;
+  font-size: 18px;
+  color: #FFF;
+  padding: 20px 0;
+  }
+  li { display: inline; 
+  a {color: #FFF; text-decoration: none; padding: 24px 25px 22px; font-size: 22px; font-weight: bold;
+  &:hover {color: $kso; text-decoration: underline;}
+    } 
+  }
+  .copyright {font-size: 14px; text-align:center; margin-left: 250px;}
+}

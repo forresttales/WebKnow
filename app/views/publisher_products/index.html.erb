@@ -551,6 +551,78 @@
 		}
 		
 	</style>
+	
+	<style>
+		
+		.btn-prod-list {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;		
+			text-align: center;	
+			padding-top: 3px;
+		  	color: #fff;
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 80px;
+		  	height: 20px;
+		  	background: linear-gradient(#2899A1, #1F7C82);
+
+		  	/*text-shadow: 1px 1px 1px #0E86B2;*/ 
+		  	border-radius: 2px;
+		}
+		.btn-prod-list:focus {
+			-webkit-box-shadow: 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: 0 0 1px 1px #3DC8D1;
+			        box-shadow: 0 0 1px 1px #3DC8D1;
+		  	background: linear-gradient(#2899A1, #1F7C82);
+		}
+		.btn-prod-list:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-prod-list:active { 
+		  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	color: #fff;
+		  	background: linear-gradient(#1F7C82, #2899A1);
+		  	outline:none;
+		}
+		
+		.publisher-products-span-1 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #666;
+			font-size: 14px;
+		}
+		
+		.unbutton-prod-list {
+		    background: none;
+		    border: none;
+		    padding: 0;
+		    margin: 0;
+		    overflow: visible;   /* IE hack to avoid extra button width */
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #666;
+			font-size: 14px;		   
+		}		
+		.unbutton-prod-list:hover {
+		  	cursor:pointer;
+		  	text-decoration: underline;
+		}		
+		.publisher-products-add {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #666;
+			font-size: 14px;		   			
+		}
+		.publisher-products-add:hover {
+		  	cursor:pointer;
+		  	text-decoration: underline;
+		}
+		
+	</style>
+	
 
 	<style>
 		
@@ -625,7 +697,10 @@
 											
 									<div style="height: 10px;"></div>	
 				
-									<span class="pad-left-20"><%= link_to '&laquo; Add a product &raquo;'.html_safe, '/Publisher-Add-Product', :class => 'links' %></span>
+									<!-- <span class="pad-left-20"><#%= link_to '&laquo; Add a product &raquo;'.html_safe, '/Publisher-Add-Product', :class => 'links', :remote => true %#></span> -->
+									<div id="btn_add_prod" class="pad-left-20"><span class="publisher-products-add">&laquo; Add a product &raquo;</span></div>
+									
+									<!-- <span class="pad-left-20"><#%= link_to '&laquo; Add a product &raquo;'.html_safe, :action => :create, :class => 'links', :remote => true %#></span> -->
 				
 									<div class="line-space-20"></div>
 
@@ -640,7 +715,7 @@
 								<!-- <div id="publisher_journalposters" style="width: 100%; text-align: center;"> -->
 								<div id="render_list" style="position: relative;">
 									
-									<%= render 'publisher_products/list' %>
+									<!-- <#%= render 'publisher_products/list' %#> -->
 			
 								</div>
 								
@@ -665,12 +740,45 @@
 	</div>
 
 
-	<!-- <script>
+	<script>
+	
 		$(document).ready(function() {
+				
+			$("#render_list").html("<%= escape_javascript(render("publisher_products/list")) %>");				
+				
+			$('#btn_add_prod').on('click', function() {
+			   	$.post("publisher_products/create", null, null, "script");
+			});
+
+			// $("#testbtn").on('click', function() {
+			  	// var obj = '';                  
+			  	// $.ajax({
+			    	// type: 'POST',
+			    	// data : obj,
+			    	// url: '/publisher_products/create',			    	
+			    	// dataType: "json",
+			    	// contentType: "application/json",
+			    	// processData: false,
+			    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	// statusCode: {
+	            	// },
+	            	// success: function(data) {
+						// alert('success');
+						// $("#render_list").html("<#%= escape_javascript(render("publisher_products/list")) %#>");
+	            	// },
+	            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	// });
+		  		// return false;
+			// });
+
+			
 			// alert($(document).height());
-			var dh = $(document).height();
-			$("#col-midd").height(dh-74);
+			// var dh = $(document).height();
+			// $("#col-midd").height(dh-74);
+			
+			
+			
 		});	
-	</script> -->
+	</script>
 	
 	

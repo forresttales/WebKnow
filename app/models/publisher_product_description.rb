@@ -30,6 +30,9 @@
 #  versions                :string(255)
 #  pricing_model           :string(255)
 #  pricing_model_index     :integer          default(0)
+#  core_literacy_standard  :string(255)
+#  core_math_standard      :string(255)
+#  slugged                 :string(255)      default("")
 #
 
 class PublisherProductDescription < ActiveRecord::Base
@@ -60,12 +63,27 @@ class PublisherProductDescription < ActiveRecord::Base
                   :versions, 
                   :source_url, 
                   :topic,
+                  :core_literacy_standard,
+                  :core_math_standard,
                   :created_at,
                   :updated_at 
   
   
   belongs_to :publisher_product
 
+
+  # extend FriendlyId
+  # friendly_id :id, use: :slugged
+
+  # def id
+    # [
+      # :id
+    # ]
+  # end  
+
+  # def to_param
+    # "#{id}"
+  # end
 
   def self.dbdelete
       self.connection.execute("DELETE FROM publisher_product_descriptions")

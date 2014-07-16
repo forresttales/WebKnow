@@ -58,11 +58,16 @@
 									
 								<div style="position: relative;">									
 									<div class="publisher-products-list-4" style="text-align: right;">
-										<span class="publisher-products-span-1"><%= link_to "View/Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %></span>
-								    	<!-- <span>
-										   	<#% delete_msg = "Delete this Journal Poster Pin?" %#>
-											<#%= button_to "Delete", {:action => 'destroy', :id => publisher_journalposter.id}, :method => :delete, data: { confirm: delete_msg }, :class => 'jp-btn' %#>
-										</span> -->
+										<!-- <span class="publisher-products-span-1"><#%= link_to "View/Edit", publisher_product_description_path(publisher_product.id), class: "" %#></span> -->
+										<!-- <span class="publisher-products-span-1"><#%= link_to "View/Edit", publisher_product_description_path(publisher_product.id), :method => :post, class: "" %#></span> -->
+										<!-- <span class="publisher-products-span-1"><#%= link_to "View/Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %#></span> -->
+										<!-- show_description_publisher_product_descriptions -->
+
+										<!-- <#%= button_to "View/Edit", { :controller => 'publisher_product_descriptions', :action => 'show_description' }, :params => { :publisher_product_id => publisher_product.id }, :method => :post, :class => 'unbutton-prod-list' %#> -->
+										<%= button_to "View/Edit", show_description_publisher_product_descriptions_path( :publisher_product_id => publisher_product.id ), :method => :post, :class => 'unbutton-prod-list' %>
+
+										<!-- <input type="submit" class="unbutton" value="Donate"> -->
+										
 									</div>
 								</div>
 								

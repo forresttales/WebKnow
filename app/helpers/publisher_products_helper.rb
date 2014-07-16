@@ -15,9 +15,19 @@ module PublisherProductsHelper
 
 
   def publisher_product_name_product_for(publisher_product)
-    publisher_product_description = PublisherProductDescription.where("publisher_product_id = ?", publisher_product.id).first
+    # publisher_product_description = PublisherProductDescription.where("publisher_product_id = ?", publisher_product.id).first
+    publisher_product_description = publisher_product.publisher_product_description
     publisher_product_description_name_product = publisher_product_description.name_product
   end  
+
+
+  # def publisher_product_description_for(publisher_product)
+    # # publisher_product_descriptions_path = publisher_product.publisher_product_description
+    # publisher_product_description = publisher_product.publisher_product_description
+# 
+    # # return '/Publisher-Product-Description'
+    # # publisher_product_description = publisher_product.publisher_product_description
+  # end  
 
 
   def publisher_product_logo_for(publisher_product)

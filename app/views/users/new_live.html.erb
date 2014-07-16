@@ -1,0 +1,160 @@
+<% provide(:title, 'Welcome') %>
+
+	
+<div id="wrapper">	
+<header id="home">
+	<div id="top-bar">
+		<!--<img src="/assets/knowstory-icon-2-w150-h50.png" alt="knowstory-icon" height="50px">-->
+		<span class="provided">Provided By:</span><a href="http://www.thelearningcounsel.com"><img src="/assets/TLC-logo.png" alt="The Learning Counsel icon" height="50px"></a>
+		<%= link_to "Log in", "https://knowstory.com", class: "sign" %>
+	</div>
+</header>
+
+	<div class="top-container">	
+		<div class="hcontainer center">
+		<img class ="ks-logo" src="assets_knowstory/knowstory-icon-2-w279-h93.png" alt="KnowStory Logo"></a>
+		<!--<h1><span class="kso und">K</span>now<span class="kso und">S</span>tory</h1> -->
+		<h2>The hub for all things having to do with digital curriculum<br/> and the field of education</h2>
+		<ul>
+			<li class="offer">Connect with other <span class="kso">S</span>tudents, <span class="kso">T</span>eachers, <span class="kso">S</span>chools, <span class="kso">P</span>ublishers, and <span class="kso">C</span>ollege Recruiters</li>
+			<li class="offer">Create your own personal profile unique to you</li>
+			<li class="offer">Find and Choose <span class="kso">your</span> digital curriculum</li>
+			<li class="offer">Take the limit off of learning, and make it fun</li>
+			<li class="offer">If you are a student or work in education, you'll want to be on KnowStory</li>
+		</ul>
+			<div class="sign-button">
+			<a class="sign-button-link" href="#sign-up">Sign up</a>
+			<p>We are in development, but are accepting new users.</p>
+			<p> This is a free service and we will always keep it that way</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="main-container wrap1">
+		<div class="wrap wrap1">	<!-- Second container -->
+		<div class="container2 center" id="profiles">
+		<h1>What's <span class="kso und">your</span> story?</h1>
+		<h2>On <span class="kso">K</span>now <span class="kso">S</span>tory you plot your story. It is <span class="kso und">your</span> story after all.</h2>
+
+		<h2 class="which">Which are you?</h2>
+
+		<ul class="profiles">
+			<li><a class="student" href="#student"><span>Student</span></a>
+			<li><a class="teacher" href="#teacher"><span>Teacher</span></a>
+			<li><a class="publisher" href="#publisher"><span>Publisher</span></a>
+			<li><a class="school" href="#school"><span>School or District</span></a>
+			<li><a class="recruiter" href="#recruiter"><span>College Recruiter</span></a>
+		</ul>
+		
+		</div>
+		</div><!-- End 2nd container -->
+
+		
+		<div class="wrap"> <!-- 3rd container with profile types-->
+					<div id="student"><%= render 'landing_nav' %></div>
+		<div class="container3 center odd">
+			<img src="/assets/profile_pics/users.jpeg" alt="Users" class="profile-image">
+			<h1>Student Profile</h1>
+			<h2>Connect up with other Students, your Teachers and your School</h2>
+			
+			<p>As a student you can share comments, photos, classes, and favorite learning content while mapping out your current and future learning. Keep up your education history and get personalized recommendations for learning games or content to study.</p>
+			<p>Your profile will say what you say about yourself. You give yourself your own labels. Your education is a story, from start to finish. You are the one writing your story, so you get to decide what it says</p>
+			<p>You can also find and choose new types of digital learning content not previously available to you.</p>
+			<p>When you are 13 years or older you can unlock your profile (with parents permission) for College Recruiters. This allows easier access for you to find and connect up with Colleges and future education goals.</p>
+			<div class="sign-button-2">
+			<a class="sign-button-link-2" href="#sign-up">Sign up</a>
+		  	</div>
+
+		</div> <!-- End 3rd container, student -->
+
+					<div id="teacher"><%= render 'landing_nav' %></div>
+		<div class="container3 center even">
+			<img src="/assets/profile_pics/teacher.jpeg" alt="Teacher" class="profile-image">
+			<h1>Teacher Profile</h1>
+			<h2>Connect up with the curriculum publishers. Connect with your students</h2>
+
+			<p>As a a teacher on KnowStory you gain the ability to directly connect with Publishers. You are able to look for and find the curriculum right for you and your class, both digitally and hard copy. Find Publishers and curriculum you might not have even known existed.</p>
+			<p>Stay in touch with your students outside of the classroom. Manage homework assignments, and give education advice.</p>
+			<p>Get ongoing classroom digital content and professional development recommendations. See analysis of how much lesson time used on digital learning</p>
+			<p>You can also connect up with other schools and teachers. With this you can share advice, or succesful learning tips to help your students and others.</p>
+			<div class="sign-button-2">
+			<a class="sign-button-link-2" href="#sign-up">Sign up</a>
+		  	</div>
+
+		</div> <!-- End 3rd container, teacher -->
+
+			<div id="publisher"><%= render 'landing_nav' %></div>
+		<div class="container3 center odd">
+			<img src="/assets/profile_pics/product.jpeg" alt="Publisher" class="profile-image">
+			<h1>Publisher Profile</h1>
+			<h2>Connect straight to the Students, Parents, and Teachers</h2>
+			
+			<p>Create a profile for your company and each of your products so they can be found by students, teachers and schools. Connect up directly with teacher and students and display your products directly</p>
+			<p>There are teachers and parents that might be looking for your curriculum, and have been unable to find you previously. Here, you can make your profile and display your products so they can find you.</p>
+			<p>Take advantage of our <a class="pub-link" href="/Poster">Journal Poster</a>. What is it? Click the link to find out.</p>
+			<p>Keep track of and monitor your metrics. Know which products you have that are popular and in demand.</p>
+			<div class="sign-button-2">
+			<a class="sign-button-link-2" href="#sign-up">Sign up</a>
+		  	</div>
+
+		</div> <!-- End 3rd container, publisher -->
+
+			<div id="school"><%= render 'landing_nav' %></div>
+		<div class="container3 center even">
+			<img src="/assets/profile_pics/poster.jpeg" alt="School" class="profile-image">
+			<h1>School or District Profile</h1>
+			<h2>Manage your digital curriculum online, and link up with other schools</h2>
+			<p>Use the system to get a gap analysis of what you are missing in digital curriculum for any grade or subject, link with other schools, post publisher request for proposals, and keep track of inventory.</p>
+			<p>Promote your school with a good online presence.</p>
+			<p>Connect up with other schools and districts to share learning ideas, tips, and advices.</p>
+			<p>Find new Publishers and new curriculum content you might not have known existed</p>
+			<div class="sign-button-2">
+			<a class="sign-button-link-2" href="#sign-up">Sign up</a>
+		  	</div>
+
+		</div> <!-- End 3rd container, school -->
+
+			<div id="recruiter"><%= render 'landing_nav' %></div>
+		<div class="container3 center odd">
+			<img src="/assets/profile_pics/maze.png" alt="Maze" class="profile-image">
+			<h1>College Recruiter Profile</h1>
+			<h2>Find and connect up with prospective college applicants</h2>
+			<p>Promote your institution and seek links with college-interested students. Search student interests and see public student profiles.</p>
+			<p>Learn more about the schools and prospective college students. Connect up with them, and learn more about them or promote your institution.</p>
+			<p>Make an online presence for your institution so students can find you.</p>
+			<p>When students are 13 years or older they can unlock your profile (with parents permission) for College Recruiters. This allows easier access for them to find and connect up with your college and you.</p>
+			<div class="sign-button-2">
+			<a class="sign-button-link-2" href="#sign-up">Sign up</a>
+		  	</div>
+
+		</div> <!-- End 3rd container, recruiter -->
+
+					
+		</div> 
+
+	</div>
+		<div id="sign-up">
+			<p>Sign up box here</p>
+		</div>
+
+		<%= render 'landing_footer' %>
+
+
+</div>
+
+<script type="text/javascript">	
+	$('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+        || location.hostname == this.hostname) {
+
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+           if (target.length) {
+             $('html,body').animate({
+                 scrollTop: target.offset().top
+            }, 750);
+            return false;
+        }
+    }
+});
+</script>

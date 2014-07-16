@@ -3,12 +3,11 @@
 # Table name: friendly_id_slugs
 #
 #  id             :integer          not null, primary key
-#  slug           :string(255)
-#  sluggable_id   :integer
+#  slug           :string(255)      not null
+#  sluggable_id   :integer          not null
 #  sluggable_type :string(50)
 #  scope          :string(255)
 #  created_at     :datetime
-#  updated_at     :datetime
 #
 
 class FriendlyIdSlug < ActiveRecord::Base

@@ -446,13 +446,13 @@ Webknow::Application.routes.draw do
 
 
   # get "publisher_products/index"
-  get "publisher_products/show"
+  # get "publisher_products/show"
+  match 'publisher_products/create', to: 'publisher_products#create', via: 'post'
   match '/Publisher-Products', to: 'publisher_products#index', via: 'get'
   match '/publisher_products/upload', to: 'publisher_products#upload', via: 'post'
   # match '/Publisher-Add-Product', to: 'publisher_products#new', via: 'get'
-  match '/Publisher-Add-Product', to: 'publisher_products#create', via: 'get'
-  match "/Publisher-Products-Edit/:id/edit" => "publisher_products#edit", via: 'post'
-  match "/publisher_products/:id" => "publisher_products#update", via: 'get'
+  # match "/Publisher-Products-Edit/:id/edit" => "publisher_products#edit", via: 'post'
+  # match "/publisher_products/:id" => "publisher_products#update", via: 'get'
 
   resources :publisher_products do
     collection do
@@ -460,16 +460,30 @@ Webknow::Application.routes.draw do
     end
   end
 
-  resources :publisher_products
+  # resources :publisher_products
 
 
 
+  # class AuthorUrlConstrainer
+    # def matches?(request)
+      # id = request.path.gsub("/", "")
+      # Author.find_by_slug(id)
+    # end
+  # end
+  # constraints(AuthorUrlConstrainer.new) do
+    # match '/:id', to: "authors#show", as: 'short_author'
+  # end
 
-  get "publisher_product_descriptions/show"
-  match '/Publisher-Product-Description', to: 'publisher_product_descriptions#index', via: 'get' 
-  match '/publisher_product_descriptions/upload', to: 'publisher_product_descriptions#upload', via: 'post'
-  match '/PublisherAddProductInformation', to: 'publisher_product_descriptions#new', via: 'get'
-  match "/Publisher-Product-Edit/:id/edit" => "publisher_product_descriptions#edit", via: 'post'
+  # get "publisher_product_description" => 'publisher_product_descriptions#index'
+  # get "publisher_product_descriptions/show"
+  match 'Publisher-Product-Description', to: 'publisher_product_descriptions#index', via: 'get' 
+  # match 'Publisher-Product-Description', to: 'publisher_product_descriptions#show_description', via: 'post'
+  # match 'Publisher-Product-Description/:id', to: 'publisher_product_descriptions#show', as: 'publisher_product_description', via: 'get' 
+  # get 'publisher_product_description/:id' => 'publisher_product_descriptions#show'
+
+  # match '/publisher_product_descriptions/upload', to: 'publisher_product_descriptions#upload', via: 'post'
+  # match '/PublisherAddProductInformation', to: 'publisher_product_descriptions#new', via: 'get'
+  # match "/Publisher-Product-Edit/:id/edit" => "publisher_product_descriptions#edit", via: 'post'
 
   resources :publisher_product_descriptions do
     collection do
@@ -477,6 +491,12 @@ Webknow::Application.routes.draw do
     end
   end
 
+  resources :publisher_product_descriptions do
+    collection do
+      post :show_description
+      # match 'Publisher-Product-Description', via: 'post'
+    end
+  end
   resources :publisher_product_descriptions do
     collection do
       post :update_name_product
@@ -547,13 +567,23 @@ Webknow::Application.routes.draw do
       post :update_word_description
     end
   end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_core_literacy_standard
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_core_math_standard
+    end
+  end
 
 
 
 
   # match "/publisher_product_descriptions/:id" => "publisher_product_descriptions#update", via: 'post'
 
-  resources :publisher_product_descriptions
+  # resources :publisher_product_descriptions, :except => ['show']
 
 
 

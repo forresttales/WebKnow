@@ -1,0 +1,2 @@
+class PublisherProductCoreMathStandardsController < ApplicationController
+end

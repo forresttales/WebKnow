@@ -2,22 +2,39 @@ class PublisherProductsController < ApplicationController
   
   layout 'publisher_product'
 
+  respond_to :html, :js, :json  
+
   helper_method :sort_column, :sort_direction
 
   before_filter :force_http
 
+  skip_before_filter :verify_authenticity_token
     
   
   def index
 
-    publisher = Publisher.where(["user_id = ?", current_user.id]).first
-    @publisher_id = publisher.id
+    # ar = Array.new
+    # c = ActiveRecord::Base.connection
+    # c.tables.collect do |t|  
+      # columns = c.columns(t).collect(&:name).select {|x| x.ends_with?("_id" || x.ends_with("_type"))}
+      # indexed_columns = c.indexes(t).collect(&:columns).flatten.uniq
+      # unindexed = columns - indexed_columns
+      # unless unindexed.empty?
+        # ar.push("#{t}: #{unindexed.join(", ")}")
+      # end
+    # end
+    # render text: ar
+
+    # publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    # @publisher_id = publisher.id
+    @publisher_id = current_user.publisher.id
     
     # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction) # .paginate(:per_page => 200, :page => params[:page])
     # @publisher_product_images = PublisherProductImage.where("publisher_product_id = ?", @publisher_product.id)
-    
     # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).paginate(:per_page => 6, page: params[:page])
-    @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).paginate(page: params[:page])
+
+    # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).paginate(page: params[:page])
+    @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
     
     
     
@@ -37,58 +54,57 @@ class PublisherProductsController < ApplicationController
 
   
   def create
-    publisher = Publisher.where(["user_id = ?", current_user.id]).first
-    h_product = Hash.new
-    h_product[:publisher_id] = publisher.id
-    publisher_product = PublisherProduct.new(h_product)
 
+    # respond_to do |format|
+      # format.html
+      # # format.js { redirect_to(:action => 'index', :form => :js ) }
+      # format.js
+    # end
+
+
+    publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    h_new = Hash.new
+    h_new[:publisher_id] = publisher.id
+    publisher_product = PublisherProduct.new(h_new)
     # publisher_product.publisher_id = publisher.id
     # user = User.find(session[:user_id])
-
     #if user.update_columns( :has_account => true, :account_type => "publisher")      
-      if publisher_product.save
-        h_description = Hash.new
-        h_description[:publisher_id] = publisher.id
-        h_description[:publisher_product_id] = publisher_product.id
-        publisher_product_description = PublisherProductDescription.new(h_description)
+    if publisher_product.save
+        h_new[:publisher_product_id] = publisher_product.id
+        publisher_product_description = PublisherProductDescription.new(h_new)
         if publisher_product_description.save
+            h_new[:publisher_product_description_id] = publisher_product_description.id
+            publisher_product_appropriate_age = PublisherProductAppropriateAge.new(h_new)
+            if publisher_product_appropriate_age.save
+                # redirect_to :action => 'index'
+                # @publisher_products = current_user.publisher.publisher_products.paginate(page: params[:page])
+                @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
+                respond_to do |format|
+                  format.html
+                  # format.js { redirect_to(:action => 'index', :form => :js ) }
+                  format.js
+                end
+              # redirect_to(:controller => 'publisher_product_descriptions', 
+                          # :action => 'show_description', 
+                          # :method => :post,
+                          # :params => { :publisher_product_id => publisher_product.id })
+                          
+                          # :params => {:publisher_id => publisher.id, 
+                                      # :publisher_product_id => publisher_product.id,
+                                      # :publisher_product_description_id => publisher_product_description.id
+                                     # })
 
-          redirect_to(:controller => 'publisher_product_descriptions', 
-                      :action => 'index', 
-                      :params => {:publisher_id => publisher.id, 
-                                  :publisher_product_id => publisher_product.id,
-                                  :publisher_product_description_id => publisher_product_description.id
-                                 })
-
-          # h_image = Hash.new
-          # h_image[:publisher_id] = publisher.id
-          # h_image[:publisher_product_id] = publisher_product.id
-          # publisher_product_image = PublisherProductImage.new(h_image)
-          # if publisher_product_image.save
-            # redirect_to(:controller => 'publisher_product_descriptions', 
-                        # :action => 'index', 
-                        # :params => {:publisher_id => publisher.id, 
-                                    # :publisher_product_id => publisher_product.id,
-                                    # :publisher_product_description_id => publisher_product_description.id,
-                                    # :publisher_product_image_id => publisher_product_image.id })        
-          # else
-            # render text: 'save publisher_product_image failed'
-          # end
+            else
+              render text: 'save publisher_product_appropriate_age failed'
+            end
         else
           render text: 'save publisher_product_description failed'
         end
-                  
-        # session[:has_account] = true
-        # redirect_to(:action => 'index')
-
-
-      else
-        render text: 'save publisher_product failed'
-        #render("new")
-      end
-    #else
-    #  render text: 'update user_id failed'
-    #end
+    else
+      render text: 'save publisher_product failed'
+      #render("new")
+    end
+      
     
   end
 
@@ -137,6 +153,15 @@ class PublisherProductsController < ApplicationController
 
       PublisherProductLogo.dbdelete
       PublisherProductLogo.dbclear
+
+      PublisherProductAppropriateAge.dbdelete
+      PublisherProductAppropriateAge.dbclear
+
+      PublisherProductCoreLiteracyStandard.dbdelete
+      PublisherProductCoreLiteracyStandard.dbclear
+
+      PublisherProductCoreMathStandard.dbdelete
+      PublisherProductCoreMathStandard.dbclear
       
       redirect_to '/Publisher-Products'
             
@@ -193,7 +218,7 @@ class PublisherProductsController < ApplicationController
     end
     
     def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
   
   

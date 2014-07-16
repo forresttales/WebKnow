@@ -28,12 +28,12 @@
 
 class User < ActiveRecord::Base
   
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  # attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   
   # attr_accessor   :id
   
-  attr_accessible :id,
-                  :name_first,
+  # attr_accessible :id,
+  attr_accessible :name_first,
                   :name_last,
                   :email, 
                   :username, 
@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   has_one :recruiter, dependent: :destroy
   has_one :student, dependent: :destroy
   has_one :teacher, dependent: :destroy
-  has_many :user_profile_images  
+  # has_many :user_profile_images  
   
   # has_many :microposts, dependent: :destroy
   # has_many :relationships, foreign_key: "follower_id", dependent: :destroy

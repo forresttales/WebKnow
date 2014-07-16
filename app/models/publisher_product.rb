@@ -31,7 +31,11 @@ class PublisherProduct < ActiveRecord::Base
   belongs_to :publisher
   has_one :publisher_product_description
   has_one :publisher_product_logo
-  has_one :publisher_product_metadatatag
+  has_one :publisher_product_image
+  # has_one :publisher_product_metadatatag
+  has_one :publisher_product_appropriate_age
+  # has_one :publisher_product_core_literacy_standard
+  # has_one :publisher_product_core_math_standard
 
 
 

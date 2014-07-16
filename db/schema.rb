@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704152543) do
+ActiveRecord::Schema.define(version: 20140716051530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,37 @@ ActiveRecord::Schema.define(version: 20140704152543) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "core_literacy_standards", force: true do |t|
+    t.string   "dot_not"
+    t.string   "uri"
+    t.string   "guid"
+    t.string   "url_prev"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "core_math_standards", force: true do |t|
+    t.string   "dot_not"
+    t.string   "uri"
+    t.string   "guid"
+    t.string   "url_prev"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "galleries", force: true do |t|
     t.string   "name"
@@ -636,6 +667,60 @@ ActiveRecord::Schema.define(version: 20140704152543) do
 
   add_index "publisher_metrics", ["user_id"], name: "index_publisher_metrics_on_user_id", using: :btree
 
+  create_table "publisher_product_appropriate_ages", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "age_appropriate_1",                default: false
+    t.boolean  "age_appropriate_2",                default: false
+    t.boolean  "age_appropriate_3",                default: false
+    t.boolean  "age_appropriate_4",                default: false
+    t.boolean  "age_appropriate_5",                default: false
+    t.boolean  "age_appropriate_6",                default: false
+    t.boolean  "age_appropriate_7",                default: false
+    t.boolean  "age_appropriate_8",                default: false
+    t.boolean  "age_appropriate_9",                default: false
+    t.boolean  "age_appropriate_10",               default: false
+    t.boolean  "age_appropriate_11",               default: false
+    t.boolean  "age_appropriate_12",               default: false
+    t.boolean  "age_appropriate_13",               default: false
+    t.boolean  "age_appropriate_14",               default: false
+    t.boolean  "age_appropriate_15",               default: false
+    t.boolean  "age_appropriate_16",               default: false
+    t.boolean  "age_appropriate_17",               default: false
+    t.boolean  "age_appropriate_adult",            default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_appropriate_ages", ["publisher_id"], name: "index_appr_age_on_publisher_id", using: :btree
+  add_index "publisher_product_appropriate_ages", ["publisher_product_description_id"], name: "index_appr_age_on_publisher_product_description_id", using: :btree
+  add_index "publisher_product_appropriate_ages", ["publisher_product_id"], name: "index_appr_age_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_core_literacy_standards", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.string   "dot_not"
+    t.string   "uri"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_core_literacy_standards", ["publisher_id"], name: "index_cls_on_publisher_id", using: :btree
+  add_index "publisher_product_core_literacy_standards", ["publisher_product_id"], name: "index_cls_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_core_math_standards", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.string   "dot_not"
+    t.string   "uri"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_core_math_standards", ["publisher_id"], name: "index_cms_on_publisher_id", using: :btree
+  add_index "publisher_product_core_math_standards", ["publisher_product_id"], name: "index_cms_on_publisher_product_id", using: :btree
+
   create_table "publisher_product_descriptions", force: true do |t|
     t.integer  "publisher_product_id"
     t.integer  "publisher_id"
@@ -664,6 +749,9 @@ ActiveRecord::Schema.define(version: 20140704152543) do
     t.string   "versions"
     t.string   "pricing_model"
     t.integer  "pricing_model_index",                             default: 0
+    t.string   "core_literacy_standard"
+    t.string   "core_math_standard"
+    t.string   "slugged",                                         default: ""
   end
 
   add_index "publisher_product_descriptions", ["publisher_id"], name: "index_publisher_product_descriptions_on_publisher_id", using: :btree

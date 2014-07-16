@@ -10,51 +10,17 @@ class PublishersController < ApplicationController
 
   def index
     
-    # publisher = Publisher.find(1)
-    # if publisher.nil?
-      # render text: 'nil'
-    # else
-      # render text: publisher.id
-    # end
-    publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    # render text: "current_user id = " + current_user.id.to_s + " publisher id = " + current_user.publisher.id.to_s
+    
+    # publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    publisher = current_user.publisher
     @publisher_id = publisher.id
-    # publishers = Publisher.where("user_id = 1")
-    # publisher = publishers[0]
+    # @publisher_profile_images = PublisherProfileImage.where("user_id = ?", current_user.id)     
+    @publisher_profile_images = current_user.publisher.publisher_profile_images     
     
-    # render text: publisher.id
-    
-    # @publisher = publisher       
-    # @username = current_user.username
-    
-    # @admin_user_profile = AdminUserProfile.find(session[:admin_user_id])    
-    
-    # session[:publisher_id] = publisher.id
-    
-    # @publisher_profile_images = PublisherProfileImage.where("publisher_profile_image.publisher_id = ? AND publisher_profile_image.primary = ?", session[:publisher_id], true)       
-    # @publisher_profile_images = PublisherProfileImage.where("publisher_id = ? AND primary = ?", session[:publisher_id], true)  
-    # @publisher_profile_images = PublisherProfileImage.where("publisher_id = ?", session[:publisher_id])     
-    @publisher_profile_images = PublisherProfileImage.where("user_id = ?", current_user.id)     
+    # publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", publisher.id)
+    publisher_journalposters = current_user.publisher.publisher_journalposters
 
-    # if @user_profile_images.any?
-      # @user_profile_image_nav = @user_profile_images[0]
-    # else
-      # @user_profile_image_nav = nil
-    # end      
-
-    # @publisher_profile_image_has_profile_image = false
-    # if publisher_profile_images.any?
-      # @publisher_profile_image_has_profile_image = true
-    # end
-
-
-    # if publisher_profile_image.count > 0
-      # image_name = publisher_image[0].image_name
-      # gon.image_name = image_name
-    # else
-      # gon.image_name = ''
-    # end
-    
-    publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", publisher.id)
     if publisher_journalposters.any?
       session[:publisher_has_journalposter] = true
     else
@@ -77,9 +43,10 @@ class PublishersController < ApplicationController
   
   def new
     
-    if !(session[:username].nil? or session[:user_id].nil?)
-      @username = session[:username]
-      @publisher = Publisher.new
+    # if !(session[:username].nil? or session[:user_id].nil?)
+    if !current_user.nil?
+      @username = current_user.username
+      @publisher = current_user.publisher.build
     else
       render text: 'failed sessions'
     end
@@ -88,14 +55,16 @@ class PublishersController < ApplicationController
 
   
   def create
-    @publisher = Publisher.new(publisher_params)
-    @publisher.user_id = session[:user_id]
-    user = User.find(session[:user_id])
+    
+    @publisher = current_user.publisher.new(publisher_params)
+    
+    # @publisher = Publisher.new(publisher_params)
+    # @publisher.user_id = session[:user_id]
+    # user = User.find(session[:user_id])
 
-    if user.update_columns( :has_account => true, :account_type => "publisher")      
+    # if user.update_columns( :has_account => true, :account_type => "publisher")      
       if @publisher.save
-        
-        session[:has_account] = true
+        # session[:has_account] = true
         session[:account_type] = "publisher"    
         session[:profile] = "publishers/home"
         
@@ -104,9 +73,9 @@ class PublishersController < ApplicationController
         render text: 'save publisher failed'
         #render("new")
       end
-    else
-      render text: 'update user_id failed'
-    end
+    # else
+      # render text: 'update user_id failed'
+    # end
     
     # if @user.update_attribute(:has_account, TRUE)
       # if @user.update_attribute(:account_type, "student")
@@ -193,9 +162,7 @@ class PublishersController < ApplicationController
                                         :company_contact_name_first, 
                                         :company_contact_name_last,
                                         :company_contact_phone, 
-                                        :company_contact_email, 
-                                        :created_at, 
-                                        :updated_at
+                                        :company_contact_email 
                                        )
                                        
     end

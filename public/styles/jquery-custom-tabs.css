@@ -1,0 +1,170 @@
+
+		@import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans);
+
+        body {
+          margin: 0;
+          padding: 0;
+        }
+       
+       #tab-container {
+       	width: 1200px;
+		box-shadow: 0 0 5px 3px #323232;
+		margin-right: auto;
+		margin-left: auto;       	
+       	
+       }
+       
+        .tabs, .tabs ul, .tabs ul li, .tabs ul li span, .tabs ul li a,
+        .subtabs, .subtabs ul, .subtabs ul li, .subtabs ul li span, .subtabs ul li a {
+          margin: 0;
+          padding: 0;
+          line-height: 1;
+        }
+
+        .tabs, .tabs a, .tabs a:visited, .tabs a:hover {
+          color: #444;
+        }
+
+        .tabs li.disabled, .tabs li.disabled a, .tabs li.disabled a:visited, .tabs li.disabled a:hover,
+        .subtabs li.disabled, .subtabs li.disabled a, .subtabs li.disabled a:visited, .subtabs li.disabled a:hover {
+          color: #888;
+        }
+
+        .tabs a {
+          text-decoration: none;
+        }
+
+
+		/*.ui-tabs-nav {
+  			font-family: 'Quattrocento Sans', sans-serif;
+		}*/
+		
+        .tabs ul {
+  		  font-family: 'Quattrocento Sans', sans-serif;
+          
+          font-size: 24px;
+          height: 32px;
+          list-style-type: none;
+          
+          background-color: #3D3D3D;
+          border: 2px solid #41B737 !important;
+          border-bottom: 4px solid #41B737 !important;
+    	  color: #222222;
+    	  font-weight: bold;
+          
+          padding-top: 22px;
+        }
+
+        .tabs ul li {
+          /*padding-top: 25px;*/
+          padding-top: 0px;
+          padding-right: 4px;
+          
+          /*float: left;*/
+          display: inline;
+          
+          
+        }
+
+        .tabs ul li .tab {
+        	
+		  border: 1px solid #41B737 !important;        	
+          
+          padding: 5px 15px 3px 15px;
+          
+          /*float: left;*/          
+          
+          -webkit-border-top-left-radius: 8px;
+          -khtml-border-radius-topleft: 8px;
+          -moz-border-radius-topleft: 8px;
+          border-top-left-radius: 8px;
+          -webkit-border-top-right-radius: 8px;
+          -khtml-border-radius-topright: 8px;
+          -moz-border-radius-topright: 8px;
+          border-top-right-radius: 8px;
+          
+          
+          
+        }
+
+        .tabs ul li .tab-blue {
+          background-color: #89BEFA;
+        }
+
+        .tabs ul li .tab-blue-lt {
+          background-color: #B8D9FF;
+        }
+
+
+        .tabs ul li .tab-yellow {
+          background-color: #E3E356;
+        }
+
+        .tabs ul li .tab-yellow-lt {
+          background-color: #E8E8BA;
+        }
+
+
+        .tabs ul li.active .tab-blue {
+          background-color: #fff;
+        }
+
+        .tabs ul li.active .tab-yellow {
+          background-color: #fff;
+        }
+
+        .tabs ul li.active .tab {
+          /*background-color: #fff;*/
+          padding-bottom: 5px;
+        }
+
+        .tabs ul li a:hover {
+          background-color: #ddd;
+        }
+
+        .tabs ul, .subtabs ul {
+        	
+        	text-align: center;
+        	vertical-align: bottom;
+        	
+          /*overflow: hidden;*/         
+          
+          /*display: inline;*/
+          
+          /*display: inline-block;*/    
+          /*display: block;*/
+                  
+        }
+       
+              
+        /*.subtabs ul {
+          margin-top: 5px;
+        }
+
+        .subtabs, .subtabs a, .subtabs a:visited {
+          color: #444;
+        }
+
+        .subtabs li.active {
+          font-weight: bold;
+        }
+
+        .subtabs a {
+          text-decoration: none;
+        }
+
+        .subtabs ul {
+          font-size: 16px;
+          height: 30px;
+          list-style-type: none;
+          padding: 0 0 0 50px;
+        }
+
+        .subtabs ul li {
+          padding: 10px;
+          float: left;
+        }
+
+        .subtabs ul li a:hover {
+          text-decoration: underline;
+        }*/
