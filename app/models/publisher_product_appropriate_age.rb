@@ -68,5 +68,6 @@ class PublisherProductAppropriateAge < ActiveRecord::Base
   def self.dbclear
       self.connection.execute("ALTER SEQUENCE publisher_product_appropriate_ages_id_seq RESTART WITH 1")
   end
+
   
 end

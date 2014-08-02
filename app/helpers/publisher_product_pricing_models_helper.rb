@@ -1,0 +1,2 @@
+module PublisherProductPricingModelsHelper
+end

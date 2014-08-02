@@ -504,52 +504,7 @@ Webknow::Application.routes.draw do
   end
   resources :publisher_product_descriptions do
     collection do
-      post :update_description
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
-      post :update_type_content_index
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
-      post :update_core_supplemental_index
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
-      post :update_source_url
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
-      post :update_subject_category_index
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
-      post :update_age_appropriate_index
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
-      post :update_grade_index
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
-      post :update_platform_index
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
-      post :update_pricing_model_index
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
-      post :update_price
+      post :update_product_tagline
     end
   end
   resources :publisher_product_descriptions do
@@ -559,7 +514,117 @@ Webknow::Application.routes.draw do
   end
   resources :publisher_product_descriptions do
     collection do
+      post :update_content_type
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_category_subject
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
       post :update_topic
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_lesson_plan_subject
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_description
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_age_appropriate_index
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_grade_appropriate
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_source_url
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_market_target_index
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_platform
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_file_type_index
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_updating_refresh_rate
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_updating_type
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_character
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_enhancement
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_pricing_model
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_price
+    end
+  end
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_reselling
+    end
+  end  
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_evaluation
+    end
+  end  
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_lesson_time
+    end
+  end  
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_allow_teacher_rating
+    end
+  end  
+  # resources :publisher_product_descriptions do
+    # collection do
+      # post :update_user_rating
+    # end
+  # end  
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_core_supplemental_index
     end
   end
   resources :publisher_product_descriptions do
@@ -962,151 +1027,179 @@ Webknow::Application.routes.draw do
   
   
   
-    #*********************************************************************
-  # mtables
-  
+  # #*********************************************************************
+  # # mtables
+#   
+  # # get "mtablets/index"
+  # # get "mtablets/show"
+  # # match '/mtablets/new', to: 'mtablets#new', via: 'get'
+  # # match "/mtablets/:id/edit" => "mtablets#edit", via: 'post'
+  # # match "/mtablets/:id" => "mtablets#update", via: 'get'
+  # # match '/mtablets/upload', to: 'mtablets#upload', via: 'post'
+#   
   # get "mtablets/index"
-  # get "mtablets/show"
+  # get "mtablets/update_show"
+  # match "/mtablets/show/:id" => "mtablets#show", via: 'get'
   # match '/mtablets/new', to: 'mtablets#new', via: 'get'
   # match "/mtablets/:id/edit" => "mtablets#edit", via: 'post'
-  # match "/mtablets/:id" => "mtablets#update", via: 'get'
   # match '/mtablets/upload', to: 'mtablets#upload', via: 'post'
-  
-  get "mtablets/index"
-  get "mtablets/update_show"
-  match "/mtablets/show/:id" => "mtablets#show", via: 'get'
-  match '/mtablets/new', to: 'mtablets#new', via: 'get'
-  match "/mtablets/:id/edit" => "mtablets#edit", via: 'post'
-  match '/mtablets/upload', to: 'mtablets#upload', via: 'post'
-  
-  resources :mtablets do
-    collection { post :import }
-  end
-
-  resources :mtablets do
-    member do
-      get 'export'
-    end
-  end
-
-  resources :mtablets do
-    collection { post :exec_sql }
-  end
-
-  resources :mtablets do
-    collection do
-      post :dbclear
-    end
-  end
-
-  resources :mtablets do
-    collection do
-      post :dbdelete
-    end
-  end
-
-  match "/mtablets/:id" => "mtablets#update", via: 'post'
-
-  resources :mtablets
-
-
-
-  # resources :mtab1lets do
+#   
+  # resources :mtablets do
+    # collection { post :import }
+  # end
+# 
+  # resources :mtablets do
     # member do
-      # get 'list'
+      # get 'export'
     # end
   # end
-
-  get "mtab1lets/index"
-  # resources :mtab1lets do
-    # member do
-      # get 'list'
+# 
+  # resources :mtablets do
+    # collection { post :exec_sql }
+  # end
+# 
+  # resources :mtablets do
+    # collection do
+      # post :dbclear
     # end
   # end
-
-  # resources :mtab1lets do
-    # collection { get :list }
+# 
+  # resources :mtablets do
+    # collection do
+      # post :dbdelete
+    # end
   # end
-  
-  # get "mtab1lets/update_show"
-  match "/mtab1lets/show/:id" => "mtab1lets#show", via: 'get'
-  # get "mtab1lets/list"  
-  # match '/mtab1lets/list' => 'mtab1lets#list', :constraints => { :only_ajax => true }, via: 'get'  
-  match '/mtab1lets/list' => 'mtab1lets#list', via: 'get'  
-  
-  match '/mtab1lets/new', to: 'mtab1lets#new', via: 'get'
-  match "/mtab1lets/:id/edit" => "mtab1lets#edit", via: 'post'
-  match '/mtab1lets/upload', to: 'mtab1lets#upload', via: 'post'
-  
-  resources :mtab1lets do
-    collection { post :import }
-  end
+# 
+  # match "/mtablets/:id" => "mtablets#update", via: 'post'
+# 
+  # resources :mtablets
+# 
+# 
+# 
+  # # resources :mtab1lets do
+    # # member do
+      # # get 'list'
+    # # end
+  # # end
+# 
+  # get "mtab1lets/index"
+  # # resources :mtab1lets do
+    # # member do
+      # # get 'list'
+    # # end
+  # # end
+# 
+  # # resources :mtab1lets do
+    # # collection { get :list }
+  # # end
+#   
+  # # get "mtab1lets/update_show"
+  # match "/mtab1lets/show/:id" => "mtab1lets#show", via: 'get'
+  # # get "mtab1lets/list"  
+  # # match '/mtab1lets/list' => 'mtab1lets#list', :constraints => { :only_ajax => true }, via: 'get'  
+  # match '/mtab1lets/list' => 'mtab1lets#list', via: 'get'  
+#   
+  # match '/mtab1lets/new', to: 'mtab1lets#new', via: 'get'
+  # match "/mtab1lets/:id/edit" => "mtab1lets#edit", via: 'post'
+  # match '/mtab1lets/upload', to: 'mtab1lets#upload', via: 'post'
+#   
+  # resources :mtab1lets do
+    # collection { post :import }
+  # end
+# 
+  # resources :mtab1lets do
+    # member do
+      # get 'export'
+    # end
+  # end
+# 
+  # resources :mtab1lets do
+    # collection { post :exec_sql }
+  # end
+# 
+  # resources :mtab1lets do
+    # collection do
+      # post :dbclear
+    # end
+  # end
+# 
+  # resources :mtab1lets do
+    # collection do
+      # post :dbdelete
+    # end
+  # end
+# 
+  # match "/mtab1lets/:id" => "mtab1lets#update", via: 'post'
+# 
+  # resources :mtab1lets
+# 
+# 
+# 
+# 
+  # get "mtab2lets/index"
+  # get "mtab2lets/update_show"
+  # match "/mtab2lets/show/:id" => "mtab2lets#show", via: 'get'
+  # match '/mtab2lets/new', to: 'mtab2lets#new', via: 'get'
+  # match "/mtab2lets/:id/edit" => "mtab2lets#edit", via: 'post'
+  # match '/mtab2lets/upload', to: 'mtab2lets#upload', via: 'post'
+#   
+  # resources :mtab2lets do
+    # collection { post :import }
+  # end
+# 
+  # resources :mtab2lets do
+    # member do
+      # get 'export'
+    # end
+  # end
+# 
+  # resources :mtab2lets do
+    # collection { post :exec_sql }
+  # end
+# 
+  # resources :mtab2lets do
+    # collection do
+      # post :dbclear
+    # end
+  # end
+# 
+  # resources :mtab2lets do
+    # collection do
+      # post :dbdelete
+    # end
+  # end
+# 
+  # match "/mtab2lets/:id" => "mtab2lets#update", via: 'post'
+# 
+  # resources :mtab2lets
 
-  resources :mtab1lets do
-    member do
-      get 'export'
-    end
-  end
-
-  resources :mtab1lets do
-    collection { post :exec_sql }
-  end
-
-  resources :mtab1lets do
-    collection do
-      post :dbclear
-    end
-  end
-
-  resources :mtab1lets do
-    collection do
-      post :dbdelete
-    end
-  end
-
-  match "/mtab1lets/:id" => "mtab1lets#update", via: 'post'
-
-  resources :mtab1lets
 
 
 
 
-  get "mtab2lets/index"
-  get "mtab2lets/update_show"
-  match "/mtab2lets/show/:id" => "mtab2lets#show", via: 'get'
-  match '/mtab2lets/new', to: 'mtab2lets#new', via: 'get'
-  match "/mtab2lets/:id/edit" => "mtab2lets#edit", via: 'post'
-  match '/mtab2lets/upload', to: 'mtab2lets#upload', via: 'post'
-  
-  resources :mtab2lets do
-    collection { post :import }
-  end
 
-  resources :mtab2lets do
-    member do
-      get 'export'
-    end
-  end
 
-  resources :mtab2lets do
-    collection { post :exec_sql }
-  end
 
-  resources :mtab2lets do
-    collection do
-      post :dbclear
-    end
-  end
 
-  resources :mtab2lets do
-    collection do
-      post :dbdelete
-    end
-  end
 
-  match "/mtab2lets/:id" => "mtab2lets#update", via: 'post'
 
-  resources :mtab2lets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,2 @@
+class PublisherProductPlatformsController < ApplicationController
+end

@@ -264,8 +264,46 @@
 			   -moz-box-shadow: inset 0 0 1px 1px #185C61;
 			        box-shadow: inset 0 0 1px 1px #185C61;
 		}
-		
-		
+		.input-home-profile-d {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #888;
+			font-weight: 600;
+			font-size: 13px;
+			width: 80px;
+			height: 24px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #fff;
+			border-color: #478A3E;
+			border-width: 1px;
+			padding-left: 4px;
+		}
+		.input-home-profile-d:focus,
+		.input-home-profile-d:active {
+			border-color: #478A3E;
+			color: #11520B;
+			font-weight: 600;
+			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;
+		}
+		.input-home-profile-d:focus:hover {
+			border-color: #478A3E;
+			color: #11520B;
+			font-weight: 600;
+			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;
+		}		
+		.input-home-profile-d:hover {
+			-webkit-box-shadow: inset 0 0 1px 1px #185C61;
+			   -moz-box-shadow: inset 0 0 1px 1px #185C61;
+			        box-shadow: inset 0 0 1px 1px #185C61;
+		}
+		.input-home-profile-d:disabled {
+			box-shadow: none;
+			color: #ccc;
+		}
 		.input-home-profile-short {
 			font-family: Arial, Helvetica, sans-serif;
 			color: #888;
@@ -401,6 +439,10 @@
 			display: table-cell;
 			width: 90px;
 		}
+		.form-home-profile-cell-1a {
+			display: table-cell;
+			width: 90px;
+		}
 		.form-home-profile-cell-2 {
 			display: table-cell;
 			width: 380px;
@@ -417,18 +459,58 @@
 		}
 		.form-home-profile-cell-1c {
 			display: table-cell;
-			width: 10px;
+			width: 30px;
 		}
 		.form-home-profile-cell-2c {
 			display: table-cell;
-			width: 510px;
+			width: 500px;
 			text-align: right;
+			/*margin-left: 10px;*/
 		}
 		.form-home-profile-cell-3c {
 			display: table-cell;
-			width: 60px;
+			width: 10px;
 			height:16px;
 		}
+		.form-home-profile-cell-1d {
+			display: table-cell;
+			width: 320px;
+			padding-left: 20px;
+		}
+		.form-home-profile-cell-2d {
+			display: table-cell;
+			width: 30px;
+			/*padding-top: 6px;*/
+			vertical-align: bottom;
+		}
+		.form-home-profile-cell-3d {
+			display: table-cell;
+			width: 10px;
+		}
+		.form-home-profile-cell-4d {
+			display: table-cell;
+			width: 80px;
+			height:16px;
+		}
+		.form-home-profile-cell-5d {
+			display: table-cell;
+			width: 40px;
+			height:16px;
+		}
+		.form-home-profile-cell-6d {
+			display: table-cell;
+			width: 560px;
+			padding-left: 330px;
+		}
+		.form-home-profile-cell-7d {
+			display: table-cell;
+			width: 1px;
+		}
+		span.price-list {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: #888;
+		} 
 		.form-home-profile-cell-submit {
 			display: table-cell;
 			width: 500px;
@@ -445,7 +527,13 @@
 		.form-home-profile-row-space {
 			height: 4px;
 		}
-			
+		div.container-dollar-sign {
+			display: inline-block;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #1F7C82;			
+		}
+		
 	</style>
 
 	<!-- <style>
@@ -930,6 +1018,17 @@
 		
 	</style>											
 	
+	<style>
+		
+		span.error-msg {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: red;
+		}
+		
+	</style>
+
+	
 	<style>						
 
 		/*
@@ -1006,13 +1105,12 @@
 
 								<div style="height: 100px;"></div>		
 								
-						    	<div style="width: 100%; text-align: center;">
+						    	<!-- <div style="width: 100%; text-align: center;">
 							    	<h5>
-									   	<% delete_all_msg = "Delete all records and reset index in publisher_product_descriptions?" %>
-										<%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long', :remote => true %>
-										<!-- <#%= button_to "Delete All Records and Reset Index", dbdelete_publisher_product_descriptions_path, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long', :remote => true %#> -->
+									   	<#% delete_all_msg = "Delete all records and reset index in publisher_product_descriptions?" %#>
+										<#%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long', :remote => true %#>
 									</h5>
-								</div>
+								</div> -->
 								
 							</div>
 						</div>

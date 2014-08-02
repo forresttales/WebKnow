@@ -33,7 +33,19 @@ class PublisherProduct < ActiveRecord::Base
   has_one :publisher_product_logo
   has_one :publisher_product_image
   # has_one :publisher_product_metadatatag
+  has_one :publisher_product_content_type  
+  has_one :publisher_product_category_subject
+  has_one :publisher_product_appropriate_grade
   has_one :publisher_product_appropriate_age
+  has_one :publisher_product_market_target
+  has_one :publisher_product_platform
+  has_one :publisher_product_file_type
+  has_one :publisher_product_character
+  has_one :publisher_product_enhancement
+  has_one :publisher_product_pricing_model
+  has_one :publisher_product_price
+  has_one :publisher_product_lesson_time
+
   # has_one :publisher_product_core_literacy_standard
   # has_one :publisher_product_core_math_standard
 

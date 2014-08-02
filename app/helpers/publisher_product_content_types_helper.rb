@@ -1,0 +1,2 @@
+module PublisherProductContentTypesHelper
+end

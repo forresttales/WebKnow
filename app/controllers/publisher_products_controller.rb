@@ -25,78 +25,124 @@ class PublisherProductsController < ApplicationController
     # end
     # render text: ar
 
-    # publisher = Publisher.where(["user_id = ?", current_user.id]).first
-    # @publisher_id = publisher.id
     @publisher_id = current_user.publisher.id
-    
     # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction) # .paginate(:per_page => 200, :page => params[:page])
-    # @publisher_product_images = PublisherProductImage.where("publisher_product_id = ?", @publisher_product.id)
-    # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).paginate(:per_page => 6, page: params[:page])
-
-    # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).paginate(page: params[:page])
     @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
-    
-    
     
   end
   
   
   def new
-    
-    # if !(session[:username].nil? or session[:publisher_id].nil?)
-      # # @username = session[:username]
-      @publisher_product = PublisherProduct.new
-    # else
-      # render text: 'failed sessions'
-    # end
-    
+      # @publisher_product = PublisherProduct.new
   end
 
   
   def create
 
-    # respond_to do |format|
-      # format.html
-      # # format.js { redirect_to(:action => 'index', :form => :js ) }
-      # format.js
-    # end
-
-
     publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    publisher = current_user.publisher
     h_new = Hash.new
     h_new[:publisher_id] = publisher.id
+    
     publisher_product = PublisherProduct.new(h_new)
-    # publisher_product.publisher_id = publisher.id
-    # user = User.find(session[:user_id])
-    #if user.update_columns( :has_account => true, :account_type => "publisher")      
+    
+    #if user.update_columns( :has_account => true, :account_type => "publisher")
+          
     if publisher_product.save
         h_new[:publisher_product_id] = publisher_product.id
         publisher_product_description = PublisherProductDescription.new(h_new)
         if publisher_product_description.save
             h_new[:publisher_product_description_id] = publisher_product_description.id
-            publisher_product_appropriate_age = PublisherProductAppropriateAge.new(h_new)
-            if publisher_product_appropriate_age.save
-                # redirect_to :action => 'index'
-                # @publisher_products = current_user.publisher.publisher_products.paginate(page: params[:page])
-                @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
-                respond_to do |format|
-                  format.html
-                  # format.js { redirect_to(:action => 'index', :form => :js ) }
-                  format.js
-                end
-              # redirect_to(:controller => 'publisher_product_descriptions', 
-                          # :action => 'show_description', 
-                          # :method => :post,
-                          # :params => { :publisher_product_id => publisher_product.id })
-                          
-                          # :params => {:publisher_id => publisher.id, 
-                                      # :publisher_product_id => publisher_product.id,
-                                      # :publisher_product_description_id => publisher_product_description.id
-                                     # })
+            
+            publisher_product_content_type = PublisherProductContentType.new(h_new)
+            if publisher_product_content_type.save
 
+              publisher_product_category_subject = PublisherProductCategorySubject.new(h_new)
+              if publisher_product_category_subject.save
+  
+                publisher_product_appropriate_age = PublisherProductAppropriateAge.new(h_new)
+                if publisher_product_appropriate_age.save
+  
+                  publisher_product_appropriate_grade = PublisherProductAppropriateGrade.new(h_new)
+                  if publisher_product_appropriate_grade.save
+  
+                    publisher_product_market_target = PublisherProductMarketTarget.new(h_new)
+                    if publisher_product_market_target.save
+  
+                      publisher_product_platform = PublisherProductPlatform.new(h_new)
+                      if publisher_product_platform.save
+  
+                        publisher_product_file_type = PublisherProductFileType.new(h_new)
+                        if publisher_product_file_type.save
+  
+                          publisher_product_character = PublisherProductCharacter.new(h_new)
+                          if publisher_product_character.save
+  
+                            publisher_product_enhancement = PublisherProductEnhancement.new(h_new)
+                            if publisher_product_enhancement.save
+  
+                              publisher_product_pricing_model = PublisherProductPricingModel.new(h_new)
+                              if publisher_product_pricing_model.save
+  
+                                publisher_product_price = PublisherProductPrice.new(h_new)
+                                if publisher_product_price.save
+
+                                  publisher_product_lesson_time = PublisherProductLessonTime.new(h_new)
+                                  if publisher_product_lesson_time.save
+        
+                                              @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
+                                              respond_to do |format|
+                                                format.html
+                                                # format.js { redirect_to(:action => 'index', :form => :js ) }
+                                                format.js
+                                              end
+                                              # redirect_to(:controller => 'publisher_product_descriptions', 
+                                                          # :action => 'show_description', 
+                                                          # :method => :post,
+                                                          # :params => { :publisher_product_id => publisher_product.id })
+                                                          
+                                                          # :params => {:publisher_id => publisher.id, 
+                                                                      # :publisher_product_id => publisher_product.id,
+                                                                      # :publisher_product_description_id => publisher_product_description.id
+                                                                     # })
+                                                                     
+                                  else
+                                    render text: 'save publisher_product_lesson_time failed'
+                                  end                                       
+                                else
+                                  render text: 'save publisher_product_price failed'
+                                end                                       
+                              else
+                                render text: 'save publisher_product_pricing_model failed'
+                              end                                       
+                            else
+                              render text: 'save publisher_product_enhancement failed'
+                            end                                       
+                          else
+                            render text: 'save publisher_product_character failed'
+                          end                                       
+                        else
+                          render text: 'save publisher_product_file_type failed'
+                        end      
+                      else
+                        render text: 'save publisher_product_platform failed'
+                      end      
+                    else
+                      render text: 'save publisher_product_market_target failed'
+                    end
+                  else
+                    render text: 'save publisher_product_appropriate_grade failed'
+                  end
+                else
+                  render text: 'save publisher_product_appropriate_age failed'
+                end
+              else
+                render text: 'save publisher_product_category_subject failed'
+              end
             else
-              render text: 'save publisher_product_appropriate_age failed'
+              render text: 'save publisher_product_content_type failed'
             end
+            
         else
           render text: 'save publisher_product_description failed'
         end
@@ -104,6 +150,47 @@ class PublisherProductsController < ApplicationController
       render text: 'save publisher_product failed'
       #render("new")
     end
+
+
+    # if (publisher_product = current_user.publisher.publisher_products.create)
+        # Rails.logger.info 'create publisher_product succeeded'
+        # result = "result"        
+        # if publisher_product.nil?
+          # result = 'publisher_product nil'
+        # else
+          # result = 'publisher_product not nil'
+        # end
+        # Rails.logger.info result
+        # publisher_product_description = PublisherProductDescription.new
+        # publisher_product_description.publisher_product = publisher_product
+        # publisher_product_description.save
+        # if !publisher_product_description.nil?
+          # result = 'publisher_product_description.publisher_product_id = ' + publisher_product_description.publisher_product_id.to_s
+        # else
+          # result = 'publisher_product_description nil'
+        # end
+        # Rails.logger.info result
+        # # if (publisher_product_description = publisher_product.publisher_product_description.create!)
+            # # # if (publisher_product_appropriate_age = publisher_product.publisher_product_appropriate_age.create!)
+                # # # if (publisher_product_market_target = publisher_product.publisher_product_market_target.create!)
+                    # # # @publisher_products = publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
+                    # # # respond_to do |format|
+                        # # # format.html
+                        # # # # format.js { redirect_to(:action => 'index', :form => :js ) }
+                        # # # format.js
+                    # # # end
+                # # # else
+                  # # # render text: 'create publisher_product_market_target failed'
+                # # # end
+            # # # else
+              # # # render text: 'create publisher_product_appropriate_age failed'
+            # # # end
+        # # else
+          # # Rails.logger.info 'create publisher_product_description failed'
+        # # end
+    # else
+      # Rails.logger.info 'create publisher_product failed'
+    # end
       
     
   end
@@ -154,8 +241,41 @@ class PublisherProductsController < ApplicationController
       PublisherProductLogo.dbdelete
       PublisherProductLogo.dbclear
 
+      PublisherProductContentType.dbdelete
+      PublisherProductContentType.dbclear
+
+      PublisherProductCategorySubject.dbdelete
+      PublisherProductCategorySubject.dbclear
+
       PublisherProductAppropriateAge.dbdelete
       PublisherProductAppropriateAge.dbclear
+
+      PublisherProductAppropriateGrade.dbdelete
+      PublisherProductAppropriateGrade.dbclear
+
+      PublisherProductMarketTarget.dbdelete
+      PublisherProductMarketTarget.dbclear
+
+      PublisherProductPlatform.dbdelete
+      PublisherProductPlatform.dbclear
+
+      PublisherProductFileType.dbdelete
+      PublisherProductFileType.dbclear
+
+      PublisherProductCharacter.dbdelete
+      PublisherProductCharacter.dbclear
+
+      PublisherProductEnhancement.dbdelete
+      PublisherProductEnhancement.dbclear
+
+      PublisherProductPricingModel.dbdelete
+      PublisherProductPricingModel.dbclear
+
+      PublisherProductPrice.dbdelete
+      PublisherProductPrice.dbclear
+
+      PublisherProductLessonTime.dbdelete
+      PublisherProductLessonTime.dbclear
 
       PublisherProductCoreLiteracyStandard.dbdelete
       PublisherProductCoreLiteracyStandard.dbclear

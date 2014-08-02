@@ -1,0 +1,2 @@
+module PublisherProductMarketTargetsHelper
+end

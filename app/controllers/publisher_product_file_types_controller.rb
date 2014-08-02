@@ -1,0 +1,2 @@
+class PublisherProductFileTypesController < ApplicationController
+end

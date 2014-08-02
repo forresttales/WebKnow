@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   require 'RMagick'
 
-  layout 'user'
+  # layout 'user'
+  layout 'newland'
 
   before_action :already_signed_in, only: [:new]
   
@@ -37,6 +38,8 @@ class UsersController < ApplicationController
     # @account_type = params[:id]
     @user = User.new
     @bd_years = BdYear.order("year_value ASC").all
+    # render layout: "newland"
+    
   end
 
   

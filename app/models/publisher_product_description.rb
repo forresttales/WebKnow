@@ -2,74 +2,108 @@
 #
 # Table name: publisher_product_descriptions
 #
-#  id                      :integer          not null, primary key
-#  publisher_product_id    :integer
-#  publisher_id            :integer
-#  price                   :decimal(8, 2)
-#  created_at              :datetime
-#  updated_at              :datetime
-#  word_description        :text
-#  metadata                :text
-#  name_product            :string(255)
-#  description             :text
-#  type_content            :string(255)
-#  type_content_index      :integer          default(0)
-#  subject_category        :string(255)
-#  subject_category_index  :integer          default(0)
-#  core_supplemental       :string(255)
-#  core_supplemental_index :integer          default(0)
-#  source_url              :string(255)
-#  topic                   :string(255)
-#  lesson_plan_subject     :string(255)
-#  age_appropriate         :string(255)
-#  age_appropriate_index   :integer          default(0)
-#  grade                   :string(255)
-#  grade_index             :integer          default(0)
-#  platform                :string(255)
-#  platform_index          :integer          default(0)
-#  versions                :string(255)
-#  pricing_model           :string(255)
-#  pricing_model_index     :integer          default(0)
-#  core_literacy_standard  :string(255)
-#  core_math_standard      :string(255)
-#  slugged                 :string(255)      default("")
+#  id                     :integer          not null, primary key
+#  publisher_product_id   :integer
+#  publisher_id           :integer
+#  created_at             :datetime
+#  updated_at             :datetime
+#  word_description       :text
+#  name_product           :string(255)
+#  description            :text
+#  source_url             :string(255)
+#  versions               :string(255)
+#  slugged                :string(255)      default("")
+#  product_tagline        :string(255)
+#  topic                  :text
+#  lesson_plan_subject    :text
+#  updating_refresh_rate  :string(255)
+#  updating_type          :string(255)
+#  reselling              :boolean          default(FALSE)
+#  evaluation             :string(255)
+#  allow_teacher_rating   :boolean          default(FALSE)
+#  user_rating_1          :boolean          default(FALSE)
+#  user_rating_2          :boolean          default(FALSE)
+#  user_rating_3          :boolean          default(FALSE)
+#  allow_student_likes    :boolean          default(FALSE)
+#  allow_comments         :boolean          default(FALSE)
+#  research_1             :boolean          default(FALSE)
+#  research_2             :boolean          default(FALSE)
+#  pr_updates_1           :boolean          default(FALSE)
+#  pr_updates_2           :boolean          default(FALSE)
+#  pr_updates_3           :boolean          default(FALSE)
+#  pr_updates_4           :boolean          default(FALSE)
+#  metrics_1              :boolean          default(FALSE)
+#  metrics_2              :boolean          default(FALSE)
+#  metrics_3              :boolean          default(FALSE)
+#  metrics_4              :boolean          default(FALSE)
+#  metrics_5              :boolean          default(FALSE)
+#  core_literacy_standard :string(255)
+#  core_math_standard     :string(255)
 #
 
 class PublisherProductDescription < ActiveRecord::Base
   
-  attr_accessible :id,
-                  :publisher_product_id,
+  attr_accessible :publisher_product_id,
                   :publisher_id,
-                  :description,
-                  :name_product,
-                  :type_content_index,
-                  :type_content,
-                  :subject_category_index,                  
-                  :subject_category,
-                  :core_supplemental_index, 
-                  :core_supplemental, 
-                  :age_appropriate_index, 
-                  :age_appropriate, 
-                  :grade_index, 
-                  :grade, 
-                  :platform_index,
-                  :platform, 
-                  :pricing_model_index,
-                  :pricing_model, 
-                  :metadata,  
-                  :price,
-                  :lesson_plan_subject, 
-                  :word_description, 
-                  :versions, 
-                  :source_url, 
-                  :topic,
+                  :word_description,   
+                  :name_product,        
+                  :description,          
+                  :source_url,           
+                  :versions,           
+                  :slugged,              
+                  :product_tagline,      
+                  :topic,               
+                  :lesson_plan_subject,  
+                  :updating_refresh_rate, 
+                  :updating_type,       
+                  :reselling,           
+                  :evaluation,         
+                  :allow_teacher_rating, 
+                  :user_rating_1,        
+                  :user_rating_2,        
+                  :user_rating_3,         
+                  :allow_student_likes,   
+                  :allow_comments,     
+                  :research_1,         
+                  :research_2,        
+                  :pr_updates_1,        
+                  :pr_updates_2,        
+                  :pr_updates_3,        
+                  :pr_updates_4,         
+                  :metrics_1,           
+                  :metrics_2,        
+                  :metrics_3,         
+                  :metrics_4,         
+                  :metrics_5,        
                   :core_literacy_standard,
                   :core_math_standard,
                   :created_at,
                   :updated_at 
-  
+
+
+                  
   
   belongs_to :publisher_product
+
+
+
+  def self.dbdelete
+      self.connection.execute("DELETE FROM publisher_product_descriptions")
+  end
+  
+  def self.dbclear
+      self.connection.execute("ALTER SEQUENCE publisher_product_descriptions_id_seq RESTART WITH 1")
+  end
+
+  
+end
+
+
+
+
+
+
+  # price  :decimal(8, 2)
 
 
   # extend FriendlyId
@@ -84,14 +118,3 @@ class PublisherProductDescription < ActiveRecord::Base
   # def to_param
     # "#{id}"
   # end
-
-  def self.dbdelete
-      self.connection.execute("DELETE FROM publisher_product_descriptions")
-  end
-  
-  def self.dbclear
-      self.connection.execute("ALTER SEQUENCE publisher_product_descriptions_id_seq RESTART WITH 1")
-  end
-
-  
-end

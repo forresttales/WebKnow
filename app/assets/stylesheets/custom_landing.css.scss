@@ -1,0 +1,261 @@
+// SCSS file for the new page
+
+body {
+  
+}
+
+ 
+#home { 
+  width: 960px;
+  margin: 0 auto;
+}
+  
+.center, .main, .profiles  {
+   width: 960px;
+   margin: 0 auto;
+}
+
+// #wrapper {
+  // max-width: 960px;
+  // margin:0 auto;
+// }
+
+//Variables, fonts, etc.
+$ksltgreen: #41B737;
+$ksgreen: #49853F;
+$lcgray: #A6A6A6;
+$ksblue: #1f7c82; //know story blue - as from the products page
+@font-face {font-family: gistlight; src: url("/fonts/gistuprightregular-webfont.ttf");}
+// @font-face {font-family: gistlight; src: url("/fonts/GistLight.otf");}
+.clearfix {clear:both;}
+
+// Nav Bar
+
+#top-bar{
+   .logo {
+  max-width: 400px;
+  }
+  .slogan {
+    font-family: "gistlight";
+    color: $ksgreen;
+    margin: 0 0 10px 40px;
+    // font-size: 1.5em;
+    font-size: 1.6em;
+  }
+}
+
+.navbar {
+  min-width: 960px;
+  margin: 0 auto;
+  padding: 0;
+  background: $ksgreen;
+  ul {margin: 0 auto;
+    padding: 0;
+    /*max-width: 750px;*/
+    .item {word-wrap: break-word;
+    list-style-type: none;
+    display: inline;
+    a {color: #FFF; text-decoration: none;
+      &:hover {color: #FFF; text-decoration: underline;}
+      &:active, &:visited {color: #FFF; text-decoration:none;}
+      
+    }
+
+  }
+}
+}
+
+.not-member {
+  color: $ksltgreen;
+  //color: $ksblue;
+    // margin-left: 197px;
+    // margin-top: 20px;
+    // width: 220px;
+  // a {padding:2px 10px;}
+  }
+
+header {margin-bottom: 30px;}
+.profiles {
+  list-style: none outside none;
+  padding: 0;
+  margin: 0px 0 0;
+  /*width: 960px; */
+    li {display: inline; margin: 0 5px;}
+    a {
+      position: relative;
+      display: inline-block;
+      width: 170px;
+      height: 50px;
+      color: #FFF;
+      text-decoration: none;
+      font-size: 18px;
+      &:visited, &:active {text-decoration: none; color: #FFF;}
+    }   
+}
+
+
+.box-content {
+  text-align:left;
+  padding:10px;
+}
+
+
+
+.student /*The icon and hover attributes for the link*/ {
+  background:url("/assets_knowstory/icons/student.png") no-repeat; 
+  background-position: center top;
+  span {position: absolute; bottom: 10px; left: 105px;}
+  &:hover {color: $lcgray !important; } 
+ }
+
+.teacher /*The icon and hover attributes for the link*/ {
+  background:url("/assets_knowstory/icons/teacher.png") no-repeat; 
+  background-position: center top;
+  span {position: absolute; bottom: 10px; left: 105px;}
+  &:hover {color: $lcgray !important; } 
+ }
+
+ .publisher /*The icon and hover attributes for the link*/ {
+  background:url("/assets_knowstory/icons/publisher.png") no-repeat; 
+  background-position: center top;
+  span {position: absolute; bottom: 10px; left: 105px;}
+  &:hover {color: $lcgray !important; } 
+ }
+
+.school /*The icon and hover attributes for the link*/ {
+  background:url("/assets_knowstory/icons/school.png") no-repeat; 
+  background-position: center top;
+  span {position: absolute; bottom: 5px; left: 105px; line-height:1em;  width:90px;}
+  &:hover {color: $lcgray !important; } 
+ 
+ }
+
+ .recruiter /*The icon and hover attributes for the link*/ {
+  background:url("/assets_knowstory/icons/recruiter.png") no-repeat; 
+  background-position: center top;
+  span {position: absolute; bottom: 5px; left: 105px; line-height:1em;  width:90px;}
+  &:hover {color: $lcgray !important; } 
+ }
+
+// After header:
+
+.main-pics { 
+  .first-pic {
+  max-width:460px;
+  margin:30px 10px 30px 0;
+  float: left;
+  }
+  position: relative; 
+}
+
+.pics {
+    max-width:480px;
+    margin: 20px 0 30px 0px; 
+    float: left;
+    img {max-width:225px; margin: 9px 0 0 9px;}
+}
+
+//Content
+
+.content {
+  max-width: 960px;
+  h1 {color: $lcgray; text-align: center; clear:both;}
+  p {color: $ksgreen;}
+}
+#box1, #box3 {
+  float: left;
+  width:280px;
+  border: 1px solid $lcgray;
+  height:300px;
+  margin: 0 10px;
+}
+#box2 {
+  float: left;
+  width:350px;
+  border: 1px solid $lcgray;
+  height:300px;
+}
+
+//Ad boxes
+
+.ad-boxes1 {
+  margin: 20px auto 70px;
+  min-height: 250px;   
+  div {
+    border:1px solid $ksgreen; 
+    width: 217px; 
+    height: 217px;
+    float: left; 
+    margin:10px;
+    h3 {
+      color: #FFF; background-color: $ksgreen; 
+      margin-top: 0; 
+      text-align: center; 
+      text-transform: uppercase;
+    }
+  }
+}
+
+
+
+// For the sign up buttons in each profile section
+
+ .sign-button-2{
+  margin:45px 0;
+}
+
+.sign-button-link-2, a.sign-button-link-2:visited {
+  border-radius: 6px;
+  border: 1px solid #b1ccaf;
+  line-height: 1.33;
+  color: $ksgreen;
+  background: transparent;
+  font-size: 22px;
+  padding: 15px 65px;
+  text-decoration: none;
+  &:hover {background: $ksgreen; text-decoration: underline; color: #FFF;}
+}
+
+// For alignment of font and images in profile sections
+ .profile-image {width:473px; margin-bottom:110px;}
+ .odd { margin-bottom: 130px;
+  h1, h2, p {color: $ksgreen;}
+  .pub-link {color: $ksblue; text-decoration: none; font-weight: bold;
+    &:hover, &:active {color: $lcgray; text-decoration: underline;}
+    &:visited {color: $ksblue; text-decoration: none;}
+  }
+  .profile-image {float:left; margin-right: 30px;}
+   .sign-button-2 {margin-left: 635px;}
+ }
+
+  .even { margin-bottom: 130px;
+  h1, h2, p {color: $ksgreen;}
+  .profile-image {float:right; margin-left: 30px; }
+  .sign-button-2 {margin-left: 125px;}
+ }
+
+#school, #recruiter {clear: both;}
+
+
+//footer
+
+ #landing-footer {
+  background: $ksgreen;
+  clear:both;
+  border-bottom: 7px solid $ksgreen;
+  margin-top: 100px;
+  ul {
+  list-style: none outside none;
+  margin: 0 auto;
+  width: 960px;
+  font-size: 18px;
+  color: #FFF;
+  padding: 20px 0;
+  }
+  li { display: inline; 
+  a {color: #FFF; text-decoration: none; padding: 24px 25px 22px; font-size: 22px; font-weight: bold;
+  &:hover {color: $lcgray; text-decoration: underline;}
+    } 
+  }
+  .copyright {font-size: 14px; text-align:center; margin-left: 250px;}
+}

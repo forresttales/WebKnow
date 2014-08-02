@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716051530) do
+ActiveRecord::Schema.define(version: 20140731151025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,183 @@ ActiveRecord::Schema.define(version: 20140716051530) do
     t.string   "uri"
     t.string   "guid"
     t.string   "url_prev"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dtab10lets", force: true do |t|
+    t.integer  "col_order"
+    t.string   "col_1"
+    t.string   "col_2"
+    t.string   "col_3"
+    t.string   "col_4"
+    t.string   "col_5"
+    t.string   "col_6"
+    t.string   "col_7"
+    t.string   "col_8"
+    t.string   "col_9"
+    t.string   "col_10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dtab1lets", force: true do |t|
+    t.integer  "col_order"
+    t.string   "col_1"
+    t.string   "col_2"
+    t.string   "col_3"
+    t.string   "col_4"
+    t.string   "col_5"
+    t.string   "col_6"
+    t.string   "col_7"
+    t.string   "col_8"
+    t.string   "col_9"
+    t.string   "col_10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dtab2lets", force: true do |t|
+    t.integer  "col_order"
+    t.string   "col_1"
+    t.string   "col_2"
+    t.string   "col_3"
+    t.string   "col_4"
+    t.string   "col_5"
+    t.string   "col_6"
+    t.string   "col_7"
+    t.string   "col_8"
+    t.string   "col_9"
+    t.string   "col_10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dtab3lets", force: true do |t|
+    t.integer  "col_order"
+    t.string   "col_1"
+    t.string   "col_2"
+    t.string   "col_3"
+    t.string   "col_4"
+    t.string   "col_5"
+    t.string   "col_6"
+    t.string   "col_7"
+    t.string   "col_8"
+    t.string   "col_9"
+    t.string   "col_10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dtab4lets", force: true do |t|
+    t.integer  "col_order"
+    t.string   "col_1"
+    t.string   "col_2"
+    t.string   "col_3"
+    t.string   "col_4"
+    t.string   "col_5"
+    t.string   "col_6"
+    t.string   "col_7"
+    t.string   "col_8"
+    t.string   "col_9"
+    t.string   "col_10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dtab5lets", force: true do |t|
+    t.integer  "col_order"
+    t.string   "col_1"
+    t.string   "col_2"
+    t.string   "col_3"
+    t.string   "col_4"
+    t.string   "col_5"
+    t.string   "col_6"
+    t.string   "col_7"
+    t.string   "col_8"
+    t.string   "col_9"
+    t.string   "col_10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dtab6lets", force: true do |t|
+    t.integer  "col_order"
+    t.string   "col_1"
+    t.string   "col_2"
+    t.string   "col_3"
+    t.string   "col_4"
+    t.string   "col_5"
+    t.string   "col_6"
+    t.string   "col_7"
+    t.string   "col_8"
+    t.string   "col_9"
+    t.string   "col_10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dtab7lets", force: true do |t|
+    t.integer  "col_order"
+    t.string   "col_1"
+    t.string   "col_2"
+    t.string   "col_3"
+    t.string   "col_4"
+    t.string   "col_5"
+    t.string   "col_6"
+    t.string   "col_7"
+    t.string   "col_8"
+    t.string   "col_9"
+    t.string   "col_10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dtab8lets", force: true do |t|
+    t.integer  "col_order"
+    t.string   "col_1"
+    t.string   "col_2"
+    t.string   "col_3"
+    t.string   "col_4"
+    t.string   "col_5"
+    t.string   "col_6"
+    t.string   "col_7"
+    t.string   "col_8"
+    t.string   "col_9"
+    t.string   "col_10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dtab9lets", force: true do |t|
+    t.integer  "col_order"
+    t.string   "col_1"
+    t.string   "col_2"
+    t.string   "col_3"
+    t.string   "col_4"
+    t.string   "col_5"
+    t.string   "col_6"
+    t.string   "col_7"
+    t.string   "col_8"
+    t.string   "col_9"
+    t.string   "col_10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dtablets", force: true do |t|
+    t.integer  "col_id"
+    t.integer  "col_order"
+    t.string   "col_1"
+    t.string   "col_2"
+    t.string   "col_3"
+    t.string   "col_4"
+    t.string   "col_5"
+    t.string   "col_6"
+    t.string   "col_7"
+    t.string   "col_8"
+    t.string   "col_9"
+    t.string   "col_10"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -697,6 +874,168 @@ ActiveRecord::Schema.define(version: 20140716051530) do
   add_index "publisher_product_appropriate_ages", ["publisher_product_description_id"], name: "index_appr_age_on_publisher_product_description_id", using: :btree
   add_index "publisher_product_appropriate_ages", ["publisher_product_id"], name: "index_appr_age_on_publisher_product_id", using: :btree
 
+  create_table "publisher_product_appropriate_grades", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "grade_appropriate_1",              default: false
+    t.boolean  "grade_appropriate_2",              default: false
+    t.boolean  "grade_appropriate_3",              default: false
+    t.boolean  "grade_appropriate_4",              default: false
+    t.boolean  "grade_appropriate_5",              default: false
+    t.boolean  "grade_appropriate_6",              default: false
+    t.boolean  "grade_appropriate_7",              default: false
+    t.boolean  "grade_appropriate_8",              default: false
+    t.boolean  "grade_appropriate_9",              default: false
+    t.boolean  "grade_appropriate_10",             default: false
+    t.boolean  "grade_appropriate_11",             default: false
+    t.boolean  "grade_appropriate_12",             default: false
+    t.boolean  "grade_appropriate_13",             default: false
+    t.boolean  "grade_appropriate_14",             default: false
+    t.boolean  "grade_appropriate_15",             default: false
+    t.boolean  "grade_appropriate_16",             default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_appropriate_grades", ["publisher_id"], name: "index_appr_grade_on_publisher_id", using: :btree
+  add_index "publisher_product_appropriate_grades", ["publisher_product_id"], name: "index_appr_grade_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_category_subjects", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "category_subject_1",               default: false
+    t.boolean  "category_subject_2",               default: false
+    t.boolean  "category_subject_3",               default: false
+    t.boolean  "category_subject_4",               default: false
+    t.boolean  "category_subject_5",               default: false
+    t.boolean  "category_subject_6",               default: false
+    t.boolean  "category_subject_7",               default: false
+    t.boolean  "category_subject_8",               default: false
+    t.boolean  "category_subject_9",               default: false
+    t.boolean  "category_subject_10",              default: false
+    t.boolean  "category_subject_11",              default: false
+    t.boolean  "category_subject_12",              default: false
+    t.boolean  "category_subject_13",              default: false
+    t.boolean  "category_subject_14",              default: false
+    t.boolean  "category_subject_15",              default: false
+    t.boolean  "category_subject_16",              default: false
+    t.boolean  "category_subject_17",              default: false
+    t.boolean  "category_subject_18",              default: false
+    t.boolean  "category_subject_19",              default: false
+    t.boolean  "category_subject_20",              default: false
+    t.boolean  "category_subject_21",              default: false
+    t.boolean  "category_subject_22",              default: false
+    t.boolean  "category_subject_23",              default: false
+    t.boolean  "category_subject_24",              default: false
+    t.boolean  "category_subject_25",              default: false
+    t.boolean  "category_subject_26",              default: false
+    t.boolean  "category_subject_27",              default: false
+    t.boolean  "category_subject_28",              default: false
+    t.boolean  "category_subject_29",              default: false
+    t.boolean  "category_subject_30",              default: false
+    t.boolean  "category_subject_31",              default: false
+    t.boolean  "category_subject_32",              default: false
+    t.boolean  "category_subject_33",              default: false
+    t.boolean  "category_subject_34",              default: false
+    t.boolean  "category_subject_35",              default: false
+    t.boolean  "category_subject_36",              default: false
+    t.boolean  "category_subject_37",              default: false
+    t.boolean  "category_subject_38",              default: false
+    t.boolean  "category_subject_39",              default: false
+    t.boolean  "category_subject_40",              default: false
+    t.boolean  "category_subject_41",              default: false
+    t.boolean  "category_subject_42",              default: false
+    t.boolean  "category_subject_43",              default: false
+    t.boolean  "category_subject_44",              default: false
+    t.boolean  "category_subject_45",              default: false
+    t.boolean  "category_subject_46",              default: false
+    t.boolean  "category_subject_47",              default: false
+    t.boolean  "category_subject_48",              default: false
+    t.boolean  "category_subject_49",              default: false
+    t.boolean  "category_subject_50",              default: false
+    t.boolean  "category_subject_51",              default: false
+    t.boolean  "category_subject_52",              default: false
+    t.boolean  "category_subject_53",              default: false
+    t.boolean  "category_subject_54",              default: false
+    t.boolean  "category_subject_55",              default: false
+    t.boolean  "category_subject_56",              default: false
+    t.boolean  "category_subject_57",              default: false
+    t.boolean  "category_subject_58",              default: false
+    t.boolean  "category_subject_59",              default: false
+    t.boolean  "category_subject_60",              default: false
+    t.boolean  "category_subject_61",              default: false
+    t.boolean  "category_subject_62",              default: false
+    t.boolean  "category_subject_63",              default: false
+    t.boolean  "category_subject_64",              default: false
+    t.boolean  "category_subject_65",              default: false
+    t.boolean  "category_subject_66",              default: false
+    t.boolean  "category_subject_67",              default: false
+    t.boolean  "category_subject_68",              default: false
+    t.boolean  "category_subject_69",              default: false
+    t.boolean  "category_subject_70",              default: false
+    t.string   "category_subject_other"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_category_subjects", ["publisher_id"], name: "index_category_subject_on_publisher_id", using: :btree
+  add_index "publisher_product_category_subjects", ["publisher_product_id"], name: "index_category_subject_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_characters", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "character_1",                      default: false
+    t.boolean  "character_2",                      default: false
+    t.boolean  "character_3",                      default: false
+    t.boolean  "character_4",                      default: false
+    t.boolean  "character_5",                      default: false
+    t.boolean  "character_6",                      default: false
+    t.boolean  "character_7",                      default: false
+    t.boolean  "character_8",                      default: false
+    t.boolean  "character_9",                      default: false
+    t.boolean  "character_10",                     default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_characters", ["publisher_id"], name: "index_character_on_publisher_id", using: :btree
+  add_index "publisher_product_characters", ["publisher_product_id"], name: "index_character_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_content_types", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "content_type_1",                   default: false
+    t.boolean  "content_type_2",                   default: false
+    t.boolean  "content_type_3",                   default: false
+    t.boolean  "content_type_4",                   default: false
+    t.boolean  "content_type_5",                   default: false
+    t.boolean  "content_type_6",                   default: false
+    t.boolean  "content_type_7",                   default: false
+    t.boolean  "content_type_8",                   default: false
+    t.boolean  "content_type_9",                   default: false
+    t.boolean  "content_type_10",                  default: false
+    t.boolean  "content_type_11",                  default: false
+    t.boolean  "content_type_12",                  default: false
+    t.boolean  "content_type_13",                  default: false
+    t.boolean  "content_type_14",                  default: false
+    t.boolean  "content_type_15",                  default: false
+    t.boolean  "content_type_16",                  default: false
+    t.boolean  "content_type_17",                  default: false
+    t.boolean  "content_type_18",                  default: false
+    t.boolean  "content_type_19",                  default: false
+    t.boolean  "content_type_20",                  default: false
+    t.string   "content_type_other"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_content_types", ["publisher_id"], name: "index_content_type_on_publisher_id", using: :btree
+  add_index "publisher_product_content_types", ["publisher_product_id"], name: "index_content_type_on_publisher_product_id", using: :btree
+
   create_table "publisher_product_core_literacy_standards", force: true do |t|
     t.integer  "publisher_id"
     t.integer  "publisher_product_id"
@@ -724,38 +1063,107 @@ ActiveRecord::Schema.define(version: 20140716051530) do
   create_table "publisher_product_descriptions", force: true do |t|
     t.integer  "publisher_product_id"
     t.integer  "publisher_id"
-    t.decimal  "price",                   precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "word_description"
-    t.text     "metadata"
     t.string   "name_product"
     t.text     "description"
-    t.string   "type_content"
-    t.integer  "type_content_index",                              default: 0
-    t.string   "subject_category"
-    t.integer  "subject_category_index",                          default: 0
-    t.string   "core_supplemental"
-    t.integer  "core_supplemental_index",                         default: 0
     t.string   "source_url"
-    t.string   "topic"
-    t.string   "lesson_plan_subject"
-    t.string   "age_appropriate"
-    t.integer  "age_appropriate_index",                           default: 0
-    t.string   "grade"
-    t.integer  "grade_index",                                     default: 0
-    t.string   "platform"
-    t.integer  "platform_index",                                  default: 0
     t.string   "versions"
-    t.string   "pricing_model"
-    t.integer  "pricing_model_index",                             default: 0
+    t.string   "slugged",                default: ""
+    t.string   "product_tagline"
+    t.text     "topic"
+    t.text     "lesson_plan_subject"
+    t.string   "updating_refresh_rate"
+    t.string   "updating_type"
+    t.boolean  "reselling",              default: false
+    t.string   "evaluation"
+    t.boolean  "allow_teacher_rating",   default: false
+    t.boolean  "user_rating_1",          default: false
+    t.boolean  "user_rating_2",          default: false
+    t.boolean  "user_rating_3",          default: false
+    t.boolean  "allow_student_likes",    default: false
+    t.boolean  "allow_comments",         default: false
+    t.boolean  "research_1",             default: false
+    t.boolean  "research_2",             default: false
+    t.boolean  "pr_updates_1",           default: false
+    t.boolean  "pr_updates_2",           default: false
+    t.boolean  "pr_updates_3",           default: false
+    t.boolean  "pr_updates_4",           default: false
+    t.boolean  "metrics_1",              default: false
+    t.boolean  "metrics_2",              default: false
+    t.boolean  "metrics_3",              default: false
+    t.boolean  "metrics_4",              default: false
+    t.boolean  "metrics_5",              default: false
     t.string   "core_literacy_standard"
     t.string   "core_math_standard"
-    t.string   "slugged",                                         default: ""
   end
 
   add_index "publisher_product_descriptions", ["publisher_id"], name: "index_publisher_product_descriptions_on_publisher_id", using: :btree
   add_index "publisher_product_descriptions", ["publisher_product_id"], name: "index_publisher_product_descriptions_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_enhancements", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "enhancement_1",                    default: false
+    t.boolean  "enhancement_2",                    default: false
+    t.boolean  "enhancement_3",                    default: false
+    t.boolean  "enhancement_4",                    default: false
+    t.boolean  "enhancement_5",                    default: false
+    t.boolean  "enhancement_6",                    default: false
+    t.boolean  "enhancement_7",                    default: false
+    t.boolean  "enhancement_8",                    default: false
+    t.boolean  "enhancement_9",                    default: false
+    t.boolean  "enhancement_10",                   default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_enhancements", ["publisher_id"], name: "index_enhancement_on_publisher_id", using: :btree
+  add_index "publisher_product_enhancements", ["publisher_product_id"], name: "index_enhancement_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_file_types", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "file_type_1",                      default: false
+    t.boolean  "file_type_2",                      default: false
+    t.boolean  "file_type_3",                      default: false
+    t.boolean  "file_type_4",                      default: false
+    t.boolean  "file_type_5",                      default: false
+    t.boolean  "file_type_6",                      default: false
+    t.boolean  "file_type_7",                      default: false
+    t.boolean  "file_type_8",                      default: false
+    t.boolean  "file_type_9",                      default: false
+    t.boolean  "file_type_10",                     default: false
+    t.boolean  "file_type_11",                     default: false
+    t.boolean  "file_type_12",                     default: false
+    t.boolean  "file_type_13",                     default: false
+    t.boolean  "file_type_14",                     default: false
+    t.boolean  "file_type_15",                     default: false
+    t.boolean  "file_type_16",                     default: false
+    t.boolean  "file_type_17",                     default: false
+    t.boolean  "file_type_18",                     default: false
+    t.boolean  "file_type_19",                     default: false
+    t.boolean  "file_type_20",                     default: false
+    t.boolean  "file_type_21",                     default: false
+    t.boolean  "file_type_22",                     default: false
+    t.boolean  "file_type_23",                     default: false
+    t.boolean  "file_type_24",                     default: false
+    t.boolean  "file_type_25",                     default: false
+    t.boolean  "file_type_26",                     default: false
+    t.boolean  "file_type_27",                     default: false
+    t.boolean  "file_type_28",                     default: false
+    t.boolean  "file_type_29",                     default: false
+    t.boolean  "file_type_30",                     default: false
+    t.string   "file_type_other"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_file_types", ["publisher_id"], name: "index_file_type_on_publisher_id", using: :btree
+  add_index "publisher_product_file_types", ["publisher_product_id"], name: "index_file_type_on_publisher_product_id", using: :btree
 
   create_table "publisher_product_images", force: true do |t|
     t.integer  "publisher_id"
@@ -768,6 +1176,68 @@ ActiveRecord::Schema.define(version: 20140716051530) do
   add_index "publisher_product_images", ["publisher_id"], name: "index_publisher_product_images_on_publisher_id", using: :btree
   add_index "publisher_product_images", ["publisher_product_id"], name: "index_publisher_product_images_on_publisher_product_id", using: :btree
 
+  create_table "publisher_product_lesson_times", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "lesson_time_1",                    default: false
+    t.boolean  "lesson_time_2",                    default: false
+    t.boolean  "lesson_time_3",                    default: false
+    t.boolean  "lesson_time_4",                    default: false
+    t.boolean  "lesson_time_5",                    default: false
+    t.boolean  "lesson_time_6",                    default: false
+    t.boolean  "lesson_time_7",                    default: false
+    t.boolean  "lesson_time_8",                    default: false
+    t.boolean  "lesson_time_9",                    default: false
+    t.boolean  "lesson_time_10",                   default: false
+    t.boolean  "lesson_time_11",                   default: false
+    t.boolean  "lesson_time_12",                   default: false
+    t.boolean  "lesson_time_13",                   default: false
+    t.boolean  "lesson_time_14",                   default: false
+    t.boolean  "lesson_time_15",                   default: false
+    t.boolean  "lesson_time_16",                   default: false
+    t.boolean  "lesson_time_17",                   default: false
+    t.boolean  "lesson_time_18",                   default: false
+    t.boolean  "lesson_time_19",                   default: false
+    t.boolean  "lesson_time_20",                   default: false
+    t.boolean  "lesson_time_21",                   default: false
+    t.boolean  "lesson_time_22",                   default: false
+    t.boolean  "lesson_time_23",                   default: false
+    t.boolean  "lesson_time_24",                   default: false
+    t.boolean  "lesson_time_25",                   default: false
+    t.boolean  "lesson_time_26",                   default: false
+    t.boolean  "lesson_time_27",                   default: false
+    t.boolean  "lesson_time_28",                   default: false
+    t.boolean  "lesson_time_29",                   default: false
+    t.boolean  "lesson_time_30",                   default: false
+    t.boolean  "lesson_time_31",                   default: false
+    t.boolean  "lesson_time_32",                   default: false
+    t.boolean  "lesson_time_33",                   default: false
+    t.boolean  "lesson_time_34",                   default: false
+    t.boolean  "lesson_time_35",                   default: false
+    t.boolean  "lesson_time_36",                   default: false
+    t.boolean  "lesson_time_37",                   default: false
+    t.boolean  "lesson_time_38",                   default: false
+    t.boolean  "lesson_time_39",                   default: false
+    t.boolean  "lesson_time_40",                   default: false
+    t.boolean  "lesson_time_41",                   default: false
+    t.boolean  "lesson_time_42",                   default: false
+    t.boolean  "lesson_time_43",                   default: false
+    t.boolean  "lesson_time_44",                   default: false
+    t.boolean  "lesson_time_45",                   default: false
+    t.boolean  "lesson_time_46",                   default: false
+    t.boolean  "lesson_time_47",                   default: false
+    t.boolean  "lesson_time_48",                   default: false
+    t.string   "lesson_time_other"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "lesson_time_pertinent_index",      default: 0
+    t.string   "lesson_time_pertinent"
+  end
+
+  add_index "publisher_product_lesson_times", ["publisher_id"], name: "index_lesson_time_on_publisher_id", using: :btree
+  add_index "publisher_product_lesson_times", ["publisher_product_id"], name: "index_lesson_time_on_publisher_product_id", using: :btree
+
   create_table "publisher_product_logos", force: true do |t|
     t.integer  "publisher_id"
     t.integer  "publisher_product_id"
@@ -778,6 +1248,19 @@ ActiveRecord::Schema.define(version: 20140716051530) do
 
   add_index "publisher_product_logos", ["publisher_id"], name: "index_publisher_product_logos_on_publisher_id", using: :btree
   add_index "publisher_product_logos", ["publisher_product_id"], name: "index_publisher_product_logos_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_market_targets", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "market_target_1",                  default: false
+    t.boolean  "market_target_2",                  default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_market_targets", ["publisher_id"], name: "index_mark_targ_on_publisher_id", using: :btree
+  add_index "publisher_product_market_targets", ["publisher_product_id"], name: "index_mark_targ_on_publisher_product_id", using: :btree
 
   create_table "publisher_product_metadatatags", force: true do |t|
     t.integer  "publisher_id"
@@ -790,6 +1273,119 @@ ActiveRecord::Schema.define(version: 20140716051530) do
 
   add_index "publisher_product_metadatatags", ["publisher_id"], name: "index_publisher_product_metadatatags_on_publisher_id", using: :btree
   add_index "publisher_product_metadatatags", ["publisher_product_id"], name: "index_publisher_product_metadatatags_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_platforms", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "platform_1",                       default: false
+    t.boolean  "platform_2",                       default: false
+    t.boolean  "platform_3",                       default: false
+    t.boolean  "platform_4",                       default: false
+    t.boolean  "platform_5",                       default: false
+    t.boolean  "platform_6",                       default: false
+    t.boolean  "platform_7",                       default: false
+    t.boolean  "platform_8",                       default: false
+    t.boolean  "platform_9",                       default: false
+    t.boolean  "platform_10",                      default: false
+    t.boolean  "platform_11",                      default: false
+    t.boolean  "platform_12",                      default: false
+    t.boolean  "platform_13",                      default: false
+    t.boolean  "platform_14",                      default: false
+    t.boolean  "platform_15",                      default: false
+    t.boolean  "platform_16",                      default: false
+    t.boolean  "platform_17",                      default: false
+    t.boolean  "platform_18",                      default: false
+    t.boolean  "platform_19",                      default: false
+    t.boolean  "platform_20",                      default: false
+    t.boolean  "platform_21",                      default: false
+    t.boolean  "platform_22",                      default: false
+    t.boolean  "platform_23",                      default: false
+    t.boolean  "platform_24",                      default: false
+    t.boolean  "platform_25",                      default: false
+    t.boolean  "platform_26",                      default: false
+    t.boolean  "platform_27",                      default: false
+    t.boolean  "platform_28",                      default: false
+    t.boolean  "platform_29",                      default: false
+    t.boolean  "platform_30",                      default: false
+    t.boolean  "platform_31",                      default: false
+    t.boolean  "platform_32",                      default: false
+    t.boolean  "platform_33",                      default: false
+    t.boolean  "platform_34",                      default: false
+    t.boolean  "platform_35",                      default: false
+    t.boolean  "platform_36",                      default: false
+    t.boolean  "platform_37",                      default: false
+    t.boolean  "platform_38",                      default: false
+    t.boolean  "platform_39",                      default: false
+    t.boolean  "platform_40",                      default: false
+    t.boolean  "platform_41",                      default: false
+    t.boolean  "platform_42",                      default: false
+    t.boolean  "platform_43",                      default: false
+    t.boolean  "platform_44",                      default: false
+    t.boolean  "platform_45",                      default: false
+    t.boolean  "platform_46",                      default: false
+    t.boolean  "platform_47",                      default: false
+    t.boolean  "platform_48",                      default: false
+    t.boolean  "platform_49",                      default: false
+    t.boolean  "platform_50",                      default: false
+    t.string   "platform_other"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_platforms", ["publisher_id"], name: "index_platform_on_publisher_id", using: :btree
+  add_index "publisher_product_platforms", ["publisher_product_id"], name: "index_platform_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_prices", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "price_1",                                                  default: false
+    t.decimal  "price_1_dec",                      precision: 8, scale: 2, default: 0.0
+    t.boolean  "price_2",                                                  default: false
+    t.decimal  "price_2_dec",                      precision: 8, scale: 2, default: 0.0
+    t.boolean  "price_3",                                                  default: false
+    t.decimal  "price_3_dec",                      precision: 8, scale: 2, default: 0.0
+    t.boolean  "price_4",                                                  default: false
+    t.decimal  "price_4_dec",                      precision: 8, scale: 2, default: 0.0
+    t.boolean  "price_5",                                                  default: false
+    t.decimal  "price_5_dec",                      precision: 8, scale: 2, default: 0.0
+    t.boolean  "price_6",                                                  default: false
+    t.decimal  "price_6_dec",                      precision: 8, scale: 2, default: 0.0
+    t.boolean  "price_7",                                                  default: false
+    t.decimal  "price_7_dec",                      precision: 8, scale: 2, default: 0.0
+    t.boolean  "price_8",                                                  default: false
+    t.decimal  "price_8_dec",                      precision: 8, scale: 2, default: 0.0
+    t.boolean  "price_9",                                                  default: false
+    t.decimal  "price_9_dec",                      precision: 8, scale: 2, default: 0.0
+    t.boolean  "price_10",                                                 default: false
+    t.decimal  "price_10_dec",                     precision: 8, scale: 2, default: 0.0
+    t.boolean  "price_11",                                                 default: false
+    t.decimal  "price_11_dec",                     precision: 8, scale: 2, default: 0.0
+    t.boolean  "price_12",                                                 default: false
+    t.decimal  "price_12_dec",                     precision: 8, scale: 2, default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_prices", ["publisher_id"], name: "index_price_on_publisher_id", using: :btree
+  add_index "publisher_product_prices", ["publisher_product_id"], name: "index_price_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_pricing_models", force: true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "publisher_product_description_id"
+    t.boolean  "pricing_model_1",                  default: false
+    t.boolean  "pricing_model_2",                  default: false
+    t.boolean  "pricing_model_3",                  default: false
+    t.boolean  "pricing_model_4",                  default: false
+    t.boolean  "pricing_model_5",                  default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publisher_product_pricing_models", ["publisher_id"], name: "index_pricing_model_on_publisher_id", using: :btree
+  add_index "publisher_product_pricing_models", ["publisher_product_id"], name: "index_pricing_model_on_publisher_product_id", using: :btree
 
   create_table "publisher_products", force: true do |t|
     t.integer  "publisher_id"
