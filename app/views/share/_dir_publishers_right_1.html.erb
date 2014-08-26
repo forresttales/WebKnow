@@ -1,0 +1,66 @@
+	
+	<style>
+		
+ 		span.right-title {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: #D98D2D;
+		}
+		span.right-title-sub {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 18px;
+			color: #A9D996;
+		}
+		span.right-title-sub:hover {
+			text-shadow: 1px 1px #34922C;		
+			cursor: pointer;	
+		}
+		.jp-start-img-1 {
+			box-shadow: 4px 4px 20px #888888;
+			margin-left: 18px;
+		}
+		.jp-start-img-1:hover {
+			box-shadow: 4px 4px 20px #786011;
+		}
+		.jp-start-img-2 {
+			box-shadow: 4px 4px 20px #888888;
+			margin-left: 18px;
+		}
+		.jp-start-img-2:hover {
+			box-shadow: 4px 4px 20px #786011;
+		}
+		a.no-underline, a.no-underline:hover, a.no-underline:visited, a.no-underline:link, a.no-underline:active {
+			text-decoration: none;
+		}
+
+	</style>
+	
+	
+	<div style="text-align: left;">
+		<% if !session[:publisher_has_journalposter] %>
+		<div style="padding-left: 0px;">
+			<span class="right-title">Posters</span>
+		</div>
+		<div style="height: 20px;"></div>
+		<div style="padding-left: 0px;">
+			<a href="/PublisherCreateJournalPoster" class="no-underline"><span class="right-title-sub">Start here...</span></a>
+		</div>
+		<!-- <div style="height: 10px;"></div>
+		<div class="jp-start-img-1">
+			<a href="/PublisherCreateJournalPoster"><img src="../journal_poster/poster-pin-free-w474-h248.png" alt="poster-pin-free-w474-h248.png" width="180px"></a>
+		</div> -->
+		<div style="height: 20px;"></div>
+		<div style="padding-left: 0px;">
+			<a href="/PublisherCreateJournalPoster" class="no-underline"><span class="right-title-sub">Learn more...</span></a>
+		</div>
+		<!-- <div style="height: 20px;"></div>
+		<div class="jp-start-img-2">
+			<a href="/Journal-Poster-About"><img src="../journal_poster/poster-pin-premium-w475-h475.png" alt="poster-pin-premium-w475-h475.png" width="180px"></a>
+		</div> -->
+		<% end %>
+	</div>
+	
+	<script>
+		
+		
+	</script>

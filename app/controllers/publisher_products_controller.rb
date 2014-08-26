@@ -27,9 +27,34 @@ class PublisherProductsController < ApplicationController
 
     @publisher_id = current_user.publisher.id
     # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction) # .paginate(:per_page => 200, :page => params[:page])
-    @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
+    
+    # @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
+    @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 5)
+    
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
     
   end
+  
+  
+  # def list
+    # @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    # respond_to do |format|
+      # format.html
+      # format.js
+    # end
+  # end
+  # def show
+    # @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    # respond_to do |format|
+      # format.html
+      # format.js
+    # end
+  # end
+  
   
   
   def new

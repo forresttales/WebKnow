@@ -517,7 +517,7 @@
 
 	div .table {
 		display: table;
-		width: 610px;
+		/*width: 610px;*/
 	}
 
 	div .cell {
@@ -564,9 +564,39 @@
 		vertical-align: top;		
 	}
 
+	div .cell-675 {
+		display: table-cell;
+		width: 675px;
+		vertical-align: top;		
+	}
+
+	div .cell-665 {
+		display: table-cell;
+		width: 665px;
+		vertical-align: top;		
+	}
+
+	div .cell-660 {
+		display: table-cell;
+		width: 660px;
+		vertical-align: top;		
+	}
+
+	div .cell-655 {
+		display: table-cell;
+		width: 655px;
+		vertical-align: top;		
+	}
+
 	div .cell-650 {
 		display: table-cell;
 		width: 650px;
+		vertical-align: top;		
+	}
+
+	div .cell-625 {
+		display: table-cell;
+		width: 625px;
 		vertical-align: top;		
 	}
 
@@ -588,9 +618,45 @@
 		vertical-align: top;		
 	}
 
+	div .cell-470 {
+		display: table-cell;
+		width: 470px;
+		vertical-align: top;		
+	}
+
+	div .cell-460 {
+		display: table-cell;
+		width: 460px;
+		vertical-align: top;		
+	}
+
+	div .cell-450 {
+		display: table-cell;
+		width: 450px;
+		vertical-align: top;		
+	}
+
+	div .cell-425 {
+		display: table-cell;
+		width: 425px;
+		vertical-align: top;		
+	}
+
 	div .cell-400 {
 		display: table-cell;
 		width: 400px;
+		vertical-align: top;		
+	}
+
+	div .cell-390 {
+		display: table-cell;
+		width: 390px;
+		vertical-align: top;		
+	}
+
+	div .cell-375 {
+		display: table-cell;
+		width: 375px;
 		vertical-align: top;		
 	}
 
@@ -600,9 +666,36 @@
 		vertical-align: top;		
 	}
 
+	div .cell-330 {
+		display: table-cell;
+		width: 330px;
+	}
+
+	div .cell-325 {
+		display: table-cell;
+		width: 325px;
+	}
+
 	div .cell-300 {
 		display: table-cell;
 		width: 300px;
+	}
+
+	div .cell-275 {
+		display: table-cell;
+		width: 275px;
+		vertical-align: top;		
+	}
+
+	div .cell-265 {
+		display: table-cell;
+		width: 265px;
+		vertical-align: top;		
+	}
+
+	div .cell-255 {
+		display: table-cell;
+		width: 255px;
 		vertical-align: top;		
 	}
 
@@ -651,6 +744,42 @@
 	div .cell-80 {
 		display: table-cell;
 		width: 80px;
+		vertical-align: top;		
+	}
+
+	div .cell-50 {
+		display: table-cell;
+		width: 50px;
+		vertical-align: top;		
+	}
+
+	div .cell-40 {
+		display: table-cell;
+		width: 40px;
+		vertical-align: top;		
+	}
+
+	div .cell-28 {
+		display: table-cell;
+		width: 28px;
+		vertical-align: top;		
+	}
+
+	div .cell-25 {
+		display: table-cell;
+		width: 25px;
+		vertical-align: top;		
+	}
+
+	div .cell-20 {
+		display: table-cell;
+		width: 20px;
+		vertical-align: top;		
+	}
+
+	div .cell-10 {
+		display: table-cell;
+		width: 10px;
 		vertical-align: top;		
 	}
 

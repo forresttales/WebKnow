@@ -26,7 +26,8 @@ class UsersController < ApplicationController
     image.write('/tmp/test.jpg')
   end
 
-
+  
+  
   def index
     
     @users = User.paginate(page: params[:page])

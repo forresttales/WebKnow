@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731151025) do
+ActiveRecord::Schema.define(version: 20140822102737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1097,6 +1097,7 @@ ActiveRecord::Schema.define(version: 20140731151025) do
     t.boolean  "metrics_5",              default: false
     t.string   "core_literacy_standard"
     t.string   "core_math_standard"
+    t.datetime "form_update",            default: '2000-01-01 00:00:00'
   end
 
   add_index "publisher_product_descriptions", ["publisher_id"], name: "index_publisher_product_descriptions_on_publisher_id", using: :btree
@@ -1118,6 +1119,16 @@ ActiveRecord::Schema.define(version: 20140731151025) do
     t.boolean  "enhancement_10",                   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "enhancement_11",                   default: false
+    t.boolean  "enhancement_12",                   default: false
+    t.boolean  "enhancement_13",                   default: false
+    t.boolean  "enhancement_14",                   default: false
+    t.boolean  "enhancement_15",                   default: false
+    t.boolean  "enhancement_16",                   default: false
+    t.boolean  "enhancement_17",                   default: false
+    t.boolean  "enhancement_18",                   default: false
+    t.boolean  "enhancement_19",                   default: false
+    t.boolean  "enhancement_20",                   default: false
   end
 
   add_index "publisher_product_enhancements", ["publisher_id"], name: "index_enhancement_on_publisher_id", using: :btree

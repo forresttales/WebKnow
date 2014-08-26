@@ -527,13 +527,14 @@
 		.publisher-product-utility-bar-footer {
 			width: 100%;
 			height: 100px;
-			position: relative;
-	 		/*position: absolute;*/
+			/*position: relative;*/
+	 		position: absolute;
 	 		/*left: 0px;*/
-	 		/*bottom: 0px;*/			
+	 		bottom: 0px;			
 			background: url('/assets/light_grey.jpg');
 			/*border-bottom: 2px #DCE3DF solid;*/
 			text-align: left;
+			z-index: 9;
 		}
 		.publisher-product-utility-bar-footer span {
 		  	font-family: Arial, Helvetica, sans-serif;
@@ -639,13 +640,25 @@
 		
 	</style>
 
-	<header>
-		<%= render 'share/backtotop' %>
-	</header>
+	<style>
+		
+	.container {
+		width: 1200px;
+		/*margin: 0 auto;*/
+		/*position: relative;*/
+		/*top: -4px;*/
+	}
+		
+	</style>
+
+
+	<!-- <header>
+		<#%= render 'share/backtotop' %#>
+	</header> -->
 
 
 
-	<div class="container-2">
+	<div class="container">
 		<div class="table-profile">
 			<div class="row-profile">
 				<div class="col-left">
@@ -660,13 +673,15 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-midd">
+				<!-- <div class="col-midd" style="height: 600px;"> -->
+				<div class="col-midd" id="col_midd">
 					<div class="table-profile">
 						<div class="row-profile" style="height: 20px;">
 							<div class="col-gen"></div>
 						</div>							
 						<div class="row-profile">
-							<div id="col_midd" class="col-midd-600">
+							<!-- <div id="col_midd" class="col-midd-600" style="height: 600px;"> -->
+							<div class="col-midd-600" id="sub_container" style="position: relative;">
 								
 								<div id="col_midd_header">
 									<div class="line-space-20"></div>
@@ -707,6 +722,7 @@
 									<div class="publisher-product-utility-bar light">
 										<div style="padding-left: 10px; padding-top: 10px;">
 											<span>Record Count: <%= @publisher_products.count %></span>
+											<span id="container_height"></span>
 										</div>
 									</div>
 									<div id="im_top_sh" style="display: block;"></div>
@@ -716,11 +732,31 @@
 								<div id="render_list" style="position: relative;">
 									
 									<!-- <#%= render 'publisher_products/list' %#> -->
-			
+									
 								</div>
+								
+								<div id="publisher_product_utility_bar_footer" class="publisher-product-utility-bar-footer">
+									<div style="height: 4px;"></div>
+									<div style="width: 100%; text-align: center;">
+										<span id="will_paginate"><%= will_paginate @publisher_products %></span>
+									</div>
+								</div>
+								
 								
 							</div>
 						</div>
+
+						<!-- <div class="row-profile">
+							<div class="col-midd-600">
+								<div class="publisher-product-utility-bar-footer">
+									<div style="height: 4px;"></div>
+									<div style="width: 100%; text-align: center;">
+										<span><#%= will_paginate @publisher_products %#></span>
+									</div>
+								</div>
+							</div>
+						</div> -->
+												
 					</div>					
 				</div>
 				<div class="col-right">
@@ -730,7 +766,7 @@
 						</div>							
 						<div class="row-profile">
 							<div class="col-right">
-								<%= render 'share/dir_publishers_right_bare' %>
+								<%= render 'share/dir_publishers_right' %>
 							</div>
 						</div>
 					</div>										
@@ -738,7 +774,9 @@
 			</div>
 		</div>
 	</div>
-
+	
+	
+<!-- </div> -->
 
 	<script>
 	
@@ -749,6 +787,19 @@
 			$('#btn_add_prod').on('click', function() {
 			   	$.post("publisher_products/create", null, null, "script");
 			});
+
+
+			$('#publisher_product_utility_bar_footer .pagination a').attr('data-remote', 'true');
+
+			// $("#publisher_product_utility_bar_footer .pagination a").on("click", function() {
+				// // alert( $.getScript(this.href) );
+				// // $.getScript(this.href);
+				// $.get(this.href, null, null, "script");
+				// // $.get("/publisher_products/index", null, null, "script");
+				// return false;
+			// });
+
+
 
 			// $("#testbtn").on('click', function() {
 			  	// var obj = '';                  

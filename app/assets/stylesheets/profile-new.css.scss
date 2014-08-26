@@ -1,0 +1,143 @@
+//New profile page styles
+
+$lgreen: #c0e7bd;
+$ksgreen: #49853f;
+$dgreen: #376340;
+$midgreen: #8eb388;
+
+	@font-face {
+		font-family: 'msyh';
+	    src: url('../fonts/msyh.eot');	  		
+		src: url('../fonts/msyh.ttf') format('truetype');
+	}
+
+	*, *:after, *:before {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+
+// Nav Bar stuff
+	#menu {
+		list-style:none;
+		// width:960px;
+		width: 1200px;
+		margin: 0px auto;
+		/*height:54px;*/
+		padding:0px 10px 0px 0px;
+		/*-moz-border-radius: 0px;
+		-webkit-border-radius: 0px;
+		border-radius: 0px;*/
+		/*background-color: rgba( 65, 183, 55, 0.92);
+		/*-moz-box-shadow:inset 0px 0px 1px #edf9ff;
+		-webkit-box-shadow:inset 0px 0px 1px #edf9ff;
+		box-shadow:inset 0px 0px 1px #edf9ff;*/
+	  border-radius: 0px 0px 6px 6px;
+	  height: 75px;
+	}
+
+	/*Gradient on top*/#menu {
+		background: -moz-linear-gradient(left,  rgba(73,133,63,0) 0%, rgba(73,133,63,1) 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(73,133,63,0)), color-stop(100%,rgba(73,133,63,1)));
+background: -webkit-linear-gradient(left,  rgba(73,133,63,0) 0%,rgba(73,133,63,1) 100%);
+background: -o-linear-gradient(left,  rgba(73,133,63,0) 0%,rgba(73,133,63,1) 100%);
+background: -ms-linear-gradient(left,  rgba(73,133,63,0) 0%,rgba(73,133,63,1) 100%);
+background: linear-gradient(to right,  rgba(73,133,63,0) 0%,rgba(73,133,63,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', endColorstr='#299a0b',GradientType=1 );
+
+
+	}
+
+	#menu li.icon {
+		float:left;
+		display:block;
+		text-align:center;
+		position:relative;
+		margin-right:0px;
+		margin-top:0px;
+		margin-left: -5px;
+		
+		/*background: #fff;*/
+	    /*border-bottom: 2px solid rgba(65, 183, 55, 0.92);*/
+	    /*border-left: 2px solid rgba(65, 183, 55, 0.92);*/
+	    /*border-radius: 0 0 0 6px;*/
+	    /*border-right: 2px solid rgba(65, 183, 55, 0.92);*/
+	    /*bottom: 8px;
+	    left: 5px;
+	    position: relative;*/
+	}
+
+	.profile-type {float:right; 
+		padding: 10px 0 0 0; 
+		color: #FFF; 
+		font-size:1.3em;
+		span {position: relative; top:-20px;}
+	}
+  .profile-type-dd {float:right; 
+    padding: 28px 0 0 0; 
+    color: #FFF; 
+    font-size:1.3em;
+  }
+	
+	.nav-ks {
+		width: 100%;
+		margin-top: 0;
+		/*height: 1px;*/
+		/*background-color: rgba( 65, 183, 55, 0.92);*/
+		/*background-color: #41B737;*/		
+		position: relative;
+		/*top: 0px;*/
+		/*line-height:21px;*/
+		text-align:left;		
+		/*z-index: 999;*/
+	}
+
+
+// End Nav Bar stuff	
+//Left Navigation
+
+.profile-labels-left ul li, .profile-links-left ul li {background: none;}
+.col-left {background: $midgreen; min-height:600px;}
+
+.profile-links-left ul li a {
+    color: $dgreen;
+    font-size: 16px;
+}
+.profile-links-left ul li:hover {
+			background-color: $lgreen;		
+			cursor: pointer;
+		}
+
+.profile-labels-left {
+	border-top: 1px solid $dgreen;
+	border-bottom: 1px solid $dgreen;
+	margin:20px 0 10px 0;
+	&:hover {background: $ksgreen;}
+	ul li span {
+	color: #FFF;
+	font-size: 18px;
+	}
+}
+
+
+//Mid column styles
+
+.col-midd {
+	border-left: 2px solid $ksgreen;
+	border-right: 2px solid $ksgreen;
+	border-top: 2px solid $ksgreen;
+}
+
+.profile-cs-style-3 li {
+	clear:both;
+	float: right;
+	margin-right: 10px;
+	border: 2px solid #CCC;
+}
+
+.delete-record {clear:both; margin-top: 200px;}
+
+.content {
+  h1 {color: $ksgreen; text-align: center; clear:both; font-size: 35px;}
+}

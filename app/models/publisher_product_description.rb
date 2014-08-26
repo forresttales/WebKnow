@@ -39,6 +39,7 @@
 #  metrics_5              :boolean          default(FALSE)
 #  core_literacy_standard :string(255)
 #  core_math_standard     :string(255)
+#  form_update            :datetime         default(2000-01-01 00:00:00 UTC)
 #
 
 class PublisherProductDescription < ActiveRecord::Base
@@ -77,6 +78,7 @@ class PublisherProductDescription < ActiveRecord::Base
                   :metrics_5,        
                   :core_literacy_standard,
                   :core_math_standard,
+                  :form_update,
                   :created_at,
                   :updated_at 
 
@@ -86,7 +88,9 @@ class PublisherProductDescription < ActiveRecord::Base
   belongs_to :publisher_product
 
 
-
+  # config.active_record.default_timezone = :local
+  
+  
   def self.dbdelete
       self.connection.execute("DELETE FROM publisher_product_descriptions")
   end

@@ -3,6 +3,9 @@ Webknow::Application.routes.draw do
 
   get "static_pages/fonts"
   
+  get "tests/test1"
+  
+  
   match '/Mail', to: 'user_messages#index', via: 'get'
   resources :user_messages
 
@@ -35,6 +38,7 @@ Webknow::Application.routes.draw do
   
   root to: 'users#new'
   match '/', to: 'users#new', via: 'get'
+  match '/About', to: 'users#about', via: 'get'  
   # match '/Members', to: 'users#index', via: 'get'
   
   # match '/Signup', to: 'users#new', via: 'get'
@@ -447,6 +451,7 @@ Webknow::Application.routes.draw do
 
   # get "publisher_products/index"
   # get "publisher_products/show"
+  # match '/publisher_products/list' => 'publisher_products#list', via: 'get'    
   match 'publisher_products/create', to: 'publisher_products#create', via: 'post'
   match '/Publisher-Products', to: 'publisher_products#index', via: 'get'
   match '/publisher_products/upload', to: 'publisher_products#upload', via: 'post'
@@ -564,7 +569,7 @@ Webknow::Application.routes.draw do
   end
   resources :publisher_product_descriptions do
     collection do
-      post :update_file_type_index
+      post :update_file_type
     end
   end
   resources :publisher_product_descriptions do
@@ -617,11 +622,31 @@ Webknow::Application.routes.draw do
       post :update_allow_teacher_rating
     end
   end  
-  # resources :publisher_product_descriptions do
-    # collection do
-      # post :update_user_rating
-    # end
-  # end  
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_allow_student_likes
+    end
+  end  
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_allow_comments
+    end
+  end  
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_research
+    end
+  end  
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_public_relations
+    end
+  end  
+  resources :publisher_product_descriptions do
+    collection do
+      post :update_metrics
+    end
+  end  
   resources :publisher_product_descriptions do
     collection do
       post :update_core_supplemental_index

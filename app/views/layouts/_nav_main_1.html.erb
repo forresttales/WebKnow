@@ -1,7 +1,7 @@
 <!-- <link rel="stylesheet" href="menu.css" type="text/css" media="screen" /> -->
 
-<!-- <script type="text/javascript" src="/assets/jquery-1.9.1.js"></script> --> 		
-<script type="text/javascript" src="/assets/jquery.js"></script>
+<!-- <script type="text/javascript" src="../scripts/jquery-1.9.1.js"></script> -->	
+<!-- <script type="text/javascript" src="/assets/jquery.js"></script> -->
 
 <style>
 
@@ -9,6 +9,12 @@
 		font-family: 'msyh';
 	    src: url('../fonts/msyh.eot');	  		
 		src: url('../fonts/msyh.ttf') format('truetype');
+	}
+
+	*, *:after, *:before {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 	}
 
 	/*body, ul, li {
@@ -76,8 +82,17 @@
 		float:right;
 	}
 	#menu li.without_sub_left {
-		float:right;
+		float:left;
 	}	
+	#menu li.without_sub_nav {
+		display:block;
+		text-align:center;
+		position:relative;
+		padding: 0px 2px 0px 0px;
+		margin-right:0px;
+		margin-top:8px;
+		border:none;
+	}
 	#menu li.without_sub {
 		display:block;
 		text-align:center;
@@ -115,6 +130,21 @@
 	#menu li.without_sub:hover a.menu-title {
 		color: #41B737;
 	}
+	#menu li.profile-type-title a {
+		font-family: NotethisRegular; 
+		font-size: 30px;
+		font-weight: 400;		
+		color: #EEEEEE;
+		display:block;
+		outline:0;
+		text-decoration:none;
+		padding: 4px 0 0 0;
+		/*text-shadow: 1px 1px 1px #000;*/
+	}
+	#menu li.profile-type-title:hover a {
+		color:#fff;
+		text-shadow: 1px 0px 0px #aaa;
+	}	
 	#menu li.icon {
 		float:left;
 		display:block;
@@ -122,8 +152,9 @@
 		position:relative;
 		margin-right:0px;
 		margin-top:0px;
-		margin-left: 0px;
-		background: #fff;
+		margin-left: -5px;
+		
+		/*background: #fff;*/
 	    /*border-bottom: 2px solid rgba(65, 183, 55, 0.92);*/
 	    /*border-left: 2px solid rgba(65, 183, 55, 0.92);*/
 	    /*border-radius: 0 0 0 6px;*/
@@ -254,9 +285,9 @@
 	}
 	#menu li .align_right {
 		/* Rounded Corners */
-		-moz-border-radius: 5px 0px 5px 5px;
-	    -webkit-border-radius: 5px 0px 5px 5px;
-	    border-radius: 5px 0px 5px 5px;
+		-moz-border-radius: 0px 0px 5px 5px;
+	    -webkit-border-radius: 0px 0px 5px 5px;
+	    border-radius: 0px 0px 5px 5px;
 	}
 	#menu li:hover .align_right {
 		left:auto;
@@ -457,7 +488,16 @@
 		border-right: 5px solid transparent;
 		border-bottom: 5px solid silver;
 	}
-	
+	.nav-avatar {
+		width: 34px;
+		border-radius: 4px;
+	}	
+	span .namefirst {
+		
+	}
+	span .namelast {
+		
+	}
 	/*
 	#D98D2D	knowstory logo orange
 	#96C785 knowstory logo green dark 
@@ -471,17 +511,32 @@
 </style>
 
 
+<script type="text/javascript" src="/assets/jquery.js"></script>
+
+
 <!-- <div style="height: 60px;" id="top-black-bar-marker"></div> -->	    
 	<div id="nav_ks_marker" class="nav-bar-ks"></div>
 
 	<div id="nav_ks" class="nav-ks">
 		<ul id="menu">
 		    <li class="icon">
-		    	<a href="/">
+		    	<!-- <a href="/"> -->
 		    		<img src="/assets/knowstory-icon-2-w150-h50.png" alt="knowstory-icon-2-w150-h50.png" height="50px">
-		    	</a>
+		    	<!-- </a> -->
 		    </li>
 
+			<% if signed_in? %>			
+		    <li class="without_sub_nav without_sub_left profile-type-title" style="margin-left: 20px;">
+		    	<a href="/<%= current_user_account_type %>" style="width: 34px; height: 34px; background-color: transparent;">
+		    		<%= current_user_account_type %>
+		    	</a>
+			</li>            
+			<% else %>
+		    <li class="without_sub without_sub_right" style="margin-right: 20px;">
+            	<%= link_to "Signin/Signup", "https://knowstory.com", class: "menu-title" %>
+			</li>            
+			<% end %>
+			
 		    <!-- <li class="with_sub" style="margin-left: 20px;"><a href="#" class="drop">Advertise</a>
 		        <div class="dropdown_2columns">
 		            <div class="col_2">
@@ -505,17 +560,16 @@
 		        </div>
 		    </li> -->
 		
-		    
           <% if signed_in? %>
 
-		    <li class="with_sub_right" style="margin-left: 20px;" id="with_sub_1">
+		    <li class="with_sub_right" style="margin-left: 0px;" id="with_sub_1">
 		    	<div class="menu-title" id="dropdown_1">
-		    		<%= current_user.username %>
+		    		<span class="namefirst"><%= current_user.name_first %></span>
+		    		<span class="namelast"><%= current_user.name_last %></span>
 		    		<div class="drop-container">
 		    			<div class="drop" id="dropdown_1_caret"></div>
 		    		</div>
 		    	</div>
-		    	
 		        <div class="dropdown_1column align_right display-none" id="dropdown_1_menu">
 		            <div class="col_1">
 						<a href="/id1">
@@ -532,6 +586,13 @@
 		            </div>
 		        </div>
 		    </li>
+		    <% if !user_profile_image_nav.nil? %>		    
+		    <li class="without_sub_nav without_sub_right" style="margin-left: 20px;">
+		    	<a href="/PublisherProfile" style="width: 34px; height: 34px; background-color: transparent;">
+		    		<img class="nav-avatar" alt="photo" src="<%= user_profile_image_nav.image_url(:profile_34_34) %>"/>
+		    	</a>
+			</li>            
+			<% end %>
 
         	<!-- <li class="menu_right text"><a href="/Signout">Sign Out</a></li> -->
 			<!-- <#% if !( current_page?(controller: 'institutes', action: 'index') or %#>
@@ -543,6 +604,9 @@
             
 		    <li class="without_sub without_sub_right" style="margin-left: 20px;">
             	<%= link_to "Members", "/Members", class: "menu-title" %>
+			</li>            
+		    <li class="without_sub without_sub_right" style="margin-left: 20px;">
+            	<%= link_to "Posters", "/Posters", class: "menu-title" %>
 			</li>            
             
             <!-- <li id="fat-menu" class="dropdown">

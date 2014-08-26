@@ -2,7 +2,6 @@
 
 			<!-- <div id="pos2"></div> -->
 
-			<% if @publisher_products.any? %>
 
 		
 			<!-- <#%= hidden_field_tag :direction, params[:direction] %#>
@@ -11,7 +10,10 @@
 
 				<!-- <div class="publisher-product-list-top-border"></div> -->
 
-				<div id="scroll1" class="product-listbox">	
+				<div id="scroll1" class="product-listbox" style="height: 100%;">	
+
+			<% if @publisher_products.any? %>
+
 
 				<% @publisher_products.each do |publisher_product| %>
 
@@ -97,21 +99,26 @@
 					
 				<% end %>
 
-				</div>
 
-				<!-- <div id="im_bottom_sh" style="display: block;"></div> -->					
-				<div class="publisher-product-utility-bar-footer">
-					<div style="height: 4px;"></div>
-					<div style="width: 100%; text-align: center;">
-						<span><%= will_paginate @publisher_products %></span>
-					</div>
-				</div>
-				
+
 			<% else %>
 				<!-- <div class="" style="color: red; padding-left: 20px;">
 					<h3>No record for Publisher Products</h3>
 				</div> -->
 			<% end %>
+
+				</div>
+
+
+				<!-- <div id="im_bottom_sh" style="display: block;"></div> -->					
+
+				<!-- <div class="publisher-product-utility-bar-footer">
+					<div style="height: 4px;"></div>
+					<div style="width: 100%; text-align: center;">
+						<span><#%= will_paginate @publisher_products %#></span>
+					</div>
+				</div> -->
+				
 
 	<script src="/assets/jquery.mousewheel.js"></script>
 
@@ -129,12 +136,25 @@
 		// }
 				
 		function body_resize() {
-			var wh = window.innerHeight;
+			var wh = window.outerHeight;
 			var sh = 0;
-			if(wh > 604) {
-				sh = wh-388;
-				$("#scroll1").css({
-					'height': sh
+			// var h1 = 0;
+			// var h2 = 0;
+			var h3 = 0;
+			// var h = $("#container").height();
+			$("#container_height").html(wh);
+			if(wh > 700) {
+				// h1 = wh - 276;
+				// h2 = wh - 594;
+				h3 = wh - 392;
+				// $("#scroll1").css({
+					// 'height': h3
+				// });
+				$("#sub_container").css({
+					'height': h3			// h1
+				});			
+				$("#render_list").css({
+					'height': h3			// h2
 				});			
 			}
 		}

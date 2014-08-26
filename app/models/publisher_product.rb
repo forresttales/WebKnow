@@ -31,7 +31,7 @@ class PublisherProduct < ActiveRecord::Base
   belongs_to :publisher
   has_one :publisher_product_description
   has_one :publisher_product_logo
-  has_one :publisher_product_image
+  has_many :publisher_product_images
   # has_one :publisher_product_metadatatag
   has_one :publisher_product_content_type  
   has_one :publisher_product_category_subject

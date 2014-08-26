@@ -28,7 +28,7 @@
 			display: inline-block;
 			width: 250px;
 			/*height: 300px;*/
-			margin: 0;
+			/*margin: 0;*/
 			padding: 0px 0px 0px 0px;
 			position: relative;
 			text-align: center;
@@ -147,14 +147,26 @@
  		
  	</style>
 
+	<style>
+		
+	.container {
+		width: 1200px;
+		/*margin: 0 auto;*/
+		/*position: relative;*/
+		/*top: -4px;*/
+	}
+		
+	</style>
 
-	<header>
-		<%= render 'share/backtotop' %>
-	</header>
+	<!-- <header>
+		<#%= render 'share/backtotop' %#>
+	</header> -->
+
 
 	<div class="container">
 		<div class="table-profile">
 			<div class="row-profile">
+				
 				<div class="col-left">
 					<div class="table-profile">
 						<div class="row-profile" style="height: 20px;">
@@ -176,10 +188,10 @@
 							<div class="col-midd-600">
 								
 								<div style="text-align: left;">
-									<span class="normal pad-left-20">Home</span>
+									
 								</div>
 					
-								<div style="height: 30px;"></div>
+								
 
 								<div id="profile_image" class="pad-left-20">
 								
@@ -223,17 +235,17 @@
 											</li>
 										</ul>
 						   			</div>
-						   			<div class="cell-400">
+						   			<!--<div class="cell-400">
 						   				<span><%= link_to "Add a photo", new_publisher_profile_image_path(:publisher_id => @publisher_id) %></span>
-						   			</div>
+						   			</div>-->
 								
 								<% end %>
 								
 								</div>
 								
 
-								<div style="height: 100px;"></div>								
-						    	<div style="width: 100%; text-align: center;">
+																
+						    	<div class="delete-record"style="width: 100%; text-align: center;">
 							    	<h5>
 									   	<% delete_all_msg = "Delete all records and reset index in Publishers?" %>
 										<%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long', :remote => true %>
@@ -246,19 +258,20 @@
 				</div>
 				<div class="col-right">
 					<div class="table-profile">
-						<div class="row-profile" style="height: 20px;">
-							<div class="col-gen"></div>
-						</div>							
-						<div class="row-profile">
-							<div class="col-right">
-								<%= render 'share/dir_publishers_right' %>
-							</div>
+						<div class="col-gen"></div>
+					</div>							
+					<div class="row-profile">
+						<div class="col-right">
+							<!-- <#%= render 'share/dir_publishers_right' %#> -->
 						</div>
-					</div>										
-				</div>								
-			</div>
+					</div>
+				</div>		
+												
+			</div>								
 		</div>
 	</div>
+
+	<!-- </div> -->
 
 	<!-- <script>
 	  

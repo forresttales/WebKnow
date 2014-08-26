@@ -1,0 +1,67 @@
+
+
+		<style>
+			
+			.div1 {
+				margin: 0 auto;
+				background-color: #ccc;
+				position: relative;
+				height: 100%;
+				width: 1000px;
+				/*border: 1px solid green;*/	
+			}	
+			.div2 {
+				background-color: #eee;
+				position: relative;
+				height: 200px;	
+			}	
+			.div3 {
+				background-color: #888;
+				position: relative;
+				height: 100px;	
+				width: 600px;
+				margin: 0 auto;
+			}	
+			#div4 {
+				background-color: blue;
+				position: absolute;
+				height: 50px;	
+				width: 100%;
+				/*clear: both;*/ 
+				z-index: 12; 
+				bottom: 101px;
+			}	
+			.div5 {
+				background-color: yellow;
+				position: relative;
+				height: 50%;	
+			}	
+			#div-container {
+				background-color: orange;
+				position: relative;
+				height: 87%;	
+				/*margin-bottom: 150px;*/
+				z-index: 11;
+			}	
+					
+		</style>
+
+		<div id="div1" class="div1">
+			div 1
+			<!-- <div id="div-container"> -->
+				<div class="div2">
+					div 2
+					<div class="div3">
+						div 3
+					</div>
+				</div>
+			<!-- </div> -->			
+			<div id="div4">
+				div 4
+			</div>
+		</div>
+		<!-- <div class="div4">
+			div 4
+		</div> -->
+
+
