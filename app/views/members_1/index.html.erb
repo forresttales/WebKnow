@@ -1,0 +1,271 @@
+<% provide(:title, 'Members') %>
+
+
+	<style>
+		
+		.users-table {
+			display:table;
+			width: 100%;
+			border-top: 0px; 
+			border-collapse: collapse;
+		}
+		.users-row-top {
+			display: table-row;
+			height: 2px;
+		  	border-bottom: 1px solid #ccc;			
+		}
+		.users-cell-top-image {
+			display:table-cell;
+			height: 2px;
+			/*width: 500px;*/
+		  	border-bottom: 1px solid #ccc;
+		}
+		.users-cell-top {
+			display:table-cell;
+			height: 2px;
+			/*width: 70px;*/
+		  	border-bottom: 1px solid #ccc;
+		}
+		.users-row {
+			display: table-row;
+			height: 68px;
+		  	border-bottom: 1px solid #ccc;
+		  	background-color: #fff;			
+		}
+		.users-row:hover {
+		  	background-color: #F8F8F8;			
+		}
+		.users-cell-image {
+			display:table-cell;
+		  	overflow: auto;
+		  	width: 70px;			
+			height: 100%;
+		  	padding: 8px 0 0 10px;
+		  	border-bottom: 1px solid #ccc;
+		}
+		.users-cell {
+			display:table-cell;
+		  	overflow: auto;
+		  	width: 530px;			
+			height: 100%;
+		  	padding: 8px 0;
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 200;
+		  	font-color: #888;
+			font-size: 13px;
+			border-bottom: 1px solid #ccc;
+			vertical-align: top;
+		}
+		.users-cell span.user-name a {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #5628E1;
+			font-size: 14px;
+		}
+		.users-cell-top div {
+			height: 100%;
+			padding: 0 0 0 10px;
+		}
+		.users-cell div {
+			height: 100%;
+		}
+		
+	</style>
+
+	<style>
+		
+		.publishers-table {
+			display:table;
+			width: 100%;
+			border-top: 0px; 
+			border-collapse: collapse;
+		}
+		.publishers-row-top {
+			display: table-row;
+			height: 2px;
+		  	border-bottom: 1px solid #ccc;			
+		}
+		.publishers-cell-top-image {
+			display:table-cell;
+			height: 2px;
+			/*width: 500px;*/
+		  	border-bottom: 1px solid #ccc;
+		}
+		.publishers-cell-top {
+			display:table-cell;
+			height: 2px;
+			/*width: 70px;*/
+		  	border-bottom: 1px solid #ccc;
+		}
+		.publishers-row {
+			display: table-row;
+			height: 118px;
+		  	border-bottom: 1px solid #ccc;
+		  	background-color: #fff;			
+		}
+		.publishers-row:hover {
+		  	background-color: #F8F8F8;			
+		}
+		.publishers-cell-image {
+			display:table-cell;
+		  	overflow: auto;
+		  	width: 120px;			
+			height: 100%;
+		  	padding: 8px 0 0 10px;
+		  	border-bottom: 1px solid #ccc;
+		}
+		.publishers-cell {
+			display:table-cell;
+		  	overflow: auto;
+		  	width: 530px;			
+			height: 100%;
+		  	padding: 8px 0;
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 200;
+		  	font-color: #888;
+			font-size: 13px;
+			border-bottom: 1px solid #ccc;
+			vertical-align: top;
+		}
+		.publishers-cell span.publisher-name a {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #5628E1;
+			font-size: 14px;
+		}
+		.publishers-cell-top div {
+			height: 100%;
+			padding: 0 0 0 10px;
+		}
+		.publishers-cell div {
+			height: 100%;
+		}
+		
+	</style>
+	
+	<style>
+	
+		.utility-bar {
+			width: 100%;
+			height: 50px;
+			background: url('/assets/lighter_grey.jpg');
+			border-bottom: 2px #DCE3DF solid;
+		}
+		.utility-bar span {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 200;
+		  	font-color: #888;
+			font-size: 13px;
+		}
+		
+	</style>
+
+	<style>
+		
+		form{
+			/*width:500px;*/
+			/*margin:0 auto;*/
+		}
+		.search { 
+			padding:6px 15px 6px 30px;
+			margin:3px; 
+			background: url('/assets/search.png') no-repeat 8px 6px; 
+			width: 300px;
+		}
+		.rounded { 
+			border-radius:15px; 
+			-moz-border-radius:15px; 
+			-webkit-border-radius:15px; 
+		}		
+		input[type=text]{
+			color:#bcbcbc;
+		}
+		input[type=button], input[type=button]:hover {
+			position:relative; 
+			left:-6px;
+			height: 29px;
+			border:1px solid #adc5cf;
+			background: #e4f1f9; /* Old browsers */
+			background: -moz-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4f1f9), color-stop(100%,#d5e7f3)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* IE10+ */
+			background: linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f1f9', endColorstr='#d5e7f3',GradientType=0 ); /* IE6-9 */
+			color:#7da2aa;
+			cursor: pointer;
+		}				
+		.lighter, .light, .dark {
+			width:100%;
+			height:50px;
+			padding:10px 0px 0px 0px;
+		}
+		.lighter{
+			background: url('/assets/lighter_grey.jpg');
+		}
+		.lighter input[type=text]{
+			border:1px solid #d0d0d0;
+			background-color:#fcfcfc;
+		}
+		.light{
+			background: url('/assets/light_grey.jpg');
+		}
+		.light input[type=text]{
+			border:1px solid #acb1b7;
+			background-color:#fcfcfc;
+		}
+		.dark{
+			background: url('/assets/dark_grey.jpg');
+		}
+		.dark input[type=text]{
+			border:1px solid #2a2e31;
+			background-color:#2d3035;
+			color:#505358;
+		}
+
+	</style>
+	
+	<header>
+		<!-- <#%= render 'layouts/nav_main' %#> -->
+		<%= render 'share/backtotop' %>
+	</header>
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				
+				<div class="col-left">
+					<%= render 'share/dir_publishers_left'%>
+				</div>
+				
+				<div class="col-midd">
+					<!-- <div class="line-space-20"></div> -->
+					<!-- <div style="text-align: left;">
+						<span class="normal" style="padding-left: 10px;">Members</span>
+					</div> -->
+
+					<div class="lighter">
+						<form>
+							<span><input type="text" class="search square" placeholder="Search..."><input type="button" value="Search"></span>
+						</form>
+					</div>
+					
+					<%= render "members/index_mtabs"%>
+					
+				</div>
+				
+				<div class="col-right">
+					<%= render 'share/dir_publishers_right' %>
+				</div>								
+			</div>
+		</div>
+	</div>
+
+	<script>
+	  
+		//$(window).load( function() {
+	
+		//});
+	  
+	</script>		

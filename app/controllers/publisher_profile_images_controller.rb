@@ -11,7 +11,13 @@ class PublisherProfileImagesController < ApplicationController
   
   
   def index
-    publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    
+    @publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
+    @publisher_id = @publisher_user.publisher_id
+    publisher = Publisher.find_by_id(@publisher_id)
+    
+    
+    # publisher = Publisher.where(["user_id = ?", current_user.id]).first
     @publisher_id = publisher.id
     
     @publisher_profile_images = PublisherProfileImage.where("publisher_id = ?", @publisher_id)    
@@ -111,20 +117,16 @@ class PublisherProfileImagesController < ApplicationController
   end
   
   
+  
   def crop_commit
-    
-    
-    # render text: params[:image_id]
-    
+
     x = params[:crop_x]
     y = params[:crop_y]
     w = params[:crop_w]
     h = params[:crop_h]
 
-    img = PublisherProfileImage.find(params[:image_id])
-    image = Magick::Image.read("public" + img.image_url(:image_500_500))[0]
-    
-    # render text: image.filename
+    img = PublisherUserImage.find(params[:image_id])
+    image = Magick::Image.read("public" + img.image_url(:profile_600_600))[0]
 
     x = x.to_i
     y = y.to_i
@@ -132,46 +134,83 @@ class PublisherProfileImagesController < ApplicationController
     h = h.to_i
     image_new = image.crop(x, y, w, h)
 
-    image_200_200 = image_new.resize_to_fill(200, 200)    
-    image_100_100 = image_new.resize_to_fill(100, 100)    
-    image_50_50 = image_new.resize_to_fill(50, 50)
-    image_34_34 = image_new.resize_to_fill(34, 34)
+    new_profile_200_200 = image_new.resize_to_fill(200, 200)    
+    new_profile_100_100 = image_new.resize_to_fill(100, 100)    
+    new_profile_50_50 = image_new.resize_to_fill(50, 50)
+    new_profile_34_34 = image_new.resize_to_fill(34, 34)
     
-    image_200_200 = Magick::Image.read("public" + img.image_url(:image_200_200))[0]
-    image_100_100 = Magick::Image.read("public" + img.image_url(:image_100_100))[0]
-    image_50_50 = Magick::Image.read("public" + img.image_url(:image_50_50))[0]
-    image_34_34 = Magick::Image.read("public" + img.image_url(:image_34_34))[0]
+    profile_200_200 = Magick::Image.read("public" + img.image_url(:profile_200_200))[0]
+    profile_100_100 = Magick::Image.read("public" + img.image_url(:profile_100_100))[0]
+    profile_50_50 = Magick::Image.read("public" + img.image_url(:profile_50_50))[0]
+    profile_34_34 = Magick::Image.read("public" + img.image_url(:profile_34_34))[0]
 
-    # public/uploads/user_image_image/image/1/image_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
+    # public/uploads/publisher_user_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
 
-    image_200_200_filename = image_200_200.filename
-    image_100_100_filename = image_100_100.filename
-    image_50_50_filename = image_50_50.filename
-    image_34_34_filename = image_34_34.filename
+    profile_200_200_filename = profile_200_200.filename
+    profile_100_100_filename = profile_100_100.filename
+    profile_50_50_filename = profile_50_50.filename
+    profile_34_34_filename = profile_34_34.filename
 
-    FileUtils.rm_rf(Dir.glob(image_200_200.filename))
-    FileUtils.rm_rf(Dir.glob(image_100_100.filename))
-    FileUtils.rm_rf(Dir.glob(image_50_50.filename))
-    FileUtils.rm_rf(Dir.glob(image_34_34.filename))
-    
-    image_200_200.write image_200_200_filename
-    image_100_100.write image_100_100_filename
-    image_50_50.write image_50_50_filename
-    image_34_34.write image_34_34_filename
+    FileUtils.rm_rf(Dir.glob(profile_200_200.filename))
+    FileUtils.rm_rf(Dir.glob(profile_100_100.filename))
+    FileUtils.rm_rf(Dir.glob(profile_50_50.filename))
+    FileUtils.rm_rf(Dir.glob(profile_34_34.filename))
+
+    new_profile_200_200.write profile_200_200_filename    
+    new_profile_100_100.write profile_100_100_filename
+    new_profile_50_50.write profile_50_50_filename
+    new_profile_34_34.write profile_34_34_filename
      
-    # # image.recreate_versions!
-# 
-    # image_100_100 = nil    
-    # image_50_50 = nil
-    # image_34_34 = nil
-#     
-    # profile_100_100 = nil
-    # profile_50_50 = nil
-    # profile_34_34 = nil
-# 
+    # image.recreate_versions!
+
     redirect_to '/Publisher-Photos'    
     
   end
+  
+  
+  
+  # def crop_commit
+    # x = params[:crop_x]
+    # y = params[:crop_y]
+    # w = params[:crop_w]
+    # h = params[:crop_h]
+    # img = PublisherProfileImage.find(params[:image_id])
+    # image = Magick::Image.read("public" + img.image_url(:profile_600_600))[0]
+    # x = x.to_i
+    # y = y.to_i
+    # w = w.to_i
+    # h = h.to_i
+    # image_new = image.crop(x, y, w, h)
+    # profile_200_200 = image_new.resize_to_fill(200, 200)    
+    # profile_100_100 = image_new.resize_to_fill(100, 100)    
+    # profile_50_50 = image_new.resize_to_fill(50, 50)
+    # profile_34_34 = image_new.resize_to_fill(34, 34)
+    # image_200_200 = Magick::Image.read("public" + img.image_url(:image_200_200))[0]
+    # image_100_100 = Magick::Image.read("public" + img.image_url(:image_100_100))[0]
+    # image_50_50 = Magick::Image.read("public" + img.image_url(:image_50_50))[0]
+    # image_34_34 = Magick::Image.read("public" + img.image_url(:image_34_34))[0]
+    # image_200_200_filename = image_200_200.filename
+    # image_100_100_filename = image_100_100.filename
+    # image_50_50_filename = image_50_50.filename
+    # image_34_34_filename = image_34_34.filename
+    # FileUtils.rm_rf(Dir.glob(image_200_200.filename))
+    # FileUtils.rm_rf(Dir.glob(image_100_100.filename))
+    # FileUtils.rm_rf(Dir.glob(image_50_50.filename))
+    # FileUtils.rm_rf(Dir.glob(image_34_34.filename))
+    # image_200_200.write image_200_200_filename
+    # image_100_100.write image_100_100_filename
+    # image_50_50.write image_50_50_filename
+    # image_34_34.write image_34_34_filename
+    # # # image.recreate_versions!
+    # # image_100_100 = nil    
+    # # image_50_50 = nil
+    # # image_34_34 = nil
+    # # profile_100_100 = nil
+    # # profile_50_50 = nil
+    # # profile_34_34 = nil
+# # 
+    # redirect_to '/Publisher-Photos'    
+  # end
   
 
   private
@@ -183,6 +222,10 @@ class PublisherProfileImagesController < ApplicationController
                                                       :image,
                                                       :primary,
                                                       :order,
+                                                      :crop_x,
+                                                      :crop_y,
+                                                      :crop_w,
+                                                      :crop_h,
                                                       :created_at,
                                                       :updated_at 
                                                      )

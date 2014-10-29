@@ -4,7 +4,8 @@
 <!-- <script type="text/javascript" src="/assets/jquery.js"></script> -->
 
 
-<%= stylesheet_link_tag "profile-new", media: "all", "data-turbolinks-track" => false %>
+<!-- <#%= stylesheet_link_tag "profile-new", media: "all" %#> -->
+
 <!--[if gte IE 9]>
   <style type="text/css">
     .gradient {
@@ -260,7 +261,8 @@
 		<ul id="menu">
 			
 		    <li class="icon">
-		    	<img src="assets_knowstory/knowstory-icon-2-w634-h212.png" alt="knowstory-icon-2-w150-h50.png" height="75px">
+		    	<img src="/assets/knowstory-icon-2-w224-h75.png" alt="knowstory-icon-2-w224-h75.png" height="75px">
+		    	<!-- <img src="assets_knowstory/knowstory-icon-2-w634-h212.png" alt="knowstory-icon-2-w150-h50.png" height="75px"> -->
 		    </li>
 			
           	<% if signed_in? %>
@@ -296,7 +298,7 @@
 		    </li>
 		    <li class="profile-type">
 				<a href="/<%= current_user_account_type %>">
-					<img src="assets_knowstory//icons/publisher.png">
+					<img src="../assets_knowstory/icons/publisher.png">
 				</a>
 		    </li>
 

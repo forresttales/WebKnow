@@ -1,0 +1,52 @@
+<% provide(:title, 'PDF Image Upload Status') %>
+
+					
+	<div style="width: 1200px; margin-right: auto; margin-left: auto; background: #fff; min-height: 700px;">
+
+		<header>				
+				
+			<%= render 'share/backtotop' %>
+			
+		</header>		
+		
+		<section>
+			
+			<div class="kontainer">
+				
+				<div class="kontainer-space-1"></div>
+				
+				<div id="mainkolumn" class="withsidebar">
+					<div id="k-articlecontent">
+	    				
+						<bodycopy id="bodykopy">
+
+								<div style="height: 170px;"></div>
+								
+								<% if session[:publisher_product_pdf_image_upload_status] %>
+									<%= render 'publisher_product_pdf_images/upload_success'%>
+								<% else %>
+									<%= render 'publisher_product_pdf_images/upload_failure'%>
+								<% end %>
+											 						
+						</bodycopy>
+
+					</div>
+
+					<br clear="all">
+					
+				</div>
+
+				<div id="k-sidebar">
+					<div id="k-sidebar_inner">
+
+					</div>
+				</div>
+
+				<br clear="all">
+					
+			</div>
+			
+		</section>
+		
+	</div>
+		

@@ -1,0 +1,61 @@
+
+
+
+	<style>
+
+		.success-saved {
+			text-align: left; 
+			margin-left: 50px;
+		}
+
+		.success-saved .success-title {
+			font-family: KlavikaBold; font-size: 22px;
+		}	
+		.success-saved p {
+			font-family: KlavikaMedium;
+			font-size: 20px;
+		}	
+		.success-saved ul li {
+			font-family: KlavikaMedium;
+			font-size: 20px;			
+		}					
+		.k-link {
+			color: #C4740C;
+			font-size: 20px;
+			font-family: KlavikaMedium;		
+		}
+		
+	</style>
+
+	
+
+	<div class="success-saved">
+		<div class="success-title">
+			<a onclick="doIt();">test</a>
+		    PDF uploaded successfully
+		</div>
+	</div>
+
+	<script>
+
+
+		function doIt() {
+		 	top.catchIt("success");
+		 	// top.catchIt('clyde'); 
+		}
+
+		
+		// $(window).load( function() {
+		$(document).ready(function(){
+
+			alert('upload_success ready');
+
+			// function doIt() {
+			 	// top.catchIt("success");
+			 	// top.catchIt('clyde'); 
+			// }
+		
+		}
+		
+	</script>
+	

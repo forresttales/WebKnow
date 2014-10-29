@@ -1,0 +1,36 @@
+			<div class="jqmWindow" id="dialog_2">
+		   		<div class="table-dl-form">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form2" class="form-edit-close jqmClose" tabindex="1">
+		   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+		   					</div>
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div class="pad-left-20">
+					<div>test after load</div>
+					<% if @publisher_profile_image_primary %>
+						<div style="display: inline-block;">
+							<%= image_tag @publisher_profile_image_primary.image_url(:profile_600_600), id: "cropbox" %>
+						</div>
+						<div style="display: inline-block; vertical-align: top;">
+							<h4>Preview</h4>
+							<div style="width:100px; height:100px; overflow:hidden">
+							  <%= image_tag @publisher_profile_image_primary.image_url(:profile_600_600), :id => "preview" %>
+							</div>
+							<%= form_tag( crop_commit_publisher_profile_images_path ) do %>
+							  	<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_y, params["crop_y"], id: "id_crop_y", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_w, params["crop_w"], id: "id_crop_w", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_h, params["crop_h"], id: "id_crop_h", class: "input-crop" %><br>
+								<%= hidden_field_tag "image_id", @publisher_profile_image_primary.id %>
+							    <%= submit_tag "Save" %>
+							<% end %>	
+						</div>
+					<% else %>
+						<div> no @publisher_profile_image_primary</div>
+					<% end %>		
+				</div>
+			</div>

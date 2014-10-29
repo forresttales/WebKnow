@@ -18,30 +18,24 @@
 		display: table-cell; 
 		width: 200px;
 	}
-	.col-midd {
+	/*.col-midd {
 		display: table-cell; 
 		width: 600px;			
-		/*border-left: 2px #41B737 solid;
-		border-right: 2px #41B737 solid;*/
-		/*border-left: 2px #D0F5DD solid;
-		border-right: 2px #D0F5DD solid;*/
 		border-left: 2px #DCE3DF solid;
 		border-right: 2px #DCE3DF solid;
-		/*height: 800px;*/		
-	}
+	}*/
 	.col-midd-700-borders {
 		display: table-cell; 
 		width: 700px;			
 		border-left: 2px #DCE3DF solid;
 		border-right: 2px #DCE3DF solid;
 	}
-
-	.col-midd-800-borders {
+	/*.col-midd-800-borders {
 		display: table-cell; 
-		width: 800px;			
+		width: 800px;
 		border-left: 2px #DCE3DF solid;
 		border-right: 2px #DCE3DF solid;
-	}
+	}*/
 	.col-midd-600 {
 		display: table-cell; 
 		width: 600px;			
@@ -50,10 +44,10 @@
 		display: table-cell; 
 		width: 700px;			
 	}	
-	.col-midd-800 {
+	/*.col-midd-800 {
 		display: table-cell; 
 		width: 800px;			
-	}
+	}*/
 	.col-right {
 		display: table-cell; 
 		width: 200px;
@@ -114,6 +108,307 @@
 		padding-left: 20px;
 	}
 	
+
+	@font-face {
+		font-family: 'msyh';
+	    src: url('../fonts/msyh.eot');	  		
+		src: url('../fonts/msyh.ttf') format('truetype');
+	}
+			
+	.title-bar-profile-1 {
+		width: 700px;
+		height: 30px;
+  		/*font-family: 'msyh';
+	    font-size: 18px;
+	    color: #376340;
+	    font-weight: 200;*/
+	    /*text-shadow: 1px 1px #34922C;*/
+	    padding-left: 0px;
+	    padding-top: 0px;
+	    margin-left: 0px;
+	    position: relative;
+		/*z-index: 100;*/
+		background: #49853f;
+		background: -moz-linear-gradient(top,  #49853f 0%, #ffffff 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#49853f), color-stop(100%,#ffffff));
+		background: -webkit-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+		background: -o-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+		background: -ms-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+		background: linear-gradient(to bottom,  #49853f 0%,#ffffff 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', endColorstr='#ffffff',GradientType=0 );
+		
+		/*border-bottom: 1px solid #49853f;*/
+		border-bottom: 1px solid #eee; 
+	}
+	
+	/*<div class="title-bar-profile-2">
+		<div class="tbl-title-bar-profile-2">
+			<div class="row-title-bar-profile">
+				<div class="cell-title-bar-profile-2">
+					<span>Premium</span>		
+				</div>
+			</div>
+		</div>
+	</div>*/
+	
+	.title-bar-profile-2 {
+		width: 700px;
+		height: 18px;
+  		/*font-family: 'msyh';
+	    font-size: 18px;
+	    color: #376340;
+	    font-weight: 200;*/
+	    /*text-shadow: 1px 1px #34922C;*/
+	    padding-left: 16px;
+	    padding-right: 16px;
+	    /*padding-top: 0px;*/
+	    margin-left: 0px;
+	    margin-right: 0px;		    
+	    position: relative;
+	    text-align: center;
+		/*z-index: 100;*/
+		/*background: #49853f;
+		background: -moz-linear-gradient(top,  #49853f 0%, #ffffff 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#49853f), color-stop(100%,#ffffff));
+		background: -webkit-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+		background: -o-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+		background: -ms-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+		background: linear-gradient(to bottom,  #49853f 0%,#ffffff 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', endColorstr='#ffffff',GradientType=0 );*/			
+	}
+	.tbl-title-bar-profile {
+		display: table;
+		width: 700px;
+	}
+	.tbl-title-bar-profile-2 {
+		display: table;
+		width: 668px;
+		/*border-bottom: 1px solid #C0C0C0;*/
+		border-bottom: 1px solid #FBB040; 			
+	}
+	.cell-title-bar-profile-2 {
+		display: table-cell;
+		width: 100%;
+		text-align: left;	
+		padding: 0px 0px 0px 0px;		
+	}		
+	.tbl-title-bar-profile-2 span {
+  		font-family: 'msyh';
+	    font-size: 16px;
+	    /*color: #C0C0C0;*/
+	    color: #FBB040;
+	    font-weight: 200;
+	}				
+	.tbl-title-bar-profile span {
+  		font-family: 'msyh';
+	    font-size: 16px;
+	    color: #376340;
+	    font-weight: 200;
+	}		
+	.row-title-bar-profile {
+		display: table-row;
+	}
+	.cell-title-bar-profile-left {
+		display: table-cell;
+		width: 30%;
+		text-align: left;	
+		padding: 6px 0px 0px 8px;		
+	}
+	.cell-title-bar-profile-center {
+		display: table-cell;
+		width: 40%;
+		text-align: center;			
+		padding: 6px 0px 0px 0px;		
+	}
+	.cell-title-bar-profile-right {
+		display: table-cell;
+		width: 30%;
+		text-align: right;
+		padding: 6px 8px 0px 0px;					
+	}
+
+	
+
+	.input-gen {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		color: #888;
+		font-weight: 400;
+		font-size: 13px;
+		width: 300px;
+		height: 24px;
+		border-style:solid;
+		border-radius: 0px;
+		background-color: #f6f6f6;
+		border-color: #478A3E;
+		border-width: 1px;
+		padding-left: 4px;
+	}
+	/*.input-gen:focus {
+		border-color: #478A3E;
+		color: #11520B;
+	}*/
+	.input-gen:focus,
+	.input-gen:hover {		
+		border-color: #478A3E;
+		/*color: #000;*/
+		-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+		   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+		        box-shadow: inset 0 0 1px 1px #3DC8D1;
+	}
+	.input-gen:focus:hover {		
+		border-color: #478A3E;
+		/*color: #000;*/
+		-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+		   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+		        box-shadow: inset 0 0 1px 1px #3DC8D1;
+	}
+	.input-gen:hover {		
+		-webkit-box-shadow: inset 0 0 1px 1px #185C61;
+		   -moz-box-shadow: inset 0 0 1px 1px #185C61;
+		        box-shadow: inset 0 0 1px 1px #185C61;
+	}
+	::-webkit-input-placeholder {
+	   color: #778899; /*#C0C0C0;*/
+	}
+	
+	:-moz-placeholder {
+	   color: #778899; /*#C0C0C0;*/
+
+	}
+	
+	::-moz-placeholder {
+	   color: #778899; /*#C0C0C0;*/
+
+	}
+	
+	:-ms-input-placeholder {  
+	   color: #778899; /*#C0C0C0;*/
+
+	}		
+	.form-edit-close {
+		width:20px;
+		height:20px;
+		/*background-color: #ddd;*/
+		float: right;
+		margin-right: 8px;
+		margin-top: 4px;
+	}		
+	.form-edit-close:hover {
+		cursor: pointer;
+		/*background-color: #FFD1D1;*/
+	}		
+	.form-dl-error {
+		/*font-family: Arial, Helvetica, sans-serif;
+		color: red;*/
+		/*font-weight: 400;*/
+		/*font-size: 13px;*/
+		padding-top: 4px;
+		margin-left: 6px;
+		width: 160px; 
+		height: 20px;
+	}
+	.form-dl-error label {
+		margin-left: 20px;
+		font-family: Arial, Helvetica, sans-serif;
+		color: red;
+		font-weight: 400;
+		font-size: 12px;
+		padding-top: 4px;
+		margin-left: 0px;
+	}
+	.btn-submit {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 16px;
+		font-weight: 400;		
+		text-align: center;	
+		padding-top: 0px;
+	  	/*color: #FBB040;*/
+	  	color: #fff;
+	  	/*display: inline-block;*/
+	  	text-decoration: none; 
+	  	width: 200px;
+	  	height: 28px;
+	  	/*background: linear-gradient(#41B737, #37633A);*/
+	  	background: linear-gradient(#2899A1, #1F7C82);
+
+	  	/*text-shadow: 1px 1px 1px #0E86B2;*/
+	  	border: 0px solid #fff; 
+	  	border-radius: 2px;
+	}
+	.btn-submit:focus {
+		/*border-color: #478A3E;
+		color: #11520B;
+		font-weight: 700;*/
+		-webkit-box-shadow: 0 0 1px 1px #3DC8D1;
+		   -moz-box-shadow: 0 0 1px 1px #3DC8D1;
+		        box-shadow: 0 0 1px 1px #3DC8D1;
+	  	background: linear-gradient(#2899A1, #1F7C82);
+	  	/*background: #CCC;*/ 
+	  	/*color: #5F7A2A;*/
+	  	/*box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);*/
+	}
+	.btn-submit:hover { 
+	  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+	  inset 0 1.5em 1em rgba(255,255,255,0.2);
+	  cursor: pointer;
+	}
+	.btn-submit:active { 
+	  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+	  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+	 	/*color: #FBB040;*/
+	 	color: #fff;
+	  	/*background: linear-gradient(#37633A, #41B737);*/
+	  	background: linear-gradient(#1F7C82, #2899A1);
+	  	outline:none;
+	}
+	.table-dl-form {
+		display: table;
+		vertical-align: top;
+		width: 700px;	
+	}
+	.table-dl-form-2 {
+		display: table;
+		vertical-align: top;
+		width: 900px;	
+	}
+
+	.dl-form-divider-line {
+		width: 98%;
+		color: #fff;
+	}
+	/*.check-required {
+		background-image: url("/assets/red_star_7.png");		
+		background-repeat: no-repeat;
+		background-position: 0px 0px;
+		top: 0px;			
+	}*/
+	input.error {
+		background-color: #FFF1F0;
+		background-image: url("/assets/red_star_7.png");		
+		background-repeat: no-repeat;
+		background-position: 288px 0px;			
+	}
+	.display-none {
+		display: none;
+	}
+	.form-pdf {
+	}
+	.form-pdf-title {
+		font-family: Arial, Helvetica, sans-serif;
+		color: #185C61;
+		font-weight: 400;
+		font-size: 14px;			
+	}
+	.table-dl-form-background {
+		padding: 10px 10px;
+		border-top: 1px solid #185C61;
+		border-bottom: 1px solid #185C61;
+		background-color: #DCE7E8; /*#BCD4D6;*/			
+	}
+	.row-divider {
+		height: 4px;	
+	}
+		
 	
 	
 	

@@ -1,0 +1,2 @@
+module PublisherUserImagesHelper
+end

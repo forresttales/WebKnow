@@ -1,0 +1,2 @@
+class PublisherPosterPremiumPositionsController < ApplicationController
+end

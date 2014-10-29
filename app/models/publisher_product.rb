@@ -29,9 +29,9 @@ class PublisherProduct < ActiveRecord::Base
   
   
   belongs_to :publisher
+  
   has_one :publisher_product_description
-  has_one :publisher_product_logo
-  has_many :publisher_product_images
+  has_one :publisher_product_logo  
   # has_one :publisher_product_metadatatag
   has_one :publisher_product_content_type  
   has_one :publisher_product_category_subject
@@ -45,8 +45,15 @@ class PublisherProduct < ActiveRecord::Base
   has_one :publisher_product_pricing_model
   has_one :publisher_product_price
   has_one :publisher_product_lesson_time
+  has_one :publisher_product_by_review
+  has_one :publisher_product1_image
+  has_one :publisher_product2_image
+  has_one :publisher_product_corporate_logo
 
-  # has_one :publisher_product_core_literacy_standard
+  has_many :publisher_product_images
+  has_many :publisher_product_pdfs
+  # has_many :publisher_product_pdf_images
+  has_many :publisher_product_core_literacy_standards
   # has_one :publisher_product_core_math_standard
 
 

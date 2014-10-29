@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   
   layout 'application'
   
-  before_filter :force_http
+  # before_filter :force_http
 
     
   

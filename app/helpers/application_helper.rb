@@ -1,5 +1,6 @@
 module ApplicationHelper
-# Returns the full title on a per-page basis.
+
+
   def full_title(page_title)
   #def title    
     base_title = "KnowStory"
@@ -10,5 +11,8 @@ module ApplicationHelper
       "#{base_title} | #{page_title}"
       #"#{base_title} | #{@title}"      
     end
+
   end    
+
+
 end

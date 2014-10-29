@@ -1,1027 +1,2196 @@
-<% provide(:title, 'Advertise') %>
+<% provide(:title, 'Advertise with KnowStory') %>
 
-
-	<script type="text/javascript" src="../scripts/jquery-1.4.1.min.js"></script>
 	
+	<script src="/assets/jquery.validate.js"></script>
+	<script src="../scripts/dot.js"></script>    
+	<script src="../scripts/jquery-dropdown-dot.js"></script>
+	<script type="text/javascript" src="../scripts/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" src="../scripts/slidedeck.jquery.js"></script>
+	<script src="/assets/jquery.colorbox.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="../styles/landing_page.css.scss" media="screen,handheld" /> -->	
+	<link rel="stylesheet" href="/assets/static_pages.css" />
+	<link rel="stylesheet" type="text/css" href="../styles/slidedeck.skin.css" media="screen,handheld" />
+
 	<style>
 	
-		@import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans);
-		@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400,400italic,700,700italic);
-		/*@import url(http://www.google.com/fonts#QuickUsePlace:quickUse/Family:Istok+Web);*/
+		@font-face {
+			font-family: 'msyh';
+		    src: url('../fonts/msyh.eot');	  		
+			src: url('../fonts/msyh.ttf') format('truetype');
+		}
+	
+		.menu-home {
+		}
+		.menu-home li.with_sub {
+			float:left;
+			display:block;
+			text-align:center;
+			position:relative;
+			padding: 12px 10px 8px 10px;
+			margin-right:30px;
+			margin-top:7px;
+			border:none;
+		}
+		.menu-home li.with_sub:hover {
+			border: 1px solid #777777;
+			padding: 12px 9px 4px 9px;
+			background: #F4F4F4;
+			background: -moz-linear-gradient(top, #F4F4F4, #EEEEEE);
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#EEEEEE));
+			-moz-border-radius: 5px 5px 0px 0px;
+			-webkit-border-radius: 5px 5px 0px 0px;
+			border-radius: 5px 5px 0px 0px;
+		}
+		.menu-home li.with_sub a {
+			font-family: msyh, Arial, Helvetica, sans-serif;			
+			font-size: 14px;		
+			color: #EEEEEE;
+			display:block;
+			outline:0;
+			text-decoration:none;
+			/*text-shadow: 1px 1px 1px #000;*/
+		}
+		.menu-home li.with_sub:hover a {
+			color:#161616;
+			text-shadow: 1px 1px 1px #ffffff;
+		}
+		.menu-home li.icon {
+			float:left;
+			display:block;
+			text-align:center;
+			position:relative;
+			padding: 6px 4px 0px 0px;
+			margin-right:0px;
+			margin-top:0px;
+			border:none;
+			background: #fff;		
+		}
+		.menu-home li.icon:hover {
+			float:left;
+			display:block;
+			text-align:center;
+			position:relative;
+			padding: 6px 4px 0px 0px;
+			margin-right:0px;
+			margin-top:0px;
+			border:none;
+			background: #fff;		
+		}
+		.menu-home li.icon a {
+			color: #fff;
+			text-shadow: 1px 1px 1px #ffffff;		
+		}
+		.menu-home li.icon:hover a {
+			color: red;
+			text-shadow: 1px 1px 1px #ffffff;		
+		}
+		.menu-home li.text {
+			display:block;
+			text-align:center;
+			position:relative;
+			padding: 12px 10px 8px 10px;
+			margin-right:30px;
+			margin-top:7px;
+			border:none;
+		}
+		.menu-home li.text:hover {
+			border: none;
+			padding: 12px 10px 8px 10px;		
+			-moz-border-radius: 0px;
+			-webkit-border-radius: 0px;
+			border-radius: 0px;
+		}
+		.menu-home li.text a {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;		
+			color: #fff;
+			display:block;
+			outline:0;
+		}
+		.menu-home li.text:hover a {
+			/*color:#161616;
+			text-shadow: 1px 1px 1px #ffffff;*/
+		}
+		.menu-home li .drop {
+			padding-right:21px;
+			background:url("img/drop.png") no-repeat right 8px;
+		}
+		.menu-home li:hover .drop {
+			background:url("img/drop.png") no-repeat right 7px;
+		}
+		.dropdown_1column, 
+		.dropdown_2columns, 
+		.dropdown_3columns, 
+		.dropdown_4columns,
+		.dropdown_5columns {
+			margin:4px auto;
+			float:left;
+			position:absolute;
+			left:-999em; /* Hides the drop down */
+			text-align:left;
+			padding:10px 5px 10px 5px;
+			border:1px solid #777777;
+			border-top:none;
+			background:#F4F4F4;
+			background: -moz-linear-gradient(top, #EEEEEE, #BBBBBB);
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEEEEE), to(#BBBBBB));
+			-moz-border-radius: 0px 5px 5px 5px;
+			-webkit-border-radius: 0px 5px 5px 5px;
+			border-radius: 0px 5px 5px 5px;
+			z-index: 100;
+		}
+		.dropdown_1column {width: 140px;}
+		.dropdown_2columns {width: 280px;}
+		.dropdown_3columns {width: 420px;}
+		.dropdown_4columns {width: 560px;}
+		.dropdown_5columns {width: 700px;}
+		.menu-home li:hover .dropdown_1column, 
+		.menu-home li:hover .dropdown_2columns, 
+		.menu-home li:hover .dropdown_3columns,
+		.menu-home li:hover .dropdown_4columns,
+		.menu-home li:hover .dropdown_5columns {
+			left:-1px;
+			top:auto;
+		}
+		.col_1,
+		.col_2,
+		.col_3,
+		.col_4,
+		.col_5 {
+			display:inline;
+			float: left;
+			position: relative;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		.col_1 {width:130px;}
+		.col_2 {width:270px;}
+		.col_3 {width:410px;}
+		.col_4 {width:550px;}
+		.col_5 {width:690px;}
+		.menu-home .menu_right {
+			/*float:right;*/
+			padding-right: 15px;
+			margin-right:0px;
+			width: 430px;
+		}
+		.menu-home li .align_right {
+			-moz-border-radius: 5px 0px 5px 5px;
+		    -webkit-border-radius: 5px 0px 5px 5px;
+		    border-radius: 5px 0px 5px 5px;
+		}
+		.menu-home li:hover .align_right {
+			left:auto;
+			right:-1px;
+			top:auto;
+		}
+		.menu-home p, .menu-home h2, .menu-home h3, .menu-home ul li {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			line-height:21px;
+			font-size:12px;
+			text-align:left;
+			text-shadow: 1px 1px 1px #FFFFFF;
+		}
+		.menu-home h2 {
+			font-size:21px;
+			font-weight:400;
+			letter-spacing:-1px;
+			margin:7px 0 14px 0;
+			padding-bottom:14px;
+			border-bottom:1px solid #666666;
+		}
+		.menu-home h3 {
+			font-size:14px;
+			margin:7px 0 14px 0;
+			padding-bottom:7px;
+			border-bottom:1px solid #888888;
+		}
+		.menu-home p {
+			line-height:18px;
+			margin:0 0 10px 0;
+		}
+		.menu-home li:hover div a {
+			font-size:12px;
+			color:#015b86;
+		}
+		.menu-home li:hover div a:hover {
+			color:#029feb;
+		}
+		.strong {
+			font-weight:bold;
+		}
+		.italic {
+			font-style:italic;
+		}
+		.imgshadow {
+			background:#FFFFFF;
+			padding:4px;
+			border:1px solid #777777;
+			margin-top:5px;
+			-moz-box-shadow:0px 0px 5px #666666;
+			-webkit-box-shadow:0px 0px 5px #666666;
+			box-shadow:0px 0px 5px #666666;
+		}
+		.img_left {
+			width:auto;
+			float:left;
+			margin:5px 15px 5px 5px;
+		}
+		.menu-home li .black_box {
+			background-color:#333333;
+			color: #eeeeee;
+			text-shadow: 1px 1px 1px #000;
+			padding:4px 6px 4px 6px;
+			-moz-border-radius: 5px;
+		    -webkit-border-radius: 5px;
+		    border-radius: 5px;
+			-webkit-box-shadow:inset 0 0 3px #000000;
+			-moz-box-shadow:inset 0 0 3px #000000;
+			box-shadow:inset 0 0 3px #000000;
+		}
+		.menu-home li ul {
+			list-style:none;
+			padding:0;
+			margin:0 0 12px 0;
+		}
+		.menu-home li ul li {
+			font-size:12px;
+			line-height:24px;
+			position:relative;
+			text-shadow: 1px 1px 1px #ffffff;
+			padding:0;
+			margin:0;
+			float:none;
+			text-align:left;
+			width:130px;
+		}
+		.menu-home li ul li:hover {
+			background:none;
+			border:none;
+			padding:0;
+			margin:0;
+		}
+		.menu-home li .greybox li {
+			background:#F4F4F4;
+			border:1px solid #bbbbbb;
+			margin:0px 0px 4px 0px;
+			padding:4px 6px 4px 6px;
+			width:116px;
+			-moz-border-radius: 5px;
+		    -webkit-border-radius: 5px;
+		    -khtml-border-radius: 5px;
+		    border-radius: 5px;
+		}
+		.menu-home li .greybox li:hover {
+			background:#ffffff;
+			border:1px solid #aaaaaa;
+			padding:4px 6px 4px 6px;
+			margin:0px 0px 4px 0px;
+		}
+		#session_password {margin-left: 37px;}
+		.nav-ks-home {
+			width: 380px;
+			position: relative;
+		}
+		.nav-ks-home .signin-text {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			color: #3d8138;
+		}
+		.nav-ks-home a.signin-pref {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #1f7c82;
+		}
+		.nav-ks-home a.signin-pref:hover,
+		.nav-ks-home a.signin-pref:focus {
+			cursor:pointer;
+			text-decoration: underline;
+			outline: none;
+
+		}
+		.nav-ks-home label.signin-pref {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #1f7c82;
+		}
+		.nav-ks-home label.signin-pref:hover,
+		.nav-ks-home label.signin-pref:focus {
+			cursor:pointer;
+			text-decoration: underline;
+			outline: none;
+		}
 		
-		
-		.journal-container {
-			position: relative;
-			margin: 0 auto;
-			clear: both;
-			width: 1000px;
-			background-color: #fff;
-		}
-		div .journal-table {
+		/*
+		#D98D2D	knowstory logo orange
+		#96C785 knowstory logo green dark 
+		#A9D996 knowstory logo green light
+		#214025 footer green
+		background-color: rgba( 65, 183, 55, 0.92); nav green
+		background-color: #41B737;	nav green		
+		*/ 
+
+		/*input[type=checkbox] {
+		    display:none;
+		}*/			
+		.table-ks-home {
 			display: table;
-			width: 1000px;
-		}
-		div .journal-table-1 {
-			display: table;
-			width: 750px;
-		}
-		div .journal-table-2 {
-			display: table;
-			width: 700px;
-		}
-		div .journal-row {
-			display: table-row;
-			align: top;
-		}
-		div .journal-cell {
-			display: table-cell;
-			verticle-align: top;
-		}
-		.journal-box-free {
-			width: 200px;
-			height: 330px;
-			border: 6px solid #ddd;
-			border-radius: 6px;
-			padding-top: 10px;
-			padding-right: 6px;
-			padding-left: 10px;
-			padding-bottom: 6px;
-			position: relative;
-			vertical-align: top;
-		}
-		.journal-box {
-			width: 150px;
-			height: 330px;
-			border: 1px solid #000;
-			padding-top: 10px;
-			padding-right: 6px;
-			padding-left: 10px;
-			padding-bottom: 6px;
-			position: relative;
-			vertical-align: top;
-		}
-		.bk-color-1 {
-			background-color: #F6F2FA;
-		}
-		.bk-color-2 {
-			background-color: #EBDEFA;			
-		}
-		.bk-color-3 {
-			background-color: #DEC7FC;			
-		}
-		.bk-color-4 {
-			background-color: #C59DFC;						
-		}		
-		.journal-box-signup {
-			width:240px;
-			height: 134px;
-			padding: 0px;
-			position: relative;
-			vertical-align: top;
- 			margin: 0 auto;			
-			border-width: 4px;
-			border-style: solid;
-			border-color: #808080;		
-		}
-		.journal-box-signup:hover {
-			border-color: #C4740C;			
-		}
-		.journal-box-signup a div div {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 20px;
-	    	font-weight: 600;
-			color: #214025;										
-		}
-		.journal-box-signup:hover a div div {
-			border-color: #C4740C;			
-			color: #C4740C;
-		}
-		.journal-link-signup {
-			width: 340px;
-			heigh: 144px;
-			background-color: #fff;
-		}		
-		.journal-link-signup:hover {
-			text-decoration: none;			
-		}		
-		.journal-space-table-1 {
-			height: 10px;
-		}
-		.journal-space-page-1 {
-			height: 10px;
-		}		
-		.journal-txt-title-light {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 50px;
-	    	color: #41B737;
-	    	font-weight: 800;
-		}
-		.journal-txt-title-dark {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 26px;
-	    	color: #214025;
-	    	font-weight: 800;
-		}
-		.journal-txt-title-dark-sub {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 16px;
-	    	color: #214025;
-	    	font-weight: 400;
-		}
-		.journal-txt-title-1 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 18px;
-	    	color: #1A9624;
-	    	text-shadow: 1px 1px #333;
-	    	font-weight: 800;
-	    	line-height: 1em;
-		}
-		.journal-txt-title-2 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 18px;
-	    	color: #C96333;
-	    	text-shadow: 1px 1px #333;
-	    	font-weight: 800;
-	    	line-height: 1em;
-		}
-		.journal-txt-title-3 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 18px;
-	    	color: #F6F9F9;
-	    	text-shadow: 1px 1px #333;
-	    	font-weight: 800;
-	    	line-height: 1em;
-		}
-		.journal-txt-title-4 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 18px;
-	    	color: #FFCC00;
-	    	text-shadow: 1px 1px #333;
-	    	font-weight: 800;
-	    	line-height: 1em;
-		}
-		.journal-txt1 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 12px;
-	    	color: #111;
-	    	font-weight: 800;
-	    	line-height: .8em;
 		}				
-		.journal-txt2 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 12px;
-	    	color: #222;
-	    	font-weight: 200;
-	    	line-height: .8em;		    	
-		}	
-		.journal-txt3 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 20px;
-	    	color: #214025;
-	    	font-weight: 600;
-		}	
-		.journal-txt4 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 22px;
-	    	font-weight: 600;
-		}	
-		.journal-container p {
-		  	/*font-family: 'Quattrocento Sans', sans-serif;*/
-	  		font-family: 'Roboto Condensed', sans-serif;
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-		    font-size: 18px;
-		    color: #222;
-		    font-weight: 200;
-		    line-height: 1.1em;		    				
+		.row-ks-home {
+			display: table-row;
+			vertical-align: top;
+		}				
+		.cell-ks-home-1 {
+			display: table-cell;
+			vertical-align: top;
+			width: 386px;
+		}				
+		.cell-ks-home-2 {
+			display: table-cell;
+			vertical-align: top;
+			/*width: 680px;*/
+			padding:60px 0 0 80px;
+		}				
+		.nav-ks-home ul.ul-1 {
+			/*padding-top: 1px;*/
+			list-style:none;			
+		  	/*background-color: #41B737;
+		  	height: 40px;
+		    border-radius: 8px 8px 0 0;
+		    box-shadow: 0 4px 4px #CCCCCC;*/
+			
 		}
-		.journal-links {
-	    	color: #C4740C;
-	    	font-weight: 200;
+		.nav-ks-home ul.ul-2 {
+			/*padding-top: 8px;*/
+			list-style:none;			
+		  	/*background-color: #41B737;
+		  	height: 36px;
+		  	border-bottom: 1px solid #CDCDCD;
+		    box-shadow: 0 4px 4px #CCCCCC;
+			padding-right: 170px;*/
 		}
-		a.journal-links-large {
-	    	color: #C4740C;
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 20px;	    	
-	    	font-weight: 200;
+
+.ul-2 .menu_right {
+	margin-right: 120px;
+}
+
+.ul-2 .menu_right a.signin-pref{
+  margin-right: 14px;
+}
+
+		.nav-ks-home ul.ul-3 {
+		 	text-align: center; 
+		 	padding-top: 10px;	
 		}
-		.journal-title-center {
-			text-align: center;
+		/*.cell-ks-home-1-3 {
+		    background-color: #F8F8F8;
+		    border: 1px solid #41B737;
+		    border-radius: 8px 8px 0 0;
+		    display: table-cell;
+		    padding: 8px;
+		    vertical-align: top;
+		    width: 200px;
+			box-shadow: 0 4px 4px #CCCCCC;
+		}*/				
+		.cell-ks-home-1-3 {
+			display: table-cell;
+			vertical-align: top;
+			width: 473px;
+			height: 500px;
+			padding-top: 0px;
+			/*box-shadow: 0 4px 4px #CCCCCC;*/
+			box-shadow: 4px 4px 4px #CCCCCC;
+		}				
+		.cell-ks-home-2-3 {
+			display: table-cell;
+			/*vertical-align: top;*/
+			width: 50px;
+			/*height: 486px;*/
+			/*padding-top: 0px;*/
+			/*border: 1px solid #CDCDCD;*/
+			/*box-shadow: 0 4px 4px #CCCCCC;*/
+			/*background-color: #49853F;*/ 	
+		}				
+		.cell-ks-home-3-3 {
+			display: table-cell;
+			vertical-align: top;
+			width: 540px;
+			background: none repeat scroll 0 0 #F8F8F8;
+		    border: 1px solid #41B737;
+		    border-radius: 8px 8px 0 0;
+			box-shadow: 0 4px 4px #CCCCCC;
+		}				
+		span.title-home-dark {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 24px;
+			color: #11520B;
+			font-weight: 700;
+			/*color: #D98D2D;*/
 		}
- 		.journal-price-1 {
- 			position: absolute;
- 			bottom: 20px; 
- 			left: 62px;
- 		}
- 		.journal-price-2 {
- 			position: absolute;
- 			bottom: 20px; 
- 			left: 64px;
- 		}
- 		.journal-price-3 {
- 			position: absolute;
- 			bottom: 20px; 
- 			left: 58px;
- 		}
-		.journal-banner-1 {
-			background-color: #41B737;
-			width: 1000px;
-			height: 40px;
-	  		font-family: 'Roboto Condensed', sans-serif;
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-		    font-size: 26px;
-		    color: #fff;
-		    font-weight: 600;
-		    text-shadow: 1px 1px #34922C;
-		    padding-top: 10px;
+		span.title-home-dark-2 {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: #49853F;
 		}
-		.journal-tab-1 {
-			width: 200px;
-			height: 30px;
-	  		font-family: 'Roboto Condensed', sans-serif;
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-		    font-size: 20px;
-		    color: #ddd;
-		    font-weight: 400;
-		    text-shadow: 1px 1px #34922C;
-		    padding-left: 20px;
-		    padding-top: 8px;
-		    margin-left: 40px;
-		    position: relative;
-			z-index: 100;			
-			background: #b4e391; /* Old browsers */
-			background: -moz-linear-gradient(top,  #b4e391 0%, #41b737 50%, #b4e391 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4e391), color-stop(50%,#41b737), color-stop(100%,#b4e391)); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(top,  #b4e391 0%,#41b737 50%,#b4e391 100%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(top,  #b4e391 0%,#41b737 50%,#b4e391 100%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(top,  #b4e391 0%,#41b737 50%,#b4e391 100%); /* IE10+ */
-			background: linear-gradient(to bottom,  #b4e391 0%,#41b737 50%,#b4e391 100%); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=0 ); /* IE6-9 */
-      		/*background: -moz-linear-gradient(center bottom, #214025, #41B737, #214025);*/ 
+		p.title-home-dark-2 {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 18px;
+			color: #49853F;
 		}
-		.journal-tab-2 {
-			width: 200px;
-			height: 30px;
-	  		font-family: 'Roboto Condensed', sans-serif;
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-		    font-size: 20px;
-		    color: #ddd;
-		    font-weight: 400;
-		    text-shadow: 1px 1px #34922C;
-		    padding-left: 20px;
-		    padding-top: 8px;
-		    margin-left: 40px;
-		    position: relative;
-			z-index: 100;			
-			background: #e2e2e2; /* Old browsers */
-			background: -moz-linear-gradient(top,  #e2e2e2 0%, #808080 50%, #e2e2e2 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e2e2e2), color-stop(50%,#808080), color-stop(100%,#e2e2e2)); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(top,  #e2e2e2 0%,#808080 50%,#e2e2e2 100%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(top,  #e2e2e2 0%,#808080 50%,#e2e2e2 100%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(top,  #e2e2e2 0%,#808080 50%,#e2e2e2 100%); /* IE10+ */
-			background: linear-gradient(to bottom,  #e2e2e2 0%,#808080 50%,#e2e2e2 100%); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#e2e2e2',GradientType=0 ); /* IE6-9 */
+		p.title-home-gray {
+			/*font-family: msyh, Arial, Helvetica, sans-serif;*/
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: #666;
 		}
-		.journal-tab-3 {
-			width: 200px;
-			height: 30px;
-	  		font-family: 'Roboto Condensed', sans-serif;
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-		    font-size: 20px;
-		    color: #ddd;
-		    font-weight: 400;
-		    text-shadow: 1px 1px #34922C;
-		    padding-left: 20px;
-		    padding-top: 8px;
-		    margin-left: 40px;
-		    position: relative;
-			z-index: 100;			
-			background: #d7e6fa; /* Old browsers */
-			background: -moz-linear-gradient(top,  #d7e6fa 0%, #5281bf 50%, #d7e6fa 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d7e6fa), color-stop(50%,#5281bf), color-stop(100%,#d7e6fa)); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(top,  #d7e6fa 0%,#5281bf 50%,#d7e6fa 100%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(top,  #d7e6fa 0%,#5281bf 50%,#d7e6fa 100%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(top,  #d7e6fa 0%,#5281bf 50%,#d7e6fa 100%); /* IE10+ */
-			background: linear-gradient(to bottom,  #d7e6fa 0%,#5281bf 50%,#d7e6fa 100%); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d7e6fa', endColorstr='#d7e6fa',GradientType=0 ); /* IE6-9 */
+		.cell-right-home {
+			text-align: right;	
 		}
-		.journal-tab-1-no-background {
-			width: 134px;
-			height: 30px;
-	  		font-family: 'Roboto Condensed', sans-serif;
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-		    font-size: 20px;
-		    color: #ddd;
-		    font-weight: 400;
-		    text-shadow: 1px 1px #34922C;
-		    padding-left: 10px;
-		    padding-top: 8px;
-		    margin-left: 40px;
-		    position: relative;
-			z-index: 100;			
-			background: #fff;
+		.cell-ks-home-2-2a, .cell-ks-home-2-2b {
+			padding-left: 24px;
+			padding-right: 0px;
+			padding-top: 16px;
+			padding-bottom: 0px;			
 		}		
-		hr.ln-1 {
-		    display: block;
-		    height: 1px;
-		    width: 750px;
-		    border: 0;
-		    border-top: 2px solid #ccc;
-		    margin: 1em 0;
-		    padding: 0;
-		    position: relative;
-		    top: -36px;
-			z-index: 1;					    
-		} 				
-		hr.ln-2 {
-		    display: block;
-		    height: 1px;
-		    width: 100%;
-		    border: 0;
-		    border-top: 2px solid #ccc;
-		    margin: 1em 0;
-		    padding: 0;
-		    position: relative;
-		    top: -36px;
-			z-index: 1;					    
-		} 				
-		.journal-tab-container {
-			width: 100%;
-			height: 50px;
+		.cell-ks-home-2-2b {
+		  border-top: 4px double #41B737;
 		}
-		.journal-pin-1 {
-			position: relative;
-			top: -282px;
-			left: 150px;
+		span.title-home-dark-3 {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: #11520B;
+			font-weight: 700;
 		}
-		ul.journal-txt5 li {
-	  		font-family: 'Roboto Condensed', sans-serif;
-		    font-size: 16px;
-		    color: #222;
-		    font-weight: 200;
-		    line-height: 1.1em;		 
-		    padding-top: 10px;
-			list-style-type: none;		       				
-			background-image: url('../journal_poster/pin-black-w15-h24.png');
-			background-repeat: no-repeat;
-			background-position: 0px 7px;
-			padding-left: 20px; 			
-		}	
-		ul.journal-txt6 li {
-	  		font-family: 'Roboto Condensed', sans-serif;
-		    font-size: 16px;
-		    color: #111;
-		    font-weight: 200;
-		    line-height: 1.1em;		 
-		    padding-top: 10px;
-			list-style-type: none;		       				
-			background-image: url('../journal_poster/pin-white-w15-h24.png');
-			background-repeat: no-repeat;
-			background-position: 0px 7px;
-			padding-left: 20px; 			
-		}	
-		.journal-txt5 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 16px;
-	    	font-weight: 400;
-	    	color: #333;
-		}	
-		.journal-txt-title-light-small {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 30px;
-	    	color: #41B737;
-	    	font-weight: 800;
-		}		
-		.journal-digit-container {
-			position: relative;
-			width: 100px;
-			height: 36px;
-			margin-left: 38px;
-			padding-top: 2px;
-			text-align: center;
-			border-left: 1px solid #000;
-			border-right: 1px solid #000;
-			border-bottom: 1px solid #000;
+		span.title-home-dark-4 {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			color: #11520B;
+			font-weight: 400;
 		}
-		.journal-digit-container-full {
-			width: 180px;
-			height: 36px;
-			padding-top: 2px;
-			text-align: center;
-			border-left: 1px solid #000;
-			border-right: 1px solid #000;
-			border-bottom: 1px solid #000;
-			border-top: 1px solid #000;
-		}
-		.journal-digit {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 40px;
-	    	color: #E500FA;
-	    	font-weight: 800;
-		}
-		.journal-digit-txt-1 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 18px;
-	    	color: #1A9624;
-	    	margin-left: 6px;
-	    	text-shadow: 1px 1px #333;
-	    	font-weight: 800;
-	    	line-height: 1em;
-			position: relative;
-			top: -13px;	    	
-		}
-		.journal-digit-txt-2 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 18px;
-	    	color: #C96333;
-	    	margin-left: 6px;
-	    	text-shadow: 1px 1px #333;
-	    	font-weight: 800;
-	    	line-height: 1em;
-			position: relative;
-			top: -13px;	    	
-		}
-		.journal-digit-txt-3 {
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 18px;
-	    	color: #F6F9F9;
-	    	margin-left: 6px;
-	    	text-shadow: 1px 1px #333;
-	    	font-weight: 800;
-	    	line-height: 1em;
-			position: relative;
-			top: -13px;	    	
-		}
-		.journal-link-pdf {
-			box-shadow: 4px 4px 20px #888888;
-			width: 200px;
-			height: 259px;
-			margin-left: 18px;
-		}
-		.journal-link-pdf:hover {
-			box-shadow: 4px 4px 20px #786011;
-		}
-		
+
+		.form-types .input-label-home {width:40px;}
 		
 	</style>
 
-	<div class="journal-container">
-
-		<header>				
-			<%= render 'share/backtotop' %>
-		</header>		
+	<style>
 		
-		<section>
-			
-			<div style="height: 30px;"></div>
-			<div class="journal-table" style="text-align: center;">
-				<div class="journal-row">
-					<div class="journal-cell" style="width: 140px;">
-						<img src="../journal_poster/icon-no-text-w131-h117.png" alt="icon-no-text-w131-h117.png">		                    	
-		        	</div>
-					<div class="journal-cell" style="width: 100px;">
-		        	</div>					
-		        	<div class="journal-cell" style="width: 140px; vertical-align: top;">
-		        		<div style="padding-top: 4px;">
-							<div>
-								<span class="journal-txt-title-light">PROMOTE</span>
-							</div>
-							<div style="height: 0px;"></div>
-							<div style="text-align: right; padding-right: 0px;">
-								<span class="journal-txt-title-dark-sub">WITH</span>
-							</div>
-						</div>
-					</div>
-					<div class="journal-cell" style="width: 60px;">
-		        	</div>					
-					<div class="journal-cell" style="width: 140px;">
-						<img src="../journal_poster/icon-text-w174-h90.png" alt="icon-text-w174-h90.png" >		                    	
-		        	</div>
-					<div class="journal-cell" style="width: 320px;">
-		        	</div>
-					<div class="journal-cell" style="width: 240px;">
-		        	</div>					
-				</div>
-			</div>
-			<div class="journal-space-page-1"></div>					
-			<div class="journal-space-page-1"></div>					
-			<div class="journal-table" style="text-align: center;">
-				<div class="journal-row">
-		        	<div class="journal-cell">
-		        		<div class="journal-banner-1">
-		        			Free and paid advertising for digital publishers and technology companies
-		        		</div>
-					</div>
-				</div>
-			</div>
-			<div class="journal-space-page-1"></div>					
-			<div class="journal-space-page-1"></div>					
-			<div class="journal-space-page-1"></div>					
-			<div class="journal-space-page-1"></div>		
-			<div class="journal-table">
-				<div class="journal-row">
-					<div class="journal-cell" style="width: 800px; vertical-align: top;">
-						<div class="journal-tab-container">
-							<div class="journal-tab-2">
-								Audience
-							</div>
-							<hr class="ln-1"></hr>
-						</div>
-						<div style="padding-right: 30px;">
-							<p>
-								The Learning Counsel audience of 30,000+ Superintendents, Chief Academic Officers, Curriculum
-								Directors, Chief Information Officers and other key executives interested in the transition to digital
-								curriculum is an enthusiastic bunch. Get your message out to them.
-							</p>
-						</div>
-						<div class="journal-space-page-1"></div>					
-						<div class="journal-space-page-1"></div>					
-						<div class="journal-tab-container">
-							<div class="journal-tab-1">
-								Journal Poster
-							</div>
-							<hr class="ln-1"></hr>
-						</div>
-						<div style="padding-right: 30px;">
-							<p>
-								Schools need to understand the “universe” of what’s available to them in digital content, curriculum, tools and
-								systems. The Learning Counsel “Journal-Posters” show a map of the various “lands” of products in the industry. Each
-								poster will have an art background and logo/description/URL for sponsors who will be “on the map” of the posters.
-								The poster folds down to look like a magazine when we mail it! We publish our unique stories and pictorials on that side.
-							</p>
-						</div>
-						<div class="journal-space-page-1"></div>					
-						<div class="journal-space-page-1"></div>					
-						<div class="journal-table-1">
-							<div class="journal-row">
-								<div class="journal-cell" style="width: 260px; vertical-align: top;">
-								</div>						
-								<div class="journal-cell" style="width: 108px; vertical-align: top;">
-									<img src="../journal_poster/foldout-w108-h132.png" alt="foldout-w108-h132.png">
-								</div>						
-								<div class="journal-cell" style="width: 50px; vertical-align: top;">
-								</div>						
-								<div class="journal-cell" style="width: 332px; vertical-align: top;">
-									<img src="../journal_poster/map-w332-h188.png" alt="map-w332-h188.png">
-								</div>						
-							</div>
-						</div>
-					</div>
-					<div class="journal-space-page-1"></div>					
-					<div class="journal-space-page-1"></div>					
-					<div class="journal-cell" style="width: 200px; vertical-align: top; padding-left: 0px;">
-						<div class="journal-box-free">
-							<div>
-								<span class="journal-txt1">FREE</span>
-							</div>
-							<div>
-								<span class="journal-txt2">Fill out your listing for a free "poster pin" online with one or more of our Posters.</span>
-							</div>	
-							<div class="journal-space-table-1"></div>	
-							<div class="journal-space-table-1"></div>	
-							<div class="journal-space-table-1"></div>	
-							<div>
-								<span class="journal-txt1">PAID OPTIONS</span>
-							</div>	
-							<div>
-								<span class="journal-txt2">Poster advertising: Get a premium poster pin on the printed-and-mailed version, an anchor advertisement or back-cover on our Poster-Journal.</span>  
-							</div>	
-							<div class="journal-space-table-1"></div>		
-							<div>
-								<span class="journal-txt2">Online display advertising: include advertising on our home page or on our outgoing electronic Newsletter to 31,000 education executives.</span>
-							</div>	
-							<div class="journal-space-table-1"></div>		
-							<div>
-								<span class="journal-txt2"><a href="/ContactUs" class="journal-links">Contact us for more information</a></span>
-							</div>
-						</div>
-						<div class="journal-pin-1">
-							<img src="../journal_poster/pin-w36-h52.png" alt="pin-w36-h52.png" width="36px">
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="journal-space-page-1"></div>
-			<div class="journal-space-page-1"></div>					
-			<div class="journal-tab-container">
-				<div class="journal-tab-1-no-background">
-					Poster Projects
-				</div>
-				<hr class="ln-2"></hr>
-			</div>				
-			<div class="journal-space-page-1"></div>					
-			<div class="journal-space-page-1"></div>					
-			<div class="journal-space-page-1"></div>					
-			<div class="journal-table">
-				<div class="journal-row">
-					<div class="journal-cell" style="width: 700px; vertical-align: top;">
-						<div class="journal-txt3">
-							Categories
-						</div>				
-						<div class="journal-space-table-1"></div>        		
-						<div>
-							<img src="../journal_poster/projects-w703-h446.png" alt="projects-w703-h446.png" width="695px">		                    	
-		        		</div>
-					</div>
-					<div class="journal-cell" style="width: 20px; vertical-align: top">
-					</div>
-					<div class="journal-cell" style="width: 280px; vertical-align: top">
-						<div class="journal-txt3">
-							DISTRIBUTION STRATEGY
-						</div>
-						<div class="journal-space-table-1"></div>
-						<div class="journal-txt5">
-							Effective content marketing is being topical and useful to the right decision makers.
-						</div>		
-						<div class="journal-space-table-1"></div>
-						<div class="journal-txt5">
-							Our distribution strategy with each Journal-Poster is: 36,000+ in Distribution through Print and Digital.
-						</div>
-						<div class="journal-space-table-1"></div>
-						<ul class="journal-txt5">
-							<li>
-								Mail to a hand-filtered list of 5,000 top executive titles who are interested in changes happening in
-								curriculum-going-digital, leadership issues, and stories of success. (2014 1st Editions will have this number mailed.)
-							</li>
-						</ul>
-						<ul class="journal-txt6">
-							<li>
-								Online format distributed to our national community via email. (30,000)
-							</li>
-						</ul>
-						<ul class="journal-txt5">
-							<li>
-								Social media marketing.<br>
-							</li>
-						</ul>
-						<ul class="journal-txt6">								
-							<li>
-								Affiliate marketing via partners and associated bloggers.
-							</li>
-						</ul>
-						<ul class="journal-txt5">								
-							<li>
-								Event distribution at subsequent events (15+ events annually—1,000 hardcopies.)
-							</li>
-						</ul>
-						<ul class="journal-txt6">								
-							<li>
-								Lead-driving through online poster-request with custom mail/ship to the requesters.
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="journal-space-page-1"></div>
-			<div class="journal-space-page-1"></div>
-			<div class="journal-space-page-1"></div>
-			<div class="journal-space-page-1"></div>
-			<div class="journal-space-page-1"></div>
-			<div class="journal-space-page-1"></div>
-			<div class="journal-table">
-				<div class="journal-row">
-					<div class="journal-cell" style="width: 750px">
-							<div style="text-align: center;">
-								<div class="journal-txt-title-light-small">
-									Get Pinned on a Poster!
-								</div>
-								<div class="journal-txt3">
-									Poster Sponsorships
-								</div class="journal-txt3">
-								<div class="journal-txt3">
-									Choose your level of sponsorship and which posters.
-								</div>
-							</div>
-							<div class="journal-space-table-1"></div>
-							<div class="journal-table-2">
-								<div class="journal-row">
-									<div class="journal-cell" style="width: 187.5px">
-										<div class="journal-box bk-color-1">
-											<div class="journal-title-center">
-												<span class="journal-txt-title-1">FREE</span>
-											</div>
-											<div class="journal-space-table-1"></div>	
-											<div>
-												<span class="journal-txt1">Free Online Poster Pin</span><span class="journal-txt2">(Listing with any poster, any subject)</span>
-											</div>
-											<div class="journal-space-table-1"></div>	
-											<div>
-												<span class="journal-txt2">&ndash; Logo</span>
-											</div>
-											<div class="journal-space-table-1"></div>							
-											<div>
-												<span class="journal-txt2">&ndash; Tag Line</span>
-											</div>
-											<div class="journal-space-table-1"></div>								
-											<div>
-												<span class="journal-txt2">&ndash; URL (and link)</span>
-											</div>
-											<div class="journal-space-table-1"></div>							
-											<div>
-												<span class="journal-txt2">&ndash; 30 Word Description</span>
-											</div>	
-										</div>
-										<div class="journal-digit-container bk-color-1">
-											<span class="journal-digit">1</span>
-										</div>
-									</div>
-									<div class="journal-cell" style="width: 187.5px">
-										<div class="journal-box bk-color-2">
-											<div class="journal-title-center">
-												<span class="journal-txt-title-2">PINNED</span>
-											</div>
-											<div class="journal-space-table-1"></div>	
-											<div>
-												<span class="journal-txt1">Print Poster Pin + Online Listing</span>
-											</div>
-											<div class="journal-space-table-1"></div>
-											<div>
-												<span class="journal-txt2">Print Poster – 5500 print/mailed copies</span>
-											</div>	
-											<div class="journal-space-table-1"></div>	
-											<div>
-												<span class="journal-txt2">&ndash; Logo</span>
-											</div>
-											<div class="journal-space-table-1"></div>							
-											<div>
-												<span class="journal-txt2">&ndash; Tag Line</span>
-											</div>
-											<div class="journal-space-table-1"></div>								
-											<div>
-												<span class="journal-txt2">&ndash; URL (and link)</span>
-											</div>
-											<div class="journal-space-table-1"></div>							
-											<div>
-												<span class="journal-txt2">&ndash; 30 Word Description</span>
-											</div>	
-											<div class="journal-space-table-1"></div>							
-											<div>
-												<span class="journal-txt2">Note: limited spots, sign up today!</span>
-											</div>	
-											<div class="journal-space-table-1"></div>							
-											<div class="journal-price-1">
-												<strong><span class="journal-txt1">$300.00</span></strong>
-											</div>	
-										</div>
-										<div class="journal-digit-container bk-color-2">
-											<span class="journal-digit">2</span>
-										</div>										
-									</div>
-									<div class="journal-cell" style="width: 187.5px">
-										<div class="journal-box bk-color-3">
-											<div class="journal-title-center">
-												<span class="journal-txt-title-3">SMALL AD BOX</span>
-											</div>
-											<div class="journal-space-table-1"></div>
-											<div>
-												<span class="journal-txt1">Poster Pin AND Poster Anchor with 3’x3’ custom ad box on border + Online Listing</span>
-											</div>
-											<div class="journal-space-table-1"></div>
-											<div>
-												<span class="journal-txt2">Print Poster – 5500 print/mailed copies</span>
-											</div>	
-											<div class="journal-space-table-1"></div>	
-											<div>
-												<span class="journal-txt2">&ndash; Logo</span>
-											</div>
-											<div class="journal-space-table-1"></div>							
-											<div>
-												<span class="journal-txt2">&ndash; Tag Line</span>
-											</div>
-											<div class="journal-space-table-1"></div>								
-											<div>
-												<span class="journal-txt2">&ndash; URL (and link)</span>
-											</div>
-											<div class="journal-space-table-1"></div>							
-											<div>
-												<span class="journal-txt2">&ndash; 30 Word Description</span>
-											</div>	
-											<div class="journal-space-table-1"></div>							
-											<div>
-												<span class="journal-txt2">Note: limited spots, sign up today!</span>
-											</div>	
-											<div class="journal-space-table-1"></div>			
-											<div class="journal-price-2">
-												<strong><span class="journal-txt1">$750.00</span></strong>
-											</div>	
-										</div>
-										<div class="journal-digit-container bk-color-3">
-											<span class="journal-digit">3</span>
-										</div>										
-									</div>
-									<div class="journal-cell" style="width: 187.5px">
-										<div class="journal-box bk-color-4">
-											<div class="journal-title-center">
-												<span class="journal-txt-title-4">BACK COVER</span>
-											</div>
-											<div class="journal-space-table-1"></div>
-											<div>
-												<span class="journal-txt1">Back Cover of Journal side AND Poster Pin & Poster Anchor + Online Listing</span>
-											</div>
-											<div class="journal-space-table-1"></div>
-											<div>
-												<span class="journal-txt2">Print Poster – 5500 print/mailed copies</span>
-											</div>	
-											
-											<div class="journal-space-table-1"></div>	
-											<div>
-												<span class="journal-txt2">&ndash; Great, Terrific and now extra Awesome with a full page on the back cover</span>
-											</div>
-											<div class="journal-space-table-1"></div>							
-											<div>
-												<span class="journal-txt2">ONE per poster</span>
-											</div>	
-											<div class="journal-space-table-1"></div>			
-											<div class="journal-price-3">
-												<strong><span class="journal-txt1">$5000.00</span></strong>
-											</div>	
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="journal-cell" style="width: 300px; vertical-align: top">
+		.input-home {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			color: #888;
+			font-weight: 700;
+			font-size: 13px;
+			width: 260px;
+			height: 24px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #f6f6f6;
+			border-color: #478A3E;
+			border-width: 1px;
+			padding-left: 0px;
+		}
+		.input-home:focus {
+			border-color: #478A3E;
+			color: #11520B;
+			font-weight: 700;
+			-webkit-box-shadow: 0 0 10px #88E87B;
+			-moz-box-shadow: 0 0 10px #88E87B;
+			box-shadow: 0 0 10px #88E87B;
+		}
+		.wid-160 {
+			width: 160px;
+		}
+		.wid-200 {
+			width: 200px;
+		}
+		.input-home-short {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			color: #888;
+			font-weight: 700;
+			font-size: 13px;
+			/*width: 160px;*/
+			height: 24px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #fff;
+			border-color: #478A3E;
+			border-width: 1px;
+			padding-left: 0px;
+		}
+		.input-home-short:focus {
+			border-color: #478A3E;
+			color: #11520B;
+			font-weight: 700;
+			-webkit-box-shadow: 0 0 10px #88E87B;
+			-moz-box-shadow: 0 0 10px #88E87B;
+			box-shadow: 0 0 10px #88E87B;
+		}
+		.input-home-exp {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			color: #404040;			
+			font-size: 16px;
+			width: 100px;
+			height: 24px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #fff;
+			border-color: #478A3E;
+			border-width: 1px;
+			padding-left: 6px;
+		}
+		.input-home-exp:focus {
+			border-color: #478A3E;
+			color: #000;
+			-webkit-box-shadow: 0 0 10px #88E87B;
+			-moz-box-shadow: 0 0 10px #88E87B;
+			box-shadow: 0 0 10px #88E87B;
+		}
+		.input-label-home, .input-label-home-dark {
+		    color: #49853F;
+		}
+		.input-label-home {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			/*color: #ccc;*/
+			width: 160px;
+			height: 18px;
+		}
+		.input-label-home-a {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #1f7c82;
+		}
+		.input-label-home-a:hover {
+			color: #1f7c82;
+		}
+		.input-label-home-a:focus {
+			color: #1f7c82;
+			text-shadow: 1px 1px #34922C;
+		}
+		.input-label-home-dark {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			/*color: #888;*/
+			width: 160px;
+			height: 18px;
+		}
+		.signin-btn-home {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #49853f;
+			height: 27px;
+			width:76px;
+			/*background-color: #D98D2D;*/
+			background-color: transparent;			
+			border: 2px solid #11520B;
+	    	/*border-radius: 12px;*/
+	    	/*border-radius: 12px 0 12px 0;	*/		
+			margin-top: 5px;
+			padding-bottom: 1px;
+			/*background: url("/assets/arrow-green-w100-h104.png") no-repeat 0px 0px;*/						
+		}
+		.signin-btn-home:hover {
+			color: #fff;
+			background-color: #49853f;
+			text-shadow: 1px 1px #34922C;
+			cursor: pointer;
+		}
+		.signin-btn-home:focus {
+			text-shadow: 1px 1px #34922C;			
+			box-shadow: 0 0 14px #eee;
+			outline: none;
+		}
+		.signin-btn-home:select {
+			text-shadow: 1px 1px #34922C;						
+			box-shadow: 0 0 14px #eee;
+			outline: none;
+		}
+		.sign-btn-home:select {
+			background: #CCC; 
+			color: #5F7A2A;
+		  	box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
+		}		
+		.space-home {
+			height: 6px;
+		}
+		.form-home-table {
+			display: table;
+			margin: 0 auto;
+		}
+		.form-home-row {
+			display: table-row;
+		}
+		.form-home-row {
+			display: table-row;
+		}		
+		.form-home-cell-1 {
+			display: table-cell;
+			width: 160px;
+		}
+		.form-home-cell-2 {
+			display: table-cell;
+			width: 160px;
+		}
+		.form-home-cell-submit {
+			display: table-cell;
+			width: 500px;
+			text-align: center;
+		}
+		.form-home-cell-3 {
+			display: table-cell;
+			width: 60px;
+		}
+		.form-home-table-bd {
+			display: table;
+			margin: 0 auto;
+		}
+		.form-home-row-bd {
+			display: table-row;
+		}
+		.form-home-cell-bd-space {
+			display: table-cell;
+			width: 30px;
+		}
+		.form-home-cell-bd {
+			display: table-cell;
+			width: 70px;
+		}
+		.form-home-cell-bd-why {
+			display: table-cell;
+			width: 160px;
+			padding-left: 20px;
+
+		}		
+		.form-home-cell-month {
+			display: table-cell;
+			width: 60px;
+		}
+		.form-home-cell-day {
+			display: table-cell;
+			width: 60px;
+		}
+		.form-home-cell-year {
+			display: table-cell;
+			width: 60px;
+		}
+		.form-home-cell-account-type {
+			display: table-cell;
+			width: 60px;
+		}		
+		.form-home-table-gender {
+			display: table;
+		}
+		.form-home-row-gender {
+			display: table-row;
+		}
+		.form-home-cell-gender-1 {
+			display: table-cell;
+		}		
+		.form-home-cell-gender-2 {
+			display: table-cell;
+		}
+		.form-home-cell-account-type-1 {
+			display: table-cell;
+			width: 70px;
+		}		
+		.form-home-row-space {
+			height: 4px;
+		}
+		.signup-btn-home {
+		    background-color: #49853F;
+		    border: 3px groove #11520B;
+		    border-radius: 6px 6px 6px 6px;
+		    color: #FFFFFF;
+		    font-family: msyh,Arial,Helvetica,sans-serif;
+		    font-size: 14px;
+		    font-weight: bold;
+		    height: 55px;
+		    letter-spacing: 1.5px;
+		    width: 260px;
+		}
+		.signup-btn-home:hover {
+			color: #49853F;
+			background-color: #FFF;
+			text-shadow: 0 1px #34922C;
+			box-shadow: 0px 0px 2px 2px #CCC inset;
+			cursor: pointer;
+		}
+		.signup-btn-home:focus {
+			box-shadow: 0 0 10px #29731F;
+			text-shadow: 1px 1px #34922C;
+			outline: none;
+		}
+		.go-btn-home {
+		    background-color: #F69010;
+		    border-radius: 0 12px 0 12px;
+		}
+		
+		.go-btn-home {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #11520B;
+			height: 24px;
+			width:50px;
+			/*background-color: #D98D2D;*/
+			border: 2px solid #11520B;
+	    	/*border-radius: 12px;*/			
+			margin-top: 10px;
+			padding-bottom: 1px;
+			margin-left: 6px;
+		    background-color: #F69010;
+		    border-radius: 0 12px 0 12px;
+		}
+		.go-btn-home:hover {
+			color: #fff;
+			background-color: #E3AC66;
+			text-shadow: 1px 1px #34922C;
+			cursor: pointer;
+		}
+		.go-btn-home:focus {
+			box-shadow: 0 0 10px #29731F;
+			text-shadow: 1px 1px #34922C;			
+			outline: none;
+		}
+		
+	</style>
+
+	<style>
+		
+	/*input[type=checkbox] {
+	    display:none;
+	}*/			
+	input[type=radio] {
+	    display:none;
+	}			
+	.rd-button {
+		width: 18px;
+		height: 18px; 
+		border-style: solid; 
+		border-width: 2px; 
+		border-color: #11520B; 
+		border-radius: 18px;		
+		margin-bottom: -4px;
+		display: inline-block;
+		margin-right: 0px;
+		cursor: pointer;		
+	}
+	.rd-button:focus {
+		/*box-shadow: 0 0 14px #eee;*/
+		/*box-shadow: 0 0 10px #88E87B;*/
+		box-shadow: 0 0 10px #29731F;
+		outline: none;
+	}
+	.rd-button:select {
+		/*box-shadow: 0 0 10px #88E87B;*/
+		box-shadow: 0 0 10px #29731F;		
+		outline: none;
+	}
+	.rd-background {
+		background-color: #A5E5B4;
+	}	
+	.dropdown-1 {
+		width: 106px;
+	}
+	.dropdown-2 {
+		width: 70px;
+	}
+	.dropdown-3 {
+		width: 70px;
+	}
+	.dropdown {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		color: #11520B;
+		background-color: #FFF;
+		border: 2px solid #11520B;
+    	border-radius: 4px;			
+		height: 24px;
+    	position: relative;
+		padding-top: 3px;
+		padding-left: 6px;
+		margin-right: 2px;
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+		text-decoration: none;
+		outline: none;
+	}
+	/*.dropdown > .selected {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		color: #11520B;
+		background-color: #D98D2D;
+		border: 2px solid #11520B;
+    	border-radius: 4px;			
+		height: 24px;
+    	position: relative;
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+		outline: none;	
+	}*/
+	.dropdown:focus {
+		color: #1f7c82;
+		/*background-color:#072C53;*/
+		-webkit-box-shadow: 0 0 25px #ccc;
+		-moz-box-shadow: 0 0 25px #ccc;
+		box-shadow: 0 0 25px #ccc;
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-o-transform: scale(1.03);
+		-ms-transform: scale(1.03);
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-o-transform: scale(1.03);
+		-ms-transform: scale(1.03);
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-o-transform: scale(1.03);
+		-ms-transform: scale(1.03);
+		transform: scale(1.03);
+		outline: none;
+	}
+	.dropdown.focus > .selected,
+	.dropdown:focus > .selected {
+	    outline: none;
+	}
+	.dropdown > .selected:hover,
+	.dropdown > .selected:focus {
+	    /*cursor: pointer;*/
+	}
+	/*.dropdown1 > .selected i {*/
+	.dropdown > .selected .down-caret {
+	    position: absolute;
+	    top: 0px;
+	    right: 4px;
+	    bottom: 0;
+	    width: 12px;
+	    /*height: 20px;*/
+	    line-height: 20px;
+	    border-left: 2px solid #11520B;
+	    text-align: center;
+	    /*color: #999;*/
+	    color: #11520B;
+	}
+	.dropdown.open > .selected {
+	    -webkit-border-radius: 4px 4px 0px 0px;
+	    border-radius: 4px 4px 0px 0px;
+	}
+	.dropdown ul {
+	    display: none;
+	    position: absolute;
+	    left: 0;
+	    top: 100%;
+	    width: 100%;
+	    background: #FFF;
+	    /*z-index: 1;    */
+	    border: 1px solid #333;
+	    border-top: none;
+	    -webkit-border-radius: 0px 0px 4px 4px;
+	    border-radius: 0px 0px 4px 4px;
+	    box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    line-height: 1;
+	    -webkit-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.2);
+	    box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.2);
+	    /*max-height: 300px;*/
+	    overflow: auto;
+	    height: 100px;
+	    margin: 0;
+	    padding-left: 6px;
+	}
+	.dropdown .dropdown-1 ul {
+		height: 100px;
+	}
+	.dropdown .dropdown-2 ul {
+		height: 100px;
+	}
+	.dropdown .dropdown-3 ul {
+		height: 100px;
+	}
+	.dropdown ul li.selected {
+	    /*color: #ACDDE3;*/
+	    color: #000;
+	    /*background: #005C9E;*/
+		background: #FFF;
+	}
+	.dropdown ul li:last-child.selected {
+	    -webkit-border-radius: 0px 0px 4px 4px;
+	    border-radius: 0px 0px 4px 4px;
+	}
+	.dropdown ul li {
+	    position: relative;
+	    display: block;
+	    text-decoration: none;    
+	    color: #1f7c82;
+	    /*padding: 4px 4px;   */    
+	    padding-left: 4px;
+	}
+	.dropdown ul li:first-child {
+	    color: #838383;
+	}
+	.dropdown ul li:first-child.selected {
+	    color: #838383;
+	}
+	.dropdown ul li.hover {
+	    background: #fff;
+	    color: #49853f;
+	    font-weight: bold;
+	}
+		#wrapper {/*border-bottom: 1px solid #e5e5e5;*/
+    margin-bottom: 80px;
+    padding-bottom: 150px;}
+	</style>		
+		
+		
+	<!-- <style>
+		
+		.main_logo {
+		  width: 300px;
+		}
+		*, *:after, *:before {
+		    -moz-box-sizing: padding-box;
+		}
+		a.title-home-dark-2 {
+		  padding: 10px;	  
+		}
+		a.profile-type:link {text-decoration:none; color:#49853F;}
+		a.profile-type:hover {
+			text-decoration:none; 
+			color:#49853F; 
+			background: #CDCDCD;
+			border: 1px solid #41B737;
+			border-radius: 3px 3px 3px 3px;
+			padding: 10px;
+		}
+		a.profile-type:active {text-decoration:none; color:#49853F; backgound: #ffffff;}
+		a.profile-type:visited {text-decoration:none; color:#49853F;}
+		.inline-space {
+			height: 30px;
+		}
+		#kfooter {
+		    background-color: #49853F;
+		}
+		
+	</style> -->		
+
+
+	<style>
+		#sign-up {
+		/*background-color: #F8F8F8;
+	    border: 1px solid #41B737;
+	    border-radius: 8px 8px 0 0;*/
+	    box-shadow: 0 4px 4px #CCCCCC;
+	    /*display: table-cell;*/
+	    padding: 8px;
+		width:660px;
+		margin: 10px auto;
+		/*height: 200px;*/
+		}
+		
+		.profile-hover {
+		text-decoration: none;
+		color: #49853f;
+		padding:10px;
+		}
+		
+		div.profile-hover:hover {
+		background: #CDCDCD;
+		border: 1px solid #41b737;
+		border-radius: 3px 3px 3px 3px;
+		color: #49853f;
+		padding: 10px;
+		text-decoration: none;
+		}
+		
+		a.profile-type:link, a.profile-type:hover, a.profile-type:active, a.profile-type:visited {
+		text-decoration:none; color:#cb7508; float:right; margin-right: 100px; margin-left: 75px;
+		}
+		span.title { text-transform:uppercase; text-decoration:underline; font-weight:bold;}
+		.select { float: right; }
+
+
+	</style>
+
+    <style type="text/css">
+		/*body{
+			background: #f2f2f2 url('bg.png') center 40px no-repeat;
+			font-family: Arial, Helvetica, sans-serif;
+		}*/
+        #slidedeck_frame {
+            width: 901px;
+            /*height: 295px;*/
+            height: 324px;
+			margin: 0px auto 0;
+			font-family: Arial, Helvetica, sans-serif;			
+        }
+		.hide {display: none !important;}
+	
+		.top-container {padding-top:20px;}
+
+    </style>
+
+
+	<script id="dropdown-data1-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	
+	<script id="dropdown-data1" type="text/x-dot-template">
+		<div class="dropdown dropdown-1" id="dropdown1" tabindex="20">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data2-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	
+	<script id="dropdown-data2" type="text/x-dot-template">
+		<div class="dropdown dropdown-2" id="dropdown2" tabindex="21">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data3-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	
+	<script id="dropdown-data3" type="text/x-dot-template">
+		<div class="dropdown dropdown-3" id="dropdown3" tabindex="22">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+
+	
+	<div id="wrapper">	
+		<header id="home">
+			<div id="top-bar">
+				
+				<div class="table-ks-home">
+					<div class="row-ks-home">
+						<div class="cell-ks-home-1">
 							
-							<div style="height: 80px;"></div>
-							<div class="journal-box-signup">
-								<a href="http://knowstory.com/Journal-Poster" class="journal-link-signup">
-									<div class="journal-table" style="width: 240px;">
-										<div class="journal-row">
-											<div class="journal-cell" style="width: 240px; position: relative; vertical-align: top; padding-top: 20px;">
-												<div style="text-align: center;">
-													Click here<br>
-													to Sign Up on our site
-												</div>
-												<div class="journal-space-table-1"></div>											
-												<div class="journal-cell" style="width: 240px; text-align: center;">							
-													<img src="../journal_poster/logo-knowstory-1-w300-h102.png" alt="logo-knowstory-1-w300-h102.png" width="170px">
-												</div>
-											</div>
-										</div>
-									</div>
-								</a>
-							</div>
-							<div class="journal-space-table-1"></div>
-							<div class="journal-space-table-1"></div>
-							<ul class="journal-txt5">
-								<li>
-									Download our Journal Poster PDF<br><br>
-								</li>
-							</ul>
-							<div class="journal-link-pdf">
-								<a href="../journal_poster/Journal-Poster.pdf" target="_blank">
-									<img src="../journal_poster/thumb-journal-poster-w200-h259.png" alt="thumb-journal-poster-w200-h259.png" width="200px">
-								</a>
-							</div>
+							
+							
+							<a href="#"><img class="logo" src="assets_knowstory/knowstory-icon-2-w634-h212.png"></a>
+        					<h2 class="slogan">The Story of What You Know</h2>
+		
 						</div>
-					</div>
-				</div>				
-				<div class="journal-space-page-1"></div>					
-				<div class="journal-space-page-1"></div>					
-				<div class="journal-space-page-1"></div>					
-				<div class="journal-space-page-1"></div>					
-				<div class="journal-space-page-1"></div>					
-				<div class="journal-space-page-1"></div>					
-				<div class="journal-space-page-1"></div>					
-				<div class="journal-space-page-1"></div>					
-				<div class="journal-table">
-					<div class="journal-row">
-						<div class="journal-cell" style="width: 500px; vertical-align: top;">
-							<div class="journal-digit-container-full bk-color-1" style="position: relative; left: 294px;">
-								<span class="journal-digit">1</span><span class="journal-digit-txt-1">FREE</span>
-							</div>
-						</div>
-						<div class="journal-cell" style="width: 500px; vertical-align: top; text-align: right;">
-							<div style="text-align: left;">						
-								<div class="journal-txt3" style="padding-left: 4px;">
-									Online Listing with Poster<br>380 pixel width, 50 to 150 pixel height
-								</div>		
-								<div>
-									<img src="../journal_poster/logo-listing-box-w471-h67.png" alt="logo-listing-box-w471-h67.png" width="471px">
-				        		</div>
-			        		</div>
-						</div>
-					</div>
-				</div>
-				<div class="journal-space-page-1"></div>			
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>			
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>			
-				<div class="journal-space-page-1"></div>				
-				<div class="journal-table">
-					<div class="journal-row">
-						<div class="journal-cell" style="width: 500px; vertical-align: top; text-align: right;">
-							<div class="journal-txt3" style="margin-right: 80px;">
-								Logo + URL Pin on Poster
-							</div>		
-							<div class="journal-space-table-1"></div>
-							<div style="margin-right: 20px;">
-								<img src="../journal_poster/journal-poster-4-w313-h143.png" alt="journal-poster-4-w313-h143.png" width="300px">
-							</div>
-						</div>
-						<div class="journal-cell" style="width: 500px; vertical-align: top; text-align: left;">
-							<div class="journal-digit-container-full bk-color-2">
-								<span class="journal-digit">2</span><span class="journal-digit-txt-2">PINNED</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="journal-space-page-1"></div>			
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>			
-				<div class="journal-space-page-1"></div>	
-				<div class="journal-space-page-1"></div>			
-				<div class="journal-space-page-1"></div>						
-				<div class="journal-table">
-					<div class="journal-row">
-						<div class="journal-cell" style="width: 500px; vertical-align: top;">
-							<div class="journal-digit-container-full bk-color-3" style="position: relative; left: 294px;">
-								<span class="journal-digit">3</span><span class="journal-digit-txt-3">SMALL AD BOX</span>
-							</div>
-						</div>
-						<div class="journal-cell" style="width: 500px; vertical-align: top; text-align: right;">
-							<div style="text-align: left;">						
-								<div class="journal-txt3" style="padding-left: 4px;">
-									3" x 3" (293 x 293 pixels)<br>Ad Box + Pin on Poster
-								</div>		
-								<div>
-									<img src="../journal_poster/logo-box-w293-h293.png" alt="logo-box-w293-h293.png" width="293px">
-				        		</div>
-			        		</div>
-						</div>
-					</div>
-				</div>
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>
-				<div class="journal-tab-container">
-					<div class="journal-tab-3">
-						Online Advertising
-					</div>
-					<hr class="ln-2"></hr>
-				</div>				
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>				
-				<div class="journal-table">
-					<div class="journal-row">
-						<div class="journal-cell" style="width: 300px; vertical-align: top;">
-							<div class="journal-txt3">
-								Learning Counsel Ad Slots
-							</div>		
-							<div class="journal-space-table-1"></div>
-							<div class="journal-space-table-1"></div>
-							<div>
-								<span><a href="/ContactUs" class="journal-links-large">Contact us for Availabilities</a></span>
-							</div>
-						</div>
-						<div class="journal-cell" style="width: 700px; vertical-align: top">
-							<div>
-								<img src="../journal_poster/ad-slot-w492-h592.png" alt="ad-slot-w492-h592.png" width="492px">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>
-				<div class="journal-space-page-1"></div>
-				<div class="journal-table">
-					<div class="journal-row">
-						<div class="journal-cell" style="width: 100%; vertical-align: top;">
-							<div class="journal-txt3">
-								Learning Counsel Newsletter
-							</div>		
-							<div class="journal-space-table-1"></div>
-							<div class="journal-space-table-1"></div>
-							<div>
-								<span><a href="/ContactUs" class="journal-links-large">Contact us for Availabilities</a></span>
-							</div>
-						</div>
-					</div>
-					<div class="journal-space-table-1"></div>
-					<div class="journal-space-table-1"></div>
-					<div class="journal-space-table-1"></div>
-					<div class="journal-space-table-1"></div>
-					<div class="journal-row">
-						<div class="journal-cell" style="width: 100%; vertical-align: top; text-align: center;">
-							<div>
-								<img src="../journal_poster/ad-slot-pad-w836-h573.png" alt="ad-slot-pad-w836-h573.png" width="836px">
-							</div>
-						</div>
-					</div>
-				</div>
-				
-			</div>			
-
-			<div style="height: 160px;"></div>
-				
-		</section>
-					
-	</div>
+						<div class="cell-ks-home-2">
+							<div id="nav_ks_home" class="nav-ks-home">
+		
+																
+							
+			</div>
 			
+		</header>
+		<%= render 'landing_page/new_nav' %>
+		<h1 class="page-title">ADVERTISE</h1>
+		<div class="sep-bar"><span>KnowStory</span></div>
+		<!-- Advertise content: main container-->
+			<div id="ad-main">
+				<div class="main-1">
+					<img src="assets_knowstory/knowstory-icon-2-w300-h100.png" width="210" alt="KnowStory Logo">
+					<p>Let’s make learning part of everyone’s Story. Let’s make it so there is a place for all publishers regardless of type or platform
+					to be. Let’s make it social so that schools, teachers and students can interact. Let’s allow schools to get an inventory gap
+					analysis and more. Let’s let students link directly with recruiters to tell a Story that’s more than a transcript.</p>
+				</div>
+
+				<div class="main-2">
+					<h2>Publishers Advertising Types</h2>
+					<table><tr>
+						<td>Corporate & Product Story</td>
+						<td>Premium Positioning-Print &/or Online</td>
+						<td>Key Word/Attribute</td>
+					</tr></table>
+					<p style="margin-top: 15px;">Create your own Corporate Story and multiple Product Stories for Free in the KnowStory site before any premium positioning or key word/attribute
+					purchase. A publisher can be any person or organization promoting digital curriculum or content. Schools may have both a publisher Story and a
+					District/school Story.</p>
+				</div>
+
+				<div class="main-3">
+					<table cellpadding=20><tr>
+						<td><h3>Corporate Story</h3><img src="/assets_knowstory/advertise/corporate-story.png" alt="Coporate Story"></td>
+						<td><h3>Product Story</h3><img src="/assets_knowstory/advertise/product-story.png" alt="Coporate Story"></td>
+						<td><a class="start-story" href="knowstory.com#sign-up">Start Story Now >></a></td>
+					</tr></table>
+				</div>
+
+				<div class="main-4">
+					<table cellpadding=15><tr>
+						<td><h3>FREE LISTING</h3><img class="first-img" src="/assets_knowstory/advertise/free-product-listing.png">
+							<p>Generated automatically when you create
+								a corporate Story and at least one product
+								Story. Limited data – premium fields offer
+								more to searchers.</p>
+								<a class="start-story" href="knowstory.com#sign-up">Start Story Now >></a>
+						</td>
+						<td><h3>FREE SQUARE</h3><img src="/assets_knowstory/advertise/square-ad.png">
+							<p>Generated automatically when
+								you create a corporate Story
+								and at least one product
+								Story. Limited data. Used in
+								right column to serve on user
+								algorithms indicating interest
+								or age/grade appropriateness.
+								Used in quick search serve pages
+								as alternative searching to the
+								larger listing size (shown left.)</p>
+						</td>
+						<td><h3>FREE PIN</h3><img src="/assets_knowstory/advertise/poster-pins-ads.png">
+							<img class="center" src="/assets_knowstory/advertise/poster-pin.png">
+							<p>Generated automatically when you create
+								a corporate Story and at least one product
+								Story. Just product logo, product name and
+								your URL (Linked online), with the category
+								on the Poster(s) you fit.</p>
+					</td></tr></table>
+					<div class="sep-border"></div>
+					<table cellpadding=15><tr>
+						<td><h3>PREMIUM LISTINGS</h3><img class="first-img" src="/assets_knowstory/advertise/ext-premium-listing.png">
+							<h4 style="margin: 26px 0px;">Premium Fields Listing:</h4>
+							<p style="margin-bottom: 25px;">For $15 per product annually, a publisher
+								may provide more extensive information to all
+								potential users. This includes full information
+								on products features such as Platform, File
+								Type, Character, Evaluation, Review Status,
+								Enhancements, and more. All information will
+								be in your Product Story full page, but these
+								additional characteristics will not appear in
+								search without the premium listing.</p>
+								<a class="orange-button" style="margin-left: 35px;" href="knowstory.com#sign-up">Buy Premium Fields Listing(s) Now</a>
+								<h4 style="margin: 25px 0px;">Premium Positioning for Listings Online:</h4>
+								<ul style="margin-bottom:25px;">
+									<li><span>1st-3rd Served $10 per month per product</span></li>
+									<li><span>Guaranteed served on 1 Key Word/Attribute
+									- $1 per month per product</span></li>
+								</ul>
+								<a class="orange-button" style="margin-left: 15px;" href="knowstory.com#sign-up">Buy Premium Positioning for Listing(s) Now</a>
+						</td>
+						<td><h3 style="font-size: 23px; padding-bottom: 21px;">PREMIUM SQUARES</h3>
+							<p>Print/Mailed on the reverse side of our
+								Journal as a 24x36” Poster to thousands
+								of key Districts and School executives
+								once a year per Poster.</p>
+								<h4 style="margin-top: 30px;">Print Squares:</h4>
+								<p>$750 per Square per Poster/annual.
+									Includes Premium listings online
+									(2 & 3 below.)</p>
+								<a class="orange-button" style="margin-left: 15px;" href="knowstory.com#sign-up">Select your Poster(s) - Buy Now</a>
+								<h4 style="margin-top: 25px;">Online Squares only:</h4>
+								<p>1)  KnowStory start landing page -
+								$500 per Square/annual</p>
+								<h4>Premium Listing(s) online only:</h4>
+								<p style="margin-bottom: 25px;">2)  1st-3rd Served $10 per month
+										per product<br/>
+									3)  Guaranteed served on 1 Key Word/
+										Attribute -$1 per month per product
+								</p>
+								<a class="orange-button" style="margin-left: 15px;" href="knowstory.com#sign-up">Select your Preferences - Buy Now</a>
+						</td>
+						<td><h3>PREMIUM PINS</h3>
+							<p>$300 per Poster.
+								Print/Mailed on the reverse side of our
+								Journal as a 24”x 36” Poster to thousands of
+								key Districts and School executives once a
+								year per Poster.</p>
+							<h4 style="font-weight: bold; text-align: center;">Posters 2015</h4>
+							<h4>Curriculum Resources</h4>
+							<p>21st Century Tools, Math, Science, Language,
+								Social Studies, Special Education</p>
+							<h4>Digital Teacher Tools</h4>
+							<p>Assessment/Testing, Collaboration, Classroom
+								Response, Grading/Attendance, Lesson Planning,
+								Presentation, Lecture Capture, Plagiarism
+								Checks</p>
+							<h4>Digital School Operations</h4>
+							<p>Learning Management Systems, Student
+								Information Systems, Web Filtering, Device
+								Mgmt, Virtual Schools & Distance Education,
+								Testing Systems, Unique Tech</p>
+							<h4>Digital Content</h4>
+							<p>Apps, eBooks/Textbooks, Games, Study Tools,
+								Video, Dictionaries, Directories</p>
+							<h4>Professional Learning & DIY Digital Content</h4>
+							<p>Subscription sites, eBook creation/game
+								creation, digital story telling/poster-boarding,
+								talent management, professional learning
+								systems, Instructional Design, DIY - Special</p>
+							<a class="orange-button" style="margin-left: 15px;" href="knowstory.com#sign-up">Select your Poster(s) - Buy Now</a>
+					</td>
+					</tr></table>
+				</div>
+				<h3 style="margin-bottom: 30px;">OTHER PREMIUM PRINT AND ONLINE ADVERTISING - <a href="/contact">Contact Us</a></h3>
+				<a class="start-story" style="margin-left: 400px;" href="knowstory.com#sign-up">Start Story Now >></a>
+
+				<div class="sep-bar" style="margin: 30px 0;"><span>eNewsletters</span></div>
+
+				<div class="main-5">
+					<img class="main-5-left" src="/assets_knowstory/advertise/lc-enews-ipad.png" alt="Ipad">
+					<div class="main-5-right">
+						<h2>Reach 36,000 Education Executive Subscribers</h2>
+						<p>Through its online advertising and promotion in the enewsletters, the Learning Counsel
+						reaches 36,000+ key curriculum buyers and tech executives in the national education
+						market.</p>
+						<p>These include Superintendents, School Board Members, State Department of Education
+						Executives, district curriculum officers and instructional designers, profesional development
+						staff, library specialists, media specialists, CIOs CTOs, directors of technology, and
+						administration specialists.</p>
+
+					<div class="arrow">
+						<img src="/assets_knowstory/advertise/newsletter-arrow.png" alt="Newsletter Arrow"> <h3>$1,000 per launch bi-weekly</h3>
+					</div>
+						<div class="special">SPECIAL eNEWSLETTER EVENT 2014:<br/>
+						Annual Awards Nominations & Custom Publication. Call for details.</div>
+					</div>
+				</div>
+
+				<div class="sep-bar" style="margin: 30px 0; clear:both;"><span>Papers</span></div>
+
+				<div class="main-6">
+					<div class="left">
+						<h2>POST & PROMOTE PAPERS</h2>
+						<p>Have a whitepaper or study you think needs to get out to more folks? The Learning Counsel can post your paper online under our growing Papers section and also promote it via our online Newsletter to 30,000 to 36,000 subscribers.</p>
+						<p>Posting (one year): $500<br/>
+						Promotion via 2 Newsletter launches: $500</p>
+						<a class="orange-button" style="margin-left: 15px;" href="/Contact">Contact Us to Get Started</a>
+					</div>
+
+					<div class="right">
+						<img class="img-1" src="/assets_knowstory/advertise/burbank-paper.png" alt="Case Study">
+						<img class="img-2" src="/assets_knowstory/advertise/marquez-paper.png" alt="Case Study">
+					</div>
+				</div>
+				<div class="sep-border"></div>
+
+				<div class="main-7">
+					<h2>CREATE CLASSY CATALOGS & COLLATERAL</h2>
+					<img src="/assets_knowstory/advertise/catalog-sample.png" alt="Catalog Sample" class="left">
+					<div class="right">
+						<p>Need a riveting marketing piece? A whitepaper? Let The Learning Counsel create something with our proprietary knowledge base and distribute it. Get a hot idea that will spread like wild fire across the teaching and instructional community, and let us research, interview, write, design, custom mail, post online and
+						optimize on the web. Papers from $7,500.</p>
+						<h4 class="green">Product calendars for the faculty break-room?</h4>
+						<h4 class="grey">Catalog of curriculum for your platform?</h4>
+						<h4 class="green">Creation story of innovative product?</h4>
+						<h4 class="grey">Spotlight on your credentialed designers?</h4>
+
+						<a class="orange-button" href="/Contact">Contact Us to Get Started</a>
+					</div>
+				</div>
+				<div class="sep-bar clearfix" style="margin: 30px 0;"><span>Learning Counsel Online</span></div>
+
+				<div class="main-8">
+					<img class="right" src="/assets_knowstory/advertise/lc-website.png">
+					<div class="left"><img style="margin-top: 10px;" src="/assets_knowstory/advertise/lc-homepage-mac.png">
+							<div class="green-box">TOP LEADERBOARD<br/>
+							600 X 140<br/>
+							$1500 per month</div>
+							<div class="green-box">COLUMN AD RIGHT<br/>
+							600 X 300<br/>
+							$1000 per month</div>
+							<div class="green-box">SQUARE<br/>
+							300 X 300<br/>
+							$500 per month</div>
+							<div class="green-box">BANNERS<br/>
+							600 X 140<br/>
+							$500 per month</div>
+							<div class="green-box">JUMP COLUMN AD — RUN OF SITE<br/>
+							600 X 140<br/>
+							$1000 per month</div>
+							<div class="green-box" style="margin-bottom: 20px;">JUMP SQUARE AD — RUN OF SITE<br/>
+							600 X 140<br/>
+							$500 per month</div>
+
+							<a class="orange-button" href="/Contact">Contact Us to Get Started</a>
+					</div>
+
+				</div>
+
+				<div class="sep-bar clearfix" style="margin: 30px 0;"><span>Journal Display Advertising</span></div>
+
+				<div class="main-9">
+					<h2>JOURNAL DISPLAY ADVERTISING</h2>
+					<h4 class="lcgray">QUALITY CONTENT MARKETING—WITH A POSTER-MAGAZINE</h4>
+					<p>Schools need to understand the "universe" of what's available to them in digital content, curriculum, tools and systems. The Learning Counsel creates posters showing the various products that fit the theme. Each poster will have an art background and logo/description/URL for
+					sponsors who will be "on the map" of the poster.</p>
+					<p>On the reverse, The Learning Counsel creates a magazine look with our Journal editorial</p>
+
+					<img style="margin-left: 70px;" src="/assets_knowstory/advertise/print-poster.png" Alt="Pins">
+					<img class="right-img" src="/assets_knowstory/advertise/print-journal.png" Alt="Journal">
+					<p class="light-green">Journal (magazine) accordion-fold, and poster on the back side.
+					(Mock Up—not the final look.)</p>
+
+					<p>An audience of over 36,000 will be reached, including K-12 Superintendents, Chief Academic Officers, Curriculum Directors, Instructional Technologists, Subject Experts and Chief Information Officers. 5,500 printed and mailed per each poster project.</p>
+
+					<div class="col-left">
+						<h4 class="ksgreen">SPONSORSHIP LEVELS</h4>
+						<p><span class="ksgreen">POSTER PINS:</span><br/>
+						FREE online listing on Poster that includes 1 (One) product
+						and/or Corporate Logo plus live-link and selected category.</p>
+
+						<p><span class="ksgreen">PRINTED POSTER PINS:</span><br/>
+						Get same pin with URL on the print version of the poster for
+						one annual printing. $300 per pin/per poster.</p>
+
+						<p><span class="ksgreen">POSTER ANCHOR:</span><br/>
+						Poster Pin and 3" x 3" Border Square ad with
+						Headline on print version and online premium ad
+						below poster. Include 50 words of text in addition to
+						Product and/or Corporate Logo, URL, and live-link.
+						$750 per ad/per poster.</p>
+
+						<p><span class="ksgreen">PREMIER SPONSOR:</span> (one only)—Back Cover<br/>
+						Pin and Anchor included on Poster side.
+						Sponsor Acknowledgement page—Back Cover on Journal
+						side. Ad Page or Logo plus up to 150 word description or
+						screen shots. Size: 9:"tall x 12", final specifications TBD.
+						Call for quote.</p>
+					</div>
+
+					<div class="col-right">
+						<h4 class="dgreen">Poster Projects 2014</h4>
+						<p class="ksgreen">Stories and articles that fit the poster theme<br/>
+						will fill the 8-pages of content with a front<br/>
+						magazine-style cover on the print version.</p>
+						<ul>
+						<li><span class="ksgreen">1. K12 Digital Curriculum Resources</span> — 21st Century Skills, Language, Math, Science, Social Studies, Special Education</li>
+						<li><span class="ksgreen">2. K12 Digital Teacher Tools</span> — Assessment, Collaboration, Classroom
+						Response, Grading/Attendance, Lesson Planning, Presentation Tools, Lecture Capture, Digital Storytelling, Plagiarism Checks, Poster-Boarding</li>
+						<li><span class="ksgreen">3. K12 Digital School Operations</span> — LMS, SIS, AppPlatforms, WebFiltering, Device Management</li>
+						<li><span class="ksgreen">4. K12 Digital Content</span> — Apps, Digital Textbooks. Games, Study Tools, Video</li>
+						<li><span class="ksgreen">5. Professional Learning & DIY Digital Content</span> — Subscription sites Courseware, Talent Management, Professional Development Systems</li>
+						</ul>
+
+					</div>
+
+					<a class="orange-button" href="/Contact">Contact Us to Get Started</a>	
+				</div>
 
 
+
+
+
+			</div>
+		
+	
+	
+			
+			</div>
+			
+		</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		<!-- <div style="height: 20px;"></div>
+		<div style="width: 100%; text-align: center;">
+			<iframe src="../iframes/home_slidedeck/index.html" width="1000px" height="350px"></iframe>
+		</div>
+		<div style="height: 20px;"></div>
+		<script type="text/javascript">
+			/* Initiate the SlideDeck */
+			$('.skin-vertical-embedded dl.slidedeck').slidedeck({
+				hideSpines: true
+			}).loaded(function(){
+			/**
+			 * Take advantage of the loaded() method of the SlideDeck library to 
+			 * change the vertical slide navigation items based on the "navLabels" array
+			 */			
+				var navLabels = [
+					'What is KnowStory?',
+					'Student Profiles',
+					'Teacher Profiles',
+					'Publisher Profiles',
+					'School or District Profiles',
+					'College Recruiter Profiles'
+				];
+				/** Array holds the title for each button in .verticalSlideNav 	*/			
+				for( i=0 ; i<navLabels.length ; i++){
+					var mynum = i+1;
+					$('.verticalSlideNav .nav_' + (mynum) + ' a').html('<span class="hide">'+mynum+'</span>'+navLabels[i]);
+					if(mynum == navLabels.length){
+						$('.verticalSlideNav .nav_' + (mynum)).addClass('last');
+					}
+				}			
+				/** Loop through navLabels array and replace the innerHTML of each <a> in the vertical slide navigation */		
+			}).vertical({
+				scroll: true
+			});
+			/** Enable vertical slides */
+			
+			$('.skin-vertical-embedded dl.slidedeck a.next').click(function(e){
+				e.preventDefault();
+				$('.skin-vertical-embedded dl.slidedeck').slidedeck().vertical().next();
+			});
+			
+			// Script for handling goto's and prev and next
+			var SlideDeckAssistant = {
+				innerSlideCount: 0,
+				/** prevSlide, nextSlide and goToSlide are all custom functions to control progress of the SlideDeck */
+				prevSlide: function(theIndex){
+					SlideDeckAssistant.goToSlide(theIndex - 1);
+				},
+				nextSlide: function(theIndex){
+					SlideDeckAssistant.goToSlide(theIndex + 1);
+				},
+				goToSlide: function(theIndex){        
+					$('ul.galleryNav li').removeClass('active');
+					$('ul.galleryNav li:eq('+ theIndex +')').addClass('active');
+					myDeck2.goTo(theIndex+1);
+					if((theIndex + 1) == SlideDeckAssistant.innerSlideCount){
+						// disable the next button
+						$('ul.galleryArrows .next').addClass('disabled');
+						$('ul.galleryArrows .prev').removeClass('disabled');
+					}else if((theIndex + 1) == 1){
+						// disable the previous button
+						$('ul.galleryArrows .next').removeClass('disabled');
+						$('ul.galleryArrows .prev').addClass('disabled');
+					}else{
+						// enable both next/previous buttons
+						$('ul.galleryArrows .next, ul.galleryArrows .prev').removeClass('disabled');
+					}
+				},
+				init: function(){
+					SlideDeckAssistant.innerSlideCount = $('#slidedeck-gallery_frame dl.slidedeck2 dd').length;
+					/** Store number of slides in SlideDeck */
+					$('#slidedeck-gallery_frame').append('<ul class="galleryArrows"><li class="prev"><a href="#prev">&larr;<\/a><\/li><li class="next"><a href="#next">&rarr;<\/a><\/li><\/ul>');
+					// create navigation element with next and previous buttons
+					$('.colRight').append('<ul class="galleryNav"><\/ul>');
+					// create bullet navigation element
+					for (i=0 ; i < SlideDeckAssistant.innerSlideCount ; i++ ) {
+						$('ul.galleryNav').append('<li><a href="goto#' + (i+1) + '">' + (i+1) + '<\/a><\/li>');
+					}
+					// create navigation bullets based on number of slides
+					var goToDots = $('ul.galleryNav li a');
+					$('ul.galleryNav').css({width: (goToDots.outerWidth(true)*goToDots.length) + 'px'});
+					// position navigation bullets
+					$('ul.galleryNav li:first').addClass('active');
+					$('ul.galleryArrows li.prev').addClass('disabled');
+					$('ul.galleryNav li a').click(function(e){
+						e.preventDefault();
+						var theIndex = $('ul.galleryNav li a').index($(this));
+						SlideDeckAssistant.goToSlide(theIndex);
+						return false;
+					});
+					// assign click function to navigation bullets
+					$('ul.galleryArrows li.prev a').click(function(e){
+						e.preventDefault();
+						if($(this).parent('li').hasClass('disabled')){
+							return false;
+						}else{
+							var theIndex = $('ul.galleryNav li').index($('ul.galleryNav li.active'));
+							SlideDeckAssistant.prevSlide(theIndex);
+						}
+						return false;
+					});
+					// assign click function for previous button
+					$('ul.galleryArrows li.next a').click(function(e){
+						e.preventDefault();
+						if($(this).parent('li').hasClass('disabled')){
+							return false;
+						}
+						else{
+							var theIndex = $('ul.galleryNav li').index($('ul.galleryNav li.active'));
+							SlideDeckAssistant.nextSlide(theIndex);
+						}
+						return false;
+					});
+					//assign click function for next button
+				}
+			};
+		
+			$(document).ready(function(){
+				SlideDeckAssistant.init();
+			});
+				
+			/** Initiate the SlideDeck */
+			var myDeck2 = $('#slidedeck-gallery_frame dl.slidedeck2').slidedeck({
+				hideSpines: true,
+				autoPlay: true,
+				cycle: true,
+				scroll: false,
+				/**
+				 * The complete function is executed after each slide animation.
+				 * here we are using it to upate the navigation dots.
+				 */
+				complete: function(deck){
+					$('ul.galleryNav li').removeClass('active');
+					$('ul.galleryNav li:eq('+ ( deck.current - 1 ) +')').addClass('active');
+					/** Update current slide indicator after each slide animation completes */
+				}
+			});
+			
+		</script> -->		
+
+		<!-- <div style="height: 50px;"></div>
+    	<div style="width: 100%; text-align: center;">
+	    	<h5>
+			   	<#% delete_all_msg = "Delete all records and reset index in Users?" %#>
+				<#%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long', :remote => true %#>
+			</h5>
+		</div>
+		<div style="height: 50px;"></div> -->
+	
+	
+		<%= render 'landing_page/landing_footer' %>
+	
+	</div>
+
+	<!-- <script type="text/javascript">	
+		$('a[href*=#]:not([href=#])').click(function() {
+		    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+		        || location.hostname == this.hostname) {
+		
+		        var target = $(this.hash);
+		        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+		           if (target.length) {
+		             $('html,body').animate({
+		                 scrollTop: target.offset().top
+		            }, 750);
+		            return false;
+		        }
+		    }
+		});
+	</script> -->
+	
+	<script>
+		SlideDeckAssistant.init();
+	</script>
+
+	<script>
+
+
+		var rd_gender_clicked = false;
+		$("#user_gender_0").on("change", function () {
+			// $('#user_address').focus();
+			if (rd_gender_clicked == false) {
+				validateRadio1();
+				rd_gender_clicked = true;
+			}
+		});
+		$("#user_gender_1").on("change", function () {
+			// $('#user_address').focus();
+			if (rd_gender_clicked == false) {
+				validateRadio1();
+				rd_gender_clicked = true;
+			}
+		});
+
+
+
+		function validateRadio1() {
+
+			// var isChecked = false;
+			// if($("#user_gender_0").is(':checked')) {
+				// isChecked = true;
+			// }
+			// if($("#user_gender_1").is(':checked')) {
+				// isChecked = true;
+			// }
+// 			
+			// if ( !isChecked ) {
+				// $("#border_gender").css ({
+					// 'border-color' : '#851717'
+				// });
+				// $('#error_user_gender').html("*");
+				// $("#state_user_gender").css ({			
+					// background: 'url("/assets/submit_form_empty.png") no-repeat 0px 5px'
+				// });				
+			// }
+			// else {
+				// $("#border_gender").css ({
+					// 'border-color' : '#005C9E'
+				// });
+				// $('#error_user_gender').html("");
+				// $("#state_user_gender").css ({			
+					// background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+				// });																
+			// }
+			
+			return isChecked;
+		}
+
+
+
+		function set_rd_1() {
+			var rd ="#user_gender_0";
+			var sd = "#rd_gender_male";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_1() {
+			var sd = "#rd_gender_male";
+			$(sd).removeClass("rd-background");			
+		}
+		function set_rd_2() {
+			var rd ="#user_gender_1";
+			var sd = "#rd_gender_female";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_2() {
+			var sd = "#rd_gender_female";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function rd_gender(caller) {
+
+			switch (caller)
+			{
+			  case 'male':
+			  		set_rd_1();
+			  		unset_rd_2();
+			  	break;
+			  case 'female':
+			  		set_rd_2();
+			  		unset_rd_1();
+			  	break;
+
+			  default:
+			  //
+			}
+			
+			if (rd_gender_clicked == false) {
+				validateRadio1();
+				rd_gender_clicked = true;
+			}
+		}
+
+
+		function set_rd_account_type_0() {
+			var rd ="#user_account_type_0";
+			var sd = "#rd_account_type_0";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_account_type_0() {
+			var sd = "#rd_account_type_0";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_account_type_1() {
+			var rd ="#user_account_type_1";
+			var sd = "#rd_account_type_1";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_account_type_1() {
+			var sd = "#rd_account_type_1";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_account_type_2() {
+			var rd ="#user_account_type_2";
+			var sd = "#rd_account_type_2";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_account_type_2() {
+			var sd = "#rd_account_type_2";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_account_type_3() {
+			var rd ="#user_account_type_3";
+			var sd = "#rd_account_type_3";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_account_type_3() {
+			var sd = "#rd_account_type_3";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_account_type_4() {
+			var rd ="#user_account_type_4";
+			var sd = "#rd_account_type_4";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_account_type_4() {
+			var sd = "#rd_account_type_4";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function rd_account_type(caller) {
+
+			switch (caller)
+			{
+			  case '0':
+			  		set_rd_account_type_0();
+			  		unset_rd_account_type_1();
+			  		unset_rd_account_type_2();
+			  		unset_rd_account_type_3();
+			  		unset_rd_account_type_4();
+			  	break;
+			  case '1':
+			  		unset_rd_account_type_0();
+			  		set_rd_account_type_1();
+			  		unset_rd_account_type_2();
+			  		unset_rd_account_type_3();
+			  		unset_rd_account_type_4();
+
+			  	break;
+			  case '2':
+			  		unset_rd_account_type_0();
+			  		unset_rd_account_type_1();
+			  		set_rd_account_type_2();
+			  		unset_rd_account_type_3();
+			  		unset_rd_account_type_4();
+			  	break;
+			  case '3':
+			  		unset_rd_account_type_0();
+			  		unset_rd_account_type_1();
+			  		unset_rd_account_type_2();
+			  		set_rd_account_type_3();			  		
+			  		unset_rd_account_type_4();
+			  	break;
+			  case '4':
+			  		unset_rd_account_type_0();
+			  		unset_rd_account_type_1();
+			  		unset_rd_account_type_2();
+			  		unset_rd_account_type_3();
+			  		set_rd_account_type_4();			  		
+			  	break;
+
+			  default:
+			  //
+			}
+			
+			// if (rd_gender_clicked == false) {
+				// validateRadio1();
+				// rd_gender_clicked = true;
+			// }
+		}
+
+
+
+		var selectValid2 = false;
+
+		function selectStatus2() {
+			
+			// alert($("#reg_event_type_affiliation option:selected").val());
+			
+			if ($("#reg_event_type_affiliation option:selected").val() == '0') {
+				$('#state_reg_event_type_affiliation').css ({			
+					background: 'url("/assets/submit_form_empty.png") no-repeat 0px 5px'
+				});
+				
+				$('.dropdown2').css ({			
+					color: '#838383'
+				});
+				
+				selectValid2 = false;						
+			}
+			else {
+				$('#state_reg_event_type_affiliation').css ({			
+					background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+				});
+				
+				$('.dropdown2').css ({			
+					color: '#ACDDE3'
+				});			
+		
+				if( !selectValid2 ) {
+					$('.dropdown2').css ({			
+						'border-color' : '#005C9E'
+					});
+					
+					$('.dropdown2 > .selected i').css ({			
+						'color' : '#005C9E',
+						'border-left-color' : '#005C9E' 
+					});
+					
+					$('#error_reg_event_type_affiliation').html("");					
+				}
+				
+				selectValid2 = true;		
+			}
+			
+			if(validatorCalled) {
+				validateSelect2();
+			}
+			
+			updateErrorCount();			
+		}
+
+
+		function validateSelect2() {
+			
+			if ($("#reg_event_type_affiliation option:selected").val() == '0') {
+				$('.dropdown2').css ({			
+					'border-color' : '#851717'
+				});
+				
+				$('.dropdown2 > .selected i').css ({			
+					'color' : '#851717',
+					'border-left-color' : '#851717' 
+				});
+		
+				$('#error_reg_event_type_affiliation').html("*");
+		
+				selectValid2 = false;
+			}
+			else {
+				$('.dropdown2').css ({			
+					'border-color' : '#005C9E'
+				});
+				
+				$('.dropdown2 > .selected i').css ({			
+					'color' : '#005C9E',
+					'border-left-color' : '#005C9E' 
+				});
+
+				$('#error_reg_event_type_affiliation').html("");
+				
+				selectValid2 = true;		
+			}
+			
+			return selectValid2;
+		}
+
+
+		function formValidate() {
+						
+			$("#form_user_new").validate({
+			
+				submitHandler: function(form) {
+					form.submit();
+				},
+			
+				debug: true,
+				onkeyup: false,
+				focusCleanup: true,
+				// invalidClass: "error",
+				// validClass: "success",
+				
+				rules: {
+					'user[name_first]': {
+						required: true,
+						minlength: 1,
+						maxlength: 50
+					},
+					'user[name_last]': {
+						required: true,
+						minlength: 1,
+						maxlength: 50
+					},
+					'user[email]': {
+						required: true,
+						maxlength: 100,
+						email: true
+					},															
+					'user[username]': {
+						required: true,
+						minlength: 1,
+						maxlength: 50
+					},
+					'user[password]': {
+						required: true,
+						minlength: 4,
+						maxlength: 50
+					},
+					'user[password_confirmation]': {
+						equalTo: "#user_password"
+					}
+				},
+				invalidHandler: function(event, validator) {
+					var errors = validator.numberOfInvalids();
+					if (errors) {
+						var message = errors == 1
+						? 'You missed 1 field'
+						: 'You missed ' + errors + ' fields';
+						$("div.errors p").html(message);
+						$("div.errors").show();
+					} else {
+						$("div.errors").hide();
+					}
+				},				
+				messages: {
+					'user[name_first]': {
+						required: "*",
+						minlength: "First Name at least 1 character",
+						maxlength: "First Name exceeds 50 characters"
+					},
+					'user[name_last]': {
+						required: "*",
+						minlength: "Last Name at least 1 character",
+						maxlength: "Last Name exceeds 50 characters"
+					},					
+					'user[username]': {
+						required: "*",
+						minlength: "Username at least 4 characters",
+						maxlength: "Username exceeds 50 characters"
+					},
+					'user[password]': {
+						required: "*",
+						minlength: "Password at least 4 characters long",
+						maxlength: "Password exceeds 20 characters"
+					},
+					'user[password_confirmation]': {
+						equalTo: "Passwords must match"
+					},
+					'user[email]': {
+						required: "*",
+						maxlength: "Email exceeds 100 characters",
+						email: "Please enter a valid email address"
+					}										
+				},
+				errorContainer: $("div .error_label"),				
+				errorPlacement: function(error, element) {
+					error.insertAfter('#error_' + element.attr('id'));
+					$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					//$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				},
+				// invalid: function(element) {
+					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// $('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');					
+				// },
+				// highlight: function(element) {
+					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				// unhighlight: function(element) {
+					// //$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				error: function(label) {
+					$('#' + label.attr('for')).removeClass('required').removeClass('success').addClass('error');
+					$('#label_' + label.attr('for')).removeClass('required-label').addClass('error-label');
+				},
+				success: function(label) {
+					$('#' + label.attr('for')).removeClass('required').removeClass('error').addClass('success');
+					$('#label_' + label.attr('for')).removeClass('error-label').addClass('required-label');
+					
+					$('#state_' + label.attr('for')).css ({			
+						background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+					});
+ 
+					$('#error_' + label.attr('for')).html("");
+				},				
+				focus: function(element) {
+				 	$('#' + element.attr('id')).removeClass('required').removeClass('error').removeClass('success').addClass('focus');
+				}
+			});
+			
+			// $.validator.setDefaults({
+				// 				
+				// submitHandler: function() {
+					// form.submit();
+				// }
+				//$('#user_username');
+				
+				// submitHandler: function() { alert("submitted!"); }
+				// debug: true,
+				// onkeyup: false,
+				// focusCleanup: true,
+				// errorClass: "invalid",
+				// validClass: "success"
+			// });
+		}
+
+
+		$(window).load( function() {
+		//$(document).ready(function(){
+
+			// formValidate();
+			
+						
+			$('select').dropdown({
+			    'changed': function(data) {
+			        // selectStatus1();
+			        // selectStatus2();	
+			    }
+			});	    
+			
+			
+			$('#user_gender_0').prop('checked', false);				
+			$('#user_gender_1').prop('checked', false);				
+
+			$('#rd_gender_male').on('click', function() {
+				rd_gender('male');
+			});
+			$('#rd_gender_female').on('click', function() {
+				rd_gender('female');
+			});
+			
+    		$('#rd_gender_male').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_gender_male').click();
+    		});				
+    		$('#rd_gender_female').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_gender_female').click();
+    		});				
+
+    		$("#ch_remember_me").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#ch_remember_me").click();
+    		});				
+
+
+			$('#user_account_type_0').prop('checked', false);				
+			$('#user_account_type_1').prop('checked', false);				
+			$('#user_account_type_2').prop('checked', false);				
+			$('#user_account_type_3').prop('checked', false);				
+			$('#user_account_type_4').prop('checked', false);				
+			
+			$('#rd_account_type_0').on('click', function() {
+				rd_account_type('0');
+			});
+			$('#rd_account_type_1').on('click', function() {
+				rd_account_type('1');
+			});
+			$('#rd_account_type_2').on('click', function() {
+				rd_account_type('2');
+			});
+			$('#rd_account_type_3').on('click', function() {
+				rd_account_type('3');
+			});
+			$('#rd_account_type_4').on('click', function() {
+				rd_account_type('4');
+			});
+			
+    		$('#rd_account_type_0').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_account_type_0').click();
+    		});				
+    		$('#rd_account_type_1').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_account_type_1').click();
+    		});				
+    		$('#rd_account_type_2').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_account_type_2').click();
+    		});				
+    		$('#rd_account_type_3').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_account_type_3').click();
+    		});				
+    		$('#rd_account_type_4').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_account_type_4').click();
+    		});				
+
+
+
+
+			$(".group1").colorbox({rel:'group1'});
+			$(".group2").colorbox({rel:'group2', transition:"fade"});
+			$(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
+			$(".group4").colorbox({rel:'group4', slideshow:true});
+			$(".ajax").colorbox();
+			$(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
+			$(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
+			$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+			$(".inline").colorbox({inline:true, width:"50%"});
+			$(".callbacks").colorbox({
+				onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+				onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+				onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+				onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+				onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+			});
+
+			$('.non-retina').colorbox({rel:'group5', transition:'none'})
+			$('.retina').colorbox({rel:'group5', transition:'none', retinaImage:true, retinaUrl:true});
+			
+			$("#click").click(function(){ 
+				$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+				return false;
+			});
+
+
+
+			$("#panel-1").focus( function() {
+				$("#panel-1").mouseover();
+			});
+			$("#panel-1").blur( function() {
+				$("#panel-1").mouseleave();
+			});
+
+			$("#panel-2").focus( function() {
+				$("#panel-2").mouseover();
+			});
+			$("#panel-2").blur( function() {
+				$("#panel-2").mouseleave();
+			});
+
+			$("#panel-3").focus( function() {
+				$("#panel-3").mouseover();
+			});
+			$("#panel-3").blur( function() {
+				$("#panel-3").mouseleave();
+			});
+
+			$("#panel-4").focus( function() {
+				$("#panel-4").mouseover();
+			});
+			$("#panel-4").blur( function() {
+				$("#panel-4").mouseleave();
+			});
+
+			$("#panel-5").focus( function() {
+				$("#panel-5").mouseover();
+			});
+			$("#panel-5").blur( function() {
+				$("#panel-5").mouseleave();
+			});
+			
+			// $('.initiator').on('mouseenter mouseleave', function(e) {
+			    // $('.receiver').trigger(e.type);
+			// });
+						
+						
+			// $("ul li").on('click', function() {
+				// alert('page');
+			// });
+
+			$('a[href*=#]:not([href=#])').click(function() {
+			    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			        || location.hostname == this.hostname) {
+			        var target = $(this.hash);
+			        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+		           	if (target.length) {
+		             	$('html,body').animate({
+		                	scrollTop: target.offset().top
+		            	}, 750);
+		            	// return false;
+		        	}
+			    }
+			});
+
+						
+		});
+	
+	</script>

@@ -1,0 +1,25 @@
+								
+	<script src="/assets/jquery.js" type="text/javascript"></script>
+								
+	<% if session[:publisher_product_pdf_upload_status] %>
+		<%= render 'publisher_product_pdfs/upload_success'%>
+	<% else %>
+		<%= render 'publisher_product_pdfs/upload_failure'%>
+	<% end %>
+
+
+	<script>
+	
+		// $(window).load( function() {
+		$(document).ready(function(){
+
+			alert('ready - new');
+			
+			// function doIt() {
+			 	// top.catchIt();
+			 	// // top.catchIt('clyde'); 
+			// }
+		
+		}
+
+	</script>

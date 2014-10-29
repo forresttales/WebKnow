@@ -1,0 +1,2 @@
+module PublisherProduct1ImagesHelper
+end

@@ -1,0 +1,245 @@
+
+<style>
+	
+		.jqmWindow-4 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 700px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}		
+	
+</style>
+
+
+								<div class="jqmWindow jqmWindow-4" id="dialog_4">
+							   		<div class="table-dl-form">
+							   			<div class="row">
+							   				<div class="cell-100percent">
+							   					<div id="close_form4" class="form-edit-close jqmClose" tabindex="">
+							   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+							   					</div>
+							   					<div style="clear: both;"></div>
+							   				</div>
+					   					</div>
+									</div>				   				
+									<div class="pad-left-20">
+										<div style="height: 20px;"></div>
+										<div class="profile-grid profile-cs-style-3">
+											<figure class="profile-figure-list" id="profile_figure_list">
+												<img alt="photo not appearing" src="" />
+												<figcaption class="figcaption-2">
+													<div class="tip-top-center"></div>
+									                <div class="tip-content">
+									                    <div class="tooltiptext">Delete</div>
+									                </div>																								
+												</figcaption>
+											</figure>
+										</div>
+									</div>
+								</div>
+
+
+
+								<% if @publisher_user_images.any? %>
+									<% @publisher_user_images.each do |publisher_user_image| %>   				
+									
+										<!-- <span class="dialog-3 label-dialog">&laquo; Add a photo &raquo;</span> -->
+										<div class="profile-grid profile-cs-style-3" style="display: inline-block;">
+											<figure class="profile-figure-list dialog-4-figure">
+												<img alt="photo not appearing" src="<%= publisher_user_image.image_url(:user_0_100) if publisher_user_image.image? %>" />
+												<input class="x-container-hidden" type="hidden" value="<%= publisher_user_image.image_url(:user_600_600) if publisher_user_image.image? %>" />												
+												<figcaption class="figcaption-2">
+													<div class="tip-top-center"><%= button_to "", destroy_publisher_user_image_publisher_users_path(:publisher_id => @publisher_id, :id => publisher_user_image.id), :confirm => 'Delete this photo?', :remote => true, class: 'x-container' %></div>
+									                <div class="tip-content">
+									                    <div class="tooltiptext">Delete</div>
+									                </div>																								
+												</figcaption>
+											</figure>
+										</div>
+									
+									<% end %>
+								<% end %>
+
+
+	<script>
+
+		function closeShowPhoto() {
+			$("#close_form4").trigger('click');
+		};	  
+	  
+	  	function setImgLast() {
+	  		setTimeout(function(){
+				var a_img = document.getElementsByClassName("profile-figure-list");
+				var len = a_img.length;
+				var list_width = 0;
+				for( var i = 0; i < len; i++ ) {
+					list_width += a_img[i].clientWidth;
+					if( list_width > 692 ) {
+						a_img[i].setAttribute("id", "list_img_last");
+						i = len;
+					}
+				}
+				var div_pos = $("#render_publisher_user_images").position();
+				var img_pos = $("#list_img_last").position();
+				var div_pos_left = div_pos.left;
+				var img_pos_left = img_pos.left;
+				var rel_pos_left = img_pos_left - div_pos_left;
+				var adj_pos_left = 16;
+				var del_pos_left = 692 - rel_pos_left - adj_pos_left;
+		  		$("#list_img_last figcaption.figcaption-2").css({
+		  			left : del_pos_left
+		  		});
+	  		},500);
+	  	}
+
+	  
+	  	// function xDelete() {
+	  		// alert('xDelete');
+	  		// return false;
+	  	// }
+	  
+	  
+		// $(window).load( function() {
+		$(document).ready(function () {				
+		
+      		// $('.dialog').jqm({
+      			// onLoad: load,
+      			// onShow: open,
+      			// onHide: close
+      		// });		
+
+
+			setImgLast();
+
+
+			$(".dialog-4-figure").on('click', function(e) {
+				if ( e.target.nodeName == "IMG" ) {
+					var this_src = $(this).find("input.x-container-hidden").attr("value");
+					$("#profile_figure_list").find("img").attr("src", this_src );
+					var this_delete = $(this).find("div.tip-top-center").html();
+					$("#profile_figure_list").find("div.tip-top-center").html(this_delete);
+					$("#dialog_4").jqmShow();	
+				}
+				// if ( e.target.nodeName == "INPUT" ) {
+					// alert("delete");
+				// }
+			});
+			
+			$('#dialog_4').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '60px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+
+					var img = $("#profile_figure_list img");
+					$("<img/>")
+			    		.attr("src", $(img).attr("src"))
+			    		.load(function() {
+			        		img_width = this.width; 
+			        		$("#profile_figure_list").css({
+			        			width : this.width
+			        	});	        		
+			    	});		
+
+
+					// hash.w.show();
+					// $('#dialog_4').animate(
+						// {bottom:'-=800', top:'+=800'}, 
+						// 500, 
+						// 'easeInOutCirc', 
+						// function() {
+							// $('#dialog_4').animate(
+								// {bottom:'+=4', top:'-=4'}, 
+								// 100, 
+								// 'easeInBounce', 
+								// function() {
+								// }
+							// );
+							// // $('#dl_email').focus();
+						// }
+					// );
+				}
+			}); 		
+
+
+
+
+		    // $(".dialog-4").bind("click",function(){
+		    	// alert('dialog-4');
+		    	// return false;
+		    // });
+
+
+			// $(".dialog-4").click(function(e) {
+				// e.stopImmediatePropagation();
+				// // alert('dialog-4');
+				// // console.log( e.target.nodeName );
+				// // console.log( this );
+				// // console.log( 'clicked', $( this ).text() );
+				// // e.preventDefault();
+				// // alert(event.target);
+				// // return false;
+			  	// // console.log( 'clicked', $( this ).text() );
+			// });
+
+			// $("#dialog_4 .x-container").on('click', function() {
+				// // $('#jqModal').jqmHide();
+				// // $(".dialog-4").preventDefault();
+				// alert('x-container');
+				// // $("#dialog_4").jqmHide();
+				// return false;
+			// });
+
+
+
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+		
+		});
+	  
+	</script>		
+
+

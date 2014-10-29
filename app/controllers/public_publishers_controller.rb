@@ -1,0 +1,2 @@
+class PublicPublishersController < ApplicationController
+end

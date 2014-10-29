@@ -3,7 +3,7 @@ module SessionsHelper
   def sign_in(user)
     remember_token = User.new_remember_token
     
-    Rails.logger.info params[:remember_me]
+    # Rails.logger.info params[:remember_me]
     
     if params[:remember_me].to_s == "1"
       cookies.permanent[:remember_token] = remember_token
@@ -26,19 +26,19 @@ module SessionsHelper
       account_type = session[:account_type] 
 
       case user.account_type.to_s  
-        when "0"
+        when "1"
           session[:profile] = "/Student"
           account_type = "Student"
-        when "1"
+        when "2"
           session[:profile] = "/Teacher"          
           account_type = "Teacher"
-        when "2"
+        when "3"
           session[:profile] = "/Publisher"          
           account_type = "Publisher"
-        when "3"
+        when "4"
           session[:profile] = "/Institute"          
           account_type = "School"
-        when "4"
+        when "5"
           session[:profile] = "/Recruiter"          
           account_type = "Recruiter"
           # redirect_to(:controller => 'students', :action => 'index')          
@@ -142,9 +142,10 @@ module SessionsHelper
           # redirect_to '/Publishers'          
           # redirect_to(:controller => 'publishers', :action => 'index')          
         when "2"
-          redirect_to "/Publisher"
+          # redirect_to "/Publisher"
           # redirect_to(:controller => 'recruiters', :action => 'index')          
         when "3"
+          redirect_to "/Publisher"
           # redirect_to(:controller => 'teachers', :action => 'index')          
         when "4"
           # redirect_to(:controller => 'students', :action => 'index')          
@@ -169,15 +170,15 @@ module SessionsHelper
   def current_user_account_type
       account_type = ""
       case current_user.account_type.to_s  
-        when "0"
-          account_type = "Student"          
         when "1"
-          account_type = "Teacher"          
+          account_type = "Student"          
         when "2"
-          account_type = "Publisher"          
+          account_type = "Teacher"          
         when "3"
-          account_type = "School"          
+          account_type = "Publisher"          
         when "4"
+          account_type = "School"          
+        when "5"
           account_type = "Recruiter"          
           # redirect_to(:controller => 'students', :action => 'index')          
         else

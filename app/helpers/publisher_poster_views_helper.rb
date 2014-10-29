@@ -1,0 +1,2 @@
+module PublisherPosterViewsHelper
+end

@@ -1,0 +1,236 @@
+
+
+			<!-- <div id="pos2"></div> -->
+
+
+		
+			<!-- <#%= hidden_field_tag :direction, params[:direction] %#>
+			<#%= hidden_field_tag :sort, params[:sort] %#>	
+			<#%= hidden_field_tag :pos, params[:pos] %#> -->	
+
+				<!-- <div class="publisher-product-list-top-border"></div> -->
+
+				<div id="scroll1" class="product-listbox" style="height: 100%;">	
+
+			<% if @public_users.any? %>
+
+
+				<% @public_users.each do |public_user| %>
+
+					<%= link_to public_user_path(:id => public_user.id), class: "" do %>
+						<!-- <#%= link_to ("/id" + publisher.id.to_s).html_safe, class: "" do %#> -->
+						<div class="publisher-products-list-1">
+							<!-- <a href="<#%= ("/publisher-id" + publisher.id.to_s).html_safe %#>" style="height: 65px;"> -->
+							<div class="publisher-products-list-2-left">
+								<div class="div-img">
+									<ul class="publisher-product-list-grid publisher-product-list-caption">
+										<li>
+											<figure>
+												<%= avatar_for public_user %>
+												<!-- <figcaption>
+												</figcaption> -->
+											</figure>
+										</li>
+									<ul>
+								</div>
+								<div class="helper"></div>								
+							</div>
+
+							<div class="publisher-products-list-3">
+								<%= @clyde %>
+								
+								<% if false %>
+								<div>
+									<div class="publisher-products-list-4">
+										<span class="publisher-products-span-1">Product ID: <%= publisher_product.id %></span>
+									</div>
+								</div>
+
+								<div>
+									<div class="publisher-products-list-4">
+										<span class="publisher-products-span-1"><%= publisher_product_name_product_for publisher_product %></span>
+									</div>
+								</div>
+									
+								<div>									
+									<div class="publisher-products-list-4">
+										<div style="height: 40px;"></div>
+									</div>
+								</div>
+									
+								<div style="position: relative;">									
+									<div class="publisher-products-list-4" style="text-align: right;">
+										<!-- <span class="publisher-products-span-1"><#%= link_to "View/Edit", publisher_product_description_path(publisher_product.id), class: "" %#></span> -->
+										<!-- <span class="publisher-products-span-1"><#%= link_to "View/Edit", publisher_product_description_path(publisher_product.id), :method => :post, class: "" %#></span> -->
+										<!-- <span class="publisher-products-span-1"><#%= link_to "View/Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %#></span> -->
+										<!-- show_description_publisher_product_descriptions -->
+
+										<!-- <#%= button_to "View/Edit", { :controller => 'publisher_product_descriptions', :action => 'show_description' }, :params => { :publisher_product_id => publisher_product.id }, :method => :post, :class => 'unbutton-prod-list' %#> -->
+										<%= button_to "View/Edit", show_description_publisher_product_descriptions_path( :publisher_product_id => publisher_product.id ), :method => :post, :class => 'unbutton-prod-list' %>
+
+										<!-- <input type="submit" class="unbutton" value="Donate"> -->
+										
+									</div>
+								</div>
+								<% end %>
+								
+							</div>
+							
+							<div class="publisher-products-list-2-right">
+								
+								<% if false %>
+								<div class="helper"></div>
+								<div class="div-img">
+									<ul class="publisher-product-list-grid publisher-product-list-caption">
+										<li>
+											<figure>
+												<%= publisher_product_image_for publisher_product %>
+												<figcaption>
+													<span class="publisher-product-list-span"><%= link_to "Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %></span>
+													<!-- <span><#%= link_to "Edit", { :action => :crop, :id => publisher_product.id } %#></span> -->
+												</figcaption>
+											</figure>
+										</li>
+									<ul>
+								</div>
+								<% end %>
+								
+							</div>
+							
+							
+						</div>
+						
+					<% end %>
+					
+				<% end %>
+
+
+
+			<% else %>
+				<!-- <div class="" style="color: red; padding-left: 20px;">
+					<h3>No record for Publisher Products</h3>
+				</div> -->
+			<% end %>
+
+				</div>
+
+				<!-- <div style="height: 4px;"></div> -->
+
+				<!-- <div id="im_bottom_sh" style="display: block;"></div> -->					
+
+				<!-- <div class="publisher-product-utility-bar-footer">
+					<div style="height: 4px;"></div>
+					<div style="width: 100%; text-align: center;">
+						<span><#%= will_paginate @publisher_products %#></span>
+					</div>
+				</div> -->
+				
+
+	<script src="/assets/jquery.mousewheel.js"></script>
+
+	<script>
+		
+        // function scrollPos() {
+            // $("#pos1").html($("#scroll1").scrollLeft());
+            // // $("#pos2").html($("#scroll1").scrollTop());
+            // $("#scroll2").scrollLeft($("#scroll1").scrollLeft());
+            // // $("#scroll2").scrollLeft(100);
+        // }
+		// function moveScroll() {
+			// $("#scroll1").scrollLeft($("#pos1").html());
+			// $("#scroll2").scrollLeft($("#pos1").html());			
+		// }
+				
+		function body_resize() {
+			var wh = window.outerHeight;
+			var sh = 0;
+			// var h1 = 0;
+			// var h2 = 0;
+			var h3 = 0;
+			// var h = $("#container").height();
+			$("#container_height").html(wh);
+			if(wh > 700) {
+				// h1 = wh - 276;
+				// h2 = wh - 594;
+				h3 = wh - 392;
+				// $("#scroll1").css({
+					// 'height': h3
+				// });
+				$("#sub_container").css({
+					'height': h3			// h1
+				});			
+				$("#render_list").css({
+					'height': h3			// h2
+				});			
+			}
+		}
+
+		// function init_page() {
+			// var wh = window.innerHeight;
+			// var sh = wh-388;
+			// $("#scroll1").css({
+				// 'height': sh
+			// });			
+		// }
+				
+		// $(window).load(function() {
+		$(document).ready(function() {			
+      	// $(function() {
+
+			body_resize();
+
+	        $('#scroll1').bind('mousewheel', function(event) {
+	          event.preventDefault();
+	          var scrollTop = this.scrollTop;
+	          this.scrollTop = (scrollTop + ((event.deltaY * event.deltaFactor) * -0.7));
+	          //console.log(event.deltaY, event.deltaFactor, event.originalEvent.deltaMode, event.originalEvent.wheelDelta);
+	        });
+
+
+			// $('#scroll1').bind('mousewheel DOMMouseScroll', function(event) {
+			  // event.preventDefault();
+			  // var delta = event.wheelDelta || -event.detail;
+			  // $(this).css({'top': $(this).position().top + (delta > 0 ? '+=40' : '-=40')});
+			// }); 
+
+			 // //Firefox
+			 // $('#scroll1').bind('DOMMouseScroll', function(e){
+			     // if(e.originalEvent.detail > 0) {
+			         // //scroll down
+			         // console.log('Down');
+			     // }else {
+			         // //scroll up
+			         // console.log('Up');
+			     // }
+			     // //prevent page fom scrolling
+			     // return false;
+			 // });
+			 // //IE, Opera, Safari
+			 // $('#scroll1').bind('mousewheel', function(e){
+			     // if(e.originalEvent.wheelDelta < 0) {
+			         // //scroll down
+			         // console.log('Down');
+			     // }else {
+			         // //scroll up
+			         // console.log('Up');
+			     // }
+			     // //prevent page fom scrolling
+			     // return false;
+			 // });				
+			
+		});				
+				
+				
+		// $(document).on('click', function(mtablet) {
+			// // alert(mtablet.target);
+			// elem = mtablet.target.className;
+			// if ((elem === 'hover-col') || (elem === 'delete-btn') || (elem === 'member-table')) {
+				// //
+			// }
+			// else {
+				// $("table.tbltablets tr").removeClass('row-select');					
+			// }
+		// });
+				
+	</script>
+

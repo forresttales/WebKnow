@@ -79,6 +79,7 @@
 #  category_subject_other           :string(255)
 #  created_at                       :datetime
 #  updated_at                       :datetime
+#  category_subject_other_b         :boolean          default(FALSE)
 #
 
 class PublisherProductCategorySubject < ActiveRecord::Base
@@ -157,6 +158,7 @@ class PublisherProductCategorySubject < ActiveRecord::Base
                   :category_subject_69,
                   :category_subject_70,
                   :category_subject_other,
+                  :category_subject_other_b,
                   :created_at,
                   :updated_at
 

@@ -39,6 +39,7 @@
 #  file_type_other                  :string(255)
 #  created_at                       :datetime
 #  updated_at                       :datetime
+#  file_type_other_b                :boolean          default(FALSE)
 #
 
 class PublisherProductFileType < ActiveRecord::Base
@@ -77,6 +78,7 @@ class PublisherProductFileType < ActiveRecord::Base
                   :file_type_29,
                   :file_type_30,
                   :file_type_other,
+                  :file_type_other_b,
                   :created_at,
                   :updated_at
 

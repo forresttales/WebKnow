@@ -159,33 +159,33 @@ class PublisherProductLogosController < ApplicationController
   end
   
 
-  def destroy_image
-    
-    publisher_id = params[:publisher_id]
-    publisher_product_id = params[:publisher_product_id]
-    publisher_product_logo_id = params[:publisher_product_logo_id]
-    descr = params[:descr]
-    
-    # http://localhost:3000/publisher_product_logos?publisher_id=2&publisher_product_id=1
-    # http://localhost:3000/publisher_product_descriptions?publisher_id=2&publisher_product_id=1
-    
-    publisher_product_logo = PublisherProductLogo.find(publisher_product_logo_id)
-    if publisher_product_logo.destroy
-      
-      if descr.to_s == '1'
-        # redirect_to "/Publisher-Product-Description?publisher_id=" + publisher_id.to_s + "&publisher_product_id=" + publisher_product_id.to_s
-        redirect_to :controller => 'publisher_product_descriptions', :action => 'index', :params => { :publisher_id => publisher_id, :publisher_product_id => publisher_product_id }
-      else
-        redirect_to :controller => 'publisher_product_logos', :action => 'index', :params => { :publisher_id => publisher_id, :publisher_product_id => publisher_product_id }
-      end      
-      # redirect_to :controller => 'publisher_product_logos', :action => 'index', :params => { :publisher_id => publisher_id, :publisher_product_id => publisher_product_id }
-    else
-      #
-    end
-    
-    # flash[:notice] = "Successfully destroyed painting."
-    # redirect_to @painting.gallery
-  end
+  # def destroy_image
+#     
+    # # publisher_id = params[:publisher_id]
+    # # publisher_product_id = params[:publisher_product_id]
+    # publisher_product_logo_id = params[:publisher_product_logo_id]
+    # # descr = params[:descr]
+#     
+    # # http://localhost:3000/publisher_product_logos?publisher_id=2&publisher_product_id=1
+    # # http://localhost:3000/publisher_product_descriptions?publisher_id=2&publisher_product_id=1
+#     
+    # publisher_product_logo = PublisherProductLogo.find(publisher_product_logo_id)
+    # if publisher_product_logo.destroy
+#       
+      # if descr.to_s == '1'
+        # # redirect_to "/Publisher-Product-Description?publisher_id=" + publisher_id.to_s + "&publisher_product_id=" + publisher_product_id.to_s
+        # redirect_to :controller => 'publisher_product_descriptions', :action => 'index', :params => { :publisher_id => publisher_id, :publisher_product_id => publisher_product_id }
+      # else
+        # redirect_to :controller => 'publisher_product_logos', :action => 'index', :params => { :publisher_id => publisher_id, :publisher_product_id => publisher_product_id }
+      # end      
+      # # redirect_to :controller => 'publisher_product_logos', :action => 'index', :params => { :publisher_id => publisher_id, :publisher_product_id => publisher_product_id }
+    # else
+      # #
+    # end
+#     
+    # # flash[:notice] = "Successfully destroyed painting."
+    # # redirect_to @painting.gallery
+  # end
 
 
   # def destroy_logo_descr
@@ -210,18 +210,33 @@ class PublisherProductLogosController < ApplicationController
   end
   
   
+    def crop
+    
+    # render text: params[:id]
+    @publisher_user_image = PublisherUserImage.find(params[:id])
+    
+    # @profile_image = PublisherUserImage.find(1)
+    
+    # @publisher_user_image.crop_image
+    # redirect_to '/MemberProfilePhotos'    
+    
+    # @publisher_user_images = PublisherUserImage.where("user_id = ?", current_user.id)    
+    # @publisher_user_image = @publisher_user_images[0] 
+  end
+  
+  
   def crop_commit
     
-    # render text: params[:crop_h]
+    
+    # render text: params[:image_id]
     
     x = params[:crop_x]
     y = params[:crop_y]
     w = params[:crop_w]
     h = params[:crop_h]
 
-
     img = PublisherProductLogo.find(params[:image_id])
-    image = Magick::Image.read("public" + img.image_url(:image_500_500))[0]
+    image = Magick::Image.read("public" + img.image_url(:image_600_600))[0]
     
     # render text: image.filename
 
@@ -231,49 +246,114 @@ class PublisherProductLogosController < ApplicationController
     h = h.to_i
     image_new = image.crop(x, y, w, h)
 
-    # [500, 500]
-    # [200, 200] 
-    # [100, 100]
-    # [50, 50]
+    new_image_200_200 = image_new.resize_to_fill(200, 200)    
+    new_image_100_100 = image_new.resize_to_fill(100, 100)    
+    new_image_50_50 = image_new.resize_to_fill(50, 50)
+    new_image_34_34 = image_new.resize_to_fill(34, 34)
 
-    # image_new_exists = false
-    # if !image_new.nil?
-      # image_new_exists = true  
-    # end
-    # render text: image_new_exists
-    
-    image_new_200_200 = image_new.resize_to_fill(200, 200)    
-    image_new_100_100 = image_new.resize_to_fill(100, 100)
-    image_new_50_50 = image_new.resize_to_fill(50, 50)
-    
-    image_200_200 = Magick::Image.read("public" + img.image_url(:image_200_200))[0]
+    image_200_200 = Magick::Image.read("public" + img.image_url(:image_200_200))[0]    
     image_100_100 = Magick::Image.read("public" + img.image_url(:image_100_100))[0]
     image_50_50 = Magick::Image.read("public" + img.image_url(:image_50_50))[0]
+    image_34_34 = Magick::Image.read("public" + img.image_url(:image_34_34))[0]
 
-    # public/uploads/user_profile_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
+    # public/uploads/publisher_user_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
 
     image_200_200_filename = image_200_200.filename
     image_100_100_filename = image_100_100.filename
     image_50_50_filename = image_50_50.filename
+    image_34_34_filename = image_34_34.filename
 
     FileUtils.rm_rf(Dir.glob(image_200_200.filename))
     FileUtils.rm_rf(Dir.glob(image_100_100.filename))
     FileUtils.rm_rf(Dir.glob(image_50_50.filename))
-    
-    image_new_200_200.write image_200_200_filename
-    image_new_100_100.write image_100_100_filename
-    image_new_50_50.write image_50_50_filename
+    FileUtils.rm_rf(Dir.glob(image_34_34.filename))
+
+    new_image_200_200.write image_200_200_filename    
+    new_image_100_100.write image_100_100_filename
+    new_image_50_50.write image_50_50_filename
+    new_image_34_34.write image_34_34_filename
+
+
      
-
-    # /publisher_product_images?publisher_id=1&publisher_product_id=1
-    # @@publisher_product_id = @publisher_product_id 
-    # @@publisher_id = @publisher_id
-
-    # url_redirect = "/Publisher-Product-Image/publisher_product_id=" + @@publisher_id.to_s + "&publisher_product_id=" + @@publisher_product_id.to_s  
-    url_redirect = "/publisher_product_logos?publisher_id=" + @@publisher_id.to_s + "&publisher_product_id=" + @@publisher_product_id.to_s
-    redirect_to url_redirect    
+    # # image.recreate_versions!
+# 
+    # image_100_100 = nil    
+    # image_50_50 = nil
+    # image_34_34 = nil
+#     
+    # profile_100_100 = nil
+    # profile_50_50 = nil
+    # profile_34_34 = nil
+# 
+    redirect_to '/Publisher-Product-Description'    
     
   end
+
+
+  # def crop_commit
+#     
+    # # render text: params[:crop_h]
+#     
+    # x = params[:crop_x]
+    # y = params[:crop_y]
+    # w = params[:crop_w]
+    # h = params[:crop_h]
+# 
+# 
+    # img = PublisherProductLogo.find(params[:image_id])
+    # image = Magick::Image.read("public" + img.image_url(:image_500_500))[0]
+#     
+    # # render text: image.filename
+# 
+    # x = x.to_i
+    # y = y.to_i
+    # w = w.to_i
+    # h = h.to_i
+    # image_new = image.crop(x, y, w, h)
+# 
+    # # [500, 500]
+    # # [200, 200] 
+    # # [100, 100]
+    # # [50, 50]
+# 
+    # # image_new_exists = false
+    # # if !image_new.nil?
+      # # image_new_exists = true  
+    # # end
+    # # render text: image_new_exists
+#     
+    # image_new_200_200 = image_new.resize_to_fill(200, 200)    
+    # image_new_100_100 = image_new.resize_to_fill(100, 100)
+    # image_new_50_50 = image_new.resize_to_fill(50, 50)
+#     
+    # image_200_200 = Magick::Image.read("public" + img.image_url(:image_200_200))[0]
+    # image_100_100 = Magick::Image.read("public" + img.image_url(:image_100_100))[0]
+    # image_50_50 = Magick::Image.read("public" + img.image_url(:image_50_50))[0]
+# 
+    # # public/uploads/user_profile_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
+# 
+    # image_200_200_filename = image_200_200.filename
+    # image_100_100_filename = image_100_100.filename
+    # image_50_50_filename = image_50_50.filename
+# 
+    # FileUtils.rm_rf(Dir.glob(image_200_200.filename))
+    # FileUtils.rm_rf(Dir.glob(image_100_100.filename))
+    # FileUtils.rm_rf(Dir.glob(image_50_50.filename))
+#     
+    # image_new_200_200.write image_200_200_filename
+    # image_new_100_100.write image_100_100_filename
+    # image_new_50_50.write image_50_50_filename
+#      
+# 
+    # # /publisher_product_images?publisher_id=1&publisher_product_id=1
+    # # @@publisher_product_id = @publisher_product_id 
+    # # @@publisher_id = @publisher_id
+# 
+    # # url_redirect = "/Publisher-Product-Image/publisher_product_id=" + @@publisher_id.to_s + "&publisher_product_id=" + @@publisher_product_id.to_s  
+    # url_redirect = "/publisher_product_logos?publisher_id=" + @@publisher_id.to_s + "&publisher_product_id=" + @@publisher_product_id.to_s
+    # redirect_to url_redirect    
+#     
+  # end
   
   
   

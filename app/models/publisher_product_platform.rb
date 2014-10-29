@@ -59,6 +59,7 @@
 #  platform_other                   :string(255)
 #  created_at                       :datetime
 #  updated_at                       :datetime
+#  platform_other_b                 :boolean          default(FALSE)
 #
 
 class PublisherProductPlatform < ActiveRecord::Base
@@ -117,6 +118,7 @@ class PublisherProductPlatform < ActiveRecord::Base
                   :platform_49,
                   :platform_50,
                   :platform_other,
+                  :platform_other_b,
                   :created_at,
                   :updated_at
 

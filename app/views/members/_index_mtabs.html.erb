@@ -1,4 +1,4 @@
-<% provide(:title, 'Mail Tablets') %>
+<!-- <#% provide(:title, 'Mail Tablets') %#> -->
 
 		<div style="width: 598px;">						
 			<!-- <div style="height: 70px;"></div> -->
@@ -69,11 +69,49 @@
 			   	$.get("/mtablets", null, null, "script");
 			});
 
+
+
 			$('#tabs1').on('click', function() {
 				
 				change_selected(1);
-			   	$.get("/mtab1lets", null, null, "script");
-			   	
+
+				// $("#form_all_users").submit();
+
+				// $("#form_all_users").trigger('submit.rails');
+				$("#submit_all_users").click();
+
+				// var input_user_age_range_1 = 18;
+				// var input_user_age_range_2 = 25;
+				// // var obj_list = '{"user_age_range_1":' + input_user_age_range_1 + 
+							   // // ', "user_age_range_2":' + input_user_age_range_2 + 
+							   // // '}';      
+				// var obj_list = '{"clyde":"' + 'clyde in mtabs' + 
+							   // '"}';      
+			  	// var obj = '{ "members": [' +  obj_list + '] }';                  
+			  	// $.ajax({
+			    	// type: 'POST',
+			    	// // data : JSON.stringify(obj),
+			    	// data : obj,
+			    	// url: '/Members-Return',			    	
+			    	// dataType: "json",
+			    	// contentType: "application/json",
+			    	// processData: false,
+			    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	// statusCode: {
+	            	// },
+	            	// success: function(data) {
+	            		// alert(data.clyde);
+	            		// $("#render_test").html("<#%= escape_javascript(render :partial => 'members/test', :locals => { :clyde => @clyde } ) %#>");
+	            		// // $("#render_list").html("<#%= escape_javascript(render :partial => 'members/public_users', :object => @return_public_users ) %#>");
+// 	            		
+						// // $task_select_div.html(<#%= escape_javascript(render :partial => 'tasks', :locals => {:tasks => current_user.department.tasks} ) %#>)	            		
+// 	            		
+	            		// // alert(data.user_age_range_1);
+	            	// },
+	            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	// });
+		  		// return false;
+			   	// $.get("/Users", null, null, "script");
 				// $.get( "/mtab1lets", null, null, 'script', function() {
 				// })
 				// .done(function() {

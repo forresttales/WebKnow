@@ -1,2 +1,4 @@
-alert('ajax works in update_lesson_plan_subject');
+// alert('ajax works in update_lesson_plan_subject');
 $("#render_lesson_plan_subject_insert").html("<%= escape_javascript(render("publisher_product_descriptions/lesson_plan_subject")) %>");
+set_control_required("lesson_plan_subject", <%= @b_required_lesson_plan_subject %>);
+show_control("lesson_plan_subject");

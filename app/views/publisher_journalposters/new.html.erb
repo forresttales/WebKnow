@@ -585,33 +585,75 @@
 		<%= render 'share/backtotop' %>
 	</header>
 
+	<% if false %>
 	<div class="container">
 		<div class="table-profile">
 			<div class="row-profile">
-				
 				<div class="col-left">
 					<%= render 'share/dir_publishers_left'%>
 				</div>
-				
 				<div class="col-midd-right">
-			
 					<div class="line-space-20"></div>
-			
 					<div class="pad-left-20">
 						<span class="jp-title">Journal Posters</span>
 					</div>
-					
 					<div class="line-space-20"></div>
-					
-
 					<div id="publisher_journalposters" style="width: 100%; text-align: center;">
-						
 						<%= render 'publisher_journalposters/new' %>
-
 					</div>
 				</div>
-				
 			</div>
 		</div>
 	</div>
+	<% end %>
+
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				<div class="col-left">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>
+						<div class="row-profile">
+							<div class="col-left">
+								<%= render 'share/dir_publishers_left'%>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="col-midd" style="height: 800px;"> -->
+				<div class="col-midd-right" style="height: 900px;">
+
+					<div class="line-space-20"></div>
+			
+					<div class="pad-left-20">
+						<span class="jp-title">Posters</span>
+					</div>
+					
+					<div class="line-space-20"></div>
+
+					<div id="publisher_journalposters" style="width: 100%; text-align: center;">
+						<%= render 'publisher_journalposters/new' %>
+					</div>
+						
+				</div>
+				<!-- <div class="col-right">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-right">
+								<span><%= link_to "Members", '/Members' %></span>
+							</div>
+						</div>
+					</div>										
+				</div> -->								
+			</div>								
+		</div>
+	</div>
+
+
 

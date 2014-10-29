@@ -1,0 +1,165 @@
+
+
+
+<h1>Painting Gallery</h1>
+
+<div id="paintings">
+  <%= render @paintings %>
+</div>
+<div class="clear"></div>
+
+<!-- <input id="new_painting" type="file" name="files[]" data-url="" multiple> -->
+
+<!-- <#%= form_for(:form_pdf, :url => {:controller => :publisher_product_pdfs, :action => :create}, :remote => true, :html => {:method => :post, :id => 'upload_form_pdf', :multipart => true}) do |f| %#> -->
+<%= form_for(Painting.new, :url => {:controller => :paintings, :action => :create}, :remote => true, :html => {:method => :post, :id => 'new_painting', :multipart => true}) do |f| %>
+<!-- <#%= form_for Painting.new do |f| %#> -->
+  <%= f.label :image, "Upload paintings:" %>
+  <!-- <#%= f.file_field :image, multiple: true, name: "painting[image]" %#> -->
+  <%= f.file_field :image %>
+  <%= f.submit %>
+<% end %>
+
+
+<script id="template-upload" type="text/x-tmpl">
+<div class="upload">
+  {%=o.name%}
+  <!-- <div class="progress"><div class="bar" style="width: 0%"></div></div> -->
+</div>
+</script>
+
+
+	<script>
+	
+	
+		// jQuery ->
+		  // $('#new_painting').fileupload
+		    // dataType: "script"
+		    // add: (e, data) ->
+		      // types = /(\.|\/)(gif|jpe?g|png)$/i
+		      // file = data.files[0]
+		      // if types.test(file.type) || types.test(file.name)
+		        // data.context = $(tmpl("template-upload", file))
+		        // $('#new_painting').append(data.context)
+		        // data.submit()
+		      // else
+		        // alert("#{file.name} is not a gif, jpeg, or png image file")
+		    // progress: (e, data) ->
+		      // if data.context
+		        // progress = parseInt(data.loaded / data.total * 100, 10)
+		        // data.context.find('.bar').css('width', progress + '%')
+        
+        	
+        function callCatchIt() {
+        	alert('callCatchIt');
+        	// top.catchIt('IFrame done');
+        }	
+        	
+		$(window).load( function() {
+		// $(document).ready(function(){
+
+			// alert('load');
+			
+		    // $('#new_painting').fileupload({		    	
+		    	// // alert('fileupload');
+		    	// // type: 'POST',
+		    	// // data : obj,
+		    	// // url: '/paintings/create',			    	
+		    	// dataType: "json",
+		    	// // contentType: "application/json",
+		    	// // processData: false,
+		    	// // beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	// // statusCode: {
+            	// // },
+            	// success: function(data) {
+            		// alert('success');
+            	// },
+            	// error: function(xhr){  alert("error: " + xhr.statusText); },        
+		        // // dataType: 'json',
+		        // // done: function (e, data) {
+		            // // $.each(data.result.files, function (index, file) {
+		                // // $('<p/>').text(file.name).appendTo(document.body);
+		            // // });
+		        // // }		        
+		        // add: function (e, data) {
+		            // data.context = $('<p/>').text('Uploading...').appendTo(document.body);
+		            // data.submit();
+		        // },
+		        // done: function (e, data) {
+		            // data.context.text('Upload finished.');
+		        // }
+            	// // success: function(data) {
+            		// // alert('success');
+            	// // },
+            	// // error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	// // $.ajax({
+			    	// // type: 'POST',
+			    	// // data : obj,
+			    	// // url: '/publisher_product_descriptions/update_word_description',			    	
+			    	// // dataType: "json",
+			    	// // contentType: "application/json",
+			    	// // processData: false,
+			    	// // beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	// // statusCode: {
+	            	// // },
+	            	// // success: function(data) {
+	            	// // },
+	            	// // error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	// // });
+		  		// // return false;
+		    // });
+
+
+			// $('#fileupload .files').on('change', ':file', function (e) {
+			    // $('#fileupload').fileupload('add', {
+			        // fileInput: $(this)
+			    // });
+			// });
+
+
+			// $('#new_painting .files').on('change', ':file', function (e) {
+				// alert('change');
+			    // $('#new_painting').fileupload('add', {
+			        // fileInput: $(this)
+			    // });
+			// });
+
+
+		    // // $('#fileupload').fileupload({
+		    // $('#new_painting').fileupload({
+		    // // $('document').fileupload({
+		        // dataType: 'json',
+		        // // url: '/paintings/create',
+		        // // add: function (e, data) {
+		            // // data.context = $('<p/>').text('Uploading...').appendTo(document.body);
+		            // // data.submit();
+		        // // },		        
+		        // // url: '/paintings/create',			    	
+		        // add: function (e, data) {
+		            // data.context = $('<button/>').text('Upload')
+		                // .appendTo(document.body)
+		                // .click(function () {
+		                    // data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+		                    // data.submit();
+		                // });
+		        // },
+            	// success: function(data) {
+            		// alert('success');
+            	// },
+            	// error: function(xhr){  alert("error: " + xhr.statusText); },        
+		        // done: function (e, data) {
+		            // data.context.text('Upload finished.');
+		        // }
+		    // });
+
+
+			// alert('ready - new');
+			
+			// function doIt() {
+			 	// top.catchIt();
+			 	// // top.catchIt('clyde'); 
+			// }
+		
+		});
+
+	</script>
+

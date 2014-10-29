@@ -1,0 +1,74 @@
+<% provide(:title, 'Sign In') %>
+
+
+	<script type="/assets/javascript" src="/assets/jquery.js"></script>
+	<script src="/assets/jquery.validate.js"></script>
+	<link href="/assets/custom_sign_form.css" rel="stylesheet">
+
+
+	<div id="sign-page">
+		
+		<header>
+	
+			<%= render 'share/backtotop' %>
+
+			<div style="height: 70px;"></div>
+			
+		</header>
+		
+		
+		<div id="sign-page-inner">
+			
+			<div style="text-align: left;">
+				<span style="font-family: msyh; font-size: 22px; color: green;"></span>
+			</div>
+	
+			<div style="height: 30px;"></div>
+			
+			<div style="text-align: left;">
+				<span style="font-family: msyh; font-size: 22px;">Sign In</span>
+			</div>
+	
+			<div style="height: 30px;"></div>
+			
+			<div class="table-sign">
+				<div class="row">
+					
+					<div class="cell-100percent">
+												
+				    	<%= form_for(:session, url: sessions_path) do |f| %>	
+						<!-- = render 'shared/error_messages', object: f.object -->			
+					
+						<div class="row">
+							<div class="cell-left-sign" style="width: 20%;">
+								<%= f.label(:email, 'Email', class: 'input-label-sign') %>							
+							</div>
+							<div class="cell-right-sign" style="width: 50%;">
+								<%= f.text_field :email, :class => "input-sign", :autofocus => true %>	
+							</div>      	
+						</div>
+						
+						<div class="input-sign-spacer"></div>
+						      		
+						<div class="row">
+							<div class="cell-left-sign" style="width: 20%;">
+								<%= f.label(:password, 'Password', class: 'input-label-sign') %>					
+							</div>
+							<div class="cell-right-sign" style="width: 50%;">
+								<%= f.password_field :password, class: 'input-sign' %>
+								<div style="height: 30px;"></div>
+								<%= f.submit "Sign In", class: 'sign-btn' %>
+							</div>      	
+						</div>      		
+											
+						<% end %>
+						
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>	
+		
+	</div>

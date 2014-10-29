@@ -25,10 +25,10 @@ class Publisher < ActiveRecord::Base
   
     # attr_accessor :created_at, :updated_at
 
-    # attr_accessor :id, :user_id, :created_at, :updated_at
+    # attr_accessor :id
 
-    # attr_accessible :id,
-    attr_accessible :user_id,
+    attr_accessible :id,
+                    :user_id,
                     :name, 
                     :address, 
                     :city, 
@@ -49,10 +49,14 @@ class Publisher < ActiveRecord::Base
     has_one :publisher_setting
     has_one :publisher_admin_setting
 
+    # has_many :publisher_users
+    has_many :publisher_members
     has_many :publisher_products    
     has_many :publisher_profile_images
-    has_many :publisher_journalposters
-    has_many :journalposterpurchases
+    # has_many :publisher_journalposters
+    # has_many :journalposterpurchases
+    has_many :publisher_posters
+    # has_many :posterpurchases
     
       
     

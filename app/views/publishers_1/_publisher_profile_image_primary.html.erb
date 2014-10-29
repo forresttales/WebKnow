@@ -1,0 +1,312 @@
+
+
+			<div class="jqmWindow jqmWindow-2" id="dialog_2">
+		   		<div class="table-dl-form-2">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form2" class="form-edit-close jqmClose" tabindex="1">
+		   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+		   					</div>
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div class="pad-left-20">
+					<% if @publisher_profile_image_primary %>
+						<div style="display: inline-block;">
+							<%= image_tag @publisher_profile_image_primary.image_url(:profile_600_600), id: "cropbox_profile" %>
+						</div>
+						<div style="display: inline-block; vertical-align: top;">
+							<h4>Preview</h4>
+							<div style="width:200px; height:200px; overflow:hidden">
+							  <%= image_tag @publisher_profile_image_primary.image_url(:profile_600_600), :id => "preview_profile_200" %>
+							</div>
+							<div style="height: 4px"></div>
+							<div style="width:100px; height:100px; overflow:hidden">
+							  <%= image_tag @publisher_profile_image_primary.image_url(:profile_600_600), :id => "preview_profile_100" %>
+							</div>
+							<div style="height: 4px"></div>
+							<div style="width:50px; height:50px; overflow:hidden">
+							  <%= image_tag @publisher_profile_image_primary.image_url(:profile_600_600), :id => "preview_profile_50" %>
+							</div>
+							<div style="height: 4px"></div>
+							<div style="width:34px; height:34px; overflow:hidden">
+							  <%= image_tag @publisher_profile_image_primary.image_url(:profile_600_600), :id => "preview_profile_34" %>
+							</div>
+							<div style="height: 4px"></div>
+							<%= form_tag( crop_commit_publisher_profile_images_path ) do %>
+							  	<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_y, params["crop_y"], id: "id_crop_y", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_w, params["crop_w"], id: "id_crop_w", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_h, params["crop_h"], id: "id_crop_h", class: "input-crop" %><br>
+								<%= hidden_field_tag "image_id", @publisher_profile_image_primary.id %>
+							    <%= submit_tag "Save", class: '' %>
+							<% end %>	
+						</div>
+					<% else %>
+						<div> no @publisher_profile_image_primary</div>
+					<% end %>		
+				</div>
+			</div>
+
+
+
+								<% if @publisher_profile_image_primary %>   				
+								
+									<div class="profile-grid profile-cs-style-3">
+										<figure id="profile_figure">
+											<img id="id_image" alt="photo not appearing" src="<%= @publisher_profile_image_primary.image_url(:profile_300_300) if @publisher_profile_image_primary.image? %>" />
+											<figcaption class="figcaption-2">
+												<div class="tip-top-center"><%= button_to "", destroy_publisher_profile_image_publishers_path(:publisher_id => @publisher_id, :id => @publisher_profile_image_primary.id), :confirm => 'Delete this photo?', :remote => true, class: 'x-container' %></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Delete</div>
+								                </div>																								
+											</figcaption>
+											<figcaption class="figcaption-1">
+												<span class="dialog-2 label-dialog-figcaption">Crop/Center small images</span>
+											</figcaption>
+										</figure>
+									</div>
+
+								<% else %>
+
+									<div class="profile-grid profile-cs-style-3">
+										<figure id="profile_figure_generic" class="profile-figure-generic">
+											<img alt="logo not appearing" src="../images_publisher/generic-corporate-logo-w300-h300.png" />
+											<figcaption class="figcaption-1">
+												<span class="dialog-1 label-dialog-figcaption">Add a photo</span>
+											</figcaption>
+										</figure>
+									</div>
+								
+								<% end %>
+
+
+	<script>
+
+        function showPreview(coords)
+        {
+            if (parseInt(coords.w) > 0)
+            {
+                // var rx = 200 / coords.w;
+                // var ry = 200 / coords.h;
+		    	$('#id_crop_x').val(coords.x);
+		    	$('#id_crop_y').val(coords.y);
+		    	$('#id_crop_w').val(coords.w);
+		    	$('#id_crop_h').val(coords.h);
+
+                jQuery('#preview_profile_200').css({
+					width: Math.round(200 / coords.w * $('#cropbox_profile').width()) + 'px',
+				    height: Math.round(200 / coords.h * $('#cropbox_profile').height()) + 'px',
+				    marginLeft: '-' + Math.round(200 / coords.w * coords.x) + 'px',
+				    marginTop: '-' + Math.round(200 / coords.h * coords.y) + 'px'
+                    // width: Math.round(rx * 200) + 'px',
+                    // height: Math.round(ry * 200) + 'px',
+                    // marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+                    // marginTop: '-' + Math.round(ry * coords.y) + 'px'
+                });
+                jQuery('#preview_profile_100').css({
+					width: Math.round(100 / coords.w * $('#cropbox_profile').width()) + 'px',
+				    height: Math.round(100 / coords.h * $('#cropbox_profile').height()) + 'px',
+				    marginLeft: '-' + Math.round(100 / coords.w * coords.x) + 'px',
+				    marginTop: '-' + Math.round(100 / coords.h * coords.y) + 'px'
+                });
+                jQuery('#preview_profile_50').css({
+					width: Math.round(50 / coords.w * $('#cropbox_profile').width()) + 'px',
+				    height: Math.round(50 / coords.h * $('#cropbox_profile').height()) + 'px',
+				    marginLeft: '-' + Math.round(50 / coords.w * coords.x) + 'px',
+				    marginTop: '-' + Math.round(50 / coords.h * coords.y) + 'px'
+                });
+                jQuery('#preview_profile_34').css({
+					width: Math.round(34 / coords.w * $('#cropbox_profile').width()) + 'px',
+				    height: Math.round(34 / coords.h * $('#cropbox_profile').height()) + 'px',
+				    marginLeft: '-' + Math.round(34 / coords.w * coords.x) + 'px',
+				    marginTop: '-' + Math.round(34 / coords.h * coords.y) + 'px'
+                });
+                
+            }
+        }
+        
+		// jQuery(window).load(function(){
+			// jQuery("#cropbox_profile").each(function() {
+			  // // image_to_crop = $(this);
+			  // image_to_crop = $("#cropbox_profile");
+			  // image_to_crop.Jcrop({
+	          	// aspectRatio: 1,
+	        	// setSelect: [0, 0, 600, 600],
+	            // onSelect: function(coords){showPreview(image_to_crop, coords);},
+			    // onChange: function(coords){showPreview(image_to_crop, coords);}
+			// }
+        // });
+		
+		// jQuery(window).load(function(){
+		jQuery(document).ready(function() {
+			image_to_crop = $("#cropbox_profile");
+			image_to_crop.Jcrop({
+            // jQuery('#cropbox_profile').Jcrop({
+                aspectRatio: 1,
+            	setSelect: [0, 0, 600, 600],
+	            onSelect: function(coords){showPreview(coords);},
+			    onChange: function(coords){showPreview(coords);}
+	            // onSelect: function(coords){showPreview(image_to_crop, coords);},
+			    // onChange: function(coords){showPreview(image_to_crop, coords);}
+                // onSelect: showPreview,
+                // onChange: showPreview                
+            });
+        });
+
+        		
+	</script>
+
+
+	<script>
+
+		// $(document).on('click','.dialog-2', {} ,function(e){
+			// alert('crop');
+			// $("#dialog_2").jqmShow();
+		// });	
+
+		function closeAddImagePrimary() {
+			$("#close_form1").trigger('click');
+		};	  
+	  
+		function closeCropImage() {
+			$("#close_form2").trigger('click');
+		};	  
+
+		// $(window).load( function() {
+		$(document).ready( function () {				
+		
+			// alert($("#profile_figure img").width());
+
+			$("#profile_figure_generic").on('click', function() {
+				$(".dialog-1").click();	
+			});
+		
+			var img_generic = $("#profile_figure_generic img");
+			$("<img/>")
+	    		.attr("src", $(img_generic).attr("src"))
+	    		.load(function() {
+	        		img_width = this.width; 
+	        		$("#profile_figure_generic").css({
+	        			width : this.width
+	        		});
+	    		});		
+
+			var img = $("#profile_figure img");
+			$("<img/>")
+	    		.attr("src", $(img).attr("src"))
+	    		.load(function() {
+	        		img_width = this.width; 
+	        		$("#profile_figure").css({
+	        			width : this.width
+	        		});	        		
+	    		});		
+
+		
+			$(".dialog-2").on('click', function() {
+				$("#dialog_2").jqmShow();
+			});
+
+			$(".dialog-1").on('click', function() {
+				$("#dialog_1").jqmShow();
+				$("#primary").val('true');
+			});
+		
+			$('#dialog_1').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-740px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_1').animate(
+						{bottom:'-=800', top:'+=800'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_1').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+							// $('#dl_email').focus();
+						}
+					);
+				}
+			}); 		
+		
+			$('#dialog_2').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-740px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_2').animate(
+						{bottom:'-=800', top:'+=800'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_2').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+							// $('#dl_email').focus();
+						}
+					);
+				}
+			}); 		
+			
+			
+			
+			
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+			
+		
+		});
+	  
+
+	</script>		
+

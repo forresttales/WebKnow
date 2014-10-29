@@ -1,0 +1,8 @@
+// alert('ajax works in upload_publisher_profile_image_primary');
+<% if @publisher_profile_image_primary %>
+	$('#render_publisher_profile_image_primary').html("<%= j render('publishers/publisher_profile_image_primary') %>");
+	$('#render_publisher_profile_images').html("<%= j render('publishers/publisher_profile_images') %>");
+	closeAddImagePrimary();
+<% else %>
+	alert("Upload error");
+<% end %>

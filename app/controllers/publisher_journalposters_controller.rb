@@ -1,8 +1,9 @@
 class PublisherJournalpostersController < ApplicationController
   
-  layout 'publisher'
+  layout 'publisher_journalposter'
 
   # require 'csv'
+  respond_to :html, :js, :json  
   
   helper_method :sort_column, :sort_direction
 
@@ -13,19 +14,19 @@ class PublisherJournalpostersController < ApplicationController
     
     publisher = Publisher.where(["user_id = ?", current_user.id]).first
     @publisher_id = publisher.id
-    
-    # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction) # .paginate(:per_page => 200, :page => params[:page])
-    # @publisher_product_images = PublisherProductImage.where("publisher_product_id = ?", @publisher_product.id)
-    
+#     
+    # # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction) # .paginate(:per_page => 200, :page => params[:page])
+    # # @publisher_product_images = PublisherProductImage.where("publisher_product_id = ?", @publisher_product.id)
+#     
     @publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", @publisher_id).paginate(page: params[:page])
-
-    
-    # publisher = Publisher.where("user_id = ?", current_user.id).first
-    # if !publisher.nil?
-      # # @publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", session[:publisher_id]).order(sort_column + " " + sort_direction)
-      # @publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", publisher.id).order(sort_column + " " + sort_direction)
-    # end
-
+# 
+#     
+    # # publisher = Publisher.where("user_id = ?", current_user.id).first
+    # # if !publisher.nil?
+      # # # @publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", session[:publisher_id]).order(sort_column + " " + sort_direction)
+      # # @publisher_journalposters = PublisherJournalposter.where("publisher_id = ?", publisher.id).order(sort_column + " " + sort_direction)
+    # # end
+# 
     if !@publisher_journalposters.any?
       session[:publisher_has_journalposter] = false
     # else
@@ -33,6 +34,12 @@ class PublisherJournalpostersController < ApplicationController
     end
     if !session[:publisher_has_journalposter]
       redirect_to '/Publisher'
+    end
+    
+    respond_to do |format|
+      format.html
+      format.csv
+      format.js
     end
     
     
@@ -137,6 +144,8 @@ class PublisherJournalpostersController < ApplicationController
     
     
   end
+
+
 
 
   def dbdelete

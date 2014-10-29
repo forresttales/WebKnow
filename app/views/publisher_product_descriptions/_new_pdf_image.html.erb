@@ -1,0 +1,103 @@
+<% provide(:title, 'New Publisher Product PDF') %>
+
+
+	<!-- <script type="text/javascript" src="../scripts/jquery-1.9.1.js"></script> -->
+	<!-- <script src="/assets/jquery.js" type="text/javascript"></script> -->
+	<!-- <link href="/assets/custom_sign_form.css" rel="stylesheet"> -->
+
+	<style>
+
+		/**, *:after, *:before {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}*/
+
+		/*input[type=file] {*/
+		.input-file {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #888;
+			background-color: #fff;
+			border: 1px solid #ccc;			
+			width: 550px;
+			height: 30px;
+		}
+		.btn-submit {
+		  	color: #0FEAFF;
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 308px;
+		  	height: 30px;
+		  	background: linear-gradient(#000, #000);
+		  	text-shadow: 1px 1px 1px #0E86B2; 
+		  	border-radius: 6px;
+		}
+		.btn-submit:focus {
+		  background: #CCC; 
+		  color: #5F7A2A;
+		  box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
+		}
+		.btn-submit:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(255,255,255,0.3);
+		}
+		.btn-submit:active { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(0,0,0,0.3); 
+		}
+		
+	</style>	
+
+	<!-- <form accept-charset="UTF-8" action="/publisher_product_descriptions/upload_pdf_image" class="new_publisher_product_pdf_image" data-remote="true" enctype="multipart/form-data" id="new_publisher_product_pdf_image" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="xJQjSJLn7mtAgtvrYa9CkzdOZUGDUIZ2zlCo4pgYWHc=" /></div>	
+	  <p>
+	    <input class="input-file" id="publisher_product_pdf_image_image" name="publisher_product_pdf_image[image]" type="file" />
+	  </p>
+	  <input id="publisher_product_pdf_image_publisher_id" name="publisher_product_pdf_image[publisher_id]" type="hidden" value="1" />
+	  <input id="publisher_product_pdf_image_publisher_product_id" name="publisher_product_pdf_image[publisher_product_id]" type="hidden" value="1" />
+	  <input id="publisher_product_pdf_image_publisher_product_pdf_id" name="publisher_product_pdf_image[publisher_product_pdf_id]" type="hidden" value="" />
+	  <p><input class="btn-submit" name="commit" type="submit" value="Upload PDF Image" /></p>
+	</form> -->
+
+	<%= form_for PublisherProductPdfImage.new, :url => upload_pdf_image_publisher_product_descriptions_path(@publisher_product_pdf_image_new), :html => {:multipart => true}, :remote => true do |f| %>	
+	  <p>
+	    <%= f.file_field :image, :class => 'input-file' %>
+	  </p>
+	  <%= f.hidden_field 'publisher_id', :value => @publisher_id %>
+	  <%= f.hidden_field 'publisher_product_id', :value => @publisher_product_id %>
+	  <%= f.hidden_field 'publisher_product_pdf_id', :value => '' %>
+	  <!-- <input type="hidden" id="id_publisher_product_pdf" value="123"> -->
+	  <p><%= f.submit :class => 'btn-submit', :value => 'Upload PDF Image' %></p>
+	<% end %>
+
+	<script>
+
+		// function catchIt(msg) {
+			// alert("parent 1");
+		// }
+
+		// function doIt() {
+		 	// top.catchIt('clyde');
+		// }
+		
+		// $(window).load( function() {
+		$(document).ready(function(){
+			
+			$("#new_publisher_product_pdf_image").on('submit', function() {
+	    		var id1 = document.getElementById("id_publisher_product_pdf").value
+	    		// alert(id1);
+	    		// var id2 = document.getElementById("publisher_product_pdf_id").value
+	    		// alert(id2);
+	    		document.getElementById("publisher_product_pdf_image_publisher_product_pdf_id").value = id1 
+	    		// document.getElementById("demo").innerHTML = x;			
+	    		// var id2 = document.getElementById("publisher_product_pdf_image_publisher_product_pdf_id").value
+	    		// alert(id2);
+				// return false;
+			});
+			
+		});
+
+
+
+						
+	</script>

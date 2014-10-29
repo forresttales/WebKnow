@@ -1,0 +1,758 @@
+<% provide(:title, 'Publishers Home') %>
+
+
+	<script src="/assets/jqModal.js"></script>
+	<script src="/assets/jquery.easing.1.3.js"></script>
+	<link rel="stylesheet" href="/assets/jqModal.css" />
+	<script src="../jcrop/js/jquery.Jcrop.js"></script>
+	<script type="text/javascript">
+	  jQuery(function($){
+	    $('#target').Jcrop();
+	  });
+	</script>
+	<link rel="stylesheet" href="../jcrop/css/jquery.Jcrop.css" type="text/css" />
+
+ 	<style>
+ 		
+		*, *:after, *:before {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.clearfix:before, .clearfix:after { content: " "; display: table; }
+		.clearfix:after { clear: both; }
+		a {
+			color: #888;
+			text-decoration: none;
+		}
+		a:hover,
+		a:active {
+			color: #333;
+		}
+		.profile-grid {
+			padding: 0px 0px 0px 0px;
+			/*max-width: 1300px;*/
+			margin: 0 auto;
+			list-style: none;
+			/*text-align: center;*/
+		}
+		.profile-grid li {
+			display: inline-block;
+			width: 250px;
+			/*height: 300px;*/
+			/*margin: 0;*/
+			padding: 0px 0px 0px 0px;
+			position: relative;
+			text-align: center;
+		}
+		.profile-grid figure {
+			margin: 0;
+			position: relative;
+			/*height: 300px;*/
+			/*padding-left: 6px;*/
+			padding-top: 0px;	
+			background-color: #fff;
+		}
+		.profile-grid figure img {
+			max-width: 100%;
+			display: block;
+			position: relative;
+		}
+		.profile-grid figcaption {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 10px;
+			/*background: #2c3f52;*/
+			background: #000;
+			color: #ed4e6e;
+		}
+		/*.profile-grid figcaption h3 {
+			margin: 0;
+			padding: 0;
+			color: #fff;
+		}*/
+		/*.profile-grid figcaption span:before {
+			content: '';
+		}*/
+		.profile-grid figcaption {
+			text-align: right;
+		}
+		.profile-grid figcaption span a {
+			text-align: right;
+			/*padding: 5px 10px;*/
+			/*border-radius: 2px;*/
+			/*display: inline-block;*/
+			/*background: #ed4e6e;*/
+			color: #fff;
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 14px;
+			font-weight: 400;					  	
+		}
+		span a {
+			text-align: right;
+			color: #888;
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 14px;
+			font-weight: 400;					  	
+		}
+		.profile-cs-style-3 figure {
+			/*border: solid 1px #000;*/
+			overflow: hidden;
+		}
+		.profile-cs-style-3 figure img {
+			-webkit-transition: -webkit-transform 0.2s;
+			-moz-transition: -moz-transform 0.2s;
+			transition: transform 0.2s;
+		}
+		.no-touch .profile-cs-style-3 figure:hover img,
+		.profile-cs-style-3 figure.cs-hover img {
+			/*-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			-ms-transform: translateY(0px);
+			transform: translateY(0px);*/
+			
+			/*-webkit-transform: translateY(-6px);
+			-moz-transform: translateY(-6px);
+			-ms-transform: translateY(-6px);
+			transform: translateY(-6px);*/
+		}
+		.profile-cs-style-3 figcaption {
+			height: 50px;
+			width: 100%;
+			top: auto;
+			bottom: 0;
+			opacity: 0;
+			-webkit-transform: translateY(100%);
+			-moz-transform: translateY(100%);
+			-ms-transform: translateY(100%);
+			transform: translateY(100%);
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+			transition: transform 0.4s, opacity 0.1s 0.3s;
+		}
+		.no-touch .profile-cs-style-3 figure:hover figcaption,
+		.profile-cs-style-3 figure.cs-hover figcaption {
+			opacity: .8;
+			-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			-ms-transform: translateY(0px);
+			transform: translateY(0px);
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+			transition: transform 0.4s, opacity 0.1s;
+		}
+		/*.profile-cs-style-3 figcaption a {
+			position: absolute;
+			bottom: 20px;
+			right: 20px;
+		}*/
+		@media screen and (max-width: 31.5em) {
+			.profile-grid {
+				padding: 0px 0px 0px 0px;
+			}
+			.profile-grid li {
+				width: 100%;
+				min-width: 30px;
+			}
+		}
+ 		
+ 	</style>
+
+	<style>
+
+		/*
+		Light gray: 166/166/166				#A6A6A6
+		Blue: 31/124/130					#1F7C82
+		Blue-darker:#1B666B
+		Blue-lighter:#2899A1		
+		Blue-dark:#185C61
+		Blue-light:#3DC8D1
+		*/
+		
+		.input-gen {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			color: #888;
+			font-weight: 400;
+			font-size: 13px;
+			width: 300px;
+			height: 24px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #f6f6f6;
+			border-color: #478A3E;
+			border-width: 1px;
+			padding-left: 4px;
+		}
+		/*.input-gen:focus {
+			border-color: #478A3E;
+			color: #11520B;
+		}*/
+		.input-gen:focus,
+		.input-gen:hover {		
+			border-color: #478A3E;
+			/*color: #000;*/
+			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;
+		}
+		.input-gen:focus:hover {		
+			border-color: #478A3E;
+			/*color: #000;*/
+			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;
+		}
+		.input-gen:hover {		
+			-webkit-box-shadow: inset 0 0 1px 1px #185C61;
+			   -moz-box-shadow: inset 0 0 1px 1px #185C61;
+			        box-shadow: inset 0 0 1px 1px #185C61;
+		}
+		::-webkit-input-placeholder {
+		   color: #778899; /*#C0C0C0;*/
+		}
+		
+		:-moz-placeholder {
+		   color: #778899; /*#C0C0C0;*/
+
+		}
+		
+		::-moz-placeholder {
+		   color: #778899; /*#C0C0C0;*/
+
+		}
+		
+		:-ms-input-placeholder {  
+		   color: #778899; /*#C0C0C0;*/
+
+		}		
+		.form-edit-close {
+			width:20px;
+			height:20px;
+			/*background-color: #ddd;*/
+			float: right;
+			margin-right: 8px;
+			margin-top: 4px;
+		}		
+		.form-edit-close:hover {
+			cursor: pointer;
+			/*background-color: #FFD1D1;*/
+		}		
+		.form-dl-error {
+			/*font-family: Arial, Helvetica, sans-serif;
+			color: red;*/
+			/*font-weight: 400;*/
+			/*font-size: 13px;*/
+			padding-top: 4px;
+			margin-left: 6px;
+			width: 160px; 
+			height: 20px;
+		}
+		.form-dl-error label {
+			margin-left: 20px;
+			font-family: Arial, Helvetica, sans-serif;
+			color: red;
+			font-weight: 400;
+			font-size: 12px;
+			padding-top: 4px;
+			margin-left: 0px;
+		}
+		.btn-submit {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			font-weight: 400;		
+			text-align: center;	
+			padding-top: 0px;
+		  	/*color: #FBB040;*/
+		  	color: #fff;
+		  	/*display: inline-block;*/
+		  	text-decoration: none; 
+		  	width: 200px;
+		  	height: 28px;
+		  	/*background: linear-gradient(#41B737, #37633A);*/
+		  	background: linear-gradient(#2899A1, #1F7C82);
+
+		  	/*text-shadow: 1px 1px 1px #0E86B2;*/
+		  	border: 0px solid #fff; 
+		  	border-radius: 2px;
+		}
+		.btn-submit:focus {
+			/*border-color: #478A3E;
+			color: #11520B;
+			font-weight: 700;*/
+			-webkit-box-shadow: 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: 0 0 1px 1px #3DC8D1;
+			        box-shadow: 0 0 1px 1px #3DC8D1;
+		  	background: linear-gradient(#2899A1, #1F7C82);
+		  	/*background: #CCC;*/ 
+		  	/*color: #5F7A2A;*/
+		  	/*box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);*/
+		}
+		.btn-submit:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-submit:active { 
+		  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	/*color: #FBB040;*/
+		 	color: #fff;
+		  	/*background: linear-gradient(#37633A, #41B737);*/
+		  	background: linear-gradient(#1F7C82, #2899A1);
+		  	outline:none;
+		}
+		.table-dl-form {
+			display: table;
+			vertical-align: top;
+			width: 700px;	
+		}
+		.dl-form-divider-line {
+			width: 98%;
+			color: #fff;
+		}
+		/*.check-required {
+			background-image: url("/assets/red_star_7.png");		
+			background-repeat: no-repeat;
+			background-position: 0px 0px;
+			top: 0px;			
+		}*/
+		input.error {
+			background-color: #FFF1F0;
+			background-image: url("/assets/red_star_7.png");		
+			background-repeat: no-repeat;
+			background-position: 288px 0px;			
+		}
+		.display-none {
+			display: none;
+		}
+		.form-pdf {
+		}
+		.form-pdf-title {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #185C61;
+			font-weight: 400;
+			font-size: 14px;			
+		}
+		.table-dl-form-background {
+			padding: 10px 10px;
+			border-top: 1px solid #185C61;
+			border-bottom: 1px solid #185C61;
+			background-color: #DCE7E8; /*#BCD4D6;*/			
+		}
+		.row-divider {
+			height: 4px;	
+		}
+		
+	</style>
+
+	<style>
+		
+		.jqmWindow {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 400px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}
+		.jqmOverlay { background-color: #000; }
+		* html .jqmWindow {
+		     position: absolute;
+		     top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
+		}		
+
+	</style>
+
+	<style>
+		
+		.input-crop {
+			width: 80px;
+			background-color: #fff;	
+		}
+		
+	</style>
+
+	<style>
+		
+		span.label-dialog {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #888;
+		}
+		span.label-dialog:hover {
+			text-decoration: underline;
+			cursor: pointer;			
+		}
+		
+	</style>
+
+
+	<style>
+		
+		.btn-reset {
+			width: 500px;
+			height: 24px;
+			background-color: #888;
+			border: 1px solid #111;	
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			font-weight: 400;
+			color: #000;
+		}
+		.btn-reset:hover {
+			background-color: #666;
+			color: #fff;	
+		}
+		
+		
+	</style>
+
+
+	<!-- <header>
+		<#%= render 'share/backtotop' %#>
+	</header> -->
+
+<% if false %>		
+			<div class="jqmWindow" id="dialog_1">
+		   		<div class="table-dl-form">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form1" class="form-edit-close jqmClose" tabindex="1">
+		   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+		   					</div>
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div class="pad-left-20">
+					<% if @publisher_user_image_primary %>
+						<div style="display: inline-block;">
+							<%= image_tag @publisher_user_image_primary.image_url(:user_600_600), id: "cropbox" %>
+						</div>
+						<div style="display: inline-block; vertical-align: top;">
+							<h4>Preview</h4>
+							<div style="width:100px; height:100px; overflow:hidden">
+							  <%= image_tag @publisher_user_image_primary.image_url(:user_600_600), :id => "preview" %>
+							</div>
+							<%= form_tag( crop_commit_publisher_user_images_path ) do %>
+							  	<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_y, params["crop_y"], id: "id_crop_y", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_w, params["crop_w"], id: "id_crop_w", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_h, params["crop_h"], id: "id_crop_h", class: "input-crop" %><br>
+								<%= hidden_field_tag "image_id", @publisher_user_image_primary.id %>
+							    <%= submit_tag "Save" %>
+							<% end %>	
+						</div>
+					<% else %>
+						<div>Add a photo here</div>
+						
+							<%= form_for PublisherUserImage.new, :url => upload_publisher_user_image_primary_publisher_users_path(@publisher_user_image_new), :html => {:multipart => true}, :remote => true do |f| %>
+							  <p><%= f.file_field :image %></p>
+							  <%= f.hidden_field 'publisher_id', :value => @publisher_id %>
+							  <%= f.hidden_field 'publisher_user_id', :value => @publisher_user_id %>
+							  <%= f.hidden_field 'primary', :value => true %>
+							  <p><%= f.submit :class => 'btn-submit', :value => 'Upload User Image' %></p>
+							<% end %>
+						
+					<% end %>		
+				</div>
+			</div>
+<% end %>
+
+
+			<div class="jqmWindow" id="dialog_1">
+		   		<div class="table-dl-form">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form1" class="form-edit-close jqmClose" tabindex="1">
+		   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+		   					</div>
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div class="pad-left-20">
+					<div>Add a photo here</div>
+					<%= form_for PublisherUserImage.new, :url => upload_publisher_user_image_primary_publisher_users_path(@publisher_user_image_new), :html => {:multipart => true}, :remote => true do |f| %>
+					  <p><%= f.file_field :image %></p>
+					  <%= f.hidden_field 'publisher_id', :value => @publisher_id %>
+					  <%= f.hidden_field 'publisher_user_id', :value => @publisher_user_id %>
+					  <%= f.hidden_field 'primary', :value => true %>
+					  <p><%= f.submit :class => 'btn-submit', :value => 'Upload User Image' %></p>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="jqmWindow" id="dialog_2">
+		   		<div class="table-dl-form">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form2" class="form-edit-close jqmClose" tabindex="1">
+		   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+		   					</div>
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div class="pad-left-20">
+					<% if @publisher_user_image_primary %>
+						<div style="display: inline-block;">
+							<%= image_tag @publisher_user_image_primary.image_url(:user_600_600), id: "cropbox" %>
+						</div>
+						<div style="display: inline-block; vertical-align: top;">
+							<h4>Preview</h4>
+							<div style="width:100px; height:100px; overflow:hidden">
+							  <%= image_tag @publisher_user_image_primary.image_url(:user_600_600), :id => "preview" %>
+							</div>
+							<%= form_tag( crop_commit_publisher_user_images_path ) do %>
+							  	<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_y, params["crop_y"], id: "id_crop_y", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_w, params["crop_w"], id: "id_crop_w", class: "input-crop" %><br>
+							  	<%= text_field_tag :crop_h, params["crop_h"], id: "id_crop_h", class: "input-crop" %><br>
+								<%= hidden_field_tag "image_id", @publisher_user_image_primary.id %>
+							    <%= submit_tag "Save" %>
+							<% end %>	
+						</div>
+					<% end %>		
+				</div>
+			</div>
+		
+			<div class="jqmWindow" id="dialog_3">
+		   		<div class="table-dl-form">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form3" class="form-edit-close jqmClose" tabindex="1">
+		   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+		   					</div>
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div class="pad-left-20">
+					<div>Add another photo here</div>
+					<%= form_for PublisherUserImage.new, :url => upload_publisher_user_image_publisher_users_path(@publisher_user_image_new), :html => {:multipart => true}, :remote => true do |f| %>
+					  <p><%= f.file_field :image %></p>
+					  <%= f.hidden_field 'publisher_id', :value => @publisher_id %>
+					  <%= f.hidden_field 'publisher_user_id', :value => @publisher_user_id %>
+					  <p><%= f.submit :class => 'btn-submit', :value => 'Upload User Image' %></p>
+					<% end %>
+				</div>
+			</div>
+
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				<div class="col-left">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>
+						<div class="row-profile">
+							<div class="col-left">
+								<%= render 'share/dir_publishers_left'%>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-midd" style="height: 800px;">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-midd-600">
+								
+								<div style="text-align: left;">
+									<span class="normal pad-left-20">Home</span>
+								</div>
+					
+								<div style="height: 30px;"></div>
+
+								<!-- <span><a href="#dialog_1" class="jqModal">Add a photo</a></span> -->
+								<div class="pad-left-20">
+									<span class="dialog-3 label-dialog">&laquo; Add a photo &raquo;</span>
+								</div>
+								
+								<div style="height: 30px;"></div>
+								<!-- <a href="#" class="jqModal" id="pdf_1">Open</a> -->
+										
+	
+								<div id="render_publisher_user_image_primary" class="pad-left-20">
+									<%= render 'publisher_user_image_primary' %>
+								</div>
+								
+								<div id="render_publisher_user_images" class="pad-left-20">
+									<%= render 'publisher_user_images' %>
+								</div>
+
+								<div style="height:400px;"></div>
+																
+						    	<div class="delete-record"style="width: 100%; text-align: center;">
+							    	<h5>
+									   	<% delete_all_msg = "Delete all records and reset index in PublisherUserImages?" %>
+										<%= button_to "Delete All Records and Reset Index in PublisherUserImages", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'btn-reset' %>
+									</h5>
+								</div>
+								
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="col-right">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-right">
+								<span><%= link_to "Members", '/Members' %></span>
+								<!-- <#%= render 'share/dir_publishers_right' %#> -->
+							</div>
+						</div>
+					</div>										
+				</div>								
+			</div>
+		</div>
+	</div>
+
+	<div style="height:100px;"></div>
+
+
+	<script>
+		SlideDeckAssistant.init();
+	</script>
+
+	<script>
+	  
+	  
+		function closeAddImagePrimary() {
+			$("#close_form1").trigger('click');
+		};	  
+	  
+		function closeCropImage() {
+			$("#close_form2").trigger('click');
+		};	  
+
+		function closeAddImage() {
+			$("#close_form3").trigger('click');
+		};	  
+	  
+		// $(window).load( function() {
+		$(document).ready(function () {				
+		
+		
+			$(".dialog-1").on('click', function() {
+				// alert('click');
+				$("#dialog_1").jqmShow();
+				$("#primary").val('true');
+			});
+			$(".dialog-2").on('click', function() {
+				// alert('click');
+				$("#dialog_2").jqmShow();
+			});
+			$(".dialog-3").on('click', function() {
+				// alert('click');
+				$("#dialog_3").jqmShow();
+			});
+		
+			// $(".jqModal").on('click', function() {
+				// // id_pdf = $(this).attr('id');
+			// });
+						
+			$('#dialog_1').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-740px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_1').animate(
+						{bottom:'-=800', top:'+=800'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_1').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+							$('#dl_email').focus();
+						}
+					);
+				}
+			}); 		
+		
+			$('#dialog_2').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-740px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_2').animate(
+						{bottom:'-=800', top:'+=800'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_2').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+							// $('#dl_email').focus();
+						}
+					);
+				}
+			}); 		
+		
+			$('#dialog_3').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-740px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_3').animate(
+						{bottom:'-=800', top:'+=800'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_3').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+							// $('#dl_email').focus();
+						}
+					);
+				}
+			}); 		
+		
+		
+		
+		
+		
+				// var cnt = 1;
+				// var cells = "";
+				// // alert(gon.image_name);
+				// if (gon.image_name !== '') {								
+					// cells += "</td><td style='width: 10px;'></td><td><img src='../images_publisher/" + gon.image_name + "' alt='image'>";
+					// var tbl = "<table><tr>" + cells + "</tr></table>";
+					// $( "#render" ).html( tbl);
+				// }
+				// else {
+					// var tbl = "<table><tr><td><span class='normal-red pad-left-20'>No photo</span><td></tr></table>";
+					// $( "#render" ).html( tbl);				
+				// }
+		});
+	  
+	</script>		

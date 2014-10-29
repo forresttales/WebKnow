@@ -1,5 +1,6 @@
 class PublisherAdminsController < ApplicationController
 
+  require 'RMagick'
   
   layout 'publisher'
 
@@ -10,6 +11,16 @@ class PublisherAdminsController < ApplicationController
     
 
   def index
+
+    publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    @publisher_id = publisher.id
+
+    # @user_profile_images = UserProfileImage.where("user_id = ?", current_user.id)     
+    # @user_profile_image = UserProfileImage.where("user_id = ?", current_user.id).first
+    
+    @publisher_profile_images = PublisherProfileImage.where("publisher_id = ?", publisher.id)     
+    @publisher_profile_image = PublisherProfileImage.where("publisher_id = ?", publisher.id).first
+
     
     # publisher = Publisher.find(1)
     # if publisher.nil?
@@ -17,7 +28,9 @@ class PublisherAdminsController < ApplicationController
     # else
       # render text: publisher.id
     # end
-    publisher = Publisher.where(["user_id = ?", current_user.id]).first
+    
+    # img = UserProfileImage.find(params[:image_id])
+    
     # publishers = Publisher.where("user_id = 1")
     # publisher = publishers[0]
     
@@ -33,7 +46,8 @@ class PublisherAdminsController < ApplicationController
     # @publisher_profile_images = PublisherProfileImage.where("publisher_profile_image.publisher_id = ? AND publisher_profile_image.primary = ?", session[:publisher_id], true)       
     # @publisher_profile_images = PublisherProfileImage.where("publisher_id = ? AND primary = ?", session[:publisher_id], true)  
     # @publisher_profile_images = PublisherProfileImage.where("publisher_id = ?", session[:publisher_id])     
-    @user_profile_images = UserProfileImage.where("user_id = ?", current_user.id)     
+
+    
 
     # if @user_profile_images.any?
       # @user_profile_image_nav = @user_profile_images[0]
@@ -66,12 +80,12 @@ class PublisherAdminsController < ApplicationController
   
   
   def settings
-    @publisher = Publisher.find_by_id(session[:publisher_id])   
+    @publisher = Publisher.find_by_id(params[:id])   
   end
 
 
   def show
-    @publisher = Publisher.find_by_id(session[:publisher_id])   
+    @publisher_admin = Publisher.find_by_id(params[:id])   
   end
 
   

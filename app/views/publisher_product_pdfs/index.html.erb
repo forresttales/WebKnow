@@ -1,0 +1,159 @@
+
+
+		
+ 	<style>
+ 		
+		.image-grid figcaption.figcaption-1 {
+			text-align: right;			
+			padding-top: 5px;
+			text-align: center;
+			/*padding-right: 10px;*/
+			/*padding-left: 0px;
+			padding-bottom: 0px;*/
+
+			background: #000;
+			/*color: #fff;*/
+		}
+		.image-grid figcaption.figcaption-1 a {
+			text-align: right;
+			color: #fff;
+			font-family: Arial, Helvetica, sans-serif;
+		    font-size: 13px;
+			font-weight: 200;					  	
+		} 		
+		.image-grid-caption-height-50 figcaption {
+			height: 50px;
+		}
+		div.image-grid-text-1-container {
+			width: 100%;
+			text-align: left;
+		}
+		div.image-grid-text-1-container span,
+		div.image-grid-text-1-container a {
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 13px;
+			font-weight: 200;
+			color: #888;								  	
+		}
+		div.image-grid-text-2-container {
+			width: 100%;
+			text-align: center;
+		}
+		div.image-grid-text-2-container span,
+		div.image-grid-text-2-container a {
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 13px;
+			font-weight: 200;
+			color: #888;								  	
+		}
+		.figure-box-500 {
+			width: 500px; 
+			height: 500px; 
+			border: 1px solid #888;
+		}
+		.figure-box-325 {
+			width: 325px; 
+			height: 207px; 
+			/*border: 1px solid #888;*/
+		}
+		.figure-box-200-200 {
+			width: 200px; 
+			height: 200px; 
+			/*border: 1px solid #888;*/
+		}
+		.figure-box-200-270 {
+			width: 200px; 
+			height: 270px; 
+			/*border: 1px solid #888;*/
+		}
+		.figure-box-100 {
+			width: 100px; 
+			height: 100px; 
+			border: 1px solid #888;
+		}
+		.figure-box-50 {
+			width: 50px; 
+			height: 50px; 
+			border: 1px solid #888;
+		}
+
+ 	</style>
+		
+
+
+					<!-- <span class="pad-left-20"><#%= link_to 'New PDF', '/Publisher-Product-New-PDF', :class => 'links' %#></span> -->
+
+					<!-- <div class="line-space-20"></div> -->
+		 			 
+		 			 
+					<%= render 'publisher_product_pdfs/list_pdfs'%>		 			 
+		 			 
+		 			 
+		 			 
+					<% if false %>		 			 
+					<% if @publisher_product_pdfs.any? %>
+				
+					<!-- <div style="height: 400px;"></div> -->
+			
+						<% for i in 0..(@publisher_product_pdfs.count - 1) %>
+				
+							<div><%= @publisher_product_pdfs[i].name_file %></div>
+							
+							<% if false %>
+							<div id="image_container"></div>
+						    <script id="imageTemplate_<%= i %>" type="text/x-jQuery-tmpl">
+						    	
+						    	<table style="margin-right: 30px; margin-left: 30px;">
+						    		<tr>
+						    			<td>
+						    				<img src="../images_publisher_product_logo/<%= @publisher_product_logos[i].name_file %>" alt="<%= @publisher_product_logos[i].name_file %>">
+						    			</td>
+						    		</tr>
+						    		<tr>
+						    			<td>
+									    	<span class="normal">
+											   	<% delete_msg = "Delete Logo Image ID: " + @publisher_product_logos[i].id.to_s + " ?" %>
+												<%= button_to "Delete", {:action => 'destroy', :id => @publisher_product_logos[i].id}, :method => :delete, :confirm => delete_msg, :class => 'delete-btn' %>
+											</span>
+						    			</td>
+						    		</tr>
+				
+						    	</table>
+						        
+					    	</script>
+							<% end %>
+							
+						<% end %>
+			
+					<% else %>
+			
+						<div>
+							<span class="normal-red pad-left-20">No pdfs</span>
+						</div>
+
+					<% end %>
+					<% end %>
+		 			 
+
+	<!-- <script>
+	  
+		// //$(document).ready(function() {
+		// $(window).load( function() {
+// 	
+			// var cnt = gon.logos_count;
+// 
+			// var container = "";
+			// var ref = "";
+			// var imageTemplate;
+// 			
+			// for( i = 0; i < cnt; i++) {
+				// container = "#imageTemplate_" + i;
+				// imageTemplate = $(container).html();
+				// ref = "#image_container";
+			    // $(ref).append(imageTemplate);
+			// }
+		// });
+	  		  
+	</script> -->		
+		
+

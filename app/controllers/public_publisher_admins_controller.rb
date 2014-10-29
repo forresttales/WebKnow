@@ -1,0 +1,2 @@
+class PublicPublisherAdminsController < ApplicationController
+end

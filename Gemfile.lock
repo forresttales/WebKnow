@@ -110,6 +110,7 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     recaptcha (0.3.6)
+    remotipart (1.2.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rmagick (2.13.2)
@@ -144,8 +145,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.2)
-      coffee-rails
     tzinfo (0.3.39)
     uglifier (2.5.1)
       execjs (>= 0.3.0)
@@ -177,12 +176,12 @@ DEPENDENCIES
   rails_12factor
   rake (~> 10.2.1)
   recaptcha
+  remotipart
   rmagick
   sass-rails
   sdoc
   sqlite3
   stripe
   tabulous
-  turbolinks
   uglifier
   will_paginate

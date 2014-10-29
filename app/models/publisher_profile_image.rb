@@ -11,6 +11,10 @@
 #  order        :integer          default(0)
 #  created_at   :datetime
 #  updated_at   :datetime
+#  crop_x       :integer          default(0)
+#  crop_y       :integer          default(0)
+#  crop_w       :integer          default(0)
+#  crop_h       :integer          default(0)
 #
 
 class PublisherProfileImage < ActiveRecord::Base
@@ -24,6 +28,10 @@ class PublisherProfileImage < ActiveRecord::Base
                   :image_name,
                   :primary,
                   :order,
+                  :crop_x,
+                  :crop_y,
+                  :crop_w,
+                  :crop_h,
                   :created_at,
                   :updated_at 
   
@@ -35,6 +43,7 @@ class PublisherProfileImage < ActiveRecord::Base
   mount_uploader :image, PublisherProfileUploader
   
   belongs_to :publisher
+  
   
   
   def self.dbdelete

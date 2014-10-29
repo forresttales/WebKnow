@@ -1,0 +1,3 @@
+//alert('return_publishers.js');
+$('#render_list').html("<%= j render('members/list_public_publishers') %>");
+$('#render_record_count span').html("<%= @public_publishers.count %>");

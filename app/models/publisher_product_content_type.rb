@@ -29,6 +29,7 @@
 #  content_type_other               :string(255)
 #  created_at                       :datetime
 #  updated_at                       :datetime
+#  content_type_other_b             :boolean          default(FALSE)
 #
 
 class PublisherProductContentType < ActiveRecord::Base
@@ -57,6 +58,7 @@ class PublisherProductContentType < ActiveRecord::Base
                   :content_type_19,
                   :content_type_20,
                   :content_type_other,
+                  :content_type_other_b,
                   :created_at,
                   :updated_at
 

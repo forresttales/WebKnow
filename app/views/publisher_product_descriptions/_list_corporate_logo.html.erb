@@ -1,0 +1,337 @@
+
+<% if false %>
+										<% if @publisher_product_corporate_logo %>   				
+										
+											<!-- <#% for publisher_journalposter_logo in @publisher_journalposter.publisher_journalposter_logos %#> -->
+							   				<div class="">
+												<ul class="image-grid image-grid-caption image-grid-caption-height-50">
+													<li>
+														<figure class="figure-box-200-200">
+															<img alt="image not appearing" src="<%= @publisher_product_corporate_logo.image_url(:image_200_200) if @publisher_product_corporate_logo.image? %>" />
+															<figcaption class="figcaption-1">
+																<span>Edit</span>
+																<!-- <span><#%= link_to "Edit", publisher_product_images_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id) %#></span> -->
+																<br>
+																<span>Delete</span>
+																<!-- <span><#%= link_to "Delete", destroy_image_publisher_product_images_path( :publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :publisher_product_image_id => @publisher_product_image.id, :descr => 1 ), :confirm => 'Delete this image?', :method => :post %#></span> -->
+															</figcaption>
+														</figure>
+													</li>
+												</ul>
+										        <!-- image_tag publisher_journalposter_logo.image_url(:logo) if publisher_journalposter_logo.image?  -->
+								   			</div>
+								   			<div class="image-grid-text-1-container">
+								   				<span>Edit</span>&nbsp;&nbsp;&nbsp;<span>Delete</span>
+								   				
+												<!-- <span><#%= link_to "Edit", publisher_product_images_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id) %#></span>
+												&nbsp;&nbsp;&nbsp;			   				
+								   				<span><#%= link_to "Delete", destroy_image_publisher_product_images_path( :publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :publisher_product_image_id => @publisher_product_image.id, :descr => 1 ), :confirm => 'Delete this image?', :method => :post %#></span> -->
+												
+								   			</div>
+											<!-- <#% end %#> -->
+		
+										<% else %>
+		
+							   				<div class="">
+												<ul class="image-grid image-grid-caption image-grid-caption-height-50">
+													<li>
+														<figure class="figure-box-200-200">
+															<img alt="logo not appearing" src="../images_publisher_product_corporate_logo/generic-corporate-logo-w200-h200.png" />
+															<figcaption class="figcaption-1">
+																<!-- <span><#%= link_to "Add a product image", new_publisher_product_corporate_logo_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id) %#></span> -->
+																<span><button type="button" class="product-link-btn" onclick="openEditProductCorporateLogo()">&laquo; Add a corporate logo &raquo;</button></span>	
+															</figcaption>
+														</figure>
+													</li>
+												</ul>
+								   			</div>
+								   			<div class="image-grid-text-2-container">
+								   				<!-- <span><#%= link_to "&laquo; Add a product image &raquo;".html_safe, new_publisher_product_corporate_logo_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id) %#></span> -->
+								   				<span><button type="button" class="product-link-btn" onclick="openEditProductCorporateLogo()">&laquo; Add a corporate logo &raquo;</button></span>
+								   			</div>
+								   			<!-- <div class="cell-400">
+												<span><#%= link_to '&laquo; Add a photo &raquo;'.html_safe, new_publisher_profile_image_path(:publisher_id => @publisher_id), :class => 'links' %#></span>
+								   			</div> -->
+										
+										<% end %>
+<% end %>
+
+
+
+
+
+
+								<% if @publisher_product_corporate_logo %>   				
+								
+									<div class="profile-grid profile-cs-style-3">
+										<!-- <figure id="figure_product" class="profile-figure dialog-5-figure"> -->
+										<figure class="figure-corporate-logo">
+										<!-- <figure id="profile_figure"> -->
+											<img alt="image not appearing" src="<%= @publisher_product_corporate_logo.image_url(:image_200_200) if @publisher_product_corporate_logo.image? %>" />
+											<input class="x-container-hidden" type="hidden" value="<%= @publisher_product_corporate_logo.image_url if @publisher_product_corporate_logo.image? %>" />
+											<figcaption class="figcaption-2">
+												<div class="tip-top-center"><%= button_to "", destroy_product_corporate_logo_publisher_product_descriptions_path( :publisher_product_corporate_logo_id => @publisher_product_corporate_logo.id), :confirm => 'Delete this image?', :remote => true, class: 'x-container' %></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Delete</div>
+								                </div>																								
+											</figcaption>
+											<figcaption class="figcaption-1">
+												<span class="dialog-12 label-dialog-figcaption">Crop/Center small images</span>
+											</figcaption>
+										</figure>
+									</div>
+
+								<% else %>
+
+									<div class="profile-grid profile-cs-style-3">
+										<figure class="figure-corporate-logo-generic">
+											<img alt="logo not appearing" src="../images_publisher_product_corporate_logo/generic-corporate-logo-w200-h200.png" />
+											<!-- <img alt="logo not appearing" src="../images_avatar/avatar_generic_1_w250_h310.png" /> -->
+											<figcaption class="figcaption-1">
+												<span class="dialog-81 label-dialog-figcaption">Add a photo</span>
+											</figcaption>
+										</figure>
+									</div>
+								
+								<% end %>
+
+
+
+	<script>
+
+        function showPreviewProductCorporateLogo(coords)
+        {
+            // if (parseInt(coords.w) > 0)
+            // {
+                // // var rx = 200 / coords.w;
+                // // var ry = 200 / coords.h;
+		    	// $('#id_crop_x').val(coords.x);
+		    	// $('#id_crop_y').val(coords.y);
+		    	// $('#id_crop_w').val(coords.w);
+		    	// $('#id_crop_h').val(coords.h);
+// 
+                // jQuery('#preview_logo_200').css({
+					// width: Math.round(200 / coords.w * $('#cropbox_logo').width()) + 'px',
+				    // height: Math.round(200 / coords.h * $('#cropbox_logo').height()) + 'px',
+				    // marginLeft: '-' + Math.round(200 / coords.w * coords.x) + 'px',
+				    // marginTop: '-' + Math.round(200 / coords.h * coords.y) + 'px'
+                    // // width: Math.round(rx * 200) + 'px',
+                    // // height: Math.round(ry * 200) + 'px',
+                    // // marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+                    // // marginTop: '-' + Math.round(ry * coords.y) + 'px'
+                // });
+                // jQuery('#preview_logo_100').css({
+					// width: Math.round(100 / coords.w * $('#cropbox_logo').width()) + 'px',
+				    // height: Math.round(100 / coords.h * $('#cropbox_logo').height()) + 'px',
+				    // marginLeft: '-' + Math.round(100 / coords.w * coords.x) + 'px',
+				    // marginTop: '-' + Math.round(100 / coords.h * coords.y) + 'px'
+                // });
+                // jQuery('#preview_logo_50').css({
+					// width: Math.round(50 / coords.w * $('#cropbox_logo').width()) + 'px',
+				    // height: Math.round(50 / coords.h * $('#cropbox_logo').height()) + 'px',
+				    // marginLeft: '-' + Math.round(50 / coords.w * coords.x) + 'px',
+				    // marginTop: '-' + Math.round(50 / coords.h * coords.y) + 'px'
+                // });
+                // jQuery('#preview_logo_34').css({
+					// width: Math.round(34 / coords.w * $('#cropbox_logo').width()) + 'px',
+				    // height: Math.round(34 / coords.h * $('#cropbox_logo').height()) + 'px',
+				    // marginLeft: '-' + Math.round(34 / coords.w * coords.x) + 'px',
+				    // marginTop: '-' + Math.round(34 / coords.h * coords.y) + 'px'
+                // });
+//                 
+            // }
+        }
+        
+		// jQuery(window).load(function(){
+			// jQuery("#cropbox_profile").each(function() {
+			  // // image_to_crop = $(this);
+			  // image_to_crop = $("#cropbox_profile");
+			  // image_to_crop.Jcrop({
+	          	// aspectRatio: 1,
+	        	// setSelect: [0, 0, 600, 600],
+	            // onSelect: function(coords){showPreview(image_to_crop, coords);},
+			    // onChange: function(coords){showPreview(image_to_crop, coords);}
+			// }
+        // });
+		
+		// jQuery(window).load(function(){
+		// jQuery(document).ready(function() {
+			// // image_to_crop = $("#cropbox_logo");
+			// // image_to_crop.Jcrop({
+            // // // jQuery('#cropbox_profile').Jcrop({
+                // // aspectRatio: 1,
+            	// // setSelect: [0, 0, 600, 600],
+	            // // onSelect: function(coords){showPreviewLogo(coords);},
+			    // // onChange: function(coords){showPreviewLogo(coords);}
+	            // // // onSelect: function(coords){showPreview(image_to_crop, coords);},
+			    // // // onChange: function(coords){showPreview(image_to_crop, coords);}
+                // // // onSelect: showPreview,
+                // // // onChange: showPreview                
+            // // });
+        // });
+
+        		
+	</script>
+
+
+	<script>
+
+		function closeCropProductCorporateLogo() {
+			// $("#close_form32").trigger('click');
+		};	  
+
+		// function closeShowProduct2Image() {
+			// $("#close_form22").trigger('click');			
+		// };	  		
+		function closeAddProductCorporateLogo() {
+			$("#close_form81").trigger('click');
+			$("#dvLoading_81").addClass("dvLoading-display-none");			
+		};	  
+
+		// function closeCropImage() {
+			// $("#close_form2").trigger('click');
+		// };	  
+
+		// $(window).load( function() {
+		$(document).ready( function () {				
+		
+		
+			$("#new_publisher_corporate_logo").on('submit', function() {
+				$("#dvLoading_81").removeClass("dvLoading-display-none");
+				// $('#dvLoading').fadeOut(2000);				
+			});	
+		
+
+			var img = $(".figure-corporate-logo-generic img");
+			$("<img/>")
+	    		.attr("src", $(img).attr("src"))
+	    		.load(function() {
+	        		var img_width = this.width; 
+	        		$(".figure-corporate-logo-generic").css({
+	        			width : this.width
+	        	});	        		
+	    	});		
+		
+			var img = $(".figure-corporate-logo img");
+			$("<img/>")
+	    		.attr("src", $(img).attr("src"))
+	    		.load(function() {
+	        		var img_width = this.width; 
+	        		$(".figure-corporate-logo").css({
+	        			width : this.width
+	        	});	        		
+	    	});		
+
+
+			$(".figure-corporate-logo").on('click', function(e) {
+				if ( e.target.nodeName == "IMG" ) {
+					var this_src = $(this).find("input.x-container-hidden").attr("value");
+					$("#figure_dialog_82").find("img").attr("src", this_src );
+					var this_delete = $(this).find("div.tip-top-center").html();
+					$("#figure_dialog_82").find("div.tip-top-center").html(this_delete);
+					$("#dialog_82").jqmShow();	
+				}
+			});
+			$('#dialog_82').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '60px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					var img = $("#figure_dialog_82 img");
+					$("<img/>")
+			    		.attr("src", $(img).attr("src"))
+			    		.load(function() {
+			        		// img_width = this.width; 
+			        		$("#figure_dialog_82").css({
+			        			width : this.width
+			        	});	        		
+			    	});		
+				}
+			}); 		
+
+
+
+
+		
+			$(".figure-corporate-logo-generic").on('click', function() {
+				$(".dialog-81").trigger('click');
+			});
+			$(".dialog-81").on('click', function() {
+				$("#dialog_81").focus();
+				$("#dialog_81").jqmShow();
+			});
+			$('#dialog_81').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-740px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					hash.w.show();
+					$('#dialog_81').animate(
+						{bottom:'-=800', top:'+=800'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_81').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+							// $('#dl_email').focus();
+						}
+					);
+				}
+			}); 		
+
+
+
+
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+
+
+			
+		
+		});
+	  
+
+	</script>		
+

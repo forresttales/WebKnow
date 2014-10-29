@@ -16,6 +16,8 @@
 #  enhancement_8                    :boolean          default(FALSE)
 #  enhancement_9                    :boolean          default(FALSE)
 #  enhancement_10                   :boolean          default(FALSE)
+#  created_at                       :datetime
+#  updated_at                       :datetime
 #  enhancement_11                   :boolean          default(FALSE)
 #  enhancement_12                   :boolean          default(FALSE)
 #  enhancement_13                   :boolean          default(FALSE)
@@ -26,8 +28,8 @@
 #  enhancement_18                   :boolean          default(FALSE)
 #  enhancement_19                   :boolean          default(FALSE)
 #  enhancement_20                   :boolean          default(FALSE)
-#  created_at                       :datetime
-#  updated_at                       :datetime
+#  enhancement_other_b              :boolean          default(FALSE)
+#  enhancement_other                :string(255)
 #
 
 class PublisherProductEnhancement < ActiveRecord::Base
@@ -55,6 +57,8 @@ class PublisherProductEnhancement < ActiveRecord::Base
                   :enhancement_18,
                   :enhancement_19,
                   :enhancement_20,
+                  :enhancement_other,
+                  :enhancement_other_b,
                   :created_at,
                   :updated_at
 

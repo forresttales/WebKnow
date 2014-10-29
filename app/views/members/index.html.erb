@@ -1,112 +1,179 @@
 <% provide(:title, 'Members') %>
 
 
+  	<link rel="stylesheet" href="../styles/chosen/chosen.css">
+  	<script src="/assets/chosen.jquery.js" type="text/javascript"></script>
+  	<script src="/assets/toucheffects.js" type="text/javascript"></script>
+  	
+  	<script src="/assets/jquery.qtip.min.js" type="text/javascript"></script>
+  	<link rel="stylesheet" href="/assets/jquery.qtip.min.css">
+
+
 	<style>
 		
-		.users-table {
-			display:table;
-			width: 100%;
-			border-top: 0px; 
-			border-collapse: collapse;
-		}
-		.users-row-top {
-			display: table-row;
-			height: 2px;
-		  	border-bottom: 1px solid #ccc;			
-		}
-		.users-cell-top-image {
-			display:table-cell;
-			height: 2px;
-			/*width: 500px;*/
-		  	border-bottom: 1px solid #ccc;
-		}
-		.users-cell-top {
-			display:table-cell;
-			height: 2px;
-			/*width: 70px;*/
-		  	border-bottom: 1px solid #ccc;
-		}
-		.users-row {
-			display: table-row;
-			height: 68px;
-		  	border-bottom: 1px solid #ccc;
-		  	background-color: #fff;			
-		}
-		.users-row:hover {
-		  	background-color: #F8F8F8;			
-		}
-		.users-cell-image {
-			display:table-cell;
-		  	overflow: auto;
-		  	width: 70px;			
-			height: 100%;
-		  	padding: 8px 0 0 10px;
-		  	border-bottom: 1px solid #ccc;
-		}
-		.users-cell {
-			display:table-cell;
-		  	overflow: auto;
-		  	width: 530px;			
-			height: 100%;
-		  	padding: 8px 0;
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 200;
-		  	font-color: #888;
-			font-size: 13px;
-			border-bottom: 1px solid #ccc;
+		/*@import url(http://www.google.com/fonts#QuickUsePlace:quickUse/Family:Istok+Web);*/
+		
+		div.jp-cell-list {
+			height: 180px;
+			width: 540px;
+			padding-left: 10px;
+			padding-top: 10px;
 			vertical-align: top;
+	    	/*cursor: pointer;*/
+	    	background-color: #fff;
+	    	border: solid 4px #aaa;
+	    	border-radius: 4px;
 		}
-		.users-cell span.user-name a {
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 400;
-		  	color: #5628E1;
+		div.jp-cell-list:hover {
+	    	/*background-color: #eee;*/	    	
+		}
+		span.jp-cell-list-text-1 {
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 14px;
+	    	color: #214025;
+	    	font-weight: 400;			
+		}
+		.jp-cell-list-link {
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 13px;
+	    	color: #9F6720;
+	    	font-weight: 400;			
+		}
+		.jp-cell-list-link:hover {
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 13px;
+	    	color: #9F6720;
+	    	font-weight: 400;			
+		}
+		/*.jp-cell-list-delete-btn {
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 50px;
+		  	height: 20px;
+		  	background: inherit;
+		  	border-width: 0px;
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 13px;
+	    	color: #9F6720;
+	    	font-weight: 400;					  	
+		}
+		.jp-cell-list-delete-btn:focus {
+		}
+		.jp-cell-list-delete-btn:hover { 
+		  	text-decoration: underline;
+		  	cursor: pointer; 
+		}
+		.jp-cell-list-delete-btn:active { 
+		  	text-decoration: underline; 
+		}*/
+		span.jp-title {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: #D98D2D;
+		}
+		span.jp-title-sub {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 18px;
+			color: #A9D996;
+		}
+		.jp-btn {
+		  	/*display: inline-block;*/
+		  	text-decoration: none; 
+		  	/*width: 38px;*/
+		  	height: 20px;
+		  	background: inherit;
+		  	border-width: 0px;
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 13px;
+	    	color: #9F6720;
+	    	font-weight: 400;					  	
+		}
+		.jp-btn:focus {
+		}
+		.jp-btn:hover { 
+		  	text-decoration: underline;
+		  	cursor: pointer; 
+		}
+		.jp-btn:active { 
+		  	text-decoration: underline; 
+		}
+		span.jp-not-purchased {
+			font-family: Arial, Helvetica, sans-serif;
 			font-size: 14px;
+			color: #FA7D7D;			
 		}
-		.users-cell-top div {
-			height: 100%;
-			padding: 0 0 0 10px;
+		span.jp-purchased {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #A9D996;			
 		}
-		.users-cell div {
-			height: 100%;
+		span.jp-missing {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #C9AB00;			
+		}		
+		.jp-listbox {
+			height: 150px;
+			width: 290px;			
+		}
+		.jp-listbox-1 {
+			height: 130px; 
+			width: 290px;			
+		}
+		.jp-listbox-2 {
+			height: 10px; 
+			width: 290px; 
+			text-align: right;			
+		}
+		ul.jp-edit-instr li {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: #666;
+			width: 500px;
+			margin-left: 60px;
 		}
 		
 	</style>
 
+
 	<style>
 		
-		.publishers-table {
+		.publisher-products-table {
 			display:table;
 			width: 100%;
 			border-top: 0px; 
 			border-collapse: collapse;
 		}
-		.publishers-row-top {
+		.publisher-products-row-top {
 			display: table-row;
 			height: 2px;
 		  	border-bottom: 1px solid #ccc;			
 		}
-		.publishers-cell-top-image {
+		.publisher-products-cell-top-image {
 			display:table-cell;
 			height: 2px;
 			/*width: 500px;*/
 		  	border-bottom: 1px solid #ccc;
 		}
-		.publishers-cell-top {
+		.publisher-products-cell-top {
 			display:table-cell;
 			height: 2px;
 			/*width: 70px;*/
 		  	border-bottom: 1px solid #ccc;
 		}
-		.publishers-row {
+		.publisher-products-row {
 			display: table-row;
 			height: 118px;
 		  	border-bottom: 1px solid #ccc;
 		  	background-color: #fff;			
 		}
-		.publishers-row:hover {
+		/*.publisher-products-row:hover {
 		  	background-color: #F8F8F8;			
-		}
-		.publishers-cell-image {
+		}*/
+		.publisher-products-cell-image {
 			display:table-cell;
 		  	overflow: auto;
 		  	width: 120px;			
@@ -114,7 +181,7 @@
 		  	padding: 8px 0 0 10px;
 		  	border-bottom: 1px solid #ccc;
 		}
-		.publishers-cell {
+		.publisher-products-cell {
 			display:table-cell;
 		  	overflow: auto;
 		  	width: 530px;			
@@ -127,22 +194,471 @@
 			border-bottom: 1px solid #ccc;
 			vertical-align: top;
 		}
-		.publishers-cell span.publisher-name a {
+		.publisher-products-cell span.publisher-name a {
 		  	font-family: Arial, Helvetica, sans-serif;
 		  	font-weight: 400;
 		  	color: #5628E1;
 			font-size: 14px;
 		}
-		.publishers-cell-top div {
+		.publisher-products-span-1 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #666;
+			font-size: 14px;
+		}
+		.publisher-products-cell-top div {
 			height: 100%;
 			padding: 0 0 0 10px;
 		}
-		.publishers-cell div {
+		.publisher-products-cell div {
 			height: 100%;
 		}
 		
 	</style>
 	
+	<style>
+	
+		.publisher-product-utility-bar {
+			width: 100%;
+			height: 50px;
+			background: url('/assets/light_grey.jpg');
+			/*border-bottom: 2px #000 solid;*/
+			/*border-bottom: 2px solid rgba(0, 0, 0, .01);*/
+			text-align: left;
+			/*-moz-box-shadow: 0 4px 2px -2px #666666;
+			-webkit-box-shadow: 0 4px 2px -2px #666666;
+			box-shadow: 0px 4px 2px -2px #666666;*/		
+			
+		    /*box-shadow: 0 4px 4px -2px #232323;
+		    -moz-box-shadow: 0 4px 4px -2px #232323;
+		    -webkit-box-shadow: 0 4px 4px -2px #232323;*/			
+		    /*z-index: 10;*/	
+		}
+		.publisher-product-utility-bar span {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 200;
+		  	color: #888;
+			font-size: 13px;
+		}
+		
+	</style>
+
+	<style>
+		
+		.search { 
+			padding:6px 15px 6px 30px;
+			margin:3px; 
+			background: url('/assets/search.png') no-repeat 8px 6px; 
+			width: 300px;
+		}
+		.rounded { 
+			border-radius:15px; 
+			-moz-border-radius:15px; 
+			-webkit-border-radius:15px; 
+		}		
+		input[type=text]{
+			color:#bcbcbc;
+		}
+		input[type=button], input[type=button]:hover {
+			position:relative; 
+			left:-6px;
+			height: 29px;
+			border:1px solid #adc5cf;
+			background: #e4f1f9; /* Old browsers */
+			background: -moz-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4f1f9), color-stop(100%,#d5e7f3)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* IE10+ */
+			background: linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f1f9', endColorstr='#d5e7f3',GradientType=0 ); /* IE6-9 */
+			color:#7da2aa;
+			cursor: pointer;
+		}				
+		.lighter, .light, .dark {
+			width:100%;
+			height:50px;
+			padding:10px 0px 0px 0px;
+		}
+		.lighter{
+			background: url('/assets/lighter_grey.jpg');
+		}
+		.lighter input[type=text]{
+			border:1px solid #d0d0d0;
+			background-color:#fcfcfc;
+		}
+		.light{
+			background: url('/assets/light_grey.jpg');
+		}
+		.light input[type=text]{
+			border:1px solid #acb1b7;
+			background-color:#fcfcfc;
+		}
+		.dark{
+			background: url('/assets/dark_grey.jpg');
+		}
+		.dark input[type=text]{
+			border:1px solid #2a2e31;
+			background-color:#2d3035;
+			color:#505358;
+		}
+
+	</style>
+
+ 	<style>
+ 		
+		*, *:after, *:before {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.clearfix:before, .clearfix:after { content: " "; display: table; }
+		.clearfix:after { clear: both; }
+		a {
+			color: #888;
+			text-decoration: none;
+		}
+		a:hover,
+		a:active {
+			color: #333;
+		}
+		.publisher-product-list-grid {
+			padding: 0px 0px 0px 0px;
+			/*max-width: 1300px;*/
+			margin: 0 auto;
+			list-style: none;
+			/*text-align: center;*/
+		}
+		.publisher-product-list-grid li {
+			display: inline-block;
+			width: 100px;
+			/*height: 300px;*/
+			margin: 0;
+			padding: 0px 0px 0px 0px;
+			position: relative;
+			text-align: center;
+		}
+		.publisher-product-list-grid-small li {
+			display: inline-block;
+			/*height: 300px;*/
+			margin: 0;
+			padding: 0px 0px 0px 0px;
+			position: relative;
+			text-align: center;
+		}
+		.publisher-product-list-grid figure {
+			margin: 0;
+			position: relative;
+			/*height: 300px;*/
+			/*padding-left: 6px;*/
+			padding-top: 0px;	
+			background-color: #fff;
+			/*border: 1px solid #ccc;*/
+		}
+		.publisher-product-list-grid figure img {
+			max-width: 100%;
+			display: block;
+			position: relative;
+		}
+		.publisher-product-list-grid figcaption {
+			position: absolute;
+			text-align: right;
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 14px;
+			font-weight: 200;					  				
+			top: 0;
+			/*left: 0;*/
+			padding: 10px;
+			background: #000;
+		}
+		.publisher-product-list-grid figcaption a {
+			color: #fff;
+		}
+		.publisher-product-list-grid figcaption a:hover{
+			color: #fff;
+		}
+		.publisher-product-list-caption figure {
+			overflow: hidden;
+		}
+		.publisher-product-list-caption figure img {
+			-webkit-transition: -webkit-transform 0.2s;
+			-moz-transition: -moz-transform 0.2s;
+			transition: transform 0.2s;
+		}
+		.no-touch .publisher-product-list-caption figure:hover img,
+		.publisher-product-list-caption figure.cs-hover img {
+			/*-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			-ms-transform: translateY(0px);
+			transform: translateY(0px);*/
+			
+			/*-webkit-transform: translateY(-6px);
+			-moz-transform: translateY(-6px);
+			-ms-transform: translateY(-6px);
+			transform: translateY(-6px);*/
+		}
+		.publisher-product-list-caption figcaption {
+			height: 34px;
+			width: 100%;
+			top: auto;
+			bottom: 0;
+			opacity: 0;
+			-webkit-transform: translateY(100%);
+			-moz-transform: translateY(100%);
+			-ms-transform: translateY(100%);
+			transform: translateY(100%);
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+			transition: transform 0.4s, opacity 0.1s 0.3s;
+		}
+		.no-touch .publisher-product-list-caption figure:hover figcaption,
+		.publisher-product-list-caption figure.cs-hover figcaption {
+			opacity: .8;
+			-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			-ms-transform: translateY(0px);
+			transform: translateY(0px);
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+			transition: transform 0.4s, opacity 0.1s;
+		}
+		/*.publisher-product-list-caption figcaption a {
+			position: absolute;
+			bottom: 20px;
+			right: 20px;
+		}*/
+		@media screen and (max-width: 31.5em) {
+			.publisher-product-list-grid {
+				padding: 0px 0px 0px 0px;
+			}
+			.publisher-product-list-grid li {
+				width: 100%;
+				min-width: 30px;
+			}
+		}
+ 		
+ 	</style>
+
+	<style>
+		
+		.publisher-products-list-1 {
+			width: 100%; 
+			height: 109px; 
+			padding: 4px;
+			position: relative;
+			background-color: #fff;
+			border-bottom: 1px solid #ccc;
+		}
+		.publisher-products-list-1:hover {
+			background-color: #F8F8F8;
+		}
+		.publisher-products-list-2-left {
+ 			display: inline-block;		
+ 			position: absolute;
+ 			top: 0px;
+ 			left: 0px;
+ 			height: 100%;
+ 			padding-left: 2px;
+    		/*white-space: nowrap;
+    		text-align: center; 
+    		margin: 1em 0;*/
+		}
+		.publisher-products-list-2-right {
+ 			display: inline-block;		
+ 			position: absolute;
+ 			top: 0px;
+ 			right: 0px;
+ 			height: 100%;
+ 			padding-right: 2px; 		
+		}
+		.publisher-products-list-3 {
+ 			display: inline-block; 
+ 			position: absolute;
+ 			top: 0px;
+ 			left: 108px;
+ 			width: 378px;
+ 			height: 100%;
+ 			padding-left: 8px;
+		}
+		.publisher-products-list-4 {
+ 			display: inline-block; 
+ 			width: 360px;
+ 			
+		}
+		/*.publisher-products-list-5 {
+ 			display: inline-block;
+ 			width: 50px; 
+		}*/
+		/*.publisher-product-list-top-border {
+			height: 2px;
+			width: 100%;
+			border-bottom: 2px solid #ccc;
+			position: absolute;
+			top: -1px;
+		}*/
+		.helper {
+		    display: inline-block;
+		    height: 100%;
+		    vertical-align: middle;
+		}		
+		.div-img {
+			display: inline-block;
+		    /*background: #3A6F9A;*/
+		    background: transparent;
+		    vertical-align: middle;
+		    height: 100px;
+		    max-width: 100px;
+		}
+
+	</style>
+
+	<style>
+		
+		.product-listbox {
+	 		/*height:436px;*/
+	 		/*height: auto;*/
+	 		position: relative;
+	 		width:600px;
+	 		/*border-top: 3px solid green;
+	 		border-bottom: 3px solid green;*/
+	 		/*overflow-y: scroll;*/	
+	 		/*border: none;*/
+		}
+		#scroll1 {
+	 		overflow: hidden;			
+		}
+		
+	</style>
+
+	<style>
+		
+		.publisher-product-utility-bar-footer {
+			width: 100%;
+			height: 100px;
+			/*position: relative;*/
+	 		position: absolute;
+	 		/*left: 0px;*/
+	 		bottom: 0px;			
+			background: url('/assets/light_grey.jpg');
+			/*border-bottom: 2px #DCE3DF solid;*/
+			text-align: left;
+			z-index: 9;
+		}
+		.publisher-product-utility-bar-footer span {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 200;
+		  	color: #888;
+			font-size: 13px;
+		}
+		.container-2 {
+			width: 1000px;
+			margin-left: auto;
+			margin-right: auto;
+			/*min-height: 900px;*/
+			position: relative;
+			top: -4px;
+		}
+		
+	</style>
+	
+	<style>
+		
+		.btn-prod-list {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;		
+			text-align: center;	
+			padding-top: 3px;
+		  	color: #fff;
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 80px;
+		  	height: 20px;
+		  	background: linear-gradient(#2899A1, #1F7C82);
+
+		  	/*text-shadow: 1px 1px 1px #0E86B2;*/ 
+		  	border-radius: 2px;
+		}
+		.btn-prod-list:focus {
+			-webkit-box-shadow: 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: 0 0 1px 1px #3DC8D1;
+			        box-shadow: 0 0 1px 1px #3DC8D1;
+		  	background: linear-gradient(#2899A1, #1F7C82);
+		}
+		.btn-prod-list:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-prod-list:active { 
+		  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	color: #fff;
+		  	background: linear-gradient(#1F7C82, #2899A1);
+		  	outline:none;
+		}
+		
+		.publisher-products-span-1 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #666;
+			font-size: 14px;
+		}
+		
+		.unbutton-prod-list {
+		    background: none;
+		    border: none;
+		    padding: 0;
+		    margin: 0;
+		    overflow: visible;   /* IE hack to avoid extra button width */
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #666;
+			font-size: 14px;		   
+		}		
+		.unbutton-prod-list:hover {
+		  	cursor:pointer;
+		  	text-decoration: underline;
+		}		
+		.publisher-products-add {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #666;
+			font-size: 14px;		   			
+		}
+		.publisher-products-add:hover {
+		  	cursor:pointer;
+		  	text-decoration: underline;
+		}
+		
+	</style>
+	
+
+	<style>
+		
+		#im_top_sh, #im_bottom_sh {
+		    background: none repeat scroll 0 0 #555555;
+		    display: none;
+		    height: 3px;
+		    margin-top: -1px;
+		    opacity: 0.10;
+		    position: absolute;
+		    width: 600px;
+		    z-index: 2;
+		}
+		
+	</style>
+
+	<style>
+		
+	.container {
+		width: 1200px;
+		/*margin: 0 auto;*/
+		/*position: relative;*/
+		/*top: -4px;*/
+	}
+		
+	</style>
+
 	<style>
 	
 		.utility-bar {
@@ -225,47 +741,334 @@
 		}
 
 	</style>
-	
-	<header>
-		<!-- <#%= render 'layouts/nav_main' %#> -->
-		<%= render 'share/backtotop' %>
-	</header>
+
+	<style>
+		
+		.btn-submit {
+			background-color: green;
+			color: #fff;
+		}
+		.display-none {
+			display: none;
+		}
+		.submit-search {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+			font-size: 14px;			
+			height: 22px; 
+			width: 100px; 
+			background-color: #888; 
+			color: #fff; 
+			text-align: center;
+			padding: 4px 0 0 0;
+		}
+		.submit-search:hover {
+			cursor: pointer;
+		}
+				
+	</style>
+
+
+
+	<!-- <header>
+		<#%= render 'share/backtotop' %#>
+	</header> -->
+
+
 
 	<div class="container">
 		<div class="table-profile">
 			<div class="row-profile">
-				
 				<div class="col-left">
-					<%= render 'share/dir_publishers_left'%>
-				</div>
-				
-				<div class="col-midd">
-					<!-- <div class="line-space-20"></div> -->
-					<!-- <div style="text-align: left;">
-						<span class="normal" style="padding-left: 10px;">Members</span>
-					</div> -->
-
-					<div class="lighter">
-						<form>
-							<span><input type="text" class="search square" placeholder="Search..."><input type="button" value="Search"></span>
-						</form>
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>
+						<div class="row-profile">
+							<div class="col-left">
+								<%= render 'share/dir_publishers_left'%>
+							</div>
+						</div>
 					</div>
-					
-					<%= render "members/index_mtabs"%>
-					
 				</div>
+				<!-- <div class="col-midd" style="height: 600px;"> -->
+				<div class="col-midd" id="col_midd">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<!-- <div id="col_midd" class="col-midd-600" style="height: 600px;"> -->
+							<div class="col-midd-600" id="sub_container" style="position: relative;">
+								<div id="col_midd_header">
+									
+									<%= form_tag return_users_members_path, :id => 'form_all_users', :remote => true do %>
+										<%= hidden_field_tag :user_profile_type, '12' %>
+										<%= submit_tag 'Submit', id: 'submit_all_users', class: 'display-none' %>
+									<% end %>									
+
+									<%= form_tag return_publishers_members_path, :id => 'form_publishers', :remote => true do %>
+										<%= submit_tag 'Submit', id: 'submit_publishers', class: 'display-none' %>
+									<% end %>									
+									
+									<div class="line-space-20"></div>
+							
+									<div class="pad-left-20">
+										<span class="jp-title">Members</span>
+									</div>
+									
+									<!-- <div class="line-space-20"></div>									
+									<ul class="jp-edit-instr">
+										<li>Instructions 1.</li>
+										<li>Instructions 2.</li>						
+									</ul> -->
+									<!-- <div class="line-space-20"></div>
+									<div class="pad-left-20" style="text-align: left;">
+										<span class="jp-cell-list-text-1">Record Count: <#%= @publisher_journalposters.count %#></span>
+									</div> -->
 				
+									<!-- <div style="height: 10px;"></div> -->	
+	
+							    	<!-- <div style="width: 100%; text-align: center;">
+								    	<h5>
+										   	<#% delete_all_msg = "Delete all records and reset index in Members?" %#>
+											<#%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long' %#>
+										</h5>
+									</div> -->
+											
+									<!-- <div style="height: 10px;"></div> -->	
+				
+									<!-- <span class="pad-left-20"><#%= link_to '&laquo; Add a product &raquo;'.html_safe, '/Publisher-Add-Product', :class => 'links', :remote => true %#></span> -->
+									<!-- <div id="btn_add_prod" class="pad-left-20"><span class="publisher-products-add">&laquo; Add a product &raquo;</span></div> -->
+									
+									<!-- <span class="pad-left-20"><#%= link_to '&laquo; Add a product &raquo;'.html_safe, :action => :create, :class => 'links', :remote => true %#></span> -->
+				
+									<div class="line-space-20"></div>
+
+									<div class="publisher-product-utility-bar light">
+										<div style="padding-left: 10px; padding-top: 10px;">
+											<div style="display: inline-block;">
+												<span>Record Count: </span>
+											</div>
+											<div id="render_record_count" style="display: inline-block;">
+												<span></span>
+											</div>
+											<div id="render_test" style="display: inline-block;">
+												<span></span>
+											</div>
+
+											<!-- <#%= @publisher_products.count %#> -->
+											<!-- <span id="container_height"></span> -->
+										</div>
+									</div>
+									<div id="im_top_sh" style="display: block;"></div>
+								</div>
+			
+								<!-- <div id="publisher_journalposters" style="width: 100%; text-align: center;"> -->
+								<div id="render_list" style="position: relative;">
+									
+									<!-- <#%= render 'publisher_products/list' %#> -->
+									<div id="scroll1" class="product-listbox" style="height: 100%;">									
+										<div class="publisher-products-list-1">
+											<div class="publisher-products-list-2-left">
+												<div class="div-img">
+													<ul class="publisher-product-list-grid publisher-product-list-caption">
+														<li>
+															<figure>
+															</figure>
+														</li>
+													<ul>
+												</div>
+												<div class="helper"></div>								
+											</div>
+											<div class="publisher-products-list-3">
+												<div>
+													<div class="publisher-products-list-4">
+														<span class="publisher-products-span-1"></span>
+													</div>
+												</div>
+											</div>
+											<div class="publisher-products-list-2-right">
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div id="publisher_product_utility_bar_footer" class="publisher-product-utility-bar-footer">
+									<div style="height: 4px;"></div>
+									<div style="width: 100%; text-align: center;">
+										<span id="will_paginate">
+											<!-- <#%= will_paginate @publisher_products %#> -->
+										</span>
+									</div>
+								</div>
+								
+								
+							</div>
+						</div>
+
+						<!-- <div class="row-profile">
+							<div class="col-midd-600">
+								<div class="publisher-product-utility-bar-footer">
+									<div style="height: 4px;"></div>
+									<div style="width: 100%; text-align: center;">
+										<span><#%= will_paginate @publisher_products %#></span>
+									</div>
+								</div>
+							</div>
+						</div> -->
+												
+					</div>					
+				</div>
 				<div class="col-right">
-					<%= render 'share/dir_publishers_right' %>
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-right">
+								
+				          		<select id="select_user" name="select_user_name" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex="">
+										<option value="0">-Select-</option>
+										<option value="1">All Users</option>
+										<option value="2">Publishers</option>
+										<option value="3">Students</option>
+										<option value="4">Teachers</option>
+										<option value="5">Schools</option>
+										<option value="6">Recruiters</option>										
+				          		</select>
+								
+								<div style="height: 30px;"></div>
+
+								<div id="submit_user" class="submit-search">
+									Search
+								</div>
+								
+								<!-- <#%= render 'share/dir_publishers_right' %#> -->
+							</div>
+						</div>
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-right">
+								
+				          		<select id="select_profile" name="select_profile_name" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex="">
+										<option value="0">-Select-</option>
+										<option value="1">Students</option>
+										<option value="2">Teachers</option>
+										<option value="3">Publishers</option>
+										<option value="4">Schools</option>
+										<option value="5">Recruiters</option>										
+				          		</select>
+								
+								<div style="height: 30px;"></div>
+
+								<div id="submit_profile" class="submit-search">
+									Search
+								</div>
+								
+								<!-- <#%= render 'share/dir_publishers_right' %#> -->
+							</div>
+						</div>
+						
+					</div>										
 				</div>								
 			</div>
 		</div>
 	</div>
+	
+	
+<!-- </div> -->
 
 	<script>
-	  
-		//$(window).load( function() {
 	
-		//});
-	  
-	</script>		
+	
+	
+		$(document).ready(function() {
+
+			$(".chosen-select").chosen({disable_search_threshold: 40});
+
+			// $("#publisher_product_lesson_time").trigger("chosen:updated");
+			
+			$("#submit_user").on('click', function() {
+				$("#user_profile_type").val($("#select_user").val());
+				$("#submit_all_users").click();
+			});
+
+			$("#submit_profile").on('click', function() {
+				var profile_type = $("#select_profile").val();
+				// $("#profile_type").val($("#select_profile").val());
+				
+				switch (profile_type)
+				{
+				  case '1':
+				  	break;
+				  case '2':
+				  	break;
+				  case '3':
+						$("#submit_publishers").click();
+				  	break;
+	
+				  default:
+				  //
+				}
+				
+			});
+
+			$("#render_list").html("<%= escape_javascript(render("members/list_public_users")) %>");				
+			// $('#render_record_count span').html("<#%= @public_users.count %#>");				
+				
+			// $('#btn_add_prod').on('click', function() {
+			   	// // $.post("publisher_products/create", null, null, "script");
+			// });
+
+
+			$('#publisher_product_utility_bar_footer .pagination a').attr('data-remote', 'true');
+
+
+
+
+
+			// $("#publisher_product_utility_bar_footer .pagination a").on("click", function() {
+				// // alert( $.getScript(this.href) );
+				// // $.getScript(this.href);
+				// $.get(this.href, null, null, "script");
+				// // $.get("/publisher_products/index", null, null, "script");
+				// return false;
+			// });
+
+
+
+			// $("#testbtn").on('click', function() {
+			  	// var obj = '';                  
+			  	// $.ajax({
+			    	// type: 'POST',
+			    	// data : obj,
+			    	// url: '/publisher_products/create',			    	
+			    	// dataType: "json",
+			    	// contentType: "application/json",
+			    	// processData: false,
+			    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	// statusCode: {
+	            	// },
+	            	// success: function(data) {
+						// alert('success');
+						// $("#render_list").html("<#%= escape_javascript(render("publisher_products/list")) %#>");
+	            	// },
+	            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	// });
+		  		// return false;
+			// });
+
+			
+			// alert($(document).height());
+			// var dh = $(document).height();
+			// $("#col-midd").height(dh-74);
+			
+			
+			
+		});	
+	</script>
+	
+	

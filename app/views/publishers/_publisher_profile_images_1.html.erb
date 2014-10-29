@@ -1,0 +1,101 @@
+
+
+
+								<% if @publisher_profile_images.any? %>
+									<% @publisher_profile_images.each do |publisher_profile_image| %>   				
+									
+										<div class="profile-grid profile-cs-style-3" style="display: inline-block;">
+											<figure class="profile-figure-list">
+												<img alt="photo not appearing" src="<%= publisher_profile_image.image_url(:profile_0_100) if publisher_profile_image.image? %>" />
+												<figcaption class="figcaption-2">
+													<div class="tip-top-center"><%= button_to "", destroy_publisher_profile_image_publishers_path(:publisher_id => @publisher_id, :id => publisher_profile_image.id), :confirm => 'Delete this photo?', :remote => true, class: 'x-container' %></div>
+									                <div class="tip-content">
+									                    <div class="tooltiptext">Delete</div>
+									                </div>																								
+												</figcaption>
+											</figure>
+										</div>
+									
+									<% end %>
+								<% end %>
+
+
+	<script>
+
+	  
+	  	function setImgLast() {
+	  		setTimeout(function(){
+				var a_img = document.getElementsByClassName("profile-figure-list");
+				var len = a_img.length;
+				var list_width = 0;
+				for( var i = 0; i < len; i++ ) {
+					list_width += a_img[i].clientWidth;
+					if( list_width > 692 ) {
+						a_img[i].setAttribute("id", "list_img_last");
+						i = len;
+					}
+				}
+				var div_pos = $("#render_publisher_profile_images").position();
+				var img_pos = $("#list_img_last").position();
+				var div_pos_left = div_pos.left;
+				var img_pos_left = img_pos.left;
+				var rel_pos_left = img_pos_left - div_pos_left;
+				var adj_pos_left = 16;
+				var del_pos_left = 692 - rel_pos_left - adj_pos_left;
+		  		$("#list_img_last figcaption.figcaption-2").css({
+		  			left : del_pos_left
+		  		});
+	  		},500);
+	  	}
+
+	  
+		// $(window).load( function() {
+		$(document).ready(function () {				
+		
+			setImgLast();
+
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+		
+		});
+	  
+	</script>		
+
+

@@ -1,0 +1,12 @@
+
+<div style="height: 100px;"></div>
+<div style="width: 100%; text-align: center;">Reset</div>
+<div style="height: 50px;"></div>
+<div style="width: 100%; text-align: center;">
+	<h5>
+	   	<% delete_all_msg = "Delete all records and reset index in Users, Publishers, Publisher Users, Publisher Products and Images?" %>
+		<%= button_to "Delete All Records and Reset Index", {:action => 'reset_users'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long' %>
+	</h5>
+</div>
+<div style="height: 700px;"></div>
+

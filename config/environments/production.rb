@@ -84,20 +84,37 @@ Webknow::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
   
-  ActionMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.delivery_method = :smtp
+#   
+  # config.action_mailer.smtp_settings = {
+    # :address              => "relay-hosting.secureserver.net",  
+    # :port                 => 25,      
+    # :domain               => 'www.knowstory.com',
+    # :user_name            => 'registration@knowstory.com',
+    # :password             => 'wolftalk666',
+    # :authentication       => 'plain',
+    # :enable_starttls_auto => true  }
   
-config.action_mailer.smtp_settings = {
-  :address              => "smtp.live.com",
-  :port                 => 587,
-  :domain               => 'mail.live.com',
-  :user_name            => 'forresttales@hotmail.com',
-  :password             => 'wolftalk666',
-  :authentication       => 'plain',
-  :enable_starttls_auto => true  }
-
-
-# config.action_mailer.default_url_options = { :host => 'localhost:8000' }  
-config.action_mailer.default_url_options = { :host => 'knowstory.com' }  
+  # config.action_mailer.smtp_settings = {
+    # :address              => "smtpout.secureserver.net ",
+    # :port                 => 80,
+    # :domain               => 'knowstory.com',
+    # :user_name            => 'registration@knowstory.com',
+    # :password             => 'wolftalk666',
+    # :authentication       => 'plain',
+    # :enable_starttls_auto => true  }
+  
+  # config.action_mailer.smtp_settings = {
+    # :address              => "smtp.live.com",
+    # :port                 => 587,
+    # :domain               => 'mail.live.com',
+    # :user_name            => 'forresttales@hotmail.com',
+    # :password             => 'wolftalk666',
+    # :authentication       => 'plain',
+    # :enable_starttls_auto => true  }
+  
+  # config.action_mailer.default_url_options = { :host => 'localhost:8000' }  
+  config.action_mailer.default_url_options = { :host => 'knowstory.com' }  
 
 
 

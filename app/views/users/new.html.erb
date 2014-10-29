@@ -11,6 +11,9 @@
 	<link rel="stylesheet" href="/assets/colorbox.css" />
 	<link rel="stylesheet" type="text/css" href="../styles/slidedeck.skin.css" media="screen,handheld" />
 
+  	<script src="/assets/jquery.qtip.min.js" type="text/javascript"></script>
+  	<link rel="stylesheet" href="/assets/jquery.qtip.min.css">
+
 
 	<style>
 	
@@ -1258,6 +1261,157 @@
 		
 	</style>
 	
+	<style>
+		
+
+		.pwd-reset span {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #37633A; /*#1f7c82;*/
+		}
+		.pwd-reset span:hover {
+			cursor: pointer;
+			text-decoration: underline;			
+		}
+		#form_new_pwd_reset, #form_new_pwd_reset_a {
+			display: none;
+		}
+		.form-new-pwd-reset-outer {
+			width: 100%;
+			height: 120px;
+			background-color: #F0E4D3;
+			-webkit-box-shadow: inset 2px 2px 6px #888;
+			   -moz-box-shadow: inset 2px 2px 6px #888;
+			        box-shadow: inset 2px 2px 6px #888;							
+		}
+		.form-new-pwd-reset-inner {
+		   	width: 500px;
+   			margin: 0 auto;
+			height: 100px;
+			/*padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;*/
+			background-color: #F0E4D3;
+		}
+		.form-edit-close-pos-rel {
+			width:20px;
+			height:30px;
+			/*background-color: #ddd;*/
+			/*float: right;*/
+		}		
+		.form-edit-close:hover {
+			cursor: pointer;
+			/*background-color: #FFD1D1;*/
+		}		
+		.form-edit-background {
+		 	background-color: #F0E4D3;	
+		}
+		
+		
+	</style>
+
+	<style>
+		
+		.tooltip-text-1 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 12px;
+			font-weight: 400;					
+			color: #37633A;	
+			background-color: #FAFF94;
+			/*background-color: #eee;*/
+			border-color: #37633A;
+			box-shadow: 0px 2px 2px #aaa;
+		}
+		.tip-content { display: none; }
+		
+	</style>
+
+	<style>
+		
+		.confirm-pwd-reset {
+			/*padding: 2px 4px 2px 4px;*/
+			margin: 0 auto;
+			text-align: center;
+		}
+		.confirm-pwd-reset span {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #555; /*#37633A;*/ /*#1f7c82;*/
+			background-color:#FCDEE2;		
+			padding: 2px 4px 2px 4px;
+			margin: 0px;	
+			height: 20px;
+		}
+		.confirm-pwd-reset span a {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: orange; /*#37633A;*/ /*#1f7c82;*/
+		}
+		.display-none {
+			display: none;	
+		}
+		/*.confirm-pwd-reset-1 {
+			width: 400px;
+			background-color:#FCDEE2;		
+			padding: 2px 4px 2px 4px;					
+		}
+		.confirm-pwd-reset-2 {
+			width: 400px;	
+			background-color:#FCDEE2;		
+			padding: 2px 4px 2px 4px;				
+		}
+		.confirm-pwd-reset-3 {
+			width: 400px;	
+			background-color:#FCDEE2;		
+			padding: 2px 4px 2px 4px;				
+		}*/
+		.pwd-reset-container-outer {
+			width: 100%;
+		}		
+		.pwd-reset-container-inner {
+			width: 960px;
+			margin: 0 auto;
+			position: relative;
+		}		
+		.pwd-reset-container-spacer {
+			height: 2px;
+		}
+		
+		
+		.ks-alert-container-outer {
+			width: 490px;
+			margin: 0 auto;
+		}		
+		.ks-alert-container-inner {
+			width: 490px;
+			margin: 0 auto;
+			position: relative;
+		}		
+		.ks-alert-container-spacer {
+			height: 2px;
+		}		
+		.ks-alert {
+			/*padding: 2px 4px 2px 4px;*/
+			margin: 0 auto;
+			text-align: center;
+		}
+		.ks-alert span {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #555; /*#37633A;*/ /*#1f7c82;*/
+			/*background-color:#FCDEE2;*/		
+			padding: 2px 4px 2px 4px;	
+		}
+		
+		/* #B0E7E3 light turquoise*/
+		/* #B0E7D5 light green */
+		/* #FCDEE2 light red */
+		.ks-alert-notice {
+			background-color: #B0E7D5;
+		}
+		
+	</style>
+	
 	
 	<script id="dropdown-data1-selected" type="text/x-dot-template">
 		{{=it.label}}<div class="down-caret">&#9660;</div>
@@ -1305,6 +1459,7 @@
 	</script>		
 
 
+
 	<!-- <div id="wrapper"> -->
 	
 		<header id="home">
@@ -1319,12 +1474,28 @@
 				</div>
 				<div style="width: 16px; display: inline-block;"></div>
 				<!-- <div class="cell-ks-home-2"> -->
-				<div style="width: 500px; display: inline-block; margin-right: 0px;">
-					<div id="nav_ks_home" class="nav-ks-home">
+				<div style="width: 500px; display: inline-block; margin: 0; vertical-align: top;">
+					
+					
+						<div style="width: 490px; height: 28px; float: right;">
+							<% flash.each do |key, value| %>
+								<div class="ks-alert-container-outer">
+									<div class="ks-alert-container-inner">
+										<div class="ks-alert ks-alert-<%= key %>">
+											<span class=""><%= value %></span>
+										</div>
+									</div>
+								</div>
+								<!-- <div class="ks-alert-container-spacer"></div> -->			    		
+					    		<!--<div class="alert alert-<%= key %>"><%= value %></div>-->
+					    		<!-- <#%= content_tag(:div, value, class: "alert alert-#{key}") %#> -->
+					  		<% end %>
+  						</div>
+						<div style="clear: both;"></div>
+
 
 						<%= form_for(:session, url: sessions_path) do |f| %>	
 
-						<div style="height: 60px;"></div>
 						<div class="tbl-sign">
 							<div class="row-sign">
 								<div class="cell-sign-1"></div>
@@ -1346,7 +1517,10 @@
 							<div class="row-sign">
 								<div class="cell-sign-1"></div>
 								<div class="cell-sign-2 text-align-center">
-									<%= link_to "Forgot password?", new_password_reset_path, class: 'signin-pref', :tabindex => '4' %>
+									<!-- <#%= link_to "Forgot password?", new_password_reset_path, class: 'signin-pref', :tabindex => '4' %#> -->
+									<div id="pwd_reset" class="pwd-reset">
+										<span>Forgot password?</span>
+									</div>
 								</div>
 								<div class="cell-sign-3 text-align-center">
 									<%= f.check_box :remember_me %>
@@ -1375,46 +1549,90 @@
 						</div>
 						
 						<% end %>								
-						
-						<!-- <p><#%= link_to "forgotten password?", new_password_reset_path %#></p> -->
-						
-						<!-- <ul class="ul-2"></ul>
-						<ul class="menu-home ul-3">
-							<li>
-								&nbsp;
-								<a href="#" class="signin-text" tabindex="4">Forgot your password?</a>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="#" class="signin-text" tabindex="5">Stay logged in?</a>
-							</li>
-						</ul> -->
-
-						<!--<div style="height: 10px;"></div>
-						 <div class="cell-left-home">
-							<span class="title-home-dark">Get started&#8212;It's free.</span>
-							<div>
-								<img src="../assets_knowstory/image_coming_soon_8k.png" alt="image_coming_soon_8k.png" width="50px">
-								<span style="font-family:Arial, Helvetica, sans-serif; font-size: 16px; color: red;">
-									* This site is under construction *
-								</span>
-							</div>
-						</div> -->
-						<!-- <div class="cell-right-home"> -->
-						<!-- <div style="height: 20px;"></div>
-						<div class="cell-right-home"> -->
-							<!-- <span class="title-home-dark-2">Connect up with Students, Schools, Teachers, Publishers and the like.</span> -->
-								
-							<!-- <span class="title-home-dark-2">Join as a student, teacher, school, college</span><br>
-							<span class="title-home-dark-2">recruiter or curriculum publisher.</span><br>
-							<span class="title-home-dark-2">Free directory searches, profiles and sharing.</span> -->
-						<!-- </div> -->				
-
-						<!-- <div style="height: 6px;"></div> -->
-					</div>
+					
 				</div>
 			</div>
 			<!-- <div style="clear: both;"></div> -->
 		</header>
 
+
+		<!-- <div class="main">
+			<div id="close_form_new_pwd_reset_1" class="form-edit-close pop-info tip-bottom-center">
+				<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+			</div>
+		        <div class="tip-content">
+		            <div class="tooltiptext">Close 1</div>
+		        </div>																								
+			<div style="clear: both;"></div>
+		</div> -->
+
+
+
+
+		<div class="pwd-reset-container-outer">
+			<div class="pwd-reset-container-inner">
+				<div id="confirm_pwd_reset_1" class="confirm-pwd-reset display-none">
+					<span><em>Reset Password instructions sent to: </em></span>
+					<span id="confirm_pwd_reset_1_email"></span>
+					<!-- <div class="pwd-reset-container-spacer"></div> -->
+				</div>
+				<div id="confirm_pwd_reset_2" class="confirm-pwd-reset display-none">
+					<span><em>* Send password reset instructions failed</em><br>
+						You may try again or send us a message:<br><a href="#">Contact Us: Subject- Password Reset</a>
+					</span>
+					<br>
+				</div>
+				<!-- <div id="confirm_pwd_reset_3" class="confirm-pwd-reset display-none">
+					<span><em>* No record for this email address: </em></span>
+					<span id="confirm_pwd_reset_3_email"></span>
+				</div> -->
+				<div id="pwd_reset_container_spacer" class="pwd-reset-container-spacer display-none"></div>
+			</div>									
+		</div>
+	   	<div id="form_new_pwd_reset" class="form-new-pwd-reset-outer" style="height: 140px;">
+	   		<div style="height: 10px;"></div>
+	   		<div class="form-new-pwd-reset-inner">
+	   			<div id="form_new_pwd_reset_a">
+			   		<div class="table" style="width: 500px;">
+			   			<div class="row">
+			   				<div class="cell-500" style="height: 26px;">
+			   					<div style="display: inline-block; width: 470px; height: 22px; text-align: right; padding-top: 4px;">
+									<div id="confirm_pwd_reset_3" class="confirm-pwd-reset display-none" style="height: 22px; padding: 0px;">
+										<span><em>* No record for this email address: </em></span>
+										<span id="confirm_pwd_reset_3_email"></span>
+									</div>
+			   					</div>
+			   					<div id="close_form_new_pwd_reset" class="form-edit-close-pos-rel tip" style="display: inline-block; vertical-align: top; height: 30px;">
+			   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+			   					</div>
+				                <div class="tip-content">
+				                    <div class="tooltiptext">Close</div>
+				                </div>																								
+			   					<!-- <div style="clear: both;"></div> -->
+			   				</div>
+	   					</div>
+						<div class="row">
+							<div class="cell-500" style="height: 84px;">
+								<!-- <div style="height: 10px"></div> -->
+								<%= render 'users/new_pwd_reset' %>
+							</div>
+							
+						</div>							
+					</div>				   				
+				</div>
+			</div>
+		</div>
+		
+		<div style="height: 10px"></div>
+			
+			
+		
+		
+		
+		
+		
+		
+		
 		
 		<%= render 'landing_page/new_nav' %>
 
@@ -1431,7 +1649,7 @@
 	        </div>
 	
 	        <div class="content">
-	        	<h1>A social media site for learning. Your Story of what you know.</h1>
+	        	<h1>A social media site for learning.<br/> Your Story of what you know.</h1>
 	          <!-- <h1>Latest News</h1>
 	          <div id="box1">
 	          	<p class="box-content">Hello Students!<br/>  This site is for your knowledge Story. Keep a secure record of your classes, grades, photos, best papers, and what you’ve learned in school or out.  Find new apps, websites, content, video, classes and more.  Create clubs and groups.  Connect and share your Story.  Allow college recruiters full or limited access to your Story after turning 14 years old.  Build your own learning word cloud and annual yearbook from your Story.  (COMING SOON – <a href="#sign-up">Sign Up</a> for Release)</p>
@@ -1460,7 +1678,7 @@
 	<!-- <div class="wrap"> --> 
 		<div id="student"><%= render 'landing_page/new_nav' %></div>
 		<div class="container3 center odd">
-			<img src="assets_knowstory/profile_pics/student.jpeg" alt="Students" class="profile-image">
+			<img src="assets_knowstory/profile_pics/student2.jpeg" alt="Students" class="profile-image">
 			<h1>Student Story</h1>
 			<h2>The Story of what you Know. You’re more than grades and test scores!</h2>
 			
@@ -1476,7 +1694,7 @@
 	
 		<div id="teacher"><%= render 'landing_page/new_nav' %></div>
 		<div class="container3 center even">
-			<img src="assets_knowstory/profile_pics/teacher2.jpeg" alt="Teacher" class="profile-image">
+			<img src="assets_knowstory/profile_pics/teacher3.jpeg" alt="Teacher" class="profile-image">
 			<h1>Teacher Story</h1>
 			<h2>Your professional knowledge Story</h2>
 
@@ -1491,7 +1709,7 @@
 	
 		<div id="publisher"><%= render 'landing_page/new_nav' %></div>
 		<div class="container3 center odd">
-			<img src="assets_knowstory/profile_pics/publisher.jpeg" alt="Publisher" class="profile-image">
+			<img src="assets_knowstory/profile_pics/publisher2.jpeg" alt="Publisher" class="profile-image">
 			<h1>Publisher Story</h1>
 			<h2>Tell your Story of helping others know</h2>
 			
@@ -1507,7 +1725,7 @@
 	
 		<div id="school"><%= render 'landing_page/new_nav' %></div>
 		<div class="container3 center even">
-			<img src="assets_knowstory/profile_pics/school.jpeg" alt="School" class="profile-image">
+			<img src="assets_knowstory/profile_pics/school2.jpeg" alt="School" class="profile-image">
 			<h1>School or District Story</h1>
 			<h2>Build the Story of your unique knowledge blend</h2>
 
@@ -1524,7 +1742,7 @@
 	
 		<div id="recruiter"><%= render 'landing_page/new_nav' %></div>
 		<div class="container3 center odd">
-			<img src="assets_knowstory/profile_pics/college.jpeg" alt="College" class="profile-image">
+			<img src="assets_knowstory/profile_pics/college2.jpeg" alt="College" class="profile-image">
 			<h1>College Recruiter Story</h1>
 			<h2>Your Story for expanded knowledge</h2>
 			<p>Promote your institution and seek links with college-interested students. Search student interests and see public student profiles.</p>
@@ -1542,7 +1760,7 @@
 		<div id="sign-up">
 			<!-- <p>Sign up box here</p> -->
 				
-	    	<%= form_for @user, :html => {:id => 'form_user_new' } do |f| %>	
+	    	<%= form_for User.new, :html => {:id => 'form_user_new' } do |f| %>	
 	
 			<div class="form-home-table">
 				<div class="form-home-row">
@@ -2446,12 +2664,132 @@
 			// });
 		}
 
+		function openNewPwdReset() {
+			// $("#form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset_a").fadeIn( 2000 ) });
+			$("#form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset_a").fadeIn( 1000, function() { $("#user_new_pwd_reset_email").focus() } ) });
+		}
 
+		function closeNewPwdReset() {
+			$("#form_new_pwd_reset_a").fadeOut(700, function(){ 
+				$("#form_new_pwd_reset").slideUp(400); 
+			});
+		}
+
+		// function focusInput() {
+			// alert('focusInput');
+			// $("#user_new_pwd_reset_email").trigger("focus");
+		// }
+		
+		// function focusInputNameFirst() {
+			// alert("focus");
+		    // // if ( this.hash.slice(1) == "sign-up" ) {
+		    	// // alert("sign-up");
+		    	// $("#user_name_first").focus();
+		    // // }			
+		// }
+		
 		$(window).load( function() {
 		//$(document).ready(function(){
 
+
+			// focusInputNameFirst();
+
 			// formValidate();
 			
+			// $("#user_new_pwd_reset_email").focus(function() {
+				// alert('focus');
+			// });
+			
+			// $("#user_new_pwd_reset_email").show( function() {
+				// alert('show');
+			// });
+			
+    		$("#submit_new_pwd_reset").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_new_pwd_reset").click();
+    		});							
+			$("#close_form_new_pwd_reset").click(function(){
+		    	$("#form_new_pwd_reset_a").fadeOut(700, function(){ $("#form_new_pwd_reset").slideUp(400) });
+		    	$("#user_new_pwd_reset_email").val("");
+		    	$("#confirm_pwd_reset_3").addClass("display-none");
+		  	});
+		  	$("#open_form_new_pwd_reset").click(function(){
+		    	$("#form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset_a").fadeIn( 2000 ) });
+		  	});	
+						
+			$("#pwd_reset").on('click', function(){			
+				
+				// $("#form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset_a").fadeIn( 2000, $("#user_new_pwd_reset_email").focus() ) });
+				// $("#form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset_a").fadeIn( 2000, function() { $("#user_new_pwd_reset_email").focus() } ) });
+					
+				openNewPwdReset();
+				// $("#user_new_pwd_reset_email").trigger("focus");
+				// $("#pwd_reset").blur();
+				// $("#user_new_pwd_reset_email").focus();
+				// $("#show_form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset").fadeIn( 2000 ) });
+	    		// $("#form_new_pwd_reset, #open_edit_lesson_plan_subject").fadeOut(300, function(){
+	    			// $("#show_lesson_plan_subject").addClass("hidden");
+	    			// $("#open_edit_lesson_plan_subject").addClass("visibility-hidden");
+	    			// $("#form_new_pwd_reset").fadeIn(1300).removeClass("hidden");
+	    		// });
+		  	// }).$("#user_new_pwd_reset_email").focus();
+		  	});    		
+						
+			$("#submit_new_pwd_reset").on('click', function() {
+				var input_user_new_pwd_reset_email = $("#user_new_pwd_reset_email").val();
+				var obj_list = '{"email":"' + input_user_new_pwd_reset_email + 
+							   '"}';      
+			  	var obj = '{ "user": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	// url: '/users/new_pwd_reset',
+			    	url: '/password_resets/create_reset',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		// alert(data.email);
+	            		// $("#pwd_reset_container_spacer").removeClass("display-none");
+	            		if( data.confirm_msg_1_b) {
+	            			$("#confirm_pwd_reset_2").addClass("display-none");
+	            			$("#confirm_pwd_reset_3").addClass("display-none");
+	            			$("#confirm_pwd_reset_1").removeClass("display-none");
+	            			$("#confirm_pwd_reset_1_email").html(data.email);
+	            			closeNewPwdReset();	            			
+	            		}
+	            		if( data.confirm_msg_2_b) {
+	            			$("#confirm_pwd_reset_1").addClass("display-none");
+	            			$("#confirm_pwd_reset_3").addClass("display-none");
+	            			$("#confirm_pwd_reset_2").removeClass("display-none");
+	            			closeNewPwdReset();
+	            		}
+	            		if( data.confirm_msg_3_b) {
+	            			$("#confirm_pwd_reset_1").addClass("display-none");
+	            			$("#confirm_pwd_reset_2").addClass("display-none");	            			
+	            			$("#confirm_pwd_reset_3").removeClass("display-none");
+	            			$("#confirm_pwd_reset_3_email").html(data.email);
+	            		}
+
+						// set_content_type(data.content_type, data.has_content_type_other);
+						// $("#focus_30").focus();
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+						
+						
+
+
+
+
+
+
+
 						
 			$('select').dropdown({
 			    'changed': function(data) {
@@ -2627,6 +2965,49 @@
 			});
 
 						
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+						
+						
+						
 		});
 	
 	</script>
+

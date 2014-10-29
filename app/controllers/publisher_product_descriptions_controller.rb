@@ -2,6 +2,8 @@ class PublisherProductDescriptionsController < ApplicationController
 
   before_filter :force_http
 
+  include CarrierWave::RMagick
+  
   layout 'publisher'
 
   respond_to :html, :js, :json  
@@ -10,8 +12,11 @@ class PublisherProductDescriptionsController < ApplicationController
 
 
 
+  @@publisher_id = nil
   @@publisher_product_id = nil
+  @@publisher_product_description_id = nil
   
+    
   def show_description
     @@publisher_product_id = params[:publisher_product_id]
     redirect_to :action => :index
@@ -20,12 +25,14 @@ class PublisherProductDescriptionsController < ApplicationController
   
   def index
     
-    a_test = Array.new
-    a_test.push("This is very very long word 1")
-    a_test.push("This is very very long word 2")
-    a_test.push("This is very very long word 3")
-    a_test.push("This is very very long word 4")
-    @word_test = a_test
+    # @publisher_product_pdf_new = PublisherProductPdf.new
+    
+    # a_test = Array.new
+    # a_test.push("This is very very long word 1")
+    # a_test.push("This is very very long word 2")
+    # a_test.push("This is very very long word 3")
+    # a_test.push("This is very very long word 4")
+    # @word_test = a_test
     
     # render text: 'id = ' + @@id.to_s
     # @publisher_product_id = params[:publisher_product_id]
@@ -35,22 +42,48 @@ class PublisherProductDescriptionsController < ApplicationController
 
     publisher_product = PublisherProduct.find(@@publisher_product_id)
     @publisher_product_id = publisher_product.id
-    @publisher_id = publisher_product.publisher_id    
+    @publisher_id = publisher_product.publisher_id
+    @@publisher_id = @publisher_id    
+
+
+    # @publisher_product_pdfs = PublisherProductPdf.where("publisher_product_id = ?", @publisher_product_id)
+
+
 
     @publisher_product_description = PublisherProductDescription.where("publisher_product_id = ?", publisher_product.id).first
     # @publisher_product_description to be deleted
     publisher_product_description = @publisher_product_description
     
     @publisher_product_description_id = @publisher_product_description.id
+    @@publisher_product_description_id = @publisher_product_description_id
     
     @publisher_product_description_description = @publisher_product_description.description
     @publisher_product_description_topic = @publisher_product_description.topic
     @publisher_product_description_lesson_plan_subject = @publisher_product_description.lesson_plan_subject
     
 
-    @publisher_product_images = publisher_product.publisher_product_images
+    # @publisher_product_images = publisher_product.publisher_product_images
+    @publisher_product_pdfs = publisher_product.publisher_product_pdfs
+
+    # gon.name_pdf = []    
+    # i = 0
+    # @publisher_product_pdfs.each do |publisher_product_pdf|
+        # gon.name_pdf[i] = publisher_product_pdf.name_pdf
+        # i += 1        
+    # end
+
+
+
+
+
+
+    
+    # @publisher_product_pdf_images = @publisher_product_pdfs
     
     @publisher_product_logo = publisher_product.publisher_product_logo
+    @publisher_product1_image = publisher_product.publisher_product1_image
+    @publisher_product2_image = publisher_product.publisher_product2_image    
+    @publisher_product_corporate_logo = publisher_product.publisher_product_corporate_logo
     @publisher_product_content_type = publisher_product.publisher_product_content_type
     @publisher_product_category_subject = publisher_product.publisher_product_category_subject
     @publisher_product_appropriate_age = publisher_product.publisher_product_appropriate_age
@@ -62,8 +95,23 @@ class PublisherProductDescriptionsController < ApplicationController
     @publisher_product_enhancement = publisher_product.publisher_product_enhancement
     @publisher_product_pricing_model = publisher_product.publisher_product_pricing_model
     @publisher_product_price = publisher_product.publisher_product_price
-    @publisher_product_lesson_time = publisher_product.publisher_product_lesson_time
+    # @publisher_product_lesson_time = publisher_product.publisher_product_lesson_time
+    @publisher_product_by_review = publisher_product.publisher_product_by_review
     
+    # @publisher_product_core_literacy_standard = publisher_product.publisher_product_core_literacy_standard
+    @publisher_product_core_literacy_standards = PublisherProductCoreLiteracyStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+
+    @core_literacy_standards = CoreLiteracyStandard.order(sort_column + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+    # @publisher_product_core_literacy_standard = PublisherProductCoreLiteracyStandard.where("publisher_product_id = ?", @publisher_product_id).first
+    # @publisher_product_core_math_standard = PublisherProductCoreMathStandard.where("publisher_product_id = ?", @publisher_product_id).first
+    # @core_literacy_standards = CoreLiteracyStandard.all
+    # @core_math_standards = CoreMathStandard.all
+
+
+
+
+
+
 
 
     # determing last update to form
@@ -123,6 +171,11 @@ class PublisherProductDescriptionsController < ApplicationController
     else
       date_updated_character = date_0   
     end
+    if @publisher_product_by_review
+      date_updated_by_review = @publisher_product_by_review.updated_at
+    else
+      date_updated_by_review = date_0   
+    end
     if @publisher_product_enhancement
       date_updated_enhancement = @publisher_product_enhancement.updated_at
     else
@@ -138,11 +191,11 @@ class PublisherProductDescriptionsController < ApplicationController
     else
       date_updated_price = date_0   
     end
-    if @publisher_product_lesson_time
-      date_updated_lesson_time = @publisher_product_lesson_time.updated_at
-    else
-      date_updated_lesson_time = date_0   
-    end
+    # if @publisher_product_lesson_time
+      # date_updated_lesson_time = @publisher_product_lesson_time.updated_at
+    # else
+      # date_updated_lesson_time = date_0   
+    # end
     ar_updated = Array.new
     ar_updated.push(date_updated_description)
     ar_updated.push(date_updated_image)
@@ -154,10 +207,11 @@ class PublisherProductDescriptionsController < ApplicationController
     ar_updated.push(date_updated_platform)
     ar_updated.push(date_updated_file_type)
     ar_updated.push(date_updated_character)
+    ar_updated.push(date_updated_by_review)
     ar_updated.push(date_updated_enhancement)
     ar_updated.push(date_updated_pricing_model)
     ar_updated.push(date_updated_price)
-    ar_updated.push(date_updated_lesson_time)    
+    # ar_updated.push(date_updated_lesson_time)    
     greatest_updated = date_0
     ar_updated.each do |updated|
       if updated > greatest_updated
@@ -168,14 +222,8 @@ class PublisherProductDescriptionsController < ApplicationController
     @last_updated =greatest_updated 
     
     
-    @lesson_times = return_all_dtab5lets
+    # @lesson_times = return_all_dtab5lets
 
-    # @publisher_product_core_literacy_standard = PublisherProductCoreLiteracyStandard.where("publisher_product_id = ?", @publisher_product_id).first
-    # @publisher_product_core_math_standard = PublisherProductCoreMathStandard.where("publisher_product_id = ?", @publisher_product_id).first
-
-    # @core_literacy_standards = CoreLiteracyStandard.all
-    @core_literacy_standards = CoreLiteracyStandard.order(sort_column + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
-    # @core_math_standards = CoreMathStandard.all
     
     
     
@@ -184,26 +232,26 @@ class PublisherProductDescriptionsController < ApplicationController
     # @b_content_type = false          # 3
     # @b_category_subject = false      # 6
     # @b_topic = true                       # 13
-    @b_lesson_plan_subject = true         # 14
+    # @b_lesson_plan_subject = true         # 14
     # @b_description = true                 # 2
-    @b_age_appropriate_index = false      # 7
-    @b_grade_appropriate = false     # 8
+    # @b_age_appropriate_index = false      # 7
+    # @b_grade_appropriate = false     # 8
     @b_source_url = true                  # 5
     @b_market_target_index = false      # 7
-    @b_platform = false              # 9
-    @b_file_type = false              # 9
+    # @b_platform = false              # 9
+    # @b_file_type = false              # 9
     @b_updating_refresh_rate = false      # 0
     @b_updating_type = false      # 0
     @b_character = false      # 0
-    @b_enhancement = false      # 0
-    @b_pricing_model = false      # 0
-    @b_price = false      # 0
+    # @b_enhancement = false      # 0
+    # @b_pricing_model = false      # 0
+    # @b_price = false      # 0
     @b_lesson_time = false              # 9
-    @b_allow_teacher_rating = false      # 0
+    # @b_allow_teacher_rating = false      # 0
     @b_research = true      # 0
     # @b_core_supplemental_index = true     # 4
     @b_word_description = true            # 15
-    @b_core_literacy_standard = true      # 16
+    # @b_core_literacy_standard = true      # 16
     @b_core_math_standard = true          # 17
 
 
@@ -272,6 +320,15 @@ class PublisherProductDescriptionsController < ApplicationController
     end
     gon.content_type = []    
     gon.content_type_text = []
+    b_content_type_other = false
+    gon.has_content_type_other = false
+    gon.content_type_other = ""
+    # if !((@publisher_product_content_type.content_type_other.blank?) or (@publisher_product_content_type.content_type_other.empty?) or (@publisher_product_content_type.content_type_other.nil?))
+    if @publisher_product_content_type.content_type_other_b      
+        b_content_type_other = true
+        gon.has_content_type_other = true
+        gon.content_type_other = @publisher_product_content_type.content_type_other            
+    end
     gon.b_required_content_type = true                    
     if (@publisher_product_content_type.content_type_1 or
         @publisher_product_content_type.content_type_2 or
@@ -283,7 +340,8 @@ class PublisherProductDescriptionsController < ApplicationController
         @publisher_product_content_type.content_type_8 or
         @publisher_product_content_type.content_type_9 or
         @publisher_product_content_type.content_type_10 or        
-        @publisher_product_content_type.content_type_11)
+        @publisher_product_content_type.content_type_11 or
+        b_content_type_other)
         
         # @b_content_type = true
         gon.b_required_content_type = false                    
@@ -367,11 +425,54 @@ class PublisherProductDescriptionsController < ApplicationController
     end
     gon.category_subject = []    
     gon.category_subject_text = []    
+    b_category_subject_other = false
+    gon.has_category_subject_other = false
+    gon.category_subject_other = ""
+    if @publisher_product_category_subject.category_subject_other_b      
+        b_category_subject_other = true
+        gon.has_category_subject_other = true
+        gon.category_subject_other = @publisher_product_category_subject.category_subject_other            
+    end
     gon.b_required_category_subject = true                    
     if (@publisher_product_category_subject.category_subject_1 or
         @publisher_product_category_subject.category_subject_2 or
         @publisher_product_category_subject.category_subject_3 or
-        @publisher_product_category_subject.category_subject_4)
+        @publisher_product_category_subject.category_subject_4 or
+        @publisher_product_category_subject.category_subject_5 or
+        @publisher_product_category_subject.category_subject_6 or
+        @publisher_product_category_subject.category_subject_7 or
+        @publisher_product_category_subject.category_subject_8 or
+        @publisher_product_category_subject.category_subject_9 or
+        @publisher_product_category_subject.category_subject_10 or
+        @publisher_product_category_subject.category_subject_11 or
+        @publisher_product_category_subject.category_subject_12 or
+        @publisher_product_category_subject.category_subject_13 or
+        @publisher_product_category_subject.category_subject_14 or
+        @publisher_product_category_subject.category_subject_15 or
+        @publisher_product_category_subject.category_subject_16 or
+        @publisher_product_category_subject.category_subject_17 or
+        @publisher_product_category_subject.category_subject_18 or
+        @publisher_product_category_subject.category_subject_19 or
+        @publisher_product_category_subject.category_subject_20 or
+        @publisher_product_category_subject.category_subject_21 or
+        @publisher_product_category_subject.category_subject_22 or
+        @publisher_product_category_subject.category_subject_23 or
+        @publisher_product_category_subject.category_subject_24 or
+        @publisher_product_category_subject.category_subject_25 or
+        @publisher_product_category_subject.category_subject_26 or
+        @publisher_product_category_subject.category_subject_27 or
+        @publisher_product_category_subject.category_subject_28 or
+        @publisher_product_category_subject.category_subject_29 or
+        @publisher_product_category_subject.category_subject_30 or
+        @publisher_product_category_subject.category_subject_31 or
+        @publisher_product_category_subject.category_subject_32 or
+        @publisher_product_category_subject.category_subject_33 or
+        @publisher_product_category_subject.category_subject_34 or
+        @publisher_product_category_subject.category_subject_35 or
+        @publisher_product_category_subject.category_subject_36 or
+        @publisher_product_category_subject.category_subject_37 or
+        @publisher_product_category_subject.category_subject_38 or
+        @publisher_product_category_subject.category_subject_39)
         
         # @b_category_subject = true
         gon.b_required_category_subject = false                    
@@ -400,6 +501,216 @@ class PublisherProductDescriptionsController < ApplicationController
           gon.category_subject_text.push(a_category_subjects[3].col_1)                                                    
         end        
 
+        b = @publisher_product_category_subject.category_subject_5
+        gon.category_subject[4] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[4].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_6
+        gon.category_subject[5] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[5].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_7
+        gon.category_subject[6] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[6].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_8
+        gon.category_subject[7] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[7].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_9
+        gon.category_subject[8] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[8].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_10
+        gon.category_subject[9] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[9].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_11
+        gon.category_subject[10] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[10].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_12
+        gon.category_subject[11] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[11].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_13
+        gon.category_subject[12] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[12].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_14
+        gon.category_subject[13] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[13].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_15
+        gon.category_subject[14] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[14].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_16
+        gon.category_subject[15] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[15].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_17
+        gon.category_subject[16] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[16].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_18
+        gon.category_subject[17] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[17].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_19
+        gon.category_subject[18] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[18].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_20
+        gon.category_subject[19] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[19].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_21
+        gon.category_subject[20] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[20].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_22
+        gon.category_subject[21] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[21].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_23
+        gon.category_subject[22] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[22].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_24
+        gon.category_subject[23] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[23].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_25
+        gon.category_subject[24] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[24].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_26
+        gon.category_subject[25] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[25].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_27
+        gon.category_subject[26] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[26].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_28
+        gon.category_subject[27] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[27].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_29
+        gon.category_subject[28] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[28].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_30
+        gon.category_subject[29] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[29].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_31
+        gon.category_subject[30] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[30].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_32
+        gon.category_subject[31] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[31].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_33
+        gon.category_subject[32] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[32].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_34
+        gon.category_subject[33] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[33].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_35
+        gon.category_subject[34] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[34].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_36
+        gon.category_subject[35] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[35].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_37
+        gon.category_subject[36] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[36].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_38
+        gon.category_subject[37] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[37].col_1)  
+        end        
+
+        b = @publisher_product_category_subject.category_subject_39
+        gon.category_subject[38] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[38].col_1)  
+        end        
+
 
     end
 
@@ -414,22 +725,65 @@ class PublisherProductDescriptionsController < ApplicationController
 
 
 
+    # 6 by_review
+    a_by_reviews = Array.new
+    @by_reviews = return_all_dtab7lets
+    @by_reviews.each do |by_review|
+      a_by_reviews.push(by_review)
+    end
+    gon.by_review = []    
+    gon.by_review_text = []
+    b_by_review_other = false
+    gon.has_by_review_other = false
+    gon.by_review_other = ""
+    if @publisher_product_by_review.by_review_other_b      
+        b_by_review_other = true
+        gon.has_by_review_other = true
+        gon.by_review_other = @publisher_product_by_review.by_review_other            
+    end                
+    gon.b_required_by_review = true                    
+    if (@publisher_product_by_review.by_review_1 or
+        @publisher_product_by_review.by_review_2)
+        
+        gon.b_required_by_review = false                    
+
+        b = @publisher_product_by_review.by_review_1
+        gon.by_review[0] = b
+        if b
+          gon.by_review_text.push(a_by_reviews[0].col_1)                            
+        end        
+
+        b = @publisher_product_by_review.by_review_2
+        gon.by_review[1] = b
+        if b
+          gon.by_review_text.push(a_by_reviews[1].col_1)                            
+        end        
 
 
-
-
-
-
-
+    end
 
 
 
 
     # 14 lesson_plan_subject
+    @b_required_lesson_plan_subject = false    
     if (@publisher_product_description.lesson_plan_subject.blank?) or (@publisher_product_description.lesson_plan_subject.empty?) or (@publisher_product_description.lesson_plan_subject.nil?)
-      @b_lesson_plan_subject = false
+      @b_required_lesson_plan_subject = true
     end
     
+
+    # 14 lesson_time
+    @b_required_lesson_time = false    
+    gon.time_per_lesson = @publisher_product_description.time_per_lesson
+    gon.time_per_course = @publisher_product_description.time_per_course
+    gon.lesson_time_hours = @publisher_product_description.lesson_time_hours
+    gon.lesson_time_minutes = @publisher_product_description.lesson_time_minutes
+    gon.course_time_months = @publisher_product_description.course_time_months
+    gon.course_time_days = @publisher_product_description.course_time_days
+
+    # if (@publisher_product_description.lesson_plan_subject.blank?) or (@publisher_product_description.lesson_plan_subject.empty?) or (@publisher_product_description.lesson_plan_subject.nil?)
+      # @b_required_lesson_plan_subject = true
+    # end
     
     
     # 7 platform
@@ -440,11 +794,31 @@ class PublisherProductDescriptionsController < ApplicationController
     end
     gon.platform = []    
     gon.platform_text = []    
+    b_platform_other = false
+    gon.has_platform_other = false
+    gon.platform_other = ""
+    if @publisher_product_platform.platform_other_b      
+        b_platform_other = true
+        gon.has_platform_other = true
+        gon.platform_other = @publisher_product_platform.platform_other            
+    end    
+    gon.b_required_platform = true                        
     if (@publisher_product_platform.platform_1 or
         @publisher_product_platform.platform_2 or
-        @publisher_product_platform.platform_3)
+        @publisher_product_platform.platform_3 or
+        @publisher_product_platform.platform_4 or
+        @publisher_product_platform.platform_5 or
+        @publisher_product_platform.platform_6 or
+        @publisher_product_platform.platform_7 or
+        @publisher_product_platform.platform_8 or
+        @publisher_product_platform.platform_9 or
+        @publisher_product_platform.platform_10 or
+        @publisher_product_platform.platform_11 or
+        @publisher_product_platform.platform_12 or
+        @publisher_product_platform.platform_13)
         
-        @b_platform = true
+        # @b_platform = true
+        gon.b_required_platform = false
 
         b = @publisher_product_platform.platform_1
         gon.platform[0] = b
@@ -464,9 +838,66 @@ class PublisherProductDescriptionsController < ApplicationController
           gon.platform_text.push(a_platforms[2].col_1)                            
         end        
 
-        # gon.platform[0] = @publisher_product_platform.platform_1
-        # gon.platform[1] = @publisher_product_platform.platform_2
-        # gon.platform[2] = @publisher_product_platform.platform_3
+        b = @publisher_product_platform.platform_4
+        gon.platform[3] = b
+        if b
+          gon.platform_text.push(a_platforms[3].col_1)  
+        end        
+
+        b = @publisher_product_platform.platform_5
+        gon.platform[4] = b
+        if b
+          gon.platform_text.push(a_platforms[4].col_1)  
+        end        
+
+        b = @publisher_product_platform.platform_6
+        gon.platform[5] = b
+        if b
+          gon.platform_text.push(a_platforms[5].col_1)  
+        end        
+
+        b = @publisher_product_platform.platform_7
+        gon.platform[6] = b
+        if b
+          gon.platform_text.push(a_platforms[6].col_1)  
+        end        
+
+        b = @publisher_product_platform.platform_8
+        gon.platform[7] = b
+        if b
+          gon.platform_text.push(a_platforms[7].col_1)  
+        end        
+
+        b = @publisher_product_platform.platform_9
+        gon.platform[8] = b
+        if b
+          gon.platform_text.push(a_platforms[8].col_1)  
+        end        
+
+        b = @publisher_product_platform.platform_10
+        gon.platform[9] = b
+        if b
+          gon.platform_text.push(a_platforms[9].col_1)  
+        end        
+
+        b = @publisher_product_platform.platform_11
+        gon.platform[10] = b
+        if b
+          gon.platform_text.push(a_platforms[10].col_1)  
+        end        
+
+        b = @publisher_product_platform.platform_12
+        gon.platform[11] = b
+        if b
+          gon.platform_text.push(a_platforms[11].col_1)  
+        end        
+
+        b = @publisher_product_platform.platform_13
+        gon.platform[12] = b
+        if b
+          gon.platform_text.push(a_platforms[12].col_1)  
+        end        
+
 
     end
 
@@ -479,11 +910,21 @@ class PublisherProductDescriptionsController < ApplicationController
     end
     gon.file_type = []    
     gon.file_type_text = []    
+    b_file_type_other = false
+    gon.has_file_type_other = false
+    gon.file_type_other = ""
+    if @publisher_product_file_type.file_type_other_b      
+        b_file_type_other = true
+        gon.has_file_type_other = true
+        gon.file_type_other = @publisher_product_file_type.file_type_other            
+    end        
+    gon.b_required_file_type = true                            
     if (@publisher_product_file_type.file_type_1 or
         @publisher_product_file_type.file_type_2 or
         @publisher_product_file_type.file_type_3)
         
-        @b_file_type = true
+        # @b_file_type = true
+        gon.b_required_file_type = false
 
         b = @publisher_product_file_type.file_type_1
         gon.file_type[0] = b
@@ -503,11 +944,118 @@ class PublisherProductDescriptionsController < ApplicationController
           gon.file_type_text.push(a_file_types[2].col_1)                            
         end        
 
-        # gon.file_type[0] = @publisher_product_file_type.file_type_1
-        # gon.file_type[1] = @publisher_product_file_type.file_type_2
-        # gon.file_type[2] = @publisher_product_file_type.file_type_3
+        b = @publisher_product_file_type.file_type_4
+        gon.file_type[3] = b
+        if b
+          gon.file_type_text.push(a_file_types[3].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_5
+        gon.file_type[4] = b
+        if b
+          gon.file_type_text.push(a_file_types[4].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_6
+        gon.file_type[5] = b
+        if b
+          gon.file_type_text.push(a_file_types[5].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_7
+        gon.file_type[6] = b
+        if b
+          gon.file_type_text.push(a_file_types[6].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_8
+        gon.file_type[7] = b
+        if b
+          gon.file_type_text.push(a_file_types[7].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_9
+        gon.file_type[8] = b
+        if b
+          gon.file_type_text.push(a_file_types[8].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_10
+        gon.file_type[9] = b
+        if b
+          gon.file_type_text.push(a_file_types[9].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_11
+        gon.file_type[10] = b
+        if b
+          gon.file_type_text.push(a_file_types[10].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_12
+        gon.file_type[11] = b
+        if b
+          gon.file_type_text.push(a_file_types[11].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_13
+        gon.file_type[12] = b
+        if b
+          gon.file_type_text.push(a_file_types[12].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_14
+        gon.file_type[13] = b
+        if b
+          gon.file_type_text.push(a_file_types[13].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_15
+        gon.file_type[14] = b
+        if b
+          gon.file_type_text.push(a_file_types[14].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_16
+        gon.file_type[15] = b
+        if b
+          gon.file_type_text.push(a_file_types[15].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_17
+        gon.file_type[16] = b
+        if b
+          gon.file_type_text.push(a_file_types[16].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_18
+        gon.file_type[17] = b
+        if b
+          gon.file_type_text.push(a_file_types[17].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_19
+        gon.file_type[18] = b
+        if b
+          gon.file_type_text.push(a_file_types[18].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_20
+        gon.file_type[19] = b
+        if b
+          gon.file_type_text.push(a_file_types[19].col_1)  
+        end        
+
+        b = @publisher_product_file_type.file_type_21
+        gon.file_type[20] = b
+        if b
+          gon.file_type_text.push(a_file_types[20].col_1)  
+        end        
+
+
 
     end
+
 
 
     # 7 enhancement_index
@@ -518,6 +1066,15 @@ class PublisherProductDescriptionsController < ApplicationController
     end
     gon.enhancement = []
     gon.enhancement_text = []    
+    b_enhancement_other = false
+    gon.has_enhancement_other = false
+    gon.enhancement_other = ""
+    if @publisher_product_enhancement.enhancement_other_b      
+        b_enhancement_other = true
+        gon.has_enhancement_other = true
+        gon.enhancement_other = @publisher_product_enhancement.enhancement_other            
+    end            
+    gon.b_required_enhancement = true                                
     if (@publisher_product_enhancement.enhancement_1 or
         @publisher_product_enhancement.enhancement_2 or
         @publisher_product_enhancement.enhancement_3 or
@@ -531,7 +1088,7 @@ class PublisherProductDescriptionsController < ApplicationController
         @publisher_product_enhancement.enhancement_11 or
         @publisher_product_enhancement.enhancement_12)
         
-        @b_enhancement = true
+        gon.b_required_enhancement = false
 
         b = @publisher_product_enhancement.enhancement_1
         gon.enhancement[0] = b
@@ -605,128 +1162,286 @@ class PublisherProductDescriptionsController < ApplicationController
           gon.enhancement_text.push(a_enhancements[11].col_1)                            
         end        
 
-        # # gon.enhancement[0] = false        
-        # gon.enhancement[1] = @publisher_product_enhancement.enhancement_1
-        # gon.enhancement[2] = @publisher_product_enhancement.enhancement_2
-        # gon.enhancement[3] = @publisher_product_enhancement.enhancement_3
-        # gon.enhancement[4] = @publisher_product_enhancement.enhancement_4
-        # gon.enhancement[5] = @publisher_product_enhancement.enhancement_5
-        # gon.enhancement[6] = @publisher_product_enhancement.enhancement_6
-        # gon.enhancement[7] = @publisher_product_enhancement.enhancement_7
-        # gon.enhancement[8] = @publisher_product_enhancement.enhancement_8
-        # gon.enhancement[9] = @publisher_product_enhancement.enhancement_9
-        # gon.enhancement[10] = @publisher_product_enhancement.enhancement_10
-        # gon.enhancement[11] = @publisher_product_enhancement.enhancement_11
-        # gon.enhancement[12] = @publisher_product_enhancement.enhancement_12
 
     end
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    # 7 age_appropriate_index
-    gon.age_appropriate = []    
+
+
+
+
+
+
+
+
+    # 8 age_appropriate
+    a_appropriate_ages = Array.new
+    @appropriate_ages = return_all_dtab8lets
+    @appropriate_ages.each do |age_appropriate|
+      a_appropriate_ages.push(age_appropriate)
+    end
+    gon.appropriate_age = []
+    gon.appropriate_age_text = []    
+    gon.b_required_appropriate_age = true                                
     if (@publisher_product_appropriate_age.age_appropriate_1 or
         @publisher_product_appropriate_age.age_appropriate_2 or
-        @publisher_product_appropriate_age.age_appropriate_3 or
-        @publisher_product_appropriate_age.age_appropriate_4 or
-        @publisher_product_appropriate_age.age_appropriate_5 or
-        @publisher_product_appropriate_age.age_appropriate_6 or
-        @publisher_product_appropriate_age.age_appropriate_7 or
-        @publisher_product_appropriate_age.age_appropriate_8 or
-        @publisher_product_appropriate_age.age_appropriate_9 or
-        @publisher_product_appropriate_age.age_appropriate_10 or
-        @publisher_product_appropriate_age.age_appropriate_11 or
-        @publisher_product_appropriate_age.age_appropriate_12 or
-        @publisher_product_appropriate_age.age_appropriate_13 or
-        @publisher_product_appropriate_age.age_appropriate_14 or
-        @publisher_product_appropriate_age.age_appropriate_15 or
-        @publisher_product_appropriate_age.age_appropriate_16 or
-        @publisher_product_appropriate_age.age_appropriate_17 or
-        @publisher_product_appropriate_age.age_appropriate_adult)
+        @publisher_product_appropriate_age.age_appropriate_3)
         
-        @b_age_appropriate_index = true
-        
-        gon.age_appropriate[1] = @publisher_product_appropriate_age.age_appropriate_1
-        gon.age_appropriate[2] = @publisher_product_appropriate_age.age_appropriate_2
-        gon.age_appropriate[3] = @publisher_product_appropriate_age.age_appropriate_3
-        gon.age_appropriate[4] = @publisher_product_appropriate_age.age_appropriate_4
-        gon.age_appropriate[5] = @publisher_product_appropriate_age.age_appropriate_5
-        gon.age_appropriate[6] = @publisher_product_appropriate_age.age_appropriate_6
-        gon.age_appropriate[7] = @publisher_product_appropriate_age.age_appropriate_7
-        gon.age_appropriate[8] = @publisher_product_appropriate_age.age_appropriate_8 
-        gon.age_appropriate[9] = @publisher_product_appropriate_age.age_appropriate_9 
-        gon.age_appropriate[10] = @publisher_product_appropriate_age.age_appropriate_10 
-        gon.age_appropriate[11] = @publisher_product_appropriate_age.age_appropriate_11 
-        gon.age_appropriate[12] = @publisher_product_appropriate_age.age_appropriate_12 
-        gon.age_appropriate[13] = @publisher_product_appropriate_age.age_appropriate_13 
-        gon.age_appropriate[14] = @publisher_product_appropriate_age.age_appropriate_14 
-        gon.age_appropriate[15] = @publisher_product_appropriate_age.age_appropriate_15 
-        gon.age_appropriate[16] = @publisher_product_appropriate_age.age_appropriate_16 
-        gon.age_appropriate[17] = @publisher_product_appropriate_age.age_appropriate_17 
-        gon.age_appropriate[18] = @publisher_product_appropriate_age.age_appropriate_adult
-        
+        # @b_age_appropriate = true
+        gon.b_required_appropriate_age = false
+
+        b = @publisher_product_appropriate_age.age_appropriate_1
+        gon.appropriate_age[0] = b
+        if b
+          gon.appropriate_age_text.push(a_appropriate_ages[0].col_1)                            
+        end        
+
+        b = @publisher_product_appropriate_age.age_appropriate_2
+        gon.appropriate_age[1] = b
+        if b
+          gon.appropriate_age_text.push(a_appropriate_ages[1].col_1)                            
+        end        
+
+        b = @publisher_product_appropriate_age.age_appropriate_3
+        gon.appropriate_age[2] = b
+        if b
+          gon.appropriate_age_text.push(a_appropriate_ages[2].col_1)                            
+        end        
+
+
     end
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    # # 7 age_appropriate_index
+    # gon.age_appropriate = []    
+    # if (@publisher_product_appropriate_age.age_appropriate_1 or
+        # @publisher_product_appropriate_age.age_appropriate_2 or
+        # @publisher_product_appropriate_age.age_appropriate_3 or
+        # @publisher_product_appropriate_age.age_appropriate_4 or
+        # @publisher_product_appropriate_age.age_appropriate_5 or
+        # @publisher_product_appropriate_age.age_appropriate_6 or
+        # @publisher_product_appropriate_age.age_appropriate_7 or
+        # @publisher_product_appropriate_age.age_appropriate_8 or
+        # @publisher_product_appropriate_age.age_appropriate_9 or
+        # @publisher_product_appropriate_age.age_appropriate_10 or
+        # @publisher_product_appropriate_age.age_appropriate_11 or
+        # @publisher_product_appropriate_age.age_appropriate_12 or
+        # @publisher_product_appropriate_age.age_appropriate_13 or
+        # @publisher_product_appropriate_age.age_appropriate_14 or
+        # @publisher_product_appropriate_age.age_appropriate_15 or
+        # @publisher_product_appropriate_age.age_appropriate_16 or
+        # @publisher_product_appropriate_age.age_appropriate_17 or
+        # @publisher_product_appropriate_age.age_appropriate_adult)
+#         
+        # # @b_age_appropriate_index = true
+#         
+        # gon.age_appropriate[1] = @publisher_product_appropriate_age.age_appropriate_1
+        # gon.age_appropriate[2] = @publisher_product_appropriate_age.age_appropriate_2
+        # gon.age_appropriate[3] = @publisher_product_appropriate_age.age_appropriate_3
+        # gon.age_appropriate[4] = @publisher_product_appropriate_age.age_appropriate_4
+        # gon.age_appropriate[5] = @publisher_product_appropriate_age.age_appropriate_5
+        # gon.age_appropriate[6] = @publisher_product_appropriate_age.age_appropriate_6
+        # gon.age_appropriate[7] = @publisher_product_appropriate_age.age_appropriate_7
+        # gon.age_appropriate[8] = @publisher_product_appropriate_age.age_appropriate_8 
+        # gon.age_appropriate[9] = @publisher_product_appropriate_age.age_appropriate_9 
+        # gon.age_appropriate[10] = @publisher_product_appropriate_age.age_appropriate_10 
+        # gon.age_appropriate[11] = @publisher_product_appropriate_age.age_appropriate_11 
+        # gon.age_appropriate[12] = @publisher_product_appropriate_age.age_appropriate_12 
+        # gon.age_appropriate[13] = @publisher_product_appropriate_age.age_appropriate_13 
+        # gon.age_appropriate[14] = @publisher_product_appropriate_age.age_appropriate_14 
+        # gon.age_appropriate[15] = @publisher_product_appropriate_age.age_appropriate_15 
+        # gon.age_appropriate[16] = @publisher_product_appropriate_age.age_appropriate_16 
+        # gon.age_appropriate[17] = @publisher_product_appropriate_age.age_appropriate_17 
+        # gon.age_appropriate[18] = @publisher_product_appropriate_age.age_appropriate_adult
+#         
+    # end
     
 
 
-    # 7 grade_appropriate_index
-    gon.grade_appropriate = []    
+
+    # 9 appropriate_grade
+    a_appropriate_grades = Array.new
+    @appropriate_grades = return_all_dtab9lets
+    @appropriate_grades.each do |grade_appropriate|
+      a_appropriate_grades.push(grade_appropriate)
+    end
+    gon.appropriate_grade = []
+    gon.appropriate_grade_text = []    
+    gon.b_required_appropriate_grade = true                                
     if (@publisher_product_appropriate_grade.grade_appropriate_1 or
         @publisher_product_appropriate_grade.grade_appropriate_2 or
-        @publisher_product_appropriate_grade.grade_appropriate_3 or
-        @publisher_product_appropriate_grade.grade_appropriate_4 or
-        @publisher_product_appropriate_grade.grade_appropriate_5 or
-        @publisher_product_appropriate_grade.grade_appropriate_6 or
-        @publisher_product_appropriate_grade.grade_appropriate_7 or
-        @publisher_product_appropriate_grade.grade_appropriate_8 or
-        @publisher_product_appropriate_grade.grade_appropriate_9 or
-        @publisher_product_appropriate_grade.grade_appropriate_10 or
-        @publisher_product_appropriate_grade.grade_appropriate_11 or
-        @publisher_product_appropriate_grade.grade_appropriate_12 or
-        @publisher_product_appropriate_grade.grade_appropriate_13 or
-        @publisher_product_appropriate_grade.grade_appropriate_14 or
-        @publisher_product_appropriate_grade.grade_appropriate_15 or
-        @publisher_product_appropriate_grade.grade_appropriate_16)
+        @publisher_product_appropriate_grade.grade_appropriate_3)
         
-        @b_grade_appropriate = true
+        # @b_grade_appropriate = true
+        gon.b_required_appropriate_grade = false
+
+        b = @publisher_product_appropriate_grade.grade_appropriate_1
+        gon.appropriate_grade[0] = b
+        if b
+          gon.appropriate_grade_text.push(a_appropriate_grades[0].col_1)                            
+        end        
+
+        b = @publisher_product_appropriate_grade.grade_appropriate_2
+        gon.appropriate_grade[1] = b
+        if b
+          gon.appropriate_grade_text.push(a_appropriate_grades[1].col_1)                            
+        end        
+
+        b = @publisher_product_appropriate_grade.grade_appropriate_3
+        gon.appropriate_grade[2] = b
+        if b
+          gon.appropriate_grade_text.push(a_appropriate_grades[2].col_1)                            
+        end        
+
+
+    end
+
+
+
+
+    # # 7 grade_appropriate_index
+    # gon.grade_appropriate = []    
+    # if (@publisher_product_appropriate_grade.grade_appropriate_1 or
+        # @publisher_product_appropriate_grade.grade_appropriate_2 or
+        # @publisher_product_appropriate_grade.grade_appropriate_3 or
+        # @publisher_product_appropriate_grade.grade_appropriate_4 or
+        # @publisher_product_appropriate_grade.grade_appropriate_5 or
+        # @publisher_product_appropriate_grade.grade_appropriate_6 or
+        # @publisher_product_appropriate_grade.grade_appropriate_7 or
+        # @publisher_product_appropriate_grade.grade_appropriate_8 or
+        # @publisher_product_appropriate_grade.grade_appropriate_9 or
+        # @publisher_product_appropriate_grade.grade_appropriate_10 or
+        # @publisher_product_appropriate_grade.grade_appropriate_11 or
+        # @publisher_product_appropriate_grade.grade_appropriate_12 or
+        # @publisher_product_appropriate_grade.grade_appropriate_13 or
+        # @publisher_product_appropriate_grade.grade_appropriate_14 or
+        # @publisher_product_appropriate_grade.grade_appropriate_15 or
+        # @publisher_product_appropriate_grade.grade_appropriate_16)
+#         
+        # @b_grade_appropriate = true
+#         
+        # gon.grade_appropriate[1] = @publisher_product_appropriate_grade.grade_appropriate_1
+        # gon.grade_appropriate[2] = @publisher_product_appropriate_grade.grade_appropriate_2
+        # gon.grade_appropriate[3] = @publisher_product_appropriate_grade.grade_appropriate_3
+        # gon.grade_appropriate[4] = @publisher_product_appropriate_grade.grade_appropriate_4
+        # gon.grade_appropriate[5] = @publisher_product_appropriate_grade.grade_appropriate_5
+        # gon.grade_appropriate[6] = @publisher_product_appropriate_grade.grade_appropriate_6
+        # gon.grade_appropriate[7] = @publisher_product_appropriate_grade.grade_appropriate_7
+        # gon.grade_appropriate[8] = @publisher_product_appropriate_grade.grade_appropriate_8 
+        # gon.grade_appropriate[9] = @publisher_product_appropriate_grade.grade_appropriate_9 
+        # gon.grade_appropriate[10] = @publisher_product_appropriate_grade.grade_appropriate_10 
+        # gon.grade_appropriate[11] = @publisher_product_appropriate_grade.grade_appropriate_11 
+        # gon.grade_appropriate[12] = @publisher_product_appropriate_grade.grade_appropriate_12 
+        # gon.grade_appropriate[13] = @publisher_product_appropriate_grade.grade_appropriate_13 
+        # gon.grade_appropriate[14] = @publisher_product_appropriate_grade.grade_appropriate_14 
+        # gon.grade_appropriate[15] = @publisher_product_appropriate_grade.grade_appropriate_15 
+        # gon.grade_appropriate[16] = @publisher_product_appropriate_grade.grade_appropriate_16 
+#         
+    # end
+    
+    
+    
+    
+    
+    
+    # 7 market_target
+    a_market_targets = Array.new
+    @market_targets = return_all_dtab11lets
+    @market_targets.each do |m_target|
+      a_market_targets.push(m_target)
+    end
+    gon.market_target = []
+    gon.market_target_text = []    
+    gon.b_required_market_target = true                                
+    if (@publisher_product_market_target.market_target_1 or
+        @publisher_product_market_target.market_target_2)
         
-        gon.grade_appropriate[1] = @publisher_product_appropriate_grade.grade_appropriate_1
-        gon.grade_appropriate[2] = @publisher_product_appropriate_grade.grade_appropriate_2
-        gon.grade_appropriate[3] = @publisher_product_appropriate_grade.grade_appropriate_3
-        gon.grade_appropriate[4] = @publisher_product_appropriate_grade.grade_appropriate_4
-        gon.grade_appropriate[5] = @publisher_product_appropriate_grade.grade_appropriate_5
-        gon.grade_appropriate[6] = @publisher_product_appropriate_grade.grade_appropriate_6
-        gon.grade_appropriate[7] = @publisher_product_appropriate_grade.grade_appropriate_7
-        gon.grade_appropriate[8] = @publisher_product_appropriate_grade.grade_appropriate_8 
-        gon.grade_appropriate[9] = @publisher_product_appropriate_grade.grade_appropriate_9 
-        gon.grade_appropriate[10] = @publisher_product_appropriate_grade.grade_appropriate_10 
-        gon.grade_appropriate[11] = @publisher_product_appropriate_grade.grade_appropriate_11 
-        gon.grade_appropriate[12] = @publisher_product_appropriate_grade.grade_appropriate_12 
-        gon.grade_appropriate[13] = @publisher_product_appropriate_grade.grade_appropriate_13 
-        gon.grade_appropriate[14] = @publisher_product_appropriate_grade.grade_appropriate_14 
-        gon.grade_appropriate[15] = @publisher_product_appropriate_grade.grade_appropriate_15 
-        gon.grade_appropriate[16] = @publisher_product_appropriate_grade.grade_appropriate_16 
+        # @b_market_target_index = true
         
+        gon.b_required_market_target = false
+
+        b = @publisher_product_market_target.market_target_1
+        gon.market_target[0] = b
+        if b
+          gon.market_target_text.push(a_market_targets[0].col_1)                            
+        end        
+
+        b = @publisher_product_market_target.market_target_2
+        gon.market_target[1] = b
+        if b
+          gon.market_target_text.push(a_market_targets[1].col_1)                            
+        end        
+        
+        # gon.market_target[1] = @publisher_product_market_target.market_target_1
+        # gon.market_target[2] = @publisher_product_market_target.market_target_2
     end
     
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    # 9 pricing_model
+    a_pricing_models = Array.new
+    @pricing_models = return_all_dtab10lets
+    @pricing_models.each do |p_model|
+      a_pricing_models.push(p_model)
+    end
+    gon.pricing_model = []
+    gon.pricing_model_text = []    
+    gon.b_required_pricing_model = true                                
+    if (@publisher_product_pricing_model.pricing_model_1 or
+        @publisher_product_pricing_model.pricing_model_2 or
+        @publisher_product_pricing_model.pricing_model_3)
+        
+        # @b_grade_appropriate = true
+        gon.b_required_pricing_model = false
+
+        b = @publisher_product_pricing_model.pricing_model_1
+        gon.pricing_model[0] = b
+        if b
+          gon.pricing_model_text.push(a_pricing_models[0].col_1)                            
+        end        
+
+        b = @publisher_product_pricing_model.pricing_model_2
+        gon.pricing_model[1] = b
+        if b
+          gon.pricing_model_text.push(a_pricing_models[1].col_1)                            
+        end        
+
+        b = @publisher_product_pricing_model.pricing_model_3
+        gon.pricing_model[2] = b
+        if b
+          gon.pricing_model_text.push(a_pricing_models[2].col_1)                            
+        end        
+
+
+    end
     
     
     
@@ -747,15 +1462,6 @@ class PublisherProductDescriptionsController < ApplicationController
     # 5 source_url
     if (@publisher_product_description.source_url.blank?) or (@publisher_product_description.source_url.empty?) or (@publisher_product_description.source_url.nil?)
       @b_source_url = false
-    end
-    # 7 market_target_index
-    gon.market_target = []    
-    if (@publisher_product_market_target.market_target_1 or
-        @publisher_product_market_target.market_target_2)
-        
-        @b_market_target_index = true
-        gon.market_target[1] = @publisher_product_market_target.market_target_1
-        gon.market_target[2] = @publisher_product_market_target.market_target_2
     end
 
     
@@ -812,24 +1518,24 @@ class PublisherProductDescriptionsController < ApplicationController
     
     
 
-    # 7 pricing_model
-    gon.pricing_model = []    
-    if (@publisher_product_pricing_model.pricing_model_1 or
-        @publisher_product_pricing_model.pricing_model_2 or
-        @publisher_product_pricing_model.pricing_model_3 or
-        @publisher_product_pricing_model.pricing_model_4 or
-        @publisher_product_pricing_model.pricing_model_5)
-        
-        @b_price_model = true
-
-        # gon.pricing_model[0] = false        
-        gon.pricing_model[1] = @publisher_product_pricing_model.pricing_model_1
-        gon.pricing_model[2] = @publisher_product_pricing_model.pricing_model_2
-        gon.pricing_model[3] = @publisher_product_pricing_model.pricing_model_3
-        gon.pricing_model[4] = @publisher_product_pricing_model.pricing_model_4
-        gon.pricing_model[5] = @publisher_product_pricing_model.pricing_model_5
-
-    end
+    # # 7 pricing_model
+    # gon.pricing_model = []    
+    # if (@publisher_product_pricing_model.pricing_model_1 or
+        # @publisher_product_pricing_model.pricing_model_2 or
+        # @publisher_product_pricing_model.pricing_model_3 or
+        # @publisher_product_pricing_model.pricing_model_4 or
+        # @publisher_product_pricing_model.pricing_model_5)
+#         
+        # @b_price_model = true
+# 
+        # # gon.pricing_model[0] = false        
+        # gon.pricing_model[1] = @publisher_product_pricing_model.pricing_model_1
+        # gon.pricing_model[2] = @publisher_product_pricing_model.pricing_model_2
+        # gon.pricing_model[3] = @publisher_product_pricing_model.pricing_model_3
+        # gon.pricing_model[4] = @publisher_product_pricing_model.pricing_model_4
+        # gon.pricing_model[5] = @publisher_product_pricing_model.pricing_model_5
+# 
+    # end
     
 
     # 7 price
@@ -841,90 +1547,161 @@ class PublisherProductDescriptionsController < ApplicationController
     # ar = Array.new(a)
     # ar.map!{Array.new(b)}
     
-    a_price = Array.new(12).map!{Array.new(2)}
+
+    a_prices_text = Array.new
+    a_prices_text[0] = "price 1 text"
+    a_prices_text[1] = "price 2 text"
+    a_prices_text[2] = "price 3 text"
+    a_prices_text[3] = "price 4 text"
+    a_prices_text[4] = "price 5 text"
+    a_prices_text[5] = "price 6 text"
+    a_prices_text[6] = "price 7 text"
+    a_prices_text[7] = "price 8 text"
+    a_prices_text[8] = "price 9 text"
+    a_prices_text[9] = "price 10 text"
+    a_prices_text[10] = "price 11 text"
+    a_prices_text[11] = "price 12 text"
+    a_prices = Array.new(12).map!{Array.new(2)}
     gon.price = nil    
-    # if (@publisher_product_price.price_1 or
-        # @publisher_product_price.price_2 or
-        # @publisher_product_price.price_3 or
-        # @publisher_product_price.price_4 or
-        # @publisher_product_price.price_5 or
-        # @publisher_product_price.price_6 or
-        # @publisher_product_price.price_7 or
-        # @publisher_product_price.price_8 or
-        # @publisher_product_price.price_9 or
-        # @publisher_product_price.price_10 or
-        # @publisher_product_price.price_11 or
-        # @publisher_product_price.price_12)
-#         
+    gon.price_text = []    
+    gon.b_required_price = true                                
+    if (@publisher_product_price.price_1 or
+        @publisher_product_price.price_2 or
+        @publisher_product_price.price_3 or
+        @publisher_product_price.price_4 or
+        @publisher_product_price.price_5 or
+        @publisher_product_price.price_6 or
+        @publisher_product_price.price_7 or
+        @publisher_product_price.price_8 or
+        @publisher_product_price.price_9 or
+        @publisher_product_price.price_10 or
+        @publisher_product_price.price_11 or
+        @publisher_product_price.price_12)
+        
         # @b_price = true
+        # gon.price[0] = false
+        
+        gon.b_required_price = false                                
 
-        # gon.price[0] = false        
-        a_price[1][0] = @publisher_product_price.price_1
-        a_price[1][1] = @publisher_product_price.price_1_dec
-        a_price[2][0] = @publisher_product_price.price_2
-        a_price[2][1] = @publisher_product_price.price_2_dec
-        a_price[3][0] = @publisher_product_price.price_3
-        a_price[3][1] = @publisher_product_price.price_3_dec
-        a_price[4][0] = @publisher_product_price.price_4
-        a_price[4][1] = @publisher_product_price.price_4_dec
-        a_price[5][0] = @publisher_product_price.price_5
-        a_price[5][1] = @publisher_product_price.price_5_dec
-        a_price[6][0] = @publisher_product_price.price_6
-        a_price[6][1] = @publisher_product_price.price_6_dec
-        a_price[7][0] = @publisher_product_price.price_7
-        a_price[7][1] = @publisher_product_price.price_7_dec
-        a_price[8][0] = @publisher_product_price.price_8
-        a_price[8][1] = @publisher_product_price.price_8_dec
-        a_price[9][0] = @publisher_product_price.price_9
-        a_price[9][1] = @publisher_product_price.price_9_dec
-        a_price[10][0] = @publisher_product_price.price_10
-        a_price[10][1] = @publisher_product_price.price_10_dec
+    end
 
-        a_price[11][0] = @publisher_product_price.price_11
+        # b = @publisher_product_price.price_1
+        # gon.price[0] = b
+        # if b
+          # gon.price_text.push(a_prices[0].col_1)                            
+        # end        
 
-        gon.price = a_price
+        a_prices[1][0] = @publisher_product_price.price_1
+        a_prices[1][1] = @publisher_product_price.price_1_dec
+        a_prices[2][0] = @publisher_product_price.price_2
+        a_prices[2][1] = @publisher_product_price.price_2_dec
+        a_prices[3][0] = @publisher_product_price.price_3
+        a_prices[3][1] = @publisher_product_price.price_3_dec
+        a_prices[4][0] = @publisher_product_price.price_4
+        a_prices[4][1] = @publisher_product_price.price_4_dec
+        a_prices[5][0] = @publisher_product_price.price_5
+        a_prices[5][1] = @publisher_product_price.price_5_dec
+        a_prices[6][0] = @publisher_product_price.price_6
+        a_prices[6][1] = @publisher_product_price.price_6_dec
+        a_prices[7][0] = @publisher_product_price.price_7
+        a_prices[7][1] = @publisher_product_price.price_7_dec
+        a_prices[8][0] = @publisher_product_price.price_8
+        a_prices[8][1] = @publisher_product_price.price_8_dec
+        a_prices[9][0] = @publisher_product_price.price_9
+        a_prices[9][1] = @publisher_product_price.price_9_dec
+        a_prices[10][0] = @publisher_product_price.price_10
+        a_prices[10][1] = @publisher_product_price.price_10_dec
+
+        a_prices[11][0] = @publisher_product_price.price_11
+
+        gon.price = a_prices
 
     # end
 
+    
+    
+    
+    
+    # @publisher_product_core_literacy_standard_count = @publisher_product_core_literacy_standard.count
+    # @core_literacy_standards
+    
+    
+    
+    a_core_literacy_standards = Array.new
+    # @core_literacy_standards.each do |stdrd|
+      # a_core_literacy_standards.push(stdrd)
+    # end
+    
+    @b_core_literacy_standard = true
+    gon.core_literacy_standard = []
+    gon.core_literacy_standard_text = []
+    if @publisher_product_core_literacy_standards.any?
+      i = 0
+      ii = 0
+      @publisher_product_core_literacy_standards.each do |c|
+        gon.core_literacy_standard[i] = c.id_standard
+        ii = c.id_standard - 1
+        a_core_literacy_standards[i] = @core_literacy_standards[ii].dot_not
+        i += 1
+      end
+      # gon.core_literacy_standard_text = a_core_literacy_standards.reverse!
+      gon.core_literacy_standard_text = a_core_literacy_standards
+    else
+      # core_literacy_standard = @publisher_product_description.core_literacy_standard
+      # ar_core_literacy_standard = Array.new
+      # ar_core_literacy_standard = core_literacy_standard.split(',')    
+      # i = 0
+      # ar_core_literacy_standard.each do |standard|    
+        # gon.core_literacy_standard[i] = standard
+        # i += 1
+      # end
+    end
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     gon.reselling = @publisher_product_description.reselling
     
     gon.evaluation = @publisher_product_description.evaluation
 
     
-    # 7 lesson_time
-    gon.lesson_time = []    
-    if (@publisher_product_lesson_time.lesson_time_1 or
-        @publisher_product_lesson_time.lesson_time_2 or
-        @publisher_product_lesson_time.lesson_time_3 or
-        @publisher_product_lesson_time.lesson_time_4 or
-        @publisher_product_lesson_time.lesson_time_5 or
-        @publisher_product_lesson_time.lesson_time_6 or
-        @publisher_product_lesson_time.lesson_time_7 or
-        @publisher_product_lesson_time.lesson_time_8 or
-        @publisher_product_lesson_time.lesson_time_9 or
-        @publisher_product_lesson_time.lesson_time_10 or
-        @publisher_product_lesson_time.lesson_time_11 or
-        @publisher_product_lesson_time.lesson_time_12)
-        
-        @b_lesson_time = true
-
-        gon.lesson_time[1] = @publisher_product_lesson_time.lesson_time_1
-        gon.lesson_time[2] = @publisher_product_lesson_time.lesson_time_2
-        gon.lesson_time[3] = @publisher_product_lesson_time.lesson_time_3
-        gon.lesson_time[4] = @publisher_product_lesson_time.lesson_time_4
-        gon.lesson_time[5] = @publisher_product_lesson_time.lesson_time_5
-        gon.lesson_time[6] = @publisher_product_lesson_time.lesson_time_6
-        gon.lesson_time[7] = @publisher_product_lesson_time.lesson_time_7
-        gon.lesson_time[8] = @publisher_product_lesson_time.lesson_time_8
-        gon.lesson_time[9] = @publisher_product_lesson_time.lesson_time_9
-        gon.lesson_time[10] = @publisher_product_lesson_time.lesson_time_10
-        gon.lesson_time[11] = @publisher_product_lesson_time.lesson_time_11
-        gon.lesson_time[12] = @publisher_product_lesson_time.lesson_time_12
-
-    end
-    
-    gon.lesson_time_pertinent_index = @publisher_product_lesson_time.lesson_time_pertinent_index
+    # # 7 lesson_time
+    # gon.lesson_time = []    
+    # if (@publisher_product_lesson_time.lesson_time_1 or
+        # @publisher_product_lesson_time.lesson_time_2 or
+        # @publisher_product_lesson_time.lesson_time_3 or
+        # @publisher_product_lesson_time.lesson_time_4 or
+        # @publisher_product_lesson_time.lesson_time_5 or
+        # @publisher_product_lesson_time.lesson_time_6 or
+        # @publisher_product_lesson_time.lesson_time_7 or
+        # @publisher_product_lesson_time.lesson_time_8 or
+        # @publisher_product_lesson_time.lesson_time_9 or
+        # @publisher_product_lesson_time.lesson_time_10 or
+        # @publisher_product_lesson_time.lesson_time_11 or
+        # @publisher_product_lesson_time.lesson_time_12)
+        # @b_lesson_time = true
+        # gon.lesson_time[1] = @publisher_product_lesson_time.lesson_time_1
+        # gon.lesson_time[2] = @publisher_product_lesson_time.lesson_time_2
+        # gon.lesson_time[3] = @publisher_product_lesson_time.lesson_time_3
+        # gon.lesson_time[4] = @publisher_product_lesson_time.lesson_time_4
+        # gon.lesson_time[5] = @publisher_product_lesson_time.lesson_time_5
+        # gon.lesson_time[6] = @publisher_product_lesson_time.lesson_time_6
+        # gon.lesson_time[7] = @publisher_product_lesson_time.lesson_time_7
+        # gon.lesson_time[8] = @publisher_product_lesson_time.lesson_time_8
+        # gon.lesson_time[9] = @publisher_product_lesson_time.lesson_time_9
+        # gon.lesson_time[10] = @publisher_product_lesson_time.lesson_time_10
+        # gon.lesson_time[11] = @publisher_product_lesson_time.lesson_time_11
+        # gon.lesson_time[12] = @publisher_product_lesson_time.lesson_time_12
+# 
+    # end
+    # gon.lesson_time_pertinent_index = @publisher_product_lesson_time.lesson_time_pertinent_index
     
 
     
@@ -946,6 +1723,28 @@ class PublisherProductDescriptionsController < ApplicationController
 
     gon.allow_comments = @publisher_product_description.allow_comments
     
+    gon.poster_print_purchase = @publisher_product_description.poster_print_purchase
+
+    gon.poster_pin_web = @publisher_product_description.poster_pin_web
+
+    gon.poster_pin_purchase = @publisher_product_description.poster_pin_purchase
+
+
+
+    gon.corporate_logo_url = "www.GenericCorporation.com"
+    gon.b_corporate_logo_url = false
+    # gon.b_required_corporate_logo_url = true
+    if !((publisher_product_description.corporate_logo_url.blank?) or (publisher_product_description.corporate_logo_url.empty?) or (publisher_product_description.corporate_logo_url.nil?)) 
+        gon.corporate_logo_url = publisher_product_description.corporate_logo_url
+        gon.b_corporate_logo_url = true
+        # gon.b_required_name_product = false
+    end
+
+
+
+
+
+
 
 
     gon.research = []
@@ -1015,19 +1814,8 @@ class PublisherProductDescriptionsController < ApplicationController
 
 
 
-    gon.core_literacy_standard = []
-    if (@publisher_product_description.core_literacy_standard.blank?) or (@publisher_product_description.core_literacy_standard.empty?) or (@publisher_product_description.core_literacy_standard.nil?)
-      #
-    else
-      core_literacy_standard = @publisher_product_description.core_literacy_standard
-      ar_core_literacy_standard = Array.new
-      ar_core_literacy_standard = core_literacy_standard.split(',')    
-      i = 0
-      ar_core_literacy_standard.each do |standard|    
-        gon.core_literacy_standard[i] = standard
-        i += 1
-      end
-    end
+
+
 
 
     gon.updated = @publisher_product_description.updated_at.to_s(:long)
@@ -1288,6 +2076,8 @@ class PublisherProductDescriptionsController < ApplicationController
     publisher_product_id = h_obj[:publisher_product_id]
     # publisher_product_description_id = h_obj[:publisher_product_description_id]
     content_type = h_obj[:content_type]
+    content_type_other = h_obj[:content_type_other]
+    content_type_other_b = h_obj[:content_type_other_b]
     
     ar_content_type = Array.new
     ar_content_type = content_type.split(',')
@@ -1317,6 +2107,8 @@ class PublisherProductDescriptionsController < ApplicationController
     h_update[:content_type_9] = false
     h_update[:content_type_10] = false
     h_update[:content_type_11] = false
+    h_update[:content_type_other_b] = content_type_other_b
+    h_update[:content_type_other] = content_type_other
     
     ar_content_type.each do |target|
       case target.to_s  
@@ -1365,19 +2157,7 @@ class PublisherProductDescriptionsController < ApplicationController
     
     gon.content_type = []
     gon.content_type_text = []
-    
-    # gon.content_type[0] = publisher_product_content_type_updated.content_type_1
-    # gon.content_type[1] = publisher_product_content_type_updated.content_type_2
-    # gon.content_type[2] = publisher_product_content_type_updated.content_type_3
-    # gon.content_type[3] = publisher_product_content_type_updated.content_type_4
-    # gon.content_type[4] = publisher_product_content_type_updated.content_type_5
-    # gon.content_type[5] = publisher_product_content_type_updated.content_type_6
-    # gon.content_type[6] = publisher_product_content_type_updated.content_type_7
-    # gon.content_type[7] = publisher_product_content_type_updated.content_type_8
-    # gon.content_type[8] = publisher_product_content_type_updated.content_type_9
-    # gon.content_type[9] = publisher_product_content_type_updated.content_type_10
-    # gon.content_type[10] = publisher_product_content_type_updated.content_type_11
-
+        
     b_has_content_type = false
     a_content_types = Array.new
     @content_types = return_all_dtab2lets
@@ -1386,6 +2166,13 @@ class PublisherProductDescriptionsController < ApplicationController
     end
     b_required = true
                         
+    b_content_type_other = false
+    content_type_other = ""            
+    if publisher_product_content_type_updated.content_type_other_b
+        b_content_type_other = true
+        content_type_other = publisher_product_content_type_updated.content_type_other
+    end
+
     if (publisher_product_content_type_updated.content_type_1 or
         publisher_product_content_type_updated.content_type_2 or
         publisher_product_content_type_updated.content_type_3 or
@@ -1396,7 +2183,8 @@ class PublisherProductDescriptionsController < ApplicationController
         publisher_product_content_type_updated.content_type_8 or
         publisher_product_content_type_updated.content_type_9 or
         publisher_product_content_type_updated.content_type_10 or
-        publisher_product_content_type_updated.content_type_11)
+        publisher_product_content_type_updated.content_type_11 or
+        b_content_type_other)
 
         b_has_content_type = true
         b_required = false                    
@@ -1466,19 +2254,898 @@ class PublisherProductDescriptionsController < ApplicationController
         if b
           gon.content_type_text.push(a_content_types[10].col_1)              
         end        
+
         
     end
     
     respond_to do |format|
       format.html {}
       format.json { render :json => { :b_has_content_type => b_has_content_type,
-                                      :g_content_type => gon.content_type,
-                                      :g_content_type_text => gon.content_type_text,
+                                      :content_type => gon.content_type,
+                                      :content_type_other => content_type_other,
+                                      :has_content_type_other => b_content_type_other,
+                                      :content_type_text => gon.content_type_text,
                                       :b_required => b_required,
                                       :updated => publisher_product_content_type_updated.updated_at.to_s(:long) } }
     end
+
     
   end  
+
+
+
+
+  #7 platform
+  def update_platform
+
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_id = h_obj[:publisher_id]
+    publisher_product_id = h_obj[:publisher_product_id]
+    # publisher_product_description_id = h_obj[:publisher_product_description_id]
+    platform = h_obj[:platform]
+    platform_other = h_obj[:platform_other]
+    platform_other_b = h_obj[:platform_other_b]
+    
+    ar_platform = Array.new
+    ar_platform = platform.split(',')
+    # len = ar_platform.length
+
+    h_update = Hash.new
+    h_update[:platform_1] = false
+    h_update[:platform_2] = false
+    h_update[:platform_3] = false
+    h_update[:platform_4] = false
+    h_update[:platform_5] = false
+    h_update[:platform_6] = false
+    h_update[:platform_7] = false
+    h_update[:platform_8] = false
+    h_update[:platform_9] = false
+    h_update[:platform_10] = false
+    h_update[:platform_11] = false
+    h_update[:platform_12] = false
+    h_update[:platform_13] = false
+    h_update[:platform_other_b] = platform_other_b
+    h_update[:platform_other] = platform_other
+    
+    ar_platform.each do |target|
+      case target.to_s  
+        when "1"
+          h_update[:platform_1] = true
+        when "2"
+          h_update[:platform_2] = true
+        when "3"
+          h_update[:platform_3] = true
+        when "4"
+          h_update[:platform_4] = true
+        when "5"
+          h_update[:platform_5] = true
+        when "6"
+          h_update[:platform_6] = true
+        when "7"
+          h_update[:platform_7] = true
+        when "8"
+          h_update[:platform_8] = true
+        when "9"
+          h_update[:platform_9] = true
+        when "10"
+          h_update[:platform_10] = true
+        when "11"
+          h_update[:platform_11] = true
+        when "12"
+          h_update[:platform_12] = true
+        when "13"
+          h_update[:platform_13] = true
+
+        else
+          #        
+      end
+      
+    end
+
+    h_update[:publisher_id] = publisher_id
+    h_update[:publisher_product_id] = publisher_product_id
+    # h_update[:publisher_product_description_id] = publisher_product_description_id
+
+    publisher_product_platform = PublisherProductPlatform.where("publisher_product_id = ?", publisher_product_id).first
+
+    if publisher_product_platform.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
+
+    publisher_product_platform_id = publisher_product_platform.id
+    publisher_product_platform = nil
+    publisher_product_platform_updated = PublisherProductPlatform.find(publisher_product_platform_id)
+    
+    gon.platform = []
+    
+    b_has_platform = false
+    a_platforms = Array.new
+    platforms = return_all_dtab3lets
+    platforms.each do |pltfrm|
+      a_platforms.push(pltfrm)
+    end
+    gon.platform_text = []
+    b_required = true
+    
+    b_platform_other = false
+    platform_other = ""            
+    if publisher_product_platform_updated.platform_other_b
+        b_platform_other = true
+        platform_other = publisher_product_platform_updated.platform_other
+    end
+    
+    if (publisher_product_platform_updated.platform_1 or
+        publisher_product_platform_updated.platform_2 or
+        publisher_product_platform_updated.platform_3 or
+        publisher_product_platform_updated.platform_4 or
+        publisher_product_platform_updated.platform_5 or
+        publisher_product_platform_updated.platform_6 or
+        publisher_product_platform_updated.platform_7 or
+        publisher_product_platform_updated.platform_8 or
+        publisher_product_platform_updated.platform_9 or
+        publisher_product_platform_updated.platform_10 or
+        publisher_product_platform_updated.platform_11 or
+        publisher_product_platform_updated.platform_12 or
+        publisher_product_platform_updated.platform_13)
+
+        #b_has_platform = true
+        b_required = false
+                
+        b = publisher_product_platform_updated.platform_1
+        gon.platform[0] = b
+        if b
+          gon.platform_text.push(a_platforms[0].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_2
+        gon.platform[1] = b
+        if b
+          gon.platform_text.push(a_platforms[1].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_3
+        gon.platform[2] = b
+        if b
+          gon.platform_text.push(a_platforms[2].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_4
+        gon.platform[3] = b
+        if b
+          gon.platform_text.push(a_platforms[3].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_5
+        gon.platform[4] = b
+        if b
+          gon.platform_text.push(a_platforms[4].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_6
+        gon.platform[5] = b
+        if b
+          gon.platform_text.push(a_platforms[5].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_7
+        gon.platform[6] = b
+        if b
+          gon.platform_text.push(a_platforms[6].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_8
+        gon.platform[7] = b
+        if b
+          gon.platform_text.push(a_platforms[7].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_9
+        gon.platform[8] = b
+        if b
+          gon.platform_text.push(a_platforms[8].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_10
+        gon.platform[9] = b
+        if b
+          gon.platform_text.push(a_platforms[9].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_11
+        gon.platform[10] = b
+        if b
+          gon.platform_text.push(a_platforms[10].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_12
+        gon.platform[11] = b
+        if b
+          gon.platform_text.push(a_platforms[11].col_1)  
+        end        
+
+        b = publisher_product_platform_updated.platform_13
+        gon.platform[12] = b
+        if b
+          gon.platform_text.push(a_platforms[12].col_1)  
+        end        
+        
+    end
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :b_has_platform => b_has_platform,
+                                      :platform => gon.platform,
+                                      :platform_other => platform_other,
+                                      :has_platform_other => b_platform_other,
+                                      :platform_text => gon.platform_text,
+                                      :b_required => b_required,
+                                      :updated => publisher_product_platform_updated.updated_at.to_s(:long) } }
+      
+      # format.json { render :json => { :b_has_platform => b_has_platform,
+                                      # :g_platform => gon.platform,
+                                      # :g_platform_text => gon.platform_text,
+                                      # :b_required => b_required,                                      
+                                      # :updated => publisher_product_platform_updated.updated_at.to_s(:long) } }
+    end
+    
+  end  
+
+
+
+
+  #7 file_type
+  def update_file_type
+
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_id = h_obj[:publisher_id]
+    publisher_product_id = h_obj[:publisher_product_id]
+    # publisher_product_description_id = h_obj[:publisher_product_description_id]
+    file_type = h_obj[:file_type]
+    file_type_other = h_obj[:file_type_other]
+    file_type_other_b = h_obj[:file_type_other_b]
+    
+    ar_file_type = Array.new
+    ar_file_type = file_type.split(',')
+
+    h_update = Hash.new
+    h_update[:file_type_1] = false
+    h_update[:file_type_2] = false
+    h_update[:file_type_3] = false
+    h_update[:file_type_4] = false
+    h_update[:file_type_5] = false
+    h_update[:file_type_6] = false
+    h_update[:file_type_7] = false
+    h_update[:file_type_8] = false
+    h_update[:file_type_9] = false
+    h_update[:file_type_10] = false
+    h_update[:file_type_11] = false
+    h_update[:file_type_12] = false
+    h_update[:file_type_13] = false
+    h_update[:file_type_14] = false
+    h_update[:file_type_15] = false
+    h_update[:file_type_16] = false
+    h_update[:file_type_17] = false
+    h_update[:file_type_18] = false
+    h_update[:file_type_19] = false
+    h_update[:file_type_20] = false
+    h_update[:file_type_21] = false
+    h_update[:file_type_other_b] = file_type_other_b
+    h_update[:file_type_other] = file_type_other
+    
+    ar_file_type.each do |target|
+      
+      case target.to_s  
+        when "1"
+          h_update[:file_type_1] = true
+        when "2"
+          h_update[:file_type_2] = true
+        when "3"
+          h_update[:file_type_3] = true
+        when "4"
+          h_update[:file_type_4] = true
+        when "5"
+          h_update[:file_type_5] = true
+        when "6"
+          h_update[:file_type_6] = true
+        when "7"
+          h_update[:file_type_7] = true
+        when "8"
+          h_update[:file_type_8] = true
+        when "9"
+          h_update[:file_type_9] = true
+        when "10"
+          h_update[:file_type_10] = true
+        when "11"
+          h_update[:file_type_11] = true
+        when "12"
+          h_update[:file_type_12] = true
+        when "13"
+          h_update[:file_type_13] = true
+        when "14"
+          h_update[:file_type_14] = true
+        when "15"
+          h_update[:file_type_15] = true
+        when "16"
+          h_update[:file_type_16] = true
+        when "17"
+          h_update[:file_type_17] = true
+        when "18"
+          h_update[:file_type_18] = true
+        when "19"
+          h_update[:file_type_19] = true
+        when "20"
+          h_update[:file_type_20] = true
+        when "21"
+          h_update[:file_type_21] = true
+
+        else
+          #        
+      end
+      
+    end
+
+    h_update[:publisher_id] = publisher_id
+    h_update[:publisher_product_id] = publisher_product_id
+    # h_update[:publisher_product_description_id] = publisher_product_description_id
+
+    publisher_product_file_type = PublisherProductFileType.where("publisher_product_id = ?", publisher_product_id).first
+
+    if publisher_product_file_type.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
+
+    publisher_product_file_type_id = publisher_product_file_type.id
+    publisher_product_file_type = nil
+    publisher_product_file_type_updated = PublisherProductFileType.find(publisher_product_file_type_id)
+    
+    gon.file_type = []
+    
+    b_has_file_type = false
+    
+    a_file_types = Array.new
+    file_types = return_all_dtab1lets
+    file_types.each do |ft|
+      a_file_types.push(ft)
+    end
+    gon.file_type_text = []
+    b_required = true
+    
+    b_file_type_other = false
+    file_type_other = ""            
+    if publisher_product_file_type_updated.file_type_other_b
+        b_file_type_other = true
+        file_type_other = publisher_product_file_type_updated.file_type_other
+    end
+    
+    if (publisher_product_file_type_updated.file_type_1 or
+        publisher_product_file_type_updated.file_type_2 or
+        publisher_product_file_type_updated.file_type_3 or
+        publisher_product_file_type_updated.file_type_4 or
+        publisher_product_file_type_updated.file_type_5 or
+        publisher_product_file_type_updated.file_type_6 or
+        publisher_product_file_type_updated.file_type_7 or
+        publisher_product_file_type_updated.file_type_8 or
+        publisher_product_file_type_updated.file_type_9 or
+        publisher_product_file_type_updated.file_type_10 or
+        publisher_product_file_type_updated.file_type_11 or
+        publisher_product_file_type_updated.file_type_12 or
+        publisher_product_file_type_updated.file_type_13 or
+        publisher_product_file_type_updated.file_type_14 or
+        publisher_product_file_type_updated.file_type_15 or
+        publisher_product_file_type_updated.file_type_16 or
+        publisher_product_file_type_updated.file_type_17 or
+        publisher_product_file_type_updated.file_type_18 or
+        publisher_product_file_type_updated.file_type_19 or
+        publisher_product_file_type_updated.file_type_20 or
+        publisher_product_file_type_updated.file_type_21)
+
+        # b_has_file_type = true
+        b_required = false
+        
+        b = publisher_product_file_type_updated.file_type_1
+        gon.file_type[0] = b
+        if b
+          gon.file_type_text.push(a_file_types[0].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_2
+        gon.file_type[1] = b
+        if b
+          gon.file_type_text.push(a_file_types[1].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_3
+        gon.file_type[2] = b
+        if b
+          gon.file_type_text.push(a_file_types[2].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_4
+        gon.file_type[3] = b
+        if b
+          gon.file_type_text.push(a_file_types[3].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_5
+        gon.file_type[4] = b
+        if b
+          gon.file_type_text.push(a_file_types[4].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_6
+        gon.file_type[5] = b
+        if b
+          gon.file_type_text.push(a_file_types[5].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_7
+        gon.file_type[6] = b
+        if b
+          gon.file_type_text.push(a_file_types[6].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_8
+        gon.file_type[7] = b
+        if b
+          gon.file_type_text.push(a_file_types[7].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_9
+        gon.file_type[8] = b
+        if b
+          gon.file_type_text.push(a_file_types[8].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_10
+        gon.file_type[9] = b
+        if b
+          gon.file_type_text.push(a_file_types[9].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_11
+        gon.file_type[10] = b
+        if b
+          gon.file_type_text.push(a_file_types[10].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_12
+        gon.file_type[11] = b
+        if b
+          gon.file_type_text.push(a_file_types[11].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_13
+        gon.file_type[12] = b
+        if b
+          gon.file_type_text.push(a_file_types[12].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_14
+        gon.file_type[13] = b
+        if b
+          gon.file_type_text.push(a_file_types[13].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_15
+        gon.file_type[14] = b
+        if b
+          gon.file_type_text.push(a_file_types[14].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_16
+        gon.file_type[15] = b
+        if b
+          gon.file_type_text.push(a_file_types[15].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_17
+        gon.file_type[16] = b
+        if b
+          gon.file_type_text.push(a_file_types[16].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_18
+        gon.file_type[17] = b
+        if b
+          gon.file_type_text.push(a_file_types[17].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_19
+        gon.file_type[18] = b
+        if b
+          gon.file_type_text.push(a_file_types[18].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_20
+        gon.file_type[19] = b
+        if b
+          gon.file_type_text.push(a_file_types[19].col_1)  
+        end        
+
+        b = publisher_product_file_type_updated.file_type_21
+        gon.file_type[20] = b
+        if b
+          gon.file_type_text.push(a_file_types[20].col_1)  
+        end        
+        
+    end
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :b_has_file_type => b_has_file_type,
+                                      :file_type => gon.file_type,
+                                      :file_type_other => file_type_other,
+                                      :has_file_type_other => b_file_type_other,
+                                      :file_type_text => gon.file_type_text,
+                                      :b_required => b_required,
+                                      :updated => publisher_product_file_type_updated.updated_at.to_s(:long) } }
+      
+      # format.json { render :json => { :g_file_type => gon.file_type,
+                                      # :g_file_type_text => gon.file_type_text,
+                                      # :b_required => b_required,
+                                      # :updated => publisher_product_file_type_updated.updated_at.to_s(:long) } }
+
+      # format.json { render :json => {} }
+
+    end
+    
+  end  
+
+
+
+  #6 by_review
+  def update_by_review
+
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_id = h_obj[:publisher_id]
+    publisher_product_id = h_obj[:publisher_product_id]
+    # publisher_product_description_id = h_obj[:publisher_product_description_id]
+    by_review = h_obj[:by_review]
+    by_review_other = h_obj[:by_review_other]
+    by_review_other_b = h_obj[:by_review_other_b]
+    
+    ar_by_review = Array.new
+    ar_by_review = by_review.split(',')
+    len = ar_by_review.length
+
+    h_update = Hash.new
+    h_update[:by_review_1] = false
+    h_update[:by_review_2] = false
+    h_update[:by_review_other_b] = by_review_other_b
+    h_update[:by_review_other] = by_review_other
+    
+    ar_by_review.each do |target|
+      case target.to_s  
+        when "1"
+          h_update[:by_review_1] = true
+        when "2"
+          h_update[:by_review_2] = true
+        else
+          #        
+      end
+      
+    end
+
+    h_update[:publisher_id] = publisher_id
+    h_update[:publisher_product_id] = publisher_product_id
+    # h_update[:publisher_product_description_id] = publisher_product_description_id
+
+    publisher_product_by_review = PublisherProductByReview.where("publisher_product_id = ?", publisher_product_id).first
+
+    if publisher_product_by_review.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
+
+    publisher_product_by_review_id = publisher_product_by_review.id
+    publisher_product_by_review = nil
+    publisher_product_by_review_updated = PublisherProductByReview.find(publisher_product_by_review_id)
+    
+    gon.by_review = []
+    
+    b_has_by_review = false
+    a_by_reviews = Array.new
+    by_reviews = return_all_dtab7lets
+    by_reviews.each do |category_subj|
+      a_by_reviews.push(category_subj)
+    end
+    gon.by_review_text = []
+    b_required = true
+    
+    b_by_review_other = false
+    by_review_other = ""            
+    if publisher_product_by_review_updated.by_review_other_b
+        b_by_review_other = true
+        by_review_other = publisher_product_by_review_updated.by_review_other
+    end
+    
+    if (publisher_product_by_review_updated.by_review_1 or
+        publisher_product_by_review_updated.by_review_2)
+
+        b_has_by_review = true
+        b_required = false
+        
+        b = publisher_product_by_review_updated.by_review_1
+        gon.by_review[0] = b
+        if b
+          gon.by_review_text.push(a_by_reviews[0].col_1)  
+        end        
+
+        b = publisher_product_by_review_updated.by_review_2
+        gon.by_review[1] = b
+        if b
+          gon.by_review_text.push(a_by_reviews[1].col_1)  
+        end        
+
+        
+    end
+
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :b_has_by_review => b_has_by_review,
+                                      :by_review => gon.by_review,
+                                      :by_review_other => by_review_other,
+                                      :has_by_review_other => b_by_review_other,
+                                      :by_review_text => gon.by_review_text,
+                                      :b_required => b_required,
+                                      :updated => publisher_product_by_review_updated.updated_at.to_s(:long) } }
+      
+      # format.json { render :json => { :b_has_by_review => b_has_by_review,
+                                      # :g_by_review => gon.by_review,
+                                      # :g_by_review_text => gon.by_review_text,
+                                      # :b_required => b_required,                                      
+                                      # :updated => publisher_product_by_review_updated.updated_at.to_s(:long) } }
+    end
+
+    
+  end  
+
+  
+  
+  
+  #7 enhancement
+  def update_enhancement
+
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_id = h_obj[:publisher_id]
+    publisher_product_id = h_obj[:publisher_product_id]
+    # publisher_product_description_id = h_obj[:publisher_product_description_id]
+    enhancement = h_obj[:enhancement]
+    enhancement_other = h_obj[:enhancement_other]
+    enhancement_other_b = h_obj[:enhancement_other_b]    
+    
+    ar_enhancement = Array.new
+    ar_enhancement = enhancement.split(',')
+    # len = ar_enhancement.length
+
+    h_update = Hash.new
+    h_update[:enhancement_1] = false
+    h_update[:enhancement_2] = false
+    h_update[:enhancement_3] = false
+    h_update[:enhancement_4] = false
+    h_update[:enhancement_5] = false
+    h_update[:enhancement_6] = false
+    h_update[:enhancement_7] = false
+    h_update[:enhancement_8] = false
+    h_update[:enhancement_9] = false
+    h_update[:enhancement_10] = false
+    h_update[:enhancement_11] = false
+    h_update[:enhancement_12] = false
+    h_update[:enhancement_other_b] = enhancement_other_b
+    h_update[:enhancement_other] = enhancement_other
+    
+    ar_enhancement.each do |target|
+      case target.to_s  
+        when "1"
+          h_update[:enhancement_1] = true
+        when "2"
+          h_update[:enhancement_2] = true
+        when "3"
+          h_update[:enhancement_3] = true
+        when "4"
+          h_update[:enhancement_4] = true
+        when "5"
+          h_update[:enhancement_5] = true
+        when "6"
+          h_update[:enhancement_6] = true
+        when "7"
+          h_update[:enhancement_7] = true
+        when "8"
+          h_update[:enhancement_8] = true
+        when "9"
+          h_update[:enhancement_9] = true
+        when "10"
+          h_update[:enhancement_10] = true
+        when "11"
+          h_update[:enhancement_11] = true
+        when "12"
+          h_update[:enhancement_12] = true
+          
+        else
+          #        
+      end
+      
+    end
+
+    h_update[:publisher_id] = publisher_id
+    h_update[:publisher_product_id] = publisher_product_id
+    # h_update[:publisher_product_description_id] = publisher_product_description_id
+
+    publisher_product_enhancement = PublisherProductEnhancement.where("publisher_product_id = ?", publisher_product_id).first
+
+    if publisher_product_enhancement.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
+
+    publisher_product_enhancement_id = publisher_product_enhancement.id
+    publisher_product_enhancement = nil
+    publisher_product_enhancement_updated = PublisherProductEnhancement.find(publisher_product_enhancement_id)
+    
+    b_has_enhancement = false
+    a_enhancements = Array.new
+    @enhancements = return_all_dtab6lets
+    @enhancements.each do |enhncmnt|
+      a_enhancements.push(enhncmnt)
+    end
+    gon.enhancement = []
+    gon.enhancement_text = []    
+    b_required = true
+    
+    b_enhancement_other = false
+    enhancement_other = ""            
+    if publisher_product_enhancement_updated.enhancement_other_b
+        b_enhancement_other = true
+        enhancement_other = publisher_product_enhancement_updated.enhancement_other
+    end
+    
+    if (publisher_product_enhancement_updated.enhancement_1 or
+        publisher_product_enhancement_updated.enhancement_2 or
+        publisher_product_enhancement_updated.enhancement_3 or
+        publisher_product_enhancement_updated.enhancement_4 or
+        publisher_product_enhancement_updated.enhancement_5 or
+        publisher_product_enhancement_updated.enhancement_6 or
+        publisher_product_enhancement_updated.enhancement_7 or
+        publisher_product_enhancement_updated.enhancement_8 or
+        publisher_product_enhancement_updated.enhancement_9 or
+        publisher_product_enhancement_updated.enhancement_10 or
+        publisher_product_enhancement_updated.enhancement_11 or
+        publisher_product_enhancement_updated.enhancement_12)
+
+        # b_has_enhancement = true
+        b_required = false
+            
+        b = publisher_product_enhancement_updated.enhancement_1
+        gon.enhancement[0] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[0].col_1)                            
+        end        
+
+        b = publisher_product_enhancement_updated.enhancement_2
+        gon.enhancement[1] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[1].col_1)                            
+        end        
+
+        b = publisher_product_enhancement_updated.enhancement_3
+        gon.enhancement[2] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[2].col_1)                            
+        end        
+
+        b = publisher_product_enhancement_updated.enhancement_4
+        gon.enhancement[3] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[3].col_1)                            
+        end        
+
+        b = publisher_product_enhancement_updated.enhancement_5
+        gon.enhancement[4] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[4].col_1)                            
+        end        
+
+        b = publisher_product_enhancement_updated.enhancement_6
+        gon.enhancement[5] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[5].col_1)                            
+        end        
+
+        b = publisher_product_enhancement_updated.enhancement_7
+        gon.enhancement[6] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[6].col_1)                            
+        end        
+
+        b = publisher_product_enhancement_updated.enhancement_8
+        gon.enhancement[7] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[7].col_1)                            
+        end        
+
+        b = publisher_product_enhancement_updated.enhancement_9
+        gon.enhancement[8] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[8].col_1)                            
+        end        
+
+        b = publisher_product_enhancement_updated.enhancement_10
+        gon.enhancement[9] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[9].col_1)                            
+        end        
+
+        b = publisher_product_enhancement_updated.enhancement_11
+        gon.enhancement[10] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[10].col_1)                            
+        end        
+
+        b = publisher_product_enhancement_updated.enhancement_12
+        gon.enhancement[11] = b
+        if b
+          gon.enhancement_text.push(a_enhancements[11].col_1)                            
+        end        
+        
+        
+    end
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :b_has_enhancement => b_has_enhancement,
+                                      :enhancement => gon.enhancement,
+                                      :enhancement_other => enhancement_other,
+                                      :has_enhancement_other => b_enhancement_other,
+                                      :enhancement_text => gon.enhancement_text,
+                                      :b_required => b_required,
+                                      :updated => publisher_product_enhancement_updated.updated_at.to_s(:long) } }
+      
+      # format.json { render :json => { :g_enhancement => gon.enhancement,
+                                      # :g_enhancement_text => gon.enhancement_text,
+                                      # :b_required => b_required,
+                                      # :updated => publisher_product_enhancement_updated.updated_at.to_s(:long) } }
+
+      # format.json { render :json => {} }
+
+    end
+    
+  end  
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1497,6 +3164,9 @@ class PublisherProductDescriptionsController < ApplicationController
     publisher_product_id = h_obj[:publisher_product_id]
     # publisher_product_description_id = h_obj[:publisher_product_description_id]
     category_subject = h_obj[:category_subject]
+    category_subject_other = h_obj[:category_subject_other]
+    category_subject_other_b = h_obj[:category_subject_other_b]
+    
     
     ar_category_subject = Array.new
     ar_category_subject = category_subject.split(',')
@@ -1507,9 +3177,45 @@ class PublisherProductDescriptionsController < ApplicationController
     h_update[:category_subject_2] = false
     h_update[:category_subject_3] = false
     h_update[:category_subject_4] = false
+    h_update[:category_subject_5] = false
+    h_update[:category_subject_6] = false
+    h_update[:category_subject_7] = false
+    h_update[:category_subject_8] = false
+    h_update[:category_subject_9] = false
+    h_update[:category_subject_10] = false
+    h_update[:category_subject_11] = false
+    h_update[:category_subject_12] = false
+    h_update[:category_subject_13] = false
+    h_update[:category_subject_14] = false
+    h_update[:category_subject_15] = false
+    h_update[:category_subject_16] = false
+    h_update[:category_subject_17] = false
+    h_update[:category_subject_18] = false
+    h_update[:category_subject_19] = false
+    h_update[:category_subject_20] = false
+    h_update[:category_subject_21] = false
+    h_update[:category_subject_22] = false
+    h_update[:category_subject_23] = false
+    h_update[:category_subject_24] = false
+    h_update[:category_subject_25] = false
+    h_update[:category_subject_26] = false
+    h_update[:category_subject_27] = false
+    h_update[:category_subject_28] = false
+    h_update[:category_subject_29] = false
+    h_update[:category_subject_30] = false
+    h_update[:category_subject_31] = false
+    h_update[:category_subject_32] = false
+    h_update[:category_subject_33] = false
+    h_update[:category_subject_34] = false
+    h_update[:category_subject_35] = false
+    h_update[:category_subject_36] = false
+    h_update[:category_subject_37] = false
+    h_update[:category_subject_38] = false
+    h_update[:category_subject_39] = false
+    h_update[:category_subject_other_b] = category_subject_other_b
+    h_update[:category_subject_other] = category_subject_other
     
     ar_category_subject.each do |target|
-      
       case target.to_s  
         when "1"
           h_update[:category_subject_1] = true
@@ -1519,10 +3225,80 @@ class PublisherProductDescriptionsController < ApplicationController
           h_update[:category_subject_3] = true
         when "4"
           h_update[:category_subject_4] = true
+        when "5"
+          h_update[:category_subject_5] = true
+        when "6"
+          h_update[:category_subject_6] = true
+        when "7"
+          h_update[:category_subject_7] = true
+        when "8"
+          h_update[:category_subject_8] = true
+        when "9"
+          h_update[:category_subject_9] = true
+        when "10"
+          h_update[:category_subject_10] = true
+        when "11"
+          h_update[:category_subject_11] = true
+        when "12"
+          h_update[:category_subject_12] = true
+        when "13"
+          h_update[:category_subject_13] = true
+        when "14"
+          h_update[:category_subject_14] = true
+        when "15"
+          h_update[:category_subject_15] = true
+        when "16"
+          h_update[:category_subject_16] = true
+        when "17"
+          h_update[:category_subject_17] = true
+        when "18"
+          h_update[:category_subject_18] = true
+        when "19"
+          h_update[:category_subject_19] = true
+        when "20"
+          h_update[:category_subject_20] = true
+        when "21"
+          h_update[:category_subject_21] = true
+        when "22"
+          h_update[:category_subject_22] = true
+        when "23"
+          h_update[:category_subject_23] = true
+        when "24"
+          h_update[:category_subject_24] = true
+        when "25"
+          h_update[:category_subject_25] = true
+        when "26"
+          h_update[:category_subject_26] = true
+        when "27"
+          h_update[:category_subject_27] = true
+        when "28"
+          h_update[:category_subject_28] = true
+        when "29"
+          h_update[:category_subject_29] = true
+        when "30"
+          h_update[:category_subject_30] = true
+        when "31"
+          h_update[:category_subject_31] = true
+        when "32"
+          h_update[:category_subject_32] = true
+        when "33"
+          h_update[:category_subject_33] = true
+        when "34"
+          h_update[:category_subject_34] = true
+        when "35"
+          h_update[:category_subject_35] = true
+        when "36"
+          h_update[:category_subject_36] = true
+        when "37"
+          h_update[:category_subject_37] = true
+        when "38"
+          h_update[:category_subject_38] = true
+        when "39"
+          h_update[:category_subject_39] = true
+
         else
           #        
       end
-      
     end
 
     h_update[:publisher_id] = publisher_id
@@ -1558,10 +3334,52 @@ class PublisherProductDescriptionsController < ApplicationController
     gon.category_subject_text = []
     b_required = true
     
+    b_category_subject_other = false
+    category_subject_other = ""            
+    if publisher_product_category_subject_updated.category_subject_other_b
+        b_category_subject_other = true
+        category_subject_other = publisher_product_category_subject_updated.category_subject_other
+    end
+    
     if (publisher_product_category_subject_updated.category_subject_1 or
         publisher_product_category_subject_updated.category_subject_2 or
         publisher_product_category_subject_updated.category_subject_3 or
-        publisher_product_category_subject_updated.category_subject_4)
+        publisher_product_category_subject_updated.category_subject_4 or
+        publisher_product_category_subject_updated.category_subject_5 or
+        publisher_product_category_subject_updated.category_subject_6 or
+        publisher_product_category_subject_updated.category_subject_7 or
+        publisher_product_category_subject_updated.category_subject_8 or
+        publisher_product_category_subject_updated.category_subject_9 or
+        publisher_product_category_subject_updated.category_subject_10 or
+        publisher_product_category_subject_updated.category_subject_11 or
+        publisher_product_category_subject_updated.category_subject_12 or
+        publisher_product_category_subject_updated.category_subject_13 or
+        publisher_product_category_subject_updated.category_subject_14 or
+        publisher_product_category_subject_updated.category_subject_15 or
+        publisher_product_category_subject_updated.category_subject_16 or
+        publisher_product_category_subject_updated.category_subject_17 or
+        publisher_product_category_subject_updated.category_subject_18 or
+        publisher_product_category_subject_updated.category_subject_19 or
+        publisher_product_category_subject_updated.category_subject_20 or
+        publisher_product_category_subject_updated.category_subject_21 or
+        publisher_product_category_subject_updated.category_subject_22 or
+        publisher_product_category_subject_updated.category_subject_23 or
+        publisher_product_category_subject_updated.category_subject_24 or
+        publisher_product_category_subject_updated.category_subject_25 or
+        publisher_product_category_subject_updated.category_subject_26 or
+        publisher_product_category_subject_updated.category_subject_27 or
+        publisher_product_category_subject_updated.category_subject_28 or
+        publisher_product_category_subject_updated.category_subject_29 or
+        publisher_product_category_subject_updated.category_subject_30 or
+        publisher_product_category_subject_updated.category_subject_31 or
+        publisher_product_category_subject_updated.category_subject_32 or
+        publisher_product_category_subject_updated.category_subject_33 or
+        publisher_product_category_subject_updated.category_subject_34 or
+        publisher_product_category_subject_updated.category_subject_35 or
+        publisher_product_category_subject_updated.category_subject_36 or
+        publisher_product_category_subject_updated.category_subject_37 or
+        publisher_product_category_subject_updated.category_subject_38 or
+        publisher_product_category_subject_updated.category_subject_39)
 
         b_has_category_subject = true
         b_required = false
@@ -1576,22 +3394,229 @@ class PublisherProductDescriptionsController < ApplicationController
         b = publisher_product_category_subject_updated.category_subject_2
         gon.category_subject[1] = b
         if b
-          # gon.category_subject_text[1] = a_category_subjects[1].col_1  
           gon.category_subject_text.push(a_category_subjects[1].col_1)  
         end        
 
         b = publisher_product_category_subject_updated.category_subject_3
         gon.category_subject[2] = b
         if b
-          # gon.category_subject_text[2] = a_category_subjects[2].col_1
           gon.category_subject_text.push(a_category_subjects[2].col_1)  
         end        
 
         b = publisher_product_category_subject_updated.category_subject_4
         gon.category_subject[3] = b
         if b
-          # gon.category_subject_text[3] = a_category_subjects[3].col_1
           gon.category_subject_text.push(a_category_subjects[3].col_1)              
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_5
+        gon.category_subject[4] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[4].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_6
+        gon.category_subject[5] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[5].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_7
+        gon.category_subject[6] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[6].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_8
+        gon.category_subject[7] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[7].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_9
+        gon.category_subject[8] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[8].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_10
+        gon.category_subject[9] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[9].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_11
+        gon.category_subject[10] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[10].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_12
+        gon.category_subject[11] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[11].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_13
+        gon.category_subject[12] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[12].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_14
+        gon.category_subject[13] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[13].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_15
+        gon.category_subject[14] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[14].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_16
+        gon.category_subject[15] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[15].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_17
+        gon.category_subject[16] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[16].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_18
+        gon.category_subject[17] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[17].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_19
+        gon.category_subject[18] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[18].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_20
+        gon.category_subject[19] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[19].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_21
+        gon.category_subject[20] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[20].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_22
+        gon.category_subject[21] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[21].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_23
+        gon.category_subject[22] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[22].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_24
+        gon.category_subject[23] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[23].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_25
+        gon.category_subject[24] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[24].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_26
+        gon.category_subject[25] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[25].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_27
+        gon.category_subject[26] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[26].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_28
+        gon.category_subject[27] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[27].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_29
+        gon.category_subject[28] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[28].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_30
+        gon.category_subject[29] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[29].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_31
+        gon.category_subject[30] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[30].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_32
+        gon.category_subject[31] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[31].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_33
+        gon.category_subject[32] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[32].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_34
+        gon.category_subject[33] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[33].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_35
+        gon.category_subject[34] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[34].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_36
+        gon.category_subject[35] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[35].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_37
+        gon.category_subject[36] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[36].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_38
+        gon.category_subject[37] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[37].col_1)  
+        end        
+
+        b = publisher_product_category_subject_updated.category_subject_39
+        gon.category_subject[38] = b
+        if b
+          gon.category_subject_text.push(a_category_subjects[38].col_1)  
         end        
         
     end
@@ -1599,10 +3624,18 @@ class PublisherProductDescriptionsController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json { render :json => { :b_has_category_subject => b_has_category_subject,
-                                      :g_category_subject => gon.category_subject,
-                                      :g_category_subject_text => gon.category_subject_text,
-                                      :b_required => b_required,                                      
+                                      :category_subject => gon.category_subject,
+                                      :category_subject_other => category_subject_other,
+                                      :has_category_subject_other => b_category_subject_other,
+                                      :category_subject_text => gon.category_subject_text,
+                                      :b_required => b_required,
                                       :updated => publisher_product_category_subject_updated.updated_at.to_s(:long) } }
+      
+      # format.json { render :json => { :b_has_category_subject => b_has_category_subject,
+                                      # :g_category_subject => gon.category_subject,
+                                      # :g_category_subject_text => gon.category_subject_text,
+                                      # :b_required => b_required,                                      
+                                      # :updated => publisher_product_category_subject_updated.updated_at.to_s(:long) } }
     end
     
   end  
@@ -1697,6 +3730,11 @@ class PublisherProductDescriptionsController < ApplicationController
     publisher_product_description_updated = PublisherProductDescription.find(publisher_product_description_id)
     
     @publisher_product_description_lesson_plan_subject = publisher_product_description_updated.lesson_plan_subject
+
+    @b_required_lesson_plan_subject = false    
+    if (publisher_product_description_updated.lesson_plan_subject.blank?) or (publisher_product_description_updated.lesson_plan_subject.empty?) or (publisher_product_description_updated.lesson_plan_subject.nil?)
+      @b_required_lesson_plan_subject = true
+    end
     
     respond_to do |format|
       format.html {}
@@ -1709,11 +3747,9 @@ class PublisherProductDescriptionsController < ApplicationController
 
 
 
-  
-  
-  
-  #7 platform
-  def update_platform
+
+  #14 lesson_time
+  def update_lesson_time
 
     ar = params[:publisher_product_description]
     h_obj = Hash.new
@@ -1721,584 +3757,62 @@ class PublisherProductDescriptionsController < ApplicationController
       h_obj = obj
     end
 
-    publisher_id = h_obj[:publisher_id]
-    publisher_product_id = h_obj[:publisher_product_id]
-    # publisher_product_description_id = h_obj[:publisher_product_description_id]
-    platform = h_obj[:platform]
+    # publisher_id = h_obj[:publisher_id]
+    # publisher_product_id = h_obj[:publisher_product_id]
+    publisher_product_description_id = h_obj[:publisher_product_description_id]
+    time_per_lesson = h_obj[:time_per_lesson]
+    lesson_time_hours = h_obj[:lesson_time_hours]
+    lesson_time_minutes = h_obj[:lesson_time_minutes]
+    time_per_course = h_obj[:time_per_course]
+    course_time_months = h_obj[:course_time_months]
+    course_time_days = h_obj[:course_time_days]
     
-    ar_platform = Array.new
-    ar_platform = platform.split(',')
-    # len = ar_platform.length
-
+    publisher_product_description = PublisherProductDescription.find(publisher_product_description_id)
+    
     h_update = Hash.new
-    h_update[:platform_1] = false
-    h_update[:platform_2] = false
-    h_update[:platform_3] = false
-    
-    ar_platform.each do |target|
-      
-      case target.to_s  
-        when "1"
-          h_update[:platform_1] = true
-        when "2"
-          h_update[:platform_2] = true
-        when "3"
-          h_update[:platform_3] = true
-        else
-          #        
-      end
-      
-    end
+    h_update[:time_per_lesson] = time_per_lesson
+    h_update[:lesson_time_hours] = lesson_time_hours
+    h_update[:lesson_time_minutes] = lesson_time_minutes
+    h_update[:time_per_course] = time_per_course
+    h_update[:course_time_months] = course_time_months
+    h_update[:course_time_days] = course_time_days
 
-    h_update[:publisher_id] = publisher_id
-    h_update[:publisher_product_id] = publisher_product_id
-    # h_update[:publisher_product_description_id] = publisher_product_description_id
-
-    publisher_product_platform = PublisherProductPlatform.where("publisher_product_id = ?", publisher_product_id).first
-
-    if publisher_product_platform.update_attributes(h_update)
+    if publisher_product_description.update_attributes(h_update)
       #
     else
       # Rails.logger.info(@user.errors.messages.inspect)
     end
 
-    publisher_product_platform_id = publisher_product_platform.id
-    publisher_product_platform = nil
-    publisher_product_platform_updated = PublisherProductPlatform.find(publisher_product_platform_id)
+    publisher_product_description = nil
+    publisher_product_description_updated = PublisherProductDescription.find(publisher_product_description_id)
     
-    gon.platform = []
-    
-    # gon.platform[0] = publisher_product_platform_updated.platform_1
-    # gon.platform[1] = publisher_product_platform_updated.platform_2
-    # gon.platform[2] = publisher_product_platform_updated.platform_3
 
-    b_has_platform = false
-    a_platforms = Array.new
-    # @a_publisher_product_platforms = Array.new    
-    platforms = return_all_dtab3lets
-    platforms.each do |pltfrm|
-      a_platforms.push(pltfrm)
-    end
-    gon.platform_text = []
-    
-    
-    if (publisher_product_platform_updated.platform_1 or
-        publisher_product_platform_updated.platform_2 or
-        publisher_product_platform_updated.platform_3)
-
-        b_has_platform = true
-        
-        b = publisher_product_platform_updated.platform_1
-        gon.platform[0] = b
-        if b
-          gon.platform_text.push(a_platforms[0].col_1)  
-        end        
-
-        b = publisher_product_platform_updated.platform_2
-        gon.platform[1] = b
-        if b
-          gon.platform_text.push(a_platforms[1].col_1)  
-        end        
-
-        b = publisher_product_platform_updated.platform_3
-        gon.platform[2] = b
-        if b
-          gon.platform_text.push(a_platforms[2].col_1)  
-        end        
-        
-    end
+    # @b_required_lesson_plan_subject = false    
+    # if (publisher_product_description_updated.lesson_plan_subject.blank?) or (publisher_product_description_updated.lesson_plan_subject.empty?) or (publisher_product_description_updated.lesson_plan_subject.nil?)
+      # @b_required_lesson_plan_subject = true
+    # end
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :b_has_platform => b_has_platform,
-                                      :g_platform => gon.platform,
-                                      :g_platform_text => gon.platform_text,
-                                      :updated => publisher_product_platform_updated.updated_at.to_s(:long) } }
+      # format.js
+      format.json { render :json => { :time_per_lesson => publisher_product_description_updated.time_per_lesson,
+                                      :lesson_time_hours => publisher_product_description_updated.lesson_time_hours,
+                                      :lesson_time_minutes => publisher_product_description_updated.lesson_time_minutes,
+                                      :time_per_course => publisher_product_description_updated.time_per_course,
+                                      :course_time_months => publisher_product_description_updated.course_time_months,
+                                      :course_time_days => publisher_product_description_updated.course_time_days,                                      
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }      
     end
+    
     
   end  
 
 
-
-
-
-
-  #7 file_type
-  def update_file_type
-
-    ar = params[:publisher_product_description]
-    h_obj = Hash.new
-    ar.each do |obj|
-      h_obj = obj
-    end
-
-    publisher_id = h_obj[:publisher_id]
-    publisher_product_id = h_obj[:publisher_product_id]
-    # publisher_product_description_id = h_obj[:publisher_product_description_id]
-    file_type = h_obj[:file_type]
     
-    ar_file_type = Array.new
-    ar_file_type = file_type.split(',')
-    # len = ar_file_type.length
-
-    h_update = Hash.new
-    h_update[:file_type_1] = false
-    h_update[:file_type_2] = false
-    h_update[:file_type_3] = false
-    # h_update[:file_type_4] = false
-    # h_update[:file_type_5] = false
-    # h_update[:file_type_6] = false
-    # h_update[:file_type_7] = false
-    # h_update[:file_type_8] = false
-    # h_update[:file_type_9] = false
-    # h_update[:file_type_10] = false
-    # h_update[:file_type_11] = false
-    # h_update[:file_type_12] = false
-    # h_update[:file_type_13] = false
-    # h_update[:file_type_14] = false
-    # h_update[:file_type_15] = false
-    # h_update[:file_type_16] = false
-    # h_update[:file_type_17] = false
-    # h_update[:file_type_18] = false
-    # h_update[:file_type_19] = false
-    # h_update[:file_type_20] = false
-    # h_update[:file_type_21] = false
-    # h_update[:file_type_22] = false
-    # h_update[:file_type_23] = false
-    # h_update[:file_type_24] = false
-    # h_update[:file_type_25] = false
-    # h_update[:file_type_26] = false
-    # h_update[:file_type_27] = false
-    # h_update[:file_type_28] = false
-    # h_update[:file_type_29] = false
-    # h_update[:file_type_30] = false
-    
-    ar_file_type.each do |target|
-      
-      case target.to_s  
-        when "1"
-          h_update[:file_type_1] = true
-        when "2"
-          h_update[:file_type_2] = true
-        when "3"
-          h_update[:file_type_3] = true
-        # when "4"
-          # h_update[:file_type_4] = true
-        # when "5"
-          # h_update[:file_type_5] = true
-        # when "6"
-          # h_update[:file_type_6] = true
-        # when "7"
-          # h_update[:file_type_7] = true
-        # when "8"
-          # h_update[:file_type_8] = true
-        # when "9"
-          # h_update[:file_type_9] = true
-        # when "10"
-          # h_update[:file_type_10] = true
-        # when "11"
-          # h_update[:file_type_11] = true
-        # when "12"
-          # h_update[:file_type_12] = true
-        # when "13"
-          # h_update[:file_type_13] = true
-        # when "14"
-          # h_update[:file_type_14] = true
-        # when "15"
-          # h_update[:file_type_15] = true
-        # when "16"
-          # h_update[:file_type_16] = true
-        # when "17"
-          # h_update[:file_type_17] = true
-        # when "18"
-          # h_update[:file_type_18] = true
-        # when "19"
-          # h_update[:file_type_19] = true
-        # when "20"
-          # h_update[:file_type_20] = true
-        # when "21"
-          # h_update[:file_type_21] = true
-        # when "22"
-          # h_update[:file_type_22] = true
-        # when "23"
-          # h_update[:file_type_23] = true
-        # when "24"
-          # h_update[:file_type_24] = true
-        # when "25"
-          # h_update[:file_type_25] = true
-        # when "26"
-          # h_update[:file_type_26] = true
-        # when "27"
-          # h_update[:file_type_27] = true
-        # when "28"
-          # h_update[:file_type_28] = true
-        # when "29"
-          # h_update[:file_type_29] = true
-        # when "30"
-          # h_update[:file_type_30] = true
-        else
-          #        
-      end
-      
-    end
-
-    h_update[:publisher_id] = publisher_id
-    h_update[:publisher_product_id] = publisher_product_id
-    # h_update[:publisher_product_description_id] = publisher_product_description_id
-
-    publisher_product_file_type = PublisherProductFileType.where("publisher_product_id = ?", publisher_product_id).first
-
-    if publisher_product_file_type.update_attributes(h_update)
-      #
-    else
-      # Rails.logger.info(@user.errors.messages.inspect)
-    end
-
-    publisher_product_file_type_id = publisher_product_file_type.id
-    publisher_product_file_type = nil
-    publisher_product_file_type_updated = PublisherProductFileType.find(publisher_product_file_type_id)
-    
-    gon.file_type = []
-    
-    # gon.file_type[0] = publisher_product_file_type_updated.file_type_1
-    # gon.file_type[1] = publisher_product_file_type_updated.file_type_2
-    # gon.file_type[2] = publisher_product_file_type_updated.file_type_3
-    # # gon.file_type[4] = publisher_product_file_type_updated.file_type_4
-    # # gon.file_type[5] = publisher_product_file_type_updated.file_type_5
-    # # gon.file_type[6] = publisher_product_file_type_updated.file_type_6
-    # # gon.file_type[7] = publisher_product_file_type_updated.file_type_7
-    # # gon.file_type[8] = publisher_product_file_type_updated.file_type_8
-    # # gon.file_type[9] = publisher_product_file_type_updated.file_type_9
-    # # gon.file_type[10] = publisher_product_file_type_updated.file_type_10
-    # # gon.file_type[11] = publisher_product_file_type_updated.file_type_11
-    # # gon.file_type[12] = publisher_product_file_type_updated.file_type_12
-    # # gon.file_type[13] = publisher_product_file_type_updated.file_type_13
-    # # gon.file_type[14] = publisher_product_file_type_updated.file_type_14
-    # # gon.file_type[15] = publisher_product_file_type_updated.file_type_15
-    # # gon.file_type[16] = publisher_product_file_type_updated.file_type_16
-    # # gon.file_type[17] = publisher_product_file_type_updated.file_type_17
-    # # gon.file_type[18] = publisher_product_file_type_updated.file_type_18
-    # # gon.file_type[19] = publisher_product_file_type_updated.file_type_19
-    # # gon.file_type[20] = publisher_product_file_type_updated.file_type_20
-    # # gon.file_type[21] = publisher_product_file_type_updated.file_type_21
-    # # gon.file_type[22] = publisher_product_file_type_updated.file_type_22
-    # # gon.file_type[23] = publisher_product_file_type_updated.file_type_23
-    # # gon.file_type[24] = publisher_product_file_type_updated.file_type_24
-    # # gon.file_type[25] = publisher_product_file_type_updated.file_type_25
-    # # gon.file_type[26] = publisher_product_file_type_updated.file_type_26
-    # # gon.file_type[27] = publisher_product_file_type_updated.file_type_27
-    # # gon.file_type[28] = publisher_product_file_type_updated.file_type_28
-    # # gon.file_type[29] = publisher_product_file_type_updated.file_type_29
-    # # gon.file_type[30] = publisher_product_file_type_updated.file_type_30
-
-    b_has_file_type = false
-    a_file_types = Array.new
-    file_types = return_all_dtab1lets
-    file_types.each do |ft|
-      a_file_types.push(ft)
-    end
-    gon.file_type_text = []
-    
-    if (publisher_product_file_type_updated.file_type_1 or
-        publisher_product_file_type_updated.file_type_2 or
-        publisher_product_file_type_updated.file_type_3)
-        # publisher_product_file_type_updated.file_type_4 or
-        # publisher_product_file_type_updated.file_type_5 or
-        # publisher_product_file_type_updated.file_type_6 or
-        # publisher_product_file_type_updated.file_type_7 or
-        # publisher_product_file_type_updated.file_type_8 or
-        # publisher_product_file_type_updated.file_type_9 or
-        # publisher_product_file_type_updated.file_type_10 or
-        # publisher_product_file_type_updated.file_type_11 or
-        # publisher_product_file_type_updated.file_type_12 or
-        # publisher_product_file_type_updated.file_type_13 or
-        # publisher_product_file_type_updated.file_type_14 or
-        # publisher_product_file_type_updated.file_type_15 or
-        # publisher_product_file_type_updated.file_type_16 or
-        # publisher_product_file_type_updated.file_type_17 or
-        # publisher_product_file_type_updated.file_type_18 or
-        # publisher_product_file_type_updated.file_type_19 or
-        # publisher_product_file_type_updated.file_type_20 or
-        # publisher_product_file_type_updated.file_type_21 or
-        # publisher_product_file_type_updated.file_type_22 or
-        # publisher_product_file_type_updated.file_type_23 or
-        # publisher_product_file_type_updated.file_type_24 or
-        # publisher_product_file_type_updated.file_type_25 or
-        # publisher_product_file_type_updated.file_type_26 or
-        # publisher_product_file_type_updated.file_type_27 or
-        # publisher_product_file_type_updated.file_type_28 or
-        # publisher_product_file_type_updated.file_type_29 or
-        # publisher_product_file_type_updated.file_type_30)
-
-        b_has_file_type = true
-        
-        b = publisher_product_file_type_updated.file_type_1
-        gon.file_type[0] = b
-        if b
-          gon.file_type_text.push(a_file_types[0].col_1)  
-        end        
-
-        b = publisher_product_file_type_updated.file_type_2
-        gon.file_type[1] = b
-        if b
-          gon.file_type_text.push(a_file_types[1].col_1)  
-        end        
-
-        b = publisher_product_file_type_updated.file_type_3
-        gon.file_type[2] = b
-        if b
-          gon.file_type_text.push(a_file_types[2].col_1)  
-        end        
-        
-    end
-    
-    respond_to do |format|
-      format.html {}
-      format.json { render :json => { :b_has_file_type => b_has_file_type,
-                                      :g_file_type => gon.file_type,
-                                      :g_file_type_text => gon.file_type_text,
-                                      :updated => publisher_product_file_type_updated.updated_at.to_s(:long) } }
-
-      # format.json { render :json => {} }
-
-    end
-    
-  end  
-  
-  
-  
-  #7 enhancement
-  def update_enhancement
-
-    ar = params[:publisher_product_description]
-    h_obj = Hash.new
-    ar.each do |obj|
-      h_obj = obj
-    end
-
-    publisher_id = h_obj[:publisher_id]
-    publisher_product_id = h_obj[:publisher_product_id]
-    # publisher_product_description_id = h_obj[:publisher_product_description_id]
-    enhancement = h_obj[:enhancement]
-    
-    ar_enhancement = Array.new
-    ar_enhancement = enhancement.split(',')
-    # len = ar_enhancement.length
-
-    h_update = Hash.new
-    h_update[:enhancement_1] = false
-    h_update[:enhancement_2] = false
-    h_update[:enhancement_3] = false
-    h_update[:enhancement_4] = false
-    h_update[:enhancement_5] = false
-    h_update[:enhancement_6] = false
-    h_update[:enhancement_7] = false
-    h_update[:enhancement_8] = false
-    h_update[:enhancement_9] = false
-    h_update[:enhancement_10] = false
-    h_update[:enhancement_11] = false
-    h_update[:enhancement_12] = false
-    
-    ar_enhancement.each do |target|
-      
-      case target.to_s  
-        when "1"
-          h_update[:enhancement_1] = true
-        when "2"
-          h_update[:enhancement_2] = true
-        when "3"
-          h_update[:enhancement_3] = true
-        when "4"
-          h_update[:enhancement_4] = true
-        when "5"
-          h_update[:enhancement_5] = true
-        when "6"
-          h_update[:enhancement_6] = true
-        when "7"
-          h_update[:enhancement_7] = true
-        when "8"
-          h_update[:enhancement_8] = true
-        when "9"
-          h_update[:enhancement_9] = true
-        when "10"
-          h_update[:enhancement_10] = true
-        when "11"
-          h_update[:enhancement_11] = true
-        when "12"
-          h_update[:enhancement_12] = true
-        else
-          #        
-      end
-      
-    end
-
-    h_update[:publisher_id] = publisher_id
-    h_update[:publisher_product_id] = publisher_product_id
-    # h_update[:publisher_product_description_id] = publisher_product_description_id
-
-    publisher_product_enhancement = PublisherProductEnhancement.where("publisher_product_id = ?", publisher_product_id).first
-
-    if publisher_product_enhancement.update_attributes(h_update)
-      #
-    else
-      # Rails.logger.info(@user.errors.messages.inspect)
-    end
-
-    publisher_product_enhancement_id = publisher_product_enhancement.id
-    publisher_product_enhancement = nil
-    publisher_product_enhancement_updated = PublisherProductEnhancement.find(publisher_product_enhancement_id)
-    
-    
-    # gon.enhancement[1] = publisher_product_enhancement_updated.enhancement_1
-    # gon.enhancement[2] = publisher_product_enhancement_updated.enhancement_2
-    # gon.enhancement[3] = publisher_product_enhancement_updated.enhancement_3
-    # gon.enhancement[4] = publisher_product_enhancement_updated.enhancement_4
-    # gon.enhancement[5] = publisher_product_enhancement_updated.enhancement_5
-    # gon.enhancement[6] = publisher_product_enhancement_updated.enhancement_6
-    # gon.enhancement[7] = publisher_product_enhancement_updated.enhancement_7
-    # gon.enhancement[8] = publisher_product_enhancement_updated.enhancement_8
-    # gon.enhancement[9] = publisher_product_enhancement_updated.enhancement_9
-    # gon.enhancement[10] = publisher_product_enhancement_updated.enhancement_10
-
-    b_has_enhancement = false
-    a_enhancements = Array.new
-    @enhancements = return_all_dtab6lets
-    @enhancements.each do |enhncmnt|
-      a_enhancements.push(enhncmnt)
-    end
-    gon.enhancement = []
-    gon.enhancement_text = []    
-    
-    if (publisher_product_enhancement_updated.enhancement_1 or
-        publisher_product_enhancement_updated.enhancement_2 or
-        publisher_product_enhancement_updated.enhancement_3 or
-        publisher_product_enhancement_updated.enhancement_4 or
-        publisher_product_enhancement_updated.enhancement_5 or
-        publisher_product_enhancement_updated.enhancement_6 or
-        publisher_product_enhancement_updated.enhancement_7 or
-        publisher_product_enhancement_updated.enhancement_8 or
-        publisher_product_enhancement_updated.enhancement_9 or
-        publisher_product_enhancement_updated.enhancement_10 or
-        publisher_product_enhancement_updated.enhancement_11 or
-        publisher_product_enhancement_updated.enhancement_12)
-
-        b_has_enhancement = true
-        
-        b = publisher_product_enhancement_updated.enhancement_1
-        gon.enhancement[0] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[0].col_1)                            
-        end        
-
-        b = publisher_product_enhancement_updated.enhancement_2
-        gon.enhancement[1] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[1].col_1)                            
-        end        
-
-        b = publisher_product_enhancement_updated.enhancement_3
-        gon.enhancement[2] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[2].col_1)                            
-        end        
-
-        b = publisher_product_enhancement_updated.enhancement_4
-        gon.enhancement[3] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[3].col_1)                            
-        end        
-
-        b = publisher_product_enhancement_updated.enhancement_5
-        gon.enhancement[4] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[4].col_1)                            
-        end        
-
-        b = publisher_product_enhancement_updated.enhancement_6
-        gon.enhancement[5] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[5].col_1)                            
-        end        
-
-        b = publisher_product_enhancement_updated.enhancement_7
-        gon.enhancement[6] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[6].col_1)                            
-        end        
-
-        b = publisher_product_enhancement_updated.enhancement_8
-        gon.enhancement[7] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[7].col_1)                            
-        end        
-
-        b = publisher_product_enhancement_updated.enhancement_9
-        gon.enhancement[8] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[8].col_1)                            
-        end        
-
-        b = publisher_product_enhancement_updated.enhancement_10
-        gon.enhancement[9] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[9].col_1)                            
-        end        
-
-        b = publisher_product_enhancement_updated.enhancement_11
-        gon.enhancement[10] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[10].col_1)                            
-        end        
-
-        b = publisher_product_enhancement_updated.enhancement_12
-        gon.enhancement[11] = b
-        if b
-          gon.enhancement_text.push(a_enhancements[11].col_1)                            
-        end        
-        
-        
-    end
-    
-    respond_to do |format|
-      format.html {}
-      format.json { render :json => { :b_has_enhancement => b_has_enhancement,
-                                      :g_enhancement => gon.enhancement,
-                                      :g_enhancement_text => gon.enhancement_text,
-                                      :updated => publisher_product_enhancement_updated.updated_at.to_s(:long) } }
-
-      # format.json { render :json => {} }
-
-    end
-    
-  end  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
 
-  #7 age_appropriate_index
-  def update_age_appropriate_index
+  #7 appropriate_age
+  def update_appropriate_age
 
     ar = params[:publisher_product_description]
     h_obj = Hash.new
@@ -2309,33 +3823,18 @@ class PublisherProductDescriptionsController < ApplicationController
     publisher_id = h_obj[:publisher_id]
     publisher_product_id = h_obj[:publisher_product_id]
     publisher_product_description_id = h_obj[:publisher_product_description_id]
-    age_appropriate_index = h_obj[:age_appropriate_index]
+    appropriate_age = h_obj[:appropriate_age]
     
-    ar_age_appropriate = Array.new
-    ar_age_appropriate = age_appropriate_index.split(',')
-    len = ar_age_appropriate.length
+    ar_appropriate_ages = Array.new
+    ar_appropriate_ages = appropriate_age.split(',')
+    # len = ar_age_appropriate.length
 
     h_update = Hash.new
     h_update[:age_appropriate_1] = false
     h_update[:age_appropriate_2] = false
     h_update[:age_appropriate_3] = false
-    h_update[:age_appropriate_4] = false
-    h_update[:age_appropriate_5] = false
-    h_update[:age_appropriate_6] = false
-    h_update[:age_appropriate_7] = false
-    h_update[:age_appropriate_8] = false
-    h_update[:age_appropriate_9] = false
-    h_update[:age_appropriate_10] = false
-    h_update[:age_appropriate_11] = false
-    h_update[:age_appropriate_12] = false
-    h_update[:age_appropriate_13] = false
-    h_update[:age_appropriate_14] = false
-    h_update[:age_appropriate_15] = false
-    h_update[:age_appropriate_16] = false
-    h_update[:age_appropriate_17] = false
-    h_update[:age_appropriate_18] = false
     
-    ar_age_appropriate.each do |age|
+    ar_appropriate_ages.each do |age|
       
       case age.to_s  
         when "1"
@@ -2344,46 +3843,12 @@ class PublisherProductDescriptionsController < ApplicationController
           h_update[:age_appropriate_2] = true
         when "3"
           h_update[:age_appropriate_3] = true
-        when "4"
-          h_update[:age_appropriate_4] = true
-        when "5"
-          h_update[:age_appropriate_5] = true
-        when "6"
-          h_update[:age_appropriate_6] = true
-        when "7"
-          h_update[:age_appropriate_7] = true
-        when "8"
-          h_update[:age_appropriate_8] = true
-        when "9"
-          h_update[:age_appropriate_9] = true
-        when "10"
-          h_update[:age_appropriate_10] = true
-        when "11"
-          h_update[:age_appropriate_11] = true
-        when "12"
-          h_update[:age_appropriate_12] = true
-        when "13"
-          h_update[:age_appropriate_13] = true
-        when "14"
-          h_update[:age_appropriate_14] = true
-        when "15"
-          h_update[:age_appropriate_15] = true
-        when "16"
-          h_update[:age_appropriate_16] = true
-        when "17"
-          h_update[:age_appropriate_17] = true
-        when "18"
-          h_update[:age_appropriate_18] = true
         else
           #        
       end
       
     end
 
-    # @info1 = Rails.logger.info "clyde in update_name_first"
-    # @info2 = Rails.logger.info h_obj
-
-    # h_update = Hash.new
 
     h_update[:publisher_id] = publisher_id
     h_update[:publisher_product_id] = publisher_product_id
@@ -2401,96 +3866,68 @@ class PublisherProductDescriptionsController < ApplicationController
     publisher_product_appropriate_age = nil
     publisher_product_appropriate_age_updated = PublisherProductAppropriateAge.find(publisher_product_appropriate_age_id)
     
-    gon.age_appropriate = []
-    
-    gon.age_appropriate[1] = publisher_product_appropriate_age_updated.age_appropriate_1
-    gon.age_appropriate[2] = publisher_product_appropriate_age_updated.age_appropriate_2
-    gon.age_appropriate[3] = publisher_product_appropriate_age_updated.age_appropriate_3
-    gon.age_appropriate[4] = publisher_product_appropriate_age_updated.age_appropriate_4
-    gon.age_appropriate[5] = publisher_product_appropriate_age_updated.age_appropriate_5
-    gon.age_appropriate[6] = publisher_product_appropriate_age_updated.age_appropriate_6
-    gon.age_appropriate[7] = publisher_product_appropriate_age_updated.age_appropriate_7
-    gon.age_appropriate[8] = publisher_product_appropriate_age_updated.age_appropriate_8 
-    gon.age_appropriate[9] = publisher_product_appropriate_age_updated.age_appropriate_9 
-    gon.age_appropriate[10] = publisher_product_appropriate_age_updated.age_appropriate_10 
-    gon.age_appropriate[11] = publisher_product_appropriate_age_updated.age_appropriate_11 
-    gon.age_appropriate[12] = publisher_product_appropriate_age_updated.age_appropriate_12 
-    gon.age_appropriate[13] = publisher_product_appropriate_age_updated.age_appropriate_13 
-    gon.age_appropriate[14] = publisher_product_appropriate_age_updated.age_appropriate_14 
-    gon.age_appropriate[15] = publisher_product_appropriate_age_updated.age_appropriate_15 
-    gon.age_appropriate[16] = publisher_product_appropriate_age_updated.age_appropriate_16 
-    gon.age_appropriate[17] = publisher_product_appropriate_age_updated.age_appropriate_17 
-    gon.age_appropriate[18] = publisher_product_appropriate_age_updated.age_appropriate_adult
+    # gon.age_appropriate = []
+    # gon.age_appropriate[1] = publisher_product_appropriate_age_updated.age_appropriate_1
+    # gon.age_appropriate[2] = publisher_product_appropriate_age_updated.age_appropriate_2
+    # gon.age_appropriate[3] = publisher_product_appropriate_age_updated.age_appropriate_3
 
-    b_has_age_appropriate = false
-    
+    a_appropriate_ages = Array.new
+    appropriate_ages = return_all_dtab8lets
+    appropriate_ages.each do |appro_age|
+      a_appropriate_ages.push(appro_age)
+    end
+    gon.appropriate_age = []
+    gon.appropriate_age_text = []    
+    b_required = true
     if (publisher_product_appropriate_age_updated.age_appropriate_1 or
         publisher_product_appropriate_age_updated.age_appropriate_2 or
-        publisher_product_appropriate_age_updated.age_appropriate_3 or
-        publisher_product_appropriate_age_updated.age_appropriate_4 or
-        publisher_product_appropriate_age_updated.age_appropriate_5 or
-        publisher_product_appropriate_age_updated.age_appropriate_6 or
-        publisher_product_appropriate_age_updated.age_appropriate_7 or
-        publisher_product_appropriate_age_updated.age_appropriate_8 or
-        publisher_product_appropriate_age_updated.age_appropriate_9 or
-        publisher_product_appropriate_age_updated.age_appropriate_10 or
-        publisher_product_appropriate_age_updated.age_appropriate_11 or
-        publisher_product_appropriate_age_updated.age_appropriate_12 or
-        publisher_product_appropriate_age_updated.age_appropriate_13 or
-        publisher_product_appropriate_age_updated.age_appropriate_14 or
-        publisher_product_appropriate_age_updated.age_appropriate_15 or
-        publisher_product_appropriate_age_updated.age_appropriate_16 or
-        publisher_product_appropriate_age_updated.age_appropriate_17 or
-        publisher_product_appropriate_age_updated.age_appropriate_adult)
-        
-        b_has_age_appropriate = true
-        
-        
-        # h_updated[1] = publisher_product_appropriate_age_updated.age_appropriate_1
-        # h_updated[2] = publisher_product_appropriate_age_updated.age_appropriate_2
-        # h_updated[3] = publisher_product_appropriate_age_updated.age_appropriate_3
-        # h_updated[4] = publisher_product_appropriate_age_updated.age_appropriate_4
-        # h_updated[5] = publisher_product_appropriate_age_updated.age_appropriate_5
-        # h_updated[6] = publisher_product_appropriate_age_updated.age_appropriate_6
-        # h_updated[7] = publisher_product_appropriate_age_updated.age_appropriate_7
-        # h_updated[8] = publisher_product_appropriate_age_updated.age_appropriate_8 
-        # h_updated[9] = publisher_product_appropriate_age_updated.age_appropriate_9 
-        # h_updated[10] = publisher_product_appropriate_age_updated.age_appropriate_10 
-        # h_updated[11] = publisher_product_appropriate_age_updated.age_appropriate_11 
-        # h_updated[12] = publisher_product_appropriate_age_updated.age_appropriate_12 
-        # h_updated[13] = publisher_product_appropriate_age_updated.age_appropriate_13 
-        # h_updated[14] = publisher_product_appropriate_age_updated.age_appropriate_14 
-        # h_updated[15] = publisher_product_appropriate_age_updated.age_appropriate_15 
-        # h_updated[16] = publisher_product_appropriate_age_updated.age_appropriate_16 
-        # h_updated[17] = publisher_product_appropriate_age_updated.age_appropriate_17 
-        # h_updated[18] = publisher_product_appropriate_age_updated.age_appropriate_adult
-        
+        publisher_product_appropriate_age_updated.age_appropriate_3)
+
+        # b_has_enhancement = true
+        b_required = false
+            
+        b = publisher_product_appropriate_age_updated.age_appropriate_1
+        gon.appropriate_age[0] = b
+        if b
+          gon.appropriate_age_text.push(a_appropriate_ages[0].col_1)                            
+        end        
+
+        b = publisher_product_appropriate_age_updated.age_appropriate_2
+        gon.appropriate_age[1] = b
+        if b
+          gon.appropriate_age_text.push(a_appropriate_ages[1].col_1)                            
+        end        
+
+        b = publisher_product_appropriate_age_updated.age_appropriate_3
+        gon.appropriate_age[2] = b
+        if b
+          gon.appropriate_age_text.push(a_appropriate_ages[2].col_1)                            
+        end        
+
         
     end
     
     respond_to do |format|
       format.html {}
-      # format.json { render :json => { :age_appropriate_index => publisher_product_description_updated.age_appropriate_index,
-                                      # :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
-
-      format.json { render :json => { :b_has_age_appropriate => b_has_age_appropriate,
-                                      # :h_updated => h_updated,
-                                      :g_updated => gon.age_appropriate,
+      format.json { render :json => { :g_appropriate_age => gon.appropriate_age,
+                                      :g_appropriate_age_text => gon.appropriate_age_text,
+                                      :b_required => b_required,
                                       :updated => publisher_product_appropriate_age_updated.updated_at.to_s(:long) } }
 
-            
-      # format.json { render :partial => "publisher_profiles/test" }
-      # format.json { render :json => { :url => '/PublisherProfiles' } }
-      # format.json { render :json => @journal1poster_position }
+      # format.json { render :json => {} }
+
     end
+
+
     
   end  
 
 
 
 
-  #7 grade_appropriate
-  def update_grade_appropriate
+
+  #8 appropriate_grade
+  def update_appropriate_grade
 
     ar = params[:publisher_product_description]
     h_obj = Hash.new
@@ -2501,31 +3938,18 @@ class PublisherProductDescriptionsController < ApplicationController
     publisher_id = h_obj[:publisher_id]
     publisher_product_id = h_obj[:publisher_product_id]
     publisher_product_description_id = h_obj[:publisher_product_description_id]
-    grade_appropriate = h_obj[:grade_appropriate]
+    appropriate_grade = h_obj[:appropriate_grade]
     
-    ar_grade_appropriate = Array.new
-    ar_grade_appropriate = grade_appropriate.split(',')
-    len = ar_grade_appropriate.length
+    ar_appropriate_grades = Array.new
+    ar_appropriate_grades = appropriate_grade.split(',')
+    # len = ar_grade_appropriate.length
 
     h_update = Hash.new
     h_update[:grade_appropriate_1] = false
     h_update[:grade_appropriate_2] = false
     h_update[:grade_appropriate_3] = false
-    h_update[:grade_appropriate_4] = false
-    h_update[:grade_appropriate_5] = false
-    h_update[:grade_appropriate_6] = false
-    h_update[:grade_appropriate_7] = false
-    h_update[:grade_appropriate_8] = false
-    h_update[:grade_appropriate_9] = false
-    h_update[:grade_appropriate_10] = false
-    h_update[:grade_appropriate_11] = false
-    h_update[:grade_appropriate_12] = false
-    h_update[:grade_appropriate_13] = false
-    h_update[:grade_appropriate_14] = false
-    h_update[:grade_appropriate_15] = false
-    h_update[:grade_appropriate_16] = false
     
-    ar_grade_appropriate.each do |grade|
+    ar_appropriate_grades.each do |grade|
       
       case grade.to_s  
         when "1"
@@ -2534,42 +3958,12 @@ class PublisherProductDescriptionsController < ApplicationController
           h_update[:grade_appropriate_2] = true
         when "3"
           h_update[:grade_appropriate_3] = true
-        when "4"
-          h_update[:grade_appropriate_4] = true
-        when "5"
-          h_update[:grade_appropriate_5] = true
-        when "6"
-          h_update[:grade_appropriate_6] = true
-        when "7"
-          h_update[:grade_appropriate_7] = true
-        when "8"
-          h_update[:grade_appropriate_8] = true
-        when "9"
-          h_update[:grade_appropriate_9] = true
-        when "10"
-          h_update[:grade_appropriate_10] = true
-        when "11"
-          h_update[:grade_appropriate_11] = true
-        when "12"
-          h_update[:grade_appropriate_12] = true
-        when "13"
-          h_update[:grade_appropriate_13] = true
-        when "14"
-          h_update[:grade_appropriate_14] = true
-        when "15"
-          h_update[:grade_appropriate_15] = true
-        when "16"
-          h_update[:grade_appropriate_16] = true
         else
           #        
       end
       
     end
 
-    # @info1 = Rails.logger.info "clyde in update_name_first"
-    # @info2 = Rails.logger.info h_obj
-
-    # h_update = Hash.new
 
     h_update[:publisher_id] = publisher_id
     h_update[:publisher_product_id] = publisher_product_id
@@ -2580,65 +3974,712 @@ class PublisherProductDescriptionsController < ApplicationController
     if publisher_product_appropriate_grade.update_attributes(h_update)
       #
     else
-      # Rails.logger.info(@user.errors.messages.inspect)
+      # Rails.logger.info(@user.errors.messgrades.inspect)
     end
 
     publisher_product_appropriate_grade_id = publisher_product_appropriate_grade.id
     publisher_product_appropriate_grade = nil
     publisher_product_appropriate_grade_updated = PublisherProductAppropriateGrade.find(publisher_product_appropriate_grade_id)
     
-    gon.grade_appropriate = []
-    
-    gon.grade_appropriate[1] = publisher_product_appropriate_grade_updated.grade_appropriate_1
-    gon.grade_appropriate[2] = publisher_product_appropriate_grade_updated.grade_appropriate_2
-    gon.grade_appropriate[3] = publisher_product_appropriate_grade_updated.grade_appropriate_3
-    gon.grade_appropriate[4] = publisher_product_appropriate_grade_updated.grade_appropriate_4
-    gon.grade_appropriate[5] = publisher_product_appropriate_grade_updated.grade_appropriate_5
-    gon.grade_appropriate[6] = publisher_product_appropriate_grade_updated.grade_appropriate_6
-    gon.grade_appropriate[7] = publisher_product_appropriate_grade_updated.grade_appropriate_7
-    gon.grade_appropriate[8] = publisher_product_appropriate_grade_updated.grade_appropriate_8 
-    gon.grade_appropriate[9] = publisher_product_appropriate_grade_updated.grade_appropriate_9 
-    gon.grade_appropriate[10] = publisher_product_appropriate_grade_updated.grade_appropriate_10 
-    gon.grade_appropriate[11] = publisher_product_appropriate_grade_updated.grade_appropriate_11 
-    gon.grade_appropriate[12] = publisher_product_appropriate_grade_updated.grade_appropriate_12 
-    gon.grade_appropriate[13] = publisher_product_appropriate_grade_updated.grade_appropriate_13 
-    gon.grade_appropriate[14] = publisher_product_appropriate_grade_updated.grade_appropriate_14 
-    gon.grade_appropriate[15] = publisher_product_appropriate_grade_updated.grade_appropriate_15 
-    gon.grade_appropriate[16] = publisher_product_appropriate_grade_updated.grade_appropriate_16 
+    # gon.grade_appropriate = []
+    # gon.grade_appropriate[1] = publisher_product_appropriate_grade_updated.grade_appropriate_1
+    # gon.grade_appropriate[2] = publisher_product_appropriate_grade_updated.grade_appropriate_2
+    # gon.grade_appropriate[3] = publisher_product_appropriate_grade_updated.grade_appropriate_3
 
-    b_has_grade_appropriate = false
-    
+    a_appropriate_grades = Array.new
+    appropriate_grades = return_all_dtab9lets
+    appropriate_grades.each do |appro_grade|
+      a_appropriate_grades.push(appro_grade)
+    end
+    gon.appropriate_grade = []
+    gon.appropriate_grade_text = []    
+    b_required = true
     if (publisher_product_appropriate_grade_updated.grade_appropriate_1 or
         publisher_product_appropriate_grade_updated.grade_appropriate_2 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_3 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_4 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_5 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_6 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_7 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_8 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_9 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_10 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_11 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_12 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_13 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_14 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_15 or
-        publisher_product_appropriate_grade_updated.grade_appropriate_16)
-        
-        b_has_grade_appropriate = true
-        
+        publisher_product_appropriate_grade_updated.grade_appropriate_3)
+
+        # b_has_enhancement = true
+        b_required = false
+            
+        b = publisher_product_appropriate_grade_updated.grade_appropriate_1
+        gon.appropriate_grade[0] = b
+        if b
+          gon.appropriate_grade_text.push(a_appropriate_grades[0].col_1)                            
+        end        
+
+        b = publisher_product_appropriate_grade_updated.grade_appropriate_2
+        gon.appropriate_grade[1] = b
+        if b
+          gon.appropriate_grade_text.push(a_appropriate_grades[1].col_1)                            
+        end        
+
+        b = publisher_product_appropriate_grade_updated.grade_appropriate_3
+        gon.appropriate_grade[2] = b
+        if b
+          gon.appropriate_grade_text.push(a_appropriate_grades[2].col_1)                            
+        end        
+
         
     end
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :b_has_grade_appropriate => b_has_grade_appropriate,
-                                      :g_updated => gon.grade_appropriate,
+      format.json { render :json => { :g_appropriate_grade => gon.appropriate_grade,
+                                      :g_appropriate_grade_text => gon.appropriate_grade_text,
+                                      :b_required => b_required,
                                       :updated => publisher_product_appropriate_grade_updated.updated_at.to_s(:long) } }
+
+      # format.json { render :json => {} }
+
     end
+
 
     
   end  
+
+
+
+  # #7 grade_appropriate
+  # def update_grade_appropriate
+# 
+    # ar = params[:publisher_product_description]
+    # h_obj = Hash.new
+    # ar.each do |obj|
+      # h_obj = obj
+    # end
+# 
+    # publisher_id = h_obj[:publisher_id]
+    # publisher_product_id = h_obj[:publisher_product_id]
+    # publisher_product_description_id = h_obj[:publisher_product_description_id]
+    # grade_appropriate = h_obj[:grade_appropriate]
+#     
+    # ar_grade_appropriate = Array.new
+    # ar_grade_appropriate = grade_appropriate.split(',')
+    # len = ar_grade_appropriate.length
+# 
+    # h_update = Hash.new
+    # h_update[:grade_appropriate_1] = false
+    # h_update[:grade_appropriate_2] = false
+    # h_update[:grade_appropriate_3] = false
+    # h_update[:grade_appropriate_4] = false
+    # h_update[:grade_appropriate_5] = false
+    # h_update[:grade_appropriate_6] = false
+    # h_update[:grade_appropriate_7] = false
+    # h_update[:grade_appropriate_8] = false
+    # h_update[:grade_appropriate_9] = false
+    # h_update[:grade_appropriate_10] = false
+    # h_update[:grade_appropriate_11] = false
+    # h_update[:grade_appropriate_12] = false
+    # h_update[:grade_appropriate_13] = false
+    # h_update[:grade_appropriate_14] = false
+    # h_update[:grade_appropriate_15] = false
+    # h_update[:grade_appropriate_16] = false
+#     
+    # ar_grade_appropriate.each do |grade|
+#       
+      # case grade.to_s  
+        # when "1"
+          # h_update[:grade_appropriate_1] = true
+        # when "2"
+          # h_update[:grade_appropriate_2] = true
+        # when "3"
+          # h_update[:grade_appropriate_3] = true
+        # when "4"
+          # h_update[:grade_appropriate_4] = true
+        # when "5"
+          # h_update[:grade_appropriate_5] = true
+        # when "6"
+          # h_update[:grade_appropriate_6] = true
+        # when "7"
+          # h_update[:grade_appropriate_7] = true
+        # when "8"
+          # h_update[:grade_appropriate_8] = true
+        # when "9"
+          # h_update[:grade_appropriate_9] = true
+        # when "10"
+          # h_update[:grade_appropriate_10] = true
+        # when "11"
+          # h_update[:grade_appropriate_11] = true
+        # when "12"
+          # h_update[:grade_appropriate_12] = true
+        # when "13"
+          # h_update[:grade_appropriate_13] = true
+        # when "14"
+          # h_update[:grade_appropriate_14] = true
+        # when "15"
+          # h_update[:grade_appropriate_15] = true
+        # when "16"
+          # h_update[:grade_appropriate_16] = true
+        # else
+          # #        
+      # end
+#       
+    # end
+# 
+    # # @info1 = Rails.logger.info "clyde in update_name_first"
+    # # @info2 = Rails.logger.info h_obj
+# 
+    # # h_update = Hash.new
+# 
+    # h_update[:publisher_id] = publisher_id
+    # h_update[:publisher_product_id] = publisher_product_id
+    # h_update[:publisher_product_description_id] = publisher_product_description_id
+# 
+    # publisher_product_appropriate_grade = PublisherProductAppropriateGrade.where("publisher_product_id = ?", publisher_product_id).first
+# 
+    # if publisher_product_appropriate_grade.update_attributes(h_update)
+      # #
+    # else
+      # # Rails.logger.info(@user.errors.messages.inspect)
+    # end
+# 
+    # publisher_product_appropriate_grade_id = publisher_product_appropriate_grade.id
+    # publisher_product_appropriate_grade = nil
+    # publisher_product_appropriate_grade_updated = PublisherProductAppropriateGrade.find(publisher_product_appropriate_grade_id)
+#     
+    # gon.grade_appropriate = []
+#     
+    # gon.grade_appropriate[1] = publisher_product_appropriate_grade_updated.grade_appropriate_1
+    # gon.grade_appropriate[2] = publisher_product_appropriate_grade_updated.grade_appropriate_2
+    # gon.grade_appropriate[3] = publisher_product_appropriate_grade_updated.grade_appropriate_3
+    # gon.grade_appropriate[4] = publisher_product_appropriate_grade_updated.grade_appropriate_4
+    # gon.grade_appropriate[5] = publisher_product_appropriate_grade_updated.grade_appropriate_5
+    # gon.grade_appropriate[6] = publisher_product_appropriate_grade_updated.grade_appropriate_6
+    # gon.grade_appropriate[7] = publisher_product_appropriate_grade_updated.grade_appropriate_7
+    # gon.grade_appropriate[8] = publisher_product_appropriate_grade_updated.grade_appropriate_8 
+    # gon.grade_appropriate[9] = publisher_product_appropriate_grade_updated.grade_appropriate_9 
+    # gon.grade_appropriate[10] = publisher_product_appropriate_grade_updated.grade_appropriate_10 
+    # gon.grade_appropriate[11] = publisher_product_appropriate_grade_updated.grade_appropriate_11 
+    # gon.grade_appropriate[12] = publisher_product_appropriate_grade_updated.grade_appropriate_12 
+    # gon.grade_appropriate[13] = publisher_product_appropriate_grade_updated.grade_appropriate_13 
+    # gon.grade_appropriate[14] = publisher_product_appropriate_grade_updated.grade_appropriate_14 
+    # gon.grade_appropriate[15] = publisher_product_appropriate_grade_updated.grade_appropriate_15 
+    # gon.grade_appropriate[16] = publisher_product_appropriate_grade_updated.grade_appropriate_16 
+# 
+    # b_has_grade_appropriate = false
+#     
+    # if (publisher_product_appropriate_grade_updated.grade_appropriate_1 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_2 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_3 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_4 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_5 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_6 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_7 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_8 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_9 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_10 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_11 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_12 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_13 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_14 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_15 or
+        # publisher_product_appropriate_grade_updated.grade_appropriate_16)
+#         
+        # b_has_grade_appropriate = true
+#         
+#         
+    # end
+#     
+    # respond_to do |format|
+      # format.html {}
+      # format.json { render :json => { :b_has_grade_appropriate => b_has_grade_appropriate,
+                                      # :g_updated => gon.grade_appropriate,
+                                      # :updated => publisher_product_appropriate_grade_updated.updated_at.to_s(:long) } }
+    # end
+# 
+#     
+  # end  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  #7 market_target
+  def update_market_target
+
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_id = h_obj[:publisher_id]
+    publisher_product_id = h_obj[:publisher_product_id]
+    # publisher_product_description_id = h_obj[:publisher_product_description_id]
+    market_target = h_obj[:market_target]
+    
+    ar_market_target = Array.new
+    ar_market_target = market_target.split(',')
+    # len = ar_market_target.length
+
+    h_update = Hash.new
+    h_update[:market_target_1] = false
+    h_update[:market_target_2] = false
+    
+    ar_market_target.each do |target|
+      
+      case target.to_s  
+        when "1"
+          h_update[:market_target_1] = true
+        when "2"
+          h_update[:market_target_2] = true
+        else
+          #        
+      end
+      
+    end
+
+    h_update[:publisher_id] = publisher_id
+    h_update[:publisher_product_id] = publisher_product_id
+    # h_update[:publisher_product_description_id] = publisher_product_description_id
+
+    publisher_product_market_target = PublisherProductMarketTarget.where("publisher_product_id = ?", publisher_product_id).first
+
+    if publisher_product_market_target.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
+
+    publisher_product_market_target_id = publisher_product_market_target.id
+    publisher_product_market_target = nil
+    publisher_product_market_target_updated = PublisherProductMarketTarget.find(publisher_product_market_target_id)
+    
+    
+    a_market_targets = Array.new
+    market_targets = return_all_dtab11lets
+    market_targets.each do |m_target|
+      a_market_targets.push(m_target)
+    end
+    gon.market_target = []
+    gon.market_target_text = []    
+    b_required = true                                
+    if (publisher_product_market_target_updated.market_target_1 or
+        publisher_product_market_target_updated.market_target_2)
+        
+        # @b_market_target_index = true        
+        b_required = false
+
+        b = publisher_product_market_target_updated.market_target_1
+        gon.market_target[0] = b
+        if b
+          gon.market_target_text.push(a_market_targets[0].col_1)                            
+        end        
+
+        b = publisher_product_market_target_updated.market_target_2
+        gon.market_target[1] = b
+        if b
+          gon.market_target_text.push(a_market_targets[1].col_1)                            
+        end        
+        
+    end
+    
+    # gon.market_target[1] = publisher_product_market_target_updated.market_target_1
+    # gon.market_target[2] = publisher_product_market_target_updated.market_target_2
+
+    # b_has_market_target = false
+    
+    # if (publisher_product_market_target_updated.market_target_1 or
+        # publisher_product_market_target_updated.market_target_2)
+        # # b_has_market_target = true
+    # end
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :g_market_target => gon.market_target,
+                                      :g_market_target_text => gon.market_target_text,
+                                      :b_required => b_required,
+                                      :updated => publisher_product_market_target_updated.updated_at.to_s(:long) } }
+
+      # format.json { render :json => {} }
+
+    end
+    
+  end  
+
+
+
+
+  #7 pricing_model
+  def update_pricing_model
+
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_id = h_obj[:publisher_id]
+    publisher_product_id = h_obj[:publisher_product_id]
+    # publisher_product_description_id = h_obj[:publisher_product_description_id]
+    pricing_model = h_obj[:pricing_model]
+    
+    ar_pricing_model = Array.new
+    ar_pricing_model = pricing_model.split(',')
+    len = ar_pricing_model.length
+
+    h_update = Hash.new
+    h_update[:pricing_model_1] = false
+    h_update[:pricing_model_2] = false
+    h_update[:pricing_model_3] = false
+    
+    ar_pricing_model.each do |target|
+      
+      case target.to_s  
+        when "1"
+          h_update[:pricing_model_1] = true
+        when "2"
+          h_update[:pricing_model_2] = true
+        when "3"
+          h_update[:pricing_model_3] = true
+        else
+          #        
+      end
+      
+    end
+
+    h_update[:publisher_id] = publisher_id
+    h_update[:publisher_product_id] = publisher_product_id
+    # h_update[:publisher_product_description_id] = publisher_product_description_id
+
+    publisher_product_pricing_model = PublisherProductPricingModel.where("publisher_product_id = ?", publisher_product_id).first
+
+    if publisher_product_pricing_model.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
+
+    publisher_product_pricing_model_id = publisher_product_pricing_model.id
+    publisher_product_pricing_model = nil
+    publisher_product_pricing_model_updated = PublisherProductPricingModel.find(publisher_product_pricing_model_id)
+    
+    
+    a_pricing_models = Array.new
+    pricing_models = return_all_dtab10lets
+    pricing_models.each do |p_model|
+      a_pricing_models.push(p_model)
+    end
+    gon.pricing_model = []
+    gon.pricing_model_text = []    
+    b_required = true
+    if (publisher_product_pricing_model_updated.pricing_model_1 or
+        publisher_product_pricing_model_updated.pricing_model_2 or
+        publisher_product_pricing_model_updated.pricing_model_3)
+
+        # b_has_enhancement = true
+        b_required = false
+            
+        b = publisher_product_pricing_model_updated.pricing_model_1
+        gon.pricing_model[0] = b
+        if b
+          gon.pricing_model_text.push(a_pricing_models[0].col_1)                            
+        end        
+
+        b = publisher_product_pricing_model_updated.pricing_model_2
+        gon.pricing_model[1] = b
+        if b
+          gon.pricing_model_text.push(a_pricing_models[1].col_1)                            
+        end        
+
+        b = publisher_product_pricing_model_updated.pricing_model_3
+        gon.pricing_model[2] = b
+        if b
+          gon.pricing_model_text.push(a_pricing_models[2].col_1)                            
+        end        
+
+        
+    end
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :g_pricing_model => gon.pricing_model,
+                                      :g_pricing_model_text => gon.pricing_model_text,
+                                      :b_required => b_required,
+                                      :updated => publisher_product_pricing_model_updated.updated_at.to_s(:long) } }
+    end
+    
+    
+  end  
+
+
+
+
+
+
+  #7 price
+  def update_price
+
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_id = h_obj[:publisher_id]
+    publisher_product_id = h_obj[:publisher_product_id]
+    # publisher_product_description_id = h_obj[:publisher_product_description_id]
+    price_1 = h_obj[:price_1]
+    price_1_dec = h_obj[:price_1_dec]
+    price_2 = h_obj[:price_2]
+    price_2_dec = h_obj[:price_2_dec]
+    price_3 = h_obj[:price_3]
+    price_3_dec = h_obj[:price_3_dec]
+    price_4 = h_obj[:price_4]
+    price_4_dec = h_obj[:price_4_dec]
+    price_5 = h_obj[:price_5]
+    price_5_dec = h_obj[:price_5_dec]
+    price_6 = h_obj[:price_6]
+    price_6_dec = h_obj[:price_6_dec]
+    price_7 = h_obj[:price_7]
+    price_7_dec = h_obj[:price_7_dec]
+    price_8 = h_obj[:price_8]
+    price_8_dec = h_obj[:price_8_dec]
+    price_9 = h_obj[:price_9]
+    price_9_dec = h_obj[:price_9_dec]
+    price_10 = h_obj[:price_10]
+    price_10_dec = h_obj[:price_10_dec]
+    price_11 = h_obj[:price_11]
+
+    if !price_1
+      price_1_dec = 0.00
+    end
+    if !price_2
+      price_2_dec = 0.00
+    end
+    if !price_3
+      price_3_dec = 0.00
+    end
+    if !price_4
+      price_4_dec = 0.00
+    end
+    if !price_5
+      price_5_dec = 0.00
+    end
+    if !price_6
+      price_6_dec = 0.00
+    end
+    if !price_7
+      price_7_dec = 0.00
+    end
+    if !price_8
+      price_8_dec = 0.00
+    end
+    if !price_9
+      price_9_dec = 0.00
+    end
+    if !price_10
+      price_10_dec = 0.00
+    end
+
+    h_update = Hash.new
+    h_update[:price_1] = price_1
+    h_update[:price_1_dec] = price_1_dec
+    h_update[:price_2] = price_2
+    h_update[:price_2_dec] = price_2_dec
+    h_update[:price_3] = price_3
+    h_update[:price_3_dec] = price_3_dec
+    h_update[:price_4] = price_4
+    h_update[:price_4_dec] = price_4_dec
+    h_update[:price_5] = price_5
+    h_update[:price_5_dec] = price_5_dec
+    h_update[:price_6] = price_6
+    h_update[:price_6_dec] = price_6_dec
+    h_update[:price_7] = price_7
+    h_update[:price_7_dec] = price_7_dec
+    h_update[:price_8] = price_8
+    h_update[:price_8_dec] = price_8_dec
+    h_update[:price_9] = price_9
+    h_update[:price_9_dec] = price_9_dec
+    h_update[:price_10] = price_10
+    h_update[:price_10_dec] = price_10_dec
+    h_update[:price_11] = price_11
+
+    h_update[:publisher_id] = publisher_id
+    h_update[:publisher_product_id] = publisher_product_id
+    # h_update[:publisher_product_description_id] = publisher_product_description_id
+    publisher_product_price = PublisherProductPrice.where("publisher_product_id = ?", publisher_product_id).first
+    if publisher_product_price.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
+
+    publisher_product_price_id = publisher_product_price.id
+    publisher_product_price = nil
+    publisher_product_price_updated = PublisherProductPrice.find(publisher_product_price_id)
+    
+    a_price = Array.new(12).map!{Array.new(2)}    
+    gon.price = nil        
+    # b_has_price = false
+    b_required = true
+    if (publisher_product_price_updated.price_1 or
+        publisher_product_price_updated.price_2 or
+        publisher_product_price_updated.price_3 or
+        publisher_product_price_updated.price_4 or
+        publisher_product_price_updated.price_5 or
+        publisher_product_price_updated.price_6 or
+        publisher_product_price_updated.price_7 or
+        publisher_product_price_updated.price_8 or
+        publisher_product_price_updated.price_9 or
+        publisher_product_price_updated.price_10 or
+        publisher_product_price_updated.price_11 or
+        publisher_product_price_updated.price_12)
+
+        # b_has_price = true
+        b_required = false
+    end
+        
+        a_price[1][0] = publisher_product_price_updated.price_1
+        a_price[1][1] = publisher_product_price_updated.price_1_dec
+        a_price[2][0] = publisher_product_price_updated.price_2
+        a_price[2][1] = publisher_product_price_updated.price_2_dec
+        a_price[3][0] = publisher_product_price_updated.price_3
+        a_price[3][1] = publisher_product_price_updated.price_3_dec
+        a_price[4][0] = publisher_product_price_updated.price_4
+        a_price[4][1] = publisher_product_price_updated.price_4_dec
+        a_price[5][0] = publisher_product_price_updated.price_5
+        a_price[5][1] = publisher_product_price_updated.price_5_dec
+        a_price[6][0] = publisher_product_price_updated.price_6
+        a_price[6][1] = publisher_product_price_updated.price_6_dec
+        a_price[7][0] = publisher_product_price_updated.price_7
+        a_price[7][1] = publisher_product_price_updated.price_7_dec
+        a_price[8][0] = publisher_product_price_updated.price_8
+        a_price[8][1] = publisher_product_price_updated.price_8_dec
+        a_price[9][0] = publisher_product_price_updated.price_9
+        a_price[9][1] = publisher_product_price_updated.price_9_dec
+        a_price[10][0] = publisher_product_price_updated.price_10
+        a_price[10][1] = publisher_product_price_updated.price_10_dec
+
+        a_price[11][0] = publisher_product_price_updated.price_11
+
+        gon.price = a_price
+        
+    # end
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :g_price => gon.price,
+                                      :b_required => b_required,
+                                      :updated => publisher_product_price_updated.updated_at.to_s(:long) } }
+
+      # format.json { render :json => {} }
+
+    end
+    
+  end  
+
+
+
+
+
+  #7 core_literacy_standard
+  def update_core_literacy_standard
+
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_id = h_obj[:publisher_id]
+    publisher_product_id = h_obj[:publisher_product_id]
+    # publisher_product_description_id = h_obj[:publisher_product_description_id]
+    core_literacy_standard = h_obj[:core_literacy_standard]
+    
+    PublisherProductCoreLiteracyStandard.delete_record(publisher_product_id.to_s)
+
+    ar_core_literacy_standards = Array.new
+    ar_core_literacy_standards = core_literacy_standard.split(',')
+    # len = ar_core_literacy_standard.length
+    
+    ar_core_literacy_standards.each do |i|
+
+      h_new = Hash.new
+      h_new[:publisher_id] = publisher_id
+      h_new[:publisher_product_id] = publisher_product_id
+      h_new[:id_standard] = i.to_i
+      
+      publisher_product_core_literacy_standard = PublisherProductCoreLiteracyStandard.new(h_new)
+      
+      if publisher_product_core_literacy_standard.save
+        #
+      else
+        #
+      end
+      
+      publisher_product_core_literacy_standard = nil
+      
+    end
+    
+    
+    publisher_product_core_literacy_standards_updated = PublisherProductCoreLiteracyStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC")
+    core_literacy_standards = CoreLiteracyStandard.order(sort_column + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+    
+    # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+    # publisher_product_core_literacy_standard_updated.updated_at = date_0
+    
+    updated = nil
+    b_updated = false
+    a_core_literacy_standards = Array.new    
+    gon.core_literacy_standard = []
+    gon.core_literacy_standard_text = []
+    if publisher_product_core_literacy_standards_updated.any?
+      i = 0
+      ii = 0
+      publisher_product_core_literacy_standards_updated.each do |c|
+        gon.core_literacy_standard[i] = c.id_standard
+        ii = c.id_standard - 1
+        a_core_literacy_standards[i] = core_literacy_standards[ii].dot_not
+        i += 1
+      end
+      # gon.core_literacy_standard_text = a_core_literacy_standards.reverse!
+      gon.core_literacy_standard_text = a_core_literacy_standards
+      b_updated = true
+      updated = publisher_product_core_literacy_standards_updated[0].updated_at.to_s(:long)
+    else
+      #
+    end
+    
+    # @info1 = Rails.logger.info "clyde in update_name_first"
+    # @info2 = Rails.logger.info h_obj
+
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :g_core_literacy_standard => gon.core_literacy_standard,
+                                      :g_core_literacy_standard_text => gon.core_literacy_standard_text,
+                                      :b_updated => b_updated,
+                                      :updated => updated } }
+
+      # format.json { render :json => {} }
+
+    end
+
+  end
+
+
+
 
 
 
@@ -2706,97 +4747,6 @@ class PublisherProductDescriptionsController < ApplicationController
     end
     
   end  
-
-
-  #7 market_target_index
-  def update_market_target_index
-
-    ar = params[:publisher_product_description]
-    h_obj = Hash.new
-    ar.each do |obj|
-      h_obj = obj
-    end
-
-    publisher_id = h_obj[:publisher_id]
-    publisher_product_id = h_obj[:publisher_product_id]
-    # publisher_product_description_id = h_obj[:publisher_product_description_id]
-    market_target_index = h_obj[:market_target_index]
-    
-    ar_market_target = Array.new
-    ar_market_target = market_target_index.split(',')
-    len = ar_market_target.length
-
-    h_update = Hash.new
-    h_update[:market_target_1] = false
-    h_update[:market_target_2] = false
-    
-    ar_market_target.each do |target|
-      
-      case target.to_s  
-        when "1"
-          h_update[:market_target_1] = true
-        when "2"
-          h_update[:market_target_2] = true
-        else
-          #        
-      end
-      
-    end
-
-    h_update[:publisher_id] = publisher_id
-    h_update[:publisher_product_id] = publisher_product_id
-    # h_update[:publisher_product_description_id] = publisher_product_description_id
-
-    publisher_product_market_target = PublisherProductMarketTarget.where("publisher_product_id = ?", publisher_product_id).first
-
-    if publisher_product_market_target.update_attributes(h_update)
-      #
-    else
-      # Rails.logger.info(@user.errors.messages.inspect)
-    end
-
-    publisher_product_market_target_id = publisher_product_market_target.id
-    publisher_product_market_target = nil
-    publisher_product_market_target_updated = PublisherProductMarketTarget.find(publisher_product_market_target_id)
-    
-    gon.market_target = []
-    
-    gon.market_target[1] = publisher_product_market_target_updated.market_target_1
-    gon.market_target[2] = publisher_product_market_target_updated.market_target_2
-
-    b_has_market_target = false
-    
-    if (publisher_product_market_target_updated.market_target_1 or
-        publisher_product_market_target_updated.market_target_2)
-        b_has_market_target = true
-    end
-    
-    respond_to do |format|
-      format.html {}
-      format.json { render :json => { :b_has_market_target => b_has_market_target,
-                                      :g_updated => gon.market_target,
-                                      :updated => publisher_product_market_target_updated.updated_at.to_s(:long) } }
-
-      # format.json { render :json => {} }
-
-    end
-    
-  end  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3031,255 +4981,16 @@ class PublisherProductDescriptionsController < ApplicationController
 
 
 
-  #7 pricing_model
-  def update_pricing_model
-
-    ar = params[:publisher_product_description]
-    h_obj = Hash.new
-    ar.each do |obj|
-      h_obj = obj
-    end
-
-    publisher_id = h_obj[:publisher_id]
-    publisher_product_id = h_obj[:publisher_product_id]
-    # publisher_product_description_id = h_obj[:publisher_product_description_id]
-    pricing_model = h_obj[:pricing_model]
-    
-    ar_pricing_model = Array.new
-    ar_pricing_model = pricing_model.split(',')
-    len = ar_pricing_model.length
-
-    h_update = Hash.new
-    h_update[:pricing_model_1] = false
-    h_update[:pricing_model_2] = false
-    h_update[:pricing_model_3] = false
-    h_update[:pricing_model_4] = false
-    h_update[:pricing_model_5] = false
-    
-    ar_pricing_model.each do |target|
-      
-      case target.to_s  
-        when "1"
-          h_update[:pricing_model_1] = true
-        when "2"
-          h_update[:pricing_model_2] = true
-        when "3"
-          h_update[:pricing_model_3] = true
-        when "4"
-          h_update[:pricing_model_4] = true
-        when "5"
-          h_update[:pricing_model_5] = true
-        else
-          #        
-      end
-      
-    end
-
-    h_update[:publisher_id] = publisher_id
-    h_update[:publisher_product_id] = publisher_product_id
-    # h_update[:publisher_product_description_id] = publisher_product_description_id
-
-    publisher_product_pricing_model = PublisherProductPricingModel.where("publisher_product_id = ?", publisher_product_id).first
-
-    if publisher_product_pricing_model.update_attributes(h_update)
-      #
-    else
-      # Rails.logger.info(@user.errors.messages.inspect)
-    end
-
-    publisher_product_pricing_model_id = publisher_product_pricing_model.id
-    publisher_product_pricing_model = nil
-    publisher_product_pricing_model_updated = PublisherProductPricingModel.find(publisher_product_pricing_model_id)
-    
-    gon.pricing_model = []
-    
-    gon.pricing_model[1] = publisher_product_pricing_model_updated.pricing_model_1
-    gon.pricing_model[2] = publisher_product_pricing_model_updated.pricing_model_2
-    gon.pricing_model[3] = publisher_product_pricing_model_updated.pricing_model_3
-    gon.pricing_model[4] = publisher_product_pricing_model_updated.pricing_model_4
-    gon.pricing_model[5] = publisher_product_pricing_model_updated.pricing_model_5
-
-    b_has_pricing_model = false
-    
-    if (publisher_product_pricing_model_updated.pricing_model_1 or
-        publisher_product_pricing_model_updated.pricing_model_2 or
-        publisher_product_pricing_model_updated.pricing_model_3 or
-        publisher_product_pricing_model_updated.pricing_model_4 or
-        publisher_product_pricing_model_updated.pricing_model_5)
-
-        b_has_pricing_model = true
-    end
-    
-    respond_to do |format|
-      format.html {}
-      format.json { render :json => { :b_has_pricing_model => b_has_pricing_model,
-                                      :g_updated => gon.pricing_model,
-                                      :updated => publisher_product_pricing_model_updated.updated_at.to_s(:long) } }
-
-      # format.json { render :json => {} }
-
-    end
-    
-  end  
 
 
-  #7 price
-  def update_price
 
-    ar = params[:publisher_product_description]
-    h_obj = Hash.new
-    ar.each do |obj|
-      h_obj = obj
-    end
 
-    publisher_id = h_obj[:publisher_id]
-    publisher_product_id = h_obj[:publisher_product_id]
-    # publisher_product_description_id = h_obj[:publisher_product_description_id]
-    price_1 = h_obj[:price_1]
-    price_1_dec = h_obj[:price_1_dec]
-    price_2 = h_obj[:price_2]
-    price_2_dec = h_obj[:price_2_dec]
-    price_3 = h_obj[:price_3]
-    price_3_dec = h_obj[:price_3_dec]
-    price_4 = h_obj[:price_4]
-    price_4_dec = h_obj[:price_4_dec]
-    price_5 = h_obj[:price_5]
-    price_5_dec = h_obj[:price_5_dec]
-    price_6 = h_obj[:price_6]
-    price_6_dec = h_obj[:price_6_dec]
-    price_7 = h_obj[:price_7]
-    price_7_dec = h_obj[:price_7_dec]
-    price_8 = h_obj[:price_8]
-    price_8_dec = h_obj[:price_8_dec]
-    price_9 = h_obj[:price_9]
-    price_9_dec = h_obj[:price_9_dec]
-    price_10 = h_obj[:price_10]
-    price_10_dec = h_obj[:price_10_dec]
-    price_11 = h_obj[:price_11]
 
-    if !price_1
-      price_1_dec = 0.00
-    end
-    if !price_2
-      price_2_dec = 0.00
-    end
-    if !price_3
-      price_3_dec = 0.00
-    end
-    if !price_4
-      price_4_dec = 0.00
-    end
-    if !price_5
-      price_5_dec = 0.00
-    end
-    if !price_6
-      price_6_dec = 0.00
-    end
-    if !price_7
-      price_7_dec = 0.00
-    end
-    if !price_8
-      price_8_dec = 0.00
-    end
-    if !price_9
-      price_9_dec = 0.00
-    end
-    if !price_10
-      price_10_dec = 0.00
-    end
 
-    h_update = Hash.new
-    h_update[:price_1] = price_1
-    h_update[:price_1_dec] = price_1_dec
-    h_update[:price_2] = price_2
-    h_update[:price_2_dec] = price_2_dec
-    h_update[:price_3] = price_3
-    h_update[:price_3_dec] = price_3_dec
-    h_update[:price_4] = price_4
-    h_update[:price_4_dec] = price_4_dec
-    h_update[:price_5] = price_5
-    h_update[:price_5_dec] = price_5_dec
-    h_update[:price_6] = price_6
-    h_update[:price_6_dec] = price_6_dec
-    h_update[:price_7] = price_7
-    h_update[:price_7_dec] = price_7_dec
-    h_update[:price_8] = price_8
-    h_update[:price_8_dec] = price_8_dec
-    h_update[:price_9] = price_9
-    h_update[:price_9_dec] = price_9_dec
-    h_update[:price_10] = price_10
-    h_update[:price_10_dec] = price_10_dec
-    h_update[:price_11] = price_11
 
-    h_update[:publisher_id] = publisher_id
-    h_update[:publisher_product_id] = publisher_product_id
-    # h_update[:publisher_product_description_id] = publisher_product_description_id
-    publisher_product_price = PublisherProductPrice.where("publisher_product_id = ?", publisher_product_id).first
-    if publisher_product_price.update_attributes(h_update)
-      #
-    else
-      # Rails.logger.info(@user.errors.messages.inspect)
-    end
 
-    publisher_product_price_id = publisher_product_price.id
-    publisher_product_price = nil
-    publisher_product_price_updated = PublisherProductPrice.find(publisher_product_price_id)
-    
-    a_price = Array.new(12).map!{Array.new(2)}    
-    gon.price = nil        
-    # b_has_price = false
-    # if (publisher_product_price_updated.price_1 or
-        # publisher_product_price_updated.price_2 or
-        # publisher_product_price_updated.price_3 or
-        # publisher_product_price_updated.price_4 or
-        # publisher_product_price_updated.price_5 or
-        # publisher_product_price_updated.price_6 or
-        # publisher_product_price_updated.price_7 or
-        # publisher_product_price_updated.price_8 or
-        # publisher_product_price_updated.price_9 or
-        # publisher_product_price_updated.price_10 or
-        # publisher_product_price_updated.price_11 or
-        # publisher_product_price_updated.price_12)
-# 
-        # b_has_price = true
-        
-        a_price[1][0] = publisher_product_price_updated.price_1
-        a_price[1][1] = publisher_product_price_updated.price_1_dec
-        a_price[2][0] = publisher_product_price_updated.price_2
-        a_price[2][1] = publisher_product_price_updated.price_2_dec
-        a_price[3][0] = publisher_product_price_updated.price_3
-        a_price[3][1] = publisher_product_price_updated.price_3_dec
-        a_price[4][0] = publisher_product_price_updated.price_4
-        a_price[4][1] = publisher_product_price_updated.price_4_dec
-        a_price[5][0] = publisher_product_price_updated.price_5
-        a_price[5][1] = publisher_product_price_updated.price_5_dec
-        a_price[6][0] = publisher_product_price_updated.price_6
-        a_price[6][1] = publisher_product_price_updated.price_6_dec
-        a_price[7][0] = publisher_product_price_updated.price_7
-        a_price[7][1] = publisher_product_price_updated.price_7_dec
-        a_price[8][0] = publisher_product_price_updated.price_8
-        a_price[8][1] = publisher_product_price_updated.price_8_dec
-        a_price[9][0] = publisher_product_price_updated.price_9
-        a_price[9][1] = publisher_product_price_updated.price_9_dec
-        a_price[10][0] = publisher_product_price_updated.price_10
-        a_price[10][1] = publisher_product_price_updated.price_10_dec
 
-        a_price[11][0] = publisher_product_price_updated.price_11
 
-        gon.price = a_price
-        
-    # end
-    
-    respond_to do |format|
-      format.html {}
-      format.json { render :json => { :g_updated => gon.price,
-                                      :updated => publisher_product_price_updated.updated_at.to_s(:long) } }
-
-      # format.json { render :json => {} }
-
-    end
-    
-  end  
 
 
 
@@ -3369,133 +5080,133 @@ class PublisherProductDescriptionsController < ApplicationController
 
 
 
-  #7 lesson_time
-  def update_lesson_time
-
-    ar = params[:publisher_product_description]
-    h_obj = Hash.new
-    ar.each do |obj|
-      h_obj = obj
-    end
-
-    publisher_id = h_obj[:publisher_id]
-    publisher_product_id = h_obj[:publisher_product_id]
-    # publisher_product_description_id = h_obj[:publisher_product_description_id]
-    lesson_time = h_obj[:lesson_time]
-    lesson_time_pertinent_index = h_obj[:lesson_time_pertinent_index]
-    
-    ar_lesson_time = Array.new
-    ar_lesson_time = lesson_time.split(',')
-    # len = ar_lesson_time.length
-
-    h_update = Hash.new
-    h_update[:lesson_time_1] = false
-    h_update[:lesson_time_2] = false
-    h_update[:lesson_time_3] = false
-    h_update[:lesson_time_4] = false
-    h_update[:lesson_time_5] = false
-    h_update[:lesson_time_6] = false
-    h_update[:lesson_time_7] = false
-    h_update[:lesson_time_8] = false
-    h_update[:lesson_time_9] = false
-    h_update[:lesson_time_10] = false
-    h_update[:lesson_time_11] = false
-    h_update[:lesson_time_12] = false
-    h_update[:lesson_time_pertinent_index] = lesson_time_pertinent_index
-    
-    ar_lesson_time.each do |target|
-      
-      case target.to_s  
-        when "1"
-          h_update[:lesson_time_1] = true
-        when "2"
-          h_update[:lesson_time_2] = true
-        when "3"
-          h_update[:lesson_time_3] = true
-        when "4"
-          h_uppate[:lesson_time_4] = true
-        when "5"
-          h_update[:lesson_time_5] = true
-        when "6"
-          h_update[:lesson_time_6] = true
-        when "7"
-          h_update[:lesson_time_7] = true
-        when "8"
-          h_update[:lesson_time_8] = true
-        when "9"
-          h_update[:lesson_time_9] = true
-        when "10"
-          h_update[:lesson_time_10] = true
-        when "11"
-          h_update[:lesson_time_11] = true
-        when "12"
-          h_update[:lesson_time_12] = true
-        else
-          #        
-      end
-      
-    end
-
-    h_update[:publisher_id] = publisher_id
-    h_update[:publisher_product_id] = publisher_product_id
-    # h_update[:publisher_product_description_id] = publisher_product_description_id
-
-    publisher_product_lesson_time = PublisherProductLessonTime.where("publisher_product_id = ?", publisher_product_id).first
-
-    if publisher_product_lesson_time.update_attributes(h_update)
-      #
-    else
-      # Rails.logger.info(@user.errors.messages.inspect)
-    end
-
-    publisher_product_lesson_time_id = publisher_product_lesson_time.id
-    publisher_product_lesson_time = nil
-    publisher_product_lesson_time_updated = PublisherProductLessonTime.find(publisher_product_lesson_time_id)
-    
-    gon.lesson_time = []
-    
-    gon.lesson_time[1] = publisher_product_lesson_time_updated.lesson_time_1
-    gon.lesson_time[2] = publisher_product_lesson_time_updated.lesson_time_2
-    gon.lesson_time[3] = publisher_product_lesson_time_updated.lesson_time_3
-    gon.lesson_time[4] = publisher_product_lesson_time_updated.lesson_time_4
-    gon.lesson_time[5] = publisher_product_lesson_time_updated.lesson_time_5
-    gon.lesson_time[6] = publisher_product_lesson_time_updated.lesson_time_6
-    gon.lesson_time[7] = publisher_product_lesson_time_updated.lesson_time_7
-    gon.lesson_time[8] = publisher_product_lesson_time_updated.lesson_time_8
-    gon.lesson_time[9] = publisher_product_lesson_time_updated.lesson_time_9
-    gon.lesson_time[10] = publisher_product_lesson_time_updated.lesson_time_10
-    gon.lesson_time[11] = publisher_product_lesson_time_updated.lesson_time_11
-    gon.lesson_time[12] = publisher_product_lesson_time_updated.lesson_time_12
-
-    gon.lesson_time_pertinent_index = publisher_product_lesson_time_updated.lesson_time_pertinent_index
-
-    b_has_lesson_time = false
-    
-    if (publisher_product_lesson_time_updated.lesson_time_1 or
-        publisher_product_lesson_time_updated.lesson_time_2 or
-        publisher_product_lesson_time_updated.lesson_time_3 or
-        publisher_product_lesson_time_updated.lesson_time_4 or
-        publisher_product_lesson_time_updated.lesson_time_5 or
-        publisher_product_lesson_time_updated.lesson_time_6 or
-        publisher_product_lesson_time_updated.lesson_time_7 or
-        publisher_product_lesson_time_updated.lesson_time_8 or
-        publisher_product_lesson_time_updated.lesson_time_9 or
-        publisher_product_lesson_time_updated.lesson_time_10 or
-        publisher_product_lesson_time_updated.lesson_time_11 or
-        publisher_product_lesson_time_updated.lesson_time_12)
-
-        b_has_lesson_time = true
-    end
-    
-    respond_to do |format|
-      format.html {}
-      format.json { render :json => { :b_has_lesson_time => b_has_lesson_time,
-                                      :g_lesson_time => gon.lesson_time,
-                                      :g_lesson_time_pertinent_index => gon.lesson_time_pertinent_index,
-                                      :updated => publisher_product_lesson_time_updated.updated_at.to_s(:long) } }
-    end
-    
-  end  
+  # #7 lesson_time
+  # def update_lesson_time
+# 
+    # ar = params[:publisher_product_description]
+    # h_obj = Hash.new
+    # ar.each do |obj|
+      # h_obj = obj
+    # end
+# 
+    # publisher_id = h_obj[:publisher_id]
+    # publisher_product_id = h_obj[:publisher_product_id]
+    # # publisher_product_description_id = h_obj[:publisher_product_description_id]
+    # lesson_time = h_obj[:lesson_time]
+    # lesson_time_pertinent_index = h_obj[:lesson_time_pertinent_index]
+#     
+    # ar_lesson_time = Array.new
+    # ar_lesson_time = lesson_time.split(',')
+    # # len = ar_lesson_time.length
+# 
+    # h_update = Hash.new
+    # h_update[:lesson_time_1] = false
+    # h_update[:lesson_time_2] = false
+    # h_update[:lesson_time_3] = false
+    # h_update[:lesson_time_4] = false
+    # h_update[:lesson_time_5] = false
+    # h_update[:lesson_time_6] = false
+    # h_update[:lesson_time_7] = false
+    # h_update[:lesson_time_8] = false
+    # h_update[:lesson_time_9] = false
+    # h_update[:lesson_time_10] = false
+    # h_update[:lesson_time_11] = false
+    # h_update[:lesson_time_12] = false
+    # h_update[:lesson_time_pertinent_index] = lesson_time_pertinent_index
+#     
+    # ar_lesson_time.each do |target|
+#       
+      # case target.to_s  
+        # when "1"
+          # h_update[:lesson_time_1] = true
+        # when "2"
+          # h_update[:lesson_time_2] = true
+        # when "3"
+          # h_update[:lesson_time_3] = true
+        # when "4"
+          # h_uppate[:lesson_time_4] = true
+        # when "5"
+          # h_update[:lesson_time_5] = true
+        # when "6"
+          # h_update[:lesson_time_6] = true
+        # when "7"
+          # h_update[:lesson_time_7] = true
+        # when "8"
+          # h_update[:lesson_time_8] = true
+        # when "9"
+          # h_update[:lesson_time_9] = true
+        # when "10"
+          # h_update[:lesson_time_10] = true
+        # when "11"
+          # h_update[:lesson_time_11] = true
+        # when "12"
+          # h_update[:lesson_time_12] = true
+        # else
+          # #        
+      # end
+#       
+    # end
+# 
+    # h_update[:publisher_id] = publisher_id
+    # h_update[:publisher_product_id] = publisher_product_id
+    # # h_update[:publisher_product_description_id] = publisher_product_description_id
+# 
+    # publisher_product_lesson_time = PublisherProductLessonTime.where("publisher_product_id = ?", publisher_product_id).first
+# 
+    # if publisher_product_lesson_time.update_attributes(h_update)
+      # #
+    # else
+      # # Rails.logger.info(@user.errors.messages.inspect)
+    # end
+# 
+    # publisher_product_lesson_time_id = publisher_product_lesson_time.id
+    # publisher_product_lesson_time = nil
+    # publisher_product_lesson_time_updated = PublisherProductLessonTime.find(publisher_product_lesson_time_id)
+#     
+    # gon.lesson_time = []
+#     
+    # gon.lesson_time[1] = publisher_product_lesson_time_updated.lesson_time_1
+    # gon.lesson_time[2] = publisher_product_lesson_time_updated.lesson_time_2
+    # gon.lesson_time[3] = publisher_product_lesson_time_updated.lesson_time_3
+    # gon.lesson_time[4] = publisher_product_lesson_time_updated.lesson_time_4
+    # gon.lesson_time[5] = publisher_product_lesson_time_updated.lesson_time_5
+    # gon.lesson_time[6] = publisher_product_lesson_time_updated.lesson_time_6
+    # gon.lesson_time[7] = publisher_product_lesson_time_updated.lesson_time_7
+    # gon.lesson_time[8] = publisher_product_lesson_time_updated.lesson_time_8
+    # gon.lesson_time[9] = publisher_product_lesson_time_updated.lesson_time_9
+    # gon.lesson_time[10] = publisher_product_lesson_time_updated.lesson_time_10
+    # gon.lesson_time[11] = publisher_product_lesson_time_updated.lesson_time_11
+    # gon.lesson_time[12] = publisher_product_lesson_time_updated.lesson_time_12
+# 
+    # gon.lesson_time_pertinent_index = publisher_product_lesson_time_updated.lesson_time_pertinent_index
+# 
+    # b_has_lesson_time = false
+#     
+    # if (publisher_product_lesson_time_updated.lesson_time_1 or
+        # publisher_product_lesson_time_updated.lesson_time_2 or
+        # publisher_product_lesson_time_updated.lesson_time_3 or
+        # publisher_product_lesson_time_updated.lesson_time_4 or
+        # publisher_product_lesson_time_updated.lesson_time_5 or
+        # publisher_product_lesson_time_updated.lesson_time_6 or
+        # publisher_product_lesson_time_updated.lesson_time_7 or
+        # publisher_product_lesson_time_updated.lesson_time_8 or
+        # publisher_product_lesson_time_updated.lesson_time_9 or
+        # publisher_product_lesson_time_updated.lesson_time_10 or
+        # publisher_product_lesson_time_updated.lesson_time_11 or
+        # publisher_product_lesson_time_updated.lesson_time_12)
+# 
+        # b_has_lesson_time = true
+    # end
+#     
+    # respond_to do |format|
+      # format.html {}
+      # format.json { render :json => { :b_has_lesson_time => b_has_lesson_time,
+                                      # :g_lesson_time => gon.lesson_time,
+                                      # :g_lesson_time_pertinent_index => gon.lesson_time_pertinent_index,
+                                      # :updated => publisher_product_lesson_time_updated.updated_at.to_s(:long) } }
+    # end
+#     
+  # end  
 
 
 
@@ -3645,6 +5356,7 @@ class PublisherProductDescriptionsController < ApplicationController
       format.json { render :json => { :allow_comments => publisher_product_description_updated.allow_comments,
                                       :updated => publisher_product_description_updated.updated_at.to_s(:long) } }      
     end
+
     
   end  
 
@@ -3667,8 +5379,8 @@ class PublisherProductDescriptionsController < ApplicationController
     research = h_obj[:research]
     ar_research = Array.new    
     ar_research = research.split(',')
-    ar_research.each do |research|
-      case research.to_s  
+    ar_research.each do |rsrch|
+      case rsrch.to_s  
         when "1"
           h_update[:research_1] = true
         when "2"
@@ -3856,6 +5568,7 @@ class PublisherProductDescriptionsController < ApplicationController
     # publisher = Publisher.find(publisher_id)    
     # publisher_product_description = PublisherProductDescription.where("publisher_product_id = ?", publisher_product_id).first
     publisher_product_description = PublisherProductDescription.find(publisher_product_description_id)
+
     
     # @info1 = Rails.logger.info "clyde in update_name_first"
     # @info2 = Rails.logger.info h_obj
@@ -3885,48 +5598,479 @@ class PublisherProductDescriptionsController < ApplicationController
   end  
     
   
-  #7 core_literacy_standard
-  def update_core_literacy_standard
+  def upload_pdf
+   
+    # pdf_path = "/path/to/interesting/file.pdf"
+    # page_index_path = pdf_path + "[0]" # first page in PDF
+    # pdf_page = Magick::Image.read( page_index_path ).first # first item in Magick::ImageList
+    # pdf_page.write( "/tmp/indexed-page.png" ) # implicit conversion based on file extension
 
+    # File.basename(@page.form.path)
+
+    # Parameters: {"utf8"=>"✓", "authenticity_token"=>"q3Sq/HhxRuVFK3JcE5A1IOnSetUatcuxh5S12h/NOAc=", 
+      # "publisher_product_pdf"=>{"name_pdf"=>"", 
+        # "name_file"=>#<ActionDispatch::Http::UploadedFile:0x007f7b702f3710 @tempfile=#<Tempfile:/tmp/RackMultipart20141015-14884-p6qvru>, 
+        # @original_filename="request.pdf", 
+        # @content_type="application/pdf", 
+        # @headers="Content-Disposition: form-data; 
+        # name=\"publisher_product_pdf[name_file]\"; 
+        # filename=\"request.pdf\"\r\nContent-Type: application/pdf\r\n">}, 
+        # "commit"=>"Upload PDF", "remotipart_submitted"=>"true", 
+        # "X-Requested-With"=>"IFrame", "X-Http-Accept"=>"text/javascript, application/javascript, 
+        # application/ecmascript, application/x-ecmascript, */*; q=0.01"}
+
+    # n_name = params[:publisher_product_pdf][:n_name]
+
+
+    # image = params[:image]
+    # publisher_product_pdf_id = params[:publisher_product_pdf_id]  
+    # publisher_product_pdf_image = PublisherProductPdfImage.new
+
+
+
+
+    # uploaded_file = params[:publisher_product_pdf][:name_file]
+    uploaded_file = params[:name_file]    
+    name_pdf = File.basename(uploaded_file.original_filename, '.*').titleize if uploaded_file
+
+    publisher_id = params[:publisher_id]
+    publisher_product_id = params[:publisher_product_id]
+    publisher_product_description_id = params[:publisher_product_description_id]
+
+    publisher_product_pdf = PublisherProductPdf.new
+
+    publisher_product_pdf.name_file = uploaded_file
+    publisher_product_pdf.name_pdf = name_pdf  
+    publisher_product_pdf.publisher_id = publisher_id
+    publisher_product_pdf.publisher_product_id = publisher_product_id
+    publisher_product_pdf.publisher_product_description_id = publisher_product_description_id
+
+    # publisher_product_pdf.name_pdf = name_pdf 
+    # publisher_product_pdf.name_pdf = params[:publisher_product_pdf][@original_filename]
+    # publisher_product_pdf.publisher_id = @@publisher_id
+    # publisher_product_pdf.publisher_product_id = @@publisher_product_id
+    # publisher_product_pdf.publisher_product_description_id = @@publisher_product_description_id
+
+    # @publisher_product_pdf = PublisherProductPdf.create(params[:publisher_product_pdf])
+    @publisher_product_pdfs = nil
+    if request.xhr? || remotipart_submitted?
+      if publisher_product_pdf.save
+
+        @publisher_product_pdfs = PublisherProductPdf.where("publisher_product_id = ?", @@publisher_product_id)  
+        gon.name_pdf = []    
+        i = 0
+        @publisher_product_pdfs.each do |publisher_product_pdf|
+            gon.name_pdf[i] = publisher_product_pdf.name_pdf
+            i += 1        
+        end
+        
+        pdf_image = Magick::Image.read("public" + publisher_product_pdf.name_file.url)[0]
+        pdf_thumb = pdf_image.resize_to_fit(200, 300) #.scale(200, 270)
+        
+        h_pdf_img = Hash.new
+        h_pdf_img['publisher_id'] = publisher_id 
+        h_pdf_img['publisher_product_id'] = publisher_product_id 
+        h_pdf_img['publisher_product_description_id'] = publisher_product_description_id 
+        h_pdf_img['publisher_product_pdf_id'] = publisher_product_pdf.id 
+
+        publisher_product_pdf_image = PublisherProductPdfImage.new(h_pdf_img)
+
+        publisher_product_pdf_image.image = File.open("public/images_publisher_product_pdf_image/add_generic_publisher_product_pdf_image_w200_h270.png")
+        
+        if publisher_product_pdf_image.save
+          # image_200_270 = Magick::Image.read("public" + publisher_product_pdf_image.image_url(:image_200_270))[0]
+          # image_200_270_filename = image_200_270.filename
+          # FileUtils.rm_rf(Dir.glob(image_200_270.filename))
+          # pdf_thumb.write image_200_270_filename
+
+          image = Magick::Image.read("public" + publisher_product_pdf_image.image_url)[0]
+          image_filename = image.filename
+          FileUtils.rm_rf(Dir.glob(image.filename))
+          pdf_thumb.write image_filename
+        else
+          #
+        end
+
+        # b_name_pdf = false
+        # # b_required = true
+        # publisher_product_pdf_name_pdf = "PDF Name"      
+        # if !((publisher_product_pdf.name_pdf.blank?) or (publisher_product_pdf.name_pdf.empty?) or (publisher_product_pdf.name_pdf.nil?)) 
+            # publisher_product_pdf_name_pdf = publisher_product_pdf.name_pdf
+            # b_name_pdf = true
+            # # b_required = false      
+        # end
+
+        # respond_to do |format|
+          # format.html {}
+          # format.json { render :json => { :b_name_pdf => b_name_pdf, 
+                                          # # :name_pdf => publisher_product_pdf_name_pdf,
+                                          # :name_pdf => gon.name_pdf 
+                                          # # :n_name => n_name,
+                                          # # :b_required => b_required,
+                                          # :publisher_product_pdf_id => publisher_product_pdf.id,                                      
+                                          # :updated => publisher_product_pdf.updated_at.to_s(:long) } }
+        # end
+
+      else
+        
+      end
+
+      # sleep 1 if params[:pause]
+      # render :layout => false, :template => (params[:template] == 'escape' ? 'comments/escape_test' : 'comments/create'), :status => (@comment.errors.any? ? :unprocessable_entity : :ok)
+    else
+      #redirect_to comments_path    
+      render text: 'Remote call failed'
+    end
+    
+    
+  end
+
+
+
+  def update_name_pdf
+    
     ar = params[:publisher_product_description]
     h_obj = Hash.new
     ar.each do |obj|
       h_obj = obj
     end
 
-    publisher_id = h_obj[:publisher_id]
-    publisher_product_id = h_obj[:publisher_product_id]
+    # publisher_id = h_obj[:publisher_id]
+    # publisher_product_id = h_obj[:publisher_product_id]
     # publisher_product_description_id = h_obj[:publisher_product_description_id]
-    core_literacy_standard = h_obj[:core_literacy_standard]
     
-    # ar_core_literacy_standard = Array.new
-    # ar_core_literacy_standard = core_literacy_standard.split(',')
-    # len = ar_core_literacy_standard.length
+    publisher_product_pdf_id = h_obj[:publisher_product_pdf_id]
+    name_pdf = h_obj[:name_pdf]
+    n_name = h_obj[:n_name]
 
-    h_update = Hash.new
-    h_update[:core_literacy_standard] = core_literacy_standard 
+    # publisher_product_pdf = PublisherProductPdf.where("publisher_id = ?" AND publisher_product_id = ? AND publisher_product_pdf = ?", @@publisher_id, @@publisher_product_id, publisher_product_pdf_id).first
 
+    publisher_product_pdf = PublisherProductPdf.find(publisher_product_pdf_id)
     
-    # ar_core_literacy_standard.each do |standard|
-      # case standard.to_s  
-        # when "1"
-          # h_update[:core_literacy_standard_1] = true
-        # else
-          # #        
-      # end
-    # end
-
     # @info1 = Rails.logger.info "clyde in update_name_first"
     # @info2 = Rails.logger.info h_obj
+    h_update = Hash.new
+    # h_update[:publisher_id] = publisher_id
+    # h_update[:publisher_product_id] = publisher_product_id
+    h_update[:name_pdf] = name_pdf
 
-    # h_update = Hash.new
+    if publisher_product_pdf.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
 
-    h_update[:publisher_id] = publisher_id
-    h_update[:publisher_product_id] = publisher_product_id
-    # h_update[:publisher_product_description_id] = publisher_product_description_id
+    publisher_product_pdf = nil
+    publisher_product_pdf_updated = PublisherProductPdf.find(publisher_product_pdf_id)
 
-    # publisher_product_core_literacy_standard = PublisherProductCoreLiteracyStandard.where("publisher_product_id = ?", publisher_product_id).first
-    publisher_product_description = PublisherProductDescription.where("publisher_product_id = ?", publisher_product_id).first
+    # @publisher_id = @@publisher_id     
+    # @publisher_product_id = @@publisher_product_id 
+    # @publisher_product_description_id = @@publisher_product_description_id 
+    
+    # @publisher_product_pdfs = publisher_product.publisher_product_pdfs
+    # gon.name_pdf = []    
+    # i = 0
+    # @publisher_product_pdfs.each do |publisher_product_pdf|
+        # gon.name_pdf[i] = publisher_product_pdf.name_pdf
+        # i += 1        
+    # end
+    
+    
+    b_name_pdf = false
+    b_required = true
+    publisher_product_pdf_name_pdf = "PDF Name"      
+    if !((publisher_product_pdf_updated.name_pdf.blank?) or (publisher_product_pdf_updated.name_pdf.empty?) or (publisher_product_pdf_updated.name_pdf.nil?)) 
+        publisher_product_pdf_name_pdf = publisher_product_pdf_updated.name_pdf
+        b_name_pdf = true
+        b_required = false      
+    end
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :b_name_pdf => b_name_pdf, 
+                                      :name_pdf => publisher_product_pdf_name_pdf,
+                                      :n_name => n_name,
+                                      :b_required => b_required,
+                                      :publisher_product_pdf_id => publisher_product_pdf_id,                                      
+                                      :updated => publisher_product_pdf_updated.updated_at.to_s(:long) } }
+
+      # format.json { render :json => { :n_name => n_name } }
+
+      # format.json { render :json => {} } 
+
+                  
+      # format.json { render :partial => "publisher_profiles/test" }
+      # format.json { render :json => { :url => '/PublisherProfiles' } }
+      # format.json { render :json => @journal1poster_position }
+    end
+
+    
+  end
+
+
+
+
+  def upload_pdf_image
+   
+    # image = params[:publisher_product_pdf_image][:image]
+    # publisher_product_pdf_id = params[:publisher_product_pdf_image][:publisher_product_pdf_id]
+
+    image = params[:image]
+    publisher_product_pdf_id = params[:publisher_product_pdf_id]
+  
+    publisher_product_pdf_image = PublisherProductPdfImage.new
+    
+    publisher_product_pdf_image.image = image
+    publisher_product_pdf_image.publisher_id = params[:publisher_id]
+    publisher_product_pdf_image.publisher_product_id = params[:publisher_product_id]
+    publisher_product_pdf_image.publisher_product_description_id = params[:publisher_product_description_id]
+    # publisher_product_pdf_image.publisher_id = @@publisher_id
+    # publisher_product_pdf_image.publisher_product_id = @@publisher_product_id
+    # publisher_product_pdf_image.publisher_product_description_id = @@publisher_product_description_id
+    publisher_product_pdf_image.publisher_product_pdf_id = publisher_product_pdf_id
+    
+    # @publisher_user_image_primary = PublisherUserImage.create(params[:publisher_profile_image])    
+    if request.xhr? || remotipart_submitted?
+        if publisher_product_pdf_image.save
+            @publisher_product_pdfs = PublisherProductPdf.where("publisher_product_id = ?", @@publisher_product_id)
+            # @publisher_product_pdf_image = publisher_product_pdf_image
+            # @publisher_user_images = publisher_user.publisher_user_images     
+            # # @publisher_user_images = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id)
+            # @publisher_user_image_primary = @publisher_user_images.where( :primary => true ).first
+        else
+          # error save
+        end
+    else
+      # render text: 'Remote call failed'
+    end
+   
+   
+   
+   
+    # @publisher_product_pdf_image = PublisherProductPdfImage.create(params[:publisher_product_pdf_image])
+    # if request.xhr? || remotipart_submitted?
+      # @publisher_product_pdfs = PublisherProductPdf.where("publisher_product_id = ?", params[:publisher_product_pdf_image][:publisher_product_id])  
+      # # sleep 1 if params[:pause]
+      # # render :layout => false, :template => (params[:template] == 'escape' ? 'comments/escape_test' : 'comments/create'), :status => (@comment.errors.any? ? :unprocessable_entity : :ok)
+    # else
+      # #redirect_to comments_path    
+      # render text: 'Remote call failed'
+    # end
+
+    
+  end
+
+
+
+  def destroy_pdf
+        
+    publisher_product_pdf = PublisherProductPdf.find(params[:publisher_product_pdf_id])
+    publisher_product_pdf_image = publisher_product_pdf.publisher_product_pdf_image
+    
+    if publisher_product_pdf.destroy
+      if !publisher_product_pdf_image.nil?
+        if publisher_product_pdf_image.destroy
+        end
+      end
+    end
+
+    @publisher_product_pdfs = PublisherProductPdf.where("publisher_product_id = ?", @@publisher_product_id)
+    
+    # respond_to do |format|
+      # format.html {}
+      # format.js
+    # end
+    
+  end
+
+
+
+  def destroy_pdf_image
+        
+    publisher_product_pdf = PublisherProductPdf.find(params[:publisher_product_pdf_id])
+    publisher_product_pdf_image = publisher_product_pdf.publisher_product_pdf_image
+    
+    if publisher_product_pdf_image.destroy
+      @publisher_product_pdfs = PublisherProductPdf.where("publisher_product_id = ?", @@publisher_product_id)
+    else
+      #      
+    end
+    
+    # respond_to do |format|
+      # format.html {}
+      # format.js
+    # end
+    
+  end
+
+
+
+  def upload_product_logo
+   
+    image = params[:image]
+  
+    publisher_product_logo = PublisherProductLogo.new
+    
+    publisher_product_logo.image = image
+    publisher_product_logo.publisher_id = params[:publisher_id]
+    publisher_product_logo.publisher_product_id = params[:publisher_product_id]
+
+    # @publisher_user_image_primary = PublisherUserImage.create(params[:publisher_profile_image])    
+    if request.xhr? || remotipart_submitted?
+        if publisher_product_logo.save
+            @publisher_product_logo = publisher_product_logo
+        else
+          # error save
+        end
+    else
+      # render text: 'Remote call failed'
+    end
+   
+    
+  end
+
+
+  def destroy_product_logo
+    
+    #@publisher_id = params[:publisher_id]
+        
+    # h_params = Hash.new
+    # h_params[:publisher_id] = current_user.publisher.id         
+    # h_params[:publisher_user_id] = publisher_user.id         
+    # h_params[:id] = params[:id]         
+        
+    publisher_product_logo = PublisherProductLogo.find(params[:publisher_product_logo_id])
+    if publisher_product_logo.destroy
+      # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
+      # @publisher_user_images = publisher_user.publisher_user_images     
+      # @publisher_user_image_primary = @publisher_user_images.where( :primary => true ).first
+      # @publisher_user_image_primary = PublisherUserImage.where("publisher_id = ?", @publisher_id).where( :primary => true ).first
+      # @publisher_profile_images = PublisherProfileImage.where("publisher_id = ?", @publisher_id)
+      # redirect_to '/Publisher-Photos'
+    else      
+      # render text: 'publisher_profile_image destory failed'
+    end
+
+    
+    # respond_to do |format|
+      # format.html {}
+      # format.js
+    # end
+    
+  end
+
+
+  def upload_product1_image
+
+    image = params[:image]
+  
+    publisher_product1_image = PublisherProduct1Image.new
+    
+    publisher_product1_image.image = image
+    publisher_product1_image.publisher_id = params[:publisher_id]
+    publisher_product1_image.publisher_product_id = params[:publisher_product_id]
+
+    # @publisher_user_image_primary = PublisherUserImage.create(params[:publisher_profile_image])    
+    if request.xhr? || remotipart_submitted?
+        if publisher_product1_image.save
+            @publisher_product1_image = publisher_product1_image
+        else
+          # error save
+        end
+    else
+      # render text: 'Remote call failed'
+    end
+   
+    # @publisher_product1_image = PublisherProduct1Image.create(params[:publisher_product1_image])
+    # if request.xhr? || remotipart_submitted?
+      # # @publisher_product_logo = publisher_product.publisher_product_logo
+      # # @publisher_product_logo = PublisherProductLogo.where("publisher_product_id = ?", params[:publisher_product_logo][:publisher_product_id])  
+    # else
+      # render text: 'Remote call failed'
+    # end
+    
+    
+  end
+
+
+
+  def destroy_product1_image
+    
+    publisher_product1_image = PublisherProduct1Image.find(params[:publisher_product1_image_id])
+    if publisher_product1_image.destroy
+      #
+    else      
+      #
+    end
+    
+    
+  end
+
+
+
+  def upload_product2_image
+   
+    image = params[:image]
+  
+    publisher_product2_image = PublisherProduct2Image.new
+    
+    publisher_product2_image.image = image
+    publisher_product2_image.publisher_id = params[:publisher_id]
+    publisher_product2_image.publisher_product_id = params[:publisher_product_id]
+
+    # @publisher_user_image_primary = PublisherUserImage.create(params[:publisher_profile_image])    
+    if request.xhr? || remotipart_submitted?
+        if publisher_product2_image.save
+            @publisher_product2_image = publisher_product2_image
+        else
+          # error save
+        end
+    else
+      # render text: 'Remote call failed'
+    end
+   
+    # @publisher_product2_image = PublisherProduct2Image.create(params[:publisher_product2_image])
+    # if request.xhr? || remotipart_submitted?
+      # # @publisher_product_logo = publisher_product.publisher_product_logo
+      # # @publisher_product_logo = PublisherProductLogo.where("publisher_product_id = ?", params[:publisher_product_logo][:publisher_product_id])  
+    # else
+      # render text: 'Remote call failed'
+    # end
+    
+    
+  end
+
+
+
+  def destroy_product2_image
+    
+    publisher_product2_image = PublisherProduct2Image.find(params[:publisher_product2_image_id])
+    if publisher_product2_image.destroy
+      #
+    else      
+      #
+    end
+    
+    
+  end
+
+
+
+  def update_poster_print_purchase
+    
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_product_description_id = h_obj[:publisher_product_description_id]
+    poster_print_purchase = h_obj[:poster_print_purchase]
+
+    publisher_product_description = PublisherProductDescription.find(publisher_product_description_id)
+    
+    h_update = Hash.new
+    h_update[:poster_print_purchase] = poster_print_purchase
 
     if publisher_product_description.update_attributes(h_update)
       #
@@ -3934,48 +6078,196 @@ class PublisherProductDescriptionsController < ApplicationController
       # Rails.logger.info(@user.errors.messages.inspect)
     end
 
-    publisher_product_description_id = publisher_product_description.id
-    publisher_product_description = nil
     publisher_product_description_updated = PublisherProductDescription.find(publisher_product_description_id)
-    
-    gon.core_literacy_standard = []
-    if (publisher_product_description_updated.core_literacy_standard.blank?) or (publisher_product_description_updated.core_literacy_standard.empty?) or (publisher_product_description_updated.core_literacy_standard.nil?)
-      #
-    else
-      core_literacy_standard = publisher_product_description_updated.core_literacy_standard
-      ar_core_literacy_standard = Array.new
-      ar_core_literacy_standard = core_literacy_standard.split(',')    
-      i = 0
-      ar_core_literacy_standard.each do |standard|    
-        gon.core_literacy_standard[i] = standard
-        i += 1
-      end
-    end
-    
-    # gon.core_literacy_standard[1] = publisher_product_core_literacy_standard_updated.core_literacy_standard_1
-
-    b_has_core_literacy_standard = false
-    
-    if (publisher_product_description_updated.core_literacy_standard.blank?) or (publisher_product_description_updated.core_literacy_standard.empty?) or (publisher_product_description_updated.core_literacy_standard.nil?)
-      #
-    else
-      b_has_core_literacy_standard = true
-    end
-    
-    # if (publisher_product_core_literacy_standard_updated.core_literacy_standard_1 or
-        # publisher_product_core_literacy_standard_updated.core_literacy_standard_2 or
-        # publisher_product_core_literacy_standard_updated.core_literacy_standard_3)
-        # b_has_core_literacy_standard = true
-    # end
     
     respond_to do |format|
       format.html {}
-      format.json { render :json => { :b_has_core_literacy_standard => b_has_core_literacy_standard,
-                                      :g_updated => gon.core_literacy_standard,
-                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+      format.json { render :json => { :poster_print_purchase => publisher_product_description_updated.poster_print_purchase,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }      
     end
 
+    
   end
+  
+  
+  
+  def update_poster_pin_web
+
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_product_description_id = h_obj[:publisher_product_description_id]
+    poster_pin_web = h_obj[:poster_pin_web]
+
+    publisher_product_description = PublisherProductDescription.find(publisher_product_description_id)
+    
+    h_update = Hash.new
+    h_update[:poster_pin_web] = poster_pin_web
+
+    if publisher_product_description.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
+
+    publisher_product_description_updated = PublisherProductDescription.find(publisher_product_description_id)
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :poster_pin_web => publisher_product_description_updated.poster_pin_web,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }      
+    end
+
+    
+  end
+  
+  
+  
+  def update_poster_pin_purchase
+    
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_product_description_id = h_obj[:publisher_product_description_id]
+    poster_pin_purchase = h_obj[:poster_pin_purchase]
+
+    publisher_product_description = PublisherProductDescription.find(publisher_product_description_id)
+    
+    h_update = Hash.new
+    h_update[:poster_pin_purchase] = poster_pin_purchase
+
+    if publisher_product_description.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
+
+    publisher_product_description_updated = PublisherProductDescription.find(publisher_product_description_id)
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :poster_pin_purchase => publisher_product_description_updated.poster_pin_purchase,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }      
+    end
+    
+    
+  end
+
+
+
+  # def upload_corporate_logo   
+    # @publisher_product_corporate_logo = PublisherProductCorporateLogo.create(params[:publisher_product_corporate_logo])
+    # if request.xhr? || remotipart_submitted?
+      # # @publisher_product_logo = publisher_product.publisher_product_logo
+      # # @publisher_product_logo = PublisherProductLogo.where("publisher_product_id = ?", params[:publisher_product_logo][:publisher_product_id])  
+    # else
+      # render text: 'Remote call failed'
+    # end
+  # end
+
+
+
+  def upload_product_corporate_logo
+   
+    image = params[:image]
+  
+    publisher_product_corporate_logo = PublisherProductCorporateLogo.new
+    
+    publisher_product_corporate_logo.image = image
+    publisher_product_corporate_logo.publisher_id = params[:publisher_id]
+    publisher_product_corporate_logo.publisher_product_id = params[:publisher_product_id]
+
+    # @publisher_user_image_primary = PublisherUserImage.create(params[:publisher_profile_image])    
+    if request.xhr? || remotipart_submitted?
+        if publisher_product_corporate_logo.save
+            @publisher_product_corporate_logo = publisher_product_corporate_logo
+        else
+          # error save
+        end
+    else
+      # render text: 'Remote call failed'
+    end
+   
+    
+  end
+
+
+
+  def destroy_product_corporate_logo
+    
+    publisher_product_corporate_logo = PublisherProductCorporateLogo.find(params[:publisher_product_corporate_logo_id])
+    if publisher_product_corporate_logo.destroy
+      #
+    else      
+      #
+    end
+
+    
+  end
+
+
+
+
+  def update_corporate_logo_url
+    
+    ar = params[:publisher_product_description]
+    h_obj = Hash.new
+    ar.each do |obj|
+      h_obj = obj
+    end
+
+    publisher_product_description_id = h_obj[:publisher_product_description_id]
+    corporate_logo_url = h_obj[:corporate_logo_url]
+
+    publisher_product_description = PublisherProductDescription.find(publisher_product_description_id)
+    
+    h_update = Hash.new
+    h_update[:corporate_logo_url] = corporate_logo_url
+
+    if publisher_product_description.update_attributes(h_update)
+      #
+    else
+      # Rails.logger.info(@user.errors.messages.inspect)
+    end
+
+    publisher_product_description_updated = PublisherProductDescription.find(publisher_product_description_id)
+    
+    b_corporate_logo_url = false
+    b_required = true
+    publisher_product_description_corporate_logo_url = "www.GenericCorporation.com"      
+    if !((publisher_product_description_updated.corporate_logo_url.blank?) or (publisher_product_description_updated.corporate_logo_url.empty?) or (publisher_product_description_updated.corporate_logo_url.nil?)) 
+        publisher_product_description_corporate_logo_url = publisher_product_description_updated.corporate_logo_url
+        b_corporate_logo_url = true
+        b_required = false      
+    end
+    
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => { :b_corporate_logo_url => b_corporate_logo_url, 
+                                      :corporate_logo_url => publisher_product_description_corporate_logo_url,
+                                      :b_required => b_required,
+                                      :updated => publisher_product_description_updated.updated_at.to_s(:long) } }
+    end
+    
+    # respond_to do |format|
+      # format.html {}
+      # format.json { render :json => { :corporate_logo_url => publisher_product_description_updated.corporate_logo_url,
+                                      # :updated => publisher_product_description_updated.updated_at.to_s(:long) } }      
+    # end
+    
+    
+  end
+
+
+
+
+
 
 
   def new
@@ -4030,10 +6322,24 @@ class PublisherProductDescriptionsController < ApplicationController
                                                               :metrics_3,         
                                                               :metrics_4,         
                                                               :metrics_5,        
+                                                              :poster_print_purchase,
+                                                              :poster_pin_web,
+                                                              :poster_pin_purchase,
+                                                              :corporate_logo_url                                                              
                                                            )
 
     end
     
+
+    # def publisher_product_pdf_params
+      # params.require(:publisher_product_pdf).permit(      
+                                                    # :name_file,
+                                                    # :publisher_id,
+                                                    # :publisher_product_id,
+                                                    # :product_product_description_id       
+                                                   # )
+    # end
+
     
     def sort_column
       CoreLiteracyStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
@@ -4088,6 +6394,41 @@ class PublisherProductDescriptionsController < ApplicationController
     end
     def sort_column_dtab6let
       Dtab6let.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def return_all_dtab7lets      
+      return Dtab7let.order(sort_column + " " + sort_direction)
+    end
+    def sort_column_dtab7let
+      Dtab7let.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def return_all_dtab8lets      
+      return Dtab8let.order(sort_column + " " + sort_direction)
+    end
+    def sort_column_dtab8let
+      Dtab8let.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def return_all_dtab9lets      
+      return Dtab9let.order(sort_column + " " + sort_direction)
+    end
+    def sort_column_dtab9let
+      Dtab9let.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def return_all_dtab10lets      
+      return Dtab10let.order(sort_column + " " + sort_direction)
+    end
+    def sort_column_dtab10let
+      Dtab10let.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def return_all_dtab11lets      
+      return Dtab11let.order(sort_column + " " + sort_direction)
+    end
+    def sort_column_dtab11let
+      Dtab11let.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
 
       

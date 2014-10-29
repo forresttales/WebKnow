@@ -3,8 +3,10 @@ class UserProfileImagesController < ApplicationController
   require 'RMagick'
   
   layout 'user_profile_image'
+  # layout 'publisher'
 
   before_filter :force_http
+
 
 
   def index
@@ -44,9 +46,11 @@ class UserProfileImagesController < ApplicationController
     
   end
 
+
   def edit
     @user_profile_image = UserProfileImage.find(params[:id])
   end
+
 
   def update
     
@@ -126,6 +130,8 @@ class UserProfileImagesController < ApplicationController
     image_100_100.write profile_100_100_filename
     image_50_50.write profile_50_50_filename
     image_34_34.write profile_34_34_filename
+
+
      
     # # image.recreate_versions!
 # 

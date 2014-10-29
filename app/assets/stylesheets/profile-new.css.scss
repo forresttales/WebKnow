@@ -128,12 +128,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', end
 	border-right: 2px solid $ksgreen;
 	border-top: 2px solid $ksgreen;
 }
-
-.profile-cs-style-3 li {
-	clear:both;
-	float: right;
-	margin-right: 10px;
-	border: 2px solid #CCC;
+.col-midd-800 {
+  width: 800px;
+  border-left: 2px solid $ksgreen;
+  border-right: 2px solid $ksgreen;
+  border-top: 2px solid $ksgreen;
 }
 
 .delete-record {clear:both; margin-top: 200px;}
@@ -141,3 +140,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', end
 .content {
   h1 {color: $ksgreen; text-align: center; clear:both; font-size: 35px;}
 }
+

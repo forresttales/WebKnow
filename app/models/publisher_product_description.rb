@@ -40,6 +40,17 @@
 #  core_literacy_standard :string(255)
 #  core_math_standard     :string(255)
 #  form_update            :datetime         default(2000-01-01 00:00:00 UTC)
+#  poster_print_purchase  :boolean          default(FALSE)
+#  poster_pin_web         :boolean          default(FALSE)
+#  poster_pin_purchase    :boolean          default(FALSE)
+#  corporate_logo_url     :string(255)
+#  lesson_time_hours      :integer          default(0)
+#  lesson_time_minutes    :integer          default(0)
+#  course_time_hours      :integer          default(0)
+#  course_time_days       :integer          default(0)
+#  course_time_months     :integer          default(0)
+#  time_per_lesson        :boolean          default(FALSE)
+#  time_per_course        :boolean          default(FALSE)
 #
 
 class PublisherProductDescription < ActiveRecord::Base
@@ -79,6 +90,17 @@ class PublisherProductDescription < ActiveRecord::Base
                   :core_literacy_standard,
                   :core_math_standard,
                   :form_update,
+                  :poster_print_purchase,
+                  :poster_pin_web,
+                  :poster_pin_purchase,
+                  :corporate_logo_url,
+                  :lesson_time_hours,
+                  :lesson_time_minutes,
+                  :course_time_hours,
+                  :course_time_days,
+                  :course_time_months,
+                  :time_per_lesson,
+                  :time_per_course,
                   :created_at,
                   :updated_at 
 

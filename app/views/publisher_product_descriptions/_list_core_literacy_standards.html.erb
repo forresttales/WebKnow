@@ -34,7 +34,10 @@
 				<% @core_literacy_standards.each do |core_literacy_standard| %>
 				  <tr align="left">
 
-				    <td style="width: 50px; padding-left: 10px;">
+				    <td class="core-sel" name="<%= core_literacy_standard.id %>" style="width: 50px; padding-left: 10px;">
+						<div class="cb-container-1d">
+							<div id="cb_core_literacy_standard_<%= core_literacy_standard.id %>" name="core_literacy_standard_<%= core_literacy_standard.id %>" class="cb-button cb-align-core core-literacy-standard" tabindex=""></div>
+						</div>
 			    		<input id="ch_core_literacy_standard_<%= core_literacy_standard.id %>" name="publisher_product_description_core_literacy_standard" type="checkbox" value="<%= core_literacy_standard.id %>" />
 						<!-- <#%= check_box_tag :core_literacy_standard %#> -->
 			    		<!-- <#%= link_to('Edit', { :action => 'edit', :id => core_literacy_standard.id, :class => 'member-table' } ) %#> -->
@@ -49,9 +52,9 @@
 						</div>
 					</td> -->
 				  	
-				    <td style="width: 50px;"><h5 class="member-table"><%= core_literacy_standard.id %></h5></td>
-				    <td style="width: 200px;"><h5 class="member-table"><%= core_literacy_standard.dot_not %></h5></td>
-				    <td style="width: 300px;"><h5 class="member-table"><%= core_literacy_standard.uri %></h5></td>
+				    <td style="width: 50px;" name="<%= core_literacy_standard.id %>" class="core-sel"><span class="member-table"><%= core_literacy_standard.id %></span></td>
+				    <td style="width: 200px;" name="<%= core_literacy_standard.id %>" class="core-sel"><span class="member-table"><%= core_literacy_standard.dot_not %></span></td>
+				    <td style="width: 300px;" class="core-uri"><span class="member-table"><a href="<%= core_literacy_standard.uri%>"><%= core_literacy_standard.uri%></a></span></td>
 				    <!-- <td style="width: 500px;"><h5 class="member-table"><#%= core_literacy_standard.guid %#></h5></td>
 				    <td style="width: 500px;"><h5 class="member-table"><#%= core_literacy_standard.url_prev %#></h5></td>
 				    <td style="width: 200px;"><h5 class="member-table"><#%= core_literacy_standard.created_at.to_s(:db) %#></h5></td>
@@ -110,21 +113,21 @@
 			var cellTh;
 			var cellIndexTh;
 			
-			$("table.tbltablets th").mouseover ( function () {
-
-				cellTh = $(this).closest('th');
-				cellIndexTh = cellTh[0].cellIndex;
-				cellIndexTh += 1;
-				
-				$("table.tbltablets td:nth-child(" + cellIndexTh + ")").addClass('hover-col');
-				$(this).addClass('hover-col');
-				
-			}).mouseout ( function() {
-				
-				$("table.tbltablets td:nth-child(" + cellIndexTh + ")").removeClass('hover-col');				
-				$(this).removeClass('hover-col');
-				
-			});
+			// $("table.tbltablets th").mouseover ( function () {
+// 
+				// cellTh = $(this).closest('th');
+				// cellIndexTh = cellTh[0].cellIndex;
+				// cellIndexTh += 1;
+// 				
+				// $("table.tbltablets td:nth-child(" + cellIndexTh + ")").addClass('hover-col');
+				// $(this).addClass('hover-col');
+// 				
+			// }).mouseout ( function() {
+// 				
+				// $("table.tbltablets td:nth-child(" + cellIndexTh + ")").removeClass('hover-col');				
+				// $(this).removeClass('hover-col');
+// 				
+			// });
 			
 			$("table.tbltablets td").mouseover ( function () {
 				
@@ -135,85 +138,104 @@
 				rowIndex = row[0].rowIndex;
 		
 
-				switch(cellIndex)
-				{
-				case 1:
-					header = "th_view"	  
-				  break;
+				// switch(cellIndex)
+				// {
+				// case 1:
+					// header = "th_view"	  
+				  // break;
+				// // case 2:
+					// // header = "th_delete"	  
+				  // // break;
 				// case 2:
-					// header = "th_delete"	  
+					// header = "#th_id"	  
 				  // break;
-				case 2:
-					header = "#th_id"	  
-				  break;
-				case 3:
-					header = "#th_dot_not"	  
-				  break;				  
-				case 4:
-					header = "#th_uri"	  
-				  break;
-				// case 6:
-					// header = "#th_guid"	  
+				// case 3:
+					// header = "#th_dot_not"	  
+				  // break;				  
+				// case 4:
+					// header = "#th_uri"	  
 				  // break;
-				// case 7:
-					// header = "#th_url_prev"	  
-				  // break;
-				// case 8:
-					// header = "#th_created_at"	  
-				  // break;
-				// case 9:
-					// header = "#th_updated_at"	  
-				  // break;
+				// // case 6:
+					// // header = "#th_guid"	  
+				  // // break;
+				// // case 7:
+					// // header = "#th_url_prev"	  
+				  // // break;
+				// // case 8:
+					// // header = "#th_created_at"	  
+				  // // break;
+				// // case 9:
+					// // header = "#th_updated_at"	  
+				  // // break;
+// 
+				// default:
+					// //
+				// }				
 
-				default:
-					//
-				}				
-
-				$(header).addClass('hover-col');
+				// $(header).addClass('hover-col');
 		
 				if (rowIndex % 2 === 0) {
-					$("table.tbltablets td:nth-child(" + cellIndex + ")").addClass('hover-col');
+					// $("table.tbltablets td:nth-child(" + cellIndex + ")").addClass('hover-col');
 					row.removeClass('gray').addClass('hover-row');					
 				}
 				else {
-					$("table.tbltablets td:nth-child(" + cellIndex + ")").addClass('hover-col');
+					// $("table.tbltablets td:nth-child(" + cellIndex + ")").addClass('hover-col');
 					row.removeClass('white').addClass('hover-row');										
 				}		
 			}).mouseout( function(){
 
-				$(header).removeClass('hover-col');
+				// $(header).removeClass('hover-col');
 				
 				if (rowIndex % 2 === 0) {
-					$("table.tbltablets td:nth-child(" + cellIndex + ")").removeClass('hover-col');
+					// $("table.tbltablets td:nth-child(" + cellIndex + ")").removeClass('hover-col');
 					row.removeClass('hover-row').addClass('gray');					
 				}
 				else {
-					$("table.tbltablets td:nth-child(" + cellIndex + ")").removeClass('hover-col');
+					// $("table.tbltablets td:nth-child(" + cellIndex + ")").removeClass('hover-col');
 					row.removeClass('hover-row').addClass('gray');					
 				}		
 			});
 			
 			var rowSelect = -1;			
 			
-			$("table.tbltablets td").on('click', function () {
-	
-				cell = $(this).closest('td');
-				btn_delete = $(this).closest('form');
-				row = cell.closest('tr');
-				rowIndex = row[0].rowIndex;
+			// $(".core-literacy-standard").on('click', function() {
+				// var cb = $(this).attr("id");
+				// var ch = "ch_" + $(this).attr("name");
+				// set_cb(ch, cb);
+			// });
 
-				if (rowSelect !== -1) {
-					$("table.tbltablets tr").removeClass('row-select');
-				}
-				
-				rowSelect = rowIndex;
-				row.addClass('row-select');
-				btn_delete.removeClass('btn-color').addClass('btn-color-select');
+			$(".core-sel").on('click', function () {
+				var id = $(this).attr("name");
+				var cb = "cb_core_literacy_standard_" + id.toString();
+				var ch = "ch_core_literacy_standard_" + id.toString();
+				set_cb(ch, cb);
+				// alert($(this).attr("id"));
 			});
+			
+			// $(".core-uri").on('click', function () {
+				// alert($(this).html());
+			// });
+			
+			// $("table.tbltablets tr").on('click', function () {
+				// alert($(this).find("input").attr("id"));
+			// });
+			
+			
+			// $("table.tbltablets td").on('click', function () {
+				// cell = $(this).closest('td');
+				// // btn_delete = $(this).closest('form');
+				// row = cell.closest('tr');
+				// rowIndex = row[0].rowIndex;
+				// if (rowSelect !== -1) {
+					// $("table.tbltablets tr").removeClass('row-select');
+				// }
+				// rowSelect = rowIndex;
+				// row.addClass('row-select');
+				// // btn_delete.removeClass('btn-color').addClass('btn-color-select');
+			// });
 	
 			
 			$(document).on('click', function(mtab1let) {
-				// alert(mtab1let.target);
 				elem = mtab1let.target.className;
 				if ((elem === 'hover-col') || (elem === 'delete-btn') || (elem === 'member-table')) {
 					//

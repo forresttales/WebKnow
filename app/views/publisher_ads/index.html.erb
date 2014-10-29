@@ -25,20 +25,25 @@
 					<%= render 'share/dir_publishers_left'%>
 				</div>
 				
-				<div class="col-midd">
+				<div class="col-midd-800">
 					<div class="line-space-20"></div>
 			
 					<div style="text-align: left;">
 						<span class="normal pad-left-20">Advertisements</span>
+						<a href="/PublisherCreateJournalPoster" class="no-underline"><span class="right-title-sub"> Start Poster</span></a>
 					</div>
 					
-					<%= render 'publisher_ads/index' %>
+					<!-- <#%= render 'publisher_ads/index' %#> -->
+					<%= render 'publisher_ads/ad_tabs' %>
+					
+					<div class="line-space-20"></div>
+					
 					
 				</div>
 				
-				<div class="col-right">
-					<%= render 'share/dir_publishers_right' %>
-				</div>								
+				<!-- <div class="col-right">
+					<#%= render 'share/dir_publishers_right' %#>
+				</div> -->								
 			</div>
 		</div>
 	</div>

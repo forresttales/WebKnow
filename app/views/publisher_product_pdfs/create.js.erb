@@ -1,0 +1,5 @@
+alert('ajax works in create publisher_product_pdfs');
+<% if @publisher_product_pdf.new_record? %>
+  alert("Failed to upload PDF: <%= j @publisher_product_pdf.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+<% end %>

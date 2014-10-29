@@ -25,11 +25,17 @@ class PublisherProductsController < ApplicationController
     # end
     # render text: ar
 
-    @publisher_id = current_user.publisher.id
+    publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
+    @publisher_id = publisher_user.publisher_id
+    publisher = Publisher.find_by_id(@publisher_id)
+
+    # @publisher_id = current_user.publisher.id
     # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction) # .paginate(:per_page => 200, :page => params[:page])
     
     # @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
-    @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 5)
+    # @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 5)
+
+    @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 5)
     
     
     respond_to do |format|
@@ -114,23 +120,29 @@ class PublisherProductsController < ApplicationController
 
                                   publisher_product_lesson_time = PublisherProductLessonTime.new(h_new)
                                   if publisher_product_lesson_time.save
+
+                                    publisher_product_by_review = PublisherProductByReview.new(h_new)
+                                    if publisher_product_by_review.save
         
-                                              @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
-                                              respond_to do |format|
-                                                format.html
-                                                # format.js { redirect_to(:action => 'index', :form => :js ) }
-                                                format.js
-                                              end
-                                              # redirect_to(:controller => 'publisher_product_descriptions', 
-                                                          # :action => 'show_description', 
-                                                          # :method => :post,
-                                                          # :params => { :publisher_product_id => publisher_product.id })
-                                                          
-                                                          # :params => {:publisher_id => publisher.id, 
-                                                                      # :publisher_product_id => publisher_product.id,
-                                                                      # :publisher_product_description_id => publisher_product_description.id
-                                                                     # })
-                                                                     
+                                        @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
+                                        respond_to do |format|
+                                          format.html
+                                          # format.js { redirect_to(:action => 'index', :form => :js ) }
+                                          format.js
+                                        end
+                                        # redirect_to(:controller => 'publisher_product_descriptions', 
+                                                    # :action => 'show_description', 
+                                                    # :method => :post,
+                                                    # :params => { :publisher_product_id => publisher_product.id })
+                                                    
+                                                    # :params => {:publisher_id => publisher.id, 
+                                                                # :publisher_product_id => publisher_product.id,
+                                                                # :publisher_product_description_id => publisher_product_description.id
+                                                               # })
+
+                                    else
+                                      render text: 'save publisher_product_by_review failed'
+                                    end                                                                                                            
                                   else
                                     render text: 'save publisher_product_lesson_time failed'
                                   end                                       
@@ -263,8 +275,23 @@ class PublisherProductsController < ApplicationController
       PublisherProductImage.dbdelete
       PublisherProductImage.dbclear
 
+      PublisherProduct1Image.dbdelete
+      PublisherProduct1Image.dbclear
+
+      PublisherProduct2Image.dbdelete
+      PublisherProduct2Image.dbclear
+
       PublisherProductLogo.dbdelete
       PublisherProductLogo.dbclear
+
+      PublisherProductCorporateLogo.dbdelete
+      PublisherProductCorporateLogo.dbclear
+
+      PublisherProductPdf.dbdelete
+      PublisherProductPdf.dbclear
+
+      PublisherProductPdfImage.dbdelete
+      PublisherProductPdfImage.dbclear
 
       PublisherProductContentType.dbdelete
       PublisherProductContentType.dbclear
@@ -292,6 +319,9 @@ class PublisherProductsController < ApplicationController
 
       PublisherProductEnhancement.dbdelete
       PublisherProductEnhancement.dbclear
+
+      PublisherProductByReview.dbdelete
+      PublisherProductByReview.dbclear
 
       PublisherProductPricingModel.dbdelete
       PublisherProductPricingModel.dbclear

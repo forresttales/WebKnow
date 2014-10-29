@@ -1,0 +1,2 @@
+module PublisherProductByReviewsHelper
+end

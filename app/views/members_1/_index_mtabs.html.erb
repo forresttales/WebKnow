@@ -1,0 +1,130 @@
+<% provide(:title, 'Mail Tablets') %>
+
+		<div style="width: 598px;">						
+			<!-- <div style="height: 70px;"></div> -->
+			<div id="mtabs" class="mtabs" style="width: 598px;">
+				<ul style="height: 55px; text-align: left;">
+					<!-- <li><a href="#tabs-A" id="tabsA">Tablets</a></li> -->				
+					<li><a href="#tabs-0" id="tabs0" class="mtab mtab-yellow">Search</a></li>				
+					<li><a href="#tabs-1" id="tabs1" class="mtab mtab-blue">All Members</a></li>
+					<li><a href="#tabs-2" id="tabs2" class="mtab mtab-blue">Publishers</a></li>
+				</ul>
+			</div>			
+			<div id="render0"></div>
+		</div>
+
+		<script>
+
+			selected_index = 0;
+			last_index = 0;
+			selected_id = "";
+			last_id = "";
+			function change_selected(selected_index) {
+				selected_id = "#tabs" + selected_index;
+				last_id = "#tabs" + last_index; 
+				
+				switch (last_index)
+				{
+				  	case 0:
+						$(last_id).removeClass("mtab-selected").addClass("mtab-yellow");
+						break;
+				  	case 1:
+				  	case 2:
+				  	case 3:
+				  	case 4:
+				  	case 5:
+				  	case 6:
+				  	case 7:
+				  	case 8:
+						$(last_id).removeClass("mtab-selected").addClass("mtab-blue");
+						break;
+					default:
+					//
+				}
+				
+				switch (selected_index)
+				{
+				  	case 0:
+						$(selected_id).removeClass("mtab-yellow").addClass("mtab-selected");
+						break;
+				  	case 1:
+				  	case 2:
+				  	case 3:
+				  	case 4:
+				  	case 5:
+				  	case 6:
+				  	case 7:
+				  	case 8:
+						$(selected_id).removeClass("mtab-blue").addClass("mtab-selected");
+						break;
+					default:
+					//
+				}
+				
+				last_index = selected_index;
+			}				
+				
+			$('#tabs0').on('click', function() {
+				change_selected(0);
+			   	$.get("/mtablets", null, null, "script");
+			});
+
+			$('#tabs1').on('click', function() {
+				
+				change_selected(1);
+			   	$.get("/mtab1lets", null, null, "script");
+			   	
+				// $.get( "/mtab1lets", null, null, 'script', function() {
+				// })
+				// .done(function() {
+					// $("#tablets th a, #tablets .pagination a").on("click", function() {
+						 // $.get("/mtab1lets/list", null, null, "script");
+						// return false;
+					// });
+				// })
+				// .fail(function() {
+					// alert( "ajax load error" );
+				// });
+			});
+	
+			$('#tabs2').on('click', function() {
+				change_selected(2);				
+			   $.get("/mtab2lets", null, null, "script");
+			});
+	
+			$('#tabs3').on('click', function() {
+				change_selected(3);
+			   	$.get("/mtab3lets", null, null, "script");
+			});
+	
+			$('#tabs4').on('click', function() {
+				change_selected(4);
+			   	$.get("/mtab4lets", null, null, "script");
+			});
+			
+			$('#tabs5').on('click', function() {
+				change_selected(5);
+			   	$.get("/mtab5lets", null, null, "script");
+			});
+
+			$('#tabs6').on('click', function() {
+				change_selected(6);
+			   	$.get("/mtab6lets", null, null, "script");
+			});
+
+			$('#tabs7').on('click', function() {
+				change_selected(7);
+			   	$.get("/mtab7lets", null, null, "script");
+			});
+
+			$('#tabs8').on('click', function() {
+				change_selected(8);
+			   	$.get("/mtab8lets", null, null, "script");
+			});
+			
+			$(function() {
+				$('#tabs0').click();
+			});			
+	
+		</script>
+

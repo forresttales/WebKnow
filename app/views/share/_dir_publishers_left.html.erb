@@ -73,7 +73,7 @@
 	<div class="profile-labels-left">
 		<ul>
 			<li>
-				<a href="/Publisher-Admin"><span href="#">Admin Story</span></a>
+				<a href="/Publisher-Admin"><span href="#">My Story</span></a>
 			</li>
 		</ul>		
 	</div>	
@@ -135,7 +135,10 @@
 		    </li> 
 		    <li id="profile-links-left-15" class="sub">
 		      <a id="profile-links-left-15-a" href="/Advertisements">Ads</a>
-		    </li> 
+		    </li>
+		    <li id="profile-links-left-15" class="sub">
+		      <a id="profile-links-left-15-a" href="/Corporate-Members">Corporate Members</a>
+		    </li> 		     
 		</ul>
 	</div>
 	
@@ -196,7 +199,7 @@
 	<div class="profile-links-left">
 		<ul>			
 			<% if session[:publisher_has_journalposter] %>
-			<li id="profile-links-left-17">
+			<li id="profile-links-left-17" class="sub">
 				<a id="profile-links-left-17-a" href="/Publisher-Posters">Posters</a>
 			</li>	
 			<% end %>

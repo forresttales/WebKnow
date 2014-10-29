@@ -9,6 +9,7 @@
 #  uri                  :string(255)
 #  created_at           :datetime
 #  updated_at           :datetime
+#  id_standard          :integer          default(0)
 #
 
 class PublisherProductCoreLiteracyStandard < ActiveRecord::Base
@@ -16,6 +17,7 @@ class PublisherProductCoreLiteracyStandard < ActiveRecord::Base
   attr_accessible :id,
                   :publisher_id,
                   :publisher_product_id,
+                  :id_standard,
                   :dot_not,
                   :uri,
                   :created_at,
@@ -33,6 +35,11 @@ class PublisherProductCoreLiteracyStandard < ActiveRecord::Base
   
   def self.dbclear
       self.connection.execute("ALTER SEQUENCE publisher_product_core_literacy_standards_id_seq RESTART WITH 1")
+  end
+
+  def self.delete_record(publisher_product_id)
+      s = "DELETE FROM publisher_product_core_literacy_standards WHERE publisher_product_id=" + publisher_product_id
+      self.connection.execute(s)
   end
 
   

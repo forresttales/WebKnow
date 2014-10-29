@@ -1,9 +1,50 @@
-<h1>Reset Password</h1>
+<% provide(:title, 'Reset Password') %>
 
-<%= form_tag password_resets_path, :method => :post do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <div class="actions"><%= submit_tag "Reset Password" %></div>
-<% end %>
+
+	<div id="sign-page">
+		
+		<header>
+	
+			<!-- <#%= render 'share/backtotop' %#> -->
+
+			<div style="height: 70px;"></div>
+			
+		</header>
+		
+		
+		<div id="sign-page-inner">
+			
+			<div style="text-align: left;">
+				<span style="font-family: msyh; font-size: 22px; color: green;"></span>
+			</div>
+	
+			<div style="height: 30px;"></div>
+			
+			<div style="text-align: left;">
+				<span style="font-family: msyh; font-size: 22px;">Reset Password</span>
+			</div>
+	
+			<div style="height: 30px;"></div>
+			
+			<div class="table-sign">
+				<div class="row">
+					
+					<div class="cell-100percent">
+
+						<%= form_tag password_resets_path, :method => :post do %>
+						  <div class="field">
+						    <%= label_tag :email %>
+						    <%= text_field_tag :email, params[:email] %>
+						  </div>
+						  <div class="actions"><%= submit_tag "Reset Password" %></div>
+						<% end %>
+
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>	
+		
+	</div>

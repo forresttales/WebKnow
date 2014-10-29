@@ -52,11 +52,22 @@ class User < ActiveRecord::Base
   
   
   
-  has_one :institute, dependent: :destroy
-  has_one :publisher, dependent: :destroy
-  has_one :recruiter, dependent: :destroy
-  has_one :student, dependent: :destroy
-  has_one :teacher, dependent: :destroy
+  # has_one :institute, dependent: :destroy
+  # has_one :publisher, dependent: :destroy
+  # has_one :recruiter, dependent: :destroy
+  # has_one :student, dependent: :destroy
+  # has_one :teacher, dependent: :destroy
+
+  has_one :institute
+  has_one :publisher
+  has_one :recruiter
+  has_one :student
+  has_one :teacher
+
+  # has_one :user_image  
+
+  # has_many :user_images  
+  
   # has_many :user_profile_images  
   
   # has_many :microposts, dependent: :destroy

@@ -19,7 +19,7 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bcrypt'
 gem 'jquery-rails'
-gem 'turbolinks'
+# gem 'turbolinks'
 gem 'jbuilder'
 gem 'json' 
 gem 'stripe'
@@ -31,6 +31,9 @@ gem 'rmagick'
 # gem "mini_magick"
 gem "carrierwave"
 gem 'recaptcha'
+# gem 'jquery-fileupload-rails'
+gem "remotipart"
+
 
 group :doc do
   gem 'sdoc', require: false

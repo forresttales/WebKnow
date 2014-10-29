@@ -1,0 +1,7 @@
+// alert('ajax works in upload_pdf');
+// <#% if @publisher_product_pdf.new_record? %#>
+//   alert("Failed to upload PDF: <#%= j @publisher_product_pdf.errors.full_messages.join(', ').html_safe %#>");
+// <#% else %#>
+	$('#render_pdfs').html("<%= j render('publisher_product_descriptions/list_pdfs') %>");
+	closeEditPDFs();
+// <#% end %#>

@@ -14,17 +14,68 @@
 	  	<%= csrf_meta_tags %>
 	  	<%= render 'layouts/shim' %>  
 
+		<style>
+		
+			#debug {
+				background-color: red;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size: 16px;
+				color: #000;
+			}
+		
+		</style>
+
+		<style type="text/css">
+		
+			html, body { 
+				height: 100%; 
+				/*margin: 0 auto; 
+				padding: 0;*/ 
+			}
+			#container {
+				height: 100%; 
+				margin: 0 auto; 
+				padding: 0; 
+				width: 1200px;
+			}
+		
+			/*html, body, #container { 
+				height: 100%; 
+				margin: 0 auto; 
+				padding: 0; 
+			}*/
+			body > #container { 
+				height: auto; 
+				min-height: 100%; 
+			}
+			/*#content { 
+				padding-bottom: 100px;
+			}*/
+		
+		</style>
+
     </head>
     
     <body>
 		
-		<%= render 'layouts/header' %>
-					
-		<%= yield %> 
+		<div id="container">
+			<%= render 'layouts/nav_main_public' %>
+			<%= yield %>
+		</div>		
+		
+		<%= render 'layouts/footer_plain' %>
 
-		<%= render 'layouts/footer' %>
-  		
-		<%= debug(params) if Rails.env.development? %>
+		<% if Rails.env.development? %>
+			<div id="debug">
+				<%= debug(params) %>
+			</div>
+		<% end %>
+
+		
+		<!-- <#%= render 'layouts/header' %#>					
+		<#%= yield %#> 
+		<#%= render 'layouts/footer' %#>
+		<#%= debug(params) if Rails.env.development? %#> -->
 		
     </body>
     

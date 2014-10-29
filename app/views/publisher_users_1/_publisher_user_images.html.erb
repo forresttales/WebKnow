@@ -1,0 +1,103 @@
+
+
+								<% if @publisher_user_images.any? %>
+								<% @publisher_user_images.each do |publisher_user_image| %>   				
+								
+					   				<div class="cell-180">
+										<ul class="profile-grid profile-cs-style-3">
+											<li>
+												<figure>
+													<img id="id_image" alt="photo not appearing" src="<%= publisher_user_image.image_url(:user_100_100) if publisher_user_image.image? %>"  width="100px" />
+				
+													<figcaption>
+														<!-- <span><%= link_to "Edit", '/Photos' %></span>
+														<br>
+														<span><a href="#" class="jqModal">Crop/Center small images</a></span>
+														<br> -->
+														<!-- <span><#%= link_to "Delete", @publisher_user_image_primary, :confirm => 'Delete this photo?', :method => :delete, :params => {:publisher_user_image_id => @publisher_user_image_primary.id} %#></span> -->
+						        						<!-- <span>= link_to "edit", edit_publisher_profile_image_path(publisher_profile_image) </span> -->
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+						   			</div>
+						   			<div class="cell-400">
+						   			</div>
+
+								<!-- <#% else %#> -->
+
+					   				<!-- <div class="cell-180">
+										<ul class="profile-grid profile-cs-style-3">
+											<li>
+												<figure>
+													<img alt="logo not appearing" src="../images_avatar/avatar_generic_1_w250_h310.png" />
+													<figcaption>
+														<span class="dialog-1 label-dialog">Add a photo</span>
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+						   			</div>
+						   			<div class="cell-400">
+						   				<span class="dialog-1 label-dialog">Add a photo</span>
+						   			</div> -->
+								
+								<% end %>
+								<% end %>
+
+
+
+<% if false %>
+
+								<% if @publisher_user_images.any? %>   				
+								
+									<% for publisher_user_image in @publisher_user_images %>
+					   				<div class="cell-180">
+										<ul class="profile-grid profile-cs-style-3">
+											<li>
+												<figure>
+													<img id="id_image" alt="photo not appearing" src="<%= publisher_user_image.image_url(:user_600_600) if publisher_user_image.image? %>"  width="250px" />
+				
+													<figcaption>
+														<span><%= link_to "Edit", '/Photos' %></span>
+														<br>
+														<!-- <span><#%= link_to "Crop/Center small images", '/Photo-Crop-Center/' + user_profile_image.id.to_s %#></span> -->
+														<!-- <span><#%= link_to "Crop/Center small images", :html => { :href => '#' }, :class => "jqModal" %#></span> -->
+														<span><a href="#" class="jqModal">Crop/Center small images</a></span>
+														<br>
+														<span><%= link_to "Delete", publisher_user_image, :confirm => 'Delete this photo?', :method => :delete, :params => {:publisher_user_image_id => publisher_user_image.id} %></span>
+						        						<!-- <span>= link_to "edit", edit_publisher_profile_image_path(publisher_profile_image) </span> -->
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+						   			</div>
+						   			<div class="cell-400">
+						   			</div>
+									<% end %>
+
+								<% else %>
+
+					   				<div class="cell-180">
+										<!-- <ul class="grid cs-style-3"> -->
+										<ul class="profile-grid profile-cs-style-3">
+											<li>
+												<figure>
+													<img alt="logo not appearing" src="../images_avatar/avatar_generic_1_w250_h310.png" />
+													<figcaption>
+														<span>Add a photo</span>
+														<!-- <span><#%= link_to "Add a photo", new_publisher_user_image_path(:publisher_id => @publisher_id) %#></span> -->											
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+						   			</div>
+						   			<div class="cell-400">
+						   				<span><a href="#" class="jqModal">Add a photo</a></span>
+						   				<!-- <span><#%= link_to "Add a photo", new_publisher_user_image_path(:publisher_id => @publisher_id) %#></span> -->
+						   				<!-- <span><#%= link_to "Add a photo", "/Photo-New/" + current_user.id %#></span> -->
+						   			</div>
+								
+								<% end %>
+
+<% end %>
