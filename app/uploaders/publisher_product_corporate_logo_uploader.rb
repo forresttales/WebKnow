@@ -15,6 +15,13 @@ class PublisherProductCorporateLogoUploader < CarrierWave::Uploader::Base
   end
 
 
+  def extension_white_list
+    # %w(pdf doc htm html docx)
+    %w(.png)
+    # fixed: %w(png)
+  end
+  
+  
   def filename
      "#{secure_token}.#{file.extension}" if original_filename.present?
   end

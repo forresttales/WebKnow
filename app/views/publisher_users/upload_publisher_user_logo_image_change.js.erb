@@ -1,0 +1,11 @@
+// alert('ajax works in upload_publisher_user_logo_image_change');
+<% if @publisher_user_logo_image %>
+	$('#render_publisher_user_logo_image .container-image').html("<%= j render('publisher_users/publisher_user_logo_image') %>");
+	$('#render_publisher_user_logo_image .container-menu').html("<%= j render('publisher_users/publisher_user_logo_image_menu') %>");
+	$('#render_publisher_user_logo_image_crop').html("<%= j render('publisher_users/publisher_user_logo_image_crop') %>");
+	id_image_logo = <%= @id_image_logo %>;
+	$(".drop-2-container").removeClass("hidden");
+	closeChangeLogoImage();
+<% else %>
+	alert("Upload error");
+<% end %>

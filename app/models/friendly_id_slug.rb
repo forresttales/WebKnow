@@ -12,7 +12,19 @@
 
 class FriendlyIdSlug < ActiveRecord::Base
   
-  attr_accessible :id, :slug, :sluggable_id, :sluggable_type, :scope, :created_at, :updated_at
+  attr_accessible :slug, 
+                  :sluggable_id, 
+                  :sluggable_type, 
+                  :scope 
     
+
+  def self.dbdelete
+      self.connection.execute("DELETE FROM friendly_id_slugs")
+  end
+  
+  def self.dbclear
+      self.connection.execute("ALTER SEQUENCE friendly_id_slugs_id_seq RESTART WITH 1")
+  end
+
     
 end

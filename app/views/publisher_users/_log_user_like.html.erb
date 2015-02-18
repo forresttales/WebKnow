@@ -1,0 +1,167 @@
+
+
+
+	<style>
+
+		.ks-tip-container {
+		}		
+		.ks-tip-target:hover + .ks-tip-1 span {
+		}
+		.ks-tip-target:hover + .ks-tip-1 {
+			display: block;
+		}
+		.ks-tip-1 {
+			position: absolute;
+			width: 60px;
+			height: 24px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;			
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			font-weight: 400;					
+			color: #fff;	
+			padding: 6px 0 0 0;
+			display: none;							
+		}
+		.ks-tip-1-indicator {
+			position: absolute;
+			top: 24px;
+			left: 4px;
+			width: 8px;
+			height: 12px;
+			background-image: url("/assets/drop-w8-h12.png");
+		}		
+		.ks-tip-34minus {
+			top: -34px;
+		}
+		.ks-tip-2 {
+			position: absolute;
+			width: 200px;
+			height: 100px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;
+			display: none;				
+		}
+		.hidden {
+			display: none !important;
+			visibility: hidden !important			
+		}
+		.dialog-span-1 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 10px;
+			font-weight: 200;					
+			color: #333;		
+			height: 12px;		
+		}
+		.dialog-span-1:hover {
+			text-decoration: underline;
+		}
+		.post-user-span-2:hover {
+			cursor: pointer;
+			text-decoration:underline;	
+		}
+		
+	</style>
+
+
+
+
+	<% @b_has_like = log_user_has_like_for(@log_user) %>
+	<div class="table">
+		<div class="row">
+			<div class="cell-30 ks-tip-container">
+				<div id="" class="ks-tip-target">
+				<% if @b_has_like %>
+					<div class="btn-submit-log-user-like-delete" name="<%= @nlist %>">
+						<input type="hidden" name="log_user_id_hidden" value="<%= @log_user.id %>">
+						<div class="icon-unlike"></div>
+					</div>
+				<% else %>
+					<div class="btn-submit-log-user-like-create" name="<%= @nlist %>">
+						<input type="hidden" name="log_user_id_hidden" value="<%= @log_user.id %>">
+						<div class="icon-like"></div>
+					</div>
+				<% end %>																
+				</div>
+			    <div class="ks-tip-1 ks-tip-34minus">
+			    	<div class="ks-tip-1-indicator"></div>
+					<% if @b_has_like %>
+						Unlike this
+					<% else %>
+						Like this
+					<% end %>
+			    </div>
+			</div>
+			<div class="cell-100">
+				<div class="dialog-101-figure">
+					<span class="post-user-span-2">Likes <%= @log_user.post_user_likes.count %></span>			
+					<!-- <input class="container-image-hidden" type="hidden" value="<#%= @publisher_user_image_primary.image_url(:user_600_600) if @publisher_user_image_primary.image? %#>" /> -->
+					<!-- <input class="container-image-hidden-101" type="hidden" value="../images_avatar/avatar_generic_1_w34_h34.png" /> -->
+
+					
+					<div id="dialog_101_content_<%= @nlist %>" class="dialog-101-content hidden">
+						<!-- test content <#%= @nlist %#> -->
+
+						<% cnt = 0 %>
+						<% post_user_likes = @log_user.post_user_likes 	%>
+						<div class="" style="margin: 0px; padding: 0 0 0 34px;">
+						<% post_user_likes.each do |post_user_like|    		%>
+						<% 		user_id = post_user_like.user_id 	   		%>
+						<% 		user = User.find_by_id(user_id)		   		%>
+						<%		if !user.nil?								%>
+						<% 			cnt += 1								%>
+						<%			if cnt == 1								%>			
+						<%			end										%>
+						<%			user_image_primary = user.user_images.where( :primary => true ).first 	%>
+								<div class="" style="display: inline-block; width: 100px; height: 120px; margin: 4px; float: left; position: relative;">
+									<a href="<%= user.slug %>" style="width: 100px; height: 120px;">
+										<div style="margin: 0; padding: 0; width: 100px; height: 100px;">
+						<% 			if !user_image_primary.nil? 											%>
+											<img alt="" src="<%= user_image_primary.image_url(:user_100_100) if user_image_primary.image? %>" width="100px" height="100px" style="margin: 0;" />
+						<%			else																	%>
+											<img alt="" src="../images_avatar/avatar_generic_1_w100_h100.png" width="100px" height="100px" style="margin: 0;" />				
+						<% 			end										%>
+										</div>
+										<div class="" style="width: 100%; height: 14px; margin: 0; padding: 0;">
+											<!-- <span class="dialog-span-1"><#%= user.name_first %#> </span> -->
+											<span class="dialog-span-1" style="margin: 0; vertical-align: top;"><%= user.name_last %></span>
+										</div>											
+									</a>
+								</div>
+						<%			if cnt == 4								%>
+						<%				cnt = 0 							%>			
+								<div></div>		
+						<%			end										%>
+						<%		end											%>
+						<% end 												%>
+						</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		
+		var scroll_top = 0;
+		
+		$(document).ready(function() {			
+      	// $(function() {
+
+
+			$(".dialog-101-figure").on('click', function() {
+				var id = $(this).find('.dialog-101-content').attr('id');
+				$(document).trigger('click_101', [id]);
+			});
+
+		});
+		
+	</script>

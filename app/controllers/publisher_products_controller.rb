@@ -9,7 +9,28 @@ class PublisherProductsController < ApplicationController
   before_filter :force_http
 
   skip_before_filter :verify_authenticity_token
+
     
+  
+  before_action :signed_in_user
+  before_action :fill_left_directory
+
+  def fill_left_directory
+
+    slug = current_user.slug
+    # @url_my_story        = '/puid' + slug
+    # @url_corporate_story = '/pcid' + slug
+        
+    @url_my_story_demo        = '/puid-demo' + slug
+    @url_corporate_story_demo = '/pcid-demo' + slug
+        
+  end
+  
+  
+  def index_demo
+    
+  end
+  
   
   def index
 
@@ -338,7 +359,19 @@ class PublisherProductsController < ApplicationController
       PublisherProductCoreMathStandard.dbdelete
       PublisherProductCoreMathStandard.dbclear
       
-      redirect_to '/Publisher-Products'
+      PublisherAd.dbdelete
+      PublisherAd.dbclear
+
+      PublisherAdListing.dbdelete
+      PublisherAdListing.dbclear
+
+      PublisherAdSquare.dbdelete
+      PublisherAdSquare.dbclear
+
+      PublisherAdPin.dbdelete
+      PublisherAdPin.dbclear
+      
+      redirect_to '/Publisher-Product-Listings'
             
       # respond_to do |format|
         # # format.html

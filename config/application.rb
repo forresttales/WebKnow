@@ -24,5 +24,7 @@ module Webknow
     config.active_support.escape_html_entities_in_json = true
     config.active_record.whitelist_attributes = true
     
+    # config.autoload_paths += %w(#{config.root}/lib)
+    
   end
 end

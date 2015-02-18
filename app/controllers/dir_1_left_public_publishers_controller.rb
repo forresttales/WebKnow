@@ -1,0 +1,2 @@
+class Dir1LeftPublicPublishersController < ApplicationController
+end

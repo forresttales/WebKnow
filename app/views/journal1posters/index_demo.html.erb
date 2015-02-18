@@ -1,0 +1,754 @@
+<% provide(:title, 'The Poster') %>
+
+	
+	<script src="/assets/jquery.validate.js"></script>
+	<script src="../scripts/dot.js"></script>    
+	<script src="../scripts/jquery-dropdown-dot.js"></script>
+	<script type="text/javascript" src="../scripts/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" src="../scripts/slidedeck.jquery.js"></script>
+	<script src="/assets/jquery.colorbox.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="../styles/landing_page.css.scss" media="screen,handheld" /> -->	
+	<link rel="stylesheet" href="/assets/static_pages.css" />
+	<link rel="stylesheet" type="text/css" href="../styles/slidedeck.skin.css" media="screen,handheld" />
+
+    <style type="text/css">
+		/*body{
+			background: #f2f2f2 url('bg.png') center 40px no-repeat;
+			font-family: Arial, Helvetica, sans-serif;
+		}*/
+        #slidedeck_frame {
+            width: 901px;
+            /*height: 295px;*/
+            height: 324px;
+			margin: 0px auto 0;
+			font-family: Arial, Helvetica, sans-serif;			
+        }
+		.hide {display: none !important;}
+	
+		.top-container {padding-top:20px;}
+
+    </style>
+
+
+	<script id="dropdown-data1-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	
+	<script id="dropdown-data1" type="text/x-dot-template">
+		<div class="dropdown dropdown-1" id="dropdown1" tabindex="20">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data2-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	
+	<script id="dropdown-data2" type="text/x-dot-template">
+		<div class="dropdown dropdown-2" id="dropdown2" tabindex="21">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data3-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	
+	<script id="dropdown-data3" type="text/x-dot-template">
+		<div class="dropdown dropdown-3" id="dropdown3" tabindex="22">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<!-- <style>
+		.navbar {width: 1200px; margin-left: -110px;}
+	</style> -->
+
+
+	<div style="height: 10px;"></div>
+	<div id="wrapper">	
+		<header id="home">
+			<div id="top-bar">
+				<div class="table-ks-home">
+					<div class="row-ks-home">
+						<div class="cell-ks-home-1">
+							<a href="#">
+								<img class="logo" src="assets_knowstory/knowstory-icon-2-w634-h212.png">
+							</a>
+        					<h2 class="slogan">The Story of What You Know</h2>
+						</div>
+						<div class="cell-ks-home-2">
+							<div id="nav_ks_home" class="nav-ks-home"></div>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</header>
+	</div>
+	
+	<%= render 'landing_page/new_nav' %>
+
+	<div style="height: 10px;"></div>
+	<div class="sep-bar" style="text-align: center;">
+		<span>Posters</span>
+	</div>
+	
+	
+		<!-- Poster content: main container-->
+	<div id="wrapper">		
+		<div>
+			<!-- <div id="ad-main"> -->
+			<div>
+				<div style="height: 20px;"></div>
+				<h1 style="text-align: center; font-size: 24px; color: red;">Note: This is a mock-up. Poster is under development.</h1>
+				<div style="height: 10px;"></div>
+				<div style="width: 100%; text-align: center;">
+					<a href="/Posters-1">
+						<span style="font-size: 14px; color: #888; font-family: Arial; font-weight: 400; margin-top: 10px;">
+							&laquo; View this page in development &raquo; 
+						</span>
+					</a> 
+				</div>
+				<div style="height: 10px;"></div>
+				
+				<img style="width: 1200px; margin-top: 30px; margin-left: -110px" src="/assets_knowstory/poster-banner.jpg" alt="Poster Page">
+				<img style="margin-left: -110px; margin-top: 30px;" src="/assets_knowstory/poster-img-2.jpg" alt="Poster Page">
+				<img style="margin-left: -110px; margin-top: 15px;" src="/assets_knowstory/poster-slider.jpg" alt="Poster Page">
+				
+				<!-- <img style="width: 960px; margin-top: 30px;" src="../assets_knowstory/poster-img-1.jpg" alt="Poster Page">
+				<img style="margin-left: -110px; margin-top: 60px;" src="../assets_knowstory/poster-img-2.jpg" alt="Poster Page">
+				<img style="margin-left: -110px; margin-top: 15px;" src="../assets_knowstory/poster-img-3.jpg" alt="Poster Page"> -->
+			</div>
+		</div>
+	
+		<!-- <#%= render 'layouts/footer' %#> -->
+	</div>
+
+	
+	
+	<script>
+		SlideDeckAssistant.init();
+	</script>
+
+	<script>
+
+
+		var rd_gender_clicked = false;
+		$("#user_gender_0").on("change", function () {
+			// $('#user_address').focus();
+			if (rd_gender_clicked == false) {
+				validateRadio1();
+				rd_gender_clicked = true;
+			}
+		});
+		$("#user_gender_1").on("change", function () {
+			// $('#user_address').focus();
+			if (rd_gender_clicked == false) {
+				validateRadio1();
+				rd_gender_clicked = true;
+			}
+		});
+
+
+
+		function validateRadio1() {
+
+			// var isChecked = false;
+			// if($("#user_gender_0").is(':checked')) {
+				// isChecked = true;
+			// }
+			// if($("#user_gender_1").is(':checked')) {
+				// isChecked = true;
+			// }
+// 			
+			// if ( !isChecked ) {
+				// $("#border_gender").css ({
+					// 'border-color' : '#851717'
+				// });
+				// $('#error_user_gender').html("*");
+				// $("#state_user_gender").css ({			
+					// background: 'url("/assets/submit_form_empty.png") no-repeat 0px 5px'
+				// });				
+			// }
+			// else {
+				// $("#border_gender").css ({
+					// 'border-color' : '#005C9E'
+				// });
+				// $('#error_user_gender').html("");
+				// $("#state_user_gender").css ({			
+					// background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+				// });																
+			// }
+			
+			return isChecked;
+		}
+
+
+
+		function set_rd_1() {
+			var rd ="#user_gender_0";
+			var sd = "#rd_gender_male";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_1() {
+			var sd = "#rd_gender_male";
+			$(sd).removeClass("rd-background");			
+		}
+		function set_rd_2() {
+			var rd ="#user_gender_1";
+			var sd = "#rd_gender_female";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_2() {
+			var sd = "#rd_gender_female";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function rd_gender(caller) {
+
+			switch (caller)
+			{
+			  case 'male':
+			  		set_rd_1();
+			  		unset_rd_2();
+			  	break;
+			  case 'female':
+			  		set_rd_2();
+			  		unset_rd_1();
+			  	break;
+
+			  default:
+			  //
+			}
+			
+			if (rd_gender_clicked == false) {
+				validateRadio1();
+				rd_gender_clicked = true;
+			}
+		}
+
+
+		function set_rd_account_type_0() {
+			var rd ="#user_account_type_0";
+			var sd = "#rd_account_type_0";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_account_type_0() {
+			var sd = "#rd_account_type_0";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_account_type_1() {
+			var rd ="#user_account_type_1";
+			var sd = "#rd_account_type_1";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_account_type_1() {
+			var sd = "#rd_account_type_1";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_account_type_2() {
+			var rd ="#user_account_type_2";
+			var sd = "#rd_account_type_2";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_account_type_2() {
+			var sd = "#rd_account_type_2";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_account_type_3() {
+			var rd ="#user_account_type_3";
+			var sd = "#rd_account_type_3";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_account_type_3() {
+			var sd = "#rd_account_type_3";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_account_type_4() {
+			var rd ="#user_account_type_4";
+			var sd = "#rd_account_type_4";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_account_type_4() {
+			var sd = "#rd_account_type_4";
+			$(sd).removeClass("rd-background");			
+		}
+
+		function rd_account_type(caller) {
+
+			switch (caller)
+			{
+			  case '0':
+			  		set_rd_account_type_0();
+			  		unset_rd_account_type_1();
+			  		unset_rd_account_type_2();
+			  		unset_rd_account_type_3();
+			  		unset_rd_account_type_4();
+			  	break;
+			  case '1':
+			  		unset_rd_account_type_0();
+			  		set_rd_account_type_1();
+			  		unset_rd_account_type_2();
+			  		unset_rd_account_type_3();
+			  		unset_rd_account_type_4();
+
+			  	break;
+			  case '2':
+			  		unset_rd_account_type_0();
+			  		unset_rd_account_type_1();
+			  		set_rd_account_type_2();
+			  		unset_rd_account_type_3();
+			  		unset_rd_account_type_4();
+			  	break;
+			  case '3':
+			  		unset_rd_account_type_0();
+			  		unset_rd_account_type_1();
+			  		unset_rd_account_type_2();
+			  		set_rd_account_type_3();			  		
+			  		unset_rd_account_type_4();
+			  	break;
+			  case '4':
+			  		unset_rd_account_type_0();
+			  		unset_rd_account_type_1();
+			  		unset_rd_account_type_2();
+			  		unset_rd_account_type_3();
+			  		set_rd_account_type_4();			  		
+			  	break;
+
+			  default:
+			  //
+			}
+			
+			// if (rd_gender_clicked == false) {
+				// validateRadio1();
+				// rd_gender_clicked = true;
+			// }
+		}
+
+
+
+		var selectValid2 = false;
+
+		function selectStatus2() {
+			
+			// alert($("#reg_event_type_affiliation option:selected").val());
+			
+			if ($("#reg_event_type_affiliation option:selected").val() == '0') {
+				$('#state_reg_event_type_affiliation').css ({			
+					background: 'url("/assets/submit_form_empty.png") no-repeat 0px 5px'
+				});
+				
+				$('.dropdown2').css ({			
+					color: '#838383'
+				});
+				
+				selectValid2 = false;						
+			}
+			else {
+				$('#state_reg_event_type_affiliation').css ({			
+					background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+				});
+				
+				$('.dropdown2').css ({			
+					color: '#ACDDE3'
+				});			
+		
+				if( !selectValid2 ) {
+					$('.dropdown2').css ({			
+						'border-color' : '#005C9E'
+					});
+					
+					$('.dropdown2 > .selected i').css ({			
+						'color' : '#005C9E',
+						'border-left-color' : '#005C9E' 
+					});
+					
+					$('#error_reg_event_type_affiliation').html("");					
+				}
+				
+				selectValid2 = true;		
+			}
+			
+			if(validatorCalled) {
+				validateSelect2();
+			}
+			
+			updateErrorCount();			
+		}
+
+
+		function validateSelect2() {
+			
+			if ($("#reg_event_type_affiliation option:selected").val() == '0') {
+				$('.dropdown2').css ({			
+					'border-color' : '#851717'
+				});
+				
+				$('.dropdown2 > .selected i').css ({			
+					'color' : '#851717',
+					'border-left-color' : '#851717' 
+				});
+		
+				$('#error_reg_event_type_affiliation').html("*");
+		
+				selectValid2 = false;
+			}
+			else {
+				$('.dropdown2').css ({			
+					'border-color' : '#005C9E'
+				});
+				
+				$('.dropdown2 > .selected i').css ({			
+					'color' : '#005C9E',
+					'border-left-color' : '#005C9E' 
+				});
+
+				$('#error_reg_event_type_affiliation').html("");
+				
+				selectValid2 = true;		
+			}
+			
+			return selectValid2;
+		}
+
+
+		function formValidate() {
+						
+			$("#form_user_new").validate({
+			
+				submitHandler: function(form) {
+					form.submit();
+				},
+			
+				debug: true,
+				onkeyup: false,
+				focusCleanup: true,
+				// invalidClass: "error",
+				// validClass: "success",
+				
+				rules: {
+					'user[name_first]': {
+						required: true,
+						minlength: 1,
+						maxlength: 50
+					},
+					'user[name_last]': {
+						required: true,
+						minlength: 1,
+						maxlength: 50
+					},
+					'user[email]': {
+						required: true,
+						maxlength: 100,
+						email: true
+					},															
+					'user[username]': {
+						required: true,
+						minlength: 1,
+						maxlength: 50
+					},
+					'user[password]': {
+						required: true,
+						minlength: 4,
+						maxlength: 50
+					},
+					'user[password_confirmation]': {
+						equalTo: "#user_password"
+					}
+				},
+				invalidHandler: function(event, validator) {
+					var errors = validator.numberOfInvalids();
+					if (errors) {
+						var message = errors == 1
+						? 'You missed 1 field'
+						: 'You missed ' + errors + ' fields';
+						$("div.errors p").html(message);
+						$("div.errors").show();
+					} else {
+						$("div.errors").hide();
+					}
+				},				
+				messages: {
+					'user[name_first]': {
+						required: "*",
+						minlength: "First Name at least 1 character",
+						maxlength: "First Name exceeds 50 characters"
+					},
+					'user[name_last]': {
+						required: "*",
+						minlength: "Last Name at least 1 character",
+						maxlength: "Last Name exceeds 50 characters"
+					},					
+					'user[username]': {
+						required: "*",
+						minlength: "Username at least 4 characters",
+						maxlength: "Username exceeds 50 characters"
+					},
+					'user[password]': {
+						required: "*",
+						minlength: "Password at least 4 characters long",
+						maxlength: "Password exceeds 20 characters"
+					},
+					'user[password_confirmation]': {
+						equalTo: "Passwords must match"
+					},
+					'user[email]': {
+						required: "*",
+						maxlength: "Email exceeds 100 characters",
+						email: "Please enter a valid email address"
+					}										
+				},
+				errorContainer: $("div .error_label"),				
+				errorPlacement: function(error, element) {
+					error.insertAfter('#error_' + element.attr('id'));
+					$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					//$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				},
+				// invalid: function(element) {
+					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// $('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');					
+				// },
+				// highlight: function(element) {
+					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				// unhighlight: function(element) {
+					// //$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				error: function(label) {
+					$('#' + label.attr('for')).removeClass('required').removeClass('success').addClass('error');
+					$('#label_' + label.attr('for')).removeClass('required-label').addClass('error-label');
+				},
+				success: function(label) {
+					$('#' + label.attr('for')).removeClass('required').removeClass('error').addClass('success');
+					$('#label_' + label.attr('for')).removeClass('error-label').addClass('required-label');
+					
+					$('#state_' + label.attr('for')).css ({			
+						background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+					});
+ 
+					$('#error_' + label.attr('for')).html("");
+				},				
+				focus: function(element) {
+				 	$('#' + element.attr('id')).removeClass('required').removeClass('error').removeClass('success').addClass('focus');
+				}
+			});
+			
+			// $.validator.setDefaults({
+				// 				
+				// submitHandler: function() {
+					// form.submit();
+				// }
+				//$('#user_username');
+				
+				// submitHandler: function() { alert("submitted!"); }
+				// debug: true,
+				// onkeyup: false,
+				// focusCleanup: true,
+				// errorClass: "invalid",
+				// validClass: "success"
+			// });
+		}
+
+
+		$(window).load( function() {
+		//$(document).ready(function(){
+
+			// formValidate();
+			
+						
+			$('select').dropdown({
+			    'changed': function(data) {
+			        // selectStatus1();
+			        // selectStatus2();	
+			    }
+			});	    
+			
+			
+			$('#user_gender_0').prop('checked', false);				
+			$('#user_gender_1').prop('checked', false);				
+
+			$('#rd_gender_male').on('click', function() {
+				rd_gender('male');
+			});
+			$('#rd_gender_female').on('click', function() {
+				rd_gender('female');
+			});
+			
+    		$('#rd_gender_male').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_gender_male').click();
+    		});				
+    		$('#rd_gender_female').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_gender_female').click();
+    		});				
+
+    		$("#ch_remember_me").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#ch_remember_me").click();
+    		});				
+
+
+			$('#user_account_type_0').prop('checked', false);				
+			$('#user_account_type_1').prop('checked', false);				
+			$('#user_account_type_2').prop('checked', false);				
+			$('#user_account_type_3').prop('checked', false);				
+			$('#user_account_type_4').prop('checked', false);				
+			
+			$('#rd_account_type_0').on('click', function() {
+				rd_account_type('0');
+			});
+			$('#rd_account_type_1').on('click', function() {
+				rd_account_type('1');
+			});
+			$('#rd_account_type_2').on('click', function() {
+				rd_account_type('2');
+			});
+			$('#rd_account_type_3').on('click', function() {
+				rd_account_type('3');
+			});
+			$('#rd_account_type_4').on('click', function() {
+				rd_account_type('4');
+			});
+			
+    		$('#rd_account_type_0').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_account_type_0').click();
+    		});				
+    		$('#rd_account_type_1').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_account_type_1').click();
+    		});				
+    		$('#rd_account_type_2').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_account_type_2').click();
+    		});				
+    		$('#rd_account_type_3').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_account_type_3').click();
+    		});				
+    		$('#rd_account_type_4').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_account_type_4').click();
+    		});				
+
+
+
+
+			$(".group1").colorbox({rel:'group1'});
+			$(".group2").colorbox({rel:'group2', transition:"fade"});
+			$(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
+			$(".group4").colorbox({rel:'group4', slideshow:true});
+			$(".ajax").colorbox();
+			$(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
+			$(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
+			$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+			$(".inline").colorbox({inline:true, width:"50%"});
+			$(".callbacks").colorbox({
+				onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+				onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+				onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+				onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+				onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+			});
+
+			$('.non-retina').colorbox({rel:'group5', transition:'none'})
+			$('.retina').colorbox({rel:'group5', transition:'none', retinaImage:true, retinaUrl:true});
+			
+			$("#click").click(function(){ 
+				$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+				return false;
+			});
+
+
+
+			$("#panel-1").focus( function() {
+				$("#panel-1").mouseover();
+			});
+			$("#panel-1").blur( function() {
+				$("#panel-1").mouseleave();
+			});
+
+			$("#panel-2").focus( function() {
+				$("#panel-2").mouseover();
+			});
+			$("#panel-2").blur( function() {
+				$("#panel-2").mouseleave();
+			});
+
+			$("#panel-3").focus( function() {
+				$("#panel-3").mouseover();
+			});
+			$("#panel-3").blur( function() {
+				$("#panel-3").mouseleave();
+			});
+
+			$("#panel-4").focus( function() {
+				$("#panel-4").mouseover();
+			});
+			$("#panel-4").blur( function() {
+				$("#panel-4").mouseleave();
+			});
+
+			$("#panel-5").focus( function() {
+				$("#panel-5").mouseover();
+			});
+			$("#panel-5").blur( function() {
+				$("#panel-5").mouseleave();
+			});
+			
+			// $('.initiator').on('mouseenter mouseleave', function(e) {
+			    // $('.receiver').trigger(e.type);
+			// });
+						
+						
+			// $("ul li").on('click', function() {
+				// alert('page');
+			// });
+
+			$('a[href*=#]:not([href=#])').click(function() {
+			    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			        || location.hostname == this.hostname) {
+			        var target = $(this.hash);
+			        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+		           	if (target.length) {
+		             	$('html,body').animate({
+		                	scrollTop: target.offset().top
+		            	}, 750);
+		            	// return false;
+		        	}
+			    }
+			});
+
+						
+		});
+	
+	</script>

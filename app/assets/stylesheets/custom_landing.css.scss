@@ -40,7 +40,7 @@ $ksblue: #1f7c82; //know story blue - as from the products page
     color: $ksgreen;
     margin: 0 0 10px 40px;
     // font-size: 1.5em;
-    font-size: 1.6em;
+    font-size: 1.25em;
   }
 }
 
@@ -204,17 +204,39 @@ header {margin-bottom: 30px;}
   margin:45px 0;
 }
 
-.sign-button-link-2, a.sign-button-link-2:visited {
-  border-radius: 6px;
-  border: 1px solid #b1ccaf;
-  line-height: 1.33;
-  color: $ksgreen;
-  background: transparent;
-  font-size: 22px;
-  padding: 15px 65px;
-  text-decoration: none;
-  &:hover {background: $ksgreen; text-decoration: underline; color: #FFF;}
+.sign-button-link-2, 
+  div.sign-button-link-2:visited,
+  a.sign-button-link-2:visited {
+    border-radius: 6px;
+    border: 1px solid #b1ccaf;
+    line-height: 1.33;
+    color: $ksgreen;
+    background: transparent;
+    font-size: 22px;
+    padding: 15px 65px;
+    text-decoration: none;
+    &:hover {background: $ksgreen; text-decoration: underline; color: #FFF;}
 }
+
+
+
+.sign-button-3 {
+  margin:45px 0;
+}
+
+.sign-button-link-3, 
+  div.sign-button-link-3:visited {
+    border-radius: 6px;
+    border: 1px solid #b1ccaf;
+    line-height: 1.33;
+    color: $ksgreen;
+    background: transparent;
+    font-size: 22px;
+    padding: 15px 65px;
+    text-decoration: none;
+    &:hover {background: $ksgreen; text-decoration: underline; color: #FFF; cursor: pointer;}
+}
+
 
 // For alignment of font and images in profile sections
  .profile-image {width:473px; margin-bottom:110px;}
@@ -225,17 +247,20 @@ header {margin-bottom: 30px;}
     &:visited {color: $ksblue; text-decoration: none;}
   }
   .profile-image {float:left; margin-right: 30px;}
-   .sign-button-2 {margin-left: 635px;}
+   .sign-button-2 {margin-left: 500px;}
+   .sign-button-3 {margin-left: 500px;}
  }
 
   .even { margin-bottom: 130px;
   h1, h2, p {color: $ksgreen;}
   .profile-image {float:right; margin-left: 30px; }
   .sign-button-2 {margin-left: 125px;}
+  .sign-button-3 {margin-left: 125px;}
  }
 
 #school, #recruiter {clear: both;}
 
+.container3 p { text-align: left;}
 
 //footer
 

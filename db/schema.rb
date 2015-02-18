@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008183734) do
+ActiveRecord::Schema.define(version: 20150209095412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -518,6 +518,40 @@ ActiveRecord::Schema.define(version: 20141008183734) do
     t.integer  "user_id"
   end
 
+  create_table "issued_gen_ids", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "profile_type",                  default: 0
+    t.integer  "profile_id",                    default: 0
+    t.boolean  "has_personalized_id",           default: false
+    t.string   "personalized_id"
+    t.integer  "gen_id",              limit: 8
+    t.integer  "user_id",             limit: 8
+    t.integer  "student_id",          limit: 8
+    t.integer  "teacher_id",          limit: 8
+    t.integer  "publisher_id",        limit: 8
+    t.integer  "institute_id",        limit: 8
+    t.integer  "recruiter_id",        limit: 8
+  end
+
+  add_index "issued_gen_ids", ["gen_id"], name: "index_issued_gen_ids_on_gen_id", unique: true, using: :btree
+  add_index "issued_gen_ids", ["institute_id"], name: "index_issued_gen_ids_on_institute_id", unique: true, using: :btree
+  add_index "issued_gen_ids", ["publisher_id"], name: "index_issued_gen_ids_on_publisher_id", unique: true, using: :btree
+  add_index "issued_gen_ids", ["recruiter_id"], name: "index_issued_gen_ids_on_recruiter_id", unique: true, using: :btree
+  add_index "issued_gen_ids", ["student_id"], name: "index_issued_gen_ids_on_student_id", unique: true, using: :btree
+  add_index "issued_gen_ids", ["teacher_id"], name: "index_issued_gen_ids_on_teacher_id", unique: true, using: :btree
+  add_index "issued_gen_ids", ["user_id"], name: "index_issued_gen_ids_on_user_id", unique: true, using: :btree
+
+  create_table "issued_per_ids", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "id_per"
+    t.integer  "profile_type", default: 0
+    t.integer  "profile_id",   default: 0
+  end
+
+  add_index "issued_per_ids", ["id_per"], name: "index_issued_per_ids_on_id_per", using: :btree
+
   create_table "journal1poster_positions", force: true do |t|
     t.integer  "id_map"
     t.integer  "pos_x",        default: 0
@@ -770,6 +804,34 @@ ActiveRecord::Schema.define(version: 20141008183734) do
     t.datetime "updated_at"
   end
 
+  create_table "log_errors", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "profile_index",       default: 0
+    t.string   "profile_description"
+    t.string   "description"
+    t.string   "controller"
+    t.string   "action"
+  end
+
+  create_table "log_publishers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id"
+    t.integer  "user_id"
+  end
+
+  add_index "log_publishers", ["publisher_id"], name: "index_log_publishers_on_publisher_id", using: :btree
+  add_index "log_publishers", ["user_id"], name: "index_log_publishers_on_user_id", using: :btree
+
+  create_table "log_users", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "log_users", ["user_id"], name: "index_log_users_on_user_id", using: :btree
+
   create_table "paintings", force: true do |t|
     t.integer  "gallery_id"
     t.string   "name"
@@ -777,6 +839,76 @@ ActiveRecord::Schema.define(version: 20141008183734) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "post_publisher_likes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_publisher_id"
+    t.integer  "user_id"
+  end
+
+  add_index "post_publisher_likes", ["post_publisher_id"], name: "index_post_publisher_likes_on_post_publisher_id", using: :btree
+  add_index "post_publisher_likes", ["user_id"], name: "index_post_publisher_likes_on_user_id", using: :btree
+
+  create_table "post_publishers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "publisher_id"
+    t.text     "post_text",    default: ""
+    t.boolean  "b_group",      default: false
+  end
+
+  add_index "post_publishers", ["publisher_id"], name: "index_post_publishers_on_publisher_id", using: :btree
+  add_index "post_publishers", ["user_id"], name: "index_post_publishers_on_user_id", using: :btree
+
+  create_table "post_user_comments", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_user_id"
+    t.integer  "user_id"
+    t.text     "comment_text", default: ""
+  end
+
+  add_index "post_user_comments", ["post_user_id"], name: "index_post_user_comments_on_post_user_id", using: :btree
+  add_index "post_user_comments", ["user_id"], name: "index_post_user_comments_on_user_id", using: :btree
+
+  create_table "post_user_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",      default: 0
+    t.integer  "post_user_id", default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",      default: false
+    t.integer  "order",        default: 0
+    t.integer  "crop_x",       default: 0
+    t.integer  "crop_y",       default: 0
+    t.integer  "crop_w",       default: 0
+    t.integer  "crop_h",       default: 0
+  end
+
+  add_index "post_user_images", ["post_user_id"], name: "index_post_user_images_on_post_user_id", using: :btree
+
+  create_table "post_user_likes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_user_id"
+    t.integer  "user_id"
+  end
+
+  add_index "post_user_likes", ["post_user_id"], name: "index_post_user_likes_on_post_user_id", using: :btree
+  add_index "post_user_likes", ["user_id"], name: "index_post_user_likes_on_user_id", using: :btree
+
+  create_table "post_users", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.text     "post_text",  default: ""
+    t.boolean  "b_group",    default: false
+  end
+
+  add_index "post_users", ["user_id"], name: "index_post_users_on_user_id", using: :btree
 
   create_table "public_publisher_admins", force: true do |t|
     t.datetime "created_at"
@@ -798,6 +930,65 @@ ActiveRecord::Schema.define(version: 20141008183734) do
     t.datetime "updated_at"
   end
 
+  create_table "publisher_ad_listings", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",                                      default: 0
+    t.integer  "publisher_id",                                 default: 0
+    t.integer  "publisher_product_id",                         default: 0
+    t.decimal  "ad_amount",            precision: 8, scale: 2, default: 0.0
+    t.string   "name_product"
+    t.integer  "term_listing",                                 default: 0
+    t.integer  "term_positioning",                             default: 0
+    t.integer  "term_keyword",                                 default: 0
+    t.string   "keyword"
+    t.decimal  "cost_listing",         precision: 8, scale: 2, default: 0.0
+    t.decimal  "cost_positioning",     precision: 8, scale: 2, default: 0.0
+    t.decimal  "cost_keyword",         precision: 8, scale: 2, default: 0.0
+    t.datetime "ad_date_exp"
+    t.datetime "ad_date_init"
+  end
+
+  add_index "publisher_ad_listings", ["publisher_id"], name: "index_publisher_ad_listings_on_publisher_id", using: :btree
+
+  create_table "publisher_ad_pins", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",                                      default: 0
+    t.integer  "publisher_id",                                 default: 0
+    t.integer  "publisher_product_id",                         default: 0
+    t.decimal  "ad_amount",            precision: 8, scale: 2, default: 0.0
+    t.string   "name_product"
+    t.string   "poster"
+    t.integer  "poster_index",                                 default: 0
+    t.string   "category"
+    t.integer  "category_index",                               default: 0
+    t.integer  "term_pin",                                     default: 0
+    t.datetime "ad_date_exp"
+    t.datetime "ad_date_init"
+  end
+
+  add_index "publisher_ad_pins", ["publisher_id"], name: "index_publisher_ad_pins_on_publisher_id", using: :btree
+
+  create_table "publisher_ad_squares", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",                                      default: 0
+    t.integer  "publisher_id",                                 default: 0
+    t.integer  "publisher_product_id",                         default: 0
+    t.decimal  "ad_amount",            precision: 8, scale: 2, default: 0.0
+    t.string   "name_product"
+    t.string   "poster"
+    t.integer  "poster_index",                                 default: 0
+    t.integer  "term_square",                                  default: 0
+    t.string   "keyword"
+    t.decimal  "cost_keyword",         precision: 8, scale: 2, default: 0.0
+    t.datetime "ad_date_exp"
+    t.datetime "ad_date_init"
+  end
+
+  add_index "publisher_ad_squares", ["publisher_id"], name: "index_publisher_ad_squares_on_publisher_id", using: :btree
+
   create_table "publisher_admin_settings", force: true do |t|
     t.integer  "user_id"
     t.integer  "publisher_id"
@@ -816,6 +1007,17 @@ ActiveRecord::Schema.define(version: 20141008183734) do
     t.string   "ad_subject"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "ad_index",                                       default: 0
+    t.string   "ad_description"
+    t.boolean  "ad_status_purchased",                            default: false
+    t.boolean  "ad_status_public",                               default: false
+    t.datetime "ad_date_exp"
+    t.datetime "ad_date_init"
+    t.decimal  "ad_amount",              precision: 8, scale: 2, default: 0.0
+    t.integer  "ad_status_public_index",                         default: 0
+    t.string   "ad_status_public_msg"
+    t.string   "auth_code"
+    t.integer  "publisher_product_id",                           default: 0
   end
 
   add_index "publisher_ads", ["publisher_id"], name: "index_publisher_ads_on_publisher_id", using: :btree
@@ -1014,6 +1216,23 @@ ActiveRecord::Schema.define(version: 20141008183734) do
   end
 
   add_index "publisher_journalposters", ["publisher_id"], name: "index_publisher_journalposters_on_publisher_id", using: :btree
+
+  create_table "publisher_logo_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",      default: 0
+    t.integer  "publisher_id", default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",      default: false
+    t.integer  "order",        default: 0
+    t.integer  "crop_x",       default: 0
+    t.integer  "crop_y",       default: 0
+    t.integer  "crop_w",       default: 0
+    t.integer  "crop_h",       default: 0
+  end
+
+  add_index "publisher_logo_images", ["publisher_id"], name: "index_publisher_logo_images_on_publisher_id", using: :btree
 
   create_table "publisher_members", force: true do |t|
     t.datetime "created_at"
@@ -1371,6 +1590,7 @@ ActiveRecord::Schema.define(version: 20141008183734) do
     t.string   "uri"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "id_standard",          default: 0
   end
 
   add_index "publisher_product_core_math_standards", ["publisher_id"], name: "index_cms_on_publisher_id", using: :btree
@@ -1589,6 +1809,24 @@ ActiveRecord::Schema.define(version: 20141008183734) do
 
   add_index "publisher_product_lesson_times", ["publisher_id"], name: "index_lesson_time_on_publisher_id", using: :btree
   add_index "publisher_product_lesson_times", ["publisher_product_id"], name: "index_lesson_time_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_logo1_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",              default: 0
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",              default: false
+    t.integer  "order",                default: 0
+    t.integer  "crop_x",               default: 0
+    t.integer  "crop_y",               default: 0
+    t.integer  "crop_w",               default: 0
+    t.integer  "crop_h",               default: 0
+  end
+
+  add_index "publisher_product_logo1_images", ["publisher_product_id"], name: "index_publisher_product_logo1_images_on_publisher_product_id", using: :btree
 
   create_table "publisher_product_logos", force: true do |t|
     t.integer  "publisher_id"
@@ -1828,33 +2066,105 @@ ActiveRecord::Schema.define(version: 20141008183734) do
     t.integer  "crop_h",            default: 0
   end
 
+  create_table "publisher_user_logo_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",           default: 0
+    t.integer  "publisher_id",      default: 0
+    t.integer  "publisher_user_id", default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",           default: false
+    t.integer  "order",             default: 0
+    t.integer  "crop_x",            default: 0
+    t.integer  "crop_y",            default: 0
+    t.integer  "crop_w",            default: 0
+    t.integer  "crop_h",            default: 0
+  end
+
+  add_index "publisher_user_logo_images", ["publisher_user_id"], name: "index_publisher_user_logo_images_on_publisher_user_id", using: :btree
+
   create_table "publisher_users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",             default: 0
     t.integer  "publisher_id",        default: 0
     t.integer  "publisher_member_id", default: 0
+    t.string   "slug"
+    t.string   "location"
+    t.string   "job_title"
+    t.string   "phone_company"
+    t.string   "website"
+    t.integer  "years_at_company",    default: 0
+    t.string   "email"
+    t.string   "name_alias"
+    t.string   "name_company"
+    t.string   "time_at_company"
+    t.text     "story_plot",          default: ""
+    t.text     "story_interest",      default: ""
   end
 
   add_index "publisher_users", ["publisher_id"], name: "index_publisher_users_on_publisher_id", using: :btree
+  add_index "publisher_users", ["slug"], name: "index_publisher_users_on_slug", unique: true, using: :btree
 
   create_table "publishers", force: true do |t|
-    t.string   "name",                       limit: 100
-    t.string   "address",                    limit: 100
-    t.string   "city",                       limit: 100
-    t.string   "state",                      limit: 50
-    t.string   "country",                    limit: 100
-    t.string   "phone",                      limit: 100
-    t.string   "url",                        limit: 100
-    t.text     "description"
-    t.string   "company_contact_name_first", limit: 100
-    t.string   "company_contact_name_last",  limit: 100
-    t.string   "company_contact_phone",      limit: 100
-    t.string   "company_contact_email",      limit: 100
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "zip"
+    t.string   "slug"
+    t.string   "name_company"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "website"
+    t.string   "phone_company"
+    t.string   "email_info"
+    t.string   "email_admin"
+    t.string   "name_admin"
+    t.string   "tagline_logo"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.text     "story_corporate", default: ""
+    t.integer  "id_gen"
+    t.string   "id_per",          default: ""
+    t.boolean  "id_per_b",        default: false
+    t.string   "slug_pre_id",     default: ""
+  end
+
+  add_index "publishers", ["slug"], name: "index_publishers_on_slug", unique: true, using: :btree
+
+  create_table "relate_follows", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+  end
+
+  create_table "relate_log_publishers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+  end
+
+  create_table "relate_log_users", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+  end
+
+  create_table "relate_publisher_follows", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+  end
+
+  create_table "user_avatars", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_connections", force: true do |t|
@@ -1875,6 +2185,22 @@ ActiveRecord::Schema.define(version: 20141008183734) do
   end
 
   add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id", using: :btree
+
+  create_table "user_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",    default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",    default: false
+    t.integer  "order",      default: 0
+    t.integer  "crop_x",     default: 0
+    t.integer  "crop_y",     default: 0
+    t.integer  "crop_w",     default: 0
+    t.integer  "crop_h",     default: 0
+  end
+
+  add_index "user_images", ["user_id"], name: "index_user_images_on_user_id", using: :btree
 
   create_table "user_messages", force: true do |t|
     t.integer  "user_id"
@@ -1901,27 +2227,34 @@ ActiveRecord::Schema.define(version: 20141008183734) do
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  limit: 50, default: ""
+    t.string   "email",                  limit: 50,  default: ""
     t.string   "username",               limit: 50
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "has_account",                       default: false
+    t.boolean  "has_account",                        default: false
     t.string   "name_first",             limit: 50
     t.string   "name_last",              limit: 50
-    t.integer  "bd_day",                            default: 0
-    t.integer  "bd_month",                          default: 0
-    t.integer  "bd_year",                           default: 0
-    t.integer  "gender",                            default: 0
-    t.integer  "account_type",                      default: 0
-    t.string   "account_type_text"
+    t.integer  "bd_day",                             default: 0
+    t.integer  "bd_month",                           default: 0
+    t.integer  "bd_year",                            default: 0
+    t.integer  "gender",                             default: 0
     t.string   "bd_month_text"
     t.string   "gender_text"
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "avatar"
+    t.integer  "id_gen",                 limit: 8,   default: 0
+    t.string   "id_per",                             default: ""
+    t.string   "slug",                   limit: 200
+    t.string   "avatar_image"
+    t.string   "slug_pre_id"
+    t.boolean  "id_per_b",                           default: false
+    t.integer  "profile_type",                       default: 0
+    t.string   "profile_type_text"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
 end

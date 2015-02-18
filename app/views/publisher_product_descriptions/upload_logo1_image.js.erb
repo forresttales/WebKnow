@@ -1,0 +1,9 @@
+// alert('ajax works in upload_logo1_image');
+<% if @publisher_product_logo1_image %>
+	$('#render_logo1_image .container-image').html("<%= j render('publisher_product_descriptions/logo1_image') %>");
+	$('#render_logo1_image .container-menu').html("<%= j render('publisher_product_descriptions/logo1_image_menu') %>");
+	id_logo1_image = <%= @publisher_product_logo1_image.id %>;
+	closeAddLogo1Image();
+<% else %>
+	alert("Upload error");
+<% end %>

@@ -8,18 +8,47 @@
 #  user_id             :integer          default(0)
 #  publisher_id        :integer          default(0)
 #  publisher_member_id :integer          default(0)
+#  slug                :string(255)
+#  location            :string(255)
+#  job_title           :string(255)
+#  phone_company       :string(255)
+#  website             :string(255)
+#  years_at_company    :integer          default(0)
+#  email               :string(255)
+#  name_alias          :string(255)
+#  name_company        :string(255)
+#  time_at_company     :string(255)
+#  story_plot          :text             default("")
+#  story_interest      :text             default("")
 #
 
 class PublisherUser < ActiveRecord::Base
   
   attr_accessible :user_id,
                   :publisher_id,
-                  :publisher_member_id
+                  :publisher_member_id,
+                  :location,
+                  :name_alias,
+                  :job_title,
+                  :name_company,
+                  :years_at_company,
+                  :time_at_company,
+                  :email,
+                  :phone_company,
+                  :website,
+                  :story_plot,
+                  :story_interest
+                  # :slug
 
-  
+
+  # extend FriendlyId
+  # friendly_id :id, use: [:slugged, :history]
+
+  belongs_to :user
   belongs_to :publisher_member
   
   has_many :publisher_user_images
+  has_many :publisher_user_logo_images
   
 
 

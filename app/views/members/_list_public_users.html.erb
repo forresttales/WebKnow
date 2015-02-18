@@ -10,24 +10,44 @@
 
 				<!-- <div class="publisher-product-list-top-border"></div> -->
 
-				<div id="scroll1" class="product-listbox" style="height: 100%;">	
+			<div id="scroll1" class="product-listbox" style="height: 100%;">	
 
-			<% if !@public_users.nil? %>
+			<!-- <#% if !@public_users.nil? %#> -->
 			<% if @public_users.any? %>
-
 
 				<% @public_users.each do |public_user| %>
 
-					<%= link_to public_user_path(:id => public_user.id), class: "" do %>
+					<% if false %>
+		            <% account_type = current_user.account_type.to_s %>
+		            <% pre_id = '' 									 %>              
+		            <% case account_type 							 %>
+		            <% 	when "1"									 %>
+		            	<!-- student -->
+		            <%  when "2"									 %>
+		            	<!-- teacher -->
+		            <%  when "3"									 %>
+		            	<!-- publisher -->
+		            <%    pre_id = '/'						 	 	 %>
+		            <%  when "4"									 %>
+		            	<!-- institute/school -->
+		            <%  when "5"									 %>
+		            	<!-- recruiter -->
+		            <%  else										 %>
+		            	<!-- #      -->
+		            <% end									 		 %>
+					<% end %>
+
+					<!-- <#%= link_to public_user_path(pre_id + public_user.slug), class: "" do %#> -->
+					<%= link_to ('/' + public_user.slug), class: "" do %>
 						<!-- <#%= link_to ("/id" + publisher.id.to_s).html_safe, class: "" do %#> -->
-						<div class="publisher-products-list-1">
+						<div class="publisher-products-list-1" style="height: 112px;">
 							<!-- <a href="<#%= ("/publisher-id" + publisher.id.to_s).html_safe %#>" style="height: 65px;"> -->
 							<div class="publisher-products-list-2-left">
 								<div class="div-img">
 									<ul class="publisher-product-list-grid publisher-product-list-caption">
 										<li>
 											<figure>
-												<%= avatar_public_user public_user %>
+												<%= avatar_public_user_for public_user %>
 												<!-- <figcaption>
 												</figcaption> -->
 											</figure>
@@ -37,35 +57,13 @@
 								<div class="helper"></div>								
 							</div>
 
-							<div class="publisher-products-list-3">
-								
-								<div>
-									<div class="publisher-products-list-4">
-										<span class="publisher-products-span-1">User ID: <%= public_user.id %></span>
-									</div>
+							<div class="publisher-products-list-3" style="padding: 10px 0 0 0;">
+								<div class="publisher-products-list-4">
+									<a href="/<%= public_user.slug %>">
+										<span class="publisher-products-span-1"><%= public_user.name_first %> </span>
+										<span class="publisher-products-span-1"><%= public_user.name_last %></span>
+									</a>
 								</div>
-
-								<% if false %>
-
-								<div>
-									<div class="publisher-products-list-4">
-										<span class="publisher-products-span-1"><%= publisher_product_name_product_for publisher_product %></span>
-									</div>
-								</div>
-									
-								<div>									
-									<div class="publisher-products-list-4">
-										<div style="height: 40px;"></div>
-									</div>
-								</div>
-									
-								<div style="position: relative;">									
-									<div class="publisher-products-list-4" style="text-align: right;">
-										<!-- <#%= button_to "View/Edit", show_description_publisher_product_descriptions_path( :publisher_product_id => publisher_product.id ), :method => :post, :class => 'unbutton-prod-list' %#> -->
-									</div>
-								</div>
-								<% end %>
-								
 							</div>
 							
 							<div class="publisher-products-list-2-right">
@@ -104,9 +102,9 @@
 					<h3>No record for Publisher Products</h3>
 				</div> -->
 			<% end %>
-			<% end %>
+			<!-- <#% end %#> -->
 
-				</div>
+			</div>
 
 
 				<!-- <div id="im_bottom_sh" style="display: block;"></div> -->					

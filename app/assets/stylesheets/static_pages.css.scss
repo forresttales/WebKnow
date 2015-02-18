@@ -1,0 +1,214 @@
+// SCSS file for the new page
+
+body {
+	
+}
+
+#wrapper {
+	max-width: 960px;
+	margin:0 auto;
+
+}
+
+p {font-size: 16px;}
+//Variables, fonts, etc.
+
+$ksgreen: #49853F;
+$lightgreen: #41b737;
+$lcgray: #A6A6A6;
+$ksblue: #1f7c82; //know story blue - as from the products page
+$kso: #DC9940; // Know story orange
+$lco: #F69010; // Learning Counsel, brighter orange
+$fadegreen: #8eb388; // Faded green for background colors
+$dgreen: #376340;
+$midgreen: #8eb388;
+
+@font-face {font-family: gistlight; src: url("/fonts/gistuprightregular-webfont.ttf");}
+.clearfix {clear:both;}
+
+//Main content
+h2 {color: $ksgreen; 
+	font-size: 25px;
+    font-weight: bold;
+    margin: 7px 0;}
+
+h3 {color: $ksgreen;}
+.ksgreen {color: $ksgreen;}
+.dgreen {color: $dgreen;}
+.lcgray {color:$lcgray;}
+
+.page-title {color: #214025; font-weight: bold;font-size: 40px; margin: 35px 0 10px 0;}
+
+.sep-bar {
+	background: linear-gradient(to bottom, #49853f -50%, #ffffff 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-bottom: 1px solid #49853f;
+    height: 30px;
+    text-align: left;
+    font-size: 20px;
+    color: $ksgreen;
+    span {padding-left: 10px;}
+}
+
+.main-1 {
+	border-bottom: none;
+	img {float:left; margin-right: 20px;}
+	p {margin-top: 10px;}
+	.border-sep{border-bottom: 1px solid $ksgreen; width:700px; margin: auto; padding-bottom: 25px;}
+}
+
+.main-2 {
+	border-bottom: none;
+	h2 {  text-align: center;}
+	table {width:960px; margin:5px auto; 
+	td {border: 1px solid $ksgreen; padding: 5px; color: $ksgreen; text-align: center; width: 250px; font-size: 18px;}
+	}
+	.border-sep{border-bottom: 2px solid $dgreen; width:700px; margin: auto; padding-bottom:25px;}
+}
+
+.main-3 {
+	h3 {color: $ksgreen; text-align: center;}
+	table {width: 960px;}
+	td { img { height: 450px;}}
+	
+}
+
+a.start-story {background: $kso; color: #fff; padding: 15px; font-size: 20px;
+		border-radius: 14px;
+		&:hover {color: #fff; opacity: 0.8;}
+		&:active, &:visited {color: #fff; text-decoration: none;}
+	}
+
+.main-4 {
+	table {border-collapse: collapse;}
+	td {width: 27%;
+		padding: 10px;
+		vertical-align: top;
+		h3 {color: #fff; border: 1px solid $dgreen; background: $fadegreen; padding: 20px;
+			text-align: center;}
+		h4 {color: $ksgreen; text-align: left;}
+		p {margin-top: 20px; }
+	}
+	img {width: 300px;}
+	border: 2px solid $dgreen;
+	margin-top: 35px;
+	span {text-align: center; color: $kso;}
+	.center {margin-left: 60px; width: 160px;}
+	.start-story {position: relative; top: 200px;}
+	ul {color: $ksgreen;
+		list-style-type: square;
+		span {color: #000;}
+	}
+}
+
+.sep-border {height: 20px; border-bottom: 2px solid $dgreen; width: 700px; margin: 20px auto; clear: both;}
+a.orange-button {
+	background: $kso; color: #fff; padding: 5px; font-size: 13px;
+		border-radius: 14px;
+		border: 1px solid $ksgreen;
+		text-align: center;
+		&:hover {color: #fff; opacity: 0.8;}
+		&:active, &:visited {color: #fff; text-decoration: none;}
+}
+
+h3 a:link, h3 a:hover, h3 a:visited {color: $kso; text-decoration: underline;}
+
+.main-5 {
+	h3 {color: $ksgreen;}
+	h2 {font-weight: bold; font-size: 25px;}
+	.main-5-left {float:left; margin:0 40px 0px 0;}
+	.special {color: #fff; border-bottom: 1px solid $dgreen; 
+			border-right: 1px solid $dgreen; background: $fadegreen; padding: 20px;
+			text-align: center; width: 650px; margin-left: 310px; clear:none; margin-top: 70px;}
+	.main-5-right p {font-size: 15px;}
+	.arrow {position: relative; right: 90px; top: 20px;
+	 img{float:left; width:300px;} h3{padding-top: 30px;}}
+
+}
+
+.main-6 {
+	.left {width: 550px;
+			float: left;}
+	.right img {width: 350px; border:3px solid $lightgreen;}
+	.img-1 {position: relative; top: 65px; left: 60px;}
+	.img-2 {position: relative; right: 30px; top: -20px; z-index: 2;}
+}
+
+.main-7 {
+	.left {float: left; margin-right: 50px; width: 200px; margin-bottom: 25px;}
+
+	.green{color: $lightgreen; margin-left: 40px; margin-top:10px;}
+	.grey {color: $lcgray; margin-left: 40px; margin-top:10px;}
+	.orange-button {float:right; margin-right: 35px; position: relative; margin-top: -50px;}
+}
+
+.main-8 {
+	.left {float: left;}
+	.right {float: right; margin-right: 100px; width: 300px; height: 775px;}
+	.green-box {
+		width:315px;
+		color: #fff; border-bottom: 1px solid $dgreen; 
+		border-right: 1px solid $dgreen; background: $fadegreen; padding: 5px 20px;
+		margin-top: 10px; font-weight: bold;
+	}
+	.orange-button {padding: 10px 50px; margin-left:35px;}
+}
+.light-green {color: $lightgreen;}
+.main-9 {
+	.light-green {margin-left: 550px; width: 350px;}
+	.right-img {margin-left: 200px;}
+	.col-left {width: 400px; float: left; background: none; min-height: 500px; 
+		h4 {font-size: 21px;}
+		p {margin: 7px 0;} 
+		p span {font-size: 18px;}
+	}
+	.col-right {
+		border:3px solid $dgreen;
+		background: #e0eade;
+		margin-left: 15px;
+		width: 540px; float: left; p.ksgreen, h4.dgreen {text-align: center;}
+	ul {list-style-type: none; li{margin:10px 0; font-size: 16px;}}
+	padding-bottom: 30px;
+	}
+	.orange-button { padding: 20px 40px; font-size: 20px; position: relative;
+		top:85px; right:150px;}
+}
+
+///New Rules for the About Us page:
+.main-container {position: relative; margin-top:20px;
+		font-size:20px;
+		font-family: Quatrocentro Sans;
+	}
+.tlc-icon {float:left; margin-right:20px;}
+.david-discuss {clear: both;
+    float: left;
+    margin-top: -150px;
+    width: 300px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	}
+
+.push-down {position: relative; top: 80px;}
+.first-p {margin-left:320px;}
+.ks-icon {width:300px; float:right; margin-left:25px; margin-top: 10px; position: relative; top: 30px;}
+.gather-banner {
+	 clear: both;
+    float: right;
+   /* margin-top: 25px;*/
+    margin-left: 20px;
+}
+.clear-push {clear:both; height: 50px;}
+.david {width: 161px; float:right; margin-left: 20px;}
+.lani {float: left; margin-right: 20px; margin-bottom: 20px;}
+
+.mission-statement {
+	clear:both;
+	font-family: Quatrocentro Sans;
+	text-align: center;
+	background: #e0eade;
+	border: 4px solid $ksgreen;
+	width: 800px;
+	margin: 100px auto 0;
+	h1 {color: $ksgreen; font-size: 30px; font-weight: bold;}
+	h2 {color: $ksgreen; span {font-style: italic;} font-size: 25px; font-weight: normal;
+	margin: 15px 0;}
+}

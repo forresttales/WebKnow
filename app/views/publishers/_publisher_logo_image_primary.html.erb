@@ -1,0 +1,223 @@
+
+
+								<% if @publisher_logo_image_primary %>   				
+								
+									<!-- <div class="container-figure container-figure-1"> -->
+									<div class="container-figure container-figure-1">
+										<!-- <figure id="profile_figure" class="dialog-11-figure cursor-pointer"> -->
+										<figure class="dialog-11-figure cursor-pointer">
+											<img id="logo_primary_img" alt="" src="<%= @publisher_logo_image_primary.image_url(:user_200_200_fit) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_logo_image_primary.image? %>" />
+											<input class="container-image-hidden" type="hidden" value="<%= @publisher_logo_image_primary.image_url(:user_600_600) if @publisher_logo_image_primary.image? %>" />
+											<figcaption id="figcaption_image_primary" class="edit-image hidden">												
+												<div class="img-1-container">
+													<!-- <div class="img-2"></div> -->
+													<!-- <div class="img-2-text">Edit photo</div> -->
+												</div>
+											</figcaption>
+										</figure>
+									</div>
+									<div class="float-clear"></div>
+
+								<% else %>
+
+									<div class="container-figure container-figure-1">
+										<!-- <figure id="profile_figure_generic" class="dialog-11-figure-generic"> -->
+										<figure class="dialog-11-figure-generic">
+											<img id="logo_generic_img" alt="" src="../images_avatar/avatar_generic_1_w200_h200.png" />
+											<figcaption id="figcaption_logo_image_primary_generic" class="edit-image cursor-pointer hidden">
+												<div class="img-1-container">
+													<div class="img-1"></div>
+													<div class="img-1-text">Add a photo</div>
+												</div>
+											</figcaption>
+										</figure>
+									</div>
+								
+								<% end %>
+
+
+
+
+	<script>
+
+
+		// $(window).load( function() {
+		$(document).ready( function () {				
+
+		
+			$("img").one("load", function() {
+			  	// alert('user_primary_img');
+				if(this.id == "logo_primary_img") {
+					// alert("logo_primary_img height = " + this.height);
+					var img_w = this.width;
+					var img_h = this.height;
+					$("div#container_logo_image .drop").on('hover', function() {
+						$("div#container_logo_image .drop. .dropdownContain").css({ 
+							top : img_h - 6
+						});
+					});
+					$("div#container_logo_image .container-figure-logo").css({
+						width : img_w + 4,
+						height : img_h + 4
+					});													
+				}
+				if(this.id == "logo_generic_img") {
+					// alert("logo_generic_img height = " + this.height);
+					var img_w = this.width;
+					var img_h = this.height;
+					$("div#container_logo_image .drop").on('hover', function() {
+						$("div#container_logo_image .drop. .dropdownContain").css({ 
+							top : img_h - 6
+						});
+					});			
+					$("div#container_logo_image .container-figure-logo").css({
+						width : img_w + 4,
+						height : img_h + 4
+					});				
+				}				
+			}).each(function() {
+			  	if(this.complete) $(this).load();
+			});
+		
+			// var img_generic = $("#profile_figure_generic img");
+			// $("<img/>")
+	    		// .attr("src", $(img_generic).attr("src"))
+	    		// .load(function() {
+	        		// img_width = this.width; 
+	        		// $("#profile_figure_generic").css({
+	        			// width : this.width
+	        	// });
+	    	// });		
+			// var img = $("#profile_figure img");
+			// $("<img/>").attr("src", $(img).attr("src")).load(function() {
+				// img_width = this.width;
+				// img_height = this.height;
+				// $("div#container_logo_image .drop").on('hover', function() {
+					// $("div#container_logo_image .drop. .dropdownContain").css({ 
+						// top : img_height - 4
+					// });
+				// });				
+				// $(".container-figure").css({
+					// width : img_width + 4
+				// });				
+				// $(".container-figure").css({
+					// height : img_height + 4
+				// });				
+        		// $("#profile_figure").css({
+        			// width : img_width
+        		// });	        		
+	    	// });		
+
+			
+			
+			$(".dialog-11-figure").on('click', function(e) {
+				if ( e.target.nodeName == "IMG" ) {
+					var this_src = $(this).find("input.container-image-hidden").attr("value");
+					$("#profile_figure_dialog_11").find("img").attr("src", this_src );
+					var this_delete = $(this).find("div.tip-top-center").html();
+					$("#profile_figure_dialog_11").find("div.tip-top-center").html(this_delete);
+					$("#dialog_11").jqmShow();	
+				}
+			});
+			$('#dialog_11').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '20px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					var img = $("#profile_figure_dialog_11 img");
+					$("<img/>")
+			    		.attr("src", $(img).attr("src"))
+			    		.load(function() {
+			        		img_width = this.width; 
+			        		$("#profile_figure_dialog_11").css({
+			        			// width : this.width 
+			        	});	        		
+			    	});		
+				}
+			}); 		
+			
+
+			$('#dialog_15').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-720px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_15').animate(
+						{bottom:'-=740', top:'+=740'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_15').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+						}
+					);
+				}
+			}); 		
+			
+			
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+			
+            $('.tip-left-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'right top',
+				        at: 'left center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+		
+		});
+	  
+
+	</script>		
+

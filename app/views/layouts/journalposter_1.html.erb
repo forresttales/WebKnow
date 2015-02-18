@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="utf-8">
+								    	
+  		<title><%= full_title(yield(:title)) %></title> 
+
+    	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => false %>
+  		
+		<link rel="icon" type="image/png" href="/assets/knowstory-icon-fav.png" />		
+  					  		
+   		<%= javascript_include_tag "application", "data-turbolinks-track" => false %>    		   		
+    	
+	  	<%= csrf_meta_tags %>
+	  	<%= render 'layouts/shim' %>  
+
+  		<%= include_gon %>
+
+		                		
+    </head>
+    
+	<body>
+
+		<!-- <#%= render 'layouts/nav_main_for_posters' %#> -->
+		<%= render 'layouts/nav_main' %>
+								
+		<%= yield %> 
+
+		<%= render 'layouts/footer' %>
+		
+		<%= debug(params) if Rails.env.development? %>
+
+		<script>
+			
+			
+			function open_dropdown_1() {
+				$("#dropdown_1_menu").removeClass("display-none");
+				$("#dropdown_1_caret").removeClass("dropdown-caret-down").addClass("dropdown-caret-up");
+			}
+			function close_dropdown_1() {
+				$("#dropdown_1_menu").addClass("display-none");
+				$("#dropdown_1_caret").removeClass("dropdown-caret-up").addClass("dropdown-caret-down");
+			}
+			
+			function init() {
+				// $("#dropdown_1_menu").css({ 'display':'none' });
+				$("#dropdown_1_menu").addClass("display-none");
+				$("#dropdown_1_caret").addClass("dropdown-caret-down");
+			}
+			
+			$(document).ready(function() {
+			//$(window).load(function() {
+				
+				init();
+				
+				$("#dropdown_1").on('click', function() {
+					if( $("#dropdown_1_caret").hasClass("dropdown-caret-down") ) {
+						open_dropdown_1();
+					}
+					else {
+						close_dropdown_1();
+					}				
+				});
+	
+				var dropdown_1_mouseover = false;
+				var dropdown_1_menu_mouseover = false;
+				$("#dropdown_1").mouseover ( function () {
+					dropdown_1_mouseover = true;
+				}).mouseleave ( function() {
+					dropdown_1_mouseover = false;
+					if(!dropdown_1_mouseover && !dropdown_1_menu_mouseover && $("#dropdown_1_menu").hasClass("display-none") ) {
+						close_dropdown_1();
+					}				
+				});			
+				$("#dropdown_1_menu").mouseover ( function () {
+					dropdown_1_menu_mouseover = true;
+				}).mouseleave ( function() {
+					dropdown_1_menu_mouseover = false;
+					if(!dropdown_1_mouseover && !dropdown_1_menu_mouseover ) {
+						close_dropdown_1();
+					}
+				});
+				
+				// $("#dropdown_1_menu").on('blur', function() {
+					// alert('blur');
+				// });
+				
+				// $(document).on('click', function(elem) {
+					// alert(elem.target);
+					// elem = mtab1let.target.className;
+					// if ((elem === 'hover-col') || (elem === 'delete-btn') || (elem === 'member-table')) {
+						// //
+					// }
+					// else {
+						// $("table.tbltablets tr").removeClass('row-select');					
+					// }
+				// });
+				
+				
+				
+			});	
+	// 		
+			// $(window).scroll(function(e){ 
+			  // $el = $('#nav_ks'); 
+			  // $topmark = $('#nav_ks_marker');
+	// 
+	// 
+			  // if ($(this).scrollTop() > $topmark.position().top){ 
+			     // $el.css({'top': '4px'}); 
+			  // } else {
+			  	// $el.css({'top': '0'});
+			  // }
+			// });
+			
+		</script>
+		
+	</body>
+	
+</html>

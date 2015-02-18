@@ -1,0 +1,2 @@
+module PublisherProductLogo1ImagesHelper
+end

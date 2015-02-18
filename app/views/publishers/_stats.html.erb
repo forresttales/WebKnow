@@ -1,0 +1,21 @@
+<% @publisher ||= current_user.publisher %>
+<div class="follow-stats">
+  <!-- <a href="<#%= following_user_path(@user) %#>"> -->
+  <div class="follow-stats-1">
+	    <div id="following" class="margin-0">
+	      	<span><%= @publisher.followed_users.count %></span>
+	    </div>
+	    <div class="margin-0">
+	    	<a href="#"><span>following</span></a>
+	    </div>
+	  </a>
+  </div>
+  <div class="follow-stats-2">
+	    <div id="followers" class="margin-0">
+	      	<span><%= @publisher.followers.count %></span>
+	    </div>
+	    <div class="margin-0">
+	    	<a href="#"><span>followers</span></a>
+	    </div>
+  </div>
+</div>

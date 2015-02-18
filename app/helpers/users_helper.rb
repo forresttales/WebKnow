@@ -1,6 +1,6 @@
 module UsersHelper
 
-  
+
   # def avatar_for(user)
     # # img = UserProfileImage.where("user_id = ?", user.id).first     
     # img = UserProfileImage.where("user_id = ?", user.id).first

@@ -98,7 +98,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', end
 //Left Navigation
 
 .profile-labels-left ul li, .profile-links-left ul li {background: none;}
-.col-left {background: $midgreen; min-height:600px;}
+// .col-left {
+  // background: $midgreen; 
+   // min-height:600px;
+  // }
 
 .profile-links-left ul li a {
     color: $dgreen;
@@ -112,7 +115,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', end
 .profile-labels-left {
 	border-top: 1px solid $dgreen;
 	border-bottom: 1px solid $dgreen;
-	margin:20px 0 10px 0;
+	// margin:20px 0 10px 0;
 	&:hover {background: $ksgreen;}
 	ul li span {
 	color: #FFF;

@@ -75,6 +75,11 @@
 		.profile-figure-generic:hover {
 			cursor: pointer;		
 		}
+		.profile-figure-logo-generic {		
+		}
+		.profile-figure-logo-generic:hover {
+			cursor: pointer;		
+		}
 		.profile-figure-list {		
 		}
 		.profile-figure-list:hover {
@@ -185,22 +190,44 @@
 			top: auto;
 			left: 0;
 			text-align: center;
-			background: #000;
-			color: #ed4e6e;
-			height: 30px;
+			/*background: #000;*/
+			/*color: #ed4e6e;*/
+			/*height: 30px;*/
+			height: 100%;
 			width: 100%;
 			bottom: 0;
-			opacity: 0;
-			-webkit-transform: translateY(100%);
+			/*opacity: 0;*/
+			/*opacity: .4;*/
+			
+			/*background: #000 url("/assets/logo_camera_1_w72_h60.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+			background: url("/assets/background-000000-o100-w10-h10.png") repeat;
+			
+			/*-webkit-transform: translateY(100%);
 			-moz-transform: translateY(100%);
 			-ms-transform: translateY(100%);
-			transform: translateY(100%);
-			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+			transform: translateY(100%);*/
+			/*-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
 			-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
-			transition: transform 0.4s, opacity 0.1s 0.3s;
-			padding-top: 4px;
+			transition: transform 0.4s, opacity 0.1s 0.3s;*/
+
+			/*padding-top: 4px;*/
 		}
-		.no-touch .profile-cs-style-3 figure:hover figcaption.figcaption-1,
+		.profile-grid figcaption.figcaption-1 div.img-1 {
+			position: relative;
+			top: 30%;
+			left: 26%;
+			width: 72px;
+			height: 60px;
+			/*background-color: #000;*/
+			opacity: 1;
+			background: url("/assets/logo_camera_1_w72_h60.png") no-repeat;
+		}			
+
+		/*img {
+		    opacity: 0.4;
+		    filter: alpha(opacity=40);
+		}*/ 		
+		/*.no-touch .profile-cs-style-3 figure:hover figcaption.figcaption-1,
 		.profile-cs-style-3 figure.cs-hover figcaption.figcaption-1 {
 			opacity: .8;
 			-webkit-transform: translateY(0px);
@@ -210,7 +237,17 @@
 			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
 			-moz-transition: -moz-transform 0.4s, opacity 0.1s;
 			transition: transform 0.4s, opacity 0.1s;
-		}
+		}*/
+		/*.no-touch .profile-cs-style-3 figure:hover, .profile-cs-style-3 figure.cs-hover {
+			opacity: .8;
+			-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			-ms-transform: translateY(0px);
+			transform: translateY(0px);
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+			transition: transform 0.4s, opacity 0.1s;
+		}*/
 		.profile-grid figure img {
 			border: 2px solid #CCC;
 			margin: 0;

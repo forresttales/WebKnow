@@ -1,0 +1,4650 @@
+
+<style>
+	
+        /*.prod-select ul.lc-inline {
+        	width: 1280px;
+        }*/
+		/*.prod-select ul.lc-inline, 
+		.prod-select ul.lc-inline li {
+			margin: 0 auto;
+			padding-right: 0px;
+        	vertical-align: top;			
+		}
+		.prod-select ul.lc-inline li {
+			display: inline-block;
+		}*/
+		/*#tab-container  {
+		  	margin-left: auto;
+		  	margin-right: auto;
+		  	width: 1200px;
+		}*/
+		/*.fixed-back-to {
+		  	display: none;
+		}*/
+		/*.tabs {
+			position: relative;
+			top: 70px;
+		  	width: 1000px;
+		  	height: 70px;
+			border-radius: 4px;
+		   	border: 3px solid #41B737 !important;
+		}*/
+        /*.tabs, .tabs ul, .tabs ul li, .tabs ul li span, .tabs ul li a, .tabs ul li a div {
+          	margin: 0;
+          	padding: 0;
+          	line-height: 1;
+        }*/
+		/*.tabs ul.short {
+			height: 20px;
+			background-color: #3D3D3D;			
+		}
+		.tabs ul.tall {
+			height: 34px;
+		}*/		
+		select.prod-select {
+			width: 380px;
+		}
+        select.prod-select ul {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 1.2em;
+	        list-style-type: none;
+	        /*background-color: #3D3D3D;*/
+	        background-color: #1F7C82;
+	    	color: #222222;
+	    	font-weight: bold;
+        }
+		select.prod-select ul li a:hover {
+		    /*color: #214025;*/
+		    color: red;
+		    text-shadow: 1px 1px #34922C;		    
+		}
+		.prod-select ul li.active {
+		    background-color: #34922C;
+		}
+		.prod-select ul li.active:hover a {
+		    color: #214025;
+		    text-shadow: 1px 1px #34922C;
+		}
+		select.prod-select ul li:hover {
+		    background-color: #ccc;
+		}
+		.prod-select ul li:hover a {
+		    color: #214025;		    
+		}
+		.prod-select ul li a:hover {
+		    text-decoration: none;
+		}
+		.prod-select ul li.active a {
+			color: #fff;
+		}
+        .prod-select li.disabled, .prod-select li.disabled a, .prod-select li.disabled a:visited, .prod-select li.disabled a:hover {
+          	color: #888;
+        }
+        .prod-select ul li a {
+        	color: #34922C;
+        }
+		.prod-select ul li {
+			padding-top: 12px;
+		    background-color: #FFFFFF;			
+			width: 230px;
+			height: 34px;
+		}
+	
+</style>
+
+	<style>
+
+		.table-page {
+			position: relative;
+			left: -1px;
+		}
+		div.table-page {
+			/*display: table;*/
+			background-color: #E3DDCF;
+			width: 1000px;
+			/*height: 600px;*/
+			border-radius: 0px;
+			padding-top: 20px;
+			padding-bottom: 40px;
+			padding-left: 10px;
+			padding-right: 10px;		
+			margin-left: 12px;
+			/*margin: 0 auto;*/	
+		}
+		.table-page p {
+			font-family: msyh; 
+			font-size: 16px;
+			color: #005187;
+		}
+		
+		#tbl-page {
+			width: 100%;
+		}
+		#tbl-page #tbl-page-inner {
+		    width: 1200px;
+		    margin: 0 auto;
+		    min-height: 800px;
+		}	
+		div .tbl-container {
+			display: table;
+			background-color: #E3DDCF;
+			width: 1000px;
+			border-radius: 0px;
+			padding-top: 40px;
+			padding-bottom: 40px;
+			padding-left: 10px;
+			padding-right: 10px;			
+		}
+		.tbl-container p {
+			font-family: msyh; 
+			font-size: 16px;
+			color: #005187;
+		}
+		.main {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: black;
+			height: 500px;
+		}
+		.links {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: brown;    		
+		}
+		h1 {
+			font-size: 22px;
+		}
+		h2 {
+			font-size: 18px;
+		}
+		h4 {
+			font-size: 16px;
+			font-weight: 600;
+		}    	
+		h5 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 12px;
+		}    	    	
+		p {
+			font-size: 12px;
+		}
+		.bar {
+			font-size: 16px;
+			font-weight: 400;
+		}
+		.input-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 600px;
+			height: 24px;
+			border-style:solid;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+			color: #888;
+		}
+		.submit-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			height: 24px;
+		}
+		#tbl {
+			width: 10300px; 
+		}
+		table#tbl th {
+			padding-left: 0px;
+		}    	    	
+		table#tbl tr {
+			height: 20px;
+		}    	
+		table#tbl td {
+			vertical-align: bottom;    		
+			padding-top: 0px;
+			padding-bottom: 4px;       		    		    		
+		}
+		#tbltablets {
+    		width: 1000px; 
+    	}
+    	table#tbltablets th {
+    		padding-left: 0px;
+    	}    	    	
+    	table#tbltablets tr {
+    		height: 20px;
+    	}    	
+    	table#tbltablets td {
+    		vertical-align: bottom;    		
+    		padding-top: 0px;
+    		padding-bottom: 4px;       		    		    		
+    	}
+    	.gray {
+			background: #CCC			    		
+    	}
+    	.white {
+			background: #fff    		
+    	}
+    	.hover-col {
+    		background-color: rgba(0, 0, 0, 0.1);
+    	}
+		.hover-row {
+			/*background-color: #FAC0C1;*/
+			background-color: #F0A546;
+			/*background-color: #BD7A26;*/
+		}
+		.row-select {
+			color: #fff;			
+			background-color: brown;
+		}
+		.btn-color-select {
+			color: #fff;	
+		}
+		.btn-color {
+		  	color: #A31C1C;			
+		}
+		.delete-btn {
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 50px;
+		  	height: 20px;
+		  	background: inherit;
+		  	border-width: 0px;
+			color: #486996; /*#9DD5ED*/		  	
+		}
+		.delete-btn:focus {
+		}
+		.delete-btn:hover { 
+		  	text-decoration: underline; 
+		}
+		.delete-btn:active { 
+		  	text-decoration: underline; 
+		}
+		.header-shift {
+			padding-left: 0px;
+		}    	    	
+		.reset-db-btn {
+		  	width: 300px;
+		  	height: 26px;
+		}
+		#loading {
+			background:url("/assets/icon_loading.gif") no-repeat center center;
+			height: 100px; width: 100px;
+			position: fixed; left: 47%; top: 50%; z-index: 1000;
+			margin: -25px 0 0 -25px;
+			visibility: hidden;
+		}				
+		#tablets .scrollbox-both {
+	 		height:330px;
+	 		width:1000px;
+	 		overflow:scroll;
+	 		/*border:1px solid #651375;*/		
+		}
+
+
+
+		.tablebox-header {
+	 		height:16px;
+	 		width:630px;
+	 		border-bottom:1px solid #651375;
+	 		overflow: hidden;			 				
+		}
+		
+		.tablebox {
+	 		height:400px;
+	 		width:630px;
+	 		border-color: #fff;
+	 		overflow: auto;		
+	 		border: none;
+		}
+		/*.tablebox-2 {
+	 		height:16px;
+	 		width:1200px;
+	 		border-bottom:1px solid #651375;
+	 		overflow: hidden;		
+		}*/
+		/*.table-header-shadow {
+	 		height:16px;
+	 		width:1200px;			
+		}*/
+		table.tbltablets {
+			width: 600px;
+		}
+    	table.tbltablets th {
+    		padding-left: 0px;
+    	}    	    	
+    	table.tbltablets tr {
+    		height: 20px;
+    	}    	
+    	table.tbltablets td {
+    		vertical-align: bottom;    		
+    		padding-top: 0px;
+    		padding-bottom: 4px;       		    		    		
+    	}
+
+	</style>
+
+	<style>
+		
+		@font-face {
+			font-family: 'msyh';
+		    src: url('../fonts/msyh.eot');	  		
+			src: url('../fonts/msyh.ttf') format('truetype');
+		}
+				
+		.title-bar-profile-1 {
+			width: 700px;
+			height: 30px;
+	  		/*font-family: 'msyh';
+		    font-size: 18px;
+		    color: #376340;
+		    font-weight: 200;*/
+		    /*text-shadow: 1px 1px #34922C;*/
+		    padding-left: 0px;
+		    padding-top: 0px;
+		    margin-left: 0px;
+		    position: relative;
+			/*z-index: 100;*/
+			background: #49853f;
+			background: -moz-linear-gradient(top,  #49853f 0%, #ffffff 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#49853f), color-stop(100%,#ffffff));
+			background: -webkit-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: -o-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: -ms-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: linear-gradient(to bottom,  #49853f 0%,#ffffff 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', endColorstr='#ffffff',GradientType=0 );
+			
+			border-bottom: 1px solid #49853f; 
+		}
+		
+		/*<div class="title-bar-profile-2">
+			<div class="tbl-title-bar-profile-2">
+				<div class="row-title-bar-profile">
+					<div class="cell-title-bar-profile-2">
+						<span>Premium</span>		
+					</div>
+				</div>
+			</div>
+		</div>*/
+		
+		.title-bar-profile-2 {
+			width: 700px;
+			height: 18px;
+	  		/*font-family: 'msyh';
+		    font-size: 18px;
+		    color: #376340;
+		    font-weight: 200;*/
+		    /*text-shadow: 1px 1px #34922C;*/
+		    padding-left: 16px;
+		    padding-right: 16px;
+		    /*padding-top: 0px;*/
+		    margin-left: 0px;
+		    margin-right: 0px;		    
+		    position: relative;
+		    text-align: center;
+			/*z-index: 100;*/
+			/*background: #49853f;
+			background: -moz-linear-gradient(top,  #49853f 0%, #ffffff 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#49853f), color-stop(100%,#ffffff));
+			background: -webkit-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: -o-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: -ms-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: linear-gradient(to bottom,  #49853f 0%,#ffffff 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', endColorstr='#ffffff',GradientType=0 );*/			
+		}
+		.tbl-title-bar-profile {
+			display: table;
+			width: 700px;
+		}
+		.tbl-title-bar-profile-2 {
+			display: table;
+			width: 668px;
+			/*border-bottom: 1px solid #C0C0C0;*/
+			border-bottom: 1px solid #FBB040; 			
+		}
+		.cell-title-bar-profile-2 {
+			display: table-cell;
+			width: 100%;
+			text-align: left;	
+			padding: 0px 0px 0px 0px;		
+		}		
+		.tbl-title-bar-profile-2 span {
+	  		font-family: 'msyh';
+		    font-size: 16px;
+		    /*color: #C0C0C0;*/
+		    color: #FBB040;
+		    font-weight: 200;
+		}				
+		.tbl-title-bar-profile span {
+	  		font-family: 'msyh';
+		    font-size: 16px;
+		    color: #376340;
+		    font-weight: 200;
+		}		
+		.row-title-bar-profile {
+			display: table-row;
+		}
+		.cell-title-bar-profile-left {
+			display: table-cell;
+			width: 30%;
+			text-align: left;	
+			padding: 6px 0px 0px 8px;		
+		}
+		.cell-title-bar-profile-center {
+			display: table-cell;
+			width: 40%;
+			text-align: center;			
+			padding: 6px 0px 0px 0px;		
+		}
+		.cell-title-bar-profile-right {
+			display: table-cell;
+			width: 30%;
+			text-align: right;
+			padding: 6px 8px 0px 0px;					
+		}
+		
+
+
+		.title-bar-profile-3 {
+			width: 250px;
+			height: 18px;
+		    padding-left: 16px;
+		    padding-right: 16px;
+		    margin-left: 0px;
+		    margin-right: 0px;		    
+		    position: relative;
+		    text-align: center;
+		}
+		.tbl-title-bar-profile-3 {
+			display: table;
+			width: 250px;
+			border-bottom: 1px solid #FBB040; 			
+		}
+		.cell-title-bar-profile-3 {
+			display: table-cell;
+			width: 100%;
+			text-align: left;	
+			padding: 0px 0px 0px 0px;		
+		}		
+		.tbl-title-bar-profile-3 span {
+	  		font-family: 'msyh';
+		    font-size: 16px;
+		    /*color: #C0C0C0;*/
+		    color: #FBB040;
+		    font-weight: 200;
+		}				
+		
+		
+		
+		
+		
+	</style>
+
+<style>
+
+		.width-314 {
+			width: 314px;			
+		}	
+		.width-678 {
+			width: 678px;			
+		}
+		.height-50 {
+			height: 50px;			
+		}						
+		.height-60 {
+			height: 60px;			
+		}						
+		.height-100 {
+			height: 100px;			
+		}				
+		.height-150 {
+			height: 150px;			
+		}						
+		.height-200 {
+			height: 200px;			
+		}				
+		.height-300 {
+			height: 300px;			
+		}		
+		.textarea-product-description {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #888;
+			font-weight: 600;
+			font-size: 13px;
+			border-style: solid;
+			border-radius: 0px;
+			background-color: #fff;
+			border-color: #478A3E;
+			border-width: 1px;
+			padding-left: 6px;
+			padding-right: 6px;
+			padding-top: 2px;
+			resize: none;
+			vertical-align: text-top;					
+		}		
+		.textarea-product-description:focus,
+		.textarea-product-description:hover {		
+			border-color: #478A3E;
+			color: #000;
+			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;
+		}
+		.textarea-product-description:focus:hover {		
+			border-color: #478A3E;
+			color: #000;
+			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;
+		}
+		.textarea-product-description:hover {		
+			-webkit-box-shadow: inset 0 0 1px 1px #185C61;
+			   -moz-box-shadow: inset 0 0 1px 1px #185C61;
+			        box-shadow: inset 0 0 1px 1px #185C61;
+		}
+		.textarea-product-description-label {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #888;    		
+			height: 16px;
+			position: relative;
+			/*top: -50px;*/
+		}
+		.textarea-product-description-disabled {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #888;
+			font-weight: 600;
+			font-size: 13px;
+			border-style: solid;
+			border-radius: 0px;
+			background-color: #fff;
+			border-color: #478A3E;
+			border-width: 1px;
+			padding-left: 6px;
+			padding-right: 6px;
+			padding-top: 2px;
+			resize: none;
+			vertical-align: text-top;					
+		}		
+	
+</style>					
+
+	<style>
+
+		.width-200 {
+			width: 200px;
+		}
+		.width-250 {
+			width: 250px;
+		}
+		.width-260 {
+			width: 260px;
+		}
+		.width-270 {
+			width: 270px;
+		}
+		.width-280 {
+			width: 280px;
+		}
+		.width-300 {
+			width: 300px;
+		}
+		.width-320 {
+			width: 320px;
+		}		
+		.width-340 {
+			width: 340px;
+		}
+		.width-350 {
+			width: 350px;
+		}						
+		.height-24 {
+			height: 24px;
+		}
+		.padding-top-4 {
+			padding: 4px 0 0 0;
+		}
+		/*D98D2D*/
+		/*BD7A26 darker*/
+		/*F0A546 lighter*/
+		/*FAC582 much lighter*/		
+		.input-product {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #888;
+			font-weight: 600;
+			font-size: 13px;
+			/*width: 380px;*/
+			/*height: 24px;*/
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #fff;
+			/*border-color: #478A3E;*/
+			border-color: #BD7A26;
+			border-width: 1px;
+			padding-left: 4px;
+		}
+		.input-product:focus,
+		.input-product:active {
+			border-color: #478A3E;
+			color: #11520B;
+			font-weight: 600;
+			/*-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;*/
+			-webkit-box-shadow: inset 0 0 1px 1px #FAC582;
+			   -moz-box-shadow: inset 0 0 1px 1px #FAC582;
+			        box-shadow: inset 0 0 1px 1px #FAC582;
+		}
+		.input-product:focus:hover {
+			border-color: #478A3E;
+			color: #11520B;
+			font-weight: 600;
+			/*-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;*/
+			-webkit-box-shadow: inset 0 0 1px 1px #FAC582;
+			   -moz-box-shadow: inset 0 0 1px 1px #FAC582;
+			        box-shadow: inset 0 0 1px 1px #FAC582;
+		}		
+		.input-product:hover {
+			/*-webkit-box-shadow: inset 0 0 1px 1px #185C61;
+			   -moz-box-shadow: inset 0 0 1px 1px #185C61;
+			        box-shadow: inset 0 0 1px 1px #185C61;*/
+			-webkit-box-shadow: inset 0 0 1px 1px #D98D2D;
+			   -moz-box-shadow: inset 0 0 1px 1px #D98D2D;
+			        box-shadow: inset 0 0 1px 1px #D98D2D;
+		}
+		.input-product-1 {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #888;
+			font-weight: 600;
+			font-size: 13px;
+			width: 380px;
+			height: 24px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #fff;
+			border-color: #478A3E;
+			border-width: 1px;
+			padding-left: 4px;
+		}
+		.input-product-1:focus,
+		.input-product-1:active {
+			border-color: #478A3E;
+			color: #11520B;
+			font-weight: 600;
+			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;
+		}
+		.input-product-1:focus:hover {
+			border-color: #478A3E;
+			color: #11520B;
+			font-weight: 600;
+			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;
+		}		
+		.input-product-1:hover {
+			-webkit-box-shadow: inset 0 0 1px 1px #185C61;
+			   -moz-box-shadow: inset 0 0 1px 1px #185C61;
+			        box-shadow: inset 0 0 1px 1px #185C61;
+		}
+		::-webkit-input-placeholder {
+		   color: #778899; /*#C0C0C0;*/
+		}
+		:-moz-placeholder {
+		   color: #778899; /*#C0C0C0;*/
+
+		}
+		::-moz-placeholder {
+		   color: #778899; /*#C0C0C0;*/
+
+		}
+		:-ms-input-placeholder {  
+		   color: #778899; /*#C0C0C0;*/
+
+		}		
+		span.form-text {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #888;
+			font-weight: 600;
+			font-size: 13px;
+			width: 280px;
+			height: 24px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #fff;
+			border-color: #478A3E;
+			border-width: 1px;
+			padding-left: 4px;
+		}
+		span.form-text-16 {
+			font-family: Arial, Helvetica, sans-serif;
+			/*color: #FBB040;*/
+			font-weight: 600;
+			font-size: 16px;
+		}
+		span.form-text-12 {
+			font-family: Arial, Helvetica, sans-serif;
+			/*color: #FBB040;*/
+			font-weight: 700;
+			font-size: 13px;
+		}
+		span.form-text-12-title {
+			font-family: Arial, Helvetica, sans-serif;
+			/*color: #FBB040;*/
+			color: #aaa;
+			font-weight: 700;
+			font-size: 13px;
+		}		
+		div.form-text-12 {
+			font-family: Arial, Helvetica, sans-serif;
+			/*color: #FBB040;*/
+			font-weight: 700;
+			font-size: 13px;
+		}
+		div.form-text-12-title {
+			font-family: Arial, Helvetica, sans-serif;
+			/*color: #FBB040;*/
+			color: #aaa;
+			font-weight: 700;
+			font-size: 13px;
+		}		
+		/*span.color-record {
+			color: #185C61;
+		}	
+		span.color-no-record {
+			color: #49853f;			
+		}	
+		.color-record {
+			color: #185C61;
+		}	
+		.color-no-record {
+			color: #49853f;			
+		}*/	
+		/*span.color-record {
+			color: #333;
+		}	
+		span.color-no-record {
+			color: #49853f;			
+		}	
+		.color-record {
+			color: #333;
+		}	
+		.color-no-record {
+			color: #49853f;			
+		}*/	
+		span.color-record {
+			color: #593E16;
+		}	
+		span.color-no-record {
+			color: #49853f;			
+		}	
+		.color-record {
+			color: #593E16;
+		}	
+		.color-no-record {
+			color: #49853f;			
+		}	
+		.form-edit-open {
+			width:40px;
+			height:40px;
+			background-color: #fff;
+		}		
+		.form-edit-open:hover {
+			cursor: pointer;
+			background-color: #E6FAE3;
+		}		
+		.form-edit-open-20 {
+			width:20px;
+			height:20px;
+			/*background-color: #fff;*/
+		}		
+		.form-edit-open-20:hover {
+			cursor: pointer;
+			/*background-color: #E6FAE3;*/
+		}		
+		.form-edit-open-28 {
+			width:28px;
+			height:20px;
+		}		
+		.form-edit-open-28:hover {
+			cursor: pointer;
+		}		
+		.form-edit-open-30 {
+			width:30px;
+			height:20px;
+		}		
+		.form-edit-open-30:hover {
+			cursor: pointer;
+		}		
+		.info-show-20 {
+			width:20px;
+			height:20px;
+		}		
+		.info-show-20:hover {
+			cursor: pointer;
+		}		
+		.pad-left-4 {
+			padding-left: 4px;
+		}
+		.pad-left-8 {
+			padding-left: 8px;
+		}
+	
+	
+	</style>
+
+	<style>
+		
+		#form_listing,
+		#form_status,
+		#form1, #form1a, 
+		#form2, #form2a, 
+		#form3, #form3a, 
+		#form4, #form4a, 
+		#form8, #form8a, 
+		#form5, #form5a, 
+		#form6, #form6a, 
+		#form7, #form7a,
+		#form9, #form9a,
+		/*#form10, #form10a,*/
+		#form11, #form11a,
+		#form12, #form12a,
+		#form_info_content_type,
+		#form_info_category_subject,
+		#form_info_topic,
+		#form_info_lesson_plan_subject,
+		#form_info_platform,
+		#form_info_file_type,
+		#form_info_enhancement,
+		#form_info_by_review,
+		#form_info_lesson_time,
+		#form_info_appropriate_age,
+		#form_info_appropriate_grade,
+		#form_info_pricing_model,
+		#form_info_price,
+		#form_info_allow_teacher_rating,
+		#form_info_allow_student_likes,
+		#form_info_allow_comments,
+		#form_info_poster_print_purchase,
+		#form_info_poster_pin_web,
+		#form_info_poster_pin_purchase,		
+		#form_price, #form_price_a,
+		#form_info_market_target,
+		#form_info_name_product,		
+		#form_info_product_tagline,		
+		#form_info_versions,		
+		#form_info_corporate_logo_url,		
+		#form_info_core_literacy_standard,
+		#form_info_core_math_standard {
+			display: none;
+		}
+		.form-info-name-pdf {
+			display: none;
+		}
+		.form-edit-outer {
+			width: 698px;	
+		}
+		.form-edit-inner {
+			background-color: #F0E4D3;
+			-webkit-box-shadow: inset 2px 2px 6px #888;
+			   -moz-box-shadow: inset 2px 2px 6px #888;
+			        box-shadow: inset 2px 2px 6px #888;
+		}
+		
+		.form-edit-outer-1 {
+			height: 400px;
+		}
+		.form-edit-inner-1 {
+			height: 380px;
+			padding: 10px;
+		}
+		
+		.form-edit-outer-2 {
+			height: 440px;
+		}
+		.form-edit-inner-2 {
+			height: 420px;
+			padding: 10px;
+		}
+		
+		.form-edit-outer-3 {
+			height: 1240px;
+		}
+		.form-edit-inner-3 {
+			height: 1220px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+
+		}
+
+		.form-edit-outer-4 {
+			height: 260px;
+		}
+		.form-edit-inner-4 {
+			height: 240px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+		}
+
+		.form-edit-outer-8 {
+			height: 260px;
+		}
+		.form-edit-inner-8 {
+			height: 240px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+		}
+
+		.form-edit-outer-9 {
+			height: 260px;
+		}
+		.form-edit-inner-9 {
+			height: 240px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+		}
+
+		.form-edit-outer-10 {
+			height: 260px;
+		}
+		.form-edit-inner-10 {
+			height: 240px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+		}
+
+		.form-edit-outer-11 {
+			height: 260px;
+		}
+		.form-edit-inner-11 {
+			height: 240px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+		}
+
+		.form-edit-outer-12 {
+			height: 260px;
+		}
+		.form-edit-inner-12 {
+			height: 240px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+		}
+
+		.form-edit-outer-5 {
+			height: 140px;
+		}
+		.form-edit-inner-5 {
+			height: 120px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+
+		}
+
+		.form-edit-outer-6 {
+			height: 140px;
+		}
+		.form-edit-inner-6 {
+			height: 120px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+
+		}
+
+		.form-edit-outer-7 {
+			height: 140px;
+		}
+		.form-edit-inner-7 {
+			height: 120px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+
+		}
+
+		.form-edit-outer-price {
+			height: 140px;
+		}
+		.form-edit-inner-price {
+			height: 120px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+
+		}
+
+
+		.form-info-outer {
+			width: 325px;	
+		}
+		.form-info-inner {
+			background-color: #F0E4D3;
+			-webkit-box-shadow: inset 2px 2px 6px #888;
+			   -moz-box-shadow: inset 2px 2px 6px #888;
+			        box-shadow: inset 2px 2px 6px #888;
+		}
+
+		.form-info-outer-1 {
+			height: 140px;
+		}
+		.form-info-inner-1 {
+			height: 120px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+
+		}
+
+		.form-info-outer-2 {
+			height: 100px;
+		}
+		.form-info-inner-2 {
+			height: 80px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+
+		}
+		
+		.form-edit-close {
+			width:20px;
+			height:20px;
+			/*background-color: #ddd;*/
+			float: right;
+		}		
+		.form-edit-close:hover {
+			cursor: pointer;
+			/*background-color: #FFD1D1;*/
+		}		
+		.form-edit-background {
+		 	background-color: #F0E4D3;	
+		}
+		
+	</style>								
+
+	<style>
+		
+		.box-detail {
+			width: 325px;
+			/*min-height: 30px;*/
+			border: 1px solid #49853f;
+			position: relative;
+			/*background-color: #fff;*/
+			padding: 0px 0px 0px 0px;
+			/*vertical-align:baseline;*/
+		}
+		.box-detail-2 {
+			width: 670px;
+			border: 1px solid #49853f;
+			position: relative;
+			padding: 0px 0px 0px 0px;
+		}
+		/*.box-detail-title-table {
+			position: absolute;			
+			top: 0;
+			left: 0px;
+		}*/
+		.box-detail-title {
+			height: 24px;
+			width: auto;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #fff;
+			font-weight: 400;
+			font-size: 14px;
+			background-color: #49853f;
+			position: absolute;
+			/*position: relative;*/
+			top: 0;
+			left: 0px;
+			/*padding: 2px;*/
+			padding: 5px 4px 2px 4px;		
+			margin: 0px 0px 0px 0px;			
+		}
+		.box-detail-title-large {
+			height: 24px;
+			width: 330px;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #fff;
+			font-weight: 400;
+			font-size: 14px;
+			/*background-color: #49853f;*/
+			/*background-color: #1F7C82;*/
+			background-color: #A6A6A6;
+			/*background-color: #1B666B;*/
+			/*background-color: #2899A1;*/
+			/*background-color: #185C61;*/
+			/*background-color: #3DC8D1;*/
+
+			/*
+			Light gray: 166/166/166				#A6A6A6
+			Blue: 31/124/130					#1F7C82
+			Blue-darker:#1B666B
+			Blue-lighter:#2899A1		
+			Blue-dark:#185C61
+			Blue-light:#3DC8D1
+			*/
+			
+			/*position: absolute;*/
+			/*position: relative;*/
+			/*top: 0;
+			left: 0px;*/
+			/*padding: 2px;*/
+			padding: 5px 4px 2px 4px;		
+			margin: 0px 0px 0px 0px;
+			text-align: center;			
+		}
+		.box-detail-table-1 {
+			width: 325px;
+			/*height: auto;*/
+			font-family: Arial, Helvetica, sans-serif;
+			/*color: #444;*/
+			font-weight: 400;
+			font-size: 14px;
+			/*background-color: #fff;*/
+			/*padding: 0px 4px 4px 4px;*/
+			padding: 0px 0px 0px 0px;
+			margin: 0px 0px 0px 0px;							
+		}
+		.box-detail-table-2 {
+			width: 670px;
+			height: auto;
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 400;
+			font-size: 14px;
+			padding: 0px 0px 0px 0px;
+			margin: 0px 0px 0px 0px;							
+		}
+		.box-detail-row {
+			height: 24px;
+		}
+		.box-detail-padding {
+			padding: 0px 4px 4px 4px;
+		}
+		/*span.box-odd {
+			color: #2C1E0B;
+		}*/
+		span.box-odd {
+			color: #593E16;
+		}
+		/*span.box-even {
+			color: #66471A;  
+		}*/
+		/*span.box-odd {
+			color: #49853f;
+		}*/
+		span.box-even {
+			color: #FBB040; /*#885F22;*/  
+		}
+		/*span.box-even {
+			color: #FBB040;  
+		}*/
+		span.box-other {
+			color: #A6A6A6;
+		}
+		.row-divider-space-4 {
+			height: 4px;	
+		}
+		.row-divider-space-8 {
+			height: 8px;	
+		}
+		.row-divider-space-20 {
+			height: 20px;	
+		}
+		.hidden {
+			display: none;
+		}
+		.visibility-hidden {
+			visibility: hidden;
+		}
+		.opt-listing:hover {
+			text-shadow: 1px 1px #ccc;			
+			cursor: pointer;	
+		}
+		.row-height-1 {
+			height: 24px;	
+		}
+		.box-detail-padding {
+			padding: 4px;
+		}
+		
+		
+	</style>
+
+	<style>
+
+		/*FBB040*/
+		
+		/*D98D2D*/
+		/*BD7A26 darker*/
+		/*F0A546 lighter*/
+		/*FAC582 much lighter*/
+		
+		.btn-submit-product {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;		
+			text-align: center;	
+			padding-top: 3px;
+		  	color: #fff;
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 54px;
+		  	height: 20px;
+		  	/*background: linear-gradient(#F0A546, #D98D2D);*/
+		  	background: linear-gradient(#F0A546, #BD7A26);
+		  	border-radius: 2px;
+		}
+		.btn-submit-product:focus {
+			-webkit-box-shadow: 0 0 1px 1px #FAC582;
+			   -moz-box-shadow: 0 0 1px 1px #FAC582;
+			        box-shadow: 0 0 1px 1px #FAC582;
+		  	/*background: linear-gradient(#F0A546, #D98D2D);*/
+		  	background: linear-gradient(#F0A546, #BD7A26);
+		}
+		.btn-submit-product:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-submit-product:active { 
+		  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	color: #fff;
+		  	background: linear-gradient(#BD7A26, #F0A546);
+		  	outline:none;
+		}
+		
+		.btn-submit-product-2 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;		
+			text-align: center;	
+			padding-top: 3px;
+		  	color: #fff;
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 70px;
+		  	height: 20px;
+		  	/*background: linear-gradient(#F0A546, #D98D2D);*/
+		  	background: linear-gradient(#F0A546, #BD7A26);
+		  	border-radius: 2px;
+		}
+		.btn-submit-product-2:focus {
+			-webkit-box-shadow: 0 0 1px 1px #FAC582;
+			   -moz-box-shadow: 0 0 1px 1px #FAC582;
+			        box-shadow: 0 0 1px 1px #FAC582;
+		  	/*background: linear-gradient(#F0A546, #D98D2D);*/
+		  	background: linear-gradient(#F0A546, #BD7A26);
+		}
+		.btn-submit-product-2:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-submit-product-2:active { 
+		  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	color: #fff;
+		  	background: linear-gradient(#BD7A26, #F0A546);
+		  	outline:none;
+		}
+		
+		/*.btn-submit-product {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;		
+			text-align: center;	
+			padding-top: 3px;
+		  	color: #fff;
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 54px;
+		  	height: 20px;
+		  	background: linear-gradient(#2899A1, #1F7C82);
+		  	border-radius: 2px;
+		}
+		.btn-submit-product:focus {
+			-webkit-box-shadow: 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: 0 0 1px 1px #3DC8D1;
+			        box-shadow: 0 0 1px 1px #3DC8D1;
+		  	background: linear-gradient(#2899A1, #1F7C82);
+		}
+		.btn-submit-product:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-submit-product:active { 
+		  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	color: #fff;
+		  	background: linear-gradient(#1F7C82, #2899A1);
+		  	outline:none;
+		}*/
+
+		.edit-icon-left {
+			/*background-image: url("/assets/edit_w20_h20.png");*/		
+			/*background-image: url("/assets/edit_btn_square_w20_h20.png");*/		
+			/*background-image: url("/assets/edit_btn_yellow_1_w20_h20.png");*/		
+			background-image: url("/assets/edit_btn_yellow_left_w28_h20.png");		
+			background-repeat: no-repeat;
+			/*background-position: 0px 0px 0px 0px;*/
+		}
+		/*.edit-icon-right {
+			background-image: url("/assets/edit_btn_yellow_right_w28_h20.png");		
+			background-repeat: no-repeat;
+		}*/
+		.edit-icon-right {
+			background-image: url("/assets/edit_btn_yellow_right_w20_h20.png");		
+			background-repeat: no-repeat;
+			/*background-position: 0px 0px 0px 0px;*/			
+		}
+		.edit-icon-blank {
+			background-image: url("/assets/edit_btn_blank_w30_h20.png");		
+			background-repeat: no-repeat;
+		}
+		.question-icon {
+			background-image: url("/assets/question_w16_h20.png");		
+			background-repeat: no-repeat;
+		}
+		.min-h-20 {
+			min-height: 20px;
+		}
+		.min-h-24 {
+			min-height: 24px;
+		}
+		.min-w-20 {
+			min-width: 20px;
+		}
+		.min-w-30 {
+			min-width: 30px;
+		}
+		.required-abs-1 {
+			position: absolute;
+		}
+		.required-1 {
+			width: 20px;
+		}
+		.left-100 {
+			left: 100px;
+		}
+		.h-24 {
+			height: 24px;
+		}
+		
+	</style>
+	
+	<style>
+		
+		.tooltip-text-1 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 12px;
+			font-weight: 400;					
+			/*color: #37633A;*/
+			color: #fff;	
+			/*background-color: #FAFF94;*/
+			background-color: rgba(0, 0, 0, 0.6);
+			/*background-color: #eee;*/
+			/*border-color: #37633A;*/
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+		}
+		.tip-content { display: none; }
+		
+	</style>
+	
+	<!-- <style>
+		
+		.tooltip-text-1 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 12px;
+			font-weight: 400;					
+			color: #37633A;	
+			background-color: #FAFF94;
+			/*background-color: #eee;*/
+			border-color: #37633A;
+			box-shadow: 0px 2px 2px #aaa;
+		}
+		.tip-content { display: none; }
+		
+	</style> -->
+
+	<style>
+	
+		.table-product-price {
+			display: table;
+		}
+		.row-product-price {
+			display: table-row;
+			height: 30px;
+		}		
+		.row-product-price-listing {
+			display: table-row;
+			height: 20px;
+		}		
+		.cell-product-price-1 {
+			display: table-cell;
+			width: 320px;
+			padding-left: 20px;
+		}
+		.cell-product-price-2 {
+			display: table-cell;
+			width: 30px;
+			vertical-align: top;
+		}
+		.cell-product-price-3 {
+			display: table-cell;
+			width: 10px;
+		}
+		.cell-product-price-4 {
+			display: table-cell;
+			width: 80px;
+			height:16px;
+		}
+		.cell-product-price-5 {
+			display: table-cell;
+			width: 40px;
+			height:16px;
+		}
+		.cell-product-price-6 {
+			display: table-cell;
+			width: 560px;
+			padding-left: 330px;
+		}
+		.cell-product-price-7 {
+			display: table-cell;
+			width: 1px;
+		}
+
+	</style>
+	
+	<style>
+		
+		.input-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 600px;
+			height: 24px;
+			border-style:solid;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+			color: #888;
+		}
+    	
+    	.submit-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+    		height: 24px;
+    	}
+
+		
+	</style>
+
+	<style>
+		
+		/**, *:after, *:before {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}*/
+
+		/*input[type=file] {*/
+		.input-pdf {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #888;
+			background-color: #fff;
+			border: 1px solid #ccc;			
+			width: 550px;
+			height: 28px;
+		}		
+		.btn-submit-pdf {
+		  	color: #0FEAFF;
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 308px;
+		  	height: 30px;
+		  	background: linear-gradient(#000, #000);
+		  	text-shadow: 1px 1px 1px #0E86B2; 
+		  	border-radius: 6px;
+		}
+		.btn-submit-pdf:focus {
+		  background: #CCC; 
+		  color: #5F7A2A;
+		  box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
+		}
+		.btn-submit-pdf:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(255,255,255,0.3);
+		}
+		.btn-submit-pdf:active { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(0,0,0,0.3); 
+		}
+		.title-pdfs {
+			/*width: 100%;*/
+			text-align: center;
+		}		
+		.title-pdfs span {
+	  		font-family: 'msyh';
+		    font-size: 16px;
+		    color: #376340;
+		    font-weight: 200;
+		}		
+		.title-pdfs span:hover {
+			cursor: pointer;
+			text-decoration: underline;
+			/*text-shadow: 1px 1px #34922C;*/
+			text-shadow: 1px 1px #ccc;
+		}		
+		
+		/*.box-detail-title {
+			height: 24px;
+			width: auto;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #fff;
+			font-weight: 400;
+			font-size: 14px;
+			background-color: #49853f;
+			position: absolute;
+			top: 0;
+			left: 0px;
+			padding: 5px 4px 2px 4px;		
+			margin: 0px 0px 0px 0px;			
+		}*/
+
+		
+	</style>
+
+	<style>
+		
+		/*.box-detail-padding {
+			padding: 0px 4px 4px 4px;
+		}*/
+		.cb-cell-1 {
+			display: table-cell;
+			width: 200px;
+			padding: 4px 0px 0px 4px;
+		}
+		.cb-cell-2 {
+			display: table-cell;
+			width: 100px;
+			/*padding-top: 6px;*/			
+		}
+		.cb-cell-3 {
+			display: table-cell;
+			width: 10px;
+			/*height: 40px;
+			vertical-align: middle;*/		
+		}
+		/*.cb-cell-4 {
+			display: table-cell;
+			width: 80px;
+			height:16px;
+		}
+		.cb-cell-5 {
+			display: table-cell;
+			width: 40px;
+			height:16px;
+		}
+		.cb-cell-6 {
+			display: table-cell;
+			width: 560px;
+			padding-left: 330px;
+		}
+		.cb-cell-7 {
+			display: table-cell;
+			width: 1px;
+		}*/
+
+		
+	</style>
+
+	<style>
+		
+		input[type=checkbox] {
+		    display:none;
+		}			
+		/*input[type=radio] {
+		    display:none;
+		}*/			
+		.cb-button {
+			width: 14px;
+			height: 15px; 
+			border-style: solid; 
+			border-width: 2px; 
+			border-color: #005C9E; 
+			border-radius: 3px;		
+			/*margin-bottom: -8px;*/
+			margin-bottom: 0px;
+			/*display: inline-block;*/
+			/*margin-right: 6px;*/
+		}
+		.cb-button:focus {
+			box-shadow: 0 0 10px #2899A1; /*#29731F;*/
+			outline: none;
+		}
+		.cb-button:hover {
+			box-shadow: 0 0 10px #1F7C82;
+			outline: none;
+			cursor: pointer;
+		}
+		.cb-button:select {
+			outline: none;
+		}
+		.cb-background {
+			/*background-color: #ACDDE3;*/
+			background-color: #0FEAFF;
+			/*background-image: url("/assets/checkbox_tick.png");		
+			background-repeat: no-repeat;
+			background-position: 2px 3px;*/
+		}	
+		.cb-align {
+			position: absolute;
+			top: -12px;
+		}		
+		.cb-align-price {
+			position: absolute;
+			top: -8px;
+		}		
+		.cb-align-core {
+			position: absolute;
+			top: -12px;
+		}		
+		.cb-container-1 {
+			/*height: 30px;*/
+		}
+		.cb-container-1:hover {
+			cursor: pointer;
+		}
+		.cb-container-1a {
+			display: inline-block;
+		}
+		.cb-container-1a span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			font-weight: 700;
+			color: #376340;
+		} 		
+		.cb-container-1 span:hover {
+			text-decoration: underline;
+		}
+		.cb-container-1b {
+			display: inline-block; 
+			position: relative; 
+		}
+		.cb-container-1c {
+			display: inline-block;
+		}
+		.cb-container-1c span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			font-weight: 700;
+			color: #FBB040;
+		}
+		.cb-container-1d {
+			display: inline-block;
+			position: relative; 
+		}
+
+		
+	</style>
+	
+	<style>
+
+		.pad-marg-null-0 {
+			padding: 0;
+			margin: 0;
+		}		
+		.pad-marg-null {
+			padding: 2px 0 0 0;
+			margin: 0;
+		}
+		.listing-space {
+			height: 30px;	
+		}
+		
+	</style>
+	
+	<!-- <style>
+
+
+		/*input[type=file] {*/
+		.input-file {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #888;
+			background-color: #fff;
+			border: 1px solid #ccc;			
+			width: 550px;
+			height: 30px;
+		}
+		.btn-submit {
+		  	color: #0FEAFF;
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 308px;
+		  	height: 30px;
+		  	background: linear-gradient(#000, #000);
+		  	text-shadow: 1px 1px 1px #0E86B2; 
+		  	border-radius: 6px;
+		}
+		.btn-submit:focus {
+		  background: #CCC; 
+		  color: #5F7A2A;
+		  box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
+		}
+		.btn-submit:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(255,255,255,0.3);
+		}
+		.btn-submit:active { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 
+		  inset 0 1.5em 1em rgba(0,0,0,0.3); 
+		}
+		
+	</style> -->	
+
+	<style>
+		
+		/*select.prod-list-1 {
+			width: 200px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+		}
+		select.prod-list-1 option {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+		}*/
+		div.box-1 {
+			width: 190px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-2 {
+			width: 90px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-3 {
+			width: 90px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-4 {
+			width: 90px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-11 {
+			width: 190px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-12 {
+			width: 190px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-21 {
+			width: 190px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-22 {
+			width: 90px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-23 {
+			width: 90px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-24 {
+			width: 90px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-31 {
+			width: 190px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-32 {
+			width: 170px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		div.box-33 {
+			width: 140px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			font-family: Arial, Helvetica, sans-serif;
+			color: #000;
+			font-size: 13px;
+			padding: 4px;
+			overflow-y: auto;			
+			overflow-x: auto;			
+		}
+		
+		input.box-5 {
+			width: 167px; 
+			height: 20px; 
+			background-color: #ccc;
+			border: 1px solid #000;
+			color: #333; 
+			font-family: Arial, Helvetica, sans-serif; 
+			font-size: 13px; 
+		}
+		input.box-13 {
+			width: 167px; 
+			height: 20px; 
+			background-color: #ccc;
+			border: 1px solid #000;
+			color: #333; 
+			font-family: Arial, Helvetica, sans-serif; 
+			font-size: 13px; 
+		}
+		input.box-25 {
+			width: 167px; 
+			height: 20px; 
+			background-color: #ccc;
+			border: 1px solid #000;
+			color: #333; 
+			font-family: Arial, Helvetica, sans-serif; 
+			font-size: 13px; 
+		}
+		.btn-box-clear span {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #888;
+			font-size: 13px;			
+		}
+		.btn-box-clear span:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		
+		/*select.box-2 {
+			width: 100px;
+			height: 200px;
+			background-color: #ddd;
+			border: 1px solid #000;
+			overflow: hidden;
+		}*/
+
+		.box-1-list-member-selected {
+			background-color: yellow;
+		}
+		.box-1-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-1-list-member-title {
+			
+		}
+		.box-2-list-member-selected {
+			background-color: yellow;
+		}
+		.box-2-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-2-list-member-title {
+			
+		}
+		.box-3-list-member-selected {
+			background-color: yellow;
+		}
+		.box-3-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-3-list-member-title {
+			
+		}
+		.box-4-list-member-selected {
+			background-color: yellow;
+		}
+		.box-4-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-4-list-member-title {
+			
+		}
+		.box-11-list-member-selected {
+			background-color: yellow;
+		}
+		.box-11-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-11-list-member-title {
+			
+		}
+		.box-12-list-member-selected {
+			background-color: yellow;
+		}
+		.box-12-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-12-list-member-title {
+			
+		}
+		.box-13-list-member-selected {
+			background-color: yellow;
+		}
+		.box-13-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-13-list-member-title {
+			
+		}
+		.box-21-list-member-selected {
+			background-color: yellow;
+		}
+		.box-21-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-21-list-member-title {
+			
+		}
+		.box-22-list-member-selected {
+			background-color: yellow;
+		}
+		.box-22-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-22-list-member-title {
+			
+		}
+		.box-23-list-member-selected {
+			background-color: yellow;
+		}
+		.box-23-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-23-list-member-title {
+			
+		}
+		.box-24-list-member-selected {
+			background-color: yellow;
+		}
+		.box-24-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-24-list-member-title {
+			
+		}
+		.box-31-list-member-selected {
+			background-color: yellow;
+		}
+		.box-31-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-31-list-member-title {
+			
+		}
+		.box-32-list-member-selected {
+			background-color: yellow;
+		}
+		.box-32-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-32-list-member-title {
+			
+		}
+		.box-33-list-member-selected {
+			background-color: yellow;
+		}
+		.box-33-list-member:hover {
+			cursor: pointer;				
+		}
+		.box-33-list-member-title {
+			
+		}		
+		.btn-cart-a {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			font-weight: 400;
+			color: #fff;
+			background-color: #49853f;
+			height: 22px;
+			text-align: center;	
+			padding: 4px 0 0 0;
+			border-radius: 7px;
+		}
+		.btn-cart-a:hover {
+			cursor: pointer;
+		}
+		.btn-cart-b {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			font-weight: 400;
+			color: #fff;
+			background-color: #8eb388;
+			height: 22px;
+			text-align: center;	
+			padding: 4px 0 0 0;
+			border-radius: 7px;
+		}
+		.btn-cart-b:hover {
+			cursor: pointer;
+		}
+		.btn-width-100 {
+			width: 100px;
+		}
+		.btn-width-80 {
+			width: 80px;
+		}
+		.cart-list-container-1 {
+			background-color: #eee;
+			border: 1px solid #bbb;
+			padding: 10px 0 10px 0;
+		}
+		.cart-list-separator {
+			height: 10px;
+		}
+		.cart-list-0 {
+			display: inline-block;
+			width: 200px;
+			height: 30px;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;			
+			font-weight: 400;
+			color: #888;
+		}
+		.cart-list-1 {
+			/*display: inline-block;*/
+			width: 100%;
+			height: 20px;
+		}
+		.span-cart-list-1 {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;			
+			font-weight: 400;
+			color: #888;
+		}
+		.cart-list-12 {
+			display: inline-block;
+			width: 200px;
+			height: 20px;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;			
+			font-weight: 400;
+			color: #888;
+		}
+		.cart-list-2 {
+			display: inline-block;
+			width: 100px;
+			height: 30px;	
+		}
+		.btn-cart-delete {
+		}
+		span.bar-title-1 {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;			
+			font-weight: 400;
+			color: #888;			
+		}
+		span.bar-title-2 {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 12px;			
+			font-weight: 400;
+			color: #eee;			
+		}
+		.ad-title-bar {
+			background-color: #8eb388;
+			width: 656px;
+			height: 40px;	
+			padding: 2px 2px 2px 2px;
+		}
+		span.main-title-1 {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 26px;			
+			font-weight: 800;
+			color: #376340;			
+		}
+		span.main-title-2 {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;			
+			font-weight: 400;
+			color: #555;			
+		}
+		span.main-title-3 {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;			
+			font-weight: 700;
+			color: #376340;			
+		}
+		span.main-title-4 {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;			
+			font-weight: 400;
+			color: #555;			
+		}
+		ul.publisher-ads-enumerated-list-square {
+		    list-style: none;
+		   	padding: 4px 0 0 0;
+		   	margin: 0;
+		}
+		
+		ul.publisher-ads-enumerated-list-square li { 
+			background:url(/assets/bullit-list-dark-green-w12-h12.png) 0 3px no-repeat;
+			list-style:none;
+			/*padding: 0 10px 0 0;*/	
+			/*margin: 0 20px 0 0;*/		
+			/*bullit-list-dark-green-w12-h12.png*/
+		    /*padding-left: 1em; 
+		    text-indent: -.7em;*/
+		}
+		ul.publisher-ads-enumerated-list-square li span { 
+			margin: 0 0 0 20px;	
+			/*padding: 0 0 4px 0;*/	
+		}
+
+		/*ul.publisher-ads-enumerated-list-square li:before {
+		    content: "4";
+		    color: red;
+		}*/
+		
+		/*		
+		lgreen: #c0e7bd;
+		ksgreen: #49853f;
+		dgreen: #376340;
+		midgreen: #8eb388;
+		*/
+		
+	</style>
+
+				<div style="height: auto;">
+					
+					<div class="pad-left-20">
+						<div style="height: 20px;"></div>
+						<div>
+							<span class="main-title-1">ADVERTISE NOW</span>
+						</div>
+						<div style="height: 20px;"></div>
+						<div style="text-align: center;">
+							<span class="main-title-2">Once you’ve completed the Product Story for your products, those products will appear</span>
+							<br>
+							<span class="main-title-2">automatically below as you select Premium advertising opportunities.</span>
+						</div>						
+						<div style="height: 8px;"></div>
+						<div style="margin 0; padding: 0;">
+							<img src="/assets/publisher-ads-prod-logo-w600-h139.png" alt="image">
+						</div>
+						<div style="height: 20px;"></div>
+						<div>
+							<span class="main-title-3">Premium Fields Listing:</span>
+							<br>
+							<span class="main-title-4">
+								For $15 per product annually, a publisher may provide more extensive information to all potential users. This includes full
+								information on products features such as Platform, File Type, Character, Evaluation, Review Status, Enhancements, and
+								more. All information will be in your Product Story full page, but these additional characteristics will not appear in search
+								without the premium listing.
+							</span>
+						</div>						
+						<div style="height: 20px;"></div>
+						<div>
+							<span class="main-title-3">Premium Positioning for Listings Online:</span>
+							<br>
+							<ul class="publisher-ads-enumerated-list-square">
+								<li>
+									<span class="main-title-4">1st-3rd Served $10 per month per product</span>									
+								</li>
+								<li>
+									<span class="main-title-4">Guaranteed served on 1 Key Word/Attribute</span>
+									<br>
+									<span class="main-title-4">- $1 per month per product</span>									
+								</li>
+							</ul>
+						</div>						
+
+					</div>
+					
+					<div style="height: 30px;"></div>
+					
+					<div class="title-bar-profile-1">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<span>Premium Listings and Positioning</span>		
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div style="height: 20px;"></div>			
+
+				   	<div style="padding: 0 0 0 20px;">
+				   		
+						<div class="ad-title-bar">
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 190px;">
+					   			<span class="bar-title-2">Product Name<br>&nbsp;</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 86px;">
+					   			<span class="bar-title-2">Premium<br>Fields Listing</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 102px;">
+					   			<span class="bar-title-2">1st-3rd Premium<br>Positioning</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 106px;">
+					   			<span class="bar-title-2">Key Word/Attribute<br>Guarantee</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 10px;">
+					   			<span class="bar-title-2"></span>
+					   		</div>					   		
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 106px;">
+					   			<span class="bar-title-2">Key Word/Attribute<br>&nbsp;</span>
+					   		</div>
+							
+						</div>			
+									
+						<div style="height: 4px;"></div>
+															
+						<div class="table">
+							<div class="row">
+								<div class="cell-200">
+									<div name="box_1" id="box_1" class="box-1"></div>
+									<div id="btn_box_1_clear" class="btn-box-clear" style="margin: 0 0 0 70px;">
+										<span>&laquo; Clear &raquo;</span>
+									</div>
+								</div>
+								<div class="cell-100">
+									<div name="box_2" id="box_2" class="box-2">
+										<div class="box-2-list-member-title">$15 Annually<br>(Select One)<br><br></div>
+										<div class="box-2-list-member" id="box_2_member_0" value=1 >1 Year</div>
+										<div class="box-2-list-member" id="box_2_member_1" value=2 >2 Years</div>
+									</div>
+								</div>
+								<div class="cell-100">
+									<div name="box_3" id="box_3" class="box-3">
+										<div class="box-3-list-member-title">$10 Monthly<br>(Select One)<br><br></div>
+										<div class="box-3-list-member" id="box_3_member_0" value=3 >3 Months</div>
+										<div class="box-3-list-member" id="box_3_member_1" value=6 >6 Months</div>
+										<div class="box-3-list-member" id="box_3_member_2" value=9 >9 Months</div>
+										<div class="box-3-list-member" id="box_3_member_3" value=12 >12 Months</div>
+										<div class="box-3-list-member" id="box_3_member_4" value=24 >24 Months</div>
+									</div>
+									
+								</div>
+								<div class="cell-100">
+									<div name="box_4" id="box_4" class="box-4">
+										<div class="box-4-list-member-title">$1 Monthly<br>(Select One)<br><br></div>
+										<div class="box-4-list-member" id="box_4_member_0" value=12 >12 Months</div>
+										<div class="box-4-list-member" id="box_4_member_1" value=24 >24 Months</div>
+									</div>
+								</div>
+
+								<div class="cell-200">
+
+									<!-- <textarea id="box_5" class="box-5"></textarea> -->
+									<input type="text" id="box_5" class="box-5"></input>	
+									<div style="height: 20px;"></div>	
+									<div id="cart_1_add" class="btn-cart-a btn-width-100">Add to Cart</div>
+																
+									<!-- <#%= form_tag url_for(:action => :update_topic, :id => ''), :remote => true do %#> -->
+										<!-- <#%= text_area_tag :topic, @publisher_product_description.topic, :class => 'textarea-product-description width-314 height-60', :placeholder => 'Topic' %#> -->
+										<!-- <#%= hidden_field_tag :publisher_id, @publisher_id %#> -->
+										<!-- <#%= submit_tag 'Save', :id => 'submit_topic_hidden', :class => 'hidden' %#> -->
+									<!-- <#% end %#> -->
+									
+								</div>
+																
+							</div>
+						</div>
+						
+					</div>				   		
+
+					<div style="height: 20px;"></div>
+					
+					<div style="width: 100%; padding: 0 0 0 20px;">
+				   		<div class="table" style="margin: 0;">
+				   			<div class="row">
+				   				<div class="cell-475">
+				   					<span class="bar-title-1">Added to Cart ...</span>
+				   				</div>
+				   				<div class="cell-125">
+				   					<span class="bar-title-1">Total: $</span>
+				   					<span class="bar-title-1" id="cart_1_total"></span>
+				   				</div>				   				
+				   			</div>
+				   		</div>
+						<div style="width: 656px; border: 1px solid #ccc; padding: 20px 10px 10px 10px;">
+							<div id="cart_1_list"></div>
+						</div>
+					</div>
+					
+					
+
+
+
+
+
+
+					<div style="height: 100px;"></div>
+					
+					<div class="title-bar-profile-1">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<span>Premium Squares</span>		
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div style="height: 8px;"></div>
+					<div class="pad-left-20">
+						<div class="table">
+							<div class="row">
+								<div class="cell-300">
+									<div style="margin 0; padding: 0;">
+										<img src="/assets/publisher-ads-prod-name-w391-h388.png" alt="image" width="270">
+									</div>
+								</div>
+								<div class="cell-400">
+									<div>
+										<span class="main-title-4">
+											Print/Mailed on the reverse side of our Journal as a 24x36”
+											Poster to thousands of key Districts and School executives
+											once a year per Poster.
+										</span>
+									</div>
+									<div style="height: 20px;"></div>	
+									<div>						
+										<span class="main-title-3">Print Squares:</span>
+									</div>
+									<div style="height: 10px;"></div>	
+									<div>
+										<span class="main-title-4">
+											$750 per Square per Poster/annual. 		
+										</span>
+										<br>
+										<span class="main-title-4">
+											 Includes Premium listings online (2 & 3 below.)
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div style="height: 20px;"></div>			
+
+					<div class="pad-left-20">
+						<span class="main-title-3">
+							PRINT SQUARES 		
+						</span>
+					</div>
+
+					<div style="height: 10px;"></div>			
+
+				   	<div style="padding: 0 0 0 20px;">
+				   		
+						<div class="ad-title-bar">
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 190px;">
+					   			<span class="bar-title-2">Product Name<br>&nbsp;</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 190px;">
+					   			<span class="bar-title-2">Poster<br>&nbsp;</span>
+					   		</div>
+					   		<!-- <div style="margin: 0; display: inline-block; text-align: center; width: 10px;">
+					   			<span class="bar-title-2"></span>
+					   		</div> -->					   		
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 106px;">
+					   			<span class="bar-title-2">Key Word/Attribute<br>&nbsp;</span>
+					   		</div>
+							
+						</div>			
+									
+						<div style="height: 4px;"></div>
+															
+						<div class="table">
+							<div class="row">
+								<div class="cell-200">
+									<div name="box_11" id="box_11" class="box-11"></div>
+								</div>
+								<div class="cell-200">
+									<div name="box_12" id="box_12" class="box-12">
+										<div class="box-12-list-member-title">(Select One)<br><br></div>
+										<div class="box-12-list-member" id="box_12_member_0">Curriculum Resources</div>
+										<div class="box-12-list-member" id="box_12_member_1">Digital Teacher Tools</div>
+										<div class="box-12-list-member" id="box_12_member_2">Digital School Operations</div>
+										<div class="box-12-list-member" id="box_12_member_3">Digital Content</div>
+										<div class="box-12-list-member" id="box_12_member_4">PLS & DIV Digital Content</div>
+
+									</div>
+								</div>
+								<div class="cell-200">
+									<!-- <textarea id="box_5" class="box-5"></textarea> -->
+									<input type="text" id="box_13" class="box-13"></input>	
+									<div style="height: 20px;"></div>	
+									<div id="cart_11_add" class="btn-cart-a btn-width-100">Add to Cart</div>
+
+									<!-- <#%= form_tag url_for(:action => :update_topic, :id => ''), :remote => true do %#> -->
+										<!-- <#%= text_area_tag :topic, @publisher_product_description.topic, :class => 'textarea-product-description width-314 height-60', :placeholder => 'Topic' %#> -->
+										<!-- <#%= hidden_field_tag :publisher_id, @publisher_id %#> -->
+										<!-- <#%= submit_tag 'Save', :id => 'submit_topic_hidden', :class => 'hidden' %#> -->
+									<!-- <#% end %#> -->
+								</div>
+								<div class="cell-100">
+									
+								</div>
+																
+							</div>
+						</div>
+						
+					</div>				   		
+
+					<div style="height: 20px;"></div>
+					
+					<div style="width: 100%; padding: 0 0 0 20px;">
+				   		<div class="table" style="margin: 0;">
+				   			<div class="row">
+				   				<div class="cell-475">
+				   					<span class="bar-title-1">Added to Cart ...</span>
+				   				</div>
+				   				<div class="cell-125">
+				   					<span class="bar-title-1">Total: $</span>
+				   					<span class="bar-title-1" id="cart_11_total"></span>
+				   				</div>				   				
+				   			</div>
+				   		</div>
+						<div style="width: 656px; border: 1px solid #ccc; padding: 20px 10px 10px 10px;">
+							<div id="cart_11_list"></div>
+						</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					<div style="height: 20px;"></div>
+					
+					<div class="pad-left-20">
+						<div style="border-bottom: 2px solid #49853f; width: 660px;"></div>
+					</div>
+
+					<div style="height: 20px;"></div>
+					
+					<div class="pad-left-20">
+						<div>
+							<span class="main-title-3">
+								ONLINE SQUARES 		
+							</span>
+						</div>
+						<div style="height: 20px;"></div>
+						<div>
+							<span class="main-title-3">
+								Online Squares only: 		
+							</span>
+						</div>
+						<div>
+							<span class="main-title-4">
+								1) KnowStory start landing page - $500 per Square/annual 		
+							</span>
+						</div>
+						<div style="height: 20px;"></div>
+						<div>
+							<span class="main-title-3">
+								Premium Listing(s) online only: 		
+							</span>
+						</div>
+						<div>
+							<span class="main-title-4">
+								2) 1st-3rd Served $10 per month per product 		
+							</span>
+						</div>
+						<div>
+							<span class="main-title-4">
+								3) Guaranteed served on 1 Key Word/Attribute -$1 per month per product
+							</span>
+						</div>
+						
+					</div>
+					
+					<div style="height: 20px;"></div>
+					
+				   	<div style="padding: 0 0 0 20px;">
+				   		
+						<div class="ad-title-bar">
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 190px;">
+					   			<span class="bar-title-2">Product Name<br>&nbsp;</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 86px;">
+					   			<span class="bar-title-2">KnowStory<br>Landing Page</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 102px;">
+					   			<span class="bar-title-2">1st-3rd Premium<br>Positioning</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 106px;">
+					   			<span class="bar-title-2">Key Word/Attribute<br>Guarantee</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 10px;">
+					   			<span class="bar-title-2"></span>
+					   		</div>					   		
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 106px;">
+					   			<span class="bar-title-2">Key Word/Attribute<br>&nbsp;</span>
+					   		</div>
+							
+						</div>			
+					
+						<div style="height: 4px;"></div>
+															
+						<div class="table">
+							<div class="row">
+								<div class="cell-200">
+									<div name="box_21" id="box_21" class="box-21"></div>
+								</div>
+								<div class="cell-100">
+									<div name="box_22" id="box_22" class="box-22">
+										<div class="box-22-list-member-title">$500 per<br>square<br>/annually<br><br></div>
+										<div class="box-22-list-member" id="box_22_member_0" value=1 >Add to<br>KnowStory<br>landing page</div>
+
+									</div>
+								</div>
+								<div class="cell-100">
+									<div name="box_23" id="box_23" class="box-23">
+										<div class="box-23-list-member-title">$10 Monthly<br>(Select One)<br><br></div>
+										<div class="box-23-list-member" id="box_23_member_0" value=3 >3 Months</div>
+										<div class="box-23-list-member" id="box_23_member_1" value=6 >6 Months</div>
+										<div class="box-23-list-member" id="box_23_member_2" value=9 >9 Months</div>
+										<div class="box-23-list-member" id="box_23_member_3" value=12 >12 Months</div>
+										<div class="box-23-list-member" id="box_23_member_4" value=24 >24 Months</div>
+									</div>
+								</div>
+								<div class="cell-100">
+									<div name="box_24" id="box_24" class="box-24">
+										<div class="box-24-list-member-title">$1 Monthly<br>(Select One)<br><br></div>
+										<div class="box-24-list-member" id="box_24_member_0" value=12 >12 Months</div>
+										<div class="box-24-list-member" id="box_24_member_1" value=24 >24 Months</div>
+									</div>
+								</div>
+
+								<div class="cell-200">
+
+									<!-- <textarea id="box_5" class="box-5"></textarea> -->
+									<input type="text" id="box_25" class="box-25"></input>	
+									<div style="height: 20px;"></div>	
+									<div id="cart_21_add" class="btn-cart-a btn-width-100">Add to Cart</div>
+																
+									<!-- <#%= form_tag url_for(:action => :update_topic, :id => ''), :remote => true do %#> -->
+										<!-- <#%= text_area_tag :topic, @publisher_product_description.topic, :class => 'textarea-product-description width-314 height-60', :placeholder => 'Topic' %#> -->
+										<!-- <#%= hidden_field_tag :publisher_id, @publisher_id %#> -->
+										<!-- <#%= submit_tag 'Save', :id => 'submit_topic_hidden', :class => 'hidden' %#> -->
+									<!-- <#% end %#> -->
+									
+								</div>
+																
+							</div>
+						</div>
+					
+					</div>					
+					
+					<div style="height: 20px;"></div>
+					
+					<div style="width: 100%; padding: 0 0 0 20px;">
+				   		<div class="table" style="margin: 0;">
+				   			<div class="row">
+				   				<div class="cell-475">
+				   					<span class="bar-title-1">Added to Cart ...</span>
+				   				</div>
+				   				<div class="cell-125">
+				   					<span class="bar-title-1">Total: $</span>
+				   					<span class="bar-title-1" id="cart_21_total"></span>
+				   				</div>				   				
+				   			</div>
+				   		</div>
+						<div style="width: 656px; border: 1px solid #ccc; padding: 20px 10px 10px 10px;">
+							<div id="cart_21_list"></div>
+						</div>
+					</div>
+					
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					
+					
+					<div style="height: 60px;"></div>		
+								
+					<div class="title-bar-profile-1">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<span>Premium Pins</span>		
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="height: 8px;"></div>
+					<div class="pad-left-20">
+						<div class="table">
+							<div class="row">
+								<div class="cell-400">
+									<div style="margin 0; padding: 0;">
+										<img src="/assets/publisher-ads-prod-poster-w505-h410.png" alt="image" width="390">
+									</div>
+								</div>
+								<div class="cell-300">
+									<div style="padding: 0 20px 0 0;">
+										<span class="main-title-4">
+											$300 per Poster.
+										</span>
+										<br>
+										<span class="main-title-4">
+											Print/Mailed on the reverse side of our Journal
+											as a 24”x 36” Poster to thousands of key Districts
+											and School executives once a year per Poster.
+										</span>
+									</div>
+									<div style="height: 50px;"></div>	
+									<div style="margin 0; padding: 0;">
+										<img src="/assets/publisher-ads-prod-pin-w253-h130.png" alt="image" width="200">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="height: 8px;"></div>
+					<div class="pad-left-20">
+						<div style="border: 1px solid #49853f; width: 658px; padding: 6px 10px 6px 10px;">
+							<div style="width: 100%; text-align: center;">
+								<span class="main-title-3">
+									Posters 2015
+								</span>
+							</div>
+							<div style="height: 6px;"></div>
+							<div>
+								<span class="main-title-3">
+									Curriculum Resources
+								</span>
+							</div>
+							<div>
+								<span class="main-title-4">
+									21st Century Tools, Math, Science, Language, Social Studies, Special Education								 		
+								</span>
+							</div>
+
+							<div style="height: 6px;"></div>
+							<div>
+								<span class="main-title-3">
+									Digital Teacher Tools
+								</span>
+							</div>
+							<div>
+								<span class="main-title-4">
+									Assessment/Testing, Collaboration, Classroom Response, Grading/Attendance, Lesson Planning, Presentation,
+									Lecture Capture, Plagiarism Checks
+								</span>
+							</div>
+
+							<div style="height: 6px;"></div>
+							<div>
+								<span class="main-title-3">
+									Digital School Operations
+								</span>
+							</div>
+							<div>
+								<span class="main-title-4">
+									Learning Management Systems, Student Information Systems, Web Filtering, Device Mgmt, Virtual Schools &
+									Distance Education, Testing Systems, Unique Tech
+								</span>
+							</div>
+
+							<div style="height: 6px;"></div>
+							<div>
+								<span class="main-title-3">
+									Digital Content
+								</span>
+							</div>
+							<div>
+								<span class="main-title-4">
+									Apps, eBooks/Textbooks, Games, Study Tools, Video, Dictionaries, Directories
+								</span>
+							</div>
+
+							<div style="height: 6px;"></div>
+							<div>
+								<span class="main-title-3">
+									Professional Learning & DIY Digital Content
+								</span>
+							</div>
+							<div>
+								<span class="main-title-4">
+									Subscription sites, eBook creation/game creation, digital story telling/poster-boarding, talent management,
+									professional learning systems, Instructional Design, DIY - Special
+								</span>
+							</div>
+							<!-- <div style="height: 6px;"></div> -->
+						</div>					
+					</div>
+					
+					
+					
+					
+
+
+
+
+
+					<div style="height: 20px;"></div>
+					
+				   	<div style="padding: 0 0 0 20px;">
+				   		
+						<div class="ad-title-bar">
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 190px;">
+					   			<span class="bar-title-2">Product Name</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 170px;">
+					   			<span class="bar-title-2">Poster</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 150px;">
+					   			<span class="bar-title-2">Category</span>
+					   		</div>
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 10px;">
+					   			<span class="bar-title-2"></span>
+					   		</div>					   		
+					   		<div style="margin: 0; display: inline-block; text-align: center; width: 20px;">
+					   			<span class="bar-title-2">Price</span>
+					   		</div>
+							
+						</div>			
+					
+						<div style="height: 4px;"></div>
+															
+						<div class="table">
+							<div class="row">
+								<div class="cell-200">
+									<div name="box_31" id="box_31" class="box-31"></div>
+								</div>
+								<div class="cell-180">
+									<div name="box_32" id="box_32" class="box-32">
+										<div class="box-32-list-member-title">(Select One)<br><br></div>
+										<div class="box-32-list-member" id="box_32_member_0" value=0 >Curriculum Resources</div>
+										<div class="box-32-list-member" id="box_32_member_1" value=1 >Digital Teacher Tools</div>
+										<div class="box-32-list-member" id="box_32_member_2" value=2 >Digital School Operations</div>
+										<div class="box-32-list-member" id="box_32_member_3" value=3 >Digital Content</div>
+										<div class="box-32-list-member" id="box_32_member_4" value=4 >PL & DIV Digital Content</div>
+									</div>
+								</div>
+								<div class="cell-150">
+									<div name="box_33" id="box_33" class="box-33">
+										<div class="box-33-list-member-title">(Select One)<br><br></div>
+										<div class="box-33-list-member" id="box_33_member_0" value=0 >21st Century Tools</div>
+										<div class="box-33-list-member" id="box_33_member_1" value=1 >Math</div>
+										<div class="box-33-list-member" id="box_33_member_2" value=2 >Science</div>
+										<div class="box-33-list-member" id="box_33_member_3" value=3 >Language</div>
+										<div class="box-33-list-member" id="box_33_member_4" value=4 >Social Studies</div>
+										<div class="box-33-list-member" id="box_33_member_5" value=5 >Special Education</div>
+
+									</div>
+								</div>
+								<div class="cell-170">
+									<div>
+										<span class="main-title-3">
+											$300
+										</span>
+									</div>
+									<div style="height: 20px;"></div>	
+									<div id="cart_31_add" class="btn-cart-a btn-width-100">Add to Cart</div>
+								</div>
+																
+							</div>
+						</div>
+					
+					</div>					
+					
+					<div style="height: 20px;"></div>
+					
+					<div style="width: 100%; padding: 0 0 0 20px;">
+				   		<div class="table" style="margin: 0;">
+				   			<div class="row">
+				   				<div class="cell-475">
+				   					<span class="bar-title-1">Added to Cart ...</span>
+				   				</div>
+				   				<div class="cell-125">
+				   					<span class="bar-title-1">Total: $</span>
+				   					<span class="bar-title-1" id="cart_31_total"></span>
+				   				</div>				   				
+				   			</div>
+				   		</div>
+						<div style="width: 656px; border: 1px solid #ccc; padding: 20px 10px 10px 10px;">
+							<div id="cart_31_list"></div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					
+					
+					
+					
+					
+					<div style="height: 60px;"></div>		
+								
+					<div class="title-bar-profile-1">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<span>Purchases</span>		
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div style="text-align: center;">
+						<div style="height: 30px;"></div>
+						<div>
+							<span class="bar-title-1">Cart Total: </span><span id="ad_cart_total" class="bar-title-1"></span>
+						</div>
+						<div style="height: 30px;"></div>
+						<div id="btn_cart_purchases_view" class="btn-cart-b btn-width-100" style="display: inline-block;">View Cart</div>
+						<div style="display: inline-block; width: 30px;"></div>
+						<div id="btn_cart_purchases_checkout" class="btn-cart-a btn-width-100" style="display: inline-block;">Checkout</div>
+					</div>
+								
+					<div style="height: 30px;"></div>
+					
+					<div style="width: 100%; padding: 0 0 0 20px;">
+				   		<div class="table" style="margin: 0;">
+				   			<div class="row">
+				   				<div class="cell-475">
+				   					<span class="bar-title-1">Added to Cart ...</span>
+				   				</div>
+				   				<div class="cell-125">
+				   					<span class="bar-title-1">Total: $</span>
+				   					<span class="bar-title-1" id="cart_view_total"></span>
+				   				</div>				   				
+				   			</div>
+				   		</div>
+						<div style="width: 656px; border: 1px solid #ccc; padding: 20px 10px 10px 10px;">
+							<div id="cart_view_list"></div>
+						</div>
+					</div>
+
+					<div style="height: 300px;"></div>
+													
+				</div>					
+								
+								
+
+		
+		
+	<script>
+
+		function fill_box_1(a_box_list) {
+			var len = a_box_list.length;
+			var list = "";
+			for(var i = 0; i < len; i++) {
+				// var coord = "<option value='" + a_prod_list[i][3] + "'> " + obj_a_coord_list[i][0] + " " + obj_a_coord_list[i][1] + "&nbsp;&nbsp;" + obj_a_coord_list[i][4] + "&nbsp;&nbsp;" + obj_a_coord_list[i][5] + "</option>";
+				// list += '<div class="list-member" id="box_1_member_' + i + '" name="' + a_box_list[i] + '">' + a_box_list[i]  + '</div>';
+				list += '<div class="box-1-list-member" id="box_1_member_' + i + '" name="' + a_box_list[i][0] + '">' + a_box_list[i][1]  + '</div>';
+				$('#box_1').html(list);
+			}					
+			
+        	// $("#prod_list_1").children("option").each( function() {
+            	// $(this).remove();
+        	// });
+			// var len = a_prod_list.length;
+			// for(var i = 0; i < len; i++) {
+				// // var coord = "<option value='" + a_prod_list[i][3] + "'> " + obj_a_coord_list[i][0] + " " + obj_a_coord_list[i][1] + "&nbsp;&nbsp;" + obj_a_coord_list[i][4] + "&nbsp;&nbsp;" + obj_a_coord_list[i][5] + "</option>";
+				// var prod = '<option data-key="' + i + '" value="' + a_prod_list[i] + '">' + a_prod_list[i]  + '</option>';
+				// $('#prod_list_1').append(prod);
+			// }					
+		}
+		function fill_box_11(a_box_list) {
+			var len = a_box_list.length;
+			var list = "";
+			for(var i = 0; i < len; i++) {
+				// list += '<div class="box-11-list-member" id="box_11_member_' + i + '">' + a_box_list[i]  + '</div>';
+				list += '<div class="box-11-list-member" id="box_11_member_' + i + '" name="' + a_box_list[i][0] + '">' + a_box_list[i][1]  + '</div>';
+				$('#box_11').html(list);
+			}					
+		}
+		function fill_box_21(a_box_list) {
+			var len = a_box_list.length;
+			var list = "";
+			for(var i = 0; i < len; i++) {
+				list += '<div class="box-21-list-member" id="box_21_member_' + i + '" name="' + a_box_list[i][0] + '">' + a_box_list[i][1]  + '</div>';
+				$('#box_21').html(list);
+			}					
+		}
+		function fill_box_31(a_box_list) {
+			var len = a_box_list.length;
+			var list = "";
+			for(var i = 0; i < len; i++) {
+				list += '<div class="box-31-list-member" id="box_31_member_' + i + '" name="' + a_box_list[i][0] + '">' + a_box_list[i][1]  + '</div>';
+				$('#box_31').html(list);
+			}					
+		}
+
+		function append_to_cart_1(a_cart_1) {
+			// var a = new Array();
+			var s = "";
+			var total = 0;
+			for(var i = 0; i < a_cart_1.length; i++) {
+				s += '<div class="cart-list-container-1">' + 
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Product Name: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_1[i][1] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+									 	'<div id="cart_1_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_1_delete(' + i + ')">' + 
+									 		'Remove' + 
+									 	'</div>' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Premium Fields Listing: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_1[i][2] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">1st-3rd Premium Positioning: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_1[i][3] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Key Word/Attribute Guarantee: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_1[i][4] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Key Word/Attribute: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_1[i][5] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">cost: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">$' + a_cart_1[i][6] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 // '<div class="cart-list-1">' + 
+						 	// '<div id="cart_1_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_1_delete(' + i + ')">' + 
+						 		// 'Remove' + 
+						 	// '</div>' +
+						 // '</div>' +
+					 '</div>' +
+					 '<div class="cart-list-separator"></div>';
+					 
+				total += parseFloat(a_cart_1[i][6]);
+			}
+			$("#cart_1_list").html(s);
+			
+			total = parseFloat(Math.round(total * 100) / 100).toFixed(2);
+			$("#cart_1_total").html(total);
+		}
+
+		function append_to_cart_11(a_cart_11) {
+			var s = "";
+			var total = 0;
+			for(var i = 0; i < a_cart_11.length; i++) {
+				s += '<div class="cart-list-container-1">' + 
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Product Name: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_11[i][1] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+									 	'<div id="cart_11_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_11_delete(' + i + ')">' + 
+									 		'Remove' + 
+									 	'</div>' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Poster: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_11[i][2] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Key Word/Attribute: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_11[i][3] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">cost: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">$' + a_cart_11[i][6] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+					 '</div>' +
+					 '<div class="cart-list-separator"></div>';
+					 
+				total += parseFloat(a_cart_11[i][6]);
+			}
+			$("#cart_11_list").html(s);
+			
+			total = parseFloat(Math.round(total * 100) / 100).toFixed(2);
+			$("#cart_11_total").html(total);
+		}
+		
+		function append_to_cart_21(a_cart_21) {
+			var s = "";
+			var total = 0;
+			for(var i = 0; i < a_cart_21.length; i++) {
+				s += '<div class="cart-list-container-1">' + 
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Product Name: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_21[i][1] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+									 	'<div id="cart_21_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_21_delete(' + i + ')">' + 
+									 		'Remove' + 
+									 	'</div>' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">KnowStory Landing Page: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_21[i][2] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">1st-3rd Premium Positioning: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_21[i][3] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Key Word/Attribute Guarantee: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_21[i][4] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Key Word/Attribute: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_21[i][5] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">cost: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">$' + a_cart_21[i][6] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 // '<div class="cart-list-1">' + 
+						 	// '<div id="cart_1_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_1_delete(' + i + ')">' + 
+						 		// 'Remove' + 
+						 	// '</div>' +
+						 // '</div>' +
+					 '</div>' +
+					 '<div class="cart-list-separator"></div>';
+					 
+				total += parseFloat(a_cart_21[i][6]);
+			}
+			$("#cart_21_list").html(s);
+			
+			total = parseFloat(Math.round(total * 100) / 100).toFixed(2);
+			$("#cart_21_total").html(total);
+		}
+
+		function append_to_cart_31(a_cart_31) {
+			var s = "";
+			var total = 0;
+			for(var i = 0; i < a_cart_31.length; i++) {
+				s += '<div class="cart-list-container-1">' + 
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Product Name: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_31[i][1] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+									 	'<div id="cart_31_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_31_delete(' + i + ')">' + 
+									 		'Remove' + 
+									 	'</div>' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Poster: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_31[i][2] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">Category: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">' + a_cart_31[i][3] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 '<div class="cart-list-1">' +
+						 	'<div class="table">' +
+						 		'<div class="row">' +
+						 			'<div class="cell-250">' +
+						 				'<span class="span-cart-list-1">cost: </span>' +
+						 			'</div>' +
+						 			'<div class="cell-200">' +
+						 				'<span class="span-cart-list-1">$' + a_cart_31[i][6] + '</span>' +
+						 			'</div>' +
+						 			'<div class="cell-150">' +
+						 			'</div>' +
+						 		'</div>' +
+						 	'</div>' +
+						 '</div>' +
+						 // '<div class="cart-list-1">' + 
+						 	// '<div id="cart_1_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_1_delete(' + i + ')">' + 
+						 		// 'Remove' + 
+						 	// '</div>' +
+						 // '</div>' +
+					 '</div>' +
+					 '<div class="cart-list-separator"></div>';
+					 
+				total += parseFloat(a_cart_31[i][6]);
+			}
+			$("#cart_31_list").html(s);
+			
+			total = parseFloat(Math.round(total * 100) / 100).toFixed(2);
+			$("#cart_31_total").html(total);
+		}
+		
+		// function append_to_cart_11(a_cart_11) {
+			// var s = "";
+			// for(var i = 0; i < a_cart_11.length; i++) {
+				// s += '<div class="cart-list">' + 
+					 // '<div class="cart-list-1">' + a_cart_11[i][1] + '</div>' +
+					 // '<div class="cart-list-12">' + a_cart_11[i][2] + '</div>' +
+					 // '<div class="cart-list-1">' + a_cart_11[i][3] + '</div>' +
+					 // '<div class="cart-list-1"></div>' +
+					 // '<div class="cart-list-1"><div id="cart_11_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_11_delete(' + i + ')">Remove</div></div>' +
+					 // '</div>';
+			// }
+			// $("#cart_11_list").html(s);
+		// }
+		function append_to_cart_view(a_cart_view) {
+			var s = "";
+			var total = 0;
+			for(var i = 0; i < a_cart_view.length; i++) {
+				if( a_cart_view[i][0] == 1 ) {
+					s += '<div class="cart-list-container-1">' + 
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Product Name: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][1] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+										 	// '<div id="cart_view_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart__delete(' + i + ')">' + 
+										 		// 'Remove' + 
+										 	// '</div>' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Premium Fields Listing: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][2] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">1st-3rd Premium Positioning: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][3] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Key Word/Attribute Guarantee: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][4] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Key Word/Attribute: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][5] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">cost: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">$' + a_cart_view[i][6] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+						 '</div>' +
+						 '<div class="cart-list-separator"></div>';
+						
+					// alert(a_cart_view[i][6]);						
+					total += parseFloat(a_cart_view[i][6]);
+						
+						// s += '<div class="cart-list">' + 
+							 // '<div class="cart-list-1">' + a_cart_view[i][1] + '</div>' +
+							 // '<div class="cart-list-1">' + a_cart_view[i][2] + '</div>' +
+							 // '<div class="cart-list-1">' + a_cart_view[i][3] + '</div>' +
+							 // '<div class="cart-list-1">' + a_cart_view[i][4] + '</div>' +
+							 // '<div class="cart-list-1">' + a_cart_view[i][5] + '</div>' +
+							 // '<div class="cart-list-1"><div id="cart_view_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_view_delete(' + i + ')">Remove</div></div>' +
+							 // '</div>';
+				}
+				else if( a_cart_view[i][0] == 2 ) {
+					s += '<div class="cart-list-container-1">' + 
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Product Name: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][1] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+										 	// '<div id="cart_11_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_11_delete(' + i + ')">' + 
+										 		// 'Remove' + 
+										 	// '</div>' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Poster: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][2] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Key Word/Attribute: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][3] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">cost: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">$' + a_cart_view[i][6] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+						 '</div>' +
+						 '<div class="cart-list-separator"></div>';
+						
+					// alert(a_cart_view[i][4]);
+					total += parseFloat(a_cart_view[i][6]);
+						
+						// s += '<div class="cart-list">' + 
+							 // '<div class="cart-list-1">' + a_cart_view[i][1] + '</div>' +
+							 // '<div class="cart-list-12">' + a_cart_view[i][2] + '</div>' +
+							 // '<div class="cart-list-1">' + a_cart_view[i][3] + '</div>' +
+							 // '<div class="cart-list-1"></div>' +
+							 // '<div class="cart-list-1"><div id="cart_view_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_view_delete(' + i + ')">Remove</div></div>' +
+							 // '</div>';
+				}
+				else if( a_cart_view[i][0] == 3 ) {
+					s += '<div class="cart-list-container-1">' + 
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Product Name: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][1] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+										 	// '<div id="cart_11_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_11_delete(' + i + ')">' + 
+										 		// 'Remove' + 
+										 	// '</div>' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">KnowStory Landing Page: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][2] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">1st-3rd Premium Positioning: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][3] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Keyword/Attribute Guarantee: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][4] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Keyword/Attribute: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][5] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">cost: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">$' + a_cart_view[i][6] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+						 '</div>' +
+						 '<div class="cart-list-separator"></div>';
+						
+					// alert(a_cart_view[i][4]);
+					total += parseFloat(a_cart_view[i][6]);
+						
+						// s += '<div class="cart-list">' + 
+							 // '<div class="cart-list-1">' + a_cart_view[i][1] + '</div>' +
+							 // '<div class="cart-list-12">' + a_cart_view[i][2] + '</div>' +
+							 // '<div class="cart-list-1">' + a_cart_view[i][3] + '</div>' +
+							 // '<div class="cart-list-1"></div>' +
+							 // '<div class="cart-list-1"><div id="cart_view_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_view_delete(' + i + ')">Remove</div></div>' +
+							 // '</div>';
+				}
+				else if( a_cart_view[i][0] == 4 ) {
+					s += '<div class="cart-list-container-1">' + 
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Product Name: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][1] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+										 	// '<div id="cart_11_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_11_delete(' + i + ')">' + 
+										 		// 'Remove' + 
+										 	// '</div>' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Poster: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][2] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">Category: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">' + a_cart_view[i][3] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+							 '<div class="cart-list-1">' +
+							 	'<div class="table">' +
+							 		'<div class="row">' +
+							 			'<div class="cell-250">' +
+							 				'<span class="span-cart-list-1">cost: </span>' +
+							 			'</div>' +
+							 			'<div class="cell-200">' +
+							 				'<span class="span-cart-list-1">$' + a_cart_view[i][6] + '</span>' +
+							 			'</div>' +
+							 			'<div class="cell-150">' +
+							 			'</div>' +
+							 		'</div>' +
+							 	'</div>' +
+							 '</div>' +
+						 '</div>' +
+						 '<div class="cart-list-separator"></div>';
+						
+					// alert(a_cart_view[i][4]);
+					total += parseFloat(a_cart_view[i][6]);
+						
+						// s += '<div class="cart-list">' + 
+							 // '<div class="cart-list-1">' + a_cart_view[i][1] + '</div>' +
+							 // '<div class="cart-list-12">' + a_cart_view[i][2] + '</div>' +
+							 // '<div class="cart-list-1">' + a_cart_view[i][3] + '</div>' +
+							 // '<div class="cart-list-1"></div>' +
+							 // '<div class="cart-list-1"><div id="cart_view_delete_' + i + '" class="btn-cart-a btn-width-80 " onclick="btn_cart_view_delete(' + i + ')">Remove</div></div>' +
+							 // '</div>';
+				}
+			}
+			$("#cart_view_list").html(s);
+
+			total = parseFloat(Math.round(total * 100) / 100).toFixed(2);
+			cart_total = total;
+			$("#cart_view_total").html(total);			
+		}
+		
+		function btn_cart_1_delete(btn_cart_delete_index) {
+			// alert(a_cart_1[btn_cart_delete_index][0]);
+			a_cart_1.splice(btn_cart_delete_index, 1);
+			append_to_cart_1(a_cart_1);		
+		}
+		function btn_cart_11_delete(btn_cart_delete_index) {
+			// alert(a_cart_1[btn_cart_delete_index][0]);
+			a_cart_11.splice(btn_cart_delete_index, 1);
+			append_to_cart_11(a_cart_11);		
+		}
+		function btn_cart_21_delete(btn_cart_delete_index) {
+			a_cart_21.splice(btn_cart_delete_index, 1);
+			append_to_cart_21(a_cart_21);		
+		}
+		function btn_cart_31_delete(btn_cart_delete_index) {
+			a_cart_31.splice(btn_cart_delete_index, 1);
+			append_to_cart_31(a_cart_31);		
+		}
+		
+		// function toFixed(value, precision) {
+    		// var power = Math.pow(10, precision || 0);
+    		// return String(Math.round(value * power) / power);
+		// }
+				
+		var a_cart_1 = new Array();		
+		var a_cart_11 = new Array();		
+		var a_cart_21 = new Array();		
+		var a_cart_31 = new Array();		
+
+		var a_cart_view;		
+		
+		var cart_total = 0;
+		
+		$(window).load( function() {
+		// $(document).ready(function(){
+
+			$("#ad_cart_total").html(cart_total);
+
+			fill_box_1(gon.publisher_products);			
+			fill_box_11(gon.publisher_products);			
+			fill_box_21(gon.publisher_products);			
+			fill_box_31(gon.publisher_products);			
+
+			
+			var id_box_1_selected = "";			
+			var clicked_box_1_list_member = false;
+			$(".box-1-list-member").on('click', function() {
+				if( id_box_1_selected != "" ) {
+					$("#" + id_box_1_selected).removeClass("box-1-list-member-selected");					
+				}
+				id_box_1_selected = $(this).attr("id");
+				$(this).addClass("box-1-list-member-selected");
+				clicked_box_1_list_member = true;
+			});			
+			$("#box_1").on('click', function() {
+				if(!clicked_box_1_list_member) {
+					id_box_1_selected = "";
+					$(".box-1-list-member").removeClass("box-1-list-member-selected");					
+				}
+				clicked_box_1_list_member = false;
+			});
+			$("#btn_box_1_clear").on('click', function() {
+				id_box_1_selected = "";
+				$(".box-1-list-member").removeClass("box-1-list-member-selected");
+			});
+
+			
+			// $(".box-1-list-member").on('click', function() {
+				// if( id_box_1_selected != "" ) {
+					// $("#" + id_box_1_selected).removeClass("box-1-list-member-selected");					
+				// }
+				// id_box_1_selected = $(this).attr("id");
+				// $(this).addClass("box-1-list-member-selected");
+			// });			
+			// $("#btn_box_1_clear").on('click', function() {
+				// id_box_1_selected = "";
+				// $(".box-1-list-member").removeClass("box-1-list-member-selected");
+			// });
+			
+
+
+
+			
+			// var id_box_2_selected = "";
+			// $(".box-2-list-member").on('click', function() {
+				// if( id_box_2_selected != "" ) {
+					// $("#" + id_box_2_selected).removeClass("box-2-list-member-selected");					
+				// }
+				// id_box_2_selected = $(this).attr("id");
+				// $(this).addClass("box-2-list-member-selected");
+			// });
+
+			var id_box_2_selected = "";			
+			var clicked_box_2_list_member = false;
+			$(".box-2-list-member").on('click', function() {
+				if( id_box_2_selected != "" ) {
+					$("#" + id_box_2_selected).removeClass("box-2-list-member-selected");					
+				}
+				id_box_2_selected = $(this).attr("id");
+				$(this).addClass("box-2-list-member-selected");
+				clicked_box_2_list_member = true;
+			});			
+			$("#box_2").on('click', function() {
+				if(!clicked_box_2_list_member) {
+					id_box_2_selected = "";
+					$(".box-2-list-member").removeClass("box-2-list-member-selected");					
+				}
+				clicked_box_2_list_member = false;
+			});
+			$("#btn_box_2_clear").on('click', function() {
+				id_box_2_selected = "";
+				$(".box-2-list-member").removeClass("box-2-list-member-selected");
+			});
+			
+			
+			
+			// var id_box_3_selected = "";
+			// $(".box-3-list-member").on('click', function() {
+				// if( id_box_3_selected != "" ) {
+					// $("#" + id_box_3_selected).removeClass("box-3-list-member-selected");					
+				// }
+				// id_box_3_selected = $(this).attr("id");
+				// $(this).addClass("box-3-list-member-selected");
+			// });
+			
+			var id_box_3_selected = "";			
+			var clicked_box_3_list_member = false;
+			$(".box-3-list-member").on('click', function() {
+				if( id_box_3_selected != "" ) {
+					$("#" + id_box_3_selected).removeClass("box-3-list-member-selected");					
+				}
+				id_box_3_selected = $(this).attr("id");
+				$(this).addClass("box-3-list-member-selected");
+				clicked_box_3_list_member = true;
+			});			
+			$("#box_3").on('click', function() {
+				if(!clicked_box_3_list_member) {
+					id_box_3_selected = "";
+					$(".box-3-list-member").removeClass("box-3-list-member-selected");					
+				}
+				clicked_box_3_list_member = false;
+			});
+			$("#btn_box_3_clear").on('click', function() {
+				id_box_3_selected = "";
+				$(".box-3-list-member").removeClass("box-3-list-member-selected");
+			});
+			
+			
+			// var id_box_4_selected = "";
+			// $(".box-4-list-member").on('click', function() {
+				// if( id_box_4_selected != "" ) {
+					// $("#" + id_box_4_selected).removeClass("box-4-list-member-selected");					
+				// }
+				// id_box_4_selected = $(this).attr("id");
+				// $(this).addClass("box-4-list-member-selected");
+			// });
+			
+			var id_box_4_selected = "";			
+			var clicked_box_4_list_member = false;
+			$(".box-4-list-member").on('click', function() {
+				if( id_box_4_selected != "" ) {
+					$("#" + id_box_4_selected).removeClass("box-4-list-member-selected");					
+				}
+				id_box_4_selected = $(this).attr("id");
+				$(this).addClass("box-4-list-member-selected");
+				clicked_box_4_list_member = true;
+			});			
+			$("#box_4").on('click', function() {
+				if(!clicked_box_4_list_member) {
+					id_box_4_selected = "";
+					$(".box-4-list-member").removeClass("box-4-list-member-selected");					
+				}
+				clicked_box_4_list_member = false;
+			});
+			$("#btn_box_4_clear").on('click', function() {
+				id_box_4_selected = "";
+				$(".box-4-list-member").removeClass("box-4-list-member-selected");
+			});
+			
+			
+			
+			
+			// var id_box_11_selected = "";			
+			// $(".box-11-list-member").on('click', function() {
+				// if( id_box_11_selected != "" ) {
+					// $("#" + id_box_11_selected).removeClass("box-11-list-member-selected");					
+				// }
+				// id_box_11_selected = $(this).attr("id");
+				// $(this).addClass("box-11-list-member-selected");
+			// });
+			
+			var id_box_11_selected = "";			
+			var clicked_box_11_list_member = false;
+			$(".box-11-list-member").on('click', function() {
+				if( id_box_11_selected != "" ) {
+					$("#" + id_box_11_selected).removeClass("box-11-list-member-selected");					
+				}
+				id_box_11_selected = $(this).attr("id");
+				$(this).addClass("box-11-list-member-selected");
+				clicked_box_11_list_member = true;
+			});			
+			$("#box_11").on('click', function() {
+				if(!clicked_box_11_list_member) {
+					id_box_11_selected = "";
+					$(".box-11-list-member").removeClass("box-11-list-member-selected");					
+				}
+				clicked_box_11_list_member = false;
+			});
+			$("#btn_box_11_clear").on('click', function() {
+				id_box_11_selected = "";
+				$(".box-11-list-member").removeClass("box-11-list-member-selected");
+			});
+			
+			
+			// var id_box_12_selected = "";
+			// $(".box-12-list-member").on('click', function() {
+				// if( id_box_12_selected != "" ) {
+					// $("#" + id_box_12_selected).removeClass("box-12-list-member-selected");					
+				// }
+				// id_box_12_selected = $(this).attr("id");
+				// $(this).addClass("box-12-list-member-selected");
+			// });
+			
+			var id_box_12_selected = "";			
+			var clicked_box_12_list_member = false;
+			$(".box-12-list-member").on('click', function() {
+				if( id_box_12_selected != "" ) {
+					$("#" + id_box_12_selected).removeClass("box-12-list-member-selected");					
+				}
+				id_box_12_selected = $(this).attr("id");
+				$(this).addClass("box-12-list-member-selected");
+				clicked_box_12_list_member = true;
+			});			
+			$("#box_12").on('click', function() {
+				if(!clicked_box_12_list_member) {
+					id_box_12_selected = "";
+					$(".box-12-list-member").removeClass("box-12-list-member-selected");					
+				}
+				clicked_box_12_list_member = false;
+			});
+			$("#btn_box_12_clear").on('click', function() {
+				id_box_12_selected = "";
+				$(".box-12-list-member").removeClass("box-12-list-member-selected");
+			});
+			
+			
+			// var id_box_13_selected = "";
+			// $(".box-13-list-member").on('click', function() {
+				// if( id_box_13_selected != "" ) {
+					// $("#" + id_box_13_selected).removeClass("box-13-list-member-selected");					
+				// }
+				// id_box_13_selected = $(this).attr("id");
+				// $(this).addClass("box-13-list-member-selected");
+			// });
+
+			var id_box_13_selected = "";			
+			var clicked_box_13_list_member = false;
+			$(".box-13-list-member").on('click', function() {
+				if( id_box_13_selected != "" ) {
+					$("#" + id_box_13_selected).removeClass("box-13-list-member-selected");					
+				}
+				id_box_13_selected = $(this).attr("id");
+				$(this).addClass("box-13-list-member-selected");
+				clicked_box_13_list_member = true;
+			});			
+			$("#box_13").on('click', function() {
+				if(!clicked_box_13_list_member) {
+					id_box_13_selected = "";
+					$(".box-13-list-member").removeClass("box-13-list-member-selected");					
+				}
+				clicked_box_13_list_member = false;
+			});
+			$("#btn_box_13_clear").on('click', function() {
+				id_box_13_selected = "";
+				$(".box-13-list-member").removeClass("box-13-list-member-selected");
+			});
+
+
+			// var id_box_21_selected = "";			
+			// $(".box-21-list-member").on('click', function() {
+				// if( id_box_21_selected != "" ) {
+					// $("#" + id_box_21_selected).removeClass("box-21-list-member-selected");					
+				// }
+				// id_box_21_selected = $(this).attr("id");
+				// $(this).addClass("box-21-list-member-selected");
+			// });
+			
+			var id_box_21_selected = "";			
+			var clicked_box_21_list_member = false;
+			$(".box-21-list-member").on('click', function() {
+				if( id_box_21_selected != "" ) {
+					$("#" + id_box_21_selected).removeClass("box-21-list-member-selected");					
+				}
+				id_box_21_selected = $(this).attr("id");
+				$(this).addClass("box-21-list-member-selected");
+				clicked_box_21_list_member = true;
+			});			
+			$("#box_21").on('click', function() {
+				if(!clicked_box_21_list_member) {
+					id_box_21_selected = "";
+					$(".box-21-list-member").removeClass("box-21-list-member-selected");					
+				}
+				clicked_box_21_list_member = false;
+			});
+			$("#btn_box_21_clear").on('click', function() {
+				id_box_21_selected = "";
+				$(".box-21-list-member").removeClass("box-21-list-member-selected");
+			});
+
+			
+			
+			// var id_box_22_selected = "";
+			// $(".box-22-list-member").on('click', function() {
+				// if( id_box_22_selected != "" ) {
+					// $("#" + id_box_22_selected).removeClass("box-22-list-member-selected");					
+				// }
+				// id_box_22_selected = $(this).attr("id");
+				// $(this).addClass("box-22-list-member-selected");
+			// });
+			
+			var id_box_22_selected = "";			
+			var clicked_box_22_list_member = false;
+			$(".box-22-list-member").on('click', function() {
+				if( id_box_22_selected != "" ) {
+					$("#" + id_box_22_selected).removeClass("box-22-list-member-selected");					
+				}
+				id_box_22_selected = $(this).attr("id");
+				$(this).addClass("box-22-list-member-selected");
+				clicked_box_22_list_member = true;
+			});			
+			$("#box_22").on('click', function() {
+				if(!clicked_box_22_list_member) {
+					id_box_22_selected = "";
+					$(".box-22-list-member").removeClass("box-22-list-member-selected");					
+				}
+				clicked_box_22_list_member = false;
+			});
+			$("#btn_box_22_clear").on('click', function() {
+				id_box_22_selected = "";
+				$(".box-22-list-member").removeClass("box-22-list-member-selected");
+			});
+			
+			
+			// var id_box_23_selected = "";
+			// $(".box-23-list-member").on('click', function() {
+				// if( id_box_23_selected != "" ) {
+					// $("#" + id_box_23_selected).removeClass("box-23-list-member-selected");					
+				// }
+				// id_box_23_selected = $(this).attr("id");
+				// $(this).addClass("box-23-list-member-selected");
+			// });
+			
+			var id_box_23_selected = "";			
+			var clicked_box_23_list_member = false;
+			$(".box-23-list-member").on('click', function() {
+				if( id_box_23_selected != "" ) {
+					$("#" + id_box_23_selected).removeClass("box-23-list-member-selected");					
+				}
+				id_box_23_selected = $(this).attr("id");
+				$(this).addClass("box-23-list-member-selected");
+				clicked_box_23_list_member = true;
+			});			
+			$("#box_23").on('click', function() {
+				if(!clicked_box_23_list_member) {
+					id_box_23_selected = "";
+					$(".box-23-list-member").removeClass("box-23-list-member-selected");					
+				}
+				clicked_box_23_list_member = false;
+			});
+			$("#btn_box_23_clear").on('click', function() {
+				id_box_23_selected = "";
+				$(".box-23-list-member").removeClass("box-23-list-member-selected");
+			});
+			
+			
+			// var id_box_24_selected = "";
+			// $(".box-24-list-member").on('click', function() {
+				// if( id_box_24_selected != "" ) {
+					// $("#" + id_box_24_selected).removeClass("box-24-list-member-selected");					
+				// }
+				// id_box_24_selected = $(this).attr("id");
+				// $(this).addClass("box-24-list-member-selected");
+			// });
+			
+			var id_box_24_selected = "";			
+			var clicked_box_24_list_member = false;
+			$(".box-24-list-member").on('click', function() {
+				if( id_box_24_selected != "" ) {
+					$("#" + id_box_24_selected).removeClass("box-24-list-member-selected");					
+				}
+				id_box_24_selected = $(this).attr("id");
+				$(this).addClass("box-24-list-member-selected");
+				clicked_box_24_list_member = true;
+			});			
+			$("#box_24").on('click', function() {
+				if(!clicked_box_24_list_member) {
+					id_box_24_selected = "";
+					$(".box-24-list-member").removeClass("box-24-list-member-selected");					
+				}
+				clicked_box_24_list_member = false;
+			});
+			$("#btn_box_24_clear").on('click', function() {
+				id_box_24_selected = "";
+				$(".box-24-list-member").removeClass("box-24-list-member-selected");
+			});
+			
+			
+			// var id_box_31_selected = "";			
+			// $(".box-31-list-member").on('click', function() {
+				// if( id_box_31_selected != "" ) {
+					// $("#" + id_box_31_selected).removeClass("box-31-list-member-selected");					
+				// }
+				// id_box_31_selected = $(this).attr("id");
+				// $(this).addClass("box-31-list-member-selected");
+			// });
+			
+			var id_box_31_selected = "";			
+			var clicked_box_31_list_member = false;
+			$(".box-31-list-member").on('click', function() {
+				if( id_box_31_selected != "" ) {
+					$("#" + id_box_31_selected).removeClass("box-31-list-member-selected");					
+				}
+				id_box_31_selected = $(this).attr("id");
+				$(this).addClass("box-31-list-member-selected");
+				clicked_box_31_list_member = true;
+			});			
+			$("#box_31").on('click', function() {
+				if(!clicked_box_31_list_member) {
+					id_box_31_selected = "";
+					$(".box-31-list-member").removeClass("box-31-list-member-selected");					
+				}
+				clicked_box_31_list_member = false;
+			});
+			$("#btn_box_31_clear").on('click', function() {
+				id_box_31_selected = "";
+				$(".box-31-list-member").removeClass("box-31-list-member-selected");
+			});
+			
+			
+			// var id_box_32_selected = "";
+			// $(".box-32-list-member").on('click', function() {
+				// if( id_box_32_selected != "" ) {
+					// $("#" + id_box_32_selected).removeClass("box-32-list-member-selected");					
+				// }
+				// id_box_32_selected = $(this).attr("id");
+				// $(this).addClass("box-32-list-member-selected");
+			// });
+			
+			var id_box_32_selected = "";			
+			var clicked_box_32_list_member = false;
+			$(".box-32-list-member").on('click', function() {
+				if( id_box_32_selected != "" ) {
+					$("#" + id_box_32_selected).removeClass("box-32-list-member-selected");					
+				}
+				id_box_32_selected = $(this).attr("id");
+				$(this).addClass("box-32-list-member-selected");
+				clicked_box_32_list_member = true;
+			});			
+			$("#box_32").on('click', function() {
+				if(!clicked_box_32_list_member) {
+					id_box_32_selected = "";
+					$(".box-32-list-member").removeClass("box-32-list-member-selected");					
+				}
+				clicked_box_32_list_member = false;
+			});
+			$("#btn_box_32_clear").on('click', function() {
+				id_box_32_selected = "";
+				$(".box-32-list-member").removeClass("box-32-list-member-selected");
+			});
+			
+			
+			// var id_box_33_selected = "";
+			// $(".box-33-list-member").on('click', function() {
+				// if( id_box_33_selected != "" ) {
+					// $("#" + id_box_33_selected).removeClass("box-33-list-member-selected");					
+				// }
+				// id_box_33_selected = $(this).attr("id");
+				// $(this).addClass("box-33-list-member-selected");
+			// });
+
+			var id_box_33_selected = "";			
+			var clicked_box_33_list_member = false;
+			$(".box-33-list-member").on('click', function() {
+				if( id_box_33_selected != "" ) {
+					$("#" + id_box_33_selected).removeClass("box-33-list-member-selected");					
+				}
+				id_box_33_selected = $(this).attr("id");
+				$(this).addClass("box-33-list-member-selected");
+				clicked_box_33_list_member = true;
+			});			
+			$("#box_33").on('click', function() {
+				if(!clicked_box_33_list_member) {
+					id_box_33_selected = "";
+					$(".box-33-list-member").removeClass("box-33-list-member-selected");					
+				}
+				clicked_box_33_list_member = false;
+			});
+			$("#btn_box_33_clear").on('click', function() {
+				id_box_33_selected = "";
+				$(".box-33-list-member").removeClass("box-33-list-member-selected");
+			});
+
+
+			$(".btn-cart-delete").on('click', function() {
+				alert($(this).attr("id"));
+			});
+
+			
+			$("#cart_1_add").on('click', function() {
+				// var s_value = $("#prod_list option:selected").val();
+				// var s_text = $("#prod_list option:selected").text();
+
+				// alert(id_box_1_selected);
+
+
+				// alert(n_box_2);				
+				
+				// var s_list_id = $("#" + id_box_1_selected).text();
+				
+				// var section = $("#section_list option:selected").attr('data-key');
+				// var section_text = $("#section_list option:selected").attr('text');
+				// if( jQuery.type(section) === "undefined" ) {
+				if( id_box_1_selected !== "" ) {
+
+					var s_box_1 = $("#" + id_box_1_selected).text();
+					var s_id    = $("#" + id_box_1_selected).attr("name");					
+					var s_box_2 = $("#" + id_box_2_selected).text();
+					var s_box_3 = $("#" + id_box_3_selected).text();
+					var s_box_4 = $("#" + id_box_4_selected).text();
+					var s_box_5 = $("#box_5").val();
+	
+					var f_box_2 = parseFloat( $("#" + id_box_2_selected).attr("value") );
+					var f_box_3 = parseFloat( $("#" + id_box_3_selected).attr("value") );
+					var f_box_4 = parseFloat( $("#" + id_box_4_selected).attr("value") );
+	
+					var f_sum = f_box_2 * 15 + f_box_3 * 10 + f_box_4 * 1;
+					// n_sum = toFixed(n_sum, 2);
+					var d_sum = parseFloat(Math.round(f_sum * 100) / 100).toFixed(2);
+					
+					var a_prod = new Array();
+					a_prod[0] = 1;			// cart type
+					a_prod[1] = s_box_1;	// Product Name
+					a_prod[2] = s_box_2;	// Premium Fields Listing			n * 15
+					a_prod[3] = s_box_3;	// 1st-3rd Premium Positioning		n * 10
+					a_prod[4] = s_box_4;	// Keyword/Attribute Guarantee		n * 1
+					a_prod[5] = s_box_5;	// Keyword/Attribute
+					a_prod[6] = d_sum;		// sum
+					a_prod[7] = s_id;		// product_id
+					
+					a_cart_1.push(a_prod);
+					append_to_cart_1(a_cart_1);
+					a_prod = null;			
+				}
+				else {
+					alert('Choose a product');
+				}
+				
+			});
+			
+			$("#cart_11_add").on('click', function() {
+				// var s_value = $("#prod_list option:selected").val();
+				// var s_text = $("#prod_list option:selected").text();
+
+				// alert(id_box_1_selected);
+
+				var s_box_11 = $("#" + id_box_11_selected).text();
+				var s_id     = $("#" + id_box_11_selected).attr("name");									
+				var s_box_12 = $("#" + id_box_12_selected).text();
+				var s_box_13 = $("#box_13").val();
+				
+				
+				// var s_list_id = $("#" + id_box_1_selected).text();
+				
+				// var section = $("#section_list option:selected").attr('data-key');
+				// var section_text = $("#section_list option:selected").attr('text');
+				// if( jQuery.type(section) === "undefined" ) {
+				if( id_box_11_selected !== "" ) {
+					var a_prod = new Array();
+					a_prod[0] = 2;			// cart type
+					a_prod[1] = s_box_11;	// Product Name
+					a_prod[2] = s_box_12;	// Poster
+					a_prod[3] = s_box_13;	// Keyword/Attribute
+					a_prod[4] = "";			// null
+					a_prod[5] = "";			// null
+					a_prod[6] = 750;		// sum
+					a_prod[7] = s_id;		// product_id
+
+					a_cart_11.push(a_prod);
+					// a_cart_1[0].push(v);
+					// a_cart_1[1].push("price");
+					append_to_cart_11(a_cart_11);
+					a_prod = null;
+				}
+				else {
+					alert('Choose a product');
+				}
+				
+			});
+			
+			$("#cart_21_add").on('click', function() {
+				if( id_box_21_selected !== "" ) {
+					var s_box_1 = $("#" + id_box_21_selected).text();
+					var s_id    = $("#" + id_box_21_selected).attr("name");					
+					var s_box_2 = $("#" + id_box_22_selected).text();
+					var s_box_3 = $("#" + id_box_23_selected).text();
+					var s_box_4 = $("#" + id_box_24_selected).text();
+					var s_box_5 = $("#box_25").val();
+					var f_box_2 = parseFloat( $("#" + id_box_22_selected).attr("value") );
+					var f_box_3 = parseFloat( $("#" + id_box_23_selected).attr("value") );
+					var f_box_4 = parseFloat( $("#" + id_box_24_selected).attr("value") );
+
+					var f_sum = f_box_2 * 500 + f_box_3 * 10 + f_box_4 * 1;
+					var d_sum = parseFloat(Math.round(f_sum * 100) / 100).toFixed(2);
+					
+					var a_prod = new Array();
+					a_prod[0] = 3;			// cart type
+					a_prod[1] = s_box_1;	// Product Name
+					a_prod[2] = s_box_2;	// KnowStory Landing Page			n * 500
+					a_prod[3] = s_box_3;	// 1st-3rd Premium Positioning		n * 10
+					a_prod[4] = s_box_4;	// Keyword/Attribute Guarantee		n * 1
+					a_prod[5] = s_box_5;	// Keyword/Attribute
+					a_prod[6] = d_sum;		// sum
+					// a_prod[6] = 123.45;		// sum
+					a_prod[7] = s_id;		// product_id
+					
+					a_cart_21.push(a_prod);
+					append_to_cart_21(a_cart_21);
+					a_prod = null;			
+				}
+				else {
+					alert('Choose a product');
+				}
+				
+			});
+
+			$("#cart_31_add").on('click', function() {
+				if( id_box_31_selected !== "" ) {
+					var s_box_1 = $("#" + id_box_31_selected).text();
+					var s_id    = $("#" + id_box_31_selected).attr("name");					
+					var s_box_2 = $("#" + id_box_32_selected).text();
+					var s_box_3 = $("#" + id_box_33_selected).text();
+					// alert(s_box_1);
+					// alert(s_id);
+					// alert(s_box_2);
+					// alert(s_box_3);
+					var f_sum = 300;
+					var d_sum = parseFloat(Math.round(f_sum * 100) / 100).toFixed(2);
+					var a_prod = new Array();
+					a_prod[0] = 4;			// cart type
+					a_prod[1] = s_box_1;	// Product Name
+					a_prod[2] = s_box_2;	// Poster
+					a_prod[3] = s_box_3;	// Category
+					a_prod[4] = "";			// null
+					a_prod[5] = "";			// null
+					a_prod[6] = d_sum;		// sum
+					// a_prod[6] = 123.45;		// sum
+					a_prod[7] = s_id;		// product_id
+					
+					a_cart_31.push(a_prod);
+					append_to_cart_31(a_cart_31);
+					a_prod = null;			
+				}
+				else {
+					alert('Choose a product');
+				}
+				
+			});
+			
+			$("#btn_cart_purchases_view").on('click', function() {
+				var a_cart_view_temp = new Array();
+				for(var i = 0; i < a_cart_1.length; i++) {
+					var a_temp = [ 
+									[a_cart_1[i][0]], // cart type
+									[a_cart_1[i][1]], // Product Name
+									[a_cart_1[i][2]], // Premium Fields Listing
+									[a_cart_1[i][3]], // 1st-3rd Premium Positioning
+									[a_cart_1[i][4]], // Keyword/Attribute Guarantee
+									[a_cart_1[i][5]], // Keyword/Attribute
+									[a_cart_1[i][6]], // sum									
+									[a_cart_1[i][7]]  // product_id
+								 ];
+								
+					a_cart_view_temp.push(a_temp);
+					a_temp = null;
+				}
+				for(var i = 0; i < a_cart_11.length; i++) {
+					var a_temp = [ 
+									[a_cart_11[i][0]], // cart type
+									[a_cart_11[i][1]], // Product Name
+									[a_cart_11[i][2]], // Poster
+									[a_cart_11[i][3]], // keyword/Attribute
+									[a_cart_11[i][4]], //
+									[a_cart_11[i][5]], //									
+									[a_cart_11[i][6]], // sum									
+									[a_cart_11[i][7]]  // product_id
+								 ];
+								
+					a_cart_view_temp.push(a_temp);
+					a_temp = null;
+				}
+				for(var i = 0; i < a_cart_21.length; i++) {
+					var a_temp = [ 
+									[a_cart_21[i][0]], // cart type
+									[a_cart_21[i][1]], // Product Name
+									[a_cart_21[i][2]], // Premium Fields Listing			n * 15
+									[a_cart_21[i][3]], // 1st-3rd Premium Positioning		n * 10
+									[a_cart_21[i][4]], // Keyword/Attribute Guarantee		n * 1
+									[a_cart_21[i][5]], // Keyword/Attribute									
+									[a_cart_21[i][6]], // sum									
+									[a_cart_21[i][7]]  // product_id
+								 ];
+								
+					a_cart_view_temp.push(a_temp);
+					a_temp = null;
+				}
+				for(var i = 0; i < a_cart_31.length; i++) {
+					var a_temp = [ 
+									[a_cart_31[i][0]], // cart type
+									[a_cart_31[i][1]], // Product Name
+									[a_cart_31[i][2]], // Poster
+									[a_cart_31[i][3]], // Category
+									[a_cart_31[i][4]], // null
+									[a_cart_31[i][5]], // null							
+									[a_cart_31[i][6]], // sum									
+									[a_cart_31[i][7]]  // product_id
+								 ];
+								
+					a_cart_view_temp.push(a_temp);
+					a_temp = null;
+				}
+				a_cart_view = a_cart_view_temp;
+				append_to_cart_view(a_cart_view);
+			});
+
+
+
+			$("#btn_cart_purchases_checkout").on('click', function() {
+				// var input_amount = $("#amount").val();
+				
+				// var a_prod = [[10, 11, 22], [100, 111, 222]];
+				// alert(JSON.stringify(a_prod));
+
+				var a_prod = a_cart_view;
+
+				
+				var input_amount = cart_total;
+				var obj_list = '{"publisher_id":' + <%= @publisher_id %> + 
+							   ', "amount":' + input_amount +
+							   ', "a_prod":' + JSON.stringify(a_prod) + 
+							   '}';      
+			  	var obj = '{ "payment": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/payments/payment_product_posters',			    				    	
+			    	// url: '/publisher_product_ads/checkout',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		// alert(data.amount);
+	            		// alert(data.a_prod_1);
+	            		// if (data.url) { window.location.href = data.url; }
+	            		// window.location.href = "/Purchase";
+	            		window.location.href = "/Purchase";
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+			
+			
+			
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+			
+		   	// $("#open_edit_name_product").qtip({
+		      	// content: 'Clyde was here'
+		   	// });	
+	
+	
+		});
+	  
+	</script>		
+

@@ -1,0 +1,7 @@
+// alert('ajax works in crop_commit_logo');
+<% if !@publisher_logo_image_primary.nil? %>
+	$('#render_publisher_logo_image_primary .container-image').html("<%= j render('publishers/publisher_logo_image_primary') %>");
+	closeCropLogoImagePrimary();
+<% else %>
+	alert("Upload error");
+<% end %>

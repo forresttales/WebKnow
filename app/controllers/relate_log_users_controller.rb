@@ -1,0 +1,2 @@
+class RelateLogUsersController < ApplicationController
+end

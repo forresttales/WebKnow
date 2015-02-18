@@ -1,0 +1,2 @@
+class IssuedGenIdsController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class PublisherLogoImagesController < ApplicationController
+end

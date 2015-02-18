@@ -1,0 +1,1304 @@
+<% provide(:title, 'Publishers Home') %>
+
+	<script src="/assets/jqModal.js"></script>
+	<script src="/assets/jquery.easing.1.3.js"></script>
+	<link rel="stylesheet" href="/assets/jqModal.css" />
+	<script src="../jcrop/js/jquery.Jcrop.js"></script>
+	<script type="text/javascript">
+	  jQuery(function($){
+	    $('#target').Jcrop();
+	  });
+	</script>
+	<link rel="stylesheet" href="../jcrop/css/jquery.Jcrop.css" type="text/css" />
+
+  	<script src="/assets/jquery.qtip.min.js" type="text/javascript"></script>
+  	<link rel="stylesheet" href="/assets/jquery.qtip.min.css">
+
+ 	<!-- <style>
+ 		
+		*, *:after, *:before {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.clearfix:before, .clearfix:after { content: " "; display: table; }
+		.clearfix:after { clear: both; }
+		a {
+			color: #888;
+			text-decoration: none;
+		}
+		a:hover,
+		a:active {
+			color: #333;
+		}
+		.profile-figure {		
+		}
+		.profile-figure:hover {
+			cursor: pointer;		
+		}
+		.profile-figure-generic {		
+		}
+		.profile-figure-generic:hover {
+			cursor: pointer;		
+		}
+		.profile-figure-list {		
+		}
+		.profile-figure-list:hover {
+			cursor: pointer;		
+		}
+		.profile-grid {
+			padding: 0px 0px 0px 0px;
+			/*max-width: 1300px;*/
+			margin: 0 auto;
+			list-style: none;
+			/*text-align: center;*/
+		}
+		.profile-grid-250 li {
+			width: 250px;
+		}
+		.profile-grid-100 li {
+			width: 100px;
+		}
+		.profile-grid li {
+			display: inline-block;
+			/*width: 250px;*/
+			/*height: 300px;*/
+			/*margin: 0;*/
+			padding: 0px 0px 0px 0px;
+			position: relative;
+			text-align: center;
+		}
+		.profile-grid figure {
+			margin: 0;
+			position: relative;
+			/*height: 300px;*/
+			/*padding-left: 6px;*/
+			padding-top: 0px;	
+			background-color: #fff;
+		}
+		.profile-grid figure img {
+			max-width: 100%;
+			display: block;
+			position: relative;
+		}
+		/*.profile-grid figcaption h3 {
+			margin: 0;
+			padding: 0;
+			color: #fff;
+		}*/
+		/*.profile-grid figcaption span:before {
+			content: '';
+		}*/
+		.profile-grid figcaption {
+			text-align: right;
+		}
+		.profile-grid figcaption span a {
+			text-align: right;
+			/*padding: 5px 10px;*/
+			/*border-radius: 2px;*/
+			/*display: inline-block;*/
+			/*background: #ed4e6e;*/
+			color: #fff;
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 14px;
+			font-weight: 400;					  	
+		}
+		span a {
+			text-align: right;
+			color: #888;
+			font-family: 'Quattrocento Sans', sans-serif;
+		    font-size: 14px;
+			font-weight: 400;					  	
+		}
+		.profile-cs-style-3 li {
+			/*clear:both;
+			float: right;
+			margin-right: 10px;*/
+			border: 2px solid #CCC;
+		}
+		.profile-cs-style-3 figure {
+			/*border: solid 1px #000;*/
+			overflow: hidden;
+		}
+		.profile-cs-style-3 figure img {
+			-webkit-transition: -webkit-transform 0.2s;
+			-moz-transition: -moz-transform 0.2s;
+			transition: transform 0.2s;
+		}
+		.no-touch .profile-cs-style-3 figure:hover img,
+		.profile-cs-style-3 figure.cs-hover img {
+			/*-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			-ms-transform: translateY(0px);
+			transform: translateY(0px);*/
+			
+			/*-webkit-transform: translateY(-6px);
+			-moz-transform: translateY(-6px);
+			-ms-transform: translateY(-6px);
+			transform: translateY(-6px);*/
+		}
+		/*.profile-grid figcaption.figcaption-1 {
+			position: absolute;
+			top: 0;
+			left: 0;
+			text-align: center;
+			background: #000;
+			color: #ed4e6e;
+		}*/
+		/*.profile-cs-style-3 figcaption.figcaption-1 {*/
+		.profile-grid figcaption.figcaption-1 {			
+			position: absolute;
+			top: auto;
+			left: 0;
+			text-align: center;
+			background: #000;
+			color: #ed4e6e;
+			height: 30px;
+			width: 100%;
+			bottom: 0;
+			opacity: 0;
+			-webkit-transform: translateY(100%);
+			-moz-transform: translateY(100%);
+			-ms-transform: translateY(100%);
+			transform: translateY(100%);
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+			transition: transform 0.4s, opacity 0.1s 0.3s;
+			padding-top: 4px;
+		}
+		.no-touch .profile-cs-style-3 figure:hover figcaption.figcaption-1,
+		.profile-cs-style-3 figure.cs-hover figcaption.figcaption-1 {
+			opacity: .8;
+			-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			-ms-transform: translateY(0px);
+			transform: translateY(0px);
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+			transition: transform 0.4s, opacity 0.1s;
+		}
+		.profile-grid figure img {
+			border: 2px solid #CCC;
+			margin: 0;
+		}
+		.profile-grid figcaption.figcaption-2 {
+			position: absolute;
+			top: 3px;
+			right: 2px;
+			padding: 1px;
+			/*background: #2c3f52;*/
+			background: #000;
+			color: #ed4e6e;
+		}
+		.profile-cs-style-3 figcaption.figcaption-2 {
+			height: 15px;
+			width: 14px;
+			top: 3px;
+			opacity: 0;
+			background: #000;
+			border-radius: 2px;
+			/*background: url("/assets/x_close_white_w8_h8.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+			/*background: #000 url("/assets/x_close_white_w8_h8.png") no-repeat 3px 3px;*/
+			/*-webkit-transform: translateY(100%);
+			-moz-transform: translateY(100%);
+			-ms-transform: translateY(100%);
+			transform: translateY(100%);*/
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+			transition: transform 0.4s, opacity 0.1s 0.3s;
+		}
+		/*.profile-cs-style-3 figcaption.figcaption-2 div.x-container {
+			background: url("/assets/x_close_white_w8_h8.png") no-repeat;
+		}*/
+		.x-container {
+			height: 15px;
+			width: 14px;
+			border: none;
+			background: url("/assets/x_close_white_w8_h8.png") no-repeat 2px 2px;
+		}
+		.x-container:hover {
+			height: 15px;
+			width: 14px;
+			border: none;
+			background: url("/assets/x_close_white_hover_w8_h8.png") no-repeat 2px 2px;
+		}
+
+		.no-touch .profile-cs-style-3 figure:hover figcaption.figcaption-2,
+		.profile-cs-style-3 figure.cs-hover figcaption.figcaption-2 {
+			cursor: pointer;
+			/*opacity: .6;*/
+			opacity: 1;
+			/*-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			-ms-transform: translateY(0px);
+			transform: translateY(0px);*/
+			/*-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+			transition: transform 0.4s, opacity 0.1s;*/
+			-webkit-transition: -webkit-transform 0.4s;
+			-moz-transition: -moz-transform 0.4s;
+			transition: transform 0.4s;
+
+		}
+		.profile-image {
+			/*border: 2px solid #CCC;*/
+		}
+
+
+		/*.delete-image {
+			
+		}
+		.delete-image:hover {
+		    background: url("/assets/x_close_white_w8_h8.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+		    height: 8px;
+		    width: 8px;
+		    cursor: pointer;
+		    opacity: 0.5;
+		    transition: opacity 100ms linear 0s;
+		}*/
+
+		/*.figcaption-delete-btn figcaption {
+			height: 50px;
+			width: 50px;
+			right: 10px;
+			top: -10px;
+			opacity: 0;
+			-webkit-transform: translateY(100%);
+			-moz-transform: translateY(100%);
+			-ms-transform: translateY(100%);
+			transform: translateY(100%);
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+			transition: transform 0.4s, opacity 0.1s 0.3s;
+		}
+		.no-touch .profile-cs-style-3 figure:hover figcaption,
+		.figcaption-delete-btn figure.cs-hover figcaption {
+			opacity: .8;
+			-webkit-transform: translateY(0px);
+			-moz-transform: translateY(0px);
+			-ms-transform: translateY(0px);
+			transform: translateY(0px);
+			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+			-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+			transition: transform 0.4s, opacity 0.1s;
+		}*/
+
+		/*.profile-cs-style-3 figcaption a {
+			position: absolute;
+			bottom: 20px;
+			right: 20px;
+		}*/
+		@media screen and (max-width: 31.5em) {
+			.profile-grid {
+				padding: 0px 0px 0px 0px;
+			}
+			.profile-grid li {
+				width: 100%;
+				min-width: 30px;
+			}
+		}
+ 		
+ 	</style> -->
+
+	<!-- <style>
+
+		.input-gen {
+			font-family: msyh, Arial, Helvetica, sans-serif;
+			color: #888;
+			font-weight: 400;
+			font-size: 13px;
+			width: 300px;
+			height: 24px;
+			border-style:solid;
+			border-radius: 0px;
+			background-color: #f6f6f6;
+			border-color: #478A3E;
+			border-width: 1px;
+			padding-left: 4px;
+		}
+		/*.input-gen:focus {
+			border-color: #478A3E;
+			color: #11520B;
+		}*/
+		.input-gen:focus,
+		.input-gen:hover {		
+			border-color: #478A3E;
+			/*color: #000;*/
+			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;
+		}
+		.input-gen:focus:hover {		
+			border-color: #478A3E;
+			/*color: #000;*/
+			-webkit-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: inset 0 0 1px 1px #3DC8D1;
+			        box-shadow: inset 0 0 1px 1px #3DC8D1;
+		}
+		.input-gen:hover {		
+			-webkit-box-shadow: inset 0 0 1px 1px #185C61;
+			   -moz-box-shadow: inset 0 0 1px 1px #185C61;
+			        box-shadow: inset 0 0 1px 1px #185C61;
+		}
+		::-webkit-input-placeholder {
+		   color: #778899; /*#C0C0C0;*/
+		}
+		
+		:-moz-placeholder {
+		   color: #778899; /*#C0C0C0;*/
+
+		}
+		
+		::-moz-placeholder {
+		   color: #778899; /*#C0C0C0;*/
+
+		}
+		
+		:-ms-input-placeholder {  
+		   color: #778899; /*#C0C0C0;*/
+
+		}		
+		.form-edit-close {
+			width:20px;
+			height:20px;
+			/*background-color: #ddd;*/
+			float: right;
+			margin-right: 8px;
+			margin-top: 4px;
+		}		
+		.form-edit-close:hover {
+			cursor: pointer;
+			/*background-color: #FFD1D1;*/
+		}		
+		.form-dl-error {
+			/*font-family: Arial, Helvetica, sans-serif;
+			color: red;*/
+			/*font-weight: 400;*/
+			/*font-size: 13px;*/
+			padding-top: 4px;
+			margin-left: 6px;
+			width: 160px; 
+			height: 20px;
+		}
+		.form-dl-error label {
+			margin-left: 20px;
+			font-family: Arial, Helvetica, sans-serif;
+			color: red;
+			font-weight: 400;
+			font-size: 12px;
+			padding-top: 4px;
+			margin-left: 0px;
+		}
+		.btn-submit {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			font-weight: 400;		
+			text-align: center;	
+			padding-top: 0px;
+		  	/*color: #FBB040;*/
+		  	color: #fff;
+		  	/*display: inline-block;*/
+		  	text-decoration: none; 
+		  	width: 200px;
+		  	height: 28px;
+		  	/*background: linear-gradient(#41B737, #37633A);*/
+		  	background: linear-gradient(#2899A1, #1F7C82);
+
+		  	/*text-shadow: 1px 1px 1px #0E86B2;*/
+		  	border: 0px solid #fff; 
+		  	border-radius: 2px;
+		}
+		.btn-submit:focus {
+			/*border-color: #478A3E;
+			color: #11520B;
+			font-weight: 700;*/
+			-webkit-box-shadow: 0 0 1px 1px #3DC8D1;
+			   -moz-box-shadow: 0 0 1px 1px #3DC8D1;
+			        box-shadow: 0 0 1px 1px #3DC8D1;
+		  	background: linear-gradient(#2899A1, #1F7C82);
+		  	/*background: #CCC;*/ 
+		  	/*color: #5F7A2A;*/
+		  	/*box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);*/
+		}
+		.btn-submit:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-submit:active { 
+		  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	/*color: #FBB040;*/
+		 	color: #fff;
+		  	/*background: linear-gradient(#37633A, #41B737);*/
+		  	background: linear-gradient(#1F7C82, #2899A1);
+		  	outline:none;
+		}
+		.table-dl-form {
+			display: table;
+			vertical-align: top;
+			width: 700px;	
+		}
+		.table-dl-form-2 {
+			display: table;
+			vertical-align: top;
+			width: 900px;	
+		}
+
+		.dl-form-divider-line {
+			width: 98%;
+			color: #fff;
+		}
+		/*.check-required {
+			background-image: url("/assets/red_star_7.png");		
+			background-repeat: no-repeat;
+			background-position: 0px 0px;
+			top: 0px;			
+		}*/
+		input.error {
+			background-color: #FFF1F0;
+			background-image: url("/assets/red_star_7.png");		
+			background-repeat: no-repeat;
+			background-position: 288px 0px;			
+		}
+		.display-none {
+			display: none;
+		}
+		.form-pdf {
+		}
+		.form-pdf-title {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #185C61;
+			font-weight: 400;
+			font-size: 14px;			
+		}
+		.table-dl-form-background {
+			padding: 10px 10px;
+			border-top: 1px solid #185C61;
+			border-bottom: 1px solid #185C61;
+			background-color: #DCE7E8; /*#BCD4D6;*/			
+		}
+		.row-divider {
+			height: 4px;	
+		}
+		
+	</style> -->
+
+	<!-- <style>
+
+		.jqmWindow-1 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 400px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}		
+		.jqmWindow-2 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 900px;
+			height: 660px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}		
+		.jqmWindow-3 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 400px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}		
+		.jqmWindow-4 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 700px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}		
+		.jqmWindow-5 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 700px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}		
+		.jqmOverlay { background-color: #000; }
+		* html .jqmWindow {
+		     position: absolute;
+		     top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
+		}		
+
+	</style> -->
+
+	<!-- <style>
+		
+		.input-crop {
+			width: 80px;
+			background-color: #fff;	
+		}
+		
+	</style> -->
+
+	<style>
+
+		span.label-dialog-figcaption {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #fff;
+		}
+		span.label-dialog-figcaption:hover {
+			text-decoration: underline;
+			cursor: pointer;			
+		}		
+		span.label-dialog {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #888;
+		}
+		span.label-dialog:hover {
+			text-decoration: underline;
+			cursor: pointer;			
+		}
+		
+	</style>
+
+
+	<style>
+		
+		.btn-reset {
+			width: 500px;
+			height: 24px;
+			background-color: #888;
+			border: 1px solid #111;	
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			font-weight: 400;
+			color: #000;
+		}
+		.btn-reset:hover {
+			background-color: #666;
+			color: #fff;	
+		}
+		
+		/*.btn-figcaption {
+			border: none;	
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			font-weight: 400;
+			color: #fff;
+		}
+		.btn-figcaption:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}*/
+		
+	</style>
+
+	<style>
+		
+		.tooltip-text-1 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 12px;
+			font-weight: 400;					
+			/*color: #37633A;*/
+			color: #fff;	
+			/*background-color: #FAFF94;*/
+			background-color: rgba(0, 0, 0, 0.6);
+			/*background-color: #eee;*/
+			/*border-color: #37633A;*/
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+		}
+		.tip-content { display: none; }
+		
+	</style>
+
+	<style>
+		
+		@font-face {
+			font-family: 'msyh';
+		    src: url('../fonts/msyh.eot');	  		
+			src: url('../fonts/msyh.ttf') format('truetype');
+		}
+				
+		.title-bar-profile-1 {
+			width: 700px;
+			height: 30px;
+	  		/*font-family: 'msyh';
+		    font-size: 18px;
+		    color: #376340;
+		    font-weight: 200;*/
+		    /*text-shadow: 1px 1px #34922C;*/
+		    padding-left: 0px;
+		    padding-top: 0px;
+		    margin-left: 0px;
+		    position: relative;
+			/*z-index: 100;*/
+			background: #49853f;
+			background: -moz-linear-gradient(top,  #49853f 0%, #ffffff 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#49853f), color-stop(100%,#ffffff));
+			background: -webkit-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: -o-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: -ms-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: linear-gradient(to bottom,  #49853f 0%,#ffffff 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', endColorstr='#ffffff',GradientType=0 );
+			
+			/*border-bottom: 1px solid #49853f;*/
+			border-bottom: 1px solid #eee; 
+		}
+		
+		/*<div class="title-bar-profile-2">
+			<div class="tbl-title-bar-profile-2">
+				<div class="row-title-bar-profile">
+					<div class="cell-title-bar-profile-2">
+						<span>Premium</span>		
+					</div>
+				</div>
+			</div>
+		</div>*/
+		
+		.title-bar-profile-2 {
+			width: 700px;
+			height: 18px;
+	  		/*font-family: 'msyh';
+		    font-size: 18px;
+		    color: #376340;
+		    font-weight: 200;*/
+		    /*text-shadow: 1px 1px #34922C;*/
+		    padding-left: 16px;
+		    padding-right: 16px;
+		    /*padding-top: 0px;*/
+		    margin-left: 0px;
+		    margin-right: 0px;		    
+		    position: relative;
+		    text-align: center;
+			/*z-index: 100;*/
+			/*background: #49853f;
+			background: -moz-linear-gradient(top,  #49853f 0%, #ffffff 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#49853f), color-stop(100%,#ffffff));
+			background: -webkit-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: -o-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: -ms-linear-gradient(top,  #49853f 0%,#ffffff 100%);
+			background: linear-gradient(to bottom,  #49853f 0%,#ffffff 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', endColorstr='#ffffff',GradientType=0 );*/			
+		}
+		.tbl-title-bar-profile {
+			display: table;
+			width: 700px;
+		}
+		.tbl-title-bar-profile-2 {
+			display: table;
+			width: 668px;
+			/*border-bottom: 1px solid #C0C0C0;*/
+			border-bottom: 1px solid #FBB040; 			
+		}
+		.cell-title-bar-profile-2 {
+			display: table-cell;
+			width: 100%;
+			text-align: left;	
+			padding: 0px 0px 0px 0px;		
+		}		
+		.tbl-title-bar-profile-2 span {
+	  		font-family: 'msyh';
+		    font-size: 16px;
+		    /*color: #C0C0C0;*/
+		    color: #FBB040;
+		    font-weight: 200;
+		}				
+		.tbl-title-bar-profile span {
+	  		font-family: 'msyh';
+		    font-size: 16px;
+		    color: #376340;
+		    font-weight: 200;
+		}		
+		.row-title-bar-profile {
+			display: table-row;
+		}
+		.cell-title-bar-profile-left {
+			display: table-cell;
+			width: 30%;
+			text-align: left;	
+			padding: 6px 0px 0px 8px;		
+		}
+		.cell-title-bar-profile-center {
+			display: table-cell;
+			width: 40%;
+			text-align: center;			
+			padding: 6px 0px 0px 0px;		
+		}
+		.cell-title-bar-profile-right {
+			display: table-cell;
+			width: 30%;
+			text-align: right;
+			padding: 6px 8px 0px 0px;					
+		}
+		
+	</style>
+
+	<style>						
+
+		/*
+		Learning Counsel colors: (in RGB)
+		Main bright green:  65/183/55		#41B737
+		Med dark green: 55/99/58			#37633A
+		Light gray: 166/166/166				#A6A6A6
+		Blue: 31/124/130					#1F7C82
+		Orange: 251/176/64					#FBB040
+		
+		Blue-darker:#1B666B
+		Blue-lighter:#2899A1		
+		Blue-dark:#185C61
+		Blue-light:#3DC8D1
+		
+		If you want to use the colors in the poster headers, they are gradients as follows:
+		Curriculum Resources:  Main bright green to black			#41B737
+		Teacher Tools:  Learning Counsel blue (above) to black		#1F7C82
+		School Operations:   236/0/140  to black					#EC008C
+		Content 229/171/74 to 70/22/35								#461623		#E7AC4A
+		Professional Learning: 0/174/239 to black					#00AEEF
+	
+		#3B39B7 blue
+		#B737AD bright violet-red
+		#6813B7 deep purple
+		#B75900 bright pumpkin
+		#07B7B7 light blue
+		
+		#D98D2D	knowstory logo orange
+		#96C785 knowstory logo green dark 
+		#A9D996 knowstory logo green light
+		#214025 footer green
+		background-color: rgba( 65, 183, 55, 0.92); nav green
+		background-color: #41B737;	nav green		
+		
+		lgreen: #c0e7bd;
+		ksgreen: #49853f;
+		dgreen: #376340;
+		midgreen: #8eb388;
+		
+		*/ 
+	
+	</style>
+
+
+
+	<style>
+
+		.jqmWindow-1 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 300px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}		
+		/*.jqmWindow-2 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 900px;
+			height: 600px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}*/		
+		.jqmWindow-3 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 300px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}		
+		/*.jqmWindow {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 400px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}*/
+		.jqmOverlay { background-color: #000; }
+		* html .jqmWindow {
+		     position: absolute;
+		     top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
+		}		
+
+	</style>
+
+
+
+
+	<!-- <header>
+		<#%= render 'share/backtotop' %#>
+	</header> -->
+
+
+
+			<div class="jqmWindow jqmWindow-1" id="dialog_1">
+		   		<div class="table-dl-form">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form1" class="form-edit-close jqmClose" tabindex="1">
+		   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+		   					</div>
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div class="pad-left-20">
+					<div>Add a primary photo here</div>
+					<%= form_for PublisherProfileImage.new, :url => upload_publisher_profile_image_primary_publishers_path(@publisher_profile_image_new), :html => {:multipart => true}, :remote => true do |f| %>
+					  <p><%= f.file_field :image %></p>
+					  <%= f.hidden_field 'publisher_id', :value => @publisher_id %>
+					  <%= f.hidden_field 'primary', :value => true %>
+					  <p><%= f.submit :class => 'btn-submit', :value => 'Upload Company Photo' %></p>
+					<% end %>
+				</div>
+			</div>
+
+
+			
+		
+			<div class="jqmWindow jqmWindow-3" id="dialog_3">
+		   		<div class="table-dl-form">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form3" class="form-edit-close jqmClose" tabindex="1">
+		   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+		   					</div>
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div class="pad-left-20">
+					<div>Add another photo here</div>
+					<%= form_for PublisherProfileImage.new, :url => upload_publisher_profile_image_publishers_path(@publisher_profile_image_new), :html => {:multipart => true}, :remote => true do |f| %>
+					  <p><%= f.file_field :image %></p>
+					  <%= f.hidden_field 'publisher_id', :value => @publisher_id %>
+					  <p><%= f.submit :class => 'btn-submit', :value => 'Upload Company Photo' %></p>
+					<% end %>
+				</div>
+			</div>
+
+
+
+	<div class="container">
+		<div class="table-profile">
+			<div class="row-profile">
+				<div class="col-left">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>
+						<div class="row-profile">
+							<div class="col-left">
+								<%= render 'share/dir_publishers_left' %>
+								<!-- <#%= render 'dir_1_left_publishers/index' %#> -->								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-midd" style="height: 800px;">
+					<div class="table-profile">
+						<!-- <div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div> -->							
+						<div class="row-profile">
+							<div class="col-midd-600">
+								
+								<div class="title-bar-profile-1">
+									<div class="tbl-title-bar-profile">
+										<div class="row-title-bar-profile">
+											<div class="cell-title-bar-profile-left">
+												<span>Corporate Story</span>		
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- <div id="test"></div> -->
+								
+								<div id="render_publisher_profile_image_primary"  style="padding: 0px 0px 0px 4px;">
+									<%= render 'publisher_profile_image_primary' %>
+								</div>
+
+								<div style="height: 10px;"></div>
+
+								<div style="width: 100%; height: 122px; padding: 0px 0px 0px 4px;">									
+									<div id="render_publisher_profile_images" style="width: 692px; height: 122px; overflow: hidden; white-space: nowrap;">
+									<!-- <div id="render_publisher_profile_images" style="height: 122px; overflow: hidden; white-space: nowrap;"> -->										
+										<%= render 'publisher_profile_images' %>
+									</div>
+								</div>
+								
+								<div style="height: 20px;"></div>
+
+								<!-- <figure class="profile-figure-list" style="width: 700px; overflow: hidden; white-space: nowrap;">
+									<div style="width: 282px; height: 30px;" class="boxtemp-green" align="right"></div>
+								</figure> -->
+
+								<div  class="pad-left-20">
+									<span class="dialog-3 label-dialog">&laquo; Add a photo &raquo;</span>
+								</div>
+								
+								<div style="height: 20px;"></div>								
+								<div  class="pad-left-20">
+									<span class="label-dialog"><a href="<%= @url_corporate_story_public %>">&laquo; View the public page &raquo;</a></span>
+								</div>
+								
+								<div style="height:400px;"></div>
+																
+						    	<div class="delete-record"style="width: 100%; text-align: center;">
+							    	<h5>
+									   	<% delete_all_msg = "Delete all records and reset index in PublisherProfileImages?" %>
+										<%= button_to "Delete All Records and Reset Index in PublisherProfileImages", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'btn-reset' %>
+									</h5>
+								</div>
+								
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="col-right">
+					<div class="table-profile">
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-right">
+								<span><%= link_to "Members", '/Members' %></span>
+								<!-- <#%= render 'share/dir_publishers_right' %#> -->
+							</div>
+						</div>
+					</div>										
+				</div>								
+				
+				<!-- <div class="col-right">
+					<div class="table-profile">
+						<div class="col-gen"></div>
+					</div>							
+					<div class="row-profile">
+						<div class="col-right">
+						</div>
+					</div>
+				</div> -->		
+												
+			</div>								
+		</div>
+	</div>
+
+	<div style="height:100px;"></div>
+	
+
+
+	<!-- <script>
+		SlideDeckAssistant.init();
+	</script> -->
+
+	
+	<script>
+	  
+	  	// function deleteImage(id_image) {
+	  		// alert("deleteImage: " + id_image);
+	  	// }
+	  
+		// function closeAddImagePrimary() {
+			// $("#close_form1").trigger('click');
+		// };	  
+	  
+		// function closeCropImage() {
+			// $("#close_form2").trigger('click');
+		// };	  
+
+		function closeAddImage() {
+			$("#close_form3").trigger('click');
+		};	  
+	  
+		// $(window).load( function() {
+		$(document).ready(function () {				
+		
+		
+			// $(".dialog-1").on('click', function() {
+				// $("#dialog_1").jqmShow();
+				// $("#primary").val('true');
+			// });
+			// $(".dialog-2").on('click', function() {
+				// alert('crop');
+				// $("#dialog_2").jqmShow();
+			// });
+			$(".dialog-3").on('click', function() {
+				$("#dialog_3").jqmShow();
+			});
+		
+			// $('#dialog_1').jqm({
+				// onShow: function(hash) {
+					// hash.o.prependTo('body');
+					// hash.w.css('top', '-740px');
+					// hash.w.css('opacity', 1.0).fadeIn(200);
+					// // hash.w.show();
+					// $('#dialog_1').animate(
+						// {bottom:'-=800', top:'+=800'}, 
+						// 500, 
+						// 'easeInOutCirc', 
+						// function() {
+							// $('#dialog_1').animate(
+								// {bottom:'+=4', top:'-=4'}, 
+								// 100, 
+								// 'easeInBounce', 
+								// function() {
+								// }
+							// );
+							// // $('#dl_email').focus();
+						// }
+					// );
+				// }
+			// }); 		
+		
+			// $('#dialog_2').jqm({
+				// onShow: function(hash) {
+					// hash.o.prependTo('body');
+					// hash.w.css('top', '-740px');
+					// hash.w.css('opacity', 1.0).fadeIn(200);
+					// // hash.w.show();
+					// $('#dialog_2').animate(
+						// {bottom:'-=800', top:'+=800'}, 
+						// 500, 
+						// 'easeInOutCirc', 
+						// function() {
+							// $('#dialog_2').animate(
+								// {bottom:'+=4', top:'-=4'}, 
+								// 100, 
+								// 'easeInBounce', 
+								// function() {
+								// }
+							// );
+							// // $('#dl_email').focus();
+						// }
+					// );
+				// }
+			// }); 		
+	  
+			$('#dialog_3').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-740px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_3').animate(
+						{bottom:'-=800', top:'+=800'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_3').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+							// $('#dl_email').focus();
+						}
+					);
+				}
+			}); 		
+		
+
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+		
+		
+				// var cnt = 1;
+				// var cells = "";
+				// // alert(gon.image_name);
+				// if (gon.image_name !== '') {								
+					// cells += "</td><td style='width: 10px;'></td><td><img src='../images_publisher/" + gon.image_name + "' alt='image'>";
+					// var tbl = "<table><tr>" + cells + "</tr></table>";
+					// $( "#render" ).html( tbl);
+				// }
+				// else {
+					// var tbl = "<table><tr><td><span class='normal-red pad-left-20'>No photo</span><td></tr></table>";
+					// $( "#render" ).html( tbl);				
+				// }
+		});
+	  
+// jQuery ->
+  // new AvatarCropper()
+// 
+// class AvatarCropper
+  // constructor: ->
+    // $('#cropbox').Jcrop
+      // aspectRatio: 1
+      // setSelect: [0, 0, 600, 600]
+      // onSelect: @update
+      // onChange: @update
+//   
+  // update: (coords) =>
+    // $('#id_crop_x').val(coords.x)
+    // $('#id_crop_y').val(coords.y)
+    // $('#id_crop_w').val(coords.w)
+    // $('#id_crop_h').val(coords.h)
+//     
+    // @updatePreview(coords)
+// 
+  // updatePreview: (coords) =>
+    // $('#preview').css
+      // width: Math.round(100/coords.w * $('#cropbox').width()) + 'px'
+      // height: Math.round(100/coords.h * $('#cropbox').height()) + 'px'
+      // marginLeft: '-' + Math.round(100/coords.w * coords.x) + 'px'
+      // marginTop: '-' + Math.round(100/coords.h * coords.y) + 'px'
+	  
+	  
+	  
+	</script>
+
+
+
+
+	<!-- <script>
+	  
+		// $(window).load( function() {
+		// //$(document).ready(function () {				
+				// var cnt = 1;
+				// var cells = "";
+				// // alert(gon.image_name);
+				// if (gon.image_name !== '') {								
+					// cells += "</td><td style='width: 10px;'></td><td><img src='../images_publisher/" + gon.image_name + "' alt='image'>";
+					// var tbl = "<table><tr>" + cells + "</tr></table>";
+					// $( "#render" ).html( tbl);
+				// }
+				// else {
+					// var tbl = "<table><tr><td><span class='normal-red pad-left-20'>No photo</span><td></tr></table>";
+					// $( "#render" ).html( tbl);				
+				// }
+		// });
+	  
+	</script> -->		
+
+
+								<% if false %>
+								<div id="profile_image" class="pad-left-20">
+								
+								<% if @publisher_profile_images.any? %>   				
+								
+									<% for publisher_profile_image in @publisher_profile_images %>
+					   				<div class="cell-180">
+										<ul class="profile-grid profile-cs-style-3">
+											<li>
+												<figure>
+													<img id="id_image" alt="photo not appearing" src="<%= publisher_profile_image.image_url(:image_500_500) if publisher_profile_image.image? %>"  width="250px" />
+				
+													<figcaption>
+														<!-- <span><#%= link_to "Crop/Center small images", { :action => :crop, :controller => 'publisher_profile_images', :params => { :id => publisher_profile_image.id  } } %#></span> -->
+														<span><%= link_to "Crop/Center small images", '/Photo-Crop-Center/' + publisher_profile_image.id.to_s %></span>
+														<br>
+														<span><%= link_to "Delete", publisher_profile_image, :confirm => 'Delete this photo?', :method => :delete, :params => {:publisher_profile_image_id => publisher_profile_image.id} %></span>
+						        						<!-- <span>= link_to "edit", edit_publisher_profile_image_path(publisher_profile_image) </span> -->
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+						   			</div>
+						   			<div class="cell-400">
+						   			</div>
+									<% end %>
+
+								<% else %>
+
+					   				<div class="cell-180">
+										<!-- <ul class="grid cs-style-3"> -->
+										<ul class="profile-grid profile-cs-style-3">
+											<li>
+												<figure style="border: 1px solid #000;">
+													<!-- <img alt="logo not appearing" src="../images_avatar/avatar_generic_1_w250_h310.png" /> -->
+													<img alt="logo not appearing" src="../journal_poster/logo_journalposter_generic.jpg" />
+													<figcaption>
+														<span><%= link_to "Add a photo", new_publisher_profile_image_path(:publisher_id => @publisher_id) %></span>											
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+						   			</div>
+						   			<!--<div class="cell-400">
+						   				<span><%= link_to "Add a photo", new_publisher_profile_image_path(:publisher_id => @publisher_id) %></span>
+						   			</div>-->
+								
+								<% end %>
+								
+								</div>
+								<% end %>

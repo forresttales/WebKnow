@@ -1,0 +1,2 @@
+class IssuedPerIdsController < ApplicationController
+end

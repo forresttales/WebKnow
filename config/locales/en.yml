@@ -21,3 +21,22 @@
 
 en:
   hello: "Hello world"
+
+  # will_paginate:
+    # previous_label: <span class="previous_page"></span>
+    # next_label: <span class="next_page"></span>
+    
+# en:
+  # errors:
+    # messages:
+      # # wrong_size: "is the wrong size (should be %{file_size})"
+      # # size_too_small: "is too small (should be at least %{file_size})"
+      # # size_too_big: "is too big (should be at most %{file_size})"
+      # carrierwave_processing_error: "failed to be processed"
+      # carrierwave_integrity_error: "is not an allowed file type"    
+      # carrierwave_download_error: "Couldn't download image."
+      
+# en:
+  # errors:
+    # messages:
+      # extension_white_list_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"

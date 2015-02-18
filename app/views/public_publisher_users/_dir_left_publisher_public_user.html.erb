@@ -1,0 +1,86 @@
+
+	<style>
+
+		.profile-links-left {
+			
+		}	
+		.profile-links-left ul {
+			
+		}
+		.profile-links-left ul li {
+			height: 20px;
+			width: 100%;
+			/*background-color: #fff;*/
+			list-style: none;						
+		}	
+		.profile-links-left ul li span {
+			height: 20px;
+			width: 100%;			
+			font-family:Arial, Helvetica, sans-serif;
+			/*font-size: 13px;
+			/*color: #9F6720;   */ 		
+		}	
+		.profile-links-left ul li a {
+			height: 20px;
+			width: 100%;			
+			font-family:Arial, Helvetica, sans-serif;
+			/*font-size: 13px;
+			/*color: #9F6720;  */  		
+		}	
+			
+
+		.profile-labels-left {
+			
+		}	
+		.profile-labels-left ul {
+			
+		}
+		.profile-labels-left ul li {
+			height: 20px;
+			width: 100%;
+			/*background-color: #fff;*/
+			list-style: none;						
+		}	
+		.profile-labels-left ul li span {
+			height: 20px;
+			padding-left:15px;
+			width: 100%;			
+			font-family:Arial, Helvetica, sans-serif;
+			/*font-size: 13px;
+			/*color: #9F6720;    */		
+		}	
+		.profile-labels-left ul li a {
+			height: 20px;
+			width: 100%;			
+			font-family:Arial, Helvetica, sans-serif;
+			/*font-size: 13px;
+			/*color: #9F6720;    */		
+		}	
+		.profile-labels-left ul li:hover {
+		}	
+
+		.profile-links-left ul li.sub {
+			padding-left: 40px;
+		}
+		.line-separator {
+			width: 90%;
+			border-top: 2px #DCE3DF solid;	
+			margin: 10px 0 10px 0;
+		}
+		
+	</style>
+
+	<div class="profile-labels-left">
+		<ul>
+			<li>
+				<span>Public view options</span>
+			</li>
+		</ul>		
+	</div>	
+	<div class="profile-links-left">
+		<ul>
+			<li id="profile-links-left-1" class="sub">
+				<a href="#">Signed-in user: <%= @signed_in_user_options %></a>
+			</li>
+		</ul>
+	</div>

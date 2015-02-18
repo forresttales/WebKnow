@@ -1,7 +1,11 @@
 // alert('ajax works in upload_publisher_user_image_primary');
 <% if @publisher_user_image_primary %>
 	$('#render_publisher_user_image_primary').html("<%= j render('publisher_users/publisher_user_image_primary') %>");
-	$('#render_publisher_user_images').html("<%= j render('publisher_users/publisher_user_images') %>");
+	// $('#render_publisher_user_image_primary .container-menu').html("<#%= j render('publisher_users/publisher_user_image_primary_menu') %#>");
+	$('#render_publisher_user_image_primary_crop').html("<%= j render('publisher_users/publisher_user_image_primary_crop') %>");
+	$('#render_nav_avatar').html("<%= j render('layouts/nav_avatar') %>");
+	id_image = <%= @publisher_user_image_primary.id %>;
+	$(".drop-1-container").removeClass("hidden");
 	closeAddImagePrimary();
 <% else %>
 	alert("Upload error");

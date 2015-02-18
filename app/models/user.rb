@@ -16,14 +16,20 @@
 #  bd_month               :integer          default(0)
 #  bd_year                :integer          default(0)
 #  gender                 :integer          default(0)
-#  account_type           :integer          default(0)
-#  account_type_text      :string(255)
 #  bd_month_text          :string(255)
 #  gender_text            :string(255)
 #  auth_token             :string(255)
 #  password_reset_token   :string(255)
 #  password_reset_sent_at :datetime
 #  avatar                 :string(255)
+#  id_gen                 :integer          default(0)
+#  id_per                 :string(255)      default("")
+#  slug                   :string(200)
+#  avatar_image           :string(255)
+#  slug_pre_id            :string(255)
+#  id_per_b               :boolean          default(FALSE)
+#  profile_type           :integer          default(0)
+#  profile_type_text      :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -33,12 +39,14 @@ class User < ActiveRecord::Base
   # attr_accessor   :id
   
   # attr_accessible :id,
-  attr_accessible :name_first,
+  attr_accessible :slug,
+                  :name_first,
                   :name_last,
                   :email, 
                   :username, 
-                  :account_type, 
-                  :has_account, 
+                  :profile_type,
+                  :profile_type_text,
+                  # :has_profile, 
                   :password, 
                   :password_confirmation, 
                   :bd_month,
@@ -47,36 +55,35 @@ class User < ActiveRecord::Base
                   :bd_year,
                   :gender,
                   :gender_text,
-                  :account_type,
-                  :account_type_text
+                  :avatar_image
+                  # :slug_pre_id
   
   
+  # extend FriendlyId
+  # friendly_id :id, use: [:slugged, :history]
   
-  # has_one :institute, dependent: :destroy
-  # has_one :publisher, dependent: :destroy
-  # has_one :recruiter, dependent: :destroy
-  # has_one :student, dependent: :destroy
-  # has_one :teacher, dependent: :destroy
+  has_one :issued_gen_id, foreign_key: "user_id"
 
-  has_one :institute
+  has_many :user_images
+  has_many :post_users 
+  has_many :relate_follows, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :relate_follows, source: :followed
+  has_many :reverse_relate_follows, foreign_key: "followed_id", class_name: "RelateFollow", dependent: :destroy
+  has_many :followers, through: :reverse_relate_follows, source: :follower
+  
+  has_many :log_users
+  
+  has_many :post_user_likes
+  has_many :post_user_comments
+  
   has_one :publisher
-  has_one :recruiter
-  has_one :student
-  has_one :teacher
-
-  # has_one :user_image  
-
-  # has_many :user_images  
+  has_one :publisher_user
   
-  # has_many :user_profile_images  
   
-  # has_many :microposts, dependent: :destroy
-  # has_many :relationships, foreign_key: "follower_id", dependent: :destroy
-  # has_many :followed_users, through: :relationships, source: :followed
-  # has_many :reverse_relationships, foreign_key: "followed_id",
-                                   # class_name: "Relationship",
-                                   # dependent: :destroy
-  # has_many :followers, through: :reverse_relationships, source: :follower
+  
+  
+  
+  
 
   before_save { self.email = email.downcase }
   before_create :create_remember_token
@@ -116,21 +123,28 @@ class User < ActiveRecord::Base
   end
     
     
-    # def feed
-      # Micropost.from_users_followed_by(self)
-    # end
-#   
-    # def following?(other_user)
-      # relationships.find_by(followed_id: other_user.id)
-    # end
-#   
-    # def follow!(other_user)
-      # relationships.create!(followed_id: other_user.id)
-    # end
-#   
-    # def unfollow!(other_user)
-      # relationships.find_by(followed_id: other_user.id).destroy!
-    # end
+  
+  def feed
+    PostUser.from_users_followed_by(self)
+  end
+
+  def following?(other_user)
+    relate_follows.find_by(followed_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    relate_follows.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relate_follows.find_by(followed_id: other_user.id).destroy!
+  end
+
+
+  def feed_log
+    LogUser.from_log_by(self)
+  end
+  
   
   
   def self.dbdelete

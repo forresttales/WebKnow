@@ -23,6 +23,7 @@ class PublisherProductLogo < ActiveRecord::Base
   
   
   mount_uploader :image, PublisherProductLogoUploader
+  # mount_uploader :image, PublisherProductLogo1ImageUploader
   
   belongs_to :publisher_product
   

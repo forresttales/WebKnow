@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="utf-8">
+								    	
+  		<title><%= full_title(yield(:title)) %></title> 
+
+		<!-- <#%= javascript_include_tag "application" %#>
+		<#%= stylesheet_link_tag    "application", :media => "all" %#> -->
+
+    	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => false %>
+   		<%= javascript_include_tag "application", "data-turbolinks-track" => false %>		
+  		
+		<link rel="icon" type="image/png" href="/assets/knowstory-icon-fav.png" />
+  		
+		<!-- 
+		<meta http-equiv='cache-control' content='no-cache'>
+		<meta http-equiv='expires' content='0'>
+		<meta http-equiv='pragma' content='no-cache'> 
+		-->
+   		    	
+  		<%= include_gon %>
+    	
+	  	<%= csrf_meta_tags %>
+	  	<%= render 'layouts/shim' %>  
+		
+		<style>
+		
+			#debug {
+				background-color: red;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size: 16px;
+				color: #000;
+			}
+			html{
+			  height: 100%;
+			}
+			body {
+			  min-height: 100%;
+			}
+					
+		</style>
+
+
+    </head>
+    
+	<body>
+
+		<!-- <#%= render 'layouts/nav_main' %#> -->
+		
+		<div style="width: 1200px; margin: 0px auto;">
+			<%= yield %>
+		</div>
+		
+		<div style="width: 100%; position: absolute; bottom: 0px;">
+			<%= render 'layouts/footer' %>
+		</div>
+
+		<% if Rails.env.development? %>
+			<div id="debug">
+				<%= debug(params) %>
+			</div>
+		<% end %>
+		
+	</body>
+	
+</html>

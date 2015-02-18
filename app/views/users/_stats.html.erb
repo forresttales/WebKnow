@@ -1,0 +1,227 @@
+
+	<style>
+	
+		.jqmWindow-2001 {
+		    display: none;
+		    position: absolute;
+		    left: 50%;
+		    margin-left: -250px;
+		    width: 500px;
+			height: auto;		    
+		    /*background-color: rgba(0, 0, 0, 0.8);*/
+		    background-color: #fff;
+		    color: #333;
+		    padding: 0px;
+		}				
+		.table-dl-form-2001 {
+			display: table;
+			vertical-align: top;
+			width: 500px;	
+		}
+		.jqmWindow-2002 {
+		    display: none;
+		    position: absolute;
+		    left: 50%;
+		    margin-left: -250px;
+		    width: 500px;
+			height: auto;		    
+		    /*background-color: rgba(0, 0, 0, 0.8);*/
+		    background-color: #fff;
+		    color: #333;
+		    padding: 0px;
+		}				
+		.table-dl-form-2002 {
+			display: table;
+			vertical-align: top;
+			width: 500px;	
+		}
+
+	</style>
+
+
+			<div class="jqmWindow jqmWindow-2001" id="dialog_2001">
+		   		<div class="table-dl-form-2001">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form2001" class="form-edit-close jqmClose tip-left-center" tabindex="">
+		   						<img src="/assets/x_close_white_w20_h20.png" alt="X" height="20px">
+		   					</div>
+			                <div class="tip-content">
+			                    <div class="tooltiptext">Close</div>
+			                </div>																															   					
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div style="width: 100%; text-align: center;">
+					<div style="height: 20px;"></div>
+					<div id="dialog_2001_content_container" class=""></div>
+				</div>
+			</div>
+
+			<div class="jqmWindow jqmWindow-2002" id="dialog_2002">
+		   		<div class="table-dl-form-2002">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form2002" class="form-edit-close jqmClose tip-left-center" tabindex="">
+		   						<img src="/assets/x_close_white_w20_h20.png" alt="X" height="20px">
+		   					</div>
+			                <div class="tip-content">
+			                    <div class="tooltiptext">Close</div>
+			                </div>																															   					
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div style="width: 100%; text-align: center;">
+					<div style="height: 20px;"></div>
+					<div id="dialog_2002_content_container" class=""></div>
+				</div>
+			</div>
+
+
+
+<% @user ||= current_user %>
+<div class="follow-stats">
+  <!-- <a href="<#%= following_user_path(@user) %#>"> -->
+  <div class="follow-stats-1">
+	    <div id="following" class="margin-0">
+	      	<span><%= @user.followed_users.count %></span>
+	    </div>
+	    <div class="margin-0">
+	    	<!-- <a href="#"><span>following</span></a> -->
+	    
+			<% if @user.followed_users.count == 0 %>				
+			<div class="">
+				<span class="post-user-span-3">following</span>					
+			<% else %>
+			<div class="dialog-2001-figure">
+				<span class="post-user-span-2">following</span>					
+			<% end %>
+
+			</div>
+
+			<div id="dialog_2001_content" class="dialog-2001-content hidden">					
+				<% cnt = 0 																			%>
+				<% user_followed_users = @user.followed_users 										%>
+				<div class="" style="margin: 0px; padding: 0 0 0 34px;">
+				<% user_followed_users.each do |user_followed_user| 								%>
+				<% 		user_id = user_followed_user.id	   											%>				
+				<% 		user = User.find_by_id(user_id)		   										%>
+				<%		if !user.nil?																%>
+				<% 			cnt += 1																%>
+				<%			if cnt == 1																%>			
+				<%			end																		%>
+				<%			user_image_primary = user.user_images.where( :primary => true ).first 	%>
+						<div class="" style="display: inline-block; width: 100px; height: 120px; margin: 4px; float: left; position: relative;">
+							<a href="<%= user.slug %>" class="underline-none" style="width: 100px; height: 120px;">
+								<div style="margin: 0; padding: 0; width: 100px; height: 100px;">
+				<% 			if !user_image_primary.nil? 											%>
+									<img alt="" src="<%= user_image_primary.image_url(:user_100_100) if user_image_primary.image? %>" width="100px" height="100px" style="margin: 0;" />
+				<%			else																	%>
+									<img alt="" src="../images_avatar/avatar_generic_1_w100_h100.png" width="100px" height="100px" style="margin: 0;" />				
+				<% 			end																		%>
+								</div>
+								<div class="" style="width: 100%; height: 14px; margin: 0; padding: 0;">
+									<!-- <span class="dialog-span-1"><#%= user.name_first %#> </span> -->
+									<span class="dialog-span-1" style="margin: 0; vertical-align: top;"><%= user.name_last %></span>
+								</div>											
+							</a>
+						</div>
+				<%			if cnt == 4																%>
+				<%				cnt = 0 															%>			
+						<div></div>		
+				<%			end																		%>
+				<%		end																			%>
+				<% end 																				%>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+	    
+	    </div>
+	    
+	    
+  </div>
+  <div class="follow-stats-2">
+	    <div id="followers" class="margin-0">
+	      	<span><%= @user.followers.count %></span>
+	    </div>
+	    <div class="margin-0">
+	    	<!-- <a href="#"><span>followers</span></a> -->
+	    
+			<% if @user.followers.count == 0 %>				
+			<div class="">
+				<span class="post-user-span-3">followers</span>					
+			<% else %>
+			<div class="dialog-2002-figure">
+				<span class="post-user-span-2">followers</span>					
+			<% end %>
+
+			</div>
+
+			<div id="dialog_2002_content" class="dialog-2002-content hidden">					
+				<% cnt = 0 																			%>
+				<% user_followers = @user.followers 												%>
+				<div class="" style="margin: 0px; padding: 0 0 0 34px;">
+				<% user_followers.each do |user_follower|    										%>
+				<% 		user_id = user_follower.id	   												%>				
+				<% 		user = User.find_by_id(user_id)		   										%>
+				<%		if !user.nil?																%>
+				<% 			cnt += 1																%>
+				<%			if cnt == 1																%>			
+				<%			end																		%>
+				<%			user_image_primary = user.user_images.where( :primary => true ).first 	%>
+						<div class="" style="display: inline-block; width: 100px; height: 120px; margin: 4px; float: left; position: relative;">
+							<a href="<%= user.slug %>" class="underline-none" style="width: 100px; height: 120px;">
+								<div style="margin: 0; padding: 0; width: 100px; height: 100px;">
+				<% 			if !user_image_primary.nil? 											%>
+									<img alt="" src="<%= user_image_primary.image_url(:user_100_100) if user_image_primary.image? %>" width="100px" height="100px" style="margin: 0;" />
+				<%			else																	%>
+									<img alt="" src="../images_avatar/avatar_generic_1_w100_h100.png" width="100px" height="100px" style="margin: 0;" />				
+				<% 			end																		%>
+								</div>
+								<div class="" style="width: 100%; height: 14px; margin: 0; padding: 0;">
+									<!-- <span class="dialog-span-1"><#%= user.name_first %#> </span> -->
+									<span class="dialog-span-1" style="margin: 0; vertical-align: top;"><%= user.name_last %></span>
+								</div>											
+							</a>
+						</div>
+				<%			if cnt == 4																%>
+				<%				cnt = 0 															%>			
+						<div></div>		
+				<%			end																		%>
+				<%		end																			%>
+				<% end 																				%>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+	    
+	    </div>
+	    
+	    
+  </div>
+</div>
+
+
+	<script>
+		
+		// var scroll_top = 0;
+		
+		$(document).ready(function() {			
+      	// $(function() {
+
+
+			$(".dialog-2001-figure").on('click', function() {
+				var id = $(this).find('.dialog-2001-content').attr('id');
+				$(document).trigger('click_2001');
+			});
+
+			$(".dialog-2002-figure").on('click', function() {
+				var id = $(this).find('.dialog-2002-content').attr('id');
+				$(document).trigger('click_2002');
+			});
+
+
+		});
+		
+	</script>

@@ -1,0 +1,59 @@
+
+
+														<% if @publisher_product_logo1_image.nil? %>
+												    	<div class="dropdownContain hidden">
+															<div class="dropOut">
+																<div class="triangle"></div>
+																<ul>
+																	<li>
+																		<div id="btn_logo1_image_new">
+																			New
+																		</div>
+																	</li>
+																</ul>
+															</div>
+												        </div>
+														<% else %>
+												    	<div class="dropdownContain hidden">
+															<div class="dropOut">
+																<div class="triangle"></div>
+																<ul>
+																	<li>
+																		<div id="btn_logo1_image_change">
+																			New/Change
+																		</div>
+																	</li>
+																	<!-- <li>
+																		<div id="btn_photo_logo_crop" class="">
+																			Crop/Center
+																		</div>
+																	</li> -->
+																	<li>
+																		<div id="btn_logo1_image_delete">
+																			Delete
+																		</div>
+																	</li>
+																</ul>
+															</div>
+												        </div>
+												        <!-- <#%= button_to "", destroy_publisher_user_image_publisher_users_path(:id => @publisher_user_image_primary.id, :format => :js), data: { confirm: 'Delete this photo?' }, :form => { :id => 'delete_user_image_primary' }, class: 'hidden', :remote => true %#> -->
+											        <% end %>
+
+
+	<script>
+	
+		
+		// $(window).load( function() {
+		$(document).ready( function () {				
+			
+		});
+		
+		
+	</script>
+	
+
+
+
+
+
+

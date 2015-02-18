@@ -16,8 +16,11 @@ class SessionsController < ApplicationController
       sign_in user
       #session[:username] = user.username
       #flash[:success] = 'Logged In'
-      redirect_to_profile_type(user.account_type)
+      # redirect_to_profile_type(user.account_type)
+      # redirect_to_profile(user)
       # redirect_to '/Publishers'
+      redirect_to '/'
+      # redirect_to '/' + current_user.slug
     else
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'

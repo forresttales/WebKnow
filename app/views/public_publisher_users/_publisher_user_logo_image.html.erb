@@ -1,0 +1,140 @@
+
+
+								<% if @publisher_user_logo_image %>   				
+								
+									<div class="container-figure container-figure-1">
+										<figure id="profile_figure_logo" class="dialog-21-figure cursor-pointer">
+											<img id="id_image_logo" alt="" src="<%= @publisher_user_logo_image.image_url(:user_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_logo_image.image? %>" />
+											<input class="container-image-hidden" type="hidden" value="<%= @publisher_user_logo_image.image_url(:user_600_600) if @publisher_user_logo_image.image? %>" />
+										</figure>
+									</div>
+
+								<% else %>
+
+									<div class="container-figure container-figure-1">
+										<figure id="profile_figure_logo_generic" class="dialog-21-figure-generic">
+											<img alt="" src="../images_avatar/avatar_generic_1_w200_h200.png" />
+										</figure>
+									</div>
+								
+								<% end %>
+
+
+
+
+	<script>
+
+
+		// $(window).load( function() {
+		$(document).ready( function () {				
+		
+		
+			var img_generic = $("#profile_figure_logo_generic img");
+			$("<img/>")
+	    		.attr("src", $(img_generic).attr("src"))
+	    		.load(function() {
+	        		img_width = this.width; 
+	        		$("#profile_figure_logo_generic").css({
+	        			width : this.width
+	        	});
+	    	});		
+
+			var img = $("#profile_figure_logo img");
+			$("<img/>")
+	    		.attr("src", $(img).attr("src"))
+	    		.load(function() {
+	        		img_width = this.width; 
+	        		$("#profile_figure_logo").css({
+	        			width : this.width
+	        	});	        		
+	    	});		
+
+			
+			
+			$(".dialog-21-figure").on('click', function(e) {
+				if ( e.target.nodeName == "IMG" ) {
+					var this_src = $(this).find("input.container-image-hidden").attr("value");
+					$("#profile_figure_dialog_21").find("img").attr("src", this_src );
+					var this_delete = $(this).find("div.tip-top-center").html();
+					$("#profile_figure_dialog_21").find("div.tip-top-center").html(this_delete);
+					$("#dialog_21").jqmShow();	
+				}
+			});
+			$('#dialog_21').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '20px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					var img = $("#profile_figure_dialog_21 img");
+					$("<img/>")
+			    		.attr("src", $(img).attr("src"))
+			    		.load(function() {
+			        		img_width = this.width; 
+			        		$("#profile_figure_dialog_21").css({
+			        			// width : this.width 
+			        	});	        		
+			    	});		
+				}
+			}); 		
+			
+
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+			
+            $('.tip-left-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'right top',
+				        at: 'left center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+		
+		});
+	  
+
+	</script>		
+

@@ -1,3 +1,4 @@
+# require 'auto_load_i18n'
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -10,6 +11,7 @@ class ApplicationController < ActionController::Base
       redirect_to :protocol => 'http://', :status => :moved_permanently
     end
   end  
+
 
   # def user_profile_image_nav
 #     

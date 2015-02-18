@@ -1,6 +1,31 @@
 Webknow::Application.routes.draw do
 
 
+  root to: 'users#index'
+  match "/" => "users#index", via: 'get'  
+  # match "/:id" => "users#index", via: 'get'
+
+  match "/Error/:id" => "log_errors#index", via: 'get'
+  match "/Error" => "log_errors#index", via: 'get'
+
+  
+  resources :relate_follows, only: [:create, :destroy]
+  resources :post_users, only: [:create, :destroy]
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+
+  match "/puid-demo:id" => "publisher_users#index_demo", via: 'get'
+  match "/ppuid-demo:id" => "public_publisher_users#index_demo", via: 'get'
+  match "/pcid-demo:id" => "publishers#index_demo", via: 'get'
+  match "/ppcid-demo:id" => "public_publishers#index_demo", via: 'get'
+  match '/Publisher-Product-Listings-Demo', to: 'publisher_products#index_demo', via: 'get'
+  match 'Publisher-Product-Description-Demo', to: 'publisher_product_descriptions#index_demo', via: 'get'
+
   get "static_pages/fonts"
   
   get "tests/test1"
@@ -41,36 +66,38 @@ Webknow::Application.routes.draw do
   
   resources :members do
     collection do
-      post :return_users
-    end
-  end
-
-  resources :members do
-    collection do
-      post :return_publishers
-    end
-  end
-
-  resources :members do
-    collection do
+      post :return_profile_users
+      post :return_profiles
       post :dbdelete
     end
   end
-  
+
   resources :members
   
 
 
-  resources :public_publisher_admins
+  # resources :public_publisher_admins
 
 
 
-  resources :public_users
-  
-  resources :public_publishers
+  # resources :public_users
 
+  # match '/payments/relay_response', :to => 'payments#relay_response', :as => 'payments_relay_response', :via => [:post]
+  # match "/ppcid:id" => "public_publishers#index", via: 'get'
+  # match "/:id_public_publisher_user" => "public_publishers#index", via: 'get'
+  # match "/:id_public_publisher_user" => "public_publisher_users#index", :as => '/id_public_publisher_user', via: 'get'
+  # resources :public_publishers
 
-  resources :public_publisher_users
+  # post '/:id.:format' => 'public_publisher_users#index', as: :field, constraints: {id: /\d+/}
+  # match "/:id.:format" => 'public_publisher_users#index', constraints: {id: \b\d{1,9}\b} # 600573625
+  # match "/:id.:format" => "public_publisher_users#index", via: 'get'  
+  # resources :public_publisher_users, param: :id_public_publisher_user
+
+  # resources :public_publisher_users, constraints: { id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/ }
+
+  # match "/ppuid:id" => "public_publisher_users#index", via: 'get'
+  # match "/:id_public_publisher_user" => "public_publisher_users#index", via: 'get'
+  # resources :public_publisher_users
 
 
 
@@ -84,33 +111,16 @@ Webknow::Application.routes.draw do
   
   get "diagnostics/rmagick"
   
-  root to: 'users#new'
-  match '/', to: 'users#new', via: 'get'
+  # match '/', to: 'users#index', via: 'get'
   match '/About', to: 'users#about', via: 'get'  
   match '/reset', to: 'users#reset', via: 'get'  
-
-  resources :users do
-    collection do
-      post :reset_users
-    end
-  end  
-  # resources :users do
-    # collection do
-      # post :edit_pwd_reset
-    # end
-  # end  
-  
-  resources :users do
-    collection do
-      post :dbdelete
-    end
-  end
-
-  resources :users
-
+  get "users/index_publisher"
+  match '/Signin', to: 'users#new', via: 'get'
+  # match '/id:id', to: 'users#index', via: 'get'
   
 
-  match '/Signin', to: 'sessions#new', via: 'get'
+
+  # match '/Signin', to: 'sessions#new', via: 'get'
   match '/Signout', to: 'sessions#destroy', via: 'get'  
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -120,19 +130,38 @@ Webknow::Application.routes.draw do
       post :create_reset
     end
   end
-
   resources :password_resets
+
+
+
+  resources :users do
+    collection do
+      post :reset_users
+      post :dbdelete      
+    end
+  end  
+  resources :users
+
+  
+  
+  # resources :user_images do
+    # collection do
+      # post :upload_user_image
+    # end
+  # end  
+
+  
 
 
 
   # match '/id:id', to: 'profiles#index', via: 'get'  
 
-  match '/id:id', to: 'profile_users#index', via: 'get'  
-  match '/publisher-id:id', to: 'profile_publishers#index', via: 'get'  
-  match '/institute-id:id', to: 'profile_institutes#index', via: 'get'  
-  match '/instructor-id:id', to: 'profile_instructors#index', via: 'get'  
-  match '/student-id:id', to: 'profile_students#index', via: 'get'  
-  match '/recruiter-id:id', to: 'profile_recruiters#index', via: 'get'  
+  # match '/id:id', to: 'profile_users#index', via: 'get'  
+  # match '/publisher-id:id', to: 'profile_publishers#index', via: 'get'  
+  # match '/institute-id:id', to: 'profile_institutes#index', via: 'get'  
+  # match '/instructor-id:id', to: 'profile_instructors#index', via: 'get'  
+  # match '/student-id:id', to: 'profile_students#index', via: 'get'  
+  # match '/recruiter-id:id', to: 'profile_recruiters#index', via: 'get'  
 
 
   
@@ -144,6 +173,7 @@ Webknow::Application.routes.draw do
 
   # match '/Posters', to: 'journal1posters#index', via: 'get'
   match '/Posters-1', to: 'journal1posters#index', via: 'get'
+  match '/Posters-Demo', to: 'journal1posters#index_demo', via: 'get'
   
   resources :journal1posters do
     collection do
@@ -207,9 +237,22 @@ Webknow::Application.routes.draw do
   resources :charges
   
   # match '/payments/payment', :to => 'payments#payment', :as => 'paymentspayment', :via => [:get]
-  # match '/payments/relay_response', :to => 'payments#relay_response', :as => 'payments_relay_response', :via => [:post]
-  # match '/payments/receipt', :to => 'payments#receipt', :as => 'payments_receipt', :via => [:get]
+  match '/Purchase', :to => 'payments#purchase', :via => [:get]
+  # match '/Purchase-Listings', :to => 'payments#payment_product_posters', :via => [:get]
+  match '/payments/relay_response', :to => 'payments#relay_response', :as => 'payments_relay_response', :via => [:post]
+  match '/payments/receipt', :to => 'payments#receipt', :as => 'payments_receipt', :via => [:get]
   
+  resources :payments do
+    collection do
+      post :payment
+    end
+  end
+  resources :payments do
+    collection do
+      post :payment_product_posters
+    end
+  end
+
 
 
   get "paypals/index"
@@ -237,14 +280,14 @@ Webknow::Application.routes.draw do
 
 
   match '/institutes/home', to: 'institutes#index', via: 'get'
-  match '/publishers/home', to: 'publishers#index', via: 'get'
+  # match '/publishers/home', to: 'publishers#index', via: 'get'
 
 
 
 
-  match '/Photos', to: 'publisher_user_images#index', via: 'get'
-  match '/Photo-New/:id', to: 'publisher_user_images#new', via: 'get'
-  match '/Photo-Crop-Center/:id', to: 'publisher_user_images#crop', via: 'get'
+  # match '/Photos', to: 'publisher_user_images#index', via: 'get'
+  # match '/Photo-New/:id', to: 'publisher_user_images#new', via: 'get'
+  # match '/Photo-Crop-Center/:id', to: 'publisher_user_images#crop', via: 'get'
   # get "publisher_user_images/crop"
   # match '/Crop-Center-Commit', to: 'publisher_user_images#crop_commit', via: 'post'
 
@@ -260,7 +303,16 @@ Webknow::Application.routes.draw do
     end
   end
 
-  resources :publisher_user_images
+  # resources :publisher_user_images
+
+
+
+  # resources :publisher_user_logo_images do
+    # collection do
+      # post :crop_commit
+    # end
+  # end
+
 
 
 
@@ -303,82 +355,95 @@ Webknow::Application.routes.draw do
   # publishers  
   
   #get 'publishers/index'
-  match "/Publisher" => "publishers#index", via: 'get'  
-  match '/PublishersUpload', to: 'publishers#upload', via: 'post'
-  match '/PublishersNew', to: 'publishers#new', via: 'get'
-  match "/PublishersEdit" => "publishers#edit", via: 'post'
-  match "/PublishersUpdate" => "publishers#update", via: 'post'
-  match "/Publisher-Photos" => "publisher_users#show_all_images", via: 'get'      
+  # match "/Publisher" => "publishers#index", via: 'get'
+  # match "/pcid:id" => "publishers#index", via: 'get'  
+  # match '/PublishersUpload', to: 'publishers#upload', via: 'post'
+  # match '/PublishersNew', to: 'publishers#new', via: 'get'
+  # match "/PublishersEdit" => "publishers#edit", via: 'post'
+  # match "/PublishersUpdate" => "publishers#update", via: 'post'
+  # match "/Publisher-Photos" => "publisher_users#show_all_images", via: 'get'      
 
   # match "/Publishers/:id/edit" => "publishers#edit", via: 'post'
   # match "/publishers/:id" => "publishers#update", via: 'post'
 
   resources :publishers do
     collection do
-      post :destroy_publisher_profile_image
-    end
-  end
-  
-  resources :publishers do
-    collection do
-      post :upload_publisher_profile_image
-    end
-  end
-
-  resources :publishers do
-    collection do
-      post :upload_publisher_profile_image_primary
-    end
-  end
-  
-  resources :publishers do
-    collection do
-      post :settings
-    end
-  end
-
-  resources :publishers do
-    collection do
+      post :update_story_1
+      post :update_story_2
+      post :destroy_publisher_logo_image
+      post :upload_publisher_logo_image_primary
+      post :upload_publisher_logo_image_primary_change
+      post :crop_commit_logo
+      post :create_post_publisher      
       post :dbdelete
     end
   end
-
-  resources :publishers
-
-
+  
+  # resources :publishers
 
 
-  match "/Publisher-Admin" => "publisher_users#index", via: 'get'  
+
+  # match "/:id" => "users#show", via: 'get'
+  # match "/" => "users#show", via: 'get'
+
+  # match "/Publisher-Admin" => "publisher_users#index", via: 'get'
+  # get "publisher_users/index"
+  # match "/:id_publisher_user" => "publisher_users#index", via: 'get'
+  # match "/puid:id" => "publisher_users#index", via: 'get'
+  # match 'publisher_users/index_post', :to => 'publisher_users#index_post', :as => '/:id_publisher_user', :via => [:post]
+  # post "publisher_users/index_post"
   match '/Publisher-Admin-Upload', to: 'publisher_users#upload', via: 'post'
   match '/Publisher-Admin-New', to: 'publisher_users#new', via: 'get'
   match "/Publisher-Admin-Edit" => "publisher_users#edit", via: 'post'
   match "/Publisher-Admin-Update" => "publisher_users#update", via: 'post'
   match "/Publisher-Admin-Photos" => "publisher_users#show_all_images", via: 'get'    
+  get "publisher_users/get_feed_post"
+  get "publisher_users/get_feed_log"
 
   resources :publisher_users do
     collection do
+      # post :get_post_feed
+      
+      post :update_story_1
+      post :update_story_2
+      post :update_story_3
+      post :update_story_6
+      
+      # post :add_post_user
+      post :create_post_user
+      post :destroy_post_user
+      post :cancel_post_user
+      post :cancel_post_user_on_close
+      post :create_post_user_like
+      post :destroy_post_user_like
+      post :create_log_user_like
+      post :destroy_log_user_like
+      
+      post :create_post_user_comment
+      post :destroy_post_user_comment
+      
       post :destroy_publisher_user_image
-    end
-  end
-
-  resources :publisher_users do
-    collection do
+      post :destroy_publisher_user_logo_image
+      
       post :upload_publisher_user_image_primary
-    end
-  end
-  resources :publisher_users do
-    collection do
+      post :upload_publisher_user_logo_image
+
+      post :upload_publisher_user_image_primary_change
+      post :upload_publisher_user_logo_image_change
+      
       post :upload_publisher_user_image
-    end
-  end
+      
+      post :upload_post_user_image
+      
+      post :crop_commit_user
+      post :crop_commit_logo
 
-  resources :publisher_users do
-    collection do
-      post :dbdelete
+      post :dbdelete      
     end
-  end
+  end  
 
-  resources :publisher_users
+  # match "/:id_publisher_user" => "publisher_users#index", via: 'get'
+  # resources :publisher_users, param: :id_publisher_user
 
 
 
@@ -606,7 +671,7 @@ Webknow::Application.routes.draw do
   # get "publisher_products/show"
   # match '/publisher_products/list' => 'publisher_products#list', via: 'get'    
   match 'publisher_products/create', to: 'publisher_products#create', via: 'post'
-  match '/Publisher-Products', to: 'publisher_products#index', via: 'get'
+  match '/Publisher-Product-Listings', to: 'publisher_products#index', via: 'get'
   match '/publisher_products/upload', to: 'publisher_products#upload', via: 'post'
   # match '/Publisher-Add-Product', to: 'publisher_products#new', via: 'get'
   # match "/Publisher-Products-Edit/:id/edit" => "publisher_products#edit", via: 'post'
@@ -645,269 +710,62 @@ Webknow::Application.routes.draw do
 
   resources :publisher_product_descriptions do
     collection do
-      post :dbdelete
-    end
-  end
-
-  resources :publisher_product_descriptions do
-    collection do
       post :show_description
-      # match 'Publisher-Product-Description', via: 'post'
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_name_product
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_product_tagline
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_versions
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_content_type
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_category_subject
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_topic
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_lesson_plan_subject
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_lesson_time
-    end
-  end  
-  resources :publisher_product_descriptions do
-    collection do
       post :update_description
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_appropriate_age
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_appropriate_grade
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_source_url
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_market_target
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_platform
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_file_type
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_updating_refresh_rate
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_updating_type
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_character
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_by_review
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_enhancement
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_pricing_model
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_price
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_reselling
-    end
-  end  
-  resources :publisher_product_descriptions do
-    collection do
       post :update_evaluation
-    end
-  end  
-  resources :publisher_product_descriptions do
-    collection do
       post :update_allow_teacher_rating
-    end
-  end  
-  resources :publisher_product_descriptions do
-    collection do
       post :update_allow_student_likes
-    end
-  end  
-  resources :publisher_product_descriptions do
-    collection do
       post :update_allow_comments
-    end
-  end  
-  resources :publisher_product_descriptions do
-    collection do
       post :update_research
-    end
-  end  
-  resources :publisher_product_descriptions do
-    collection do
       post :update_public_relations
-    end
-  end  
-  resources :publisher_product_descriptions do
-    collection do
       post :update_metrics
-    end
-  end  
-  resources :publisher_product_descriptions do
-    collection do
       post :update_core_supplemental_index
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_word_description
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_core_literacy_standard
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_core_math_standard
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_name_pdf
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :upload_pdf
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :upload_pdf_image
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :destroy_pdf
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :destroy_pdf_image
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
-      post :upload_product_logo
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
-      post :destroy_product_logo
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
+      # post :upload_product_logo
+      post :upload_logo1_image
+      post :upload_logo1_image_change
+      # post :destroy_product_logo
+      post :destroy_logo1_image
       post :upload_product1_image
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :destroy_product1_image
-    end
-  end  
-  resources :publisher_product_descriptions do
-    collection do
       post :upload_product2_image
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :destroy_product2_image
-    end
-  end    
-  resources :publisher_product_descriptions do
-    collection do
       post :update_poster_print_purchase
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_poster_pin_web
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_poster_pin_purchase
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :upload_product_corporate_logo
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :destroy_product_corporate_logo
-    end
-  end
-  resources :publisher_product_descriptions do
-    collection do
       post :update_corporate_logo_url
+      post :dbdelete      
     end
   end
 
@@ -1302,7 +1160,23 @@ Webknow::Application.routes.draw do
 
 
 
+  match '/Buy-It', :to => 'publisher_product_ads#index', :via => [:get]
 
+  resources :publisher_product_ads do
+    collection do
+      post :checkout
+    end
+  end
+
+
+
+
+
+  match '/Publisher-Listings', to: 'publisher_ad_listings#index', via: 'get'
+
+  match '/Publisher-Squares', to: 'publisher_ad_squares#index', via: 'get'
+
+  match '/Publisher-Pins', to: 'publisher_ad_pins#index', via: 'get'
 
 
 
@@ -1435,6 +1309,21 @@ Webknow::Application.routes.draw do
   resources :paintings
 
   
+  
+  # match "/:id_public_publisher_user" => "public_publisher_users#index", via: 'get'
+  # match "/:id_publisher_user" => "publisher_users#index", via: 'get'
+
+  # post "publisher_users/index"
+  # post "public_publisher_users/index"
+
+
+  match "/Publisher" => "users#render_index_publisher_home", via: 'get'
+
+
+  
+  # this must be last
+  match "/:id" => "users#index", via: 'get'
+  match "/:id_public_publisher_user" => "public_publisher_users#index", via: 'get'
   
   
   

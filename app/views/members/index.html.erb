@@ -802,13 +802,14 @@
 							<div class="col-midd-600" id="sub_container" style="position: relative;">
 								<div id="col_midd_header">
 									
-									<%= form_tag return_users_members_path, :id => 'form_all_users', :remote => true do %>
-										<%= hidden_field_tag :user_profile_type, '12' %>
-										<%= submit_tag 'Submit', id: 'submit_all_users', class: 'display-none' %>
+									<%= form_tag return_profile_users_members_path, :id => 'form_return_profile_users', :remote => true do %>
+										<%= hidden_field_tag :profile_user_type %>
+										<%= submit_tag 'Submit', id: 'submit_profile_user_hidden', class: 'display-none' %>
 									<% end %>									
 
-									<%= form_tag return_publishers_members_path, :id => 'form_publishers', :remote => true do %>
-										<%= submit_tag 'Submit', id: 'submit_publishers', class: 'display-none' %>
+									<%= form_tag return_profiles_members_path, :id => 'form_return_profiles', :remote => true do %>
+										<%= hidden_field_tag :profile_type %>
+										<%= submit_tag 'Submit', id: 'submit_profile_hidden', class: 'display-none' %>
 									<% end %>									
 									
 									<div class="line-space-20"></div>
@@ -940,7 +941,7 @@
 								
 								<div style="height: 30px;"></div>
 
-								<div id="submit_user" class="submit-search">
+								<div id="submit_user_profile" class="submit-search">
 									Search
 								</div>
 								
@@ -989,11 +990,14 @@
 
 			$(".chosen-select").chosen({disable_search_threshold: 40});
 
-			// $("#publisher_product_lesson_time").trigger("chosen:updated");
+			$("#select_user").val(1)
+			$('#select_user').trigger('chosen:updated');
+
 			
-			$("#submit_user").on('click', function() {
-				$("#user_profile_type").val($("#select_user").val());
-				$("#submit_all_users").click();
+			$("#submit_user_profile").on('click', function() {
+				alert('click');
+				$("#profile_user_type").val($("#select_user").val());
+				$("#submit_profile_user_hidden").click();
 			});
 
 			$("#submit_profile").on('click', function() {

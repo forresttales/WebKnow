@@ -1,2 +1,2 @@
-module PublisherProductCoreMathStandardsHelper
+module PublisherProductCoreMathStandardsHelper  
 end

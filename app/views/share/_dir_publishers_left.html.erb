@@ -2,7 +2,7 @@
 	<style>
 
 		.profile-links-left {
-			
+			text-align: left;
 		}	
 		.profile-links-left ul {
 			
@@ -70,74 +70,83 @@
 		
 	</style>
 
+
+<div style="height: 260px; background-color: #8eb388; margin: 0;">
+	<div style="height: 20px;"></div>
 	<div class="profile-labels-left">
 		<ul>
 			<li>
-				<a href="/Publisher-Admin"><span href="#">My Story</span></a>
+				<!-- <a href="/Publisher-Admin"><span href="#">My Story</span></a> -->
+				<a href="<%= @url_user_story %>"><span>My Story</span></a>
 			</li>
 		</ul>		
 	</div>	
 	<div class="profile-links-left">
 		<ul>
-			<!--<li id="profile-links-left-7" class="sub">
-				<a id="profile-links-left-7-a" href="/Publisher-Admin">Home</a>
+			<li id="profile-links-left-15" class="sub">
+				<a id="profile-links-left-15-a" href="/">Home</a>
 			</li>
 			<!--<li id="profile-links-left-8" class="sub">
 				<!-- <a id="profile-links-left-9-a" href="/MemberProfilePhotos">Photos</a>
 				<a id="profile-links-left-8-a" href="/Photos">Photos</a>
 			</li>-->						
-			<li id="profile-links-left-9" class="sub">
-				<a id="profile-links-left-9-a" href="/Publisher-Profile-Admin">Edit Profile</a>
-			</li>
+			<!-- <li id="profile-links-left-1" class="sub">
+				<a id="profile-links-left-1-a" href="/Publisher-Profile-Admin">Edit Profile</a>
+			</li> -->
 			<!--<li id="profile-links-left-10" class="sub">
 				<a id="profile-links-left-10-a" href="/Publisher-Admin-Settings">Settings</a>
 			</li>-->
-			<li id="profile-links-left-12" class="sub">
-		      <a id="profile-links-left-12-a" href="/Connections">My Connections</a>
-		    </li>
-		    <li id="profile-links-left-11" class="sub">
-		      <a id="profile-links-left-11-a" href="/Mail">My Mail</a>
-		    </li>  
+			<!-- <li id="profile-links-left-2" class="sub">
+		      <a id="profile-links-left-2-a" href="/Connections">My Connections</a>
+		    </li> -->
+		    <!-- <li id="profile-links-left-3" class="sub">
+		      <a id="profile-links-left-3-a" href="/Mail">My Mail</a>
+		    </li> -->  
 		</ul>
 	</div>
 	<div class="profile-labels-left">
 		<ul>
 			<li>
-				<a href="/Publisher"><span href="#">Corporate Story</span></a>
+				<!-- <a href="<#%= @url_corporate_story %#>"><span>Corporate Story</span></a> -->
+				<a href="<%= @url_profile_story %>"><span>Corporate Story</span></a>
 			</li>
 		</ul>		
 	</div>	
 	<div class="profile-links-left">
 		<ul>
+			<li id="profile-links-left-16" class="sub">
+				<a id="profile-links-left-16-a" href="/<%= @url_profile_story_home %>">Home</a>
+			</li>
+			
 			<!--<li id="profile-links-left-2" class="sub">
 				<a id="profile-links-left-2-a" href="/Publisher">Home</a>
 			</li>			
 			<li id="profile-links-left-3" class="sub">
 				<a id="profile-links-left-3-a" href="/Publisher-Photos">Photos</a>
 			</li>-->
-			<li id="profile-links-left-4" class="sub">
+			<!-- <li id="profile-links-left-4" class="sub">
 				<a id="profile-links-left-4-a" href="/Publisher-Profile">Edit Profile</a>
-			</li>
-			<li id="profile-links-left-5" class="sub">
+			</li> -->
+			<!-- <li id="profile-links-left-5" class="sub">
 				<a id="profile-links-left-5-a" href="/Publisher-Settings">Settings</a>
-			</li>
-			<li id="profile-links-left-12" class="sub">
-		      <a id="profile-links-left-12-a" href="/Connections">Connections</a>
-		    </li> 
-			<li id="profile-links-left-11" class="sub">
-		      <a id="profile-links-left-11-a" href="/Mail">Mail</a>
-		    </li> 
-		    <li id="profile-links-left-13" class="sub">
-		      <a id="profile-links-left-13-a" href="/Groups">Groups</a>
+			</li> -->
+			<!-- <li id="profile-links-left-6" class="sub">
+		      <a id="profile-links-left-6-a" href="/Connections">Connections</a>
+		    </li> --> 
+			<!-- <li id="profile-links-left-7" class="sub">
+		      <a id="profile-links-left-7-a" href="/Mail">Mail</a>
+		    </li> --> 
+		    <!-- <li id="profile-links-left-8" class="sub">
+		      <a id="profile-links-left-8-a" href="/Groups">Groups</a>
+		    </li> -->
+		    <!-- <li id="profile-links-left-9" class="sub">
+		      <a id="profile-links-left-9-a" href="/Metrics">Metrics</a>
+		    </li> --> 
+		    <li id="profile-links-left-10" class="sub">
+		      <a id="profile-links-left-10-a" href="/Advertisements">Ads Summary</a>
 		    </li>
-		    <li id="profile-links-left-14" class="sub">
-		      <a id="profile-links-left-14-a" href="/Metrics">Metrics</a>
-		    </li> 
-		    <li id="profile-links-left-15" class="sub">
-		      <a id="profile-links-left-15-a" href="/Advertisements">Ads</a>
-		    </li>
-		    <li id="profile-links-left-15" class="sub">
-		      <a id="profile-links-left-15-a" href="/Corporate-Members">Corporate Members</a>
+		    <li id="profile-links-left-11" class="sub">
+		      <a id="profile-links-left-11-a" href="/Corporate-Members">Members</a>
 		    </li> 		     
 		</ul>
 	</div>
@@ -181,31 +190,33 @@
 	<div class="profile-labels-left">
 		<ul>
 			<li>
-				<span href="#">Product Story</span>
+				<!-- <span href="/Publisher-Product-Listings">Product Story</span> -->
+				<a href="/Publisher-Product-Listings-Demo"><span>Product Story</span></a>				
 			</li>
 		</ul>		
 	</div>	
 	<div class="profile-links-left">
 		<ul>	
-			<li id="profile-links-left-16" class="sub">
-				<a id="profile-links-left-16-a" href="/Publisher-Products">Products</a>
+			<li id="profile-links-left-12" class="sub">
+				<a id="profile-links-left-12-a" href="/Publisher-Product-Listings-Demo">Product Listings</a>
 			</li>		
-		    <li id="profile-links-left-15" class="sub">
-		      <a id="profile-links-left-15-a" href="/Advertisements">Ads</a>
+		    <li id="profile-links-left-13" class="sub">
+		      <!-- <a id="profile-links-left-13-a" href="/Advertise-Now">Advertise</a> -->
+		      <a id="profile-links-left-13-a" href="/Buy-It">Buy It</a>
 		    </li> 
 				
 		</ul>
 	</div>
-	<div class="profile-links-left">
+	<!-- <div class="profile-links-left">
 		<ul>			
-			<% if session[:publisher_has_journalposter] %>
-			<li id="profile-links-left-17" class="sub">
-				<a id="profile-links-left-17-a" href="/Publisher-Posters">Posters</a>
+			<#% if session[:publisher_has_journalposter] %#>
+			<li id="profile-links-left-14" class="sub">
+				<a id="profile-links-left-14-a" href="/Publisher-Posters">Posters</a>
 			</li>	
-			<% end %>
+			<#% end %#>
 		</ul>
-	</div>
-
+	</div> -->
+</div>	
 	<script>
 		
 		$(window).load( function() {
@@ -259,9 +270,9 @@
 			$('li#profile-links-left-16').on('click', function() {
 				window.location = document.getElementById('profile-links-left-16-a').href;				
 			});
-			$('li#profile-links-left-17').on('click', function() {
-				window.location = document.getElementById('profile-links-left-17-a').href;				
-			});
+			// $('li#profile-links-left-17').on('click', function() {
+				// window.location = document.getElementById('profile-links-left-17-a').href;				
+			// });
 
 		});
 		

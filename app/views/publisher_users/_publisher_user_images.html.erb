@@ -21,9 +21,12 @@
 							   		<div class="table-dl-form">
 							   			<div class="row">
 							   				<div class="cell-100percent">
-							   					<div id="close_form4" class="form-edit-close jqmClose" tabindex="">
+							   					<div id="close_form4" class="form-edit-close jqmClose tip-left-center" tabindex="">
 							   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
 							   					</div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Close</div>
+								                </div>																								
 							   					<div style="clear: both;"></div>
 							   				</div>
 					   					</div>
@@ -31,7 +34,7 @@
 									<div class="pad-left-20">
 										<div style="height: 20px;"></div>
 										<div class="profile-grid profile-cs-style-3">
-											<figure class="profile-figure-list" id="profile_figure_list">
+											<figure class="" id="profile_figure_list">
 												<img alt="photo not appearing" src="" />
 												<figcaption class="figcaption-2">
 													<div class="tip-top-center"></div>
@@ -233,6 +236,21 @@
 				    position: {
 				        my: 'bottom center',
 				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+		
+            $('.tip-left-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'right top',
+				        at: 'left center'
 				        // target: $('.tip-top-center')
     				}                    
                 })

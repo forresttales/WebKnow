@@ -1,0 +1,169 @@
+
+
+	<style>
+		
+		.container-right-1 {
+			width: 290px;
+			height: 50px;
+			margin: 0 auto;
+			position: relative;
+			top: 0px;
+			background-color: #fff;
+			padding: 0 0 0 10px;
+			text-align: left;
+		}
+		.container-right-1 .container-right-1-span-1:hover {
+			color: #555;
+		}
+
+		.fix-shadow {
+		  	/*box-shadow: 3px 3px 10px #000;*/
+		  	/*box-shadow: 1px 1px 1px 1px #ddd;*/
+		  	box-shadow: 2px 1px 2px 1px #eee;
+		}
+		#adjust_fix {
+			height: 50px;
+			width: 290px;
+		}
+		.fix-in-place {
+			position: fixed;
+			top: 6px;	
+			z-index: 1;
+		}
+		.container-right-1-span-1 a {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			font-weight: 400;
+			color: #888;
+			text-decoration: none;
+		}
+		.container-right-1-span-1 a:hover {
+			color: #555;
+		}
+		.hidden {
+			display: none !important;
+			visibility: hidden !important			
+		}
+		.dir-span-1 {
+	  		font-family: 'msyh';
+		    font-size: 16px;
+		    color: #376340;
+		    font-weight: 200;
+		}		
+		
+
+	</style>
+
+
+	<div class="margin-0" style="width: 300px; height: 800px; padding: 0 0 0 10px;">
+		<div id="container_right_1" class="container-right-1">		
+			<span class="container-right-1-span-1"><a href="/Members">Search other Members</a></span>
+		</div>
+		<div style="clear: both;"></div>
+		<div id="adjust_fix" class="hidden"></div>
+		<div style="height: 10px;"></div>
+		
+		<div class="title-bar-profile title-bar-profile-1-top-border" style="width: 280px;">
+			<div style="display: table;">
+				<div class="row-title-bar-profile">
+					<div class="cell-title-bar-profile-left">
+						<div class="position-relative">
+							<div class="position-absolute top-minus-24">												
+								<span class="dir-span-1">Connections</span>
+							</div>
+						</div>		
+					</div>
+					<div class="cell-title-bar-profile-center">
+						<span></span>
+					</div>
+					<div class="cell-title-bar-profile-right">
+						<div class="btn-opt-edit-container-outer">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="table margin-0">
+			<div class="row">
+				<div class="cell-100percent">
+					<div style="height: 20px;"></div>
+					<img src="/assets_knowstory/fills/fill-publisher-mystory-connections-w277-h130.png" style="width: 277px; margin-bottom: 0px;">
+				</div>
+			</div>
+		</div>
+		
+		<div style="height: 20px;"></div>		
+
+		<div class="title-bar-profile title-bar-profile-1-top-border" style="width: 280px;">
+			<div style="display: table;">
+				<div class="row-title-bar-profile">
+					<div class="cell-title-bar-profile-left">
+						<div class="position-relative">
+							<div class="position-absolute top-minus-24">												
+								<span class="dir-span-1">Groups</span>
+							</div>
+						</div>		
+					</div>
+					<div class="cell-title-bar-profile-center">
+						<span></span>
+					</div>
+					<div class="cell-title-bar-profile-right">
+						<div class="btn-opt-edit-container-outer">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="table margin-0">
+			<div class="row">
+				<div class="cell-100percent">
+					<div style="height: 20px;"></div>
+					<img src="/assets_knowstory/fills/fill-publisher-mystory-groups-w278-h103.png" style="width: 278px; margin-bottom: 0px;">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+		
+
+
+	<script>
+
+		$(window).scroll(function(e){ 
+			$el = $('#container_right_1');
+			if ($(this).scrollTop() > 80 && $el.css('position') == 'relative') {
+		    	$el.addClass('fix-in-place').addClass('fix-shadow');
+		    	$('#adjust_fix').removeClass('hidden'); 		      
+		  	} 
+		  	else if ($(this).scrollTop() <  80 && $el.css('position') == 'fixed'){
+		     	$el.removeClass('fix-in-place').removeClass('fix-shadow');
+				$('#adjust_fix').addClass('hidden');
+		  	}
+		});
+		
+		// $(window).load( function() {
+		$(document).ready(function () {				
+
+			// alert($("#container_right_1").offset().top);
+			
+			
+			
+		});
+		
+				
+	</script>
+
+<!-- <div style="text-align: left;">
+<img src="/assets_knowstory/fills/search-fill.jpg" style="width: 275px; margin-bottom: 15px;">
+<img src="/assets_knowstory/fills/poster-fill.jpg" style="width: 275px; margin-bottom: 15px;">
+<img src="/assets_knowstory/fills/reading-fill.jpg" style="width: 275px; margin-bottom: 15px;">
+<img src="/assets_knowstory/fills/list-fill-1-2.jpg" style="width: 275px;margin-bottom: 15px;">
+<img src="/assets_knowstory/fills/list-fill-3-4.jpg" style="width: 275px;margin-bottom: 30px;">
+<img class="listing-last" src="/assets_knowstory/fills/list-fill-5-6.jpg" style="width: 275px;margin-bottom: 15px;">
+</div> -->

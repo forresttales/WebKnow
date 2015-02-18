@@ -1,0 +1,2 @@
+class RelateLogPublishersController < ApplicationController
+end

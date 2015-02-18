@@ -5,6 +5,8 @@ class Journal1posterPositionsController < ApplicationController
   before_filter :force_http
 
 
+
+
   def index
 
     @id_map = 1
@@ -196,6 +198,6 @@ class Journal1posterPositionsController < ApplicationController
                                         
     end
 
-  
 
+    
 end

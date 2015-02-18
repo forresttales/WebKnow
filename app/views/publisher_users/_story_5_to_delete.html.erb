@@ -1,0 +1,178 @@
+
+
+			<!-- <div id="scroll1" class="product-listbox" style="height: 500px;"> -->
+			<div id="scroll1" class="product-listbox">	
+
+			<% if @log_users.any? %>
+				<% @nlist = 0 %>
+				<% @log_users.each do |log_user| %>
+					<% @nlist += 1 %>
+					<% @log_user = log_user %>
+					<div class="table post-user-list-1" style="background-color: transparent;">
+						<div class="row">
+							<div class="cell-100 post-user-list-1a">
+								<div class="post-user-list-1a-1">
+									<ul class="publisher-product-list-grid publisher-product-list-caption">
+										<li>
+											<figure>
+												<a href="<%= log_user.user.slug %>">
+												<%= log_user_avatar_for log_user.user %>
+												<figcaption>
+													<!-- <span class="publisher-product-list-span"><#%= link_to "Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %#></span> -->
+													<!-- <span><#%= link_to "Edit", { :action => :crop, :id => publisher_product.id } %#></span> -->
+												</figcaption>
+												</a>
+											</figure>
+										</li>
+									<ul>
+								</div>
+							</div>
+							<div class="cell-560 post-user-list-1b"  style="background-color: #fff;">
+								<div class="post-user-list-1b-1" style="">
+									<a href="<%= log_user.user.slug %>" class="post-user-span-2-a">
+										<span><%= log_user.user.name_first %> </span><span><%= log_user.user.name_last %></span>
+									</a>
+								</div>
+								<div class="post-user-list-1b-2" style="">
+									<span class="post-user-span-1"><%= log_user.post_text %></span>
+								</div>
+								<div class="post-user-list-1b-3">
+									<div class="table" style="height: 30px; margin: 0 0 10px 0;">
+										<div class="row">
+											<div id="render_log_user_like_<%= @nlist %>" class="cell-150">
+												<%= render 'publisher_users/log_user_like' %>		
+											</div>
+											<div class="cell-350">
+											</div>													
+											<div class="cell-100" style="text-align: right;">
+											    <span class="post-user-span-2">
+											      - <%= time_ago_in_words(log_user.created_at) %> ago
+											    </span>
+											</div>													
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				<% end %>
+
+			<% else %>
+				<!-- <div class="" style="color: red; padding-left: 20px;">
+					<h3>No record for Publisher Products</h3>
+				</div> -->
+			<% end %>
+
+				</div>
+
+
+				<!-- <div id="im_bottom_sh" style="display: block;"></div> -->					
+
+				<!-- <div class="publisher-product-utility-bar-footer">
+					<div style="height: 4px;"></div>
+					<div style="width: 100%; text-align: center;">
+						<span><#%= will_paginate @publisher_products %#></span>
+					</div>
+				</div> -->
+
+	<!-- <script src="/assets/jquery.mousewheel.js"></script> -->
+
+	<script>
+		
+        // function scrollPos() {
+            // $("#pos1").html($("#scroll1").scrollLeft());
+            // // $("#pos2").html($("#scroll1").scrollTop());
+            // $("#scroll2").scrollLeft($("#scroll1").scrollLeft());
+            // // $("#scroll2").scrollLeft(100);
+        // }
+		// function moveScroll() {
+			// $("#scroll1").scrollLeft($("#pos1").html());
+			// $("#scroll2").scrollLeft($("#pos1").html());			
+		// }
+				
+		// function body_resize() {
+			// var wh = window.outerHeight;
+			// var sh = 0;
+			// // var h1 = 0;
+			// // var h2 = 0;
+			// var h3 = 0;
+			// // var h = $("#container").height();
+			// $("#container_height").html(wh);
+			// if(wh > 700) {
+				// // h1 = wh - 276;
+				// // h2 = wh - 594;
+				// h3 = wh - 392;
+				// // $("#scroll1").css({
+					// // 'height': h3
+				// // });
+				// $("#sub_container").css({
+					// 'height': h3			// h1
+				// });			
+				// $("#render_list").css({
+					// 'height': h3			// h2
+				// });			
+			// }
+		// }
+
+		// function init_page() {
+			// var wh = window.innerHeight;
+			// var sh = wh-388;
+			// $("#scroll1").css({
+				// 'height': sh
+			// });			
+		// }
+				
+		// $(window).load(function() {
+		$(document).ready(function() {			
+      	// $(function() {
+
+			// var api = $('.tip-top-center').qtip("api"); // Get the API of an already created tooltip			 
+			// api.elements.tooltip.bind('close_tip', api.hide); // Hide the tooltip using the hide API method on 'yourevent'
+
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+
+			
+		});				
+
+				
+	</script>
+

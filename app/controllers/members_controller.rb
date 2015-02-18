@@ -37,13 +37,13 @@ class MembersController < ApplicationController
     # publisher_user = PublisherUser.where("publisher_id = ? AND user_id = ?", publisher.id, current_user_id).first
     # publisher_user_images = PublisherUserImages.where("publisher_id = ? AND publisher_user_id = ?", publisher.id, publisher_user.id)
     # @publisher_user_image_primary = publisher_user_images.first
-    @public_publisher_users = PublicPublisherUser.all 
+    # @public_publisher_users = PublicPublisherUser.all 
     # @public_users = public_publisher_users
     # @public_publisher_users = PublicPublisherUser.where("id = ?", 1)
 
     # @public_users = PublicUser.all
 
-    # @public_users = nil
+    @public_users = PublicUser.all
 
 
     # @public_users = PublicUser.paginate(page: params[:page])    
@@ -114,7 +114,9 @@ class MembersController < ApplicationController
       # # end
     # end
 
-    public_users = PublicUser.all      
+    # public_users = PublicUser.all
+    
+    public_users = PublicPublisherUser.all      
       
       
     return public_users      
@@ -123,38 +125,24 @@ class MembersController < ApplicationController
 
 
 
-  def return_users
+  def return_profile_users
     
-    # ar = params[:users]
-    # h_obj = Hash.new
-    # ar.each do |obj|
-      # h_obj = obj
-    # end
-
-    # user_age_range_1 = h_obj[:user_age_range_1]
-    # user_age_range_2 = h_obj[:user_age_range_2]
-    
-    # @users = Users.all
     
     # render locals: {
       # public_users: PublicUser.all
     # }
     
-    # @user_profile_type = params[:user_profile_type]
-    # @test = params[:user_profile_type]
-
-    user_profile_type = params[:user_profile_type]
+    profile_user_type = params[:profile_user_type]
     
     @public_users = nil
-    # @public_publishers = nil    
     
-    case user_profile_type.to_s   
+    case profile_user_type.to_s   
       when "0"
         @public_users = PublicUser.all
       when "1"
-        @public_users = PublicUser.all
+        # @public_users = PublicUser.all
       when "2"
-        @public_users = PublicPublisher.all
+        # @public_users = PublicPublisherUser.all
       when "3"
         # @public_users = PublicUser.all
       when "4"
@@ -167,45 +155,16 @@ class MembersController < ApplicationController
         #        
     end
 
-    @user_profile_type = user_profile_type
-
-    # @clyde = 'clyde in controller'
-    
-    
-    # msg = "all users"
-    
-
-    # @clyde = 'clyde in controller'
-    
-    respond_to do |format|
-      format.html
-      # format.js
-      # format.json { render :json => { :msg => msg,
-                                      # :user_age_range_1 => user_age_range_1,
-                                      # :user_age_range_2 => user_age_range_2
-                  # }                 }      
-
-      # format.json { render :json => { :clyde => @clyde, :public_users => @return_public_users } }
-      # format.json { render json: @public_users, status: :created, location: @public_users }
-      # format.json { render :partial => 'members/list', :locals => { :clyde => @clyde } }              
-      # format.json { render json: @public_users, status: :created, location: @public_users }              
-
-      # format.json { render json: @clyde }              
-
-      # format.json render 'return_users.json'              
-      format.js
-
-      
-    end
+    @profile_user_type = profile_user_type
 
     
   end
 
 
 
-  def return_publishers
+  def return_profiles
     
-    @public_publishers = PublicPublisher.all
+    @public_publishers = PublicPublisherUser.all
 
     respond_to do |format|
       format.html

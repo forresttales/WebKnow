@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="utf-8">
+								    	
+  		<title><%= full_title(yield(:title)) %></title> 
+
+		<!-- <#%= javascript_include_tag "application" %#>
+		<#%= stylesheet_link_tag    "application", :media => "all" %#> -->
+
+   		<%= javascript_include_tag "application" %>		
+    	<%= stylesheet_link_tag "application", media: "all" %>
+  		
+		<link rel="icon" type="image/png" href="/assets/knowstory-icon-fav.png" />
+  		
+   		    	
+  		<%= include_gon %>
+    	
+	  	<%= csrf_meta_tags %>
+	  	<%= render 'layouts/shim' %>  
+		
+		<style>
+		
+			#debug {
+				background-color: red;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size: 16px;
+				color: #000;
+			}
+		
+		</style>
+
+
+    </head>
+    
+	<body>
+
+		<%= render 'layouts/nav_main' %>
+		<%= yield %>
+		
+		<%= render 'layouts/footer' %>
+
+		<% if Rails.env.development? %>
+			<div id="debug">
+				<%= debug(params) %>
+			</div>
+		<% end %>
+			
+	</body>
+	
+</html>

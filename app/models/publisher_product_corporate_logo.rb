@@ -21,13 +21,24 @@ class PublisherProductCorporateLogo < ActiveRecord::Base
                   :created_at,
                   :updated_at 
   
+
+  belongs_to :publisher_product
+
   
   mount_uploader :image, PublisherProductCorporateLogoUploader
   
-  belongs_to :publisher_product
+  # validates :image, 
+    # :presence => true #, 
+    # # :file_size => { :maximum => 5.megabytes.to_i}   
+  # validates_integrity_of :image
+  # validates_processing_of :image
   
-
-
+  
+  # def image_integrity_validation
+    # # errors[:avatar] << "should be less than 5MB" if avatar.size > 5.megabytes
+    # errors[:image] << "Wrong file type"
+  # end  
+  
   
   def self.dbdelete
       self.connection.execute("DELETE FROM publisher_product_corporate_logos")

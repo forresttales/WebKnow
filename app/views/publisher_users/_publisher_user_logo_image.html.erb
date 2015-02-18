@@ -1,0 +1,535 @@
+
+	<!-- <style>
+		
+		/*div#container_logo_image {
+			cursor: pointer;
+			-webkit-transition: padding .05s linear;
+			-moz-transition: padding .05s linear;
+			-ms-transition: padding .05s linear;
+			-o-transition: padding .05s linear;
+			transition: padding .05s linear;
+		}*/
+		div#container_logo_image .drop {
+			position: relative;
+		}
+		/*div#container_logo_image ul > li {
+			display: inline-block;
+		}*/
+		/*#menu ul li a {*/
+		/*div#container_logo_image div.photo-frame {
+			height: 200px;
+			-webkit-transition: all .1s ease-out;
+			-moz-transition: all .1s ease-out;
+			-ms-transition: all .1s ease-out;
+			-o-transition: all .1s ease-out;
+			transition: all .1s ease-out;
+		}*/
+		/*div#container_logo_image .drop .dropdownContain {
+			top: 58px;
+		}*/
+		/*ul li a:hover {
+			color: #eee;
+		}*/
+		
+		div#container_logo_image .drop .dropdownContain .dropOut .triangle {
+			width: 0;
+			height: 0;
+			position: absolute;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-bottom: 8px solid white;
+			top: -8px;
+			/*left: 0px;*/
+			right: 0px;
+			/*margin-left: -8px;*/
+		}
+		div#container_logo_image .drop .dropdownContain {
+			width: 140px;
+			position: absolute;
+			z-index: 2;
+			/*left: 0px;*/
+			right: 2px;
+			/*margin-left: -80px;*/
+			top: -1000px;
+		}
+		/*div#container_logo_image .drop .dropdownContain .dropOut {*/
+		div#container_logo_image .drop .dropdownContain .dropOut {
+			width: 140px;
+			background: #fff;
+			float: left;
+			position: relative;
+			margin-top: 0px;
+			/*margin-left: 0 auto;
+			margin-right: 0 auto;*/
+			opacity: 0;
+			/*-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;*/
+			-webkit-border-top-left-radius: 4px;
+			-webkit-border-top-right-radius: 0px;
+			-webkit-border-bottom-right-radius: 4px;
+			-webkit-border-bottom-left-radius: 4px; 			
+			-moz-border-top-left-radius: 4px;
+			-moz-border-top-right-radius: 0px;
+			-moz-border-bottom-right-radius: 4px;
+			-moz-border-bottom-left-radius: 4px; 			
+			border-top-left-radius: 4px;
+			border-top-right-radius: 0px;
+			border-bottom-right-radius: 4px;
+			border-bottom-left-radius: 4px; 			
+			-webkit-box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			-moz-box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			-webkit-transition: all .1s ease-out;
+			-moz-transition: all .1s ease-out;
+			-ms-transition: all .1s ease-out;
+			-o-transition: all .1s ease-out;
+			transition: all .1s ease-out;
+		}
+		div#container_logo_image .drop .dropdownContain .dropOut ul {
+			float: left;
+			padding: 10px 0;
+		}
+		div#container_logo_image .drop .dropdownContain .dropOut ul li {
+			text-align: left;
+			float: left;
+			width: 120px;
+			height: 24px;
+			padding: 4px 0 6px 10px;
+			margin: 3px 10px 3px 10px;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+		}
+		div#container_logo_image .drop .dropdownContain .dropOut ul li:hover {
+			background: #f2f2f2;
+		}
+		div#container_logo_image .drop .dropdownContain .dropOut ul li div {
+			color: #376340;	
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			font-weight: 700;
+			width: 100%;
+			height: 24px;
+		}
+		div#container_logo_image .drop .dropdownContain .dropOut ul li:hover div {
+			color: #376340;	
+			cursor: pointer;
+			/*text-decoration: none;*/
+		}
+		/*ul li:hover a { color: red; underline: none;}*/
+		/*ul li:hover .dropdownContain { top: 65px; left: -60px;}*/
+		/*div#container_logo_image .drop:hover .dropdownContain { top: 186px; }*/
+		/*ul li:hover .underline { border-bottom-color: #777; }*/
+		div#container_logo_image .drop:hover .dropdownContain .dropOut { opacity: 1; margin-top: 8px; }
+		
+		/*#menu div.separator_line {
+			height: 1px;
+			width: 100%;
+			border-bottom: 1px solid silver;
+		}*/
+		
+	</style> -->
+
+
+
+	<style>
+		
+		div.drop-2-container-target  {
+			position: relative;
+		}
+		div.drop-2-container-target .dropOut .triangle {
+			width: 0;
+			height: 0;
+			position: absolute;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-bottom: 8px solid white;
+			top: -8px;
+			left: 0px;
+		}
+		div.drop-2-container-target .drop-2-container {
+			width: 140px;
+			position: absolute;
+			z-index: 2;
+			left: 2px;
+			top: -1000px;
+		}
+		div.drop-2-container-target .dropOut {
+			width: 140px;
+			background: #fff;
+			float: left;
+			position: relative;
+			margin-top: 0px;
+			opacity: 0;
+			-webkit-border-top-left-radius: 0px;
+			-webkit-border-top-right-radius: 4px;
+			-webkit-border-bottom-right-radius: 4px;
+			-webkit-border-bottom-left-radius: 4px; 			
+			-moz-border-top-left-radius: 0px;
+			-moz-border-top-right-radius: 4px;
+			-moz-border-bottom-right-radius: 4px;
+			-moz-border-bottom-left-radius: 4px; 			
+			border-top-left-radius: 0px;
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+			border-bottom-left-radius: 4px; 			
+			-webkit-box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			-moz-box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			/*display: none !important;
+			visibility: hidden !important;*/
+			/*display: none;*/
+			/*visibility: hidden;*/					
+		}
+		div.drop-2-container-target .dropOut ul {
+			float: left;
+			padding: 10px 0;
+		}
+		div.drop-2-container-target .dropOut ul li {
+			text-align: left;
+			float: left;
+			width: 120px;
+			height: 24px;
+			padding: 4px 0 6px 10px;
+			margin: 3px 10px 3px 10px;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+		}
+		div.drop-2-container-target .dropOut ul li:hover {
+			background: #f2f2f2;
+		}
+		div.drop-2-container-target .dropOut ul li div {
+			color: #376340;	
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			font-weight: 700;
+			width: 100%;
+			height: 24px;
+		}
+		div.drop-2-container-target .dropOut ul li:hover div {
+			color: #376340;	
+			cursor: pointer;
+		}
+		div.drop-2-container-target .drop-2-target:hover + .drop-2-container .dropOut { opacity: 1; margin-top: 8px; }
+		div.drop-2-container-target .drop-2-target:hover + .drop-2-container { top: 180px; }
+		div.drop-2-container-target .drop-2-target + .drop-2-container:hover .dropOut { opacity: 1; margin-top: 8px; }		
+		div.drop-2-container-target .drop-2-target + .drop-2-container:hover { top: 180px; }
+	
+		
+	</style>
+
+	<style>
+	
+		li {list-style-type: none;}
+	
+	</style>
+
+
+								<% if @publisher_user_logo_image %>   				
+									<% rnum = (rand(10..90) * rand(100..900)).to_s %>
+									
+									<div class="container-figure-logo container-figure-logo-1 drop-2-container-target">
+										<!-- <figure id="profile_figure" class="profile-figure dialog-5-figure"> -->
+										<figure id="profile_figure_logo" class="dialog-21-figure cursor-pointer drop-2-target">
+										<!-- <figure id="profile_figure"> -->
+											<img id="logo_primary_img" alt="" src="<%= @publisher_user_logo_image.image_url(:user_200_200_fit) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_logo_image.image? %>" />
+
+											<!-- <input class="x-container-hidden" type="hidden" value="<#%= @publisher_user_logo_image.image_url(:user_600_600) if @publisher_user_logo_image.image? %#>" /> -->
+											<input class="container-image-hidden" type="hidden" value="<%= @publisher_user_logo_image.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_logo_image.image? %>" />
+											
+											
+											<!-- form_tag url_for(:action => :create, :id => @artist.id), :remote => true do --> 
+											<!-- <#%= form_tag('/articles', remote: true) do %#> -->
+											<!-- <#%= form_tag destroy_publisher_user_image_publisher_users_path(:id => @publisher_user_logo_image.id, :format => :js), :id => 'delete_user_logo_image', :method => 'post', :class => 'hidden', :remote => true do %#> -->
+					
+
+											<!-- <#%= button_to "", destroy_publisher_user_image_publisher_users_path(:id => @publisher_user_logo_image.id, :format => :js), data: { confirm: 'Delete this photo?' }, :form => { :id => 'delete_user_logo_image' }, class: 'hidden', :remote => true %#> -->
+											<!-- <figcaption class="figcaption-2">
+												<div class="tip-top-center"><#%= button_to "", destroy_publisher_user_image_publisher_users_path(:id => @publisher_user_logo_image.id), :confirm => 'Delete this photo?', :remote => true, class: 'x-container' %#></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Delete</div>
+								                </div>																								
+											</figcaption> -->
+
+											<!-- <figcaption class="figcaption-1"> -->
+											<!-- <div class="edit-image-container hidden"> -->
+												<figcaption id="figcaption_logo_image" class="edit-image hidden">												
+													<div class="img-1-container">
+														<!-- <div class="img-1"></div>
+														<div class="img-1-text">Edit photo</div> -->
+													</div>
+													<!-- <span class="dialog-2 label-dialog-figcaption">Crop/Center small images</span> -->
+													<!-- <img alt="" src="/assets/logo_camera_1_w72_h60.png" /> -->
+													<!-- <div class="img-1"></div> -->
+												</figcaption>
+											<!-- </div> -->
+										</figure>
+								    	<div class="drop-2-container hidden">
+											<div class="dropOut">
+												<div class="triangle"></div>
+												<ul>
+													<li>
+														<div id="btn_photo_logo_change">
+															New/Change
+														</div>
+													</li>
+													<!-- <li>
+														<div id="btn_photo_logo_crop" class="">
+															Crop/Center
+														</div>
+													</li> -->
+													<li>
+														<div id="btn_photo_logo_delete">
+															Delete
+														</div>
+													</li>
+												</ul>
+											</div>
+								        </div>
+										
+									</div>
+									<div class="float-clear"></div>
+
+								<% else %>
+
+									<!-- <div class="profile-grid profile-cs-style-3"> -->
+									<div class="container-figure-logo container-figure-logo-1 drop-2-container-target">
+										<!-- <figure id="profile_figure_generic" class="profile-figure-generic"> -->
+										<figure id="profile_figure_logo_generic" class="dialog-21-figure-generic drop-2-target">
+											<!-- <img alt="logo not appearing" src="../images_avatar/avatar_generic_1_w250_h310.png" /> -->
+											<img id="logo_generic_img" alt="" src="../images_avatar/avatar_generic_1_w200_h200.png" />
+											<!-- <figcaption id="figcaption_logo_image_generic" class="edit-image edit-image-hover-pointer hidden"> -->
+											<figcaption id="figcaption_logo_image_generic" class="edit-image cursor-pointer hidden">
+												<div class="img-1-container">
+													<div class="img-1"></div>
+													<div class="img-1-text">Add a photo</div>
+												</div>
+											</figcaption>
+										</figure>
+								    	<div class="drop-2-container hidden">
+											<div class="dropOut">
+												<div class="triangle"></div>
+												<ul>
+													<li>
+														<div id="btn_photo_logo_new">
+															New
+														</div>
+													</li>
+												</ul>
+											</div>
+								        </div>
+									</div>
+								
+								<% end %>
+
+
+
+
+	<script>
+
+
+		// $(window).load( function() {
+		$(document).ready( function () {				
+		
+			// div.drop-2-container-target .drop-2-target:hover + .drop-2-container { top: 180px; }
+			// div.drop-2-container-target .drop-2-target + .drop-2-container:hover { top: 180px; }
+		
+			$("img").one("load", function() {
+			  	// alert('user_primary_img');
+				if(this.id == "logo_primary_img") {
+					// alert("logo_primary_img height = " + this.height);
+					var img_w = this.width;
+					var img_h = this.height;
+					$("div.drop-2-container-target .drop-2-target").on('hover', function() {
+						$(".drop-2-container").css({ 
+							top : img_h - 14
+						});
+					});
+					$("div.drop-2-container-target .drop-2-container").on('hover', function() {
+						$(".drop-2-container").css({ 
+							top : img_h - 14
+						});
+					});
+					
+					// $("div#container_logo_image .drop").on('hover', function() {
+						// $("div#container_logo_image .drop. .dropdownContain").css({ 
+							// top : img_h - 6
+						// });
+					// });
+					$("div#container_logo_image .container-figure-logo").css({
+						width : img_w + 4,
+						height : img_h + 4
+					});													
+				}
+				if(this.id == "logo_generic_img") {
+					// alert("logo_generic_img height = " + this.height);
+					var img_w = this.width;
+					var img_h = this.height;
+					// $("div#container_logo_image .drop").on('hover', function() {
+						// $("div#container_logo_image .drop. .dropdownContain").css({ 
+							// top : img_h - 6
+						// });
+					// });			
+					$("div#container_logo_image .container-figure-logo").css({
+						width : img_w + 4,
+						height : img_h + 4
+					});				
+				}				
+			}).each(function() {
+			  	if(this.complete) $(this).load();
+			});
+		
+		
+			// var img_generic = $("#profile_figure_logo_generic img");
+			// $("<img/>")
+	    		// .attr("src", $(img_generic).attr("src"))
+	    		// .load(function() {
+	        		// img_width = this.width; 
+	        		// $("#profile_figure_logo_generic").css({
+	        			// width : this.width
+	        	// });
+	    	// });		
+			// var img = $("#profile_figure_logo img");
+			// $("<img/>")
+	    		// .attr("src", $(img).attr("src"))
+	    		// .load(function() {
+	        		// img_width = this.width; 
+	        		// $("#profile_figure_logo").css({
+	        			// width : this.width
+	        	// });	        		
+	    	// });		
+
+			// var img = $("#profile_figure_logo img");
+			// $("<img/>").attr("src", $(img).attr("src")).load(function() {
+				// img_width = this.width;
+				// img_height = this.height;
+				// $("div#container_logo_image .drop").on('hover', function() {
+					// $("div#container_logo_image .drop. .dropdownContain").css({ 
+						// top : img_height - 4
+					// });
+				// });				
+				// $("div#container_logo_image .container-figure-logo").css({
+					// width : img_width + 4
+				// });				
+				// $("div#container_logo_image .container-figure-logo").css({
+					// height : img_height + 4
+				// });				
+        		// // $("#profile_figure_logo").css({
+        			// // width : img_width
+        		// // });	        		
+	    	// });		
+			
+			
+			$(".dialog-21-figure").on('click', function(e) {
+				if ( e.target.nodeName == "IMG" ) {
+					var this_src = $(this).find("input.container-image-hidden").attr("value");
+					$("#profile_figure_dialog_21").find("img").attr("src", this_src );
+					var this_delete = $(this).find("div.tip-top-center").html();
+					$("#profile_figure_dialog_21").find("div.tip-top-center").html(this_delete);
+					$("#dialog_21").jqmShow();	
+				}
+			});
+			$('#dialog_21').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '20px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					var img = $("#profile_figure_dialog_21 img");
+					$("<img/>")
+			    		.attr("src", $(img).attr("src"))
+			    		.load(function() {
+			        		img_width = this.width; 
+			        		$("#profile_figure_dialog_21").css({
+			        			// width : this.width 
+			        	});	        		
+			    	});		
+				}
+			}); 		
+			
+
+			$('#dialog_25').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-720px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_25').animate(
+						{bottom:'-=740', top:'+=740'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_25').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+						}
+					);
+				}
+			}); 		
+			
+			
+			
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+			
+            $('.tip-left-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'right top',
+				        at: 'left center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+		
+		});
+	  
+
+	</script>		
+

@@ -20,7 +20,7 @@
 
 class PublisherUserImage < ActiveRecord::Base
   
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  # attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   
   attr_accessible :user_id,
                   :publisher_id,

@@ -1,0 +1,13 @@
+<%= form_for(current_user.relate_follows.build(followed_id: @user.id),
+             remote: true) do |f| %>
+  <div><%= f.hidden_field :followed_id %></div>
+  <!-- <#%= f.submit "Follow", class: "btn btn-large btn-primary" %#> -->
+  <%= f.submit "Follow", :id => 'btn_submit_follow_hidden', :class => 'hidden' %>
+<% end %>
+<div id="btn_submit_follow" class="btn-follow-container-outer">
+	<div class="btn-follow-container">
+		<div class="btn-follow" tabindex="">
+			Follow														
+		</div>
+	</div>
+</div>
