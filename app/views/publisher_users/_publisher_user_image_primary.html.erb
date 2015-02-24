@@ -98,13 +98,14 @@
 								
 									<div class="container-figure container-figure-1 drop-1-container-target" style="height: 200px;">
 										<!-- <figure id="profile_figure" class="profile-figure dialog-11-figure"> -->
-										<figure id="profile_figure" class="dialog-11-figure cursor-pointer drop-1-target">
+										<figure id="figure_user_primary_img" class="dialog-11-figure cursor-pointer drop-1-target">
 										<!-- <figure id="profile_figure"> -->
 											<img id="user_primary_img" class="user-primary-img" alt="" src="<%= @publisher_user_image_primary.image_url(:user_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>" />
 
 											<!-- <input class="x-container-hidden" type="hidden" value="<#%= @publisher_user_image_primary.image_url(:user_600_600) if @publisher_user_image_primary.image? %#>" /> -->
 											<input class="container-image-hidden" type="hidden" value="<%= @publisher_user_image_primary.image_url(:user_600_600) if @publisher_user_image_primary.image? %>" />
 											
+											<img id="user_primary_img_600" class="hidden" alt="" src="<%= @publisher_user_image_primary.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>" />
 											
 											<!-- form_tag url_for(:action => :create, :id => @artist.id), :remote => true do --> 
 											<!-- <#%= form_tag('/articles', remote: true) do %#> -->
@@ -130,6 +131,7 @@
 													<!-- <img alt="" src="/assets/logo_camera_1_w72_h60.png" /> -->
 													<!-- <div class="img-1"></div> -->
 												</figcaption>
+												
 											<!-- </div> -->
 										</figure>
 								    	<div class="drop-1-container hidden">
@@ -206,21 +208,30 @@
 
 
 			$("img").one("load", function() {
-			  	// alert('user_primary_img');
 				if(this.id == "user_primary_img") {
 					// alert("user_primary_img height = " + this.height);
-					var img_w = this.width;
-					var img_h = this.height;
+					// var img_w = this.width;
+					// var img_h = this.height;
 					// $("div#container_user_image_primary .drop").on('hover', function() {
 						// $("div#container_user_image_primary .drop. .dropdownContain").css({ 
 							// top : img_h - 6
 						// });
 					// });
-					$("div#container_user_image_primary .container-figure-logo").css({
-						width : img_w + 4,
-						height : img_h + 4
-					});																			
+					// $("div#container_user_image_primary .container-figure-logo").css({
+						// width : img_w + 4,
+						// height : img_h + 4
+					// });																			
 				}
+				if(this.id == "user_primary_img_600") {
+					// alert("user_primary_img width = " + this.width);
+					// alert("user_primary_img height = " + this.height);
+					var img_w = this.width;
+					var img_h = this.height;
+					$("#figure_dialog_11").css({
+						width : img_w,
+						height : img_h
+					});																			
+				}				
 				if(this.id == "user_generic_img") {
 					// alert("user_generic_img height = " + this.height);
 					var img_w = this.width;
@@ -230,10 +241,10 @@
 							// top : img_h - 6
 						// });
 					// });			
-					$("div#container_user_image_primary .container-figure-logo").css({
-						width : img_w + 4,
-						height : img_h + 4
-					});										
+					// $("div#container_user_image_primary .container-figure-logo").css({
+						// width : img_w + 4,
+						// height : img_h + 4
+					// });										
 				}				
 			}).each(function() {
 			  	if(this.complete) $(this).load();
@@ -342,9 +353,9 @@
 			$(".dialog-11-figure").on('click', function(e) {
 				if ( e.target.nodeName == "IMG" ) {
 					var this_src = $(this).find("input.container-image-hidden").attr("value");
-					$("#profile_figure_dialog_11").find("img").attr("src", this_src );
+					$("#figure_dialog_11").find("img").attr("src", this_src );
 					var this_delete = $(this).find("div.tip-top-center").html();
-					$("#profile_figure_dialog_11").find("div.tip-top-center").html(this_delete);
+					$("#figure_dialog_11").find("div.tip-top-center").html(this_delete);
 					$("#dialog_11").jqmShow();	
 				}
 			});
@@ -353,12 +364,12 @@
 					hash.o.prependTo('body');
 					hash.w.css('top', '20px');
 					hash.w.css('opacity', 1.0).fadeIn(200);
-					var img = $("#profile_figure_dialog_11 img");
+					var img = $("#figure_dialog_11 img");
 					$("<img/>")
 			    		.attr("src", $(img).attr("src"))
 			    		.load(function() {
 			        		img_width = this.width; 
-			        		$("#profile_figure_dialog_11").css({
+			        		$("#figure_dialog_11").css({
 			        			// width : this.width 
 			        	});	        		
 			    	});		

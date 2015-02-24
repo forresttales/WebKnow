@@ -1,4 +1,4 @@
-<% provide(:title, 'Home') %>
+<% provide(:title, 'My Home') %>
 
 	<script src="/assets/jqModal.js"></script>
 	<script src="/assets/jquery.easing.1.3.js"></script>
@@ -19,6 +19,9 @@
 	
 	<!-- <link rel="stylesheet" href="../styles/digg-pagination.css" /> -->
 	<link rel="stylesheet" href="../styles/ks-profile.css" />
+	
+	<link rel="stylesheet" type="text/css" href="../styles/fullscreenstyle.css"></link>
+	<script src="../scripts/jquery.fullscreenslides.js"></script>
 	
 	<!-- <script type="text/javascript" src="../scripts/slidedeck.jquery.js"></script>
 	<link rel="stylesheet" type="text/css" href="../styles/slidedeck.skin.css" media="screen,handheld" /> -->
@@ -69,9 +72,9 @@
 		
 	</style>
 
-	<style>
-		
-		.icon-like, .icon-unlike {
+	<!-- <style>		
+
+		/*.icon-like, .icon-unlike {
 			background-image: url('/assets/like-and-unlike-buttons-w80-h58.png');
 			background-repeat: no-repeat;
 			display: inline-block;
@@ -88,9 +91,23 @@
 		}
 		.icon-like:hover, .icon-unlike:hover {
 			cursor: pointer;
-		}
+		}*/
 		
-	</style>								
+		/*.icon-like {
+			background-image: url('/assets/icon_like_cross_w32_h32.png');
+			background-repeat: no-repeat;
+			display: inline-block;
+		}
+		.icon-unlike {
+			background-image: url('/assets/icon_like_check_w32_h32.png');
+			background-repeat: no-repeat;
+			display: inline-block;
+		}	
+		.icon-like:hover, .icon-unlike:hover {
+			cursor: pointer;
+		}*/
+		
+	</style> -->								
 
 	<style>
 		
@@ -642,7 +659,7 @@
 					<div style="height: 20px;"></div>
 					<div class="">
 						<figure id="profile_figure_dialog_1001" class="dialog-user-image">
-							<img alt="photo not appearing" src="" />
+							<img alt="" src="" />
 						</figure>
 					</div>
 				</div>
@@ -691,7 +708,7 @@
 					<div style="height: 20px;"></div>
 					<div id="dialog_101_content_container" class="">
 						<!-- <figure id="profile_figure_dialog_101" class="dialog-user-image">
-							<img alt="photo not appearing" src="" />
+							<img alt="" src="" />
 						</figure> -->
 					</div>
 				</div>
@@ -770,9 +787,87 @@
 				<div style="height: 20px;"></div>
 			</div>
 	
-	
+	<style>
+
+		figure.dialog-user-image-2 {
+			position: relative;
+			margin: 0 auto;
+		}		
+		figure.dialog-user-image-2 img {
+			/*border: 1px solid #aaa;*/
+		}
+		figcaption.expand-image {		
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			height: 100%;
+			width: 100%;
+			/*display: none !important;
+			visibility: hidden !important*/
+			/*background: url("/assets/background-000000-o100-w10-h10.png") repeat;*/
+		}
+		figcaption.expand-image div.img-2-container {
+			position: relative;
+			width: 100%;
+			height: auto;
+		}			
+		figcaption.expand-image div.img-2-container div.img-2 {
+			position: absolute;
+			top: 14px;
+			right: 14px;
+			width: 48px;
+			height: 48px;
+			margin: auto;
+			background: url("/assets/icon_expand_w48_h48.png") no-repeat;
+			opacity: 0;
+			
+		}			
+		figure.dialog-user-image-2 figcaption:hover div a div.img-2 {
+			-webkit-opacity: 0.5;
+			-moz-opacity: 0.5;
+			opacity: 0.5;
+			-webkit-transition: all 1s ease;
+			-moz-transition: all 1s ease;
+			-ms-transition: all 1s ease;
+			-o-transition: all 1s ease;
+			transition: all 1s ease;			
+		}
+		
+	</style>
+
 			<!-- user image - show 11 -->			
 			<div class="jqmWindow jqmWindow-11" id="dialog_11">
+		   		<div class="table-dl-form-1">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form11" class="form-edit-close jqmClose tip-left-center" tabindex="">
+		   						<img src="/assets/x_close_white_w20_h20.png" alt="X" height="20px">
+		   					</div>
+			                <div class="tip-content">
+			                    <div class="tooltiptext">Close</div>
+			                </div>																															   					
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<!-- <div class="pad-left-20"> -->
+				<div style="width: 100%; text-align: center;">
+					<div style="height: 20px;"></div>
+					<figure id="figure_dialog_11" class="dialog-user-image-2">
+						<img alt="" src="" class="dialog-user-image-hover" />
+						<figcaption id="figcaption_dialog_11" class="expand-image">												
+							<div class="img-2-container image">
+								<a rel="gallery" title="" href="<%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>">									
+									<div id="img_2" class="img-2"></div>
+								</a>
+							</div>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+	
+			<!-- user image - show 11 -->			
+			<!-- <div class="jqmWindow jqmWindow-11" id="dialog_11">
 		   		<div class="table-dl-form-1">
 		   			<div class="row">
 		   				<div class="cell-100percent">
@@ -794,7 +889,7 @@
 						</figure>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 
 		<div class="table-profile" style="height: 100%;">
@@ -810,7 +905,7 @@
 								<div class="cell-title-bar-profile-left">
 									<div style="position: relative;">
 										<div style="position: absolute; top: -24px;">												
-											<span>My Story Home</span>
+											<span>My Home</span>
 										</div>
 									</div>		
 								</div>
@@ -830,12 +925,12 @@
 							<div class="cell-225 padding-left-4" id="container_user_image_primary" style="height: 260px;">
 								<div id="drop_container_user_image_primary" class="drop float-left width-200">
 									<div id="render_publisher_user_image_primary" class="padding-0">
-										<div class="container-image">
+										<!-- <div class="container-image"> -->
 											<%= render 'publisher_users/publisher_user_image_primary' %>
-										</div>
+										<!-- </div>
 										<div class="container-menu">
-											<%= render 'publisher_users/publisher_user_image_primary_menu' %>
-										</div>
+											<#%= render 'publisher_users/publisher_user_image_primary_menu' %#>
+										</div> -->
 							        </div>
 								</div>
 								<div class="float-clear"></div>
@@ -971,6 +1066,53 @@
 			</div>								
 		</div>
 		<div style="height: 20px;"></div>
+
+
+	<script>
+	 
+	   	// $(function(){
+		// $(window).load( function() {
+		$(document).ready(function () {				
+	   		
+			// $('.image img').fullscreenslides();
+			$('.image div').fullscreenslides();
+
+			var $container = $('#fullscreenSlideshowContainer');
+			$container.bind("init", function() {
+				$container
+				.append('<div class="ui" id="fs-close">&times;</div>')
+				.append('<div class="ui" id="fs-loader">Loading...</div>');
+				// .append('<div class="ui" id="fs-prev">&lt;</div>')
+				// .append('<div class="ui" id="fs-next">&gt;</div>')
+				// .append('<div class="ui" id="fs-caption"><span></span></div>');
+	
+				// $('#fs-prev').click(function(){
+					// $container.trigger("prevSlide");
+				// });
+				// $('#fs-next').click(function(){
+					// $container.trigger("nextSlide");
+				// });
+				$('#fs-close').click(function(){
+					$container.trigger("close");
+				});
+			})
+			.bind("startLoading", function() {
+				$('#fs-loader').show();
+			})
+			.bind("stopLoading", function() {
+				$('#fs-loader').hide();
+			});
+			// .bind("startOfSlide", function(event, slide) {
+				// $('#fs-caption span').text(slide.title);
+				// $('#fs-caption').show();
+			// })
+			// .bind("endOfSlide", function(event, slide) {
+				// $('#fs-caption').hide();
+			// });	   		
+	     
+	   	});
+
+	</script>
 
 	<script type="text/javascript">
 	
@@ -1607,7 +1749,7 @@
 
 			$(document).on('click_2001', function() {
 				var s = "#dialog_2001_content";				
-				scroll_top = $(window).scrollTop();
+				// scroll_top = $(window).scrollTop();
 				var content = $(this).find(s).html();
 				$("#dialog_2001_content_container").html(content);
 				$("#dialog_2001").jqmShow();	
@@ -1615,14 +1757,15 @@
 			$('#dialog_2001').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', 40 + scroll_top);
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 40);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 				}
 			}); 		
 
 			$(document).on('click_2002', function() {
 				var s = "#dialog_2002_content";				
-				scroll_top = $(window).scrollTop();
+				// scroll_top = $(window).scrollTop();
 				var content = $(this).find(s).html();
 				$("#dialog_2002_content_container").html(content);
 				$("#dialog_2002").jqmShow();	
@@ -1630,7 +1773,8 @@
 			$('#dialog_2002').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', 40 + scroll_top);
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 40);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 				}
 			}); 		

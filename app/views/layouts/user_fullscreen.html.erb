@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html style="overflow: auto;">
+	<head>
+		<title><%= full_title(yield(:title)) %></title> 
+		<!-- <#%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => false %#> -->
+		<!-- <#%= javascript_include_tag "application", "data-turbolinks-track" => false %#> -->		
+		<link rel="icon" type="image/png" href="/assets/knowstory-icon-fav.png" />
+		
+		<title>jQuery HTML5 Fullscreen Slideshow / Gallery</title>
+		<link rel="stylesheet" type="text/css" href="../styles/fullscreenstyle.css"></link>
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="../scripts/jquery.fullscreenslides.js"></script>
+		
+	  	<%= csrf_meta_tags %>
+	  	<%= render 'layouts/shim' %>  
+		
+	</head>
+	<body>
+		
+		<%= yield %>	
+		
+	</body>
+</html>

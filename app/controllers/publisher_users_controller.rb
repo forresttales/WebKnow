@@ -984,35 +984,34 @@ class PublisherUsersController < ApplicationController
   
   
   def show_all_images
-    
-    publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
-    if !publisher_user.nil?
-      @publisher_user = publisher_user
-      @publisher_user_id = publisher_user.id
-      publisher_id = publisher_user.publisher_id
-      @publisher_id = publisher_id
-      publisher = Publisher.find_by_id(publisher_id)
-      if !publisher.nil?
-        @publisher_user_images = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id)
-        @publisher_user_image_primary = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id).where( :primary => true ).first        
-      else
-        #
-      end
-    else
-      #
-    end
-    
+    # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
+    # if !publisher_user.nil?
+      # @publisher_user = publisher_user
+      # @publisher_user_id = publisher_user.id
+      # publisher_id = publisher_user.publisher_id
+      # @publisher_id = publisher_id
+      # publisher = Publisher.find_by_id(publisher_id)
+      # if !publisher.nil?
+        # @publisher_user_images = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id)
+        # @publisher_user_image_primary = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id).where( :primary => true ).first        
+      # else
+        # #
+      # end
+    # else
+      # #
+    # end
   end
 
 
 
   def destroy_publisher_user_image
 
+    @post_users = nil
     @publisher_user_image = nil
     publisher_user_image = UserImage.find(params[:id]) rescue nil
     if !publisher_user_image.nil?
         if publisher_user_image.destroy
-            #
+            @post_users = current_user.feed
         else      
             #
         end
@@ -1031,7 +1030,7 @@ class PublisherUsersController < ApplicationController
     publisher_user_logo_image = PublisherUserLogoImage.find(params[:id]) rescue nil
     if !publisher_user_logo_image.nil?
         if publisher_user_logo_image.destroy
-            #
+            # 
         else      
             # Rails.logger.info "publisher_user_logo_image destroy failed"
         end
@@ -1045,6 +1044,8 @@ class PublisherUsersController < ApplicationController
 
   
   def upload_publisher_user_image_primary
+
+      @post_users = nil
 
       @id_image = nil
       @crop_x = 0
@@ -1118,6 +1119,7 @@ class PublisherUsersController < ApplicationController
                     #  
                   end
                   @publisher_user_image_primary = user_image_primary
+                  @post_users = current_user.feed
               end
           else
             # error save
@@ -1127,113 +1129,13 @@ class PublisherUsersController < ApplicationController
       end
 
 
-      # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil    
-      # if !publisher_user.nil?
-          # h_publisher_user_image = Hash.new
-          # h_publisher_user_image[:image] = params[:publisher_user_image][:image]
-          # h_publisher_user_image[:user_id] = publisher_user.user_id
-          # h_publisher_user_image[:publisher_id] = publisher_user.publisher_id
-          # h_publisher_user_image[:publisher_user_id] = publisher_user.id
-          # h_publisher_user_image[:primary] = true
-          # h_publisher_user_image[:crop_x] = @crop_x
-          # h_publisher_user_image[:crop_y] = @crop_y
-          # h_publisher_user_image[:crop_w] = @crop_w
-          # h_publisher_user_image[:crop_h] = @crop_h
-          # publisher_user_image = PublisherUserImage.new(h_publisher_user_image)
-          # if request.xhr? || remotipart_submitted?
-              # if publisher_user_image.save
-                  # publisher_user_images = publisher_user.publisher_user_images     
-                  # publisher_user_image_primary = publisher_user_images.where( :primary => true ).first rescue nil
-                  # if !publisher_user_image_primary.nil? 
-                      # @id_image = publisher_user_image_primary.id
-                      # @publisher_user_image_primary = publisher_user_image_primary
-                      # img = publisher_user_image_primary
-                      # image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
-                      # w = image.columns
-                      # h = image.rows
-                      # w_max = false
-                      # h_max = false
-                      # w_h_equal = false
-                      # x = 0
-                      # y = 0
-                      # l = 0                    
-                      # d = 0
-                      # if ( w == h)
-                          # w_h_equal = true
-                      # else
-                          # if ( w > h )
-                            # w_max = true
-                          # else
-                            # h_max = true
-                          # end
-                      # end
-                      # if w_max
-                          # d = w - h
-                          # d = (d/2).round
-                          # x = d
-                          # l = h  
-                      # end
-                      # if h_max
-                          # d = h - w
-                          # d = (d/2).round
-                          # y = d
-                          # l = w  
-                      # end
-                      # if w_h_equal
-                          # l = w
-                      # end
-                      # @crop_x = x
-                      # @crop_y = y
-                      # @crop_w = l
-                      # @crop_h = l
-                      # h_update = Hash.new
-                      # h_update[:crop_x] = x
-                      # h_update[:crop_y] = y
-                      # h_update[:crop_w] = l
-                      # h_update[:crop_h] = l
-                      # if publisher_user_image_primary.update_attributes(h_update)
-                        # #                      
-                      # else
-                        # #  
-                      # end
-                      # h_update_user = Hash.new
-                      # h_update_user[:avatar_image] = img.image                   
-                      # if current_user.update_attributes(h_update_user)
-                          # #
-                      # else
-                          # # Rails.logger.info('user update failed')
-                      # end
-                  # end
-              # else
-                # # error save
-              # end
-          # else
-            # # 
-          # end
-      # else
-        # #
-      # end
-
-      # respond_to do |format|
-        # format.html
-        # # format.js
-        # # format.js { render :js => "window.location.replace('#{article_path(@article)}');"}
-        # format.js { render :js => { :id_image => id_image,
-                                    # :crop_x => crop_x,
-                                    # :crop_y => crop_y,
-                                    # :crop_w => crop_w,
-                                    # :crop_h => crop_h
-                                  # }
-                  # }
-      # end
-
-
   end  
   
 
 
   def upload_publisher_user_image_primary_change
 
+      @post_users = nil
 
       @publisher_user_image = nil
       publisher_user_image = current_user.user_images.where( :primary => true ).first
@@ -1333,6 +1235,7 @@ class PublisherUsersController < ApplicationController
                     #  
                   end
                   @publisher_user_image_primary = user_image_primary
+                  @post_users = current_user.feed
               end
           else
             # error save
@@ -1347,34 +1250,31 @@ class PublisherUsersController < ApplicationController
 
 
   def upload_publisher_user_image
-    
-    publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
-    if !publisher_user.nil?
-        h_publisher_user_image = Hash.new
-        h_publisher_user_image[:image] = params[:publisher_user_image][:image]
-        h_publisher_user_image[:user_id] = publisher_user.user_id
-        h_publisher_user_image[:publisher_id] = publisher_user.publisher_id
-        h_publisher_user_image[:publisher_user_id] = publisher_user.id
-        h_publisher_user_image[:primary] = false 
-        publisher_user_image = PublisherUserImage.new
-        # publisher_user_image.image = params[:publisher_user_image][:image]
-        # publisher_user_image.publisher_id = publisher_user.publisher_id
-        # publisher_user_image.publisher_user_id = publisher_user.id
-        # @publisher_user_image_primary = PublisherUserImage.create(params[:publisher_profile_image])    
-        if request.xhr? || remotipart_submitted?
-            if publisher_user_image.save
-              @publisher_user_images = publisher_user.publisher_user_images     
-            else
-              # error save
-            end
-        else
-          # render text: 'Remote call failed'
-        end
-    else
-      #
-    end
-    
-
+    # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
+    # if !publisher_user.nil?
+        # h_publisher_user_image = Hash.new
+        # h_publisher_user_image[:image] = params[:publisher_user_image][:image]
+        # h_publisher_user_image[:user_id] = publisher_user.user_id
+        # h_publisher_user_image[:publisher_id] = publisher_user.publisher_id
+        # h_publisher_user_image[:publisher_user_id] = publisher_user.id
+        # h_publisher_user_image[:primary] = false 
+        # publisher_user_image = PublisherUserImage.new
+        # # publisher_user_image.image = params[:publisher_user_image][:image]
+        # # publisher_user_image.publisher_id = publisher_user.publisher_id
+        # # publisher_user_image.publisher_user_id = publisher_user.id
+        # # @publisher_user_image_primary = PublisherUserImage.create(params[:publisher_profile_image])    
+        # if request.xhr? || remotipart_submitted?
+            # if publisher_user_image.save
+              # @publisher_user_images = publisher_user.publisher_user_images     
+            # else
+              # # error save
+            # end
+        # else
+          # # render text: 'Remote call failed'
+        # end
+    # else
+      # #
+    # end
   end  
 
 
@@ -1760,8 +1660,6 @@ class PublisherUsersController < ApplicationController
 
   def crop_commit_user
     
-      # render text: params[:image_id]
-  
       x = params[:crop_x]
       y = params[:crop_y]
       w = params[:crop_w]
@@ -1826,7 +1724,8 @@ class PublisherUsersController < ApplicationController
       h_crop[:crop_y] = y
       h_crop[:crop_w] = w
       h_crop[:crop_h] = h
-  
+
+      @post_users = nil    
       @publisher_user_image_primary = nil
       # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
       # if !publisher_user.nil?
@@ -1836,6 +1735,7 @@ class PublisherUsersController < ApplicationController
               if !publisher_user_image_primary.nil?
                   if publisher_user_image_primary.update_attributes(h_crop)
                       @publisher_user_image_primary = publisher_user_image_primary  
+                      @post_users = current_user.feed
                   else
                     #
                   end
@@ -2055,7 +1955,10 @@ class PublisherUsersController < ApplicationController
 
   end
 
-
+  # def fullscreen
+      # @user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
+      # render 'publisher_users/fullscreen', :layout => 'user_fullscreen'      
+  # end
   
   private
 

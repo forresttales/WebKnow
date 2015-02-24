@@ -14,6 +14,7 @@ class PublishersController < ApplicationController
   before_action :verify_id, only: [:index, :index_demo]
   before_action :fill_left_directory, only: [:index, :index_demo]
 
+  @@current_post_publisher = nil
     
   def verify_id
 
@@ -277,30 +278,368 @@ class PublishersController < ApplicationController
 
   def create_post_publisher
 
-    # @post_publisher = nil
-    @post_publishers = nil    
-    # @user = current_user
-
+    # @post_publishers = nil    
     h_post_publisher = Hash.new
     h_post_publisher[:post_text] = params[:post_publisher][:post_text]
-    h_post_publisher[:user_id] = current_user.id
-    
-    publisher = current_user.publisher rescue nil
-    if !publisher.nil?
-        post_publisher = publisher.post_publishers.build(h_post_publisher)
+
+    if @@current_post_publisher.nil?
+        h_post_publisher[:user_id] = current_user.id
+        post_publisher = current_user.publisher.post_publishers.build(h_post_publisher)
         if post_publisher.save
-            # @post_publisher = publisher.post_publishers.build
-            @post_publishers = publisher.feed # .paginate(:page => params[:page], :per_page => 5)
+            #
         else
-          # @feed_items = []
+            #
         end
     else
-      #
+        if @@current_post_publisher.update_attributes(h_post_publisher)
+            #
+        else
+            #
+        end
+    end
+
+    @@current_post_publisher = nil
+    @post_publishers = current_user.publisher.feed # .paginate(:page => params[:page], :per_page => 5)  
+    
+  end
+
+
+  def destroy_post_publisher
+    
+    post_publisher_id = params[:post_publisher_id]
+    post_publisher = current_user.publisher.post_publishers.where("id = ?", post_publisher_id).first rescue nil
+    if !post_publisher.nil?
+        if post_publisher.destroy
+            # @post_publishers = current_user.publisher.feed.paginate(:page => params[:page], :per_page => 100)
+            @post_publishers = current_user.publisher.feed
+        else
+            #
+        end
+    else
+        #
     end
     
     
   end
+  
+  
+  def cancel_post_publisher
+      if @@current_post_publisher
+          @@current_post_publisher.destroy
+      end    
+      @@current_post_publisher = nil
+  end
 
+
+  def cancel_post_publisher_on_close
+      Rails.logger.info('cancel_post_publisher_on_close called')
+      if @@current_post_publisher
+          if @@current_post_publisher.destroy
+              # Rails.logger.info('@@current_post_publisher.destroy successful')
+          else
+              # Rails.logger.info('@@current_post_publisher.destroy failed')
+          end
+      else
+          Rails.logger.info('@@current_post_publisher = nil')
+      end    
+      @@current_post_publisher = nil
+  end
+  
+  
+  
+  def create_post_publisher_image
+    
+      post_publisher_images = nil
+    
+      @id_image = nil
+      @crop_x = 0
+      @crop_y = 0
+      @crop_w = 200
+      @crop_h = 200
+
+    
+      post_publisher = @@current_post_publisher
+      Rails.logger.info('post_publisher id = ' + post_publisher.id.to_s)
+    
+      if !post_publisher.nil?
+        
+          h_post_publisher_image = Hash.new
+          h_post_publisher_image[:user_id] = current_user.id
+          h_post_publisher_image[:publisher_id] = current_user.publisher.id
+          h_post_publisher_image[:post_publisher_id] = post_publisher.id
+          h_post_publisher_image[:image] = params[:post_publisher_image][:image]
+          # h_post_publisher_image[:primary] = true
+          h_post_publisher_image[:crop_x] = @crop_x
+          h_post_publisher_image[:crop_y] = @crop_y
+          h_post_publisher_image[:crop_w] = @crop_w
+          h_post_publisher_image[:crop_h] = @crop_h
+          
+          # post_publisher_image = PostPublisherImage.new(h_post_publisher_image)
+          post_publisher_image = post_publisher.post_publisher_images.build(h_post_publisher_image)
+          
+          if request.xhr? || remotipart_submitted?
+              if post_publisher_image.save
+                  # post_publisher = current_user.post_publishers.where("id = ?", post_publisher.id ).first rescue nil
+                  # post_publisher_image = post_publisher.post_publisher_images.where("id = ?", post_publisher_image.id ).first rescue nil     
+                  if !post_publisher_image.nil? 
+                      img = post_publisher_image
+                      image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
+                      w = image.columns
+                      h = image.rows
+                      w_max = false
+                      h_max = false
+                      w_h_equal = false
+                      x = 0
+                      y = 0
+                      l = 0                    
+                      d = 0
+                      if ( w == h)
+                          w_h_equal = true
+                      else
+                          if ( w > h )
+                            w_max = true
+                          else
+                            h_max = true
+                          end
+                      end
+                      if w_max
+                          d = w - h
+                          d = (d/2).round
+                          x = d
+                          l = h  
+                      end
+                      if h_max
+                          d = h - w
+                          d = (d/2).round
+                          y = d
+                          l = w  
+                      end
+                      if w_h_equal
+                          l = w
+                      end
+                      @crop_x = x
+                      @crop_y = y
+                      @crop_w = l
+                      @crop_h = l
+                      h_update = Hash.new
+                      h_update[:crop_x] = x
+                      h_update[:crop_y] = y
+                      h_update[:crop_w] = l
+                      h_update[:crop_h] = l
+                      if post_publisher_image.update_attributes(h_update)
+                        #                      
+                      else
+                        #  
+                      end
+                      # post_publisher = post_publisher_image.post_publisher
+                      post_publisher_images = post_publisher_image.post_publisher.post_publisher_images
+                      # @post_publisher_created_id = post_publisher.id
+                  else
+                      Rails.logger.info "post_publisher_image = nil"
+                  end
+              else
+                # error save
+              end
+          else
+            # 
+          end
+      else
+          Rails.logger.info "post_publisher = nil"
+      end
+    
+    
+      return post_publisher_images
+  end
+
+
+  def upload_post_publisher_image
+
+      @post_publisher_images = nil
+      
+      if @@current_post_publisher.nil?
+        add_post_publisher
+      end    
+
+      @post_publisher_images = create_post_publisher_image
+  end  
+
+  
+  def add_post_publisher
+
+      b_save = false
+      
+      h_post_publisher = Hash.new
+      h_post_publisher[:user_id] = current_user.id
+      
+      post_publisher = current_user.publisher.post_publishers.build(h_post_publisher)
+      if post_publisher.save
+          @@current_post_publisher = post_publisher
+          b_save = true    
+      else
+        # @feed_items = []
+      end
+      
+      return b_save
+  end
+
+
+  def cancel_post_publisher
+      if @@current_post_publisher
+          @@current_post_publisher.destroy
+      end    
+      @@current_post_publisher = nil
+  end
+  
+  
+  def create_post_publisher_comment
+    
+      @post_publisher_comments = nil
+      @post_publisher_id = nil
+      
+      post_publisher_id = params[:post_publisher_comment][:post_publisher_id]
+
+      if !post_publisher_id.nil?
+          post_publisher = PostPublisher.where("id = ?", post_publisher_id).first rescue nil
+          if !post_publisher.nil?
+
+              h_post_publisher_comment = Hash.new
+              h_post_publisher_comment[:post_publisher_id] = post_publisher_id
+              h_post_publisher_comment[:publisher_id] = post_publisher.publisher.id
+              h_post_publisher_comment[:user_id] = current_user.id
+              h_post_publisher_comment[:comment_text] = params[:post_publisher_comment][:comment_text]
+
+              post_publisher_comment = post_publisher.post_publisher_comments.build(h_post_publisher_comment)
+              if post_publisher_comment.save
+                  @post_publisher_comments = post_publisher.post_publisher_comments
+                  @post_publisher_id = post_publisher_id                    
+              else
+                  #
+              end
+          else
+              #
+          end  
+      else
+          #
+      end
+      
+    
+  end
+  
+  
+  def destroy_post_publisher_comment
+    
+    @post_publisher_comments = nil
+    @post_publisher_id = nil
+    
+    post_publisher_comment_id = params[:post_publisher_comment_id]
+    post_publisher_id = params[:post_publisher_id]
+    
+    # post_publisher_comment = current_user.publisher.post_publisher_comments.where("id = ?", post_publisher_comment_id).first rescue nil
+    
+    post_publisher = PostPublisher.where("id = ?", post_publisher_id).first rescue nil
+    if !post_publisher.nil?
+        post_publisher_comment = post_publisher.post_publisher_comments.where("id = ?", post_publisher_comment_id).first rescue nil
+        if !post_publisher_comment.nil?
+            if post_publisher_comment.destroy
+                @post_publisher_comments = post_publisher.post_publisher_comments
+                @post_publisher_id = post_publisher.id
+            else
+                #
+            end
+        else
+            #
+        end
+    else
+        #
+    end
+
+    
+    # if !post_publisher_comment.nil?
+        # if post_publisher_comment.destroy
+            # post_publisher = PostPublisher.where("id = ?", post_publisher_id).first rescue nil
+            # if !post_publisher.nil?
+                # @post_publisher_comments = post_publisher.post_publisher_comments
+                # @post_publisher_id = post_publisher.id                
+            # else
+                # #
+            # end
+        # else
+            # #
+        # end
+    # else
+        # #
+    # end
+
+    
+  end
+  
+  
+  
+  def create_post_publisher_like
+
+      @nlist = params[:n_list]
+      post_publisher_id = params[:post_publisher_id]
+      @post_publisher = nil
+      @b_has_like = false
+            
+      h_post_publisher_like = Hash.new
+      h_post_publisher_like[:post_publisher_id] = post_publisher_id
+      h_post_publisher_like[:publisher_id] = current_user.publisher.id
+      h_post_publisher_like[:user_id] = current_user.id
+      post_publisher_like = PostPublisherLike.new(h_post_publisher_like)
+      # post_publisher_like = current_publisher.post_publishers.build(post_publisher_like_params)
+      if post_publisher_like.save
+          post_publisher = PostPublisher.find_by_id(post_publisher_id) rescue nil
+          if !post_publisher.nil?
+              # Rails.logger.info('post_publisher not nil')
+              @post_publisher = post_publisher
+              @b_has_like = true
+          else
+              # Rails.logger.info('post_publisher = nil')
+          end          
+      else
+          #
+      end
+
+      
+  end
+  
+  
+  def destroy_post_publisher_like
+    
+      @nlist = params[:n_list]
+      post_publisher_id = params[:post_publisher_id]
+      @post_publisher = nil
+      @b_has_like = true
+      
+      post_publisher_likes = PostPublisherLike.where('post_publisher_id = ?', post_publisher_id)
+      if post_publisher_likes.any?
+          post_publisher_like = post_publisher_likes.where('user_id = ?', current_user.id).first rescue nil
+          if !post_publisher_like.nil?
+              if post_publisher_like.destroy
+                  post_publisher = PostPublisher.find(post_publisher_id) rescue nil
+                  if !post_publisher.nil?
+                      @post_publisher = post_publisher
+                      @b_has_like = false
+                  else
+                      #
+                  end          
+                  # Rails.logger.info "post_publisher_like destroyed"
+              else      
+                  # Rails.logger.info "publisher_publisher_logo_image destroy failed"
+              end
+          else
+              # Rails.logger.info "post_publisher_like = nil"
+          end
+      else
+          #
+      end
+
+    
+  end
+  
+  
+  
   
   def update_story_1
     
@@ -534,11 +873,12 @@ class PublishersController < ApplicationController
   
   def destroy_publisher_logo_image
 
+    @post_publishers=nil
     @publisher_logo_image = nil
     publisher_logo_image = PublisherLogoImage.find(params[:id]) rescue nil
     if !publisher_logo_image.nil?
         if publisher_logo_image.destroy
-            #
+            @post_publishers = current_user.publisher.feed # .paginate(:page => params[:page], :per_page => 5)  
         else      
             #
         end
@@ -581,6 +921,7 @@ class PublishersController < ApplicationController
 
                     @id_logo_image = publisher_logo_image_primary.id
                     @publisher_logo_image_primary = publisher_logo_image_primary
+                    @post_publishers = current_user.publisher.feed # .paginate(:page => params[:page], :per_page => 5)  
 
                     img = publisher_logo_image_primary
                     image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
@@ -706,6 +1047,7 @@ class PublishersController < ApplicationController
 
                     @id_logo_image = publisher_logo_image_primary.id
                     @publisher_logo_image_primary = publisher_logo_image_primary
+                    @post_publishers = current_user.publisher.feed # .paginate(:page => params[:page], :per_page => 5)  
 
                     img = publisher_logo_image_primary
                     image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
@@ -774,10 +1116,112 @@ class PublishersController < ApplicationController
 
   
 
+  # def crop_commit_logo
+#     
+      # # render text: params[:image_id]
+#   
+      # x = params[:crop_x]
+      # y = params[:crop_y]
+      # w = params[:crop_w]
+      # h = params[:crop_h]
+#   
+      # img = PublisherLogoImage.find(params[:image_id])
+      # image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
+#   
+      # # require 'rmagick'
+      # # img = Magick::Image.read( 'demo.png' ).first
+      # # width = img.columns
+      # # height = img.rows
+#   
+      # # render text: image.filename
+#   
+      # # version :user_0_200 do
+        # # # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
+        # # process :resize_to_limit => [0, 200]
+      # # end
+# 
+#   
+#   
+      # x = x.to_i
+      # y = y.to_i
+      # w = w.to_i
+      # h = h.to_i
+      # image_new = image.crop(x, y, w, h)
+#   
+      # new_user_200_200 = image_new.resize_to_fill(200, 200)    
+      # new_user_100_100 = image_new.resize_to_fill(100, 100)    
+      # new_user_50_50 = image_new.resize_to_fill(50, 50)
+      # new_user_34_34 = image_new.resize_to_fill(34, 34)
+      # new_user_200_200_fit = image_new.resize_to_fit(200, 200)    
+# 
+      # user_200_200 = Magick::Image.read("public" + img.image_url(:user_200_200))[0]    
+      # user_100_100 = Magick::Image.read("public" + img.image_url(:user_100_100))[0]
+      # user_50_50 = Magick::Image.read("public" + img.image_url(:user_50_50))[0]
+      # user_34_34 = Magick::Image.read("public" + img.image_url(:user_34_34))[0]
+      # user_200_200_fit = Magick::Image.read("public" + img.image_url(:user_200_200_fit))[0]    
+#   
+      # # public/uploads/publisher_user_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
+#   
+      # user_200_200_filename = user_200_200.filename
+      # user_100_100_filename = user_100_100.filename
+      # user_50_50_filename = user_50_50.filename
+      # user_34_34_filename = user_34_34.filename
+      # user_200_200_fit_filename = user_200_200_fit.filename
+#   
+      # FileUtils.rm_rf(Dir.glob(user_200_200.filename))
+      # FileUtils.rm_rf(Dir.glob(user_100_100.filename))
+      # FileUtils.rm_rf(Dir.glob(user_50_50.filename))
+      # FileUtils.rm_rf(Dir.glob(user_34_34.filename))
+      # FileUtils.rm_rf(Dir.glob(user_200_200_fit.filename))
+#       
+      # new_user_200_200.write user_200_200_filename
+      # new_user_100_100.write user_100_100_filename
+      # new_user_50_50.write user_50_50_filename
+      # new_user_34_34.write user_34_34_filename
+      # new_user_200_200_fit.write user_200_200_fit_filename
+#   
+      # # # image.recreate_versions!
+      # # image_100_100 = nil    
+      # # image_50_50 = nil
+      # # image_34_34 = nil
+      # # profile_100_100 = nil
+      # # profile_50_50 = nil
+      # # profile_34_34 = nil
+#   
+      # h_crop = Hash.new
+      # h_crop[:crop_x] = x
+      # h_crop[:crop_y] = y
+      # h_crop[:crop_w] = w
+      # h_crop[:crop_h] = h
+#   
+      # @publisher_logo_image_primary = nil
+      # publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+      # if !publisher.nil?
+          # publisher_logo_images = publisher.publisher_logo_images rescue nil
+          # if !publisher_logo_images.nil?
+              # publisher_logo_image_primary = publisher_logo_images.where( :primary => true ).first rescue nil
+              # if !publisher_logo_image_primary.nil?
+                  # if publisher_logo_image_primary.update_attributes(h_crop)
+                      # @publisher_logo_image_primary = publisher_logo_image_primary  
+                  # else
+                    # #
+                  # end
+              # else
+                # #
+              # end
+          # else
+            # #
+          # end
+      # else
+        # #
+      # end
+#     
+#     
+  # end
+  
+  
   def crop_commit_logo
     
-      # render text: params[:image_id]
-  
       x = params[:crop_x]
       y = params[:crop_y]
       w = params[:crop_w]
@@ -793,13 +1237,6 @@ class PublishersController < ApplicationController
   
       # render text: image.filename
   
-      # version :user_0_200 do
-        # # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
-        # process :resize_to_limit => [0, 200]
-      # end
-
-  
-  
       x = x.to_i
       y = y.to_i
       w = w.to_i
@@ -810,13 +1247,11 @@ class PublishersController < ApplicationController
       new_user_100_100 = image_new.resize_to_fill(100, 100)    
       new_user_50_50 = image_new.resize_to_fill(50, 50)
       new_user_34_34 = image_new.resize_to_fill(34, 34)
-      new_user_200_200_fit = image_new.resize_to_fit(200, 200)    
-
+  
       user_200_200 = Magick::Image.read("public" + img.image_url(:user_200_200))[0]    
       user_100_100 = Magick::Image.read("public" + img.image_url(:user_100_100))[0]
       user_50_50 = Magick::Image.read("public" + img.image_url(:user_50_50))[0]
       user_34_34 = Magick::Image.read("public" + img.image_url(:user_34_34))[0]
-      user_200_200_fit = Magick::Image.read("public" + img.image_url(:user_200_200_fit))[0]    
   
       # public/uploads/publisher_user_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
   
@@ -824,19 +1259,16 @@ class PublishersController < ApplicationController
       user_100_100_filename = user_100_100.filename
       user_50_50_filename = user_50_50.filename
       user_34_34_filename = user_34_34.filename
-      user_200_200_fit_filename = user_200_200_fit.filename
   
       FileUtils.rm_rf(Dir.glob(user_200_200.filename))
       FileUtils.rm_rf(Dir.glob(user_100_100.filename))
       FileUtils.rm_rf(Dir.glob(user_50_50.filename))
       FileUtils.rm_rf(Dir.glob(user_34_34.filename))
-      FileUtils.rm_rf(Dir.glob(user_200_200_fit.filename))
       
       new_user_200_200.write user_200_200_filename
       new_user_100_100.write user_100_100_filename
       new_user_50_50.write user_50_50_filename
       new_user_34_34.write user_34_34_filename
-      new_user_200_200_fit.write user_200_200_fit_filename
   
       # # image.recreate_versions!
       # image_100_100 = nil    
@@ -846,38 +1278,62 @@ class PublishersController < ApplicationController
       # profile_50_50 = nil
       # profile_34_34 = nil
   
+      # redirect_to '/Publisher-Admin'    
+  
       h_crop = Hash.new
       h_crop[:crop_x] = x
       h_crop[:crop_y] = y
       h_crop[:crop_w] = w
       h_crop[:crop_h] = h
-  
+
+      @post_users = nil    
       @publisher_logo_image_primary = nil
-      publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
-      if !publisher.nil?
-          publisher_logo_images = publisher.publisher_logo_images rescue nil
-          if !publisher_logo_images.nil?
-              publisher_logo_image_primary = publisher_logo_images.where( :primary => true ).first rescue nil
+      # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+      # if !publisher_user.nil?
+          # publisher_user_images = publisher_user.publisher_user_images rescue nil
+          # if !publisher_user_images.nil?
+              publisher_logo_image_primary = current_user.publisher.publisher_logo_images.where( :primary => true ).first rescue nil
               if !publisher_logo_image_primary.nil?
                   if publisher_logo_image_primary.update_attributes(h_crop)
                       @publisher_logo_image_primary = publisher_logo_image_primary  
+                      @post_publishers = current_user.publisher.feed # .paginate(:page => params[:page], :per_page => 5)
                   else
                     #
                   end
               else
                 #
               end
-          else
-            #
-          end
-      else
-        #
-      end
+          # else
+            # #
+          # end
+      # else
+        # #
+      # end
+
+      # @publisher_user_image_primary = nil
+      # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+      # if !publisher_user.nil?
+          # publisher_user_images = publisher_user.publisher_user_images rescue nil
+          # if !publisher_user_images.nil?
+              # publisher_user_image_primary = publisher_user_images.where( :primary => true ).first rescue nil
+              # if !publisher_user_image_primary.nil?
+                  # if publisher_user_image_primary.update_attributes(h_crop)
+                      # @publisher_user_image_primary = publisher_user_image_primary  
+                  # else
+                    # #
+                  # end
+              # else
+                # #
+              # end
+          # else
+            # #
+          # end
+      # else
+        # #
+      # end
     
     
   end
-  
-  
 
   
   def dbdelete
@@ -917,3 +1373,11 @@ class PublishersController < ApplicationController
   
   
 end
+
+
+# Your Ubuntu release is not supported anymore.
+# For upgrade information, please visit:
+# http://www.ubuntu.com/releaseendoflife
+# 
+# New release '14.04.2 LTS' available.
+# Run 'do-release-upgrade' to upgrade to it.

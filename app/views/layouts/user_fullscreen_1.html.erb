@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="utf-8">
+								    	
+  		<title><%= full_title(yield(:title)) %></title> 
+
+		<!-- <#%= javascript_include_tag "application" %#>
+		<#%= stylesheet_link_tag    "application", :media => "all" %#> -->
+
+    	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => false %>
+   		<%= javascript_include_tag "application", "data-turbolinks-track" => false %>		
+  		
+		<link rel="icon" type="image/png" href="/assets/knowstory-icon-fav.png" />
+  		
+		<!-- 
+		<meta http-equiv='cache-control' content='no-cache'>
+		<meta http-equiv='expires' content='0'>
+		<meta http-equiv='pragma' content='no-cache'> 
+		-->
+   		    	
+    	
+	  	<%= csrf_meta_tags %>
+	  	<%= render 'layouts/shim' %>  
+
+		<title>jQuery HTML5 Fullscreen Slideshow / Gallery</title>
+		<link rel="stylesheet" type="text/css" href="fullscreenstyle.css">
+		<link rel="stylesheet" type="text/css" href="pagestyle.css">
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="jquery.fullscreenslides.js"></script>
+		<script id="sample"></script>
+		<link rel="stylesheet" type="text/css" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css">
+		<script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+
+    </head>
+    
+	<body style="margin 0; padding: 0;">
+
+		<div class="wrapper">
+		<a href="http://github.com/eikes/jquery.fullscreen.js">
+		<!-- <script type="text/javascript"></script> -->
+		<div id="fullscreenSlideshowContainer" style="position: absolute; top: 0px; left: 0px; width: 100%; text-align: center; background-color: rgb(0, 0, 0); height: 695px; display: block;">
+		<div id="fs-close" class="ui">×</div>
+		<div id="fs-loader" class="ui" style="display: none;">Loading...</div>
+		<div id="fs-prev" class="ui"><</div>
+		<div id="fs-next" class="ui">></div>
+		<div id="fs-caption" class="ui" style="display: block;">
+		<img class="slide" style="position: absolute; left: 50%; top: 50%; height: 695px; width: auto; margin-left: -512.5px; margin-top: -347.5px; display: block;" src="http://upload.wikimedia.org/wikipedia/commons/c/cb/Broadway_tower_edit.jpg">
+		<img class="slide" style="position: absolute; left: 50%; top: 50%; height: 1079px; width: auto; margin-left: -816.5px; margin-top: -539.5px; display: none;" src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/22/New_York_City_at_night_HDR.jpg/1280px-New_York_City_at_night_HDR.jpg">
+		<img class="slide" style="position: absolute; left: 50%; top: 50%; height: 1079px; width: auto; margin-left: -794.5px; margin-top: -539.5px; display: none;" src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Eichh%C3%B6rnchen_D%C3%BCsseldorf_Hofgarten_edit.jpg/1280px-Eichh%C3%B6rnchen_D%C3%BCsseldorf_Hofgarten_edit.jpg">
+		</div>
+
+	</body>
+	
+</html>

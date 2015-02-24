@@ -75,6 +75,9 @@ class User < ActiveRecord::Base
   
   has_many :post_user_likes
   has_many :post_user_comments
+
+  has_many :post_publisher_likes
+  has_many :post_publisher_comments
   
   has_one :publisher
   has_one :publisher_user

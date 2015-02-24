@@ -62,10 +62,42 @@ class PublisherLogoImageUploader < CarrierWave::Uploader::Base
     # process :resize_to_limit => [200, 200]
   # end
 
-  version :user_200_200_fit do
+  version :user_34_34 do
+    process :resize_to_fit => [34, 34]
+    # process :resize_to_limit => [34, 34]
+  end
+
+  version :user_50_50 do
+    process :resize_to_fit => [50, 50]
+    # process :resize_to_limit => [50, 50]
+  end
+
+  version :user_100_100 do
+    process :resize_to_fit => [100, 100]
+    # process :resize_to_limit => [100, 100]
+  end
+
+  # version :user_34_34_fill do
+    # process :resize_to_fill => [34, 34, gravity = ::Magick::CenterGravity]
+  # end
+  # version :user_50_50_fill do
+    # process :resize_to_fill => [50, 50, gravity = ::Magick::CenterGravity]
+  # end
+  # version :user_100_100_fill do
+    # process :resize_to_fill => [100, 100, gravity = ::Magick::CenterGravity]
+  # end
+  # version :user_200_200_fill do
     # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
+  # end
+
+  # version :user_200_200_fit do
+    # process :resize_to_fit => [200, 200]
+  # end
+
+  version :user_200_200 do
     process :resize_to_fit => [200, 200]
   end
+
 
   # version :user_300_300 do
     # # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
@@ -75,6 +107,13 @@ class PublisherLogoImageUploader < CarrierWave::Uploader::Base
   version :user_600_600 do
     process :resize_to_limit => [600, 600]
   end
+
+  # version :user_600_600_fit do
+    # process :resize_to_fit => [600, 600]
+  # end
+  # version :user_600_600_fill do
+    # process :resize_to_fill => [600, 600, gravity = ::Magick::CenterGravity]
+  # end
 
   # version :user_600_600_fit do
     # process :resize_to_fit => [600, 600]

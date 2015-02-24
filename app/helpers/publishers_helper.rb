@@ -14,26 +14,80 @@ module PublishersHelper
   end
 
 
-  def post_publisher_avatar_for(user)
-    img = user.user_images.where( :primary => true ).first     
+  # def post_publisher_avatar_for(user)
+    # img = user.user_images.where( :primary => true ).first     
+    # if !img.nil?     
+      # post_publisher_avatar_url = img.image_url(:user_50_50)
+    # else
+      # post_publisher_avatar_url = "../images_avatar/avatar_generic_1_w50_h50.png"
+    # end
+      # image_tag(post_publisher_avatar_url, alt: "", class: "")
+  # end  
+  # def log_publisher_avatar_for(user)
+    # img = user.user_images.where( :primary => true ).first     
+    # # img = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id).where( :primary => true ).first
+    # if !img.nil?     
+      # log_publisher_avatar_url = img.image_url(:user_50_50)
+    # else
+      # log_publisher_avatar_url = "../images_avatar/avatar_generic_1_w50_h50.png"
+    # end
+      # image_tag(log_publisher_avatar_url, alt: "", class: "")
+  # end  
+
+  def post_publisher_avatar_for(publisher, s_rand)
+    img = publisher.publisher_logo_images.first rescue nil     
     if !img.nil?     
       post_publisher_avatar_url = img.image_url(:user_50_50)
     else
       post_publisher_avatar_url = "../images_avatar/avatar_generic_1_w50_h50.png"
     end
-      image_tag(post_publisher_avatar_url, alt: "", class: "")
+      image_tag(post_publisher_avatar_url + s_rand, alt: "", class: "")
   end  
 
 
-  def log_publisher_avatar_for(user)
-    img = user.user_images.where( :primary => true ).first     
-    # img = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id).where( :primary => true ).first
+  def log_publisher_avatar_for(publisher)
+    img = publisher.publisher_logo_images.where( :primary => true ).first     
     if !img.nil?     
       log_publisher_avatar_url = img.image_url(:user_50_50)
     else
       log_publisher_avatar_url = "../images_avatar/avatar_generic_1_w50_h50.png"
     end
       image_tag(log_publisher_avatar_url, alt: "", class: "")
+  end  
+
+
+  def post_publisher_has_like_for(post_publisher)
+    
+      b_has_like = false
+      post_publisher_like = post_publisher.post_publisher_likes.where("user_id = ?", current_user.id).first rescue nil
+      if !post_publisher_like.nil?
+          b_has_like = true
+      end
+      
+      return b_has_like                      
+  end
+
+
+  def log_publisher_has_like_for(log_publisher)
+    
+      b_has_like = false
+      post_publisher_like = log_publisher.post_publisher_likes.where("publisher_id = ?", current_user.publisher.id).first rescue nil
+      if !post_publisher_like.nil?
+          b_has_like = true
+      end
+      
+      return b_has_like                      
+  end
+
+
+  def post_publisher_comment_avatar_for(publisher, s_rand)
+    img = publisher.publisher_logo_images.first rescue nil     
+    if !img.nil?     
+      post_publisher_comment_avatar_url = img.image_url(:user_34_34)
+    else
+      post_publisher_comment_avatar_url = "../images_avatar/avatar_generic_1_w34_h34.png"
+    end
+      image_tag(post_publisher_comment_avatar_url + s_rand, alt: "", class: "")
   end  
 
 

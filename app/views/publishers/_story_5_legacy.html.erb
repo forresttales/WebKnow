@@ -1,0 +1,166 @@
+
+
+			<!-- <div id="pos2"></div> -->
+
+			<!-- <#%= hidden_field_tag :direction, params[:direction] %#>
+			<#%= hidden_field_tag :sort, params[:sort] %#>	
+			<#%= hidden_field_tag :pos, params[:pos] %#> -->	
+
+			<!-- <div class="publisher-product-list-top-border"></div> -->
+
+			<!-- <div id="scroll1" class="product-listbox" style="height: 500px;"> -->
+			<div id="scroll1" class="product-listbox">
+
+			<% if @log_publishers.any? %>
+
+				<% @log_publishers.each do |log_publisher| %>
+
+					<!-- <#%= link_to publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" do %#> -->
+						<!-- <#%= link_to ("/id" + publisher.id.to_s).html_safe, class: "" do %#> -->
+					<div class="table post-user-list-1" style="background-color: transparent;">
+						<div class="row">
+							<!-- <a href="<#%= ("/publisher-id" + publisher.id.to_s).html_safe %#>" style="height: 65px;"> -->
+							<div class="cell-100 post-user-list-1a">
+								<div class="post-user-list-1a-1">
+									<ul class="publisher-product-list-grid publisher-product-list-caption">
+										<li>
+											<figure>
+												<a href="#">
+												<%= log_publisher_avatar_for log_publisher.publisher %>
+												<figcaption>
+													<!-- <span class="publisher-product-list-span"><#%= link_to "Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %#></span> -->
+													<!-- <span><#%= link_to "Edit", { :action => :crop, :id => publisher_product.id } %#></span> -->
+												</figcaption>
+												</a>
+											</figure>
+										</li>
+									<ul>
+								</div>
+								<!-- <div class="helper"></div> -->			
+							    <!-- <div class="post-user-list-1a-1">
+							    	<span class="post-user-span-1">
+							      	</span>
+							    </div> -->
+													
+							</div>
+
+							<div class="cell-560 post-user-list-1b"  style="background-color: #fff;">
+								<div class="post-user-list-1b-1" style="">
+									<a href="#">
+										<span class="post-user-span-2"><%= log_publisher.publisher.user.name_first %></span>
+										&nbsp;
+										<span class="post-user-span-2"><%= log_publisher.publisher.user.name_last %></span>
+									</a>
+								</div>
+								<div class="post-user-list-1b-2" style="">
+									<span class="post-user-span-1"><%= log_publisher.publisher.slug %></span>
+									<br>
+									<span class="post-user-span-1"><%= log_publisher.post_text %></span>
+								</div>
+								<div class="post-user-list-1b-3">
+									<div class="float-right">
+									    <span class="post-user-span-1">
+									      - <%= time_ago_in_words(log_publisher.created_at) %> ago.
+									    </span>
+								    </div>
+									<div class="float-clear"></div>    
+							    </div>
+							    
+
+							</div>
+							
+						</div>
+					</div>
+						
+					<!-- <#% end %#> -->
+					
+				<% end %>
+
+
+
+			<% else %>
+				<!-- <div class="" style="color: red; padding-left: 20px;">
+					<h3>No record for Publisher Products</h3>
+				</div> -->
+			<% end %>
+
+				</div>
+
+
+				<!-- <div id="im_bottom_sh" style="display: block;"></div> -->					
+
+				<!-- <div class="publisher-product-utility-bar-footer">
+					<div style="height: 4px;"></div>
+					<div style="width: 100%; text-align: center;">
+						<span><#%= will_paginate @publisher_products %#></span>
+					</div>
+				</div> -->
+				
+
+	<!-- <script src="/assets/jquery.mousewheel.js"></script> -->
+
+	<script>
+		
+        // function scrollPos() {
+            // $("#pos1").html($("#scroll1").scrollLeft());
+            // // $("#pos2").html($("#scroll1").scrollTop());
+            // $("#scroll2").scrollLeft($("#scroll1").scrollLeft());
+            // // $("#scroll2").scrollLeft(100);
+        // }
+		// function moveScroll() {
+			// $("#scroll1").scrollLeft($("#pos1").html());
+			// $("#scroll2").scrollLeft($("#pos1").html());			
+		// }
+				
+		function body_resize() {
+			var wh = window.outerHeight;
+			var sh = 0;
+			// var h1 = 0;
+			// var h2 = 0;
+			var h3 = 0;
+			// var h = $("#container").height();
+			$("#container_height").html(wh);
+			if(wh > 700) {
+				// h1 = wh - 276;
+				// h2 = wh - 594;
+				h3 = wh - 392;
+				// $("#scroll1").css({
+					// 'height': h3
+				// });
+				$("#sub_container").css({
+					'height': h3			// h1
+				});			
+				$("#render_list").css({
+					'height': h3			// h2
+				});			
+			}
+		}
+
+		// function init_page() {
+			// var wh = window.innerHeight;
+			// var sh = wh-388;
+			// $("#scroll1").css({
+				// 'height': sh
+			// });			
+		// }
+				
+		// $(window).load(function() {
+		$(document).ready(function() {			
+      	// $(function() {
+
+			// body_resize();
+
+	        // $('#scroll1').bind('mousewheel', function(event) {
+	          // event.preventDefault();
+	          // var scrollTop = this.scrollTop;
+	          // this.scrollTop = (scrollTop + ((event.deltaY * event.deltaFactor) * -0.7));
+	          // //console.log(event.deltaY, event.deltaFactor, event.originalEvent.deltaMode, event.originalEvent.wheelDelta);
+	        // });
+
+
+			
+		});				
+
+				
+	</script>
+

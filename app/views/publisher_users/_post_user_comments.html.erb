@@ -43,7 +43,7 @@
 
 
 	<% if @post_user_comments.any? %>
-	
+		<% s_rand = '?' + (rand(10..90) * rand(100..900)).to_s %>
 		<div style="width: 100%; height: 14px; text-align: left;">
 		    <span class="post-user-span-3">
 		    	Comments <%= @post_user_comments.count %>
@@ -55,7 +55,7 @@
 		<div class="post-user-list-container">
 			<div style="display: inline-block; vertical-align: top; width: 50px; padding: 2px;">
 				<a href="<%= post_user_comment.user.slug %>">
-					<%= post_user_comment_avatar_for post_user_comment.user %>
+					<%= post_user_comment_avatar_for(post_user_comment.user, s_rand) %>
 				</a>
 			</div>
 			

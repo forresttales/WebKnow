@@ -5,6 +5,7 @@
 
 			<% if @post_users.any? %>
 				<% @nlist = 0 %>
+				<% s_rand = '?' + (rand(10..90) * rand(100..900)).to_s %>
 				<% @post_users.each do |post_user| %>
 					<% @nlist += 1 %>
 					<% @post_user = post_user %>
@@ -18,7 +19,7 @@
 										<li>
 											<figure>
 												<a href="<%= post_user.user.slug %>">
-												<%= post_user_avatar_for post_user.user %>
+												<%= post_user_avatar_for(post_user.user, s_rand) %>
 												<figcaption>
 													<!-- <span class="publisher-product-list-span"><#%= link_to "Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %#></span> -->
 													<!-- <span><#%= link_to "Edit", { :action => :crop, :id => publisher_product.id } %#></span> -->

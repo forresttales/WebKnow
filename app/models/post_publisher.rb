@@ -19,6 +19,10 @@ class PostPublisher < ActiveRecord::Base
 
   
   belongs_to :publisher
+  has_many :post_publisher_likes, dependent: :destroy
+  has_many :post_publisher_images, dependent: :destroy
+  has_many :post_publisher_comments, dependent: :destroy
+  
   
   # has_many :post_user_images
   

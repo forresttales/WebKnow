@@ -1,7 +1,15 @@
 // alert('ajax works in crop_commit_logo');
 <% if !@publisher_logo_image_primary.nil? %>
-	$('#render_publisher_logo_image_primary .container-image').html("<%= j render('publishers/publisher_logo_image_primary') %>");
+	$('#render_publisher_logo_image_primary').html("<%= j render('publishers/publisher_logo_image_primary') %>");
+	$(".drop-1-container").removeClass("hidden");
 	closeCropLogoImagePrimary();
 <% else %>
 	alert("Upload error");
+<% end %>
+
+<% if @post_publishers.any? %>
+	$("#render_story_4").html("<%= j render('publishers/story_4') %>");
+	// $("#render_story_4_will_paginate").html("<#%= j render("publisher_users/story_4_will_paginate") %#>");
+<% else %>
+	// alert('return error post_users');
 <% end %>

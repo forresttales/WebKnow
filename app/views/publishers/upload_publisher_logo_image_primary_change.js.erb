@@ -1,10 +1,19 @@
 // alert('ajax works in upload_publisher_logo_image_primary_change');
 <% if @publisher_logo_image_primary %>
-	$('#render_publisher_logo_image_primary .container-image').html("<%= j render('publishers/publisher_logo_image_primary') %>");
-	$('#render_publisher_logo_image_primary .container-menu').html("<%= j render('publishers/publisher_logo_image_primary_menu') %>");
+	$('#render_publisher_logo_image_primary').html("<%= j render('publishers/publisher_logo_image_primary') %>");
+	// $('#render_publisher_logo_image_primary .container-menu').html("<#%= j render('publishers/publisher_logo_image_primary_menu') %#>");
 	$('#render_publisher_logo_image_primary_crop').html("<%= j render('publishers/publisher_logo_image_primary_crop') %>");
 	id_logo_image = <%= @publisher_logo_image_primary.id %>;
+	$(".drop-2-container").removeClass("hidden");
+	$(".container-figure-logo figure").removeClass("cursor-pointer");
 	closeChangeLogoImagePrimary();
 <% else %>
 	alert("Upload error");
+<% end %>
+
+<% if @post_publishers.any? %>
+	$("#render_story_4").html("<%= j render("publishers/story_4") %>");
+	// $("#render_story_4_will_paginate").html("<#%= j render("publishers/story_4_will_paginate") %#>");
+<% else %>
+	// alert('return error');
 <% end %>

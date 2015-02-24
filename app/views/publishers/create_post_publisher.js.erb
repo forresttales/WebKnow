@@ -1,4 +1,12 @@
 // alert('ajax works in create_post_publisher');
-$("#render_story_4").html("<%= j render("publishers/story_4") %>");
-$("#render_story_4_post_publishers_count").html("<%= j render("publishers/story_4_post_publishers_count") %>");
-// $("#render_story_4_will_paginate").html("<#%= j render("publishers/story_4_will_paginate") %#>");
+<% if @post_publishers.any? %>
+	$("#render_story_4").html("<%= j render("publishers/story_4") %>");
+	$("#render_story_4_post_publishers_count").html("<%= j render("publishers/story_4_post_publishers_count") %>");
+	// $("#render_story_4_will_paginate").html("<#%= j render("publishers/story_4_will_paginate") %#>");
+	$("#submit_story_4_loader").addClass("hidden");
+	$("#submit_story_4_text").removeClass("hidden");
+	$("#render_post_user_image").html('');
+	reset_textarea_post_publisher();
+<% else %>
+	// alert('return error');
+<% end %>

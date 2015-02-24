@@ -370,11 +370,24 @@ Webknow::Application.routes.draw do
     collection do
       post :update_story_1
       post :update_story_2
+      
+      # post :add_post_publisher
+      post :create_post_publisher            
+      post :destroy_post_publisher
+      post :cancel_post_publisher
+      post :cancel_post_publisher_on_close
+      post :create_post_publisher_like
+      post :destroy_post_publisher_like
+      post :create_log_publisher_like
+      post :destroy_log_publisher_like      
+      post :create_post_publisher_comment
+      post :destroy_post_publisher_comment
+      post :upload_post_publisher_image
+      
       post :destroy_publisher_logo_image
       post :upload_publisher_logo_image_primary
       post :upload_publisher_logo_image_primary_change
       post :crop_commit_logo
-      post :create_post_publisher      
       post :dbdelete
     end
   end
@@ -399,6 +412,7 @@ Webknow::Application.routes.draw do
   match "/Publisher-Admin-Photos" => "publisher_users#show_all_images", via: 'get'    
   get "publisher_users/get_feed_post"
   get "publisher_users/get_feed_log"
+  # get "publisher_users/fullscreen"
 
   resources :publisher_users do
     collection do
@@ -417,8 +431,7 @@ Webknow::Application.routes.draw do
       post :create_post_user_like
       post :destroy_post_user_like
       post :create_log_user_like
-      post :destroy_log_user_like
-      
+      post :destroy_log_user_like      
       post :create_post_user_comment
       post :destroy_post_user_comment
       

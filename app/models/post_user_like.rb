@@ -20,7 +20,6 @@ class PostUserLike < ActiveRecord::Base
   
   
 
-  
   def self.dbdelete
       self.connection.execute("DELETE FROM post_user_likes")
   end
@@ -28,5 +27,6 @@ class PostUserLike < ActiveRecord::Base
   def self.dbclear
       self.connection.execute("ALTER SEQUENCE post_user_likes_id_seq RESTART WITH 1")
   end
+
   
 end

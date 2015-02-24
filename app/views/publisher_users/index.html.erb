@@ -17,7 +17,9 @@
   	<link rel="stylesheet" href="/assets/jquery.qtip.min.css">
 	<link rel="stylesheet" href="../styles/ks-profile.css" />
 	
-
+	<link rel="stylesheet" type="text/css" href="../styles/fullscreenstyle.css"></link>
+	<script src="../scripts/jquery.fullscreenslides.js"></script>
+	
 	<style>
 		
 	.btn-follow-container-outer {
@@ -58,8 +60,7 @@
 		
 	</style>
 
-	<style>
-		
+	<!-- <style>
 		.icon-like, .icon-unlike {
 			background-image: url('/assets/like-and-unlike-buttons-w80-h58.png');
 			background-repeat: no-repeat;
@@ -78,8 +79,7 @@
 		.icon-like:hover, .icon-unlike:hover {
 			cursor: pointer;
 		}
-		
-	</style>								
+	</style> -->								
 
 	<style>
 		
@@ -124,14 +124,13 @@
 
 	<style>
 		
-		.jqmWindow-101 {
+		/*.jqmWindow-101 {
 		    display: none;
 		    position: absolute;
 		    left: 50%;
 		    margin-left: -250px;
 		    width: 500px;
 			height: auto;		    
-		    /*background-color: rgba(0, 0, 0, 0.8);*/
 		    background-color: #fff;
 		    color: #333;
 		    padding: 0px;
@@ -140,7 +139,7 @@
 			display: table;
 			vertical-align: top;
 			width: 500px;	
-		}
+		}*/
 		.jqmWindow-104 {
 		    display: none;
 		    position: absolute;
@@ -167,14 +166,13 @@
 		    border: 4px solid #376340; /*rgba(55,99,64,1)*/
 		    padding: 0px;
 		}		
-		.jqmWindow-1001 {
+		/*.jqmWindow-1001 {
 		    display: none;
 		    position: absolute;
 		    left: 50%;
 		    margin-left: -400px;
 		    width: 800px;
 			height: auto;		    
-		    /*background-color: rgba(0, 0, 0, 0.8);*/
 		    background-color: #fff;
 		    color: #333;
 		    padding: 0px;
@@ -183,7 +181,7 @@
 			display: table;
 			vertical-align: top;
 			width: 800px;	
-		}
+		}*/
 		
 	</style>
 
@@ -1307,7 +1305,7 @@
 					<div style="height: 20px;"></div>
 					<div id="dialog_101_content_container" class="">
 						<!-- <figure id="profile_figure_dialog_101" class="dialog-user-image">
-							<img alt="photo not appearing" src="" />
+							<img alt="" src="" />
 						</figure> -->
 					</div>
 				</div>
@@ -1383,6 +1381,53 @@
 				<div style="height: 20px;"></div>
 			</div>
 
+	<style>
+
+		figure.dialog-user-image-2 {
+			position: relative;
+			margin: 0 auto;
+		}		
+		figure.dialog-user-image-2 img {
+			/*border: 1px solid #aaa;*/
+		}
+		figcaption.expand-image {		
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			height: 100%;
+			width: 100%;
+			/*display: none !important;
+			visibility: hidden !important*/
+			/*background: url("/assets/background-000000-o100-w10-h10.png") repeat;*/
+		}
+		figcaption.expand-image div.img-2-container {
+			position: relative;
+			width: 100%;
+			height: auto;
+		}			
+		figcaption.expand-image div.img-2-container div.img-2 {
+			position: absolute;
+			top: 14px;
+			right: 14px;
+			width: 48px;
+			height: 48px;
+			margin: auto;
+			background: url("/assets/icon_expand_w48_h48.png") no-repeat;
+			opacity: 0;
+			
+		}			
+		figure.dialog-user-image-2 figcaption:hover div a div.img-2 {
+			-webkit-opacity: 0.5;
+			-moz-opacity: 0.5;
+			opacity: 0.5;
+			-webkit-transition: all 1s ease;
+			-moz-transition: all 1s ease;
+			-ms-transition: all 1s ease;
+			-o-transition: all 1s ease;
+			transition: all 1s ease;			
+		}
+		
+	</style>
 			<!-- user image - show 11 -->			
 			<div class="jqmWindow jqmWindow-11" id="dialog_11">
 		   		<div class="table-dl-form-1">
@@ -1401,19 +1446,16 @@
 				<!-- <div class="pad-left-20"> -->
 				<div style="width: 100%; text-align: center;">
 					<div style="height: 20px;"></div>
-					<!-- <div class="profile-grid profile-cs-style-3"> -->
-					<!-- <div class="container-figure container-figure-1"> -->
-					<div class="">
-						<figure id="profile_figure_dialog_11" class="dialog-user-image">
-							<img alt="photo not appearing" src="" />
-							<!-- <figcaption class="figcaption-2">
-								<div class="tip-top-center"></div>
-				                <div class="tip-content">
-				                    <div class="tooltiptext">Delete</div>
-				                </div>																								
-							</figcaption> -->
-						</figure>
-					</div>
+					<figure id="figure_dialog_11" class="dialog-user-image-2">
+						<img alt="" src="" class="dialog-user-image-hover" />
+						<figcaption id="figcaption_dialog_11" class="expand-image">												
+							<div class="img-2-container image">
+								<a rel="gallery" title="" href="<%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>">									
+									<div id="img_2" class="img-2"></div>
+								</a>
+							</div>
+						</figcaption>
+					</figure>
 				</div>
 			</div>
 
@@ -1610,8 +1652,6 @@
 				</div>
 			</div>
 
-
-
 			<!-- logo image - show 21 -->
 			<div class="jqmWindow jqmWindow-21" id="dialog_21">
 		   		<div class="table-dl-form-1">
@@ -1634,7 +1674,7 @@
 					<!-- <div class="container-figure container-figure-1"> -->
 					<div class="">
 						<figure id="profile_figure_dialog_21" class="dialog-user-image">
-							<img alt="photo not appearing" src="" />
+							<img alt="" src="" />
 							<!-- <figcaption class="figcaption-2">
 								<div class="tip-top-center"></div>
 				                <div class="tip-content">
@@ -2061,9 +2101,9 @@
 					
 					<div style="height: 4px;"></div>
 					
-					<div style="width: 100%; height: 50px; padding: 0 0 0 300px;">
+					<!-- <div style="width: 100%; height: 50px; padding: 0 0 0 300px;">
 						<div id="testmove" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;"></div>
-					</div>
+					</div> -->
 					
 					<div class="table" style="height: 220px; margin: 0;">
 						<div class="row">
@@ -2260,9 +2300,9 @@
 								<!-- <div id="drop_container_logo_image" class="drop width-200 float-right"> -->
 								<div class="width-200 float-right">
 									<div id="render_publisher_user_logo_image" class="padding-0">
-										<div class="container-image">
+										<!-- <div class="container-image"> -->
 											<%= render 'publisher_users/publisher_user_logo_image' %>
-										</div>
+										<!-- </div> -->
 										<!-- <div class="container-menu">
 											<#%= render 'publisher_users/publisher_user_logo_image_menu' %#>
 										</div> -->
@@ -2612,46 +2652,6 @@
 							</div>
 						</div>
 					</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
 						<div class="tbl-title-bar-profile">
@@ -3108,7 +3108,52 @@
 			</div>								
 		</div>
 
+	
+	<script>
+	 
+	   	// $(function(){
+		// $(window).load( function() {
+		$(document).ready(function () {				
+	   		
+			// $('.image img').fullscreenslides();
+			$('.image div').fullscreenslides();
 
+			var $container = $('#fullscreenSlideshowContainer');
+			$container.bind("init", function() {
+				$container
+				.append('<div class="ui" id="fs-close">&times;</div>')
+				.append('<div class="ui" id="fs-loader">Loading...</div>');
+				// .append('<div class="ui" id="fs-prev">&lt;</div>')
+				// .append('<div class="ui" id="fs-next">&gt;</div>')
+				// .append('<div class="ui" id="fs-caption"><span></span></div>');
+	
+				// $('#fs-prev').click(function(){
+					// $container.trigger("prevSlide");
+				// });
+				// $('#fs-next').click(function(){
+					// $container.trigger("nextSlide");
+				// });
+				$('#fs-close').click(function(){
+					$container.trigger("close");
+				});
+			})
+			.bind("startLoading", function() {
+				$('#fs-loader').show();
+			})
+			.bind("stopLoading", function() {
+				$('#fs-loader').hide();
+			});
+			// .bind("startOfSlide", function(event, slide) {
+				// $('#fs-caption span').text(slide.title);
+				// $('#fs-caption').show();
+			// })
+			// .bind("endOfSlide", function(event, slide) {
+				// $('#fs-caption').hide();
+			// });	   		
+	     
+	   	});
+
+	</script>
 	
 	<script>
 		
@@ -4004,47 +4049,6 @@
     		});				
 
 
-
-
-			// $(".dialog-101-figure").on('click_101', function(e) {
-			$(document).on('click_101', function(e, id) {
-				// alert(id);
-				var s = "div#" + id;				
-				scroll_top = $(window).scrollTop();
-				// var this_src = $(this).find("input.container-image-hidden-101").attr("value");
-				// $('content') = $(this).find("div.dialog-101-content");
-				// var content = $(this).find("div.dialog-101-content").html();
-				var content = $(this).find(s).html();
-				// alert($('content').html());
-				// $("#profile_figure_dialog_101").find("img").attr("src", this_src );
-				// $("#dialog_101_content_container").html($('content').html());
-				$("#dialog_101_content_container").html(content);
-				// var this_delete = $(this).find("div.tip-top-center").html();
-				// $("#profile_figure_dialog_101").find("div.tip-top-center").html(this_delete);
-				$("#dialog_101").jqmShow();	
-			});
-			$('#dialog_101').jqm({
-				onShow: function(hash) {
-					hash.o.prependTo('body');
-					// hash.w.css('top', 0);
-					hash.w.css('top', 40 + scroll_top);
-					hash.w.css('opacity', 1.0).fadeIn(200);
-					// var img = $("#profile_figure_dialog_101 img");
-					// $("<img/>")
-			    		// .attr("src", $(img).attr("src"))
-			    		// .load(function() {
-			        		// img_width = this.width; 
-			        		// $("#profile_figure_dialog_101").css({
-			        			// // width : this.width 
-			        	// });	        		
-			    	// });		
-				}
-			}); 		
-
-			$(document).on('click_1001', function() {
-				scroll_top = $(window).scrollTop();
-			});
-
 			
 			$("#render_story_4").html("<%= j render("publisher_users/story_4") %>");
 			$("#render_story_4_post_users_count").html("<%= j render("publisher_users/story_4_post_users_count") %>");			
@@ -4202,6 +4206,7 @@
 				// alert('index btn_photo_primary_new');
 				$("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
 				$("#dialog_12").jqmShow();
+				$("#btn_dlg_submit_upload_image_primary").focus();
 			});		
 			// $("#btn_dlg_cancel_upload_image_primary").on('click', function() {
 			$(document).on("click", "#btn_dlg_cancel_upload_image_primary", function() {
@@ -4227,6 +4232,7 @@
 				// alert('index btn_photo_primary_change');
 				$("form#change_publisher_user_image input#change_publisher_user_image_image").val('');
 				$("#dialog_13").jqmShow();
+				$("#btn_dlg_submit_upload_image_primary_change").focus();
 			});		
 			$(document).on("click", "#btn_dlg_cancel_upload_image_primary_change", function() {
 				// alert('cancel delete');
@@ -4311,6 +4317,7 @@
 			$(document).on("click", "#btn_photo_logo_change", function() {				
 				$("form#change_publisher_user_logo_image input#change_publisher_user_logo_image_image").val('');
 				$("#dialog_23").jqmShow();
+				$("#btn_dlg_submit_upload_logo_image_change").focus();
 			});		
 			$(document).on("click", "#btn_dlg_cancel_upload_logo_image_change", function() {
 				$("#close_form23").trigger('click');
@@ -4703,7 +4710,7 @@
 		
 			$(document).on('click_2001', function() {
 				var s = "#dialog_2001_content";				
-				scroll_top = $(window).scrollTop();
+				// scroll_top = $(window).scrollTop();
 				var content = $(this).find(s).html();
 				$("#dialog_2001_content_container").html(content);
 				$("#dialog_2001").jqmShow();	
@@ -4711,14 +4718,15 @@
 			$('#dialog_2001').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', 40 + scroll_top);
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 40);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 				}
 			}); 		
 
 			$(document).on('click_2002', function() {
 				var s = "#dialog_2002_content";				
-				scroll_top = $(window).scrollTop();
+				// scroll_top = $(window).scrollTop();
 				var content = $(this).find(s).html();
 				$("#dialog_2002_content_container").html(content);
 				$("#dialog_2002").jqmShow();	
@@ -4726,7 +4734,8 @@
 			$('#dialog_2002').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', 40 + scroll_top);
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 40);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 				}
 			}); 		
@@ -4917,9 +4926,13 @@
 				// $("#submit_story_4_loader").removeClass("hidden");
 			});
 		
+		
+			// $(document).on('click_1001', function() {
+				// scroll_top = $(window).scrollTop();
+			// });		
 			$(document).on('click_101', function(e, id) {
 				var s = "div#" + id;				
-				scroll_top = $(window).scrollTop();
+				// scroll_top = $(window).scrollTop();
 				var content = $(this).find(s).html();
 				$("#dialog_101_content_container").html(content);
 				$("#dialog_101").jqmShow();	
@@ -4927,7 +4940,8 @@
 			$('#dialog_101').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', 40 + scroll_top);
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 20);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 				}
 			}); 		
@@ -4961,9 +4975,10 @@
 			}); 		
 		
 		
-		
-		
-		
+			// $("#img_2").on('click', function() {
+				// $("#profile_figure_dialog_11_link").click();
+				// // window.location = "publisher_users/fullscreen";
+			// });
 		
 		
 		

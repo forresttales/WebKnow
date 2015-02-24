@@ -10,3 +10,10 @@
 <% else %>
 	alert("Upload error");
 <% end %>
+
+<% if @post_users.any? %>
+	$("#render_story_4").html("<%= j render('publisher_users/story_4') %>");
+	// $("#render_story_4_will_paginate").html("<#%= j render("publisher_users/story_4_will_paginate") %#>");
+<% else %>
+	// alert('return error');
+<% end %>

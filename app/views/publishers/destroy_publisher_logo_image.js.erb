@@ -1,4 +1,12 @@
 // alert('ajax works in destroy_publisher_logo_image');
-$('#render_publisher_logo_image_primary .container-image').html("<%= j render('publishers/publisher_logo_image_primary') %>");
-$('#render_publisher_logo_image_primary .container-menu').html("<%= j render('publishers/publisher_logo_image_primary_menu') %>");
+$('#render_publisher_logo_image_primary').html("<%= j render('publishers/publisher_logo_image_primary') %>");
+// $('#render_publisher_logo_image_primary .container-menu').html("<#%= j render('publishers/publisher_logo_image_primary_menu') %#>");
+$(".drop-2-container").removeClass("hidden");
 closeDeleteLogoImagePrimary();
+
+<% if @post_publishers.any? %>
+	$("#render_story_4").html("<%= j render("publishers/story_4") %>");
+	// $("#render_story_4_will_paginate").html("<#%= j render("publishers/story_4_will_paginate") %#>");
+<% else %>
+	// alert('return error');
+<% end %>

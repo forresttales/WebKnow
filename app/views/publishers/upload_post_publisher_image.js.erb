@@ -1,0 +1,16 @@
+// alert('ajax works in upload_post_publisher_image');
+<% if @post_publisher_images.any? %>
+	$('#render_post_publisher_image').html("<%= j render('publishers/post_publisher_image') %>");
+	$("#btn_story_4_attach_loader").addClass("hidden");
+	$("#btn_story_4_attach_text").removeClass("hidden");
+	$("#textarea_add_post_publisher").focus();
+<% else %>
+	alert("Upload error");
+<% end %>
+
+<% if @post_publishers.any? %>
+	$("#render_story_4").html("<%= j render("publishers/story_4") %>");
+	// $("#render_story_4_will_paginate").html("<#%= j render("publishers/story_4_will_paginate") %#>");
+<% else %>
+	// alert('return error');
+<% end %>

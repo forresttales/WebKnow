@@ -29,8 +29,716 @@
 	<!-- <link rel="stylesheet" href="/assets/jqModal.css" /> -->
 	<!-- <script src="/assets/jquery.validate.js"></script> -->
 
+	<style>
+		
+		.btn-follow-container-outer {
+			position: relative;
+		  	width: 100%;
+		  	height: 20px;
+		}
+		.btn-follow-container {
+			position: relative;
+		  	background: linear-gradient(#FBB040, #CA8E33);
+		  	border-radius: 2px;
+		  	width: 50px;
+		  	height: 20px;
+		}
+		.btn-follow {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 10px;
+			font-weight: 400;		
+		  	color: #eee;
+			text-align: center;	
+		  	width: 50px;
+		  	height: 20px;
+		  	padding-top: 6px;
+		  	text-decoration:none;
+		  	outline: none;
+		}
+		.btn-follow:focus {
+		}
+		.btn-follow-container:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-follow-container:active .btn-follow { 
+			color: transparent;
+			text-shadow: 1px 1px #fff;
+		}
+		
+	</style>
+
+	<!-- <style>
+		.icon-like, .icon-unlike {
+			background-image: url('/assets/like-and-unlike-buttons-w80-h58.png');
+			background-repeat: no-repeat;
+			display: inline-block;
+		}
+		.icon-like {
+		  height: 26px;
+		  width: 23px;
+		  background-position: -1px -4px;			
+		}
+		.icon-unlike {
+		  height: 26px;
+		  width: 23px;
+		  background-position: -1px -30px;			
+		}
+		.icon-like:hover, .icon-unlike:hover {
+			cursor: pointer;
+		}
+	</style> -->								
+
+	<style>
+		
+		.post-user-span-2 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #37633a;
+			font-size: 11px;
+		}
+		.post-user-span-2:hover {
+			cursor: pointer;
+			text-decoration:underline;	
+		}		
+		.post-user-span-3 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #37633a;
+			font-size: 11px;
+		}
+		
+	</style>
+	
+	<style>
+		
+		.tooltip-text-1 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 12px;
+			font-weight: 400;					
+			/*color: #37633A;*/
+			color: #fff;	
+			/*background-color: #FAFF94;*/
+			background-color: rgba(0, 0, 0, 0.6);
+			/*background-color: #eee;*/
+			/*border-color: #37633A;*/
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+		}
+		.tip-content { display: none; }
+		
+	</style>
+	
+	<style>
+		
+		.jqmWindow-101 {
+		    display: none;
+		    position: absolute;
+		    left: 50%;
+		    margin-left: -250px;
+		    width: 500px;
+			height: auto;		    
+		    /*background-color: rgba(0, 0, 0, 0.8);*/
+		    background-color: #fff;
+		    color: #333;
+		    padding: 0px;
+		}				
+		.table-dl-form-101 {
+			display: table;
+			vertical-align: top;
+			width: 500px;	
+		}
+
+		.jqmWindow-1001 {
+		    display: none;
+		    position: absolute;
+		    left: 50%;
+		    margin-left: -400px;
+		    width: 800px;
+			height: auto;		    
+		    /*background-color: rgba(0, 0, 0, 0.8);*/
+		    background-color: #fff;
+		    color: #333;
+		    padding: 0px;
+		}				
+		.table-dl-form-1001 {
+			display: table;
+			vertical-align: top;
+			width: 800px;	
+		}
 
 
+		.jqmWindow-104 {
+		    display: none;
+		    position: absolute;
+		    /*top:30%;*/
+			left: 50%;
+			margin-left: -200px;		    
+		    width: 400px;
+			height: 160px;		    
+		    background-color: #f6f6f6;
+		    color: #333;
+		    border: 4px solid #376340; /*rgba(55,99,64,1)*/
+		    padding: 0px;
+		}		
+		.jqmWindow-105 {
+		    display: none;
+		    position: absolute;
+		    /*top:30%;*/
+			left: 50%;
+			margin-left: -200px;		    
+		    width: 400px;
+			height: 160px;		    
+		    background-color: #f6f6f6;
+		    color: #333;
+		    border: 4px solid #376340; /*rgba(55,99,64,1)*/
+		    padding: 0px;
+		}		
+
+		/*.jqmWindow-1001 {
+		    display: none;
+		    position: absolute;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 700px;		    
+		    background-color: rgba(0, 0, 0, 0.8);
+		    color: #333;
+		    padding: 0px;
+		}*/				
+
+		
+	</style>
+	
+	<style>
+
+		.ks-tip-container {
+			position: relative;
+		}		
+		.ks-tip-target:hover + .ks-tip-1 span {
+		}
+		.ks-tip-target:hover + .ks-tip-1 {
+			display: block;
+		}
+		.ks-tip-1 {
+			position: absolute;
+			width: 60px;
+			height: 24px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;			
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			font-weight: 400;					
+			color: #fff;	
+			padding: 6px 0 0 0;
+			display: none;							
+		}
+		.ks-tip-1-indicator {
+			position: absolute;
+			top: 24px;
+			left: 4px;
+			width: 8px;
+			height: 12px;
+			background-image: url("/assets/drop-w8-h12.png");
+		}		
+		.ks-tip-34minus {
+			top: -34px;
+		}
+
+		.ks-tip-target:hover + .ks-tip span {
+		}
+		.ks-tip-target:hover + .ks-tip {
+			display: block;
+		}
+		.ks-tip {
+			position: absolute;
+			display: none;							
+		}		
+		.ks-tip-delete-post-user-comment {
+			position: absolute;
+			width: 60px;
+			height: 24px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;			
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			font-weight: 400;					
+			color: #fff;	
+			padding: 6px 0 0 0;
+			display: none;
+			top: -36px;
+			left: -20px;		
+			z-index: 1;
+		}		
+		.ks-tip-indicator-delete-post-user-comment {
+			position: absolute;
+			top: 24px;
+			left: 27px;
+			width: 8px;
+			height: 12px;
+			background-image: url("/assets/drop-w8-h12.png");
+		}		
+
+		.ks-tip-delete-post-user {
+			position: absolute;
+			width: 60px;
+			height: 24px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;			
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			font-weight: 400;					
+			color: #fff;	
+			padding: 6px 0 0 0;
+			display: none;
+			top: -36px;
+			left: -20px;		
+			z-index: 1;
+		}		
+		.ks-tip-indicator-delete-post-user {
+			position: absolute;
+			top: 24px;
+			left: 27px;
+			width: 8px;
+			height: 12px;
+			background-image: url("/assets/drop-w8-h12.png");
+		}		
+
+		/*.ks-tip-2 {
+			position: absolute;
+			width: 200px;
+			height: 100px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;
+			display: none;				
+		}*/
+		.hidden {
+			display: none !important;
+			visibility: hidden !important			
+		}
+		.dialog-span-1 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 10px;
+			font-weight: 200;					
+			color: #333;		
+			height: 12px;		
+		}
+		.dialog-span-1:hover {
+			text-decoration: underline;
+		}
+		
+	</style>
+
+	<style>
+		
+		/*.add-post-user-container-active {
+			min-height: 52px;
+		}
+		.add-post-user-container-inactive {
+			min-height: 26px;
+			background: url('/assets/background-placeholder-comment-2-w206-h20.png') 3px 4px no-repeat;
+		}*/
+		.textarea-add-post-user-container {
+			border: 1px solid #2899A1; 
+			border-radius: 0px;			
+			min-height: 26px;
+			width: 591px;			
+			background-color: #fff;
+			padding: 4px 0px 4px 5px;
+		}
+		.textarea-add-post-user-inactive {
+			min-height: 26px;
+			background-image: url('/assets/background-placeholder-comment-2-w206-h20.png');
+			background-repeat: no-repeat;
+			background-position: 3px 4px;
+			background-color: #fff;
+		}
+		.textarea-add-post-user-active {
+			background-color: #eee;
+			min-height: 52px;
+		}
+		.textarea-add-post-user {
+			vertical-align: text-top;
+			/*overflow: hidden;*/
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 400;
+			font-size: 13px;
+			color: #1B666B;
+			line-height: 100%;
+			padding: 6px 5px 5px 5px;
+			min-height: 26px;
+			width: 579px;			
+			/*white-space: pre;*/
+		    white-space: pre-wrap;
+		    word-wrap: break-word;
+		    overflow-wrap: break-word;									
+		}
+		.textarea-add-post-user:focus:hover {
+			outline: none;
+		}
+		.textarea-add-post-user:focus {
+			outline: none;
+		}						
+		.textarea-add-post-user:hover {
+			outline: none;
+		}		
+		.render-add-post-user-image {
+			
+		}
+		.textarea-add-post-user-show-text {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 600;
+			font-size: 13px;
+			color: #888;
+		}
+		
+		.resize-none {
+			resize: none;
+		}
+				
+		.submit-edit-story-4-text {
+			margin: 0;
+		}				
+		.submit-edit-story-4-text-2 {
+			margin: 9px 0 0 0;
+		}				
+		.submit-edit-story-4-loader {
+			width: 32px;
+			height: 32px;
+			background-image: url('/assets/loader_ajax_w32_h32_7.gif');
+			background-repeat: no-repeat;
+			display: inline-block;
+			/*margin: 5px 0 0 0;*/
+			margin: 5px 0 0 0;
+		}						
+		.post-user-delete {
+			width: 20px;
+			height: 20px;
+			background-image: url('/assets/button_delete_w20_h20.png');
+			background-repeat: no-repeat;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+		.post-user-delete:hover {
+			cursor: pointer;
+		}
+		.post-user-delete-blank {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+		.post-user-comment-delete-blank {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+
+		.post-user-comment-delete-container {
+			width: 20px;
+			height: 20px;
+			margin: 2px 2px 0 0;			
+		}
+		.post-user-comment-delete {
+			width: 20px;
+			height: 20px;
+			background-image: url('/assets/button_delete_w20_h20.png');
+			background-repeat: no-repeat;
+			display: inline-block;
+		}
+		.post-user-comment-delete:hover {
+			cursor: pointer;
+		}
+		.post-user-comment-delete-blank {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+
+		.story-4-attach {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 400;
+			font-size: 13px;
+			color: #888;
+		}
+		.story-4-attach:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		
+	</style>
+
+	<style>
+
+		.add-comment-container-active {
+			min-height: 52px;
+		}
+		.add-comment-container-inactive {
+			min-height: 26px;
+			background: url('/assets/background-placeholder-comment-1-w98-h18.png') 3px 4px no-repeat;
+			/*background-repeat: no-repeat;*/
+		}
+		.add-comment-container {
+			border-radius: 0px;			
+			/*min-height: 26px;*/
+			width: 100%;			
+		}		
+		.add-comment-container:focus {
+			outline: 0;
+		}		
+		.add-comment-container:hover {
+			outline: 0;
+		}		
+		.add-comment-container:focus:hover {
+			outline: 0;
+		}		
+		.add-comment-container:active {
+			outline: 0;
+		}				
+		.textarea-add-comment-container {
+			border: 1px solid #2899A1; 
+			border-radius: 0px;			
+			width: 542px;			
+		}
+		.textarea-add-comment {
+			background-color: #fff;
+			color: #1B666B;						
+			/*resize: none;*/
+			vertical-align: text-top;
+			/*overflow: hidden;*/
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 400;
+			font-size: 13px;
+			line-height: 100%;
+			padding: 6px 5px 5px 5px;
+			min-height: 26px;
+			width: 540px;			
+			/*white-space: pre;*/
+		    white-space: pre-wrap;
+		    word-wrap: break-word;
+		    overflow-wrap: break-word;									
+		}
+		.textarea-add-comment:focus:hover {
+			outline: none;
+		}
+		.textarea-add-comment:focus {
+			outline: none;
+		}						
+		.textarea-add-comment:hover {
+			outline: none;
+		}		
+
+		.btn-add-comment-story-4 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 12px;		
+			text-align: center;	
+			padding: 4px 0 0 0;
+		  	color: #fff;
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 50px;
+		  	height: 20px;
+		  	/*background: linear-gradient(#F0A546, #D98D2D);*/
+		  	/*background: linear-gradient(#F0A546, #BD7A26);*/
+		  	/*background: linear-gradient(#1F7C82, #1C7278);*/
+		  	background: linear-gradient(#fbb040, #ca8e33) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		  	border-radius: 3px;
+		}
+		.btn-add-comment-story-4:focus {
+			/*-webkit-box-shadow: 0 0 2px 2px #FAC582;
+			   -moz-box-shadow: 0 0 2px 2px #FAC582;
+			        box-shadow: 0 0 2px 2px #FAC582;*/
+		  	background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		  	outline:none;
+		}
+		.btn-add-comment-story-4:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-add-comment-story-4:active { 
+		  	/*box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	color: #fff;
+			background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);*/  	
+		  	outline:none;
+		}
+
+		/*.btn-story-4-attach-text {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 600;
+			font-size: 18px;
+			color: #fff;			
+		}*/
+		.btn-add-comment-story-4-loader {
+			width: 16px;
+			height: 11px;
+			background-image: url('/assets/loader_ajax_w16_h11_blue.gif');
+			background-repeat: no-repeat;
+			display: inline-block;
+			margin: 5px 0 0 5px;
+		}	
+		.add-comment-text-1 span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 400;
+			font-size: 13px;
+			color: #1B666B;
+			line-height: 100%;
+		}
+
+		.add-comment-border-top {
+		    background: linear-gradient(to bottom, #49853f 0%, #ffffff 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		    /*border-bottom: 1px solid #eee;*/
+		    height: 8px;
+		    margin-left: 0;
+		    padding-left: 0;
+		    padding-top: 0;
+		    position: relative;
+		    width: 100%;
+		}
+		
+		.textarea-add-comment-parent {
+			width: 100%; 
+			background-color: #eee; 
+			padding: 0 4px 0 4px;	
+		}	
+			
+	</style>	
+
+			<div class="jqmWindow jqmWindow-1001" id="dialog_1001">
+		   		<div class="table-dl-form-1001">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form1001" class="form-edit-close jqmClose tip-left-center" tabindex="">
+		   						<img src="/assets/x_close_white_w20_h20.png" alt="X" height="20px">
+		   					</div>
+			                <div class="tip-content">
+			                    <div class="tooltiptext">Close</div>
+			                </div>																															   					
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div style="width: 100%; text-align: center;">
+					<div style="height: 20px;"></div>
+					<div id="dialog_1001_content_container" class="">
+						<figure id="profile_figure_dialog_1001" class="dialog-user-image">
+							<img alt="" src="" />
+						</figure>
+					</div>
+					<div style="height: 50px;"></div>
+				</div>
+			</div>
+
+			<div class="jqmWindow jqmWindow-101" id="dialog_101">
+		   		<div class="table-dl-form-101">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form101" class="form-edit-close jqmClose tip-left-center" tabindex="">
+		   						<img src="/assets/x_close_white_w20_h20.png" alt="X" height="20px">
+		   					</div>
+			                <div class="tip-content">
+			                    <div class="tooltiptext">Close</div>
+			                </div>																															   					
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div style="width: 100%; text-align: center;">
+					<div style="height: 20px;"></div>
+					<div id="dialog_101_content_container" class="">
+						<!-- <figure id="profile_figure_dialog_101" class="dialog-user-image">
+							<img alt="" src="" />
+						</figure> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="jqmWindow jqmWindow-104" id="dialog_104">
+				<div class="dialog-topbar-1" style="margin-top:0px;">
+					<div style="height: 63px; width: 60px; float: left; position: absolute;">
+						<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+					</div>
+					<!-- text goes here -->
+   					<div id="close_form104" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+   					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					   					
+   					<div style="clear: both;"></div>
+				</div>
+				<!-- <div style="height: 20px;"></div> -->
+				<div class="background-table-dialog-1">
+			   		<div class="table-dialog-1">
+						<div class="dialog-msg-container">
+							<span>Delete this status?</span>
+						</div>
+	   				</div>
+   				</div>
+   				<div style="height: 16px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+		   				<div class="cell-100percent" style="text-align: center;">
+							<span><input id="btn_dlg_submit_delete_post" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<span><input id="btn_dlg_cancel_delete_post" class="btn-pop-dialog" type="button" value="Cancel" tabindex=""></span>
+		   				</div>
+   					</div>
+				</div>														   				
+				<div style="height: 20px;"></div>
+			</div>
+
+			<div class="jqmWindow jqmWindow-105" id="dialog_105">
+				<div class="dialog-topbar-1" style="margin-top:0px;">
+					<div style="height: 63px; width: 60px; float: left; position: absolute;">
+						<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+					</div>
+					<!-- text goes here -->
+   					<div id="close_form105" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+   					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					   					
+   					<div style="clear: both;"></div>
+				</div>
+				<!-- <div style="height: 20px;"></div> -->
+				<div class="background-table-dialog-1">
+			   		<div class="table-dialog-1">
+						<div class="dialog-msg-container">
+							<span>Delete this comment?</span>
+						</div>
+	   				</div>
+   				</div>
+   				<div style="height: 16px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+		   				<div class="cell-100percent" style="text-align: center;">
+							<span><input id="btn_dlg_submit_delete_comment" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<span><input id="btn_dlg_cancel_delete_comment" class="btn-pop-dialog" type="button" value="Cancel" tabindex=""></span>
+		   				</div>
+   					</div>
+				</div>														   				
+				<div style="height: 20px;"></div>
+			</div>
 
 			<!-- logo image - show 11 -->			
 			<div class="jqmWindow jqmWindow-11" id="dialog_11">
@@ -54,7 +762,7 @@
 					<!-- <div class="container-figure container-figure-1"> -->
 					<div class="">
 						<figure id="profile_figure_dialog_11" class="dialog-user-image">
-							<img alt="photo not appearing" src="" />
+							<img alt="" src="" />
 							<!-- <figcaption class="figcaption-2">
 								<div class="tip-top-center"></div>
 				                <div class="tip-content">
@@ -273,9 +981,6 @@
 					</div>
 				</div>
 			</div>
-
-
-
 
 			
 			
@@ -767,12 +1472,12 @@
 							<div class="cell-225 padding-right-8" id="container_logo_image">
 								<div id="drop_container_logo_image" class="drop width-200 float-right">
 									<div id="render_publisher_logo_image_primary" class="padding-0">
-										<div class="container-image">
+										<!-- <div class="container-image"> -->
 											<%= render 'publishers/publisher_logo_image_primary' %>
-										</div>
+										<!-- </div>
 										<div class="container-menu">
-											<%= render 'publishers/publisher_logo_image_primary_menu' %>
-										</div>
+											<#%= render 'publishers/publisher_logo_image_primary_menu' %#>
+										</div> -->
 							        </div>
 								</div>
 								<div class="float-clear"></div>
@@ -851,7 +1556,7 @@
 								<div class="cell-title-bar-profile-left-long padding-left-8">
 									<div class="position-relative">
 										<div class="position-absolute top-minus-24">												
-											<span>Corporate Story</span>
+											<span>About Us</span>
 										</div>
 									</div>		
 								</div>
@@ -1167,6 +1872,8 @@
 						</div>
 					</div>
 
+
+
 					<div style="height: 20px;"></div>
 
 					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
@@ -1198,6 +1905,89 @@
 						</div>
 					</div>
 					
+					<div class="table margin-0" style="height: auto;">
+						<div class="row">
+							<div class="cell-100percent">
+								<div style="height: 10px;"></div>
+								<div class="edit-story-4 textarea-add-post-user-parent" style="float: right; padding: 0 20px 0 0;">
+									
+									<%= form_for PostPublisherComment.new, :url => create_post_publisher_comment_publishers_path(@post_publisher_comment_new), :html => {:multipart => true, :class => '', :id => 'new_post_publisher_comment'}, :remote => true do |f| %>
+										<%= f.hidden_field :comment_text %>
+										<%= f.hidden_field :post_publisher_id %>
+									  	<%= f.submit :id =>'submit_post_publisher_comment_hidden', :class => 'btn-submit hidden toggle-comment', :value => '' %>
+									<% end %>
+									
+									<%= form_for PostPublisher.new, :url => create_post_publisher_publishers_path(@post_publisher_new), :html => {:multipart => true, :class => '', :id => 'new_post_publisher'}, :remote => true do |f| %>
+										<%= f.hidden_field :post_text %>
+									  	<%= f.submit :id => 'submit_story_4_hidden', :class => 'btn-submit hidden', :value => '' %>
+									<% end %>
+									
+									<div class="textarea-add-post-user-container toggle-post-user" tabindex="">
+										<div id="render_post_publisher_image" class="render-post-user-image"></div>
+										<div id="textarea_add_post_publisher" class="textarea-add-post-user toggle-post-user textarea-add-post-user-inactive" contenteditable="true" tabindex="101"><br></div>
+									</div>
+										
+									<div class="btn-textarea-add-post-user-story-4-container hidden">
+										<div style="height: 10px;"></div>
+										<div id="drop_container_story_4_attach" class="drop float-left width-200">
+											<%= render 'publishers/post_publisher_attach_menu' %>
+	
+											<%= form_for PostPublisherImage.new, :url => upload_post_publisher_image_publishers_path(@post_publisher_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_post_publisher_image'}, :remote => true do |f| %>
+											  <p><%= f.file_field :image, :id => 'new_post_publisher_image_image' %></p>
+											  <!-- <#%= f.hidden_field :post_publisher_id, :val => nil %#> -->
+											  <p><%= f.submit :id => 'btn_submit_post_publisher_image', :class => 'btn-submit hidden', :value => '' %></p>
+											<% end %>
+										</div>
+										<div id="submit_story_4" class="btn-submit-story-2 float-right toggle-post-user" tabindex="103">
+											<div id="submit_story_4_text" class="submit-edit-story-4-text-2">Add</div>
+											<div id="submit_story_4_loader" class="submit-edit-story-4-loader hidden"></div>
+										</div>
+										<div class="float-right" style="display: inline-block; width: 6px; height: 1px"></div>
+										<div id="cancel_story_4" class="btn-submit-story-1 float-right toggle-post-user" tabindex="102">
+											<div id="cancel_story_4_text" class="submit-edit-story-4-text">Cancel</div>
+											<div id="cancel_story_4_loader" class="submit-edit-story-4-loader hidden"></div>
+										</div>
+									</div>
+								</div>
+								<div style="clear: both;"></div>
+
+								<!-- <div id="btn_test" style="width: 20px; height: 10px; background-color: red;"></div> -->
+
+								<div style="height: 10px;"></div>				
+								
+								<div class="show-story-3">
+									<div class="text-align-left">
+										<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
+											<div style="margin: 0;">													
+												<div class="publisher-product-utility-bar light">
+													<div id="render_story_4_post_publishers_count" style="padding-left: 10px; padding-top: 10px;"></div>
+												</div>
+												<div id="im_top_sh" style="display: block;"></div>
+											</div>
+											<div id="render_story_4" style="height: auto;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<% if false %>
 					<div class="table margin-0" style="height: auto;">
 						<div class="row">
 							<div class="cell-100percent">
@@ -1243,7 +2033,7 @@
 							</div>
 						</div>
 					</div>
-					
+					<% end %>
 					
 					
 					
@@ -1269,7 +2059,39 @@
 
 	
 
-		
+	<!-- <script>
+		function crop_logo_image_primary() {
+			var input_image_id = $("#image_id_logo").val();
+			var input_crop_x = $("#id_crop_x_logo").val();
+			var input_crop_y = $("#id_crop_y_logo").val();
+			var input_crop_w = $("#id_crop_w_logo").val();
+			var input_crop_h = $("#id_crop_h_logo").val();
+			var formData = { image_id: input_image_id, 
+							 crop_x: input_crop_x, 
+							 crop_y: input_crop_y,
+							 crop_w: input_crop_w, 
+							 crop_h: input_crop_h 
+						   };
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publisher_users/crop_commit_logo',	
+		    	// cache: false,		    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful crop");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+	  		// return false;
+		}
+	</script> -->		
+
 	<script>
 
 
@@ -1378,6 +2200,13 @@
     		});
 		}
 
+
+
+
+
+
+
+
 	  	function show_edit_story_1() {
 			$("#open_edit_story_1, .show-story-1").fadeOut(200, function(){    			
 				$("#open_edit_story_1").addClass("hidden");
@@ -1391,14 +2220,17 @@
     			
 				$(".edit-image").fadeIn(200).removeClass("hidden");
 				$(".container-figure figure").removeClass("cursor-pointer");
+				$(".container-figure-logo figure").removeClass("cursor-pointer");
 				
-				
-				$("#drop_container_photo_primary").addClass("drop");
-				$("#drop_container_logo_image").addClass("drop");
+				// $("#drop_container_user_image_primary").addClass("drop");
+				// $("#drop_container_logo_image").addClass("drop");
 
-				$(".container-menu .dropdownContain").removeClass("hidden");
+				// $(".container-menu .dropdownContain").removeClass("hidden");
 				
-    			// $("#user_name_first").focus();
+				$(".drop-1-container").removeClass("hidden");
+				$(".drop-2-container").removeClass("hidden");
+				
+    			$("#publisher_name_company").focus();
 				
     		});
 	  	}
@@ -1420,14 +2252,58 @@
 				$(".dialog-11-figure").addClass("cursor-pointer");
 				$(".dialog-21-figure").addClass("cursor-pointer");
 				
-				// jQuery(document).trigger( click_cancel_edit_story_1 );
-				
-				$(".container-menu .dropdownContain").addClass("hidden");
-				
-				$("#drop_container_photo_primary").removeClass("drop");
-				$("#drop_container_logo_image").removeClass("drop");
+				$(".drop-1-container").addClass("hidden");				
+				$(".drop-2-container").addClass("hidden");				
+
+				// $(".container-menu .dropdownContain").addClass("hidden");
+				// $("#drop_container_user_image_primary").removeClass("drop");
+				// $("#drop_container_logo_image").removeClass("drop");
 			});
 	  	}
+
+
+
+
+
+
+
+
+
+	  	// function show_edit_story_1() {
+			// $("#open_edit_story_1, .show-story-1").fadeOut(200, function(){    			
+				// $("#open_edit_story_1").addClass("hidden");
+				// $("#close_edit_story_1").fadeIn(200).removeClass("hidden");
+    			// $(".show-story-1").addClass("hidden");
+    			// $(".edit-story-1").fadeIn(300).removeClass("hidden");
+				// // $("#btns_edit_story_1").fadeIn(200).removeClass("hidden");
+				// $("#btns_edit_story_1").fadeIn(200).removeClass("visibility-hidden");
+				// $(".edit-image").fadeIn(200).removeClass("hidden");
+				// $(".container-figure figure").removeClass("cursor-pointer");
+				// $("#drop_container_photo_primary").addClass("drop");
+				// $("#drop_container_logo_image").addClass("drop");
+				// $(".container-menu .dropdownContain").removeClass("hidden");
+    			// // $("#user_name_first").focus();
+    		// });
+	  	// }
+	  	// function cancel_edit_story_1() {
+	  		// $(".edit-story-1").fadeOut(200, function(){
+    			// $(".edit-story-1").addClass("hidden");
+    			// $(".show-story-1").removeClass("hidden").fadeIn(300);
+				// $("#open_edit_story_1").removeClass("hidden").fadeIn(200);
+				// $("#close_edit_story_1").addClass("hidden");
+				// // $("#btns_edit_story_1").removeAttr("style");
+				// // $("#btns_edit_story_1").addClass("hidden");
+				// $("#btns_edit_story_1").addClass("visibility-hidden");
+				// $(".edit-image").removeAttr("style");				
+				// $(".edit-image").fadeIn(200).addClass("hidden");
+				// $(".dialog-11-figure").addClass("cursor-pointer");
+				// $(".dialog-21-figure").addClass("cursor-pointer");
+				// // jQuery(document).trigger( click_cancel_edit_story_1 );
+				// $(".container-menu .dropdownContain").addClass("hidden");
+				// $("#drop_container_photo_primary").removeClass("drop");
+				// $("#drop_container_logo_image").removeClass("drop");
+			// });
+	  	// }
 
 	  	function show_edit_story_2() {
 			$("#open_edit_story_2, .show-story-2").fadeOut(200, function(){    			
@@ -1586,28 +2462,446 @@
 		// }
 
 
-		var id_logo_image = null;
-		// var id_image_logo = null;
-		// var gon_crop_x = gon.crop_x;
-		// var gon_crop_y = gon.crop_y;
-		// var gon_crop_w = gon.crop_w;
-		// var gon_crop_h = gon.crop_h; 
+		function create_post_publisher_like(id, nlist) {
+			// alert("create_post_publisher_like(post_publisher_id)");
+			var formData = {post_publisher_id:id, n_list:nlist};
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publishers/create_post_publisher_like',			    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function delete_post_publisher_like(id, nlist) {
+			// alert("delete_post_publisher_like(post_publisher_id)");
+			var formData = {post_publisher_id:id, n_list:nlist};
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publishers/destroy_post_publisher_like',			    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function delete_post_publisher(id) {
+			// alert("delete_post_publisher");
+			var formData = {post_publisher_id:id};
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publishers/destroy_post_publisher',			    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function cancel_post_publisher() {
+			// alert("delete_post_publisher");
+			// var formData = {post_publisher_id:id};
+		  	$.ajax({
+		    	type: 'POST',
+		    	// data : formData,
+		    	url: '/publishers/cancel_post_publisher',			    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function cancel_post_publisher_on_close() {
+			var w = $("#render_post_publisher_image").html();
+			if ( !( (w == "<br>") || (w == "") ) ) {
+				$.ajax({
+					type: 'POST',
+					url: '/publishers/cancel_post_publisher_on_close',			    	
+					dataType: "script",
+					async: false,
+					beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))} // ,
+				});
+			}
+		}
+
+		function delete_post_publisher_comment() {
+			// alert("delete_post_publisher_comment");
+			var formData = { post_publisher_comment_id: post_publisher_comment_comment_id_delete, 
+							 post_publisher_id: post_publisher_comment_post_publisher_id_delete
+						   };
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publishers/destroy_post_publisher_comment',			    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function reset_post_publisher_comment_delete() {
+			post_publisher_comment_comment_id_delete = null;
+			post_publisher_comment_post_publisher_id_delete = null;			
+		}
+
+
+
+		var a_comments = [];
 		
+		function edit_textarea_comment($t, $b) {
+			// textarea_add_comment_<#%= post_publisher.id %#>
+			// btn_add_comment_<#%= post_publisher.id %#>
+			b_comments = [];
+			var is_open = false;
+			for ( i = 0; i < a_comments.length; i++ ) {
+				var $t_held = a_comments[i][0];
+				if ( $t.attr("id") == $t_held.attr("id") ) {
+					is_open = true;
+				}
+				else {
+					var $b_held = a_comments[i][1];
+					var v = $t_held.html();
+					if ((v == "<br>") || (v == "")) {
+						$b_held.addClass("hidden");
+						$t_held.removeClass("add-comment-container-active").addClass("add-comment-container-inactive");
+						$t_held.html("<br>");
+					}
+					else {
+						var b = [];
+						b.push($t_held);
+						b.push($b_held);
+						b_comments.push(b);						
+					}
+				}
+			}			
+			var c = [];
+			c.push($t);
+			c.push($b);
+			b_comments.push(c);					
+			if (!is_open) {
+				$t.removeClass("add-comment-container-inactive").addClass("add-comment-container-active");
+				$b.removeClass("hidden");
+			}
+			a_comments = b_comments;
+		}		
+
+		function reset_textarea_comment() {
+			b_comments = [];
+			for ( i = 0; i < a_comments.length; i++ ) {
+				$t = a_comments[i][0];
+				$b = a_comments[i][1];
+				var v = $t.html();
+				if ((v == "<br>") || (v == "")) {
+					$b.addClass("hidden");
+					$t.removeClass("add-comment-container-active").addClass("add-comment-container-inactive");
+					$t.html("<br>");
+				}
+				else {
+					var b = [];
+					b.push($t);
+					b.push($b);
+					b_comments.push(b);					
+				}
+			}
+			a_comments = b_comments;
+		}
+		
+		function reset_textarea_comment_callback( post_publisher_id ) {
+			var t_id = "textarea_add_comment_" + post_publisher_id;
+			b_comments = [];
+			for ( i = 0; i < a_comments.length; i++ ) {
+				var $t_held = a_comments[i][0];
+				if ( !( t_id == $t_held.attr("id") ) ) {
+					var b = [];
+					var $b_held = a_comments[i][1];
+					b.push($t_held);
+					b.push($b_held);
+					b_comments.push(b);					
+				}
+			}			
+			a_comments = b_comments;
+			var $t = $("#" + t_id);						
+			var b_id = "#btn_add_comment_" + post_publisher_id;			
+			var $b = $(b_id);
+			$b.addClass("hidden");
+			$t.removeClass("add-comment-container-active").addClass("add-comment-container-inactive");
+			$t.html("<br>");
+			$t.focus();
+		}
+
+
+
+		var b_edit_post_publisher = false;
+		
+		function edit_textarea_post_publisher() {
+			b_edit_post_publisher = true;
+			$("#textarea_add_post_publisher").removeClass("textarea-add-post-user-inactive").addClass("textarea-add-post-user-active");
+			$(".btn-textarea-add-post-user-story-4-container").removeClass("hidden");
+		}		
+		function reset_textarea_post_publisher() {
+			$("#render_post_publisher_image").html("");
+			$("#textarea_add_post_publisher").html("<br>");
+			$(".btn-textarea-add-post-user-story-4-container").addClass("hidden");
+			$("#textarea_add_post_publisher").removeClass("textarea-add-post-user-active").addClass("textarea-add-post-user-inactive");
+			// $("#textarea_add_post_publisher").focus();
+			// if ($ttpost != null) {
+				b_edit_post_publisher = false;
+				// $bbpost.addClass("hidden");
+				// $ttpost.removeClass("textarea-add-post-user-active").addClass("textarea-add-post-user-inactive");
+				// $ttpost.html("<br>");
+				// $ttpost.focus();
+				// $ttpost = null;
+				// $bbpost = null;				
+			// }
+		}
+		
+		
+		
+		// function getScrollPos() {
+			// return $(window).scrollTop();	
+		// }
+		
+
+		var drop_story_4_attach_visible = false;
+		var btn_1_drop_add_post_publisher_image_clicked = false;
+
+		function drop_story_4_attach_show() {
+			$("#drop_story_4_attach").addClass('drop');
+			$("#container_drop_story_4_attach").removeClass('hidden');
+			$("#drop_story_4_attach div div.dropdownContain div.dropOut").fadeIn(200, function() {
+				$(this).css({ 
+					'margin-top' : 10
+				});
+			});
+			$("#caret_story_4_attach").removeClass("nav-caret-down").addClass("nav-caret-up");
+			drop_story_4_attach_visible = true;			
+		}	
+		function drop_story_4_attach_hide() {
+			// alert('drop_story_4_attach_hide');
+			$("#drop_story_4_attach").removeClass('drop');
+			$("#container_drop_story_4_attach").addClass('hidden');
+			drop_story_4_attach_visible = false;			
+			// $("#render_nav_avatar").removeClass("avatar-focus");
+			// $("#nav_caret_container").removeClass("nav-caret-focus");
+			$("#drop_story_4_attach div div.dropdownContain div.dropOut").css({
+				'margin-top' : 0
+			});
+			$("#caret_story_4_attach").removeClass("nav-caret-up").addClass("nav-caret-down");
+			
+			if( btn_1_drop_add_post_publisher_image_clicked == true ) {
+				btn_1_drop_add_post_publisher_image_clicked = false;
+				// alert('btn_1_drop_add_post_publisher_image_clicked == true');
+				$("form#new_post_publisher_image input#new_post_publisher_image_image").click();
+			}
+		}	
+		function drop_toggle_story_4_attach() {
+			if (drop_story_4_attach_visible) {
+				drop_story_4_attach_hide();
+			}
+			else {
+				drop_story_4_attach_show();
+			}
+		}	
+
+		
+			  	
+		var id_logo_image = null;
+
+		var id_image = null;
+		var id_image_logo = null;
+
+		var publisher_slug = <%= @publisher.slug %>;
+
+		var scroll_top = 0;
+
+		var post_publisher_id_delete = null;
+
+		var post_publisher_comment_comment_id_delete = null;
+		var post_publisher_comment_post_publisher_id_delete = null;
+			  	
+			  	
+			  	
+			  	
 			  	
 		// $(window).load( function() {
 		$(document).ready(function () {				
 
 			// $.ajaxSetup({cache: false});
 			
+			$(document).on("click", ".textarea-add-post-user", function() {
+				if (!b_edit_post_publisher) {
+					// $p = $(this).closest(".textarea-add-post-user-parent");
+					// $b = $p.find(".btn-textarea-add-post-user-story-4-container"); // btn-textarea-add-post-user-story-4-container
+					// edit_textarea_post_publisher($(this), $b);
+					edit_textarea_post_publisher();
+				}
+			});
+			$(document).on("keyup", ".textarea-add-post-user", function() {
+				// var v = $(this).html();
+				// var $p = $(this).parent();
+				// var $q = $p.find(".render-post-user-image");
+				// var w = $q.html();
+				var v = $("#textarea_add_post_publisher").html();
+				var w = $("#render_post_publisher_image").html();
+				if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+					reset_textarea_post_publisher();
+				}
+			});
+			$(document).on("keydown", ".textarea-add-post-user", function() {
+				if (!b_edit_post_publisher) {
+					// $p = $(this).closest(".textarea-add-post-user-parent");
+					// $b = $p.find(".btn-textarea-add-post-user-story-4-container");
+					// edit_textarea_post_publisher($(this), $b);
+					edit_textarea_post_publisher();					
+				}
+			});
+			$(document).on('click', function(e) {
+				var $t = $(e.target);
+				var c = ":" + $t.attr("class") + ":";
+				if ( (c !== ":undefined:") && (c !== ":btn-submit hidden:") ) {
+					if ( !( ($t.hasClass("div-link")) || ($t.hasClass("toggle-post-user"))  || ($t.parents().hasClass("toggle-post-user") ) ) ) {
+						var v = $("#textarea_add_post_publisher").html();
+						var w = $("#render_post_publisher_image").html();
+						if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+							// alert("triggered by = " + c);
+							reset_textarea_post_publisher();
+						}
+					}
+				}
+			});
+
+
+			
+			$(document).on("click", ".textarea-add-comment", function() {
+				// if (!b_edit_comment) {
+					$p = $(this).closest(".textarea-add-comment-parent");
+					$b = $p.find(".btn-add-comment-story-4-container");
+					edit_textarea_comment($(this), $b);
+				// }
+			});
+			$(document).on("keyup", ".textarea-add-comment", function() {
+				// var v = $(this).html();
+				// if ((v == "<br>") || (v == "")) {
+					reset_textarea_comment();
+				// }
+			});
+			$(document).on("keydown", ".textarea-add-comment", function() {
+				// if (!b_edit_comment) {
+					$p = $(this).closest(".textarea-add-comment-parent");
+					$b = $p.find(".btn-add-comment-story-4-container");
+					edit_textarea_comment($(this), $b);					
+				// }
+			});
+			$(document).on('click', function(e) {
+				var $t = $(e.target);
+				if (!$t.hasClass("toggle-comment")) {
+					reset_textarea_comment();
+				}
+			});
+			
+			
+			
+			$(document).on("click", "#btn_dlg_submit_delete_post", function() {
+				delete_post_publisher(post_publisher_id_delete);
+			});
+			$(document).on("click", "#btn_dlg_cancel_delete_post", function() {
+				$("#close_form104").trigger('click');
+			});
+			$(document).on("click", ".post-user-delete", function() {
+				post_publisher_id_delete = $(this).find(".post-user-id").attr("name");				
+				// $("#dialog_104").jqmShow();
+				$(document).trigger('click_104');
+				$("#btn_dlg_cancel_delete_post").focus();
+			});			
+
+
+			$(document).on("click", "#btn_dlg_submit_delete_comment", function() {
+				// var o_target = $(e.target).parents('.nav-drop-1').attr('id');
+				delete_post_publisher_comment();
+			});
+			$(document).on("click", "#btn_dlg_cancel_delete_comment", function() {
+				$("#close_form105").trigger('click');
+			});
+			$(document).on("click", ".post-user-comment-delete", function() {
+				post_publisher_comment_comment_id_delete = $(this).find(".comment-id").attr("name");
+				post_publisher_comment_post_publisher_id_delete = $(this).find(".post-user-id").attr("name");
+				// $("#dialog_104").jqmShow();
+				$(document).trigger('click_105');
+				$("#btn_dlg_cancel_delete_comment").focus();
+			});			
+
+
+
+			document.body.setAttribute('spellcheck', false);
+			
+			
+			
 			id_logo_image = gon.id_logo_image;
 			// id_image_logo = gon.id_image_logo;
 			
-			$("#render_story_5").html("<%= j render("publishers/story_5") %>");
-			$("#render_story_5_log_publishers_count").html("<%= j render("publishers/story_5_log_publishers_count") %>");
+			
+			$(document).on('click_1001', function() {
+				scroll_top = $(window).scrollTop();
+			});
+			
+			
+			// $("#render_story_5").html("<#%= j render("publishers/story_5") %#>");
+			// $("#render_story_5_log_publishers_count").html("<#%= j render("publishers/story_5_log_publishers_count") %#>");
 			// $("#render_story_5_will_paginate").html("<#%= j render("publishers/story_5_will_paginate") %#>");			
+
+			$("#render_story_4").html("<%= j render("publishers/story_4") %>");
+			$("#render_story_4_post_publishers_count").html("<%= j render("publishers/story_4_post_publishers_count") %>");			
+
+			$(document).on("click", ".btn-submit-post-user-like-create", function() {
+				var id = $(this).find("input[name='post_publisher_id_hidden']").attr("value");
+				var nlist = $(this).attr("name");
+				create_post_publisher_like(id, nlist);
+			});
 			
-			
-			
+			$(document).on("click", ".btn-submit-post-user-like-delete", function() {
+				var id = $(this).find("input[name='post_publisher_id_hidden']").attr("value");
+				var nlist = $(this).attr("name");
+				delete_post_publisher_like(id, nlist);
+			});
+
 			
 		  	$("#open_edit_story_1").click(function(){
 				show_edit_story_1();
@@ -1709,6 +3003,99 @@
 
 
 			
+			
+			
+			
+		    $("#textarea_add_post_publisher").on ('blur', function (e) {
+				onDivBlur();
+		    });
+		    $("#textarea_add_post_publisher").on ('mousedown', function (e) {
+				return cancelEvent(e);
+		    });
+		    $("#textarea_add_post_publisher").on ('click', function (e) {
+				return cancelEvent(e);
+		    });
+		    $("#textarea_add_post_publisher").on ('mouseup', function (e) {
+				saveSelection();
+		    });
+		    $("#textarea_add_post_publisher").on ('keyup', function (e) {
+				saveSelection();
+		    });
+		    $("#textarea_add_post_publisher").on ('focus', function (e) {
+				restoreSelection();
+		    });
+		    $("#textarea_add_post_publisher").on ('keydown', function (e) {
+		    	if( e.keyCode == 9) {
+		    		e.preventDefault();
+					insertTextAtCursor("\t");
+		    	}
+		    });
+
+    		$("#submit_story_4").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_story_4").click();
+    		});
+			$("#submit_story_4").on('click', function() {
+				var c = $("#textarea_add_post_publisher").html().replace(/\t/g, '        '); 
+				$("#post_publisher_post_text").val(c);	
+				// $("#post_publisher_id").val(post_publisher_created_id);
+				$("#submit_story_4_text").addClass("hidden");						
+				$("#submit_story_4_loader").removeClass("hidden");
+				$("#submit_story_4_hidden").click();
+			});
+
+    		$("#cancel_story_4").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_story_4").click();
+    		});
+			$("#cancel_story_4").on('click', function() {
+				cancel_post_publisher();
+				// $("#submit_story_4_text").addClass("hidden");						
+				// $("#submit_story_4_loader").removeClass("hidden");
+			});
+			
+			$(document).on('click_101', function(e, id) {
+				var s = "div#" + id;				
+				scroll_top = $(window).scrollTop();
+				var content = $(this).find(s).html();
+				$("#dialog_101_content_container").html(content);
+				$("#dialog_101").jqmShow();	
+			});
+			$('#dialog_101').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', 40 + scroll_top);
+					hash.w.css('opacity', 1.0).fadeIn(200);
+				}
+			}); 		
+			
+			$(document).on('click_104', function() {
+				scroll_top = $(window).scrollTop();
+				// var content = $(this).find(s).html();
+				// $("#dialog_101_content_container").html(content);
+				$("#dialog_104").jqmShow();	
+			});
+			$('#dialog_104').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', 40 + scroll_top);
+					hash.w.css('opacity', 1.0).fadeIn(200);
+				}
+			}); 		
+
+			$(document).on('click_105', function() {
+				scroll_top = $(window).scrollTop();
+				// var content = $(this).find(s).html();
+				// $("#dialog_101_content_container").html(content);
+				$("#dialog_105").jqmShow();	
+			});
+			$('#dialog_105').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', 40 + scroll_top);
+					hash.w.css('opacity', 1.0).fadeIn(200);
+				}
+			}); 		
 
 			// $(document).on("click", "#btn_dlg_submit_upload_image_logo", function(e) {
 				// $("form#new_publisher_user_logo_image input#new_publisher_user_logo_image_image").click();
@@ -2131,6 +3518,10 @@
 				// $("#dialog_14").jqmShow();
 				// // $("#primary").val('true');
 			// });			
+		});
+	  
+		$(window).on('beforeunload', function(){
+			cancel_post_publisher_on_close();
 		});
 	  
 	</script>

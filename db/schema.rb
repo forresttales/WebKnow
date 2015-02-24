@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209095412) do
+ActiveRecord::Schema.define(version: 20150218124940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -839,6 +839,39 @@ ActiveRecord::Schema.define(version: 20150209095412) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "post_publisher_comments", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_publisher_id"
+    t.integer  "publisher_id"
+    t.integer  "user_id"
+    t.text     "comment_text",      default: ""
+  end
+
+  add_index "post_publisher_comments", ["post_publisher_id"], name: "index_post_publisher_comments_on_post_publisher_id", using: :btree
+  add_index "post_publisher_comments", ["publisher_id"], name: "index_post_publisher_comments_on_publisher_id", using: :btree
+  add_index "post_publisher_comments", ["user_id"], name: "index_post_publisher_comments_on_user_id", using: :btree
+
+  create_table "post_publisher_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_publisher_id", default: 0
+    t.integer  "publisher_id",      default: 0
+    t.integer  "user_id",           default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",           default: false
+    t.integer  "order",             default: 0
+    t.integer  "crop_x",            default: 0
+    t.integer  "crop_y",            default: 0
+    t.integer  "crop_w",            default: 0
+    t.integer  "crop_h",            default: 0
+  end
+
+  add_index "post_publisher_images", ["post_publisher_id"], name: "index_post_publisher_images_on_post_publisher_id", using: :btree
+  add_index "post_publisher_images", ["publisher_id"], name: "index_post_publisher_images_on_publisher_id", using: :btree
+  add_index "post_publisher_images", ["user_id"], name: "index_post_publisher_images_on_user_id", using: :btree
 
   create_table "post_publisher_likes", force: true do |t|
     t.datetime "created_at"

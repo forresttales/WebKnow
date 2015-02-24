@@ -424,7 +424,8 @@ class UsersController < ApplicationController
           end
           
           @publisher = publisher
-          @log_publishers = publisher.feed_log
+          # @log_publishers = publisher.feed_log
+          @post_publishers = publisher.feed_log
 
 
           gon.id_logo_image = nil

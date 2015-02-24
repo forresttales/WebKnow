@@ -1,0 +1,8 @@
+// alert('ajax works in publishers/destroy_post_publisher_comment');
+<% if !@post_publisher_id.nil? %>
+	$("#render_post_publisher_comments_<%= @post_publisher_id %>").html("<%= j render('publishers/post_publisher_comments') %>");
+	reset_post_publisher_comment_delete();
+	$("#close_form105").trigger('click');
+<% else %>
+	alert('publishers/destroy_post_publisher_comment return error');
+<% end %>
