@@ -2,16 +2,15 @@
 #
 # Table name: publisher_product_pdfs
 #
-#  id                               :integer          not null, primary key
-#  publisher_id                     :integer
-#  publisher_product_id             :integer
-#  publisher_product_description_id :integer
-#  created_at                       :datetime
-#  updated_at                       :datetime
-#  name_file                        :string(255)
-#  image                            :string(255)
-#  name_pdf                         :string(255)
-#  attachment                       :string(255)
+#  id                   :integer          not null, primary key
+#  publisher_id         :integer
+#  publisher_product_id :integer
+#  created_at           :datetime
+#  updated_at           :datetime
+#  name_file            :string(255)
+#  image                :string(255)
+#  name_pdf             :string(255)
+#  attachment           :string(255)
 #
 
 class PublisherProductPdf < ActiveRecord::Base
@@ -20,7 +19,6 @@ class PublisherProductPdf < ActiveRecord::Base
   
   attr_accessible :publisher_id,
                   :publisher_product_id,
-                  :publisher_product_description_id,
                   :name_file,
                   :name_pdf,
                   :image,

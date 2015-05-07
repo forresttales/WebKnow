@@ -12,12 +12,14 @@
 #  has_product_logo     :boolean          default(FALSE)
 #  product_metadata     :string(100)
 #  has_product_metadata :boolean          default(FALSE)
+#  slug                 :string(255)
 #
 
 class PublisherProduct < ActiveRecord::Base
   
   attr_accessible :id,
                   :publisher_id,
+                  :slug,
                   :name_product,
                   :has_description,
                   :product_logo,
@@ -30,32 +32,44 @@ class PublisherProduct < ActiveRecord::Base
   
   belongs_to :publisher
   
-  has_one :publisher_product_description
+  has_one :issued_publisher_product_id, foreign_key: "publisher_product_id", dependent: :destroy
+  
+  has_one :publisher_product_manifest, dependent: :destroy
+  has_one :publisher_product_description, dependent: :destroy
+  has_one :publisher_product_topic, dependent: :destroy
+  has_one :publisher_product_subject, dependent: :destroy
   # has_one :publisher_product_logo
-  has_one :publisher_product_logo1_image  
+  has_one :publisher_product_pos1_image, dependent: :destroy
+  has_one :publisher_product_pos2_image, dependent: :destroy
+  has_one :publisher_product_pos3_image, dependent: :destroy
+  has_one :publisher_product_pos4_image, dependent: :destroy
   # has_one :publisher_product_metadatatag
-  has_one :publisher_product_content_type  
-  has_one :publisher_product_category_subject
-  has_one :publisher_product_appropriate_grade
-  has_one :publisher_product_appropriate_age
-  has_one :publisher_product_market_target
-  has_one :publisher_product_platform
-  has_one :publisher_product_file_type
-  has_one :publisher_product_character
-  has_one :publisher_product_enhancement
-  has_one :publisher_product_pricing_model
-  has_one :publisher_product_price
-  has_one :publisher_product_lesson_time
-  has_one :publisher_product_by_review
-  has_one :publisher_product1_image
-  has_one :publisher_product2_image
-  has_one :publisher_product_corporate_logo
+  has_one :publisher_product_content_type, dependent: :destroy
+  has_one :publisher_product_category_subject, dependent: :destroy
+  # has_one :publisher_product_appropriate_grade
+  # has_one :publisher_product_appropriate_age
+  has_one :publisher_product_from_age, dependent: :destroy
+  has_one :publisher_product_to_age, dependent: :destroy
+  has_one :publisher_product_from_grade, dependent: :destroy
+  has_one :publisher_product_to_grade, dependent: :destroy    
+  has_one :publisher_product_market_target, dependent: :destroy
+  has_one :publisher_product_platform, dependent: :destroy
+  has_one :publisher_product_file_type, dependent: :destroy
+  has_one :publisher_product_character, dependent: :destroy
+  has_one :publisher_product_enhancement, dependent: :destroy
+  has_one :publisher_product_pricing_model, dependent: :destroy
+  has_one :publisher_product_price, dependent: :destroy
+  has_one :publisher_product_lesson_time, dependent: :destroy
+  has_one :publisher_product_by_review, dependent: :destroy
+  # has_one :publisher_product1_image
+  # has_one :publisher_product2_image
+  # has_one :publisher_product_corporate_logo
 
-  has_many :publisher_product_images
-  has_many :publisher_product_pdfs
+  # has_many :publisher_product_images
+  has_many :publisher_product_pdfs, dependent: :destroy
   # has_many :publisher_product_pdf_images
-  has_many :publisher_product_core_literacy_standards
-  # has_one :publisher_product_core_math_standard
+  has_many :publisher_product_core_literacy_standards, dependent: :destroy
+  has_one :publisher_product_core_math_standard, dependent: :destroy
 
 
 

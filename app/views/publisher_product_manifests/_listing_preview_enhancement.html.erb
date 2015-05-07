@@ -1,0 +1,34 @@
+
+
+															<% i = 0 %>
+															<div id="render_enhancement_<%= i %>" class="list-tip-container"></div>
+														    <script id="enhancement_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="enhancement_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="enhancement_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
+																	</div>
+																</div>
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_enhancement_<%= i %>";
+																var ref		  = "#enhancement_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
+
+																<% h_enhancement = enhancement_for(@publisher_product) %>
+																var enhancement_text = <%=raw h_enhancement[:enhancement_text] %>;
+																var has_enhancement_other = <%=raw h_enhancement[:has_enhancement_other] %>;
+																var enhancement_other = "<%=raw h_enhancement[:enhancement_other] %>";
+																var list_number = "<%= i %>";
+																set_field("Enhancements: ", "enhancement", enhancement_text, "Enhancements", has_enhancement_other, enhancement_other, list_number);
+															</script>

@@ -1,0 +1,35 @@
+
+
+															<% i = 0 %>
+															<div id="render_file_type_<%= i %>" class="list-tip-container"></div>
+														    <script id="file_type_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="file_type_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="file_type_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
+																	</div>
+																</div>
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_file_type_<%= i %>";
+																var ref		  = "#file_type_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
+
+																<% h_file_type = file_type_for(@publisher_product) %>
+																var file_type_text = <%=raw h_file_type[:file_type_text] %>;
+																var has_file_type_other = <%=raw h_file_type[:has_file_type_other] %>;
+																var file_type_other = "<%=raw h_file_type[:file_type_other] %>";
+																var list_number = "<%= i %>";
+																// set_file_type(file_type_text, has_file_type_other, file_type_other, list_number);
+																set_field("File Type: ", "file_type", file_type_text, "File Type", has_file_type_other, file_type_other, list_number);
+															</script>

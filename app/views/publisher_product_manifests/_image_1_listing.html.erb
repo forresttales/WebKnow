@@ -1,0 +1,99 @@
+
+
+								<% if @image_1 %>   				
+									<div class="container-figure-image container-figure-image-border-load container-figure-image-1-listing">
+										<figure id="figure_image_1_listing" class="dialog-11-figure">
+											<img id="img_image_1_listing" alt="" src="<%= @image_1.image_url(:image_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_1.image? %>" />
+										</figure>
+									</div>
+
+								<% else %>
+
+									<div class="container-figure-image container-figure-image-border-load container-figure-image-1-listing">
+										<figure id="figure_image_1_generic_listing" class="dialog-11-figure-generic">
+											<img id="img_image_1_generic_listing" alt="" src="../images_avatar/avatar-gen-product-w200-h200.png" />
+										</figure>
+									</div>
+								
+								<% end %>
+
+
+
+								<% if false %>
+								<% if @image_1 %>   				
+								
+									<div class="profile-grid profile-cs-style-3">
+										<figure id="figure_product_logo_listing" class="figure-product-logo-listing dialog-5-figure-listing">
+											<img alt="" src="<%= @image_1.image_url(:user_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_1.image? %>" />
+										</figure>
+									</div>
+
+								<% else %>
+
+									<div class="profile-grid profile-cs-style-3">
+										<figure class="figure-logo-generic-listing">
+											<img alt="" src="../images_avatar/avatar-gen-product-w200-h200.png" />
+										</figure>
+									</div>
+								
+								<% end %>
+								<% end %>
+
+
+
+
+
+	<script>
+
+		// $(window).load( function() {
+		$(document).ready( function () {				
+		
+			$("img").one("load", function() {
+				if((this.id == "img_image_1_listing") || (this.id == "img_image_1_generic_listing")) {
+					var img_w = this.width;
+					var img_h = this.height;
+
+					// $("div#container_image_1 .container-figure-image").css({
+					$(".container-figure-image-1-listing").css({
+						width : img_w + 4,
+						height : img_h + 4
+					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");													
+				}
+				if(this.id == "img_image_1_generic") {
+					var img_w = this.width;
+					var img_h = this.height;
+					$(".container-figure-image-1-listing").css({
+						width : img_w + 4,
+						height : img_h + 4
+					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
+				}				
+			}).each(function() {
+			  	if(this.complete) $(this).load();
+			});
+			
+			// var img = $(".figure-logo-generic-listing img");
+			// $("<img/>")
+	    		// .attr("src", $(img).attr("src"))
+	    		// .load(function() {
+	        		// var img_width = this.width; 
+	        		// $(".figure-logo-generic-listing").css({
+	        			// width : this.width
+	        	// });	        		
+	    	// });		
+			// var img = $(".figure-product-logo-listing img");
+			// $("<img/>")
+	    		// .attr("src", $(img).attr("src"))
+	    		// .load(function() {
+	        		// var img_width = this.width; 
+	        		// $(".figure-product-logo-listing").css({
+	        			// width : this.width
+	        	// });	        		
+	    	// });		
+
+		
+		});
+	  
+
+	</script>		
+
+

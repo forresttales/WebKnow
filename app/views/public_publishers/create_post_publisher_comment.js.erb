@@ -1,0 +1,3 @@
+// alert('ajax works in publisher_users/create_post_publisher_comment');
+$("#render_post_publisher_comments_<%= @post_publisher_id %>").html("<%= j render('publishers/post_publisher_comments') %>");
+reset_textarea_comment_callback(<%= @post_publisher_id %>);

@@ -1,0 +1,35 @@
+
+
+															<% i = 0 %>
+															<div id="render_platform_<%= i %>" class="list-tip-container"></div>
+														    <script id="platform_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="platform_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="platform_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
+																	</div>
+																</div>
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_platform_<%= i %>";
+																var ref		  = "#platform_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
+
+																<% h_platform = platform_for(@publisher_product) %>
+																var platform_text = <%=raw h_platform[:platform_text] %>;
+																var has_platform_other = <%=raw h_platform[:has_platform_other] %>;
+																var platform_other = "<%=raw h_platform[:platform_other] %>";
+																var list_number = "<%= i %>";
+																// set_platform(platform_text, has_platform_other, platform_other, list_number);
+																set_field("Platform: ", "platform", platform_text, "Platform", has_platform_other, platform_other, list_number);
+															</script>

@@ -37,7 +37,7 @@ $midgreen: #8eb388;
 	  height: 75px;
 	}
 
-	/*Gradient on top*/#menu {
+	/*Gradient on top#menu {
 		background: -moz-linear-gradient(left,  rgba(73,133,63,0) 0%, rgba(73,133,63,1) 100%);
 background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(73,133,63,0)), color-stop(100%,rgba(73,133,63,1)));
 background: -webkit-linear-gradient(left,  rgba(73,133,63,0) 0%,rgba(73,133,63,1) 100%);
@@ -47,7 +47,7 @@ background: linear-gradient(to right,  rgba(73,133,63,0) 0%,rgba(73,133,63,1) 10
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', endColorstr='#299a0b',GradientType=1 );
 
 
-	}
+	}*/
 
 	#menu li.icon {
 		float:left;
@@ -109,12 +109,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', end
 }
 .profile-links-left ul li:hover {
 			background-color: $lgreen;		
-			cursor: pointer;
-		}
+			// cursor: pointer;
+}
 
 .profile-labels-left {
-	border-top: 1px solid $dgreen;
-	border-bottom: 1px solid $dgreen;
+	/*border-top: 1px solid $dgreen;
+	border-bottom: 1px solid $dgreen;*/
 	// margin:20px 0 10px 0;
 	&:hover {background: $ksgreen;}
 	ul li span {
@@ -122,9 +122,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', end
 	font-size: 18px;
 	}
 }
+.profile-labels-left:hover {
+  cursor: pointer;
+}
 
 
 //Mid column styles
+.publisher-item-border {
+		border:2px solid #49853f;
+	}
+	
+.profile-left-col {
+		/*display: table-cell; */
+		/*border-left: 2px solid #49853f; 
+		border-top: 2px solid #49853f; 
+		border-right: 2px solid #49853f; 
+		border-bottom: 2px solid #49853f;*/
+		width: 555px; 
+		vertical-align: top; 
+		height: 100%;
+	}
 
 .col-midd {
 	border-left: 2px solid $ksgreen;
@@ -142,5 +159,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49853f', end
 
 .content {
   h1 {color: $ksgreen; text-align: center; clear:both; font-size: 35px;}
+}
+
+#right-column-home-publisher {
+	display: table-cell; 
+	width: 555px; 
+	padding: 0; 
+	margin: 0; vertical-align: top; height: 100%;
+	/*border-left: 2px solid #49853f;
+	border-right: 2px solid #49853f;
+	border-bottom: 2px solid #49853f;*/
 }
 

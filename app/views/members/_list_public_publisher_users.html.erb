@@ -18,7 +18,7 @@
 
 				<% @public_publisher_users.each do |public_publisher_user| %>
 
-					<%= link_to public_publisher_user_path(:id => public_publisher_user.id), class: "" do %>
+					<%= link_to users_path(:id => public_publisher_user.id), class: "" do %>
 						<!-- <#%= link_to ("/id" + publisher.id.to_s).html_safe, class: "" do %#> -->
 						<div class="publisher-products-list-1">
 							<!-- <a href="<#%= ("/publisher-id" + publisher.id.to_s).html_safe %#>" style="height: 65px;"> -->
@@ -27,7 +27,7 @@
 									<ul class="publisher-product-list-grid publisher-product-list-caption">
 										<li>
 											<figure>
-												<%= avatar_for public_publisher_user %>
+												<%= avatar_public_publisher_user_for public_publisher_user %>
 												<!-- <figcaption>
 												</figcaption> -->
 											</figure>

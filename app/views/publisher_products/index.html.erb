@@ -1,302 +1,34 @@
-<% provide(:title, 'Publisher Products') %>
+<% provide(:title, 'Products List') %>
+
+	<!-- <script src="/assets/jqModal.js"></script>
+	<script src="/assets/jquery.easing.1.3.js"></script>
+	<link rel="stylesheet" href="/assets/jqModal.css" /> -->
+
+	<!-- <script src="../jcrop/js/jquery.Jcrop.js"></script>
+	<script type="text/javascript">
+	  jQuery(function($){
+	    $('#target').Jcrop();
+	  });
+	</script>
+	<link rel="stylesheet" href="../jcrop/css/jquery.Jcrop.css" type="text/css" /> -->
+  	<!-- <script src="/assets/jquery.qtip.min.js" type="text/javascript"></script>
+  	<link rel="stylesheet" href="/assets/jquery.qtip.min.css"> -->
 
 
-	<style>
-		
-		/*@import url(http://www.google.com/fonts#QuickUsePlace:quickUse/Family:Istok+Web);*/
-		
-		div.jp-cell-list {
-			height: 180px;
-			width: 540px;
-			padding-left: 10px;
-			padding-top: 10px;
-			vertical-align: top;
-	    	/*cursor: pointer;*/
-	    	background-color: #fff;
-	    	border: solid 4px #aaa;
-	    	border-radius: 4px;
-		}
-		div.jp-cell-list:hover {
-	    	/*background-color: #eee;*/	    	
-		}
-		span.jp-cell-list-text-1 {
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 14px;
-	    	color: #214025;
-	    	font-weight: 400;			
-		}
-		.jp-cell-list-link {
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 13px;
-	    	color: #9F6720;
-	    	font-weight: 400;			
-		}
-		.jp-cell-list-link:hover {
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 13px;
-	    	color: #9F6720;
-	    	font-weight: 400;			
-		}
-		/*.jp-cell-list-delete-btn {
-		  	display: inline-block;
-		  	text-decoration: none; 
-		  	width: 50px;
-		  	height: 20px;
-		  	background: inherit;
-		  	border-width: 0px;
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 13px;
-	    	color: #9F6720;
-	    	font-weight: 400;					  	
-		}
-		.jp-cell-list-delete-btn:focus {
-		}
-		.jp-cell-list-delete-btn:hover { 
-		  	text-decoration: underline;
-		  	cursor: pointer; 
-		}
-		.jp-cell-list-delete-btn:active { 
-		  	text-decoration: underline; 
-		}*/
-		span.jp-title {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 20px;
-			color: #D98D2D;
-		}
-		span.jp-title-sub {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 18px;
-			color: #A9D996;
-		}
-		.jp-btn {
-		  	/*display: inline-block;*/
-		  	text-decoration: none; 
-		  	/*width: 38px;*/
-		  	height: 20px;
-		  	background: inherit;
-		  	border-width: 0px;
-	  		font-family: 'Quattrocento Sans', sans-serif;
-	        font-size: 13px;
-	    	color: #9F6720;
-	    	font-weight: 400;					  	
-		}
-		.jp-btn:focus {
-		}
-		.jp-btn:hover { 
-		  	text-decoration: underline;
-		  	cursor: pointer; 
-		}
-		.jp-btn:active { 
-		  	text-decoration: underline; 
-		}
-		span.jp-not-purchased {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #FA7D7D;			
-		}
-		span.jp-purchased {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #A9D996;			
-		}
-		span.jp-missing {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #C9AB00;			
-		}		
-		.jp-listbox {
-			height: 150px;
-			width: 290px;			
-		}
-		.jp-listbox-1 {
-			height: 130px; 
-			width: 290px;			
-		}
-		.jp-listbox-2 {
-			height: 10px; 
-			width: 290px; 
-			text-align: right;			
-		}
-		ul.jp-edit-instr li {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 13px;
-			color: #666;
-			width: 500px;
-			margin-left: 60px;
-		}
-		
-	</style>
-
-
-	<style>
-		
-		.publisher-products-table {
-			display:table;
-			width: 100%;
-			border-top: 0px; 
-			border-collapse: collapse;
-		}
-		.publisher-products-row-top {
-			display: table-row;
-			height: 2px;
-		  	border-bottom: 1px solid #ccc;			
-		}
-		.publisher-products-cell-top-image {
-			display:table-cell;
-			height: 2px;
-			/*width: 500px;*/
-		  	border-bottom: 1px solid #ccc;
-		}
-		.publisher-products-cell-top {
-			display:table-cell;
-			height: 2px;
-			/*width: 70px;*/
-		  	border-bottom: 1px solid #ccc;
-		}
-		.publisher-products-row {
-			display: table-row;
-			height: 118px;
-		  	border-bottom: 1px solid #ccc;
-		  	background-color: #fff;			
-		}
-		/*.publisher-products-row:hover {
-		  	background-color: #F8F8F8;			
-		}*/
-		.publisher-products-cell-image {
-			display:table-cell;
-		  	overflow: auto;
-		  	width: 120px;			
-			height: 100%;
-		  	padding: 8px 0 0 10px;
-		  	border-bottom: 1px solid #ccc;
-		}
-		.publisher-products-cell {
-			display:table-cell;
-		  	overflow: auto;
-		  	width: 530px;			
-			height: 100%;
-		  	padding: 8px 0;
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 200;
-		  	font-color: #888;
-			font-size: 13px;
-			border-bottom: 1px solid #ccc;
-			vertical-align: top;
-		}
-		.publisher-products-cell span.publisher-name a {
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 400;
-		  	color: #5628E1;
-			font-size: 14px;
-		}
-		.publisher-products-span-1 {
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 400;
-		  	color: #666;
-			font-size: 14px;
-		}
-		.publisher-products-cell-top div {
-			height: 100%;
-			padding: 0 0 0 10px;
-		}
-		.publisher-products-cell div {
-			height: 100%;
-		}
-		
-	</style>
+	<!-- <script src="/assets/jquery.colorbox.js"></script>
+	<link rel="stylesheet" href="/assets/colorbox.css" /> -->
 	
-	<style>
+  	<link rel="stylesheet" href="../styles/chosen/chosen.css">
+  	<script src="/assets/chosen.jquery.js" type="text/javascript"></script>
+  	<script src="/assets/toucheffects.js" type="text/javascript"></script>
 	
-		.publisher-product-utility-bar {
-			width: 100%;
-			height: 50px;
-			background: url('/assets/light_grey.jpg');
-			/*border-bottom: 2px #000 solid;*/
-			/*border-bottom: 2px solid rgba(0, 0, 0, .01);*/
-			text-align: left;
-			/*-moz-box-shadow: 0 4px 2px -2px #666666;
-			-webkit-box-shadow: 0 4px 2px -2px #666666;
-			box-shadow: 0px 4px 2px -2px #666666;*/		
-			
-		    /*box-shadow: 0 4px 4px -2px #232323;
-		    -moz-box-shadow: 0 4px 4px -2px #232323;
-		    -webkit-box-shadow: 0 4px 4px -2px #232323;*/			
-		    /*z-index: 10;*/	
-		}
-		.publisher-product-utility-bar span {
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 200;
-		  	color: #888;
-			font-size: 13px;
-		}
-		
-	</style>
-
-	<style>
-		
-		.search { 
-			padding:6px 15px 6px 30px;
-			margin:3px; 
-			background: url('/assets/search.png') no-repeat 8px 6px; 
-			width: 300px;
-		}
-		.rounded { 
-			border-radius:15px; 
-			-moz-border-radius:15px; 
-			-webkit-border-radius:15px; 
-		}		
-		input[type=text]{
-			color:#bcbcbc;
-		}
-		input[type=button], input[type=button]:hover {
-			position:relative; 
-			left:-6px;
-			height: 29px;
-			border:1px solid #adc5cf;
-			background: #e4f1f9; /* Old browsers */
-			background: -moz-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4f1f9), color-stop(100%,#d5e7f3)); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* IE10+ */
-			background: linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f1f9', endColorstr='#d5e7f3',GradientType=0 ); /* IE6-9 */
-			color:#7da2aa;
-			cursor: pointer;
-		}				
-		.lighter, .light, .dark {
-			width:100%;
-			height:50px;
-			padding:10px 0px 0px 0px;
-		}
-		.lighter{
-			background: url('/assets/lighter_grey.jpg');
-		}
-		.lighter input[type=text]{
-			border:1px solid #d0d0d0;
-			background-color:#fcfcfc;
-		}
-		.light{
-			background: url('/assets/light_grey.jpg');
-		}
-		.light input[type=text]{
-			border:1px solid #acb1b7;
-			background-color:#fcfcfc;
-		}
-		.dark{
-			background: url('/assets/dark_grey.jpg');
-		}
-		.dark input[type=text]{
-			border:1px solid #2a2e31;
-			background-color:#2d3035;
-			color:#505358;
-		}
-
-	</style>
-
+	
+	<!-- <link rel="stylesheet" href="../styles/digg-pagination.css" /> -->
+	<link rel="stylesheet" href="../styles/ks-profile.css" />
+	
+	<script type="text/javascript" src="../scripts/jquery.tmpl.js"></script>
+	
+	
  	<style>
  		
 		*, *:after, *:before {
@@ -306,14 +38,15 @@
 		}
 		.clearfix:before, .clearfix:after { content: " "; display: table; }
 		.clearfix:after { clear: both; }
-		a {
-			color: #888;
+		a, a:focus {
+			/*color: #888;*/
 			text-decoration: none;
+			outline: none;
 		}
-		a:hover,
+		/*a:hover,
 		a:active {
 			color: #333;
-		}
+		}*/
 		.publisher-product-list-grid {
 			padding: 0px 0px 0px 0px;
 			/*max-width: 1300px;*/
@@ -355,7 +88,8 @@
 		.publisher-product-list-grid figcaption {
 			position: absolute;
 			text-align: right;
-			font-family: 'Quattrocento Sans', sans-serif;
+			/*font-family: 'Quattrocento Sans', sans-serif;*/
+			font-family: Arial, Helvetica, sans-serif;
 		    font-size: 14px;
 			font-weight: 200;					  				
 			top: 0;
@@ -503,99 +237,196 @@
 		}
 
 	</style>
-
+	
 	<style>
 		
-		.product-listbox {
-	 		/*height:436px;*/
-	 		/*height: auto;*/
-	 		position: relative;
-	 		width:600px;
-	 		/*border-top: 3px solid green;
-	 		border-bottom: 3px solid green;*/
-	 		/*overflow-y: scroll;*/	
-	 		/*border: none;*/
+		.btn-submit {
+			background-color: green;
+			color: #fff;
 		}
-		#scroll1 {
-	 		overflow: hidden;			
+		.display-none {
+			display: none;
 		}
-		
+		.submit-search {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+			font-size: 14px;			
+			height: 22px; 
+			width: 100px; 
+			background-color: #888; 
+			color: #fff; 
+			text-align: center;
+			padding: 4px 0 0 0;
+		}
+		.submit-search:hover {
+			cursor: pointer;
+		}
+				
 	</style>
 
 	<style>
 		
-		.publisher-product-utility-bar-footer {
-			width: 100%;
-			height: 100px;
-			/*position: relative;*/
-	 		position: absolute;
-	 		/*left: 0px;*/
-	 		bottom: 0px;			
-			background: url('/assets/light_grey.jpg');
-			/*border-bottom: 2px #DCE3DF solid;*/
-			text-align: left;
-			z-index: 9;
+		.tooltip-text-1 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 12px;
+			font-weight: 400;					
+			/*color: #37633A;*/
+			color: #fff;	
+			/*background-color: #FAFF94;*/
+			background-color: rgba(0, 0, 0, 0.6);
+			/*background-color: #eee;*/
+			/*border-color: #37633A;*/
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
 		}
-		.publisher-product-utility-bar-footer span {
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 200;
-		  	color: #888;
-			font-size: 13px;
-		}
-		.container-2 {
-			width: 1000px;
-			margin-left: auto;
-			margin-right: auto;
-			/*min-height: 900px;*/
-			position: relative;
-			top: -4px;
-		}
+		.tip-content { display: none; }
 		
 	</style>
 	
 	<style>
-		
-		.btn-prod-list {
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 14px;		
-			text-align: center;	
-			padding-top: 3px;
-		  	color: #fff;
-		  	display: inline-block;
-		  	text-decoration: none; 
-		  	width: 80px;
-		  	height: 20px;
-		  	background: linear-gradient(#2899A1, #1F7C82);
 
-		  	/*text-shadow: 1px 1px 1px #0E86B2;*/ 
-		  	border-radius: 2px;
+		.ks-tip-container {
+			position: relative;
+		}		
+		.ks-tip-target:hover + .ks-tip-1 span {
 		}
-		.btn-prod-list:focus {
-			-webkit-box-shadow: 0 0 1px 1px #3DC8D1;
-			   -moz-box-shadow: 0 0 1px 1px #3DC8D1;
-			        box-shadow: 0 0 1px 1px #3DC8D1;
-		  	background: linear-gradient(#2899A1, #1F7C82);
+		.ks-tip-target:hover + .ks-tip-1 {
+			display: block;
 		}
-		.btn-prod-list:hover { 
-		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
-		  inset 0 1.5em 1em rgba(255,255,255,0.2);
-		  cursor: pointer;
+		.ks-tip-1 {
+			position: absolute;
+			width: 60px;
+			height: 24px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;			
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			font-weight: 400;					
+			color: #fff;	
+			padding: 6px 0 0 0;
+			display: none;							
 		}
-		.btn-prod-list:active { 
-		  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
-		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
-		 	color: #fff;
-		  	background: linear-gradient(#1F7C82, #2899A1);
-		  	outline:none;
+		.ks-tip-1-indicator {
+			position: absolute;
+			top: 24px;
+			left: 4px;
+			width: 8px;
+			height: 12px;
+			background-image: url("/assets/drop-w8-h12.png");
+		}		
+		.ks-tip-34minus {
+			top: -34px;
+		}
+
+		.ks-tip-target:hover + .ks-tip span {
+		}
+		.ks-tip-target:hover + .ks-tip {
+			display: block;
+		}
+		.ks-tip {
+			position: absolute;
+			display: none;							
+		}		
+		.ks-tip-delete-post-user-comment {
+			position: absolute;
+			width: 60px;
+			height: 24px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;			
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			font-weight: 400;					
+			color: #fff;	
+			padding: 6px 0 0 0;
+			display: none;
+			top: -36px;
+			left: -20px;		
+			z-index: 1;
+		}		
+		.ks-tip-indicator-delete-post-user-comment {
+			position: absolute;
+			top: 24px;
+			left: 27px;
+			width: 8px;
+			height: 12px;
+			background-image: url("/assets/drop-w8-h12.png");
+		}		
+
+		.ks-tip-delete-post-user {
+			position: absolute;
+			width: 60px;
+			height: 24px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;			
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			font-weight: 400;					
+			color: #fff;	
+			padding: 6px 0 0 0;
+			display: none;
+			top: -36px;
+			left: -20px;		
+			z-index: 1;
+		}		
+		.ks-tip-indicator-delete-post-user {
+			position: absolute;
+			top: 24px;
+			left: 27px;
+			width: 8px;
+			height: 12px;
+			background-image: url("/assets/drop-w8-h12.png");
+		}		
+
+		/*.ks-tip-2 {
+			position: absolute;
+			width: 200px;
+			height: 100px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;
+			display: none;				
+		}*/
+		.hidden {
+			display: none !important;
+			visibility: hidden !important			
+		}
+		.dialog-span-1 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 10px;
+			font-weight: 200;					
+			color: #333;		
+			height: 12px;		
+		}
+		.dialog-span-1:hover {
+			text-decoration: underline;
 		}
 		
-		.publisher-products-span-1 {
+	</style>
+
+	<style>
+		
+		.publisher-products-add {
 		  	font-family: Arial, Helvetica, sans-serif;
 		  	font-weight: 400;
 		  	color: #666;
-			font-size: 14px;
+			font-size: 14px;		   			
 		}
-		
+		.publisher-products-add:hover {
+		  	cursor:pointer;
+		  	text-decoration: underline;
+		}
 		.unbutton-prod-list {
 		    background: none;
 		    border: none;
@@ -611,226 +442,458 @@
 		  	cursor:pointer;
 		  	text-decoration: underline;
 		}		
-		.publisher-products-add {
-		  	font-family: Arial, Helvetica, sans-serif;
+		.publisher-product-list-span {
+			font-family: Arial, Helvetica, sans-serif;
 		  	font-weight: 400;
 		  	color: #666;
 			font-size: 14px;		   			
 		}
-		.publisher-products-add:hover {
-		  	cursor:pointer;
+		
+	</style>
+
+	<style>
+		
+		/*@import url(http://www.google.com/fonts#QuickUsePlace:quickUse/Family:Istok+Web);*/
+		
+		div.jp-cell-list {
+			height: 180px;
+			width: 540px;
+			padding-left: 10px;
+			padding-top: 10px;
+			vertical-align: top;
+	    	/*cursor: pointer;*/
+	    	background-color: #fff;
+	    	border: solid 4px #aaa;
+	    	border-radius: 4px;
+		}
+		div.jp-cell-list:hover {
+	    	/*background-color: #eee;*/	    	
+		}
+		span.jp-cell-list-text-1 {
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+	  		font-family: Arial, Helvetica, sans-serif;
+	        font-size: 14px;
+	    	color: #214025;
+	    	font-weight: 400;			
+		}
+		.jp-cell-list-link {
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+	  		font-family: Arial, Helvetica, sans-serif;
+	        font-size: 13px;
+	    	color: #9F6720;
+	    	font-weight: 400;			
+		}
+		.jp-cell-list-link:hover {
+	  		/*font-family: 'QuickUsePlace', sans-serif;*/
+	  		font-family: Arial, Helvetica, sans-serif;
+	        font-size: 13px;
+	    	color: #9F6720;
+	    	font-weight: 400;			
+		}
+		/*.jp-cell-list-delete-btn {
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 50px;
+		  	height: 20px;
+		  	background: inherit;
+		  	border-width: 0px;
+	  		font-family: Arial, Helvetica, sans-serif;
+	        font-size: 13px;
+	    	color: #9F6720;
+	    	font-weight: 400;					  	
+		}
+		.jp-cell-list-delete-btn:focus {
+		}
+		.jp-cell-list-delete-btn:hover { 
 		  	text-decoration: underline;
+		  	cursor: pointer; 
+		}
+		.jp-cell-list-delete-btn:active { 
+		  	text-decoration: underline; 
+		}*/
+		span.jp-title {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 24px;
+			color: #D98D2D;
+		}
+		span.jp-title-sub {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 18px;
+			color: #A9D996;
+		}
+		.jp-btn {
+		  	/*display: inline-block;*/
+		  	text-decoration: none; 
+		  	/*width: 38px;*/
+		  	height: 20px;
+		  	background: inherit;
+		  	border-width: 0px;
+	  		font-family: Arial, Helvetica, sans-serif;
+	        font-size: 13px;
+	    	color: #9F6720;
+	    	font-weight: 400;					  	
+		}
+		.jp-btn:focus {
+		}
+		.jp-btn:hover { 
+		  	text-decoration: underline;
+		  	cursor: pointer; 
+		}
+		.jp-btn:active { 
+		  	text-decoration: underline; 
+		}
+		span.jp-not-purchased {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #FA7D7D;			
+		}
+		span.jp-purchased {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #A9D996;			
+		}
+		span.jp-missing {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #C9AB00;			
+		}		
+		.jp-listbox {
+			height: 150px;
+			width: 290px;			
+		}
+		.jp-listbox-1 {
+			height: 130px; 
+			width: 290px;			
+		}
+		.jp-listbox-2 {
+			height: 10px; 
+			width: 290px; 
+			text-align: right;			
+		}
+
+		ul.jp-edit-instr {margin-bottom:30px;}
+
+		ul.jp-edit-instr li {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 18px;
+			color: #444;
+			width: 500px;
+			margin-left: 60px;
+			line-height: 1.1em;
+			padding-bottom:15px;
 		}
 		
 	</style>
 	
 
-	<style>
-		
-		#im_top_sh, #im_bottom_sh {
-		    background: none repeat scroll 0 0 #555555;
-		    display: none;
-		    height: 3px;
-		    margin-top: -1px;
-		    opacity: 0.10;
-		    position: absolute;
-		    width: 600px;
-		    z-index: 2;
-		}
-		
-	</style>
+									<%= form_tag return_profile_users_members_path, :id => 'form_return_profile_users', :remote => true do %>
+										<%= hidden_field_tag :profile_user_type %>
+										<%= submit_tag 'Submit', id: 'submit_profile_user_hidden', class: 'display-none' %>
+									<% end %>									
 
-	<style>
-		
-	.container {
-		width: 1200px;
-		/*margin: 0 auto;*/
-		/*position: relative;*/
-		/*top: -4px;*/
-	}
-		
-	</style>
+									<%= form_tag return_profiles_members_path, :id => 'form_return_profiles', :remote => true do %>
+										<%= hidden_field_tag :profile_type %>
+										<%= submit_tag 'Submit', id: 'submit_profile_hidden', class: 'display-none' %>
+									<% end %>									
+	
 
-
-	<!-- <header>
-		<#%= render 'share/backtotop' %#>
-	</header> -->
-
-
-
-	<div class="container">
-		<div class="table-profile">
+		<div class="table-profile" style="height: 100%;">
 			<div class="row-profile">
-				<div class="col-left">
-					<div class="table-profile">
-						<div class="row-profile" style="height: 20px;">
-							<div class="col-gen"></div>
-						</div>
-						<div class="row-profile">
-							<div class="col-left">
-								<!-- <#%= render 'share/dir_publishers_left' %#> -->
-								<%= render 'dir_1_left_publishers/index' %>
+				<div style="display: table-cell; width: 200px; vertical-align: top; margin: 0; padding: 0; height: 100%;">
+					<%= render 'share/dir_publishers_left' %>
+				</div>
+				<div class="profile-mid-col-700">
+
+					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left-long padding-left-8">
+									<div class="position-relative">
+										<div class="position-absolute top-minus-24">												
+											<span>Products</span>
+										</div>
+									</div>		
+								</div>
+								<div class="cell-title-bar-profile-right">
+									<div class="btn-opt-edit-container-outer">
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- <div class="col-midd" style="height: 600px;"> -->
-				<div class="col-midd" id="col_midd">
-					<div class="table-profile">
-						<div class="row-profile" style="height: 20px;">
-							<div class="col-gen"></div>
-						</div>							
-						<div class="row-profile">
-							<!-- <div id="col_midd" class="col-midd-600" style="height: 600px;"> -->
-							<div class="col-midd-600" id="sub_container" style="position: relative;">
-								
-								<div id="col_midd_header">
-									<div class="line-space-20"></div>
-							
-									<div class="pad-left-20">
-										<span class="jp-title">Products</span>
-									</div>
-									
-									<div class="line-space-20"></div>
-									
-									<ul class="jp-edit-instr">
-										<li>Instructions 1.</li>
-										<li>Instructions 2.</li>						
-									</ul>
-									<!-- <div class="line-space-20"></div>
-									<div class="pad-left-20" style="text-align: left;">
-										<span class="jp-cell-list-text-1">Record Count: <#%= @publisher_journalposters.count %#></span>
-									</div> -->
-				
-									<div style="height: 10px;"></div>	
 	
-							    	<div style="width: 100%; text-align: center;">
-								    	<h5>
-										   	<% delete_all_msg = "Delete all records and reset index in Publisher Products?" %>
-											<%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long' %>
-										</h5>
-									</div>
-											
-									<div style="height: 10px;"></div>	
-				
-									<!-- <span class="pad-left-20"><#%= link_to '&laquo; Add a product &raquo;'.html_safe, '/Publisher-Add-Product', :class => 'links', :remote => true %#></span> -->
-									<div id="btn_add_prod" class="pad-left-20"><span class="publisher-products-add">&laquo; Add a product &raquo;</span></div>
+					<div class="table margin-0" style="height: auto;">
+						<div class="row">
+							<div class="cell-100percent">
+								<div style="height: 10px;"></div>
 									
-									<!-- <span class="pad-left-20"><#%= link_to '&laquo; Add a product &raquo;'.html_safe, :action => :create, :class => 'links', :remote => true %#></span> -->
-				
-									<div class="line-space-20"></div>
+								<% if current_user.email == "b@b.com" %>
+								<div style="width: 100%; text-align: center;">
+									<h5>
+									   	<% delete_all_msg = "Delete all Publisher Product records and reset indices?" %>
+										<%= button_to "Delete All Records and Reset Indices", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long' %>
+									</h5>
+								</div>
+								<% end %>
+								
+								<!-- <div class="pad-left-20">
+									<span class="jp-title">Products</span>
+								</div> -->
+								
+								<div class="line-space-20"></div>
+								<h2 style="text-decoration: underline; text-align: center;">Instructions:</h2>
+								<ul class="jp-edit-instr" style="margin-bottom: 30px;">
+									<li>1. Click Add Product to add a product to your listing</li>
+									<li>2. Then Click on that listing to be taken to its page. From there you can add all the details about this product</li>
+									<li>&bull; Each product is added individually. If you need to upload products in bulk, this is a premium service we offer</li>
+									<li>&bull; If you need help or have questions, please <a target="_blank" href="http://thelearningcounsel.com/ContactUs" style="color:#49853f;">Contact Us</a></li>						
+								</ul>
+									
+								<div style="height: 10px;"></div>				
+								
+								<div class="show-story-3">
+									<div class="text-align-left">
+										<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
+											
+											<div style="margin: 0;">													
+												<div class="publisher-product-utility-bar light">
+													<!-- <div id="render_story_4_post_users_count" style="padding-left: 10px; padding-top: 10px;"></div> -->
+													
+													<!-- <div style="padding-left: 10px; padding-top: 10px;"> -->
+													<div style="padding-left: 130px; padding-top: 10px;">
+														<!-- <div style="display: inline-block;">
+															<span>Products Count: </span>
+														</div>
+														<div id="render_record_count" style="display: inline-block;">
+															<span></span>
+														</div> -->
+														
 
-									<div class="publisher-product-utility-bar light">
-										<div style="padding-left: 10px; padding-top: 10px;">
-											<span>Record Count: <%= @publisher_products.count %></span>
-											<span id="container_height"></span>
+	<style>
+		
+		.btn-opt-add-spacer {
+			display: inline-block; 
+			width: 430px;
+		}
+		.btn-opt-add-container-outer {
+			position: relative;
+		  	height: 24px;
+			display: inline-block; 
+			width: 122px; 
+			height: 26px; 
+			margin: 2px 0 0 0;		  	
+		}
+		.btn-opt-add-container {
+		  	background: linear-gradient(#FBB040, #CA8E33);
+		  	border-radius: 10px;
+		  	width: 120px;
+		  	height: 24px;
+		}
+		.btn-opt-add {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			font-weight: 700;		
+		  	color: #eee;
+			text-align: center;	
+		  	width: 120px;
+		  	height: 24px;
+		  	padding-top: 4px;
+		  	text-decoration:none;
+		  	outline: none;
+		}
+		.btn-opt-add:focus {
+		}
+		.btn-opt-add-container:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-opt-add-container:active .btn-opt-edit { 
+			color: transparent;
+			text-shadow: 1px 1px #fff;
+		}
+		
+	</style>											
+	
+														<div class="btn-opt-add-spacer"></div>
+														<div class="btn-opt-add-container-outer">
+															<div class="btn-opt-add-container">
+																<div id="btn_add_prod" id="open_edit_story_1" class="btn-opt-add" tabindex="">
+																	Add Product
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div id="im_top_sh" style="display: block;"></div>
+											</div>
+											
+											<div id="render_list" style="position: relative;"></div>
+											
 										</div>
 									</div>
-									<div id="im_top_sh" style="display: block;"></div>
 								</div>
-			
-								<!-- <div id="publisher_journalposters" style="width: 100%; text-align: center;"> -->
-								<div id="render_list" style="position: relative;">
-									
-									<!-- <#%= render 'publisher_products/list' %#> -->
-									
-								</div>
-								
-								<div id="publisher_product_utility_bar_footer" class="publisher-product-utility-bar-footer">
-									<div style="height: 4px;"></div>
-									<div style="width: 100%; text-align: center;">
-										<span id="will_paginate"><%= will_paginate @publisher_products %></span>
-									</div>
-								</div>
-								
-								
 							</div>
 						</div>
-
-						<!-- <div class="row-profile">
-							<div class="col-midd-600">
-								<div class="publisher-product-utility-bar-footer">
-									<div style="height: 4px;"></div>
-									<div style="width: 100%; text-align: center;">
-										<span><#%= will_paginate @publisher_products %#></span>
-									</div>
-								</div>
-							</div>
-						</div> -->
-												
-					</div>					
+					</div>
+					<!-- <div style="height: 20px;"></div> -->
 				</div>
-				<div class="col-right">
+				
+				<div style="display: table-cell; width: 300px; padding: 0; margin: 0; vertical-align: top; height: 100%;">
+					<div class="" style="width: 200px; height: 50px; position: relative;">
+						<%= render 'share/dir_publishers_right_user_home' %>
+					</div>
+				</div>
+				
+				<!-- <div style="display: table-cell; width: 300px; padding: 0; margin: 0; vertical-align: top; height: 100%;">
 					<div class="table-profile">
 						<div class="row-profile" style="height: 20px;">
 							<div class="col-gen"></div>
 						</div>							
 						<div class="row-profile">
 							<div class="col-right">
-								<%= render 'share/dir_publishers_right' %>
+				          		<select id="select_user" name="select_user_name" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex="">
+										<option value="0">-Select-</option>
+										<option value="1">All Users</option>
+										<option value="2">Publishers</option>
+										<option value="3">Students</option>
+										<option value="4">Teachers</option>
+										<option value="5">Schools</option>
+										<option value="6">Recruiters</option>										
+				          		</select>
+								<div style="height: 30px;"></div>
+								<div id="submit_user_profile" class="submit-search">
+									Search
+								</div>
 							</div>
 						</div>
-					</div>										
-				</div>								
-			</div>
+						<div class="row-profile" style="height: 20px;">
+							<div class="col-gen"></div>
+						</div>							
+						<div class="row-profile">
+							<div class="col-right">
+				          		<select id="select_profile" name="select_profile_name" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex="">
+										<option value="0">-Select-</option>
+										<option value="1">Students</option>
+										<option value="2">Teachers</option>
+										<option value="3">Publishers</option>
+										<option value="4">Schools</option>
+										<option value="5">Recruiters</option>										
+				          		</select>
+								<div style="height: 30px;"></div>
+								<div id="submit_profile" class="submit-search">
+									Search
+								</div>
+							</div>
+						</div>
+					</div>		
+				</div> -->
+				
+				
+			</div>								
 		</div>
-	</div>
-	
-	
-<!-- </div> -->
+		<div style="height: 20px;"></div>
+
+
 
 	<script>
-	
-		$(document).ready(function() {
-				
-			$("#render_list").html("<%= escape_javascript(render("publisher_products/list")) %>");				
+
+			  	
+		// $(window).load( function() {
+		$(document).ready(function () {				
+
+
+			$("#render_list").html("<%= escape_javascript(render("publisher_products/list_full")) %>");				
 				
 			$('#btn_add_prod').on('click', function() {
 			   	$.post("publisher_products/create", null, null, "script");
 			});
 
+			// $('#publisher_product_utility_bar_footer .pagination a').attr('data-remote', 'true');
 
-			$('#publisher_product_utility_bar_footer .pagination a').attr('data-remote', 'true');
-
-			// $("#publisher_product_utility_bar_footer .pagination a").on("click", function() {
-				// // alert( $.getScript(this.href) );
-				// // $.getScript(this.href);
-				// $.get(this.href, null, null, "script");
-				// // $.get("/publisher_products/index", null, null, "script");
-				// return false;
-			// });
+			// $('#render_record_count span').html("<#%= @publisher_products.count %#>");
 
 
+			$(".chosen-select").chosen({disable_search_threshold: 40});
 
-			// $("#testbtn").on('click', function() {
-			  	// var obj = '';                  
-			  	// $.ajax({
-			    	// type: 'POST',
-			    	// data : obj,
-			    	// url: '/publisher_products/create',			    	
-			    	// dataType: "json",
-			    	// contentType: "application/json",
-			    	// processData: false,
-			    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-	            	// statusCode: {
-	            	// },
-	            	// success: function(data) {
-						// alert('success');
-						// $("#render_list").html("<#%= escape_javascript(render("publisher_products/list")) %#>");
-	            	// },
-	            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
-			  	// });
-		  		// return false;
-			// });
+			$("#select_user").val(1)
+			$('#select_user').trigger('chosen:updated');
 
 			
-			// alert($(document).height());
-			// var dh = $(document).height();
-			// $("#col-midd").height(dh-74);
+			$("#submit_user_profile").on('click', function() {
+				alert('click');
+				$("#profile_user_type").val($("#select_user").val());
+				$("#submit_profile_user_hidden").click();
+			});
+
+			$("#submit_profile").on('click', function() {
+				var profile_type = $("#select_profile").val();
+				// $("#profile_type").val($("#select_profile").val());
+				
+				switch (profile_type)
+				{
+				  case '1':
+				  	break;
+				  case '2':
+				  	break;
+				  case '3':
+						$("#submit_publishers").click();
+				  	break;
+	
+				  default:
+				  //
+				}
+				
+			});
+
+
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
 			
-			
-			
-		});	
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+		
+		
+		});
+
+	  
 	</script>
-	
-	
+
+
+
+
+

@@ -15,6 +15,9 @@ module SessionsHelper
     # cookies.permanent[:remember_token] = remember_token
     user.update_attribute(:remember_token, User.encrypt(remember_token))
     self.current_user = user
+    
+    signin_init
+    
     # self.user_34_avatar = user_34_avatar(user)
     
     # session[:username] = user.username
@@ -57,6 +60,57 @@ module SessionsHelper
 
     
   end
+
+
+  def signin_init
+    
+      profile_type = ""
+      case current_user.profile_type.to_s  
+        when "1"
+          signin_init_student
+        when "2"
+          signin_init_teacher
+        when "3"
+          signin_init_publisher
+        when "4"
+          signin_init_school
+        when "5"
+          signin_init_recruiter          
+        else
+          #
+      end
+      
+    
+  end
+
+  def signin_init_student
+  end
+  def signin_init_teacher
+  end
+  
+  def signin_init_publisher
+
+      publisher_product_current = current_user.publisher.publisher_product_current rescue nil
+      if !publisher_product_current.nil?
+          publisher_product_current.current_publisher_product_id = 0
+          publisher_product_current.current_publisher_product_gen_id = 0
+          if publisher_product_current.save
+              #
+          else
+              Rails.logger.info("publisher_product_current save to 0 failed")
+          end
+      else
+          Rails.logger.info("publisher_product_current was nil")
+      end
+
+    
+  end
+
+  def signin_init_school
+  end
+  def signin_init_recruiter
+  end
+
 
 
   def signed_in?

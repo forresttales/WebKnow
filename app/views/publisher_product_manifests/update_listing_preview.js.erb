@@ -1,0 +1,34 @@
+// alert('ajax works in update_listing_preview');
+
+<% if !((@publisher_product.nil?) or (@control.nil?)) %>
+
+    <% case @control.to_s %>  
+		<% when "0" %>
+				$("#form_listing").html("<%= j render("publisher_product_manifests/listing_preview") %>");
+	    <% when "story_1" %>
+				$("#render_listing_preview_name_product").html("<%= j render("publisher_product_manifests/listing_preview_name_product") %>");
+				$("#render_listing_preview_versions").html("<%= j render("publisher_product_manifests/listing_preview_versions") %>");
+				$("#render_listing_preview_product_tagline").html("<%= j render("publisher_product_manifests/listing_preview_product_tagline") %>");
+	    <% when "category_subject" %>
+				$("#render_listing_preview_category_subject").html("<%= j render("publisher_product_manifests/listing_preview_category_subject") %>");
+	    <% when "age_range" %>
+				$("#render_listing_preview_age_range").html("<%= j render("publisher_product_manifests/listing_preview_age_range") %>");
+	    <% when "grade_range" %>
+				$("#render_listing_preview_grade_range").html("<%= j render("publisher_product_manifests/listing_preview_grade_range") %>");
+	    <% when "market_target" %>
+				$("#render_listing_preview_market_target").html("<%= j render("publisher_product_manifests/listing_preview_market_target") %>");
+	    <% when "pricing_model" %>
+				$("#render_listing_preview_pricing_model").html("<%= j render("publisher_product_manifests/listing_preview_pricing_model") %>");
+	    <% when "platform" %>
+				$("#render_listing_preview_platform").html("<%= j render("publisher_product_manifests/listing_preview_platform") %>");
+	    <% when "file_type" %>
+				$("#render_listing_preview_file_type").html("<%= j render("publisher_product_manifests/listing_preview_file_type") %>");
+	    <% when "by_review" %>
+				$("#render_listing_preview_by_review").html("<%= j render("publisher_product_manifests/listing_preview_by_review") %>");
+	    <% when "enhancement" %>
+				$("#render_listing_preview_enhancement").html("<%= j render("publisher_product_manifests/listing_preview_enhancement") %>");
+	    <% else %>
+	<% end %>
+	
+<% else %>
+<% end %>	

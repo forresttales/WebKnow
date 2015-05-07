@@ -1,0 +1,252 @@
+
+		<!-- <div id="foo" style="width: 20px; height: 20px; background-color: red;"></div> -->
+
+		<div id="scroll2" class="tablebox-header">
+	
+				<table id="tbl-1" class="tbltablets" title="Tablets">    	  
+					  	
+				  <thead>
+				  <tr align="left">
+				    <th class="member-table" id="th_view" field="view" style="width: 50px; padding-left: 10px;"><div class="header-shift"><h4></h4></div></th>
+				    <!-- <th class="member-table" id="th_delete" field="delete" style="width: 100px;"><div class="header-shift"><h4></h4></div></th> -->
+				    <th class="member-table" id="th_id" field="id" style="width: 50px;"><div id="id" class="header-shift"><h4><%= sortable "id", "ID" %></div></th>
+				    <th class="member-table" id="th_dot_not" field="dot_not" style="width: 200px;"><div id="dot_not" class="header-shift"><h4><%= sortable "dot_not", "dot_not" %></h4></div></th>
+				    <th class="member-table" id="th_uri" field="uri" style="width: 300px;"><div id="uri" class="header-shift"><h4><%= sortable "uri", "uri" %></h4></div></th>
+				    <!-- <th class="member-table" id="th_guid" field="guid" style="width: 500px;"><div id="guid" class="header-shift"><h4><#%= sortable "guid", "guid" %#></h4></div></th>
+				    <th class="member-table" id="th_url_prev" field="url_prev" style="width: 500px;"><div id="url_prev" class="header-shift"><h4><#%= sortable "url_prev", "url_prev" %#></h4></div></th>
+				    <th class="member-table" id="th_created_at" field="created_at" style="width: 200px;"><div id="created_at" class="header-shift"><h4><#%= sortable "created_at", "created_at" %#></h4></div></th>
+				    <th class="member-table" id="th_updated_at" field="updated_at" style="width: 200px;"><div id="updated_at" class="header-shift"><h4><#%= sortable "updated_at", "updated_at" %#></h4></div></th> -->
+				  </tr>
+				  </thead>
+				</table>
+	
+		</div>
+		
+		<div id="scroll1" class="tablebox" onscroll="scrollPos();">	
+			
+			<% if @core_math_standards.any? %>
+				
+				<%= hidden_field_tag :direction, params[:direction] %>
+				<%= hidden_field_tag :sort, params[:sort] %>	
+			
+				<table class="tbltablets">
+				  <tbody>
+				<% @core_math_standards.each do |core_math_standard| %>
+				  <tr align="left">
+
+				    <td class="core-sel-mat" name="<%= core_math_standard.id %>" style="width: 50px; padding-left: 10px;">
+						<div class="cb-container-1d">
+							<div id="cb_core_math_standard_<%= core_math_standard.id %>" name="core_math_standard_<%= core_math_standard.id %>" class="cb-button cb-align-core core-math-standard" tabindex=""></div>
+						</div>
+			    		<input id="ch_core_math_standard_<%= core_math_standard.id %>" name="publisher_product_description_core_math_standard" type="checkbox" value="<%= core_math_standard.id %>" />
+						<!-- <#%= check_box_tag :core_math_standard %#> -->
+			    		<!-- <#%= link_to('Edit', { :action => 'edit', :id => core_math_standard.id, :class => 'member-table' } ) %#> -->
+				    </td>
+
+				    <!-- <td style="width: 100px;">
+				    	<div style="position: relative; bottom: -2px">
+					    	<h5>
+							   	<#% delete_msg = "Delete ID: " + core_math_standard.id.to_s + " ?" %#>
+								<#%= button_to "Delete", { :action => 'destroy', :id => core_math_standard.id }, :method => :delete, data: { confirm: delete_msg }, :class => 'delete-btn', :remote => true %#>
+							</h5>
+						</div>
+					</td> -->
+				  	
+				    <td style="width: 50px;" name="<%= core_math_standard.id %>" class="core-sel-mat"><span class="member-table"><%= core_math_standard.id %></span></td>
+				    <td style="width: 200px;" name="<%= core_math_standard.id %>" class="core-sel-mat"><span class="member-table"><%= core_math_standard.dot_not %></span></td>
+				    <td style="width: 300px;" class="core-uri"><span class="member-table"><a href="<%= core_math_standard.uri%>"><%= core_math_standard.uri%></a></span></td>
+				    <!-- <td style="width: 500px;"><h5 class="member-table"><#%= core_math_standard.guid %#></h5></td>
+				    <td style="width: 500px;"><h5 class="member-table"><#%= core_math_standard.url_prev %#></h5></td>
+				    <td style="width: 200px;"><h5 class="member-table"><#%= core_math_standard.created_at.to_s(:db) %#></h5></td>
+				    <td style="width: 200px;"><h5 class="member-table"><#%= core_math_standard.updated_at.to_s(:db) %#></h5></td> -->
+				    
+				  </tr>
+				<% end %>
+				  </tbody>	
+				</table>			
+							
+				<%= will_paginate @core_math_standards %>
+											
+			<% else %>
+						
+				<h3>No record for Core Literacy Standards</h3>
+				
+			<% end %>
+			
+		</div>
+   
+	<script>
+		
+        function scrollPos() {
+            $("#pos1").html($("#scroll1").scrollLeft());
+            $("#scroll2").scrollLeft($("#scroll1").scrollLeft());
+        }
+		
+		function moveScroll() {
+			$("#scroll1").scrollLeft($("#pos1").html());
+			$("#scroll2").scrollLeft($("#pos1").html());			
+		}
+
+		$(function() {
+
+			// $("#foo").on('click', function () {
+				// alert($("#direction").val());
+				// alert($("#sort").val());
+			// });
+
+			jQuery.ajaxSetup({
+			    'beforeSend': function(xhr) {
+			        xhr.setRequestHeader("Accept", "text/javascript")
+			    }
+			});
+		
+    		var $cols = $('colgroup');
+
+			$("table.tbltablets tr:nth-child(even)").addClass('gray');
+			$("table.tbltablets tr:nth-child(odd)").addClass('white');
+
+			var cell;
+			var cellIndex;
+			var row;
+			var rowIndex;
+			var header;
+			var cellTh;
+			var cellIndexTh;
+			
+			// $("table.tbltablets th").mouseover ( function () {
+// 
+				// cellTh = $(this).closest('th');
+				// cellIndexTh = cellTh[0].cellIndex;
+				// cellIndexTh += 1;
+// 				
+				// $("table.tbltablets td:nth-child(" + cellIndexTh + ")").addClass('hover-col');
+				// $(this).addClass('hover-col');
+// 				
+			// }).mouseout ( function() {
+// 				
+				// $("table.tbltablets td:nth-child(" + cellIndexTh + ")").removeClass('hover-col');				
+				// $(this).removeClass('hover-col');
+// 				
+			// });
+			
+			$("table.tbltablets td").mouseover ( function () {
+				
+				cell = $(this).closest('td');
+				cellIndex = cell[0].cellIndex;
+				cellIndex += 1;
+				row = cell.closest('tr');
+				rowIndex = row[0].rowIndex;
+		
+
+				// switch(cellIndex)
+				// {
+				// case 1:
+					// header = "th_view"	  
+				  // break;
+				// // case 2:
+					// // header = "th_delete"	  
+				  // // break;
+				// case 2:
+					// header = "#th_id"	  
+				  // break;
+				// case 3:
+					// header = "#th_dot_not"	  
+				  // break;				  
+				// case 4:
+					// header = "#th_uri"	  
+				  // break;
+				// // case 6:
+					// // header = "#th_guid"	  
+				  // // break;
+				// // case 7:
+					// // header = "#th_url_prev"	  
+				  // // break;
+				// // case 8:
+					// // header = "#th_created_at"	  
+				  // // break;
+				// // case 9:
+					// // header = "#th_updated_at"	  
+				  // // break;
+// 
+				// default:
+					// //
+				// }				
+
+				// $(header).addClass('hover-col');
+		
+				if (rowIndex % 2 === 0) {
+					// $("table.tbltablets td:nth-child(" + cellIndex + ")").addClass('hover-col');
+					row.removeClass('gray').addClass('hover-row');					
+				}
+				else {
+					// $("table.tbltablets td:nth-child(" + cellIndex + ")").addClass('hover-col');
+					row.removeClass('white').addClass('hover-row');										
+				}		
+			}).mouseout( function(){
+
+				// $(header).removeClass('hover-col');
+				
+				if (rowIndex % 2 === 0) {
+					// $("table.tbltablets td:nth-child(" + cellIndex + ")").removeClass('hover-col');
+					row.removeClass('hover-row').addClass('gray');					
+				}
+				else {
+					// $("table.tbltablets td:nth-child(" + cellIndex + ")").removeClass('hover-col');
+					row.removeClass('hover-row').addClass('gray');					
+				}		
+			});
+			
+			var rowSelect = -1;			
+			
+			// $(".core-math-standard").on('click', function() {
+				// var cb = $(this).attr("id");
+				// var ch = "ch_" + $(this).attr("name");
+				// set_cb(ch, cb);
+			// });
+
+			$(".core-sel-mat").on('click', function () {
+				var id = $(this).attr("name");
+				var cb = "cb_core_math_standard_" + id.toString();
+				var ch = "ch_core_math_standard_" + id.toString();
+				set_cb(ch, cb);
+				// alert($(this).attr("id"));
+			});
+			
+			// $(".core-uri").on('click', function () {
+				// alert($(this).html());
+			// });
+			
+			// $("table.tbltablets tr").on('click', function () {
+				// alert($(this).find("input").attr("id"));
+			// });
+			
+			
+			// $("table.tbltablets td").on('click', function () {
+				// cell = $(this).closest('td');
+				// // btn_delete = $(this).closest('form');
+				// row = cell.closest('tr');
+				// rowIndex = row[0].rowIndex;
+				// if (rowSelect !== -1) {
+					// $("table.tbltablets tr").removeClass('row-select');
+				// }
+				// rowSelect = rowIndex;
+				// row.addClass('row-select');
+				// // btn_delete.removeClass('btn-color').addClass('btn-color-select');
+			// });
+	
+			
+			$(document).on('click', function(mtab1let) {
+				elem = mtab1let.target.className;
+				if ((elem === 'hover-col') || (elem === 'delete-btn') || (elem === 'member-table')) {
+					//
+				}
+				else {
+					$("table.tbltablets tr").removeClass('row-select');					
+				}
+			});
+		});
+
+			
+	</script>
+
+

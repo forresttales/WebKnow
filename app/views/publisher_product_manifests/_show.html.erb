@@ -1,0 +1,2359 @@
+
+<style>
+	
+        /*.prod-select ul.lc-inline {
+        	width: 1280px;
+        }*/
+		/*.prod-select ul.lc-inline, 
+		.prod-select ul.lc-inline li {
+			margin: 0 auto;
+			padding-right: 0px;
+        	vertical-align: top;			
+		}
+		.prod-select ul.lc-inline li {
+			display: inline-block;
+		}*/
+		/*#tab-container  {
+		  	margin-left: auto;
+		  	margin-right: auto;
+		  	width: 1200px;
+		}*/
+		/*.fixed-back-to {
+		  	display: none;
+		}*/
+		/*.tabs {
+			position: relative;
+			top: 70px;
+		  	width: 1000px;
+		  	height: 70px;
+			border-radius: 4px;
+		   	border: 3px solid #41B737 !important;
+		}*/
+        /*.tabs, .tabs ul, .tabs ul li, .tabs ul li span, .tabs ul li a, .tabs ul li a div {
+          	margin: 0;
+          	padding: 0;
+          	line-height: 1;
+        }*/
+		/*.tabs ul.short {
+			height: 20px;
+			background-color: #3D3D3D;			
+		}
+		.tabs ul.tall {
+			height: 34px;
+		}*/		
+		select.prod-select {
+			width: 380px;
+		}
+        select.prod-select ul {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 1.2em;
+	        list-style-type: none;
+	        /*background-color: #3D3D3D;*/
+	        background-color: #1F7C82;
+	    	color: #222222;
+	    	font-weight: bold;
+        }
+		select.prod-select ul li a:hover {
+		    /*color: #214025;*/
+		    color: red;
+		    text-shadow: 1px 1px #34922C;		    
+		}
+		.prod-select ul li.active {
+		    background-color: #34922C;
+		}
+		.prod-select ul li.active:hover a {
+		    color: #214025;
+		    text-shadow: 1px 1px #34922C;
+		}
+		select.prod-select ul li:hover {
+		    background-color: #ccc;
+		}
+		.prod-select ul li:hover a {
+		    color: #214025;		    
+		}
+		.prod-select ul li a:hover {
+		    text-decoration: none;
+		}
+		.prod-select ul li.active a {
+			color: #fff;
+		}
+        .prod-select li.disabled, .prod-select li.disabled a, .prod-select li.disabled a:visited, .prod-select li.disabled a:hover {
+          	color: #888;
+        }
+        .prod-select ul li a {
+        	color: #34922C;
+        }
+		.prod-select ul li {
+			padding-top: 12px;
+		    background-color: #FFFFFF;			
+			width: 230px;
+			height: 34px;
+		}
+	
+</style>
+
+	<style>
+
+		.table-page {
+			position: relative;
+			left: -1px;
+		}
+		div.table-page {
+			/*display: table;*/
+			background-color: #E3DDCF;
+			width: 1000px;
+			/*height: 600px;*/
+			border-radius: 0px;
+			padding-top: 20px;
+			padding-bottom: 40px;
+			padding-left: 10px;
+			padding-right: 10px;		
+			margin-left: 12px;
+			/*margin: 0 auto;*/	
+		}
+		.table-page p {
+			font-family: msyh; 
+			font-size: 16px;
+			color: #005187;
+		}
+		
+		#tbl-page {
+			width: 100%;
+		}
+		#tbl-page #tbl-page-inner {
+		    width: 1200px;
+		    margin: 0 auto;
+		    min-height: 800px;
+		}	
+		div .tbl-container {
+			display: table;
+			background-color: #E3DDCF;
+			width: 1000px;
+			border-radius: 0px;
+			padding-top: 40px;
+			padding-bottom: 40px;
+			padding-left: 10px;
+			padding-right: 10px;			
+		}
+		.tbl-container p {
+			font-family: msyh; 
+			font-size: 16px;
+			color: #005187;
+		}
+		.main {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 20px;
+			color: black;
+			height: 500px;
+		}
+		.links {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			color: brown;    		
+		}
+		h1 {
+			font-size: 22px;
+		}
+		h2 {
+			font-size: 18px;
+		}
+		h4 {
+			font-size: 16px;
+			font-weight: 600;
+		}    	
+		h5 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 12px;
+		}    	    	
+		p {
+			font-size: 12px;
+		}
+		.bar {
+			font-size: 16px;
+			font-weight: 400;
+		}
+		.input-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			width: 600px;
+			height: 24px;
+			border-style:solid;
+			background-color: #fff;
+			border-color: #000;
+			border-width: 1px;
+			padding-left: 6px;
+			color: #888;
+		}
+		.submit-upload {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			height: 24px;
+		}
+		#tbl {
+			width: 10300px; 
+		}
+		table#tbl th {
+			padding-left: 0px;
+		}    	    	
+		table#tbl tr {
+			height: 20px;
+		}    	
+		table#tbl td {
+			vertical-align: bottom;    		
+			padding-top: 0px;
+			padding-bottom: 4px;       		    		    		
+		}
+		.gray {
+			background: #CCC			    		
+		}
+		.white {
+			background: #fff    		
+		}
+		.hover-col {
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+		.hover-row {
+			background-color: #FAC0C1;
+		}
+		.row-select {
+			color: #fff;			
+			background-color: brown;
+		}
+		.btn-color-select {
+			color: #fff;	
+		}
+		.btn-color {
+		  	color: #A31C1C;			
+		}
+		.delete-btn {
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 50px;
+		  	height: 20px;
+		  	background: inherit;
+		  	border-width: 0px;
+		}
+		.delete-btn:focus {
+		}
+		.delete-btn:hover { 
+		  	text-decoration: underline; 
+		}
+		.delete-btn:active { 
+		  	text-decoration: underline; 
+		}
+		.header-shift {
+			padding-left: 0px;
+		}    	    	
+		.reset-db-btn {
+		  	width: 200px;
+		  	height: 20px;
+		}
+		#loading {
+			background:url("/assets/icon_loading.gif") no-repeat center center;
+			height: 100px; width: 100px;
+			position: fixed; left: 47%; top: 50%; z-index: 1000;
+			margin: -25px 0 0 -25px;
+			visibility: hidden;
+		}				
+
+
+
+		#tbltablets {
+    		width: 1000px; 
+    	}
+    	table#tbltablets th {
+    		padding-left: 0px;
+    	}    	    	
+    	table#tbltablets tr {
+    		height: 20px;
+    	}    	
+    	table#tbltablets td {
+    		vertical-align: bottom;    		
+    		padding-top: 0px;
+    		padding-bottom: 4px;       		    		    		
+    	}
+    	.gray {
+			background: #CCC			    		
+    	}
+    	.white {
+			background: #fff    		
+    	}
+    	.hover-col {
+    		background-color: rgba(0, 0, 0, 0.1);
+    	}
+		.hover-row {
+			background-color: #FAC0C1;
+		}
+		.row-select {
+			color: #fff;			
+			background-color: brown;
+		}
+		.btn-color-select {
+			color: #fff;	
+		}
+		.btn-color {
+		  	color: #A31C1C;			
+		}
+		.delete-btn {
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 50px;
+		  	height: 20px;
+		  	background: inherit;
+		  	border-width: 0px;
+			color: #486996; /*#9DD5ED*/		  	
+		}
+		.delete-btn:focus {
+		}
+		.delete-btn:hover { 
+		  	text-decoration: underline; 
+		}
+		.delete-btn:active { 
+		  	text-decoration: underline; 
+		}
+		.header-shift {
+			padding-left: 0px;
+		}    	    	
+		.reset-db-btn {
+		  	width: 300px;
+		  	height: 26px;
+		}
+		#loading {
+			background:url("/assets/icon_loading.gif") no-repeat center center;
+			height: 100px; width: 100px;
+			position: fixed; left: 47%; top: 50%; z-index: 1000;
+			margin: -25px 0 0 -25px;
+			visibility: hidden;
+		}				
+		#tablets .scrollbox-both {
+	 		height:330px;
+	 		width:1000px;
+	 		overflow:scroll;
+	 		/*border:1px solid #651375;*/		
+		}
+
+
+
+		.tablebox-header {
+	 		height:16px;
+	 		width:500px;
+	 		border-bottom:1px solid #651375;
+	 		overflow: hidden;			 				
+		}
+		
+		.tablebox {
+	 		height:400px;
+	 		width:500px;
+	 		border-color: #fff;
+	 		overflow: auto;		
+	 		border: none;
+		}
+		/*.tablebox-2 {
+	 		height:16px;
+	 		width:1200px;
+	 		border-bottom:1px solid #651375;
+	 		overflow: hidden;		
+		}*/
+		/*.table-header-shadow {
+	 		height:16px;
+	 		width:1200px;			
+		}*/
+		table.tbltablets {
+			width: 600px;
+		}
+    	table.tbltablets th {
+    		padding-left: 0px;
+    	}    	    	
+    	table.tbltablets tr {
+    		height: 20px;
+    	}    	
+    	table.tbltablets td {
+    		vertical-align: bottom;    		
+    		padding-top: 0px;
+    		padding-bottom: 4px;       		    		    		
+    	}
+
+	</style>
+
+
+	<script id="dropdown-data1-selected" type="text/x-dot-template">
+		<!-- {{=it.label}}<div class="down-caret">&#9660;</div> -->
+		{{=it.label}}
+	</script>
+	<script id="dropdown-data1" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-1" id="dropdown1" tabindex="16">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div id="dropdown1_selected" class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data2-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data2" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-2" id="dropdown2" tabindex="19">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data3-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data3" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-3" id="dropdown3" tabindex="25">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data4-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data4" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-4" id="dropdown4" tabindex="28">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data5-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data5" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-5" id="dropdown5" tabindex="31">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data6-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data6" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-6" id="dropdown6" tabindex="34">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data7-selected" type="text/x-dot-template">
+		{{=it.label}}
+	</script>	
+	<script id="dropdown-data7" type="text/x-dot-template">
+		<div class="profile-dropdown profile-dropdown-7" id="dropdown7" tabindex="37">
+		    <!-- <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div> -->
+		    <div class="selected">{{=it.selected.label}}</div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+					<div style="text-align: left;">
+						<span class="normal pad-left-20">Publisher Products</span>
+					</div>
+					
+					<div class="line-space-20"></div>
+					<!-- <div id="test" style="width:20px; height: 20px; background-color: red;"></div> -->
+					
+				   	<div class="pad-left-20">
+				   		<div class="table">
+				   			<div class="row">
+								<div class="cell-250">
+								<% if @publisher_product_logo %>   				
+								
+									<!-- <#% for publisher_journalposter_logo in @publisher_journalposter.publisher_journalposter_logos %#> -->
+					   				<div class="">
+											<ul class="image-grid image-grid-caption image-grid-caption-height-50">
+												<li>
+													<figure class="figure-box-200">
+														<img alt="image not appearing" src="<%= @publisher_product_logo.image_url(:image_200_200) if @publisher_product_logo.image? %>" />
+														<figcaption class="figcaption-1">
+															<span><%= link_to "Edit", publisher_product_logos_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id) %></span>
+															<br>
+															<span><%= link_to "Delete", destroy_image_publisher_product_logos_path( :publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :publisher_product_logo_id => @publisher_product_logo.id, :descr => 1 ), :confirm => 'Delete this image?', :method => :post %></span>
+														</figcaption>
+													</figure>
+												</li>
+											</ul>
+									        <!-- image_tag publisher_journalposter_logo.image_url(:logo) if publisher_journalposter_logo.image?  -->
+						   			</div>
+						   			<div class="image-grid-text-1-container">
+										<span><%= link_to "Edit", publisher_product_logos_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id) %></span>
+										&nbsp;&nbsp;&nbsp;			   				
+						   				<span><%= link_to "Delete", destroy_image_publisher_product_logos_path( :publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :publisher_product_logo_id => @publisher_product_logo.id, :descr => 1 ), :confirm => 'Delete this image?', :method => :post %></span>
+										<!-- <span><#%= link_to 'Delete', publisher_product_images_path, :confirm => 'Delete this image?', :method => :delete, :params => { :publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :id => @publisher_product_image.id }, :class => '' %#></span> -->						   				
+										<!-- <span><#%= link_to '&laquo; Delete image &raquo;'.html_safe, publisher_product_images_path, :confirm => 'Delete this image?', :method => :delete, :params => {:publisher_product_id => @publisher_product_id}, :class => 'links' %#></span> -->						   				
+						   			</div>
+									<!-- <#% end %#> -->
+
+								<% else %>
+
+					   				<div class="">
+										<ul class="image-grid image-grid-caption image-grid-caption-height-50">
+											<li>
+												<figure class="figure-box-200">
+													<img alt="logo not appearing" src="../images_publisher_product_logo/image_company_generic_w200_h200_1.png" />
+													<figcaption class="figcaption-1">
+														<span><%= link_to "Add a company logo image", new_publisher_product_logo_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :descr => 1) %></span>	
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+						   			</div>
+						   			<div class="image-grid-text-1-container">
+						   				<span><%= link_to "&laquo; Add a company logo image &raquo;".html_safe, new_publisher_product_logo_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :descr => 1) %></span>
+						   			</div>
+						   			<!-- <div class="cell-400">
+										<span><#%= link_to '&laquo; Add a photo &raquo;'.html_safe, new_publisher_profile_image_path(:publisher_id => @publisher_id), :class => 'links' %#></span>
+						   			</div> -->
+								
+								<% end %>
+								</div>
+								<div style="display:table-cell; width: 30px;"></div>
+								<div class="cell-250">
+								<% if @publisher_product_image %>   				
+								
+									<!-- <#% for publisher_journalposter_logo in @publisher_journalposter.publisher_journalposter_logos %#> -->
+					   				<div class="">
+											<ul class="image-grid image-grid-caption image-grid-caption-height-50">
+												<li>
+													<figure class="figure-box-200">
+														<img alt="image not appearing" src="<%= @publisher_product_image.image_url(:image_200_200) if @publisher_product_image.image? %>" />
+														<figcaption class="figcaption-1">
+															<span><%= link_to "Edit", publisher_product_images_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id) %></span>
+															<br>
+															<span><%= link_to "Delete", destroy_image_publisher_product_images_path( :publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :publisher_product_image_id => @publisher_product_image.id, :descr => 1 ), :confirm => 'Delete this image?', :method => :post %></span>
+														</figcaption>
+													</figure>
+												</li>
+											</ul>
+									        <!-- image_tag publisher_journalposter_logo.image_url(:logo) if publisher_journalposter_logo.image?  -->
+						   			</div>
+						   			<div class="image-grid-text-1-container">
+										<span><%= link_to "Edit", publisher_product_images_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id) %></span>
+										&nbsp;&nbsp;&nbsp;			   				
+						   				<span><%= link_to "Delete", destroy_image_publisher_product_images_path( :publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :publisher_product_image_id => @publisher_product_image.id, :descr => 1 ), :confirm => 'Delete this image?', :method => :post %></span>
+										<!-- <span><#%= link_to 'Delete', publisher_product_images_path, :confirm => 'Delete this image?', :method => :delete, :params => { :publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :id => @publisher_product_image.id }, :class => '' %#></span> -->						   				
+										<!-- <span><#%= link_to '&laquo; Delete image &raquo;'.html_safe, publisher_product_images_path, :confirm => 'Delete this image?', :method => :delete, :params => {:publisher_product_id => @publisher_product_id}, :class => 'links' %#></span> -->						   				
+						   			</div>
+									<!-- <#% end %#> -->
+
+								<% else %>
+
+					   				<div class="">
+										<ul class="image-grid image-grid-caption image-grid-caption-height-50">
+											<li>
+												<figure class="figure-box-200">
+													<img alt="logo not appearing" src="../images_publisher_product/image_product_generic_w200_h200_3.png" />
+													<figcaption class="figcaption-1">
+														<span><%= link_to "Add a product image", new_publisher_product_image_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :descr => 1) %></span>	
+													</figcaption>
+												</figure>
+											</li>
+										</ul>
+						   			</div>
+						   			<div class="image-grid-text-1-container">
+						   				<span><%= link_to "&laquo; Add a product image &raquo;".html_safe, new_publisher_product_image_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :descr => 1) %></span>
+						   			</div>
+						   			<!-- <div class="cell-400">
+										<span><#%= link_to '&laquo; Add a photo &raquo;'.html_safe, new_publisher_profile_image_path(:publisher_id => @publisher_id), :class => 'links' %#></span>
+						   			</div> -->
+								
+								<% end %>
+								</div>
+					   		</div>
+					   	</div> 
+					</div>
+			
+					<div class="line-space-20"></div>
+					<div class="line-space-20"></div>
+
+					<!-- <#% if @has_product_metadata %#>
+						<div class="pad-left-20"><a id="render" class="links" href="/PublisherMetadata/<#%= @publisher_product_id %#>"><#%= @product_metadata %#></a></div>		
+					<#% else %#>
+						<div class="pad-left-20">
+							<span class="normal">
+								<#%= link_to 'Upload Product Metadata', '/PublisherMetadata/' + @publisher_product_id.to_s, :class => 'links' %#>
+							</span>
+						</div>					
+					<#% end %#> -->
+
+					<% if !@publisher_product_description.nil? %>
+
+						<div class="pad-left-20">
+							<div id="box_profile_general" class="box-profile-general" tabindex="100">
+								
+								<!-- <div class="box-profile-space"></div> -->								
+								
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1b">
+											<span class="input-label-category">Publisher Product ID:</span>
+										</div>
+										<div class="form-home-profile-cell-2b">
+											<span class="input-label-category"><%= @publisher_product_id %></span>
+										</div>
+										<div class="form-home-profile-cell-3b">
+										</div>								
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1b">
+											<span class="input-label-category">Publisher Product Description ID:</span>
+										</div>
+										<div class="form-home-profile-cell-2b">
+											<span class="input-label-category"><%= @publisher_product_description_id %></span>
+										</div>
+										<div class="form-home-profile-cell-3b">
+										</div>								
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1b">
+											<span class="input-label-category">Created:</span>
+										</div>
+										<div class="form-home-profile-cell-2b">
+											<span class="input-label-category"><%= @publisher_product_description.created_at.to_s(:long) %></span>
+										</div>
+										<div class="form-home-profile-cell-3b">
+										</div>								
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1b">
+											<span class="input-label-category">Updated:</span>
+										</div>
+										<div class="form-home-profile-cell-2b">
+											<span class="input-label-category" id="render_name_product_update"></span>
+										</div>
+										<div class="form-home-profile-cell-3b">
+										</div>								
+									</div>
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span class="input-label-category" tabindex="9" autofocus>Product Name</span>
+								<div class="box-profile-space"></div>
+								
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for=""></label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_name_product %>
+											<input class="input-home-profile" id="publisher_product_description_name_product" name="publisher_product_description[name_product]" tabindex="10" type="text" value="<%= @publisher_product_description.name_product %>" placeholder="" />
+											<% else %>
+											<input class="input-home-profile" id="publisher_product_description_name_product" name="publisher_product_description[name_product]" tabindex="10" type="text" value="" placeholder="Product Name" />
+											<% end %>
+										</div>
+										<div id="render_name_product" class="form-home-profile-cell-3 render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<div style="height:4px;"></div>
+											<div id="submit_name_product" class="btn-submit-home-profile" tabindex="11">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>
+								</div>
+								
+								
+								
+								
+								
+								
+								
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_15" tabindex="15" class="input-label-category">Core Literacy Standards</span>
+								<div class="box-profile-space"></div>
+
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1c">
+											<label class="input-label-home-profile" for="publisher_state"></label>
+										</div>		
+										<div class="form-home-profile-cell-2c">
+											
+											<div id="tablets">
+												 <%= render 'publisher_product_descriptions/list_core_literacy_standards' %>
+											</div>											
+
+											<!-- <select id="publisher_product_description_core_literacy_standard" name="publisher_product_description_core_literacy_standard" multiple="multiple" class="prod-select" size="">
+												<option value="0">-Select-</option>
+												<#% @core_literacy_standards.each do|core_literacy_standard| %#>
+													<option value="<#%= core_literacy_standard.id %#>"><#%= core_literacy_standard.dot_not %#></option>
+												<#% end %#>
+											</select> -->
+
+										</div>
+										<div id="render_core_literacy_standard" class="form-home-profile-cell-3c render-1"></div>
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1c">
+										</div>
+										<div class="form-home-profile-cell-2c">
+											<div style="height:4px;"></div>
+											<div id="submit_core_literacy_standards" class="btn-submit-home-profile" tabindex="17">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3c">
+										</div>								
+									</div>							
+								</div>
+
+
+
+
+
+
+								
+								
+								
+								
+								
+								
+								
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_42" tabindex="42" class="input-label-category">Versions</span>
+								<div class="box-profile-space"></div>
+								
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for=""></label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_versions %>
+											<input class="input-home-profile" id="publisher_product_description_versions" name="publisher_product_description[versions]" tabindex="43" type="text" value="<%= @publisher_product_description.versions %>" placeholder="" />
+											<% else %>
+											<input class="input-home-profile" id="publisher_product_description_versions" name="publisher_product_description[versions]" tabindex="43" type="text" value="" placeholder="Versions" />
+											<% end %>
+										</div>
+										<div id="render_versions" class="form-home-profile-cell-3 render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<div style="height:4px;"></div>
+											<div id="submit_versions" class="btn-submit-home-profile" tabindex="44">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_12" tabindex="12" class="input-label-category">Product Description</span>
+								<div class="box-profile-space"></div>
+								
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile-textarea" for=""></label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_description %>
+											<textarea class="input-home-profile-textarea" id="publisher_product_description_description" name="publisher_product_description[description]" tabindex="13" type="text" value="" placeholder="" onkeyup="countChar_1(this)" ><%= @publisher_product_description.description %></textarea>
+											<% else %>
+											<textarea class="input-home-profile-textarea" id="publisher_product_description_description" name="publisher_product_description[description]" tabindex="13" type= value="text" placeholder="Product Description" onkeyup="countChar(this)" ></textarea>
+											<% end %>
+										</div>
+										<div id="render_description" class="form-home-profile-cell-3 render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<div style="height:4px;"></div>
+											<div id="char_num_1" class="char-num">count</div>
+											<div id="submit_description" class="btn-submit-home-profile" tabindex="14">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+								
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_15" tabindex="15" class="input-label-category">Content Type</span>
+								<div class="box-profile-space"></div>
+
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
+										</div>		
+										<div class="form-home-profile-cell-2a">
+
+											<select id="publisher_product_description_type_content_index" name="publisher_product_description_type_content_index" data-template="#dropdown-data1">
+												<option value="0">-Select-</option>
+												<option value="1">App</option>
+												<option value="2">Lesson Plan Document</option>
+												<option value="3">Digital Curriculum</option>
+												<option value="4">eBook</option>
+												<option value="5">Game</option>
+												<option value="6">Software-School Management</option>
+												<option value="7">Software-Other</option>
+												<option value="8">Online Course</option>
+												<option value="9">Tools</option>
+												<option value="10">Video</option>
+											</select>
+									   		<!-- <#%= select_tag("publisher_product_description_type_content_index", options_for_select(
+									   				[['-Select-','0'],
+									   				['App','1'],
+									   				['Lesson Plan Document','2'],
+									   				['Digital Curriculum','3'],
+									   				['eBook','4'],
+									   				['Game','5'],
+									   				['Software-School Management','6'],
+									   				['Software-Other','7'],
+									   				['Online Course','8'],
+									   				['Tools','9'],
+									   				['Video','10']], 
+									   				@publisher_product_description.type_content_index ),
+									   				:class => 'sparkbox-custom' ) %#> -->
+										</div>
+										<div id="render_type_content_index" class="form-home-profile-cell-3 render-1"></div>
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2a">
+											<div style="height:4px;"></div>
+											<div id="submit_type_content_index" class="btn-submit-home-profile" tabindex="17">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_18" tabindex="18" class="input-label-category">Core or Supplemental</span>
+								<div class="box-profile-space"></div>
+
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
+										</div>		
+										<div class="form-home-profile-cell-2a">
+											<select id="publisher_product_description_core_supplemental_index" name="publisher_product_description[core_supplemental_index]" data-template="#dropdown-data2">
+												<option value="0">-Select-</option>
+												<option value="1">Core</option>
+												<option value="2">Supplemental</option>
+											</select>
+										</div>
+										<div id="render_core_supplemental_index" class="form-home-profile-cell-3 render-1"></div>
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2a">
+											<div style="height:4px;"></div>
+											<div id="submit_core_supplemental_index" class="btn-submit-home-profile" tabindex="20">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_24" tabindex="24" class="input-label-category">Subject Category</span>
+								<div class="box-profile-space"></div>
+
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
+										</div>		
+										<div class="form-home-profile-cell-2a">
+											<select id="publisher_product_description_subject_category_index" name="publisher_product_description[subject_category_index]" data-template="#dropdown-data3">
+												<option value="0">-Select-</option>
+												<option value="1">Language Arts</option>
+												<option value="2">Science</option>
+												<option value="3">Music & Drama</option>
+												<option value="4">Physical Education</option>
+												<option value="5">Arts</option>
+												<option value="6">Professional Development</option>
+												<option value="7">Extra-Curricular</option>
+											</select>
+										</div>
+										<div id="render_subject_category_index" class="form-home-profile-cell-3 render-1"></div>
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2a">
+											<div style="height:4px;"></div>
+											<div id="submit_subject_category_index" class="btn-submit-home-profile" tabindex="26">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_27" tabindex="27" class="input-label-category">Age Appropriate</span>
+								<div class="box-profile-space"></div>
+
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
+										</div>		
+										<div class="form-home-profile-cell-2a">
+											
+							          		<select id="publisher_product_description_age_appropriate_index" name="publisher_product_description[age_appropriate_index]" data-placeholder="-Select-" class="chosen-select" multiple style="width:380px;" tabindex="">
+							            		<option value="0">-Select-</option>
+												<option value="1">Age 1</option>
+												<option value="2">Age 2</option>
+												<option value="3">Age 3</option>
+												<option value="4">Age 4</option>
+												<option value="5">Age 5</option>
+												<option value="6">Age 6</option>
+												<option value="7">Age 7</option>
+												<option value="8">Age 8</option>
+												<option value="9">Age 9</option>
+												<option value="10">Age 10</option>
+												<option value="11">Age 11</option>
+												<option value="12">Age 12</option>
+												<option value="13">Age 13</option>
+												<option value="14">Age 14</option>
+												<option value="15">Age 15</option>
+												<option value="16">Age 16</option>
+												<option value="17">Age 17</option>
+												<option value="18">Adult</option>
+							          		</select>
+											
+										  	<script type="text/javascript">
+										    	var config = {
+										      	'.chosen-select'           : {},
+										      	'.chosen-select-deselect'  : {allow_single_deselect:true},
+										      	'.chosen-select-no-single' : {disable_search_threshold:10},
+										      	'.chosen-select-no-results': {no_results_text:'-nothing found-'},
+										      	'.chosen-select-width'     : {width:"95%"}
+										    	}
+										    	for (var selector in config) {
+										      		$(selector).chosen(config[selector]);
+										    	}
+										  	</script>
+											
+											<!-- <select id="publisher_product_description_age_appropriate_index" name="publisher_product_description[age_appropriate_index]" data-template="#dropdown-data4">
+												<option value="0">-Select-</option>
+												<option value="1">2 to 5</option>
+												<option value="2">5 to 10</option>
+												<option value="3">10 to 15</option>
+												<option value="4">15 50 18</option>
+											</select> -->
+										</div>
+										<div id="render_age_appropriate_index" class="form-home-profile-cell-3 render-1"></div>
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2a">
+											<div style="height:4px;"></div>
+											<div id="submit_age_appropriate_index" class="btn-submit-home-profile" tabindex="29">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_30" tabindex="30" class="input-label-category">Grade</span>
+								<div class="box-profile-space"></div>
+
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
+										</div>		
+										<div class="form-home-profile-cell-2a">
+											<select id="publisher_product_description_grade_index" name="publisher_product_description[grade_index]" data-template="#dropdown-data5">
+												<option value="0">-Select-</option>
+												<option value="1">Grade 1</option>
+												<option value="2">Grade 2</option>
+												<option value="3">Grade 3</option>
+												<option value="4">Grade 4</option>
+
+											</select>
+										</div>
+										<div id="render_grade_index" class="form-home-profile-cell-3 render-1"></div>
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2a">
+											<div style="height:4px;"></div>
+											<div id="submit_grade_index" class="btn-submit-home-profile" tabindex="32">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_33" tabindex="33" class="input-label-category">Platform</span>
+								<div class="box-profile-space"></div>
+
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
+										</div>		
+										<div class="form-home-profile-cell-2a">
+											<select id="publisher_product_description_platform_index" name="publisher_product_description[platform_index]" data-template="#dropdown-data6">
+												<option value="0">-Select-</option>
+												<option value="1">Apple iOS</option>
+												<option value="2">Kindle Android</option>
+												<option value="3">Google Android</option>
+												<option value="4">Linux</option>
+												<option value="5">Microsoft</option>
+												<option value="6">HTML</option>
+												<option value="7">Nook</option>
+												<option value="8">Other</option>
+											</select>
+										</div>
+										<div id="render_platform_index" class="form-home-profile-cell-3 render-1"></div>
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2a">
+											<div style="height:4px;"></div>
+											<div id="submit_platform_index" class="btn-submit-home-profile" tabindex="35">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_45" tabindex="45" class="input-label-category">Topic</span>
+								<div class="box-profile-space"></div>
+								
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for=""></label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_topic %>
+											<input class="input-home-profile" id="publisher_product_description_topic" name="publisher_product_description[topic]" tabindex="46" type="text" value="<%= @publisher_product_description.topic %>" placeholder="" />
+											<% else %>
+											<input class="input-home-profile" id="publisher_product_description_topic" name="publisher_product_description[topic]" tabindex="46" type="text" value="" placeholder="Topic" />
+											<% end %>
+										</div>
+										<div id="render_topic" class="form-home-profile-cell-3 render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<div style="height:4px;"></div>
+											<div id="submit_topic" class="btn-submit-home-profile" tabindex="47">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_48" tabindex="48" class="input-label-category">Lesson Plan Subject</span>
+								<div class="box-profile-space"></div>
+								
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for=""></label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_topic %>
+											<input class="input-home-profile" id="publisher_product_description_lesson_plan_subject" name="publisher_product_description[lesson_plan_subject]" tabindex="49" type="text" value="<%= @publisher_product_description.lesson_plan_subject %>" placeholder="" />
+											<% else %>
+											<input class="input-home-profile" id="publisher_product_description_lesson_plan_subject" name="publisher_product_description[lesson_plan_subject]" tabindex="49" type="text" value="" placeholder="Lesson Plan Subject" />
+											<% end %>
+										</div>
+										<div id="render_lesson_plan_subject" class="form-home-profile-cell-3 render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<div style="height:4px;"></div>
+											<div id="submit_lesson_plan_subject" class="btn-submit-home-profile" tabindex="50">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_51" tabindex="51" class="input-label-category">Additional Description</span>
+								<div class="box-profile-space"></div>
+
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile-textarea" for=""></label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_word_description %>
+											<textarea class="input-home-profile-textarea" id="publisher_product_description_word_description" name="publisher_product_description[word_description]" tabindex="52" type="text" value="" placeholder="" onkeyup="countChar_1(this)" ><%= @publisher_product_description.word_description %></textarea>
+											<% else %>
+											<textarea class="input-home-profile-textarea" id="publisher_product_description_word_description" name="publisher_product_description[word_description]" tabindex="52" type= value="text" placeholder="Product Description" onkeyup="countChar(this)" ></textarea>
+											<% end %>
+										</div>
+										<div id="render_word_description" class="form-home-profile-cell-3 render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<div style="height:4px;"></div>
+											<div id="char_num_1" class="char-num">count</div>
+											<div id="submit_word_description" class="btn-submit-home-profile" tabindex="53">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+								
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_21" tabindex="21" class="input-label-category">Source URL</span>
+								<div class="box-profile-space"></div>
+								
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for=""></label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_source_url %>
+											<input class="input-home-profile" id="publisher_product_description_source_url" name="publisher_product_description[source_url]" tabindex="22" type="text" value="<%= @publisher_product_description.source_url %>" placeholder="" />
+											<% else %>
+											<input class="input-home-profile" id="publisher_product_description_source_url" name="publisher_product_description[source_url]" tabindex="22" type="text" value="" placeholder="www.MyCompany.com" />
+											<% end %>
+										</div>
+										<div id="render_source_url" class="render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<div style="height:4px;"></div>
+											<div id="submit_source_url" class="btn-submit-home-profile" tabindex="23">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+								
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_36" tabindex="36" class="input-label-category">Pricing Model</span>
+								<div class="box-profile-space"></div>
+
+								<div class="form-home-profile-table">			
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for="publisher_state"></label>
+										</div>		
+										<div class="form-home-profile-cell-2a">
+											<select id="publisher_product_description_pricing_model_index" name="publisher_product_description[pricing_model_index]" data-template="#dropdown-data7">
+												<option value="0">-Select-</option>
+												<option value="1">Free</option>
+												<option value="2">Premium</option>
+											</select>
+										</div>
+										<div id="render_pricing_model_index" class="form-home-profile-cell-3 render-1"></div>
+									</div>
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2a">
+											<div style="height:4px;"></div>
+											<div id="submit_pricing_model_index" class="btn-submit-home-profile" tabindex="38">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								<div class="box-profile-line-container"><div class="box-profile-line"></div></div>
+								<span id="focus_39" tabindex="39" class="input-label-category">Price</span>
+								<div class="box-profile-space"></div>
+								
+								<div class="form-home-profile-table">						
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+											<label class="input-label-home-profile" for=""></label>
+										</div>
+										<div class="form-home-profile-cell-2">
+											<% if @b_price %>
+											<input class="input-home-profile" id="publisher_product_description_price" name="publisher_product_description[price]" tabindex="40" type="text" value="<%= @publisher_product_description.price %>" placeholder="" />
+											<% else %>
+											<input class="input-home-profile" id="publisher_product_description_price" name="publisher_product_description[price]" tabindex="40" type="text" value="" placeholder="Price" />
+											<% end %>
+										</div>
+										<div id="render_price" class="form-home-profile-cell-3 render-1"></div>
+									</div>							
+									<div class="form-home-profile-row">
+										<div class="form-home-profile-cell-1">
+										</div>
+										<div class="form-home-profile-cell-2">
+											<div style="height:4px;"></div>
+											<div id="submit_price" class="btn-submit-home-profile" tabindex="41">Submit</div>
+										</div>
+										<div class="form-home-profile-cell-3">
+										</div>								
+									</div>							
+								</div>
+								
+								<div class="box-profile-space"></div>								
+								<div class="box-profile-space"></div>
+								
+							</div>
+						</div>			
+					<% end %>
+			
+			
+			
+			
+			
+
+
+
+	<script>
+
+		// $(function(){
+		    // $('.sparkbox-custom').sbCustomSelect();
+		// });
+	  
+		// $(function(){
+			// $(".prod-select").multiselect();
+		// });
+
+		
+		function countChar_1(val) {
+	    	var len = val.value.length;
+	        if (len > 150) {
+	        	val.value = val.value.substring(0, 150);
+	        } else {
+	        	$('#char_num_1').text(150 - len);
+	      	}
+		}
+
+		function countChar_2(val) {
+	    	var len = val.value.length;
+	        if (len > 150) {
+	        	val.value = val.value.substring(0, 150);
+	        } else {
+	        	$('#char_num_2').text(150 - len);
+	      	}
+		}
+
+		function set_updated(s_updated) {
+			// alert(s_updated);
+			$("#render_name_product_update").html(s_updated);
+		}
+		
+		function set_age_appropriate(age_appropriate) {
+			var e = document.getElementById("publisher_product_description_age_appropriate_index");
+			for(var i = 1; i < 19; i++) {
+				if( age_appropriate[i] ) {
+					e.options[i].setAttribute('selected','selected');
+				}
+			}
+			$("#publisher_product_description_age_appropriate_index").trigger("chosen:updated");
+		}
+		
+
+		$('#publisher_product_description_type_content_index option[value=<%= @publisher_product_description.type_content_index %>]').attr('selected', 'selected');
+		$('#publisher_product_description_core_supplemental_index option[value=<%= @publisher_product_description.core_supplemental_index %>]').attr('selected', 'selected');
+		$('#publisher_product_description_subject_category_index option[value=<%= @publisher_product_description.subject_category_index %>]').attr('selected', 'selected');
+		$('#publisher_product_description_grade_index option[value=<%= @publisher_product_description.grade_index %>]').attr('selected', 'selected');
+		$('#publisher_product_description_platform_index option[value=<%= @publisher_product_description.platform_index %>]').attr('selected', 'selected');
+		$('#publisher_product_description_pricing_model_index option[value=<%= @publisher_product_description.pricing_model_index %>]').attr('selected', 'selected');
+
+
+		function set_core_literacy_standard(standard) {
+			// alert(standard.length);
+			var e = "";
+			var s = "";
+			for(var i = 0; i < standard.length; i++) {
+				// alert(standard[i]);
+				s = "ch_core_literacy_standard_" + standard[i].toString();
+				e = document.getElementById(s);
+				e.setAttribute('checked','checked');
+			}
+		}	
+
+		
+		$(window).load( function() {
+		// $(document).ready(function(){
+
+			// $(function(){
+				// $(".prod-select").multiselect();
+			// });
+
+			// set_core_literacy_standard();
+
+
+			// $('select').dropdown();	
+			$('select').dropdown({
+			    'changed': function(data) {
+			        // selectStatus1();
+			        // selectStatus2();	
+			    }
+			});	    
+
+			$(".chosen-select").chosen({no_results_text: "no results found"}); 
+			
+			var gon_age_appropriate = gon.age_appropriate;
+			set_age_appropriate(gon_age_appropriate);
+			
+			var gon_core_literacy_standard = gon.core_literacy_standard;
+			// var g_core_literacy_standard = "clyde in load";
+			set_core_literacy_standard(gon_core_literacy_standard);
+			// set_core_literacy_standard();
+			
+			// var ar_core_literacy_standard = [1, 2, 3]; 
+			// set_core_literacy_standard(ar_core_literacy_standard, 10);
+			// set_core_literacy_standard();
+
+
+			// gon_core_literacy_standard = gon.core_literacy_standard;
+			// set_core_literacy_standard(core_literacy_standard, n_standards)
+
+			// $("#test").on("click", function() {
+				// set_age();
+			// });
+
+
+			if(<%= @b_name_product %>) {
+				$("#render_name_product").html("");
+			}
+			else {
+				$("#render_name_product").addClass("check-required");
+			}
+			if(<%= @b_description %>) {
+				$("#render_description_1").html("");
+			}
+			else {
+				$("#render_description_1").addClass("check-required");
+			}
+			if(<%= @b_type_content_index %>) {
+				$("#render_type_content_index").html("");
+			}
+			else {
+				$("#render_type_content_index").addClass("check-required");
+			}
+			if(<%= @b_core_supplemental_index %>) {
+				$("#render_core_supplemental_index").html("");
+			}
+			else {
+				$("#render_core_supplemental_index").addClass("check-required");
+			}
+			if(<%= @b_source_url %>) {
+				$("#render_source_url").html("");
+			}
+			else {
+				$("#render_source_url").addClass("check-required");
+			}
+			if(<%= @b_subject_category_index %>) {
+				$("#render_subject_category_index").html("");
+			}
+			else {
+				$("#render_subject_category_index").addClass("check-required");
+			}	
+			if(<%= @b_age_appropriate_index %>) {
+				$("#render_age_appropriate_index").html("");
+			}
+			else {
+				$("#render_age_appropriate_index").addClass("check-required");
+			}
+			if(<%= @b_grade_index %>) {
+				$("#render_grade_index").html("");
+			}
+			else {
+				$("#render_grade_index").addClass("check-required");
+			}
+			if(<%= @b_platform_index %>) {
+				$("#render_platform_index").html("");
+			}
+			else {
+				$("#render_platform_index").addClass("check-required");
+			}
+			if(<%= @b_pricing_model_index %>) {
+				$("#render_pricing_model_index").html("");
+			}
+			else {
+				$("#render_pricing_model_index").addClass("check-required");
+			}
+			if(<%= @b_price %>) {
+				$("#render_price").html("");
+			}
+			else {
+				$("#render_price").addClass("check-required");
+			}
+			if(<%= @b_versions %>) {
+				$("#render_versions").html("");
+			}
+			else {
+				$("#render_versions").addClass("check-required");
+			}
+			if(<%= @b_topic %>) {
+				$("#render_topic").html("");
+			}
+			else {
+				$("#render_topic").addClass("check-required");
+			}
+			if(<%= @b_lesson_plan_subject %>) {
+				$("#render_lesson_plan_subject").html("");
+			}
+			else {
+				$("#render_lesson_plan_subject").addClass("check-required");
+			}
+			if(<%= @b_word_description %>) {
+				$("#render_word_description_1").html("");
+			}
+			else {
+				$("#render_word_description_1").addClass("check-required");
+			}
+
+
+
+    		$("#submit_name_product").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_name_product").click();
+    		});
+    		$("#submit_description").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_description").click();
+    		});				
+    		$("#submit_type_content_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_type_content_index").click();
+    		});				
+    		$("#submit_core_supplemental_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_core_supplemental_index").click();
+    		});				
+    		$("#submit_source_url").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_source_url").click();
+    		});				
+    		$("#submit_subject_category_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_subject_category_index").click();
+    		});				
+    		$("#submit_age_appropriate_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_age_appropriate_index").click();
+    		});				
+    		$("#submit_grade_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_grade_index").click();
+    		});				
+    		$("#submit_platform_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_platform_index").click();
+    		});				
+    		$("#submit_pricing_model_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_pricing_model_index").click();
+    		});				
+    		$("#submit_price").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_price").click();
+    		});				
+    		$("#submit_versions").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_versions").click();
+    		});				
+    		$("#submit_topic").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_topic").click();
+    		});				
+    		$("#submit_lesson_plan_subject").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_lesson_plan_subject").click();
+    		});				
+    		$("#submit_word_description").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_word_description").click();
+    		});				
+
+
+
+    		// $("#publisher_product_description_name_product").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_name_product").click();
+    		// });
+    		// $("#publisher_product_description_description").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_description").click();
+    		// });				
+    		$("#publisher_product_description_type_content_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_type_content_index").click();
+    		});				
+    		$("#publisher_product_description_core_supplemental_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_core_supplemental_index").click();
+    		});				
+    		// $("#publisher_product_description_source_url").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_source_url").click();
+    		// });	
+    		$("#publisher_product_description_subject_category_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_subject_category_index").click();
+    		});				
+    		$("#publisher_product_description_age_appropriate_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_age_appropriate_index").click();
+    		});				
+    		$("#publisher_product_description_grade_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_grade_index").click();
+    		});				
+    		$("#publisher_product_description_platform_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_platform_index").click();
+    		});				
+    		$("#publisher_product_description_pricing_model_index").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#publisher_product_description_pricing_model_index").click();
+    		});				
+    		// $("#publisher_product_description_price").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_price").click();
+    		// });				
+    		// $("#publisher_product_description_versions").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_versions").click();
+    		// });				
+    		// $("#publisher_product_description_topic").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_topic").click();
+    		// });				
+    		// $("#publisher_product_description_lesson_plan_subject").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_lesson_plan_subject").click();
+    		// });				
+    		// $("#publisher_product_description_word_description").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#publisher_product_description_word_description").click();
+    		// });				
+
+
+
+			$("#submit_name_product").on('click', function() {
+				var input_publisher_product_description_name_product = $("#publisher_product_description_name_product").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "name_product":"' + input_publisher_product_description_name_product + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	// data : JSON.stringify(obj),
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_name_product',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	                	// 200:function() { alert("200"); },
+	                	// 202:function() { alert("202"); }
+	            	},
+	            	success: function(data) {
+						// $("#render0").html("<#%= escape_javascript(render("publisher_profiles/test")) %#>");	            		
+						if (data.name_product.length > 0) {      		
+							$("#publisher_product_description_name_product").attr("value", data.name_product);
+							$("#render_name_product").removeClass("check-required");
+							$("#render_name_product").addClass("check-affirm");							
+						}
+						else {
+							$("#publisher_product_description_name_product").attr("value", "");
+							$("#render_name_product").addClass("check-required");
+							$("#render_name_product").removeClass("check-affirm");														
+						}							
+						$("#focus_12").focus();
+						set_updated(data.updated);	
+						//$("#box_profile_general").focus();												
+	            		// if (data.url) { window.location.href = data.url; }
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+			
+
+			$("#submit_description").on('click', function() {
+				var input_publisher_product_description_description = $("#publisher_product_description_description").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "description":"' + input_publisher_product_description_description + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_description',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.description.length > 0) {      		
+							$("#publisher_product_description_description").attr("value", data.description);
+							$("#render_description").removeClass("check-required");
+							$("#render_description").addClass("check-affirm");
+						}
+						else {
+							$("#publisher_product_description_description").attr("value", "");
+							$("#render_description").addClass("check-required");
+							$("#render_description").removeClass("check-affirm");
+						}							
+						$("#focus_15").focus();
+						set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+			$("#submit_type_content_index").on('click', function() {
+				var input_publisher_product_description_type_content_index = $("#publisher_product_description_type_content_index").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "type_content_index":"' + input_publisher_product_description_type_content_index + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_type_content_index',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.type_content_index == '0') {						
+							$("#render_type_content_index").removeClass("check-affirm");
+							$("#render_type_content_index").addClass("check-required");
+						}
+						else {
+							$("#render_type_content_index").removeClass("check-required");
+							$("#render_type_content_index").addClass("check-affirm");
+						}
+						$("#focus_18").focus();
+						set_updated(data.updated);												
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+			$("#submit_core_supplemental_index").on('click', function() {
+				var input_publisher_product_description_core_supplemental_index = $("#publisher_product_description_core_supplemental_index").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "core_supplemental_index":"' + input_publisher_product_description_core_supplemental_index + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_core_supplemental_index',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.core_supplemental_index == '0') {						
+							$("#render_core_supplemental_index").removeClass("check-affirm");
+							$("#render_core_supplemental_index").addClass("check-required");
+						}
+						else {
+							$("#render_core_supplemental_index").removeClass("check-required");
+							$("#render_core_supplemental_index").addClass("check-affirm");
+						}
+						$("#focus_21").focus();
+						set_updated(data.updated);												
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+			$("#submit_source_url").on('click', function() {
+				var input_publisher_product_description_source_url = $("#publisher_product_description_source_url").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "source_url":"' + input_publisher_product_description_source_url + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_source_url',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.source_url.length > 0) {      		
+							$("#publisher_product_description_source_url").attr("value", data.source_url);
+							$("#render_source_url").removeClass("check-required");
+							$("#render_source_url").addClass("check-affirm");
+						}
+						else {
+							$("#publisher_product_description_source_url").attr("value", "");
+							$("#render_source_url").removeClass("check-affirm");
+							$("#render_source_url").addClass("check-required");
+						}							
+						$("#focus_24").focus();	
+						set_updated(data.updated);												
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+			$("#submit_subject_category_index").on('click', function() {
+				var input_publisher_product_description_subject_category_index = $("#publisher_product_description_subject_category_index").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "subject_category_index":"' + input_publisher_product_description_subject_category_index + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_subject_category_index',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		// alert(data.subject_category_index);
+						if (data.subject_category_index == '0') {						
+							$("#render_subject_category_index").removeClass("check-affirm");
+							$("#render_subject_category_index").addClass("check-required");
+						}
+						else {
+							$("#render_subject_category_index").removeClass("check-required");
+							$("#render_subject_category_index").addClass("check-affirm");
+						}
+						$("#focus_27").focus();	
+						set_updated(data.updated);												
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+			$("#submit_age_appropriate_index").on('click', function() {
+				var input_publisher_product_description_age_appropriate_index = $("#publisher_product_description_age_appropriate_index").val();
+				// alert(input_publisher_product_description_age_appropriate_index);
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "age_appropriate_index":"' + input_publisher_product_description_age_appropriate_index + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_age_appropriate_index',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		
+	            		// alert("success");
+	            		// alert("len = " + data.len)
+						if (data.b_has_age_appropriate) {
+							$("#render_age_appropriate_index").removeClass("check-required");
+							$("#render_age_appropriate_index").addClass("check-affirm");
+						}
+						else {
+							$("#render_age_appropriate_index").removeClass("check-affirm");
+							$("#render_age_appropriate_index").addClass("check-required");
+						}
+						set_age_appropriate(data.g_updated);
+						$("#focus_30").focus();
+						set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+			$("#submit_grade_index").on('click', function() {
+				var input_publisher_product_description_grade_index = $("#publisher_product_description_grade_index").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "grade_index":"' + input_publisher_product_description_grade_index + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_grade_index',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.grade_index == '0') {						
+							$("#render_grade_index").removeClass("check-affirm");
+							$("#render_grade_index").addClass("check-required");
+						}
+						else {
+							$("#render_grade_index").removeClass("check-required");
+							$("#render_grade_index").addClass("check-affirm");
+						}
+						$("#focus_33").focus();
+						set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+			$("#submit_platform_index").on('click', function() {
+				var input_publisher_product_description_platform_index = $("#publisher_product_description_platform_index").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "platform_index":"' + input_publisher_product_description_platform_index + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_platform_index',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.platform_index == '0') {						
+							$("#render_platform_index").removeClass("check-affirm");
+							$("#render_platform_index").addClass("check-required");
+						}
+						else {
+							$("#render_platform_index").removeClass("check-required");
+							$("#render_platform_index").addClass("check-affirm");
+						}
+						$("#focus_36").focus();
+						set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+			$("#submit_pricing_model_index").on('click', function() {
+				var input_publisher_product_description_pricing_model_index = $("#publisher_product_description_pricing_model_index").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "pricing_model_index":"' + input_publisher_product_description_pricing_model_index + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_pricing_model_index',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.pricing_model_index == '0') {						
+							$("#render_pricing_model_index").removeClass("check-affirm");
+							$("#render_pricing_model_index").addClass("check-required");
+						}
+						else {
+							$("#render_pricing_model_index").removeClass("check-required");
+							$("#render_pricing_model_index").addClass("check-affirm");
+						}
+						$("#focus_39").focus();
+						set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+			$("#submit_price").on('click', function() {
+				var input_publisher_product_description_price = $("#publisher_product_description_price").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "price":"' + input_publisher_product_description_price + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_price',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						// var data_price = parceFloat(data.price);
+						if (data.price.toString().length > 0) {      	
+							$("#publisher_product_description_price").attr("value", data.price);
+							$("#render_price").removeClass("check-required");		
+							$("#render_price").addClass("check-affirm");
+						}
+						else {
+							$("#publisher_product_description_price").attr("value", "");
+							$("#render_price").removeClass("check-affirm");
+							$("#render_price").addClass("check-required");																												
+						}							
+						$("#focus_42").focus();
+						set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+			$("#submit_versions").on('click', function() {
+				var input_publisher_product_description_versions = $("#publisher_product_description_versions").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "versions":"' + input_publisher_product_description_versions + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_versions',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.versions.length > 0) {      		
+							$("#publisher_product_description_versions").attr("value", data.versions);
+							$("#render_versions").removeClass("check-required");						
+							$("#render_versions").addClass("check-affirm");
+						}
+						else {
+							$("#publisher_product_description_versions").attr("value", "");
+							$("#render_versions").removeClass("check-affirm");
+							$("#render_versions").addClass("check-required");														
+						}							
+						$("#focus_45").focus();
+						set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+			$("#submit_topic").on('click', function() {
+				var input_publisher_product_description_topic = $("#publisher_product_description_topic").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "topic":"' + input_publisher_product_description_topic + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_topic',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.topic.length > 0) {      		
+							$("#publisher_product_description_topic").attr("value", data.topic);
+							$("#render_topic").removeClass("check-required");
+							$("#render_topic").addClass("check-affirm");
+						}
+						else {
+							$("#publisher_product_description_topic").attr("value", "");
+							$("#render_topic").removeClass("check-affirm");
+							$("#render_topic").addClass("check-required");
+						}							
+						$("#focus_48").focus();
+						set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+	
+
+			$("#submit_lesson_plan_subject").on('click', function() {
+				var input_publisher_product_description_lesson_plan_subject = $("#publisher_product_description_lesson_plan_subject").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "lesson_plan_subject":"' + input_publisher_product_description_lesson_plan_subject + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_lesson_plan_subject',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.lesson_plan_subject.length > 0) {      		
+							$("#publisher_product_description_lesson_plan_subject").attr("value", data.lesson_plan_subject);
+							$("#render_lesson_plan_subject").removeClass("check-required");
+							$("#render_lesson_plan_subject").addClass("check-affirm");
+						}
+						else {
+							$("#publisher_product_description_lesson_plan_subject").attr("value", "");
+							$("#render_lesson_plan_subject").removeClass("check-affirm");
+							$("#render_lesson_plan_subject").addClass("check-required");
+						}							
+						$("#focus_51").focus();
+						set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+	
+			$("#submit_word_description").on('click', function() {
+				var input_publisher_product_description_word_description = $("#publisher_product_description_word_description").val();
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "word_description":"' + input_publisher_product_description_word_description + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_word_description',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						if (data.word_description.length > 0) {      		
+							$("#publisher_product_description_word_description").attr("value", data.word_description);
+							$("#render_word_description_1").removeClass("check-required");
+							$("#render_word_description_2").addClass("check-affirm");
+						}
+						else {
+							$("#publisher_product_description_word_description").attr("value", "");
+							$("#render_word_description_1").addClass("check-required");
+							$("#render_word_description_2").removeClass("check-affirm");
+						}							
+						$("#box_profile_general").focus();	
+						set_updated(data.updated);												
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+	
+	
+			$("#submit_core_literacy_standards").on('click', function() {
+				// submit_core_literacy_standards
+				// alert("submit");
+				var val = "";
+				var s = "";
+				for(var i = 1; i < 10; i++ )
+				{
+					s = "#ch_core_literacy_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+					// .substr(0, myString.length-4);
+				}
+				
+				// alert(val);
+				
+				// var input_publisher_product_description_core_literacy_standard = $("#publisher_product_description_core_literacy_standard").val();
+				// alert(input_publisher_product_description_core_literacy_standard);
+				var obj_list = '{"publisher_product_description_id":' + <%= @publisher_product_description_id %> + 
+							   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
+							   ', "publisher_id":' + <%= @publisher_id %> + 
+							   ', "core_literacy_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_description": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_descriptions/update_core_literacy_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		// alert("success");
+	            		// alert("len = " + data.len)
+						if (data.b_has_core_literacy_standard) {
+							$("#render_core_literacy_standard").removeClass("check-required");
+							$("#render_core_literacy_standard").addClass("check-affirm");
+						}
+						else {
+							$("#render_core_literacy_standard").removeClass("check-affirm");
+							$("#render_core_literacy_standard").addClass("check-required");
+						}
+						set_core_literacy_standard(data.g_updated);
+						// $("#focus_30").focus();
+						set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+	
+			// $("#tablets th a, #tablets .pagination a").on("click", function() {
+				// // $.getScript(this.href);
+				// $.get("/publisher_product_descriptions/list_core_literacy_standards", null, null, "script");
+				// return false;
+			// });
+	
+	
+		});
+	  
+	</script>		
+
+
+	<!-- <script>
+		$(document).ready(function () {							
+		// $(window).load( function() {
+			$("#tablets th a, #tablets .pagination a").on("click", function() {
+				// $.getScript(this.href);
+				$.get("/publisher_product_descriptions/list_core_literacy_standards", null, null, "script");
+				return false;
+			});
+		});		
+	</script> -->
+
+
+<!-- <style>
+	
+        /*.prod-select ul.lc-inline {
+        	width: 1280px;
+        }*/
+		/*.prod-select ul.lc-inline, 
+		.prod-select ul.lc-inline li {
+			margin: 0 auto;
+			padding-right: 0px;
+        	vertical-align: top;			
+		}
+		.prod-select ul.lc-inline li {
+			display: inline-block;
+		}*/
+		/*#tab-container  {
+		  	margin-left: auto;
+		  	margin-right: auto;
+		  	width: 1200px;
+		}*/
+		/*.fixed-back-to {
+		  	display: none;
+		}*/
+		/*.tabs {
+			position: relative;
+			top: 70px;
+		  	width: 1000px;
+		  	height: 70px;
+			border-radius: 4px;
+		   	border: 3px solid #41B737 !important;
+		}*/
+        /*.tabs, .tabs ul, .tabs ul li, .tabs ul li span, .tabs ul li a, .tabs ul li a div {
+          	margin: 0;
+          	padding: 0;
+          	line-height: 1;
+        }*/
+		/*.tabs ul.short {
+			height: 20px;
+			background-color: #3D3D3D;			
+		}
+		.tabs ul.tall {
+			height: 34px;
+		}*/		
+		select.prod-select {
+			width: 380px;
+		}
+        select.prod-select ul {
+	  		font-family: 'Quattrocento Sans', sans-serif;
+	        font-size: 1.2em;
+	        list-style-type: none;
+	        /*background-color: #3D3D3D;*/
+	        background-color: #1F7C82;
+	    	color: #222222;
+	    	font-weight: bold;
+        }
+		select.prod-select ul li a:hover {
+		    /*color: #214025;*/
+		    color: red;
+		    text-shadow: 1px 1px #34922C;		    
+		}
+		.prod-select ul li.active {
+		    background-color: #34922C;
+		}
+		.prod-select ul li.active:hover a {
+		    color: #214025;
+		    text-shadow: 1px 1px #34922C;
+		}
+		select.prod-select ul li:hover {
+		    background-color: #ccc;
+		}
+		.prod-select ul li:hover a {
+		    color: #214025;		    
+		}
+		.prod-select ul li a:hover {
+		    text-decoration: none;
+		}
+		.prod-select ul li.active a {
+			color: #fff;
+		}
+        .prod-select li.disabled, .prod-select li.disabled a, .prod-select li.disabled a:visited, .prod-select li.disabled a:hover {
+          	color: #888;
+        }
+        .prod-select ul li a {
+        	color: #34922C;
+        }
+		.prod-select ul li {
+			padding-top: 12px;
+		    background-color: #FFFFFF;			
+			width: 230px;
+			height: 34px;
+		}
+	
+</style> -->
+

@@ -49,7 +49,8 @@
 			$('#dialog_1001').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', 40 + scroll_top);
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 20);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 					var img = $("#profile_figure_dialog_1001 img");
 					$("<img/>")

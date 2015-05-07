@@ -19,12 +19,45 @@ module Webknow
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    config.action_view.embed_authenticity_token_in_remote_forms = true
 
+    # config.autoload_paths += %w(#{config.root}/lib)
+
+    config.action_view.embed_authenticity_token_in_remote_forms = true
     config.active_support.escape_html_entities_in_json = true
     config.active_record.whitelist_attributes = true
+
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.svg *.ico *.eot *.ttf *woff)
     
-    # config.autoload_paths += %w(#{config.root}/lib)
+    Dir.glob("#{Rails.root}/app/assets/images/**/").each do |path|
+      config.assets.paths << path
+    end
+
+    config.assets.enabled = true
+    config.assets.precompile += [
+                                  'jquery.validate.js', 
+                                  'chosen.jquery.js',
+                                  'chosen.proto.js',
+                                  'dot.js',
+                                  'jqModal.js',
+                                  'jquery.colorbox.js',
+                                  'jquery.easing.1.3.js',
+                                  'jquery.fullscreenslides.js',
+                                  'jquery.mousewheel.js',
+                                  'jquery.qtip.min.js',
+                                  'jquery.selectbox-0.6.1.js',
+                                  'jquery.sparkbox-select.js',
+                                  'jquery-dropdown-dot.js',
+                                  'nav-jquery.js',
+                                  'toucheffects.js'
+                                ]
+
     
   end
 end
+
+
+
+
+
+
+

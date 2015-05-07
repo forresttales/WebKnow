@@ -14,8 +14,8 @@ class PublisherProductAdsController < ApplicationController
   def fill_left_directory
 
     slug = current_user.slug
-    @url_my_story        = '/puid' + slug
-    @url_corporate_story = '/pcid' + slug
+    @url_user_story  = '/' + current_user.slug
+    @url_profile_story = '/' + current_user.publisher.slug
         
   end
 
@@ -32,18 +32,18 @@ class PublisherProductAdsController < ApplicationController
     a_publisher_products = Array.new
     publisher_products.each do |publisher_product|
       a_temp = Array.new
-      publisher_product_description = publisher_product.publisher_product_description
-      publisher_product_description_name_product = publisher_product_description.name_product
+      publisher_product_manifest = publisher_product.publisher_product_manifest
+      publisher_product_manifest_name_product = publisher_product_manifest.name_product
       # publisher_product_id = publisher_product.id
       a_temp[0] = publisher_product.id
-      a_temp[1] = publisher_product_description_name_product      
+      a_temp[1] = publisher_product_manifest_name_product      
       # a_temp.push(publisher_product.id)
-      # a_temp.push(publisher_product.publisher_product_description)      
+      # a_temp.push(publisher_product.publisher_product_manifest)      
 
       # a_temp[0] = "first"
       # a_temp[1] = "second"      
 
-      # a_publisher_products.push(publisher_product_description.name_product)
+      # a_publisher_products.push(publisher_product_manifest.name_product)
       a_publisher_products.push(a_temp)      
       a_temp = nil
     end    

@@ -1,0 +1,89 @@
+
+	<style>
+
+		.profile-links-left {
+			text-align: left;
+		}	
+		.profile-links-left ul {
+			
+		}
+		.profile-links-left ul li {
+			height: 20px;
+			width: 100%;
+			list-style: none;						
+		}	
+		.profile-links-left ul li span {
+			height: 20px;
+			width: 100%;			
+			font-family:Arial, Helvetica, sans-serif;
+		}	
+		.profile-links-left ul li a {
+			height: 20px;
+			width: 100%;			
+			font-family:Arial, Helvetica, sans-serif;
+		}	
+		.profile-labels-left {
+			
+		}	
+		.profile-labels-left ul {
+			
+		}
+		.profile-labels-left ul li {
+			height: 20px;
+			width: 100%;
+			list-style: none;						
+		}	
+		.profile-labels-left ul li span {
+			height: 20px;
+			padding-left:15px;
+			width: 100%;			
+			font-family:Arial, Helvetica, sans-serif;
+		}	
+		.profile-labels-left ul li a {
+			height: 20px;
+			width: 100%;			
+			font-family:Arial, Helvetica, sans-serif;
+		}	
+		.profile-labels-left ul li:hover {
+		}	
+		.profile-links-left ul li.sub {
+			padding-left: 40px;
+		}
+		.line-separator {
+			width: 90%;
+			border-top: 2px #DCE3DF solid;	
+			margin: 10px 0 10px 0;
+		}
+		
+	</style>
+
+
+		<div style="height: 66px; background-color: #8eb388; margin: 0;">
+			<div style="height: 20px;"></div>
+			<div class="profile-labels-left">
+				<ul>
+					<li id="profile-links-expand-1">
+						<!-- <a href="/Publisher-Admin"><span href="#">My Story</span></a> -->
+						<a id="profile-links-expand-1-a" href="/"><span>Signin/Signup</span></a>
+					</li>
+					<!-- <li id="profile-links-left-1">
+						<a id="profile-links-left-1-a" href="/">Signin/Signup</a>
+					</li> -->
+				</ul>		
+			</div>	
+		</div>
+
+
+	<script>
+		
+		$(window).load( function() {
+		//$(document).ready(function(){
+
+			$('li#profile-links-expand-1').on('click', function() {
+				window.location = document.getElementById('profile-links-expand-1-a').href;
+			});
+
+		});
+		
+	</script>
+	

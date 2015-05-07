@@ -30,6 +30,7 @@
 #  id_per_b               :boolean          default(FALSE)
 #  profile_type           :integer          default(0)
 #  profile_type_text      :string(255)
+#  new_user               :boolean          default(TRUE)
 #
 
 class PublicUser < User

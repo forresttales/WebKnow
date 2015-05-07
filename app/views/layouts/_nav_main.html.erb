@@ -33,15 +33,17 @@
 			position: absolute;
 			bottom: 9px;
 			right: 0px;
-			font-family: KlavikaBlack;
-			/*font-family: Arial, Helvetica, sans-serif;*/
-			color: #ccc; 
+			/*font-family: KlavikaBlack;*/
+			font-family: Arial, Helvetica, sans-serif;
+			/*color: #ccc;*/
+			color: #333;/*#f6f6f6; */
 			/*font-size:1.3em;*/
-			font-weight: 200;
+			/*font-weight: 200;*/
+			font-weight: 500;
 			font-size: 22px;
 		}
 		.ks-nav-title-1 span:hover {
-			color: #ddd;
+			color: green; /*#ddd*/
 		}
 		
 	</style>
@@ -260,9 +262,9 @@
 			border-bottom-left-radius: 4px;			
 		}
 		.drop-shadow {
-			-webkit-box-shadow: 0 1px 6px rgba(0,0,0,.15);
-			-moz-box-shadow: 0 1px 6px rgba(0,0,0,.15);
-			box-shadow: 0 1px 6px rgba(0,0,0,.15);			
+			-webkit-box-shadow: 0 1px 6px rgba(0,0,0,.45);
+			-moz-box-shadow: 0 1px 6px rgba(0,0,0,.45);
+			box-shadow: 0 1px 6px rgba(0,0,0,.45);			
 		}
 		
 	</style>
@@ -329,7 +331,7 @@
 		.nav-drop-1:hover .nav-caret-up {
 			border-bottom: 4px solid #A9D996;
 		}
-		
+		#top-search-box {height:40px; width:250px;float:left; margin:32px 0 0 320px;}
 	</style>
 	
 	<div id="nav_ks" class="nav-ks" style="margin: 0;">
@@ -344,6 +346,13 @@
 		    <!-- <li class="profile-type">
 		    	<img src="assets_knowstory//icons/publisher.png"><span>Publisher</span>
 		    </li> -->
+
+		    <!-- Searched moved here to top JIN - 24 Mar 15-->
+		    <div id="top-search-box">		
+			<div><span class="container-right-1-span-1"><a href="/Members">Search other Members</a></span></div>
+			<!--<div><span class="container-right-1-span-1"><a href="/Products">Search Products</a></span></div>-->
+			</div><!--End Search-->
+
 
 		    <li class="nav-drop-1" id="li_drop_1" style="float: right; margin: 0;">
 		    		

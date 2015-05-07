@@ -20,6 +20,9 @@
 #  time_at_company     :string(255)
 #  story_plot          :text             default("")
 #  story_interest      :text             default("")
+#  admin_1             :boolean          default(FALSE)
+#  admin_2             :boolean          default(FALSE)
+#  admin_3             :boolean          default(FALSE)
 #
 
 class PublicPublisherUser < PublisherUser

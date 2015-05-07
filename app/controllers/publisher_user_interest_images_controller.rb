@@ -1,0 +1,2 @@
+class PublisherUserInterestImagesController < ApplicationController
+end

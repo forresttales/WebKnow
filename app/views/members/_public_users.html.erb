@@ -17,7 +17,8 @@
 
 				<% @public_users.each do |public_user| %>
 
-					<%= link_to public_user_path(:id => public_user.id), class: "" do %>
+					<!-- <#%= link_to public_user_path(:id => public_user.id), class: "" do %#> -->
+					<%= link_to users_path(:id => public_user.id), class: "" do %>
 						<!-- <#%= link_to ("/id" + publisher.id.to_s).html_safe, class: "" do %#> -->
 						<div class="publisher-products-list-1">
 							<!-- <a href="<#%= ("/publisher-id" + publisher.id.to_s).html_safe %#>" style="height: 65px;"> -->

@@ -1,0 +1,31 @@
+
+
+															<% i = 0 %>
+															<div id="render_name_product_<%= i %>" class="list-tip-container"></div>
+														    <script id="name_product_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="name_product_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="name_product_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
+																	</div>
+																</div>
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+															<script type="text/javascript">
+																var container = "#render_name_product_<%= i %>";
+																var ref		  = "#name_product_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
+
+																<% h_name_product = name_product_for(@publisher_product) %>
+																var name_product_text = <%=raw h_name_product[:name_product_text] %>;
+																var list_number = "<%= i %>";
+															    set_field("", "name_product", name_product_text, "Product Name", false, "", list_number);
+															</script>

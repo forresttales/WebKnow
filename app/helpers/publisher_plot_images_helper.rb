@@ -1,0 +1,2 @@
+module PublisherPlotImagesHelper
+end

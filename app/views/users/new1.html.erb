@@ -1,0 +1,1919 @@
+<% provide(:title, 'Welcome') %>
+
+	
+	<script src="/assets/jquery.validate.js"></script>
+	<!-- <script src="../scripts/dot.js"></script>    
+	<script src="../scripts/jquery-dropdown-dot.js"></script> -->
+	<script src="/assets/dot.js"></script>    
+	<script src="/assets/jquery-dropdown-dot.js"></script>
+	
+	<!-- <script type="text/javascript" src="../scripts/jquery.mousewheel.min.js"></script> -->
+
+	<!-- <script type="text/javascript" src="../scripts/slidedeck.jquery.js"></script> -->
+	<!-- <link rel="stylesheet" type="text/css" href="../styles/slidedeck.skin.css" media="screen,handheld" /> -->
+
+	<!-- <script src="/assets/jquery.colorbox.js"></script>
+	<link rel="stylesheet" href="/assets/colorbox.css" /> -->
+
+	<!-- <link rel="stylesheet" type="text/css" href="../styles/landing_page.css.scss" media="screen,handheld" /> -->	
+
+  	<!-- <script src="/assets/jquery.qtip.min.js" type="text/javascript"></script>
+  	<link rel="stylesheet" href="/assets/jquery.qtip.min.css"> -->
+  	
+  	<!-- <link rel="stylesheet" href="../styles/bootstrap.min.css"> -->
+
+	<script src="/assets/jqModal.js"></script>
+	<script src="/assets/jquery.easing.1.3.js"></script>
+	<link rel="stylesheet" href="/assets/jqModal.css" />
+	
+	<link rel="stylesheet" href="/assets/ks-signin.css" />
+
+	<style>
+		
+		.jqmWindow-301 .dialog-topbar-1 {
+			text-align: right;
+			height:30px;
+			width: 100%;
+			position: relative;
+			background: -moz-linear-gradient(left,  rgba(55,99,64,0) 0%, rgba(55,99,64,1) 100%);
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(55,99,64,0)), color-stop(100%,rgba(55,99,64,1)));
+			background: -webkit-linear-gradient(left,  rgba(55,99,64,0) 0%,rgba(55,99,64,1) 100%);
+			background: -o-linear-gradient(left,  rgba(55,99,64,0) 0%,rgba(55,99,64,1) 100%);
+			background: -ms-linear-gradient(left,  rgba(55,99,64,0) 0%,rgba(55,99,64,1) 100%);
+			background: linear-gradient(to right,  rgba(55,99,64,0) 0%,rgba(55,99,64,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#376340', endColorstr='#299a0b',GradientType=1 );
+		}
+		.jqmWindow-301 .dialog-topbar-1 .topbar-title {
+			display: inline-block;
+			height: 20px;
+			font-family: quattrocento, sans;
+			font-size: 18px;
+			font-weight: 400;
+			color: #fff;
+			margin-top: 7px;
+			margin-right: 20px;
+		}		
+		.jqmWindow-301 .btn-pop-dialog {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			font-weight: 700;		
+			text-align: center;	
+			padding-top: 0px;
+		  	color: #fff;
+		  	text-decoration: none; 
+		  	width: 100px;
+		  	height: 34px;
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		  	background: linear-gradient(#618468, #376340);
+		  	/*text-shadow: 1px 1px 1px #0E86B2;*/
+		  	border: 0px solid #fff; 
+		  	border-radius: 2px;
+		}
+		.jqmWindow-301 .btn-pop-dialog:focus {
+			-webkit-box-shadow: 0 0 1px 1px #49853f;
+			   -moz-box-shadow: 0 0 1px 1px #49853f;
+			        box-shadow: 0 0 1px 1px #49853f;
+			background: linear-gradient(#618468, #376340);
+		}
+		.jqmWindow-301 .btn-pop-dialog:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.jqmWindow-301 .btn-pop-dialog:active { 
+		  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	color: #fff;
+		  	background: linear-gradient(#376340, #618468);  	
+		  	outline:none;
+		}
+		.jqmWindow-301 {
+		    display: none;
+		    position: fixed;
+		    top:30%;
+			left: 50%;
+			margin-left: -300px;		    
+		    width: 600px;
+			height: 200px;		    
+		    background-color: #f6f6f6;
+		    color: #333;
+		    border: 4px solid #376340;
+		    padding: 0px;		    
+			/*background-image: url('/assets/icon-notify-1.png') 400px 60px no-repeat;*/
+			background-image: url('/assets/icon-notify-1-w100-h100.png');		
+			background-repeat: no-repeat;    
+			background-position: 480px 80px;
+		}				
+		.jqmWindow-301 .background-table-dialog-1 {
+			padding: 10px 10px;
+			border-top: 1px solid #A6A6A6;
+			border-bottom: 1px solid #A6A6A6;
+			background-color: #fff;			
+			height: 36px;
+		}		
+		.jqmWindow-301 .table-dialog-1 {
+			display: table;
+			vertical-align: top;
+			width: 100%;
+		}			
+		.jqmWindow-301 .form-edit-close-1 {
+			width:20px;
+			height:20px;
+			float: right;
+			margin-right: 8px;
+			margin-top: 4px;
+		}		
+		.jqmWindow-301 .form-edit-close-1:hover {
+			cursor: pointer;
+		}		
+		.jqmWindow-301 .dialog-msg-container {
+			text-align: center;
+			width: 100%;
+		}
+		.jqmWindow-301 .dialog-msg-container span {
+			font-family: quattrocento, sans;
+			font-size: 14px;
+			font-weight: 400;
+			color: #376340;	
+		}
+		.jqmWindow-301 .icon-container-301 {
+			height: 63px; 
+			width: 60px; 
+			float: left; 
+			position: absolute;
+		}
+		.jqmWindow-301 .dialog-icon-1 {
+			width:26px;
+			height:26px;
+			float: right;
+			margin-right: 8px;
+			margin-top: 2px;
+		}		
+		
+	</style>
+	
+	<script id="dropdown-data1-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	
+	<script id="dropdown-data1" type="text/x-dot-template">
+		<div class="dropdown dropdown-1" id="dropdown1" tabindex="20">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data2-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	
+	<script id="dropdown-data2" type="text/x-dot-template">
+		<div class="dropdown dropdown-2" id="dropdown2" tabindex="21">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	<script id="dropdown-data3-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	
+	<script id="dropdown-data3" type="text/x-dot-template">
+		<div class="dropdown dropdown-3" id="dropdown3" tabindex="22">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+
+	
+			<div id="dialog_301" class="jqmWindow-301">
+				<div class="dialog-topbar-1">
+					<div class="icon-container-301">
+						<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+					</div>
+   					<div class="form-edit-close-1 jqmClose tip-left-center">
+   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+   					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					   					
+   					<div style="clear: both;"></div>
+				</div>
+				<!-- <div style="height: 20px;"></div> -->
+				<div class="background-table-dialog-1">
+			   		<div class="table-dialog-1">
+						<div class="dialog-msg-container">
+							<span></span>
+						</div>
+	   				</div>
+   					<!-- <div class="dialog-icon-1">
+   						<img src="/assets/icon-notify-1-w26-h26.png" alt="" height="26px">
+   					</div> -->	   				
+   				</div>
+   				<div style="height: 8px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+						<div class="dialog-msg-container" style="width: 100%; text-align: center;">						
+							<span>The email address,</span>
+						</div>
+   					</div>
+   				</div>
+   				<div style="height: 1px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+						<div class="dialog-msg-container dialog-msg-show-1" style="width: 100%; text-align: center;">						
+							<span></span>
+						</div>
+   					</div>
+   				</div>
+   				<div style="height: 1px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+						<div class="dialog-msg-container" style="width: 100%; text-align: center;">						
+							<span>is already in use.</span>
+						</div>
+   					</div>
+   				</div>
+   				<div style="height: 8px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+		   				<div class="cell-100percent" style="text-align: center;">
+							<input class="btn-pop-dialog btn-dialog-close" type="button" value="Close" tabindex="">
+		   				</div>
+   					</div>
+				</div>														   				
+				<div style="height: 20px;"></div>
+			</div>
+
+	
+	<div id="home-wrap" class="hidden">
+		<header id="home" class="hidden">
+			<div id="top-bar">
+				<div style="height: 6px;"></div>
+					<!-- <div class="cell-ks-home-1"> -->
+				<div style="width: 420px; display: inline-block; margin-left: 0px;">
+					<a href="#"><img class="logo" src="assets_knowstory/knowstory-icon-2-w634-h212.png" alt=""></a>
+				<div class="ks-slogan"><img class="logo" src="assets_knowstory/the_story_w309_h28.png" alt=""></div>
+					<!-- <h2 class="slogan">The Story of What You Know</h2> -->
+				</div>
+
+				<div style="width: 16px; display: inline-block;"></div>
+				<!-- <div class="cell-ks-home-2"> -->
+				<div style="width: 500px; display: inline-block; margin: 0; vertical-align: top;">
+					
+					
+						<div style="width: 490px; height: 28px; float: right;">
+							<% flash.each do |key, value| %>
+								<div class="ks-alert-container-outer">
+									<div class="ks-alert-container-inner">
+										<div class="ks-alert ks-alert-<%= key %>">
+											<span class=""><%= value %></span>
+										</div>
+									</div>
+								</div>
+								<!-- <div class="ks-alert-container-spacer"></div> -->			    		
+					    		<!--<div class="alert alert-<%= key %>"><%= value %></div>-->
+					    		<!-- <#%= content_tag(:div, value, class: "alert alert-#{key}") %#> -->
+					  		<% end %>
+  						</div>
+						<div style="clear: both;"></div>
+
+
+						<%= form_for(:session, url: sessions_path) do |f| %>	
+
+						<div class="tbl-sign">
+							<div class="row-sign">
+								<div class="cell-sign-1"></div>
+								<div class="cell-sign-2 text-align-right">
+									<%= f.text_field :email, class: 'input-home-short wid-190', :autofocus => true, :tabindex => '1' ,:placeholder => 'Email' %>
+								</div>
+								<div class="cell-sign-3">
+									<input class="input-home-short wid-190" style="margin-left: 10px;" id="session_password" name="session[password]" placeholder="Password" tabindex="2" type="password" />
+									<!-- <#%= f.password_field :password, class: 'input-home-short wid-190 margin-left-10', :tabindex => '2', :placeholder => 'Password' %#> -->
+								</div>
+								<div class="cell-sign-4 text-align-right">
+									<div style="position: relative; height: 1px; width: 100px;">
+									<%= f.submit "Sign In", class: 'signin-btn-home alt-pos', :tabindex => '3' %>
+									</div>
+								</div>
+							</div>
+							<div class="row-sign" style="height: 6px;">
+							</div>
+							<div class="row-sign">
+								<div class="cell-sign-1"></div>
+								<div class="cell-sign-2 text-align-center">
+									<!-- <#%= link_to "Forgot password?", new_password_reset_path, class: 'signin-pref', :tabindex => '4' %#> -->
+									<div id="pwd_reset" class="pwd-reset">
+										<span>Forgot password?</span>
+									</div>
+								</div>
+								<div class="cell-sign-3 text-align-center">
+									<%= f.check_box :remember_me %>
+									<%= f.label :remember_me, nil, class: 'remember-me-link', :id => 'ch_remember_me', :tabindex => '5' %>
+								</div>
+								<div class="cell-sign-4">
+								</div>										
+							</div>
+						
+							</div>
+			
+						</div>
+
+						
+						<% end %>								
+					
+				</div>
+			<!-- <div style="clear: both;"></div> -->
+		</header>
+
+
+		<!-- <div class="main">
+			<div id="close_form_new_pwd_reset_1" class="form-edit-close pop-info tip-bottom-center">
+				<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+			</div>
+		        <div class="tip-content">
+		            <div class="tooltiptext">Close 1</div>
+		        </div>																								
+			<div style="clear: both;"></div>
+		</div> -->
+
+
+		<div class="pwd-reset-container-outer">
+			<div class="pwd-reset-container-inner">
+				<div id="confirm_pwd_reset_1" class="confirm-pwd-reset display-none">
+					<span><em>Reset Password instructions sent to: </em></span>
+					<span id="confirm_pwd_reset_1_email"></span>
+					<!-- <div class="pwd-reset-container-spacer"></div> -->
+				</div>
+				<div id="confirm_pwd_reset_2" class="confirm-pwd-reset display-none">
+					<span><em>* Send password reset instructions failed</em><br>
+						You may try again or send us a message:<br><a href="#">Contact Us: Subject- Password Reset</a>
+					</span>
+					<br>
+				</div>
+				<!-- <div id="confirm_pwd_reset_3" class="confirm-pwd-reset display-none">
+					<span><em>* No record for this email address: </em></span>
+					<span id="confirm_pwd_reset_3_email"></span>
+				</div> -->
+				<div id="pwd_reset_container_spacer" class="pwd-reset-container-spacer display-none"></div>
+			</div>									
+		</div>
+	   	<div id="form_new_pwd_reset" class="form-new-pwd-reset-outer" style="height: 140px;">
+	   		<div style="height: 10px;"></div>
+	   		<div class="form-new-pwd-reset-inner">
+	   			<div id="form_new_pwd_reset_a">
+			   		<div class="table" style="width: 500px;">
+			   			<div class="row">
+			   				<div class="cell-500" style="height: 26px;">
+			   					<div style="display: inline-block; width: 470px; height: 22px; text-align: right; padding-top: 4px;">
+									<div id="confirm_pwd_reset_3" class="confirm-pwd-reset display-none" style="height: 22px; padding: 0px;">
+										<span><em>* No record for this email address: </em></span>
+										<span id="confirm_pwd_reset_3_email"></span>
+									</div>
+			   					</div>
+			   					<div id="close_form_new_pwd_reset" class="form-edit-close-pos-rel tip" style="display: inline-block; vertical-align: top; height: 30px;">
+			   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+			   					</div>
+				                <div class="tip-content">
+				                    <div class="tooltiptext">Close</div>
+				                </div>																								
+			   					<!-- <div style="clear: both;"></div> -->
+			   				</div>
+	   					</div>
+						<div class="row">
+							<div class="cell-500" style="height: 84px;">
+								<!-- <div style="height: 10px"></div> -->
+								<%= render 'users/new_pwd_reset' %>
+							</div>
+							
+						</div>							
+					</div>				   				
+				</div>
+			</div>
+		</div>
+
+		
+		<div style="height: 10px"></div>
+
+		<div id="sign_wrap" class="sign-wrap hidden">
+			<div class="sign-info signup-box">
+				<!-- <h1 style="text-align: center; color:#47b64a; margin:10px 0 21px;">Publishers</h1> -->
+				<div style="height: 12px;"></div>
+				<div class="span-title-container-1">
+					<span class="span-title">Publishers</span>	
+				</div>
+				<div style="height: 24px;"></div>
+				<p>Reach 60,000 K12 Leaders in our<br>Stage 1.</p>
+				<p>
+				 	&bull;	Superintendents<br/>
+					&bull;	Chief Academic Officers<br/>
+					&bull;	Chief Technology Officers<br/>
+					&bull;	Other District &amp; School Executives<br/>
+				</p>
+				<div style="height: 100px;"></div>
+				<div class="arrow-container">
+					<div class="arrow-container-1">
+						<span>Join Now</span> 
+					</div>				
+					<div class="arrow-container-2">
+						<img src="/assets_knowstory/long-arrow.png" alt="Arrow">
+					</div>
+				</div>
+				<div class="sign-info-link">
+					<p class="sign-link">
+					<!-- <a href="/Learn-More">Learn More</a> -->
+					<!-- <a style="float:right;" href="http://thelearningcounsel.com/ContactUs">Contact Us</a> -->
+					<a style="margin: 0 auto;" href="http://thelearningcounsel.com/ContactUs">Contact Us</a>
+					</p>
+				</div>
+			</div>
+
+		<div id="sign-up" class="signup-box">
+		
+			<!-- <h1 style="margin:0 auto; color:#47b64a; width: 135px; margin-bottom:25px;">Sign up</h1> -->		
+			<div style="height: 12px;"></div>			
+			<div class="span-title-container-2">
+				<span class="span-title">Sign up</span>	
+			</div>
+			<div style="height: 24px;"></div>					
+				
+	    	<%= form_for User.new, :html => {:id => 'form_user_new' } do |f| %>	
+	
+			<div class="form-home-table">
+				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
+					<div class="form-home-cell-1">
+						<%= f.label(:name_first, 'First Name', class: 'input-label-home') %>
+					</div>
+					<div class="form-home-cell-2">
+						<%= f.text_field :name_first, class: 'input-home input-required', :tabindex => '12', :autofocus => false %>	
+					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_name_first"></label></div>					
+				</div>
+				<div class="form-home-row-space"></div>
+				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
+					<div class="form-home-cell-1">
+						<%= f.label(:name_last, 'Last Name', class: 'input-label-home') %>
+					</div>
+					<div class="form-home-cell-2">
+						<%= f.text_field :name_last, class: 'input-home input-required', :tabindex => '13' %>
+					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_name_last"></label></div>										
+				</div>
+				<div class="form-home-row-space"></div>
+				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
+					<div class="form-home-cell-1">
+						<%= f.label(:email, 'Email', class: 'input-label-home') %>
+					</div>
+					<div class="form-home-cell-2">
+						<%= f.text_field :email, class: 'input-home input-required', :tabindex => '14' %>
+					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_email"></label></div>															
+				</div>
+				<div class="form-home-row-space"></div>
+				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
+					<div class="form-home-cell-1">
+						<%= f.label(:username, 'Username', class: 'input-label-home') %>
+					</div>
+					<div class="form-home-cell-2">
+						<%= f.text_field :username, class: 'input-home input-required', :tabindex => '15' %>
+					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_username"></label></div>																				
+				</div>
+				<div class="form-home-row-space"></div>
+				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
+					<div class="form-home-cell-1">
+						<%= f.label(:password, 'Password', class: 'input-label-home') %>
+					</div>
+					<div class="form-home-cell-2">
+						<%= f.password_field :password, class: 'input-home input-required', :tabindex => '16' %>
+					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_password"></label></div>																				
+				</div>
+				<div class="form-home-row-space"></div>
+				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
+					<div class="form-home-cell-1">
+						<%= f.label(:password_confirmation, 'Confirm Password', class: 'input-label-home') %>
+					</div>
+					<div class="form-home-cell-2">
+						<%= f.password_field :password_confirmation, class: 'input-home input-required', :tabindex => '17' %>
+					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_password_confirmation"></label></div>																				
+				</div>
+			</div>
+			
+			<div style="height: 20px;"></div>
+
+			<div style="width: 100%;">
+				<div style="width: 200px; margin: 0 auto;">
+					<div class="form-home-table" style="text-align: center;">
+						<div class="form-home-row">						
+							<div class="form-home-cell-gender-1" style="text-align: center; padding-right: 0px; width: 30%;">
+								<label id="label_gender_male" class="input-label-home label-hover" for="gender_male" onclick="rd_gender('male');" tabindex="">Male</label>
+							</div>
+							<div class="form-home-cell-gender-2" style="text-align: center; padding-left: 0px; width: 30%;">
+								<label id="label_gender_female" class="input-label-home label-hover" for="gender_female" onclick="rd_gender('female');" tabindex="">Female</label>
+							</div>
+						</div>							
+						<div class="form-home-row">						
+							<div class="form-home-cell-gender-1" style="text-align: center; padding-right: 0px;">
+								<!-- <div id="rd_gender_male" class="rd-button"></div> -->
+								<div id="rd_gender_male" class="rd-button" tabindex="18"></div>
+								<%= f.radio_button(:gender, 0) %>
+								<!-- <div style="position: relative; top: 4px;">
+									<#%= f.radio_button(:gender, 0) %#>
+								</div> -->
+							</div>
+							<div class="form-home-cell-gender-2" style="text-align: center; padding-left: 0px;">
+								<!-- <div id="rd_gender_female" class="rd-button"></div> -->
+								<div id="rd_gender_female" class="rd-button" tabindex="19"></div>
+								<%= f.radio_button(:gender, 1) %>
+								<!-- <div style="position: relative; top: 4px;">
+									<#%= f.radio_button(:gender, 1) %#>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div style="height: 20px;"></div>
+			
+			<div class="form-home-table-bd">
+				<div class="form-home-row-bd">
+					<div class="form-home-cell-bd">
+						<span class="input-label-home">Birthday</span>
+					</div>								
+					<div class="form-home-cell-month">
+						<select id="user_bd_month" name="user[bd_month]" data-template="#dropdown-data1" tabindex="">
+							<option value="0">-Month-</option>
+							<option value="1">Jan</option>
+							<option value="2">Feb</option>
+							<option value="3">Mar</option>
+							<option value="4">Apr</option>
+							<option value="5">May</option>
+							<option value="6">Jun</option>
+							<option value="7">Jul</option>
+							<option value="8">Aug</option>
+							<option value="9">Sep</option>
+							<option value="10">Oct</option>
+							<option value="11">Nov</option>
+							<option value="12">Dec</option>
+						</select>		
+			   		<!-- <#%= f.select("bd_month", options_for_select(
+			   				[['-Month-','0'],
+			   				['Jan','1'],
+			   				['Feb','2'],
+			   				['Mar','3'],
+			   				['Apr','4'],
+			   				['May','5'],
+			   				['Jun','6'],
+			   				['Jul','7'],
+			   				['Aug','8'],
+			   				['Sep','9'],
+			   				['Oct','10'],
+			   				['Nov','11'],
+			   				['Dec','12']]), :class => 'btn-bd-month', :html => {:id => 'bd_month'}) %#> -->
+					</div>
+					<div class="form-home-cell-day">
+						<select id="user_bd_day" name="user[bd_day]" data-template="#dropdown-data2" tabindex="">
+							<option value="0">-Day-</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+							<option value="27">27</option>
+							<option value="28">28</option>
+							<option value="29">29</option>
+							<option value="30">30</option>
+							<option value="31">31</option>
+						</select>		
+					</div>
+					<div class="form-home-cell-year">
+					<!-- <#%= f.collection_select :bd_year, @bd_years, :id, :year, :html => {}  %#> -->		
+						<select id="user_bd_year" name="user[bd_year]" data-template="#dropdown-data3" tabindex="">
+							<option value="0">-Year-</option>
+							<% @bd_years.each do|bd_year| %>
+								<option value="<%= bd_year.year %>"><%= bd_year.year %></option>
+							<% end %>
+						</select>		
+					</div>
+					<!-- <div class="form-home-cell-bd-space">
+					</div> -->		
+
+				</div>
+			</div>
+
+			<!-- <div class="form-home-cell-bd-why"> -->
+			<div style="width: 100%; margin: 14px 0 8px 0;">
+				<div style="width: 156px; margin: 0 auto; height: 24px;">
+					<!-- <span><a class="inline input-label-home-a" href="#inline_bd_why" tabindex="23">Why ask for Birthday?</a></span> -->
+				</div>
+			</div>								
+							
+			<div class="form-home-table form-types" style="width: 400px;">
+				<div class="form-home-row">						
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<label id="label_profile_type_1" class="input-label-home" for="profile_type_1" onclick="rd_profile_type('0');" tabindex="">Student</label>
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<label id="label_profile_type_2" class="input-label-home" for="profile_type_2" onclick="rd_profile_type('1');" tabindex="">Teacher</label>
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<label id="label_profile_type_3" class="input-label-home" for="profile_type_3" onclick="rd_profile_type('2');" tabindex="">Publisher</label>
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<label id="label_profile_type_4" class="input-label-home" for="profile_type_4" onclick="rd_profile_type('3');" tabindex="">School</label>
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<label id="label_profile_type_5" class="input-label-home" for="profile_type_5" onclick="rd_profile_type('4');" tabindex="">Recruiter</label>
+					</div>
+				</div>							
+
+				<div class="form-home-row">
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<div id="rd_profile_type_1" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_11" type="radio" name="user[profile_type]" value="1">
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<div id="rd_profile_type_2" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_12" type="radio" name="user[profile_type]" value="2">
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<div id="rd_profile_type_3" class="rd-button" tabindex="24"></div>
+						<input id="user_profile_type_13" type="radio" name="user[profile_type]" value="3">
+						<!-- <#%= f.radio_button(:profile_type, 3, :checked => true) %#> -->
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<div id="rd_profile_type_4" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_14" type="radio" name="user[profile_type]" value="4">						
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<div id="rd_profile_type_5" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_15" type="radio" name="user[profile_type]" value="5">
+					</div>
+				</div>
+			</div>
+			<div style="height: 30px;"></div>							
+			<div class="form-home-table">
+				<div class="form-home-row">
+					<div class="form-home-cell-2">
+						<%= f.submit '', :id => 'submit_new_hidden', class: 'hidden', :tabindex => '' %>
+						<div id="submit_new" class="signup-btn-home" tabindex="25">
+							Submit
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div style="width: 80px; height: 20px; margin: 16px 0 0 50px;" class="boxtemp-red">Submit</div> -->
+			<% end %>
+		
+			<div style='display:none'>
+				<div id='inline_bd_why' style='padding:10px; background:#fff;'>
+				<h2 style="color: #49853F;">Why your birthday?</h2>
+				<p>
+				   Your birthdate helps us provide the right Knowstory experience for your age.
+				   Birthdates remain completely private, unless visibility options are selected in the profile settings. 
+				   For adults over the age of 18, by default, birthdates are not disclosed publically.
+				   
+				   Birthdates cannot be used in searches or email. It is encouraged to enable certain birthdate options for certain Story types. For example, recruiters may search for students through a specified range of ages. For minors, ages 13 and below, most details remain anonymous and birthdate is strictly confidential.  
+				   For complete details, please see our <a href="#">Privacy Policy</a>.
+				</p>
+				</div>
+	
+	
+				<!-- <div id='inline_student' style='padding:10px; background:#fff;'>
+				<h2 style="color: #49853F;">Student Profile</h2>
+				<p>Share comments, photos, classes, and favorite learning content while charting your current and future learning. Keep up your education history and get personalized recommendations for learning games or content to study. You can open access to college recruiters after 13 years old.</p>
+				</div>
+				
+				<div id='inline_teacher' style='padding:10px; background:#fff;'>
+				<h2 style="color: #49853F;">Teacher Profile</h2>
+				<p>Get ongoing classroom digital content and professional development recommendations. See analysis of how much lesson time used on digital learning, and connect with students.</p>
+				</div>
+				
+				<div id='inline_publisher' style='padding:10px; background:#fff;'>
+				<h2 style="color: #49853F;">Publisher Profile</h2>
+				<p>Post a profile of your company and each of your products so they can be found by students, teachers and schools.</p>
+				</div>
+				
+				<div id='inline_school' style='padding:10px; background:#fff;'>
+				<h2 style="color: #49853F;">School or District Profile</h2>
+				<p>Use the system to get a gap analysis of what you are missing in digital curriculum for any grade or subject, link with other schools, post publisher request for proposals, and keep track of inventory.</p>
+				</div>
+				
+				<div id='inline_recruiter' style='padding:10px; background:#fff;'>
+				<h2 style="color: #49853F;">Recruiter Profile</h2>
+				<p>Promote your institution and seek links with college-interested students. Search student interests and see public student profiles.</p>
+				</div> -->
+			</div>
+			
+		</div><!-- End Signup Div-->
+		</div> <!--End sign-wrap Div -->
+		</div> <!-- End home-wrap -->
+		<%= render 'share/footer' %>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		<!-- <div style="height: 20px;"></div>
+		<div style="width: 100%; text-align: center;">
+			<iframe src="../iframes/home_slidedeck/index.html" width="1000px" height="350px"></iframe>
+		</div>
+		<div style="height: 20px;"></div>
+		<script type="text/javascript">
+			/* Initiate the SlideDeck */
+			$('.skin-vertical-embedded dl.slidedeck').slidedeck({
+				hideSpines: true
+			}).loaded(function(){
+			/**
+			 * Take advantage of the loaded() method of the SlideDeck library to 
+			 * change the vertical slide navigation items based on the "navLabels" array
+			 */			
+				var navLabels = [
+					'What is KnowStory?',
+					'Student Profiles',
+					'Teacher Profiles',
+					'Publisher Profiles',
+					'School or District Profiles',
+					'College Recruiter Profiles'
+				];
+				/** Array holds the title for each button in .verticalSlideNav 	*/			
+				for( i=0 ; i<navLabels.length ; i++){
+					var mynum = i+1;
+					$('.verticalSlideNav .nav_' + (mynum) + ' a').html('<span class="hide">'+mynum+'</span>'+navLabels[i]);
+					if(mynum == navLabels.length){
+						$('.verticalSlideNav .nav_' + (mynum)).addClass('last');
+					}
+				}			
+				/** Loop through navLabels array and replace the innerHTML of each <a> in the vertical slide navigation */		
+			}).vertical({
+				scroll: true
+			});
+			/** Enable vertical slides */
+			
+			$('.skin-vertical-embedded dl.slidedeck a.next').click(function(e){
+				e.preventDefault();
+				$('.skin-vertical-embedded dl.slidedeck').slidedeck().vertical().next();
+			});
+			
+			// Script for handling goto's and prev and next
+			var SlideDeckAssistant = {
+				innerSlideCount: 0,
+				/** prevSlide, nextSlide and goToSlide are all custom functions to control progress of the SlideDeck */
+				prevSlide: function(theIndex){
+					SlideDeckAssistant.goToSlide(theIndex - 1);
+				},
+				nextSlide: function(theIndex){
+					SlideDeckAssistant.goToSlide(theIndex + 1);
+				},
+				goToSlide: function(theIndex){        
+					$('ul.galleryNav li').removeClass('active');
+					$('ul.galleryNav li:eq('+ theIndex +')').addClass('active');
+					myDeck2.goTo(theIndex+1);
+					if((theIndex + 1) == SlideDeckAssistant.innerSlideCount){
+						// disable the next button
+						$('ul.galleryArrows .next').addClass('disabled');
+						$('ul.galleryArrows .prev').removeClass('disabled');
+					}else if((theIndex + 1) == 1){
+						// disable the previous button
+						$('ul.galleryArrows .next').removeClass('disabled');
+						$('ul.galleryArrows .prev').addClass('disabled');
+					}else{
+						// enable both next/previous buttons
+						$('ul.galleryArrows .next, ul.galleryArrows .prev').removeClass('disabled');
+					}
+				},
+				init: function(){
+					SlideDeckAssistant.innerSlideCount = $('#slidedeck-gallery_frame dl.slidedeck2 dd').length;
+					/** Store number of slides in SlideDeck */
+					$('#slidedeck-gallery_frame').append('<ul class="galleryArrows"><li class="prev"><a href="#prev">&larr;<\/a><\/li><li class="next"><a href="#next">&rarr;<\/a><\/li><\/ul>');
+					// create navigation element with next and previous buttons
+					$('.colRight').append('<ul class="galleryNav"><\/ul>');
+					// create bullet navigation element
+					for (i=0 ; i < SlideDeckAssistant.innerSlideCount ; i++ ) {
+						$('ul.galleryNav').append('<li><a href="goto#' + (i+1) + '">' + (i+1) + '<\/a><\/li>');
+					}
+					// create navigation bullets based on number of slides
+					var goToDots = $('ul.galleryNav li a');
+					$('ul.galleryNav').css({width: (goToDots.outerWidth(true)*goToDots.length) + 'px'});
+					// position navigation bullets
+					$('ul.galleryNav li:first').addClass('active');
+					$('ul.galleryArrows li.prev').addClass('disabled');
+					$('ul.galleryNav li a').click(function(e){
+						e.preventDefault();
+						var theIndex = $('ul.galleryNav li a').index($(this));
+						SlideDeckAssistant.goToSlide(theIndex);
+						return false;
+					});
+					// assign click function to navigation bullets
+					$('ul.galleryArrows li.prev a').click(function(e){
+						e.preventDefault();
+						if($(this).parent('li').hasClass('disabled')){
+							return false;
+						}else{
+							var theIndex = $('ul.galleryNav li').index($('ul.galleryNav li.active'));
+							SlideDeckAssistant.prevSlide(theIndex);
+						}
+						return false;
+					});
+					// assign click function for previous button
+					$('ul.galleryArrows li.next a').click(function(e){
+						e.preventDefault();
+						if($(this).parent('li').hasClass('disabled')){
+							return false;
+						}
+						else{
+							var theIndex = $('ul.galleryNav li').index($('ul.galleryNav li.active'));
+							SlideDeckAssistant.nextSlide(theIndex);
+						}
+						return false;
+					});
+					//assign click function for next button
+				}
+			};
+		
+			$(document).ready(function(){
+				SlideDeckAssistant.init();
+			});
+				
+			/** Initiate the SlideDeck */
+			var myDeck2 = $('#slidedeck-gallery_frame dl.slidedeck2').slidedeck({
+				hideSpines: true,
+				autoPlay: true,
+				cycle: true,
+				scroll: false,
+				/**
+				 * The complete function is executed after each slide animation.
+				 * here we are using it to upate the navigation dots.
+				 */
+				complete: function(deck){
+					$('ul.galleryNav li').removeClass('active');
+					$('ul.galleryNav li:eq('+ ( deck.current - 1 ) +')').addClass('active');
+					/** Update current slide indicator after each slide animation completes */
+				}
+			});
+			
+		</script> -->		
+
+		<!-- <div style="height: 50px;"></div>
+    	<div style="width: 100%; text-align: center;">
+	    	<h5>
+			   	<#% delete_all_msg = "Delete all records and reset index in Users?" %#>
+				<#%= button_to "Delete All Records and Reset Index", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long', :remote => true %#>
+			</h5>
+		</div>
+		<div style="height: 50px;"></div> -->
+	
+	
+	
+
+	<!-- <script type="text/javascript">	
+		$('a[href*=#]:not([href=#])').click(function() {
+		    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+		        || location.hostname == this.hostname) {
+		
+		        var target = $(this.hash);
+		        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+		           if (target.length) {
+		             $('html,body').animate({
+		                 scrollTop: target.offset().top
+		            }, 750);
+		            return false;
+		        }
+		    }
+		});
+	</script> -->
+	
+	<!-- <script>
+		SlideDeckAssistant.init();
+	</script> -->
+
+	<script>
+
+
+		var rd_gender_clicked = false;
+		$("#user_gender_0").on("change", function () {
+			// $('#user_address').focus();
+			if (rd_gender_clicked == false) {
+				validateRadio1();
+				rd_gender_clicked = true;
+			}
+		});
+		$("#user_gender_1").on("change", function () {
+			// $('#user_address').focus();
+			if (rd_gender_clicked == false) {
+				validateRadio1();
+				rd_gender_clicked = true;
+			}
+		});
+
+		function validateRadio1() {
+			var isChecked = false;
+			if($("#user_gender_0").is(':checked')) {
+				isChecked = true;
+			}
+			if($("#user_gender_1").is(':checked')) {
+				isChecked = true;
+			}
+			if ( !isChecked ) {
+				$("#rd_gender_male").addClass("rd-button-error");
+				$("#rd_gender_female").addClass("rd-button-error");
+				// $("#border_gender").css ({
+					// 'border-color' : '#851717'
+				// });
+				// $('#error_user_gender').html("*");
+				// $("#state_user_gender").css ({			
+					// background: 'url("/assets/submit_form_empty.png") no-repeat 0px 5px'
+				// });				
+			}
+			else {
+				if ($("#rd_gender_male").hasClass("rd-button-error")) {
+					$("#rd_gender_male").removeClass("rd-button-error");
+					$("#rd_gender_female").removeClass("rd-button-error");					
+				}
+				if ($("#rd_gender_female").hasClass("rd-button-error")) {
+					$("#rd_gender_male").removeClass("rd-button-error");
+					$("#rd_gender_female").removeClass("rd-button-error");					
+				}
+				
+				// $("#border_gender").css ({
+					// 'border-color' : '#005C9E' // 11520b
+				// });
+				// $('#error_user_gender').html("");
+				// $("#state_user_gender").css ({			
+					// background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+				// });																
+			}
+			// if ( isChecked ) {
+				// $("#rd_gender_male").removeClass("rd-button-error");
+				// $("#rd_gender_female").removeClass("rd-button-error");									
+			// }
+			
+			return isChecked;
+		}
+
+		function set_rd_1() {
+			// $("input[type='radio'][name='user[gender]'][value='0']").prop('checked',true);
+			// jQuery("input[type='radio'][name='content[id]']")
+			var rd ="#user_gender_0";
+			var sd = "#rd_gender_male";
+			$(rd).prop('checked',true);
+			// $(rd).attr("checked", "checked");
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_1() {
+			// var rd ="#user_gender_0";
+			var sd = "#rd_gender_male";
+			// $(rd).prop('checked',false);
+			$(sd).removeClass("rd-background");			
+		}
+		function set_rd_2() {
+			var rd ="#user_gender_1";
+			var sd = "#rd_gender_female";
+			$(rd).prop('checked',true);
+			// $(rd).attr("checked", "checked");
+			$(sd).addClass("rd-background");			
+		}
+		function unset_rd_2() {
+			// var rd ="#user_gender_1";
+			var sd = "#rd_gender_female";
+			// $(rd).prop('checked',false);
+			$(sd).removeClass("rd-background");			
+		}
+
+		function rd_gender(caller) {
+
+			switch (caller)
+			{
+			  case 'male':
+			  		set_rd_1();
+			  		unset_rd_2();
+			  	break;
+			  case 'female':
+			  		set_rd_2();
+			  		unset_rd_1();
+			  	break;
+
+			  default:
+			  //
+			}
+			
+			if (rd_gender_clicked == false) {
+				validateRadio1();
+				rd_gender_clicked = true;
+			}
+		}
+
+
+		function set_rd_profile_type_1() {
+			// var rd ="#user_profile_type_1";
+			// var sd = "#rd_profile_type_1";
+			// $(rd).prop('checked',true);
+			// $(sd).addClass("rd-background");			
+		}
+		function unset_rd_profile_type_1() {
+			// var sd = "#rd_profile_type_1";
+			// $(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_profile_type_2() {
+			// var rd ="#user_profile_type_12";
+			// var sd = "#rd_profile_type_2";
+			// $(rd).prop('checked',true);
+			// $(sd).addClass("rd-background");			
+		}
+		function unset_rd_profile_type_2() {
+			// var sd = "#rd_profile_type_2";
+			// $(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_profile_type_3() {
+			// $("input[name='user[profile_type]']:checked").val("checked");
+			// $("input[type='radio'][name='user[profile_type]'][value='3']").prop('checked',true);
+			// $("input[type='radio'][name='user[profile_type]']").filter("[value='3']").prop('checked',true);
+			var rd ="#user_profile_type_13";
+			var sd = "#rd_profile_type_3";
+			$(rd).prop('checked',true);
+			$(sd).addClass("rd-background");			
+			// $("input[name='user[profile_type]'][value='3']").prop("checked", true);
+			// $("input[name='user[profile_type]']:checked").val('3');
+			// alert($("input[name='user[profile_type]']:checked").val());
+		}
+		function unset_rd_profile_type_3() {
+			// var sd = "#rd_profile_type_3";
+			// $(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_profile_type_4() {
+			// var rd ="#user_profile_type_14";
+			// var sd = "#rd_profile_type_4";
+			// $(rd).prop('checked',true);
+			// $(sd).addClass("rd-background");			
+		}
+		function unset_rd_profile_type_4() {
+			// var sd = "#rd_profile_type_4";
+			// $(sd).removeClass("rd-background");			
+		}
+
+		function set_rd_profile_type_5() {
+			// var rd ="#user_profile_type_15";
+			// var sd = "#rd_profile_type_5";
+			// $(rd).prop('checked',true);
+			// $(sd).addClass("rd-background");			
+		}
+		function unset_rd_profile_type_5() {
+			// var sd = "#rd_profile_type_5";
+			// $(sd).removeClass("rd-background");			
+		}
+
+		function rd_profile_type(caller) {
+
+			switch (caller)
+			{
+			  case '1':
+			  		set_rd_profile_type_1();
+			  		unset_rd_profile_type_2();
+			  		unset_rd_profile_type_3();
+			  		unset_rd_profile_type_4();
+			  		unset_rd_profile_type_5();
+			  	break;
+			  case '2':
+			  		unset_rd_profile_type_1();
+			  		set_rd_profile_type_2();
+			  		unset_rd_profile_type_3();
+			  		unset_rd_profile_type_4();
+			  		unset_rd_profile_type_5();
+
+			  	break;
+			  case '3':
+			  		unset_rd_profile_type_1();
+			  		unset_rd_profile_type_2();
+			  		set_rd_profile_type_3();
+			  		unset_rd_profile_type_4();
+			  		unset_rd_profile_type_5();
+			  	break;
+			  case '4':
+			  		unset_rd_profile_type_1();
+			  		unset_rd_profile_type_2();
+			  		unset_rd_profile_type_3();
+			  		set_rd_profile_type_4();			  		
+			  		unset_rd_profile_type_5();
+			  	break;
+			  case '5':
+			  		unset_rd_profile_type_1();
+			  		unset_rd_profile_type_2();
+			  		unset_rd_profile_type_3();
+			  		unset_rd_profile_type_4();
+			  		set_rd_profile_type_5();			  		
+			  	break;
+
+			  default:
+			  //
+			}
+			
+			// if (rd_gender_clicked == false) {
+				// validateRadio1();
+				// rd_gender_clicked = true;
+			// }
+		}
+
+		var validationCalled = false;
+		var dropdown1_focus = false;
+		var dropdown2_focus = false;
+		var dropdown3_focus = false;
+		function validateDropdowns() {
+			var b = true;
+			if (validationCalled) {
+				if (!dropdown1_focus) {
+					if ($("#dropdown1 ul li.selected").attr("data-index") == '0') {
+						$("#dropdown1").addClass("input-error");
+						b = false;
+					}
+					else {
+						$("#dropdown1").removeClass("input-error");
+					}					
+				}
+				if (!dropdown2_focus) {
+					if ($("#dropdown2 ul li.selected").attr("data-index") == '0') {
+						$("#dropdown2").addClass("input-error");
+						b = false;
+					}
+					else {
+						$("#dropdown2").removeClass("input-error");
+					}					
+				}
+				if (!dropdown3_focus) {
+					if ($("#dropdown3 ul li.selected").attr("data-index") == '0') {
+						$("#dropdown3").addClass("input-error");
+						b = false;
+					}
+					else {
+						$("#dropdown3").removeClass("input-error");
+					}					
+				}
+			}
+			
+			return b;
+		}
+
+		function show_upload_button() {
+			$("#submit_new").html("");
+			$("#submit_new").addClass("submit-btn-home-loader-1");
+		}
+
+		b_validateRadio1 = false;
+		b_validateDropdowns = false;
+
+		function validateDropdownsSubmit() {
+			var b = true;
+			if ($("#dropdown1 ul li.selected").attr("data-index") == '0') {
+				b = false;
+			}
+			if ($("#dropdown2 ul li.selected").attr("data-index") == '0') {
+				b = false;
+			}
+			if ($("#dropdown3 ul li.selected").attr("data-index") == '0') {
+				b = false;
+			}
+			
+			return b;
+		}
+
+		function formValidate() {
+						
+			$("#form_user_new").validate({
+				submitHandler: function(form) {
+					// b_validateRadio1 = validateRadio1();
+					b_validateDropdownsSubmit = validateDropdownsSubmit();
+					if (b_validateRadio1 && b_validateDropdownsSubmit) {
+						var email = $("#user_email").val(); 
+						if (submit_email_exists(email)) {
+							$("#dialog_301 .dialog-msg-show-1").html(email);
+							$("#dialog_301").jqmShow();
+							$("#dialog_301 .btn-dialog-close").focus();					
+						}
+						else {
+							show_upload_button();						
+							form.submit();	
+						}						
+					}
+				},
+				debug: true,
+				onkeyup: false,
+				focusCleanup: true,
+				// invalidClass: "error",
+				// validClass: "success",
+				rules: {
+					'user[name_first]': {
+						required: true,
+						minlength: 1,
+						maxlength: 20
+					},
+					'user[name_last]': {
+						required: true,
+						minlength: 1,
+						maxlength: 20
+					},
+					'user[email]': {
+						required: true,
+						maxlength: 50,
+						email: true
+					},															
+					'user[username]': {
+						required: true,
+						minlength: 4,
+						maxlength: 20
+					},
+					'user[password]': {
+						required: true,
+						minlength: 6,
+						maxlength: 20
+					},
+					'user[password_confirmation]': {
+						equalTo: "#user_password"
+					}
+				},
+				invalidHandler: function(event, validator) {
+					// var errors = validator.numberOfInvalids();
+					// if (errors) {
+						// var message = errors == 1
+						// ? 'You missed 1 field'
+						// : 'You missed ' + errors + ' fields';
+						// $("div.errors p").html(message);
+						// $("div.errors").show();
+					// } else {
+						// $("div.errors").hide();
+					// }
+				},				
+				messages: {
+					'user[name_first]': {
+						required: "",
+						minlength: "* at least 1 character",
+						maxlength: "* exceeds 20 characters"
+					},
+					'user[name_last]': {
+						required: "",
+						minlength: "* at least 1 character",
+						maxlength: "* exceeds 20 characters"
+					},					
+					'user[username]': {
+						required: "",
+						minlength: "* at least 4 characters",
+						maxlength: "* exceeds 20 characters"
+					},
+					'user[password]': {
+						// required: "*",
+						required: "",
+						minlength: "* at least 6 characters",
+						maxlength: "* exceeds 20 characters"
+					},
+					'user[password_confirmation]': {
+						equalTo: "* passwords must match"
+					},
+					'user[email]': {
+						required: "",
+						maxlength: "* exceeds 50 characters",
+						email: "* invalid email"
+					}										
+				},
+				// errorContainer: $("div .error_label"),
+				errorContainer: ".error-msg-container",				
+				// errorPlacement: function(error, element) {
+				// errorPlacement: function(element) {
+					// error.insertAfter('#error_' + element.attr('id'));
+					// // // $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('input-error');
+					// $('#' + element.attr('id')).addClass('input-error');
+					// // //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				// invalid: function(element) {
+					// // $('#' + element.attr('id')).addClass('input-error');
+					// // $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// // $('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');					
+				// },
+				// highlight: function(element) {
+					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				// unhighlight: function(element) {
+					// //$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
+				// error: function(label) {
+				error: function(element) {
+					// $('#' + element.attr('id')).addClass('input-error');
+					// // $('#' + label.attr('for')).removeClass('required').removeClass('success').addClass('error');
+					// // $('#label_' + label.attr('for')).removeClass('required-label').addClass('error-label');
+				},
+				success: function(label) {
+					// $('#' + label.attr('for')).removeClass('required').removeClass('error').addClass('success');
+					// $('#label_' + label.attr('for')).removeClass('error-label').addClass('required-label');
+					// $('#state_' + label.attr('for')).css ({			
+						// background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+					// });
+					// $('#error_' + label.attr('for')).html("");
+				},				
+				// focus: function(element) {
+					// // alert('focus');
+				 	// // $('#' + element.attr('id')).removeClass('required').removeClass('input-error').removeClass('success').addClass('focus');
+				 	// $('#' + element.attr('id')).removeClass('input-error');				 	
+				// }
+			});
+			
+			// $.validator.setDefaults({
+				// 				
+				// submitHandler: function() {
+					// form.submit();
+				// }
+				//$('#user_username');
+				
+				// submitHandler: function() { alert("submitted!"); }
+				// debug: true,
+				// onkeyup: false,
+				// focusCleanup: true,
+				// errorClass: "invalid",
+				// validClass: "success"
+			// });
+		}
+
+		function openNewPwdReset() {
+			// $("#form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset_a").fadeIn( 2000 ) });
+			$("#form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset_a").fadeIn( 1000, function() { $("#user_new_pwd_reset_email").focus() } ) });
+		}
+
+		function closeNewPwdReset() {
+			$("#form_new_pwd_reset_a").fadeOut(700, function(){ 
+				$("#form_new_pwd_reset").slideUp(400); 
+			});
+		}
+
+		// function focusInput() {
+			// alert('focusInput');
+			// $("#user_new_pwd_reset_email").trigger("focus");
+		// }
+		
+		// var b_email_exists = true;
+		
+		function submit_email_exists(signup_email) {
+			
+			var b_email_exists = false;
+			// Parameters: {"utf8"=>"✓", "authenticity_token"=>"KrdmfAhEnXpYmztZiePC4VFH93xiQKRAA1szIqJzOYc=", "user"=>{"name_first"=>"hfirst", "name_last"=>"hlast", "email"=>"h@h.com", "username"=>"hhhh", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "gender"=>"0", "bd_month"=>"1", "bd_day"=>"1", "bd_year"=>"2014"}, "commit"=>"Submit"}
+			
+			// var obj_list = '{"email":"' + email + 
+						   // '"}';      
+		  	// var obj = '{ "check_duplicate_signup": [' +  obj_list + '] }';                  
+			// alert(obj);
+			
+			
+			// var formData = {check_duplicate_signup: email};
+			var formData = {email: signup_email};
+		  	$.ajax({
+		    	type: 'POST',
+		    	// data : JSON.stringify(formData),
+		    	data : formData,
+		    	// data : obj,
+		    	url: '/users/check_duplicate_signup',
+		    	dataType: "json",			    	
+		    	// dataType: "script",
+		    	async: false,
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+            		b_email_exists = data.b_email_exists;
+					// alert(data.b_email_exists);
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});			
+		  	
+		  	return b_email_exists;
+		}
+
+
+		var body_init = function() {
+		  	var r = $.Deferred();
+			setTimeout(function() {
+				$("body").removeClass("hidden");
+				$("#home-wrap").removeClass("hidden");
+		 	}, 10); 
+		  	return r;
+		};
+
+		var page_init = function() {
+		  	var r = $.Deferred();
+			setTimeout(function() {
+				$("#home").removeClass("hidden");
+				$("#sign_wrap").removeClass("hidden");
+				$("input#session_email").focus();
+		 	}, 2500); 
+		  	return r;
+		};
+
+		
+		$(window).load( function() {
+		// $(document).ready(function(){
+			
+			// var image = '../assets_knowstory/profile_pics/school-bus-back.jpg';
+			// #home-wrap {background: url("/assets_knowstory/profile_pics/school-bus-back.jpg") no-repeat center center fixed; min-height: 900px;}
+			var image = '/assets/school-bus-back.jpg';
+			img = $('<img />');
+			img.bind('load', function() {
+				// setTimeout(function() {
+			  		// $.when(body_init()).done(page_init());
+			 	// }, 10);
+				$("#home-wrap").css({
+					'background': 'url(' + image + ')  no-repeat center center fixed',
+					'min-height': '900px'
+				})
+			}).each(function() {
+			  	if(this.complete) {
+			  		$(this).load();
+			  		$.when(body_init()).done(page_init());
+			  	}
+			});
+			
+			$(".btn-signup").on('click', function() {
+				var target_offset = 1;
+	        	target = $("#sign-up");
+             	$('html,body').animate({
+                	scrollTop: target.offset().top + target_offset
+            	}, 750);
+            	$("input#user_name_first").focus();
+			});
+
+			// preset Publisher type			
+			set_rd_profile_type_3();
+
+			formValidate();	
+
+    		$("#submit_new").keypress(function(e){
+      			if(e.keyCode==13)
+      			$(this).click();
+    		});						
+			$("#submit_new").on("click", function() {
+				$("#submit_new_hidden").click();
+			});
+			$("#submit_new_hidden").on("click", function() {
+				validationCalled = true;
+				b_validateRadio1 = validateRadio1();
+				validateDropdowns();
+				// e.preventDefault();
+			});
+
+	
+			$(document).on("focus", "#dropdown1", function() {
+				dropdown1_focus = true;
+				$("#dropdown1").removeClass("input-error");
+			});
+			$(document).on("blur", "#dropdown1", function() {
+				dropdown1_focus = false;
+				validateDropdowns();
+			});
+			$(document).on("focus", "#dropdown2", function() {
+				dropdown2_focus = true;
+				$("#dropdown2").removeClass("input-error");
+			});
+			$(document).on("blur", "#dropdown2", function() {
+				dropdown2_focus = false;
+				validateDropdowns();
+			});
+			$(document).on("focus", "#dropdown3", function() {
+				dropdown3_focus = true;
+				$("#dropdown3").removeClass("input-error");
+			});
+			$(document).on("blur", "#dropdown3", function() {
+				dropdown3_focus = false;
+				validateDropdowns();
+			});
+
+			
+			// $("#user_new_pwd_reset_email").focus(function() {
+				// alert('focus');
+			// });
+			
+			// $("#user_new_pwd_reset_email").show( function() {
+				// alert('show');
+			// });
+			
+			// $("#submit_signup").on('click', function() {
+				// $("#user_name_first").focus();
+			// });
+			
+    		$("#submit_new_pwd_reset").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_new_pwd_reset").click();
+    		});							
+			$("#close_form_new_pwd_reset").click(function(){
+		    	$("#form_new_pwd_reset_a").fadeOut(700, function(){ $("#form_new_pwd_reset").slideUp(400) });
+		    	$("#user_new_pwd_reset_email").val("");
+		    	$("#confirm_pwd_reset_3").addClass("display-none");
+		  	});
+		  	$("#open_form_new_pwd_reset").click(function(){
+		    	$("#form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset_a").fadeIn( 2000 ) });
+		  	});	
+						
+			$("#pwd_reset").on('click', function(){			
+				
+				// $("#form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset_a").fadeIn( 2000, $("#user_new_pwd_reset_email").focus() ) });
+				// $("#form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset_a").fadeIn( 2000, function() { $("#user_new_pwd_reset_email").focus() } ) });
+					
+				openNewPwdReset();
+				// $("#user_new_pwd_reset_email").trigger("focus");
+				// $("#pwd_reset").blur();
+				// $("#user_new_pwd_reset_email").focus();
+				// $("#show_form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset").fadeIn( 2000 ) });
+	    		// $("#form_new_pwd_reset, #open_edit_lesson_plan_subject").fadeOut(300, function(){
+	    			// $("#show_lesson_plan_subject").addClass("hidden");
+	    			// $("#open_edit_lesson_plan_subject").addClass("visibility-hidden");
+	    			// $("#form_new_pwd_reset").fadeIn(1300).removeClass("hidden");
+	    		// });
+		  	// }).$("#user_new_pwd_reset_email").focus();
+		  	});    		
+						
+			$("#submit_new_pwd_reset").on('click', function() {
+				var input_user_new_pwd_reset_email = $("#user_new_pwd_reset_email").val();
+				var obj_list = '{"email":"' + input_user_new_pwd_reset_email + 
+							   '"}';      
+			  	var obj = '{ "user": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	// url: '/users/new_pwd_reset',
+			    	url: '/password_resets/create_reset',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		// alert(data.email);
+	            		// $("#pwd_reset_container_spacer").removeClass("display-none");
+	            		if( data.confirm_msg_1_b) {
+	            			$("#confirm_pwd_reset_2").addClass("display-none");
+	            			$("#confirm_pwd_reset_3").addClass("display-none");
+	            			$("#confirm_pwd_reset_1").removeClass("display-none");
+	            			$("#confirm_pwd_reset_1_email").html(data.email);
+	            			closeNewPwdReset();	            			
+	            		}
+	            		if( data.confirm_msg_2_b) {
+	            			$("#confirm_pwd_reset_1").addClass("display-none");
+	            			$("#confirm_pwd_reset_3").addClass("display-none");
+	            			$("#confirm_pwd_reset_2").removeClass("display-none");
+	            			closeNewPwdReset();
+	            		}
+	            		if( data.confirm_msg_3_b) {
+	            			$("#confirm_pwd_reset_1").addClass("display-none");
+	            			$("#confirm_pwd_reset_2").addClass("display-none");	            			
+	            			$("#confirm_pwd_reset_3").removeClass("display-none");
+	            			$("#confirm_pwd_reset_3_email").html(data.email);
+	            		}
+
+						// set_content_type(data.content_type, data.has_content_type_other);
+						// $("#focus_30").focus();
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+						
+			$('select').dropdown({
+			    'changed': function(data) {
+			        // selectStatus1();
+			        // selectStatus2();	
+			    }
+			});	    
+			
+			
+			$('#user_gender_0').prop('checked', false);				
+			$('#user_gender_1').prop('checked', false);				
+
+			$('#rd_gender_male').on('click', function() {
+				rd_gender('male');
+				b_validateRadio1 = validateRadio1();				
+			});
+			$('#rd_gender_female').on('click', function() {
+				rd_gender('female');
+				b_validateRadio1 = validateRadio1();				
+			});
+			
+    		$('#rd_gender_male').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_gender_male').click();
+    		});				
+    		$('#rd_gender_female').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_gender_female').click();
+    		});				
+
+    		$("#ch_remember_me").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#ch_remember_me").click();
+    		});				
+
+
+			$('#user_profile_type_1').prop('checked', false);				
+			$('#user_profile_type_2').prop('checked', false);				
+			$('#user_profile_type_3').prop('checked', false);				
+			$('#user_profile_type_4').prop('checked', false);				
+			$('#user_profile_type_5').prop('checked', false);				
+			
+			$('#rd_profile_type_1').on('click', function() {
+				rd_profile_type('1');
+			});
+			$('#rd_profile_type_2').on('click', function() {
+				rd_profile_type('2');
+			});
+			$('#rd_profile_type_3').on('click', function() {
+				rd_profile_type('3');
+			});
+			$('#rd_profile_type_4').on('click', function() {
+				rd_profile_type('4');
+			});
+			$('#rd_profile_type_5').on('click', function() {
+				rd_profile_type('5');
+			});
+			
+    		$('#rd_profile_type_1').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_profile_type_1').click();
+    		});				
+    		$('#rd_profile_type_2').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_profile_type_2').click();
+    		});				
+    		$('#rd_profile_type_3').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_profile_type_3').click();
+    		});				
+    		$('#rd_profile_type_4').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_profile_type_4').click();
+    		});				
+    		$('#rd_profile_type_5').keypress(function(e){
+      			if(e.keyCode==13)
+      			$('#rd_profile_type_5').click();
+    		});				
+
+
+
+
+			// $(".group1").colorbox({rel:'group1'});
+			// $(".group2").colorbox({rel:'group2', transition:"fade"});
+			// $(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
+			// $(".group4").colorbox({rel:'group4', slideshow:true});
+			// $(".ajax").colorbox();
+			// $(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
+			// $(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
+			// $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+			// $(".inline").colorbox({inline:true, width:"50%"});
+			// $(".callbacks").colorbox({
+				// onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+				// onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+				// onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+				// onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+				// onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+			// });
+			// $('.non-retina').colorbox({rel:'group5', transition:'none'})
+			// $('.retina').colorbox({rel:'group5', transition:'none', retinaImage:true, retinaUrl:true});
+			// $("#click").click(function(){ 
+				// $('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+				// return false;
+			// });
+
+
+
+			// $("#panel-1").focus( function() {
+				// $("#panel-1").mouseover();
+			// });
+			// $("#panel-1").blur( function() {
+				// $("#panel-1").mouseleave();
+			// });
+// 
+			// $("#panel-2").focus( function() {
+				// $("#panel-2").mouseover();
+			// });
+			// $("#panel-2").blur( function() {
+				// $("#panel-2").mouseleave();
+			// });
+// 
+			// $("#panel-3").focus( function() {
+				// $("#panel-3").mouseover();
+			// });
+			// $("#panel-3").blur( function() {
+				// $("#panel-3").mouseleave();
+			// });
+// 
+			// $("#panel-4").focus( function() {
+				// $("#panel-4").mouseover();
+			// });
+			// $("#panel-4").blur( function() {
+				// $("#panel-4").mouseleave();
+			// });
+// 
+			// $("#panel-5").focus( function() {
+				// $("#panel-5").mouseover();
+			// });
+			// $("#panel-5").blur( function() {
+				// $("#panel-5").mouseleave();
+			// });
+			
+			// $('.initiator').on('mouseenter mouseleave', function(e) {
+			    // $('.receiver').trigger(e.type);
+			// });
+						
+						
+			// $("ul li").on('click', function() {
+				// alert('page');
+			// });
+
+			// $('a[href*=#]:not([href=#])').click(function() {
+			    // event.preventDefault();
+			    // var target_offset = $(this.hash).offset() ? $(this.hash).offset().top : 0;
+			    // //change this number to create the additional off set        
+			    // var customoffset = 0;
+			    // $('html, body').animate({scrollTop:target_offset - customoffset}, 500);
+			// });
+
+			// $('a[href*=#]:not([href=#])').click(function() {
+				// var target_offset = 1;
+			    // if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			        // || location.hostname == this.hostname) {
+			        // var target = $(this.hash);
+			        // // alert(this.hash.slice(1));
+		        	// // if(this.hash.slice(1) === 'sign-up') {
+		        		// // $("input#user_name_first").focus();
+		        	// // }
+			        // target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+		           	// if (target.length) {
+		             	// $('html,body').animate({
+		                	// scrollTop: target.offset().top + target_offset
+		            	// }, 750);
+		            	// // return false;
+		        	// }
+			    // }
+			// });
+
+						
+            // $('.tip').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout'
+                // })
+            // });			
+// 			
+            // $('.tip-bottom-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'top center',
+				        // at: 'bottom center'
+				        // // target: $('.tip-bottom-center')
+    				// }                    
+                // })
+            // });			
+// 
+            // $('.tip-top-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'bottom center',
+				        // at: 'top center'
+				        // // target: $('.tip-top-center')
+    				// }                    
+                // })
+            // });			
+
+						
+    		$("#dialog_301 .jqmClose").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#dialog_301 .jqmClose").click();
+    		});						
+			$(document).on("click", "#dialog_301 .jqmClose", function() {
+				$(this).trigger('click');
+			});
+    		$("#dialog_301 .btn-dialog-close").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#dialog_301 .jqmClose").click();
+    		});						
+			$(document).on("click", "#dialog_301 .btn-dialog-close", function() {
+				$("#dialog_301 .jqmClose").trigger('click');
+			});
+						
+			// $(document).on("click", "#btn_dlg_submit_new_user_msg", function() {
+				// var ch_new_user = $("#new_user").is(':checked');
+				// if (ch_new_user) {
+					// // alert(ch_new_user);	
+					// update_new_user();
+					// $("#close_form201").trigger('click');
+				// }
+				// else {
+					// $("#close_form201").trigger('click');					
+				// }
+			// });			
+						
+			// $("#dialog_301").jqmShow();
+									
+			$(document).on('click_301', function(e, id) {
+				$("#dialog_301").jqmShow();	
+			});
+			$('#dialog_301').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 20);
+					hash.w.css('opacity', 1.0).fadeIn(200);
+				}
+			}); 		
+						
+			// $('#dialog_301').jqm({
+				// onShow: function(hash) {
+					// hash.o.prependTo('body');
+					// hash.w.css('top', '-200px');
+					// hash.w.css('opacity', 1.0).fadeIn(200);
+					// // hash.w.show();
+					// $('#dialog_201').animate(
+						// {bottom:'-=220', top:'+=220'}, 
+						// 500, 
+						// 'easeInOutCirc', 
+						// function() {
+							// $('#dialog_201').animate(
+								// {bottom:'+=4', top:'-=4'}, 
+								// 100, 
+								// 'easeInBounce', 
+								// function() {
+								// }
+							// );
+						// }
+					// );
+				// }
+			// }); 		
+						
+						
+		});
+	
+	</script>
+
+
+
+

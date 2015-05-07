@@ -1,0 +1,34 @@
+
+
+															<% i = 0 %>
+															<div id="render_by_review_<%= i %>" class="list-tip-container"></div>
+														    <script id="by_review_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="by_review_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="by_review_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
+																	</div>
+																</div>
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    										    	
+															<script type="text/javascript">
+																var container = "#render_by_review_<%= i %>";
+																var ref		  = "#by_review_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
+
+																<% h_by_review = by_review_for(@publisher_product) %>
+																var by_review_text = [<%=raw h_by_review[:by_review_text] %>];
+																var has_by_review_other = <%=raw h_by_review[:has_by_review_other] %>;
+																var by_review_other = "<%=raw h_by_review[:by_review_other] %>";
+																var list_number = "<%= i %>";
+																set_field("Reviewed: ", "by_review", by_review_text, "No", has_by_review_other, by_review_other, list_number);
+															</script>

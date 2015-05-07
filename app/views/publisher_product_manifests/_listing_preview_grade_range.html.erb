@@ -1,0 +1,32 @@
+
+
+															<% i = 0 %>
+															<div id="render_grade_range_<%= i %>" class="list-tip-container"></div>
+														    <script id="grade_range_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="grade_range_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="grade_range_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
+																	</div>
+																</div>
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    										    	
+															<script type="text/javascript">
+																var container = "#render_grade_range_<%= i %>";
+																var ref		  = "#grade_range_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
+
+																<% h_grade_range = grade_range_for(@publisher_product) %>
+																var grade_range_text = <%=raw h_grade_range[:grade_range_text] %>;
+																var list_number = "<%= i %>";
+																set_field("Grade Range: ", "grade_range", grade_range_text, "Grades", false, "", list_number);
+															</script>

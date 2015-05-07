@@ -1,0 +1,820 @@
+
+	<style>
+		
+		div.drop-5-container-target  {
+			position: relative;
+		}
+		div.drop-5-container-target .dropOut .triangle {
+			width: 0;
+			height: 0;
+			position: absolute;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-bottom: 8px solid white;
+			top: -8px;
+			left: 0px;
+		}
+		div.drop-5-container-target .drop-5-container {
+			width: 140px;
+			position: absolute;
+			z-index: 2;
+			left: 2px;
+			top: -2000px;
+		}
+		div.drop-5-container-target .dropOut {
+			width: 140px;
+			background: #fff;
+			float: left;
+			position: relative;
+			margin-top: 0px;
+			/*opacity: 0;*/
+			opacity: 1;
+			-webkit-border-top-left-radius: 0px;
+			-webkit-border-top-right-radius: 4px;
+			-webkit-border-bottom-right-radius: 4px;
+			-webkit-border-bottom-left-radius: 4px; 			
+			-moz-border-top-left-radius: 0px;
+			-moz-border-top-right-radius: 4px;
+			-moz-border-bottom-right-radius: 4px;
+			-moz-border-bottom-left-radius: 4px; 			
+			border-top-left-radius: 0px;
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+			border-bottom-left-radius: 4px; 			
+			-webkit-box-shadow: 0 1px 6px rgba(0,0,0,.45);
+			-moz-box-shadow: 0 1px 6px rgba(0,0,0,.45);
+			box-shadow: 0 1px 6px rgba(0,0,0,.45);
+			/*display: none !important;
+			visibility: hidden !important;*/
+			/*display: none;*/
+			/*visibility: hidden;*/					
+		}
+		div.drop-5-container-target .dropOut ul {
+			float: left;
+			padding: 10px 0;
+		}
+		div.drop-5-container-target .dropOut ul li {
+			text-align: left;
+			float: left;
+			width: 120px;
+			height: 24px;
+			padding: 4px 0 6px 10px;
+			margin: 3px 10px 3px 10px;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+		}
+		div.drop-5-container-target .dropOut ul li:hover {
+			background: #f2f2f2;
+		}
+		div.drop-5-container-target .dropOut ul li div {
+			color: #376340;	
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			font-weight: 700;
+			width: 100%;
+			height: 24px;
+		}
+		div.drop-5-container-target .dropOut ul li:hover div {
+			color: #376340;	
+			cursor: pointer;
+		}
+		/*div.drop-5-container-target .drop-5-target:hover + .drop-5-container .dropOut { margin-top: 8px; }
+		div.drop-5-container-target .drop-5-target + .drop-5-container:hover .dropOut { margin-top: 8px; }*/		
+
+		div.drop-5-container-target .drop-5-target:hover + .drop-5-container .dropOut { margin-top: 8px; }
+		div.drop-5-container-target .drop-5-target + .drop-5-container:hover .dropOut { margin-top: 8px; }		
+		
+	</style>
+
+	<style>
+	
+		li {list-style-type: none;}
+	
+	</style>
+
+	<style>
+
+		.container-figure-image-border-load {
+			border: 2px solid #fff;
+		}	
+		.container-figure-image-border {
+			border: 2px solid #ccc;
+		}
+		.container-figure-image-border-edit {
+			border: 2px solid #fbb040;
+		}	
+		
+	</style>
+
+
+	<style>
+		
+		.figure-pdf-image-generic:hover {
+			cursor: pointer;
+		}
+		
+	</style>
+
+	<style>
+
+		span.label-pdf-delete {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #888;
+		}
+		span.label-pdf-delete:hover {
+			text-decoration: underline;
+			cursor: pointer;			
+		}
+		
+	</style>
+
+	<style>
+	
+		.form-info-outer-pdf {
+			height: 110px;
+		}
+		.form-info-inner-pdf {
+			height: 90px;
+			padding-top: 10px;
+			padding-right: 10px;
+			padding-left: 20px;
+
+		}
+		.list-divide-line-pdf {
+			width: 100%; 
+			padding: 0 0 0 10px;
+		}
+		.list-divide-line-pdf div {
+			width: 680px; 
+			height: 2px; 
+			border-bottom: 2px solid #ddd; /*#49853f*/ 
+			margin: 6px 0 6px 0;
+		}
+		
+	</style>										
+
+							<!-- <div style="height: 20px;"></div> -->
+
+							<% if @publisher_product_pdfs.any? %>								
+								<% i = 0 %>
+
+								<% if (i == 0) %>						
+									<div class="list-divide-line-pdf"><div></div></div>		
+								<% end %>
+								
+								<% @publisher_product_pdfs.each do |publisher_product_pdf| %>
+							   		<div class="table">
+							   			<div class="row">
+							   				<div class="cell-10" style="height: 10px;"></div>
+							   				<div class="cell-230" id="list_num_<%= i %>">
+							   					
+												<% img = publisher_product_pdf_image_for(publisher_product_pdf) %>
+												<% if !img.nil? %>
+													<div class="container-figure-image container-figure-image-border-load container-figure-image-5 drop-5-container-target">
+														<!-- <figure class="figure-image-5 dialog-53-figure cursor-pointer drop-5-target"> -->
+														<figure data-id="<%= publisher_product_pdf.id %>" class="figure-image-5 cursor-pointer">
+															<a href="<%= publisher_product_pdf.name_file %>">
+																<img alt="" class="img-image-5" src="<%= img + '?' + (rand(10..90) * rand(100..900)).to_s %>" width="" height="" />
+															</a>
+															<!-- <figcaption id="figcaption_image_2" class="edit-image hidden">												
+															</figcaption> -->
+															<figcaption class="figcaption-image-5 edit-image drop-5-target hidden" data-drop-target="<%= i.to_s %>">
+																<!-- <div class="tip-top-center"><#%= button_to "", destroy_pdf_image_publisher_product_manifests_path(:publisher_product_pdf_id => publisher_product_pdf.id), data: { confirm: 'Delete this PDF image?' }, :remote => true, class: 'x-container' %#></div> -->
+																<!-- <div name="<%= publisher_product_pdf.id %>" class="tip-top-center x-container x-pdf-image-delete-change"></div>
+												                <div class="tip-content">
+												                    <div class="tooltiptext">Delete</div>
+												                </div> -->																								
+															</figcaption>
+														</figure>
+												    	<div class="drop-5-container hidden" data-drop-container="<%= i.to_s %>">
+															<div class="dropOut">
+																<div class="triangle"></div>
+																<ul>
+																	<li>
+																		<div name="<%= publisher_product_pdf.id %>" class="btn-image-5-change">
+																			Change PDF
+																		</div>
+																	</li>
+																	<!-- <li>
+																		<div id="btn_image_2_crop" class="">
+																			Crop/Center
+																		</div>
+																	</li> -->
+																	<li>
+																		<div name="<%= publisher_product_pdf.id %>" class="btn-image-5-delete">
+																			Delete
+																		</div>
+																	</li>
+																</ul>
+															</div>
+												        </div>
+													</div>
+													<div class="float-clear"></div>
+
+												<% else %>
+
+													<div class="container-figure-image container-figure-image-border-load container-figure-image-5 drop-5-container-target">
+														<figure class="figure-image-5-generic dialog-51-figure-generic drop-5-target">
+															<a href="<%= publisher_product_pdf.name_file %>">
+																<img class="img-image-5-generic" alt="" src="../images_publisher_product_pdf_image/add_generic_publisher_product_pdf_image_w200_h270.png" width="" height="" />
+															</a>
+															<figcaption data-id="<%= publisher_product_pdf.id %>" class="figcaption-image-5-generic edit-image cursor-pointer hidden">
+																<!-- <div class="img-2-container"> -->
+																	<!-- <div class="img-2"></div> -->
+																	<div class="img-5-text">Add a PDF image</div>
+																<!-- </div> -->
+															</figcaption>
+														</figure>
+												    	<div class="drop-5-container hidden">
+															<div class="dropOut">
+																<div class="triangle"></div>
+																<ul>
+																	<li>
+																		<div name="<%= publisher_product_pdf.id %>" class="btn-image-5-new">
+																			New
+																		</div>
+																	</li>
+																</ul>
+															</div>
+												        </div>
+													</div>
+
+												<% end %>
+
+
+												<% if false %>
+												<div class="profile-grid profile-cs-style-3">
+													<% img = publisher_product_pdf_image_for(publisher_product_pdf) %>
+													<% if !img.nil? %>
+														<figure class="figure-pdf-image">
+															<a href="<%= publisher_product_pdf.name_file %>"><img alt="logo not appearing" src="<%= img %>" width="200px" /></a>
+															<figcaption class="figcaption-2">
+																<!-- <div class="tip-top-center"><#%= button_to "", destroy_pdf_image_publisher_product_manifests_path(:publisher_product_pdf_id => publisher_product_pdf.id), data: { confirm: 'Delete this PDF image?' }, :remote => true, class: 'x-container' %#></div> -->
+																<div name="<%= publisher_product_pdf.id %>" class="tip-top-center x-container x-pdf-image-delete-change"></div>
+												                <div class="tip-content">
+												                    <div class="tooltiptext">Delete</div>
+												                </div>																								
+															</figcaption>
+															<!-- <figcaption class="figcaption-1">
+																<span>Test</span>
+															</figcaption> -->
+														</figure>
+													<% else %>
+														<figure class="figure-pdf-image-generic">
+															<img alt="logo not appearing" src="../images_publisher_product_pdf_image/add_generic_publisher_product_pdf_image_w200_h270.png" width="200px"/>
+															<figcaption class="figcaption-1">
+																<span class="dialog-51 label-dialog-figcaption" name="<%= publisher_product_pdf.id %>">Add a PDF image</span>
+																<!-- <span><#%= link_to "Add a PDF image", new_publisher_product_pdf_image_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :publisher_product_pdf_id => publisher_product_pdf.id) %#></span> -->	
+															</figcaption>
+														</figure>
+													<% end %>
+												</div>
+												<% end %>
+												
+							   				</div>
+							   				<div class="cell-10"></div>
+							   				<div class="cell-440">
+							   					
+												<!-- <div><a href="<#%= publisher_product_pdf.name_file.url %#>"><#%= publisher_product_pdf.name_pdf %#></a></div> -->
+												<div class="listing-space"></div>
+												<div class="table pad-marg-null">
+													<div class="row">
+														<div class="cell-370">															
+															<div id="edit_name_pdf_<%= i %>" class="hidden">
+
+																<div class="width-350">
+																	<input id="publisher_product_pdf_name_pdf_<%= i %>" name="<%= i %>" class="publisher-product-pdf-name-pdf input-product width-350 height-24" tabindex="5100" type="text" value="<%= publisher_product_pdf.name_pdf %>" placeholder="" />
+																</div>
+																<div class="width-200 box-detail-padding">
+																	<div style="display: inline-block;">
+																		<div id="submit_name_pdf_<%= i %>" name="<%= i %>" class="submit-name-pdf btn-submit-product" tabindex="5130">
+																			Save
+																			<div data-id-pdf="<%= publisher_product_pdf.id %>" data-id-product="<%= publisher_product_pdf.publisher_product.id %>" class="hidden-pdf-id hidden"></div>
+																		</div>
+																	</div>
+																	<div style="display: inline-block;">
+																		<div id="cancel_name_pdf_<%= i %>" name="<%= i %>" class="cancel-name-pdf btn-submit-product" tabindex="5140">Cancel</div>
+																	</div>
+																</div>
+																
+															</div>
+															<div id="show_name_pdf_<%= i %>">
+																<span id="span_name_pdf_<%= i %>" class="form-text-16"><%= publisher_product_pdf.name_pdf %></span>
+															</div>
+															<div style="height: 40px;"></div>
+															<div>
+																
+																<!-- <span name="<#%= i %#>" class="label-pdf-delete">&laquo; Delete PDF &raquo;</span> -->
+																<span name="<%= publisher_product_pdf.id %>" class="label-pdf-delete btn-pdf-delete tip-top-center">&laquo; Delete PDF &raquo;</span>
+																<!-- <div class="tip-top-center"><#%= button_to "", destroy_pdf_publisher_product_manifests_path(:publisher_product_pdf_id => publisher_product_pdf.id), data: { confirm: 'Delete this PDF?' }, :remote => true, class: 'hidden', id: 'pdf_delete_' + i.to_s %#></div> -->
+
+																<!-- <div class="tip-top-center"></div> -->
+												                <div class="tip-content">
+												                    <div class="tooltiptext">Delete</div>
+												                </div>			
+												                																					
+															</div>
+														</div>
+														<div class="cell-60">
+															<div class="cell-20 min-h-20 min-w-20">
+																<!-- <div id="open_info_name_pdf_<#%= i %#>" name="<#%= i %#>" class="open-info-name-pdf question-icon info-show-20 required-1 pop-info tip-top-center" tabindex="5110"></div>
+												                <div class="tip-content">
+												                    <div class="tooltiptext">What is this?</div>
+												                </div> -->																								
+															</div>																		
+															<div class="cell-20 min-h-20 min-w-20">
+																<!-- <div id="required_name_pdf_<#%= i %#>" name="<#%= i %#>" class="required-1 pop-info tip-top-center"></div>
+												                <div class="tip-content">
+												                    <div class="tooltiptext">Required</div>
+												                </div> -->																								
+															</div>
+															<div class="cell-20 min-h-20 min-w-20">
+																<div id="open_edit_name_pdf_<%= i %>" name="<%= i %>" class="open-edit-name-pdf edit-icon-right form-edit-open-20 pop-info tip-top-center" tabindex="5120"></div>
+												                <div class="tip-content">
+												                    <div class="tooltiptext">Edit</div>
+												                </div>																								
+															</div>
+														</div>
+													</div>		
+												</div>
+												<div style="height: 10px;"></div>
+												
+												<% if false %>
+											   	<div id="form_info_name_pdf_<%= i %>" class="form-info-name-pdf form-info-outer-pdf pad-marg-null" style="width: 440px;">
+											   		<div class="form-info-inner form-info-inner-pdf">
+											   			<div id="form_info_name_pdf_a_<%= i %>">
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+													   					<div id="close_info_name_pdf_<%= i %>" name="<%= i %>" class="close-info-name-pdf form-edit-close pop-info tip-left-center">
+													   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+													   					</div>
+														                <div class="tip-content">
+														                    <div class="tooltiptext">Close</div>
+														                </div>													   																		   					
+													   					<div style="clear: both;"></div>
+													   				</div>
+											   					</div>
+															</div>				   				
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+																		<span class="info-text-2">
+																			Research based studies validating the publisher's approach or validating student achievement through use.															
+																		</span>
+																		<!-- <div>
+																			<div><span class="info-text-1">Core</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					Provides content or curriculum that address core subjects.																		
+																				</span>
+																			</div>
+																		</div> -->										   					
+													   				</div>
+											   					</div>
+															</div>				   				
+														</div>
+													</div>
+												</div>
+												<% end %>
+												
+							   				</div>
+							   				<div class="cell-10"></div>
+							   			</div>
+									</div>								
+									<% i += 1 %>
+
+									<div class="list-divide-line-pdf"><div></div></div>
+									
+								<% end %>
+					
+							<% else %>
+					
+								<!-- <div>
+									<span class="normal-red pad-left-20">No pdfs</span>
+								</div> -->
+		
+							<% end %>
+
+
+
+
+												<% if false %>
+												<div id="image_container"></div>
+											    <script id="imageTemplate_<%= i %>" type="text/x-jQuery-tmpl">
+											    	<img src="../images_publisher_product_logo/<%= @publisher_product_logos[i].name_file %>" alt="<%= @publisher_product_logos[i].name_file %>">
+													<% delete_msg = "Delete Logo Image ID: " + @publisher_product_logos[i].id.to_s + " ?" %>
+													<%= button_to "Delete", {:action => 'destroy', :id => @publisher_product_logos[i].id}, :method => :delete, :confirm => delete_msg, :class => 'delete-btn' %>
+										    	</script>
+												<% end %>
+
+
+	<script>
+		
+		
+		function closeAddPdfImage() {
+			$("#close_form51").trigger('click');
+		};	  
+		
+		function set_pdf(a_name_pdf) {
+			// var s_id = "";
+			var s_name_pdf = "";
+			var b_name_pdf = false;
+			for( var i = 0; i < a_name_pdf.length; i++ ) {
+				// s_id = "#span_name_pdf_" + i;
+				s_name_pdf = a_name_pdf[i];
+				if(s_name_pdf.length > 0) {
+					b_name_pdf = true;
+				}
+				else {
+					b_name_pdf = false;
+					s_name_pdf = "PDF Name";
+				}
+				set_pdf_id(i, s_name_pdf, b_name_pdf);
+				// $(s_id).html(s_name_pdf);
+			}
+		}
+
+		
+		function show_pdf(n) {
+			var n_name = n
+
+			var list_num = "div#list_num_" + n_name.toString() + " ";
+			var l1 = list_num + ".edit-image";
+			var l2 = list_num + ".container-figure-image-5 figure";
+			var l3 = list_num + ".drop-5-container";
+			var l4 = list_num + ".container-figure-image-5";
+			var s_name_pdf = "name_pdf_" + n_name.toString();
+
+			show_control_pdf(s_name_pdf);
+			
+			$(l1).removeAttr("style");				
+			$(l1).fadeIn(200).addClass("hidden");
+			$(l2).addClass("cursor-pointer");
+			$(l3).addClass("hidden");			
+			$(l4).removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");					
+		}
+
+		
+		function show_control_pdf(cntrl) {
+			// alert(cntrl);
+			var s_edit = "#edit_" + cntrl;
+			var s_show_open = "#show_" + cntrl + ", #open_edit_" + cntrl;		
+    		$(s_edit).fadeOut(300, function(){
+    			$(s_edit).addClass("hidden");
+    			$(s_show_open).fadeIn(1300).removeClass("hidden");
+    			$(s_show_open).fadeIn(1300).removeClass("hidden").removeClass("visibility-hidden");
+    		});
+		}
+
+		function set_pdf_id(n_name, name_pdf, b_name_pdf) {
+			var s_id = "#span_name_pdf_" + n_name;
+			if (b_name_pdf) {
+				$(s_id).removeClass("color-no-record").addClass("color-record");
+			}
+			else {
+				$(s_id).removeClass("color-record").addClass("color-no-record");				
+			}
+			$(s_id).html(name_pdf);
+		}
+
+
+		
+		$(document).ready( function () {				
+		
+		
+			$("img").one("load", function() {
+				if( ($(this).hasClass("img-image-5")) || ($(this).hasClass("img-image-5-generic")) ) {
+					var img_w = this.width;
+					var img_h = this.height;
+
+					$("div.drop-5-container-target .drop-5-target").on('mouseenter', function() {
+						var i = $(this).attr("data-drop-target");	
+						var container = "div.drop-5-container-target div[data-drop-container='" + i.toString() + "']";	
+						$(container).css({ 
+							top : img_h - 14
+						});
+					});
+					$("div.drop-5-container-target .drop-5-target").on('mouseleave', function() {
+						var i = $(this).attr("data-drop-target");
+						var container = "div.drop-5-container-target div[data-drop-container='" + i.toString() + "']";
+						$(container).css({ 
+							top : -2000
+						});
+					});
+					$("div.drop-5-container-target .drop-5-container").on('mouseenter', function() {
+						var i = $(this).attr("data-drop-container");
+						var container = "div.drop-5-container-target div[data-drop-container='" + i.toString() + "']";
+						$(container).css({ 
+							top : img_h - 14
+						});
+					});
+					$("div.drop-5-container-target .drop-5-container").on('mouseleave', function() {
+						var i = $(this).attr("data-drop-container");
+						var container = "div.drop-5-container-target div[data-drop-container='" + i.toString() + "']";
+						$(container).css({ 
+							top : -2000
+						});
+					});
+
+					// $("div.drop-5-container-target .drop-5-target").on('mouseenter', function() {
+						// $(".drop-5-container").css({ 
+							// top : img_h - 14
+						// });
+					// });
+					// $("div.drop-5-container-target .drop-5-target").on('mouseleave', function() {
+						// $(".drop-5-container").css({ 
+							// top : -2000
+						// });
+					// });
+					// $("div.drop-5-container-target .drop-5-container").on('mouseenter', function() {
+						// $(".drop-5-container").css({ 
+							// top : img_h - 14
+						// });
+					// });
+					// $("div.drop-5-container-target .drop-5-container").on('mouseleave', function() {
+						// $(".drop-5-container").css({ 
+							// top : -2000
+						// });
+					// });
+
+					// $(".container-figure-image-5").css({
+						// width : img_w + 4,
+						// height : img_h + 4
+					// }).addClass("container-figure-image-border-load").addClass("container-figure-image-border");													
+				}
+				// if( ($(this).hasClass("img-image-5")) || ($(this).hasClass("img-image-5-generic")) ) {
+					
+					// var img_w_border = img_w + 4;
+					// var img_h_border = img_h + 4;
+					var container = $(this).closest("div.container-figure-image-5");
+					// container.attr("width") = img_w_border;
+					// container.attr("height") = img_h_border;
+					// container.addClass("container-figure-image-border-load").addClass("container-figure-image-border");
+																		
+					container.css({
+						width : img_w + 4,
+						height : img_h + 4
+					}).addClass("container-figure-image-border-load").addClass("container-figure-image-border");													
+				// }				
+				// if(this.hasClass("img-image-5-generic")) {
+					// var img_w = this.width;
+					// var img_h = this.height;
+					// $("div#container_image_5 .container-figure-image").css({
+						// width : img_w + 4,
+						// height : img_h + 4
+					// }).addClass("container-figure-image-border-load").addClass("container-figure-image-border");				
+				// }				
+			}).each(function() {
+			  	if(this.complete) $(this).load();
+			});
+		
+		
+		
+		
+		
+		
+			var img = $(".figure-pdf-image img");
+			$("<img/>")
+	    		.attr("src", $(img).attr("src"))
+	    		.load(function() {
+	        		var img_width = this.width; 
+	        		$(".figure-pdf-image").css({
+	        			width : this.width
+	        	});	        		
+	    	});		
+
+			var img = $(".figure-pdf-image-generic img");
+			$("<img/>")
+	    		.attr("src", $(img).attr("src"))
+	    		.load(function() {
+	        		var img_width = this.width; 
+	        		$(".figure-pdf-image-generic").css({
+	        			width : this.width
+	        	});	        		
+	    	});		
+		
+			
+			
+			$(".figure-pdf-image-generic").on('click', function() {
+				$(".dialog-51").trigger('click');
+			});			
+			$(".dialog-51").on('click', function() {
+				var s_id = $(this).attr("name");
+				// alert("insert s_id = " + s_id.toString());
+				// $("#publisher_product_pdf_image_publisher_product_pdf_id").val(s_id);
+				$("#publisher_product_pdf_id").val(s_id);
+				$("#dialog_51").jqmShow();
+			});
+			$('#dialog_51').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-740px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_51').animate(
+						{bottom:'-=800', top:'+=800'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_51').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+							// $('#dl_email').focus();
+						}
+					);
+				}
+			}); 		
+			
+			
+			$(".label-pdf-delete").on('click', function() {
+				var n_name = $(this).attr("name");
+				var id = "#pdf_delete_" + n_name.toString();
+				$(id).trigger('click');
+			});
+			
+			// gon_name_pdf = gon.name_pdf;
+			// set_pdf(gon_name_pdf);
+		
+		    $(".submit-name-pdf").keypress(function(e){
+		    	var n_name = $(this).attr("name");
+		    	var s_id = "#submit_name_pdf_" + n_name.toString();
+      			if(e.keyCode==13)
+      			$(s_id).click();
+    		});
+    		$(".cancel-name-pdf").keypress(function(e){
+		    	var n_name = $(this).attr("name");
+		    	var s_id = "#cancel_name_pdf_" + n_name.toString();
+      			if(e.keyCode==13)
+      			$(s_id).click();
+    		});
+			$(".open-edit-name-pdf").click(function(){
+				var n_name = $(this).attr("name");
+
+				var list_num = "div#list_num_" + n_name.toString() + " ";
+				var l1 = list_num + ".edit-image";
+				var l2 = list_num + ".container-figure-image-5 figure";
+				var l3 = list_num + ".drop-5-container";
+				var l4 = list_num + ".container-figure-image-5";
+				
+		  		var s_show_name_pdf = "#show_name_pdf_" + n_name.toString();
+		  		var s_open_edit_name_pdf = "#open_edit_name_pdf_" + n_name.toString();
+		  		var s_edit_name_pdf = "#edit_name_pdf_" + n_name.toString();
+		  		var s_dbl = s_show_name_pdf + "," + s_open_edit_name_pdf; 
+				var s_publisher_product_pdf_name_pdf = "#publisher_product_pdf_name_pdf_" + n_name.toString();
+	    		$(s_dbl).fadeOut(300, function(){
+	    			$(s_show_name_pdf).addClass("hidden");
+	    			$(s_open_edit_name_pdf).addClass("visibility-hidden");
+	    			$(s_edit_name_pdf).fadeIn(1300).removeClass("hidden");
+	    			$(s_publisher_product_pdf_name_pdf).focus();
+	    			
+					$(l1).fadeIn(200).removeClass("hidden");
+					$(l2).removeClass("cursor-pointer");
+					$(l3).removeClass("hidden");
+					$(l4).removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+	    			
+					// $(".edit-image").fadeIn(200).removeClass("hidden");
+					// $(".container-figure-image-5 figure").removeClass("cursor-pointer");
+					// $(".drop-5-container").removeClass("hidden");
+					// $(".container-figure-image-5").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+	    		});
+		  	});
+			$(".cancel-name-pdf").on('click', function() {
+				var n_name = $(this).attr("name");
+
+				var list_num = "div#list_num_" + n_name.toString() + " ";
+				var l1 = list_num + ".edit-image";
+				var l2 = list_num + ".container-figure-image-5 figure";
+				var l3 = list_num + ".drop-5-container";
+				var l4 = list_num + ".container-figure-image-5";
+
+				var s_name_pdf = "name_pdf_" + n_name.toString();
+				show_control_pdf(s_name_pdf);
+				
+				// $(".edit-image").removeAttr("style");				
+				// $(".edit-image").fadeIn(200).addClass("hidden");
+				// $(".container-figure-image-5 figure").addClass("cursor-pointer");
+				// $(".drop-5-container").addClass("hidden");			
+				// $(".container-figure-image-5").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");					
+
+				$(l1).removeAttr("style");				
+				$(l1).fadeIn(200).addClass("hidden");
+				$(l2).addClass("cursor-pointer");
+				$(l3).addClass("hidden");			
+				$(l4).removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");					
+			});
+			// $(".close-info-name-pdf").click(function(){
+				// var n_name = $(this).attr("name");
+		  		// var s_id = "#form_info_name_pdf_" + n_name.toString();
+				// var s_id_a = "#form_info_name_pdf_a_" + n_name.toString();
+		    	// $(s_id_a).fadeOut(700, function(){ $(s_id).slideUp(400) });
+		  	// });
+		  	// $(".open-info-name-pdf").click(function(){
+		  		// var n_name = $(this).attr("name");
+		  		// var s_id = "#form_info_name_pdf_" + n_name.toString();
+		  		// var s_id_a = "#form_info_name_pdf_a_" + n_name.toString(); 
+		    	// $(s_id).slideDown(400, function(){ $(s_id_a).fadeIn( 2000 ) });
+		  	// });	    					
+			$(".submit-name-pdf").on('click', function() {
+				var n_name = $(this).attr("name");
+				var s_pdf_id = $(this).find(".hidden-pdf-id").attr("data-id-pdf");
+				var s_product_id = $(this).find(".hidden-pdf-id").attr("data-id-product");
+				// alert(s_pdf_id);
+				var s_id = "#publisher_product_pdf_name_pdf_" + n_name.toString();
+				var input_publisher_product_pdf_name_pdf = $(s_id).val();
+				// var obj_list = '{"publisher_product_manifest_id":' + <#%= @publisher_product_manifest_id %#> + 
+							   // ', "publisher_product_id":' + <#%= @publisher_product_id %#> + 
+							   // ', "publisher_id":' + <#%= @publisher_id %#> + 
+							   // ', "publisher_product_pdf_id":' + s_pdf_id + 
+							   // ', "n_name":' + n_name + 
+							   // ', "name_pdf":"' + input_publisher_product_pdf_name_pdf + 
+							   // '"}';      
+				var obj_list = '{ "publisher_product_pdf_id":' + s_pdf_id + 
+							   ', "publisher_product_id":' + s_product_id +
+							   ', "n_name":' + n_name + 
+							   ', "name_pdf":"' + input_publisher_product_pdf_name_pdf + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';              
+			  	$.ajax({
+			    	type: 'POST',
+			    	// data : JSON.stringify(obj),
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_name_pdf',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	                	// 200:function() { alert("200"); },
+	                	// 202:function() { alert("202"); }
+	            	},
+	            	success: function(data) {
+	            		set_pdf_id(data.n_name, data.name_pdf, data.b_name_pdf);
+						// var s_name_pdf = "name_pdf_" + data.n_name.toString();
+						// set_control_span(s_name_pdf, s, b)
+						// show_control_pdf(s_name_pdf);
+						show_pdf(data.n_name);
+						// show_control_pdf("name_pdf_0");
+						// $("#focus_12").focus();
+						// set_updated(data.updated);	
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		
+		
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+		
+		
+		
+		});		
+		
+
+	</script>
+

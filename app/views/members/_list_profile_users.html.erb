@@ -1,0 +1,277 @@
+
+
+	<style>
+		
+		.member-list-1 {
+			width: 100%; 
+			/*height: 109px;*/
+			height: auto; 
+			padding: 1px;
+			vertical-align: top;
+			margin: 0;
+			position: relative;
+			/*background-color:transparent;*/
+			/*opacity: 1;*/
+			border-bottom: 1px solid #ccc;
+			/*background: rgba (255, 255, 255, 0.2);*/		
+			/*background: red;*/	
+		}
+		.member-list-1:hover {
+			background-color: #F8F8F8;
+		}		
+		.member-list-1a {
+			height: auto;
+			padding-left: 2px;
+		}
+		.member-list-1a-1 {
+			background-color: inherit;   
+		    vertical-align: top;
+		    margin: 0;
+		    height: 100px;
+		    width: 100px;
+		}
+		.member-list-1b-1 {
+			position: relative;
+			width: 100%;
+			height: 24px;
+			margin: 0;
+			padding: 4px 0 0 0;
+		}
+		.member-list-1b-2 {
+			position: relative;
+			width: 100%;
+			height: 52px;
+			margin: 0;
+			padding: 0 10px 0 0;
+		}
+		.member-list-1b-3 {
+			position: relative;
+			width: 100%;
+			height: 24px;
+			padding: 0 10px 0 0;
+		}	
+		.member-span-1 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	/*color: #666;*/
+		  	color: #333;
+			font-size: 13px;
+			width: 579px;
+		    white-space: pre-wrap;
+		    word-wrap: break-word;
+		    overflow-wrap: break-word;		
+		    border: 1px solid transparent;
+			padding: 6px 5px 5px 5px;	    
+		}		
+		.member-span-2 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #37633a;
+			font-size: 10px;
+		}
+		.member-span-2-a {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #37633a;
+			font-size: 13px;
+		}
+		/*.member-span-2-a:hover {
+			text-decoration: underline;
+			cursor: pointer;
+		}*/		
+		/*.member-span-3 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #37633a;
+			font-size: 10px;
+		}*/
+
+		
+	</style>
+	
+	<style>
+		
+		/*:focus {
+			text-decoration: none;
+		}*/
+		.member-list-link-a a {
+		    color: transparent;
+		    text-decoration: none;
+		}
+		.member-list-link-a a:hover {
+		    color: transparent;
+		    text-decoration: none;
+		}
+		.member-list-link-a a:active {
+		    color: transparent;
+		    text-decoration: none;
+		}
+		.member-list-link-a a:focus {
+		    color: transparent;
+		    text-decoration: none;
+		}
+		a {
+		    color: transparent;
+		    text-decoration: none;
+		}
+		a:hover {
+		    color: transparent;
+		    text-decoration: none;
+		}
+		a:active {
+		    color: transparent;
+		    text-decoration: none;
+		}
+		a:focus {
+		    color: transparent;
+		    text-decoration: none;
+		}
+
+		/*img {
+		    border: 0 none;
+		}*/
+		/*a:hover {
+		    text-decoration: none;
+		}		
+		a:active {
+		    text-decoration: none;
+		}		
+		a:focus {
+		    text-decoration: none;
+		}*/		
+
+	</style>
+
+			<!-- <div id="scroll1" class="product-listbox" style="height: 500px;"> -->
+			<div class="product-listbox">	
+
+			<% if @profile_users.any? %>
+				<% s_rand = '?' + (rand(10..90) * rand(100..900)).to_s %>
+				<% @profile_users.each do |profile_user| %>
+					<% @profile_user = profile_user %>
+					<div class="table member-list-1" style="background-color: transparent;">
+						<div class="row">
+							<div class="cell-100 member-list-1a">
+								<a href="<%= profile_user.slug %>" class="member-list-link-a">
+									<div class="member-list-1a-1">
+										<ul class="publisher-product-list-grid publisher-product-list-caption">
+											<li>
+												<figure>
+													<!-- <a href="<#%= profile_user.slug %#>"> -->
+													<!-- <#%= profile_user_avatar_for(post_user.user, s_rand) %#> -->
+													<%= avatar_profile_user_for(profile_user, s_rand) %>
+													<figcaption>
+														<!-- <span class="publisher-product-list-span"><#%= link_to "Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %#></span> -->
+														<!-- <span><#%= link_to "Edit", { :action => :crop, :id => publisher_product.id } %#></span> -->
+													</figcaption>
+													<!-- </a> -->
+												</figure>
+											</li>
+										<ul>
+									</div>
+								</a>
+							</div>
+							<div class="cell-600">
+								<a href="<%= profile_user.slug %>" class="member-list-link-a">
+									<div style="width: 594px; background-color: #fff; padding: 0 0 0 4px;">
+										<div class="member-list-1b-1" style="">
+											<!-- <div style="display: inline-block; width: 561px;"> -->
+											<div style="display: inline-block;" class="float-left member-span-2-a">
+												<!-- <a href="<#%= profile_user.slug %#>" class="member-span-2-a"> -->
+													<span><%= profile_user.name_first %> </span><span><%= profile_user.name_last %></span>
+												<!-- </a> -->
+											</div>
+											<div style="clear: both;"></div>
+										</div>
+										<div class="member-list-1b-2" style="">
+											<!-- <div class="member-span-1"><#%= post_user.post_text.html_safe %#></div> -->
+											<div class="member-span-1">
+												<!-- text goes here -->
+											</div>
+										</div>
+										<div class="member-list-1b-3">
+											<div class="table" style="height: 30px; margin: 0 0 10px 0;">
+												<div class="row">
+													<div class="cell-150">
+													</div>
+													<div class="cell-300">
+													</div>													
+													<div class="cell-150" style="text-align: right;">
+													    <!-- <span class="member-span-2"> logged in
+													      - <#%= time_ago_in_words(profile_user.created_at) %#> ago
+													    </span> -->
+													</div>													
+												</div>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+						
+					</div>
+					
+				<% end %>
+
+			<% else %>
+				<div class="" style="color: red; padding-left: 20px;">
+					<h3>No record</h3>
+				</div>
+			<% end %>
+
+				</div>
+
+	<script>
+		
+				
+		// $(window).load(function() {
+		$(document).ready(function() {			
+      	// $(function() {
+
+
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+
+			
+		});				
+
+				
+	</script>
+

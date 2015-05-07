@@ -1,0 +1,10 @@
+// alert('ajax works in upload_product_logo');
+<% if @publisher_product_logo %>
+	$('#render_product_logo').html("<%= j render('publisher_product_descriptions/list_logo') %>");
+	$('#render_listing_product_logo').html("<%= j render('publisher_product_descriptions/list_logo_listing') %>");
+	//closeEditProductLogo();
+	closeAddProductLogo();
+<% else %>
+	alert("Error in upload of product logo image");
+<% end %>
+$("#dvLoading_1").addClass("dvLoading-display-none");

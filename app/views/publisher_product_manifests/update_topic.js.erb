@@ -1,0 +1,4 @@
+// alert('ajax works in publisher_product_manifest/update_topic');
+$("#render_topic_insert").html("<%= escape_javascript(render("publisher_product_manifests/topic")) %>");
+set_control_required("topic", <%= @b_required_topic %>);
+show_control("topic");

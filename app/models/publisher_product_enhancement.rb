@@ -2,34 +2,33 @@
 #
 # Table name: publisher_product_enhancements
 #
-#  id                               :integer          not null, primary key
-#  publisher_id                     :integer
-#  publisher_product_id             :integer
-#  publisher_product_description_id :integer
-#  enhancement_1                    :boolean          default(FALSE)
-#  enhancement_2                    :boolean          default(FALSE)
-#  enhancement_3                    :boolean          default(FALSE)
-#  enhancement_4                    :boolean          default(FALSE)
-#  enhancement_5                    :boolean          default(FALSE)
-#  enhancement_6                    :boolean          default(FALSE)
-#  enhancement_7                    :boolean          default(FALSE)
-#  enhancement_8                    :boolean          default(FALSE)
-#  enhancement_9                    :boolean          default(FALSE)
-#  enhancement_10                   :boolean          default(FALSE)
-#  created_at                       :datetime
-#  updated_at                       :datetime
-#  enhancement_11                   :boolean          default(FALSE)
-#  enhancement_12                   :boolean          default(FALSE)
-#  enhancement_13                   :boolean          default(FALSE)
-#  enhancement_14                   :boolean          default(FALSE)
-#  enhancement_15                   :boolean          default(FALSE)
-#  enhancement_16                   :boolean          default(FALSE)
-#  enhancement_17                   :boolean          default(FALSE)
-#  enhancement_18                   :boolean          default(FALSE)
-#  enhancement_19                   :boolean          default(FALSE)
-#  enhancement_20                   :boolean          default(FALSE)
-#  enhancement_other_b              :boolean          default(FALSE)
-#  enhancement_other                :string(255)
+#  id                   :integer          not null, primary key
+#  publisher_id         :integer
+#  publisher_product_id :integer
+#  enhancement_1        :boolean          default(FALSE)
+#  enhancement_2        :boolean          default(FALSE)
+#  enhancement_3        :boolean          default(FALSE)
+#  enhancement_4        :boolean          default(FALSE)
+#  enhancement_5        :boolean          default(FALSE)
+#  enhancement_6        :boolean          default(FALSE)
+#  enhancement_7        :boolean          default(FALSE)
+#  enhancement_8        :boolean          default(FALSE)
+#  enhancement_9        :boolean          default(FALSE)
+#  enhancement_10       :boolean          default(FALSE)
+#  created_at           :datetime
+#  updated_at           :datetime
+#  enhancement_11       :boolean          default(FALSE)
+#  enhancement_12       :boolean          default(FALSE)
+#  enhancement_13       :boolean          default(FALSE)
+#  enhancement_14       :boolean          default(FALSE)
+#  enhancement_15       :boolean          default(FALSE)
+#  enhancement_16       :boolean          default(FALSE)
+#  enhancement_17       :boolean          default(FALSE)
+#  enhancement_18       :boolean          default(FALSE)
+#  enhancement_19       :boolean          default(FALSE)
+#  enhancement_20       :boolean          default(FALSE)
+#  enhancement_other_b  :boolean          default(FALSE)
+#  enhancement_other    :string(255)
 #
 
 class PublisherProductEnhancement < ActiveRecord::Base

@@ -20,12 +20,15 @@
 #  time_at_company     :string(255)
 #  story_plot          :text             default("")
 #  story_interest      :text             default("")
+#  admin_1             :boolean          default(FALSE)
+#  admin_2             :boolean          default(FALSE)
+#  admin_3             :boolean          default(FALSE)
 #
 
 class PublisherUser < ActiveRecord::Base
   
-  attr_accessible :user_id,
-                  :publisher_id,
+  attr_accessible :publisher_id,
+                  :user_id,
                   :publisher_member_id,
                   :location,
                   :name_alias,
@@ -44,12 +47,15 @@ class PublisherUser < ActiveRecord::Base
   # extend FriendlyId
   # friendly_id :id, use: [:slugged, :history]
 
-  belongs_to :user
+  belongs_to :publisher
   belongs_to :publisher_member
+  belongs_to :user
   
-  has_many :publisher_user_images
-  has_many :publisher_user_logo_images
+  has_many :publisher_user_images, dependent: :destroy
+  has_many :publisher_user_logo_images, dependent: :destroy
   
+  has_one :publisher_user_plot, dependent: :destroy
+  has_one :publisher_user_interest, dependent: :destroy
 
 
   

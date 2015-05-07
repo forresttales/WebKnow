@@ -1,43 +1,4 @@
 
-	<style>
-	
-		.jqmWindow-2001 {
-		    display: none;
-		    position: fixed;
-		    left: 50%;
-		    margin-left: -250px;
-		    width: 500px;
-			height: auto;		    
-		    /*background-color: rgba(0, 0, 0, 0.8);*/
-		    background-color: #fff;
-		    color: #333;
-		    padding: 0px;
-		}				
-		.table-dl-form-2001 {
-			display: table;
-			vertical-align: top;
-			width: 500px;	
-		}
-		.jqmWindow-2002 {
-		    display: none;
-		    position: fixed;
-		    left: 50%;
-		    margin-left: -250px;
-		    width: 500px;
-			height: auto;		    
-		    /*background-color: rgba(0, 0, 0, 0.8);*/
-		    background-color: #fff;
-		    color: #333;
-		    padding: 0px;
-		}				
-		.table-dl-form-2002 {
-			display: table;
-			vertical-align: top;
-			width: 500px;	
-		}
-
-	</style>
-
 
 			<div class="jqmWindow jqmWindow-2001" id="dialog_2001">
 		   		<div class="table-dl-form-2001">
@@ -85,18 +46,16 @@
 <div class="follow-stats">
   <!-- <a href="<#%= following_user_path(@user) %#>"> -->
   <div class="follow-stats-1">
-	    <div id="following" class="margin-0">
-	      	<span><%= @user.followed_users.count %></span>
-	    </div>
+	    <div id="following" class="post-user-span-3" style="margin-top: 4px;"><%= @user.followed_users.count %></div>
 	    <div class="margin-0">
 	    	<!-- <a href="#"><span>following</span></a> -->
 	    
 			<% if @user.followed_users.count == 0 %>				
-			<div class="">
-				<span class="post-user-span-3">following</span>					
+			<div class="post-user-span-3">
+				following					
 			<% else %>
-			<div class="dialog-2001-figure">
-				<span class="post-user-span-2">following</span>					
+			<div class="dialog-2001-figure post-user-span-2">
+				following					
 			<% end %>
 
 			</div>
@@ -143,18 +102,16 @@
 	    
   </div>
   <div class="follow-stats-2">
-	    <div id="followers" class="margin-0">
-	      	<span><%= @user.followers.count %></span>
-	    </div>
+	    <div id="followers" class="post-user-span-3" style="margin-top: 4px;"><%= @user.followers.count %></div>
 	    <div class="margin-0">
 	    	<!-- <a href="#"><span>followers</span></a> -->
 	    
 			<% if @user.followers.count == 0 %>				
-			<div class="">
-				<span class="post-user-span-3">followers</span>					
+			<div class="post-user-span-3">
+				followers					
 			<% else %>
-			<div class="dialog-2002-figure">
-				<span class="post-user-span-2">followers</span>					
+			<div class="dialog-2002-figure post-user-span-2">
+				followers					
 			<% end %>
 
 			</div>
@@ -225,3 +182,4 @@
 		});
 		
 	</script>
+

@@ -1,45 +1,26 @@
-// SCSS file for the new page
 
-body {
-  
-}
-
- 
 #home { 
   width: 960px;
   margin: 0 auto;
 }
-  
 .center, .main, .profiles  {
    width: 960px;
    margin: 0 auto;
 }
-
-// #wrapper {
-  // max-width: 960px;
-  // margin:0 auto;
-// }
-
-//Variables, fonts, etc.
 $ksltgreen: #41B737;
 $ksgreen: #49853F;
 $lcgray: #A6A6A6;
-$ksblue: #1f7c82; //know story blue - as from the products page
-@font-face {font-family: gistlight; src: url("/fonts/gistuprightregular-webfont.ttf");}
-// @font-face {font-family: gistlight; src: url("/fonts/GistLight.otf");}
+$ksblue: #1f7c82;
+// @font-face {font-family: gistlight; src: url("/fonts/gistuprightregular-webfont.ttf");}
 .clearfix {clear:both;}
-
-// Nav Bar
-
 #top-bar{
-   .logo {
+.logo {
   max-width: 400px;
-  }
-  .slogan {
-    font-family: "gistlight";
+}
+.slogan {
+    font-family: "GistLight";
     color: $ksgreen;
-    margin: 0 0 10px 40px;
-    // font-size: 1.5em;
+    margin: -5px 0 10px 65px;
     font-size: 1.25em;
   }
 }
@@ -49,96 +30,96 @@ $ksblue: #1f7c82; //know story blue - as from the products page
   margin: 0 auto;
   padding: 0;
   background: $ksgreen;
-  ul {margin: 0 auto;
+  ul {
+    margin: 0 auto;
     padding: 0;
-    /*max-width: 750px;*/
-    .item {word-wrap: break-word;
-    list-style-type: none;
-    display: inline;
-    a {color: #FFF; text-decoration: none;
-      &:hover {color: #FFF; text-decoration: underline;}
-      &:active, &:visited {color: #FFF; text-decoration:none;}
-      
+    .item {
+      word-wrap: break-word;
+      list-style-type: none;
+      display: inline;
+      a {
+        color: #FFF; 
+        text-decoration: none;
+        &:hover {
+          color: #FFF; 
+          text-decoration: 
+          underline;
+        }
+        &:active, &:visited {
+          color: #FFF; 
+          text-decoration:none;
+        }
+      }
     }
-
   }
-}
 }
 
 .not-member {
   color: $ksltgreen;
-  //color: $ksblue;
-    // margin-left: 197px;
-    // margin-top: 20px;
-    // width: 220px;
-  // a {padding:2px 10px;}
-  }
-
-header {margin-bottom: 30px;}
+}
+header {
+  margin-bottom: 30px;
+}
 .profiles {
   list-style: none outside none;
   padding: 0;
   margin: 0px 0 0;
-  /*width: 960px; */
-    li {display: inline; margin: 0 5px;}
-    a {
-      position: relative;
-      display: inline-block;
-      width: 170px;
-      height: 50px;
+  li {
+    display: inline; 
+    margin: 0 5px;
+  }
+  a {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    height: 50px;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 18px;
+    &:visited, &:active {
+      text-decoration: none; 
       color: #FFF;
-      text-decoration: none;
-      font-size: 18px;
-      &:visited, &:active {text-decoration: none; color: #FFF;}
-    }   
+    }
+  }   
 }
-
-
 .box-content {
   text-align:left;
   padding:10px;
 }
-
-
-
-.student /*The icon and hover attributes for the link*/ {
-  background:url("/assets_knowstory/icons/student.png") no-repeat; 
+.student {
+  background: asset-url("student.png") no-repeat; 
   background-position: center top;
   span {position: absolute; bottom: 10px; left: 105px;}
   &:hover {color: $lcgray !important; } 
  }
 
-.teacher /*The icon and hover attributes for the link*/ {
+.teacher {
   background:url("/assets_knowstory/icons/teacher.png") no-repeat; 
   background-position: center top;
   span {position: absolute; bottom: 10px; left: 105px;}
   &:hover {color: $lcgray !important; } 
  }
 
- .publisher /*The icon and hover attributes for the link*/ {
+ .publisher {
   background:url("/assets_knowstory/icons/publisher.png") no-repeat; 
   background-position: center top;
   span {position: absolute; bottom: 10px; left: 105px;}
   &:hover {color: $lcgray !important; } 
  }
 
-.school /*The icon and hover attributes for the link*/ {
+.school {
   background:url("/assets_knowstory/icons/school.png") no-repeat; 
   background-position: center top;
   span {position: absolute; bottom: 5px; left: 105px; line-height:1em;  width:90px;}
   &:hover {color: $lcgray !important; } 
  
  }
-
- .recruiter /*The icon and hover attributes for the link*/ {
+ .recruiter {
   background:url("/assets_knowstory/icons/recruiter.png") no-repeat; 
   background-position: center top;
   span {position: absolute; bottom: 5px; left: 105px; line-height:1em;  width:90px;}
   &:hover {color: $lcgray !important; } 
  }
-
-// After header:
-
 .main-pics { 
   .first-pic {
   max-width:460px;
@@ -147,7 +128,6 @@ header {margin-bottom: 30px;}
   }
   position: relative; 
 }
-
 .pics {
     max-width:480px;
     margin: 20px 0 30px 0px; 
@@ -204,21 +184,17 @@ header {margin-bottom: 30px;}
   margin:45px 0;
 }
 
-.sign-button-link-2, 
-  div.sign-button-link-2:visited,
-  a.sign-button-link-2:visited {
-    border-radius: 6px;
-    border: 1px solid #b1ccaf;
-    line-height: 1.33;
-    color: $ksgreen;
-    background: transparent;
-    font-size: 22px;
-    padding: 15px 65px;
-    text-decoration: none;
-    &:hover {background: $ksgreen; text-decoration: underline; color: #FFF;}
+.sign-button-link-2, a.sign-button-link-2:visited {
+  border-radius: 6px;
+  border: 1px solid #b1ccaf;
+  line-height: 1.33;
+  color: $ksgreen;
+  background: transparent;
+  font-size: 22px;
+  padding: 15px 65px;
+  text-decoration: none;
+  &:hover {background: $ksgreen; text-decoration: underline; color: #FFF;}
 }
-
-
 
 .sign-button-3 {
   margin:45px 0;
@@ -236,7 +212,6 @@ header {margin-bottom: 30px;}
     text-decoration: none;
     &:hover {background: $ksgreen; text-decoration: underline; color: #FFF; cursor: pointer;}
 }
-
 
 // For alignment of font and images in profile sections
  .profile-image {width:473px; margin-bottom:110px;}

@@ -55,26 +55,34 @@ class Publisher < ActiveRecord::Base
     
     has_one :issued_gen_id, foreign_key: "publisher_id"
     
+    has_many :post_publisher_likes, dependent: :destroy
+    has_many :post_publisher_comments, dependent: :destroy
+    
+    has_one :publisher_plot, dependent: :destroy
+    has_one :publisher_product_current, dependent: :destroy
+    
+    
     # has_one :publisher_profile
     # has_one :publisher_setting
     # has_one :publisher_admin_setting
 
-    # has_many :publisher_users
-    has_many :publisher_members
-    has_many :publisher_products    
-    has_many :publisher_logo_images
+    has_many :publisher_users, dependent: :destroy
+    has_many :publisher_members, dependent: :destroy
+
+    has_many :publisher_products, dependent: :destroy    
+    has_many :publisher_logo_images, dependent: :destroy
     # has_many :publisher_journalposters
     # has_many :journalposterpurchases
-    has_many :publisher_posters
+    has_many :publisher_posters, dependent: :destroy
     # has_many :posterpurchases
     
-    has_many :post_publishers 
+    has_many :post_publishers, dependent: :destroy 
     has_many :relate_publisher_follows, foreign_key: "follower_id", dependent: :destroy
     has_many :followed_users, through: :relate_publisher_follows, source: :followed
     has_many :reverse_relate_publisher_follows, foreign_key: "followed_id", class_name: "RelatePublisherFollow", dependent: :destroy
     has_many :followers, through: :reverse_relate_publisher_follows, source: :follower
     
-    has_many :log_publishers
+    has_many :log_publishers, dependent: :destroy
 
       
       

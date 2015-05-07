@@ -1,0 +1,32 @@
+
+
+									<% i = 0 %>
+									<div id="render_product_tagline_<%= i %>" class="list-tip-container"></div>
+								    <script id="product_tagline_Template_<%= i %>" type="text/x-jQuery-tmpl">
+										<div id="product_tagline_container_<%= i %>" class="table pad-marg-null list-tip-target">
+											<div class="row">
+												<div class="list-field-cell-1">
+													<div id="product_tagline_<%= i %>" class="list-field-cell-1a"></div>
+												</div>
+												<div class="list-field-cell-2">
+													<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+												</div>
+												<div class="list-field-cell-3"></div>																		
+											</div>
+										</div>
+									    <div class="list-tip-1 list-tip-pos-1 hidden">
+									    	<div class="list-tip-1-indicator"></div>
+											<span></span>
+									    </div>
+							    	</script>
+							    										    	
+									<script type="text/javascript">
+										var container = "#render_product_tagline_<%= i %>";
+										var ref		  = "#product_tagline_Template_<%= i %>";
+									    $(ref).tmpl().appendTo(container);
+
+										<% h_product_tagline = product_tagline_for(@publisher_product) %>
+										var product_tagline_text = <%=raw h_product_tagline[:product_tagline_text] %>;
+										var list_number = "<%= i %>";
+									    set_field("", "product_tagline", product_tagline_text, "Tagline", false, "", list_number);
+									</script>

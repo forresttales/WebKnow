@@ -1,0 +1,116 @@
+
+
+<!-- <style>
+	
+		.jqmWindow-5 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 700px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}		
+		.figure-logo-generic {
+		}
+		.figure-logo-generic:hover {
+			cursor: pointer;
+		}
+	
+</style> -->
+
+
+								<% if @publisher_product_logo %>   				
+								
+									<div class="profile-grid profile-cs-style-3">
+										<figure id="figure_product_logo_listing" class="figure-product-logo-listing dialog-5-figure-listing">
+											<img alt="image not appearing" src="<%= @publisher_product_logo.image_url(:image_200_200) if @publisher_product_logo.image? %>" />
+											<input class="x-container-hidden" type="hidden" value="<%= @publisher_product_logo.image_url(:image_600_600) if @publisher_product_logo.image? %>" />
+										</figure>
+									</div>
+
+								<% else %>
+
+									<div class="profile-grid profile-cs-style-3">
+										<figure class="figure-logo-generic-listing">
+											<!-- <img alt="logo not appearing" src="../images_publisher_product_logo/add_generic_product_logo_w200_h200.png" /> -->
+											<img alt="logo not appearing" src="../images_avatar/avatar-gen-product-w200-h200.png" />
+											<!-- <img alt="logo not appearing" src="../images_avatar/avatar_generic_1_w250_h310.png" /> -->
+											<!-- <figcaption class="figcaption-1">
+												<span class="dialog-1 label-dialog-figcaption">Add a photo</span>
+											</figcaption> -->
+										</figure>
+									</div>
+								
+								<% end %>
+
+
+
+
+
+
+	<script>
+
+		// $(window).load( function() {
+		$(document).ready( function () {				
+		
+			// alert('ready');
+			
+			var img = $(".figure-logo-generic-listing img");
+			$("<img/>")
+	    		.attr("src", $(img).attr("src"))
+	    		.load(function() {
+	        		var img_width = this.width; 
+	        		$(".figure-logo-generic-listing").css({
+	        			width : this.width
+	        	});	        		
+	    	});		
+		
+			var img = $(".figure-product-logo-listing img");
+			$("<img/>")
+	    		.attr("src", $(img).attr("src"))
+	    		.load(function() {
+	        		var img_width = this.width; 
+	        		$(".figure-product-logo-listing").css({
+	        			width : this.width
+	        	});	        		
+	    	});		
+
+
+			$(".dialog-5-figure-listing").on('click', function(e) {
+				if ( e.target.nodeName == "IMG" ) {
+					var this_src = $(this).find("input.x-container-hidden").attr("value");
+					$("#profile_figure_dialog_listing").find("img").attr("src", this_src );
+					// $(this).find("img").attr("src", this_src );
+					// var this_delete = $(this).find("div.tip-top-center").html();
+					// $("#profile_figure_dialog_listing").find("div.tip-top-center").html(this_delete);
+					$("#dialog_5_listing").jqmShow();	
+				}
+			});
+			$('#dialog_5_listing').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '60px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					var img = $("#profile_figure_dialog_listing img");
+					$("<img/>")
+			    		.attr("src", $(img).attr("src"))
+			    		.load(function() {
+			        		img_width = this.width; 
+			        		$("#profile_figure_dialog_listing").css({
+			        			width : this.width
+			        	});	        		
+			    	});		
+				}
+			}); 		
+
+		
+		});
+	  
+
+	</script>		
+
+

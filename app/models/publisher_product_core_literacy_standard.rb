@@ -14,15 +14,11 @@
 
 class PublisherProductCoreLiteracyStandard < ActiveRecord::Base
   
-  attr_accessible :id,
-                  :publisher_id,
+  attr_accessible :publisher_id,
                   :publisher_product_id,
                   :id_standard,
                   :dot_not,
-                  :uri,
-                  :created_at,
-                  :updated_at
-
+                  :uri
 
 
 

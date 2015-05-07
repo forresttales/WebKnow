@@ -1,0 +1,2 @@
+module PublicPublisherProductManifestsHelper
+end

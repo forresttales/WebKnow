@@ -1,0 +1,5 @@
+// alert('ajax works in upload_pdf_image');
+<% if !@publisher_product_pdfs.nil? %>
+	$('#render_pdfs').html("<%= j render('publisher_product_manifests/list_pdfs') %>");
+<% end %>
+closeAddPdfImage();

@@ -1,0 +1,120 @@
+
+
+								<% if @publisher_product_logo1_image %>   				
+									<div class="container-figure-dlg-11">
+										<!-- <figure id="profile_figure" class="profile-figure dialog-5-figure"> -->
+										<figure id="figure_dlg_11" class="figure-dlg-11 cursor-pointer">
+										<!-- <figure id="profile_figure"> -->
+											<img id="img_11" alt="" src="<%= @publisher_product_logo1_image.image_url(:user_200_200_fit) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_product_logo1_image.image? %>" />
+											<input class="container-image-hidden" type="hidden" value="<%= @publisher_product_logo1_image.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_product_logo1_image.image? %>" />
+											<figcaption id="figcaption_dlg_11" class="edit-image hidden">												
+												<div class="img-1-container">
+												</div>
+											</figcaption>
+										</figure>
+									</div>
+									<div class="float-clear"></div>
+
+								<% else %>
+
+									<div class="container-figure-dlg-11" style="width: 204px;">
+										<figure id="figure_dlg_11_generic" class="figure-dlg-11-generic">
+											<img id="logo1_generic_img" alt="" src="../images_avatar/avatar-gen-product-w200-h200.png" />
+											<figcaption id="figcaption_dlg_11_generic" class="edit-image cursor-pointer hidden">
+												<div class="img-1-container">
+													<div class="img-1"></div>
+													<div class="img-1-text">Add a Logo Image</div>
+												</div>
+											</figcaption>
+										</figure>
+									</div>
+								
+								<% end %>
+
+
+
+
+	<script>
+
+
+		// $(window).load( function() {
+		$(document).ready( function () {				
+		
+			// alert('ready');
+
+			$("img").one("load", function() {
+			  	// alert('user_primary_img');
+				if(this.id == "img_11") {
+					// alert("logo_primary_img height = " + this.height);
+					var img_w = this.width;
+					var img_h = this.height;
+					$("div#container_logo1_image .drop").on('hover', function() {
+					// $("div#drop_container_log1_image").on('hover', function() {
+					// $(document).on("hover", "div#container_logo1_image .drop", function() {
+						$("div#container_logo1_image .drop .dropdownContain").css({ 
+							top : img_h - 10
+						});
+					});
+					$("div#container_logo1_image .container-figure-dlg-11").css({
+						width : img_w + 4,
+						height : img_h + 4
+					});													
+				}
+				if(this.id == "logo1_generic_img") {
+					// alert("logo_generic_img height = " + this.height);
+					var img_w = this.width;
+					var img_h = this.height;
+					$("div#container_logo1_image .drop").on('hover', function() {
+						$("div#container_logo1_image .drop .dropdownContain").css({ 
+							top : img_h - 10
+						});
+					});			
+					$("div#container_logo1_image .container-figure-dlg-11").css({
+						width : img_w + 4,
+						height : img_h + 4
+					});				
+				}				
+			}).each(function() {
+			  	if(this.complete) $(this).load();
+			});
+		
+
+			$("#figure_dlg_11").on('click', function(e) {				
+			// $(document).on("click", "#figure_dlg_11", function() {
+				// alert('click');
+				if ( e.target.nodeName == "IMG" ) {
+					var this_src = $(this).find("input.container-image-hidden").attr("value");
+					// $("#profile_figure_dialog_11").find("img").attr("src", this_src );
+					$("#dialog_figure_11").find("img").attr("src", this_src );
+					// $("#img_11").attr("src", this_src );
+					var this_delete = $(this).find("div.tip-top-center").html();
+					$("#figure_dlg_11").find("div.tip-top-center").html(this_delete);
+					$("#dialog_11").jqmShow();	
+				}
+			});
+			$('#dialog_11').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '20px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					var img = $("#figure_dlg_11 img");
+					$("<img/>")
+			    		.attr("src", $(img).attr("src"))
+			    		.load(function() {
+			        		img_width = this.width; 
+			        		$("#figure_dlg_11").css({
+			        			// width : this.width 
+			        	});	        		
+			    	});		
+				}
+			}); 		
+
+
+		
+		});
+	  
+	  
+	  
+
+	</script>		
+

@@ -1,0 +1,32 @@
+
+
+															<% i = 0 %>
+															<div id="render_age_range_<%= i %>" class="list-tip-container"></div>
+														    <script id="age_range_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="age_range_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="age_range_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
+																	</div>
+																</div>
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_age_range_<%= i %>";
+																var ref		  = "#age_range_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
+
+																<% h_age_range = age_range_for(@publisher_product) %>
+																var age_range_text = <%=raw h_age_range[:age_range_text] %>;
+																var list_number = "<%= i %>";
+																set_field("Age Range: ", "age_range", age_range_text, "Ages", false, "", list_number);
+															</script>

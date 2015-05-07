@@ -26,7 +26,7 @@ class PostPublisherComment < ActiveRecord::Base
 
 
   def self.dbdelete
-      self.connection.execute("DELETE FROM post_publishers_comments")
+      self.connection.execute("DELETE FROM post_publisher_comments")
   end
   
   def self.dbclear

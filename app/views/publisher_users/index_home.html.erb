@@ -151,87 +151,6 @@
 	</style>
 	
 	<style>
-		
-		.jqmWindow-101 {
-		    display: none;
-		    position: absolute;
-		    left: 50%;
-		    margin-left: -250px;
-		    width: 500px;
-			height: auto;		    
-		    /*background-color: rgba(0, 0, 0, 0.8);*/
-		    background-color: #fff;
-		    color: #333;
-		    padding: 0px;
-		}				
-		.table-dl-form-101 {
-			display: table;
-			vertical-align: top;
-			width: 500px;	
-		}
-
-		.jqmWindow-1001 {
-		    display: none;
-		    position: absolute;
-		    left: 50%;
-		    margin-left: -400px;
-		    width: 800px;
-			height: auto;		    
-		    /*background-color: rgba(0, 0, 0, 0.8);*/
-		    background-color: #fff;
-		    color: #333;
-		    padding: 0px;
-		}				
-		.table-dl-form-1001 {
-			display: table;
-			vertical-align: top;
-			width: 800px;	
-		}
-
-
-		.jqmWindow-104 {
-		    display: none;
-		    position: absolute;
-		    /*top:30%;*/
-			left: 50%;
-			margin-left: -200px;		    
-		    width: 400px;
-			height: 160px;		    
-		    background-color: #f6f6f6;
-		    color: #333;
-		    border: 4px solid #376340; /*rgba(55,99,64,1)*/
-		    padding: 0px;
-		}		
-		.jqmWindow-105 {
-		    display: none;
-		    position: absolute;
-		    /*top:30%;*/
-			left: 50%;
-			margin-left: -200px;		    
-		    width: 400px;
-			height: 160px;		    
-		    background-color: #f6f6f6;
-		    color: #333;
-		    border: 4px solid #376340; /*rgba(55,99,64,1)*/
-		    padding: 0px;
-		}		
-
-		/*.jqmWindow-1001 {
-		    display: none;
-		    position: absolute;
-		    left: 50%;
-		    margin-left: -350px;
-		    width: 700px;
-			height: 700px;		    
-		    background-color: rgba(0, 0, 0, 0.8);
-		    color: #333;
-		    padding: 0px;
-		}*/				
-
-		
-	</style>
-	
-	<style>
 
 		.ks-tip-container {
 			position: relative;
@@ -372,7 +291,7 @@
 			background: url('/assets/background-placeholder-comment-2-w206-h20.png') 3px 4px no-repeat;
 		}*/
 		.textarea-add-post-user-container {
-			border: 1px solid #2899A1; 
+			border: 1px solid #49853F; 
 			border-radius: 0px;			
 			min-height: 26px;
 			width: 591px;			
@@ -531,7 +450,7 @@
 			outline: 0;
 		}				
 		.textarea-add-comment-container {
-			border: 1px solid #2899A1; 
+			border: 1px solid #49853F; 
 			border-radius: 0px;			
 			width: 542px;			
 		}
@@ -714,8 +633,6 @@
 				</div>
 			</div>
 
-	
-				<!-- logo image - delete 24 -->
 			<div class="jqmWindow jqmWindow-104" id="dialog_104">
 				<div class="dialog-topbar-1" style="margin-top:0px;">
 					<div style="height: 63px; width: 60px; float: left; position: absolute;">
@@ -734,7 +651,7 @@
 				<div class="background-table-dialog-1">
 			   		<div class="table-dialog-1">
 						<div class="dialog-msg-container">
-							<span>Delete this status?</span>
+							<span>Delete this post?</span>
 						</div>
 	   				</div>
    				</div>
@@ -857,9 +774,11 @@
 						<img alt="" src="" class="dialog-user-image-hover" />
 						<figcaption id="figcaption_dialog_11" class="expand-image">												
 							<div class="img-2-container image">
+								<% if !@publisher_user_image_primary.nil? %>
 								<a rel="gallery" title="" href="<%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>">									
 									<div id="img_2" class="img-2"></div>
 								</a>
+								<% end %>
 							</div>
 						</figcaption>
 					</figure>
@@ -922,9 +841,10 @@
 
 					<div class="table margin-0" style="height: 270px;">
 						<div class="row" style="height: 260px;">
-							<div class="cell-225 padding-left-4" id="container_user_image_primary" style="height: 260px;">
-								<div id="drop_container_user_image_primary" class="drop float-left width-200">
-									<div id="render_publisher_user_image_primary" class="padding-0">
+							<div class="cell-225" id="container_user_image_primary" style="height: 260px; padding: 0 0 0 1px;">
+								<!-- <div id="drop_container_user_image_primary" class="drop float-left width-200"> -->
+								<div id="drop_container_user_image_primary" class="drop">
+									<div id="render_publisher_user_image_primary">
 										<!-- <div class="container-image"> -->
 											<%= render 'publisher_users/publisher_user_image_primary' %>
 										<!-- </div>
@@ -933,8 +853,8 @@
 										</div> -->
 							        </div>
 								</div>
-								<div class="float-clear"></div>
-								<div class="follow-stats-container">
+								<!-- <div class="float-clear"></div> -->
+								<div class="follow-stats-container" style="margin: 0 0 0 10px;">
 									<%= render 'users/stats' %>
 								</div>
 			
@@ -977,7 +897,7 @@
 								<div class="cell-title-bar-profile-left-long padding-left-8">
 									<div class="position-relative">
 										<div class="position-absolute top-minus-24">												
-											<span>Status</span>
+											<span>Posts</span>
 										</div>
 									</div>		
 								</div>
@@ -1704,7 +1624,7 @@
 	
 			$(document).on('click_101', function(e, id) {
 				var s = "div#" + id;				
-				scroll_top = $(window).scrollTop();
+				// scroll_top = $(window).scrollTop();
 				var content = $(this).find(s).html();
 				$("#dialog_101_content_container").html(content);
 				$("#dialog_101").jqmShow();	
@@ -1712,14 +1632,15 @@
 			$('#dialog_101').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', 40 + scroll_top);
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 20);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 				}
 			}); 		
 
 
 			$(document).on('click_104', function() {
-				scroll_top = $(window).scrollTop();
+				// scroll_top = $(window).scrollTop();
 				// var content = $(this).find(s).html();
 				// $("#dialog_101_content_container").html(content);
 				$("#dialog_104").jqmShow();	
@@ -1727,14 +1648,15 @@
 			$('#dialog_104').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', 40 + scroll_top);
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 20);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 				}
 			}); 		
 
 
 			$(document).on('click_105', function() {
-				scroll_top = $(window).scrollTop();
+				// scroll_top = $(window).scrollTop();
 				// var content = $(this).find(s).html();
 				// $("#dialog_101_content_container").html(content);
 				$("#dialog_105").jqmShow();	
@@ -1742,7 +1664,8 @@
 			$('#dialog_105').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', 40 + scroll_top);
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 20);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 				}
 			}); 		
@@ -1758,7 +1681,7 @@
 				onShow: function(hash) {
 					hash.o.prependTo('body');
 					// hash.w.css('top', 40 + scroll_top);
-					hash.w.css('top', 40);
+					hash.w.css('top', 20);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 				}
 			}); 		
@@ -1774,16 +1697,16 @@
 				onShow: function(hash) {
 					hash.o.prependTo('body');
 					// hash.w.css('top', 40 + scroll_top);
-					hash.w.css('top', 40);
+					hash.w.css('top', 20);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 				}
 			}); 		
 
 
 
-			$(document).on('click_1001', function() {
-				scroll_top = $(window).scrollTop();
-			});
+			// $(document).on('click_1001', function() {
+				// scroll_top = $(window).scrollTop();
+			// });
 
 			// $.ajaxSetup({cache: false});
 

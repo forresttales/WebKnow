@@ -24,24 +24,24 @@ module PublisherUsersHelper
 
 
   def post_user_avatar_for(user, s_rand)
-    img = user.user_images.where( :primary => true ).first     
+    img = user.user_images.where( :primary => true ).first rescue nil
     # img = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id).where( :primary => true ).first
     if !img.nil?     
       post_user_avatar_url = img.image_url(:user_50_50)
     else
-      post_user_avatar_url = "../images_avatar/avatar_generic_1_w50_h50.png"
+      post_user_avatar_url = "../images_avatar/avatar-gen-person-w50-h50.png"
     end
       image_tag(post_user_avatar_url + s_rand, alt: "", class: "")
   end  
 
 
   def log_user_avatar_for(user)
-    img = user.user_images.where( :primary => true ).first     
+    img = user.user_images.where( :primary => true ).first rescue nil
     # img = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id).where( :primary => true ).first
     if !img.nil?     
       log_user_avatar_url = img.image_url(:user_50_50)
     else
-      log_user_avatar_url = "../images_avatar/avatar_generic_1_w50_h50.png"
+      log_user_avatar_url = "../images_avatar/avatar-gen-person-w50-h50.png"
     end
       image_tag(log_user_avatar_url, alt: "", class: "")
   end  
@@ -72,12 +72,12 @@ module PublisherUsersHelper
 
 
   def post_user_comment_avatar_for(user, s_rand)
-    img = user.user_images.where( :primary => true ).first     
+    img = user.user_images.where( :primary => true ).first rescue nil
     # img = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id).where( :primary => true ).first
     if !img.nil?     
       post_user_comment_avatar_url = img.image_url(:user_34_34)
     else
-      post_user_comment_avatar_url = "../images_avatar/avatar_generic_1_w34_h34.png"
+      post_user_comment_avatar_url = "../images_avatar/avatar-gen-person-w34-h34.png"
     end
       image_tag(post_user_comment_avatar_url + s_rand, alt: "", class: "")
   end  

@@ -1,0 +1,2 @@
+class PublisherUserInterestsController < ApplicationController
+end

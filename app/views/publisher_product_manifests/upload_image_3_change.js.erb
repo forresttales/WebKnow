@@ -1,0 +1,11 @@
+// alert('ajax works in upload_image_3_change');
+<% if @image_3 %>
+	$('#render_image_3').html("<%= j render('publisher_product_manifests/image_3') %>");
+	$(".container-figure-image-3").removeClass("container-figure-image-border-load").addClass("container-figure-image-border-edit");	
+	// $('#render_image_3_crop').html("<#%= j render('publisher_product_manifests/image_3_crop') %#>");
+	id_image_3 = <%= @id_image_3 %>;
+	$(".drop-3-container").removeClass("hidden");
+	closeChangeImage3();
+<% else %>
+	alert("Upload error");
+<% end %>

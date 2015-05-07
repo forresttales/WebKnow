@@ -14,6 +14,16 @@ class MembersController < ApplicationController
     # 'members/member'
   # end
   
+  before_action :signed_in_user
+  before_action :fill_left_directory
+
+  def fill_left_directory
+
+    slug = current_user.slug
+    @url_user_story  = '/' + current_user.slug
+    @url_profile_story = '/' + current_user.publisher.slug
+        
+  end
   
   
   def index
@@ -43,7 +53,7 @@ class MembersController < ApplicationController
 
     # @public_users = PublicUser.all
 
-    @public_users = PublicUser.all
+    @profile_users = PublicUser.all
 
 
     # @public_users = PublicUser.paginate(page: params[:page])    
@@ -57,17 +67,16 @@ class MembersController < ApplicationController
     # @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
     # @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 5)
     
-    respond_to do |format|
-      format.html
-      format.js
+    # respond_to do |format|
+      # format.html
+      # format.js
       # format.json { render :json => { :msg => msg,
                                       # :user_age_range_1 => user_age_range_1,
                                       # :user_age_range_2 => user_age_range_2
                   # }                 }      
 
       # format.json { render :json => { :clyde => @clyde } }
-      
-     end
+     # end
      
      
     
@@ -134,26 +143,27 @@ class MembersController < ApplicationController
     
     profile_user_type = params[:profile_user_type]
     
-    @public_users = nil
+    @profile_users = nil
+    @profile_users = PublicUser.all
     
-    case profile_user_type.to_s   
-      when "0"
-        @public_users = PublicUser.all
-      when "1"
+    # case profile_user_type.to_s   
+      # when "0"
         # @public_users = PublicUser.all
-      when "2"
-        # @public_users = PublicPublisherUser.all
-      when "3"
-        # @public_users = PublicUser.all
-      when "4"
-        # @public_users = PublicUser.all
-      when "5"
-        # @public_users = PublicUser.all
-      when "6"
-        # @public_users = PublicUser.all
-      else
-        #        
-    end
+      # when "1"
+        # # @public_users = PublicUser.all
+      # when "2"
+        # # @public_users = PublicPublisherUser.all
+      # when "3"
+        # @public_publisher_users = PublicPublisherUser.all
+      # when "4"
+        # # @public_users = PublicUser.all
+      # when "5"
+        # # @public_users = PublicUser.all
+      # when "6"
+        # # @public_users = PublicUser.all
+      # else
+        # #        
+    # end
 
     @profile_user_type = profile_user_type
 
@@ -161,15 +171,15 @@ class MembersController < ApplicationController
   end
 
 
-
   def return_profiles
     
-    @public_publishers = PublicPublisherUser.all
+    # @public_publishers = PublicPublisherUser.all
+    @profiles = PublicPublisher.all
 
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    # respond_to do |format|
+      # format.html
+      # format.js
+    # end
 
     
   end

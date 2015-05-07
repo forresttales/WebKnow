@@ -1,5 +1,32 @@
 class UsersController < ApplicationController
 
+  # fill_left_directory
+  # index
+  # render_index_publisher_home
+  # render_index_publisher
+  # render_index_public_publisher(publisher)
+  # render_index_publisher_user_home
+  # render_index_publisher_user
+  # render_index_public_publisher_user(user)
+  # render_index_public_publisher_user_signedout(user)
+  # get_user_url(id)
+  # get_user_url_public(user, id)
+  # # show
+  # new
+  # create
+  # render_error(controller, action, profile_index, profile_description, description)
+  # get_random
+  # get_gender_text(gender)
+  # get_bd_month_text(bd_month)
+  # create_user_publisher(params_user)
+  # following
+  # followers
+  # # edit
+  # # update
+  # # delete
+  # # destroy
+  # reset_users
+  # private
 
   layout 'newland'
 
@@ -19,11 +46,154 @@ class UsersController < ApplicationController
     # image.write('/tmp/test.jpg')
   # end
 
+  before_action :verify_params, only: :index
   before_action :fill_left_directory, only: [:index, 
                                              :render_index_publisher, 
                                              :render_index_publisher_home,
                                              :render_index_publisher_user,
                                              :render_index_publisher_user_home]
+  
+  
+  def verify_params
+    
+      # id_passed = params[:id]
+      # b_signed_in = signed_in?
+      # if id_passed.nil?
+          # if b_signed_in
+              # @user = current_user
+              # case current_user.profile_type.to_s
+                # when "1"
+                    # # student user
+                # when "2"
+                    # # teacher user
+                # when "3"
+                    # # publisher user
+                    # # Rails.logger.info("current_user.publisher_user.slug = " + current_user.publisher_user.slug)
+                    # redirect_to user_publisher_user_url(@user)
+                    # # redirect_to user_publisher_users_url(:user_id => current_user.id, :id => current_user.slug)
+                    # # redirect_to index_home_user_publisher_user_url(@user)
+                    # # redirect_to user_publisher_user_publisher_users_index_home_url
+                    # # redirect_to publisher_user_publisher_users_path
+                    # # redirect_to publisher_users_index_home_path
+                    # # redirect_to publisher_users_index_path
+                    # # redirect_to '/publisher_user/publisher_users/index'
+                    # # redirect_to '/publisher_users/index'
+                    # # redirect_to '/publisher_user/publisher_users'
+                    # # redirect_to '/publisher_user/'
+                # when "4"
+                    # # institute user
+                # when "5"
+                    # # recruiter user
+                # else
+                    # #
+              # end
+              # # home_url = get_user_url(id_passed)
+              # # redirect_to home_url
+              # # render_index_publisher_user_home
+          # else
+              # redirect_to '/Signin'
+          # end        
+      # else
+          # issued_gen_id = IssuedGenId.where(:gen_id => id_passed).first rescue nil
+          # if !issued_gen_id.nil?
+              # # user_passed = User.friendly.find(id_passed) rescue nil
+              # profile_type = issued_gen_id.profile_type
+              # if !profile_type.nil?
+                  # case profile_type.to_s
+                    # when "1"
+                        # # student user
+                    # when "2"
+                        # # teacher user
+                    # when "3"
+                        # # publisher user
+                        # user_passed = issued_gen_id.user
+                        # if !user_passed.nil?
+                            # if b_signed_in
+                                # if ( user_passed.id == current_user.id )
+                                    # redirect_to 'publisher_users/index'
+                                    # Rails.logger.info('called render_index_publisher_user')
+                                    # # render_index_publisher_user
+                                # else
+                                    # redirect_to 'public_publisher_users/index'
+                                    # Rails.logger.info('called render_index_public_publisher_user')
+                                    # # render_index_public_publisher_user(user_passed)
+                                # end                
+                            # else
+                                # redirect_to 'public_publisher_users_signedout/index'
+                                # Rails.logger.info('called render_index_public_publisher_user_signedout')
+                                # # render_index_public_publisher_user_signedout(user_passed)
+                                # # render 'index_public_publisher_user'
+                                # # user_url = get_user_url_public(user_passed, id_passed)                      
+                            # end
+                        # else
+                            # Rails.logger.info('user_passed was nil')
+                            # # id passed exists, but user not found -> error
+                        # end
+                    # when "4"
+                        # # institute/school user
+                    # when "5"
+                        # #recruiter user
+                    # when "11"
+                        # # student
+                    # when "22"
+                        # # teacher
+                    # when "33"
+                        # # publisher
+                        # publisher_passed = issued_gen_id.publisher
+                        # if !publisher_passed.nil?
+                            # if b_signed_in
+                                # # current_user_profile_type = current_user.profile_type  
+                                # if current_user.profile_type == 3
+                                    # # same profile type. is this the user's own publisher?
+                                    # if publisher_passed == current_user.publisher
+                                        # # is this the publisher admin?
+                                        # redirect_to 'publishers/index'
+                                        # # render_index_publisher
+                                    # else
+                                        # # -> public_publisher
+                                        # redirect_to 'public_publishers/index'
+                                        # # render_index_public_publisher(publisher_passed)
+                                    # end
+                                # else
+                                    # # user is a different profile type
+                                    # redirect_to 'public_publishers/index'
+                                    # # render_index_public_publisher(publisher_passed)
+                                # end
+                            # else
+                              # # -> public_publishers, no signin
+                              # redirect_to 'public_publishers_signedout/index'
+                              # # render_index_public_publisher_no_signin(publisher)
+                              # # render_index_public_publisher_signedout(publisher_passed)
+                            # end
+                        # else
+                            # Rails.logger.info('publisher_passed was nil')
+                            # # id passed exists, but publisher not found -> error
+                        # end
+                    # when "44"
+                        # # institute/school
+                    # when "55"
+                        # #recruiter
+                    # else
+                        # #        
+                  # end
+              # end
+          # else
+              # Rails.logger.info('issued_gen_id was nil')
+              # if b_signed_in
+                  # # Rails.logger.info('b_signed_in was true')
+                  # # signed in user manually entered an invalid url. he should know better. display error page 404
+                  # raise ActionController::RoutingError.new('Not Found')  
+              # else
+                  # # invalid url and no signed-in user. display Signin/Signup
+                  # Rails.logger.info('user not signed-in')
+                  # redirect_to '/Signin'
+              # end
+#               
+          # end
+      # end
+    
+    
+  end
   
   
   def fill_left_directory
@@ -56,6 +226,8 @@ class UsersController < ApplicationController
     else
         # not signed
     end
+    
+    
   end
 
 
@@ -69,7 +241,6 @@ class UsersController < ApplicationController
     Rails.logger.info('in users index')
     
     id_passed = params[:id]
-
     b_signed_in = signed_in?
 
     if id_passed.nil?
@@ -148,7 +319,7 @@ class UsersController < ApplicationController
                           else
                             # -> public_publishers, no signin
                             # render_index_public_publisher_no_signin(publisher)
-                            render_index_public_publisher(publisher_passed)
+                            render_index_public_publisher_signedout(publisher_passed)
                           end
                       else
                           Rails.logger.info('publisher_passed was nil')
@@ -188,6 +359,8 @@ class UsersController < ApplicationController
 
   def render_index_publisher_home
     
+      Rails.logger.info('render_index_publisher_home')
+      
       if signed_in?
           # @url_corporate_story_public = ""
           
@@ -404,6 +577,8 @@ class UsersController < ApplicationController
 
   def render_index_publisher
     
+      Rails.logger.info('render_index_publisher')
+      
       @url_corporate_story_public = ""
       
       @publisher = nil
@@ -609,39 +784,277 @@ class UsersController < ApplicationController
 
   def render_index_public_publisher(publisher)
     
+      Rails.logger.info('render_index_public_publisher')
+      
+      # @signed_in_user_options = signed_in?
+      # @b_signed_in = signed_in?
+      # if !publisher.nil?
+        # @publisher_id = publisher.id
+        # @publisher_name = publisher.name_company
+        # @publisher_profile_image_primary = publisher.publisher_profile_images.first rescue nil
+      # else
+        # # catch error, here, which should not be necessary, as the passed id has already been verified.
+      # end
+      # render 'publishers/index_public', :layout => 'publisher'
 
-      # fill left nav
-      # @url_my_story        = '#'
-      # @url_corporate_story = '#'
-      # if signed_in?
-        # @url_my_story = current_user.slug
-      # end 
+      @url_corporate_story_public = ""
+      
+      @publisher = nil
+      @publisher_profile_image_primary = nil
+      @log_publishers = nil
+      
+      # publisher = current_user.publisher rescue nil
+      # publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+      if !publisher.nil?
+          @publisher = publisher
+          publisher_id = publisher.id
+          # publisher_logo_image_primary = PublisherLogoImage.where("publisher_id = ?", publisher_id).where( :primary => true ).first rescue nil
+          publisher_logo_image_primary = publisher.publisher_logo_images.first rescue nil
+          if !publisher_logo_image_primary.nil?
+              @publisher_logo_image_primary = publisher_logo_image_primary  
+          else
+            #
+          end
+          
+          # @publisher = publisher
+          # @log_publishers = publisher.feed_log
+          @post_publishers = publisher.feed_log
+
+
+          gon.id_logo_image = nil
+          @crop_x = 0
+          @crop_y = 0
+          @crop_w = 200
+          @crop_h = 200
+          if !@publisher_logo_image_primary.nil? 
+            gon.id_logo_image = @publisher_logo_image_primary.id
+            @crop_x = @publisher_logo_image_primary.crop_x
+            @crop_y = @publisher_logo_image_primary.crop_y
+            @crop_w = @publisher_logo_image_primary.crop_w
+            @crop_h = @publisher_logo_image_primary.crop_h
+          end
+          
+          # name_company                    
+          # address1        
+          # address2       
+          # city            
+          # state          
+          # country                             
+          # zip    
+          # phone_company      
+          # website       
+          # email_info      
+          # email_admin     
+          # name_admin     
+          # tagline_logo  
+          # story_corporate
+          
+          gon.name_company = ""
+          gon.b_name_company = false
+          gon.b_required_name_company = true
+          if !((publisher.name_company.blank?) or (publisher.name_company.empty?) or (publisher.name_company.nil?)) 
+              # @b_name_company = true
+              gon.name_company = publisher.name_company
+              gon.b_name_company = true
+              gon.b_required_name_company = false
+          end
+          
+          gon.address1 = ""
+          gon.b_address1 = false
+          gon.b_required_address1 = true
+          if !((publisher.address1.blank?) or (publisher.address1.empty?) or (publisher.address1.nil?)) 
+              # @b_address1 = true
+              gon.address1 = publisher.address1
+              gon.b_address1 = true
+              gon.b_required_address1 = false
+          end
+      
+          gon.address2 = ""
+          gon.b_address2 = false
+          gon.b_required_address2 = true
+          if !((publisher.address2.blank?) or (publisher.address2.empty?) or (publisher.address2.nil?)) 
+              # @b_address2 = true
+              gon.address2 = publisher.address2
+              gon.b_address2 = true
+              gon.b_required_address2 = false
+          end
+      
+          gon.city = ""
+          gon.b_city = false
+          gon.b_required_city = true
+          if !((publisher.city.blank?) or (publisher.city.empty?) or (publisher.city.nil?)) 
+              # @b_city = true
+              gon.city = publisher.city
+              gon.b_city = true
+              gon.b_required_city = false
+          end
+      
+          gon.state = ""
+          gon.b_state = false
+          gon.b_required_state = true
+          if !((publisher.state.blank?) or (publisher.state.empty?) or (publisher.state.nil?)) 
+              # @b_state = true
+              gon.state = publisher.state
+              gon.b_state = true
+              gon.b_required_state = false
+          end
+      
+          gon.country = ""
+          gon.b_country = false
+          gon.b_required_country = true
+          if !((publisher.country.blank?) or (publisher.country.empty?) or (publisher.country.nil?)) 
+              # @b_country = true
+              gon.country = publisher.country
+              gon.b_country = true
+              gon.b_required_country = false
+          end
+      
+          gon.zip = ""
+          gon.b_zip = false
+          gon.b_required_zip = true
+          if !((publisher.zip.blank?) or (publisher.zip.empty?) or (publisher.zip.nil?)) 
+              # @b_zip = true
+              gon.zip = publisher.zip
+              gon.b_zip = true
+              gon.b_required_zip = false
+          end
+      
+          gon.phone_company = ""
+          gon.b_phone_company = false
+          gon.b_required_phone_company = true
+          if !((publisher.phone_company.blank?) or (publisher.phone_company.empty?) or (publisher.phone_company.nil?)) 
+              # @b_phone_company = true
+              gon.phone_company = publisher.phone_company
+              gon.b_phone_company = true
+              gon.b_required_phone_company = false
+          end
+      
+          gon.website = ""
+          gon.b_website = false
+          gon.b_required_website = true
+          if !((publisher.website.blank?) or (publisher.website.empty?) or (publisher.website.nil?)) 
+              # @b_website = true
+              gon.website = publisher.website
+              gon.b_website = true
+              gon.b_required_website = false
+          end
+          
+          gon.email_info = ""
+          gon.b_email_info = false
+          gon.b_required_email_info = true
+          if !((publisher.email_info.blank?) or (publisher.email_info.empty?) or (publisher.email_info.nil?)) 
+              # @b_email_info = true
+              gon.email_info = publisher.email_info
+              gon.b_email_info = true
+              gon.b_required_email_info = false
+          end
+      
+          gon.email_admin = ""
+          gon.b_email_admin = false
+          gon.b_required_email_admin = true
+          if !((publisher.email_admin.blank?) or (publisher.email_admin.empty?) or (publisher.email_admin.nil?)) 
+              # @b_email_admin = true
+              gon.email_admin = publisher.email_admin
+              gon.b_email_admin = true
+              gon.b_required_email_admin = false
+          end
+      
+          gon.name_admin = ""
+          gon.b_name_admin = false
+          gon.b_required_name_admin = true
+          if !((publisher.name_admin.blank?) or (publisher.name_admin.empty?) or (publisher.name_admin.nil?)) 
+              # @b_name_admin = true
+              gon.name_admin = publisher.name_admin
+              gon.b_name_admin = true
+              gon.b_required_name_admin = false
+          end
+      
+          gon.tagline_logo = ""
+          gon.b_tagline_logo = false
+          gon.b_required_tagline_logo = true
+          if !((publisher.tagline_logo.blank?) or (publisher.tagline_logo.empty?) or (publisher.tagline_logo.nil?)) 
+              # @b_tagline_logo = true
+              gon.tagline_logo = publisher.tagline_logo
+              gon.b_tagline_logo = true
+              gon.b_required_tagline_logo = false
+          end
+      
+          gon.story_corporate = ""
+          gon.b_story_corporate = false
+          gon.b_required_story_corporate = true
+          if !((publisher.story_corporate.blank?) or (publisher.story_corporate.empty?) or (publisher.story_corporate.nil?)) 
+              # @b_story_corporate = true
+              gon.story_corporate = publisher.story_corporate
+              gon.b_story_corporate = true
+              gon.b_required_story_corporate = false
+          end
+
+          # render 'publishers/index', :layout => 'publisher'
+          render 'public_publishers/index', :layout => 'public_publisher'
   
+      else
+          redirect_to '/'
+      end    
 
+
+
+  end
+
+
+  def render_index_public_publisher_signedout(publisher)
+
+      Rails.logger.info('render_index_public_publisher_signedout')
+      
+      @publisher = nil
+      @publisher_user_image_primary = nil
+      @publisher_user_logo_image = nil
       
       @signed_in_user_options = signed_in?
       @b_signed_in = signed_in?
   
-      # id_passed = params[:id]
-      # @friendly_id = id_passed
-      # publisher = Publisher.friendly.find(id_passed) rescue nil
-      
       if !publisher.nil?
-        @publisher_id = publisher.id
-        @publisher_name = publisher.name
-        # @publisher_profile_images = publisher.publisher_profile_images     
-        # @publisher_profile_image_primary = PublisherProfileImage.where("publisher_id = ?", @publisher_id).where( :primary => true ).first
-        @publisher_profile_image_primary = publisher.publisher_profile_images.first rescue nil
+        
+          @publisher = publisher
+          publisher_id = publisher.id
+          # publisher_logo_image_primary = PublisherLogoImage.where("publisher_id = ?", publisher_id).where( :primary => true ).first rescue nil
+          publisher_logo_image_primary = publisher.publisher_logo_images.first rescue nil
+          if !publisher_logo_image_primary.nil?
+              @publisher_logo_image_primary = publisher_logo_image_primary  
+          else
+            #
+          end
+        
+          @post_publishers = publisher.feed_log
+          
+          Rails.logger.info('post_publishers count = ' + @post_publishers.count.to_s)
+          
+          gon.name_company = ""
+          gon.b_name_company = false
+          gon.b_required_name_company = true
+          if !((publisher.name_company.blank?) or (publisher.name_company.empty?) or (publisher.name_company.nil?)) 
+              # @b_name_company = true
+              gon.name_company = publisher.name_company
+              gon.b_name_company = true
+              gon.b_required_name_company = false
+          end
+          
+          
+          render 'public_publishers_signedout/index', :layout => 'public_publisher'
       else
-        # catch error, here, which should not be necessary, as the passed id has already been verified.
+          # Catch error, here, which shouldn't be necessary, as the passed id was already verified.
+          Rails.logger.info('render_index_public_publisher_signedout publisher = nil')
+          redirect_to '/Signin'
       end
     
-      render 'publishers/index_public', :layout => 'publisher'
   end
+
+
 
 
   def render_index_publisher_user_home
     
+        Rails.logger.info('render_index_publisher_user_home')
+        
         @user = current_user
         @publisher_user = nil
         @publisher_user_image_primary = nil
@@ -659,6 +1072,8 @@ class UsersController < ApplicationController
             publisher = current_user.publisher
             if !publisher.nil?
                 @publisher_user_image_primary = current_user.user_images.where( :primary => true ).first
+                n = @publisher_user_image_primary.nil?
+                Rails.logger.info('@publisher_user_image_primary nil = ' + n.to_s)
                 @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", @publisher_user_id).first
             else
               #
@@ -755,7 +1170,7 @@ class UsersController < ApplicationController
             # gon.b_time_at_company = false
             # gon.b_required_time_at_company = true
             # if !((publisher_user.time_at_company.blank?) or (publisher_user.time_at_company.empty?) or (publisher_user.time_at_company.nil?)) 
-                # gon.time_at_company = publisher_user.time_at_company
+                # gon.time_at_company = publisher_user.tim<div id="rd_profile_type_1" class="rd-button-disabled" tabindex=""></div>e_at_company
                 # gon.b_time_at_company = true
                 # gon.b_required_time_at_company = false
             # end
@@ -791,7 +1206,15 @@ class UsersController < ApplicationController
     
   end
 
+
   def render_index_publisher_user
+    
+        Rails.logger.info('render_index_publisher_user')
+        
+        # @new_user = false
+        # if session[:new_user]
+          # @new_user = true
+        # end
     
         @user = current_user
         @publisher_user = nil
@@ -817,7 +1240,7 @@ class UsersController < ApplicationController
                 Rails.logger.info('publisher was nil')
             end
             
-
+            # @publisher_user_plot_text = publisher_user.publisher_user_plot.plot_text
             # @post_user = current_user.post_users.build
             # @post_users = current_user.feed.paginate(:page => params[:page], :per_page => 5)
         
@@ -851,6 +1274,7 @@ class UsersController < ApplicationController
               @crop_h_logo = @publisher_user_logo_image.crop_h
             end
             
+            gon.new_user = current_user.new_user
             
             gon.user_name_first = ""
             gon.b_user_name_first = false
@@ -1013,53 +1437,30 @@ class UsersController < ApplicationController
 
 
   def render_index_public_publisher_user(user)
-    
-      @name_first = ""
-      @name_last = ""
-      # PublisherUser
-      @email = ""
-      @location = ""
-      @name_alias = ""
-      @job_title = ""
-      @name_company = ""
-      @time_at_company = ""
-      @website = ""
-      @phone_company = ""
-  
-      @user = nil
+
+      Rails.logger.info('render_index_public_publisher_user')
+      
+      @user = nil    
+      @publisher_user = nil
       @publisher_user_image_primary = nil
       @publisher_user_logo_image = nil
       
-      
       @signed_in_user_options = signed_in?
       @b_signed_in = signed_in?
-  
-      id_passed = params[:id]
-      @url_my_story = '/puid' + id_passed
-  
-      @friendly_id = id_passed
+      # id_passed = params[:id]
+      # @url_my_story = '/puid' + id_passed
+      # @friendly_id = id_passed
       # publisher_user = PublisherUser.friendly.find(id_passed) rescue nil
+
       publisher_user = user.publisher_user
       if !publisher_user.nil?
-          # publisher_user_id = publisher_user.id
-          # @publisher_user_id = publisher_user_id
-          @user = user
+          @user = user          
+          @publisher_user = publisher_user
           @publisher_user_image_primary = user.user_images.where( :primary => true ).first
-          @name_first = user.name_first
-          @name_last = user.name_last
-  
-          # @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", publisher_user_id).first
           @publisher_user_logo_image = publisher_user.publisher_user_logo_images.first
-          @email = publisher_user.email
-          @location = publisher_user.location
-          @name_alias = publisher_user.name_alias
-          @job_title = publisher_user.job_title
-          @name_company = publisher_user.name_company
-          @time_at_company = publisher_user.time_at_company
-          @website = publisher_user.website
-          @phone_company = publisher_user.phone_company
-          
-          render 'publisher_users/index_public', :layout => 'publisher'
+          @post_users = user.feed_log # .paginate(:page => params[:page], :per_page => 5)
+          # render 'publisher_users/index_public', :layout => 'publisher'
+          render 'public_publisher_users/index', :layout => 'public_publisher_user'
       else
           # Catch error, here, which shouldn't be necessary, as the passed id was already verified.
           Rails.logger.info('render_index_public_publisher_user publisher_user = nil')
@@ -1072,73 +1473,34 @@ class UsersController < ApplicationController
 
 
   def render_index_public_publisher_user_signedout(user)
-    
-      @name_first = ""
-      @name_last = ""
-      # PublisherUser
-      @email = ""
-      @location = ""
-      @name_alias = ""
-      @job_title = ""
-      @name_company = ""
-      @time_at_company = ""
-      @website = ""
-      @phone_company = ""
-  
-      @user = nil
+
+      Rails.logger.info('render_index_public_publisher_user_signedout')
+      
+      @user = nil    
+      @publisher_user = nil
       @publisher_user_image_primary = nil
       @publisher_user_logo_image = nil
       
-      
       @signed_in_user_options = signed_in?
       @b_signed_in = signed_in?
+      # id_passed = params[:id]
   
-      id_passed = params[:id]
-      @url_my_story = '/puid' + id_passed
-  
-      @friendly_id = id_passed
-      # publisher_user = PublisherUser.friendly.find(id_passed) rescue nil
       publisher_user = user.publisher_user
       if !publisher_user.nil?
-          # publisher_user_id = publisher_user.id
-          # @publisher_user_id = publisher_user_id
-          @user = user
+          @user = user          
+          @publisher_user = publisher_user
           @publisher_user_image_primary = user.user_images.where( :primary => true ).first
-          @name_first = user.name_first
-          @name_last = user.name_last
-  
-          # @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", publisher_user_id).first
           @publisher_user_logo_image = publisher_user.publisher_user_logo_images.first
-          @email = publisher_user.email
-          @location = publisher_user.location
-          @name_alias = publisher_user.name_alias
-          @job_title = publisher_user.job_title
-          @name_company = publisher_user.name_company
-          @time_at_company = publisher_user.time_at_company
-          @website = publisher_user.website
-          @phone_company = publisher_user.phone_company
-          
-          render 'publisher_users/index_public_signedout', :layout => 'publisher'
+          @post_users = user.feed_log # .paginate(:page => params[:page], :per_page => 5)
+
+          render 'public_publisher_users_signedout/index', :layout => 'public_publisher_user'
       else
           # Catch error, here, which shouldn't be necessary, as the passed id was already verified.
           Rails.logger.info('render_index_public_publisher_user_signedout publisher_user = nil')
           redirect_to '/Signin'
       end
     
-    
   end
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   def get_user_url(id)
@@ -1193,6 +1555,13 @@ class UsersController < ApplicationController
   end
 
 
+  def learn_more
+  
+    @bd_years = BdYear.order("year_value ASC").all
+      
+  end
+  
+  
   def new
     
     if signed_in?
@@ -1232,7 +1601,9 @@ class UsersController < ApplicationController
       params_user = params[:user]
       
       profile_type = params_user[:profile_type]
-  
+
+      Rails.logger.info('profile_type = ' + profile_type.to_s)
+      
       profile_type = 3 # force this...for now
   
       case profile_type.to_s
@@ -1251,8 +1622,16 @@ class UsersController < ApplicationController
       end
 
       if !user.nil?
+          # new_user = sign_in_new user
+          # redirect_to '/' + new_user.slug
           sign_in user
-          redirect_to '/'
+          if signed_in?
+              # session[:new_user] = true
+              redirect_to '/' + current_user.slug
+          else
+              # log an error. flag user on signin page.
+              redirect_to '/'  
+          end
       else
           render_error('log_errors', 
                        'create', 
@@ -1260,9 +1639,33 @@ class UsersController < ApplicationController
                        'publisher',
                        'Create User failed')
       end  
+      
 
   end
     
+    
+  def check_duplicate_signup
+    
+      email = params[:email]
+      b_email_exists = User.exists?(:email => email) rescue nil
+      if b_email_exists
+          # Rails.logger.info('b_email_exists true')
+      else
+          # Rails.logger.info('b_email_exists nil or false')
+          b_email_exits = false
+      end
+
+      respond_to do |format|
+        format.html {}
+        format.json { render :json => { 
+                                        :b_email_exists => b_email_exists
+                                      } 
+                    }
+      end
+    
+
+  end
+  
     
   def render_error(controller, action, profile_index, profile_description, description)
     
@@ -1384,15 +1787,14 @@ class UsersController < ApplicationController
   
       publisher_user = nil
 
-
       h_user = Hash.new
       h_user[:name_first] = params_user[:name_first]
       h_user[:name_last] = params_user[:name_last]
       h_user[:email] = params_user[:email]
       h_user[:username] = params_user[:username]
-      h_user[:profile_type] = params_user[:profile_type]
+      # h_user[:profile_type] = params_user[:profile_type]
+      h_user[:profile_type] = 3
       h_user[:profile_type_text] = 'publisher' 
-      # h_user[:has_profile] = params_user[:name_first]
       h_user[:password] = params_user[:password]
       h_user[:password_confirmation] = params_user[:password_confirmation]
       h_user[:bd_month] = params_user[:bd_month]
@@ -1401,64 +1803,131 @@ class UsersController < ApplicationController
       h_user[:bd_year] = params_user[:bd_year]
       h_user[:gender] = params_user[:gender]
       h_user[:gender_text] = get_gender_text(params_user[:gender])
-      user = User.new(h_user)
-      if user.save
-          user_gen_id = get_random
-          h_issued_gen_id = Hash.new
-          h_issued_gen_id[:gen_id] = user_gen_id
-          h_issued_gen_id[:profile_type] = 3 
-          h_issued_gen_id[:user_id] = user.id            
-          issued_gen_id = IssuedGenId.new(h_issued_gen_id)
-          if issued_gen_id.save
-              if user.update_attributes(:slug => issued_gen_id.gen_id.to_s)
-                  h_publisher_user = Hash.new
-                  h_publisher_user[:user_id] = user.id
-                  publisher_user = PublisherUser.new(h_publisher_user)
-                  if publisher_user.save
-                      h_publisher = Hash.new
-                      h_publisher[:user_id] = user.id
-                      publisher = Publisher.new(h_publisher)
-                      if publisher.save
-                          publisher_gen_id = get_random
-                          h_issued_gen_id_publisher = Hash.new
-                          h_issued_gen_id_publisher[:gen_id] = publisher_gen_id
-                          h_issued_gen_id_publisher[:profile_type] = 33
-                          h_issued_gen_id_publisher[:publisher_id] = publisher.id  
-                          issued_gen_id_publisher = IssuedGenId.new(h_issued_gen_id_publisher)
-                          if issued_gen_id_publisher.save
-                              if publisher.update_attributes(:slug => issued_gen_id_publisher.gen_id.to_s)
-                                  #
+      user = User.new(h_user) rescue nil
+      if !user.nil?
+          if user.save
+              user_gen_id = get_random
+              h_issued_gen_id = Hash.new
+              h_issued_gen_id[:gen_id] = user_gen_id
+              h_issued_gen_id[:profile_type] = 3 
+              h_issued_gen_id[:user_id] = user.id            
+              issued_gen_id = IssuedGenId.new(h_issued_gen_id) rescue nil
+              if !issued_gen_id.nil?
+                  if issued_gen_id.save
+                      if user.update_attributes(:slug => issued_gen_id.gen_id.to_s)
+                          h_publisher = Hash.new
+                          h_publisher[:user_id] = user.id
+                          publisher = Publisher.new(h_publisher) rescue nil
+                          if !publisher.nil?
+                              if publisher.save
+                                  publisher_gen_id = get_random
+                                  h_issued_gen_id_publisher = Hash.new
+                                  h_issued_gen_id_publisher[:gen_id] = publisher_gen_id
+                                  h_issued_gen_id_publisher[:profile_type] = 33
+                                  h_issued_gen_id_publisher[:publisher_id] = publisher.id  
+                                  issued_gen_id_publisher = IssuedGenId.new(h_issued_gen_id_publisher) rescue nil
+                                  if !issued_gen_id_publisher.nil?
+                                      if issued_gen_id_publisher.save
+                                          if publisher.update_attributes(:slug => issued_gen_id_publisher.gen_id.to_s)
+                                              h_publisher_plot = Hash.new
+                                              h_publisher_plot[:user_id] = user.id
+                                              h_publisher_plot[:publisher_id] = publisher.id                                              
+                                              # h_publisher_plot[:publisher_user_id] = publisher_user.id
+                                              publisher_plot = PublisherPlot.new(h_publisher_plot) rescue nil
+                                              if !publisher_plot.nil?
+                                                  if publisher_plot.save
+                                                      h_publisher_user = Hash.new
+                                                      h_publisher_user[:user_id] = user.id
+                                                      h_publisher_user[:publisher_id] = publisher.id
+                                                      publisher_user = PublisherUser.new(h_publisher_user) rescue nil
+                                                      if !publisher_user.nil?
+                                                          if publisher_user.save
+                                                              h_publisher_user_plot = Hash.new
+                                                              h_publisher_user_plot[:user_id] = user.id
+                                                              h_publisher_user_plot[:publisher_id] = publisher.id
+                                                              h_publisher_user_plot[:publisher_user_id] = publisher_user.id
+                                                              publisher_user_plot = PublisherUserPlot.new(h_publisher_user_plot) rescue nil
+                                                              if !publisher_user_plot.nil?
+                                                                  if publisher_user_plot.save
+                                                                      h_publisher_user_interest = Hash.new
+                                                                      h_publisher_user_interest[:user_id] = user.id
+                                                                      h_publisher_user_interest[:publisher_id] = publisher.id
+                                                                      h_publisher_user_interest[:publisher_user_id] = publisher_user.id
+                                                                      publisher_user_interest = PublisherUserInterest.new(h_publisher_user_interest) rescue nil
+                                                                      if !publisher_user_interest.nil?
+                                                                          if publisher_user_interest.save
+                                                                              h_publisher_product_current = Hash.new
+                                                                              h_publisher_product_current[:user_id] = user.id
+                                                                              h_publisher_product_current[:publisher_id] = publisher.id
+                                                                              publisher_product_current = PublisherProductCurrent.new(h_publisher_product_current) rescue nil
+                                                                              if !publisher_product_current.nil?
+                                                                                  if publisher_product_current.save
+                                                                                      #
+                                                                                  else
+                                                                                      Rails.logger.info('publisher_product_current save failed')
+                                                                                  end
+                                                                              else
+                                                                                  Rails.logger.info('publisher_product_current new returned nil')
+                                                                              end
+                                                                          else
+                                                                              Rails.logger.info('publisher_user_interest save failed')
+                                                                          end
+                                                                      else
+                                                                          Rails.logger.info('publisher_user_interest new returned nil')
+                                                                      end
+                                                                  else
+                                                                      Rails.logger.info('publisher_user_plot save failed')
+                                                                  end
+                                                              else
+                                                                  Rails.logger.info('publisher_user_plot new returned nil')
+                                                              end
+                                                          else
+                                                              Rails.logger.info('publisher_user save failed')
+                                                          end
+                                                      else
+                                                          Rails.logger.info('publisher_user new returned nil')
+                                                      end
+                                                  else
+                                                      Rails.logger.info('publisher_plot save failed')                                            
+                                                  end
+                                              else
+                                                  Rails.logger.info('publisher_plot new returned nil')
+                                              end                                        
+                                          else
+                                              Rails.logger.info('publisher update failed')
+                                          end
+                                      else
+                                          Rails.logger.info('issued_gen_id_publisher save failed')
+                                      end
+                                  else
+                                      Rails.logger.info('issued_gen_id_publisher new returned nil')
+                                  end            
                               else
-                                  Rails.logger.info('publisher update failed')
+                                  Rails.logger.info('publisher save failed')
                               end
                           else
-                              Rails.logger.info('issued_gen_id_publisher not saved')
-                          end            
+                              Rails.logger.info('publisher new returned nil')
+                          end
                       else
-                          Rails.logger.info('publisher not saved')
+                          Rails.logger.info('user update failed')                
                       end
                   else
-                      Rails.logger.info('publisher_user not saved')
+                      Rails.logger.info('issued_gen_id save failed')
                   end
               else
-                  Rails.logger.info('user update failed')                
-              end
+                  Rails.logger.info('issued_gen_id new returned nil')
+              end              
           else
-              Rails.logger.info('issued_gen_id not saved')
+              Rails.logger.info('user save failed')
           end
       else
-          Rails.logger.info('user not saved')
+          Rails.logger.info('user new returned nil')
       end
       
       return user
   end
 
 
-
-
-
-
-    
     
   def following
     @title = "Following"
@@ -1523,157 +1992,207 @@ class UsersController < ApplicationController
     
   def reset_users
 
-      # LogError.dbdelete
-      # LogError.dbclear
-# 
-      # LogUser.dbdelete
-      # LogUser.dbclear
-      # RelateLogUser.dbdelete
-      # RelateLogUser.dbclear
-# 
-      # LogPublisher.dbdelete
-      # LogPublisher.dbclear
-      # RelateLogPublisher.dbdelete
-      # RelateLogPublisher.dbclear
-# 
-      # PostPublisher.dbdelete
-      # PostPublisher.dbclear
-      # RelatePublisherFollow.dbdelete
-      # RelatePublisherFollow.dbclear
-# 
-# 
-# 
-      # PostUser.dbdelete
-      # PostUser.dbclear
-      # RelateFollow.dbdelete
-      # RelateFollow.dbclear
-      # PostUserLike.dbdelete
-      # PostUserLike.dbclear
-      
+      LogError.dbdelete
+      LogError.dbclear
+
+      LogUser.dbdelete
+      LogUser.dbclear
+      RelateLogUser.dbdelete
+      RelateLogUser.dbclear
+
+      LogPublisher.dbdelete
+      LogPublisher.dbclear
+      RelateLogPublisher.dbdelete
+      RelateLogPublisher.dbclear
+
+      PostPublisher.dbdelete
+      PostPublisher.dbclear
+      RelatePublisherFollow.dbdelete
+      RelatePublisherFollow.dbclear
+      PostPublisherImage.dbdelete
+      PostPublisherImage.dbclear
+      PostPublisherComment.dbdelete
+      PostPublisherComment.dbclear
+
+      PublisherUserPlot.dbdelete
+      PublisherUserPlot.dbclear
+      PublisherUserInterest.dbdelete
+      PublisherUserInterest.dbclear
+      PublisherUserPlotImage.dbdelete
+      PublisherUserPlotImage.dbclear
+      PublisherUserInterestImage.dbdelete
+      PublisherUserInterestImage.dbclear
+
+      PublisherPlot.dbdelete
+      PublisherPlot.dbclear
+
+      PostUser.dbdelete
+      PostUser.dbclear
+      RelateFollow.dbdelete
+      RelateFollow.dbclear
+      PostUserLike.dbdelete
+      PostUserLike.dbclear      
       PostUserImage.dbdelete
-      PostUserImage.dbclear
-      
-      # PostUserComment.dbdelete
-      # PostUserComment.dbclear
-# 
+      PostUserImage.dbclear      
+      PostUserComment.dbdelete
+      PostUserComment.dbclear
+
       # FriendlyIdSlug.dbdelete
       # FriendlyIdSlug.dbclear
-#       
-      # User.dbdelete
-      # User.dbclear
-# 
-      # UserImage.dbdelete
-      # UserImage.dbclear
-# 
-      # # UserProfileImage.dbdelete
-      # # UserProfileImage.dbclear
-# 
-      # IssuedGenId.dbdelete
-      # IssuedGenId.dbclear
-# 
-      # IssuedPerId.dbdelete
-      # IssuedPerId.dbclear
-# 
-      # Publisher.dbdelete
-      # Publisher.dbclear
-# 
-      # PublisherUser.dbdelete
-      # PublisherUser.dbclear
-# 
-      # PublisherMember.dbdelete
-      # PublisherMember.dbclear
-# 
-      # PublisherUserImage.dbdelete
-      # PublisherUserImage.dbclear
-# 
-      # PublisherUserLogoImage.dbdelete
-      # PublisherUserLogoImage.dbclear
-# 
-      # PublisherLogoImage.dbdelete
-      # PublisherLogoImage.dbclear
-# 
-      # # PublisherProfileImage.dbdelete
-      # # PublisherProfileImage.dbclear
-# 
-      # PublisherProduct.dbdelete
-      # PublisherProduct.dbclear
-# 
-      # PublisherProductDescription.dbdelete
-      # PublisherProductDescription.dbclear
-# 
-      # PublisherProductImage.dbdelete
-      # PublisherProductImage.dbclear
-# 
-      # PublisherProduct1Image.dbdelete
-      # PublisherProduct1Image.dbclear
-# 
-      # PublisherProduct2Image.dbdelete
-      # PublisherProduct2Image.dbclear
-# 
-      # # PublisherProductLogo.dbdelete
-      # # PublisherProductLogo.dbclear
-# 
+      
+      User.dbdelete
+      User.dbclear
+      UserImage.dbdelete
+      UserImage.dbclear
+      IssuedGenId.dbdelete
+      IssuedGenId.dbclear
+      IssuedPerId.dbdelete
+      IssuedPerId.dbclear
+
+      # UserProfileImage.dbdelete
+      # UserProfileImage.dbclear
+
+      IssuedPublisherProductId.dbdelete
+      IssuedPublisherProductId.dbclear
+
+      Publisher.dbdelete
+      Publisher.dbclear
+
+      PublisherUser.dbdelete
+      PublisherUser.dbclear
+
+      PublisherMember.dbdelete
+      PublisherMember.dbclear
+
+      PublisherUserImage.dbdelete
+      PublisherUserImage.dbclear
+
+      PublisherUserLogoImage.dbdelete
+      PublisherUserLogoImage.dbclear
+
+      PublisherLogoImage.dbdelete
+      PublisherLogoImage.dbclear
+
+      # PublisherProfileImage.dbdelete
+      # PublisherProfileImage.dbclear
+
+      PublisherProduct.dbdelete
+      PublisherProduct.dbclear
+
+      PublisherProductManifest.dbdelete
+      PublisherProductManifest.dbclear
+
+      PublisherProductDescription.dbdelete
+      PublisherProductDescription.dbclear
+
+      PublisherProductCurrent.dbdelete
+      PublisherProductCurrent.dbclear
+
+      PublisherProductPos1Image.dbdelete
+      PublisherProductPos1Image.dbclear
+      PublisherProductPos2Image.dbdelete
+      PublisherProductPos2Image.dbclear
+      PublisherProductPos3Image.dbdelete
+      PublisherProductPos3Image.dbclear
+
+      PublisherProductImage.dbdelete
+      PublisherProductImage.dbclear
+
+      PublisherProduct1Image.dbdelete
+      PublisherProduct1Image.dbclear
+
+      PublisherProduct2Image.dbdelete
+      PublisherProduct2Image.dbclear
+
+      # PublisherProductLogo.dbdelete
+      # PublisherProductLogo.dbclear
+
       # PublisherProductLogo1Image.dbdelete
       # PublisherProductLogo1Image.dbclear
-# 
-      # PublisherProductCorporateLogo.dbdelete
-      # PublisherProductCorporateLogo.dbclear
-# 
-      # PublisherProductPdf.dbdelete
-      # PublisherProductPdf.dbclear
-# 
-      # PublisherProductPdfImage.dbdelete
-      # PublisherProductPdfImage.dbclear
-# 
-      # PublisherProductContentType.dbdelete
-      # PublisherProductContentType.dbclear
-# 
-      # PublisherProductCategorySubject.dbdelete
-      # PublisherProductCategorySubject.dbclear
-# 
-      # PublisherProductAppropriateAge.dbdelete
-      # PublisherProductAppropriateAge.dbclear
-# 
-      # PublisherProductAppropriateGrade.dbdelete
-      # PublisherProductAppropriateGrade.dbclear
-# 
-      # PublisherProductMarketTarget.dbdelete
-      # PublisherProductMarketTarget.dbclear
-# 
-      # PublisherProductPlatform.dbdelete
-      # PublisherProductPlatform.dbclear
-# 
-      # PublisherProductFileType.dbdelete
-      # PublisherProductFileType.dbclear
-# 
-      # PublisherProductCharacter.dbdelete
-      # PublisherProductCharacter.dbclear
-# 
-      # PublisherProductEnhancement.dbdelete
-      # PublisherProductEnhancement.dbclear
-# 
-      # PublisherProductByReview.dbdelete
-      # PublisherProductByReview.dbclear
-# 
-      # PublisherProductPricingModel.dbdelete
-      # PublisherProductPricingModel.dbclear
-# 
-      # PublisherProductPrice.dbdelete
-      # PublisherProductPrice.dbclear
-# 
-      # PublisherProductLessonTime.dbdelete
-      # PublisherProductLessonTime.dbclear
-# 
-      # PublisherProductCoreLiteracyStandard.dbdelete
-      # PublisherProductCoreLiteracyStandard.dbclear
-# 
-      # PublisherProductCoreMathStandard.dbdelete
-      # PublisherProductCoreMathStandard.dbclear
+
+      PublisherProductCorporateLogo.dbdelete
+      PublisherProductCorporateLogo.dbclear
+
+      PublisherProductPdf.dbdelete
+      PublisherProductPdf.dbclear
+
+      PublisherProductPdfImage.dbdelete
+      PublisherProductPdfImage.dbclear
+
+      PublisherProductContentType.dbdelete
+      PublisherProductContentType.dbclear
+
+      PublisherProductCategorySubject.dbdelete
+      PublisherProductCategorySubject.dbclear
+
+      PublisherProductAppropriateAge.dbdelete
+      PublisherProductAppropriateAge.dbclear
+
+      PublisherProductFromAge.dbdelete
+      PublisherProductFromAge.dbclear
+
+      PublisherProductToAge.dbdelete
+      PublisherProductToAge.dbclear
+
+      PublisherProductAppropriateGrade.dbdelete
+      PublisherProductAppropriateGrade.dbclear
+
+      PublisherProductFromGrade.dbdelete
+      PublisherProductFromGrade.dbclear
+
+      PublisherProductToGrade.dbdelete
+      PublisherProductToGrade.dbclear
+
+      PublisherProductMarketTarget.dbdelete
+      PublisherProductMarketTarget.dbclear
+
+      PublisherProductPlatform.dbdelete
+      PublisherProductPlatform.dbclear
+
+      PublisherProductFileType.dbdelete
+      PublisherProductFileType.dbclear
+
+      PublisherProductCharacter.dbdelete
+      PublisherProductCharacter.dbclear
+
+      PublisherProductEnhancement.dbdelete
+      PublisherProductEnhancement.dbclear
+
+      PublisherProductByReview.dbdelete
+      PublisherProductByReview.dbclear
+
+      PublisherProductPricingModel.dbdelete
+      PublisherProductPricingModel.dbclear
+
+      PublisherProductPrice.dbdelete
+      PublisherProductPrice.dbclear
+
+      PublisherProductLessonTime.dbdelete
+      PublisherProductLessonTime.dbclear
+
+      PublisherProductCoreLiteracyStandard.dbdelete
+      PublisherProductCoreLiteracyStandard.dbclear
+
+      PublisherProductCoreMathStandard.dbdelete
+      PublisherProductCoreMathStandard.dbclear
 
  
       redirect_to '/'      
   end
     
+    
+  def update_new_user
+    
+      if current_user.update_attributes(:new_user => false)
+          Rails.logger.info('current_user.update_attributes succeeded')
+          # Rails.logger.info('current_user.save succeeded')
+      else
+          Rails.logger.info('current_user.update_attributes failed')
+          # Rails.logger.info('current_user.save failed')
+      end
+      
+      
+  end    
     
     
   private

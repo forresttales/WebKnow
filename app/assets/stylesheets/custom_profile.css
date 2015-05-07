@@ -8,6 +8,11 @@
 	/*.container {
 		width: 1200px;
 	}*/
+
+	#container_drop {z-index:12 !important;}
+
+	
+
 	.table-profile {
 		display: table;
 	}
@@ -26,7 +31,7 @@
 	}*/
 	.col-midd-700-borders {
 		display: table-cell; 
-		width: 700px;			
+		width: 550px;		/*700*/	
 		border-left: 2px #DCE3DF solid;
 		border-right: 2px #DCE3DF solid;
 	}
@@ -116,7 +121,7 @@
 	}
 			
 	.title-bar-profile-1 {
-		width: 700px;
+		width: 550px; /*700*/
 		height: 30px;
   		/*font-family: 'msyh';
 	    font-size: 18px;
@@ -152,7 +157,7 @@
 	</div>*/
 	
 	.title-bar-profile-2 {
-		width: 700px;
+		width: 550px; /*700*/
 		height: 18px;
   		/*font-family: 'msyh';
 	    font-size: 18px;
@@ -203,7 +208,7 @@
 	
 	.tbl-title-bar-profile {
 		display: table;
-		width: 700px;
+		width: 550px; /*700*/
 	}
 	.tbl-title-bar-profile-2 {
 		display: table;
@@ -389,7 +394,7 @@
 	.table-dl-form {
 		display: table;
 		vertical-align: top;
-		width: 700px;	
+		width: 550px;	/*700*/
 	}
 	.table-dl-form-2 {
 		display: table;
@@ -407,12 +412,6 @@
 		background-position: 0px 0px;
 		top: 0px;			
 	}*/
-	input.error {
-		background-color: #FFF1F0;
-		background-image: url("/assets/red_star_7.png");		
-		background-repeat: no-repeat;
-		background-position: 288px 0px;			
-	}
 	.display-none {
 		display: none;
 	}

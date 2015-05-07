@@ -510,7 +510,7 @@ class PublishersController < ApplicationController
 
               post_publisher_comment = post_publisher.post_publisher_comments.build(h_post_publisher_comment)
               if post_publisher_comment.save
-                  @post_publisher_comments = post_publisher.post_publisher_comments
+                  @post_publisher_comments = post_publisher.post_publisher_comments.order('created_at DESC')
                   @post_publisher_id = post_publisher_id                    
               else
                   #
@@ -541,7 +541,7 @@ class PublishersController < ApplicationController
         post_publisher_comment = post_publisher.post_publisher_comments.where("id = ?", post_publisher_comment_id).first rescue nil
         if !post_publisher_comment.nil?
             if post_publisher_comment.destroy
-                @post_publisher_comments = post_publisher.post_publisher_comments
+                @post_publisher_comments = post_publisher.post_publisher_comments.order('created_at DESC')
                 @post_publisher_id = post_publisher.id
             else
                 #
@@ -812,62 +812,80 @@ class PublishersController < ApplicationController
   end  
 
 
-  def update_story_2
-    
-    # ar = params[:publisher]
-    # h_obj = Hash.new
-    # ar.each do |obj|
-      # h_obj = obj
-    # end
-    # story_corporate = h_obj[:story_corporate]
 
-    story_corporate = params[:story_corporate]
-    
-    # Rails.logger.info("story_corporate = " + story_corporate)
-    
-    h_publisher = Hash.new
-    h_publisher[:story_corporate] = story_corporate
-    
-    publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
-    if !publisher.nil?
-        if publisher.update_attributes(h_publisher)
+  def update_publisher_plot
+
+    plot_text = params[:publisher_plot][:plot_text]
+    h_publisher_plot = Hash.new
+    h_publisher_plot[:plot_text] = plot_text
+    # publisher_plot = PublisherPlot.where("publisher_plot_id = ?", current_publisher.publisher.publisher_plot.id).first rescue nil
+    publisher_plot = current_user.publisher.publisher_plot rescue nil
+    if !publisher_plot.nil?
+        if publisher_plot.update_attributes(h_publisher_plot)
             #
         else
-            # Rails.logger.info('user update failed')
+            Rails.logger.info('publisher_plot update failed')
         end
     else
-        # Rails.logger.info('user = nil')      
+        Rails.logger.info('publisher_plot = nil')      
     end
-    
-    publisher = nil    
-    @publisher = nil
-    publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
-    
-    if !publisher.nil?
-      @publisher = publisher
-    else
-      #
-    end
-    
-    # respond_to do |format|
-      # format.html {}
-      # format.js
-    # end
-    
-    # story_corporate = publisher.story_corporate
-    # b_story_corporate = true
-    
-    # respond_to do |format|
-      # format.html {}
-      # format.json { render :json => {
-                                      # :b_story_corporate => b_story_corporate,
-                                      # :story_corporate => story_corporate
-                                    # } 
-                  # }
-    # end
 
+    @publisher = nil
+    publisher = current_user.publisher rescue nil
+    if !publisher.nil?
+        @publisher = publisher
+    else
+        # error
+    end
+    
     
   end
+
+
+  # def update_story_2
+    # # ar = params[:publisher]
+    # # h_obj = Hash.new
+    # # ar.each do |obj|
+      # # h_obj = obj
+    # # end
+    # # story_corporate = h_obj[:story_corporate]
+    # story_corporate = params[:story_corporate]
+    # # Rails.logger.info("story_corporate = " + story_corporate)
+    # h_publisher = Hash.new
+    # h_publisher[:story_corporate] = story_corporate
+    # publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+    # if !publisher.nil?
+        # if publisher.update_attributes(h_publisher)
+            # #
+        # else
+            # # Rails.logger.info('user update failed')
+        # end
+    # else
+        # # Rails.logger.info('user = nil')      
+    # end
+    # publisher = nil    
+    # @publisher = nil
+    # publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+    # if !publisher.nil?
+      # @publisher = publisher
+    # else
+      # #
+    # end
+    # # respond_to do |format|
+      # # format.html {}
+      # # format.js
+    # # end
+    # # story_corporate = publisher.story_corporate
+    # # b_story_corporate = true
+    # # respond_to do |format|
+      # # format.html {}
+      # # format.json { render :json => {
+                                      # # :b_story_corporate => b_story_corporate,
+                                      # # :story_corporate => story_corporate
+                                    # # } 
+                  # # }
+    # # end
+  # end
 
 
   

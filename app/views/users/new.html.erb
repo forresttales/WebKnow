@@ -1,1417 +1,166 @@
 <% provide(:title, 'Welcome') %>
 
 	
+	<link rel="stylesheet" href="/assets/ks-signin.css" />
+	<link rel="stylesheet" type="text/css" href="/slick/slick/slick.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="/slick//slick/slick-theme.css"/> -->
 	<script src="/assets/jquery.validate.js"></script>
-	<script src="../scripts/dot.js"></script>    
-	<script src="../scripts/jquery-dropdown-dot.js"></script>
-	<script type="text/javascript" src="../scripts/jquery.mousewheel.min.js"></script>
-	<script type="text/javascript" src="../scripts/slidedeck.jquery.js"></script>
-	<script src="/assets/jquery.colorbox.js"></script>
+	<script src="/assets/dot.js"></script>    
+	<script src="/assets/jquery-dropdown-dot.js"></script>
+	<!-- <script type="text/javascript" src="../scripts/jquery.mousewheel.min.js"></script> -->
+	<!-- <script type="text/javascript" src="../scripts/slidedeck.jquery.js"></script> -->
+	<!-- <link rel="stylesheet" type="text/css" href="../styles/slidedeck.skin.css" media="screen,handheld" /> -->
+	<!-- <script src="/assets/jquery.colorbox.js"></script>
+	<link rel="stylesheet" href="/assets/colorbox.css" /> -->
 	<!-- <link rel="stylesheet" type="text/css" href="../styles/landing_page.css.scss" media="screen,handheld" /> -->	
-	<link rel="stylesheet" href="/assets/colorbox.css" />
-	<link rel="stylesheet" type="text/css" href="../styles/slidedeck.skin.css" media="screen,handheld" />
-
-  	<script src="/assets/jquery.qtip.min.js" type="text/javascript"></script>
-  	<link rel="stylesheet" href="/assets/jquery.qtip.min.css">
-  	
-  	<link rel="stylesheet" href="../styles/bootstrap.min.css">
-
-
-	<style>
+  	<!-- <script src="/assets/jquery.qtip.min.js" type="text/javascript"></script>
+  	<link rel="stylesheet" href="/assets/jquery.qtip.min.css"> -->
+  	<!-- <link rel="stylesheet" href="../styles/bootstrap.min.css"> -->
+	<script src="/assets/jqModal.js"></script>
+	<script src="/assets/jquery.easing.1.3.js"></script>
+	<link rel="stylesheet" href="/assets/jqModal.css" />
 	
-		@font-face {
-			font-family: 'msyh';
-		    src: url('../fonts/msyh.eot');	  		
-			src: url('../fonts/msyh.ttf') format('truetype');
-		}
-	
-		.menu-home {
-		}
-		.menu-home li.with_sub {
-			float:left;
-			display:block;
-			text-align:center;
-			position:relative;
-			padding: 12px 10px 8px 10px;
-			margin-right:30px;
-			margin-top:7px;
-			border:none;
-		}
-		.menu-home li.with_sub:hover {
-			border: 1px solid #777777;
-			padding: 12px 9px 4px 9px;
-			background: #F4F4F4;
-			background: -moz-linear-gradient(top, #F4F4F4, #EEEEEE);
-			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#EEEEEE));
-			/*-moz-border-radius: 5px 5px 0px 0px;
-			-webkit-border-radius: 5px 5px 0px 0px;
-			border-radius: 5px 5px 0px 0px;*/
-		}
-		.menu-home li.with_sub a {
-			font-family: msyh, Arial, Helvetica, sans-serif;			
-			font-size: 14px;		
-			color: #EEEEEE;
-			display:block;
-			outline:0;
-			text-decoration:none;
-			/*text-shadow: 1px 1px 1px #000;*/
-		}
-		.menu-home li.with_sub:hover a {
-			color:#161616;
-			text-shadow: 1px 1px 1px #ffffff;
-		}
-		.menu-home li.icon {
-			float:left;
-			display:block;
-			text-align:center;
-			position:relative;
-			padding: 6px 4px 0px 0px;
-			margin-right:0px;
-			margin-top:0px;
-			border:none;
-			background: #fff;		
-		}
-		.menu-home li.icon:hover {
-			float:left;
-			display:block;
-			text-align:center;
-			position:relative;
-			padding: 6px 4px 0px 0px;
-			margin-right:0px;
-			margin-top:0px;
-			border:none;
-			background: #fff;		
-		}
-		.menu-home li.icon a {
-			color: #fff;
-			text-shadow: 1px 1px 1px #ffffff;		
-		}
-		.menu-home li.icon:hover a {
-			color: red;
-			text-shadow: 1px 1px 1px #ffffff;		
-		}
-		.menu-home li.text {
-			display:block;
-			text-align:center;
-			position:relative;
-			padding: 12px 10px 8px 10px;
-			margin-right:30px;
-			margin-top:7px;
-			border:none;
-		}
-		.menu-home li.text:hover {
-			border: none;
-			padding: 12px 10px 8px 10px;		
-			-moz-border-radius: 0px;
-			-webkit-border-radius: 0px;
-			border-radius: 0px;
-		}
-		.menu-home li.text a {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;		
-			color: #fff;
-			display:block;
-			outline:0;
-		}
-		.menu-home li.text:hover a {
-			/*color:#161616;
-			text-shadow: 1px 1px 1px #ffffff;*/
-		}
-		.menu-home li .drop {
-			padding-right:21px;
-			background:url("img/drop.png") no-repeat right 8px;
-		}
-		.menu-home li:hover .drop {
-			background:url("img/drop.png") no-repeat right 7px;
-		}
-		.dropdown_1column, 
-		.dropdown_2columns, 
-		.dropdown_3columns, 
-		.dropdown_4columns,
-		.dropdown_5columns {
-			margin:4px auto;
-			float:left;
-			position:absolute;
-			left:-999em; /* Hides the drop down */
-			text-align:left;
-			padding:10px 5px 10px 5px;
-			border:1px solid #777777;
-			border-top:none;
-			background:#F4F4F4;
-			background: -moz-linear-gradient(top, #EEEEEE, #BBBBBB);
-			background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEEEEE), to(#BBBBBB));
-			-moz-border-radius: 0px 5px 5px 5px;
-			-webkit-border-radius: 0px 5px 5px 5px;
-			border-radius: 0px 5px 5px 5px;
-			z-index: 100;
-		}
-		.dropdown_1column {width: 140px;}
-		.dropdown_2columns {width: 280px;}
-		.dropdown_3columns {width: 420px;}
-		.dropdown_4columns {width: 560px;}
-		.dropdown_5columns {width: 700px;}
-		.menu-home li:hover .dropdown_1column, 
-		.menu-home li:hover .dropdown_2columns, 
-		.menu-home li:hover .dropdown_3columns,
-		.menu-home li:hover .dropdown_4columns,
-		.menu-home li:hover .dropdown_5columns {
-			left:-1px;
-			top:auto;
-		}
-		.col_1,
-		.col_2,
-		.col_3,
-		.col_4,
-		.col_5 {
-			display:inline;
-			float: left;
-			position: relative;
-			margin-left: 5px;
-			margin-right: 5px;
-		}
-		.col_1 {width:130px;}
-		.col_2 {width:270px;}
-		.col_3 {width:410px;}
-		.col_4 {width:550px;}
-		.col_5 {width:690px;}
-		.menu-home .menu_right {
-			/*float:right;*/
-			padding-right: 15px;
-			margin-right:0px;
-			width: 430px;
-		}
-		.menu-home li .align_right {
-			-moz-border-radius: 5px 0px 5px 5px;
-		    -webkit-border-radius: 5px 0px 5px 5px;
-		    border-radius: 5px 0px 5px 5px;
-		}
-		.menu-home li:hover .align_right {
-			left:auto;
-			right:-1px;
-			top:auto;
-		}
-		.menu-home p, .menu-home h2, .menu-home h3, .menu-home ul li {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			line-height:21px;
-			font-size:12px;
-			text-align:left;
-			text-shadow: 1px 1px 1px #FFFFFF;
-		}
-		.menu-home h2 {
-			font-size:21px;
-			font-weight:400;
-			letter-spacing:-1px;
-			margin:7px 0 14px 0;
-			padding-bottom:14px;
-			border-bottom:1px solid #666666;
-		}
-		.menu-home h3 {
-			font-size:14px;
-			margin:7px 0 14px 0;
-			padding-bottom:7px;
-			border-bottom:1px solid #888888;
-		}
-		.menu-home p {
-			line-height:18px;
-			margin:0 0 10px 0;
-		}
-		.menu-home li:hover div a {
-			font-size:12px;
-			color:#015b86;
-		}
-		.menu-home li:hover div a:hover {
-			color:#029feb;
-		}
-		.strong {
-			font-weight:bold;
-		}
-		.italic {
-			font-style:italic;
-		}
-		.imgshadow {
-			background:#FFFFFF;
-			padding:4px;
-			border:1px solid #777777;
-			margin-top:5px;
-			-moz-box-shadow:0px 0px 5px #666666;
-			-webkit-box-shadow:0px 0px 5px #666666;
-			box-shadow:0px 0px 5px #666666;
-		}
-		.img_left {
-			width:auto;
-			float:left;
-			margin:5px 15px 5px 5px;
-		}
-		.menu-home li .black_box {
-			background-color:#333333;
-			color: #eeeeee;
-			text-shadow: 1px 1px 1px #000;
-			padding:4px 6px 4px 6px;
-			-moz-border-radius: 5px;
-		    -webkit-border-radius: 5px;
-		    border-radius: 5px;
-			-webkit-box-shadow:inset 0 0 3px #000000;
-			-moz-box-shadow:inset 0 0 3px #000000;
-			box-shadow:inset 0 0 3px #000000;
-		}
-		.menu-home li ul {
-			list-style:none;
-			padding:0;
-			margin:0 0 12px 0;
-		}
-		.menu-home li ul li {
-			font-size:12px;
-			line-height:24px;
-			position:relative;
-			text-shadow: 1px 1px 1px #ffffff;
-			padding:0;
-			margin:0;
-			float:none;
-			text-align:left;
-			width:130px;
-		}
-		.menu-home li ul li:hover {
-			background:none;
-			border:none;
-			padding:0;
-			margin:0;
-		}
-		.menu-home li .greybox li {
-			background:#F4F4F4;
-			border:1px solid #bbbbbb;
-			margin:0px 0px 4px 0px;
-			padding:4px 6px 4px 6px;
-			width:116px;
-			-moz-border-radius: 5px;
-		    -webkit-border-radius: 5px;
-		    -khtml-border-radius: 5px;
-		    border-radius: 5px;
-		}
-		.menu-home li .greybox li:hover {
-			background:#ffffff;
-			border:1px solid #aaaaaa;
-			padding:4px 6px 4px 6px;
-			margin:0px 0px 4px 0px;
-		}
-		#session_password {margin-left: 37px;}
-		.nav-ks-home {
-			width: 100%;
-			position: relative;
-		}
-		.nav-ks-home .signin-text {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 16px;
-			color: #3d8138;
-		}
-		.nav-ks-home a.signin-pref {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #37633A; /*#1f7c82;*/
-		}
-		.nav-ks-home a.signin-pref:hover,
-		.nav-ks-home a.signin-pref:focus {
-			cursor:pointer;
-			text-decoration: underline;
-			outline: none;
-
-		}
-		.nav-ks-home label.signin-pref {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #37633A; /*#1f7c82;*/
-		}
-		.nav-ks-home label.signin-pref:hover,
-		.nav-ks-home label.signin-pref:focus {
-			cursor:pointer;
-			text-decoration: underline;
-			outline: none;
-		}
-		
-		/*
-		#D98D2D	knowstory logo orange
-		#96C785 knowstory logo green dark 
-		#A9D996 knowstory logo green light
-		#214025 footer green
-		background-color: rgba( 65, 183, 55, 0.92); nav green
-		background-color: #41B737;	nav green		
-		*/ 
-
-		/*input[type=checkbox] {
-		    display:none;
-		}*/			
-		.table-ks-home {
-			display: table;
-		}				
-		.row-ks-home {
-			display: table-row;
-			vertical-align: top;
-		}				
-		.cell-ks-home-1 {
-			display: table-cell;
-			vertical-align: top;
-			width: 386px;
-		}				
-		.cell-ks-home-2 {
-			display: table-cell;
-			vertical-align: top;
-			width: 600px;
-			/*padding:60px 0 0 0px;*/
-		}				
-		.nav-ks-home ul.ul-1 {
-			/*padding-top: 1px;*/
-			list-style:none;			
-		  	/*background-color: #41B737;
-		  	height: 40px;
-		    border-radius: 8px 8px 0 0;
-		    box-shadow: 0 4px 4px #CCCCCC;*/
-			
-		}
-		.nav-ks-home ul.ul-2 {
-			/*padding-top: 8px;*/
-			list-style:none;			
-		  	/*background-color: #41B737;
-		  	height: 36px;
-		  	border-bottom: 1px solid #CDCDCD;
-		    box-shadow: 0 4px 4px #CCCCCC;
-			padding-right: 170px;*/
-		}
-		.nav-ks-home ul.ul-3 {
-		 	text-align: center; 
-		 	padding-top: 10px;	
-		}
-		/*.cell-ks-home-1-3 {
-		    background-color: #F8F8F8;
-		    border: 1px solid #41B737;
-		    border-radius: 8px 8px 0 0;
-		    display: table-cell;
-		    padding: 8px;
-		    vertical-align: top;
-		    width: 200px;
-			box-shadow: 0 4px 4px #CCCCCC;
-		}*/				
-		.cell-ks-home-1-3 {
-			display: table-cell;
-			vertical-align: top;
-			width: 473px;
-			height: 500px;
-			padding-top: 0px;
-			/*box-shadow: 0 4px 4px #CCCCCC;*/
-			box-shadow: 4px 4px 4px #CCCCCC;
-		}				
-		.cell-ks-home-2-3 {
-			display: table-cell;
-			/*vertical-align: top;*/
-			width: 50px;
-			/*height: 486px;*/
-			/*padding-top: 0px;*/
-			/*border: 1px solid #CDCDCD;*/
-			/*box-shadow: 0 4px 4px #CCCCCC;*/
-			/*background-color: #49853F;*/ 	
-		}				
-		.cell-ks-home-3-3 {
-			display: table-cell;
-			vertical-align: top;
-			width: 540px;
-			background: none repeat scroll 0 0 #F8F8F8;
-		    border: 1px solid #41B737;
-		    border-radius: 8px 8px 0 0;
-			box-shadow: 0 4px 4px #CCCCCC;
-		}				
-		span.title-home-dark {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 24px;
-			color: #11520B;
-			font-weight: 700;
-			/*color: #D98D2D;*/
-		}
-		span.title-home-dark-2 {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 20px;
-			color: #49853F;
-		}
-		p.title-home-dark-2 {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 18px;
-			color: #49853F;
-		}
-		p.title-home-gray {
-			/*font-family: msyh, Arial, Helvetica, sans-serif;*/
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 13px;
-			color: #666;
-		}
-		.cell-right-home {
-			text-align: right;	
-		}
-		.cell-ks-home-2-2a, .cell-ks-home-2-2b {
-			padding-left: 24px;
-			padding-right: 0px;
-			padding-top: 16px;
-			padding-bottom: 0px;			
-		}		
-		.cell-ks-home-2-2b {
-		  border-top: 4px double #41B737;
-		}
-		span.title-home-dark-3 {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 20px;
-			color: #11520B;
-			font-weight: 700;
-		}
-		span.title-home-dark-4 {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 16px;
-			color: #11520B;
-			font-weight: 400;
-		}
-
-		.form-types .input-label-home {width:40px;}
-		
-	</style>
 
 	<style>
 		
-		.input-home {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			color: #888;
-			font-weight: 700;
-			font-size: 13px;
-			width: 260px;
-			height: 24px;
-			border-style:solid;
-			border-radius: 0px;
-			background-color: #f6f6f6;
-			border-color: #478A3E;
-			border-width: 1px;
-			padding-left: 4px;
-		}
-		.input-home:focus {
-			border-color: #478A3E;
-			color: #11520B;
-			font-weight: 700;
-			/*-webkit-box-shadow: 0 0 10px #88E87B;
-			-moz-box-shadow: 0 0 10px #88E87B;
-			box-shadow: 0 0 10px #88E87B;*/
-		}
-		
-		.input-home:focus,
-		.input-home:hover {		
-			border-color: #478A3E;
-			/*color: #000;*/
-			-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			   -moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			        box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		}
-		.input-home:focus:hover {		
-			border-color: #478A3E;
-			/*color: #000;*/
-			-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			   -moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			        box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		}
-		.input-home:hover {		
-			-webkit-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
-			   -moz-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
-			        box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
-		}
-		.input-home-short {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			color: #888;
-			font-weight: 700;
-			font-size: 13px;
-			/*width: 160px;*/
-			height: 24px;
-			border-style:solid;
-			border-radius: 0px;
-			background-color: #fff;
-			border: 1px solid #478A3E;
-			padding-left: 4px;
-		}
-		.input-home-short:focus {
-			border-color: #478A3E;
-			color: #11520B;
-			font-weight: 700;
-			/*-webkit-box-shadow: 0 0 10px #88E87B;
-			-moz-box-shadow: 0 0 10px #88E87B;
-			box-shadow: 0 0 10px #88E87B;*/
-		}
-		/*Main bright green:  65/183/55		#41B737
-		Med dark green: 55/99/58			#37633A*/
-		.input-home-short:focus,
-		.input-home-short:hover {		
-			border-color: #478A3E;
-			/*color: #000;*/
-			-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			   -moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			        box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		}
-		.input-home-short:focus:hover {		
-			border-color: #478A3E;
-			/*color: #000;*/
-			-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			   -moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			        box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		}
-		.input-home-short:hover {		
-			-webkit-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
-			   -moz-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
-			        box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
-		}
-		::-webkit-input-placeholder {
-		   color: #778899; /*#C0C0C0;*/
-		}
-		
-		:-moz-placeholder {
-		   color: #778899; /*#C0C0C0;*/
-
-		}
-		
-		::-moz-placeholder {
-		   color: #778899; /*#C0C0C0;*/
-
-		}
-		
-		:-ms-input-placeholder {  
-		   color: #778899; /*#C0C0C0;*/
-
-		}		
-		
-		
-		
-		
-		
-		.input-home-exp {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			color: #404040;			
-			font-size: 16px;
-			width: 100px;
-			height: 24px;
-			border-style:solid;
-			border-radius: 0px;
-			background-color: #fff;
-			border-color: #478A3E;
-			border-width: 1px;
-			padding-left: 6px;
-		}
-		.input-home-exp:focus {
-			border-color: #478A3E;
-			color: #000;
-			-webkit-box-shadow: 0 0 10px #88E87B;
-			-moz-box-shadow: 0 0 10px #88E87B;
-			box-shadow: 0 0 10px #88E87B;
-		}
-		.input-label-home, .input-label-home-dark {
-		    color: #49853F;
-		}
-		.input-label-home {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			/*color: #ccc;*/
-			width: 160px;
-			height: 18px;
-		}
-		.input-label-home-a {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #1f7c82;
-		}
-		.input-label-home-a:hover {
-			color: #1f7c82;
-		}
-		.input-label-home-a:focus {
-			color: #1f7c82;
-			text-shadow: 1px 1px #34922C;
-		}
-		.input-label-home-dark {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			/*color: #888;*/
-			width: 160px;
-			height: 18px;
-		}
-		.signin-btn-home {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			height: 27px;
-			width:76px;
-			border: 2px solid #11520B;
-			text-align: center;
-			color: #49853f;
-			background-color: transparent;			
-		}
-		.signin-btn-home:hover {
-			color: #fff;
-			cursor: pointer;
-			background-color: #49853f;
-			text-shadow: 1px 1px #34922C;
-		}
-		.signin-btn-home:focus {
-			outline: none;
-			text-shadow: 1px 1px #34922C;			
-			box-shadow: 0 0 14px #eee;
-		}
-		.signin-btn-home:select {
-			outline: none;
-			text-shadow: 1px 1px #34922C;						
-			box-shadow: 0 0 14px #eee;
-		}
-		
-		
-		
-		.signup-btn-home-div {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			height: 27px;
-			width:76px;
-			text-align: center;
-			padding-top: 2px;			
-			border: 2px solid #11520B;
-			/*color: #49853f;
-			background-color: transparent;*/	
-			color: #fff;
-			background-color: #49853f;
-			/*text-shadow: 1px 1px #34922C;*/
-		}
-		a.signup-btn-home-a {
-			text-decoration: none;
-			float: right;
-			/*right: -90px;*/
-		}
-		a.signup-btn-home-a:select {
-			color: transparent;
-			text-shadow: 1px 1px #49853f;
-		}
-		.signup-btn-home-div:hover {
-			/*color: #fff;*/
-			cursor: pointer;
-			/*background-color: #49853f;
-			text-shadow: 1px 1px #34922C;*/
-			color: #49853f;
-			background-color: transparent;						
-		}
-		.signup-btn-home-div:focus {
-			outline: none;
-			/*text-shadow: 1px 1px #34922C;*/
-			color: transparent;
-			text-shadow: 1px 1px #49853f;						
-			box-shadow: 0 0 14px #eee;
-		}
-		.signup-btn-home-div:select {
-			outline: none;
-			/*text-shadow: 1px 1px #34922C;*/
-			text-shadow: 1px 1px #49853f;						
-			box-shadow: 0 0 14px #eee;
-		}
-		
-		
-		
-		.sign-btn-home:select {
-			background: #CCC; 
-			color: #5F7A2A;
-		  	box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
-		}		
-		.space-home {
-			height: 6px;
-		}
-		.form-home-table {
-			display: table;
-			margin: 0 auto;
-		}
-		.form-home-row {
-			display: table-row;
-		}
-		.form-home-cell-1 {
-			display: table-cell;
-			width: 160px;
-		}
-		.form-home-cell-2 {
-			display: table-cell;
-			width: 160px;
-		}
-		.form-home-cell-submit {
-			display: table-cell;
-			width: 500px;
-			text-align: center;
-		}
-		.form-home-cell-3 {
-			display: table-cell;
-			width: 60px;
-		}
-		.form-home-table-bd {
-			display: table;
-			margin: 0 auto;
-		}
-		.form-home-row-bd {
-			display: table-row;
-		}
-		.form-home-cell-bd-space {
-			display: table-cell;
-			width: 30px;
-		}
-		.form-home-cell-bd {
-			display: table-cell;
-			width: 70px;
-		}
-		.form-home-cell-bd-why {
-			display: table-cell;
-			width: 160px;
-			padding-left: 20px;
-
-		}		
-		.form-home-cell-month {
-			display: table-cell;
-			width: 60px;
-		}
-		.form-home-cell-day {
-			display: table-cell;
-			width: 60px;
-		}
-		.form-home-cell-year {
-			display: table-cell;
-			width: 60px;
-		}
-		.form-home-cell-profile-type {
-			display: table-cell;
-			width: 60px;
-		}		
-		.form-home-table-gender {
-			display: table;
-		}
-		.form-home-row-gender {
-			display: table-row;
-		}
-		.form-home-cell-gender-1 {
-			display: table-cell;
-		}		
-		.form-home-cell-gender-2 {
-			display: table-cell;
-		}
-		.form-home-cell-profile-type-1 {
-			display: table-cell;
-			width: 70px;
-		}		
-		.form-home-row-space {
-			height: 4px;
-		}
-		.signup-btn-home {
-		    background-color: #49853F;
-		    border: 3px groove #11520B;
-		    border-radius: 6px 6px 6px 6px;
-		    color: #FFFFFF;
-		    font-family: msyh,Arial,Helvetica,sans-serif;
-		    font-size: 14px;
-		    font-weight: bold;
-		    height: 55px;
-		    letter-spacing: 1.5px;
-		    width: 260px;
-		}
-		.signup-btn-home:hover {
-			color: #49853F;
-			background-color: #FFF;
-			text-shadow: 0 1px #34922C;
-			box-shadow: 0px 0px 2px 2px #CCC inset;
-			cursor: pointer;
-		}
-		.signup-btn-home:focus {
-			box-shadow: 0 0 10px #29731F;
-			text-shadow: 1px 1px #34922C;
-			outline: none;
-		}
-		.go-btn-home {
-		    background-color: #F69010;
-		    border-radius: 0 12px 0 12px;
-		}
-		
-		.go-btn-home {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #11520B;
-			height: 24px;
-			width:50px;
-			/*background-color: #D98D2D;*/
-			border: 2px solid #11520B;
-	    	/*border-radius: 12px;*/			
-			margin-top: 10px;
-			padding-bottom: 1px;
-			margin-left: 6px;
-		    background-color: #F69010;
-		    border-radius: 0 12px 0 12px;
-		}
-		.go-btn-home:hover {
-			color: #fff;
-			background-color: #E3AC66;
-			text-shadow: 1px 1px #34922C;
-			cursor: pointer;
-		}
-		.go-btn-home:focus {
-			box-shadow: 0 0 10px #29731F;
-			text-shadow: 1px 1px #34922C;			
-			outline: none;
-		}
-		
-	</style>
-
-	<style>
-		
-	/*input[type=checkbox] {
-	    display:none;
-	}*/			
-	input[type=radio] {
-	    display:none;
-	}			
-	.rd-button {
-		width: 18px;
-		height: 18px; 
-		border-style: solid; 
-		border-width: 2px; 
-		border-color: #11520B; 
-		border-radius: 18px;		
-		margin-bottom: -4px;
-		display: inline-block;
-		margin-right: 0px;
-		cursor: pointer;		
-	}
-	.rd-button:focus {
-		box-shadow: 0 0 10px #2899A1; /*#29731F;*/
-		outline: none;
-	}
-	.rd-button:hover {
-		box-shadow: 0 0 10px #1F7C82;
-		outline: none;
-	}
-	.rd-button:select {
-		/*box-shadow: 0 0 10px #2899A1;*/ /*#29731F;*/		
-		outline: none;
-	}
-	.rd-background {
-		background-color: #2899A1; /*#3DC8D1;*/ /*#1F7C82;*/ /*#A5E5B4*/
-	}	
-	.dropdown-1 {
-		width: 106px;
-	}
-	.dropdown-2 {
-		width: 106px;
-	}
-	.dropdown-3 {
-		width: 106px;
-	}
-	.dropdown {
-		font-family: msyh, Arial, Helvetica, sans-serif;
-		font-size: 14px;
-		color: #11520B;
-		background-color: #FFF;
-		border: 2px solid #11520B;
-    	border-radius: 4px;			
-		height: 24px;
-    	position: relative;
-		padding-top: 0px;
-		padding-left: 12px;
-		margin-right: 2px;
-		-webkit-transition: all 0.2s ease-in-out;
-		-moz-transition: all 0.2s ease-in-out;
-		-o-transition: all 0.2s ease-in-out;
-		-ms-transition: all 0.2s ease-in-out;
-		transition: all 0.2s ease-in-out;
-		text-decoration: none;
-		outline: none;
-	}
-	/*.dropdown > .selected {
-		font-family: msyh, Arial, Helvetica, sans-serif;
-		font-size: 14px;
-		color: #11520B;
-		background-color: #D98D2D;
-		border: 2px solid #11520B;
-    	border-radius: 4px;			
-		height: 24px;
-    	position: relative;
-		-webkit-transition: all 0.2s ease-in-out;
-		-moz-transition: all 0.2s ease-in-out;
-		-o-transition: all 0.2s ease-in-out;
-		-ms-transition: all 0.2s ease-in-out;
-		transition: all 0.2s ease-in-out;
-		outline: none;	
-	}*/
-	
-	
-		.input-home-short:focus,
-		.input-home-short:hover {		
-			border-color: #478A3E;
-			/*color: #000;*/
-			-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			   -moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			        box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		}
-		.input-home-short:focus:hover {		
-			border-color: #478A3E;
-			/*color: #000;*/
-			-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			   -moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-			        box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		}
-		.input-home-short:hover {		
-			-webkit-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
-			   -moz-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
-			        box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
-		}
-	
-	
-	.dropdown:focus {
-		color: #1f7c82;
-		/*background-color:#072C53;*/
-		/*-webkit-box-shadow: 0 0 25px #ccc;
-		   -moz-box-shadow: 0 0 25px #ccc;
-		        box-shadow: 0 0 25px #ccc;*/
-		-webkit-box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		   -moz-box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		        box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		-webkit-transform: scale(1.03);
-		-moz-transform: scale(1.03);
-		-webkit-transform: scale(1.03);
-		-moz-transform: scale(1.03);
-		-o-transform: scale(1.03);
-		-ms-transform: scale(1.03);
-		-webkit-transform: scale(1.03);
-		-moz-transform: scale(1.03);
-		-o-transform: scale(1.03);
-		-ms-transform: scale(1.03);
-		-webkit-transform: scale(1.03);
-		-moz-transform: scale(1.03);
-		-o-transform: scale(1.03);
-		-ms-transform: scale(1.03);
-		transform: scale(1.03);
-		outline: none;
-	}
-	.dropdown:focus:hover {
-		color: #1f7c82;
-		-webkit-box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		   -moz-box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		        box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
-		-webkit-transform: scale(1.03);
-		-moz-transform: scale(1.03);
-		-webkit-transform: scale(1.03);
-		-moz-transform: scale(1.03);
-		-o-transform: scale(1.03);
-		-ms-transform: scale(1.03);
-		-webkit-transform: scale(1.03);
-		-moz-transform: scale(1.03);
-		-o-transform: scale(1.03);
-		-ms-transform: scale(1.03);
-		-webkit-transform: scale(1.03);
-		-moz-transform: scale(1.03);
-		-o-transform: scale(1.03);
-		-ms-transform: scale(1.03);
-		transform: scale(1.03);
-		outline: none;
-	}
-	.dropdown:hover {
-		color: #1f7c82;
-		-webkit-box-shadow: 0 0 1px 1px #37633A; /*#185C61;*/
-		   -moz-box-shadow: 0 0 1px 1px #37633A; /*#185C61;*/
-		        box-shadow: 0 0 1px 1px #37633A; /*#185C61;*/
-	}
-	
-	
-	
-	
-	
-	.dropdown.focus > .selected,
-	.dropdown:focus > .selected {
-	    outline: none;
-	}
-	.dropdown > .selected:hover,
-	.dropdown > .selected:focus {
-	    /*cursor: pointer;*/
-	}
-	/*.dropdown1 > .selected i {*/
-	.dropdown > .selected .down-caret {
-	    position: absolute;
-	    top: 0px;
-	    right: 4px;
-	    bottom: 0;
-	    width: 12px;
-	    /*height: 20px;*/
-	    line-height: 20px;
-	    border-left: 2px solid #11520B;
-	    text-align: center;
-	    /*color: #999;*/
-	    color: #11520B;
-	}
-	.dropdown.open > .selected {
-	    -webkit-border-radius: 4px 4px 0px 0px;
-	    border-radius: 4px 4px 0px 0px;
-	}
-	.dropdown ul {
-	    display: none;
-	    position: absolute;
-	    left: 0;
-	    top: 100%;
-	    width: 100%;
-	    background: #FFF;
-	    /*z-index: 1;    */
-	    border: 1px solid #333;
-	    border-top: none;
-	    -webkit-border-radius: 0px 0px 4px 4px;
-	    border-radius: 0px 0px 4px 4px;
-	    box-sizing: border-box;
-	    -moz-box-sizing: border-box;
-	    line-height: 1;
-	    -webkit-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.2);
-	    box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.2);
-	    /*max-height: 300px;*/
-	    overflow: auto;
-	    height: 100px;
-	    margin: 0;
-	    padding-left: 6px;
-	}
-	.dropdown .dropdown-1 ul {
-		height: 100px;
-	}
-	.dropdown .dropdown-2 ul {
-		height: 100px;
-	}
-	.dropdown .dropdown-3 ul {
-		height: 100px;
-	}
-	.dropdown ul li.selected {
-	    /*color: #ACDDE3;*/
-	    color: #000;
-	    /*background: #005C9E;*/
-		background: #FFF;
-	}
-	.dropdown ul li:last-child.selected {
-	    -webkit-border-radius: 0px 0px 4px 4px;
-	    border-radius: 0px 0px 4px 4px;
-	}
-	.dropdown ul li {
-	    position: relative;
-	    display: block;
-	    text-decoration: none;    
-	    color: #1f7c82;
-	    /*padding: 4px 4px;   */    
-	    padding-left: 4px;
-	}
-	.dropdown ul li:first-child {
-	    color: #838383;
-	}
-	.dropdown ul li:first-child.selected {
-	    color: #838383;
-	}
-	.dropdown ul li.hover {
-	    background: #fff;
-	    color: #49853f;
-	    font-weight: bold;
-	}
-		#wrapper {border-bottom: 1px solid #e5e5e5;
-    margin-bottom: 80px;
-    padding-bottom: 150px;}
-	</style>		
-		
-		
-	<!-- <style>
-		
-		.main_logo {
-		  width: 300px;
-		}
-		*, *:after, *:before {
-		    -moz-box-sizing: padding-box;
-		}
-		a.title-home-dark-2 {
-		  padding: 10px;	  
-		}
-		a.profile-type:link {text-decoration:none; color:#49853F;}
-		a.profile-type:hover {
-			text-decoration:none; 
-			color:#49853F; 
-			background: #CDCDCD;
-			border: 1px solid #41B737;
-			border-radius: 3px 3px 3px 3px;
-			padding: 10px;
-		}
-		a.profile-type:active {text-decoration:none; color:#49853F; backgound: #ffffff;}
-		a.profile-type:visited {text-decoration:none; color:#49853F;}
-		.inline-space {
-			height: 30px;
-		}
-		#kfooter {
-		    background-color: #49853F;
-		}
-		
-	</style> -->		
-
-
-	<style>
-		#sign-up {
-		/*background-color: #F8F8F8;
-	    border: 1px solid #41B737;
-	    border-radius: 8px 8px 0 0;*/
-	    box-shadow: 0 4px 4px #CCCCCC;
-	    /*display: table-cell;*/
-	    padding: 8px;
-		width:660px;
-		margin: 10px auto;
-		/*height: 200px;*/
-		}
-		
-		.profile-hover {
-		text-decoration: none;
-		color: #49853f;
-		padding:10px;
-		}
-		
-		div.profile-hover:hover {
-		background: #CDCDCD;
-		border: 1px solid #41b737;
-		border-radius: 3px 3px 3px 3px;
-		color: #49853f;
-		padding: 10px;
-		text-decoration: none;
-		}
-		
-		a.profile-type:link, a.profile-type:hover, a.profile-type:active, a.profile-type:visited {
-		text-decoration:none; color:#cb7508; float:right; margin-right: 100px; margin-left: 75px;
-		}
-		span.title { text-transform:uppercase; text-decoration:underline; font-weight:bold;}
-		.select { float: right; }
-
-
-	</style>
-
-    <style type="text/css">
-		/*body{
-			background: #f2f2f2 url('bg.png') center 40px no-repeat;
-			font-family: Arial, Helvetica, sans-serif;
-		}*/
-        #slidedeck_frame {
-            width: 901px;
-            /*height: 295px;*/
-            height: 324px;
-			margin: 0px auto 0;
-			font-family: Arial, Helvetica, sans-serif;			
-        }
-		.hide {display: none !important;}
-	
-		.top-container {padding-top:20px;}
-
-    </style>
-
-	<style>
-	
-		.wid-100 {
-			width: 100px;
-		}
-		.wid-140 {
-			width: 140px;
-		}		
-		.wid-160 {
-			width: 160px;
-		}
-		.wid-190 {
-			width: 190px;
-		}
-		.wid-200 {
-			width: 200px;
-		}
-		.wid-240 {
-			width: 240px;
-		}
-
-	</style>
-	
-	<style>
-	
-		.tbl-sign {
-			display: table;
-			table-layout: fixed;
-			border-collapse:collapse;
-		}
-		.row-sign {
-			display: table-row;
-		}
-		.cell-sign-1 {
-			display: table-cell;
-			width: 100px;
-		}
-		.cell-sign-2 {
-			display: table-cell;
-			width: 200px;
-		}
-		.cell-sign-3 {
-			display: table-cell;
-			width: 200px;
-		}
-		.cell-sign-4 {
-			display: table-cell;
-			width: 100px;
-		}
-		.text-align-right {
+		.jqmWindow-301 .dialog-topbar-1 {
 			text-align: right;
-		}
-		.text-align-center {
-			text-align: center;
-		}
-		.text-align-left {
-			text-align: left;
-		}
-		.alt-pos {
-			position: absolute;
-			top: -16px;	
-			right: 0px;
-		}
-		
-	</style>
-	
-	<style>
-		
-
-		.pwd-reset span {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #37633A; /*#1f7c82;*/
-		}
-		.pwd-reset span:hover {
-			cursor: pointer;
-			text-decoration: underline;			
-		}
-		#form_new_pwd_reset, #form_new_pwd_reset_a {
-			display: none;
-		}
-		.form-new-pwd-reset-outer {
-			width: 100%;
-			height: 120px;
-			background-color: #F0E4D3;
-			-webkit-box-shadow: inset 2px 2px 6px #888;
-			   -moz-box-shadow: inset 2px 2px 6px #888;
-			        box-shadow: inset 2px 2px 6px #888;							
-		}
-		.form-new-pwd-reset-inner {
-		   	width: 500px;
-   			margin: 0 auto;
-			height: 100px;
-			/*padding-top: 10px;
-			padding-right: 10px;
-			padding-left: 20px;*/
-			background-color: #F0E4D3;
-		}
-		.form-edit-close-pos-rel {
-			width:20px;
 			height:30px;
-			/*background-color: #ddd;*/
-			/*float: right;*/
-		}		
-		.form-edit-close:hover {
-			cursor: pointer;
-			/*background-color: #FFD1D1;*/
-		}		
-		.form-edit-background {
-		 	background-color: #F0E4D3;	
-		}
-		
-		
-	</style>
-
-	<style>
-		
-		.tooltip-text-1 {
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 12px;
-			font-weight: 400;					
-			color: #37633A;	
-			background-color: #FAFF94;
-			/*background-color: #eee;*/
-			border-color: #37633A;
-			box-shadow: 0px 2px 2px #aaa;
-		}
-		.tip-content { display: none; }
-		
-	</style>
-
-	<style>
-		
-		.confirm-pwd-reset {
-			/*padding: 2px 4px 2px 4px;*/
-			margin: 0 auto;
-			text-align: center;
-		}
-		.confirm-pwd-reset span {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #555; /*#37633A;*/ /*#1f7c82;*/
-			background-color:#FCDEE2;		
-			padding: 2px 4px 2px 4px;
-			margin: 0px;	
-			height: 20px;
-		}
-		.confirm-pwd-reset span a {
-			font-family: msyh, Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: orange; /*#37633A;*/ /*#1f7c82;*/
-		}
-		.display-none {
-			display: none;	
-		}
-		/*.confirm-pwd-reset-1 {
-			width: 400px;
-			background-color:#FCDEE2;		
-			padding: 2px 4px 2px 4px;					
-		}
-		.confirm-pwd-reset-2 {
-			width: 400px;	
-			background-color:#FCDEE2;		
-			padding: 2px 4px 2px 4px;				
-		}
-		.confirm-pwd-reset-3 {
-			width: 400px;	
-			background-color:#FCDEE2;		
-			padding: 2px 4px 2px 4px;				
-		}*/
-		.pwd-reset-container-outer {
 			width: 100%;
-		}		
-		.pwd-reset-container-inner {
-			width: 960px;
-			margin: 0 auto;
 			position: relative;
-		}		
-		.pwd-reset-container-spacer {
-			height: 2px;
+			background: -moz-linear-gradient(left,  rgba(55,99,64,0) 0%, rgba(55,99,64,1) 100%);
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(55,99,64,0)), color-stop(100%,rgba(55,99,64,1)));
+			background: -webkit-linear-gradient(left,  rgba(55,99,64,0) 0%,rgba(55,99,64,1) 100%);
+			background: -o-linear-gradient(left,  rgba(55,99,64,0) 0%,rgba(55,99,64,1) 100%);
+			background: -ms-linear-gradient(left,  rgba(55,99,64,0) 0%,rgba(55,99,64,1) 100%);
+			background: linear-gradient(to right,  rgba(55,99,64,0) 0%,rgba(55,99,64,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#376340', endColorstr='#299a0b',GradientType=1 );
 		}
-		
-		
-		.ks-alert-container-outer {
-			width: 490px;
-			margin: 0 auto;
+		.jqmWindow-301 .dialog-topbar-1 .topbar-title {
+			display: inline-block;
+			height: 20px;
+			font-family: quattrocento, sans;
+			font-size: 18px;
+			font-weight: 400;
+			color: #fff;
+			margin-top: 7px;
+			margin-right: 20px;
 		}		
-		.ks-alert-container-inner {
-			width: 490px;
-			margin: 0 auto;
-			position: relative;
+		.jqmWindow-301 .btn-pop-dialog {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			font-weight: 700;		
+			text-align: center;	
+			padding-top: 0px;
+		  	color: #fff;
+		  	text-decoration: none; 
+		  	width: 100px;
+		  	height: 34px;
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		  	background: linear-gradient(#618468, #376340);
+		  	/*text-shadow: 1px 1px 1px #0E86B2;*/
+		  	border: 0px solid #fff; 
+		  	border-radius: 2px;
+		}
+		.jqmWindow-301 .btn-pop-dialog:focus {
+			-webkit-box-shadow: 0 0 1px 1px #49853f;
+			   -moz-box-shadow: 0 0 1px 1px #49853f;
+			        box-shadow: 0 0 1px 1px #49853f;
+			background: linear-gradient(#618468, #376340);
+		}
+		.jqmWindow-301 .btn-pop-dialog:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.jqmWindow-301 .btn-pop-dialog:active { 
+		  	box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	color: #fff;
+		  	background: linear-gradient(#376340, #618468);  	
+		  	outline:none;
+		}
+		.jqmWindow-301 {
+		    display: none;
+		    position: fixed;
+		    top:30%;
+			left: 50%;
+			margin-left: -300px;		    
+		    width: 600px;
+			height: 200px;		    
+		    background-color: #f6f6f6;
+		    color: #333;
+		    border: 4px solid #376340;
+		    padding: 0px;		    
+			/*background-image: url('/assets/icon-notify-1.png') 400px 60px no-repeat;*/
+			background-image: url('/assets/icon-notify-1-w100-h100.png');		
+			background-repeat: no-repeat;    
+			background-position: 480px 80px;
+		}				
+		.jqmWindow-301 .background-table-dialog-1 {
+			padding: 10px 10px;
+			border-top: 1px solid #A6A6A6;
+			border-bottom: 1px solid #A6A6A6;
+			background-color: #fff;			
+			height: 36px;
 		}		
-		.ks-alert-container-spacer {
-			height: 2px;
+		.jqmWindow-301 .table-dialog-1 {
+			display: table;
+			vertical-align: top;
+			width: 100%;
+		}			
+		.jqmWindow-301 .form-edit-close-1 {
+			width:20px;
+			height:20px;
+			float: right;
+			margin-right: 8px;
+			margin-top: 4px;
 		}		
-		.ks-alert {
-			/*padding: 2px 4px 2px 4px;*/
-			margin: 0 auto;
+		.jqmWindow-301 .form-edit-close-1:hover {
+			cursor: pointer;
+		}		
+		.jqmWindow-301 .dialog-msg-container {
 			text-align: center;
+			width: 100%;
 		}
-		.ks-alert span {
-			font-family: msyh, Arial, Helvetica, sans-serif;
+		.jqmWindow-301 .dialog-msg-container span {
+			font-family: quattrocento, sans;
 			font-size: 14px;
-			color: #555; /*#37633A;*/ /*#1f7c82;*/
-			/*background-color:#FCDEE2;*/		
-			padding: 2px 4px 2px 4px;	
+			font-weight: 400;
+			color: #376340;	
 		}
+		.jqmWindow-301 .icon-container-301 {
+			height: 63px; 
+			width: 60px; 
+			float: left; 
+			position: absolute;
+		}
+		.jqmWindow-301 .dialog-icon-1 {
+			width:26px;
+			height:26px;
+			float: right;
+			margin-right: 8px;
+			margin-top: 2px;
+		}		
 		
-		/* #B0E7E3 light turquoise*/
-		/* #B0E7D5 light green */
-		/* #FCDEE2 light red */
-		.ks-alert-notice {
-			background-color: #B0E7D5;
-		}
+		.jqmWindow-202 {
+		    display: none;
+		    position: fixed;
+		    top:30%;
+			left: 50%;
+			margin-left: -300px;		    
+		    width: 520px; /*720px;*/
+			height: 430px; /*660px;*/		    
+		    background-color: #fff;/*#f6f6f6;*/
+		    color: #333;
+		    border: 1px solid #4e5964;/*#376340; /*rgba(55,99,64,1)*/
+		    border-radius: 6px;
+		    padding: 0px;		    
+		}	.jqmWindow-202 .dialog-msg-container-3 {text-align:center; font-size:28px; color:#4e5964;}			
+		
+		
 		
 	</style>
-	
-	
 	
 	<script id="dropdown-data1-selected" type="text/x-dot-template">
 		{{=it.label}}<div class="down-caret">&#9660;</div>
@@ -1460,440 +209,82 @@
 
 
 
-	<!-- <div id="wrapper"> -->
-	
-		<header id="home">
-			<div id="top-bar">
-				<div style="height: 6px;"></div>
-					<!-- <div class="cell-ks-home-1"> -->
-				<div style="width: 420px; display: inline-block; margin-left: 0px;">
-					<a href="#"><img class="logo" src="assets_knowstory/knowstory-icon-2-w634-h212.png" alt=""></a>
-					<div style="height: 6px;"></div>
-					<div style="margin-left: 14px; margin-bottom: 4px;"><img class="logo" src="assets_knowstory/the_story_w309_h28.png" alt=""></div>
-					<!-- <h2 class="slogan">The Story of What You Know</h2> -->
+			<div class="jqmWindow jqmWindow-202" id="dialog_202">
+				<div class="dialog-topbar-1" style="margin-top:0px;">
+					<div style="height: 63px; width: 60px; float: left; position: absolute;">
+						<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+					</div>
+					<!-- text goes here -->
+   					<div id="close_form202" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+   					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					   					
+   					<div style="clear: both;"></div>
 				</div>
-
-				<div style="width: 16px; display: inline-block;"></div>
-				<!-- <div class="cell-ks-home-2"> -->
-				<div style="width: 500px; display: inline-block; margin: 0; vertical-align: top;">
-					
-					
-						<div style="width: 490px; height: 28px; float: right;">
-							<% flash.each do |key, value| %>
-								<div class="ks-alert-container-outer">
-									<div class="ks-alert-container-inner">
-										<div class="ks-alert ks-alert-<%= key %>">
-											<span class=""><%= value %></span>
-										</div>
-									</div>
-								</div>
-								<!-- <div class="ks-alert-container-spacer"></div> -->			    		
-					    		<!--<div class="alert alert-<%= key %>"><%= value %></div>-->
-					    		<!-- <#%= content_tag(:div, value, class: "alert alert-#{key}") %#> -->
-					  		<% end %>
-  						</div>
-						<div style="clear: both;"></div>
-
-
-						<%= form_for(:session, url: sessions_path) do |f| %>	
-
-						<div class="tbl-sign">
-							<div class="row-sign">
-								<div class="cell-sign-1"></div>
-								<div class="cell-sign-2 text-align-right">
-									<%= f.text_field :email, class: 'input-home-short wid-190', :autofocus => true, :tabindex => '1' ,:placeholder => 'Email' %>
-								</div>
-								<div class="cell-sign-3">
-									<input class="input-home-short wid-190" style="margin-left: 10px;" id="session_password" name="session[password]" placeholder="Password" tabindex="2" type="password" />
-									<!-- <#%= f.password_field :password, class: 'input-home-short wid-190 margin-left-10', :tabindex => '2', :placeholder => 'Password' %#> -->
-								</div>
-								<div class="cell-sign-4 text-align-right">
-									<div style="position: relative; height: 1px; width: 100px;">
-									<%= f.submit "Sign In", class: 'signin-btn-home alt-pos', :tabindex => '3' %>
-									</div>
-								</div>
-							</div>
-							<div class="row-sign" style="height: 10px;">
-							</div>
-							<div class="row-sign">
-								<div class="cell-sign-1"></div>
-								<div class="cell-sign-2 text-align-center">
-									<!-- <#%= link_to "Forgot password?", new_password_reset_path, class: 'signin-pref', :tabindex => '4' %#> -->
-									<div id="pwd_reset" class="pwd-reset">
-										<span>Forgot password?</span>
-									</div>
-								</div>
-								<div class="cell-sign-3 text-align-center">
-									<%= f.check_box :remember_me %>
-									<%= f.label :remember_me, nil, class: 'signin-pref', :id => 'ch_remember_me', :tabindex => '5' %>
-								</div>
-								<div class="cell-sign-4">
-								</div>										
-							</div>
-							<div class="row-sign" style="height: 10px;">
-							</div>
-							<div class="row-sign">
-								<div class="cell-sign-1"></div>
-								<div class="cell-sign-2">
-								</div>
-								<div class="cell-sign-3 text-align-right" style="padding-right: 10px;">
-									<span class="not-member">Not yet a member?</span>
-								</div>
-								<div class="cell-sign-4">
-								</div>
-							</div>
+				<!-- <div style="height: 20px;"></div> -->
+				<div class="background-table-dialog-1">
+			   		<div class="table-dialog-1">
+						<div class="dialog-msg-container-3">
+							<span>Sign Up</span>
 						</div>
-						<div style="width: 100%; text-align: right; height: 1px; position: relative;">
-							<!-- <a href="#sign-up" id="submit_signup" class="signup-btn-home-a" style="position: absolute; right: 0px; top: -28px;">
-								<div class="signup-btn-home-div">Sign up</div>
-							</a> -->
+	   				</div>
+   				</div>
+   				<div style="height: 16px;"></div>
+   				<div class="table-dialog-1">
 
-							<div class="signup-btn-home-div btn-signup" style="position: absolute; right: 0px; top: -28px;">Sign up</div>
-						</div>
-						
-						<% end %>								
-					
-				</div>
-			</div>
-			<!-- <div style="clear: both;"></div> -->
-		</header>
-
-
-		<!-- <div class="main">
-			<div id="close_form_new_pwd_reset_1" class="form-edit-close pop-info tip-bottom-center">
-				<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
-			</div>
-		        <div class="tip-content">
-		            <div class="tooltiptext">Close 1</div>
-		        </div>																								
-			<div style="clear: both;"></div>
-		</div> -->
-
-
-
-
-		<div class="pwd-reset-container-outer">
-			<div class="pwd-reset-container-inner">
-				<div id="confirm_pwd_reset_1" class="confirm-pwd-reset display-none">
-					<span><em>Reset Password instructions sent to: </em></span>
-					<span id="confirm_pwd_reset_1_email"></span>
-					<!-- <div class="pwd-reset-container-spacer"></div> -->
-				</div>
-				<div id="confirm_pwd_reset_2" class="confirm-pwd-reset display-none">
-					<span><em>* Send password reset instructions failed</em><br>
-						You may try again or send us a message:<br><a href="#">Contact Us: Subject- Password Reset</a>
-					</span>
-					<br>
-				</div>
-				<!-- <div id="confirm_pwd_reset_3" class="confirm-pwd-reset display-none">
-					<span><em>* No record for this email address: </em></span>
-					<span id="confirm_pwd_reset_3_email"></span>
-				</div> -->
-				<div id="pwd_reset_container_spacer" class="pwd-reset-container-spacer display-none"></div>
-			</div>									
-		</div>
-	   	<div id="form_new_pwd_reset" class="form-new-pwd-reset-outer" style="height: 140px;">
-	   		<div style="height: 10px;"></div>
-	   		<div class="form-new-pwd-reset-inner">
-	   			<div id="form_new_pwd_reset_a">
-			   		<div class="table" style="width: 500px;">
-			   			<div class="row">
-			   				<div class="cell-500" style="height: 26px;">
-			   					<div style="display: inline-block; width: 470px; height: 22px; text-align: right; padding-top: 4px;">
-									<div id="confirm_pwd_reset_3" class="confirm-pwd-reset display-none" style="height: 22px; padding: 0px;">
-										<span><em>* No record for this email address: </em></span>
-										<span id="confirm_pwd_reset_3_email"></span>
-									</div>
-			   					</div>
-			   					<div id="close_form_new_pwd_reset" class="form-edit-close-pos-rel tip" style="display: inline-block; vertical-align: top; height: 30px;">
-			   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
-			   					</div>
-				                <div class="tip-content">
-				                    <div class="tooltiptext">Close</div>
-				                </div>																								
-			   					<!-- <div style="clear: both;"></div> -->
-			   				</div>
-	   					</div>
-						<div class="row">
-							<div class="cell-500" style="height: 84px;">
-								<!-- <div style="height: 10px"></div> -->
-								<%= render 'users/new_pwd_reset' %>
-							</div>
-							
-						</div>							
-					</div>				   				
-				</div>
-			</div>
-		</div>
-		
-		<div style="height: 10px"></div>
-		
-		<div style="width: 740px; height: 100px; margin: 0 auto;">
-			<a href="http://thelearningcounsel.com/LetterRegistration">
-				<img class="logo" src="assets_knowstory/image_coming_soon.png">
-				<span style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; color: red;">
-					This site is under contruction. For news and updates of its release, click here.
-				</span>
-			</a>
-		</div>
-		
-		<%= render 'landing_page/new_nav' %>
-
-		<!-- New Page content: 2nd container-->
-		<div class="main">
-	        <div class="main-pics">
-	          <a href="#student"><img class="first-pic" src="assets_knowstory/profile_pics/student.jpeg" alt="student"></a>
-	          <div class="pics">
-		          <a href="#publisher"><img src="assets_knowstory/profile_pics/publisher.jpeg" alt="publisher"></a>
-		          <a href="#teacher"><img src="assets_knowstory/profile_pics/teacher2.jpeg" alt="teacher"></a>
-		          <a href="#school"><img src="assets_knowstory/profile_pics/school.jpeg" alt="schools & districts"></a>
-		          <a href="#recruiter"><img src="assets_knowstory/profile_pics/college.jpeg" alt="college recruiters"></a>
-	          </div>
-	        </div>
-	
-	        <div class="content">
-	        	<h1>Social Media for Learning.</h1>
-	          <!-- <h1>Latest News</h1>
-	          <div id="box1">
-	          	<p class="box-content">Hello Students!<br/>  This site is for your knowledge Story. Keep a secure record of your classes, grades, photos, best papers, and what you’ve learned in school or out.  Find new apps, websites, content, video, classes and more.  Create clubs and groups.  Connect and share your Story.  Allow college recruiters full or limited access to your Story after turning 14 years old.  Build your own learning word cloud and annual yearbook from your Story.  (COMING SOON – <a href="#sign-up">Sign Up</a> for Release)</p>
-	          </div>
-	          <div id="box2">
-	          	<h1>Finally, a Social Media Site for Learning you can control yourself!</h1>
-	          </div>
-	          <div id="box3">
-	          	<p class="box-content">Hello Teachers, Schools, Publishers & Recruiters!  Build your Story here, connect and share, and make yourself known professionally.  If you’re a teacher, school or district who has digital learning content to make known or sell, make both your own Story and then enter additionally as a Publisher to make a Product Story.  </p>
-	          </div> -->
-
-	          <div class="clearfix"></div>
-	
-	        </div>
-	
-	        <div class="ad-boxes1 clearfix" style="">	        	
-	          <!-- <#%= render 'landing_page/ad_boxes' %#> -->
-	        </div>
-	        <div style="height: 4px;"></div>
-		</div> <!-- End main div -->
-		
-	<!-- </div> -->
-		<!-- End 2nd container -->
-	
-	
-	<!-- <style>
-		.sign-button-3 {
-		  margin:45px 0;
-		}
-		.sign-button-link-3 {
-		  border-radius: 6px;
-		  border: 1px solid #b1ccaf;
-		  line-height: 1.33;
-		  color: #49853F;
-		  background: transparent;
-		  font-size: 22px;
-		  padding: 15px 65px;
-		  text-decoration: none;
-		}
-		.sign-button-link-3:hover {
-		  background: #49853F; 
-		  text-decoration: underline; 
-		  color: #FFF;
-		  cursor: pointer;
-		}
-	</style> -->
-	
-	<!-- 3rd container with profile types-->			
-	<!-- <div class="wrap"> --> 
-		<div id="student"><%= render 'landing_page/new_nav' %></div>
-		<div class="container3 center odd">
-			<img style="margin-bottom: 180px;" src="assets_knowstory/profile_pics/student2.jpeg" alt="Students" class="profile-image">
-			<h1>Student Story</h1>
-			<h2>You control the Story<br/> of what you Know</h2>
-			
-			<p>&#x25cf; Timeline from Kindergarten to High School to ongoing Professional Development and Personal Enhancement </p>
-			<p>&#x25cf; Grades | Scores | Merit Badges</p> 
-			<p>&#x25cf; Class notes | Photos | Clubs</p>
-			<p>&#x25cf; Favorite Apps | Sites | eBooks</p>
-			<p>&#x25cf; Personalized Yearbooks | Shopping List of Colleges</p> 
-			<p>&#x25cf; After 14 years old you can share records or your whole Story with college recruiters.</p>  
-			<p>&#x25cf; Invite friends and win Credits towards:<br/>
-			&nbsp;- 1 Year Free – Personalized Yearbook  or <br/>
-			&nbsp;- 1 Year Free -- College Recruiter Share-Mail </p>
-			
-			<div class="sign-button-3">
-				<!-- <a class="sign-button-link-2" href="#sign-up">Sign up</a> -->
-				<div class="sign-button-link-3 btn-signup" style="width: 240px;">Sign up</div>
-		  	</div>
-		</div> <!-- End 3rd container, student -->
-	
-		<div id="teacher"><%= render 'landing_page/new_nav' %></div>
-		<div class="container3 center even">
-			<img src="assets_knowstory/profile_pics/teacher3.jpeg" alt="Teacher" class="profile-image">
-			<h1>Teacher Story</h1>
-			<h2>Your professional knowledge Story</h2>
-
-			<p>Keep a personal record of all your professional development and find learning content.  Use KnowStory to analyze gaps in what you have digital versus what you may need against the lesson time you have by subject, topic, grade, standards and other fields.</p>
-			<p>&#x25cf; Link with other Teachers | Form Groups</p>
-			<p>&#x25cf; Validate Student Grades and Scores | Award Student Merit Badges</p>
-			<p>&#x25cf; Advance Your Career</p>
-			
-			<!-- <div class="sign-button-2">
-				<a class="sign-button-link-2" href="#sign-up">Sign up</a>
-		  	</div> -->
-		  	
-			<div class="sign-button-3">
-				<!-- <a class="sign-button-link-2" href="#sign-up">Sign up</a> -->
-				<div class="sign-button-link-3 btn-signup" style="width: 240px;">Sign up</div>
-		  	</div>		  	
-		</div> <!-- End 3rd container, teacher -->
-	
-		<div id="publisher"><%= render 'landing_page/new_nav' %></div>
-		<div class="container3 center odd">
-			<img src="assets_knowstory/profile_pics/publisher2.jpeg" alt="Publisher" class="profile-image">
-			<h1>Publisher Story</h1>
-			<h2>Tell your Story of<br/> helping others know</h2>
-			
-			<p>KnowStory helps you reach schools, teachers and students with free or premium Stories.</p>
-			<p>&#x25cf; Market your Story | Gain Followers by Product</p>
-			<p>&#x25cf; Get Listed in Searches | Get “Pinned” on our Poster | Advertise</p>
-			<p>&#x25cf; See Bids | See Top Search Terms</p>
-			<p>&#x25cf; Get Your Story, Listing & Ad Click Analytics (Individual Students <span style="text-decoration: underlin;">Always</span> Remain Anonymous)</p>
-			
-			<!-- <div class="sign-button-2">
-				<a class="sign-button-link-2" href="#sign-up">Sign up</a>
-		  	</div> -->
-		  	
-			<div class="sign-button-3">
-				<!-- <a class="sign-button-link-2" href="#sign-up">Sign up</a> -->
-				<div class="sign-button-link-3 btn-signup" style="width: 240px;">Sign up</div>
-		  	</div>		  	
-		</div> <!-- End 3rd container, publisher -->
-	
-		<div id="school"><%= render 'landing_page/new_nav' %></div>
-		<div class="container3 center even">
-			<img style="margin-bottom: 270px;" src="assets_knowstory/profile_pics/school2.jpeg" alt="School" class="profile-image">
-			<h1>School or District Story</h1>
-			<h2>Build the Story of your unique knowledge blend</h2>
-
-			<p>Have an online social presence with a free or premium Story. </p>
-			<p>&#x25cf; Manage your Digital Curriculum Inventory | Analyze Gaps against your Digital Goals</p> 
-			<p>&#x25cf; Search by Grade, Subject, Topic, Lesson-Time Used, Platform, File-Type, Standards, Enhancements, Ratings/Reviews, Cost Structure and more</p>
-			<p>&#x25cf; Professional Publisher Content | Apps, Sites, eBooks, Software, Classes, Resources | Reviewed/Non-Reviewed | Open Education Resources</p> 
-			<p>&#x25cf; Post Bids | Post Requests-for-Solutions</p>                       
-			<p>&#x25cf; Post your own digital products as a Publisher</p>
-			<p>&#x25cf; Create groups of interest for sharing and advice</p>
-			<p>&#x25cf; Manage Student & College Requests for Transcript Validations</p>
-			
-			<!-- <div class="sign-button-2">
-				<a class="sign-button-link-2" href="#sign-up">Sign up</a>
-		  	</div> -->
-		  	
-			<div class="sign-button-3">
-				<!-- <a class="sign-button-link-2" href="#sign-up">Sign up</a> -->
-				<div class="sign-button-link-3 btn-signup" style="width: 240px;">Sign up</div>
-		  	</div>		  	
-		</div> <!-- End 3rd container, school -->
-	
-		<div id="recruiter"><%= render 'landing_page/new_nav' %></div>
-		<div class="container3 center odd">
-			<img src="assets_knowstory/profile_pics/college2.jpeg" alt="College" class="profile-image" style="margin-bottom: 350px;">
-			<h1>College or University Story</h1>
-			<h2>Your Story for expanded knowledge</h2>
-
-			<p>Have an online social presence for your institution with a free or premium Story.</p>
-			<p>&#x25cf; Recruit college-interested students | Search student interests and see public student profiles</p>
-			<p>&#x25cf; Create groups of interest for sharing and advice such as<br/> “Class of 20XX” | “Alumni” | “Dean’s List” and more</p>
-			<p>&#x25cf; Link with neighboring districts and schools</p> 
-			<p>&#x25cf; Manage your Digital Curriculum Inventory | Analyze Gaps against your Digital Goals</p> 
-			<p>&#x25cf; Search by Grade, Subject, Topic, Lesson-Time Used, Platform, File-Type, Standards, Enhancements, Ratings/Reviews, Cost Structure and more</p>
-			<p>&#x25cf; Professional Publisher Content | Apps, Sites, eBooks, Software, Classes, Resources | Reviewed/Non-Reviewed | Open Education Resources</p> 
-			<p>&#x25cf; Post Bids | Post Requests-for-Solutions</p>
-			<p>&#x25cf; Post your own digital products as a Publisher</p>
-			<p>&#x25cf; Manage Student & College Requests for Transcript Validations</p>
-
-			<!-- <div class="sign-button-2">
-				<a class="sign-button-link-2" href="#sign-up">Sign up</a>
-		  	</div> -->
-		  	
-			<div class="sign-button-3">
-				<!-- <a class="sign-button-link-2" href="#sign-up">Sign up</a> -->
-				<div class="sign-button-link-3 btn-signup" style="width: 240px;">Sign up</div>
-		  	</div>		  	
-		</div> <!-- End 3rd container, recruiter -->
-						
-		<!-- </div> --> 
-		
-		<h1 style="margin:0 auto; color:#11520b; width: 660px;">Sign up. It's fast, easy and free.</h1>
-		<div id="sign-up">
-			<!-- <p>Sign up box here</p> -->
-				
 	    	<%= form_for User.new, :html => {:id => 'form_user_new' } do |f| %>	
 	
 			<div class="form-home-table">
-				<div class="form-home-row">
-					<div class="form-home-cell-1">
-						<%= f.label(:name_first, 'First Name', class: 'input-label-home') %>
-					</div>
-					<div class="form-home-cell-2">
-						<%= f.text_field :name_first, class: 'input-home', :tabindex => '12', :autofocus => false %>	
-					</div>
-				</div>
+				
 				<div class="form-home-row-space"></div>
 				<div class="form-home-row">
-					<div class="form-home-cell-1">
-						<%= f.label(:name_last, 'Last Name', class: 'input-label-home') %>
-					</div>
-					<div class="form-home-cell-2">
-						<%= f.text_field :name_last, class: 'input-home', :tabindex => '13' %>
-					</div>
-				</div>
-				<div class="form-home-row-space"></div>
-				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
 					<div class="form-home-cell-1">
 						<%= f.label(:email, 'Email', class: 'input-label-home') %>
 					</div>
 					<div class="form-home-cell-2">
-						<%= f.text_field :email, class: 'input-home', :tabindex => '14' %>
+						<%= f.text_field :email, class: 'input-home input-required', :tabindex => '14' %>
 					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_email"></label></div>															
 				</div>
+				
 				<div class="form-home-row-space"></div>
 				<div class="form-home-row">
-					<div class="form-home-cell-1">
-						<%= f.label(:username, 'Username', class: 'input-label-home') %>
-					</div>
-					<div class="form-home-cell-2">
-						<%= f.text_field :username, class: 'input-home', :tabindex => '15' %>
-					</div>
-				</div>
-				<div class="form-home-row-space"></div>
-				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
 					<div class="form-home-cell-1">
 						<%= f.label(:password, 'Password', class: 'input-label-home') %>
 					</div>
 					<div class="form-home-cell-2">
-						<%= f.password_field :password, class: 'input-home', :tabindex => '16' %>
+						<%= f.password_field :password, class: 'input-home input-required', :tabindex => '16' %>
 					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_password"></label></div>																				
 				</div>
 				<div class="form-home-row-space"></div>
 				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
 					<div class="form-home-cell-1">
 						<%= f.label(:password_confirmation, 'Confirm Password', class: 'input-label-home') %>
 					</div>
 					<div class="form-home-cell-2">
-						<%= f.password_field :password_confirmation, class: 'input-home', :tabindex => '17' %>
+						<%= f.password_field :password_confirmation, class: 'input-home input-required', :tabindex => '17' %>
 					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_password_confirmation"></label></div>																				
 				</div>
 			</div>
 			
 			<div style="height: 20px;"></div>
-			
+
 			<div style="width: 100%;">
 				<div style="width: 200px; margin: 0 auto;">
 					<div class="form-home-table" style="text-align: center;">
 						<div class="form-home-row">						
 							<div class="form-home-cell-gender-1" style="text-align: center; padding-right: 0px; width: 30%;">
-								<label id="label_gender_male" class="input-label-home" for="gender_male" onclick="rd_gender('male');" tabindex="">Male</label>
+								<label id="label_gender_male" class="input-label-home label-hover" for="gender_male" onclick="rd_gender('male');" tabindex="">Male</label>
 							</div>
 							<div class="form-home-cell-gender-2" style="text-align: center; padding-left: 0px; width: 30%;">
-								<label id="label_gender_female" class="input-label-home" for="gender_female" onclick="rd_gender('female');" tabindex="">Female</label>
+								<label id="label_gender_female" class="input-label-home label-hover" for="gender_female" onclick="rd_gender('female');" tabindex="">Female</label>
 							</div>
 						</div>							
 						<div class="form-home-row">						
@@ -2003,16 +394,505 @@
 					</div>
 					<!-- <div class="form-home-cell-bd-space">
 					</div> -->		
-					
-					<div class="form-home-cell-bd-why">
-						<span><a class="inline input-label-home-a" href="#inline_bd_why" tabindex="23">Why your birthday?</a></span>
-					</div>								
-											
+
 				</div>
 			</div>
+
+			<!-- <div class="form-home-cell-bd-why"> -->
+			<div style="width: 100%; margin: 10px 0 8px 0;">
+				<div style="width: 156px; margin: 0 auto; height: 5px;">
+					<!-- <span><a class="inline input-label-home-a" href="#inline_bd_why" tabindex="23">Why ask for Birthday?</a></span> -->
+				</div>
+			</div>								
+							
+			<div class="form-home-table form-types" style="width: 400px;">
+				<div class="form-home-row">						
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<label id="label_profile_type_1" class="input-label-home" for="profile_type_1" onclick="rd_profile_type('0');" tabindex="">Student</label>
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<label id="label_profile_type_2" class="input-label-home" for="profile_type_2" onclick="rd_profile_type('1');" tabindex="">Teacher</label>
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<label id="label_profile_type_3" class="input-label-home" for="profile_type_3" onclick="rd_profile_type('2');" tabindex="">Publisher</label>
+					</div>
+					<div style="display:none;" class="form-home-cell-profile-type" style="text-align: center;">
+						<label id="label_profile_type_4" class="input-label-home" for="profile_type_4" onclick="rd_profile_type('3');" tabindex="">School</label>
+					</div>
+					<div style="display:none;" class="form-home-cell-profile-type" style="text-align: center;">
+						<label id="label_profile_type_5" class="input-label-home" for="profile_type_5" onclick="rd_profile_type('4');" tabindex="">Recruiter</label>
+					</div>
+				</div>							
+
+				<div class="form-home-row">
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<div id="rd_profile_type_1" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_11" type="radio" name="user[profile_type]" value="1">
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<div id="rd_profile_type_2" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_12" type="radio" name="user[profile_type]" value="2">
+					</div>
+					<div class="form-home-cell-profile-type" style="text-align: center;">
+						<div id="rd_profile_type_3" class="rd-button" tabindex="24"></div>
+						<input id="user_profile_type_13" type="radio" name="user[profile_type]" value="3">
+						<!-- <#%= f.radio_button(:profile_type, 3, :checked => true) %#> -->
+					</div>
+					<div style="display:none;" class="form-home-cell-profile-type" style="text-align: center;">
+						<div id="rd_profile_type_4" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_14" type="radio" name="user[profile_type]" value="4">						
+					</div>
+					<div style="display:none;" class="form-home-cell-profile-type" style="text-align: center;">
+						<div id="rd_profile_type_5" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_15" type="radio" name="user[profile_type]" value="5">
+					</div>
+				</div>
+			</div>
+			<div style="height: 15px;"></div>							
+			<div class="form-home-table">
+				<div class="form-home-row">
+					<div class="form-home-cell-2">
+						<%= f.submit '', :id => 'submit_new_hidden', class: 'hidden', :tabindex => '' %>
+						<div id="submit_new" class="signup-btn-home" tabindex="25">
+							Submit
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div style="width: 80px; height: 20px; margin: 16px 0 0 50px;" class="boxtemp-red">Submit</div> -->
+			<% end %>
+
+
+
+
+
+				</div>														   				
+				<div style="height: 20px;"></div>
+			</div>
 	
-			<div style="height: 24px;"></div>							
+	
+			<div id="dialog_301" class="jqmWindow-301">
+				<div class="dialog-topbar-1">
+					<div class="icon-container-301">
+						<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+					</div>
+   					<div class="form-edit-close-1 jqmClose tip-left-center">
+   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+   					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					   					
+   					<div style="clear: both;"></div>
+				</div>
+				<!-- <div style="height: 20px;"></div> -->
+				<div class="background-table-dialog-1">
+			   		<div class="table-dialog-1">
+						<div class="dialog-msg-container">
+							<span></span>
+						</div>
+	   				</div>
+   					<!-- <div class="dialog-icon-1">
+   						<img src="/assets/icon-notify-1-w26-h26.png" alt="" height="26px">
+   					</div> -->	   				
+   				</div>
+   				<div style="height: 8px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+						<div class="dialog-msg-container" style="width: 100%; text-align: center;">						
+							<span>The email address,</span>
+						</div>
+   					</div>
+   				</div>
+   				<div style="height: 1px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+						<div class="dialog-msg-container dialog-msg-show-1" style="width: 100%; text-align: center;">						
+							<span></span>
+						</div>
+   					</div>
+   				</div>
+   				<div style="height: 1px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+						<div class="dialog-msg-container" style="width: 100%; text-align: center;">						
+							<span>is already in use.</span>
+						</div>
+   					</div>
+   				</div>
+   				<div style="height: 8px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+		   				<div class="cell-100percent" style="text-align: center;">
+							<input class="btn-pop-dialog btn-dialog-close" type="button" value="Close" tabindex="">
+		   				</div>
+   					</div>
+				</div>														   				
+				<div style="height: 20px;"></div>
+			</div>
+
+	
+	<div id="home-wrap" class="">
+		<header id="home" class="">
+			<div id="top-bar">
 			
+					<!-- <div class="cell-ks-home-1"> -->
+				<div style="width: 420px; display: inline-block; margin-left: 0px;">
+					<a href="#"><img class="logo" src="assets_knowstory/ks-top-logo.png" alt=""></a>
+				
+					<!--<h2 class="slogan">The Story of What You Know</h2>-->
+				</div>
+
+				<div style="width: 16px; display: inline-block;"></div>
+				<!-- <div class="cell-ks-home-2"> -->
+				<div style="width: 305px; display: inline-block; margin: 28px 0 0; vertical-align: top; float:right;">
+					
+					
+						<div style="width: 490px; height: 8px; float: right;">
+							<% flash.each do |key, value| %>
+								<div class="ks-alert-container-outer">
+									<div class="ks-alert-container-inner">
+										<div class="ks-alert ks-alert-<%= key %>">
+											<span class=""><%= value %></span>
+										</div>
+									</div>
+								</div>
+								<!-- <div class="ks-alert-container-spacer"></div> -->			    		
+					    		<!--<div class="alert alert-<%= key %>"><%= value %></div>-->
+					    		<!-- <#%= content_tag(:div, value, class: "alert alert-#{key}") %#> -->
+					  		<% end %>
+  						</div>
+						<div style="clear: both;"></div>
+
+						<div class="get-started"><span>Sign Up</span></div>
+						<div id="open_signin">Sign in</div>
+						
+					<% if false %>
+						<%= form_for(:session, url: sessions_path) do |f| %>	
+
+						<div class="tbl-sign">
+							<div class="row-sign">
+								<div class="cell-sign-1"></div>
+								<div class="cell-sign-2 text-align-right">
+									<%= f.text_field :email, class: 'input-home-short wid-190', :autofocus => true, :tabindex => '1' ,:placeholder => 'Email' %>
+								</div>
+								<div class="cell-sign-3">
+									<input class="input-home-short wid-190" style="margin-left: 10px;" id="session_password" name="session[password]" placeholder="Password" tabindex="2" type="password" />
+									<!-- <#%= f.password_field :password, class: 'input-home-short wid-190 margin-left-10', :tabindex => '2', :placeholder => 'Password' %#> -->
+								</div>
+								<div class="cell-sign-4 text-align-right">
+									<div style="position: relative; height: 1px; width: 100px;">
+									<%= f.submit "Sign In", class: 'signin-btn-home alt-pos', :tabindex => '3' %>
+									</div>
+								</div>
+							</div>
+							<div class="row-sign" style="height: 6px;">
+							</div>
+							<div class="row-sign">
+								<div class="cell-sign-1"></div>
+								<div class="cell-sign-2 text-align-center">
+									<!-- <#%= link_to "Forgot password?", new_password_reset_path, class: 'signin-pref', :tabindex => '4' %#> -->
+									<div id="pwd_reset" class="pwd-reset">
+										<span>Forgot password?</span>
+									</div>
+								</div>
+								<div class="cell-sign-3 text-align-center">
+									<%= f.check_box :remember_me %>
+									<%= f.label :remember_me, nil, class: 'remember-me-link', :id => 'ch_remember_me', :tabindex => '5' %>
+								</div>
+								<div class="cell-sign-4">
+								</div>										
+							</div>
+						
+							</div>
+			
+						</div>
+						<% end %>								
+					<% end %>
+										
+				</div>
+			<!-- <div style="clear: both;"></div> -->
+		</header>
+
+
+		<!-- <div class="main">
+			<div id="close_form_new_pwd_reset_1" class="form-edit-close pop-info tip-bottom-center">
+				<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+			</div>
+		        <div class="tip-content">
+		            <div class="tooltiptext">Close 1</div>
+		        </div>																								
+			<div style="clear: both;"></div>
+		</div> -->
+
+	   	<div id="form_signin" class="form-signin-outer" style="height: 95px;">
+	   		<div style="height: 5px;"></div>
+	   		<div class="form-signin-inner">
+	   			<div id="form_signin_a">
+			   		<div class="table" style="width: 500px;">
+			   			<div class="row">
+			   				<div class="cell-500" style="height: 25px;">
+			   					<div id="close_form_signin" class="form-edit-close-pos-rel tip" style="display: inline-block; vertical-align: top; height: 25px;">
+			   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+			   					</div>
+				                <div class="tip-content">
+				                    <div class="tooltiptext">Close</div>
+				                </div>																								
+			   				</div>
+	   					</div>
+						<div class="row">
+							<div class="cell-500" style="height: 60px;">
+								<%= render 'users/signin' %>
+							</div>
+						</div>							
+					</div>				   				
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="pwd-reset-container-outer">
+			<div class="pwd-reset-container-inner">
+				<div id="confirm_pwd_reset_1" class="confirm-pwd-reset display-none">
+					<span><em>Reset Password instructions sent to: </em></span>
+					<span id="confirm_pwd_reset_1_email"></span>
+					<!-- <div class="pwd-reset-container-spacer"></div> -->
+				</div>
+				<div id="confirm_pwd_reset_2" class="confirm-pwd-reset display-none">
+					<span><em>* Send password reset instructions failed</em><br>
+						You may try again or send us a message:<br><a href="#">Contact Us: Subject- Password Reset</a>
+					</span>
+					<br>
+				</div>
+				<!-- <div id="confirm_pwd_reset_3" class="confirm-pwd-reset display-none">
+					<span><em>* No record for this email address: </em></span>
+					<span id="confirm_pwd_reset_3_email"></span>
+				</div> -->
+				<div id="pwd_reset_container_spacer" class="pwd-reset-container-spacer display-none"></div>
+			</div>									
+		</div>
+	   	<div id="form_new_pwd_reset" class="form-new-pwd-reset-outer" style="height: 105px;">
+	   		<div style="height: 5px;"></div>
+	   		<div class="form-new-pwd-reset-inner">
+	   			<div id="form_new_pwd_reset_a">
+			   		<div class="table" style="width: 500px;">
+			   			<div class="row">
+			   				<div class="cell-500" style="height: 26px;">
+			   					<div style="display: inline-block; width: 470px; height: 22px; text-align: right; padding-top: 4px;">
+									<div id="confirm_pwd_reset_3" class="confirm-pwd-reset display-none" style="height: 22px; padding: 0px;">
+										<span><em>* No record for this email address: </em></span>
+										<span id="confirm_pwd_reset_3_email"></span>
+									</div>
+			   					</div>
+			   					<div id="close_form_new_pwd_reset" class="form-edit-close-pos-rel tip" style="display: inline-block; vertical-align: top; height: 20px;">
+			   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+			   					</div>
+				                <div class="tip-content">
+				                    <div class="tooltiptext">Close</div>
+				                </div>																								
+			   					<!-- <div style="clear: both;"></div> -->
+			   				</div>
+	   					</div>
+						<div class="row">
+							<div class="cell-500" style="height: 50px;">
+								<!-- <div style="height: 10px"></div> -->
+								<%= render 'users/new_pwd_reset' %>
+							</div>
+						</div>							
+					</div>				   				
+				</div>
+			</div>
+		</div>
+
+		
+		<div style="height: 10px"></div>
+		<!--<div id="main-header">
+			<h1>The Story of What you Know</h1>
+		</div>-->
+
+
+		<div id="sign_wrap" class="sign-wrap" style="display:none;">
+			
+			<!-- Start Signup Div-->
+		<div id="sign-up" class="signup-box">
+		
+			<!-- <h1 style="margin:0 auto; color:#47b64a; width: 135px; margin-bottom:25px;">Sign up</h1> -->		
+			<div style="height: 12px;"></div>			
+			<div style="text-align:center;">
+				<span class="span-title">Sign up</span>	
+			</div>
+			<div style="height: 24px;"></div>					
+				
+	    	<%= form_for User.new, :html => {:id => 'form_user_new' } do |f| %>	
+	
+			<div class="form-home-table">
+				
+				<div class="form-home-row-space"></div>
+				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
+					<div class="form-home-cell-1">
+						<%= f.label(:email, 'Email', class: 'input-label-home') %>
+					</div>
+					<div class="form-home-cell-2">
+						<%= f.text_field :email, class: 'input-home input-required', :tabindex => '14' %>
+					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_email"></label></div>															
+				</div>
+				
+				<div class="form-home-row-space"></div>
+				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
+					<div class="form-home-cell-1">
+						<%= f.label(:password, 'Password', class: 'input-label-home') %>
+					</div>
+					<div class="form-home-cell-2">
+						<%= f.password_field :password, class: 'input-home input-required', :tabindex => '16' %>
+					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_password"></label></div>																				
+				</div>
+				<div class="form-home-row-space"></div>
+				<div class="form-home-row">
+					<div class="form-home-cell-1a"></div>
+					<div class="form-home-cell-1">
+						<%= f.label(:password_confirmation, 'Confirm Password', class: 'input-label-home') %>
+					</div>
+					<div class="form-home-cell-2">
+						<%= f.password_field :password_confirmation, class: 'input-home input-required', :tabindex => '17' %>
+					</div>
+					<div class="form-home-cell-4 form-error-container"><label class="error form-error-label" for="user_password_confirmation"></label></div>																				
+				</div>
+			</div>
+			
+			<div style="height: 20px;"></div>
+
+			<div style="width: 100%;">
+				<div style="width: 200px; margin: 0 auto;">
+					<div class="form-home-table" style="text-align: center;">
+						<div class="form-home-row">						
+							<div class="form-home-cell-gender-1" style="text-align: center; padding-right: 0px; width: 30%;">
+								<label id="label_gender_male" class="input-label-home label-hover" for="gender_male" onclick="rd_gender('male');" tabindex="">Male</label>
+							</div>
+							<div class="form-home-cell-gender-2" style="text-align: center; padding-left: 0px; width: 30%;">
+								<label id="label_gender_female" class="input-label-home label-hover" for="gender_female" onclick="rd_gender('female');" tabindex="">Female</label>
+							</div>
+						</div>							
+						<div class="form-home-row">						
+							<div class="form-home-cell-gender-1" style="text-align: center; padding-right: 0px;">
+								<!-- <div id="rd_gender_male" class="rd-button"></div> -->
+								<div id="rd_gender_male" class="rd-button" tabindex="18"></div>
+								<%= f.radio_button(:gender, 0) %>
+								<!-- <div style="position: relative; top: 4px;">
+									<#%= f.radio_button(:gender, 0) %#>
+								</div> -->
+							</div>
+							<div class="form-home-cell-gender-2" style="text-align: center; padding-left: 0px;">
+								<!-- <div id="rd_gender_female" class="rd-button"></div> -->
+								<div id="rd_gender_female" class="rd-button" tabindex="19"></div>
+								<%= f.radio_button(:gender, 1) %>
+								<!-- <div style="position: relative; top: 4px;">
+									<#%= f.radio_button(:gender, 1) %#>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div style="height: 20px;"></div>
+			
+			<div class="form-home-table-bd">
+				<div class="form-home-row-bd">
+					<div class="form-home-cell-bd">
+						<span class="input-label-home">Birthday</span>
+					</div>								
+					<div class="form-home-cell-month">
+						<select id="user_bd_month" name="user[bd_month]" data-template="#dropdown-data1" tabindex="">
+							<option value="0">-Month-</option>
+							<option value="1">Jan</option>
+							<option value="2">Feb</option>
+							<option value="3">Mar</option>
+							<option value="4">Apr</option>
+							<option value="5">May</option>
+							<option value="6">Jun</option>
+							<option value="7">Jul</option>
+							<option value="8">Aug</option>
+							<option value="9">Sep</option>
+							<option value="10">Oct</option>
+							<option value="11">Nov</option>
+							<option value="12">Dec</option>
+						</select>		
+			   		<!-- <#%= f.select("bd_month", options_for_select(
+			   				[['-Month-','0'],
+			   				['Jan','1'],
+			   				['Feb','2'],
+			   				['Mar','3'],
+			   				['Apr','4'],
+			   				['May','5'],
+			   				['Jun','6'],
+			   				['Jul','7'],
+			   				['Aug','8'],
+			   				['Sep','9'],
+			   				['Oct','10'],
+			   				['Nov','11'],
+			   				['Dec','12']]), :class => 'btn-bd-month', :html => {:id => 'bd_month'}) %#> -->
+					</div>
+					<div class="form-home-cell-day">
+						<select id="user_bd_day" name="user[bd_day]" data-template="#dropdown-data2" tabindex="">
+							<option value="0">-Day-</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+							<option value="27">27</option>
+							<option value="28">28</option>
+							<option value="29">29</option>
+							<option value="30">30</option>
+							<option value="31">31</option>
+						</select>		
+					</div>
+					<div class="form-home-cell-year">
+					<!-- <#%= f.collection_select :bd_year, @bd_years, :id, :year, :html => {}  %#> -->		
+						<select id="user_bd_year" name="user[bd_year]" data-template="#dropdown-data3" tabindex="">
+							<option value="0">-Year-</option>
+							<% @bd_years.each do|bd_year| %>
+								<option value="<%= bd_year.year %>"><%= bd_year.year %></option>
+							<% end %>
+						</select>		
+					</div>
+					<!-- <div class="form-home-cell-bd-space">
+					</div> -->		
+
+				</div>
+			</div>
+
+			<!-- <div class="form-home-cell-bd-why"> -->
+			<div style="width: 100%; margin: 14px 0 8px 0;">
+				<div style="width: 156px; margin: 0 auto; height: 24px;">
+					<!-- <span><a class="inline input-label-home-a" href="#inline_bd_why" tabindex="23">Why ask for Birthday?</a></span> -->
+				</div>
+			</div>								
+							
 			<div class="form-home-table form-types" style="width: 400px;">
 				<div class="form-home-row">						
 					<div class="form-home-cell-profile-type" style="text-align: center;">
@@ -2031,88 +911,221 @@
 						<label id="label_profile_type_5" class="input-label-home" for="profile_type_5" onclick="rd_profile_type('4');" tabindex="">Recruiter</label>
 					</div>
 				</div>							
+
 				<div class="form-home-row">
 					<div class="form-home-cell-profile-type" style="text-align: center;">
-						<div id="rd_profile_type_1" class="rd-button" tabindex="24"></div>
-						<%= f.radio_button(:profile_type, 1) %>
+						<div id="rd_profile_type_1" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_11" type="radio" name="user[profile_type]" value="1">
 					</div>
 					<div class="form-home-cell-profile-type" style="text-align: center;">
-						<div id="rd_profile_type_2" class="rd-button" tabindex="25"></div>
-						<%= f.radio_button(:profile_type, 2) %>
+						<div id="rd_profile_type_2" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_12" type="radio" name="user[profile_type]" value="2">
 					</div>
 					<div class="form-home-cell-profile-type" style="text-align: center;">
-						<div id="rd_profile_type_3" class="rd-button" tabindex="26"></div>
-						<%= f.radio_button(:profile_type, 3) %>
+						<div id="rd_profile_type_3" class="rd-button" tabindex="24"></div>
+						<input id="user_profile_type_13" type="radio" name="user[profile_type]" value="3">
+						<!-- <#%= f.radio_button(:profile_type, 3, :checked => true) %#> -->
 					</div>
 					<div class="form-home-cell-profile-type" style="text-align: center;">
-						<div id="rd_profile_type_4" class="rd-button" tabindex="27"></div>
-						<%= f.radio_button(:profile_type, 4) %>
+						<div id="rd_profile_type_4" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_14" type="radio" name="user[profile_type]" value="4">						
 					</div>
 					<div class="form-home-cell-profile-type" style="text-align: center;">
-						<div id="rd_profile_type_5" class="rd-button" tabindex="28"></div>
-						<%= f.radio_button(:profile_type, 5) %>
+						<div id="rd_profile_type_5" class="rd-button-disabled" tabindex=""></div>
+						<input id="user_profile_type_15" type="radio" name="user[profile_type]" value="5">
 					</div>
 				</div>
 			</div>
 			<div style="height: 30px;"></div>							
 			<div class="form-home-table">
 				<div class="form-home-row">
-					
 					<div class="form-home-cell-2">
-						<%= f.submit 'Submit', class: 'signup-btn-home', :tabindex => '29' %>
+						<%= f.submit '', :id => 'submit_new_hidden', class: 'hidden', :tabindex => '' %>
+						<div id="submit_new" class="signup-btn-home" tabindex="25">
+							Submit
+						</div>
 					</div>
 				</div>
 			</div>
-	
+			<!-- <div style="width: 80px; height: 20px; margin: 16px 0 0 50px;" class="boxtemp-red">Submit</div> -->
 			<% end %>
 		
-			<div style='display:none'>
-				<div id='inline_bd_why' style='padding:10px; background:#fff;'>
-				<h2 style="color: #49853F;">Why your birthday?</h2>
-				<p>
-				   Your birthdate helps us provide the right Knowstory experience for your age.
-				   Birthdates remain completely private, unless visibility options are selected in the profile settings. 
-				   For adults over the age of 18, by default, birthdates are not disclosed publically.
-				   That is, they are not shown in the profile pages. Nor, are they used in searches
-				   or email. But it is encouraged to enable certain birthdate options, 
-				   For example, recruiters may search for students through a specified range of ages.  
-				   For minors, ages 15 and below, your birthdate will always remain confidential. 
-				   For complete details, please see our <a href="#">Privacy Policy</a>.
-				</p>
-				</div>
-	
-	
-				<!-- <div id='inline_student' style='padding:10px; background:#fff;'>
-				<h2 style="color: #49853F;">Student Profile</h2>
-				<p>Share comments, photos, classes, and favorite learning content while charting your current and future learning. Keep up your education history and get personalized recommendations for learning games or content to study. You can open access to college recruiters after 13 years old.</p>
-				</div>
-				
-				<div id='inline_teacher' style='padding:10px; background:#fff;'>
-				<h2 style="color: #49853F;">Teacher Profile</h2>
-				<p>Get ongoing classroom digital content and professional development recommendations. See analysis of how much lesson time used on digital learning, and connect with students.</p>
-				</div>
-				
-				<div id='inline_publisher' style='padding:10px; background:#fff;'>
-				<h2 style="color: #49853F;">Publisher Profile</h2>
-				<p>Post a profile of your company and each of your products so they can be found by students, teachers and schools.</p>
-				</div>
-				
-				<div id='inline_school' style='padding:10px; background:#fff;'>
-				<h2 style="color: #49853F;">School or District Profile</h2>
-				<p>Use the system to get a gap analysis of what you are missing in digital curriculum for any grade or subject, link with other schools, post publisher request for proposals, and keep track of inventory.</p>
-				</div>
-				
-				<div id='inline_recruiter' style='padding:10px; background:#fff;'>
-				<h2 style="color: #49853F;">Recruiter Profile</h2>
-				<p>Promote your institution and seek links with college-interested students. Search student interests and see public student profiles.</p>
-				</div> -->
-			</div>
 			
-		</div>
-	<!-- </div> -->
+			
+		</div><!-- End Signup Div-->
 
-		<!-- <#%= render 'landing_page/landing_footer' %#> -->
-		<%= render 'share/footer' %>
+		</div> <!--End sign-wrap Div -->
+
+		<div id="slick_slider_wrap" class="slick-slider-wrap hidden">
+			<div class="slick-slider-inner">
+				<div class="slick-slider">
+					<div><img src="/slick/slick/img/slider-1.jpg"></div>
+					<div><img src="/slick/slick/img/slider-2.jpg"></div>
+					<div><img src="/slick/slick/img/slider-3.jpg"></div>
+					<div><img src="/slick/slick/img/slider-4.jpg"></div>
+					<div><img src="/slick/slick/img/slider-5.jpg"></div>
+					<div><img src="/slick/slick/img/slider-6.jpg"></div>
+					<div><img src="/slick/slick/img/slider-7.jpg"></div>
+					<div><img src="/slick/slick/img/slider-8.jpg"></div>
+					<div><img src="/slick/slick/img/slider-9.jpg"></div>
+				</div><!-- End home-bottom-slider -->
+			</div>
+		</div>
+
+		<div style="clear:both;"></div>
+		</div> <!-- End home-wrap -->
+
+
+		<div id="home-section-2">
+			<h1 style="margin-top:50px;"></h1>
+			<div id="home-2-box-row">
+
+				<div class="home-2-box vertical flip-container" ontouchstart="this.classList.toggle('hover');">
+					<div class="flipper"><div class="front" style="background:#49853f;">
+					<img src="/assets_knowstory/icons/student-icon.png">
+					<h2 style="margin-bottom:20px;">For learners</h2>
+					<div style="border-bottom:1px solid #fff; width:150px; margin:45px auto 0;"></div>
+					<p>Create your unique Story.<br/>
+						Earn and display your achievements.
+						Keep track of your learning progress.</p>
+						<span class="box-learn-more">Hover for more</span>
+					</div>
+
+					<div class="back">
+			<p style="margin:12px 20px;">&#x25cf; Timeline from Kindergarten through High School and College to ongoing Professional Development and Personal Enhancement </p>
+			<p style="margin:12px 20px;">&#x25cf; Grades | Scores | Merit Badges</p> 
+			<p style="margin:12px 20px;">&#x25cf; Class notes | Photos | Clubs</p>
+			<p style="margin:12px 20px;">&#x25cf; Favorite Apps | Sites | eBooks</p>
+			<p style="margin:12px 20px;">&#x25cf; Personalized Yearbooks</p> 
+			<p style="margin:14px 20px;">&#x25cf; After 14 years old you can share records or your whole Story with college recruiters.</p>
+						<p style="margin:22px 0;">Student Stories are currently in development</p>
+						<div class="get-started"><span>Coming Soon</span></div>
+					</div>
+
+					</div>
+				</div>
+
+
+				<div class="home-2-box vertical flip-container" ontouchstart="this.classList.toggle('hover');">
+					<div class="flipper"><div class="front" style="background:#f08a26;">
+					<img src="/assets_knowstory/icons/teacher-icon.png">
+					<h2 style="margin-bottom:20px;">For educators</h2>
+					<div style="border-bottom:1px solid #fff; width:150px; margin:45px auto 0;"></div>
+					<p>Find free or paid content.
+						<br/>
+						Connect with learners and educators.
+						Form groups.
+						Display your certifications.
+						<span class="box-learn-more">Hover for more</span>
+					</div>
+
+					<div class="back">
+			<p>&#x25cf; Link with other Teachers | Form Groups</p>
+			<p>&#x25cf; Validate Student Grades and Scores | Award Student Merit Badges</p>
+			<p>&#x25cf; Advance Your Career</p>
+						<p style="margin-top: 171px;">Teacher Stories are currently in development</p>
+						<div class="get-started"><span>Coming Soon</span></div>
+					</div>
+
+					</div>
+				</div>
+
+
+				<div class="home-2-box vertical flip-container" ontouchstart="this.classList.toggle('hover');">
+					<div class="flipper"><div class="front" style="background:#818181;">
+					<img src="/assets_knowstory/icons/publisher-icon.png">
+					<h2 style="margin-bottom:20px;">For those who provide things to learn</h2>
+					<div style="border-bottom:1px solid #fff; width:150px; margin:0 auto;"></div>
+					<p>Tell your story of helping others know.  
+					Market your company and products with full details.</p>
+						<span class="box-learn-more">Hover for more</span>
+					</div>
+
+					<div class="back">
+						<p>&#x25cf; Market your Story | Gain Followers by Product</p>
+			<p>&#x25cf; Get Listed in Searches | Get “Pinned” on our Poster | Advertise</p>
+			<p>&#x25cf; See Bids | See Top Search Terms</p>
+			<p>&#x25cf; Get Your Story, Listing &amp; Ad Click Analytics (Individual Students <span style="text-decoration: underlin;">Always</span> Remain Anonymous)</p>
+						<p style="margin-top:41px;">Make your Story to begin uploading your products</p>
+						<div class="get-started"><span>Get Started</span></div>
+					</div>
+
+					</div>
+				</div>
+
+			</div><!-- end home-2-box-row-->
+
+			<div id="grey-bar">
+				<div id="home-2-bar-inner">
+				<h1 style="padding-top:20px;">Publish.</h1>
+			</div>
+			</div><!-- End grey-bar -->
+
+			<div id="home-2-bar-2">
+				<div id="home-2-bar-inner">
+					<div class="home-2-inner-box" style="float:left;">
+				
+				<p style="margin-top: 35px;">KnowStory helps you reach schools, teachers and students with free or premium Stories about your company and products.</p>
+			<p>&#x25cf; Advertise | Let your product or content be found by multiple attributes including Standards</p>
+			<p>&#x25cf; Market your Story | Gain Followers by Product</p>
+			<p>&#x25cf; Get Listed in Searches | Get “Pinned” on our Dynamic Online or Print-version Poster</p>
+			<p>&#x25cf; See Top Search Terms</p>
+			<p>&#x25cf; Get Your Story, Listing &amp; Ad Click Analytics</p>
+				<div class="get-started"><span>Get Started</span></div>
+					</div>
+					<div class="home-2-inner-box">
+						<img src="assets_knowstory/profile_pics/publisher2.jpeg">
+					</div>
+			</div>
+			</div><!-- End home-2-bar-2 -->
+
+			<div id="orange-bar" style="clear:both;">
+				<div id="home-2-bar-inner">
+				<h1 style="padding-top:20px;">Educate.</h1>
+			</div>
+			</div><!-- End orange-bar -->
+
+			<div id="home-2-bar-2">
+				<div id="home-2-bar-inner">
+					<div class="home-2-inner-box" style="float:left;">
+						<img src="assets_knowstory/profile_pics/teacher3.jpeg">
+					</div>
+					<div class="home-2-inner-box">
+
+					<p style="margin-top: 35px;">Keep a personal record of all your professional development and find learning content. Use KnowStory to analyze gaps in what you have digital versus what you may need against the lesson time you have by subject, topic, grade, standards and other fields.</p>
+					<p>&#x25cf; Link with other Teachers | Form Groups</p>
+					<p>&#x25cf; Validate Student Grades and Scores | Award Student Merit Badges</p>
+				<div class="get-started"><span>Get Started</span></div>
+					</div>
+			</div>
+			</div><!-- End home-2-bar-2 -->
+
+			<div id="green-bar">
+				<div id="home-2-bar-inner">
+				<h1 style="padding-top:20px;">Learn.</h1>
+			</div>
+			</div><!-- End green-bar -->
+
+				<div id="home-2-bar-2">
+				<div id="home-2-bar-inner">
+					<div class="home-2-inner-box" style="float:left;">
+
+					<p style="margin-top: 35px;">This is a place to track and share your learning so you have your own record, pictures and Yearbook online.</p>  
+					<p>This is not a school, course or individual learning object but you can find all of those here. You can connect with other students and invite teachers, college recruiters and employers to view your pages.</p>  
+					<p>This is your story of learning and doing for life.</p>  
+
+				<div class="get-started"><span>Get Started</span></div>
+					</div>
+					<div class="home-2-inner-box">
+						<img src="assets_knowstory/profile_pics/student2.jpeg">
+					</div>
+
+			</div>
+			</div><!-- End home-2-bar-2 -->
+			
+
+		</div><!-- End home-section-2-->
+		<%= render 'layouts/footer' %>
 	
 	
 	
@@ -2293,9 +1306,9 @@
 		});
 	</script> -->
 	
-	<script>
+	<!-- <script>
 		SlideDeckAssistant.init();
-	</script>
+	</script> -->
 
 	<script>
 
@@ -2316,19 +1329,17 @@
 			}
 		});
 
-
-
 		function validateRadio1() {
-
-			// var isChecked = false;
-			// if($("#user_gender_0").is(':checked')) {
-				// isChecked = true;
-			// }
-			// if($("#user_gender_1").is(':checked')) {
-				// isChecked = true;
-			// }
-// 			
-			// if ( !isChecked ) {
+			var isChecked = false;
+			if($("#user_gender_0").is(':checked')) {
+				isChecked = true;
+			}
+			if($("#user_gender_1").is(':checked')) {
+				isChecked = true;
+			}
+			if ( !isChecked ) {
+				$("#rd_gender_male").addClass("rd-button-error");
+				$("#rd_gender_female").addClass("rd-button-error");
 				// $("#border_gender").css ({
 					// 'border-color' : '#851717'
 				// });
@@ -2336,40 +1347,59 @@
 				// $("#state_user_gender").css ({			
 					// background: 'url("/assets/submit_form_empty.png") no-repeat 0px 5px'
 				// });				
-			// }
-			// else {
+			}
+			else {
+				if ($("#rd_gender_male").hasClass("rd-button-error")) {
+					$("#rd_gender_male").removeClass("rd-button-error");
+					$("#rd_gender_female").removeClass("rd-button-error");					
+				}
+				if ($("#rd_gender_female").hasClass("rd-button-error")) {
+					$("#rd_gender_male").removeClass("rd-button-error");
+					$("#rd_gender_female").removeClass("rd-button-error");					
+				}
+				
 				// $("#border_gender").css ({
-					// 'border-color' : '#005C9E'
+					// 'border-color' : '#005C9E' // 11520b
 				// });
 				// $('#error_user_gender').html("");
 				// $("#state_user_gender").css ({			
 					// background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
 				// });																
+			}
+			// if ( isChecked ) {
+				// $("#rd_gender_male").removeClass("rd-button-error");
+				// $("#rd_gender_female").removeClass("rd-button-error");									
 			// }
 			
 			return isChecked;
 		}
 
-
-
 		function set_rd_1() {
+			// $("input[type='radio'][name='user[gender]'][value='0']").prop('checked',true);
+			// jQuery("input[type='radio'][name='content[id]']")
 			var rd ="#user_gender_0";
 			var sd = "#rd_gender_male";
 			$(rd).prop('checked',true);
+			// $(rd).attr("checked", "checked");
 			$(sd).addClass("rd-background");			
 		}
 		function unset_rd_1() {
+			// var rd ="#user_gender_0";
 			var sd = "#rd_gender_male";
+			// $(rd).prop('checked',false);
 			$(sd).removeClass("rd-background");			
 		}
 		function set_rd_2() {
 			var rd ="#user_gender_1";
 			var sd = "#rd_gender_female";
 			$(rd).prop('checked',true);
+			// $(rd).attr("checked", "checked");
 			$(sd).addClass("rd-background");			
 		}
 		function unset_rd_2() {
+			// var rd ="#user_gender_1";
 			var sd = "#rd_gender_female";
+			// $(rd).prop('checked',false);
 			$(sd).removeClass("rd-background");			
 		}
 
@@ -2398,58 +1428,64 @@
 
 
 		function set_rd_profile_type_1() {
-			var rd ="#user_profile_type_1";
-			var sd = "#rd_profile_type_1";
-			$(rd).prop('checked',true);
-			$(sd).addClass("rd-background");			
+			// var rd ="#user_profile_type_1";
+			// var sd = "#rd_profile_type_1";
+			// $(rd).prop('checked',true);
+			// $(sd).addClass("rd-background");			
 		}
 		function unset_rd_profile_type_1() {
-			var sd = "#rd_profile_type_1";
-			$(sd).removeClass("rd-background");			
+			// var sd = "#rd_profile_type_1";
+			// $(sd).removeClass("rd-background");			
 		}
 
 		function set_rd_profile_type_2() {
-			var rd ="#user_profile_type_2";
-			var sd = "#rd_profile_type_2";
-			$(rd).prop('checked',true);
-			$(sd).addClass("rd-background");			
+			// var rd ="#user_profile_type_12";
+			// var sd = "#rd_profile_type_2";
+			// $(rd).prop('checked',true);
+			// $(sd).addClass("rd-background");			
 		}
 		function unset_rd_profile_type_2() {
-			var sd = "#rd_profile_type_2";
-			$(sd).removeClass("rd-background");			
+			// var sd = "#rd_profile_type_2";
+			// $(sd).removeClass("rd-background");			
 		}
 
 		function set_rd_profile_type_3() {
-			var rd ="#user_profile_type_3";
+			// $("input[name='user[profile_type]']:checked").val("checked");
+			// $("input[type='radio'][name='user[profile_type]'][value='3']").prop('checked',true);
+			// $("input[type='radio'][name='user[profile_type]']").filter("[value='3']").prop('checked',true);
+			var rd ="#user_profile_type_13";
 			var sd = "#rd_profile_type_3";
 			$(rd).prop('checked',true);
 			$(sd).addClass("rd-background");			
+			// $("input[name='user[profile_type]'][value='3']").prop("checked", true);
+			// $("input[name='user[profile_type]']:checked").val('3');
+			// alert($("input[name='user[profile_type]']:checked").val());
 		}
 		function unset_rd_profile_type_3() {
-			var sd = "#rd_profile_type_3";
-			$(sd).removeClass("rd-background");			
+			// var sd = "#rd_profile_type_3";
+			// $(sd).removeClass("rd-background");			
 		}
 
 		function set_rd_profile_type_4() {
-			var rd ="#user_profile_type_4";
-			var sd = "#rd_profile_type_4";
-			$(rd).prop('checked',true);
-			$(sd).addClass("rd-background");			
+			// var rd ="#user_profile_type_14";
+			// var sd = "#rd_profile_type_4";
+			// $(rd).prop('checked',true);
+			// $(sd).addClass("rd-background");			
 		}
 		function unset_rd_profile_type_4() {
-			var sd = "#rd_profile_type_4";
-			$(sd).removeClass("rd-background");			
+			// var sd = "#rd_profile_type_4";
+			// $(sd).removeClass("rd-background");			
 		}
 
 		function set_rd_profile_type_5() {
-			var rd ="#user_profile_type_5";
-			var sd = "#rd_profile_type_5";
-			$(rd).prop('checked',true);
-			$(sd).addClass("rd-background");			
+			// var rd ="#user_profile_type_15";
+			// var sd = "#rd_profile_type_5";
+			// $(rd).prop('checked',true);
+			// $(sd).addClass("rd-background");			
 		}
 		function unset_rd_profile_type_5() {
-			var sd = "#rd_profile_type_5";
-			$(sd).removeClass("rd-background");			
+			// var sd = "#rd_profile_type_5";
+			// $(sd).removeClass("rd-background");			
 		}
 
 		function rd_profile_type(caller) {
@@ -2503,188 +1539,178 @@
 			// }
 		}
 
-
-
-		var selectValid2 = false;
-
-		function selectStatus2() {
-			
-			// alert($("#reg_event_type_affiliation option:selected").val());
-			
-			if ($("#reg_event_type_affiliation option:selected").val() == '0') {
-				$('#state_reg_event_type_affiliation').css ({			
-					background: 'url("/assets/submit_form_empty.png") no-repeat 0px 5px'
-				});
-				
-				$('.dropdown2').css ({			
-					color: '#838383'
-				});
-				
-				selectValid2 = false;						
-			}
-			else {
-				$('#state_reg_event_type_affiliation').css ({			
-					background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
-				});
-				
-				$('.dropdown2').css ({			
-					color: '#ACDDE3'
-				});			
-		
-				if( !selectValid2 ) {
-					$('.dropdown2').css ({			
-						'border-color' : '#005C9E'
-					});
-					
-					$('.dropdown2 > .selected i').css ({			
-						'color' : '#005C9E',
-						'border-left-color' : '#005C9E' 
-					});
-					
-					$('#error_reg_event_type_affiliation').html("");					
+		var validationCalled = false;
+		var dropdown1_focus = false;
+		var dropdown2_focus = false;
+		var dropdown3_focus = false;
+		function validateDropdowns() {
+			var b = true;
+			if (validationCalled) {
+				if (!dropdown1_focus) {
+					if ($("#dropdown1 ul li.selected").attr("data-index") == '0') {
+						$("#dropdown1").addClass("input-error");
+						b = false;
+					}
+					else {
+						$("#dropdown1").removeClass("input-error");
+					}					
 				}
-				
-				selectValid2 = true;		
+				if (!dropdown2_focus) {
+					if ($("#dropdown2 ul li.selected").attr("data-index") == '0') {
+						$("#dropdown2").addClass("input-error");
+						b = false;
+					}
+					else {
+						$("#dropdown2").removeClass("input-error");
+					}					
+				}
+				if (!dropdown3_focus) {
+					if ($("#dropdown3 ul li.selected").attr("data-index") == '0') {
+						$("#dropdown3").addClass("input-error");
+						b = false;
+					}
+					else {
+						$("#dropdown3").removeClass("input-error");
+					}					
+				}
 			}
 			
-			if(validatorCalled) {
-				validateSelect2();
-			}
-			
-			updateErrorCount();			
+			return b;
 		}
 
-
-		function validateSelect2() {
-			
-			if ($("#reg_event_type_affiliation option:selected").val() == '0') {
-				$('.dropdown2').css ({			
-					'border-color' : '#851717'
-				});
-				
-				$('.dropdown2 > .selected i').css ({			
-					'color' : '#851717',
-					'border-left-color' : '#851717' 
-				});
-		
-				$('#error_reg_event_type_affiliation').html("*");
-		
-				selectValid2 = false;
-			}
-			else {
-				$('.dropdown2').css ({			
-					'border-color' : '#005C9E'
-				});
-				
-				$('.dropdown2 > .selected i').css ({			
-					'color' : '#005C9E',
-					'border-left-color' : '#005C9E' 
-				});
-
-				$('#error_reg_event_type_affiliation').html("");
-				
-				selectValid2 = true;		
-			}
-			
-			return selectValid2;
+		function show_upload_button() {
+			$("#submit_new").html("");
+			$("#submit_new").addClass("submit-btn-home-loader-1");
 		}
 
+		b_validateRadio1 = false;
+		b_validateDropdowns = false;
+
+		function validateDropdownsSubmit() {
+			var b = true;
+			if ($("#dropdown1 ul li.selected").attr("data-index") == '0') {
+				b = false;
+			}
+			if ($("#dropdown2 ul li.selected").attr("data-index") == '0') {
+				b = false;
+			}
+			if ($("#dropdown3 ul li.selected").attr("data-index") == '0') {
+				b = false;
+			}
+			
+			return b;
+		}
 
 		function formValidate() {
 						
 			$("#form_user_new").validate({
-			
 				submitHandler: function(form) {
-					form.submit();
+					// b_validateRadio1 = validateRadio1();
+					b_validateDropdownsSubmit = validateDropdownsSubmit();
+					if (b_validateRadio1 && b_validateDropdownsSubmit) {
+						var email = $("#user_email").val(); 
+						if (submit_email_exists(email)) {
+							$("#dialog_301 .dialog-msg-show-1").html(email);
+							$("#dialog_301").jqmShow();
+							$("#dialog_301 .btn-dialog-close").focus();					
+						}
+						else {
+							show_upload_button();						
+							form.submit();	
+						}						
+					}
 				},
-			
 				debug: true,
 				onkeyup: false,
 				focusCleanup: true,
 				// invalidClass: "error",
 				// validClass: "success",
-				
 				rules: {
 					'user[name_first]': {
 						required: true,
 						minlength: 1,
-						maxlength: 50
+						maxlength: 20
 					},
 					'user[name_last]': {
 						required: true,
 						minlength: 1,
-						maxlength: 50
+						maxlength: 20
 					},
 					'user[email]': {
 						required: true,
-						maxlength: 100,
+						maxlength: 50,
 						email: true
 					},															
 					'user[username]': {
 						required: true,
-						minlength: 1,
-						maxlength: 50
+						minlength: 4,
+						maxlength: 20
 					},
 					'user[password]': {
 						required: true,
-						minlength: 4,
-						maxlength: 50
+						minlength: 6,
+						maxlength: 20
 					},
 					'user[password_confirmation]': {
 						equalTo: "#user_password"
 					}
 				},
 				invalidHandler: function(event, validator) {
-					var errors = validator.numberOfInvalids();
-					if (errors) {
-						var message = errors == 1
-						? 'You missed 1 field'
-						: 'You missed ' + errors + ' fields';
-						$("div.errors p").html(message);
-						$("div.errors").show();
-					} else {
-						$("div.errors").hide();
-					}
+					// var errors = validator.numberOfInvalids();
+					// if (errors) {
+						// var message = errors == 1
+						// ? 'You missed 1 field'
+						// : 'You missed ' + errors + ' fields';
+						// $("div.errors p").html(message);
+						// $("div.errors").show();
+					// } else {
+						// $("div.errors").hide();
+					// }
 				},				
 				messages: {
 					'user[name_first]': {
-						required: "*",
-						minlength: "First Name at least 1 character",
-						maxlength: "First Name exceeds 50 characters"
+						required: "",
+						minlength: "* at least 1 character",
+						maxlength: "* exceeds 20 characters"
 					},
 					'user[name_last]': {
-						required: "*",
-						minlength: "Last Name at least 1 character",
-						maxlength: "Last Name exceeds 50 characters"
+						required: "",
+						minlength: "* at least 1 character",
+						maxlength: "* exceeds 20 characters"
 					},					
 					'user[username]': {
-						required: "*",
-						minlength: "Username at least 4 characters",
-						maxlength: "Username exceeds 50 characters"
+						required: "",
+						minlength: "* at least 4 characters",
+						maxlength: "* exceeds 20 characters"
 					},
 					'user[password]': {
-						required: "*",
-						minlength: "Password at least 4 characters long",
-						maxlength: "Password exceeds 20 characters"
+						// required: "*",
+						required: "",
+						minlength: "* at least 6 characters",
+						maxlength: "* exceeds 20 characters"
 					},
 					'user[password_confirmation]': {
-						equalTo: "Passwords must match"
+						equalTo: "* passwords must match"
 					},
 					'user[email]': {
-						required: "*",
-						maxlength: "Email exceeds 100 characters",
-						email: "Please enter a valid email address"
+						required: "",
+						maxlength: "* exceeds 50 characters",
+						email: "* invalid email"
 					}										
 				},
-				errorContainer: $("div .error_label"),				
-				errorPlacement: function(error, element) {
-					error.insertAfter('#error_' + element.attr('id'));
-					$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
-					//$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
-				},
+				// errorContainer: $("div .error_label"),
+				errorContainer: ".error-msg-container",				
+				// errorPlacement: function(error, element) {
+				// errorPlacement: function(element) {
+					// error.insertAfter('#error_' + element.attr('id'));
+					// // // $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('input-error');
+					// $('#' + element.attr('id')).addClass('input-error');
+					// // //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
+				// },
 				// invalid: function(element) {
-					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
-					// $('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');					
+					// // $('#' + element.attr('id')).addClass('input-error');
+					// // $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
+					// // $('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');					
 				// },
 				// highlight: function(element) {
 					// $('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
@@ -2694,23 +1720,25 @@
 					// //$('#' + element.attr('id')).removeClass('required').removeClass('success').addClass('error');
 					// //$('#label_' + element.attr('id')).removeClass('required-label').addClass('error-label');
 				// },
-				error: function(label) {
-					$('#' + label.attr('for')).removeClass('required').removeClass('success').addClass('error');
-					$('#label_' + label.attr('for')).removeClass('required-label').addClass('error-label');
+				// error: function(label) {
+				error: function(element) {
+					// $('#' + element.attr('id')).addClass('input-error');
+					// // $('#' + label.attr('for')).removeClass('required').removeClass('success').addClass('error');
+					// // $('#label_' + label.attr('for')).removeClass('required-label').addClass('error-label');
 				},
 				success: function(label) {
-					$('#' + label.attr('for')).removeClass('required').removeClass('error').addClass('success');
-					$('#label_' + label.attr('for')).removeClass('error-label').addClass('required-label');
-					
-					$('#state_' + label.attr('for')).css ({			
-						background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
-					});
- 
-					$('#error_' + label.attr('for')).html("");
+					// $('#' + label.attr('for')).removeClass('required').removeClass('error').addClass('success');
+					// $('#label_' + label.attr('for')).removeClass('error-label').addClass('required-label');
+					// $('#state_' + label.attr('for')).css ({			
+						// background: 'url("/assets/submit_form_tick.png") no-repeat 0px 5px'
+					// });
+					// $('#error_' + label.attr('for')).html("");
 				},				
-				focus: function(element) {
-				 	$('#' + element.attr('id')).removeClass('required').removeClass('error').removeClass('success').addClass('focus');
-				}
+				// focus: function(element) {
+					// // alert('focus');
+				 	// // $('#' + element.attr('id')).removeClass('required').removeClass('input-error').removeClass('success').addClass('focus');
+				 	// $('#' + element.attr('id')).removeClass('input-error');				 	
+				// }
 			});
 			
 			// $.validator.setDefaults({
@@ -2740,30 +1768,223 @@
 			});
 		}
 
+
+		function openSignin() {
+			// $("#form_new_pwd_reset").slideDown(400, function(){ $("#form_new_pwd_reset_a").fadeIn( 2000 ) });
+			$("#form_signin").slideDown(400, function(){ $("#form_signin_a").fadeIn( 1000, function() {
+				 // $("#user_new_pwd_reset_email").focus() 
+			}) 
+			});
+		}
+
+		function closeSignin() {
+			$("#form_signin_a").fadeOut(700, function(){ 
+				$("#form_signin").slideUp(400); 
+			});
+		}
+
+
+
+
 		// function focusInput() {
 			// alert('focusInput');
 			// $("#user_new_pwd_reset_email").trigger("focus");
 		// }
 		
+		// var b_email_exists = true;
+		
+		function submit_email_exists(signup_email) {
+			
+			var b_email_exists = false;
+			// Parameters: {"utf8"=>"✓", "authenticity_token"=>"KrdmfAhEnXpYmztZiePC4VFH93xiQKRAA1szIqJzOYc=", "user"=>{"name_first"=>"hfirst", "name_last"=>"hlast", "email"=>"h@h.com", "username"=>"hhhh", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "gender"=>"0", "bd_month"=>"1", "bd_day"=>"1", "bd_year"=>"2014"}, "commit"=>"Submit"}
+			
+			// var obj_list = '{"email":"' + email + 
+						   // '"}';      
+		  	// var obj = '{ "check_duplicate_signup": [' +  obj_list + '] }';                  
+			// alert(obj);
+			
+			
+			// var formData = {check_duplicate_signup: email};
+			var formData = {email: signup_email};
+		  	$.ajax({
+		    	type: 'POST',
+		    	// data : JSON.stringify(formData),
+		    	data : formData,
+		    	// data : obj,
+		    	url: '/users/check_duplicate_signup',
+		    	dataType: "json",			    	
+		    	// dataType: "script",
+		    	async: false,
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+            		b_email_exists = data.b_email_exists;
+					// alert(data.b_email_exists);
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});			
+		  	
+		  	return b_email_exists;
+		}
+
+
+		var body_init = function() {
+		  	var r = $.Deferred();
+			setTimeout(function() {
+				$("body").removeClass("hidden");
+				$("#home-wrap").removeClass("hidden");
+		 	}, 100); 
+		  	return r;
+		};
+
+		var page_init = function() {
+		  	var r = $.Deferred();
+			setTimeout(function() {
+				$("#home").removeClass("hidden");
+				$("#sign_wrap").removeClass("hidden");
+				$("#slick_slider_wrap").removeClass("hidden");
+				$("input#session_email").focus();
+		 	}, 100); 
+		  	return r;
+		};
+
+		var slick_init = function() {
+			// alert("slick_init");
+		  	var r = $.Deferred();
+			setTimeout(function() {
+				$("#slick_slider_wrap").removeClass("hidden");
+		 	}, 500); 
+		  	return r;
+		};
 		
 		$(window).load( function() {
-		//$(document).ready(function(){
-
-			// $("input#user_name_first").focus();
+		// $(document).ready(function(){
 			
-			$(".btn-signup").on('click', function() {
-				// alert('click');
-				var target_offset = 1;
-	        	// target = $('[name=sign-up]');
-	        	target = $("#sign-up");
-             	$('html,body').animate({
-                	scrollTop: target.offset().top + target_offset
-            	}, 750);
-            	$("input#user_name_first").focus();
+			
+			$(document).on("click", ".get-started", function() {
+				$("#dialog_202").jqmShow();
 			});
 			
 			
-			// formValidate();
+			$(document).on("click", "#btn_dlg_submit_new_user_msg", function() {
+				var ch_new_user = $("#new_user").is(':checked');
+				if (ch_new_user) {
+					// alert(ch_new_user);	
+					update_new_user();
+					$("#close_form202").trigger('click');
+				}
+				else {
+					$("#close_form202").trigger('click');					
+				}
+			});			
+
+			$('#dialog_202').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-200px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_202').animate(
+						{bottom:'-=220', top:'+=220'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_202').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+						}
+					);
+				}
+			}); 		
+			
+			
+			
+			
+			
+			
+			// var image = '../assets_knowstory/profile_pics/school-bus-back.jpg';
+			// #home-wrap {background: url("/assets_knowstory/profile_pics/school-bus-back.jpg") no-repeat center center fixed; min-height: 900px;}
+			var image = '/assets/landing-image3.jpg';
+			img = $('<img />');
+			img.bind('load', function() {
+				// setTimeout(function() {
+			  		// $.when(body_init()).done(page_init());
+			 	// }, 10);
+				$("#home-wrap").css({
+					// 'background': 'url(' + image + ')  no-repeat center center fixed',
+					// 'min-height': '600px'
+					'background': 'url(' + image + ')  no-repeat center -100px fixed',
+					'min-height': '650px',
+					'background-size': '1600px'
+				})
+			}).each(function() {
+			  	if(this.complete) {
+			  		$(this).load();
+			  		$.when(body_init()).done(page_init());
+			  	}
+			});
+			
+			// $(".btn-signup").on('click', function() {
+				// var target_offset = 1;
+	        	// target = $("#sign-up");
+             	// $('html,body').animate({
+                	// scrollTop: target.offset().top + target_offset
+            	// }, 750);
+            	// $("input#user_name_first").focus();
+			// });
+
+			// preset Publisher type			
+			set_rd_profile_type_3();
+
+			formValidate();	
+
+    		$("#submit_new").keypress(function(e){
+      			if(e.keyCode==13)
+      			$(this).click();
+    		});						
+			$("#submit_new").on("click", function() {
+				$("#submit_new_hidden").click();
+			});
+			$("#submit_new_hidden").on("click", function() {
+				validationCalled = true;
+				b_validateRadio1 = validateRadio1();
+				validateDropdowns();
+				// e.preventDefault();
+			});
+
+	
+			$(document).on("focus", "#dropdown1", function() {
+				dropdown1_focus = true;
+				$("#dropdown1").removeClass("input-error");
+			});
+			$(document).on("blur", "#dropdown1", function() {
+				dropdown1_focus = false;
+				validateDropdowns();
+			});
+			$(document).on("focus", "#dropdown2", function() {
+				dropdown2_focus = true;
+				$("#dropdown2").removeClass("input-error");
+			});
+			$(document).on("blur", "#dropdown2", function() {
+				dropdown2_focus = false;
+				validateDropdowns();
+			});
+			$(document).on("focus", "#dropdown3", function() {
+				dropdown3_focus = true;
+				$("#dropdown3").removeClass("input-error");
+			});
+			$(document).on("blur", "#dropdown3", function() {
+				dropdown3_focus = false;
+				validateDropdowns();
+			});
+
 			
 			// $("#user_new_pwd_reset_email").focus(function() {
 				// alert('focus');
@@ -2776,6 +1997,19 @@
 			// $("#submit_signup").on('click', function() {
 				// $("#user_name_first").focus();
 			// });
+
+
+			$("#close_form_signin").click(function(){
+		    	$("#form_signin_a").fadeOut(700, function(){ $("#form_signin").slideUp(400) });
+		  	});
+		  	$("#open_signin").click(function(){
+		    	$("#form_signin").slideDown(400, function(){ $("#form_signin_a").fadeIn( 2000 ) });
+		  	});	
+
+
+
+
+
 			
     		$("#submit_new_pwd_reset").keypress(function(e){
       			if(e.keyCode==13)
@@ -2854,14 +2088,6 @@
 			  	});
 		  		return false;
 			});
-						
-						
-
-
-
-
-
-
 
 						
 			$('select').dropdown({
@@ -2877,9 +2103,11 @@
 
 			$('#rd_gender_male').on('click', function() {
 				rd_gender('male');
+				b_validateRadio1 = validateRadio1();				
 			});
 			$('#rd_gender_female').on('click', function() {
 				rd_gender('female');
+				b_validateRadio1 = validateRadio1();				
 			});
 			
     		$('#rd_gender_male').keypress(function(e){
@@ -2943,67 +2171,65 @@
 
 
 
-			$(".group1").colorbox({rel:'group1'});
-			$(".group2").colorbox({rel:'group2', transition:"fade"});
-			$(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
-			$(".group4").colorbox({rel:'group4', slideshow:true});
-			$(".ajax").colorbox();
-			$(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
-			$(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
-			$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
-			$(".inline").colorbox({inline:true, width:"50%"});
-			$(".callbacks").colorbox({
-				onOpen:function(){ alert('onOpen: colorbox is about to open'); },
-				onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
-				onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
-				onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
-				onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
-			});
-
-			$('.non-retina').colorbox({rel:'group5', transition:'none'})
-			$('.retina').colorbox({rel:'group5', transition:'none', retinaImage:true, retinaUrl:true});
-			
-			$("#click").click(function(){ 
-				$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
-				return false;
-			});
+			// $(".group1").colorbox({rel:'group1'});
+			// $(".group2").colorbox({rel:'group2', transition:"fade"});
+			// $(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
+			// $(".group4").colorbox({rel:'group4', slideshow:true});
+			// $(".ajax").colorbox();
+			// $(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
+			// $(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
+			// $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+			// $(".inline").colorbox({inline:true, width:"50%"});
+			// $(".callbacks").colorbox({
+				// onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+				// onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+				// onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+				// onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+				// onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+			// });
+			// $('.non-retina').colorbox({rel:'group5', transition:'none'})
+			// $('.retina').colorbox({rel:'group5', transition:'none', retinaImage:true, retinaUrl:true});
+			// $("#click").click(function(){ 
+				// $('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+				// return false;
+			// });
 
 
 
-			$("#panel-1").focus( function() {
-				$("#panel-1").mouseover();
-			});
-			$("#panel-1").blur( function() {
-				$("#panel-1").mouseleave();
-			});
-
-			$("#panel-2").focus( function() {
-				$("#panel-2").mouseover();
-			});
-			$("#panel-2").blur( function() {
-				$("#panel-2").mouseleave();
-			});
-
-			$("#panel-3").focus( function() {
-				$("#panel-3").mouseover();
-			});
-			$("#panel-3").blur( function() {
-				$("#panel-3").mouseleave();
-			});
-
-			$("#panel-4").focus( function() {
-				$("#panel-4").mouseover();
-			});
-			$("#panel-4").blur( function() {
-				$("#panel-4").mouseleave();
-			});
-
-			$("#panel-5").focus( function() {
-				$("#panel-5").mouseover();
-			});
-			$("#panel-5").blur( function() {
-				$("#panel-5").mouseleave();
-			});
+			// $("#panel-1").focus( function() {
+				// $("#panel-1").mouseover();
+			// });
+			// $("#panel-1").blur( function() {
+				// $("#panel-1").mouseleave();
+			// });
+// 
+			// $("#panel-2").focus( function() {
+				// $("#panel-2").mouseover();
+			// });
+			// $("#panel-2").blur( function() {
+				// $("#panel-2").mouseleave();
+			// });
+// 
+			// $("#panel-3").focus( function() {
+				// $("#panel-3").mouseover();
+			// });
+			// $("#panel-3").blur( function() {
+				// $("#panel-3").mouseleave();
+			// });
+// 
+			// $("#panel-4").focus( function() {
+				// $("#panel-4").mouseover();
+			// });
+			// $("#panel-4").blur( function() {
+				// $("#panel-4").mouseleave();
+			// });
+// 
+			// $("#panel-5").focus( function() {
+				// $("#panel-5").mouseover();
+			// });
+			// $("#panel-5").blur( function() {
+				// $("#panel-5").mouseleave();
+			// });
 			
 			// $('.initiator').on('mouseenter mouseleave', function(e) {
 			    // $('.receiver').trigger(e.type);
@@ -3022,70 +2248,201 @@
 			    // $('html, body').animate({scrollTop:target_offset - customoffset}, 500);
 			// });
 
-			$('a[href*=#]:not([href=#])').click(function() {
-				var target_offset = 1;
-			    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
-			        || location.hostname == this.hostname) {
-			        var target = $(this.hash);
-			        // alert(this.hash.slice(1));
-		        	// if(this.hash.slice(1) === 'sign-up') {
-		        		// $("input#user_name_first").focus();
+			// $('a[href*=#]:not([href=#])').click(function() {
+				// var target_offset = 1;
+			    // if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			        // || location.hostname == this.hostname) {
+			        // var target = $(this.hash);
+			        // // alert(this.hash.slice(1));
+		        	// // if(this.hash.slice(1) === 'sign-up') {
+		        		// // $("input#user_name_first").focus();
+		        	// // }
+			        // target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+		           	// if (target.length) {
+		             	// $('html,body').animate({
+		                	// scrollTop: target.offset().top + target_offset
+		            	// }, 750);
+		            	// // return false;
 		        	// }
-			        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-		           	if (target.length) {
-		             	$('html,body').animate({
-		                	scrollTop: target.offset().top + target_offset
-		            	}, 750);
-		            	// return false;
-		        	}
-			    }
+			    // }
+			// });
+
+						
+            // $('.tip').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout'
+                // })
+            // });			
+// 			
+            // $('.tip-bottom-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'top center',
+				        // at: 'bottom center'
+				        // // target: $('.tip-bottom-center')
+    				// }                    
+                // })
+            // });			
+// 
+            // $('.tip-top-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'bottom center',
+				        // at: 'top center'
+				        // // target: $('.tip-top-center')
+    				// }                    
+                // })
+            // });			
+
+						
+    		$("#dialog_301 .jqmClose").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#dialog_301 .jqmClose").click();
+    		});						
+			$(document).on("click", "#dialog_301 .jqmClose", function() {
+				$(this).trigger('click');
 			});
-
+    		$("#dialog_301 .btn-dialog-close").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#dialog_301 .jqmClose").click();
+    		});						
+			$(document).on("click", "#dialog_301 .btn-dialog-close", function() {
+				$("#dialog_301 .jqmClose").trigger('click');
+			});
 						
-            $('.tip').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout'
-                })
-            });			
-			
-            $('.tip-bottom-center').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout',
-				    position: {
-				        my: 'top center',
-				        at: 'bottom center'
-				        // target: $('.tip-bottom-center')
-    				}                    
-                })
-            });			
-
-            $('.tip-top-center').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout',
-				    position: {
-				        my: 'bottom center',
-				        at: 'top center'
-				        // target: $('.tip-top-center')
-    				}                    
-                })
-            });			
+			// $(document).on("click", "#btn_dlg_submit_new_user_msg", function() {
+				// var ch_new_user = $("#new_user").is(':checked');
+				// if (ch_new_user) {
+					// // alert(ch_new_user);	
+					// update_new_user();
+					// $("#close_form201").trigger('click');
+				// }
+				// else {
+					// $("#close_form201").trigger('click');					
+				// }
+			// });			
 						
+			// $("#dialog_301").jqmShow();
+									
+			$(document).on('click_301', function(e, id) {
+				$("#dialog_301").jqmShow();	
+			});
+			$('#dialog_301').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 20);
+					hash.w.css('opacity', 1.0).fadeIn(200);
+				}
+			}); 		
+						
+			// $('#dialog_301').jqm({
+				// onShow: function(hash) {
+					// hash.o.prependTo('body');
+					// hash.w.css('top', '-200px');
+					// hash.w.css('opacity', 1.0).fadeIn(200);
+					// // hash.w.show();
+					// $('#dialog_201').animate(
+						// {bottom:'-=220', top:'+=220'}, 
+						// 500, 
+						// 'easeInOutCirc', 
+						// function() {
+							// $('#dialog_201').animate(
+								// {bottom:'+=4', top:'-=4'}, 
+								// 100, 
+								// 'easeInBounce', 
+								// function() {
+								// }
+							// );
+						// }
+					// );
+				// }
+			// }); 		
 						
 						
 		});
 	
-	</script>
 
+
+	</script>
+<script type="text/javascript" src="/slick/slick/slick.min.js"></script>
+
+<script>
+
+
+//Slick slider 
+
+	$(document).ready(function(){
+  $('.slick-slider').slick({
+    slidesToShow: 8,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2600,
+  speed:1500,
+  variableWidth: false,
+
+responsive: [
+{
+      breakpoint: 1474,
+      settings: {
+      	variableWidth: false,
+        slidesToShow: 7,
+        slidesToScroll: 1
+      }
+    },
+	{
+      breakpoint: 1350,
+      settings: {
+      	variableWidth: false,
+        slidesToShow: 6,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 1224,
+      settings: {
+      	variableWidth: false,
+        slidesToShow: 5,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+      	variableWidth: false,
+        slidesToShow: 3,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+      	variableWidth: false,
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ],
+
+
+  });
+});
+</script>
 

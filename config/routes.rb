@@ -2,29 +2,173 @@ Webknow::Application.routes.draw do
 
 
   root to: 'users#index'
-  match "/" => "users#index", via: 'get'  
+  # match "/" => "users#index", via: 'get'
+  # get "/", to: "users#index"  
+  
+  # constraints(id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/) do
+    # resources :photos
+    # resources :accounts
+  # end
+    
   # match "/:id" => "users#index", via: 'get'
+  resources :users do
+      member do
+        get :following, :followers
+      end
+      collection do
+        post :update_new_user
+        post :check_duplicate_signup
+      end
+  
+      # scope :module => 'publisher_user' do
+    
+  end
+
+
+  resources :publisher_users do
+      collection do
+          # post :get_post_feed
+          post :update_story_1
+          post :update_story_2
+          post :update_story_3
+          post :update_story_6
+          # post :add_post_user
+          post :create_post_user
+          post :destroy_post_user
+          post :cancel_post_user
+          post :cancel_post_user_on_close
+          post :create_post_user_like
+          post :destroy_post_user_like
+          post :create_log_user_like
+          post :destroy_log_user_like      
+          post :create_post_user_comment
+          post :destroy_post_user_comment
+          post :update_publisher_user_plot
+          post :update_publisher_user_interest
+          post :destroy_publisher_user_image
+          post :destroy_publisher_user_logo_image
+          post :upload_publisher_user_image_primary
+          post :upload_publisher_user_logo_image
+          post :upload_publisher_user_image_primary_change
+          post :upload_publisher_user_logo_image_change
+          post :upload_publisher_user_image
+          post :upload_post_user_image
+          post :upload_publisher_user_plot_image
+          post :upload_publisher_user_interest_image
+          post :crop_commit_user
+          post :crop_commit_logo
+          post :dbdelete      
+      end
+
+  end
+
+  match '/KnowCred', to: 'publisher_users#knowcred', via: 'get'
+  match '/Journal', to: 'publisher_users#journal', via: 'get'
+  match '/Publisher-Admin-Upload', to: 'publisher_users#upload', via: 'post'
+  match '/Publisher-Admin-New', to: 'publisher_users#new', via: 'get'
+  match "/Publisher-Admin-Edit" => "publisher_users#edit", via: 'post'
+  match "/Publisher-Admin-Update" => "publisher_users#update", via: 'post'
+  match "/Publisher-Admin-Photos" => "publisher_users#show_all_images", via: 'get'    
+  get "publisher_users/get_feed_post"
+  get "publisher_users/get_feed_log"
+  # get "publisher_users/fullscreen"
+
+  # get "publisher_users/index_home"
+  # get "index_home", to: "publisher_users#index_home", as: :publisher_users_index_home
+
+  match "/:id" => "public_publisher_product_manifests#index", via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/}
+
+
+
+
+
+
+
+
+
+
+  # For example:
+#   
+  # scope 'foo', module: 'bar', as: 'baz' do
+    # resources :posts
+  # end
+#   
+  # produces these routes:
+#   
+  # $ rake routes
+         # Prefix Verb   URI Pattern                   Controller#Action
+      # baz_posts GET    /foo/posts(.:format)          bar/posts#index
+                # POST   /foo/posts(.:format)          bar/posts#create
+   # new_baz_post GET    /foo/posts/new(.:format)      bar/posts#new
+  # edit_baz_post GET    /foo/posts/:id/edit(.:format) bar/posts#edit
+       # baz_post GET    /foo/posts/:id(.:format)      bar/posts#show
+                # PATCH  /foo/posts/:id(.:format)      bar/posts#update
+                # PUT    /foo/posts/:id(.:format)      bar/posts#update
+                # DELETE /foo/posts/:id(.:format)      bar/posts#destroy
+
+
+
+
+    # publisher_user_publisher_users GET    /publisher_user/publisher_users(.:format)                             publisher_user/publisher_users#index
+                                   # POST   /publisher_user/publisher_users(.:format)                             publisher_user/publisher_users#create
+ # new_publisher_user_publisher_user GET    /publisher_user/publisher_users/new(.:format)                         publisher_user/publisher_users#new
+# edit_publisher_user_publisher_user GET    /publisher_user/publisher_users/:id/edit(.:format)                    publisher_user/publisher_users#edit
+     # publisher_user_publisher_user GET    /publisher_user/publisher_users/:id(.:format)                         publisher_user/publisher_users#show
+                                   # PATCH  /publisher_user/publisher_users/:id(.:format)                         publisher_user/publisher_users#update
+                                   # PUT    /publisher_user/publisher_users/:id(.:format)                         publisher_user/publisher_users#update
+                                   # DELETE /publisher_user/publisher_users/:id(.:format)                         publisher_user/publisher_users#destroy
+
+
+
+
+  # namespace :publisher_user do
+  # scope :module => 'publisher_user' do
+    
+
+      # match "/:id_publisher_user" => "publisher_users#index", via: 'get'
+      # resources :publisher_users, param: :id_publisher_user
+    
+      # scope '/publisher_user' do
+      # scope 'publisher_user', module: 'publisher_user', as: 'publisher_user' do
+      # scope 'publisher_user', module: 'publisher_user' do
+        # resources :publisher_users, module: 'publisher_user'
+        # resources :publisher_users    
+        # resources :publisher_users do
+          # member do
+            # get "/publisher_user/publisher_users/index_home", module: 'publisher_user'
+            # get "/publisher_user", to: 'publisher_users#index_home'
+          # end
+        # end    
+  # end
+  # get "/publisher_user/publiser_users/", to: "publisher_user/publisher_users#index_home", via: 'get' #, module: 'mod_publisher'
+  # get "publisher_users/index" #, constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/}
+
+
+
+
+  resources :relate_follows, only: [:create, :destroy]
+  resources :post_users, only: [:create, :destroy]
+
+
+
+
+  
+
+
+
 
   match "/Error/:id" => "log_errors#index", via: 'get'
   match "/Error" => "log_errors#index", via: 'get'
 
-  
-  resources :relate_follows, only: [:create, :destroy]
-  resources :post_users, only: [:create, :destroy]
-
-  resources :users do
-    member do
-      get :following, :followers
-    end
-  end
 
 
-  match "/puid-demo:id" => "publisher_users#index_demo", via: 'get'
-  match "/ppuid-demo:id" => "public_publisher_users#index_demo", via: 'get'
-  match "/pcid-demo:id" => "publishers#index_demo", via: 'get'
-  match "/ppcid-demo:id" => "public_publishers#index_demo", via: 'get'
-  match '/Publisher-Product-Listings-Demo', to: 'publisher_products#index_demo', via: 'get'
-  match 'Publisher-Product-Description-Demo', to: 'publisher_product_descriptions#index_demo', via: 'get'
+
+  # match "/puid-demo:id" => "publisher_users#index_demo", via: 'get'
+  # match "/ppuid-demo:id" => "public_publisher_users#index_demo", via: 'get'
+  # match "/pcid-demo:id" => "publishers#index_demo", via: 'get'
+  # match "/ppcid-demo:id" => "public_publishers#index_demo", via: 'get'
+  # match '/Publisher-Product-Listings-Demo', to: 'publisher_products#index_demo', via: 'get'
+  # match 'Publisher-Product-Description-Demo', to: 'publisher_product_descriptions#index_demo', via: 'get'
 
   get "static_pages/fonts"
   
@@ -116,6 +260,8 @@ Webknow::Application.routes.draw do
   match '/reset', to: 'users#reset', via: 'get'  
   get "users/index_publisher"
   match '/Signin', to: 'users#new', via: 'get'
+  match '/Learn-More', to: 'users#learn_more', via: 'get'
+  
   # match '/id:id', to: 'users#index', via: 'get'
   
 
@@ -351,6 +497,16 @@ Webknow::Application.routes.draw do
 
 
 
+  match "/Products" => "products#index", via: 'get'
+
+  resources :products do
+    collection do
+      post :return_products_1
+      post :return_products_2
+    end
+  end
+
+
 
   # publishers  
   
@@ -370,7 +526,7 @@ Webknow::Application.routes.draw do
     collection do
       post :update_story_1
       post :update_story_2
-      
+      post :update_publisher_plot
       # post :add_post_publisher
       post :create_post_publisher            
       post :destroy_post_publisher
@@ -396,67 +552,21 @@ Webknow::Application.routes.draw do
 
 
 
-  # match "/:id" => "users#show", via: 'get'
-  # match "/" => "users#show", via: 'get'
-
   # match "/Publisher-Admin" => "publisher_users#index", via: 'get'
   # get "publisher_users/index"
   # match "/:id_publisher_user" => "publisher_users#index", via: 'get'
   # match "/puid:id" => "publisher_users#index", via: 'get'
   # match 'publisher_users/index_post', :to => 'publisher_users#index_post', :as => '/:id_publisher_user', :via => [:post]
   # post "publisher_users/index_post"
-  match '/Publisher-Admin-Upload', to: 'publisher_users#upload', via: 'post'
-  match '/Publisher-Admin-New', to: 'publisher_users#new', via: 'get'
-  match "/Publisher-Admin-Edit" => "publisher_users#edit", via: 'post'
-  match "/Publisher-Admin-Update" => "publisher_users#update", via: 'post'
-  match "/Publisher-Admin-Photos" => "publisher_users#show_all_images", via: 'get'    
-  get "publisher_users/get_feed_post"
-  get "publisher_users/get_feed_log"
-  # get "publisher_users/fullscreen"
-
-  resources :publisher_users do
-    collection do
-      # post :get_post_feed
-      
-      post :update_story_1
-      post :update_story_2
-      post :update_story_3
-      post :update_story_6
-      
-      # post :add_post_user
-      post :create_post_user
-      post :destroy_post_user
-      post :cancel_post_user
-      post :cancel_post_user_on_close
-      post :create_post_user_like
-      post :destroy_post_user_like
-      post :create_log_user_like
-      post :destroy_log_user_like      
-      post :create_post_user_comment
-      post :destroy_post_user_comment
-      
-      post :destroy_publisher_user_image
-      post :destroy_publisher_user_logo_image
-      
-      post :upload_publisher_user_image_primary
-      post :upload_publisher_user_logo_image
-
-      post :upload_publisher_user_image_primary_change
-      post :upload_publisher_user_logo_image_change
-      
-      post :upload_publisher_user_image
-      
-      post :upload_post_user_image
-      
-      post :crop_commit_user
-      post :crop_commit_logo
-
-      post :dbdelete      
-    end
-  end  
-
-  # match "/:id_publisher_user" => "publisher_users#index", via: 'get'
-  # resources :publisher_users, param: :id_publisher_user
+  
+  # match "/" => "publisher_users#index", via: 'get'
+  
+  # get "publisher_users/index_home"
+  # match "/", to: "publisher_users#index_home", via: 'get'
+  # get "publisher_users/index" #, constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/}
+  
+  
+  
 
 
 
@@ -710,9 +820,14 @@ Webknow::Application.routes.draw do
     # match '/:id', to: "authors#show", as: 'short_author'
   # end
 
+
+
   # get "publisher_product_description" => 'publisher_product_descriptions#index'
   # get "publisher_product_descriptions/show"
-  match 'Publisher-Product-Description', to: 'publisher_product_descriptions#index', via: 'get' 
+  match '/Publisher-Product-Manifest-id:id', to: 'publisher_product_manifests#index', via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/}
+  # match '/Product-Description', to: 'publisher_product_descriptions#index_description', via: 'get'
+  # get "publisher_product_manifests/index_manifest"
+  # match '/Product-Description', to: 'publisher_product_descriptions#show_description', via: 'post' 
   # match 'Publisher-Product-Description', to: 'publisher_product_descriptions#show_description', via: 'post'
   # match 'Publisher-Product-Description/:id', to: 'publisher_product_descriptions#show', as: 'publisher_product_description', via: 'get' 
   # get 'publisher_product_description/:id' => 'publisher_product_descriptions#show'
@@ -721,20 +836,27 @@ Webknow::Application.routes.draw do
   # match '/PublisherAddProductInformation', to: 'publisher_product_descriptions#new', via: 'get'
   # match "/Publisher-Product-Edit/:id/edit" => "publisher_product_descriptions#edit", via: 'post'
 
-  resources :publisher_product_descriptions do
+  resources :publisher_product_manifests do
     collection do
-      post :show_description
-      post :update_name_product
-      post :update_product_tagline
-      post :update_versions
+      post :update_listing_preview
+      # post :reset_current_publisher_product
+      post :update_story_1
+      # post :update_story_2
+      post :update_story_4
+      # post :show_description
+      # post :update_name_product
+      # post :update_product_tagline
+      # post :update_versions
       post :update_content_type
       post :update_category_subject
       post :update_topic
       post :update_lesson_plan_subject
       post :update_lesson_time
-      post :update_description
-      post :update_appropriate_age
-      post :update_appropriate_grade
+      # post :update_description
+      # post :update_appropriate_age
+      # post :update_appropriate_grade
+      post :update_age_range
+      post :update_grade_range
       post :update_source_url
       post :update_market_target
       post :update_platform
@@ -758,16 +880,35 @@ Webknow::Application.routes.draw do
       post :update_word_description
       post :update_core_literacy_standard
       post :update_core_math_standard
+      
       post :update_name_pdf
       post :upload_pdf
       post :upload_pdf_image
+      post :upload_pdf_image_change
       post :destroy_pdf
       post :destroy_pdf_image
-      # post :upload_product_logo
-      post :upload_logo1_image
-      post :upload_logo1_image_change
-      # post :destroy_product_logo
-      post :destroy_logo1_image
+
+      # post :upload_logo1_image
+      # post :upload_logo1_image_change
+      # post :destroy_logo1_image
+
+      post :upload_image_1
+      post :upload_image_1_change
+      post :crop_image_1
+      post :destroy_image_1
+
+      post :upload_image_2
+      post :upload_image_2_change
+      post :destroy_image_2
+
+      post :upload_image_3
+      post :upload_image_3_change
+      post :destroy_image_3
+
+      post :upload_image_4
+      post :upload_image_4_change
+      post :destroy_image_4
+
       post :upload_product1_image
       post :destroy_product1_image
       post :upload_product2_image
@@ -781,6 +922,14 @@ Webknow::Application.routes.draw do
       post :dbdelete      
     end
   end
+
+
+  # match "/pid:id" => "public_publisher_product_manifests#index", via: 'get'
+
+
+
+  # match '/Publisher-Product-Description', to: 'publisher_product_descriptions#index', via: 'get'
+  # get "publisher_product_descriptions/index_description"
 
 
 
@@ -1173,7 +1322,8 @@ Webknow::Application.routes.draw do
 
 
 
-  match '/Buy-It', :to => 'publisher_product_ads#index', :via => [:get]
+  # match '/Buy-It', :to => 'publisher_product_ads#index', :via => [:get]
+  match '/Publisher-Advertise', :to => 'publisher_product_ads#index', :via => [:get]
 
   resources :publisher_product_ads do
     collection do
@@ -1333,10 +1483,16 @@ Webknow::Application.routes.draw do
   match "/Publisher" => "users#render_index_publisher_home", via: 'get'
 
 
+  # constraints(id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/) do
+    # resources :photos
+    # resources :accounts
+  # end
+
   
   # this must be last
   match "/:id" => "users#index", via: 'get'
-  match "/:id_public_publisher_user" => "public_publisher_users#index", via: 'get'
+  # match "/:id_public_publisher_user" => "public_publisher_users#index", via: 'get'
+  # match "/:id" => "users#index", via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/}  
   
   
   

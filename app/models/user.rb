@@ -30,13 +30,14 @@
 #  id_per_b               :boolean          default(FALSE)
 #  profile_type           :integer          default(0)
 #  profile_type_text      :string(255)
+#  new_user               :boolean          default(TRUE)
 #
 
 class User < ActiveRecord::Base
   
   # attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   
-  # attr_accessor   :id
+  # attr_accessor   :new_user
   
   # attr_accessible :id,
   attr_accessible :slug,
@@ -55,7 +56,8 @@ class User < ActiveRecord::Base
                   :bd_year,
                   :gender,
                   :gender_text,
-                  :avatar_image
+                  :avatar_image,
+                  :new_user
                   # :slug_pre_id
   
   
@@ -66,24 +68,19 @@ class User < ActiveRecord::Base
 
   has_many :user_images
   has_many :post_users 
+  
+  has_many :post_user_likes, dependent: :destroy
+  has_many :post_user_comments, dependent: :destroy
+  has_many :log_users, dependent: :destroy    # ? possibly delete this
+
   has_many :relate_follows, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relate_follows, source: :followed
   has_many :reverse_relate_follows, foreign_key: "followed_id", class_name: "RelateFollow", dependent: :destroy
   has_many :followers, through: :reverse_relate_follows, source: :follower
   
-  has_many :log_users
   
-  has_many :post_user_likes
-  has_many :post_user_comments
-
-  has_many :post_publisher_likes
-  has_many :post_publisher_comments
-  
+  has_one :publisher_user, dependent: :destroy  
   has_one :publisher
-  has_one :publisher_user
-  
-  
-  
   
   
   
@@ -93,9 +90,9 @@ class User < ActiveRecord::Base
   # validates :username, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
+                    uniqueness: { case_sensitive: false }, on: :create
   has_secure_password
-  # validates :password, length: { minimum: 4 }
+  validates :password, length: { minimum: 6 }, on: :create
     
   # has_secure_password
   # validates_presence_of :password, :on => :create

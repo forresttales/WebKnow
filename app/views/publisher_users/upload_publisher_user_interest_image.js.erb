@@ -1,0 +1,9 @@
+alert('ajax works in upload_publisher_user_interest_image');
+<% if !@publisher_user_interest_image.nil? %>
+	$('#render_publisher_user_interest_image').html("<%= j render('publisher_users/publisher_user_interest_image') %>");
+	$("#btn_story_3_attach_loader").addClass("hidden");
+	$("#btn_story_3_attach_text").removeClass("hidden");
+	$("#textarea_add_publisher_user_interest").focus();
+<% else %>
+	alert("Upload error");
+<% end %>

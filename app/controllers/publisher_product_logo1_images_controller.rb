@@ -1,2 +1,0 @@
-class PublisherProductLogo1ImagesController < ApplicationController
-end

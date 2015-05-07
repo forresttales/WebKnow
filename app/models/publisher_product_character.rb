@@ -2,22 +2,21 @@
 #
 # Table name: publisher_product_characters
 #
-#  id                               :integer          not null, primary key
-#  publisher_id                     :integer
-#  publisher_product_id             :integer
-#  publisher_product_description_id :integer
-#  character_1                      :boolean          default(FALSE)
-#  character_2                      :boolean          default(FALSE)
-#  character_3                      :boolean          default(FALSE)
-#  character_4                      :boolean          default(FALSE)
-#  character_5                      :boolean          default(FALSE)
-#  character_6                      :boolean          default(FALSE)
-#  character_7                      :boolean          default(FALSE)
-#  character_8                      :boolean          default(FALSE)
-#  character_9                      :boolean          default(FALSE)
-#  character_10                     :boolean          default(FALSE)
-#  created_at                       :datetime
-#  updated_at                       :datetime
+#  id                   :integer          not null, primary key
+#  publisher_id         :integer
+#  publisher_product_id :integer
+#  character_1          :boolean          default(FALSE)
+#  character_2          :boolean          default(FALSE)
+#  character_3          :boolean          default(FALSE)
+#  character_4          :boolean          default(FALSE)
+#  character_5          :boolean          default(FALSE)
+#  character_6          :boolean          default(FALSE)
+#  character_7          :boolean          default(FALSE)
+#  character_8          :boolean          default(FALSE)
+#  character_9          :boolean          default(FALSE)
+#  character_10         :boolean          default(FALSE)
+#  created_at           :datetime
+#  updated_at           :datetime
 #
 
 class PublisherProductCharacter < ActiveRecord::Base

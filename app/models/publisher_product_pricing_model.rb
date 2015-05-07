@@ -2,17 +2,16 @@
 #
 # Table name: publisher_product_pricing_models
 #
-#  id                               :integer          not null, primary key
-#  publisher_id                     :integer
-#  publisher_product_id             :integer
-#  publisher_product_description_id :integer
-#  pricing_model_1                  :boolean          default(FALSE)
-#  pricing_model_2                  :boolean          default(FALSE)
-#  pricing_model_3                  :boolean          default(FALSE)
-#  pricing_model_4                  :boolean          default(FALSE)
-#  pricing_model_5                  :boolean          default(FALSE)
-#  created_at                       :datetime
-#  updated_at                       :datetime
+#  id                   :integer          not null, primary key
+#  publisher_id         :integer
+#  publisher_product_id :integer
+#  pricing_model_1      :boolean          default(FALSE)
+#  pricing_model_2      :boolean          default(FALSE)
+#  pricing_model_3      :boolean          default(FALSE)
+#  pricing_model_4      :boolean          default(FALSE)
+#  pricing_model_5      :boolean          default(FALSE)
+#  created_at           :datetime
+#  updated_at           :datetime
 #
 
 class PublisherProductPricingModel < ActiveRecord::Base

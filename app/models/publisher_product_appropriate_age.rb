@@ -2,30 +2,29 @@
 #
 # Table name: publisher_product_appropriate_ages
 #
-#  id                               :integer          not null, primary key
-#  publisher_id                     :integer
-#  publisher_product_id             :integer
-#  publisher_product_description_id :integer
-#  age_appropriate_1                :boolean          default(FALSE)
-#  age_appropriate_2                :boolean          default(FALSE)
-#  age_appropriate_3                :boolean          default(FALSE)
-#  age_appropriate_4                :boolean          default(FALSE)
-#  age_appropriate_5                :boolean          default(FALSE)
-#  age_appropriate_6                :boolean          default(FALSE)
-#  age_appropriate_7                :boolean          default(FALSE)
-#  age_appropriate_8                :boolean          default(FALSE)
-#  age_appropriate_9                :boolean          default(FALSE)
-#  age_appropriate_10               :boolean          default(FALSE)
-#  age_appropriate_11               :boolean          default(FALSE)
-#  age_appropriate_12               :boolean          default(FALSE)
-#  age_appropriate_13               :boolean          default(FALSE)
-#  age_appropriate_14               :boolean          default(FALSE)
-#  age_appropriate_15               :boolean          default(FALSE)
-#  age_appropriate_16               :boolean          default(FALSE)
-#  age_appropriate_17               :boolean          default(FALSE)
-#  age_appropriate_adult            :boolean          default(FALSE)
-#  created_at                       :datetime
-#  updated_at                       :datetime
+#  id                    :integer          not null, primary key
+#  publisher_id          :integer
+#  publisher_product_id  :integer
+#  age_appropriate_1     :boolean          default(FALSE)
+#  age_appropriate_2     :boolean          default(FALSE)
+#  age_appropriate_3     :boolean          default(FALSE)
+#  age_appropriate_4     :boolean          default(FALSE)
+#  age_appropriate_5     :boolean          default(FALSE)
+#  age_appropriate_6     :boolean          default(FALSE)
+#  age_appropriate_7     :boolean          default(FALSE)
+#  age_appropriate_8     :boolean          default(FALSE)
+#  age_appropriate_9     :boolean          default(FALSE)
+#  age_appropriate_10    :boolean          default(FALSE)
+#  age_appropriate_11    :boolean          default(FALSE)
+#  age_appropriate_12    :boolean          default(FALSE)
+#  age_appropriate_13    :boolean          default(FALSE)
+#  age_appropriate_14    :boolean          default(FALSE)
+#  age_appropriate_15    :boolean          default(FALSE)
+#  age_appropriate_16    :boolean          default(FALSE)
+#  age_appropriate_17    :boolean          default(FALSE)
+#  age_appropriate_adult :boolean          default(FALSE)
+#  created_at            :datetime
+#  updated_at            :datetime
 #
 
 class PublisherProductAppropriateAge < ActiveRecord::Base

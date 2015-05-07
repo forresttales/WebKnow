@@ -2,14 +2,13 @@
 #
 # Table name: publisher_product_market_targets
 #
-#  id                               :integer          not null, primary key
-#  publisher_id                     :integer
-#  publisher_product_id             :integer
-#  publisher_product_description_id :integer
-#  market_target_1                  :boolean          default(FALSE)
-#  market_target_2                  :boolean          default(FALSE)
-#  created_at                       :datetime
-#  updated_at                       :datetime
+#  id                   :integer          not null, primary key
+#  publisher_id         :integer
+#  publisher_product_id :integer
+#  market_target_1      :boolean          default(FALSE)
+#  market_target_2      :boolean          default(FALSE)
+#  created_at           :datetime
+#  updated_at           :datetime
 #
 
 class PublisherProductMarketTarget < ActiveRecord::Base

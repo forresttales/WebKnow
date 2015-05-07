@@ -1,0 +1,2 @@
+module PublisherProductPos3ImagesHelper
+end

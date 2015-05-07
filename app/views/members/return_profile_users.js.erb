@@ -1,7 +1,3 @@
-alert('return_profile_users.js');
-
-// if (<%= @user_profile_type %> == 1) {
-	$('#render_list').html("<%= j render('members/list_public_users') %>");
-	$('#render_record_count span').html("<%= @public_users.count %>");
-// }
-
+// alert('ajax works in members/return_profile_users.js');
+$('#render_list').html("<%= j render('members/list_profile_users') %>");
+$('#render_record_count span').html("<%= @profile_users.count %>");

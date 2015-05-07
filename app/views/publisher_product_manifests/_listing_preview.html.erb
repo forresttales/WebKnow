@@ -1,0 +1,443 @@
+
+
+	<style>
+		
+		.member-list-1 {
+			width: 100%; 
+			/*height: 109px;*/
+			height: auto; 
+			padding: 1px;
+			vertical-align: top;
+			margin: 0;
+			position: relative;
+			/*background-color:transparent;*/
+			/*opacity: 1;*/
+			border-bottom: 1px solid #ccc;
+			/*background: rgba (255, 255, 255, 0.2);*/		
+			/*background: red;*/	
+		}
+		.member-list-1:hover {
+			background-color: #F8F8F8;
+		}		
+		.member-list-1a {
+			height: auto;
+			padding-left: 2px;
+		}
+		.member-list-1a-1 {
+			background-color: inherit;   
+		    vertical-align: top;
+		    margin: 0;
+		    height: 100px;
+		    width: 100px;
+		}
+		.member-list-1b-1 {
+			position: relative;
+			width: 100%;
+			height: 24px;
+			margin: 0;
+			padding: 4px 0 0 10px;
+		}
+		.member-list-1b-2 {
+			position: relative;
+			width: 100%;
+			height: 52px;
+			margin: 0;
+			padding: 0 10px 0 0;
+		}
+		.member-list-1b-3 {
+			position: relative;
+			width: 100%;
+			height: 24px;
+			padding: 0 10px 0 0;
+		}	
+		.member-span-1 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	/*color: #666;*/
+		  	color: #333;
+			font-size: 13px;
+			width: 579px;
+		    white-space: pre-wrap;
+		    word-wrap: break-word;
+		    overflow-wrap: break-word;		
+		    border: 1px solid transparent;
+			padding: 6px 5px 5px 5px;	    
+		}		
+		.member-span-2 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #37633a;
+			font-size: 10px;
+		}
+		.member-span-2-a {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #37633a;
+			font-size: 13px;
+		}
+		/*.member-span-2-a:hover {
+			text-decoration: underline;
+			cursor: pointer;
+		}*/		
+		/*.member-span-3 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #37633a;
+			font-size: 10px;
+		}*/
+
+		
+	</style>
+	
+	<style>
+		
+		/*:focus {
+			text-decoration: none;
+		}*/
+		.member-list-link-a a {
+		    /*color: transparent;*/
+		    text-decoration: none;
+		}
+		.member-list-link-a a:hover {
+		    /*color: transparent;*/
+		    text-decoration: none;
+		}
+		.member-list-link-a a:active {
+		    /*color: transparent;*/
+		    text-decoration: none;
+		}
+		.member-list-link-a a:focus {
+		    /*color: transparent;*/
+		    text-decoration: none;
+		}
+		a {
+		    /*color: transparent;*/
+		    text-decoration: none;
+		}
+		a:hover {
+		    /*color: transparent;*/
+		    text-decoration: none;
+		}
+		a:active {
+		    /*color: transparent;*/
+		    text-decoration: none;
+		}
+		a:focus {
+		    /*color: transparent;*/
+		    text-decoration: none;
+		}
+		/*img {
+		    border: 0 none;
+		}*/
+		/*a:hover {
+		    text-decoration: none;
+		}		
+		a:active {
+		    text-decoration: none;
+		}		
+		a:focus {
+		    text-decoration: none;
+		}*/		
+
+	</style>
+
+	<style>
+		
+		.product-listbox-full {
+	 		position: relative;
+	 		width:700px;
+	 		/*height: 230px;*/
+	 		/*background: #8eb388;*/
+	 		background: #fff;
+		}
+		
+		
+	</style>
+	
+	<style>
+
+		.container-figure-image-border-load {
+			border: 2px solid #fff;
+		}	
+		.container-figure-image-border {
+			border: 2px solid #ccc;
+		}
+		.container-figure-image-border-edit {
+			border: 2px solid #fbb040;
+		}	
+		.container-figure-image-list {
+			width: 204px;
+			height: 204px;	
+		}
+		/*span.color-record {
+			color: #593E16;
+		}	
+		span.color-no-record {
+			color: #49853f;			
+		}*/	
+		
+	</style>
+	
+	
+			<div class="product-listbox-full">	
+
+			<% if @publisher_product %>
+				<% i = 1 %>
+				<% publisher_product = @publisher_product %>
+				<% publisher_product_manifest = publisher_product.publisher_product_manifest %>
+			   		<div class="table pad-marg-null">
+			   			<div class="row">
+							<div class="cell-210">
+								<div style="padding: 0px 0px 0px 0px;">
+						   			<div id="render_listing_preview_image_1"></div>
+								</div>
+							</div>
+							<div class="cell-490">
+								<div class="table pad-marg-null">
+									<div class="row">
+										<div class="cell-235">
+											<div style="4px;"></div>
+											<div class="table pad-marg-null">
+												<div class="row">
+													<div class="cell-235" id="render_listing_preview_name_product"></div>
+												</div>		
+												<div class="row" style="height: 4px;"></div>
+												<div class="row">
+													<div class="cell-235" id="render_listing_preview_versions"></div>
+												</div>		
+												<div class="row" style="height: 4px;"></div>
+												<div class="row">
+													<div class="cell-235" id="render_listing_preview_category_subject"></div>
+												</div>		
+												<div class="row" style="height: 4px;"></div>
+												<div class="row">
+													<div class="cell-235" id="render_listing_preview_age_range"></div>
+												</div>		
+												<div class="row" style="height: 4px;"></div>
+												<div class="row">
+													<div class="cell-235" id="render_listing_preview_grade_range"></div>
+												</div>		
+												<div class="row" style="height: 4px;"></div>
+												<div class="row">
+													<div class="cell-235" id="render_listing_preview_market_target"></div>
+												</div>		
+												<div class="row" style="height: 4px;"></div>
+												<div class="row">
+													<div class="cell-235" id="render_listing_preview_pricing_model"></div>
+												</div>		
+												<div class="row" style="height: 10px;"></div>
+											</div>
+										</div>
+						   				<div class="cell-10"></div>
+										<div class="cell-235">
+											<div style="height: 4px;"></div>
+											<div class="table pad-marg-null">
+												<div class="row">
+													<div class="cell-235" id="render_listing_preview_platform"></div>
+												</div>	
+												<div class="row" style="height: 4px;"></div>
+												<div class="row">
+													<div class="cell-235" id="render_listing_preview_file_type"></div>
+												</div>	
+												<div class="row" style="height: 4px;"></div>
+												<div class="row">
+													<div class="cell-235" id="render_listing_preview_by_review"></div>
+												</div>	
+												<div class="row" style="height: 4px;"></div>
+												<div class="row">
+													<div class="cell-235" id="render_listing_preview_enhancement"></div>
+												</div>	
+												<div class="row" style="height: 4px;"></div>
+												<div class="row">
+													<div class="cell-235">
+														<div style="position: relative;">
+															<div style="display: inline-block">
+																<span class="list-field-title">Student Rating </span>
+															</div>
+															<div style="display: inline-block" class="like-icon"></div>
+															<div style="display: inline-block">
+																<span class="list-field-title"> : </span>
+															</div>
+															<div style="display: inline-block">
+																<span id="box_student_rating_listing" class="list-field-text"></span>
+															</div>
+														</div>
+													</div>
+												</div>	
+											</div>
+										</div>
+										<div class="cell-10"></div>			
+									</div>
+								</div>
+								<div class="table pad-marg-null">
+									<div class="row">
+										<div class="cell-490">
+											<span class="list-field-title">Teacher Rating Total: </span>
+											<span class="list-field-title"> # </span>
+											<span class="list-field-title">&nbsp;&nbsp;&nbsp;</span>
+											<span class="list-field-title">Easy: </span>
+											<span class="list-field-title"> # </span>
+											<span class="list-field-title">&nbsp;&nbsp;&nbsp;</span>
+											<span class="list-field-title">Fit: </span>
+											<span class="list-field-title"> # </span>
+											<span class="list-field-title">&nbsp;&nbsp;&nbsp;</span>
+											<span class="list-field-title">Worked: </span>
+											<span class="list-field-title"> # </span>
+										</div>
+									</div>
+								</div>
+							</div>
+				   		</div>
+				   	</div> 
+			   		<div class="table pad-marg-null">
+			   			<div class="row">
+							<div class="cell-210" id="render_listing_preview_product_tagline"></div>					   	
+							<div class="cell-490">
+								<div class="table pad-marg-null">
+									<div class="row">
+										<div class="cell-235"></div>
+										<div class="cell-10"></div>
+										<div class="cell-235">
+											<span class="list-field-title">Product ID: <%= publisher_product.slug %> </span>
+										</div>
+										<div class="cell-10"></div>
+									</div>
+								</div>									
+							</div>					   	
+						</div>					   	
+				   	</div>
+				   	<div style="2px;"></div>
+				   	<div style="background-color: #37633a; width: 100%; height: 2px;"></div>
+
+				<% else %>
+					<div class="" style="color: red; padding-left: 20px;">
+						<h3>No record</h3>
+					</div>
+				<% end %>
+
+				</div>
+
+
+
+
+
+	<script>
+		
+				
+		// $(window).load(function() {
+		$(document).ready(function() {			
+
+			// image_1					x
+			// name_product				x
+			// versions					x
+			// category_subject			x
+			// age_range				x
+			// grade_range				x
+			// market_target			x
+			// pricing_model			x
+			// platform					x
+			// file_type				x
+			// by_review				x
+			// enhancement				x
+			// product_tagline			x
+			$("#render_listing_preview_image_1").html("<%= j render("publisher_product_manifests/listing_preview_image_1") %>");
+			$("#render_listing_preview_name_product").html("<%= j render("publisher_product_manifests/listing_preview_name_product") %>");
+			$("#render_listing_preview_versions").html("<%= j render("publisher_product_manifests/listing_preview_versions") %>");
+			$("#render_listing_preview_category_subject").html("<%= j render("publisher_product_manifests/listing_preview_category_subject") %>");
+			$("#render_listing_preview_age_range").html("<%= j render("publisher_product_manifests/listing_preview_age_range") %>");
+			$("#render_listing_preview_grade_range").html("<%= j render("publisher_product_manifests/listing_preview_grade_range") %>");
+			$("#render_listing_preview_market_target").html("<%= j render("publisher_product_manifests/listing_preview_market_target") %>");
+			$("#render_listing_preview_pricing_model").html("<%= j render("publisher_product_manifests/listing_preview_pricing_model") %>");
+			$("#render_listing_preview_platform").html("<%= j render("publisher_product_manifests/listing_preview_platform") %>");
+			$("#render_listing_preview_file_type").html("<%= j render("publisher_product_manifests/listing_preview_file_type") %>");
+			$("#render_listing_preview_by_review").html("<%= j render("publisher_product_manifests/listing_preview_by_review") %>");
+			$("#render_listing_preview_enhancement").html("<%= j render("publisher_product_manifests/listing_preview_enhancement") %>");
+			$("#render_listing_preview_product_tagline").html("<%= j render("publisher_product_manifests/listing_preview_product_tagline") %>");
+
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+
+			
+		});				
+
+				
+	</script>
+
+	<script>
+
+	 	// *****
+	 	// section listing_name_product
+
+		// .color-record {
+			// color: #185C61;
+		// }	
+		// .color-no-record {
+			// color: #49853f;			
+		// }	
+
+		function set_listing_name_product(name_product, b_name_product) {
+			if( b_name_product ) {
+				$("#listing_name_product").removeClass("color-no-record").addClass("color-record");
+			}
+			else {
+				$("#listing_name_product").removeClass("color-record").addClass("color-no-record");
+			}
+			$("#listing_name_product").html(name_product);
+		}
+		
+	</script>
+
+	<script>
+
+	 	// *****
+	 	// section listing_product_tagline
+		
+		function set_listing_product_tagline(product_tagline, b_product_tagline) {
+			if( b_product_tagline ) {
+				$("#listing_product_tagline").removeClass("color-no-record").addClass("color-record");
+			}
+			else {
+				$("#listing_product_tagline").removeClass("color-record").addClass("color-no-record");
+			}
+			$("#listing_product_tagline").html(product_tagline);
+		}
+		
+	</script>
+

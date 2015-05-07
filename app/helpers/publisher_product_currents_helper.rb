@@ -1,0 +1,2 @@
+module PublisherProductCurrentsHelper
+end

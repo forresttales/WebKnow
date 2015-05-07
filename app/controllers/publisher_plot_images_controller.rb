@@ -1,0 +1,2 @@
+class PublisherPlotImagesController < ApplicationController
+end

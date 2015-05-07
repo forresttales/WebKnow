@@ -1,0 +1,132 @@
+
+	<style>
+		
+		.story-4-comment-list-container-text {
+			display: inline-block; 
+			/*min-height: 80px;*/ 
+			vertical-align: top; 
+			/*width: 100%;*/ 
+			text-align: left; 
+			/*border: 1px solid #aaa;*/						
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #333;
+			font-size: 13px;
+		    white-space: pre-wrap;
+		    word-wrap: break-word;
+		    overflow-wrap: break-word;		
+		    /*border: 1px solid transparent;*/
+			padding: 6px 5px 5px 5px;	    
+		}
+		.post-user-comment-span-1-a {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #37633a;
+			font-size: 13px;
+			padding: 2px 0 0 0;
+		}
+		.post-user-comment-span-1-a:hover {
+			text-decoration: underline;
+			cursor: pointer;
+		}		
+		.post-user-list-container {
+			width: 596px; 
+			margin: 3px 0 0 0; 
+			background-color: #fff; 
+			border: 1px solid #ddd; 
+		}
+		.post-user-list-container:focus:hover {
+			outline: 0;
+		}
+		
+	</style>
+
+
+	<% if @post_user_comments.any? %>
+		<% s_rand = '?' + (rand(10..90) * rand(100..900)).to_s %>
+		<div style="width: 100%; height: 14px; text-align: left;">
+		    <span class="post-user-span-3">
+		    	Comments <%= @post_user_comments.count %>
+		    </span>
+		</div>													
+		<div style="height: 5px;"></div>
+			
+		<% @post_user_comments.each do |post_user_comment| %>
+		<div class="post-user-list-container">
+			<div style="display: inline-block; vertical-align: top; width: 50px; padding: 2px;">
+				<a href="<%= post_user_comment.user.slug %>">
+					<%= post_user_comment_avatar_for(post_user_comment.user, s_rand) %>
+				</a>
+			</div>
+			
+			<!-- 
+			<div class="ks-tip-container">
+				<div class="ks-tip-target">
+				</div>
+			    <div class="ks-tip-1 ks-tip-34minus">
+			    	<div class="ks-tip-1-indicator"></div>
+					Text
+			    </div>
+			</div> 
+			-->
+			
+			<div style="display: inline-block; width: 534px;">
+				<!-- <div style="height: 4px;"></div> -->
+				<div style="display: inline-block;" class="float-left">
+					<a href="<%= post_user_comment.user.slug %>" class="post-user-span-2-a">
+						<span><%= post_user_comment.user.name_first %> </span><span><%= post_user_comment.user.name_last %></span>
+					</a>
+				</div>
+				
+				<% if false %>
+				<% if post_user_comment.user.id == current_user.id %>
+				<div class="post-user-comment-delete-container ks-tip-container float-right">
+					<div class="post-user-comment-delete ks-tip-target">
+						<div class="comment-id hidden" name="<%= post_user_comment.id %>"></div>
+						<div class="post-user-id hidden" name="<%= post_user_comment.post_user.id %>"></div>
+					</div>
+				    <div class="ks-tip ks-tip-delete-post-user-comment">
+				    	<div class="ks-tip-indicator-delete-post-user-comment"></div>
+						Delete
+				    </div>				
+			    </div>
+				<% else %>
+				<div class="post-user-comment-delete-blank float-right"></div>
+				<% end %>
+				<% end %>
+				
+				<div style="clear: both;"></div>
+				
+				<div class="story-4-comment-list-container-text"><%= post_user_comment.comment_text.html_safe %></div>
+				
+				<div style="width: 100%;">
+					<div style="width: 150px; text-align: right;" class="float-right">
+					    <span class="post-user-span-2">
+					      - <%= time_ago_in_words(post_user_comment.created_at) %> ago
+					    </span>					
+				    </div>
+				</div>
+			</div>
+			
+		</div>								
+
+		<% end %>
+		
+		<div style="height: 6px;"></div>
+		
+	<% end %>
+
+
+
+	<script>
+
+
+		// $(window).load( function() {
+		$(document).ready( function () {				
+		
+		});
+	  
+
+	</script>		
+
+

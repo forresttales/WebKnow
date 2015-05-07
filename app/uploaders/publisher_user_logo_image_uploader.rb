@@ -65,7 +65,7 @@ class PublisherUserLogoImageUploader < CarrierWave::Uploader::Base
     # process :resize_to_limit => [200, 200]
   # end
 
-  version :user_200_200_fit do
+  version :user_200_200 do
     # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
     process :resize_to_fit => [200, 200]
   end

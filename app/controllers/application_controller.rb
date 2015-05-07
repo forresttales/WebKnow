@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper  
 
-
+  
   def force_http
     if request.ssl? && Rails.env.production?
       redirect_to :protocol => 'http://', :status => :moved_permanently

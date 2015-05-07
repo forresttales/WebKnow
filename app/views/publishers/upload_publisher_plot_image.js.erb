@@ -1,0 +1,9 @@
+alert('ajax works in upload_publisher_plot_image');
+<% if !@publisher_plot_image.nil? %>
+	$('#render_publisher_plot_image').html("<%= j render('publishers/publisher_plot_image') %>");
+	$("#btn_story_2_attach_loader").addClass("hidden");
+	$("#btn_story_2_attach_text").removeClass("hidden");
+	$("#textarea_add_publisher_plot").focus();
+<% else %>
+	alert("Upload error");
+<% end %>

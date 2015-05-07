@@ -12,7 +12,23 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.remotipart
-//= require jquery.iframe-transport
-//= require_tree .
+//= require jquery.validate
+//= require chosen.jquery
+//= require chosen.proto
+//= require dot
+//= require jqModal
+//= require jquery.easing.1.3
+//= require jquery.fullscreenslides
+//= require jquery.mousewheel
+//= require jquery.qtip.min
+//= require jquery.selectbox-0.6.1
+//= require jquery.sparkbox-select
+//= require jquery-dropdown-dot
+//= require nav-jquery
 
+// // require toucheffects
+// // require jquery.remotipart
+// // require jquery.iframe-transport
+// // bootstrap.min
+// // modernizr.custom
+// // require jquery.colorbox

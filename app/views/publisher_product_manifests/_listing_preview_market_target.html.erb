@@ -1,0 +1,33 @@
+
+
+															<% i = 0 %>
+															<div id="render_market_target_<%= i %>" class="list-tip-container"></div>
+														    <script id="market_target_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="market_target_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="market_target_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
+																	</div>
+																</div>
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_market_target_<%= i %>";
+																var ref		  = "#market_target_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
+
+																<% h_market_target = market_target_for(@publisher_product) %>
+																var market_target_text = <%=raw h_market_target[:market_target_text] %>;
+																var list_number = "<%= i %>";
+																// set_market_target(market_target_text, list_number);
+																set_field("Market: ", "market_target", market_target_text, "Market", false, "", list_number);
+															</script>

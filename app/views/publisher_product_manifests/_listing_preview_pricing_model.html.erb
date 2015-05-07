@@ -1,0 +1,33 @@
+
+
+															<% i = 0 %>
+															<div id="render_pricing_model_<%= i %>" class="list-tip-container"></div>
+														    <script id="pricing_model_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="pricing_model_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="pricing_model_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
+																	</div>
+																</div>
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_pricing_model_<%= i %>";
+																var ref		  = "#pricing_model_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
+
+																<% h_pricing_model = pricing_model_for(@publisher_product) %>
+																var pricing_model_text = <%=raw h_pricing_model[:pricing_model_text] %>;
+																var list_number = "<%= i %>";
+																// set_pricing_model(pricing_model_text, list_number);
+																set_field("Pricing Model: ", "pricing_model", pricing_model_text, "Pricing Model", false, "", list_number);
+															</script>

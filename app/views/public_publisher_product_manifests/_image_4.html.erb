@@ -1,0 +1,327 @@
+
+	<style>
+		
+		div.drop-4-container-target  {
+			position: relative;
+		}
+		div.drop-4-container-target .dropOut .triangle {
+			width: 0;
+			height: 0;
+			position: absolute;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-bottom: 8px solid white;
+			top: -8px;
+			right: 0px;
+		}
+		div.drop-4-container-target .drop-4-container {
+			width: 140px;
+			position: absolute;
+			z-index: 2;
+			right: 2px;
+			top: -1000px;
+		}
+		div.drop-4-container-target .dropOut {
+			width: 140px;
+			background: #fff;
+			float: left;
+			position: relative;
+			margin-top: 0px;
+			/*opacity: 0;*/
+			opacity: 1;
+			-webkit-border-top-left-radius: 4px;
+			-webkit-border-top-right-radius: 0px;
+			-webkit-border-bottom-right-radius: 4px;
+			-webkit-border-bottom-left-radius: 4px; 			
+			-moz-border-top-left-radius: 4px;
+			-moz-border-top-right-radius: 0px;
+			-moz-border-bottom-right-radius: 4px;
+			-moz-border-bottom-left-radius: 4px; 			
+			border-top-left-radius: 4px;
+			border-top-right-radius: 0px;
+			border-bottom-right-radius: 4px;
+			border-bottom-left-radius: 4px; 			
+			-webkit-box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			-moz-box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			/*display: none !important;
+			visibility: hidden !important;*/
+			/*display: none;*/
+			/*visibility: hidden;*/					
+		}
+		div.drop-4-container-target .dropOut ul {
+			float: left;
+			padding: 10px 0;
+		}
+		div.drop-4-container-target .dropOut ul li {
+			text-align: left;
+			float: left;
+			width: 120px;
+			height: 24px;
+			padding: 4px 0 6px 10px;
+			margin: 3px 10px 3px 10px;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+		}
+		div.drop-4-container-target .dropOut ul li:hover {
+			background: #f2f2f2;
+		}
+		div.drop-4-container-target .dropOut ul li div {
+			color: #376340;	
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			font-weight: 700;
+			width: 100%;
+			height: 24px;
+		}
+		div.drop-4-container-target .dropOut ul li:hover div {
+			color: #376340;	
+			cursor: pointer;
+		}
+		/*div.drop-2-container-target .drop-2-target:hover + .drop-2-container .dropOut { opacity: 1; margin-top: 8px; }*/
+		div.drop-4-container-target .drop-4-target:hover + .drop-4-container .dropOut { margin-top: 8px; }
+		/*div.drop-2-container-target .drop-2-target:hover + .drop-2-container { top: 180px; }*/
+		/*div.drop-2-container-target .drop-2-target + .drop-2-container:hover .dropOut { opacity: 1; margin-top: 8px; }*/
+		div.drop-4-container-target .drop-4-target + .drop-4-container:hover .dropOut { margin-top: 8px; }		
+		/*div.drop-2-container-target .drop-2-target + .drop-2-container:hover { top: 180px; }*/
+		
+	</style>
+
+	<style>
+	
+		li {list-style-type: none;}
+	
+	</style>
+
+	<style>
+
+		.container-figure-image-border-load {
+			border: 2px solid #fff;
+		}	
+		.container-figure-image-border {
+			border: 2px solid #ccc;
+		}
+		.container-figure-image-border-edit {
+			border: 2px solid #fbb040;
+		}	
+		
+	</style>
+
+
+								<% if @image_4 %>   				
+									<!-- <#% rnum = (rand(10..90) * rand(100..900)).to_s %#> -->
+									<div class="container-figure-image container-figure-image-border-load container-figure-image-4 drop-4-container-target">
+										<figure id="figure_image_4" class="dialog-41-figure cursor-pointer drop-4-target">
+											<img id="img_image_4" alt="" src="<%= @image_4.image_url(:user_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_4.image? %>" />
+											<input class="container-image-hidden" type="hidden" value="<%= @image_4.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_4.image? %>" />
+											<img id="img_4_600" class="hidden" alt="" src="<%= @image_4.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_4.image? %>" />
+											<figcaption id="figcaption_image_4" class="edit-image hidden">												
+												<div class="img-1-text">Edit image</div>
+											</figcaption>
+										</figure>
+								    	<div class="drop-4-container hidden">
+											<div class="dropOut">
+												<div class="triangle"></div>
+												<ul>
+													<li>
+														<div id="btn_image_4_change">
+															New/Change
+														</div>
+													</li>
+													<!-- <li>
+														<div id="btn_image_4_crop" class="">
+															Crop/Center
+														</div>
+													</li> -->
+													<li>
+														<div id="btn_image_4_delete">
+															Delete
+														</div>
+													</li>
+												</ul>
+											</div>
+								        </div>
+										
+									</div>
+									<div class="float-clear"></div>
+
+								<% else %>
+
+									<div class="container-figure-image container-figure-image-border-load container-figure-image-4 drop-4-container-target">
+										<figure id="figure_image_4_generic" class="dialog-41-figure-generic drop-4-target">
+											<img id="img_image_4_generic" alt="" src="../images_avatar/avatar-gen-corp-w200-h200.png" />
+											<figcaption id="figcaption_image_4_generic" class="edit-image cursor-pointer hidden">
+												<!-- <div class="img-1-container"> -->
+													<!-- <div class="img-1"></div> -->
+													<div class="img-1-text">Add an image</div>
+												<!-- </div> -->
+											</figcaption>
+										</figure>
+								    	<div class="drop-4-container hidden">
+											<div class="dropOut">
+												<div class="triangle"></div>
+												<ul>
+													<li>
+														<div id="btn_image_4_new">
+															New
+														</div>
+													</li>
+												</ul>
+											</div>
+								        </div>
+									</div>
+								
+								<% end %>
+
+
+
+
+	<script>
+
+
+		// $(window).load( function() {
+		$(document).ready( function () {				
+		
+			$("img").one("load", function() {
+				if((this.id == "img_image_4") || (this.id == "img_image_4_generic")) {
+					var img_w = this.width;
+					var img_h = this.height;
+					$("div.drop-4-container-target .drop-4-target").on('mouseenter', function() {
+						$(".drop-4-container").css({ 
+							top : img_h - 14
+						});
+					});
+					$("div.drop-4-container-target .drop-4-target").on('mouseleave', function() {
+						$(".drop-4-container").css({ 
+							top : -1000
+						});
+					});
+					
+					$("div.drop-4-container-target .drop-4-container").on('mouseenter', function() {
+						$(".drop-4-container").css({ 
+							top : img_h - 14
+						});
+					});
+					$("div.drop-4-container-target .drop-4-container").on('mouseleave', function() {
+						$(".drop-4-container").css({ 
+							top : -1000
+						});
+					});
+
+					// $("div#container_image_4 .container-figure-image").css({
+					$(".container-figure-image-4").css({
+						width : img_w + 4,
+						height : img_h + 4
+					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");													
+				}
+				if(this.id == "img_image_4_generic") {
+					var img_w = this.width;
+					var img_h = this.height;
+					$(".container-figure-image-4").css({
+						width : img_w + 4,
+						height : img_h + 4
+					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
+				}				
+				if(this.id == "img_4_600") {
+					// alert("user_primary_img width = " + this.width);
+					// alert("user_primary_img height = " + this.height);
+					var img_w = this.width;
+					var img_h = this.height;
+					$("#figure_dialog_41").css({
+						width : img_w,
+						height : img_h
+					});																			
+				}								
+			}).each(function() {
+			  	if(this.complete) $(this).load();
+			});
+		
+		
+			$(".dialog-41-figure").on('click', function(e) {
+				if ( e.target.nodeName == "IMG" ) {
+					var this_src = $(this).find("input.container-image-hidden").attr("value");
+					$("#figure_dialog_41").find("img").attr("src", this_src );
+					var this_delete = $(this).find("div.tip-top-center").html();
+					$("#figure_dialog_41").find("div.tip-top-center").html(this_delete);
+					$("#dialog_41").jqmShow();	
+				}
+			});
+			$('#dialog_41').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '20px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					var img = $("#figure_dialog_41 img");
+					$("<img/>")
+			    		.attr("src", $(img).attr("src"))
+			    		.load(function() {
+			        		img_width = this.width; 
+			        		$("#figure_dialog_41").css({
+			        			// width : this.width 
+			        	});	        		
+			    	});		
+				}
+			}); 		
+			
+			
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+			
+            $('.tip-left-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'right top',
+				        at: 'left center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+		
+		});
+	  
+
+	</script>		
+

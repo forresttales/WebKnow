@@ -135,7 +135,7 @@
 		
 		.jqmWindow-101 {
 		    display: none;
-		    position: absolute;
+		    position: fixed;
 		    left: 50%;
 		    margin-left: -250px;
 		    width: 500px;
@@ -353,7 +353,7 @@
 			background: url('/assets/background-placeholder-comment-2-w206-h20.png') 3px 4px no-repeat;
 		}*/
 		.textarea-add-post-user-container {
-			border: 1px solid #2899A1; 
+			border: 1px solid #49853F; 
 			border-radius: 0px;			
 			min-height: 26px;
 			width: 591px;			
@@ -512,7 +512,7 @@
 			outline: 0;
 		}				
 		.textarea-add-comment-container {
-			border: 1px solid #2899A1; 
+			border: 1px solid #49853F; 
 			border-radius: 0px;			
 			width: 542px;			
 		}
@@ -715,7 +715,7 @@
 				<div class="background-table-dialog-1">
 			   		<div class="table-dialog-1">
 						<div class="dialog-msg-container">
-							<span>Delete this status?</span>
+							<span>Delete this post?</span>
 						</div>
 	   				</div>
    				</div>
@@ -822,9 +822,117 @@
 						</div>
 					</div>
 
-					<div class="table margin-0" style="height: 270px;">
+					<div class="table" style="height: 300px; margin: 0;">
+						<div class="row">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row" style="height: 12px;"></div>
+									<div class="row pad-marg-null">
+										<div class="cell-475">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<!-- <div class="cell-195 text-align-left pad-left-20">
+														<span class="profile-label-1">Company:</span>
+													</div> -->
+													<!-- <div class="cell-280 edit-story-1 hidden">
+														<div class="table pad-marg-null">
+															<div class="row pad-marg-null">
+																<div class="cell-280 position-relative">
+																	<div class="position-absolute top-minus-7 right-0">
+																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_name_company" name="publisher[name_company]" tabindex="12" type="text" value="<#%= @publisher.name_company %#>" placeholder="Company Name" />
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div> -->
+													<!-- <div class="cell-280 show-story-1"> -->
+													<div class="cell-280 show-story-1 text-align-left pad-left-20">
+														<div class="table pad-marg-null">
+															<div class="row pad-marg-null">
+																<div class="cell-280 position-relative text-align-left">
+																	<div class="position-absolute top-minus-3">
+																		<span id="span_name_company" class="profile-text-1"></span>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="cell-195 text-align-left pad-left-20">
+													</div>													
+												</div>
+											</div>
+										</div>
+									</div>	
+									<!-- <div class="row" style="height: 12px;"></div> -->
+										
+								</div>
+							</div>
+							<div class="cell-225" id="container_logo_image">
+								<!-- <div id="drop_container_logo_image" class="drop width-200 float-right"> -->
+								<div id="drop_container_logo_image" class="drop">
+									<div id="render_publisher_logo_image_primary" class="padding-0">
+										<!-- <div class="container-image"> -->
+											<%= render 'publishers/publisher_logo_image_primary' %>
+										<!-- </div>
+										<div class="container-menu">
+											<#%= render 'publishers/publisher_logo_image_primary_menu' %#>
+										</div> -->
+							        </div>
+								</div>
+								<div class="float-clear"></div>
+								
+								<!-- <div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-225 text-align-left pad-left-20">
+											<span class="profile-label-1">Tagline:</span>
+										</div>
+									</div>
+								</div> -->
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<!-- <div class="cell-225 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-225 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-200 height-24" id="publisher_tagline_logo" name="publisher[tagline_logo]" tabindex="12" type="text" value="<#%= @publisher.tagline_logo %#>" placeholder="Tagline" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div> -->
+										<div class="cell-225 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-225 position-relative text-align-left">
+														<!-- <div class="position-absolute top-minus-3"> -->
+														<div style="margin: 2px 0 0 22px;">
+															<span id="span_tagline_logo" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div style="height: 2px;"></div>
+								<div class="follow-stats-container-publisher float-right" style="padding: 0 10px 0 0;">
+									<%= render 'publishers/stats' %>
+								</div>
+								<div class="float-clear"></div>																
+							</div>
+						</div>
+					</div>
+
+
+
+
+<% if false %>
+
+					<div class="table margin-0" style="height: 270px; padding: 0 0 0 12px;">
 						<div class="row" style="height: 260px;">
-							<div class="cell-225 padding-left-4" id="container_user_image_primary" style="height: 260px;">
+							<div class="cell-225" id="container_user_image_primary" style="height: 260px;">
 								<div id="drop_container_user_image_primary" class="drop float-left width-200">
 									<div id="render_publisher_image_primary" class="padding-0">
 										<!-- <div class="container-image"> -->
@@ -837,7 +945,7 @@
 								</div>
 								<div class="float-clear"></div>
 								<div class="follow-stats-container">
-									<%= render 'users/stats' %>
+									<%= render 'publishers/stats' %>
 								</div>
 			
 								<!-- <div><img src="/assets/like-and-unlike-buttons.jpg" /></div> -->
@@ -870,6 +978,8 @@
 							</div>	
 						</div>
 					</div>
+<% end %>
+
 
 					<div style="height: 4px;"></div>
 
@@ -879,7 +989,7 @@
 								<div class="cell-title-bar-profile-left-long padding-left-8">
 									<div class="position-relative">
 										<div class="position-absolute top-minus-24">												
-											<span>Status</span>
+											<span>Posts</span>
 										</div>
 									</div>		
 								</div>
@@ -1390,7 +1500,8 @@
 		$(document).ready(function () {				
 
 
-			set_control_span("publisher_name_company", gon.name_company, gon.b_name_company);
+			set_control_span("name_company", gon.name_company, gon.b_name_company);
+			set_control_span("tagline_logo", gon.tagline_logo, gon.b_tagline_logo);
 
 
 			$(document).on("click", ".textarea-add-post-user", function() {
@@ -1558,7 +1669,7 @@
 	
 			$(document).on('click_101', function(e, id) {
 				var s = "div#" + id;				
-				scroll_top = $(window).scrollTop();
+				// scroll_top = $(window).scrollTop();
 				var content = $(this).find(s).html();
 				$("#dialog_101_content_container").html(content);
 				$("#dialog_101").jqmShow();	
@@ -1566,7 +1677,8 @@
 			$('#dialog_101').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', 40 + scroll_top);
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 40);
 					hash.w.css('opacity', 1.0).fadeIn(200);
 				}
 			}); 		

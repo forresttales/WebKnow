@@ -1479,18 +1479,8 @@
 
 		<div class="table-profile">
 			<div class="row-profile">
-				<div class="col-left">
-					<div class="table-profile">
-						<div class="row-profile" style="height: 20px;">
-							<div class="col-gen"></div>
-						</div>
-						<div class="row-profile">
-							<div class="col-left">
-								<!-- <#%= render 'share/dir_publishers_left' %#> -->
-								<%= render 'dir_1_left_publishers/index' %>								
-							</div>
-						</div>
-					</div>
+				<div style="display: table-cell; width: 200px; vertical-align: top; margin: 0; padding: 0; height: 100%;">
+					<%= render 'share/dir_publishers_left' %>
 				</div>
 				<div class="col-midd-700-borders">
 					<div class="table-profile">
@@ -1506,7 +1496,12 @@
 						</div>
 					</div>					
 				</div>
-				<div class="col-right-300">
+				<div style="display: table-cell; width: 300px; padding: 0; margin: 0; vertical-align: top; height: 100%;">
+					<div class="" style="width: 200px; height: 50px; position: relative;">
+						<%= render 'share/dir_publishers_right_user_home' %>
+					</div>
+				</div>
+				<!-- <div class="col-right-300">
 					<div class="table-profile" style="margin 0; padding: 0;">
 						<div class="row-profile" style="height: 0px; margin 0; padding: 0;">
 							<div class="col-gen" style="margin 0; padding: 0;"></div>
@@ -1520,11 +1515,11 @@
 								<div style="margin 0; padding: 0 0 0 4px;">
 									<img src="/assets_knowstory/generic-reading-kingdom-ad-box-w279-h275.png" alt="generic-reading-kingdom-ad-box-w279-h275.png" width="200px">
 								</div>
-								<!-- <#%= render 'share/dir_publishers_right' %#> -->
 							</div>
 						</div>
 					</div>										
-				</div>								
+				</div> -->
+												
 			</div>
 		</div>
 	</div>

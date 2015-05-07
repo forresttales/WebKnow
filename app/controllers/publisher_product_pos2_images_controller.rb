@@ -1,0 +1,2 @@
+class PublisherProductPos2ImagesController < ApplicationController
+end
