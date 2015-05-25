@@ -1,68 +1,37 @@
 
-	<style>
-		
-		.center {
-			text-align: center;	
-		}
-		.form-signin-inner .gen-background-color {
-			background-color: #fafafa; /*#F0E4D3;*/
-		}
-		
-	</style>
-
-
-				<div class="center gen-background-color" style="width: 490px;">
-
-					<%= form_for(:session, url: sessions_path) do |f| %>	
-
-
-						<div class="tbl-sign">
-							
-							<div class="row-sign">
-								
-								<div class="cell-sign-1"></div>
-								<div class="cell-sign-2 text-align-right">
-									<%= f.text_field :email, class: 'input-home-short wid-190', :autofocus => true, :tabindex => '1' ,:placeholder => 'Email' %>
-								</div>
-								<div class="cell-sign-3">
-									<input class="input-home-short wid-190" style="margin-left: 10px;" id="session_password" name="session[password]" placeholder="Password" tabindex="2" type="password" />
-									<!-- <#%= f.password_field :password, class: 'input-home-short wid-190 margin-left-10', :tabindex => '2', :placeholder => 'Password' %#> -->
-								</div>
-								<div class="cell-sign-4 text-align-right">
-									<div style="position: relative; height: 1px; width: 100px;">
-									<%= f.submit "Sign In", class: 'signin-btn-home alt-pos', :tabindex => '3' %>
-									</div>
-								</div>
-
-
-							</div>
-							<div class="row-sign" style="height: 6px;">
-							</div>
-							<div class="row-sign">
-
-								<div class="cell-sign-1"></div>
-								<div class="cell-sign-2 text-align-center">
-									<!-- <#%= link_to "Forgot password?", new_password_reset_path, class: 'signin-pref', :tabindex => '4' %#> -->
-									<div id="pwd_reset" class="pwd-reset">
-										<span>Forgot password?</span>
-									</div>
-								</div>
-								<div class="cell-sign-3 text-align-center">
-									<%= f.check_box :remember_me %>
-									<%= f.label :remember_me, nil, class: 'remember-me-link', :id => 'ch_remember_me', :tabindex => '5' %>
-								</div>
-								<div class="cell-sign-4">
-								</div>										
-
-
-							</div>
-						
+	<div class="text-align-center gen-background-color" style="width: 490px;">
+		<%= form_for(:session, url: sessions_path, :html => {:id => 'form_session'}) do |f| %>	
+			<div class="tbl-sign">
+				<div class="row-sign">
+					<div class="cell-sign-1 text-align-right">
+						<%= f.text_field :email, class: 'input-1 wid-190', :tabindex => '1' ,:placeholder => 'Email' %>
+					</div>
+					<div class="cell-sign-2">
+						<!-- <input class="input-home-short wid-190" style="margin-left: 10px;" id="session_password" name="session[password]" placeholder="Password" tabindex="2" type="password" /> -->
+						<%= f.password_field :password, class: 'input-1 wid-190 margin-left-10', :tabindex => '2', :placeholder => 'Password' %>
+					</div>
+					<div class="cell-sign-3"></div>					
+					<div class="cell-sign-4">
+						<div style="position: relative; width: 76px; height: 30px;">
+							<%= f.submit "Sign In", class: 'signin-btn-home padding-btn-1', :tabindex => '3' %>
 						</div>
-
-					<% end %>								
-			
+					</div>
 				</div>
-
-						
-
-				<!-- </div> -->
+				<div class="row-sign" style="height: 6px;"></div>
+				<div class="row-sign">
+					<div class="cell-sign-1 text-align-center">
+						<!-- <#%= link_to "Forgot password?", new_password_reset_path, class: 'signin-pref', :tabindex => '4' %#> -->
+						<div id="pwd_reset" class="pwd-reset" tabindex="4">
+							<span>Forgot password?</span>
+						</div>
+					</div>
+					<div class="cell-sign-2 text-align-center">
+						<%= f.check_box :remember_me %>
+						<%= f.label :remember_me, nil, class: 'remember-me-link', :id => 'ch_remember_me', :tabindex => '5' %>
+					</div>
+					<div class="cell-sign-3"></div>
+					<div class="cell-sign-4"></div>										
+				</div>
+			</div>
+		<% end %>								
+	</div>

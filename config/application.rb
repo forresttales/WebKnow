@@ -22,19 +22,29 @@ module Webknow
 
     # config.autoload_paths += %w(#{config.root}/lib)
 
+    # config.action_controller.asset_host = "assets.example.com"
+    
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.active_support.escape_html_entities_in_json = true
     config.active_record.whitelist_attributes = true
 
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.svg *.ico *.eot *.ttf *woff)
-    
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
     Dir.glob("#{Rails.root}/app/assets/images/**/").each do |path|
       config.assets.paths << path
     end
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.svg *.ico *.eot *.ttf *woff)
+    
+    # config.assets.precompile << Proc.new { |path|
+      # if path =~ /\.(eot|svg|ttf|woff)\z/
+        # true
+      # end
+    # }    
+    
 
     config.assets.enabled = true
     config.assets.precompile += [
                                   'jquery.validate.js', 
+                                  'slick.js',
                                   'chosen.jquery.js',
                                   'chosen.proto.js',
                                   'dot.js',
@@ -50,6 +60,83 @@ module Webknow
                                   'nav-jquery.js',
                                   'toucheffects.js'
                                 ]
+
+    # *** already in application.css ***
+    # require 'init_html'
+    # require 'ks-tip'
+    # require 'nav_main'
+    # require 'table'
+    config.assets.precompile += [
+                                  'chosen.css',
+                                  'custom_dialog.css',
+                                  'custom_form.css',
+                                  'custom_image.css',
+                                  'custom_landing.css',
+                                  'custom_nav.css',
+                                  'custom_page_layout.css',
+                                  'custom_page.css',
+                                  'custom_profile.css',
+                                  'custom_sign_form.css',
+                                  'custom.css',
+                                  'forms.css',
+                                  # 'init_html.css'
+                                  'jqModal.css',
+                                  'jquery_image_overlay.css',
+                                  'jquery_ui_1.10.4.css',
+                                  'jquery.multiselect.css',
+                                  'jquery.qtip.min.css',
+                                  'ks-profile.css',
+                                  # 'ks-tip.css',
+                                  # 'nav_main.css',
+                                  'profile-new.css',
+                                  'slideshow.css',
+                                  'slick.css',
+                                  'slick-theme.css',
+                                  'slideshow.css',
+                                  'static_pages.css',
+                                  # 'table.css',
+                                  'users.css',
+                                  'z_custom_mtablets_tabs.css',
+                                  'z_custom_mtablets.css'
+                                ]
+    
+    # config.assets.precompile += [
+                                  # 'chosen.css.scss',
+                                  # 'custom_dialog.css.scss',
+                                  # 'custom_form.css.scss',
+                                  # 'custom_image.css.scss',
+                                  # 'custom_landing.css.scss',
+                                  # 'custom_nav.css',
+                                  # 'custom_page_layout.css.scss',
+                                  # 'custom_page.css',
+                                  # 'custom_profile.css',
+                                  # 'custom_sign_form.css',
+                                  # 'custom.css.scss',
+                                  # 'forms.css.scss',
+                                  # # 'init_html.css.scss'
+                                  # 'jqModal.css',
+                                  # 'jquery_image_overlay.css',
+                                  # 'jquery_ui_1.10.4.css',
+                                  # 'jquery.multiselect.css',
+                                  # 'jquery.qtip.min.css',
+                                  # 'ks-profile.css',
+                                  # # 'ks-tip.css.scss',
+                                  # # 'nav_main.css.scss',
+                                  # 'profile-new.css.scss',
+                                  # 'slideshow.css.scss',
+                                  # 'slick.css',
+                                  # 'slick-theme.css.scss',
+                                  # 'slideshow.css',
+                                  # 'static_pages.css.scss',
+                                  # # 'table.css.scss',
+                                  # 'users.css.scss',
+                                  # 'z_custom_mtablets_tabs.css.scss',
+                                  # 'z_custom_mtablets.css.scss'
+                                # ]
+
+
+
+
 
     
   end

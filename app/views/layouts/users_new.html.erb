@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<title><%= full_title(yield(:title)) %></title> 
+		<meta charset="utf-8">								    	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  		<%= favicon_link_tag source='global/knowstory-icon-fav.png' %>
+
+		<%= stylesheet_link_tag "application" %>
+    	<%= stylesheet_link_tag "users" %>
+    	<%= stylesheet_link_tag "slick" %>
+    	<%= stylesheet_link_tag "forms" %>
+    	
+   		<%= javascript_include_tag "application" %>
+   		<%= javascript_include_tag "jquery.validate.js" %>
+   		<%= javascript_include_tag "dot.js" %>
+   		<%= javascript_include_tag "jquery-dropdown-dot.js" %>
+   		<%= javascript_include_tag "jqModal.js" %>
+   		<%= javascript_include_tag "jquery.easing.1.3.js" %>
+   		<%= javascript_include_tag "slick.js" %>
+   		    		   		
+  		<%= include_gon %>
+	  	<%= csrf_meta_tags %>
+	  	<%= render 'layouts/shim' %>  
+		
+		<style>
+		
+			#debug {
+				background-color: red;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size: 16px;
+				color: #000;
+			}
+			html{
+				height: 100%;
+			 	margin: 0;			  
+			}
+			body {
+			  	min-height: 100%;
+			  	margin: 0;
+			}
+		
+		</style>
+		
+    </head>
+    
+	<body class="hidden">
+		
+		<%= yield %>
+		<%= render 'layouts/footer' %>
+		
+		<% if Rails.env.development? %>
+			<div id="debug">
+				<%= debug(params) %>
+			</div>
+		<% end %>
+		
+	</body>
+	
+</html>

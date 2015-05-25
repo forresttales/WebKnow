@@ -1,179 +1,48 @@
 	
-	@font-face {
-		font-family: 'KlavikaExtraLight';
-		src: asset-url('KlavikaWebDisplayExtraLight.eot');
-		src: asset-url('KlavikaWebDisplayExtraLight.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebDisplayExtraLight.woff') format('woff');
-	}
-	@font-face {
-		font-family: 'KlavikaLight';
-		src: asset-url('KlavikaWebBasicLight.eot');
-		src: asset-url('KlavikaWebBasicLight.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebBasicLight.woff') format('woff');
-	}
-	@font-face {
-		font-family: 'KlavikaRegular';
-		src: asset-url('KlavikaWebBasicRegular.eot');
-		src: asset-url('KlavikaWebBasicRegular.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebBasicRegular.woff') format('woff');
-	}		
-	@font-face {
-		font-family: 'KlavikaMedium';
-		src: asset-url('KlavikaWebBasicMedium.eot');
-		src: asset-url('KlavikaWebBasicMedium.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebBasicMedium.woff') format('woff');
-	}
-	@font-face {
-		font-family: 'KlavikaBold';
-		src: asset-url('KlavikaWebBasicBold.eot');
-		src: asset-url('KlavikaWebBasicBold.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebBasicBold.woff') format('woff');
-	}
-	@font-face {
-		font-family: 'KlavikaBlack';
-		src: asset-url('KlavikaWebDisplayBlack.eot');
-		src: asset-url('KlavikaWebDisplayBlack.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebDisplayBlack.woff') format('woff');
-	}
+	// @font-face {
+		// font-family: 'KlavikaExtraLight';
+		// src: asset-url('KlavikaWebDisplayExtraLight.eot');
+		// src: asset-url('KlavikaWebDisplayExtraLight.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebDisplayExtraLight.woff') format('woff');
+	// }
+	// @font-face {
+		// font-family: 'KlavikaLight';
+		// src: asset-url('KlavikaWebBasicLight.eot');
+		// src: asset-url('KlavikaWebBasicLight.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebBasicLight.woff') format('woff');
+	// }
+	// @font-face {
+		// font-family: 'KlavikaRegular';
+		// src: asset-url('KlavikaWebBasicRegular.eot');
+		// src: asset-url('KlavikaWebBasicRegular.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebBasicRegular.woff') format('woff');
+	// }		
+	// @font-face {
+		// font-family: 'KlavikaMedium';
+		// src: asset-url('KlavikaWebBasicMedium.eot');
+		// src: asset-url('KlavikaWebBasicMedium.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebBasicMedium.woff') format('woff');
+	// }
+	// @font-face {
+		// font-family: 'KlavikaBold';
+		// src: asset-url('KlavikaWebBasicBold.eot');
+		// src: asset-url('KlavikaWebBasicBold.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebBasicBold.woff') format('woff');
+	// }
+	// @font-face {
+		// font-family: 'KlavikaBlack';
+		// src: asset-url('KlavikaWebDisplayBlack.eot');
+		// src: asset-url('KlavikaWebDisplayBlack.eot?#iefix') format('embedded-opentype'), asset-url('KlavikaWebDisplayBlack.woff') format('woff');
+	// }
+  @font-face {
+    font-family: 'Quattrocento';
+    font-style: normal;
+    font-weight: 400;
+    src: asset-url('QuattrocentoSans.woff') format('woff');
+  }   
+  @font-face {
+      font-family: 'QuattrocentoSans-Regular';
+      src: asset-url('QuattrocentoSans-Regular.ttf') format('truetype');
+  }
   @font-face {
     font-family: 'GistLight';
     src: asset-url('gistuprightregular-webfont.ttf') format('truetype');
   }
-
-	// @font-face {
-	  	// font-family: 'bytes';
-	  	// src: asset-url('bytes.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'BNEfG';
-	  	// src: asset-url('BNEfG98.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'BNEG';
-	  	// src: asset-url('BNEG98.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'BNEnG';
-	  	// src: asset-url('BNEnG98.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'BNEoG';
-	  	// src: asset-url('BNEoG98.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'copyviol';
-	  	// src: asset-url('Copyviol.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'copyvlN';
-	  	// src: asset-url('CopyvlN.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'crackdr2';
-	  	// src: asset-url('crackdr2.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'crkdownr';
-	  	// src: asset-url('crkdownr.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'crkdwno1';
-	  	// src: asset-url('crkdwno1.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'crkdwno2';
-	  	// src: asset-url('BNEfG98.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'forgotbi';
-	  	// src: asset-url('Forgotbi.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'forgottb';
-	  	// src: asset-url('Forgottb.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'forgotte';
-	  	// src: asset-url('Forgotte.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'forgotti';
-	  	// src: asset-url('Forgotti.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'forgotts';
-	  	// src: asset-url('Forgotts.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'ffs';
-	  	// src: asset-url('ForgottenFuturistShadow.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'excelsiorcomics';
-	  	// src: asset-url('excelsiorcomics.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'exelsiorcomics3d';
-	  	// src: asset-url('exelsiorcomics3d.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'exelsiorcomics3dital';
-	  	// src: asset-url('exelsiorcomics3dital.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'exelsiorcomicscond';
-	  	// src: asset-url('exelsiorcomicscond.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'exelsiorcomicscondital';
-	  	// src: asset-url('exelsiorcomicscondital.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'excelsiorcomicsexpand';
-	  	// src: asset-url('excelsiorcomicsexpand.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'excelsiorcomicsexpandital';
-	  	// src: asset-url('excelsiorcomicsexpandital.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'excelsiorcomicsital';
-	  	// src: asset-url('excelsiorcomicsital.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'excelsiorcomicsleft';
-	  	// src: asset-url('excelsiorcomicsleft.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'AsSeenOnTV';
-	  	// src: asset-url('AsSeenOnTV.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'AsseenonTVSkew';
-	  	// src: asset-url('AsseenonTVSkew.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'JuneBug';
-	  	// src: asset-url('JuneBug.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'Vollkorn-Italic';
-	  	// src: asset-url('Vollkorn-Italic.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'JandaCheerfulScript';
-	  	// src: asset-url('JandaCheerfulScript.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'second-breakfast';
-	  	// src: asset-url('second-breakfast.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'msyh';
-	  	// src: asset-url('msyh.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'msyhb';
-	  	// src: asset-url('msyhb.ttf') format('truetype');
-	// }
-	// @font-face {
-	  	// font-family: 'msyhb';
-	  	// src: asset-url('msyhb.ttf') format('truetype');
-	// }
 	@font-face {
 	  	font-family: 'QuattrocentoSans-Regular';
 	  	src: asset-url('QuattrocentoSans-Regular.ttf') format('truetype');
@@ -190,60 +59,19 @@
 	  	font-family: 'QuattrocentoSans-BoldItalic';
 	  	src: asset-url('QuattrocentoSans-BoldItalic.ttf') format('truetype');
 	}
-	// .headline-excelsiorcomics {
-		// font-size: 36px;
-		// color: #000;
-		// font-family: excelsiorcomics;
-		// margin-top: 18px;
-		// margin-left: 4px;
-		// padding-bottom: 4px;
-		// position: relative;	
-	// }	
-	// .headline-JandaCheerfulScript {
-		// font-size: 36px;
-		// color: #000;
-		// font-family: JandaCheerfulScript;
-		// margin-top: 18px;
-		// margin-left: 4px;
-		// padding-bottom: 4px;
-		// position: relative;	
-	// }	
-	// .headline-junebug {
-		// font-size: 26px;
-		// color: #000;
-		// font-family: JuneBug;
-		// margin-top: 30px;
-		// margin-left: 0px;
-		// padding-bottom: 4px;
-		// position: relative;	
-	// }	
-	// .headline-second-breakfast {
-		// font-size: 16px;
-		// color: #000;
-		// font-family: second-breakfast;
-		// margin-top: 10px;
-		// margin-left: 10px;
-		// position: relative;	
-	// }	
-	// .headline-junebug-red {
-	// }	
-	// .headline-junebug-gold {
-	// }
-	// .headline-junebug-blue {
-	// }
-	// .headline-junebug:hover {
-		// text-decoration: underline;
-		// color: #989A9C;
-	// }			
-	// .headline-junebug .red:hover {
-		// color: #9C2426;
-	// }		
-	// .headline-junebug .gold:hover {
-		// color: #B8A727;
-	// }
-	// .headline-junebug .blue:hover {
-		// color: #3F27B8;
-	// }
+  @font-face {
+    font-family: 'Signika';     
+    src: asset-url('SignikaNegative.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'slick';
+    src: asset-url('slick.eot');
+    src: asset-url('slick.eot?#iefix') format('embedded-opentype'), asset-url('slick.woff') format('woff');
+  }
+  .display-none {
+    display: none !important;
+    visibility: hidden !important     
+  }
 	.boxtemp-red {
 		border-style: solid;
 		border-width: 1px;

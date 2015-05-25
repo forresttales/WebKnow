@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   # reset_users
   # private
 
-  layout 'newland'
+  layout 'users_new'
 
   respond_to :html, :js, :json  
 

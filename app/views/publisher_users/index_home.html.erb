@@ -1,4 +1,4 @@
-<% provide(:title, 'My Home') %>
+<% provide(:title, 'My Activity') %>
 
 	<script src="/assets/jqModal.js"></script>
 	<script src="/assets/jquery.easing.1.3.js"></script>
@@ -294,7 +294,8 @@
 			border: 1px solid #49853F; 
 			border-radius: 0px;			
 			min-height: 26px;
-			width: 591px;			
+			width: 515px;
+			margin:0 0 25px 20px;			
 			background-color: #fff;
 			padding: 4px 0px 4px 5px;
 		}
@@ -319,7 +320,7 @@
 			line-height: 100%;
 			padding: 6px 5px 5px 5px;
 			min-height: 26px;
-			width: 579px;			
+			width: 505px;			
 			/*white-space: pre;*/
 		    white-space: pre-wrap;
 		    word-wrap: break-word;
@@ -452,7 +453,7 @@
 		.textarea-add-comment-container {
 			border: 1px solid #49853F; 
 			border-radius: 0px;			
-			width: 542px;			
+			width: 485px; /*542px;*/			
 		}
 		.textarea-add-comment {
 			background-color: #fff;
@@ -466,7 +467,7 @@
 			line-height: 100%;
 			padding: 6px 5px 5px 5px;
 			min-height: 26px;
-			width: 540px;			
+			width: 483px; /*540px;	*/		
 			/*white-space: pre;*/
 		    white-space: pre-wrap;
 		    word-wrap: break-word;
@@ -552,10 +553,30 @@
 		}
 		
 		.textarea-add-comment-parent {
-			width: 100%; 
-			background-color: #eee; 
-			padding: 0 4px 0 4px;	
+			width: 490px; /*100%;*/
+			/*background-color: #eee; */
+			padding: 0 4px 0 4px;
+			margin:4px 0;	
 		}	
+
+		#notifications {margin-top: 25px; height:150px; border:2px solid #999; opacity: .45;}
+ .title-grey {
+ 		padding:5px;
+		border-bottom:1px solid #ccc;
+		background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
+		background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
+	}
+.title-grey span {color:#333; float:right;}
+
+
+		#requests {margin-top: 25px; height:150px; border:2px solid #999; opacity: .45;}
+
+		#what-friends {margin-top: 25px; height:150px; border:2px solid #999; opacity: .45;}
 			
 	</style>	
 	
@@ -749,7 +770,22 @@
 			-o-transition: all 1s ease;
 			transition: all 1s ease;			
 		}
-		
+
+		.feed-header h1 {text-align: center; font-size:32px; color:green; margin:0 0 25px 0;}
+
+		.feed-listbox {
+	background: #fff;
+    position: relative;
+    width: 1200px;}
+
+    .btn-submit-story-2 {
+    	margin-bottom:20px;
+    }
+
+    #drop_container_story_4_attach {
+    	margin-left: 20px;
+    }
+
 	</style>
 
 			<!-- user image - show 11 -->			
@@ -810,14 +846,12 @@
 				</div>
 			</div> -->
 
-
+<% if false %>
 		<div class="table-profile" style="height: 100%;">
 			<div class="row-profile">
-				<div style="display: table-cell; width: 200px; vertical-align: top; margin: 0; padding: 0; height: 100%;">
-					<%= render 'share/dir_publishers_left' %>
-				</div>
-				<div class="profile-mid-col-700">
-
+				
+				<div class="profile-left-col">
+					<!-- <div class="publisher-item-border"> -->
 					<div class="title-bar-profile-1 title">
 						<div class="tbl-title-bar-profile">
 							<div class="row-title-bar-profile">
@@ -839,6 +873,14 @@
 						</div>
 					</div>
 
+				</div>
+			</div>
+		</div>
+
+		<div class="table-profile" style="height: 100%;">
+			<div class="row-profile">
+				<div class="profile-left-col">
+		
 					<div class="table margin-0" style="height: 270px;">
 						<div class="row" style="height: 260px;">
 							<div class="cell-225" id="container_user_image_primary" style="height: 260px; padding: 0 0 0 1px;">
@@ -888,16 +930,39 @@
 							</div>	
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+<% end %>
+		
+<% if false %>
+				<div id="what-friends"> <!-- What Friends Section -->
+							<p class="title-grey">What friends are doing <span>(Coming Soon)</span></p>
+				</div><!-- End What Friends Section -->
 
-					<div style="height: 4px;"></div>
 
-					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
+								<!-- <div id="btn_test" style="width: 20px; height: 10px; background-color: red;"></div> -->
+
+						<!-- Feed was here -->
+					
+					<!-- <div style="height: 20px;"></div> -->
+				
+
+				<div style="display: table-cell; width:25px;"></div>
+				<!-- This adds small space in middle of columns-->
+
+				<div style="" id="right-column-home-publisher">
+						<%#= render 'share/dir_publishers_right_user_home' %>
+
+						
+						<div class="publisher-item-border"><!-- Share section -->
+						<div class="title-bar-profile-1 title-bar-profile-1-top-border">
 						<div class="tbl-title-bar-profile">
 							<div class="row-title-bar-profile">
 								<div class="cell-title-bar-profile-left-long padding-left-8">
 									<div class="position-relative">
 										<div class="position-absolute top-minus-24">												
-											<span>Posts</span>
+											<span>Share</span>
 										</div>
 									</div>		
 								</div>
@@ -913,7 +978,7 @@
 						<div class="row">
 							<div class="cell-100percent">
 								<div style="height: 10px;"></div>
-								<div class="edit-story-4 textarea-add-post-user-parent" style="float: right; padding: 0 20px 0 0;">
+								<div class="edit-story-4 textarea-add-post-user-parent" style="float: right;">
 									
 									<%= form_for PostUserComment.new, :url => create_post_user_comment_publisher_users_path(@post_user_comment_new), :html => {:multipart => true, :class => '', :id => 'new_post_user_comment'}, :remote => true do |f| %>
 										<%= f.hidden_field :comment_text %>
@@ -955,38 +1020,47 @@
 								</div>
 								<div style="clear: both;"></div>
 
-								<!-- <div id="btn_test" style="width: 20px; height: 10px; background-color: red;"></div> -->
 
-								<div style="height: 10px;"></div>				
+					</div><!-- End Share Section -->
+
+						</div>
+						</div>
+						</div><!-- End Main section-->
+
+						<div id="notifications"> <!-- Notifications Section -->
+							<p class="title-grey">Notifications <span>(Coming Soon)</span></p>
+						</div><!-- End Notifications Section -->
+
+						<div id="requests"> <!-- Requests Section -->
+							<p class="title-grey">Requests <span>(Coming Soon)</span></p>
+						</div><!-- End Requests Section -->
+
+					</div><!-- End Right COlumn--> 
+				</div> <!-- End Row -->
+			</div>	<!-- End table view-->							
+		<div style="height: 25px;"></div>
+
+
+		<!-- Start Feed Section -->
+						
 								
-								<div class="show-story-3">
-									<div class="text-align-left">
-										<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
-											<div style="margin: 0;">													
-												<div class="publisher-product-utility-bar light">
-													<div id="render_story_4_post_users_count" style="padding-left: 10px; padding-top: 10px;">
-													</div>
-												</div>
-												<div id="im_top_sh" style="display: block;"></div>
+							<div class="show-story-3">
+								<div class="text-align-left">
+									<div class="post-user-sub-container" id="sub_container" style="">
+										<div style="margin: 0;">													
+											<div class="feed-header">
+												<h1>Activity Feed:</h1>
 											</div>
-											<div id="render_story_4" style="height: auto;"></div>
+											<div id="im_top_sh" style="display: block;"></div>
 										</div>
+										<div id="render_story_4" style="height: auto;"></div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<!-- <div style="height: 20px;"></div> -->
-				</div>
-				<div style="display: table-cell; width: 300px; padding: 0; margin: 0; vertical-align: top; height: 100%;">
-					<div class="" style="width: 200px; height: 50px; position: relative;">
-						<%= render 'share/dir_publishers_right_user_home' %>
-					</div>
-				</div>
-			</div>								
-		</div>
-		<div style="height: 20px;"></div>
+	<div style="clear:both;"></div>
+		<!-- End Feed Section -->
 
+<% end %>
 
 	<script>
 	 
@@ -1956,6 +2030,15 @@
 	</script>
 
 
+<script src="/scripts/masonry.pkgd.js"></script>
 
+<script>
+docReady( function() {
+  var container = document.querySelector('#basic');
+  var msnry = new Masonry( container, {
+    columnWidth: 575
+  });
+});
+</script>
 
 

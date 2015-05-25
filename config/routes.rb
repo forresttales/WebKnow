@@ -1,5 +1,8 @@
 Webknow::Application.routes.draw do
 
+  get "tests/test1"
+  get "control_elements/nav_dropdowns"
+  
 
   root to: 'users#index'
   # match "/" => "users#index", via: 'get'
@@ -171,9 +174,6 @@ Webknow::Application.routes.draw do
   # match 'Publisher-Product-Description-Demo', to: 'publisher_product_descriptions#index_demo', via: 'get'
 
   get "static_pages/fonts"
-  
-  get "tests/test1"
-  
   
   match '/Mail', to: 'user_messages#index', via: 'get'
   resources :user_messages

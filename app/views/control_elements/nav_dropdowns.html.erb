@@ -1,0 +1,1028 @@
+<% provide(:title, 'Navigation Dropdowns') %>
+
+<style>
+
+.drop-1 {
+	width: 200px;
+}
+.drop-1 .drop-1-triangle {
+  	width: 0px;
+  	height: 0px;
+  	border-left: 8px solid transparent;
+  	border-right: 8px solid transparent;
+  	border-bottom: 8px solid #fff;
+  	position: relative;
+  	left: 3px;
+  	float: left;
+}
+.drop-1 .drop-1-box {
+  	width: 200px;
+  	float: left;
+  	position: relative;
+  	margin-top: 0px;
+  	-webkit-transition: all .1s ease-out;
+  	-moz-transition: all .1s ease-out;
+  	-ms-transition: all .1s ease-out;
+  	-o-transition: all .1s ease-out;
+  	transition: all .1s ease-out;
+}
+.drop-1 .drop-1-container-links {
+}
+.drop-1 .margin-top-hide-1 {
+	margin-top: -16px;
+}
+.drop-1 .margin-top-show-1 {
+	margin-top: -6px;
+}
+.drop-1 .drop-1-link-1 {
+	width: 100%;
+}
+.drop-1 .drop-1-target {
+	position: relative;
+  	width: 130px;
+  	height: 36px;
+  	border-radius: 4px;
+  	padding: 6px 4px 4px 4px;
+}
+.drop-1 .drop-1-target:hover {
+  	background: #f6f6f6;
+}
+.drop-1 .drop-1-link-1:hover .span-1 {
+}   
+.drop-1 .drop-1-span-1 {
+  	color: #376340; 
+  	font-family: Arial, Helvetica, sans-serif;
+  	font-size: 16px;
+  	font-weight: 700;
+}
+.drop-1 a.drop-1-link-a-1 {
+	text-decoration: none;
+}
+.drop-1 a.drop-1-link-a-1:hover {
+	text-decoration: none;
+}
+.drop-1 .drop-1-border {
+  	-webkit-border-top-left-radius: 4px;
+  	-moz-border-top-left-radius: 4px;
+  	border-top-left-radius: 4px;      
+
+  	-webkit-border-top-right-radius: 4px;
+  	-moz-border-top-right-radius: 4px;
+  	border-top-right-radius: 4px;     
+
+  	-webkit-border-bottom-right-radius: 4px;
+  	-moz-border-bottom-right-radius: 4px;
+  	border-bottom-right-radius: 4px;      
+
+  	-webkit-border-bottom-left-radius: 4px;
+  	-moz-border-bottom-left-radius: 4px;
+  	border-bottom-left-radius: 4px;     
+}
+.drop-1 .drop-1-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+}
+.drop-1 .drop-1-divider-1 {
+  	height: 2px;
+}
+.drop-1 .drop-1-divider-2 {
+  	height: 10px;
+}
+.drop-1 .background-transparent {
+  	background-color: transparent;
+}
+.drop-1 .background-white {
+  	background-color: #fff;
+}
+.drop-1 .nav-caret-container {
+  	width: 14px;
+  	height: 30px;
+  	padding: 0 0 0 2px;     
+}
+.drop-1 .nav-caret {
+  	width: 0px;
+  	height: 0px;
+  	position: relative;
+  	border-left: 4px solid transparent;
+  	border-right: 4px solid transparent;
+  	margin: 16px 0 0 0px;
+}
+.drop-1 .nav-caret-down {
+  	border-top: 5px solid #999;
+  	border-bottom: 0;     
+}
+.drop-1 .nav-caret-up {
+  	border-bottom: 5px solid #999;
+  	border-top: 0;
+}
+.drop-1 .nav-drop-1:hover {
+  	cursor: pointer;
+}
+.drop-1 .nav-drop-1:hover .nav-avatar img {
+  	border: 2px solid #A9D996;
+}
+.drop-1 .nav-drop-1:hover .nav-caret-down {
+  	border-top: 5px solid #A9D996;
+}
+.drop-1 .nav-drop-1:hover .nav-caret-up {
+  	border-bottom: 5px solid #A9D996;
+}
+.drop-1 .cursor-pointer:hover {
+	cursor: pointer;
+}
+.drop-1-target-icon {
+	display: inline-block;
+}	
+.drop-1-target-text {
+	display: inline-block;
+}	
+.drop-1 a:focus {
+	outline: none;	
+}
+.drop-1 a:active {
+	outline: none;
+}
+.drop-1 a:visited {
+	outline: none;
+}
+.drop-1-table {
+	display: table;
+}
+.drop-1-table-row {
+	display: table-row;
+}
+.drop-1-table-cell-1 {
+	display: table-cell;
+	width: 174px;
+}
+.drop-1-table-cell-2 {
+	display: table-cell;
+	width: 12px;
+}
+	
+</style>
+
+<style>
+
+.drop-1-1 {
+	text-align: left;
+	width: auto;
+	height: 24px;
+	padding: 4px;
+}
+.drop-1-1:hover {
+  	background: #f6f6f6;
+}
+.drop-1-1-target {
+	position: relative;
+}
+.drop-1-1 .drop-1-1-triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 8px 8px 0;
+	border-color: transparent #ffffff transparent transparent;	
+  	position: relative;
+  	float: left;
+  	left: -8px;
+  	top: 33px;
+}
+.drop-1-1 .drop-1-1-container {
+  	position: relative;
+}
+.drop-1-1 .drop-1-1-box {
+  	width: 200px;
+  	position: absolute;
+  	margin-top: 0px;
+  	-webkit-transition: all .1s ease-out;
+  	-moz-transition: all .1s ease-out;
+  	-ms-transition: all .1s ease-out;
+  	-o-transition: all .1s ease-out;
+  	transition: all .1s ease-out;
+  	z-index: 1;
+}
+.drop-1-1 .drop-1-1-container-links {
+}
+.drop-1-1 .margin-top-hide-1-1 {
+	margin-top: -53px;
+	margin-left: 160px;
+}
+.drop-1-1 .margin-top-show-1-1 {
+	margin-top: -53px;
+	margin-left: 180px;
+}
+.drop-1-1 .drop-1-1-link-1 {
+  	width: 100%;
+}
+.drop-1-1 .drop-1-1-link-1:hover {
+  	background: #f6f6f6;
+}
+.drop-1-1 .drop-1-1-link-1:hover .span-1 {
+}   
+.drop-1-1 .drop-1-1-span-1 {
+  	color: #376340; 
+  	font-family: Arial, Helvetica, sans-serif;
+  	font-size: 16px;
+  	font-weight: 700;
+}
+.drop-1-1 a.drop-1-1-link-a-1 {
+	text-decoration: none;
+}
+.drop-1-1 a.drop-1-1-link-a-1:hover {
+	text-decoration: none;
+}
+.drop-1-1 .drop-1-1-border {
+  	-webkit-border-top-left-radius: 4px;
+  	-moz-border-top-left-radius: 4px;
+  	border-top-left-radius: 4px;      
+
+  	-webkit-border-top-right-radius: 4px;
+  	-moz-border-top-right-radius: 4px;
+  	border-top-right-radius: 4px;     
+
+  	-webkit-border-bottom-right-radius: 4px;
+  	-moz-border-bottom-right-radius: 4px;
+  	border-bottom-right-radius: 4px;      
+
+  	-webkit-border-bottom-left-radius: 4px;
+  	-moz-border-bottom-left-radius: 4px;
+  	border-bottom-left-radius: 4px;     
+}
+.drop-1-1 .drop-1-1-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+}
+.drop-1-1 .drop-1-1-divider-1 {
+  	height: 2px;
+}
+.drop-1-1 .drop-1-1-divider-2 {
+  	height: 10px;
+}
+.drop-1-1 .background-transparent {
+  	background-color: transparent;
+}
+.drop-1-1 .background-white {
+  	background-color: #fff;
+}
+.drop-1-1 .nav-caret-container {
+  	width: 14px;
+  	height: 30px;
+  	padding: 0 0 0 2px;     
+}
+.drop-1-1 .nav-caret {
+  	width: 0px;
+  	height: 0px;
+  	position: relative;
+  	border-left: 4px solid transparent;
+  	border-right: 4px solid transparent;
+  	margin: 16px 0 0 0px;
+}
+.drop-1-1 .nav-caret-down {
+  	border-top: 5px solid #999;
+  	border-bottom: 0;     
+}
+.drop-1-1 .nav-caret-up {
+  	border-bottom: 5px solid #999;
+  	border-top: 0;
+}
+.drop-1-1 .nav-drop-1:hover {
+  	cursor: pointer;
+}
+.drop-1-1 .nav-drop-1:hover .nav-avatar img {
+  	border: 2px solid #A9D996;
+}
+.drop-1-1 .nav-drop-1:hover .nav-caret-down {
+  	border-top: 5px solid #A9D996;
+}
+.drop-1-1 .nav-drop-1:hover .nav-caret-up {
+  	border-bottom: 5px solid #A9D996;
+}
+.drop-1-1 .cursor-pointer:hover {
+	cursor: pointer;
+}
+.drop-1-1-target-icon {
+	display: inline-block;
+}	
+.drop-1-1-target-text {
+	display: inline-block;
+	margin: 4px 0px 0px 1px;
+}	
+
+</style>
+
+<style>
+
+.drop-1-2 {
+	text-align: left;
+	width: auto;
+	height: 24px;
+	padding: 4px;
+}
+.drop-1-2:hover {
+  	background: #f6f6f6;
+}
+.drop-1-2-target {
+	position: relative;
+}
+.drop-1-2 .drop-1-2-triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 8px 8px 0;
+	border-color: transparent #ffffff transparent transparent;	
+  	position: relative;
+  	float: left;
+  	left: -8px;
+  	top: 33px;
+}
+.drop-1-2 .drop-1-2-container {
+  	position: relative;
+}
+.drop-1-2 .drop-1-2-box {
+  	width: 200px;
+  	position: absolute;
+  	margin-top: 0px;
+  	-webkit-transition: all .1s ease-out;
+  	-moz-transition: all .1s ease-out;
+  	-ms-transition: all .1s ease-out;
+  	-o-transition: all .1s ease-out;
+  	transition: all .1s ease-out;
+  	z-index: 1;
+}
+.drop-1-2 .drop-1-2-container-links {
+}
+.drop-1-2 .margin-top-hide-1-2 {
+	margin-top: -53px;
+	margin-left: 160px;
+}
+.drop-1-2 .margin-top-show-1-2 {
+	margin-top: -53px;
+	margin-left: 180px;
+}
+.drop-1-2 .drop-1-2-link-1 {
+  	width: 100%;
+}
+.drop-1-2 .drop-1-2-link-1:hover {
+  	background: #f6f6f6;
+}
+.drop-1-2 .drop-1-2-link-1:hover .span-1 {
+}   
+.drop-1-2 .drop-1-2-span-1 {
+  	color: #376340; 
+  	font-family: Arial, Helvetica, sans-serif;
+  	font-size: 16px;
+  	font-weight: 700;
+}
+.drop-1-2 a.drop-1-2-link-a-1 {
+	text-decoration: none;
+}
+.drop-1-2 a.drop-1-2-link-a-1:hover {
+	text-decoration: none;
+}
+.drop-1-2 .drop-1-2-border {
+  	-webkit-border-top-left-radius: 4px;
+  	-moz-border-top-left-radius: 4px;
+  	border-top-left-radius: 4px;      
+
+  	-webkit-border-top-right-radius: 4px;
+  	-moz-border-top-right-radius: 4px;
+  	border-top-right-radius: 4px;     
+
+  	-webkit-border-bottom-right-radius: 4px;
+  	-moz-border-bottom-right-radius: 4px;
+  	border-bottom-right-radius: 4px;      
+
+  	-webkit-border-bottom-left-radius: 4px;
+  	-moz-border-bottom-left-radius: 4px;
+  	border-bottom-left-radius: 4px;     
+}
+.drop-1-2 .drop-1-2-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+}
+.drop-1-2 .drop-1-2-divider-1 {
+  	height: 2px;
+}
+.drop-1-2 .drop-1-2-divider-2 {
+  	height: 10px;
+}
+.drop-1-2 .background-transparent {
+  	background-color: transparent;
+}
+.drop-1-2 .background-white {
+  	background-color: #fff;
+}
+.drop-1-2 .nav-caret-container {
+  	width: 14px;
+  	height: 30px;
+  	padding: 0 0 0 2px;     
+}
+.drop-1-2 .nav-caret {
+  	width: 0px;
+  	height: 0px;
+  	position: relative;
+  	border-left: 4px solid transparent;
+  	border-right: 4px solid transparent;
+  	margin: 16px 0 0 0px;
+}
+.drop-1-2 .nav-caret-down {
+  	border-top: 5px solid #999;
+  	border-bottom: 0;     
+}
+.drop-1-2 .nav-caret-up {
+  	border-bottom: 5px solid #999;
+  	border-top: 0;
+}
+.drop-1-2 .nav-drop-1:hover {
+  	cursor: pointer;
+}
+.drop-1-2 .nav-drop-1:hover .nav-avatar img {
+  	border: 2px solid #A9D996;
+}
+.drop-1-2 .nav-drop-1:hover .nav-caret-down {
+  	border-top: 5px solid #A9D996;
+}
+.drop-1-2 .nav-drop-1:hover .nav-caret-up {
+  	border-bottom: 5px solid #A9D996;
+}
+.drop-1-2 .cursor-pointer:hover {
+	cursor: pointer;
+}
+.drop-1-2-target-icon {
+	display: inline-block;
+}	
+.drop-1-2-target-text {
+	display: inline-block;
+	margin: 4px 0px 0px 1px;
+}	
+
+</style>
+
+<style>
+
+.drop-1-3 {
+	text-align: left;
+	width: auto;
+	height: 24px;
+	padding: 4px;
+}
+.drop-1-3:hover {
+  	background: #f6f6f6;
+}
+.drop-1-3-target {
+	position: relative;
+}
+.drop-1-3 .drop-1-3-triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 8px 8px 0;
+	border-color: transparent #ffffff transparent transparent;	
+  	position: relative;
+  	float: left;
+  	left: -8px;
+  	top: 33px;
+}
+.drop-1-3 .drop-1-3-container {
+  	position: relative;
+}
+.drop-1-3 .drop-1-3-box {
+  	width: 200px;
+  	position: absolute;
+  	margin-top: 0px;
+  	-webkit-transition: all .1s ease-out;
+  	-moz-transition: all .1s ease-out;
+  	-ms-transition: all .1s ease-out;
+  	-o-transition: all .1s ease-out;
+  	transition: all .1s ease-out;
+  	z-index: 1;
+}
+.drop-1-3 .drop-1-3-container-links {
+}
+.drop-1-3 .margin-top-hide-1-3 {
+	margin-top: -53px;
+	margin-left: 160px;
+}
+.drop-1-3 .margin-top-show-1-3 {
+	margin-top: -53px;
+	margin-left: 180px;
+}
+.drop-1-3 .drop-1-3-link-1 {
+  	width: 100%;
+}
+.drop-1-3 .drop-1-3-link-1:hover {
+  	background: #f6f6f6;
+}
+.drop-1-3 .drop-1-3-link-1:hover .span-1 {
+}   
+.drop-1-3 .drop-1-3-span-1 {
+  	color: #376340; 
+  	font-family: Arial, Helvetica, sans-serif;
+  	font-size: 16px;
+  	font-weight: 700;
+}
+.drop-1-3 a.drop-1-3-link-a-1 {
+	text-decoration: none;
+}
+.drop-1-3 a.drop-1-3-link-a-1:hover {
+	text-decoration: none;
+}
+.drop-1-3 .drop-1-3-border {
+  	-webkit-border-top-left-radius: 4px;
+  	-moz-border-top-left-radius: 4px;
+  	border-top-left-radius: 4px;      
+
+  	-webkit-border-top-right-radius: 4px;
+  	-moz-border-top-right-radius: 4px;
+  	border-top-right-radius: 4px;     
+
+  	-webkit-border-bottom-right-radius: 4px;
+  	-moz-border-bottom-right-radius: 4px;
+  	border-bottom-right-radius: 4px;      
+
+  	-webkit-border-bottom-left-radius: 4px;
+  	-moz-border-bottom-left-radius: 4px;
+  	border-bottom-left-radius: 4px;     
+}
+.drop-1-3 .drop-1-3-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+}
+.drop-1-3 .drop-1-3-divider-1 {
+  	height: 2px;
+}
+.drop-1-3 .drop-1-3-divider-2 {
+  	height: 10px;
+}
+.drop-1-3 .background-transparent {
+  	background-color: transparent;
+}
+.drop-1-3 .background-white {
+  	background-color: #fff;
+}
+.drop-1-3 .nav-caret-container {
+  	width: 14px;
+  	height: 30px;
+  	padding: 0 0 0 2px;     
+}
+.drop-1-3 .nav-caret {
+  	width: 0px;
+  	height: 0px;
+  	position: relative;
+  	border-left: 4px solid transparent;
+  	border-right: 4px solid transparent;
+  	margin: 16px 0 0 0px;
+}
+.drop-1-3 .nav-caret-down {
+  	border-top: 5px solid #999;
+  	border-bottom: 0;     
+}
+.drop-1-3 .nav-caret-up {
+  	border-bottom: 5px solid #999;
+  	border-top: 0;
+}
+.drop-1-3 .nav-drop-1:hover {
+  	cursor: pointer;
+}
+.drop-1-3 .nav-drop-1:hover .nav-avatar img {
+  	border: 2px solid #A9D996;
+}
+.drop-1-3 .nav-drop-1:hover .nav-caret-down {
+  	border-top: 5px solid #A9D996;
+}
+.drop-1-3 .nav-drop-1:hover .nav-caret-up {
+  	border-bottom: 5px solid #A9D996;
+}
+.drop-1-3 .cursor-pointer:hover {
+	cursor: pointer;
+}
+.drop-1-3-target-icon {
+	display: inline-block;
+}	
+.drop-1-3-target-text {
+	display: inline-block;
+	margin: 4px 0px 0px 1px;
+}	
+
+</style>
+
+<style>
+
+.drop-hidden {
+	display: none !important;
+    visibility: hidden !important;  
+}
+.span-arrow-right {
+	width: 10%;
+  	color: #376340; 
+  	font-family: Arial, Helvetica, sans-serif;
+  	font-size: 16px;
+  	font-weight: 700;	
+	text-align: right;	
+}
+.drop-clear-both {
+	clear: both;
+}
+
+</style>
+
+
+<div id="drop_namespace1" class="drop-1">
+	<div class="drop-1-target cursor-pointer">
+		<div class="drop-1-target-icon">
+			<div style="width: 30px; height: 30px; background-color: red;"></div>
+		</div>
+		<div class="drop-1-target-text">
+			<span class="drop-1-span-1">Options 1</span>
+		</div>						    		
+	</div>
+	<!-- <div id="nav_caret_container" class="nav-caret-container" style="display: inline-block;">
+		<div id="nav_caret" class="nav-caret nav-caret-down"></div>
+	</div> -->
+	<div class="drop-1-container drop-hidden">
+		<div class="drop-1-box background-transparent margin-top-hide-1">
+			<div class="drop-1-triangle"></div>
+			<div style="clear: both;"></div>
+			<div class="drop-1-container-links background-white drop-1-border drop-1-shadow">
+				<div class="drop-1-divider-2"></div>
+				<div class="drop-1-link-1 cursor-pointer" data-id="1">
+				    <div class="drop-1-1">
+				    	<div class="drop-1-1-target">
+				    		<!-- <div class="drop-1-1-target-icon">
+				    			<div style="width: 20px; height: 20px; background-color: blue;"></div>
+				    		</div> -->
+				    		<div class="drop-1-1-target-text">
+				    			<div class="drop-1-table">
+				    				<div class="drop-1-table-row">
+				    					<div class="drop-1-table-cell-1">
+				    						<span class="drop-1-span-1">Sub Option 1</span>		
+				    					</div>
+				    					<div class="drop-1-table-cell-2">
+				    						<div class="span-arrow-right">&raquo;</div>			
+				    					</div>						    					
+				    				</div>
+				    			</div>
+				    		</div>
+				    	</div>
+				    	<div class="drop-1-1-container drop-hidden">
+							<div class="drop-1-1-box background-transparent margin-top-hide-1-1">
+								<div class="drop-1-1-triangle"></div>
+								<div style="clear: both;"></div>
+								<div class="drop-1-1-container-links background-white drop-1-1-border drop-1-1-shadow">
+									<div class="drop-1-1-divider-2"></div>
+									<div class="drop-1-1-link-1">
+										<a href="#" class="drop-1-1-link-a-1">
+											<div class="drop-1-1">
+										    	<div class="drop-1-1-target" style="display: inline-block;">
+										    		<!-- <div class="drop-1-1-target-icon">
+										    			<div style="width: 20px; height: 20px; background-color: blue;"></div>
+										    		</div> -->
+										    		<div class="drop-1-1-target-text">
+										    			<span class="drop-1-1-span-1">Sub Option 1-1</span>
+										    		</div>		
+										    	</div>
+									    	</div>
+								    	</a>
+									</div>
+									<div class="drop-1-1-divider-1"></div>
+									<div class="drop-1-1-link-1">
+										<a href="#" class="drop-1-1-link-a-1">
+											<div class="drop-1-1">
+										    	<div class="drop-1-1-target" style="display: inline-block;">
+										    		<!-- <div class="drop-1-1-target-icon">
+										    			<div style="width: 20px; height: 20px; background-color: blue;"></div>
+										    		</div> -->
+										    		<div class="drop-1-1-target-text">
+										    			<span class="drop-1-1-span-1">Sub Option 1-2</span>
+										    		</div>						    		
+										    	</div>
+									    	</div>
+								    	</a>
+									</div>
+									<div class="drop-1-1-divider-1"></div>
+									<div class="drop-1-1-link-1">
+										<a href="#" class="drop-1-1-link-a-1">
+											<div class="drop-1-1">
+										    	<div class="drop-1-1-target" style="display: inline-block;">
+										    		<!-- <div class="drop-1-1-target-icon">
+										    			<div style="width: 20px; height: 20px; background-color: blue;"></div>
+										    		</div> -->
+										    		<div class="drop-1-1-target-text">
+										    			<span class="drop-1-1-span-1">Sub Option 1-3</span>
+										    		</div>						    		
+										    	</div>
+									    	</div>
+								    	</a>
+									</div>
+									<div class="drop-1-1-divider-2"></div>
+								</div>
+							</div>
+				        </div>
+				   	</div>
+				</div>
+				<div class="drop-1-divider-1"></div>
+				<div class="drop-1-link-1 cursor-pointer" data-id="2">
+				    <div class="drop-1-2">
+				    	<div class="drop-1-2-target">
+				    		<!-- <div class="drop-1-2-target-icon">
+				    			<div style="width: 20px; height: 20px; background-color: blue;"></div>
+				    		</div> -->
+				    		<div class="drop-1-2-target-text">
+				    			<div class="drop-1-table">
+				    				<div class="drop-1-table-row">
+				    					<div class="drop-1-table-cell-1">
+				    						<span class="drop-1-span-1">Sub Option 2</span>		
+				    					</div>
+				    					<div class="drop-1-table-cell-2">
+				    						<div class="span-arrow-right">&raquo;</div>			
+				    					</div>						    					
+				    				</div>
+				    			</div>
+				    		</div>					
+				    	</div>
+				    	<div class="drop-1-2-container drop-hidden">
+							<div class="drop-1-2-box background-transparent margin-top-hide-1-2">
+								<div class="drop-1-2-triangle"></div>
+								<div style="clear: both;"></div>
+								<div class="drop-1-2-container-links background-white drop-1-2-border drop-1-2-shadow">
+									<div class="drop-1-2-divider-2"></div>
+									<div class="drop-1-2-link-1">
+										<a href="/" class="drop-1-2-link-a-1">
+											<div class="drop-1-2">
+										    	<div class="drop-1-2-target" style="display: inline-block;">
+										    		<!-- <div class="drop-1-1-target-icon">
+										    			<div style="width: 20px; height: 20px; background-color: blue;"></div>
+										    		</div> -->
+										    		<div class="drop-1-2-target-text">
+										    			<span class="drop-1-2-span-1">Sub Option 2-1</span>
+										    		</div>						    		
+										    	</div>
+									    	</div>
+								    	</a>
+									</div>
+									<div class="drop-1-2-divider-1"></div>
+									<div class="drop-1-2-link-1">
+										<a href="#" class="drop-1-2-link-a-1">
+											<div class="drop-1-2">
+										    	<div class="drop-1-2-target" style="display: inline-block;">
+										    		<!-- <div class="drop-1-1-target-icon">
+										    			<div style="width: 20px; height: 20px; background-color: blue;"></div>
+										    		</div> -->
+										    		<div class="drop-1-2-target-text">
+										    			<span class="drop-1-2-span-1">Sub Option 2-2</span>
+										    		</div>						    		
+										    	</div>
+									    	</div>
+								    	</a>
+									</div>
+									<div class="drop-1-2-divider-1"></div>
+									<div class="drop-1-2-link-1">
+										<a href="#" class="drop-1-2-link-a-1">
+											<div class="drop-1-2">
+										    	<div class="drop-1-2-target" style="display: inline-block;">
+										    		<!-- <div class="drop-1-1-target-icon">
+										    			<div style="width: 20px; height: 20px; background-color: blue;"></div>
+										    		</div> -->
+										    		<div class="drop-1-2-target-text">
+										    			<span class="drop-1-2-span-1">Sub Option 2-3</span>
+										    		</div>						    		
+										    	</div>
+									    	</div>
+								    	</a>
+									</div>
+									<div class="drop-1-2-divider-2"></div>
+								</div>
+							</div>
+				        </div>
+				   	</div>
+				</div>
+				<div class="drop-1-divider-1"></div>
+				<div class="drop-1-link-1 cursor-pointer" data-id="3">
+					<a href="#" class="drop-1-3-link-a-1">
+						<div class="drop-1-3">
+					    	<div class="drop-1-3-target">
+					    		<!-- <div class="drop-1-1-target-icon">
+					    			<div style="width: 20px; height: 20px; background-color: blue;"></div>
+					    		</div> -->
+					    		<div class="drop-1-3-target-text">
+					    			<span class="drop-1-3-span-1">Sub Option 3</span>
+					    		</div>						    		
+					    	</div>
+				    	</div>
+			    	</a>
+				</div>
+				<div class="drop-1-divider-2"></div>
+			</div>
+		</div>
+    </div>
+</div>
+
+
+<script>
+
+	var drop_visible_namespace1_2 = false;
+	function drop_show_namespace1_2() {
+		$("#drop_namespace1 .drop-1-2-container").removeClass('drop-hidden');
+		$("#drop_namespace1 .drop-1-2-box").fadeIn(500).removeClass("margin-top-hide-1-2").addClass("margin-top-show-1-2");
+		drop_visible_namespace1_2 = true;			
+	}	
+	function drop_hide_namespace1_2() {
+		$("#drop_namespace1 .drop-1-2-box").removeClass("margin-top-show-1-2").addClass("margin-top-hide-1-2").fadeOut(50);		
+		drop_visible_namespace1_2 = false;			
+	}	
+	function drop_toggle_namespace1_2() {
+		if (drop_visible_namespace1_2) {
+			drop_hide_namespace1_2();
+		}
+		else {
+			drop_show_namespace1_2();
+			if (drop_visible_namespace1_1) {
+				drop_hide_namespace1_1();
+			} 
+		}
+	}	
+
+
+	$(document).ready(function () {				
+
+		$(".drop-1-2-link-a-1").on("click", function() {
+			dropCloseAll_1();
+		});
+		
+		$("#drop_namespace1 .drop-1-link-1[data-id='2']").on('click', function() {
+			if(!drop_close_all_called_1) {
+				drop_toggle_namespace1_2();	
+			}
+		});
+		
+	});
+	
+</script>
+
+<script>
+
+	var drop_visible_namespace1_1 = false;
+	function drop_show_namespace1_1() {
+		$("#drop_namespace1 .drop-1-1-container").removeClass('drop-hidden');
+		$("#drop_namespace1 .drop-1-1-box").fadeIn(500).removeClass("margin-top-hide-1-1").addClass("margin-top-show-1-1");
+		drop_visible_namespace1_1 = true;			
+	}	
+	function drop_hide_namespace1_1() {
+		$("#drop_namespace1 .drop-1-1-box").removeClass("margin-top-show-1-1").addClass("margin-top-hide-1-1").fadeOut(50);		
+		drop_visible_namespace1_1 = false;			
+	}	
+	function drop_toggle_namespace1_1() {
+		if (drop_visible_namespace1_1) {
+			drop_hide_namespace1_1();
+		}
+		else {
+			drop_show_namespace1_1();
+			if (drop_visible_namespace1_2) {
+				drop_hide_namespace1_2();
+			} 
+		}
+	}	
+
+
+	$(document).ready(function () {				
+
+		$(".drop-1-1-link-a-1").on("click", function() {
+			dropCloseAll_1();
+		});
+
+		$("#drop_namespace1 .drop-1-link-1[data-id='1']").on('click', function() {
+			if(!drop_close_all_called_1) {
+				drop_toggle_namespace1_1();	
+			}
+		});
+
+	});
+	
+</script>
+
+<script>
+
+	var drop_visible_namespace1 = false;
+	function drop_show_namespace1() {
+		$("#drop_namespace1 .drop-1-container").removeClass('drop-hidden');
+		$("#drop_namespace1 .drop-1-box").fadeIn(500).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
+		drop_visible_namespace1 = true;			
+	}	
+	function drop_hide_namespace1() {
+		$("#drop_namespace1 .drop-1-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);		
+		drop_visible_namespace1 = false;			
+	}	
+	function drop_toggle_namespace1() {
+		if (drop_visible_namespace1) {
+			drop_hide_namespace1();
+			drop_hide_namespace1_1();
+			drop_hide_namespace1_2();
+		}
+		else {
+			drop_close_all_called_1 = false;
+			drop_show_namespace1();
+		}
+	}	
+	
+	function dropCloseAll_1() {
+		drop_close_all_called_1 = true;
+		if (drop_visible_namespace1_2) {
+			drop_hide_namespace1_2();
+		} 			
+		if (drop_visible_namespace1_1) {
+			drop_hide_namespace1_1();
+		} 
+		drop_hide_namespace1();
+	}
+	
+	
+	var drop_close_all_called_1 = false;
+	
+	
+	$(document).ready(function () {				
+
+		$(document).on('click', function(e) {
+			var target_namespace1 = $(e.target).parents('#drop_namespace1').attr("id");
+			var target_namespace1_1 = $(e.target).parents("#drop_namespace1 drop-1-link-1[data-id='1']");
+			var target_namespace1_2 = $(e.target).parents("#drop_namespace1 drop-1-link-1[data-id='2']");
+			if (target_namespace1_2 == null) {
+				drop_hide_namespace1_2();
+			}
+			if (target_namespace1_1 == null) {
+				drop_hide_namespace1_1();
+			}
+			if (target_namespace1 == null) {
+				drop_hide_namespace1_2();					
+				drop_hide_namespace1_1();					
+				drop_hide_namespace1();
+			}
+		});
+
+		$("#drop_namespace1 .drop-1-target").on('click', function() {
+			// $("#render_nav_avatar").addClass("avatar-focus");
+			// $("#nav_caret").addClass("nav-caret-focus");
+			drop_toggle_namespace1();
+		});
+		$("#drop_namespace1 .drop-1-link-1[data-id='3']").on("click", function() {
+			dropCloseAll_1();
+		});
+
+		// $('#div-nav-1').on('click', function() {
+			// drop_hide();
+			// window.location = document.getElementById('div-nav-1a').href;				
+		// });
+		// $('#div-nav-2').on('click', function() {
+			// drop_hide();
+			// window.location = document.getElementById('div-nav-2a').href;				
+		// });
+		// $('#div-nav-3').on('click', function() {
+			// drop_hide();
+			// window.location = document.getElementById('div-nav-3a').href;				
+		// });
+		// $('#div-nav-4').on('click', function() {
+			// drop_hide();
+			// window.location = document.getElementById('div-nav-4a').href;				
+		// });
+
+
+		
+	});
+	
+</script>
+
+<script>
+	
+	// function test() {
+		// var obj = {
+			// "one",
+			// "two"
+		// };
+		// $.each( obj, function( value) {
+			// alert( value );
+		// });
+		
+		// $.each( [ "a", "b", "c" ], function( i, l ){
+			// // alert( "Index #" + i + ": " + l );
+			// alert( l );
+		// });
+					
+		// var obj = {
+			// "flammable": "inflammable",
+			// "duh": "no duh"
+		// };
+		// $.each( obj, function( key, value ) {
+			// alert( key + ": " + value );
+		// });
+	// }
+
+</script>
+
+
+
+
+
+
