@@ -1,6 +1,7 @@
 class PublisherUsersController < ApplicationController
 
-  require 'RMagick'
+  # require 'RMagick'
+  require 'rmagick'
   
   # layout 'publisher'
   layout 'publisher'
@@ -1144,17 +1145,25 @@ class PublisherUsersController < ApplicationController
 
   def create_post_user_comment
     
+      ar = params[:post_user_comment]
+      h_obj = Hash.new
+      ar.each do |obj|
+        h_obj = obj
+      end
+    
       @post_user_comments = nil
       @post_user_id = nil
-      
-      post_user_id = params[:post_user_comment][:post_user_id]
+
+      post_user_id = h_obj[:post_user_id]
+      # post_user_id = params[:post_user_comment][:post_user_id]
       # @post_user = nil
       # @b_has_like = false
             
       h_post_user_comment = Hash.new
       h_post_user_comment[:post_user_id] = post_user_id
       h_post_user_comment[:user_id] = current_user.id
-      h_post_user_comment[:comment_text] = params[:post_user_comment][:comment_text]
+      # h_post_user_comment[:comment_text] = params[:post_user_comment][:comment_text]
+      h_post_user_comment[:comment_text] = h_obj[:comment_text]
 
       if !post_user_id.nil?
           post_user = PostUser.where("id = ?", post_user_id).first rescue nil
@@ -1251,11 +1260,18 @@ class PublisherUsersController < ApplicationController
 
   def create_post_user
 
-      @post_users = nil
+      ar = params[:post_user]
+      h_obj = Hash.new
+      ar.each do |obj|
+        h_obj = obj
+      end
 
-      h_post_user = Hash.new
-      h_post_user[:post_text] = params[:post_user][:post_text]
+      @post_users = nil
+      # Rails.logger.info('in create_post_user - ' + h_obj[:post_text])
       
+      h_post_user = Hash.new
+      h_post_user[:post_text] = h_obj[:post_text]
+
       if @@current_post_user.nil?
           post_user = current_user.post_users.build(h_post_user)
           if post_user.save

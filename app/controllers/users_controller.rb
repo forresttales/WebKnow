@@ -557,7 +557,7 @@ class UsersController < ApplicationController
               gon.b_required_story_corporate = false
           end
 
-          render 'publishers/index_home', :layout => 'publisher'
+          render 'publishers/index_home', :layout => 'publishers_index_home'
       else
           redirect_to '/'      
       end
@@ -771,7 +771,7 @@ class UsersController < ApplicationController
               gon.b_required_story_corporate = false
           end
 
-          render 'publishers/index', :layout => 'publisher'
+          render 'publishers/index', :layout => 'publishers_index'
   
       else
           redirect_to '/'
@@ -1072,6 +1072,8 @@ class UsersController < ApplicationController
             publisher = current_user.publisher
             if !publisher.nil?
                 @publisher_user_image_primary = current_user.user_images.where( :primary => true ).first
+                gon.publisher_user_image_primary_url = @publisher_user_image_primary.image_url()
+                # <%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>
                 n = @publisher_user_image_primary.nil?
                 Rails.logger.info('@publisher_user_image_primary nil = ' + n.to_s)
                 @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", @publisher_user_id).first
@@ -1202,7 +1204,7 @@ class UsersController < ApplicationController
         end
         
         
-        render 'publisher_users/index_home', :layout => 'publisher'
+        render 'publisher_users/index_home', :layout => 'publisher_users_index_home'
     
   end
 
@@ -1235,6 +1237,7 @@ class UsersController < ApplicationController
             if !publisher.nil?
                 Rails.logger.info('publisher not nil')
                 @publisher_user_image_primary = current_user.user_images.where( :primary => true ).first
+                gon.publisher_user_image_primary_url = @publisher_user_image_primary.image_url()
                 @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", @publisher_user_id).first
             else
                 Rails.logger.info('publisher was nil')
@@ -1431,7 +1434,7 @@ class UsersController < ApplicationController
         end
         
         
-        render 'publisher_users/index', :layout => 'publisher'
+        render 'publisher_users/index', :layout => 'publisher_users_index'
     
   end
 

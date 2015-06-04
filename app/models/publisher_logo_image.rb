@@ -15,11 +15,11 @@
 #  crop_y       :integer          default(0)
 #  crop_w       :integer          default(0)
 #  crop_h       :integer          default(0)
+#  width        :integer          default(0)
+#  height       :integer          default(0)
 #
 
 class PublisherLogoImage < ActiveRecord::Base
-
-
 
   attr_accessible :user_id,
                   :publisher_id,
@@ -31,6 +31,8 @@ class PublisherLogoImage < ActiveRecord::Base
                   :crop_y,
                   :crop_w,
                   :crop_h,
+                  :width,
+                  :height,
                   :created_at,
                   :updated_at 
   
@@ -40,9 +42,6 @@ class PublisherLogoImage < ActiveRecord::Base
   
   belongs_to :publisher
   
-  
-  
-
 
   
   def self.dbdelete

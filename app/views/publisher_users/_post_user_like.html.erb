@@ -42,10 +42,10 @@
 			</div>
 			<div class="cell-100">
 				<% if @post_user.post_user_likes.count == 0 %>				
-				<div class="">
+				<div class="" style="padding-top: 8px;">
 					<span class="post-user-span-3">Likes <%= @post_user.post_user_likes.count %></span>					
 				<% else %>
-				<div class="dialog-101-figure">
+				<div class="dialog-101-figure" style="padding-top: 8px;">
 					<span class="post-user-span-2">Likes <%= @post_user.post_user_likes.count %></span>					
 				<% end %>
 

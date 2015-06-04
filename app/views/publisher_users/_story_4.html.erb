@@ -1,7 +1,7 @@
 
 
 			<!-- <div id="scroll1" class="product-listbox" style="height: 500px;"> -->
-			<div class="product-listbox">	
+			<div class="post-container">	
 
 			<% if @post_users.any? %>
 				<% @nlist = 0 %>
@@ -31,7 +31,7 @@
 								</div>
 							</div>
 							<div class="cell-600">
-								<div style="width: 100%; background-color: #fff; padding: 0 0 0 4px;">
+								<div style="width: 598px; background-color: #fff; padding: 0 0 0 0px;">
 									<div class="post-user-list-1b-1" style="">
 										<!-- <div style="display: inline-block; width: 561px;"> -->
 										<div style="display: inline-block;" class="float-left">
@@ -68,8 +68,8 @@
 												</div>
 												<div class="cell-300">
 												</div>													
-												<div class="cell-150" style="text-align: right;">
-												    <span class="post-user-span-2">
+												<div class="cell-150" style="text-align: right; padding-top: 10px;">
+												    <span class="post-user-span-3">
 												      - <%= time_ago_in_words(post_user.created_at) %> ago
 												    </span>
 												</div>													
@@ -89,12 +89,14 @@
 										</div>
 										<div style="height: 4px;"></div>
 										<!-- <div class="btn-add-comment-story-4-container hidden"> -->
-										<div id="btn_add_comment_<%= post_user.id %>" class="btn-add-comment-story-4-container hidden">			
-											<div style="display: inline-block; width: 480px;"></div>
-											<div class="btn-add-comment-story-4 toggle-comment" style="display: inline-block; width: 50px;" name="<%= post_user.id %>" tabindex="">
+										<div id="btn_add_comment_<%= post_user.id %>" class="btn-add-comment-story-4-container hidden" style="width: 100%;">			
+											<!-- <div style="display: inline-block; width: 480px;"></div> -->
+											<!-- <div class="btn-add-comment-story-4 toggle-comment" style="display: inline-block; width: 50px;" name="<%= post_user.id %>" tabindex=""> -->
+											<div class="btn-1 toggle-comment btn-add-comment-story-4" style="display: inline-block; width: 50px; float: right;" data-post-user-id="<%= post_user.id %>" tabindex="">
 												<div class="add-comment-story-4-text toggle-comment">Add</div>
 												<div class="add-comment-story-4-loader toggle-comment hidden"></div>
 											</div>
+											<div style="clear: both;"></div>
 											<div style="height: 4px;"></div>
 											<!-- <div class="btn-submit-story-1" tabindex="">
 												<div class="submit-edit-story-4-text">Cancel</div>
@@ -104,7 +106,7 @@
 									</div>									
 									<!-- <div style="height: 8px;"></div> -->
 									<!-- <div class="" style="display: inline-block; width: 100%;"> -->
-									<div class="" style="width: 100%;">
+									<div class="">
 										<div id="render_post_user_comments_<%= post_user.id %>" name="<%= post_user.id %>" class="render-post-user-comments add-comment-container" tabindex="">
 											<%= render 'publisher_users/post_user_comments' %>
 										</div>
@@ -219,21 +221,48 @@
     		// });
 
 
+			// $(".btn-add-comment-story-4").on('click', function() {
+				// // alert($(this).attr("name"));
+				// var post_user_id = $(this).attr("name"); 
+				// var textarea_id = "#textarea_add_comment_" + post_user_id;
+				// var c = $(textarea_id).html().replace(/\t/g, '        '); 
+				// // var c = $(this).html().replace(/\t/g, '        '); 
+				// // $("#post_user_comment_comment_text").val(c);	
+				// $("form#new_post_user_comment input#post_user_comment_comment_text").val(c);
+				// $("form#new_post_user_comment input#post_user_comment_post_user_id").val(post_user_id);
+				// // $("#submit_comment_story_4_text").addClass("hidden");						
+				// // $("#submit_comment_story_4_loader").removeClass("hidden");
+				// $("#submit_post_user_comment_hidden").click();
+			// });
+
+
 			$(".btn-add-comment-story-4").on('click', function() {
-				// alert($(this).attr("name"));
-				var post_user_id = $(this).attr("name"); 
+				var post_user_id = $(this).data("post-user-id"); 
 				var textarea_id = "#textarea_add_comment_" + post_user_id;
-				var c = $(textarea_id).html().replace(/\t/g, '        '); 
-				// var c = $(this).html().replace(/\t/g, '        '); 
-				// $("#post_user_comment_comment_text").val(c);	
-				$("form#new_post_user_comment input#post_user_comment_comment_text").val(c);
-				$("form#new_post_user_comment input#post_user_comment_post_user_id").val(post_user_id);
-				// $("#submit_comment_story_4_text").addClass("hidden");						
-				// $("#submit_comment_story_4_loader").removeClass("hidden");
-				$("#submit_post_user_comment_hidden").click();
+				var comment_text = $(textarea_id).html().replace(/\t/g, '        '); 
+				var obj_list = '{ "comment_text":"' + comment_text +
+							   '", "post_user_id":' + post_user_id + 
+							   '}';      
+			  	var obj = '{ "post_user_comment": [' +  obj_list + '] }';
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_users/create_post_user_comment',			    	
+			    	// dataType: "json",
+			    	dataType: "script",
+			    	contentType: "application/json",
+			    	// contentType: "application/js",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		// alert('success');
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
 			});
-
-
 
 
 
@@ -245,45 +274,43 @@
 
 
 
-            $('.tip').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout'
-                })
-            });			
-			
-            $('.tip-bottom-center').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout',
-				    position: {
-				        my: 'top center',
-				        at: 'bottom center'
-				        // target: $('.tip-bottom-center')
-    				}                    
-                })
-            });			
-
-            $('.tip-top-center').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout',
-				    position: {
-				        my: 'bottom center',
-				        at: 'top center'
-				        // target: $('.tip-top-center')
-    				}                    
-                })
-            });			
+            // $('.tip').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout'
+                // })
+            // });			
+            // $('.tip-bottom-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'top center',
+				        // at: 'bottom center'
+				        // // target: $('.tip-bottom-center')
+    				// }                    
+                // })
+            // });			
+            // $('.tip-top-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'bottom center',
+				        // at: 'top center'
+				        // // target: $('.tip-top-center')
+    				// }                    
+                // })
+            // });			
 
 			// $("#btn_submit_post_user_like").on('click', function() {
 				// alert('click');

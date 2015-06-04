@@ -1,5 +1,5 @@
 
-	<style>
+	<!-- <style>
 		
 		div.drop-2-container-target  {
 			position: relative;
@@ -86,15 +86,15 @@
 		div.drop-2-container-target .drop-2-target + .drop-2-container:hover .dropOut { margin-top: 8px; }		
 		/*div.drop-2-container-target .drop-2-target + .drop-2-container:hover { top: 180px; }*/
 		
-	</style>
+	</style> -->
 
-	<style>
+	<!-- <style>
 	
 		li {list-style-type: none;}
 	
-	</style>
+	</style> -->
 
-	<style>
+	<!-- <style>
 
 		.container-figure-image-border-load {
 			border: 2px solid #fff;
@@ -106,17 +106,121 @@
 			border: 2px solid #fbb040;
 		}	
 		
-	</style>
+	</style> -->
+
+
+<style>
+	
+/*.drop-namespace101 {
+	width: 200px;
+}*/
+.drop-namespace101 .drop-1-triangle {
+  	width: 0px;
+  	height: 0px;
+  	border-left: 8px solid transparent;
+  	border-right: 8px solid transparent;
+  	border-bottom: 8px solid #fff;
+  	position: relative;
+  	left: 3px;
+  	float: left;
+}
+.drop-namespace101 .drop-1-box {
+  	width: 200px;
+  	float: left;
+  	position: absolute;
+  	margin-top: 0px;
+  	-webkit-transition: all .1s ease-out;
+  	-moz-transition: all .1s ease-out;
+  	-ms-transition: all .1s ease-out;
+  	-o-transition: all .1s ease-out;
+  	transition: all .1s ease-out;
+  	z-index: 1;
+}
+.drop-namespace101 .drop-1-container-links {
+}
+.drop-namespace101 .margin-top-hide-1 {
+	margin-top: -16px;
+}
+.drop-namespace101 .margin-top-show-1 {
+	margin-top: -6px;
+}
+.drop-namespace101 .drop-1-link-1 {
+	width: 100%;
+}
+/*.drop-namespace101 .drop-1-target {
+	position: relative;
+  	width: 200px;
+  	height: 19px;
+  	padding: 9px 0px 4px 0px;
+  	text-align: center;
+}*/
+/*.drop-namespace101 .drop-1-target:hover {
+  	background: #f6f6f6;
+}*/
+.drop-namespace101 .drop-1-link-1:hover .span-1 {
+}   
+.drop-namespace101 .drop-1-span-1 {
+  	color: #376340; 
+  	font-family: Arial, Helvetica, sans-serif;
+  	font-size: 16px;
+  	font-weight: 700;
+}
+.drop-namespace101 a.drop-1-link-a-1 {
+	text-decoration: none;
+}
+.drop-namespace101 a.drop-1-link-a-1:hover {
+	text-decoration: none;
+}
+.drop-namespace101 .drop-1-border {
+  	-webkit-border-top-left-radius: 4px;
+  	-moz-border-top-left-radius: 4px;
+  	border-top-left-radius: 4px;      
+
+  	-webkit-border-top-right-radius: 4px;
+  	-moz-border-top-right-radius: 4px;
+  	border-top-right-radius: 4px;     
+
+  	-webkit-border-bottom-right-radius: 4px;
+  	-moz-border-bottom-right-radius: 4px;
+  	border-bottom-right-radius: 4px;      
+
+  	-webkit-border-bottom-left-radius: 4px;
+  	-moz-border-bottom-left-radius: 4px;
+  	border-bottom-left-radius: 4px;     
+}
+.drop-namespace101 .drop-1-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+}
+.drop-namespace101 .drop-1-divider-1 {
+  	height: 2px;
+}
+.drop-namespace101 .drop-1-divider-2 {
+  	height: 10px;
+}
+.drop-namespace101 .background-transparent {
+  	background-color: transparent;
+}
+.drop-namespace101 .background-white {
+  	background-color: #fff;
+}
+	
+</style>
+
+
 
 
 								<% if @publisher_user_logo_image %>   				
 									<!-- <#% rnum = (rand(10..90) * rand(100..900)).to_s %#> -->
 									<!-- <div class="container-figure-logo container-figure-logo-1 drop-2-container-target"> -->
-									<div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-2-container-target">
-										<figure id="profile_figure_logo" class="dialog-21-figure cursor-pointer drop-2-target">
+									<!-- <div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-2-container-target"> -->
+									<div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-namespace101" style="position: relative;">
+										<!-- <figure id="profile_figure_logo" class="dialog-21-figure cursor-pointer"> -->
+										<figure id="profile_figure_logo" class="dialog-21-figure cursor-pointer" data-width="<%= @publisher_user_logo_image.width %>" data-src-600="<%= @publisher_user_logo_image.image_url(:user_600_600) %>">
 											<img id="logo_primary_img" alt="" src="<%= @publisher_user_logo_image.image_url(:user_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_logo_image.image? %>" />
-											<input class="container-image-hidden" type="hidden" value="<%= @publisher_user_logo_image.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_logo_image.image? %>" />
-											<figcaption id="figcaption_logo_image" class="edit-image hidden">												
+											<!-- <input class="container-image-hidden" type="hidden" value="<#%= @publisher_user_logo_image.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_logo_image.image? %#>" /> -->
+											<figcaption id="figcaption_logo_image" class="edit-image hidden drop-1-target">												
 												<!-- <div class="img-1-container"> -->
 													<!-- <div class="img-1"></div> -->
 													<div class="img-1-text">Edit image</div>
@@ -126,7 +230,56 @@
 												<!-- <div class="img-1"></div> -->
 											</figcaption>
 										</figure>
-								    	<div class="drop-2-container hidden">
+										
+								    	<div class="drop-1-container drop-hidden">
+											<div class="drop-1-box background-transparent margin-top-hide-1">
+												<div class="drop-1-triangle"></div>
+												<div style="clear: both;"></div>
+												<div class="drop-1-container-links background-white drop-1-border drop-1-shadow">
+													<div class="drop-1-divider-2"></div>
+													<div class="drop-1-link-1 cursor-pointer" data-id="1">
+														<!-- <a href="/" class="drop-1-1-link-a-1"> -->
+															<div class="drop-1-1">
+														    	<div class="drop-1-1-target">
+														    		<div class="drop-1-1-target-text">
+														    			<span class="drop-1-1-span-1">New/Change</span>
+														    		</div>
+														    	</div>
+													    	</div>
+												    	<!-- </a> -->
+													</div>
+													<!-- <div class="drop-1-divider-1"></div>
+													<div class="drop-1-link-1 cursor-pointer" data-id="2">
+														<a href="<%= @url_user_story %>" class="drop-1-1-link-a-1">
+															<div class="drop-1-1">
+														    	<div class="drop-1-1-target">
+														    		<div class="drop-1-1-target-text" id="btn_photo_primary_crop">
+														    			<span class="drop-1-1-span-1">Crop/Center</span>
+														    		</div>						 
+														    	</div>
+													    	</div>
+												    	</a>
+													</div> -->
+													<div class="drop-1-divider-1"></div>
+													<div class="drop-1-link-1 cursor-pointer" data-id="3">
+														<!-- <a href="/KnowCred" class="drop-1-1-link-a-1"> -->
+															<div class="drop-1-1">
+														    	<div class="drop-1-1-target">
+														    		<div class="drop-1-1-target-text">
+														    			<span class="drop-1-1-span-1">Delete</span>
+														    		</div>		
+														    	</div>
+													    	</div>
+												    	<!-- </a> -->
+													</div>
+													<div class="drop-1-divider-2"></div>
+												</div>
+											</div>
+								        </div>
+										
+										
+										
+								    	<!-- <div class="drop-2-container hidden">
 											<div class="dropOut">
 												<div class="triangle"></div>
 												<ul>
@@ -135,11 +288,6 @@
 															New/Change
 														</div>
 													</li>
-													<!-- <li>
-														<div id="btn_photo_logo_crop" class="">
-															Crop/Center
-														</div>
-													</li> -->
 													<li>
 														<div id="btn_photo_logo_delete">
 															Delete
@@ -147,7 +295,7 @@
 													</li>
 												</ul>
 											</div>
-								        </div>
+								        </div> -->
 										
 									</div>
 									<div class="float-clear"></div>
@@ -182,6 +330,66 @@
 								<% end %>
 
 
+<script>
+
+	var drop_visible_namespace101 = false;
+	function drop_show_namespace101() {
+		$(".drop-namespace101 .drop-1-container").removeClass('drop-hidden');
+		$(".drop-namespace101 .drop-1-box").fadeIn(500).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
+		drop_visible_namespace101 = true;			
+	}	
+	function drop_hide_namespace101() {
+		$(".drop-namespace101 .drop-1-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);		
+		drop_visible_namespace101 = false;			
+	}	
+	function drop_toggle_namespace101() {
+		if (drop_visible_namespace101) {
+			drop_hide_namespace101();
+		}
+		else {
+			drop_close_all_called_namespace101 = false;
+			drop_show_namespace101();
+		}
+	}	
+	
+	function dropCloseAll_namespace101() {
+		drop_close_all_called_namespace101 = true;
+		drop_hide_namespace101();
+	}
+	
+	
+	var drop_close_all_called_namespace101 = false;
+	
+	
+	$(document).ready(function () {				
+
+		$(document).on('click', function(e) {
+			// var target_namespace101 = $(e.target).parents('#drop_namespace101').attr("id");
+			var target_namespace101 = $(e.target).parents('.drop-namespace101').attr("class");
+			if (target_namespace101 == null) {
+				drop_hide_namespace101();
+			}
+		});
+
+		$(".drop-namespace101 .drop-1-target").on('click', function() {
+			drop_toggle_namespace101();
+		});
+		$(".drop-namespace101 .drop-1-link-1[data-id='1']").on("click", function() {
+			dropCloseAll_namespace101();
+			$(document).trigger("btn_photo_logo_change_click");
+		});
+		// $(".drop-namespace101 .drop-1-link-1[data-id='2']").on("click", function() {
+			// dropCloseAll_namespace101();
+			// $(document).trigger("btn_photo_logo_crop_click");
+		// });
+		$(".drop-namespace101 .drop-1-link-1[data-id='3']").on("click", function() {
+			dropCloseAll_namespace101();
+			$(document).trigger("btn_photo_logo_delete_click");
+		});
+
+	});
+	
+</script>
 
 
 	<script>
@@ -197,40 +405,43 @@
 				if((this.id == "logo_primary_img") || (this.id == "logo_generic_img")) {
 					var img_w = this.width;
 					var img_h = this.height;
-					$("div.drop-2-container-target .drop-2-target").on('mouseenter', function() {
-						$(".drop-2-container").css({ 
-							top : img_h - 14
-						});
-					});
-					$("div.drop-2-container-target .drop-2-target").on('mouseleave', function() {
-						$(".drop-2-container").css({ 
-							top : -1000
-						});
-					});
-					
-					$("div.drop-2-container-target .drop-2-container").on('mouseenter', function() {
-						$(".drop-2-container").css({ 
-							top : img_h - 14
-						});
-					});
-					$("div.drop-2-container-target .drop-2-container").on('mouseleave', function() {
-						$(".drop-2-container").css({ 
-							top : -1000
-						});
-					});
+					// $("div.drop-2-container-target .drop-2-target").on('mouseenter', function() {
+						// $(".drop-2-container").css({ 
+							// top : img_h - 14
+						// });
+					// });
+					// $("div.drop-2-container-target .drop-2-target").on('mouseleave', function() {
+						// $(".drop-2-container").css({ 
+							// top : -1000
+						// });
+					// });
+					// $("div.drop-2-container-target .drop-2-container").on('mouseenter', function() {
+						// $(".drop-2-container").css({ 
+							// top : img_h - 14
+						// });
+					// });
+					// $("div.drop-2-container-target .drop-2-container").on('mouseleave', function() {
+						// $(".drop-2-container").css({ 
+							// top : -1000
+						// });
+					// });
 
 					// $("div#container_image_1 .container-figure-image").css({
 					$(".container-figure-image-2").css({
-						width : img_w + 4,
-						height : img_h + 4
+						// width : img_w + 4,
+						// height : img_h + 4
+						width : img_w ,
+						height : img_h
 					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");													
 				}
 				if(this.id == "logo_generic_img") {
 					var img_w = this.width;
 					var img_h = this.height;
 					$(".container-figure-image-2").css({
-						width : img_w + 4,
-						height : img_h + 4
+						// width : img_w + 4,
+						// height : img_h + 4
+						width : img_w,
+						height : img_h
 					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
 				}				
 				// if(this.id == "user_primary_img_600") {
@@ -247,6 +458,70 @@
 			  	if(this.complete) $(this).load();
 			});
 
+		
+			var this_img;			
+			$(".dialog-21-figure").on('click', function(e) {
+				if ( e.target.nodeName == "IMG" ) {
+
+					$("#dialog_overlay").jqmShow();
+					$("#overlay_loading").removeClass("display-none");
+
+					// alert($(this).attr("id"));
+					// var w = $(this).data("width");
+					// alert(w);
+					// w += 120;
+					// var w2 = -(w/2);
+					var src_img = $(this).data("src-600");
+					// alert(src_img);
+					$('<img src="'+ src_img +'">').load(function(){
+						$("#figure_dialog_21").append($(this));
+						
+						// var publisher_user_image_primary_url = gon.publisher_user_image_primary_url;
+						// var s_tmpl = "templates/figure_dialog_21";
+						// $.tmpl(s_tmpl, {
+							// src_image: publisher_user_image_primary_url
+						// }).appendTo($("#figure_dialog_21"));
+
+						// $(".jqmWindow-21").css({
+							// 'margin-left' : w2,
+							// 'width' : w  
+						// });
+						$("#overlay_loading").addClass("display-none");
+						$("#dialog_overlay").jqmHide();
+						$("#dialog_21").jqmShow();	
+					}).error(function(){
+						alert('error loading image');
+					});
+				}
+			});
+			$('#dialog_21').jqm({
+				overlay: 84,
+				onShow: function(hash) {
+					hash.w.css('opacity', 1.0).fadeIn(10);
+					hash.o.prependTo('body');
+					hash.w.css('top', '0px');
+				},
+				onHide: function(hash) {
+					hash.o.remove();
+					hash.w.css('top', '-8000px');
+					$("#figure_dialog_21 img").remove();
+					// hash.w.fadeOut('10',function(){ 
+						// hash.o.remove(); 
+					// });
+				}
+			}); 		
+			$('#dialog_overlay').jqm({
+				overlay: 84,
+				onShow: function(hash) {
+					hash.w.css('opacity', 1.0).fadeIn(10);
+					hash.o.prependTo('body');
+					// hash.w.css('top', '0px');
+				},
+				onHide: function(hash) {
+					hash.o.remove();
+					hash.w.css('top', '-8000px');
+				}
+			}); 		
 		
 			// $("img").one("load", function() {
 			  	// // alert('user_primary_img');
@@ -397,60 +672,57 @@
 			
 			
 			
-            $('.tip').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout'
-                })
-            });			
-			
-            $('.tip-bottom-center').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout',
-				    position: {
-				        my: 'top center',
-				        at: 'bottom center'
-				        // target: $('.tip-bottom-center')
-    				}                    
-                })
-            });			
-
-            $('.tip-top-center').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout',
-				    position: {
-				        my: 'bottom center',
-				        at: 'top center'
-				        // target: $('.tip-top-center')
-    				}                    
-                })
-            });			
-			
-            $('.tip-left-center').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout',
-				    position: {
-				        my: 'right top',
-				        at: 'left center'
-				        // target: $('.tip-top-center')
-    				}                    
-                })
-            });			
+            // $('.tip').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout'
+                // })
+            // });			
+            // $('.tip-bottom-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'top center',
+				        // at: 'bottom center'
+				        // // target: $('.tip-bottom-center')
+    				// }                    
+                // })
+            // });			
+            // $('.tip-top-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'bottom center',
+				        // at: 'top center'
+				        // // target: $('.tip-top-center')
+    				// }                    
+                // })
+            // });			
+            // $('.tip-left-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'right top',
+				        // at: 'left center'
+				        // // target: $('.tip-top-center')
+    				// }                    
+                // })
+            // });			
 		
 		});
 	  

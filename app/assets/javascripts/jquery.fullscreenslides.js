@@ -5,9 +5,7 @@
  * This is a jQuery plugin to generate full screen galleries.
  *
  * https://github.com/eikes/jquery.fullscreen.js
- */
-;
-/* 
+ *
  * It assumes that your images are wrapped in links like this:
  * 
  * <a href="image-1-large.jpg" rel="gallery-1" title="woot">

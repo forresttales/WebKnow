@@ -1,0 +1,152 @@
+<style type="text/css">
+   .textarea-container-edit {
+      border: 1px solid #fbb040;     
+      min-height: 38px;
+      width: 515px;  /*660*/     
+      background-color: #fff;
+      padding: 5px;
+   }
+   .textarea-user {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 400;
+      vertical-align: text-top;
+      font-weight: 400;
+      font-size: 13px;
+      color: #1B666B;
+      line-height: 100%;
+      padding: 5px;
+      min-height: 28px;
+      width: 505px; /*648*/         
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-wrap: break-word;                           
+   }
+   .textarea-user:focus:hover {
+      outline: none;
+   }
+   .textarea-user:focus {
+      outline: none;
+   }                 
+   .textarea-user:hover {
+      outline: none;
+   }
+   .textarea-user-edit {
+      background-color: #eee;
+   }
+
+
+   .im_editable {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 400;
+      background: #FFFFFF;
+      color: #1B666B;
+      border: 1px solid #fbb040;
+      width: 515px;
+      min-height: 40px;
+      padding: 5px;
+      outline: 0;
+      line-height: 100%;
+      word-wrap: break-word;
+      cursor: text;
+      white-space: pre-wrap;
+      overflow-wrap: break-word; 
+   }
+   .im_editable:focus/*, .im_editable:not(:empty)*/{
+      background: #eee;
+      background-clip: content-box;
+      color: black;
+   }
+   [contentEditable=true]:empty:not(:focus):before{
+      content:attr(data-placeholder);
+      color: #8C8E91
+   }
+</style>
+
+<div style="height: 100px;"></div>
+<h1>KS Textarea</h1>
+<div id="textarea_publisher_user_interest_containter_edit" class="textarea-container-edit">
+   <!-- <div id="render_publisher_user_interest_image_edit" class="render-user-interest-image"></div> -->
+   <div id="textarea_publisher_user_interest_edit" class="textarea-user textarea-user-edit" contenteditable="true"></div>
+</div>
+<div style="height: 100px;"></div>
+
+<h1>Vkontakte based Textarea</h1>
+<div class="im_txt_wrap im_editable_txt">
+   <div class="im_editable" id="im_txt" tabindex="0" contenteditable="true" data-placeholder="Enter your text here.."></div>
+</div>
+
+<script type="text/javascript">
+   // $("#textarea_publisher_user_interest_edit").on ('blur', function (e) {
+   //    onDivBlur_publisher_user_interest();
+   // });
+   // $("#im_txt").on ('mousedown', function (e) {
+   //    return cancelEvent_publisher_user_interest(e);
+   // });
+   // $("#im_txt").on ('click', function (e) {
+   //    return cancelEvent_publisher_user_interest(e);
+   // });
+   // $("#im_txt").on ('mouseup', function (e) {
+   //    saveSelection_publisher_user_interest();
+   // });
+   // $("#im_txt").on ('keyup', function (e) {
+   //    saveSelection_publisher_user_interest();
+   // });
+   // $("#im_txt").on ('focus', function (e) {
+   //    restoreSelection_publisher_user_interest();
+   // });
+   $("#im_txt").on ('keydown', function (e) {
+      if(e.keyCode == 9) {
+         e.preventDefault();
+         // if (window.getSelection) {
+         //    var sel = window.getSelection();
+         //    if (sel.getRangeAt) {
+         //       var range = sel.getRangeAt(0);
+               
+         //       var caretPosStart = range.startOffset;
+         //       var caretPosEnd = range.endOffset;
+
+         //       range.deleteContents();
+         //       range.insertNode( document.createTextNode("\t") );
+         //       range.collapse(false);
+
+         //       var childNode = $("#im_txt")[0].firstChild
+         //       range.setStart(childNode.nextSibling, childNode.nextSibling.length);
+         //    }            
+         // }
+         contenteditableInsertText("\t");
+
+         var x = 0;
+      }
+
+      // if( e.keyCode == 13) {
+      //    e.preventDefault();
+      //    contenteditableInsertText("\n");
+      // }
+   });
+
+   function contenteditableInsertText(text) {
+      var sel, range;
+      if(window.getSelection) {
+         sel = window.getSelection();
+         if(sel.getRangeAt) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(document.createTextNode(text));
+            
+            var newOffset = sel.focusOffset + text.length;
+            var textNode = sel.focusNode.nextSibling;
+            // var textNode = sel.focusNode.firstChild.nextSibling;
+            
+            // sel.collapse(textNode, Math.min(textNode.length, newOffset));
+            // sel.extend(textNode, Math.min(textNode.length, newOffset));
+            range.setStart(textNode, Math.min(textNode.length, newOffset));
+            range.setEnd(textNode, Math.min(textNode.length, newOffset));
+
+            sel.removeAllRanges();
+            sel.addRange(range);
+         }
+      } else if (document.selection) {
+           document.selection.createRange().text = text;
+      }
+   }  
+</script>

@@ -21,7 +21,6 @@
 #  auth_token             :string(255)
 #  password_reset_token   :string(255)
 #  password_reset_sent_at :datetime
-#  avatar                 :string(255)
 #  id_gen                 :integer          default(0)
 #  id_per                 :string(255)      default("")
 #  slug                   :string(200)

@@ -24,13 +24,11 @@
 	
 	
 	<!-- <link rel="stylesheet" href="../styles/digg-pagination.css" /> -->
-	<link rel="stylesheet" href="../styles/ks-profile.css" />
+	<!-- <link rel="stylesheet" href="../styles/ks-profile.css" /> -->
 	
-	<script type="text/javascript" src="../scripts/jquery.tmpl.js"></script>
+	<!-- <script type="text/javascript" src="../scripts/jquery.tmpl.js"></script> -->
 	
-	
- 	<style>
- 		
+ 	<!-- <style>
 		*, *:after, *:before {
 			-webkit-box-sizing: border-box;
 			-moz-box-sizing: border-box;
@@ -39,14 +37,13 @@
 		.clearfix:before, .clearfix:after { content: " "; display: table; }
 		.clearfix:after { clear: both; }
 		a, a:focus {
-			/*color: #888;*/
 			text-decoration: none;
 			outline: none;
 		}
-		/*a:hover,
-		a:active {
-			color: #333;
-		}*/
+	</style> -->
+	
+ 	<style>
+
 		.publisher-product-list-grid {
 			padding: 0px 0px 0px 0px;
 			/*max-width: 1300px;*/
@@ -264,26 +261,6 @@
 				
 	</style>
 
-	<style>
-		
-		.tooltip-text-1 {
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 12px;
-			font-weight: 400;					
-			/*color: #37633A;*/
-			color: #fff;	
-			/*background-color: #FAFF94;*/
-			background-color: rgba(0, 0, 0, 0.6);
-			/*background-color: #eee;*/
-			/*border-color: #37633A;*/
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-		}
-		.tip-content { display: none; }
-		
-	</style>
-	
 	<style>
 
 		.ks-tip-container {
@@ -585,18 +562,176 @@
 		
 	</style>
 	
-
-									<%= form_tag return_profile_users_members_path, :id => 'form_return_profile_users', :remote => true do %>
-										<%= hidden_field_tag :profile_user_type %>
-										<%= submit_tag 'Submit', id: 'submit_profile_user_hidden', class: 'display-none' %>
-									<% end %>									
-
-									<%= form_tag return_profiles_members_path, :id => 'form_return_profiles', :remote => true do %>
-										<%= hidden_field_tag :profile_type %>
-										<%= submit_tag 'Submit', id: 'submit_profile_hidden', class: 'display-none' %>
-									<% end %>									
 	
+<%= form_tag return_profile_users_members_path, :id => 'form_return_profile_users', :remote => true do %>
+	<%= hidden_field_tag :profile_user_type %>
+	<%= submit_tag 'Submit', id: 'submit_profile_user_hidden', class: 'display-none' %>
+<% end %>									
 
+<%= form_tag return_profiles_members_path, :id => 'form_return_profiles', :remote => true do %>
+	<%= hidden_field_tag :profile_type %>
+	<%= submit_tag 'Submit', id: 'submit_profile_hidden', class: 'display-none' %>
+<% end %>									
+	
+<div class="table-profile" style="height: 100%;">
+	<div class="row-profile">
+		<div class="profile-left-col">
+
+			<div class="table margin-0">
+				<div class="row">
+					<div class="cell-225" style="height: 260px; padding: 0 0 0 1px;">
+						<div style="height: 300px; background-color: #dedede;"></div>						
+					</div>
+					<div class="cell-750">
+
+						<div class="post-column">
+
+
+
+							<div class="table margin-0">
+								<div class="row">
+									<div class="cell-100percent">
+										<div style="height: 10px;"></div>
+										
+									
+										<% if current_user.email == "b@b.com" %>
+										<div style="width: 100%; text-align: center;">
+											<h5>
+											   	<% delete_all_msg = "Delete all Publisher Product records and reset indices?" %>
+												<%= button_to "Delete All Records and Reset Indices", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long' %>
+											</h5>
+										</div>
+										<% end %>
+										
+										<!-- <div class="pad-left-20">
+											<span class="jp-title">Products</span>
+										</div> -->
+										
+										<div class="line-space-20"></div>
+										<h2 style="text-decoration: underline; text-align: center;">Instructions:</h2>
+										<ul class="jp-edit-instr" style="margin-bottom: 30px;">
+											<li>1. Click Add Product to add a product to your listing</li>
+											<li>2. Then Click on that listing to be taken to its page. From there you can add all the details about this product</li>
+											<li>&bull; Each product is added individually. If you need to upload products in bulk, this is a premium service we offer</li>
+											<li>&bull; If you need help or have questions, please <a target="_blank" href="http://thelearningcounsel.com/ContactUs" style="color:#49853f;">Contact Us</a></li>						
+										</ul>
+											
+										<div style="height: 10px;"></div>				
+										
+										<div class="show-story-3">
+											<div class="text-align-left">
+												<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
+													
+													<div style="margin: 0;">													
+														<div class="publisher-product-utility-bar light">
+															<!-- <div id="render_story_4_post_users_count" style="padding-left: 10px; padding-top: 10px;"></div> -->
+															
+															<!-- <div style="padding-left: 10px; padding-top: 10px;"> -->
+															<div style="padding-left: 130px; padding-top: 10px;">
+																<!-- <div style="display: inline-block;">
+																	<span>Products Count: </span>
+																</div>
+																<div id="render_record_count" style="display: inline-block;">
+																	<span></span>
+																</div> -->
+																
+		
+			<style>
+				
+				.btn-opt-add-spacer {
+					display: inline-block; 
+					width: 430px;
+				}
+				.btn-opt-add-container-outer {
+					position: relative;
+				  	height: 24px;
+					display: inline-block; 
+					width: 122px; 
+					height: 26px; 
+					margin: 2px 0 0 0;		  	
+				}
+				.btn-opt-add-container {
+				  	background: linear-gradient(#FBB040, #CA8E33);
+				  	border-radius: 10px;
+				  	width: 120px;
+				  	height: 24px;
+				}
+				.btn-opt-add {
+					font-family: Arial, Helvetica, sans-serif;
+					font-size: 14px;
+					font-weight: 700;		
+				  	color: #eee;
+					text-align: center;	
+				  	width: 120px;
+				  	height: 24px;
+				  	padding-top: 4px;
+				  	text-decoration:none;
+				  	outline: none;
+				}
+				.btn-opt-add:focus {
+				}
+				.btn-opt-add-container:hover { 
+				  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+				  inset 0 1.5em 1em rgba(255,255,255,0.2);
+				  cursor: pointer;
+				}
+				.btn-opt-add-container:active .btn-opt-edit { 
+					color: transparent;
+					text-shadow: 1px 1px #fff;
+				}
+				
+			</style>											
+			
+																<div class="btn-opt-add-spacer"></div>
+																<div class="btn-opt-add-container-outer">
+																	<div class="btn-opt-add-container">
+																		<div id="btn_add_prod" id="open_edit_story_1" class="btn-opt-add" tabindex="">
+																			Add Product
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div id="im_top_sh" style="display: block;"></div>
+													</div>
+													
+													<div id="render_list" style="position: relative;"></div>
+													
+												</div>
+											</div>
+										</div>
+										
+										
+										
+										
+									</div>
+								</div>
+							</div>
+							
+							<div class="show-story-3">
+								<div class="text-align-left">
+									<div class="post-user-sub-container" id="sub_container">
+										<div id="render_story_4" style="height: auto;"></div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+
+					</div>	
+
+					<div class="cell-225">
+						<div style="height: 300px; background-color: #dedede;"></div>
+					</div>					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<% if false %>
 		<div class="table-profile" style="height: 100%;">
 			<div class="row-profile">
 				<div style="display: table-cell; width: 200px; vertical-align: top; margin: 0; padding: 0; height: 100%;">
@@ -625,115 +760,23 @@
 					<div class="table margin-0" style="height: auto;">
 						<div class="row">
 							<div class="cell-100percent">
-								<div style="height: 10px;"></div>
-									
-								<% if current_user.email == "b@b.com" %>
-								<div style="width: 100%; text-align: center;">
-									<h5>
-									   	<% delete_all_msg = "Delete all Publisher Product records and reset indices?" %>
-										<%= button_to "Delete All Records and Reset Indices", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long' %>
-									</h5>
-								</div>
-								<% end %>
 								
-								<!-- <div class="pad-left-20">
-									<span class="jp-title">Products</span>
-								</div> -->
 								
-								<div class="line-space-20"></div>
-								<h2 style="text-decoration: underline; text-align: center;">Instructions:</h2>
-								<ul class="jp-edit-instr" style="margin-bottom: 30px;">
-									<li>1. Click Add Product to add a product to your listing</li>
-									<li>2. Then Click on that listing to be taken to its page. From there you can add all the details about this product</li>
-									<li>&bull; Each product is added individually. If you need to upload products in bulk, this is a premium service we offer</li>
-									<li>&bull; If you need help or have questions, please <a target="_blank" href="http://thelearningcounsel.com/ContactUs" style="color:#49853f;">Contact Us</a></li>						
-								</ul>
-									
-								<div style="height: 10px;"></div>				
 								
-								<div class="show-story-3">
-									<div class="text-align-left">
-										<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
-											
-											<div style="margin: 0;">													
-												<div class="publisher-product-utility-bar light">
-													<!-- <div id="render_story_4_post_users_count" style="padding-left: 10px; padding-top: 10px;"></div> -->
-													
-													<!-- <div style="padding-left: 10px; padding-top: 10px;"> -->
-													<div style="padding-left: 130px; padding-top: 10px;">
-														<!-- <div style="display: inline-block;">
-															<span>Products Count: </span>
-														</div>
-														<div id="render_record_count" style="display: inline-block;">
-															<span></span>
-														</div> -->
-														
-
-	<style>
-		
-		.btn-opt-add-spacer {
-			display: inline-block; 
-			width: 430px;
-		}
-		.btn-opt-add-container-outer {
-			position: relative;
-		  	height: 24px;
-			display: inline-block; 
-			width: 122px; 
-			height: 26px; 
-			margin: 2px 0 0 0;		  	
-		}
-		.btn-opt-add-container {
-		  	background: linear-gradient(#FBB040, #CA8E33);
-		  	border-radius: 10px;
-		  	width: 120px;
-		  	height: 24px;
-		}
-		.btn-opt-add {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			font-weight: 700;		
-		  	color: #eee;
-			text-align: center;	
-		  	width: 120px;
-		  	height: 24px;
-		  	padding-top: 4px;
-		  	text-decoration:none;
-		  	outline: none;
-		}
-		.btn-opt-add:focus {
-		}
-		.btn-opt-add-container:hover { 
-		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
-		  inset 0 1.5em 1em rgba(255,255,255,0.2);
-		  cursor: pointer;
-		}
-		.btn-opt-add-container:active .btn-opt-edit { 
-			color: transparent;
-			text-shadow: 1px 1px #fff;
-		}
-		
-	</style>											
-	
-														<div class="btn-opt-add-spacer"></div>
-														<div class="btn-opt-add-container-outer">
-															<div class="btn-opt-add-container">
-																<div id="btn_add_prod" id="open_edit_story_1" class="btn-opt-add" tabindex="">
-																	Add Product
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div id="im_top_sh" style="display: block;"></div>
-											</div>
-											
-											<div id="render_list" style="position: relative;"></div>
-											
-										</div>
-									</div>
-								</div>
+								
+								
+								
+								
+								
+								
+								
+								
 							</div>
+							
+							
+							
+							
+							
 						</div>
 					</div>
 					<!-- <div style="height: 20px;"></div> -->
@@ -793,7 +836,7 @@
 			</div>								
 		</div>
 		<div style="height: 20px;"></div>
-
+<% end %>
 
 
 	<script>

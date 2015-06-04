@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.fullscreenslides
+//= require jquery-tmpl
+//= require_directory ./templates
 
-// require jquery_ujs
 // require slick
 // require jquery.validate
 // require chosen.jquery
@@ -28,6 +30,7 @@
 // require jquery-dropdown-dot
 // require nav-jquery
 
+// // require jquery_ujs
 // // require toucheffects
 // // require jquery.remotipart
 // // require jquery.iframe-transport

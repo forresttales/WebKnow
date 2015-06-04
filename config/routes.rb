@@ -1,7 +1,10 @@
 Webknow::Application.routes.draw do
 
   get "tests/test1"
+  get "tests/test_fullscreen"
   get "control_elements/nav_dropdowns"
+  get "control_elements/dynamic_edit_box"
+  get "control_elements/sticky_footer"
   
 
   root to: 'users#index'
@@ -1488,7 +1491,6 @@ Webknow::Application.routes.draw do
     # resources :accounts
   # end
 
-  
   # this must be last
   match "/:id" => "users#index", via: 'get'
   # match "/:id_public_publisher_user" => "public_publisher_users#index", via: 'get'

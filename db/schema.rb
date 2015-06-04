@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522040012) do
+ActiveRecord::Schema.define(version: 20150604035642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -420,15 +420,6 @@ ActiveRecord::Schema.define(version: 20140522040012) do
     t.datetime "updated_at"
   end
 
-  create_table "image_idents", force: :cascade do |t|
-    t.string   "assigned_text",   limit: 255
-    t.integer  "assigned_digit"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "assigned_text_1", limit: 255
-    t.string   "assigned_text_2", limit: 255
-  end
-
   create_table "image_sizes", force: :cascade do |t|
     t.string   "image",      limit: 255
     t.datetime "created_at"
@@ -564,11 +555,13 @@ ActiveRecord::Schema.define(version: 20140522040012) do
 
   create_table "journal1poster_positions", force: :cascade do |t|
     t.integer  "id_map"
-    t.integer  "pos_map",    default: 0
-    t.integer  "pos_x",      default: 0
-    t.integer  "pos_y",      default: 0
+    t.integer  "pos_x",                    default: 0
+    t.integer  "pos_y",                    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "section",                  default: 0
+    t.string   "section_text", limit: 255
+    t.integer  "section_pos",              default: 0
   end
 
   add_index "journal1poster_positions", ["id_map"], name: "index_journal1poster_positions_on_id_map", using: :btree
@@ -577,11 +570,12 @@ ActiveRecord::Schema.define(version: 20140522040012) do
     t.integer  "id_user"
     t.integer  "publisher_id"
     t.integer  "publisher_journalposter_id"
+    t.integer  "map_position",                           default: 0
+    t.integer  "id_final"
     t.string   "url",                        limit: 255
     t.string   "main_sales_phone",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "pos_map",                                default: 0
   end
 
   add_index "journal1posters", ["publisher_id"], name: "index_journal1posters_on_publisher_id", using: :btree
@@ -589,11 +583,13 @@ ActiveRecord::Schema.define(version: 20140522040012) do
 
   create_table "journal2poster_positions", force: :cascade do |t|
     t.integer  "id_map"
-    t.integer  "pos_map",    default: 0
-    t.integer  "pos_x",      default: 0
-    t.integer  "pos_y",      default: 0
+    t.integer  "pos_x",                    default: 0
+    t.integer  "pos_y",                    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "section",                  default: 0
+    t.string   "section_text", limit: 255
+    t.integer  "section_pos",              default: 0
   end
 
   add_index "journal2poster_positions", ["id_map"], name: "index_journal2poster_positions_on_id_map", using: :btree
@@ -602,11 +598,12 @@ ActiveRecord::Schema.define(version: 20140522040012) do
     t.integer  "id_user"
     t.integer  "publisher_id"
     t.integer  "publisher_journalposter_id"
+    t.integer  "map_position",                           default: 0
+    t.integer  "id_final"
     t.string   "url",                        limit: 255
     t.string   "main_sales_phone",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "pos_map",                                default: 0
   end
 
   add_index "journal2posters", ["publisher_id"], name: "index_journal2posters_on_publisher_id", using: :btree
@@ -614,11 +611,13 @@ ActiveRecord::Schema.define(version: 20140522040012) do
 
   create_table "journal3poster_positions", force: :cascade do |t|
     t.integer  "id_map"
-    t.integer  "pos_map",    default: 0
-    t.integer  "pos_x",      default: 0
-    t.integer  "pos_y",      default: 0
+    t.integer  "pos_x",                    default: 0
+    t.integer  "pos_y",                    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "section",                  default: 0
+    t.string   "section_text", limit: 255
+    t.integer  "section_pos",              default: 0
   end
 
   add_index "journal3poster_positions", ["id_map"], name: "index_journal3poster_positions_on_id_map", using: :btree
@@ -627,11 +626,12 @@ ActiveRecord::Schema.define(version: 20140522040012) do
     t.integer  "id_user"
     t.integer  "publisher_id"
     t.integer  "publisher_journalposter_id"
+    t.integer  "map_position",                           default: 0
+    t.integer  "id_final"
     t.string   "url",                        limit: 255
     t.string   "main_sales_phone",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "pos_map",                                default: 0
   end
 
   add_index "journal3posters", ["publisher_id"], name: "index_journal3posters_on_publisher_id", using: :btree
@@ -639,11 +639,13 @@ ActiveRecord::Schema.define(version: 20140522040012) do
 
   create_table "journal4poster_positions", force: :cascade do |t|
     t.integer  "id_map"
-    t.integer  "pos_map",    default: 0
-    t.integer  "pos_x",      default: 0
-    t.integer  "pos_y",      default: 0
+    t.integer  "pos_x",                    default: 0
+    t.integer  "pos_y",                    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "section",                  default: 0
+    t.string   "section_text", limit: 255
+    t.integer  "section_pos",              default: 0
   end
 
   add_index "journal4poster_positions", ["id_map"], name: "index_journal4poster_positions_on_id_map", using: :btree
@@ -652,11 +654,12 @@ ActiveRecord::Schema.define(version: 20140522040012) do
     t.integer  "id_user"
     t.integer  "publisher_id"
     t.integer  "publisher_journalposter_id"
+    t.integer  "map_position",                           default: 0
+    t.integer  "id_final"
     t.string   "url",                        limit: 255
     t.string   "main_sales_phone",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "pos_map",                                default: 0
   end
 
   add_index "journal4posters", ["publisher_id"], name: "index_journal4posters_on_publisher_id", using: :btree
@@ -664,11 +667,13 @@ ActiveRecord::Schema.define(version: 20140522040012) do
 
   create_table "journal5poster_positions", force: :cascade do |t|
     t.integer  "id_map"
-    t.integer  "pos_map",    default: 0
-    t.integer  "pos_x",      default: 0
-    t.integer  "pos_y",      default: 0
+    t.integer  "pos_x",                    default: 0
+    t.integer  "pos_y",                    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "section",                  default: 0
+    t.string   "section_text", limit: 255
+    t.integer  "section_pos",              default: 0
   end
 
   add_index "journal5poster_positions", ["id_map"], name: "index_journal5poster_positions_on_id_map", using: :btree
@@ -677,11 +682,12 @@ ActiveRecord::Schema.define(version: 20140522040012) do
     t.integer  "id_user"
     t.integer  "publisher_id"
     t.integer  "publisher_journalposter_id"
+    t.integer  "map_position",                           default: 0
+    t.integer  "id_final"
     t.string   "url",                        limit: 255
     t.string   "main_sales_phone",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "pos_map",                                default: 0
   end
 
   add_index "journal5posters", ["publisher_id"], name: "index_journal5posters_on_publisher_id", using: :btree
@@ -698,107 +704,17 @@ ActiveRecord::Schema.define(version: 20140522040012) do
   create_table "journalposterpurchases", force: :cascade do |t|
     t.integer  "id_user"
     t.integer  "id_journalposter"
-    t.string   "description",               limit: 255
-    t.integer  "price"
+    t.string   "description",      limit: 255
+    t.decimal  "price",                        precision: 5, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "logo",                      limit: 255
-    t.text     "word_descr"
-    t.text     "tag_line"
-    t.string   "headline",                  limit: 255
-    t.string   "screen_shot",               limit: 255
-    t.string   "main_sales_phone",          limit: 255
-    t.integer  "curriculum_resources"
-    t.string   "curriculum_resources_text", limit: 255
-    t.integer  "teacher_tools"
-    t.string   "teacher_tools_text",        limit: 255
-    t.integer  "school_operations"
-    t.string   "school_operations_text",    limit: 255
-    t.integer  "content"
-    t.string   "content_text",              limit: 255
-    t.integer  "prof_learning"
-    t.string   "prof_learning_text",        limit: 255
-    t.integer  "cent21_learning"
-    t.string   "cent21_learning_text",      limit: 255
-    t.integer  "language"
-    t.string   "language_text",             limit: 255
-    t.integer  "math"
-    t.string   "math_text",                 limit: 255
-    t.integer  "science"
-    t.string   "science_text",              limit: 255
-    t.integer  "social_studies"
-    t.string   "social_studies_text",       limit: 255
-    t.integer  "special_ed"
-    t.string   "special_ed_text",           limit: 255
-    t.integer  "assmt_testing"
-    t.string   "assmt_testing_text",        limit: 255
-    t.integer  "collaboration"
-    t.string   "collaboration_text",        limit: 255
-    t.integer  "classroom_resp"
-    t.string   "classroom_resp_text",       limit: 255
-    t.integer  "grading_atten"
-    t.string   "grading_atten_text",        limit: 255
-    t.integer  "lesson_planning"
-    t.string   "lesson_planning_text",      limit: 255
-    t.integer  "pres_tools"
-    t.string   "pres_tools_text",           limit: 255
-    t.integer  "lecture_capture"
-    t.string   "lecture_capture_text",      limit: 255
-    t.integer  "plag_checks"
-    t.string   "plag_checks_text",          limit: 255
-    t.integer  "learning_mgmt_systs"
-    t.string   "learning_mgmt_systs_text",  limit: 255
-    t.integer  "student_info_systs"
-    t.string   "student_info_systs_text",   limit: 255
-    t.integer  "web_filtering"
-    t.string   "web_filtering_text",        limit: 255
-    t.integer  "device_mgmt"
-    t.string   "device_mgmt_text",          limit: 255
-    t.integer  "virtual_dist_ed"
-    t.string   "virtual_dist_ed_text",      limit: 255
-    t.integer  "testing_systs"
-    t.string   "testing_systs_text",        limit: 255
-    t.integer  "unique_tech"
-    t.string   "unique_tech_text",          limit: 255
-    t.integer  "apps"
-    t.string   "apps_text",                 limit: 255
-    t.integer  "digit_textbooks"
-    t.string   "digit_textbooks_text",      limit: 255
-    t.integer  "games"
-    t.string   "games_text",                limit: 255
-    t.integer  "study_tools"
-    t.string   "study_tools_text",          limit: 255
-    t.integer  "video"
-    t.string   "video_text",                limit: 255
-    t.integer  "dictionaries"
-    t.string   "dictionaries_text",         limit: 255
-    t.integer  "directories"
-    t.string   "directories_text",          limit: 255
-    t.integer  "subscrip_sites"
-    t.string   "subscrip_sites_text",       limit: 255
-    t.integer  "ebook_game_creat"
-    t.string   "ebook_game_creat_text",     limit: 255
-    t.integer  "digit_story_poster"
-    t.string   "digit_story_poster_text",   limit: 255
-    t.integer  "courseware"
-    t.string   "courseware_text",           limit: 255
-    t.integer  "talent_mgmt"
-    t.string   "talent_mgmt_text",          limit: 255
-    t.integer  "prof_devel_systems"
-    t.string   "prof_devel_systems_text",   limit: 255
-    t.integer  "instr_design"
-    t.string   "instr_design_text",         limit: 255
-    t.integer  "other_diy"
-    t.string   "other_diy_text",            limit: 255
-    t.integer  "poster"
-    t.string   "poster_text",               limit: 255
   end
 
   create_table "journalposters", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description", limit: 255
-    t.integer  "price"
+    t.decimal  "price",                   precision: 5, scale: 2
   end
 
   create_table "log_available_posters", force: :cascade do |t|
@@ -1256,6 +1172,8 @@ ActiveRecord::Schema.define(version: 20140522040012) do
     t.integer  "crop_y",                   default: 0
     t.integer  "crop_w",                   default: 0
     t.integer  "crop_h",                   default: 0
+    t.integer  "width",                    default: 0
+    t.integer  "height",                   default: 0
   end
 
   add_index "publisher_logo_images", ["publisher_id"], name: "index_publisher_logo_images_on_publisher_id", using: :btree
@@ -2383,6 +2301,8 @@ ActiveRecord::Schema.define(version: 20140522040012) do
     t.integer  "crop_y",                        default: 0
     t.integer  "crop_w",                        default: 0
     t.integer  "crop_h",                        default: 0
+    t.integer  "width",                         default: 0
+    t.integer  "height",                        default: 0
   end
 
   add_index "publisher_user_logo_images", ["publisher_user_id"], name: "index_publisher_user_logo_images_on_publisher_user_id", using: :btree
@@ -2528,6 +2448,8 @@ ActiveRecord::Schema.define(version: 20140522040012) do
     t.integer  "crop_y",                 default: 0
     t.integer  "crop_w",                 default: 0
     t.integer  "crop_h",                 default: 0
+    t.integer  "width",                  default: 0
+    t.integer  "height",                 default: 0
   end
 
   add_index "user_images", ["user_id"], name: "index_user_images_on_user_id", using: :btree

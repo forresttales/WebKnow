@@ -1,650 +1,6 @@
-<% provide(:title, 'Corporate Home') %>
+<% provide(:title, 'My Activity') %>
 
-	<script src="/assets/jqModal.js"></script>
-	<script src="/assets/jquery.easing.1.3.js"></script>
-	<link rel="stylesheet" href="/assets/jqModal.css" />
-	<script src="../jcrop/js/jquery.Jcrop.js"></script>
-	<script type="text/javascript">
-	  jQuery(function($){
-	    $('#target').Jcrop();
-	  });
-	</script>
-	<link rel="stylesheet" href="../jcrop/css/jquery.Jcrop.css" type="text/css" />
-  	<script src="/assets/jquery.qtip.min.js" type="text/javascript"></script>
-  	<link rel="stylesheet" href="/assets/jquery.qtip.min.css">
-
-
-	<script src="/assets/jquery.colorbox.js"></script>
-	<link rel="stylesheet" href="/assets/colorbox.css" />
 	
-	<!-- <link rel="stylesheet" href="../styles/digg-pagination.css" /> -->
-	<link rel="stylesheet" href="../styles/ks-profile.css" />
-	
-	<!-- <script type="text/javascript" src="../scripts/slidedeck.jquery.js"></script>
-	<link rel="stylesheet" type="text/css" href="../styles/slidedeck.skin.css" media="screen,handheld" /> -->
-
-
-	<!-- <script src="/assets/jqModal.js"></script> -->
-	<!-- <script src="/assets/jquery.easing.1.3.js"></script> -->
-	<!-- <link rel="stylesheet" href="/assets/jqModal.css" /> -->
-	<!-- <script src="/assets/jquery.validate.js"></script> -->
-
-	<style>
-		
-		.btn-follow-container-outer {
-			position: relative;
-		  	width: 100%;
-		  	height: 20px;
-		}
-		.btn-follow-container {
-			position: relative;
-		  	background: linear-gradient(#FBB040, #CA8E33);
-		  	border-radius: 2px;
-		  	width: 50px;
-		  	height: 20px;
-		}
-		.btn-follow {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 10px;
-			font-weight: 400;		
-		  	color: #eee;
-			text-align: center;	
-		  	width: 50px;
-		  	height: 20px;
-		  	padding-top: 6px;
-		  	text-decoration:none;
-		  	outline: none;
-		}
-		.btn-follow:focus {
-		}
-		.btn-follow-container:hover { 
-		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
-		  inset 0 1.5em 1em rgba(255,255,255,0.2);
-		  cursor: pointer;
-		}
-		.btn-follow-container:active .btn-follow { 
-			color: transparent;
-			text-shadow: 1px 1px #fff;
-		}
-		
-	</style>
-
-	<!-- <style>
-		.icon-like, .icon-unlike {
-			background-image: url('/assets/like-and-unlike-buttons-w80-h58.png');
-			background-repeat: no-repeat;
-			display: inline-block;
-		}
-		.icon-like {
-		  height: 26px;
-		  width: 23px;
-		  background-position: -1px -4px;			
-		}
-		.icon-unlike {
-		  height: 26px;
-		  width: 23px;
-		  background-position: -1px -30px;			
-		}
-		.icon-like:hover, .icon-unlike:hover {
-			cursor: pointer;
-		}
-	</style> -->								
-
-	<style>
-		
-		.post-user-span-2 {
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 400;
-		  	color: #37633a;
-			font-size: 11px;
-		}
-		.post-user-span-2:hover {
-			cursor: pointer;
-			text-decoration:underline;	
-		}		
-		.post-user-span-3 {
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 400;
-		  	color: #37633a;
-			font-size: 11px;
-		}
-		
-	</style>
-	
-	<style>
-		
-		.tooltip-text-1 {
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 12px;
-			font-weight: 400;					
-			/*color: #37633A;*/
-			color: #fff;	
-			/*background-color: #FAFF94;*/
-			background-color: rgba(0, 0, 0, 0.6);
-			/*background-color: #eee;*/
-			/*border-color: #37633A;*/
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-		}
-		.tip-content { display: none; }
-		
-	</style>
-	
-	<style>
-		
-		.jqmWindow-101 {
-		    display: none;
-		    position: fixed;
-		    left: 50%;
-		    margin-left: -250px;
-		    width: 500px;
-			height: auto;		    
-		    /*background-color: rgba(0, 0, 0, 0.8);*/
-		    background-color: #fff;
-		    color: #333;
-		    padding: 0px;
-		}				
-		.table-dl-form-101 {
-			display: table;
-			vertical-align: top;
-			width: 500px;	
-		}
-
-		.jqmWindow-1001 {
-		    display: none;
-		    position: absolute;
-		    left: 50%;
-		    margin-left: -400px;
-		    width: 800px;
-			height: auto;		    
-		    /*background-color: rgba(0, 0, 0, 0.8);*/
-		    background-color: #fff;
-		    color: #333;
-		    padding: 0px;
-		}				
-		.table-dl-form-1001 {
-			display: table;
-			vertical-align: top;
-			width: 800px;	
-		}
-
-
-		.jqmWindow-104 {
-		    display: none;
-		    position: absolute;
-		    /*top:30%;*/
-			left: 50%;
-			margin-left: -200px;		    
-		    width: 400px;
-			height: 160px;		    
-		    background-color: #f6f6f6;
-		    color: #333;
-		    border: 4px solid #376340; /*rgba(55,99,64,1)*/
-		    padding: 0px;
-		}		
-		.jqmWindow-105 {
-		    display: none;
-		    position: absolute;
-		    /*top:30%;*/
-			left: 50%;
-			margin-left: -200px;		    
-		    width: 400px;
-			height: 160px;		    
-		    background-color: #f6f6f6;
-		    color: #333;
-		    border: 4px solid #376340; /*rgba(55,99,64,1)*/
-		    padding: 0px;
-		}		
-
-		/*.jqmWindow-1001 {
-		    display: none;
-		    position: absolute;
-		    left: 50%;
-		    margin-left: -350px;
-		    width: 700px;
-			height: 700px;		    
-		    background-color: rgba(0, 0, 0, 0.8);
-		    color: #333;
-		    padding: 0px;
-		}*/				
-
-		
-	</style>
-	
-	<style>
-
-		.ks-tip-container {
-			position: relative;
-		}		
-		.ks-tip-target:hover + .ks-tip-1 span {
-		}
-		.ks-tip-target:hover + .ks-tip-1 {
-			display: block;
-		}
-		.ks-tip-1 {
-			position: absolute;
-			width: 60px;
-			height: 24px;
-			background-color: rgba(0, 0, 0, 0.6);
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-			text-align: center;			
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 11px;
-			font-weight: 400;					
-			color: #fff;	
-			padding: 6px 0 0 0;
-			display: none;							
-		}
-		.ks-tip-1-indicator {
-			position: absolute;
-			top: 24px;
-			left: 4px;
-			width: 8px;
-			height: 12px;
-			background-image: url("/assets/drop-w8-h12.png");
-		}		
-		.ks-tip-34minus {
-			top: -34px;
-		}
-
-		.ks-tip-target:hover + .ks-tip span {
-		}
-		.ks-tip-target:hover + .ks-tip {
-			display: block;
-		}
-		.ks-tip {
-			position: absolute;
-			display: none;							
-		}		
-		.ks-tip-delete-post-user-comment {
-			position: absolute;
-			width: 60px;
-			height: 24px;
-			background-color: rgba(0, 0, 0, 0.6);
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-			text-align: center;			
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 11px;
-			font-weight: 400;					
-			color: #fff;	
-			padding: 6px 0 0 0;
-			display: none;
-			top: -36px;
-			left: -20px;		
-			z-index: 1;
-		}		
-		.ks-tip-indicator-delete-post-user-comment {
-			position: absolute;
-			top: 24px;
-			left: 27px;
-			width: 8px;
-			height: 12px;
-			background-image: url("/assets/drop-w8-h12.png");
-		}		
-
-		.ks-tip-delete-post-user {
-			position: absolute;
-			width: 60px;
-			height: 24px;
-			background-color: rgba(0, 0, 0, 0.6);
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-			text-align: center;			
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 11px;
-			font-weight: 400;					
-			color: #fff;	
-			padding: 6px 0 0 0;
-			display: none;
-			top: -36px;
-			left: -20px;		
-			z-index: 1;
-		}		
-		.ks-tip-indicator-delete-post-user {
-			position: absolute;
-			top: 24px;
-			left: 27px;
-			width: 8px;
-			height: 12px;
-			background-image: url("/assets/drop-w8-h12.png");
-		}		
-
-		/*.ks-tip-2 {
-			position: absolute;
-			width: 200px;
-			height: 100px;
-			background-color: rgba(0, 0, 0, 0.6);
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-			text-align: center;
-			display: none;				
-		}*/
-		.hidden {
-			display: none !important;
-			visibility: hidden !important			
-		}
-		.dialog-span-1 {
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 10px;
-			font-weight: 200;					
-			color: #333;		
-			height: 12px;		
-		}
-		.dialog-span-1:hover {
-			text-decoration: underline;
-		}
-		
-	</style>
-
-	<style>
-		
-		/*.add-post-user-container-active {
-			min-height: 52px;
-		}
-		.add-post-user-container-inactive {
-			min-height: 26px;
-			background: url('/assets/background-placeholder-comment-2-w206-h20.png') 3px 4px no-repeat;
-		}*/
-		.textarea-add-post-user-container {
-			border: 1px solid #49853F; 
-			border-radius: 0px;			
-			min-height: 26px;
-			width: 591px;			
-			background-color: #fff;
-			padding: 4px 0px 4px 5px;
-		}
-		.textarea-add-post-user-inactive {
-			min-height: 26px;
-			background-image: url('/assets/background-placeholder-comment-2-w206-h20.png');
-			background-repeat: no-repeat;
-			background-position: 3px 4px;
-			background-color: #fff;
-		}
-		.textarea-add-post-user-active {
-			background-color: #eee;
-			min-height: 52px;
-		}
-		.textarea-add-post-user {
-			vertical-align: text-top;
-			/*overflow: hidden;*/
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 400;
-			font-size: 13px;
-			color: #1B666B;
-			line-height: 100%;
-			padding: 6px 5px 5px 5px;
-			min-height: 26px;
-			width: 579px;			
-			/*white-space: pre;*/
-		    white-space: pre-wrap;
-		    word-wrap: break-word;
-		    overflow-wrap: break-word;									
-		}
-		.textarea-add-post-user:focus:hover {
-			outline: none;
-		}
-		.textarea-add-post-user:focus {
-			outline: none;
-		}						
-		.textarea-add-post-user:hover {
-			outline: none;
-		}		
-		.render-add-post-user-image {
-			
-		}
-		.textarea-add-post-user-show-text {
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 600;
-			font-size: 13px;
-			color: #888;
-		}
-		
-		.resize-none {
-			resize: none;
-		}
-				
-		.submit-edit-story-4-text {
-			margin: 0;
-		}				
-		.submit-edit-story-4-text-2 {
-			margin: 9px 0 0 0;
-		}				
-		.submit-edit-story-4-loader {
-			width: 32px;
-			height: 32px;
-			background-image: url('/assets/loader_ajax_w32_h32_7.gif');
-			background-repeat: no-repeat;
-			display: inline-block;
-			/*margin: 5px 0 0 0;*/
-			margin: 5px 0 0 0;
-		}						
-		.post-user-delete {
-			width: 20px;
-			height: 20px;
-			background-image: url('/assets/button_delete_w20_h20.png');
-			background-repeat: no-repeat;
-			display: inline-block;
-			margin: 2px 2px 0 0;			
-		}
-		.post-user-delete:hover {
-			cursor: pointer;
-		}
-		.post-user-delete-blank {
-			width: 20px;
-			height: 20px;
-			display: inline-block;
-			margin: 2px 2px 0 0;			
-		}
-		.post-user-comment-delete-blank {
-			width: 20px;
-			height: 20px;
-			display: inline-block;
-			margin: 2px 2px 0 0;			
-		}
-
-		.post-user-comment-delete-container {
-			width: 20px;
-			height: 20px;
-			margin: 2px 2px 0 0;			
-		}
-		.post-user-comment-delete {
-			width: 20px;
-			height: 20px;
-			background-image: url('/assets/button_delete_w20_h20.png');
-			background-repeat: no-repeat;
-			display: inline-block;
-		}
-		.post-user-comment-delete:hover {
-			cursor: pointer;
-		}
-		.post-user-comment-delete-blank {
-			width: 20px;
-			height: 20px;
-			display: inline-block;
-			margin: 2px 2px 0 0;			
-		}
-
-		.story-4-attach {
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 400;
-			font-size: 13px;
-			color: #888;
-		}
-		.story-4-attach:hover {
-			cursor: pointer;
-			text-decoration: underline;
-		}
-		
-	</style>
-
-	<style>
-
-		.add-comment-container-active {
-			min-height: 52px;
-		}
-		.add-comment-container-inactive {
-			min-height: 26px;
-			background: url('/assets/background-placeholder-comment-1-w98-h18.png') 3px 4px no-repeat;
-			/*background-repeat: no-repeat;*/
-		}
-		.add-comment-container {
-			border-radius: 0px;			
-			/*min-height: 26px;*/
-			width: 100%;			
-		}		
-		.add-comment-container:focus {
-			outline: 0;
-		}		
-		.add-comment-container:hover {
-			outline: 0;
-		}		
-		.add-comment-container:focus:hover {
-			outline: 0;
-		}		
-		.add-comment-container:active {
-			outline: 0;
-		}				
-		.textarea-add-comment-container {
-			border: 1px solid #49853F; 
-			border-radius: 0px;			
-			width: 542px;			
-		}
-		.textarea-add-comment {
-			background-color: #fff;
-			color: #1B666B;						
-			/*resize: none;*/
-			vertical-align: text-top;
-			/*overflow: hidden;*/
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 400;
-			font-size: 13px;
-			line-height: 100%;
-			padding: 6px 5px 5px 5px;
-			min-height: 26px;
-			width: 540px;			
-			/*white-space: pre;*/
-		    white-space: pre-wrap;
-		    word-wrap: break-word;
-		    overflow-wrap: break-word;									
-		}
-		.textarea-add-comment:focus:hover {
-			outline: none;
-		}
-		.textarea-add-comment:focus {
-			outline: none;
-		}						
-		.textarea-add-comment:hover {
-			outline: none;
-		}		
-
-		.btn-add-comment-story-4 {
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 12px;		
-			text-align: center;	
-			padding: 4px 0 0 0;
-		  	color: #fff;
-		  	display: inline-block;
-		  	text-decoration: none; 
-		  	width: 50px;
-		  	height: 20px;
-		  	/*background: linear-gradient(#F0A546, #D98D2D);*/
-		  	/*background: linear-gradient(#F0A546, #BD7A26);*/
-		  	/*background: linear-gradient(#1F7C82, #1C7278);*/
-		  	background: linear-gradient(#fbb040, #ca8e33) repeat scroll 0 0 rgba(0, 0, 0, 0);
-		  	border-radius: 3px;
-		}
-		.btn-add-comment-story-4:focus {
-			/*-webkit-box-shadow: 0 0 2px 2px #FAC582;
-			   -moz-box-shadow: 0 0 2px 2px #FAC582;
-			        box-shadow: 0 0 2px 2px #FAC582;*/
-		  	background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);
-		  	outline:none;
-		}
-		.btn-add-comment-story-4:hover { 
-		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
-		  inset 0 1.5em 1em rgba(255,255,255,0.2);
-		  cursor: pointer;
-		}
-		.btn-add-comment-story-4:active { 
-		  	/*box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
-		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
-		 	color: #fff;
-			background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);*/  	
-		  	outline:none;
-		}
-
-		/*.btn-story-4-attach-text {
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 600;
-			font-size: 18px;
-			color: #fff;			
-		}*/
-		.btn-add-comment-story-4-loader {
-			width: 16px;
-			height: 11px;
-			background-image: url('/assets/loader_ajax_w16_h11_blue.gif');
-			background-repeat: no-repeat;
-			display: inline-block;
-			margin: 5px 0 0 5px;
-		}	
-		.add-comment-text-1 span {
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 400;
-			font-size: 13px;
-			color: #1B666B;
-			line-height: 100%;
-		}
-
-		.add-comment-border-top {
-		    background: linear-gradient(to bottom, #49853f 0%, #ffffff 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-		    /*border-bottom: 1px solid #eee;*/
-		    height: 8px;
-		    margin-left: 0;
-		    padding-left: 0;
-		    padding-top: 0;
-		    position: relative;
-		    width: 100%;
-		}
-		
-		.textarea-add-comment-parent {
-			width: 100%; 
-			background-color: #eee; 
-			padding: 0 4px 0 4px;	
-		}	
-			
-	</style>	
-	
-
-			<!-- <div class="jqmWindow jqmWindow-1001" id="dialog_1001">
-		   		<div class="table-dl-form-1">
-		   			<div class="row">
-		   				<div class="cell-100percent">
-		   					<div id="close_form1001" class="form-edit-close jqmClose tip-left-center" tabindex="">
-		   						<img src="/assets/x_close_white_w20_h20.png" alt="X" height="20px">
-		   					</div>
-			                <div class="tip-content">
-			                    <div class="tooltiptext">Close</div>
-			                </div>																															   					
-		   					<div style="clear: both;"></div>
-		   				</div>
-   					</div>
-				</div>				   				
-				<div style="width: 100%; text-align: center;">
-					<div style="height: 20px;"></div>
-					<div class="">
-						<figure id="profile_figure_dialog_1001" class="dialog-user-image">
-							<img alt="" src="" />
-						</figure>
-					</div>
-				</div>
-			</div> -->
 
 			<div class="jqmWindow jqmWindow-1001" id="dialog_1001">
 		   		<div class="table-dl-form-1001">
@@ -768,316 +124,262 @@
 				<div style="height: 20px;"></div>
 			</div>
 	
-	
-			<!-- user image - show 11 -->			
-			<div class="jqmWindow jqmWindow-11" id="dialog_11">
-		   		<div class="table-dl-form-1">
-		   			<div class="row">
-		   				<div class="cell-100percent">
-		   					<div id="close_form11" class="form-edit-close jqmClose tip-left-center" tabindex="">
-		   						<img src="/assets/x_close_white_w20_h20.png" alt="X" height="20px">
-		   					</div>
-			                <div class="tip-content">
-			                    <div class="tooltiptext">Close</div>
-			                </div>																															   					
-		   					<div style="clear: both;"></div>
-		   				</div>
-   					</div>
-				</div>				   				
-				<div style="width: 100%; text-align: center;">
-					<div style="height: 20px;"></div>
-					<div class="">
-						<figure id="profile_figure_dialog_11" class="dialog-user-image">
-							<img alt="" src="" />
-						</figure>
+<% if false %>	
+<!-- user image - show 11 -->			
+<div class="jqmWindow jqmWindow-11" id="dialog_11">
+	<div class="table-dl-form-1">
+		<div class="row">
+			<div class="cell-100percent">
+				<div id="close_form11" class="form-edit-close jqmClose tip-left-center" tabindex="">
+					<img src="/assets/x_close_white_w20_h20.png" alt="X" height="20px">
+				</div>
+                <div class="tip-content">
+                    <div class="tooltiptext">Close</div>
+                </div>																															   					
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+	</div>				   				
+	<div style="width: 100%; text-align: center;">
+		<div style="height: 20px;"></div>
+		<div class="">
+			<figure id="profile_figure_dialog_11" class="dialog-user-image">
+				<img alt="" src="" />
+			</figure>
+		</div>
+	</div>
+</div>
+<% end %>
+			
+<div class="jqmWindow jqmWindow-overlay" id="dialog_overlay">
+	<div id="overlay_loading" class="overlay-loading display-none"></div>
+</div>
+
+<div class="jqmWindow jqmWindow-11" id="dialog_11">
+	<div class="jqmClose ks-tip-container close-container">
+		<div class="ks-tip-target">
+			<%= image_tag('jqModal/close_btn_round_white_w60_h60.png', alt: 'X', class: 'x-close-60-60' ) %>
+		</div>
+	    <div class="ks-tip ks-tip-pos-left-dialog-11 ks-tip-text-dialog-11">
+			Close
+	    </div>				
+	</div>
+	<div style="clear: both;"></div>
+	<div style="width: 600px; margin: 0 auto;">
+		<div class="figure-container" style="width: 100%; background-color: #000;">
+			<figure id="figure_dialog_11" class="dialog-user-image-2">
+				<figcaption id="figcaption_dialog_11" class="expand-image">												
+					<div class="img-2-container image">
+						<% if !@publisher_logo_image_primary.nil? %>
+						<a rel="gallery" title="" href="<%= @publisher_logo_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_logo_image_primary.image? %>">									
+							<div id="img_2" class="img-2"></div>
+						</a>
+						<% end %>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div style="width: 100%; min-height: 100px; background-color: #fff;"></div>
+	</div>
+</div>
+
+
+
+<div class="table-profile" style="height: 100%;">
+	<div class="row-profile">
+		<div class="profile-left-col">
+			<div class="title-bar-profile-1 title">
+				<div class="tbl-title-bar-profile">
+					<div class="row-title-bar-profile">
+						<div class="cell-title-bar-profile-left">
+							<div style="position: relative;">
+								<!-- <span id="span_user_name_first" class="profile-text-1"></span>
+								&nbsp;&nbsp;
+								<span id="span_user_name_last" class="profile-text-1"></span> -->
+							</div>		
+						</div>
+						<div class="cell-title-bar-profile-center">
+							<span></span>
+						</div>
+						<div class="cell-title-bar-profile-right">
+							<div class="btn-opt-edit-container-outer">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-
-
-		<div class="table-profile" style="height: 100%;">
-			<div class="row-profile">
-				<div style="display: table-cell; width: 200px; vertical-align: top; margin: 0; padding: 0; height: 100%;">
-					<%= render 'share/dir_publishers_left' %>
-				</div>
-				<div class="profile-mid-col-700">
-					<div class="title-bar-profile-1 title">
-						<div class="tbl-title-bar-profile">
-							<div class="row-title-bar-profile">
-								<div class="cell-title-bar-profile-left">
-									<div style="position: relative;">
-										<div style="position: absolute; top: -24px;">												
-											<span>Corporate Home</span>
-										</div>
-									</div>		
-								</div>
-								<div class="cell-title-bar-profile-center">
-									<span></span>
-								</div>
-								<div class="cell-title-bar-profile-right">
-									<div class="btn-opt-edit-container-outer">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="table" style="height: 300px; margin: 0;">
-						<div class="row">
-							<div class="cell-475">
-								<div class="table pad-marg-null">
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<!-- <div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Company:</span>
-													</div> -->
-													<!-- <div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_name_company" name="publisher[name_company]" tabindex="12" type="text" value="<#%= @publisher.name_company %#>" placeholder="Company Name" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div> -->
-													<!-- <div class="cell-280 show-story-1"> -->
-													<div class="cell-280 show-story-1 text-align-left pad-left-20">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_name_company" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-195 text-align-left pad-left-20">
-													</div>													
-												</div>
-											</div>
-										</div>
-									</div>	
-									<!-- <div class="row" style="height: 12px;"></div> -->
-										
-								</div>
-							</div>
-							<div class="cell-225" id="container_logo_image">
-								<!-- <div id="drop_container_logo_image" class="drop width-200 float-right"> -->
-								<div id="drop_container_logo_image" class="drop">
-									<div id="render_publisher_logo_image_primary" class="padding-0">
-										<!-- <div class="container-image"> -->
-											<%= render 'publishers/publisher_logo_image_primary' %>
-										<!-- </div>
-										<div class="container-menu">
-											<#%= render 'publishers/publisher_logo_image_primary_menu' %#>
-										</div> -->
-							        </div>
-								</div>
-								<div class="float-clear"></div>
-								
-								<!-- <div class="table pad-marg-null">
-									<div class="row pad-marg-null">
-										<div class="cell-225 text-align-left pad-left-20">
-											<span class="profile-label-1">Tagline:</span>
-										</div>
-									</div>
-								</div> -->
-								<div class="table pad-marg-null">
-									<div class="row pad-marg-null">
-										<!-- <div class="cell-225 edit-story-1 hidden">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-225 position-relative">
-														<div class="position-absolute top-minus-7 right-0">
-															<input class="input-profile-1 input-profile-color-1 width-200 height-24" id="publisher_tagline_logo" name="publisher[tagline_logo]" tabindex="12" type="text" value="<#%= @publisher.tagline_logo %#>" placeholder="Tagline" />
-														</div>
-													</div>
-												</div>
-											</div>
-										</div> -->
-										<div class="cell-225 show-story-1">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-225 position-relative text-align-left">
-														<!-- <div class="position-absolute top-minus-3"> -->
-														<div style="margin: 2px 0 0 22px;">
-															<span id="span_tagline_logo" class="profile-text-1"></span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								<div style="height: 2px;"></div>
-								<div class="follow-stats-container-publisher float-right" style="padding: 0 10px 0 0;">
-									<%= render 'publishers/stats' %>
-								</div>
-								<div class="float-clear"></div>																
-							</div>
-						</div>
-					</div>
-
-
-
-
-<% if false %>
-
-					<div class="table margin-0" style="height: 270px; padding: 0 0 0 12px;">
-						<div class="row" style="height: 260px;">
-							<div class="cell-225" id="container_user_image_primary" style="height: 260px;">
-								<div id="drop_container_user_image_primary" class="drop float-left width-200">
-									<div id="render_publisher_image_primary" class="padding-0">
-										<!-- <div class="container-image"> -->
-											<%= render 'publishers/publisher_logo_image_primary' %>
-										<!-- </div>
-										<div class="container-menu">
-											<#%= render 'publishers/publisher_logo_image_primary_menu' %#>
-										</div> -->
-							        </div>
-								</div>
-								<div class="float-clear"></div>
-								<div class="follow-stats-container">
-									<%= render 'publishers/stats' %>
-								</div>
-			
-								<!-- <div><img src="/assets/like-and-unlike-buttons.jpg" /></div> -->
-								<!-- <div class="icon-like"></div><div class="icon-unlike"></div> -->
-								
-							</div>
-							<div class="cell-475">
-								<div class="table pad-marg-null">
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-100 text-align-left">
-											<span class="profile-label-1">Company:</span>
-										</div>
-										<div class="cell-375 show-story-1">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-375 position-relative text-align-left">
-														<div class="position-absolute top-minus-3">
-															<span id="span_publisher_name_company" class="profile-text-1"></span>
-															<!-- &nbsp;&nbsp;
-															<span id="span_user_name_last" class="profile-text-1"></span> -->
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>		
-									
-								</div>
-							</div>	
-						</div>
-					</div>
-<% end %>
-
-
-					<div style="height: 4px;"></div>
-
-					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
-						<div class="tbl-title-bar-profile">
-							<div class="row-title-bar-profile">
-								<div class="cell-title-bar-profile-left-long padding-left-8">
-									<div class="position-relative">
-										<div class="position-absolute top-minus-24">												
-											<span>Posts</span>
-										</div>
-									</div>		
-								</div>
-								<div class="cell-title-bar-profile-right">
-									<div class="btn-opt-edit-container-outer">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-	
-					<div class="table margin-0" style="height: auto;">
-						<div class="row">
-							<div class="cell-100percent">
-								<div style="height: 10px;"></div>
-								<div class="edit-story-4 textarea-add-post-user-parent" style="float: right; padding: 0 20px 0 0;">
-									
-									<%= form_for PostPublisherComment.new, :url => create_post_publisher_comment_publishers_path(@post_publisher_comment_new), :html => {:multipart => true, :class => '', :id => 'new_post_publisher_comment'}, :remote => true do |f| %>
-										<%= f.hidden_field :comment_text %>
-										<%= f.hidden_field :post_publisher_id %>
-									  	<%= f.submit :id =>'submit_post_publisher_comment_hidden', :class => 'btn-submit hidden toggle-comment', :value => '' %>
-									<% end %>
-									
-									<%= form_for PostPublisher.new, :url => create_post_publisher_publishers_path(@post_publisher_new), :html => {:multipart => true, :class => '', :id => 'new_post_publisher'}, :remote => true do |f| %>
-										<%= f.hidden_field :post_text %>
-									  	<%= f.submit :id => 'submit_story_4_hidden', :class => 'btn-submit hidden', :value => '' %>
-									<% end %>
-									
-									<div class="textarea-add-post-user-container toggle-post-user" tabindex="">
-										<div id="render_post_publisher_image" class="render-post-user-image"></div>
-										<div id="textarea_add_post_publisher" class="textarea-add-post-user toggle-post-user textarea-add-post-user-inactive" contenteditable="true" tabindex="101"><br></div>
-									</div>
-										
-									<div class="btn-textarea-add-post-user-story-4-container hidden">
-										<div style="height: 10px;"></div>
-										<div id="drop_container_story_4_attach" class="drop float-left width-200">
-											<%= render 'publishers/post_publisher_attach_menu' %>
-	
-											<%= form_for PostPublisherImage.new, :url => upload_post_publisher_image_publishers_path(@post_publisher_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_post_publisher_image'}, :remote => true do |f| %>
-											  <p><%= f.file_field :image, :id => 'new_post_publisher_image_image' %></p>
-											  <!-- <#%= f.hidden_field :post_publisher_id, :val => nil %#> -->
-											  <p><%= f.submit :id => 'btn_submit_post_publisher_image', :class => 'btn-submit hidden', :value => '' %></p>
-											<% end %>
-										</div>
-										<div id="submit_story_4" class="btn-submit-story-2 float-right toggle-post-user" tabindex="103">
-											<div id="submit_story_4_text" class="submit-edit-story-4-text-2">Add</div>
-											<div id="submit_story_4_loader" class="submit-edit-story-4-loader hidden"></div>
-										</div>
-										<div class="float-right" style="display: inline-block; width: 6px; height: 1px"></div>
-										<div id="cancel_story_4" class="btn-submit-story-1 float-right toggle-post-user" tabindex="102">
-											<div id="cancel_story_4_text" class="submit-edit-story-4-text">Cancel</div>
-											<div id="cancel_story_4_loader" class="submit-edit-story-4-loader hidden"></div>
-										</div>
-									</div>
-								</div>
-								<div style="clear: both;"></div>
-
-								<!-- <div id="btn_test" style="width: 20px; height: 10px; background-color: red;"></div> -->
-
-								<div style="height: 10px;"></div>				
-								
-								<div class="show-story-3">
-									<div class="text-align-left">
-										<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
-											<div style="margin: 0;">													
-												<div class="publisher-product-utility-bar light">
-													<div id="render_story_4_post_publishers_count" style="padding-left: 10px; padding-top: 10px;">
-													</div>
-												</div>
-												<div id="im_top_sh" style="display: block;"></div>
-											</div>
-											<div id="render_story_4" style="height: auto;"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- <div style="height: 20px;"></div> -->
-				</div>
-				<div style="display: table-cell; width: 300px; padding: 0; margin: 0; vertical-align: top; height: 100%;">
-					<div class="" style="width: 200px; height: 50px; position: relative;">
-						<%= render 'share/dir_publishers_right_user_home' %>
-					</div>
-				</div>
-			</div>								
 		</div>
-		<div style="height: 20px;"></div>
+	</div>
+</div>
+
+
+
+<div class="table-profile" style="height: 100%;">
+	<div class="row-profile">
+		<div class="profile-left-col">
+
+			<div class="table margin-0" style="height: 270px;">
+				<div class="row" style="height: 260px;">
+					<div class="cell-225" id="container_logo_image_primary" style="height: 260px; padding: 0 0 0 1px;">
+						<div id="drop_container_logo_image_primary" class="drop">
+							<div id="render_publisher_logo_image_primary">
+								<%= render 'publishers/publisher_logo_image_primary' %>
+					        </div>
+						</div>
+						<div class="follow-stats-container" style="margin: 0 0 0 10px;">
+							<%= render 'publishers/stats' %>
+						</div>
+						<div style="height: 300px; background-color: #dedede;"></div>						
+						
+					</div>
+					<div class="cell-750">
+
+						<div class="post-column">
+
+							<div class="table margin-0">
+								<div class="row">
+									<div class="cell-700">
+										<span class="font-default-1">Share</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="cell-700">
+										<div class="border-line-700"></div>
+									</div>
+								</div>								
+							</div>
+
+							<div class="table margin-0">
+								<div class="row">
+									<div class="cell-100percent">
+										<div style="height: 10px;"></div>
+										<div style="padding: 0 0 4px 98px; min-height: 64px;">
+											<div style="height: 4px;"></div>
+											<div class="edit-story-4 textarea-add-post-user-parent">
+												
+												<% if false %>
+												<%= form_for PostUserComment.new, :url => create_post_user_comment_publisher_users_path(@post_user_comment_new), :html => {:multipart => true, :class => '', :id => 'new_post_user_comment'}, :remote => true do |f| %>
+													<%= f.hidden_field :comment_text %>
+													<%= f.hidden_field :post_user_id %>
+												  	<%= f.submit :id =>'submit_post_user_comment_hidden', :class => 'btn-submit hidden toggle-comment', :value => '' %>
+												<% end %>
+												<% end %>
+												
+												<% if false %>
+												<%= form_for PostUser.new, :url => create_post_user_publisher_users_path(@post_user_new), :html => {:multipart => true, :class => '', :id => 'new_post_user'}, :remote => true do |f| %>
+													<%= f.hidden_field :post_text %>
+												  	<%= f.submit :id => 'submit_story_4_hidden', :class => 'btn-submit hidden', :value => '' %>
+												<% end %>
+												<% end %>
+												
+												<div class="textarea-add-post-user-container toggle-post-user" tabindex="">
+													<div id="render_post_publisher_image" class="render-post-user-image"></div>
+													<div id="textarea_add_post_publisher" class="textarea-add-post-user toggle-post-user textarea-add-post-user-inactive" contenteditable="true" tabindex="101"><br></div>
+												</div>
+													
+												<div class="btn-textarea-add-post-user-story-4-container hidden">
+													<div style="height: 4px;"></div>
+													<div id="drop_container_story_4_attach" class="drop float-left width-200">
+														<!-- <#%= render 'publisher_users/post_user_attach_menu' %#> -->
+														<%= render 'publishers/post_publisher_attach_menu' %>
+				
+														<%= form_for PostPublisherImage.new, :url => upload_post_publisher_image_publishers_path(@post_publisher_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_post_publisher_image'}, :remote => true do |f| %>
+														  <p><%= f.file_field :image, :id => 'new_post_publisher_image_image' %></p>
+														  <!-- <#%= f.hidden_field :post_publisher_id, :val => nil %#> -->
+														  <p><%= f.submit :id => 'btn_submit_post_publisher_image', :class => 'btn-submit hidden', :value => '' %></p>
+														<% end %>
+													</div>
+													<!-- <div id="submit_story_4" class="btn-submit-story-2 float-right toggle-post-user" tabindex="103"> -->
+													<div id="submit_story_4" class="btn-1 float-right toggle-post-user" tabindex="103">
+														<!-- <div id="submit_story_4_text" class="submit-edit-story-4-text-2">Add</div> -->
+														<div id="submit_story_4_text" class="">Add</div>
+														<div id="submit_story_4_loader" class="submit-edit-story-4-loader hidden"></div>
+													</div>
+													<div class="float-right" style="display: inline-block; width: 6px; height: 1px"></div>
+													<div id="cancel_story_4" class="btn-1 float-right toggle-post-user" tabindex="102">
+														<div id="cancel_story_4_text" class="">Cancel</div>
+														<div id="cancel_story_4_loader" class="submit-edit-story-4-loader hidden"></div>
+													</div>
+												</div>
+												
+											</div>
+											<div style="clear: both;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="show-story-3">
+								<div class="text-align-left">
+									<div class="post-user-sub-container" id="sub_container">
+										<!-- <div style="margin: 0;">													
+											<div class="feed-header">
+												<h1>Activity Feed:</h1>
+											</div>
+											<div id="im_top_sh" style="display: block;"></div>
+										</div> -->
+										<div id="render_story_4" style="height: auto;"></div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+
+					</div>	
+
+					<div class="cell-225">
+						<div style="height: 300px; background-color: #dedede;"></div>
+					</div>					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	// *****
+	// full screen image gallery
+
+	// $(function(){
+	// $(window).load( function() {
+	$(document).ready(function() {
+
+		// $('.image img').fullscreenslides();
+		$('.image div').fullscreenslides();
+
+		var $container = $('#fullscreenSlideshowContainer');
+		$container.bind("init", function() {
+			$container.append('<div class="ui" id="fs-close">&times;</div>').append('<div class="ui" id="fs-loader">Loading...</div>');
+			// .append('<div class="ui" id="fs-prev">&lt;</div>')
+			// .append('<div class="ui" id="fs-next">&gt;</div>')
+			// .append('<div class="ui" id="fs-caption"><span></span></div>');
+
+			// $('#fs-prev').click(function(){
+			// $container.trigger("prevSlide");
+			// });
+			// $('#fs-next').click(function(){
+			// $container.trigger("nextSlide");
+			// });
+			$('#fs-close').click(function() {
+				$container.trigger("close");
+			});
+		}).bind("startLoading", function() {
+			$('#fs-loader').show();
+		}).bind("stopLoading", function() {
+			$('#fs-loader').hide();
+		});
+		// .bind("startOfSlide", function(event, slide) {
+		// $('#fs-caption span').text(slide.title);
+		// $('#fs-caption').show();
+		// })
+		// .bind("endOfSlide", function(event, slide) {
+		// $('#fs-caption').hide();
+		// });
+
+	});
+
+</script>
 
 	<script type="text/javascript">
 	
@@ -1990,13 +1292,9 @@
 
 
 		$(window).on('beforeunload', function(){
-			cancel_post_publisher_on_close();
+			// cancel_post_publisher_on_close();
 		});
 
 	  
 	</script>
-
-
-
-
 

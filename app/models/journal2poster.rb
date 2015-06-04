@@ -6,11 +6,12 @@
 #  id_user                    :integer
 #  publisher_id               :integer
 #  publisher_journalposter_id :integer
+#  map_position               :integer          default(0)
+#  id_final                   :integer
 #  url                        :string(255)
 #  main_sales_phone           :string(255)
 #  created_at                 :datetime
 #  updated_at                 :datetime
-#  pos_map                    :integer          default(0)
 #
 
 class Journal2poster < ActiveRecord::Base

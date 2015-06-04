@@ -1,0 +1,308 @@
+
+
+			<!-- <div id="scroll1" class="product-listbox" style="height: 500px;"> -->
+			<div class="product-listbox">	
+
+			<% if @post_publishers.any? %>
+				<% @nlist = 0 %>
+				<% s_rand = '?' + (rand(10..90) * rand(100..900)).to_s %>
+				<% @post_publishers.each do |post_publisher| %>
+					<% @nlist += 1 %>
+					<% @post_publisher = post_publisher %>
+					<% @post_publisher_images = post_publisher.post_publisher_images %>
+					<% @post_publisher_comments = post_publisher.post_publisher_comments.order('created_at DESC') %>
+					<div class="table post-user-list-1" style="background-color: transparent;">
+						<div class="row">
+							<div class="cell-100 post-user-list-1a">
+								<div class="post-user-list-1a-1">
+									<ul class="publisher-product-list-grid publisher-product-list-caption">
+										<li>
+											<figure>
+												<a href="<%= post_publisher.publisher.slug %>">
+												<%= post_publisher_avatar_for(post_publisher.publisher, s_rand) %>
+												<figcaption>
+													<!-- <span class="publisher-product-list-span"><#%= link_to "Edit", publisher_product_descriptions_path(:publisher_id => @publisher_id, :publisher_product_id => publisher_product.id), class: "" %#></span> -->
+													<!-- <span><#%= link_to "Edit", { :action => :crop, :id => publisher_product.id } %#></span> -->
+												</figcaption>
+												</a>
+											</figure>
+										</li>
+									<ul>
+								</div>
+							</div>
+							<div class="cell-600">
+								<div style="width: 100%; background-color: #fff; padding: 0 0 0 4px;">
+									<div class="post-user-list-1b-1" style="">
+										<!-- <div style="display: inline-block; width: 561px;"> -->
+										<div style="display: inline-block;" class="float-left">
+											<a href="<%= post_publisher.publisher.slug %>" class="post-user-span-2-a">
+												<span><%= post_publisher.publisher.name_company %> </span><!-- <span><#%= post_user.user.name_last %#></span> -->
+											</a>
+										</div>
+										<% if post_publisher.publisher.id == current_user.publisher.id %>
+										<!-- <div class="post-user-delete float-right" name="<#%= post_user.id %#>"></div> -->
+										<div class="post-user-delete-container ks-tip-container float-right">
+											<div class="post-user-delete ks-tip-target">
+												<div class="post-user-id hidden" name="<%= post_publisher.id %>"></div>
+											</div>
+										    <div class="ks-tip ks-tip-delete-post-user">
+										    	<div class="ks-tip-indicator-delete-post-user"></div>
+												Delete
+										    </div>				
+									    </div>
+										<% else %>
+										<div class="post-user-delete-blank float-right"></div>
+										<% end %>
+										<div style="clear: both;"></div>
+									</div>
+									<div class="post-user-list-1b-2" style="">
+										<%= render 'publishers/post_publisher_image' %>
+										<div class="post-user-span-1"><%= post_publisher.post_text.html_safe %></div>
+										<!-- <textarea class="textarea-show textarea-show-text" style="width: 100%; overflow: visible;" tabindex="13" type="text" value="" placeholder="" disabled="disabled"><#%= post_user.post_text %#></textarea> -->
+									</div>
+									<div class="post-user-list-1b-3">
+										<div class="table" style="height: 30px; margin: 0 0 10px 0;">
+											<div class="row">
+												<div id="render_post_publisher_like_<%= @nlist %>" class="cell-150">
+													<%= render 'publishers/post_publisher_like' %>		
+												</div>
+												<div class="cell-300">
+												</div>													
+												<div class="cell-150" style="text-align: right;">
+												    <span class="post-user-span-2">
+												      - <%= time_ago_in_words(post_publisher.created_at) %> ago
+												    </span>
+												</div>													
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="add-comment-border-top" style="width: 100%; height:8px;"></div>
+								<div class="textarea-add-comment-parent" name="textarea_add_comment_container">
+									<div style="padding: 0 0 0 54px;">
+										<!-- <div class="add-comment-text-1" style="width: 100%; text-align: left;">
+											<span>Add a comment</span>
+										</div> -->
+										<div style="height: 4px;"></div>
+										<div class="textarea-add-comment-container toggle-comment" tabindex="">
+											<div id="textarea_add_comment_<%= post_publisher.id %>" class="textarea-add-comment toggle-comment add-comment-container-inactive" name="<%= post_publisher.id %>" contenteditable="true" tabindex="101"><br></div>
+										</div>
+										<div style="height: 4px;"></div>
+										<!-- <div class="btn-add-comment-story-4-container hidden"> -->
+										<div id="btn_add_comment_<%= post_publisher.id %>" class="btn-add-comment-story-4-container hidden">			
+											<div style="display: inline-block; width: 480px;"></div>
+											<div class="btn-add-comment-story-4 toggle-comment" style="display: inline-block; width: 50px;" name="<%= post_publisher.id %>" tabindex="">
+												<div class="add-comment-story-4-text toggle-comment">Add</div>
+												<div class="add-comment-story-4-loader toggle-comment hidden"></div>
+											</div>
+											<div style="height: 4px;"></div>
+											<!-- <div class="btn-submit-story-1" tabindex="">
+												<div class="submit-edit-story-4-text">Cancel</div>
+												<div class="submit-edit-story-4-loader hidden"></div>
+											</div> -->
+										</div>
+									</div>									
+									<!-- <div style="height: 8px;"></div> -->
+									<!-- <div class="" style="display: inline-block; width: 100%;"> -->
+									<div class="" style="width: 100%;">
+										<div id="render_post_publisher_comments_<%= post_publisher.id %>" name="<%= post_publisher.id %>" class="render-post-user-comments add-comment-container" tabindex="">
+											<%= render 'publishers/post_publisher_comments' %>
+										</div>
+									</div>
+									<!-- <div style="height: 6px;"></div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				<% end %>
+
+			<% else %>
+				<!-- <div class="" style="color: red; padding-left: 20px;">
+					<h3>No record for Publisher Products</h3>
+				</div> -->
+			<% end %>
+
+				</div>
+
+
+				<!-- <div id="im_bottom_sh" style="display: block;"></div> -->					
+
+				<!-- <div class="publisher-product-utility-bar-footer">
+					<div style="height: 4px;"></div>
+					<div style="width: 100%; text-align: center;">
+						<span><#%= will_paginate @publisher_products %#></span>
+					</div>
+				</div> -->
+
+	<!-- <script src="/assets/jquery.mousewheel.js"></script> -->
+
+	<script>
+		
+        // function scrollPos() {
+            // $("#pos1").html($("#scroll1").scrollLeft());
+            // // $("#pos2").html($("#scroll1").scrollTop());
+            // $("#scroll2").scrollLeft($("#scroll1").scrollLeft());
+            // // $("#scroll2").scrollLeft(100);
+        // }
+		// function moveScroll() {
+			// $("#scroll1").scrollLeft($("#pos1").html());
+			// $("#scroll2").scrollLeft($("#pos1").html());			
+		// }
+				
+		// function body_resize() {
+			// var wh = window.outerHeight;
+			// var sh = 0;
+			// // var h1 = 0;
+			// // var h2 = 0;
+			// var h3 = 0;
+			// // var h = $("#container").height();
+			// $("#container_height").html(wh);
+			// if(wh > 700) {
+				// // h1 = wh - 276;
+				// // h2 = wh - 594;
+				// h3 = wh - 392;
+				// // $("#scroll1").css({
+					// // 'height': h3
+				// // });
+				// $("#sub_container").css({
+					// 'height': h3			// h1
+				// });			
+				// $("#render_list").css({
+					// 'height': h3			// h2
+				// });			
+			// }
+		// }
+
+		// function init_page() {
+			// var wh = window.innerHeight;
+			// var sh = wh-388;
+			// $("#scroll1").css({
+				// 'height': sh
+			// });			
+		// }
+				
+		// $(window).load(function() {
+		$(document).ready(function() {			
+      	// $(function() {
+
+
+
+		    $("#textarea_addcomment").on ('blur', function (e) {
+				onDivBlur();
+		    });
+		    $("#textarea_addcomment").on ('mousedown', function (e) {
+				return cancelEvent(event);
+		    });
+		    $("#textarea_addcomment").on ('click', function (e) {
+				return cancelEvent(event);
+		    });
+		    $("#textarea_addcomment").on ('mouseup', function (e) {
+				saveSelection();
+		    });
+		    $("#textarea_addcomment").on ('keyup', function (e) {
+				saveSelection();
+		    });
+		    $("#textarea_addcomment").on ('focus', function (e) {
+				restoreSelection();
+		    });
+		    $("#textarea_addcomment").on ('keydown', function (e) {
+		    	if( e.keyCode == 9) {
+		    		e.preventDefault();
+					insertTextAtCursor("\t");
+		    	}
+		    });
+
+    		// $(".btn-add-comment-story-4").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $(".btn-add-comment-story-4").click();
+    		// });
+
+
+			$(".btn-add-comment-story-4").on('click', function() {
+				// alert($(this).attr("name"));
+				var post_publisher_id = $(this).attr("name"); 
+				var textarea_id = "#textarea_add_comment_" + post_publisher_id;
+				var c = $(textarea_id).html().replace(/\t/g, '        '); 
+				// var c = $(this).html().replace(/\t/g, '        '); 
+				// $("#post_publisher_comment_comment_text").val(c);	
+				$("form#new_post_publisher_comment input#post_publisher_comment_comment_text").val(c);
+				$("form#new_post_publisher_comment input#post_publisher_comment_post_publisher_id").val(post_publisher_id);
+				// $("#submit_comment_story_4_text").addClass("hidden");						
+				// $("#submit_comment_story_4_loader").removeClass("hidden");
+				$("#submit_post_publisher_comment_hidden").click();
+			});
+
+
+
+
+
+			// $(".btn-add-comment-story-4").on('click', function() {
+				// var id = $(this).attr('name');
+				// // $(document).trigger('click_add_comment_story_4', [id]);
+			// });
+
+
+
+
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+
+			// $("#btn_submit_post_publisher_like").on('click', function() {
+				// alert('click');
+				// // $("#btn_submit_post_publisher_like_hidden").click();
+			// });
+
+			// body_resize();
+
+	        // $('#scroll1').bind('mousewheel', function(event) {
+	          // event.preventDefault();
+	          // var scrollTop = this.scrollTop;
+	          // this.scrollTop = (scrollTop + ((event.deltaY * event.deltaFactor) * -0.7));
+	          // //console.log(event.deltaY, event.deltaFactor, event.originalEvent.deltaMode, event.originalEvent.wheelDelta);
+	        // });
+
+
+			
+		});				
+
+				
+	</script>
+

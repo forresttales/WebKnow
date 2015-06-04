@@ -1,7 +1,8 @@
 
 
 			<!-- <div id="scroll1" class="product-listbox" style="height: 500px;"> -->
-			<div class="product-listbox">	
+			<!-- <div class="product-listbox"> -->
+			<div class="post-container">	
 
 			<% if @post_publishers.any? %>
 				<% @nlist = 0 %>
@@ -31,7 +32,9 @@
 								</div>
 							</div>
 							<div class="cell-600">
-								<div style="width: 100%; background-color: #fff; padding: 0 0 0 4px;">
+								<!-- <div style="width: 100%; background-color: #fff; padding: 0 0 0 4px;"> -->
+								<div style="width: 598px; background-color: #fff; padding: 0 0 0 0px;">
+
 									<div class="post-user-list-1b-1" style="">
 										<!-- <div style="display: inline-block; width: 561px;"> -->
 										<div style="display: inline-block;" class="float-left">
@@ -55,6 +58,7 @@
 										<% end %>
 										<div style="clear: both;"></div>
 									</div>
+									
 									<div class="post-user-list-1b-2" style="">
 										<%= render 'publishers/post_publisher_image' %>
 										<div class="post-user-span-1"><%= post_publisher.post_text.html_safe %></div>
@@ -68,8 +72,8 @@
 												</div>
 												<div class="cell-300">
 												</div>													
-												<div class="cell-150" style="text-align: right;">
-												    <span class="post-user-span-2">
+												<div class="cell-150" style="text-align: right; padding-top: 10px;">
+												    <span class="post-user-span-3">
 												      - <%= time_ago_in_words(post_publisher.created_at) %> ago
 												    </span>
 												</div>													
@@ -77,6 +81,7 @@
 										</div>
 									</div>
 								</div>
+
 								<div class="add-comment-border-top" style="width: 100%; height:8px;"></div>
 								<div class="textarea-add-comment-parent" name="textarea_add_comment_container">
 									<div style="padding: 0 0 0 54px;">
@@ -89,12 +94,13 @@
 										</div>
 										<div style="height: 4px;"></div>
 										<!-- <div class="btn-add-comment-story-4-container hidden"> -->
-										<div id="btn_add_comment_<%= post_publisher.id %>" class="btn-add-comment-story-4-container hidden">			
-											<div style="display: inline-block; width: 480px;"></div>
-											<div class="btn-add-comment-story-4 toggle-comment" style="display: inline-block; width: 50px;" name="<%= post_publisher.id %>" tabindex="">
+										<div id="btn_add_comment_<%= post_publisher.id %>" class="btn-add-comment-story-4-container hidden" style="width: 100%;">			
+											<!-- <div style="display: inline-block; width: 480px;"></div> -->
+											<div class="btn-1 toggle-comment btn-add-comment-story-4" style="display: inline-block; width: 50px; float: right;" data-post-publisher-id="<%= post_publisher.id %>" tabindex="">
 												<div class="add-comment-story-4-text toggle-comment">Add</div>
 												<div class="add-comment-story-4-loader toggle-comment hidden"></div>
 											</div>
+											<div style="clear: both;"></div>
 											<div style="height: 4px;"></div>
 											<!-- <div class="btn-submit-story-1" tabindex="">
 												<div class="submit-edit-story-4-text">Cancel</div>
@@ -104,7 +110,7 @@
 									</div>									
 									<!-- <div style="height: 8px;"></div> -->
 									<!-- <div class="" style="display: inline-block; width: 100%;"> -->
-									<div class="" style="width: 100%;">
+									<div class="">
 										<div id="render_post_publisher_comments_<%= post_publisher.id %>" name="<%= post_publisher.id %>" class="render-post-user-comments add-comment-container" tabindex="">
 											<%= render 'publishers/post_publisher_comments' %>
 										</div>
@@ -245,45 +251,43 @@
 
 
 
-            $('.tip').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout'
-                })
-            });			
-			
-            $('.tip-bottom-center').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout',
-				    position: {
-				        my: 'top center',
-				        at: 'bottom center'
-				        // target: $('.tip-bottom-center')
-    				}                    
-                })
-            });			
-
-            $('.tip-top-center').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout',
-				    position: {
-				        my: 'bottom center',
-				        at: 'top center'
-				        // target: $('.tip-top-center')
-    				}                    
-                })
-            });			
+            // $('.tip').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout'
+                // })
+            // });			
+            // $('.tip-bottom-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'top center',
+				        // at: 'bottom center'
+				        // // target: $('.tip-bottom-center')
+    				// }                    
+                // })
+            // });			
+            // $('.tip-top-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'bottom center',
+				        // at: 'top center'
+				        // // target: $('.tip-top-center')
+    				// }                    
+                // })
+            // });			
 
 			// $("#btn_submit_post_publisher_like").on('click', function() {
 				// alert('click');

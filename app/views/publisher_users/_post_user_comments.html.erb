@@ -30,7 +30,7 @@
 			cursor: pointer;
 		}		
 		.post-user-list-container {
-			width: 596px; 
+			width: 590px; 
 			margin: 3px 0 0 0; 
 			background-color: #fff; 
 			border: 1px solid #ddd; 
@@ -70,7 +70,7 @@
 			</div> 
 			-->
 			
-			<div style="display: inline-block; width: 534px;">
+			<div style="display: inline-block; width: 530px;">
 				<!-- <div style="height: 4px;"></div> -->
 				<div style="display: inline-block;" class="float-left">
 					<a href="<%= post_user_comment.user.slug %>" class="post-user-span-2-a">
@@ -96,8 +96,8 @@
 				<div class="story-4-comment-list-container-text"><%= post_user_comment.comment_text.html_safe %></div>
 				
 				<div style="width: 100%;">
-					<div style="width: 150px; text-align: right;" class="float-right">
-					    <span class="post-user-span-2">
+					<div style="width: 150px; text-align: right; padding-right: 4px; padding-bottom: 2px;" class="float-right">
+					    <span class="post-user-span-3">
 					      - <%= time_ago_in_words(post_user_comment.created_at) %> ago
 					    </span>					
 				    </div>

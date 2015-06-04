@@ -1241,14 +1241,13 @@ module PublisherProductsHelper
   end  
 
 
-  # <img id="img_image_1" alt="" src="<%= @image_1.image_url(:user_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_1.image? %>" />
-
   def publisher_product_pos1_200_for(publisher_product)
       img = publisher_product.publisher_product_pos1_image rescue nil     
       if !img.nil?     
         publisher_product_pos1_200_url = img.image_url(:image_200_200)
+        Rails.logger.info('publisher_product_pos1_200_url = ' + publisher_product_pos1_200_url)
       else
-        publisher_product_pos1_200_url = "../images_avatar/avatar-gen-product-w200-h200.png"
+        publisher_product_pos1_200_url = "avatars/avatar-gen-product-w200-h200.png"
       end
     
       s_rand = '?' + (rand(10..90) * rand(100..900)).to_s

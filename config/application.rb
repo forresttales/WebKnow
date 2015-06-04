@@ -24,6 +24,8 @@ module Webknow
 
     # config.action_controller.asset_host = "assets.example.com"
     
+    config.active_record.raise_in_transactional_callbacks = true
+    
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.active_support.escape_html_entities_in_json = true
     config.active_record.whitelist_attributes = true
@@ -43,22 +45,24 @@ module Webknow
 
     config.assets.enabled = true
     config.assets.precompile += [
-                                  'jquery.validate.js', 
-                                  'slick.js',
                                   'chosen.jquery.js',
                                   'chosen.proto.js',
+                                  'control_elements.js',
                                   'dot.js',
                                   'jqModal.js',
-                                  'jquery.colorbox.js',
+                                  # 'jquery.colorbox.js',
                                   'jquery.easing.1.3.js',
                                   'jquery.fullscreenslides.js',
+                                  'jquery.Jcrop.js',
                                   'jquery.mousewheel.js',
                                   'jquery.qtip.min.js',
                                   'jquery.selectbox-0.6.1.js',
                                   'jquery.sparkbox-select.js',
+                                  'jquery.validate.js', 
                                   'jquery-dropdown-dot.js',
                                   'nav-jquery.js',
-                                  'toucheffects.js'
+                                  'slick.js'                                  
+                                  # 'toucheffects.js'
                                 ]
 
     # *** already in application.css ***
@@ -68,6 +72,7 @@ module Webknow
     # require 'table'
     config.assets.precompile += [
                                   'chosen.css',
+                                  'control_elements.css',
                                   'custom_dialog.css',
                                   'custom_form.css',
                                   'custom_image.css',
@@ -77,19 +82,25 @@ module Webknow
                                   'custom_page.css',
                                   'custom_profile.css',
                                   'custom_sign_form.css',
-                                  'custom.css',
+                                  # 'custom.css',
                                   'forms.css',
+                                  # 'fullscreenstyle.css',
                                   # 'init_html.css'
+                                  # 'ink_screen_2.css'
                                   'jqModal.css',
+                                  'jqModal-11.css',
                                   'jquery_image_overlay.css',
                                   'jquery_ui_1.10.4.css',
+                                  'jquery.Jcrop.css',
                                   'jquery.multiselect.css',
                                   'jquery.qtip.min.css',
+                                  # 'ks_footer.css',
+                                  # 'ks_tip.css',
                                   'ks-profile.css',
-                                  # 'ks-tip.css',
                                   # 'nav_main.css',
+                                  'nav_publisher.css',
                                   'profile-new.css',
-                                  'slideshow.css',
+                                  'publisher_users_index_home.css',
                                   'slick.css',
                                   'slick-theme.css',
                                   'slideshow.css',
@@ -133,7 +144,6 @@ module Webknow
                                   # 'z_custom_mtablets_tabs.css.scss',
                                   # 'z_custom_mtablets.css.scss'
                                 # ]
-
 
 
 

@@ -638,6 +638,7 @@
 			<!-- <div id="scroll1" class="product-listbox" style="height: 500px;"> -->
 			<div class="product-listbox-full">	
 
+			<% if !@publisher_products.nil? %>
 			<% if @publisher_products.any? %>
 				<% i = 1 %>
 				<!-- <#% s_rand = '?' + (rand(10..90) * rand(100..900)).to_s %#> -->
@@ -654,6 +655,8 @@
 											<div class="container-figure-image-list container-figure-image-border">
 												<figure>
 													<%= publisher_product_pos1_200_for(publisher_product) %>
+													<!-- <#%= image_tag("avatars/avatar-gen-product-w200-h200.png") %#> -->
+													<!-- <img src="../images_avatar/avatar-gen-product-w200-h200.png" alt=""> -->
 												</figure>
 											</div>
 										</div>
@@ -1183,8 +1186,8 @@
 					<h3>No record</h3>
 				</div>
 			<% end %>
-
-				</div>
+			<% end %>
+			</div>
 
 
 

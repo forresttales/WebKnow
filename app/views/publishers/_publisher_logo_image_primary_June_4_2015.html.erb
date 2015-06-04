@@ -1,0 +1,444 @@
+
+	<style>
+		
+		div.drop-2-container-target  {
+			position: relative;
+		}
+		div.drop-2-container-target .dropOut .triangle {
+			width: 0;
+			height: 0;
+			position: absolute;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-bottom: 8px solid white;
+			top: -8px;
+			right: 0px;
+		}
+		div.drop-2-container-target .drop-2-container {
+			width: 140px;
+			position: absolute;
+			z-index: 2;
+			right: 2px;
+			top: -1000px;
+		}
+		div.drop-2-container-target .dropOut {
+			width: 140px;
+			background: #fff;
+			float: left;
+			position: relative;
+			margin-top: 0px;
+			/*opacity: 0;*/
+			opacity: 1;
+			-webkit-border-top-left-radius: 4px;
+			-webkit-border-top-right-radius: 0px;
+			-webkit-border-bottom-right-radius: 4px;
+			-webkit-border-bottom-left-radius: 4px; 			
+			-moz-border-top-left-radius: 4px;
+			-moz-border-top-right-radius: 0px;
+			-moz-border-bottom-right-radius: 4px;
+			-moz-border-bottom-left-radius: 4px; 			
+			border-top-left-radius: 4px;
+			border-top-right-radius: 0px;
+			border-bottom-right-radius: 4px;
+			border-bottom-left-radius: 4px; 			
+			-webkit-box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			-moz-box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			box-shadow: 0 1px 6px rgba(0,0,0,.15);
+			/*display: none !important;
+			visibility: hidden !important;*/
+			/*display: none;*/
+			/*visibility: hidden;*/					
+		}
+		div.drop-2-container-target .dropOut ul {
+			float: left;
+			padding: 10px 0;
+		}
+		div.drop-2-container-target .dropOut ul li {
+			text-align: left;
+			float: left;
+			width: 120px;
+			height: 24px;
+			padding: 4px 0 6px 10px;
+			margin: 3px 10px 3px 10px;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+		}
+		div.drop-2-container-target .dropOut ul li:hover {
+			background: #f2f2f2;
+		}
+		div.drop-2-container-target .dropOut ul li div {
+			color: #376340;	
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			font-weight: 700;
+			width: 100%;
+			height: 24px;
+		}
+		div.drop-2-container-target .dropOut ul li:hover div {
+			color: #376340;	
+			cursor: pointer;
+		}
+		/*div.drop-2-container-target .drop-2-target:hover + .drop-2-container .dropOut { opacity: 1; margin-top: 8px; }*/
+		div.drop-2-container-target .drop-2-target:hover + .drop-2-container .dropOut { margin-top: 8px; }
+		/*div.drop-2-container-target .drop-2-target:hover + .drop-2-container { top: 180px; }*/
+		/*div.drop-2-container-target .drop-2-target + .drop-2-container:hover .dropOut { opacity: 1; margin-top: 8px; }*/
+		div.drop-2-container-target .drop-2-target + .drop-2-container:hover .dropOut { margin-top: 8px; }		
+		/*div.drop-2-container-target .drop-2-target + .drop-2-container:hover { top: 180px; }*/
+		
+	</style>
+
+	<style>
+	
+		li {list-style-type: none;}
+	
+	</style>
+
+	<style>
+
+		.container-figure-image-border-load {
+			border: 2px solid #fff;
+		}	
+		.container-figure-image-border {
+			border: 2px solid #ccc;
+		}
+		.container-figure-image-border-edit {
+			border: 2px solid #fbb040;
+		}	
+		
+	</style>
+
+
+								<% if @publisher_logo_image_primary %>   				
+									<!-- <#% rnum = (rand(10..90) * rand(100..900)).to_s %#> -->
+									<div class="container-figure-logo container-figure-image-border-load container-figure-logo-1 drop-2-container-target">
+										<figure id="profile_figure_logo" class="dialog-11-figure cursor-pointer drop-2-target">
+											<img id="logo_primary_img" alt="" src="<%= @publisher_logo_image_primary.image_url(:user_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_logo_image_primary.image? %>" />
+											<input class="container-image-hidden" type="hidden" value="<%= @publisher_logo_image_primary.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_logo_image_primary.image? %>" />
+											<figcaption id="figcaption_logo_image" class="edit-image hidden">		
+												<div class="img-1-text">Edit image</div>										
+											</figcaption>
+										</figure>
+								    	<div class="drop-2-container hidden">
+											<div class="dropOut">
+												<div class="triangle"></div>
+												<ul>
+													<li>
+														<div id="btn_logo_image_primary_change">
+															New/Change
+														</div>
+													</li>
+													<li>
+														<div id="btn_logo_image_primary_crop">
+															Crop/Center
+														</div>
+													</li>													
+													<li>
+														<div id="btn_logo_image_primary_delete">
+															Delete
+														</div>
+													</li>
+												</ul>
+											</div>
+								        </div>
+										
+									</div>
+									<div class="float-clear"></div>
+
+								<% else %>
+
+									<div class="container-figure-logo container-figure-image-border-load container-figure-logo-1 drop-2-container-target">
+										<figure id="profile_figure_logo_generic" class="dialog-11-figure-generic drop-2-target">
+											<img id="logo_generic_img" alt="" src="../images_avatar/avatar-gen-corp-w200-h200.png" />
+											<figcaption id="figcaption_logo_image_primary_generic" class="edit-image cursor-pointer hidden">
+												<!-- <div class="img-1-container">
+													<div class="img-1"></div> -->
+													<div class="img-1-text">Add a photo</div>
+												<!-- </div> -->
+											</figcaption>
+										</figure>
+								    	<div class="drop-2-container hidden">
+											<div class="dropOut">
+												<div class="triangle"></div>
+												<ul>
+													<li>
+														<div id="btn_logo_image_primary_new">
+															New
+														</div>
+													</li>
+												</ul>
+											</div>
+								        </div>
+									</div>
+								
+								<% end %>
+
+
+								<% if false %>
+								<% if @publisher_logo_image_primary %>   				
+									<div class="container-figure container-figure-1">
+										<figure class="dialog-11-figure cursor-pointer">
+											<img id="logo_primary_img" alt="" src="<%= @publisher_logo_image_primary.image_url(:user_200_200_fit) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_logo_image_primary.image? %>" />
+											<input class="container-image-hidden" type="hidden" value="<%= @publisher_logo_image_primary.image_url(:user_600_600) if @publisher_logo_image_primary.image? %>" />
+											<figcaption id="figcaption_image_primary" class="edit-image hidden">												
+												<div class="img-1-container">
+												</div>
+											</figcaption>
+										</figure>
+									</div>
+									<div class="float-clear"></div>
+								<% else %>
+									<div class="container-figure container-figure-1">
+										<figure class="dialog-11-figure-generic">
+											<img id="logo_generic_img" alt="" src="../images_avatar/avatar-gen-corp-w200-h200.png" />
+											<figcaption id="figcaption_logo_image_primary_generic" class="edit-image cursor-pointer hidden">
+												<div class="img-1-container">
+													<div class="img-1"></div>
+													<div class="img-1-text">Add a photo</div>
+												</div>
+											</figcaption>
+										</figure>
+									</div>
+								<% end %>
+								<% end %>
+
+
+
+	<script>
+
+
+		// $(window).load( function() {
+		$(document).ready( function () {				
+
+			$("img").one("load", function() {
+				if( (this.id == "logo_primary_img") || (this.id == "logo_generic_img") ) {
+					// alert("logo_primary_img height = " + this.height);
+					var img_w = this.width;
+					var img_h = this.height;
+					$("div.drop-2-container-target .drop-2-target").on('mouseenter', function() {
+						$(".drop-2-container").css({ 
+							top : img_h - 14
+						});
+					});
+					$("div.drop-2-container-target .drop-2-target").on('mouseleave', function() {
+						$(".drop-2-container").css({ 
+							top : -1000
+						});
+					});
+					
+					$("div.drop-2-container-target .drop-2-container").on('mouseenter', function() {
+						$(".drop-2-container").css({ 
+							top : img_h - 14
+						});
+					});
+					$("div.drop-2-container-target .drop-2-container").on('mouseleave', function() {
+						$(".drop-2-container").css({ 
+							top : -1000
+						});
+					});
+					
+					// $("div#container_logo_image .drop").on('hover', function() {
+						// $("div#container_logo_image .drop. .dropdownContain").css({ 
+							// top : img_h - 6
+						// });
+					// });
+					// $("div#container_logo_image .container-figure-logo").css({
+					$(".container-figure-logo").css({
+						width : img_w + 4,
+						height : img_h + 4
+					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");									
+				}
+				if(this.id == "logo_generic_img") {
+					// alert("logo_generic_img height = " + this.height);
+					var img_w = this.width;
+					var img_h = this.height;
+					// $("div#container_logo_image .drop").on('hover', function() {
+						// $("div#container_logo_image .drop. .dropdownContain").css({ 
+							// top : img_h - 6
+						// });
+					// });			
+					$(".container-figure-logo").css({
+						width : img_w + 4,
+						height : img_h + 4
+					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
+				}				
+			}).each(function() {
+			  	if(this.complete) $(this).load();
+			});
+
+
+		
+			// $("img").one("load", function() {
+				// if(this.id == "logo_primary_img") {
+					// var img_w = this.width;
+					// var img_h = this.height;
+					// $("div#container_logo_image .drop").on('hover', function() {
+						// $("div#container_logo_image .drop. .dropdownContain").css({ 
+							// top : img_h - 6
+						// });
+					// });
+					// $("div#container_logo_image .container-figure-logo").css({
+						// width : img_w + 4,
+						// height : img_h + 4
+					// });													
+				// }
+				// if(this.id == "logo_generic_img") {
+					// var img_w = this.width;
+					// var img_h = this.height;
+					// $("div#container_logo_image .drop").on('hover', function() {
+						// $("div#container_logo_image .drop. .dropdownContain").css({ 
+							// top : img_h - 6
+						// });
+					// });			
+					// $("div#container_logo_image .container-figure-logo").css({
+						// width : img_w + 4,
+						// height : img_h + 4
+					// });				
+				// }				
+			// }).each(function() {
+			  	// if(this.complete) $(this).load();
+			// });
+
+		
+			// var img_generic = $("#profile_figure_generic img");
+			// $("<img/>")
+	    		// .attr("src", $(img_generic).attr("src"))
+	    		// .load(function() {
+	        		// img_width = this.width; 
+	        		// $("#profile_figure_generic").css({
+	        			// width : this.width
+	        	// });
+	    	// });		
+			// var img = $("#profile_figure img");
+			// $("<img/>").attr("src", $(img).attr("src")).load(function() {
+				// img_width = this.width;
+				// img_height = this.height;
+				// $("div#container_logo_image .drop").on('hover', function() {
+					// $("div#container_logo_image .drop. .dropdownContain").css({ 
+						// top : img_height - 4
+					// });
+				// });				
+				// $(".container-figure").css({
+					// width : img_width + 4
+				// });				
+				// $(".container-figure").css({
+					// height : img_height + 4
+				// });				
+        		// $("#profile_figure").css({
+        			// width : img_width
+        		// });	        		
+	    	// });		
+
+			
+			
+			$(".dialog-11-figure").on('click', function(e) {
+				if ( e.target.nodeName == "IMG" ) {
+					var this_src = $(this).find("input.container-image-hidden").attr("value");
+					$("#profile_figure_dialog_11").find("img").attr("src", this_src );
+					var this_delete = $(this).find("div.tip-top-center").html();
+					$("#profile_figure_dialog_11").find("div.tip-top-center").html(this_delete);
+					$("#dialog_11").jqmShow();	
+				}
+			});
+			$('#dialog_11').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '20px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					var img = $("#profile_figure_dialog_11 img");
+					$("<img/>")
+			    		.attr("src", $(img).attr("src"))
+			    		.load(function() {
+			        		img_width = this.width; 
+			        		$("#profile_figure_dialog_11").css({
+			        			// width : this.width 
+			        	});	        		
+			    	});		
+				}
+			}); 		
+			
+
+			$('#dialog_15').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-720px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_15').animate(
+						{bottom:'-=740', top:'+=740'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_15').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+						}
+					);
+				}
+			}); 		
+			
+			
+            $('.tip').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout'
+                })
+            });			
+			
+            $('.tip-bottom-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'top center',
+				        at: 'bottom center'
+				        // target: $('.tip-bottom-center')
+    				}                    
+                })
+            });			
+
+            $('.tip-top-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'bottom center',
+				        at: 'top center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+			
+            $('.tip-left-center').each(function() {
+                var tipContent = $(this).next('.tip-content').html();
+                $(this).qtip({
+                	style: { classes: 'tooltip-text-1' },
+                    content: tipContent,
+                    show: 'mouseover',
+                    hide: 'mouseout',
+				    position: {
+				        my: 'right top',
+				        at: 'left center'
+				        // target: $('.tip-top-center')
+    				}                    
+                })
+            });			
+		
+		});
+	  
+
+	</script>		
+

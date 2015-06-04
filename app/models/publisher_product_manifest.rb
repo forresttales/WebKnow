@@ -32,7 +32,7 @@
 #  metrics_5              :boolean          default(FALSE)
 #  core_literacy_standard :string(255)      default("")
 #  core_math_standard     :string(255)      default("")
-#  form_update            :datetime         default(2000-01-01 00:00:00 UTC)
+#  form_update            :datetime         default(Sat, 01 Jan 2000 00:00:00 UTC +00:00)
 #  poster_print_purchase  :boolean          default(FALSE)
 #  poster_pin_web         :boolean          default(FALSE)
 #  poster_pin_purchase    :boolean          default(FALSE)
