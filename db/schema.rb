@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604035642) do
+ActiveRecord::Schema.define(version: 20150606031257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1276,6 +1276,20 @@ ActiveRecord::Schema.define(version: 20150604035642) do
 
   add_index "publisher_posters", ["publisher_id"], name: "index_publisher_posters_on_publisher_id", using: :btree
   add_index "publisher_posters", ["publisher_product_id"], name: "index_publisher_posters_on_publisher_product_id", using: :btree
+
+  create_table "publisher_privileges", force: :cascade do |t|
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "user_id"
+    t.integer  "publisher_user_id"
+    t.integer  "publisher_id"
+    t.boolean  "level_1",           default: false
+    t.boolean  "level_2",           default: false
+    t.boolean  "level_3",           default: false
+  end
+
+  add_index "publisher_privileges", ["publisher_id"], name: "index_publisher_privileges_on_publisher_id", using: :btree
+  add_index "publisher_privileges", ["publisher_user_id"], name: "index_publisher_privileges_on_publisher_user_id", using: :btree
 
   create_table "publisher_product1_images", force: :cascade do |t|
     t.integer  "publisher_id"

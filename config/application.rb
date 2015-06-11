@@ -60,6 +60,8 @@ module Webknow
                                   'jquery.sparkbox-select.js',
                                   'jquery.validate.js', 
                                   'jquery-dropdown-dot.js',
+                                  'jquery_ui_1.10.4.js',
+                                  'jquery.multiselect.js',
                                   'nav-jquery.js',
                                   'slick.js'                                  
                                   # 'toucheffects.js'
@@ -101,6 +103,7 @@ module Webknow
                                   'nav_publisher.css',
                                   'profile-new.css',
                                   'publisher_users_index_home.css',
+                                  'publisher-product-manifest.css',
                                   'slick.css',
                                   'slick-theme.css',
                                   'slideshow.css',

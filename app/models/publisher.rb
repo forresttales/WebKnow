@@ -57,7 +57,8 @@ class Publisher < ActiveRecord::Base
     
     has_many :post_publisher_likes, dependent: :destroy
     has_many :post_publisher_comments, dependent: :destroy
-    
+    has_many :publisher_privileges, dependent: :destroy
+
     has_one :publisher_plot, dependent: :destroy
     has_one :publisher_product_current, dependent: :destroy
     

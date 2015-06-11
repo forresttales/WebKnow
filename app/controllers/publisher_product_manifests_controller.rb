@@ -4,7 +4,7 @@ class PublisherProductManifestsController < ApplicationController
 
   # include CarrierWave::RMagick
   
-  layout 'publisher'
+  layout 'publisher_product_manifest'
 
   respond_to :html, :js, :json  
 
@@ -22,45 +22,101 @@ class PublisherProductManifestsController < ApplicationController
   @@publisher_product_gen_id = nil
   @@publisher_product_manifest_id = nil
 
+  # 2015-03-17 12:10:57.741937
+
   def verify_params
     
       id_passed = params[:id]
       b_signed_in = signed_in?
       b_issued_publisher_product_id_exists = IssuedPublisherProductId.exists?(:publisher_product_gen_id => id_passed)
       if b_issued_publisher_product_id_exists
-          # Rails.logger.info("b_issued_publisher_product_id_exists true")
           if b_signed_in
-              # Rails.logger.info("b_signed_in true")
-              current_user_profile_type = current_user.profile_type
-              if (current_user_profile_type.to_s == "3")
-                  # Rails.logger.info("current_user_profile_type = 3")
-                  b_current_user_owns = current_user.publisher.publisher_products.exists?(:slug => id_passed)
-                  if b_current_user_owns
-                      # Rails.logger.info("b_current_user_owns")
-                      current_user_publisher_user = current_user.publisher_user
-                      b_current_user_publisher_user_admin_2 = current_user_publisher_user.admin_2
-                      if b_current_user_publisher_user_admin_2
-                          # Rails.logger.info("b_current_user_publisher_user_admin_2")
-                          # allow to index
+                current_user_publisher = current_user.publisher rescue nil
+                if !current_user_publisher.nil?
+                      b_current_user_publisher_owns = current_user_publisher.publisher_products.exists?(:slug => id_passed)
+                      if b_current_user_publisher_owns
+                          current_user_publisher_user = current_user.publisher_user rescue nil
+                          if !current_user_publisher_user.nil?
+                              current_user_publisher_privileges = current_user_publisher.publisher_privileges rescue nil
+                              # Rails.logger.info("current_user_publisher_privileges = " + current_user_publisher_privileges.length.to_s)
+                              if !current_user_publisher_privileges.nil?
+                                  if current_user_publisher_privileges.any?
+                                      current_user_publisher_privilege = current_user_publisher_privileges.where("publisher_user_id=?", current_user_publisher_user.id).first rescue nil
+                                      # Rails.logger.info('current_user_publisher_user.id = ' + current_user_publisher_user.id.to_s)
+                                      # note - the index 'publisher_privilege_on_publisher_id' is NOT forced to be unique. This might need to be changed.
+                                      if !current_user_publisher_privilege.nil?
+                                          b_current_user_publisher_privilege_level_2 = current_user_publisher_privilege.level_2 rescue nil
+                                          if !b_current_user_publisher_privilege_level_2.nil?
+                                              if b_current_user_publisher_privilege_level_2                          
+                                                  # user is a member of this publisher with edit privilege
+                                              else
+                                                  Rails.logger.info("b_current_user_publisher_user_level_2 false")
+                                                  Rails.logger.info("current_user_publisher_user_id = " + current_user.publisher_user.id.to_s)
+                                                  # user is a member of this publisher, but does not have administrative privilege to edit product forms
+                                                  # display public page
+                                                  redirect_to '/' + id_passed
+                                              end
+                                          else
+                                              Rails.logger.info("current_user_publisher_privilege_level_2 returned nil")
+                                              # a boolean return nil
+                                              # this should NEVER happen. But if it does, it is because the publisher_privileges table was not properly updated for this user, or computer error
+                                              # -> log error
+                                              # display public page
+                                              redirect_to '/' + id_passed
+                                          end
+                                      else
+                                          Rails.logger.info("current_user_publisher_privilege returned nil")
+                                          # this should NEVER happen. If it does, it is because the publisher_privileges table was not properly updated for this user, or computer error
+                                          # -> log error
+                                          # display public page
+                                          redirect_to '/' + id_passed
+                                      end                                      
+                                  else
+                                      Rails.logger.info("current_user_publisher_privileges any failed")
+                                      # Again, this should NEVER happen. There should always be 1 record for the publisher account initiator
+                                      # -> log error
+                                      # display public page
+                                      redirect_to '/' + id_passed
+                                  end
+                              else
+                                  Rails.logger.info("current_user_publisher_privileges returned nil")
+                                  # this should NEVER return nil. At the least, there should be 1 record - the publisher account initiator
+                                  # -> log error
+                                  # display public page
+                                  redirect_to '/' + id_passed
+                              end
+                          else
+                              Rails.logger.info("current_user_publisher_user returned nil")
+                              # publisher confirmed, but publisher_user not found
+                              # this should NEVER happen. but if it does by computer error, display the public page and log error
+                              # -> log error
+                              # display public page
+                              redirect_to '/' + id_passed
+                          end
                       else
-                          # Rails.logger.info("b_current_user_publisher_user_admin_2 false")
+                          Rails.logger.info("b_current_user_owns false")
+                          # user is a publisher, but does not own this product
+                          # display public page
                           redirect_to '/' + id_passed
                       end
-                  else
-                      # Rails.logger.info("b_current_user_owns false")
-                      redirect_to '/' + id_passed
-                  end
-              else
-                  # Rails.logger.info("current_user_profile_type = 3 false")
-                  redirect_to '/' + id_passed
-              end
+                else
+                    Rails.logger.info("current_user_publisher returned nil")
+                    # user not even a publisher
+                    # display public page
+                end
           else
-              # Rails.logger.info("b_signed_in false")
+              Rails.logger.info("b_signed_in false")
+              # display public page
               redirect_to '/' + id_passed
           end    
       else
-          # Rails.logger.info("b_issued_publisher_product_id_exists false")
-          redirect_to '/'
+          Rails.logger.info("b_issued_publisher_product_id_exists false")
+          if b_signed_in
+            # error message -> 'URL not found
+            redirect_to request.referrer  
+          else
+            redirect_to '/'
+          end
       end
 
   end
