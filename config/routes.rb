@@ -5,6 +5,7 @@ Webknow::Application.routes.draw do
   get "control_elements/nav_dropdowns"
   get "control_elements/dynamic_edit_box"
   get "control_elements/sticky_footer"
+  get "control_elements/sticky_footer_with_icon"
   
 
   root to: 'users#index'
