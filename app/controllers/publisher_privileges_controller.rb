@@ -1,0 +1,2 @@
+class PublisherPrivilegesController < ApplicationController
+end
