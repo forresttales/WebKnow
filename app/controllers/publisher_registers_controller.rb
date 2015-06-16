@@ -1,19 +1,53 @@
 class PublisherRegistersController < ApplicationController
 
-  # before_filter :force_http
+  before_filter :force_http
 
-  layout 'publisher_register'
-  
+  # layout 'publisher'
+
   respond_to :html, :js, :json  
 
-  # helper_method :sort_column, :sort_direction, :yesno
+  helper_method :sort_column, :sort_direction, :yesno
 
-  # before_action :signed_in_user, only: [:index, :index_demo]  
+  before_action :verify_signin, only: [:index]
+
+
+  def verify_signin
+    
+      if !signed_in?
+          redirect_to '/Signin'
+      end
+      
+  end
 
 
   def index
     
+      case current_user.profile_type.to_s
+        when "1"
+            # student user
+        when "2"
+            # teacher user
+        when "3"
+            # publisher user
+            # Rails.logger.info('called render_index_publisher_user')
+            render_index_publisher
+        when "4"
+            # institute user
+        when "5"
+            # recruiter user
+        else
+            #
+      end
+
+    
   end
+
+  def render_index_publisher
+    
+      render 'publisher_registers/index_publisher', :layout => 'index_publisher_register'
+    
+  end
+
 
 
 end

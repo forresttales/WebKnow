@@ -44,7 +44,7 @@ class UserRegistersController < ApplicationController
 
   def render_index_publisher
     
-      render 'user_registers/index_publisher', :layout => 'index_register_publisher_user'
+      render 'user_registers/index_publisher', :layout => 'index_user_register_publisher'
     
   end
 

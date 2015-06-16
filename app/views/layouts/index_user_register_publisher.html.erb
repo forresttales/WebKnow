@@ -52,15 +52,15 @@
 			html, body {
 			  height: 100%;
 			}
-			.body-wrap {
+			.body-wrap-outer {
 			  min-height: 100%;
 			  margin-bottom: -150px; 
 			}
-			.body-wrap:after {
+			.body-wrap-outer:after {
 			  content: "";
 			  display: block;
 			}
-			.ks-footer, .body-wrap:after {
+			.ks-footer, .body-wrap-outer:after {
 			  height: 150px; 
 			}		
 
@@ -76,13 +76,12 @@
     
 	<body style="margin 0; padding: 0;">
 		<div class="body-wrap-outer">
-			
-		<%= render 'layouts/nav_main' %>
-		<%= render 'layouts/nav_publisher' %>
-		<div class="body-wrap-inner">
-			<%= yield %>
+			<%= render 'layouts/nav_main' %>
+			<%= render 'layouts/nav_publisher' %>
+			<div class="body-wrap-inner">
+				<%= yield %>
+			</div>
 		</div>
-		
 		<%= render 'layouts/footer' %>
 
 		<% if false %>
@@ -97,7 +96,6 @@
 		
 		<% end %>
 		
-		</div>
 	</body>
     
 </html>
