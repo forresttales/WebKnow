@@ -143,6 +143,7 @@ module SessionsHelper
     end
   end
 
+
   def signed_in_user
     unless signed_in?
       store_location
@@ -151,6 +152,7 @@ module SessionsHelper
       # redirect_to signin_url, notice: "Please sign in"
     end
   end
+
 
   def sign_out
     self.current_user = nil
@@ -187,6 +189,7 @@ module SessionsHelper
     
     
   end
+
 
   def redirect_back_or(default)
     # redirect_to(session[:return_to] || default)
@@ -272,11 +275,13 @@ module SessionsHelper
     return avatar_test 
   end
   
+  
   def avatar34
       avatar34 = user_34_avatar
       # avatar34 = nil
       return avatar34
   end
+  
   
   def user_34_avatar
     
@@ -334,6 +339,7 @@ module SessionsHelper
       # avatar50 = nil
       return avatar50
   end
+  
   
   def user_50_avatar
     

@@ -16,6 +16,17 @@ Webknow::Application.routes.draw do
     # resources :photos
     # resources :accounts
   # end
+  
+  
+  match "/Settings" => "user_registers#index", via: 'get'
+  
+  
+  match "/Publisher-Settings" => "publisher_registers#index", via: 'get'
+  
+  
+  
+  
+  
     
   # match "/:id" => "users#index", via: 'get'
   resources :users do
