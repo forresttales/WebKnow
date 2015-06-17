@@ -13,7 +13,7 @@
 		<%= javascript_include_tag "application", "data-turbolinks-track" => false %>
 
 		<%= stylesheet_link_tag "nav_publisher" %>
-		<%= stylesheet_link_tag "publisher_users_index_home" %>
+		<!-- <#%= stylesheet_link_tag "publisher_users_index_home" %> -->
 		<%= stylesheet_link_tag "slick" %>
 		<%= stylesheet_link_tag "slick-theme" %>
 		
@@ -22,11 +22,11 @@
 		<%= stylesheet_link_tag "jquery.Jcrop.css" %>
 		<!-- <link rel="stylesheet" href="../jcrop/css/jquery.Jcrop.css" type="text/css" /> -->
 		<!-- <link rel="stylesheet" href="/assets/jquery.qtip.min.css"> -->
+		<%= stylesheet_link_tag "publishers_index" %>
 		
 		<%= javascript_include_tag "jqModal" %>
 		<%= javascript_include_tag "jquery.easing.1.3" %>
 		<%= javascript_include_tag "jquery.Jcrop" %>
-		<!-- <script src="../jcrop/js/jquery.Jcrop.js"></script> -->
 		
 		<%= stylesheet_link_tag "jquery.qtip.min" %>
 		<%= javascript_include_tag "jquery.qtip.min" %>				
@@ -85,14 +85,14 @@
 		
 		<%= render 'layouts/footer' %>
 
-		<% if false %>
+		<% if true %>
 
 		<% if Rails.env.development? %>
-			<div style="width: 100%; position: absolute; bottom: -50px;">
+			<!-- <div style="width: 100%; position: absolute; bottom: -50px;"> -->
 				<div id="debug">
 					<%= debug(params) %>
 				</div>
-			</div>
+			<!-- </div> -->
 		<% end %>
 		
 		<% end %>
