@@ -101,6 +101,7 @@ module Webknow
                                   'ks-profile.css',
                                   # 'nav_main.css',
                                   'nav_publisher.css',
+                                  'nav_publisher_product_summary.css',
                                   'profile-new.css',
                                   'publisher_users_index_home.css',
                                   'publisher-product-manifest.css',

@@ -2,23 +2,21 @@
 <html>
     <head>
 		<meta charset="utf-8">
-								    	
-  		<title><%= full_title(yield(:title)) %></title> 
-
-		<!-- <#%= javascript_include_tag "application" %#>
-		<#%= stylesheet_link_tag    "application", :media => "all" %#> -->
-
-   		<%= javascript_include_tag "application" %>		
-    	<%= stylesheet_link_tag "application", media: "all" %>
+  		<title><%= full_title(yield(:title)) %></title>
   		
-		<link rel="icon" type="image/png" href="/assets/knowstory-icon-fav.png" />
-  		
-   		    	
+		<%= favicon_link_tag source='global/knowstory-icon-fav.png' %>
   		<%= include_gon %>
-    	
 	  	<%= csrf_meta_tags %>
 	  	<%= render 'layouts/shim' %>  
+
+		<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => false %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => false %>
+
+		<%= stylesheet_link_tag "nav_publisher" %>
+		<%= stylesheet_link_tag "nav_publisher_product_summary" %>
+		<%= stylesheet_link_tag "ks-profile" %>
 		
+
 		<style>
 		
 			#debug {
@@ -27,25 +25,58 @@
 				font-size: 16px;
 				color: #000;
 			}
-		
-		</style>
 
+			* {
+			  margin: 0;
+			}
+			html, body {
+			  height: 100%;
+			}
+			.body-wrap-outer {
+			  min-height: 100%;
+			  margin-bottom: -150px; 
+			}
+			.body-wrap-outer:after {
+			  content: "";
+			  display: block;
+			}
+			.ks-footer, .body-wrap-outer:after {
+			  height: 150px; 
+			}		
+
+			.body-wrap-inner {
+				width: 1200px; 
+				height: 100%; 
+				margin: 0px auto;
+			}
+			
+		</style>
 
     </head>
     
-	<body>
-
-		<%= render 'layouts/nav_main' %>
-		<%= yield %>
-		
+	<body style="margin 0; padding: 0;">
+		<div class="body-wrap-outer">
+			<%= render 'layouts/nav_main' %>
+			<%= render 'layouts/nav_publisher' %>
+			<%= render 'layouts/nav_publisher_product_summary' %>
+			<div class="body-wrap-inner">
+				<%= yield %>
+			</div>
+		</div>
 		<%= render 'layouts/footer' %>
 
+		<% if false %>
+
 		<% if Rails.env.development? %>
-			<div id="debug">
-				<%= debug(params) %>
+			<div style="width: 100%; position: absolute; bottom: -50px;">
+				<div id="debug">
+					<%= debug(params) %>
+				</div>
 			</div>
 		<% end %>
-			
+		
+		<% end %>
+		
 	</body>
-	
+    
 </html>

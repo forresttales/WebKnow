@@ -1,6 +1,6 @@
 class PublisherProductAdsController < ApplicationController
 
-  layout 'publisher'
+  layout 'publisher_product_ad'
 
   before_filter :force_http
 
@@ -52,6 +52,14 @@ class PublisherProductAdsController < ApplicationController
 
     @publisher_id = publisher_id
       
+  end
+
+
+  def manual
+
+    # render 'publishers/index_home', :layout => 'publisher_product_ads_manual'
+    render :layout => 'publisher_product_ads_manual'
+        
   end
 
 

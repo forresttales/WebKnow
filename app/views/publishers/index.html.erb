@@ -2353,7 +2353,7 @@
 				</div>
 				
 				<div style="display: table-cell; width: 300px; padding: 0; margin: 0; vertical-align: top; height: 100%;">
-					<div class="" style="width: 200px; height: 50px; position: relative;">
+					<div class="" style="width: 300px; height: 50px; position: relative;">
 						<%= render 'share/dir_publishers_right_user_home' %>
 					</div>
 				</div>
@@ -3361,10 +3361,15 @@
 				$("#dvLoading_13").removeClass("dvLoading-display-none");
 				$("form#change_publisher_logo_image input#btn_submit_dialog_13").click();
 			});
-			$(document).on("click", "#btn_logo_image_primary_change", function() {				
-				$("form#change_publisher_logo_image input#change_publisher_logo_image_image").val('');
-				$("#dialog_13").jqmShow();
-			});		
+			// $(document).on("click", "#btn_logo_image_primary_change", function() {				
+				// $("form#change_publisher_logo_image input#change_publisher_logo_image_image").val('');
+				// $("#dialog_13").jqmShow();
+			// });		
+				$(document).on("btn_logo_image_primary_change_click", function() {
+					$("form#change_publisher_logo_image input#change_publisher_logo_image_image").val('');
+					$("#dialog_13").jqmShow();
+					$("#btn_dlg_submit_upload_logo_image_primary_change").focus();
+				});
 			$(document).on("click", "#btn_dlg_cancel_upload_logo_image_primary_change", function() {
 				$("#close_form13").trigger('click');
 			});
@@ -3376,15 +3381,22 @@
 			$(document).on("click", "#btn_dlg_cancel_delete_logo_image_primary", function() {
 				$("#close_form14").trigger('click');
 			});
-			$(document).on("click", "#btn_logo_image_primary_delete", function() {
-				$("#dialog_14").jqmShow();
-				$("#btn_dlg_submit_delete_logo_image_primary").focus();
-			});			
+			// $(document).on("click", "#btn_logo_image_primary_delete", function() {
+				// $("#dialog_14").jqmShow();
+				// $("#btn_dlg_submit_delete_logo_image_primary").focus();
+			// });			
+				$(document).on("btn_logo_image_primary_delete_click", function() {
+					$("#dialog_14").jqmShow();
+					$("#btn_dlg_submit_delete_logo_image_primary").focus();
+				});
 
 
-			$(document).on("click", "#btn_logo_image_primary_crop", function() {
-				$("#dialog_15").jqmShow();
-			});
+			// $(document).on("click", "#btn_logo_image_primary_crop", function() {
+				// $("#dialog_15").jqmShow();
+			// });
+				$(document).on("btn_logo_image_primary_crop_click", function() {
+					$("#dialog_15").jqmShow();
+				});
 			$(document).on("click", "#btn_dlg_submit_crop_logo_image_primary", function() {
 				crop_logo_image_primary();
 			});

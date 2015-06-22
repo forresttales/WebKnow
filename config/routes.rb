@@ -1339,6 +1339,7 @@ Webknow::Application.routes.draw do
 
   # match '/Buy-It', :to => 'publisher_product_ads#index', :via => [:get]
   match '/Publisher-Advertise', :to => 'publisher_product_ads#index', :via => [:get]
+  match '/How-to-Advertise', :to => 'publisher_product_ads#manual', :via => [:get]
 
   resources :publisher_product_ads do
     collection do
