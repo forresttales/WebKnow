@@ -11,6 +11,7 @@ class PublisherRegistersController < ApplicationController
   before_action :verify_signin, only: [:index]
 
 
+
   def verify_signin
     
       if !signed_in?
@@ -41,6 +42,8 @@ class PublisherRegistersController < ApplicationController
 
     
   end
+
+
 
   def render_index_publisher
     

@@ -24,7 +24,7 @@ module Webknow
 
     # config.action_controller.asset_host = "assets.example.com"
     
-    config.active_record.raise_in_transactional_callbacks = true
+    # config.active_record.raise_in_transactional_callbacks = true
     
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.active_support.escape_html_entities_in_json = true
@@ -102,6 +102,7 @@ module Webknow
                                   # 'nav_main.css',
                                   'nav_publisher.css',
                                   'nav_publisher_product_summary.css',
+                                  'nav_publisher_user_register.css',
                                   'profile-new.css',
                                   'publisher_users_index_home.css',
                                   'publisher-product-manifest.css',

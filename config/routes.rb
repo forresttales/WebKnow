@@ -18,7 +18,13 @@ Webknow::Application.routes.draw do
   # end
   
   
-  match "/Settings" => "user_registers#index", via: 'get'
+  # match "/Settings" => "user_registers#index", via: 'get'
+  
+  match "/Settings-1" => "publisher_user_registers#register_1", via: 'get'
+  match "/Settings-2" => "publisher_user_registers#register_2", via: 'get'
+  match "/Settings-3" => "publisher_user_registers#register_3", via: 'get'
+  match "/Settings-4" => "publisher_user_registers#register_4", via: 'get'
+  match "/Settings-5" => "publisher_user_registers#register_5", via: 'get'
   
   
   match "/Publisher-Settings" => "publisher_registers#index", via: 'get'

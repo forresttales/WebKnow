@@ -1,0 +1,2 @@
+module PublisherUserRegistersHelper
+end
