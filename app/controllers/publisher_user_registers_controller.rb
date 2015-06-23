@@ -6,7 +6,7 @@ class PublisherUserRegistersController < ApplicationController
 
   respond_to :html, :js, :json  
 
-  helper_method :sort_column, :sort_direction, :yesno
+  # helper_method :sort_column, :sort_direction, :yesno
 
   before_action :verify_signin, only: [:index]
 

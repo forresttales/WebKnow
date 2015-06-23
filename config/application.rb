@@ -102,6 +102,7 @@ module Webknow
                                   # 'nav_main.css',
                                   'nav_publisher.css',
                                   'nav_publisher_product_summary.css',
+                                  'nav_publisher_register.css',
                                   'nav_publisher_user_register.css',
                                   'profile-new.css',
                                   'publisher_users_index_home.css',
