@@ -1,3 +1,5 @@
+# todo list...
+# updates require auto-email response
 class PublisherUserRegistersController < ApplicationController
 
   before_filter :force_http
@@ -101,7 +103,7 @@ class PublisherUserRegistersController < ApplicationController
           gender_updated = current_user.gender rescue nil
           gender_text_updated = current_user.gender_text rescue nil
 
-          if !((bd_day_updated.nil?) or (bd_month_updated.nil?) or (bd_month_text.nil?) or (bd_year.nil?) or (gender.nil?) or (gender_text.nil?))
+          if !((bd_day_updated.nil?) or (bd_month_updated.nil?) or (bd_month_text_updated.nil?) or (bd_year_updated.nil?) or (gender_updated.nil?) or (gender_text_updated.nil?))
               respond_to do |format|
                   format.html {}
                   format.json { render :json => { :status => "Saved!",
