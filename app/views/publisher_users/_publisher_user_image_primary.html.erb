@@ -315,227 +315,95 @@
 	margin: 4px 0px 0px 1px;
 }	
 	
-	
 </style>
 
 
-								<div class="drop-namespace101">
-								<% if @publisher_user_image_primary %>   				
-								
-									<!-- <div class="container-figure container-figure-1 drop-101-container-target" style="height: 200px;"> -->
-									<!-- <div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-101-container-target"> -->
-									<div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-101" style="position: relative;">
-										<figure id="figure_user_primary_img" class="dialog-11-figure cursor-pointer" data-width="<%= @publisher_user_image_primary.width %>" data-src-600="<%= @publisher_user_image_primary.image_url(:user_600_600) %>">
-											<img id="user_primary_img" class="user-primary-img" alt="" src="<%= @publisher_user_image_primary.image_url(:user_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>" />
-											<!-- <input class="container-image-hidden" type="hidden" value="<#%= @publisher_user_image_primary.image_url(:user_600_600) if @publisher_user_image_primary.image? %#>" />
-											<img id="user_primary_img_600" class="hidden" alt="" src="<#%= @publisher_user_image_primary.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %#>" /> -->
-											<figcaption id="figcaption_image_primary" class="edit-image hidden drop-101-target">
-											<!-- <figcaption id="figcaption_image_primary" class="hidden drop-101-target"> -->												
-												<!-- <div class="img-1-container">
-													<div class="img-1"></div> -->
-													<div class="img-1-text">Edit photo</div>
-												<!-- </div> -->
-												<!-- <span class="dialog-2 label-dialog-figcaption">Crop/Center small images</span> -->
-												<!-- <img alt="" src="/assets/logo_camera_1_w72_h60.png" /> -->
-												<!-- <div class="img-1"></div> -->
-											</figcaption>
-										</figure>
-										
-										
-								    	<div class="drop-101-container drop-hidden">
-											<div class="drop-101-box background-transparent margin-top-hide-1">
-												<div class="drop-101-triangle"></div>
-												<div style="clear: both;"></div>
-												<div class="drop-101-container-links background-white drop-101-border drop-101-shadow">
-													<div class="drop-101-divider-2"></div>
-													<div class="drop-101-link-1 cursor-pointer" data-id="1">
-														<!-- <a href="#" class="drop-101-1-link-a-1"> -->
-															<div class="drop-101-1">
-														    	<div class="drop-101-1-target">
-														    		<div class="drop-101-1-target-text">
-														    			<span class="drop-101-1-span-1">New/Change</span>
-														    		</div>						    		
-														    	</div>
-													    	</div>
-												    	<!-- </a> -->
-													</div>
-													<div class="drop-101-divider-1"></div>
-													<div class="drop-101-link-1 cursor-pointer" data-id="2">
-														<!-- <a href="#" class="drop-101-1-link-a-1"> -->
-															<div class="drop-101-1">
-														    	<div class="drop-101-1-target">
-														    		<div class="drop-101-1-target-text">
-														    			<span class="drop-101-1-span-1">Crop/Center</span>
-														    		</div>						    		
-														    	</div>
-													    	</div>
-												    	<!-- </a> -->
-													</div>
+<div class="drop-namespace101">
+	<% if @publisher_user_image_primary %>   				
+	
+		<!-- <div class="container-figure container-figure-1 drop-101-container-target" style="height: 200px;"> -->
+		<!-- <div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-101-container-target"> -->
+		<div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-101" style="position: relative;">
+			<figure class="dialog-11-figure cursor-pointer" data-width="<%= @publisher_user_image_primary.width %>" data-src-600="<%= @publisher_user_image_primary.image_url(:user_600_600) %>">
+				<img id="user_primary_img" class="user-primary-img" alt="" src="<%= @publisher_user_image_primary.image_url(:user_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>" />
+				<!-- <input class="container-image-hidden" type="hidden" value="<#%= @publisher_user_image_primary.image_url(:user_600_600) if @publisher_user_image_primary.image? %#>" />
+				<img id="user_primary_img_600" class="hidden" alt="" src="<#%= @publisher_user_image_primary.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %#>" /> -->
+				<figcaption class="edit-image hidden drop-101-target">
+						<div class="img-1-text">Edit photo</div>
+				</figcaption>
+			</figure>
+	    	<div class="drop-101-container drop-hidden">
+				<div class="drop-101-box background-transparent margin-top-hide-1">
+					<div class="drop-101-triangle"></div>
+					<div style="clear: both;"></div>
+					<div class="drop-101-container-links background-white drop-101-border drop-101-shadow">
+						<div class="drop-101-divider-2"></div>
+						<div class="drop-101-link-1 cursor-pointer" data-id="1">
+							<div class="drop-101-1">
+						    	<div class="drop-101-1-target">
+						    		<div class="drop-101-1-target-text">
+						    			<span class="drop-101-1-span-1">New/Change</span>
+						    		</div>						    		
+						    	</div>
+					    	</div>
+						</div>
+						<div class="drop-101-divider-1"></div>
+						<div class="drop-101-link-1 cursor-pointer" data-id="2">
+							<div class="drop-101-1">
+						    	<div class="drop-101-1-target">
+						    		<div class="drop-101-1-target-text">
+						    			<span class="drop-101-1-span-1">Crop/Center</span>
+						    		</div>						    		
+						    	</div>
+					    	</div>
+						</div>
+						<div class="drop-101-divider-1"></div>
+						<div class="drop-101-link-1 cursor-pointer" data-id="3">
+							<div class="drop-101-1">
+						    	<div class="drop-101-1-target">
+						    		<div class="drop-101-1-target-text">
+						    			<span class="drop-101-1-span-1">Delete</span>
+						    		</div>						    		
+						    	</div>
+					    	</div>
+						</div>
+						<div class="drop-101-divider-2"></div>
+					</div>
+				</div>
+	        </div>
+		</div>
 
-													<div class="drop-101-divider-1"></div>
-													<div class="drop-101-link-1 cursor-pointer" data-id="3">
-														<!-- <a href="#" class="drop-101-1-link-a-1"> -->
-															<div class="drop-101-1">
-														    	<div class="drop-101-1-target">
-														    		<div class="drop-101-1-target-text">
-														    			<span class="drop-101-1-span-1">Delete</span>
-														    		</div>						    		
-														    	</div>
-													    	</div>
-												    	<!-- </a> -->
-													</div>
+	<% else %>
 
-													<div class="drop-101-divider-2"></div>
-												</div>
-											</div>
-								        </div>
-										
-										
-										
-								    	<!-- <div class="drop-101-target cursor-pointer">
-								    		<div class="drop-101-target-text">
-								    			<span class="drop-101-span-1">My Story</span>
-								    		</div>						    		
-								    	</div> -->
-								    	
-								    	<% if false %>
-								    	<div class="drop-101-container drop-hidden">
-											<div class="drop-101-box background-transparent margin-top-hide-1">
-												<div class="drop-101-triangle"></div>
-												<div style="clear: both;"></div>
-												<div class="drop-101-container-links background-white drop-101-border drop-101-shadow">
-													<div class="drop-101-divider-2"></div>
-													<div class="drop-101-link-1 cursor-pointer" data-id="1">
-														<!-- <a href="/" class="drop-101-link-a-1"> -->
-															<div class="drop-101">
-														    	<div class="drop-101-target">
-														    		<div class="drop-101-target-text">
-														    			<span class="drop-101-span-1">New/Change</span>
-														    		</div>
-														    	</div>
-													    	</div>
-												    	<!-- </a> -->
-													</div>
-													<div class="drop-101-divider-1"></div>
-													<div class="drop-101-link-1 cursor-pointer" data-id="2">
-														<!-- <a href="<%= @url_user_story %>" class="drop-101-link-a-1"> -->
-															<div class="drop-101">
-														    	<div class="drop-101-target">
-														    		<div class="drop-101-target-text">
-														    			<span class="drop-101-span-1">Crop/Center</span>
-														    		</div>						 
-														    	</div>
-													    	</div>
-												    	<!-- </a> -->
-													</div>
-													<div class="drop-101-divider-1"></div>
-													<div class="drop-101-link-1 cursor-pointer" data-id="3">
-														<!-- <a href="/KnowCred" class="drop-101-link-a-1"> -->
-															<div class="drop-101">
-														    	<div class="drop-101-target">
-														    		<div class="drop-101-target-text">
-														    			<span class="drop-101-span-1">Delete</span>
-														    		</div>		
-														    	</div>
-													    	</div>
-												    	<!-- </a> -->
-													</div>
-													<div class="drop-101-divider-2"></div>
-												</div>
-											</div>
-								        </div>
-										<% end %>
-										
-										
-										
-										
-										
-										
-										
-										
-								    	<!-- <div class="drop-101-container hidden">
-											<div class="dropOut">
-												<div class="triangle"></div>
-												<ul>
-													<li>
-														<div id="btn_photo_primary_change">
-															New/Change
-														</div>
-													</li>
-													<li>
-														<div id="btn_photo_primary_crop" class="btn-photo-primary-crop">
-															Crop/Center
-														</div>
-													</li>
-													<li>
-														<div id="btn_photo_primary_delete">
-															Delete
-														</div>
-													</li>
-												</ul>
-											</div>
-								        </div> -->
-									</div>
-
-
-
-
-
-
-
-								<% else %>
-
-									<!-- <div class="container-figure container-figure-1 drop-101-container-target" style="height: 200px;"> -->
-									<div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-101">
-										<figure id="profile_figure_generic" class="dialog-11-figure-generic cursor-pointer">
-											<img id="user_generic_img" alt="" src="../images_avatar/avatar-gen-person-w200-h200.png" />
-											<figcaption id="figcaption_image_primary_generic" class="edit-image hidden drop-101-target">
-												<!-- <div class="img-1-container">
-													<div class="img-1"></div> -->
-													<div class="img-1-text">Add a photo</div>
-												<!-- </div> -->
-											</figcaption>
-										</figure>
-
-								    	<!-- <div class="drop-101-container hidden">
-											<div class="dropOut">
-												<div class="triangle"></div>
-												<ul>
-													<li>
-														<div id="btn_photo_primary_new">
-															New
-														</div>
-													</li>
-												</ul>
-											</div>
-								        </div> -->
-
-								    	<div class="drop-101-container drop-hidden">
-											<div class="drop-101-box background-transparent margin-top-hide-1">
-												<div class="drop-101-triangle"></div>
-												<div style="clear: both;"></div>
-												<div class="drop-101-container-links background-white drop-101-border drop-101-shadow">
-													<div class="drop-101-divider-2"></div>
-													<div class="drop-101-link-1 cursor-pointer" data-id="4">
-														<!-- <a href="<%= @url_user_story %>" class="drop-101-1-link-a-1"> -->
-															<div class="drop-101-1">
-														    	<div class="drop-101-1-target">
-														    		<div class="drop-101-1-target-text">
-														    			<span class="drop-101-1-span-1">New</span>
-														    		</div>						 
-														    	</div>
-													    	</div>
-												    	<!-- </a> -->
-													</div>
-													<div class="drop-101-divider-2"></div>
-												</div>
-											</div>
-								        </div>
-								        										
-									</div>
-								
-								<% end %>
-								</div>
+		<div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-101" style="position: relative;">
+			<figure class="dialog-11-figure-generic" data-width="200" data-src-600="">
+				<img id="user_generic_img" class="user-primary-img" alt="" src="../images_avatar/avatar-gen-person-w200-h200.png" />
+				<figcaption class="edit-image hidden cursor-pointer drop-101-target">
+						<div class="img-1-text">Add a photo</div>
+				</figcaption>
+			</figure>
+	    	<div class="drop-101-container drop-hidden">
+				<div class="drop-101-box background-transparent margin-top-hide-1">
+					<div class="drop-101-triangle"></div>
+					<div style="clear: both;"></div>
+					<div class="drop-101-container-links background-white drop-101-border drop-101-shadow">
+						<div class="drop-101-divider-2"></div>
+						<div class="drop-101-link-1 cursor-pointer" data-id="4">
+							<div class="drop-101-1">
+						    	<div class="drop-101-1-target">
+						    		<div class="drop-101-1-target-text">
+						    			<span class="drop-101-1-span-1">New Photo</span>
+						    		</div>						    		
+						    	</div>
+					    	</div>
+						</div>
+						<div class="drop-101-divider-2"></div>
+					</div>
+				</div>
+	        </div>
+		</div>
+	<% end %>
+</div>
 
 
 <script>
@@ -594,6 +462,10 @@
 			dropCloseAll_namespace101();
 			$(document).trigger("btn_photo_primary_delete_click");
 		});
+		$(".drop-namespace101 .drop-101-link-1[data-id='4']").on("click", function() {
+			dropCloseAll_namespace101();
+			$(document).trigger("btn_photo_primary_new_click");
+		});
 
 	});
 	
@@ -602,44 +474,14 @@
 
 	<script>
 
-
-
 		// $(window).load( function() {
 		$(document).ready( function () {				
-
-			// $("div#container_user_image_primary .drop").on('hover', function() {
-				// $("div#container_user_image_primary .drop. .dropdownContain").css({ 
-					// top : 200 - 8
-				// });
-			// });				
 
 			$("img").one("load", function() {
 				if((this.id == "user_primary_img") || (this.id == "user_generic_img")) {
 					var img_w = this.width;
 					var img_h = this.height;
-					// $("div.drop-101-container-target .drop-101-target").on('mouseenter', function() {
-						// $(".drop-101-container").css({ 
-							// top : img_h - 14
-						// });
-					// });
-					// $("div.drop-101-container-target .drop-101-target").on('mouseleave', function() {
-						// $(".drop-101-container").css({ 
-							// top : -1000
-						// });
-					// });
-// 					
-					// $("div.drop-101-container-target .drop-101-container").on('mouseenter', function() {
-						// $(".drop-101-container").css({ 
-							// top : img_h - 14
-						// });
-					// });
-					// $("div.drop-101-container-target .drop-101-container").on('mouseleave', function() {
-						// $(".drop-101-container").css({ 
-							// top : -1000
-						// });
-					// });
 
-					// $("div#container_image_1 .container-figure-image").css({
 					$(".container-figure-image-1").css({
 						// width : img_w + 4,
 						// height : img_h + 4
@@ -658,8 +500,6 @@
 					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
 				}				
 				if(this.id == "user_primary_img_600") {
-					// alert("user_primary_img width = " + this.width);
-					// alert("user_primary_img height = " + this.height);
 					var img_w = this.width;
 					var img_h = this.height;
 					$("#figure_dialog_11").css({
@@ -671,177 +511,6 @@
 			  	if(this.complete) $(this).load();
 			});
 
-
-
-
-
-			// $("img").one("load", function() {
-				// if(this.id == "user_primary_img") {
-					// // alert("user_primary_img height = " + this.height);
-					// // var img_w = this.width;
-					// // var img_h = this.height;
-					// // $("div#container_user_image_primary .drop").on('hover', function() {
-						// // $("div#container_user_image_primary .drop. .dropdownContain").css({ 
-							// // top : img_h - 6
-						// // });
-					// // });
-					// // $("div#container_user_image_primary .container-figure-logo").css({
-						// // width : img_w + 4,
-						// // height : img_h + 4
-					// // });																			
-				// }
-				// if(this.id == "user_primary_img_600") {
-					// // alert("user_primary_img width = " + this.width);
-					// // alert("user_primary_img height = " + this.height);
-					// var img_w = this.width;
-					// var img_h = this.height;
-					// $("#figure_dialog_11").css({
-						// width : img_w,
-						// height : img_h
-					// });																			
-				// }				
-				// if(this.id == "user_generic_img") {
-					// // alert("user_generic_img height = " + this.height);
-					// var img_w = this.width;
-					// var img_h = this.height;
-					// // $("div#container_user_image_primary .drop").on('hover', function() {
-						// // $("div#container_user_image_primary .drop. .dropdownContain").css({ 
-							// // top : img_h - 6
-						// // });
-					// // });			
-					// // $("div#container_user_image_primary .container-figure-logo").css({
-						// // width : img_w + 4,
-						// // height : img_h + 4
-					// // });										
-				// }				
-			// }).each(function() {
-			  	// if(this.complete) $(this).load();
-			// });
-			
-			
-			// $("#user_primary_img").on('load', function() {
-			  	// alert('Image Loaded'); 
-			// }).each(function() {
-			  	// if(this.complete) {
-			  		// $(this).load();
-			  	// } 
-			// });
-
-			// $(this).find('img').ensureLoad(function(){
-			// // $("#profile_figure").find('img').ensureLoad(function(){				
-			    // // loadedImages++;
-			    // // if((loadedImages == $(this).find('img').length)) {
-			    	// // alert('equal');	
-			   	// // }
-			// });
-			// jQuery.fn.extend({
-			    // ensureLoad: function(handler) {
-			        // return $(this).each(function() {
-			            // if($(this).complete) {
-			            	// alert('complete');
-			                // // handler.call(this);
-			            // } 
-			            // else {
-			            	// alert('not complete');
-			                // // $(this).load(handler);
-			            // }
-			        // });
-			    // }
-			// });
-
-
-
-
-			// $("#user_primary_img").load(function() {
-				// alert('user_primary_img load');
-			// });
-
-
-			// $("div#container_user_image_primary .drop").on('hover', function() {
-				// $("div#container_user_image_primary .drop. .dropdownContain").css({ 
-					// top : img_height - 4
-				// });
-			// });				
-		
-			// var img_generic = $("#profile_figure_generic img");
-			// $("<img/>")
-	    		// .attr("src", $(img_generic).attr("src"))
-	    		// .load(function() {
-	        		// img_width = this.width; 
-	        		// $("#profile_figure_generic").css({
-	        			// width : this.width
-	        	// });
-	    	// });		
-
-			// var img = $("#profile_figure img");
-			// $("<img/>")
-	    		// .attr("src", $(img).attr("src"))
-	    		// .load(function() {
-	        		// img_width = this.width; 
-	        		// $("#profile_figure").css({
-	        			// width : this.width
-	        	// });	        		
-	    	// });		
-
-			// var img = $("#profile_figure img");
-			
-			// $("#user_primary_img").on('load', function() {
-				// alert('user_primary_img load');
-			// });
-
-			// $("#user_primary_img").load(function() {
-				// alert('user_primary_img load');
-			// });
-			
-			// $("<img/>").attr("src", $(img).attr("src")).load(function() {
-				// alert('#profile_figure img');
-				// // img_width = this.width;
-				// // img_height = this.height;
-				// // div#container_user_image_primary .drop:hover .dropdownContain { top: 186px; }
-				// // $("div#container_user_image_primary .drop").on('hover', function() {
-					// // $("div#container_user_image_primary .drop. .dropdownContain").css({ 
-						// // top : img_height - 4
-					// // });
-				// // });				
-				// // $("div#container_photo_primary .container-figure").css({
-					// // width : img_width + 4,
-					// // height : img_height + 4
-				// // });				
-				// // $("div#container_user_image_primary .container-figure").css({
-				// // });				
-        		// // $("#profile_figure").css({
-        			// // width : img_width
-        		// // });	        		
-	    	// });		
-
-			// $("<img/>").load(function() {
-				// alert('#profile_figure img');
-	    	// });		
-			
-			
-			// $(".article-type-1").each(function() {
-				// var id = $(this).data("id");
-				// if(id != null) {
-					// if(in_archive_ids(gon.archives, id)) {
-						// var archive_img_path_carousel 	= gon.archives[id][4];
-						// var archive_type 				= gon.archives[id][9];
-						// var archive_slug 				= gon.archives[id][10];
-						// var archive_subtitle_1_carousel = gon.archives[id][6];
-						// var archive_subtitle_2_carousel = gon.archives[id][7];
-						// var src_image = gon.publisher_user_image_primary_url;
-						// // var s_tmpl = null;
-						// var s_tmpl = "templates/figure_11";
-						// $.tmpl(s_tmpl, {
-							// src_image: archive_img_path_carousel,
-						// }).appendTo(this);
-					// }
-					// else {
-						// alert("page id = " + id.toString() + " not found in database");
-					// }
-				// }
-			// });					
-			
-			
 			
 			var this_img;			
 			$(".dialog-11-figure").on('click', function(e) {
@@ -906,37 +575,6 @@
 				}
 			}); 		
 			
-			
-			
-			
-			
-			// $(".dialog-11-figure").on('click', function(e) {
-				// if ( e.target.nodeName == "IMG" ) {
-					// var this_src = $(this).find("input.container-image-hidden").attr("value");
-					// $("#figure_dialog_11").find("img").attr("src", this_src );
-					// var this_delete = $(this).find("div.tip-top-center").html();
-					// $("#figure_dialog_11").find("div.tip-top-center").html(this_delete);
-					// $("#dialog_11").jqmShow();	
-				// }
-			// });
-			// $('#dialog_11').jqm({
-				// onShow: function(hash) {
-					// hash.o.prependTo('body');
-					// hash.w.css('top', '20px');
-					// hash.w.css('opacity', 1.0).fadeIn(200);
-					// var img = $("#figure_dialog_11 img");
-					// $("<img/>")
-			    		// .attr("src", $(img).attr("src"))
-			    		// .load(function() {
-			        		// img_width = this.width; 
-			        		// $("#figure_dialog_11").css({
-			        			// // width : this.width 
-			        	// });	        		
-			    	// });		
-				// }
-			// }); 		
-			
-
 			$('#dialog_15').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
@@ -959,59 +597,6 @@
 					);
 				}
 			}); 		
-			
-			
-            // $('.tip').each(function() {
-                // var tipContent = $(this).next('.tip-content').html();
-                // $(this).qtip({
-                	// style: { classes: 'tooltip-text-1' },
-                    // content: tipContent,
-                    // show: 'mouseover',
-                    // hide: 'mouseout'
-                // })
-            // });			
-            // $('.tip-bottom-center').each(function() {
-                // var tipContent = $(this).next('.tip-content').html();
-                // $(this).qtip({
-                	// style: { classes: 'tooltip-text-1' },
-                    // content: tipContent,
-                    // show: 'mouseover',
-                    // hide: 'mouseout',
-				    // position: {
-				        // my: 'top center',
-				        // at: 'bottom center'
-				        // // target: $('.tip-bottom-center')
-    				// }                    
-                // })
-            // });			
-            // $('.tip-top-center').each(function() {
-                // var tipContent = $(this).next('.tip-content').html();
-                // $(this).qtip({
-                	// style: { classes: 'tooltip-text-1' },
-                    // content: tipContent,
-                    // show: 'mouseover',
-                    // hide: 'mouseout',
-				    // position: {
-				        // my: 'bottom center',
-				        // at: 'top center'
-				        // // target: $('.tip-top-center')
-    				// }                    
-                // })
-            // });			
-            // $('.tip-left-center').each(function() {
-                // var tipContent = $(this).next('.tip-content').html();
-                // $(this).qtip({
-                	// style: { classes: 'tooltip-text-1' },
-                    // content: tipContent,
-                    // show: 'mouseover',
-                    // hide: 'mouseout',
-				    // position: {
-				        // my: 'right top',
-				        // at: 'left center'
-				        // // target: $('.tip-top-center')
-    				// }                    
-                // })
-            // });			
 		
 		});
 	  

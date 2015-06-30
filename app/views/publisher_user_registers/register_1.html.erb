@@ -1,3 +1,462 @@
+<% provide(:title, 'My Registration and Personal') %>
+
+<style type="text/css">
+	/*Do not place in the assets pipeline*/
+	.nav-publisher-product-summary .drop-17 .drop-17-target {
+		background-color: #e8e8e8;
+	}
+</style>
+
+<style type="text/css">
+	.title-container {
+		min-height: 100px;
+		border: 2px solid #999;
+	}
+	.title-bar {
+		padding: 3px;
+		background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
+		background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
+	}
+	.title-bar span {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		color: #000;
+	}
+	.row label {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 700;
+		font-size: 14px;
+		color: #888;
+	}
+	.edit-icon {
+		height: 20px;
+		width: 20px;
+		background-image: url(/assets/global/edit_btn_yellow_right_w20_h20.png);
+		background-repeat: no-repeat;
+		background-position: 0px 0px 0px 0px;
+	}
+	.settings-input {
+		height: 20px;
+		width: 160px;
+		border: 1px solid #49853F;
+		margin: 0;
+		background-color: #fff;
+	}	
+</style>
+
+<div style="height: 12px;"></div>
+	<div class="title-container">
+		<div class="title-bar" style="position: relative;">
+			<div style="float: left; width: 100px;">
+				<span>My Settings</span>
+			</div>
+			<div style="float: right; width: 200px;">
+				<div class="btn-opt-edit-container-outer">
+					<div class="btn-opt-edit-container">
+						<div id="open_edit_story_1" class="btn-opt-edit" tabindex="">
+							Edit
+						</div>
+						<div id="close_edit_story_1" class="btn-opt-edit hidden" tabindex="">
+							Cancel
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<!-- <div class="table margin-0">		
+			<div class="row" style="height: 12px;"></div>
+			<div class="row pad-marg-null">
+				<div class="cell-edit-6 text-align-left pad-left-20">
+					<span class="profile-label-1">Email:</span>
+				</div>
+				<div class="cell-edit-7 edit-story-1 hidden">
+					<div class="table pad-marg-null">
+						<div class="row pad-marg-null">
+							<div class="cell-edit-7 position-relative">
+								<div class="position-absolute top-minus-edit-1 right-0">
+									<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_job_title" name="publisher_user[job_title]" tabindex="15" type="text" value="job 1" placeholder="Job Title">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="cell-edit-7 show-story-1">
+					<div class="table pad-marg-null">
+						<div class="row pad-marg-null">
+							<div class="cell-edit-7 position-relative text-align-left">
+								<div class="position-absolute top-minus-edit-2">
+									<span id="span_publisher_user_job_title" class="profile-text-1 color-record">job 1</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="height: 12px;"></div>
+			<div class="row pad-marg-null">
+				<div class="cell-edit-6 text-align-left pad-left-20">
+					<span class="profile-label-1">Password:</span>
+				</div>
+				<div class="cell-edit-7 edit-story-1 hidden">
+					<div class="table pad-marg-null">
+						<div class="row pad-marg-null">
+							<div class="cell-edit-7 position-relative">
+								<div class="position-absolute top-minus-edit-1 right-0">
+									<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_job_title" name="publisher_user[job_title]" tabindex="15" type="text" value="job 1" placeholder="Job Title">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="cell-edit-7 show-story-1">
+					<div class="table pad-marg-null">
+						<div class="row pad-marg-null">
+							<div class="cell-edit-7 position-relative text-align-left">
+								<div class="position-absolute top-minus-edit-2">
+									<span id="span_publisher_user_job_title" class="profile-text-1 color-record">****</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+		<div style="height: 20px"></div>
+		<div class="table">
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
+					<label>Change Email:</label>
+				</div>
+				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>Email:</label>
+				</div>
+				<div style="display: table; width: 240px;">
+					<div style="display: table-cell; width: 160px;">
+						<input class="settings-input" disabled="true" placeholder="<%= @user_personal.email.to_s %>">
+					</div>
+					<!-- <div style="display: table-cell; width: 70px;">
+						<div class="edit-icon"></div>
+					</div> -->
+				</div>			
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>New Email:</label>
+				</div>
+				<div style="display: table; width: 240px;">
+					<div style="display: table-cell; width: 160px;">
+						<input class="settings-input">
+					</div>
+				</div>			
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;"></div>
+				<div style="display: table; width: 240px;">
+					<div style="display: table-cell; width: 160px;">
+						<div class="btn-opt-edit-container-outer">
+							<div class="btn-opt-edit-container">
+								<div class="btn-opt-edit" tabindex="">Save</div>
+							</div>
+						</div>
+					</div>
+					<div style="display: table-cell; width: 80px;"></div>
+				</div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
+					<label>Change Password:</label>
+				</div>
+				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>Old Password:</label>
+				</div>
+				<div style="display: table; width: 240px;">
+					<div style="display: table-cell; width: 160px;">
+						<input class="settings-input" >
+					</div>
+				</div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>New Password:</label>
+				</div>
+				<div style="display: table; width: 240px;">
+					<div style="display: table-cell; width: 160px;">
+						<input class="settings-input" >
+					</div>
+				</div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>Confirm Password:</label>
+				</div>
+				<div style="display: table; width: 240px;">
+					<div style="display: table-cell; width: 160px;">
+						<input class="settings-input" >
+					</div>
+				</div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;"></div>
+				<div style="display: table; width: 240px;">
+					<div style="display: table-cell; width: 160px;">
+						<div class="btn-opt-edit-container-outer">
+							<div class="btn-opt-edit-container">
+								<div class="btn-opt-edit" tabindex="">Save</div>
+							</div>
+						</div>
+					</div>
+					<div style="display: table-cell; width: 80px;"></div>
+				</div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
+					<label>Change Personal:</label>
+				</div>
+				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>Birthday:</label>
+				</div>
+				<div style="display: table-cell; width: 240px;">
+					<div id="bd_day" style="width: 70px; height: 20px; color: grey; display: inline-block;">
+						<select id="user_bd_day" name="user[bd_day]" class="chosen-select" style="width: 70px;">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+							<option value="27">27</option>
+							<option value="28">28</option>
+							<option value="29">29</option>
+							<option value="30">30</option>
+							<option value="31">31</option>
+						</select>
+					</div>
+					<div id="bd_month" style="width: 70px; height: 20px; color: grey; display: inline-block;">
+						<select id="user_bd_month" name="user[bd_month]" class="chosen-select" style="width: 70px;">
+							<option value="1">Jan</option>
+							<option value="2">Feb</option>
+							<option value="3">Mar</option>
+							<option value="4">Apr</option>
+							<option value="5">May</option>
+							<option value="6">Jun</option>
+							<option value="7">Jul</option>
+							<option value="8">Aug</option>
+							<option value="9">Sep</option>
+							<option value="10">Oct</option>
+							<option value="11">Nov</option>
+							<option value="12">Dec</option>
+						</select>
+					</div>
+					<div id="bd_year" style="width: 70px; height: 20px; color: grey; display: inline-block;">
+						<select id="user_bd_year" name="user[bd_year]" class="chosen-select" style="width: 70px;">
+							<% @bd_years.each do|bd_year| %>
+								<option value="<%= bd_year.year %>"><%= bd_year.year %></option>
+							<% end %>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>Gender:</label>
+				</div>
+				<div style="display: table-cell; width: 240px;">
+					<div style="width: 75px; height: 20px; color: grey; display: inline-block;">Male</div>
+					<div style="width: 35px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="gender_male" class="rd-button"></div>
+						<!-- <input name="user[gender]" type="radio" value="0"> -->
+					</div>
+					<div style="width: 75px; height: 20px; color: grey; display: inline-block;">Female</div>
+					<div style="width: 35px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="gender_female"  class="rd-button"></div>
+						<!-- <input name="user[gender]" type="radio" value="1"> -->
+					</div>
+				</div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;"></div>
+				<div style="display: table; width: 240px;">
+					<div style="display: table-cell; width: 220px;">
+						<div class="btn-opt-edit-container-outer">
+							<div class="btn-opt-edit-container">
+								<div id="save_user_personal" class="btn-opt-edit" tabindex="">Save</div>
+							</div>
+						</div>
+					</div>
+					<div style="display: table-cell; width: 20px;"></div>
+				</div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+		</div>
+		<div style="height: 20px"></div>
+	</div>
+	<div style="height: 4px;"></div>
+</div>
+
+<script type="text/javascript">
+	function set_user_birthday(bd_day, bd_month, bd_year) {
+		// Setting loaded birthday
+		$("#user_bd_day").val(bd_day);
+		$("#user_bd_month").val(bd_month);
+		$("#user_bd_year").val(bd_year);
+		// Updating user_bd_day dropdown due to chosen bd_month
+		update_bd_day_select(bd_month);
+		// Updating user_bd_month and user_bd_year dropdowns
+		$("#user_bd_month").trigger('chosen:updated');
+		$("#user_bd_year").trigger('chosen:updated');
+	}
+	function set_user_gender(user_gender) {
+		// Setting user gender
+		if(user_gender == 0) {
+			$('#gender_male').addClass("rd-background");
+			$('#gender_female').removeClass("rd-background");
+		} else {
+			$('#gender_female').addClass("rd-background");
+			$('#gender_male').removeClass("rd-background");
+		}
+	}
+	function update_bd_day_select (selected_month_value) {
+		if (selected_month_value == 2) {
+        	$("#user_bd_day option[value=30]").hide();
+        	$("#user_bd_day option[value=31]").hide();
+		} else if ( selected_month_value == 4 || 
+					selected_month_value == 6 || 
+					selected_month_value == 9 || 
+					selected_month_value == 11 ) 
+		{
+			$("#user_bd_day option[value=30]").show();
+        	$("#user_bd_day option[value=31]").hide();
+		} else {
+			$("#user_bd_day option[value=30]").show();
+        	$("#user_bd_day option[value=31]").show();
+		}
+		// Updating dropdown
+		$("#user_bd_day").trigger('chosen:updated');
+	}
+	$(document).ready(function () {
+		// Loading birthday
+		var user_birthday = gon.user_birthday;
+		//Initialize dropdowns
+		$(".chosen-select").chosen({
+			disable_search_threshold: 100
+		});
+		// Setting user personal
+		set_user_birthday(user_birthday.day,
+						  user_birthday.month,
+						  user_birthday.year);		
+		set_user_gender(gon.user_gender);		
+	});
+	// Dynamic update of birthday dropdown due to selected month
+	$( "#user_bd_month" ).change(function() {
+		update_bd_day_select($("#user_bd_month").val());
+	});
+	// Radio button click (Should be changed if more rd-buttons will be added)
+	$(".rd-button").click(function() {
+		$(".rd-button").each ( function () {
+			$(this).removeClass("rd-background");
+		});
+		$(this).addClass("rd-background");
+	});
+	$("#save_user_personal").click(function() {
+		var newGender = 0;
+		if( $(".rd-background").attr('id') == "gender_female" ) {
+			newGender = 1;
+		}
+		var order = '{ "bd_day": ' + $("#user_bd_day").val() +
+					', "bd_month": ' + $("#user_bd_month").val() +
+					', "bd_year": ' + $("#user_bd_year").val() +
+					', "gender": ' + newGender +
+					'}';
+		$.ajax({
+			type: 'POST',
+			data: order,
+			url: '/publisher_user_registers/update_user_personal',
+			dataType: 'json',
+			contentType: "application/json",
+	    	processData: false,
+	    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        	statusCode: {
+        	},
+	    	success: function(data) {
+	    		alert(data.status);
+        	},
+        	error: function(xhr){ 
+        		alert("AJAX error: " + xhr.statusText);
+        	} 
+		});
+	});
+</script>
+
+
+
+
+
+
+
+
+<% if false %>
 <% provide(:title, 'Signin and Personal') %>
 
 <style>
@@ -72,3 +531,5 @@
 	<div style="height: 4px;"></div>
 
 </div>
+<% end %>
+

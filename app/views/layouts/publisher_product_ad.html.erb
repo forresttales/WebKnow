@@ -19,23 +19,9 @@
 		
 		<%= stylesheet_link_tag "jqModal-11" %>
 		<%= stylesheet_link_tag "ks-profile" %>
-		<%= stylesheet_link_tag "jquery.Jcrop.css" %>
-		<!-- <link rel="stylesheet" href="../jcrop/css/jquery.Jcrop.css" type="text/css" /> -->
-		<!-- <link rel="stylesheet" href="/assets/jquery.qtip.min.css"> -->
 		
 		<%= javascript_include_tag "jqModal" %>
 		<%= javascript_include_tag "jquery.easing.1.3" %>
-		<%= javascript_include_tag "jquery.Jcrop" %>
-		<!-- <script src="../jcrop/js/jquery.Jcrop.js"></script> -->
-		
-		<%= stylesheet_link_tag "jquery.qtip.min" %>
-		<%= javascript_include_tag "jquery.qtip.min" %>				
-		
-		<script type="text/javascript">
-		  jQuery(function($){
-		    $('#target').Jcrop();
-		  });
-		</script>
 
 		<style>
 		
@@ -54,13 +40,13 @@
 			}
 			.body-wrap-outer {
 			  min-height: 100%;
-			  margin-bottom: -150px; 
+			  margin-bottom: -152px; 
 			}
 			.body-wrap-outer:after {
 			  content: "";
 			  display: block;
 			}
-			.ks-footer, .body-wrap-outer:after {
+			.body-wrap-outer:after {
 			  height: 150px; 
 			}		
 
@@ -84,12 +70,15 @@
 		</div>
 		<%= render 'layouts/footer' %>
 
+		<% if false %>
 		<% if Rails.env.development? %>
-			<div style="width: 100%; position: absolute; bottom: -50px;">
+			<!-- <div style="width: 100%; position: absolute; bottom: -50px;"> -->
+			<div style="width: 100%; position: relative;">
 				<div id="debug">
 					<%= debug(params) %>
 				</div>
 			</div>
+		<% end %>
 		<% end %>
 	</body>
 </html>

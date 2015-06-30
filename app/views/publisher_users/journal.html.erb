@@ -1035,73 +1035,6 @@ width:100%;}
 
     </style>
 
-
-	<script id="dropdown-data1-selected" type="text/x-dot-template">
-		{{=it.label}}<div class="down-caret">&#9660;</div>
-	</script>
-	
-	<script id="dropdown-data1" type="text/x-dot-template">
-		<div class="dropdown dropdown-1" id="dropdown1" tabindex="20">
-		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
-		    <ul>
-		        {{~it.items :item:index}}
-		        <li data-index="{{=index}}">{{=item.label}}</li>
-		        {{~}}
-		    </ul>
-		</div>
-	</script>		
-
-	<script id="dropdown-data2-selected" type="text/x-dot-template">
-		{{=it.label}}<div class="down-caret">&#9660;</div>
-	</script>
-	
-	<script id="dropdown-data2" type="text/x-dot-template">
-		<div class="dropdown dropdown-2" id="dropdown2" tabindex="21">
-		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
-		    <ul>
-		        {{~it.items :item:index}}
-		        <li data-index="{{=index}}">{{=item.label}}</li>
-		        {{~}}
-		    </ul>
-		</div>
-	</script>		
-
-	<script id="dropdown-data3-selected" type="text/x-dot-template">
-		{{=it.label}}<div class="down-caret">&#9660;</div>
-	</script>
-	
-	<script id="dropdown-data3" type="text/x-dot-template">
-		<div class="dropdown dropdown-3" id="dropdown3" tabindex="22">
-		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
-		    <ul>
-		        {{~it.items :item:index}}
-		        <li data-index="{{=index}}">{{=item.label}}</li>
-		        {{~}}
-		    </ul>
-		</div>
-	</script>		
-
-
-	
-	<div id="wrap">	
-		<header id="home">
-			<div id="top-bar">
-				
-				<div class="table-ks-home">
-					<div class="row-ks-home">
-						<div class="cell-ks-home-1">
-							
-							
-							
-							<a href="#"><img class="logo" src="assets_knowstory/knowstory-icon-2-w634-h212.png"></a>
-		
-						</div>
-					
-							
-		
-			
-		</header>
-
 <style>
 #top-bar .logo {
     max-width: 250px;
@@ -1130,6 +1063,75 @@ width:100%;}
 #j-col-right {width:550px; float:right;}
 .ex-box {width:250px; border:1px solid #333; height:150px; float:left; margin:11px;}.ex-box h2 {font-size:24px; text-align: center;}
 </style>
+
+<style>
+#journal-box {opacity:.45;}
+#j-sub {width:250px; float:left;
+border-top:1px solid #333;}
+.j-sub-square {height:150px; border-bottom:1px solid #333;border-left:1px solid #333}
+.j-sub-square p {text-align:center; padding:60px 0 0; font-size:32px;}
+.j-sub-main {width:875px; float:right; border-top:1px solid #333;border-right:1px solid #333;border-bottom:1px solid #333; min-height:550px;}
+
+.j-post {width:700px; height:50px; border:2px solid #49853f; margin: 25px auto 0;}
+.j-post span {float:right; height:47px; border-left:3px solid #333; width:75px; padding: 15px 0 0 20px; color: #fff; background:#49853f;}
+
+.j-post-options {font-size:18px; color:#333; float:right; margin:35px 20px 0 0;}
+</style>
+
+	<% if false %>
+	<script id="dropdown-data1-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	<script id="dropdown-data1" type="text/x-dot-template">
+		<div class="dropdown dropdown-1" id="dropdown1" tabindex="20">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+	<script id="dropdown-data2-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	<script id="dropdown-data2" type="text/x-dot-template">
+		<div class="dropdown dropdown-2" id="dropdown2" tabindex="21">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+	<script id="dropdown-data3-selected" type="text/x-dot-template">
+		{{=it.label}}<div class="down-caret">&#9660;</div>
+	</script>
+	<script id="dropdown-data3" type="text/x-dot-template">
+		<div class="dropdown dropdown-3" id="dropdown3" tabindex="22">
+		    <div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+		    <ul>
+		        {{~it.items :item:index}}
+		        <li data-index="{{=index}}">{{=item.label}}</li>
+		        {{~}}
+		    </ul>
+		</div>
+	</script>		
+	<% end %>
+	
+	<div id="wrap">	
+		<!-- <header id="home">
+			<div id="top-bar">
+				<div class="table-ks-home">
+					<div class="row-ks-home">
+						<div class="cell-ks-home-1">
+							<a href="#"><img class="logo" src="assets_knowstory/knowstory-icon-2-w634-h212.png"></a>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</header> -->
 	
 		<div id="journal-main">
 			<h1 class="j-coming-soon">Journal is coming soon</h1>
@@ -1153,19 +1155,6 @@ width:100%;}
 			</div>
 			<div style="clear:both; height:5px; margin-bottom:35px;"></div>
 
-<style>
-#journal-box {opacity:.45;}
-#j-sub {width:250px; float:left;
-border-top:1px solid #333;}
-.j-sub-square {height:150px; border-bottom:1px solid #333;border-left:1px solid #333}
-.j-sub-square p {text-align:center; padding:60px 0 0; font-size:32px;}
-.j-sub-main {width:875px; float:right; border-top:1px solid #333;border-right:1px solid #333;border-bottom:1px solid #333; min-height:550px;}
-
-.j-post {width:700px; height:50px; border:2px solid #49853f; margin: 25px auto 0;}
-.j-post span {float:right; height:47px; border-left:3px solid #333; width:75px; padding: 15px 0 0 20px; color: #fff; background:#49853f;}
-
-.j-post-options {font-size:18px; color:#333; float:right; margin:35px 20px 0 0;}
-</style>
 			<div id="journal-box">
 				<h1 style="text-align: left; font-size:24px;">2015:</h1>
 				<div id="j-sub">
@@ -1199,20 +1188,8 @@ border-top:1px solid #333;}
 
 
 		</div><!-- End journal-main -->
-			<div style="clear:both; margin-bottom:50px; height:10px;"></div>
-
-
-
-
-
-			</div>
-		
-	
-	
-			
-			</div>
-			
-		</div>
+		<div style="clear:both; margin-bottom:50px; height:10px;"></div>
+	</div>
 	
 	
 	

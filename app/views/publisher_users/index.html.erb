@@ -2591,7 +2591,7 @@ cursor: pointer;
 		<div class="title-bar" style="position: relative;">
 			<!-- <p>My Info</p> -->
 			<div style="float: left; width: 100px;">
-				<span>My Info</span>
+				<span>My Story</span>
 			</div>		
 			<div style="float: right; width: 200px;">
 				<div class="btn-opt-edit-container-outer">
@@ -2759,6 +2759,12 @@ cursor: pointer;
 	
 					</div>
 				</div>
+	
+	
+	
+	
+	
+	
 	
 			</div>
 		</div>
@@ -5283,11 +5289,16 @@ $(document).on("click", "#figcaption_image_primary_generic", function() {
 $("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
 $("#dialog_12").jqmShow();
 });
-$(document).on("click", "#btn_photo_primary_new", function() {
-$("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
-$("#dialog_12").jqmShow();
-$("#btn_dlg_submit_upload_image_primary").focus();
-});
+// $(document).on("click", "#btn_photo_primary_new", function() {
+// $("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
+// $("#dialog_12").jqmShow();
+// $("#btn_dlg_submit_upload_image_primary").focus();
+// });
+	$(document).on("btn_photo_primary_new_click", function() {
+	$("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
+	$("#dialog_12").jqmShow();
+	$("#btn_dlg_submit_upload_image_primary").focus();
+	});
 $(document).on("click", "#btn_dlg_cancel_upload_image_primary", function() {
 $("#close_form12").trigger('click');
 });

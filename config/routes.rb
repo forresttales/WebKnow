@@ -25,6 +25,12 @@ Webknow::Application.routes.draw do
   match "/Settings-4" => "publisher_user_registers#register_4", via: 'get'
   match "/Settings-5" => "publisher_user_registers#register_5", via: 'get'
   
+  resources :publisher_user_registers do
+      collection do
+        post :update_user_personal
+      end
+  end
+  
   
   # match "/Publisher-Settings" => "publisher_registers#index", via: 'get'
   match "/Publisher-Settings-1" => "publisher_registers#register_1", via: 'get'

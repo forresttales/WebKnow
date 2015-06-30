@@ -1,5 +1,6 @@
 <% provide(:title, 'Corporate Story') %>
 
+	<% if false %>
 	<script src="/assets/jqModal.js"></script>
 	<script src="/assets/jquery.easing.1.3.js"></script>
 	<link rel="stylesheet" href="/assets/jqModal.css" />
@@ -28,6 +29,7 @@
 	<!-- <script src="/assets/jquery.easing.1.3.js"></script> -->
 	<!-- <link rel="stylesheet" href="/assets/jqModal.css" /> -->
 	<!-- <script src="/assets/jquery.validate.js"></script> -->
+	<% end %>
 
 	<style>
 		
@@ -1212,9 +1214,609 @@
 				</div>
 			</div>
 
+<style>
+	
+	.title-container {
+		min-height: 100px;
+		border: 2px solid #999;
+		/*opacity: .45;*/
+	}
+	.title-bar {
+		/*padding: 5px 5px 5px 5px;*/
+		padding: 3px;
+		/*border-bottom: 1px solid #ccc;*/
+		background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
+		background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
+	}
+	.title-grey span {
+		color: #333;
+		float: right;
+	}
+	
+</style>
 			
 			
-			
+
+<div class="publishers-index">
+
+	<div style="height: 10px;"></div>
+	
+	<div class="title-container">
+		<div class="title-bar" style="position: relative;">
+			<!-- <p>My Info</p> -->
+			<div style="float: left; width: 100px;">
+				<span>Our Story</span>
+			</div>		
+			<div style="float: right; width: 200px;">
+				<div class="btn-opt-edit-container-outer">
+					<div class="btn-opt-edit-container">
+						<div id="open_edit_story_1" class="btn-opt-edit" tabindex="">
+							Edit
+						</div>
+						<div id="close_edit_story_1" class="btn-opt-edit hidden" tabindex="">
+							Cancel
+						</div>
+					</div>
+				</div>
+			</div>		
+			<div style="clear: both;"></div>
+		</div>
+
+		<div class="table margin-0" style="height: 225px;">
+			<div class="row" style="height: 225px;">
+				<div class="cell-edit-1" style="height: 225px; padding: 0 0 0 1px;">
+					<div class="drop">
+						<div id="render_publisher_logo_image_primary">
+							<!-- <#%= render 'publisher_users/publisher_user_image_primary' %#> -->
+							<%= render 'publishers/publisher_logo_image_primary' %>
+						</div>
+					</div>
+					<div class="follow-stats-container" style="margin: 0 0 0 10px;">
+						<%= render 'publishers/stats' %>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="table" style="height: 440px; margin: 0;">
+			<div class="row">
+				<div class="cell-475">
+					<div class="table pad-marg-null">
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Company:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_name_company" name="publisher[name_company]" tabindex="12" type="text" value="<%= @publisher.name_company %>" placeholder="Company Name" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_name_company" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Address 1:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_address1" name="publisher[address1]" tabindex="12" type="text" value="<%= @publisher.address1 %>" placeholder="Address 1" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_address1" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>													
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Address 2:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_address2" name="publisher[address2]" tabindex="12" type="text" value="<%= @publisher.address2 %>" placeholder="Address 2" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_address2" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>													
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">City:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_city" name="publisher[city]" tabindex="12" type="text" value="<%= @publisher.city %>" placeholder="City" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_city" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">State:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_state" name="publisher[state]" tabindex="12" type="text" value="<%= @publisher.state %>" placeholder="State" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_state" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Country:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_country" name="publisher[country]" tabindex="12" type="text" value="<%= @publisher.country %>" placeholder="Country" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_country" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Zip:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_zip" name="publisher[zip]" tabindex="12" type="text" value="<%= @publisher.zip %>" placeholder="Zip" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_zip" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Company Phone:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_phone_company" name="publisher[phone_company]" tabindex="12" type="text" value="<%= @publisher.phone_company %>" placeholder="555-555-5555" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_phone_company" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Website:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_website" name="publisher[phone_website]" tabindex="12" type="text" value="<%= @publisher.website %>" placeholder="OurCompany@here.com" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_website" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Info Email:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_email_info" name="publisher[email_info]" tabindex="12" type="text" value="<%= @publisher.email_info %>" placeholder="info@here.com" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_email_info" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Admin Email:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_email_admin" name="publisher[email_admin]" tabindex="12" type="text" value="<%= @publisher.email_admin %>" placeholder="admin@here.com" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_email_admin" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Admin Name:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_name_admin" name="publisher[name_admin]" tabindex="12" type="text" value="<%= @publisher.name_admin %>" placeholder="Admin Name" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_name_admin" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+				
+				<% if false %>							
+				<div class="cell-225" id="container_logo_image">
+					<div id="drop_container_logo_image" class="drop">
+						<div id="render_publisher_logo_image_primary" class="padding-0">
+								<%= render 'publishers/publisher_logo_image_primary' %>
+				        </div>
+					</div>
+					<div class="float-clear"></div>
+					
+					<div class="table pad-marg-null">
+						<div class="row pad-marg-null">
+							<div class="cell-225 edit-story-1 hidden">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-225 position-relative">
+											<!-- <div class="position-absolute top-minus-7 right-0"> -->
+											<!-- <div class="position-absolute" style="top: -7; right: 0;"> -->
+											<div style="margin: 0 0 0 17px;">
+												<input class="input-profile-1 input-profile-color-1 height-24" id="publisher_tagline_logo" style="width: 207px;" name="publisher[tagline_logo]" tabindex="12" type="text" value="<%= @publisher.tagline_logo %>" placeholder="Tagline" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cell-225 show-story-1">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-225 position-relative text-align-left">
+											<!-- <div class="position-absolute top-minus-3"> -->
+											<div style="margin: 2px 0 0 22px;">
+												<span id="span_tagline_logo" class="profile-text-1"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div style="height: 2px;"></div>
+					<div class="follow-stats-container-publisher float-right">
+						<%= render 'publishers/stats' %>
+					</div>
+					<div class="float-clear"></div>																
+				</div>
+				<% end %>
+				
+				
+				
+			</div>
+		</div>
+		
+		<div style="height: 10px;"></div>
+
+		<div style="width: 700px; height: 60px; text-align: center;">
+			<div class="table">
+				<div class="row">
+					<div id="btns_edit_story_1" class="cell-700 visibility-hidden">
+						<div style="display: inline-block;">
+							<div id="cancel_edit_story_1" class="btn-submit-story-1" tabindex="51">Cancel</div>
+						</div>
+						<div style="display: inline-block;">
+							<div id="submit_edit_story_1" class="btn-submit-story-1" tabindex="52">Save</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div style="height: 20px;"></div>					
+		<div  class="pad-left-20">
+			<span class="label-dialog"><a href="<%= @url_corporate_story_public %>">&laquo; View the public page &raquo;</a></span>
+		</div> -->
+		
+		<!-- <div style="height: 30px;"></div> -->
+
+		<!-- <div class="title-bar-profile-1 title-bar-profile-1-top-border">
+			<div class="tbl-title-bar-profile">
+				<div class="row-title-bar-profile">
+					<div class="cell-title-bar-profile-left-long padding-left-8">
+						<div class="position-relative">
+							<div class="position-absolute top-minus-24">												
+								<span>About Us</span>
+							</div>
+						</div>		
+					</div>
+					<div class="cell-title-bar-profile-right">
+						<div class="btn-opt-edit-container-outer">
+							<div class="btn-opt-edit-container">
+								<div id="open_edit_story_2" class="btn-opt-edit" tabindex="">
+									Edit
+								</div>
+								<div id="close_edit_story_2" class="btn-opt-edit hidden" tabindex="">
+									Cancel
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+					
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+</div>
+
+<% if false %>
+
 		<div class="table-profile" style="height: 100%;">
 			<div class="row-profile">
 				<div style="display: table-cell; width: 200px; vertical-align: top; margin: 0; padding: 0; height: 100%;">
@@ -1228,7 +1830,7 @@
 								<div class="cell-title-bar-profile-left">
 									<div class="position-relative">
 										<div class="position-absolute top-minus-24">												
-											<span>Corporate Story - June 16 2015</span>
+											<span>Our Story</span>
 										</div>
 									</div>		
 								</div>
@@ -1250,568 +1852,22 @@
 							</div>
 						</div>
 					</div>
-					<div class="table" style="height: 440px; margin: 0;">
-						<div class="row">
-							<div class="cell-475">
-								<div class="table pad-marg-null">
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Company:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_name_company" name="publisher[name_company]" tabindex="12" type="text" value="<%= @publisher.name_company %>" placeholder="Company Name" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_name_company" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>	
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Address 1:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_address1" name="publisher[address1]" tabindex="12" type="text" value="<%= @publisher.address1 %>" placeholder="Address 1" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_address1" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>													
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Address 2:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_address2" name="publisher[address2]" tabindex="12" type="text" value="<%= @publisher.address2 %>" placeholder="Address 2" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_address2" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>													
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">City:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_city" name="publisher[city]" tabindex="12" type="text" value="<%= @publisher.city %>" placeholder="City" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_city" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>	
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">State:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_state" name="publisher[state]" tabindex="12" type="text" value="<%= @publisher.state %>" placeholder="State" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_state" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>	
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Country:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_country" name="publisher[country]" tabindex="12" type="text" value="<%= @publisher.country %>" placeholder="Country" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_country" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>	
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Zip:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_zip" name="publisher[zip]" tabindex="12" type="text" value="<%= @publisher.zip %>" placeholder="Zip" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_zip" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>	
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Company Phone:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_phone_company" name="publisher[phone_company]" tabindex="12" type="text" value="<%= @publisher.phone_company %>" placeholder="555-555-5555" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_phone_company" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>	
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Website:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_website" name="publisher[phone_website]" tabindex="12" type="text" value="<%= @publisher.website %>" placeholder="OurCompany@here.com" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_website" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>	
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Info Email:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_email_info" name="publisher[email_info]" tabindex="12" type="text" value="<%= @publisher.email_info %>" placeholder="info@here.com" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_email_info" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>	
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Admin Email:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_email_admin" name="publisher[email_admin]" tabindex="12" type="text" value="<%= @publisher.email_admin %>" placeholder="admin@here.com" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_email_admin" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>	
-									<div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Admin Name:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_name_admin" name="publisher[name_admin]" tabindex="12" type="text" value="<%= @publisher.name_admin %>" placeholder="Admin Name" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_name_admin" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>	
-									<!-- <div class="row" style="height: 12px;"></div>
-									<div class="row pad-marg-null">
-										<div class="cell-475">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-195 text-align-left pad-left-20">
-														<span class="profile-label-1">Tagline:</span>
-													</div>
-													<div class="cell-280 edit-story-1 hidden">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative">
-																	<div class="position-absolute top-minus-7 right-0">
-																		<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_tagline_logo" name="publisher[tagline_logo]" tabindex="12" type="text" value="<#%= @publisher.tagline_logo %#>" placeholder="Tagline" />
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cell-280 show-story-1">
-														<div class="table pad-marg-null">
-															<div class="row pad-marg-null">
-																<div class="cell-280 position-relative text-align-left">
-																	<div class="position-absolute top-minus-3">
-																		<span id="span_tagline_logo" class="profile-text-1"></span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div> -->
-										
-								</div>
-							</div>
-							<!-- <div class="cell-225 padding-right-8" id="container_logo_image"> -->
-							<div class="cell-225" id="container_logo_image">
-								<!-- <div id="drop_container_logo_image" class="drop width-200 float-right"> -->
-								<div id="drop_container_logo_image" class="drop">
-									<div id="render_publisher_logo_image_primary" class="padding-0">
-										<!-- <div class="container-image"> -->
-											<%= render 'publishers/publisher_logo_image_primary' %>
-										<!-- </div>
-										<div class="container-menu">
-											<#%= render 'publishers/publisher_logo_image_primary_menu' %#>
-										</div> -->
-							        </div>
-								</div>
-								<div class="float-clear"></div>
-								
-								<!-- <div class="table pad-marg-null">
-									<div class="row pad-marg-null">
-										<div class="cell-225 text-align-left pad-left-20">
-											<span class="profile-label-1">Tagline:</span>
-										</div>
-									</div>
-								</div> -->
-								<div class="table pad-marg-null">
-									<div class="row pad-marg-null">
-										<div class="cell-225 edit-story-1 hidden">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-225 position-relative">
-														<!-- <div class="position-absolute top-minus-7 right-0"> -->
-														<!-- <div class="position-absolute" style="top: -7; right: 0;"> -->
-														<div style="margin: 0 0 0 17px;">
-															<input class="input-profile-1 input-profile-color-1 height-24" id="publisher_tagline_logo" style="width: 207px;" name="publisher[tagline_logo]" tabindex="12" type="text" value="<%= @publisher.tagline_logo %>" placeholder="Tagline" />
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="cell-225 show-story-1">
-											<div class="table pad-marg-null">
-												<div class="row pad-marg-null">
-													<div class="cell-225 position-relative text-align-left">
-														<!-- <div class="position-absolute top-minus-3"> -->
-														<div style="margin: 2px 0 0 22px;">
-															<span id="span_tagline_logo" class="profile-text-1"></span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								<div style="height: 2px;"></div>
-								<div class="follow-stats-container-publisher float-right">
-									<%= render 'publishers/stats' %>
-								</div>
-								<div class="float-clear"></div>																
-							</div>
-						</div>
-					</div>
 					
-					<div style="height: 10px;"></div>
-
-					<div style="width: 700px; height: 60px; text-align: center;">
-						<div class="table">
-							<div class="row">
-								<div id="btns_edit_story_1" class="cell-700 visibility-hidden">
-									<div style="display: inline-block;">
-										<div id="cancel_edit_story_1" class="btn-submit-story-1" tabindex="51">Cancel</div>
-									</div>
-									<div style="display: inline-block;">
-										<div id="submit_edit_story_1" class="btn-submit-story-1" tabindex="52">Save</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- <div style="height: 20px;"></div>					
-					<div  class="pad-left-20">
-						<span class="label-dialog"><a href="<%= @url_corporate_story_public %>">&laquo; View the public page &raquo;</a></span>
-					</div> -->
 					
-					<!-- <div style="height: 30px;"></div> -->
-
-					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
-						<div class="tbl-title-bar-profile">
-							<div class="row-title-bar-profile">
-								<div class="cell-title-bar-profile-left-long padding-left-8">
-									<div class="position-relative">
-										<div class="position-absolute top-minus-24">												
-											<span>About Us</span>
-										</div>
-									</div>		
-								</div>
-								<!-- <div class="cell-title-bar-profile-center">
-									<span></span>
-								</div> -->
-								<div class="cell-title-bar-profile-right">
-									<div class="btn-opt-edit-container-outer">
-										<div class="btn-opt-edit-container">
-											<div id="open_edit_story_2" class="btn-opt-edit" tabindex="">
-												Edit
-											</div>
-											<div id="close_edit_story_2" class="btn-opt-edit hidden" tabindex="">
-												Cancel
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 
 					<div class="table margin-0">
 						<div class="row">
@@ -2361,7 +2417,7 @@
 		</div>
 			
 
-	
+<% end %>	
 
 	<!-- <script>
 		function crop_logo_image_primary() {
@@ -2616,8 +2672,8 @@
 
 				// $(".container-menu .dropdownContain").removeClass("hidden");
 				
-				$(".drop-1-container").removeClass("hidden");
-				$(".drop-2-container").removeClass("hidden");
+				// $(".drop-1-container").removeClass("hidden");
+				// $(".drop-2-container").removeClass("hidden");
 				
     			$("#publisher_name_company").focus();
 				
@@ -2643,8 +2699,8 @@
 				
 				$(".container-figure-logo").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
 								
-				$(".drop-1-container").addClass("hidden");				
-				$(".drop-2-container").addClass("hidden");				
+				// $(".drop-1-container").addClass("hidden");				
+				// $(".drop-2-container").addClass("hidden");				
 
 				// $(".container-menu .dropdownContain").addClass("hidden");
 				// $("#drop_container_user_image_primary").removeClass("drop");
@@ -3345,10 +3401,14 @@
 				$("form#new_publisher_logo_image input#new_publisher_logo_image_image").val('');
 				$("#dialog_12").jqmShow();
 			});		
-			$(document).on("click", "#btn_logo_image_primary_new", function() {				
-				$("form#new_publisher_logo_image input#new_publisher_logo_image_image").val('');
-				$("#dialog_12").jqmShow();
-			});		
+			// $(document).on("click", "#btn_logo_image_primary_new", function() {				
+				// $("form#new_publisher_logo_image input#new_publisher_logo_image_image").val('');
+				// $("#dialog_12").jqmShow();
+			// });		
+				$(document).on("btn_logo_image_primary_new_click", function() {				
+					$("form#new_publisher_logo_image input#new_publisher_logo_image_image").val('');
+					$("#dialog_12").jqmShow();
+				});		
 			$(document).on("click", "#btn_dlg_cancel_upload_logo_image_primary", function() {
 				$("#close_form12").trigger('click');
 			});
@@ -3881,45 +3941,43 @@
 
 
 
-            $('.tip').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout'
-                })
-            });			
-			
-            $('.tip-bottom-center').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout',
-				    position: {
-				        my: 'top center',
-				        at: 'bottom center'
-				        // target: $('.tip-bottom-center')
-    				}                    
-                })
-            });			
-
-            $('.tip-top-center').each(function() {
-                var tipContent = $(this).next('.tip-content').html();
-                $(this).qtip({
-                	style: { classes: 'tooltip-text-1' },
-                    content: tipContent,
-                    show: 'mouseover',
-                    hide: 'mouseout',
-				    position: {
-				        my: 'bottom center',
-				        at: 'top center'
-				        // target: $('.tip-top-center')
-    				}                    
-                })
-            });			
+            // $('.tip').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout'
+                // })
+            // });			
+            // $('.tip-bottom-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'top center',
+				        // at: 'bottom center'
+				        // // target: $('.tip-bottom-center')
+    				// }                    
+                // })
+            // });			
+            // $('.tip-top-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'bottom center',
+				        // at: 'top center'
+				        // // target: $('.tip-top-center')
+    				// }                    
+                // })
+            // });			
 		
 		
 			// $("#div_pop_dialog_test").on('click', function() {

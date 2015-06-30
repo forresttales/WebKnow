@@ -1061,6 +1061,7 @@ class UsersController < ApplicationController
         @user_image_primary = nil
         @post_users = nil
         @post_user = nil
+        gon.publisher_user_image_primary_url = nil
         
         # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
         publisher_user = current_user.publisher_user
@@ -1071,12 +1072,16 @@ class UsersController < ApplicationController
             # publisher = Publisher.find_by_id(@publisher_id)
             publisher = current_user.publisher
             if !publisher.nil?
-                @publisher_user_image_primary = current_user.user_images.where( :primary => true ).first
-                gon.publisher_user_image_primary_url = @publisher_user_image_primary.image_url()
-                # <%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>
-                n = @publisher_user_image_primary.nil?
-                Rails.logger.info('@publisher_user_image_primary nil = ' + n.to_s)
-                @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", @publisher_user_id).first
+                @publisher_user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
+                if !@publisher_user_image_primary.nil?
+                  gon.publisher_user_image_primary_url = @publisher_user_image_primary.image_url()
+                end
+                # @publisher_user_image_primary = current_user.user_images.where( :primary => true ).first
+                # gon.publisher_user_image_primary_url = @publisher_user_image_primary.image_url()
+                # # <%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>
+                # n = @publisher_user_image_primary.nil?
+                # Rails.logger.info('@publisher_user_image_primary nil = ' + n.to_s)
+                # @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", @publisher_user_id).first
             else
               #
             end
@@ -1224,6 +1229,7 @@ class UsersController < ApplicationController
         @user_image_primary = nil
         @post_users = nil
         @post_user = nil
+        gon.publisher_user_image_primary_url = nil
         
         # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
         publisher_user = current_user.publisher_user        
@@ -1235,10 +1241,12 @@ class UsersController < ApplicationController
             # publisher = Publisher.find_by_id(@publisher_id)
             publisher = current_user.publisher
             if !publisher.nil?
-                Rails.logger.info('publisher not nil')
-                @publisher_user_image_primary = current_user.user_images.where( :primary => true ).first
-                gon.publisher_user_image_primary_url = @publisher_user_image_primary.image_url()
-                @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", @publisher_user_id).first
+                # Rails.logger.info('publisher not nil')
+                @publisher_user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
+                if !@publisher_user_image_primary.nil?
+                  gon.publisher_user_image_primary_url = @publisher_user_image_primary.image_url()
+                end
+                # @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", @publisher_user_id).first
             else
                 Rails.logger.info('publisher was nil')
             end
