@@ -70,65 +70,6 @@
 			</div>
 			<div style="clear: both;"></div>
 		</div>
-		<!-- <div class="table margin-0">		
-			<div class="row" style="height: 12px;"></div>
-			<div class="row pad-marg-null">
-				<div class="cell-edit-6 text-align-left pad-left-20">
-					<span class="profile-label-1">Email:</span>
-				</div>
-				<div class="cell-edit-7 edit-story-1 hidden">
-					<div class="table pad-marg-null">
-						<div class="row pad-marg-null">
-							<div class="cell-edit-7 position-relative">
-								<div class="position-absolute top-minus-edit-1 right-0">
-									<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_job_title" name="publisher_user[job_title]" tabindex="15" type="text" value="job 1" placeholder="Job Title">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="cell-edit-7 show-story-1">
-					<div class="table pad-marg-null">
-						<div class="row pad-marg-null">
-							<div class="cell-edit-7 position-relative text-align-left">
-								<div class="position-absolute top-minus-edit-2">
-									<span id="span_publisher_user_job_title" class="profile-text-1 color-record">job 1</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row" style="height: 12px;"></div>
-			<div class="row pad-marg-null">
-				<div class="cell-edit-6 text-align-left pad-left-20">
-					<span class="profile-label-1">Password:</span>
-				</div>
-				<div class="cell-edit-7 edit-story-1 hidden">
-					<div class="table pad-marg-null">
-						<div class="row pad-marg-null">
-							<div class="cell-edit-7 position-relative">
-								<div class="position-absolute top-minus-edit-1 right-0">
-									<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_job_title" name="publisher_user[job_title]" tabindex="15" type="text" value="job 1" placeholder="Job Title">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="cell-edit-7 show-story-1">
-					<div class="table pad-marg-null">
-						<div class="row pad-marg-null">
-							<div class="cell-edit-7 position-relative text-align-left">
-								<div class="position-absolute top-minus-edit-2">
-									<span id="span_publisher_user_job_title" class="profile-text-1 color-record">****</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
-
 		<div style="height: 20px"></div>
 		<div class="table">
 			<div class="row">
@@ -146,7 +87,7 @@
 				</div>
 				<div style="display: table; width: 240px;">
 					<div style="display: table-cell; width: 160px;">
-						<input class="settings-input" disabled="true" placeholder="<%= @user_personal.email.to_s %>">
+						<input id="user_old_email" class="settings-input" disabled="true" value="<%= @user_personal.email.to_s %>">
 					</div>
 					<!-- <div style="display: table-cell; width: 70px;">
 						<div class="edit-icon"></div>
@@ -161,7 +102,7 @@
 				</div>
 				<div style="display: table; width: 240px;">
 					<div style="display: table-cell; width: 160px;">
-						<input class="settings-input">
+						<input type="email" id="user_new_email" class="settings-input">
 					</div>
 				</div>			
 			</div>
@@ -173,7 +114,7 @@
 					<div style="display: table-cell; width: 160px;">
 						<div class="btn-opt-edit-container-outer">
 							<div class="btn-opt-edit-container">
-								<div class="btn-opt-edit" tabindex="">Save</div>
+								<div id="save_user_email" class="btn-opt-edit" tabindex="">Save</div>
 							</div>
 						</div>
 					</div>
@@ -440,96 +381,41 @@
         	statusCode: {
         	},
 	    	success: function(data) {
-	    		alert(data.status);
+	    		if(data.status != "Update!")
+	    			alert(data.status);
+	    		else
+	    			location.href=("/Signin");//reload(true);
         	},
-        	error: function(xhr){ 
-        		alert("AJAX error: " + xhr.statusText);
+        	error: function(xhr){
+    			alert("AJAX error: " + xhr.statusText);
+        	} 
+		});
+	});
+	$("#save_user_email").click(function() {
+		var order = '{ "user_old_email": ' + '"' + $("#user_old_email").val() + '"' +
+					', "user_new_email": ' + '"' + $("#user_new_email").val() + '"' +
+					'}';
+		$.ajax({
+			type: 'POST',
+			data: order,
+			url: '/publisher_user_registers/update_user_email',
+			dataType: 'json',
+			contentType: "application/json",
+	    	processData: false,
+	    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        	statusCode: {
+        	},
+	    	success: function(data) {
+	    		if(data.status != "Update!") {
+	    			alert(data.status);
+	    			$("#user_old_email").val(data.new_email);
+	    		}
+	    		else
+	    			location.href=("/Signin");
+        	},
+        	error: function(xhr){
+    			alert("AJAX error: " + xhr.statusText);
         	} 
 		});
 	});
 </script>
-
-
-
-
-
-
-
-
-<% if false %>
-<% provide(:title, 'Signin and Personal') %>
-
-<style>
-	
-	.title-container {
-		min-height: 100px;
-		border: 2px solid #999;
-		/*opacity: .45;*/
-	}
-	.title-bar {
-		/*padding: 5px 5px 5px 5px;*/
-		padding: 3px;
-		/*border-bottom: 1px solid #ccc;*/
-		background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
-		background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
-		background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
-		background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
-		background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
-	}
-	.title-grey span {
-		color: #333;
-		float: right;
-	}
-	.title-bar span {
-		font-family: Arial, Helvetica, sans-serif;
-		font-size: 16px;
-		font-weight: 400;
-		color: #000;
-	}
-	
-</style>
-
-<style>
-
-	/*Do not place in the assets pipeline*/
-	.nav-publisher-user-register .drop-11 .drop-11-target {
-		background-color: #e8e8e8;
-	}	
-	
-</style>
-
-<div style="height: 10px;"></div>
-
-<div class="title-container">
-	<div class="title-bar" style="position: relative;">
-		<!-- <p>My Info</p> -->
-		<div style="float: left; width: 300px;">
-			<span>Signin and Personal</span>
-		</div>		
-		<!-- <div style="float: right; width: 200px;">
-			<div class="btn-opt-edit-container-outer">
-				<div class="btn-opt-edit-container">
-					<div id="open_edit_story_1" class="btn-opt-edit" tabindex="">
-						Edit
-					</div>
-					<div id="close_edit_story_1" class="btn-opt-edit hidden" tabindex="">
-						Cancel
-					</div>
-				</div>
-			</div>
-		</div> -->		
-		<div style="clear: both;"></div>
-	</div>
-
-	<div class="table margin-0" style="height: 225px;">
-		<div class="row" style="height: 225px;">
-		</div>
-	</div>
-
-	<div style="height: 4px;"></div>
-
-</div>
-<% end %>
-
