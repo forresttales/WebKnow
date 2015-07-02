@@ -175,12 +175,46 @@ class PublisherUserRegistersController < ApplicationController
 
 
   def update_user_password
+    # @responce = "Responce"
 
-    if signed_in?
-      #TODO
+    user_old_password = params[:user_old_password]
+    user_new_password = params[:user_new_password]
+    user_confirm_password = params[:user_confirm_password]
+    
+    if check_user_password(user_old_password)
+
+        h_update = Hash.new
+        h_update[:password] = user_new_password
+        h_update[:password_confirmation] = user_confirm_password
+
+        if current_user.update_attributes(h_update)
+            respond_to do |format|
+              format.js
+              format.json { render :json => { :status => "Saved!" } }
+            end
+        else
+            respond_to do |format|
+              format.js
+              format.json { render :json => { :status => "Error: Not saved!" } }
+            end
+        end
+
     else
-      redirect_to '/'
+        respond_to do |format|
+          format.js
+          format.json { render :json => { :status => "Wrong password!" } }
+        end
     end
+
+    # respond_to do |format|
+    #   format.js
+    #   format.json { render :json => { :status => verithy_user_password,
+    #                                   :user_old_password => user_old_password,
+    #                                   :user_new_password => user_new_password, 
+    #                                   :user_confirm_password => user_confirm_password 
+    #                                   } 
+    #               }     
+    # end
 
   end
 
@@ -238,6 +272,15 @@ class PublisherUserRegistersController < ApplicationController
       return bd_month_text
   end
 
-
+  def check_user_password(password)
+    
+    authorized_user = current_user.authenticate(password)
+    if authorized_user
+      return true
+    else
+      return false
+    end
+    
+  end
 
 end

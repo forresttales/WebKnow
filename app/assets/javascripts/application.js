@@ -14,6 +14,7 @@
 //= require jquery.fullscreenslides
 //= require jquery-tmpl
 //= require_directory ./templates
+//= require jquery_ujs
 
 // require slick
 // require jquery.validate

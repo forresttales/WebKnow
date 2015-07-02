@@ -71,6 +71,77 @@
 			<div style="clear: both;"></div>
 		</div>
 		<div style="height: 20px"></div>
+
+
+
+
+
+		<%= form_tag({action: 'update_user_password'}, remote: true, 'data-type': "json", id: "my_form", class: "table") do %>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
+					<label>Change Password:</label>
+				</div>
+				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;"></div>
+				<div style="display: table-cell; width: 260px;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">				
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>Old Password:</label>
+				</div>
+				<div style="display: table-cell; width: 240px;">
+					<%= password_field_tag :user_old_password, nil, :class => "settings-input" %>
+				</div>
+				<div id="message_user_old_password" style="display: table-cell; width: 260px;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">				
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>New Password:</label>
+				</div>
+				<div style="display: table-cell; width: 240px;">
+					<%= password_field_tag :user_new_password, nil, :class => "settings-input" %>
+				</div>
+				<div id="message_user_new_password" style="display: table-cell; width: 260px;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">				
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>Confirm Password:</label>
+				</div>
+				<div style="display: table-cell; width: 160px;">
+					<%= password_field_tag :user_confirm_password, nil, :class => "settings-input" %>
+				</div>
+				<div id="message_user_confirm_password" style="display: table-cell; width: 260px;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;"></div>
+				<div style="display: table; width: 160px;">
+					<div class="btn-opt-edit-container-outer">
+						<div class="btn-opt-edit-container">
+							<%= submit_tag("Save", class: "btn-opt-edit", id: "save_user_pass", :style => " background: none;  border: none;") %> 
+						</div>
+					</div>
+				</div>
+				<div style="display: table-cell; width: 80px;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div id="answer"></div>
+			</div>
+		<% end %>
+
+
+
+
+
+
 		<div class="table">
 			<div class="row">
 				<div style="display: table-cell; width: 30px;"></div>
@@ -289,7 +360,7 @@
 					<div style="display: table-cell; width: 20px;"></div>
 				</div>
 			</div>
-			<div class="row" style="height: 12px"></div>
+			<div class="row" style="height: 12px"></div>			
 		</div>
 		<div style="height: 20px"></div>
 	</div>
@@ -347,7 +418,7 @@
 		set_user_birthday(user_birthday.day,
 						  user_birthday.month,
 						  user_birthday.year);		
-		set_user_gender(gon.user_gender);		
+		set_user_gender(gon.user_gender);
 	});
 	// Dynamic update of birthday dropdown due to selected month
 	$( "#user_bd_month" ).change(function() {
@@ -418,4 +489,69 @@
         	} 
 		});
 	});
+
+
+	function startPasswordFormValidation () {
+		$("#user_old_password").rules('add', {
+			required: true,
+			minlength: 6
+		});
+		$("#user_new_password").rules('add', {
+			required: true,
+			minlength: 6
+		});
+		$("#user_confirm_password").rules('add', {
+			required: true,
+			minlength: 6,
+			equalTo: "#user_new_password"
+		});
+	}
+	function stopFormValidation (formID) {
+		$('#' + formID + ' :input').not(':button,:hidden').each( function() {
+			$(this).rules('remove');
+		});
+	}
+	// Password form validation starts after first click on submit button
+	$("#save_user_pass").one('click', function() {
+        passwordFormValidate();
+        startPasswordFormValidation ();
+    });
+	$("#my_form").on("ajax:success",function(event, data, status, xhr) {
+		if(data.status == "Update!") {
+			location.href=("/Signin");
+		} else if (data.status == "Wrong password!") {
+			$("#message_user_old_password label").text("Wrong password!");
+		} else {
+			alert(JSON.stringify(data));
+			$("#user_old_password").val("");
+			$("#user_new_password").val("");
+			$("#user_confirm_password").val("");
+
+
+			// Password validation stops after password was changed	
+			stopFormValidation($("#my_form").attr("id"));
+			
+			$("#save_user_pass").one('click', function() {
+				startPasswordFormValidation();
+		    });
+		}	
+	});
+	function passwordFormValidate() {
+		$("#my_form").validate({
+			debug: true,
+			onkeyup: false,
+			focusCleanup: true,
+			focusInvalid: false,
+			success: "valid",
+			submitHandler: function(form) {
+				$.rails.handleRemote($("#my_form"));
+				// form.submit();
+			},
+			invalidHandler: function(event, validator) {			
+			},
+			errorPlacement: function(error, element) {
+	    		error.appendTo('#message_' + element.attr('id'));
+	    	}
+		});
+	}
 </script>
