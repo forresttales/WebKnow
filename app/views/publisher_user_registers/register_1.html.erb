@@ -47,7 +47,23 @@
 		border: 1px solid #49853F;
 		margin: 0;
 		background-color: #fff;
-	}	
+	}
+	p.error {
+		  font-family: Arial, Helvetica, sans-serif;
+		  font-weight: 700;
+		  font-size: 14px;
+		  color: #f00;
+	}
+	.success-message {
+		  font-family: Arial, Helvetica, sans-serif;
+		  font-weight: 700;
+		  font-size: 14px;
+		  color: #376340;
+		  text-align: right;
+	}
+	.btn-opt-edit {
+		padding: 0;
+	}
 </style>
 
 <div style="height: 12px;"></div>
@@ -56,33 +72,70 @@
 			<div style="float: left; width: 100px;">
 				<span>My Settings</span>
 			</div>
-			<div style="float: right; width: 200px;">
-				<div class="btn-opt-edit-container-outer">
-					<div class="btn-opt-edit-container">
-						<div id="open_edit_story_1" class="btn-opt-edit" tabindex="">
-							Edit
-						</div>
-						<div id="close_edit_story_1" class="btn-opt-edit hidden" tabindex="">
-							Cancel
-						</div>
-					</div>
-				</div>
-			</div>
+			<div style="float: right; width: 200px;"></div>
 			<div style="clear: both;"></div>
 		</div>
 		<div style="height: 20px"></div>
-
-
-
-
-
-		<%= form_tag({action: 'update_user_password'}, remote: true, 'data-type': "json", id: "my_form", class: "table") do %>
+		<%= form_tag({action: 'update_user_email'}, remote: true, 'data-type': "json", id: "change_email_form", class: "table") do %>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
+					<label>Change Email:</label>
+				</div>
+				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;">
+					<p id="message_user_email" class="success-message"></p>
+				</div>
+				<div style="display: table-cell; width: 260px;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">				
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>Email:</label>
+				</div>
+				<div style="display: table-cell; width: 240px;">
+					<%= text_field_tag :user_old_email, nil, class: "settings-input", disabled: true, value: @user_personal.email.to_s %>
+				</div>
+				<div id="message_user_old_email" style="display: table-cell; width: 260px;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">				
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;">
+					<label>New Email:</label>
+				</div>
+				<div style="display: table-cell; width: 240px;">
+					<%= text_field_tag :user_new_email, nil, class: "settings-input" %>
+				</div>
+				<div id="message_user_new_email" style="display: table-cell; width: 260px;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div style="display: table-cell; width: 30px;"></div>
+				<div style="display: table-cell; width: 160px;"></div>
+				<div style="display: table; width: 160px;">
+					<div class="btn-opt-edit-container-outer">
+						<div class="btn-opt-edit-container">
+							<%= submit_tag("Save", class: "btn-opt-edit", id: "save_user_email", :style => " background: none;  border: none;") %>
+						</div>
+					</div>
+				</div>
+				<div style="display: table-cell; width: 80px;"></div>
+			</div>
+			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div id="answer"></div>
+			</div>
+		<% end %>
+		<%= form_tag({action: 'update_user_password'}, remote: true, 'data-type': "json", id: "change_password_form", class: "table") do %>
 			<div class="row">
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
 					<label>Change Password:</label>
 				</div>
-				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;"></div>
+				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;">
+					<p id="message_user_password" class="success-message"></p>
+				</div>
 				<div style="display: table-cell; width: 260px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
@@ -125,7 +178,7 @@
 				<div style="display: table; width: 160px;">
 					<div class="btn-opt-edit-container-outer">
 						<div class="btn-opt-edit-container">
-							<%= submit_tag("Save", class: "btn-opt-edit", id: "save_user_pass", :style => " background: none;  border: none;") %> 
+							<%= submit_tag("Save", class: "btn-opt-edit", id: "save_user_password", :style => " background: none;  border: none;") %> 
 						</div>
 					</div>
 				</div>
@@ -136,128 +189,15 @@
 				<div id="answer"></div>
 			</div>
 		<% end %>
-
-
-
-
-
-
-		<div class="table">
-			<div class="row">
-				<div style="display: table-cell; width: 30px;"></div>
-				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
-					<label>Change Email:</label>
-				</div>
-				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;"></div>
-			</div>
-			<div class="row" style="height: 12px"></div>
-			<div class="row">
-				<div style="display: table-cell; width: 30px;"></div>
-				<div style="display: table-cell; width: 160px;">
-					<label>Email:</label>
-				</div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<input id="user_old_email" class="settings-input" disabled="true" value="<%= @user_personal.email.to_s %>">
-					</div>
-					<!-- <div style="display: table-cell; width: 70px;">
-						<div class="edit-icon"></div>
-					</div> -->
-				</div>			
-			</div>
-			<div class="row" style="height: 12px"></div>
-			<div class="row">
-				<div style="display: table-cell; width: 30px;"></div>
-				<div style="display: table-cell; width: 160px;">
-					<label>New Email:</label>
-				</div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<input type="email" id="user_new_email" class="settings-input">
-					</div>
-				</div>			
-			</div>
-			<div class="row" style="height: 12px"></div>
-			<div class="row">
-				<div style="display: table-cell; width: 30px;"></div>
-				<div style="display: table-cell; width: 160px;"></div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<div class="btn-opt-edit-container-outer">
-							<div class="btn-opt-edit-container">
-								<div id="save_user_email" class="btn-opt-edit" tabindex="">Save</div>
-							</div>
-						</div>
-					</div>
-					<div style="display: table-cell; width: 80px;"></div>
-				</div>
-			</div>
-			<div class="row" style="height: 12px"></div>
-			<div class="row">
-				<div style="display: table-cell; width: 30px;"></div>
-				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
-					<label>Change Password:</label>
-				</div>
-				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;"></div>
-			</div>
-			<div class="row" style="height: 12px"></div>
-			<div class="row">
-				<div style="display: table-cell; width: 30px;"></div>
-				<div style="display: table-cell; width: 160px;">
-					<label>Old Password:</label>
-				</div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<input class="settings-input" >
-					</div>
-				</div>
-			</div>
-			<div class="row" style="height: 12px"></div>
-			<div class="row">
-				<div style="display: table-cell; width: 30px;"></div>
-				<div style="display: table-cell; width: 160px;">
-					<label>New Password:</label>
-				</div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<input class="settings-input" >
-					</div>
-				</div>
-			</div>
-			<div class="row" style="height: 12px"></div>
-			<div class="row">
-				<div style="display: table-cell; width: 30px;"></div>
-				<div style="display: table-cell; width: 160px;">
-					<label>Confirm Password:</label>
-				</div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<input class="settings-input" >
-					</div>
-				</div>
-			</div>
-			<div class="row" style="height: 12px"></div>
-			<div class="row">
-				<div style="display: table-cell; width: 30px;"></div>
-				<div style="display: table-cell; width: 160px;"></div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<div class="btn-opt-edit-container-outer">
-							<div class="btn-opt-edit-container">
-								<div class="btn-opt-edit" tabindex="">Save</div>
-							</div>
-						</div>
-					</div>
-					<div style="display: table-cell; width: 80px;"></div>
-				</div>
-			</div>
-			<div class="row" style="height: 12px"></div>
+		<div id="change_personal_form" class="table">
 			<div class="row">
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
 					<label>Change Personal:</label>
 				</div>
-				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;"></div>
+				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;">
+					<p id="message_user_personal" class="success-message"></p>
+				</div>
 			</div>
 			<div class="row" style="height: 12px"></div>
 			<div class="row">
@@ -325,6 +265,7 @@
 						</select>
 					</div>
 				</div>
+				<div style="display: table-cell; width: 260px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
 			<div class="row">
@@ -353,7 +294,8 @@
 					<div style="display: table-cell; width: 220px;">
 						<div class="btn-opt-edit-container-outer">
 							<div class="btn-opt-edit-container">
-								<div id="save_user_personal" class="btn-opt-edit" tabindex="">Save</div>
+								<%= submit_tag("Save", class: "btn-opt-edit", id: "save_user_personal", :style => " background: none;  border: none;") %>
+								<!-- <div id="save_user_personal" class="btn-opt-edit" tabindex="">Save</div> -->
 							</div>
 						</div>
 					</div>
@@ -407,7 +349,11 @@
 		// Updating dropdown
 		$("#user_bd_day").trigger('chosen:updated');
 	}
+
 	$(document).ready(function () {
+		//Forms validation
+		passwordFormValidate();
+		emailFormValidate();
 		// Loading birthday
 		var user_birthday = gon.user_birthday;
 		//Initialize dropdowns
@@ -452,45 +398,28 @@
         	statusCode: {
         	},
 	    	success: function(data) {
-	    		if(data.status != "Update!")
-	    			alert(data.status);
-	    		else
-	    			location.href=("/Signin");//reload(true);
-        	},
-        	error: function(xhr){
-    			alert("AJAX error: " + xhr.statusText);
-        	} 
-		});
-	});
-	$("#save_user_email").click(function() {
-		var order = '{ "user_old_email": ' + '"' + $("#user_old_email").val() + '"' +
-					', "user_new_email": ' + '"' + $("#user_new_email").val() + '"' +
-					'}';
-		$.ajax({
-			type: 'POST',
-			data: order,
-			url: '/publisher_user_registers/update_user_email',
-			dataType: 'json',
-			contentType: "application/json",
-	    	processData: false,
-	    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-        	statusCode: {
-        	},
-	    	success: function(data) {
 	    		if(data.status != "Update!") {
-	    			alert(data.status);
-	    			$("#user_old_email").val(data.new_email);
+	    			// alert(data.status);
+	    			$("#message_user_personal").fadeTo( "slow", 0 , function () {
+	    				$("#message_user_personal").text(data.status).fadeTo( "slow", 1 );
+	    			});
+	    			
 	    		}
 	    		else
 	    			location.href=("/Signin");
         	},
         	error: function(xhr){
     			alert("AJAX error: " + xhr.statusText);
+    			$("#message_user_personal").fadeTo( "slow", 0 );
         	} 
 		});
 	});
 
-
+	function stopFormValidation (formID) {
+		$('#' + formID + ' :input').not(':button,:hidden').each( function() {
+			$(this).rules('remove');
+		});
+	}
 	function startPasswordFormValidation () {
 		$("#user_old_password").rules('add', {
 			required: true,
@@ -498,7 +427,7 @@
 		});
 		$("#user_new_password").rules('add', {
 			required: true,
-			minlength: 6
+			
 		});
 		$("#user_confirm_password").rules('add', {
 			required: true,
@@ -506,52 +435,114 @@
 			equalTo: "#user_new_password"
 		});
 	}
-	function stopFormValidation (formID) {
-		$('#' + formID + ' :input').not(':button,:hidden').each( function() {
-			$(this).rules('remove');
+	function startEmailFormValidation () {
+		$("#user_new_email").rules('add', {
+			required: true,
+			email: true,
+			maxlength: 50
 		});
 	}
+
 	// Password form validation starts after first click on submit button
-	$("#save_user_pass").one('click', function() {
-        passwordFormValidate();
-        startPasswordFormValidation ();
+	$("#save_user_password").one('click', function() {        
+        startPasswordFormValidation();
     });
-	$("#my_form").on("ajax:success",function(event, data, status, xhr) {
+    // Email form validation starts after first click on submit button
+	$("#save_user_email").one('click', function() {
+        startEmailFormValidation();
+    });
+
+	$("#change_password_form").on("ajax:success",function(event, data, status, xhr) {
 		if(data.status == "Update!") {
 			location.href=("/Signin");
-		} else if (data.status == "Wrong password!") {
-			$("#message_user_old_password label").text("Wrong password!");
+		} else if (data.status != "Saved!") {
+			$("#message_user_password").text("");
+			$("#message_user_old_password p").text(data.status);
 		} else {
-			alert(JSON.stringify(data));
+			// alert(data.status);
 			$("#user_old_password").val("");
 			$("#user_new_password").val("");
 			$("#user_confirm_password").val("");
 
+			$("#message_user_password").text(data.status).fadeTo( "slow", 1 );
 
-			// Password validation stops after password was changed	
-			stopFormValidation($("#my_form").attr("id"));
+			// Password validation stops after password was changed	correctly
+			stopFormValidation($(this).attr("id"));
 			
-			$("#save_user_pass").one('click', function() {
+			$("#save_user_password").one('click', function() {
+				$("#message_user_password").fadeTo( "slow", 0 );
 				startPasswordFormValidation();
 		    });
 		}	
 	});
+	$("#change_email_form").on("ajax:success",function(event, data, status, xhr) {
+		if(data.status == "Update!") {
+			location.href=("/Signin");
+		} else if (data.status != "Saved!") {
+			$("#message_user_email").text("");
+			$("#message_user_new_email p").text(data.status);
+		} else {
+			// alert(data.status);
+			$("#user_old_email").val(data.new_email);
+			$("#user_new_email").val("");
+
+			$("#message_user_email").text(data.status).fadeTo( "slow", 1 );
+
+			// Password validation stops after password was changed	correctly
+			stopFormValidation($(this).attr("id"));
+			
+			$("#save_user_email").one('click', function() {
+				$("#message_user_email").fadeTo( "slow", 0 );
+				startEmailFormValidation();
+		    });
+		}	
+	});
+
 	function passwordFormValidate() {
-		$("#my_form").validate({
+		$("#change_password_form").validate({
 			debug: true,
 			onkeyup: false,
 			focusCleanup: true,
 			focusInvalid: false,
+			errorElement: "p",
 			success: "valid",
 			submitHandler: function(form) {
-				$.rails.handleRemote($("#my_form"));
+				$.rails.handleRemote($("#change_password_form"));
 				// form.submit();
-			},
-			invalidHandler: function(event, validator) {			
 			},
 			errorPlacement: function(error, element) {
 	    		error.appendTo('#message_' + element.attr('id'));
 	    	}
 		});
 	}
+	function emailFormValidate() {
+		$("#change_email_form").validate({
+			debug: true,
+			onkeyup: false,
+			focusCleanup: true,
+			focusInvalid: false,
+			errorElement: "p",
+			success: "valid",
+			submitHandler: function(form) {
+				$.rails.handleRemote($("#change_email_form"));
+				// form.submit();
+			},
+			errorPlacement: function(error, element) {
+	    		error.appendTo('#message_' + element.attr('id'));
+	    	}
+		});
+	}
+
+	$("#user_old_password").keypress(function(e){
+        if(e.keyCode==13) {
+        	e.preventDefault();
+      		$("#user_new_password").focus();
+        }
+    });
+    $("#user_new_password").keypress(function(e){
+        if(e.keyCode==13) {
+        	e.preventDefault();
+      		$("#user_confirm_password").focus();
+        }
+    });
 </script>
