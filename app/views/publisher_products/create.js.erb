@@ -1,2 +1,5 @@
 // alert('ajax works in publisher_products/create');
-$("#render_list").html("<%= escape_javascript(render("publisher_products/list_full")) %>");
+// $("#render_list").html("<#%= escape_javascript(render("publisher_products/list_full")) %>");
+$("<%= escape_javascript(render @publisher_products) %>").prependTo("#render_list");
+updateLoadedItemsCount();
+$("#items_count").text(parseInt($("#items_count").text())+1);

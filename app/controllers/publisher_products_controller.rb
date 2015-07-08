@@ -51,18 +51,16 @@ class PublisherProductsController < ApplicationController
     publisher = publisher_user.publisher
     
     # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction) # .paginate(:per_page => 200, :page => params[:page])
-    
-    # @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction)
-    # @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).limit(2)
-    @itemsShowed = 0
 
+    # counting items in db
+    @publisher_products_count = current_user.publisher.publisher_products.length
     # if the id params is present
     if params[:id]
       # get all records with id less than 'our last id'
-      # and limit the results to 5
-      @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).where('id < ?', params[:id]).limit(2)
+      # and limit the results to params[:count]
+      @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).where('id < ?', params[:id]).limit(params[:count]) rescue nil
     else
-      @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).limit(2)
+      @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).limit(2) rescue nil
     end
     respond_to do |format|
       format.html
@@ -194,7 +192,7 @@ class PublisherProductsController < ApplicationController
                                                                                                     publisher_product_by_review = PublisherProductByReview.new(h_new)
                                                                                                     if publisher_product_by_review.save
                                                     
-                                                                                                        @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
+                                                                                                        @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).first() rescue nil#.paginate(page: params[:page])
                                                                                                         respond_to do |format|
                                                                                                           format.html
                                                                                                           format.js

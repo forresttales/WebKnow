@@ -596,11 +596,14 @@
 												<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
 													<div style="margin: 0;">
 														<div class="publisher-product-utility-bar light">
-															<div style="padding-left: 130px; padding-top: 10px;">
-																<div class="btn-opt-add-spacer"></div>
+															<div id="items_count_container" style="color: #eee; font-size: 14px; font-weight: 700; float: left; padding-left: 30px; padding-top: 16px;">
+																<span id="items_loaded" style="color: #eee; font-size: 14px; font-weight: 700;"></span> out of <span id="items_count" style="color: #eee; font-size: 14px; font-weight: 700;"><%= @publisher_products_count %></span> items shown
+															</div> 
+															<div style="float: right; padding-right: 30px; padding-top: 10px;">
+																<!-- <div class="btn-opt-add-spacer"></div> -->
 																<div class="btn-opt-add-container-outer">
 																	<div class="btn-opt-add-container">
-																		<div id="btn_add_prod" id="open_edit_story_1" class="btn-opt-add" tabindex="">
+																		<div id="btn_add_prod" class="btn-opt-add" tabindex="">
 																			Add Product
 																		</div>
 																	</div>
@@ -612,8 +615,16 @@
 													<div id="render_list" style="position: relative;">
 														<%= render @publisher_products %>
 													</div>
-													<div style="text-align: center; font-size: 20px;">
-														<a href="#" id="show_more">Load more</a>
+													<div id="show_more_container" style="text-align: center; font-size: 20px;">
+														<div style="height: 10px;"></div>
+														<div id="show_more" class="btn-opt-add-container-outer">
+															<div class="btn-opt-add-container">
+																<div class="btn-opt-add" tabindex="">
+																	Load more
+																</div>
+															</div>
+														</div>
+														<div><%= image_tag('global/loader.gif', alt: 'Loading...', id: 'loader_img', style: 'display: none; height: 26px;') %></div>
 													</div>													
 												</div>
 											</div>
@@ -693,42 +704,46 @@
 		//    	$("<#%= escape_javascript(render("list_full", :locals => {:showNextCount => 2})) %>").appendTo("#render_list");
 		// });
 
-		$('a#show_more').click(function (e) {
-		 
+		updateLoadedItemsCount();
+
+		$('#show_more').click(function (e) {		 
 	        // prevent the default click action
-	        e.preventDefault();
-	 
+	        e.preventDefault();	 
 	        // hide load more link
-	        $('#show_more').hide();
-	 
+	        $('#show_more').hide();	 
 	        // show loading gif
-	        // $('.loading-gif').show();
-	 
+	        $('#loader_img').show();
+	        // remember current last element
+	        var lastElement = $('a.publisher-product-list-span').last(); 
 	        // get the last id and save it in a variable 'last-id'
-	        var last_id = $('a.publisher-product-list-span').last().attr('data-id');
-	 
+	        var last_id = lastElement.attr('data-id');
+	        // count of items you want to load
+	        var loadItemsCount = 3; 
 	        // make an ajax call passing along our last user id
-	        $.ajax({
-	 
+	        $.ajax({	 
 	            // make a get request to the server
 	            type: "GET",
 	            // get the url from the href attribute of our link
 	            url: $(this).attr('href'),
 	            // send the last id to our rails app
 	            data: {
-	                id: last_id
+	                id: last_id,
+	                count: loadItemsCount
 	            },
 	            // the response will be a script
 	            dataType: "script",	 
 	            // upon success 
 	            success: function () {
 	                // hide the loading gif
-	                // $('.loading-gif').hide();
+	                $('#loader_img').hide();
 	                // show our load more link
 	                $('#show_more').show();
+	                // focusing on last item
+	                // $('html, body').animate({ scrollTop: lastElement.offset().top - 30 }, 500);
+	                // updated items count
+	                updateLoadedItemsCount();
 	            }
-	        });
-	 
+	        });	 
 	    });
 
 		$('#btn_add_prod').on('click', function() {
@@ -814,6 +829,21 @@
 	          });			
 	
 	
-	});	
+	});
+
+	function updateLoadedItemsCount() {
+		var loadedItemsCount = 0;
+
+		$("a.publisher-product-list-span").each( function() {
+			loadedItemsCount++;
+		});
+
+		if (loadedItemsCount > 0) {
+			$("#items_count_container").show();
+			$("#items_loaded").text(loadedItemsCount);
+		} else{
+			$("#items_count_container").hide();
+		};
+	}	
 	 
 </script>
