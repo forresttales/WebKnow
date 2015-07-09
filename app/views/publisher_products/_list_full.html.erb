@@ -635,554 +635,550 @@
 		
 	</style>
 	
-
-			<div class="product-listbox-full">
+			<!-- <div id="scroll1" class="product-listbox" style="height: 500px;"> -->
+			<div class="product-listbox-full">	
 
 			<% if !@publisher_products.nil? %>
 			<% if @publisher_products.any? %>
-				<% i = 0 %>
-				<%= @itemsShowed %>
-				<% if defined?(locals) %>
-					<h1><%= i = start = @itemsShowed %></h1>
-					<h1><%= finish = start + locals[:showNextCount].to_i - 1 %></h1>
-					<%= @itemsShowed = finish + 1 %>
-				<% else %>
-					<% start = 0 %>
-					<% finish = @publisher_products.length %>
-				<% end %>
-				<% @publisher_products[start..finish].each do |publisher_product| %>
+				<% i = 1 %>
+				<!-- <#% s_rand = '?' + (rand(10..90) * rand(100..900)).to_s %#> -->
+				<% @publisher_products.each do |publisher_product| %>
 					<% publisher_product_manifest = publisher_product.publisher_product_manifest %>
-					<%= link_to(('Publisher-Product-Manifest-id' + publisher_product.slug), class: "publisher-product-list-span publisher-product-list-edit") do %>
-			   		<div class="table pad-marg-null">
-			   			<div class="row">
-							<div class="cell-210">
-								<div style="padding: 0px 0px 0px 0px;">
-						   			<div id="render_listing_product_logo">
-										<div class="container-figure-image-list container-figure-image-border">
-											<figure>
-												<%= publisher_product_pos1_200_for(publisher_product) %>
-											</figure>
+					<!-- <#% @publisher_product = publisher_product %#> -->
+					<!-- <#% @publisher_product_manifest = publisher_product.publisher_product_manifest %#> -->
+						<%= link_to(('Publisher-Product-Manifest-id' + publisher_product.slug), class: "publisher-product-list-span publisher-product-list-edit") do %>
+				   		<div class="table pad-marg-null">
+				   			<div class="row">
+								<div class="cell-210">
+									<div style="padding: 0px 0px 0px 0px;">
+							   			<div id="render_listing_product_logo">
+											<div class="container-figure-image-list container-figure-image-border">
+												<figure>
+													<%= publisher_product_pos1_200_for(publisher_product) %>
+													<!-- <#%= image_tag("avatars/avatar-gen-product-w200-h200.png") %#> -->
+													<!-- <img src="../images_avatar/avatar-gen-product-w200-h200.png" alt=""> -->
+												</figure>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="cell-490">
-								<div class="table pad-marg-null">
-									<div class="row">
-										<div class="cell-235">
-											<div style="4px;"></div>
-											<div class="table pad-marg-null">
-												<div class="row">
-													<div class="cell-235">
+								<div class="cell-490">
+									<div class="table pad-marg-null">
+										<div class="row">
+											<div class="cell-235">
+												<div style="4px;"></div>
+												<div class="table pad-marg-null">
+													<div class="row">
+														<div class="cell-235">
 
-														<div id="render_name_product_<%= i %>" class="list-tip-container"></div>
-													    <script id="name_product_Template_<%= i %>" type="text/x-jQuery-tmpl">
-															<div id="name_product_container_<%= i %>" class="table pad-marg-null list-tip-target">
-																<div class="row">
-																	<div class="list-field-cell-1">
-																		<div id="name_product_<%= i %>" class="list-field-cell-1a"></div>
+															<div id="render_name_product_<%= i %>" class="list-tip-container"></div>
+														    <script id="name_product_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="name_product_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="name_product_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
 																	</div>
-																	<div class="list-field-cell-2">
-																		<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-																	</div>
-																	<div class="list-field-cell-3"></div>																		
 																</div>
-															</div>
-														    <div class="list-tip-1 list-tip-pos-1 hidden">
-														    	<div class="list-tip-1-indicator"></div>
-																<span></span>
-														    </div>
-												    	</script>
-														<script type="text/javascript">
-															var container = "#render_name_product_<%= i %>";
-															var ref		  = "#name_product_Template_<%= i %>";
-														    $(ref).tmpl().appendTo(container);
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+															<script type="text/javascript">
+																var container = "#render_name_product_<%= i %>";
+																var ref		  = "#name_product_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
 
-															<% h_name_product = name_product_for(publisher_product) %>
-															var name_product_text = <%=raw h_name_product[:name_product_text] %>;
-															var list_number = "<%= i %>";
-														    set_field("", "name_product", name_product_text, "Product Name", false, "", list_number);
-														</script>
+																<% h_name_product = name_product_for(publisher_product) %>
+																var name_product_text = <%=raw h_name_product[:name_product_text] %>;
+																var list_number = "<%= i %>";
+															    set_field("", "name_product", name_product_text, "Product Name", false, "", list_number);
+															</script>
 
-													</div>
-												</div>		
-												<div class="row" style="height: 4px;"></div>
-												<div class="row">
-													<div class="cell-235">
+														</div>
+													</div>		
+													<div class="row" style="height: 4px;"></div>
+													<div class="row">
+														<div class="cell-235">
 
-														<div id="render_versions_<%= i %>" class="list-tip-container"></div>
-													    <script id="versions_Template_<%= i %>" type="text/x-jQuery-tmpl">
-															<div id="versions_container_<%= i %>" class="table pad-marg-null list-tip-target">
-																<div class="row">
-																	<div class="list-field-cell-1">
-																		<div id="versions_<%= i %>" class="list-field-cell-1a"></div>
+															<div id="render_versions_<%= i %>" class="list-tip-container"></div>
+														    <script id="versions_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="versions_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="versions_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
 																	</div>
-																	<div class="list-field-cell-2">
-																		<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-																	</div>
-																	<div class="list-field-cell-3"></div>																		
 																</div>
-															</div>
-														    <div class="list-tip-1 list-tip-pos-1 hidden">
-														    	<div class="list-tip-1-indicator"></div>
-																<span></span>
-														    </div>
-												    	</script>
-												    										    	
-														<script type="text/javascript">
-															var container = "#render_versions_<%= i %>";
-															var ref		  = "#versions_Template_<%= i %>";
-														    $(ref).tmpl().appendTo(container);
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    										    	
+															<script type="text/javascript">
+																var container = "#render_versions_<%= i %>";
+																var ref		  = "#versions_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
 
-															<% h_versions = versions_for(publisher_product) %>
-															var versions_text = <%=raw h_versions[:versions_text] %>;
-															var list_number = "<%= i %>";
-														    set_field("Version: ", "versions", versions_text, "Version", false, "", list_number);
-														</script>
-														
-													</div>
-												</div>		
-												<div class="row" style="height: 4px;"></div>
-												<div class="row">
-													<div class="cell-235">
-														
-														<div id="render_category_subject_<%= i %>" class="list-tip-container"></div>
-													    <script id="category_subject_Template_<%= i %>" type="text/x-jQuery-tmpl">
-															<div id="category_subject_container_<%= i %>" class="table pad-marg-null list-tip-target">
-																<div class="row">
-																	<div class="list-field-cell-1">
-																		<div id="category_subject_<%= i %>" class="list-field-cell-1a"></div>
-																	</div>
-																	<div class="list-field-cell-2">
-																		<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-																	</div>
-																	<div class="list-field-cell-3"></div>																		
-																</div>
-															</div>
-														    <div class="list-tip-1 list-tip-pos-1 hidden">
-														    	<div class="list-tip-1-indicator"></div>
-																<span></span>
-														    </div>
-												    	</script>
-												    	
-														<script type="text/javascript">
-															var container = "#render_category_subject_<%= i %>";
-															var ref		  = "#category_subject_Template_<%= i %>";
-														    $(ref).tmpl().appendTo(container);
-
-															<% h_category_subject = category_subject_for(publisher_product) %>
-															var category_subject_text = <%=raw h_category_subject[:category_subject_text] %>;
-															var has_category_subject_other = <%=raw h_category_subject[:has_category_subject_other] %>;
-															var category_subject_other = "<%=raw h_category_subject[:category_subject_other] %>";
-															var list_number = "<%= i %>";
-															set_field("Subject: ", "category_subject", category_subject_text, "Subject", has_category_subject_other, category_subject_other, list_number);
-														</script>
-														
-													</div>
-												</div>		
-												<div class="row" style="height: 4px;"></div>
-												<div class="row">
-													<div class="cell-235">
+																<% h_versions = versions_for(publisher_product) %>
+																var versions_text = <%=raw h_versions[:versions_text] %>;
+																var list_number = "<%= i %>";
+															    set_field("Version: ", "versions", versions_text, "Version", false, "", list_number);
+															</script>
 															
-														<div id="render_age_range_<%= i %>" class="list-tip-container"></div>
-													    <script id="age_range_Template_<%= i %>" type="text/x-jQuery-tmpl">
-															<div id="age_range_container_<%= i %>" class="table pad-marg-null list-tip-target">
-																<div class="row">
-																	<div class="list-field-cell-1">
-																		<div id="age_range_<%= i %>" class="list-field-cell-1a"></div>
-																	</div>
-																	<div class="list-field-cell-2">
-																		<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-																	</div>
-																	<div class="list-field-cell-3"></div>																		
-																</div>
-															</div>
-														    <div class="list-tip-1 list-tip-pos-1 hidden">
-														    	<div class="list-tip-1-indicator"></div>
-																<span></span>
-														    </div>
-												    	</script>
-												    											    	
-														<script type="text/javascript">
-															var container = "#render_age_range_<%= i %>";
-															var ref		  = "#age_range_Template_<%= i %>";
-														    $(ref).tmpl().appendTo(container);
-
-															<% h_age_range = age_range_for(publisher_product) %>
-															var age_range_text = <%=raw h_age_range[:age_range_text] %>;
-															var list_number = "<%= i %>";
-															set_field("Age Range: ", "age_range", age_range_text, "Ages", false, "", list_number);
-														</script>
+														</div>
+													</div>		
+													<div class="row" style="height: 4px;"></div>
+													<div class="row">
+														<div class="cell-235">
 															
-													</div>
-												</div>		
-												<div class="row" style="height: 4px;"></div>
-												<div class="row">
-													<div class="cell-235">
-
-														<div id="render_grade_range_<%= i %>" class="list-tip-container"></div>
-													    <script id="grade_range_Template_<%= i %>" type="text/x-jQuery-tmpl">
-															<div id="grade_range_container_<%= i %>" class="table pad-marg-null list-tip-target">
-																<div class="row">
-																	<div class="list-field-cell-1">
-																		<div id="grade_range_<%= i %>" class="list-field-cell-1a"></div>
+															<div id="render_category_subject_<%= i %>" class="list-tip-container"></div>
+														    <script id="category_subject_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="category_subject_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="category_subject_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
 																	</div>
-																	<div class="list-field-cell-2">
-																		<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-																	</div>
-																	<div class="list-field-cell-3"></div>																		
 																</div>
-															</div>
-														    <div class="list-tip-1 list-tip-pos-1 hidden">
-														    	<div class="list-tip-1-indicator"></div>
-																<span></span>
-														    </div>
-												    	</script>
-												    										    	
-														<script type="text/javascript">
-															var container = "#render_grade_range_<%= i %>";
-															var ref		  = "#grade_range_Template_<%= i %>";
-														    $(ref).tmpl().appendTo(container);
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    	
+															<script type="text/javascript">
+																var container = "#render_category_subject_<%= i %>";
+																var ref		  = "#category_subject_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
 
-															<% h_grade_range = grade_range_for(publisher_product) %>
-															var grade_range_text = <%=raw h_grade_range[:grade_range_text] %>;
-															var list_number = "<%= i %>";
-															set_field("Grade Range: ", "grade_range", grade_range_text, "Grades", false, "", list_number);
-														</script>
-
-													</div>
-												</div>		
-												<div class="row" style="height: 4px;"></div>
-												<div class="row">
-													<div class="cell-235">
-														
-														<div id="render_market_target_<%= i %>" class="list-tip-container"></div>
-													    <script id="market_target_Template_<%= i %>" type="text/x-jQuery-tmpl">
-															<div id="market_target_container_<%= i %>" class="table pad-marg-null list-tip-target">
-																<div class="row">
-																	<div class="list-field-cell-1">
-																		<div id="market_target_<%= i %>" class="list-field-cell-1a"></div>
+																<% h_category_subject = category_subject_for(publisher_product) %>
+																var category_subject_text = <%=raw h_category_subject[:category_subject_text] %>;
+																var has_category_subject_other = <%=raw h_category_subject[:has_category_subject_other] %>;
+																var category_subject_other = "<%=raw h_category_subject[:category_subject_other] %>";
+																var list_number = "<%= i %>";
+																set_field("Subject: ", "category_subject", category_subject_text, "Subject", has_category_subject_other, category_subject_other, list_number);
+															</script>
+															
+														</div>
+													</div>		
+													<div class="row" style="height: 4px;"></div>
+													<div class="row">
+														<div class="cell-235">
+																
+															<div id="render_age_range_<%= i %>" class="list-tip-container"></div>
+														    <script id="age_range_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="age_range_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="age_range_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
 																	</div>
-																	<div class="list-field-cell-2">
-																		<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-																	</div>
-																	<div class="list-field-cell-3"></div>																		
 																</div>
-															</div>
-														    <div class="list-tip-1 list-tip-pos-1 hidden">
-														    	<div class="list-tip-1-indicator"></div>
-																<span></span>
-														    </div>
-												    	</script>
-												    											    	
-														<script type="text/javascript">
-															var container = "#render_market_target_<%= i %>";
-															var ref		  = "#market_target_Template_<%= i %>";
-														    $(ref).tmpl().appendTo(container);
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_age_range_<%= i %>";
+																var ref		  = "#age_range_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
 
-															<% h_market_target = market_target_for(publisher_product) %>
-															var market_target_text = <%=raw h_market_target[:market_target_text] %>;
-															var list_number = "<%= i %>";
-															// set_market_target(market_target_text, list_number);
-															set_field("Market: ", "market_target", market_target_text, "Market", false, "", list_number);
-														</script>
-														
-													</div>
-												</div>		
-												<div class="row" style="height: 4px;"></div>
-												<div class="row">
-													<div class="cell-235">
+																<% h_age_range = age_range_for(publisher_product) %>
+																var age_range_text = <%=raw h_age_range[:age_range_text] %>;
+																var list_number = "<%= i %>";
+																set_field("Age Range: ", "age_range", age_range_text, "Ages", false, "", list_number);
+															</script>
+																
+														</div>
+													</div>		
+													<div class="row" style="height: 4px;"></div>
+													<div class="row">
+														<div class="cell-235">
 
-														<div id="render_pricing_model_<%= i %>" class="list-tip-container"></div>
-													    <script id="pricing_model_Template_<%= i %>" type="text/x-jQuery-tmpl">
-															<div id="pricing_model_container_<%= i %>" class="table pad-marg-null list-tip-target">
-																<div class="row">
-																	<div class="list-field-cell-1">
-																		<div id="pricing_model_<%= i %>" class="list-field-cell-1a"></div>
+															<div id="render_grade_range_<%= i %>" class="list-tip-container"></div>
+														    <script id="grade_range_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="grade_range_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="grade_range_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
 																	</div>
-																	<div class="list-field-cell-2">
-																		<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-																	</div>
-																	<div class="list-field-cell-3"></div>																		
 																</div>
-															</div>
-														    <div class="list-tip-1 list-tip-pos-1 hidden">
-														    	<div class="list-tip-1-indicator"></div>
-																<span></span>
-														    </div>
-												    	</script>
-												    											    	
-														<script type="text/javascript">
-															var container = "#render_pricing_model_<%= i %>";
-															var ref		  = "#pricing_model_Template_<%= i %>";
-														    $(ref).tmpl().appendTo(container);
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    										    	
+															<script type="text/javascript">
+																var container = "#render_grade_range_<%= i %>";
+																var ref		  = "#grade_range_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
 
-															<% h_pricing_model = pricing_model_for(publisher_product) %>
-															var pricing_model_text = <%=raw h_pricing_model[:pricing_model_text] %>;
-															var list_number = "<%= i %>";
-															// set_pricing_model(pricing_model_text, list_number);
-															set_field("Pricing Model: ", "pricing_model", pricing_model_text, "Pricing Model", false, "", list_number);
-														</script>
+																<% h_grade_range = grade_range_for(publisher_product) %>
+																var grade_range_text = <%=raw h_grade_range[:grade_range_text] %>;
+																var list_number = "<%= i %>";
+																set_field("Grade Range: ", "grade_range", grade_range_text, "Grades", false, "", list_number);
+															</script>
 
-													</div>
-												</div>		
-												<div class="row" style="height: 10px;"></div>
+														</div>
+													</div>		
+													<div class="row" style="height: 4px;"></div>
+													<div class="row">
+														<div class="cell-235">
+															
+															<div id="render_market_target_<%= i %>" class="list-tip-container"></div>
+														    <script id="market_target_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="market_target_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="market_target_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
+																	</div>
+																</div>
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_market_target_<%= i %>";
+																var ref		  = "#market_target_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
+
+																<% h_market_target = market_target_for(publisher_product) %>
+																var market_target_text = <%=raw h_market_target[:market_target_text] %>;
+																var list_number = "<%= i %>";
+																// set_market_target(market_target_text, list_number);
+																set_field("Market: ", "market_target", market_target_text, "Market", false, "", list_number);
+															</script>
+															
+														</div>
+													</div>		
+													<div class="row" style="height: 4px;"></div>
+													<div class="row">
+														<div class="cell-235">
+
+															<div id="render_pricing_model_<%= i %>" class="list-tip-container"></div>
+														    <script id="pricing_model_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="pricing_model_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="pricing_model_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
+																	</div>
+																</div>
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_pricing_model_<%= i %>";
+																var ref		  = "#pricing_model_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
+
+																<% h_pricing_model = pricing_model_for(publisher_product) %>
+																var pricing_model_text = <%=raw h_pricing_model[:pricing_model_text] %>;
+																var list_number = "<%= i %>";
+																// set_pricing_model(pricing_model_text, list_number);
+																set_field("Pricing Model: ", "pricing_model", pricing_model_text, "Pricing Model", false, "", list_number);
+															</script>
+
+														</div>
+													</div>		
+													<div class="row" style="height: 10px;"></div>
+												</div>
 											</div>
-										</div>
-						   				<div class="cell-10"></div>
-										<div class="cell-235">
-											<div style="height: 4px;"></div>
-											<div class="table pad-marg-null">
-												<div class="row">
-													<div class="cell-235">
+							   				<div class="cell-10"></div>
+											<div class="cell-235">
+												<div style="height: 4px;"></div>
+												<div class="table pad-marg-null">
+													<div class="row">
+														<div class="cell-235">
 
-														<div id="render_platform_<%= i %>" class="list-tip-container"></div>
-													    <script id="platform_Template_<%= i %>" type="text/x-jQuery-tmpl">
-															<div id="platform_container_<%= i %>" class="table pad-marg-null list-tip-target">
-																<div class="row">
-																	<div class="list-field-cell-1">
-																		<div id="platform_<%= i %>" class="list-field-cell-1a"></div>
+															<div id="render_platform_<%= i %>" class="list-tip-container"></div>
+														    <script id="platform_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="platform_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="platform_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
 																	</div>
-																	<div class="list-field-cell-2">
-																		<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-																	</div>
-																	<div class="list-field-cell-3"></div>																		
 																</div>
-															</div>
-														    <div class="list-tip-1 list-tip-pos-1 hidden">
-														    	<div class="list-tip-1-indicator"></div>
-																<span></span>
-														    </div>
-												    	</script>
-												    											    	
-														<script type="text/javascript">
-															var container = "#render_platform_<%= i %>";
-															var ref		  = "#platform_Template_<%= i %>";
-														    $(ref).tmpl().appendTo(container);
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_platform_<%= i %>";
+																var ref		  = "#platform_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
 
-															<% h_platform = platform_for(publisher_product) %>
-															var platform_text = <%=raw h_platform[:platform_text] %>;
-															var has_platform_other = <%=raw h_platform[:has_platform_other] %>;
-															var platform_other = "<%=raw h_platform[:platform_other] %>";
-															var list_number = "<%= i %>";
-															// set_platform(platform_text, has_platform_other, platform_other, list_number);
-															set_field("Platform: ", "platform", platform_text, "Platform", has_platform_other, platform_other, list_number);
-														</script>
+																<% h_platform = platform_for(publisher_product) %>
+																var platform_text = <%=raw h_platform[:platform_text] %>;
+																var has_platform_other = <%=raw h_platform[:has_platform_other] %>;
+																var platform_other = "<%=raw h_platform[:platform_other] %>";
+																var list_number = "<%= i %>";
+																// set_platform(platform_text, has_platform_other, platform_other, list_number);
+																set_field("Platform: ", "platform", platform_text, "Platform", has_platform_other, platform_other, list_number);
+															</script>
 
-													</div>
-												</div>	
-												<div class="row" style="height: 4px;"></div>
-												<div class="row">
-													<div class="cell-235">
+														</div>
+													</div>	
+													<div class="row" style="height: 4px;"></div>
+													<div class="row">
+														<div class="cell-235">
 
-														<div id="render_file_type_<%= i %>" class="list-tip-container"></div>
-													    <script id="file_type_Template_<%= i %>" type="text/x-jQuery-tmpl">
-															<div id="file_type_container_<%= i %>" class="table pad-marg-null list-tip-target">
-																<div class="row">
-																	<div class="list-field-cell-1">
-																		<div id="file_type_<%= i %>" class="list-field-cell-1a"></div>
+															<div id="render_file_type_<%= i %>" class="list-tip-container"></div>
+														    <script id="file_type_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="file_type_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="file_type_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
 																	</div>
-																	<div class="list-field-cell-2">
-																		<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-																	</div>
-																	<div class="list-field-cell-3"></div>																		
 																</div>
-															</div>
-														    <div class="list-tip-1 list-tip-pos-1 hidden">
-														    	<div class="list-tip-1-indicator"></div>
-																<span></span>
-														    </div>
-												    	</script>
-												    											    	
-														<script type="text/javascript">
-															var container = "#render_file_type_<%= i %>";
-															var ref		  = "#file_type_Template_<%= i %>";
-														    $(ref).tmpl().appendTo(container);
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_file_type_<%= i %>";
+																var ref		  = "#file_type_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
 
-															<% h_file_type = file_type_for(publisher_product) %>
-															var file_type_text = <%=raw h_file_type[:file_type_text] %>;
-															var has_file_type_other = <%=raw h_file_type[:has_file_type_other] %>;
-															var file_type_other = "<%=raw h_file_type[:file_type_other] %>";
-															var list_number = "<%= i %>";
-															// set_file_type(file_type_text, has_file_type_other, file_type_other, list_number);
-															set_field("File Type: ", "file_type", file_type_text, "File Type", has_file_type_other, file_type_other, list_number);
-														</script>
-														
-													</div>
-												</div>	
-												<div class="row" style="height: 4px;"></div>
-												<div class="row">
-													<div class="cell-235">
+																<% h_file_type = file_type_for(publisher_product) %>
+																var file_type_text = <%=raw h_file_type[:file_type_text] %>;
+																var has_file_type_other = <%=raw h_file_type[:has_file_type_other] %>;
+																var file_type_other = "<%=raw h_file_type[:file_type_other] %>";
+																var list_number = "<%= i %>";
+																// set_file_type(file_type_text, has_file_type_other, file_type_other, list_number);
+																set_field("File Type: ", "file_type", file_type_text, "File Type", has_file_type_other, file_type_other, list_number);
+															</script>
+															
+														</div>
+													</div>	
+													<div class="row" style="height: 4px;"></div>
+													<div class="row">
+														<div class="cell-235">
 
-														<div id="render_by_review_<%= i %>" class="list-tip-container"></div>
-													    <script id="by_review_Template_<%= i %>" type="text/x-jQuery-tmpl">
-															<div id="by_review_container_<%= i %>" class="table pad-marg-null list-tip-target">
-																<div class="row">
-																	<div class="list-field-cell-1">
-																		<div id="by_review_<%= i %>" class="list-field-cell-1a"></div>
+															<div id="render_by_review_<%= i %>" class="list-tip-container"></div>
+														    <script id="by_review_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="by_review_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="by_review_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
 																	</div>
-																	<div class="list-field-cell-2">
-																		<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-																	</div>
-																	<div class="list-field-cell-3"></div>																		
 																</div>
-															</div>
-														    <div class="list-tip-1 list-tip-pos-1 hidden">
-														    	<div class="list-tip-1-indicator"></div>
-																<span></span>
-														    </div>
-												    	</script>
-												    										    	
-														<script type="text/javascript">
-															var container = "#render_by_review_<%= i %>";
-															var ref		  = "#by_review_Template_<%= i %>";
-														    $(ref).tmpl().appendTo(container);
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    										    	
+															<script type="text/javascript">
+																var container = "#render_by_review_<%= i %>";
+																var ref		  = "#by_review_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
 
-															<% h_by_review = by_review_for(publisher_product) %>
-															var by_review_text = [<%=raw h_by_review[:by_review_text] %>];
-															var has_by_review_other = <%=raw h_by_review[:has_by_review_other] %>;
-															var by_review_other = "<%=raw h_by_review[:by_review_other] %>";
-															var list_number = "<%= i %>";
-															set_field("Reviewed: ", "by_review", by_review_text, "No", has_by_review_other, by_review_other, list_number);
-														</script>
+																<% h_by_review = by_review_for(publisher_product) %>
+																var by_review_text = [<%=raw h_by_review[:by_review_text] %>];
+																var has_by_review_other = <%=raw h_by_review[:has_by_review_other] %>;
+																var by_review_other = "<%=raw h_by_review[:by_review_other] %>";
+																var list_number = "<%= i %>";
+																set_field("Reviewed: ", "by_review", by_review_text, "No", has_by_review_other, by_review_other, list_number);
+															</script>
 
-													</div>
-												</div>	
-												<div class="row" style="height: 4px;"></div>
-												<div class="row">
-													<div class="cell-235">
+														</div>
+													</div>	
+													<div class="row" style="height: 4px;"></div>
+													<div class="row">
+														<div class="cell-235">
 
-														<div id="render_enhancement_<%= i %>" class="list-tip-container"></div>
-													    <script id="enhancement_Template_<%= i %>" type="text/x-jQuery-tmpl">
-															<div id="enhancement_container_<%= i %>" class="table pad-marg-null list-tip-target">
-																<div class="row">
-																	<div class="list-field-cell-1">
-																		<div id="enhancement_<%= i %>" class="list-field-cell-1a"></div>
+															<div id="render_enhancement_<%= i %>" class="list-tip-container"></div>
+														    <script id="enhancement_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="enhancement_container_<%= i %>" class="table pad-marg-null list-tip-target">
+																	<div class="row">
+																		<div class="list-field-cell-1">
+																			<div id="enhancement_<%= i %>" class="list-field-cell-1a"></div>
+																		</div>
+																		<div class="list-field-cell-2">
+																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+																		</div>
+																		<div class="list-field-cell-3"></div>																		
 																	</div>
-																	<div class="list-field-cell-2">
-																		<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-																	</div>
-																	<div class="list-field-cell-3"></div>																		
 																</div>
-															</div>
-														    <div class="list-tip-1 list-tip-pos-1 hidden">
-														    	<div class="list-tip-1-indicator"></div>
-																<span></span>
-														    </div>
-												    	</script>
-												    											    	
-														<script type="text/javascript">
-															var container = "#render_enhancement_<%= i %>";
-															var ref		  = "#enhancement_Template_<%= i %>";
-														    $(ref).tmpl().appendTo(container);
+															    <div class="list-tip-1 list-tip-pos-1 hidden">
+															    	<div class="list-tip-1-indicator"></div>
+																	<span></span>
+															    </div>
+													    	</script>
+													    											    	
+															<script type="text/javascript">
+																var container = "#render_enhancement_<%= i %>";
+																var ref		  = "#enhancement_Template_<%= i %>";
+															    $(ref).tmpl().appendTo(container);
 
-															<% h_enhancement = enhancement_for(publisher_product) %>
-															var enhancement_text = <%=raw h_enhancement[:enhancement_text] %>;
-															var has_enhancement_other = <%=raw h_enhancement[:has_enhancement_other] %>;
-															var enhancement_other = "<%=raw h_enhancement[:enhancement_other] %>";
-															var list_number = "<%= i %>";
-															set_field("Enhancements: ", "enhancement", enhancement_text, "Enhancements", has_enhancement_other, enhancement_other, list_number);
-														</script>
+																<% h_enhancement = enhancement_for(publisher_product) %>
+																var enhancement_text = <%=raw h_enhancement[:enhancement_text] %>;
+																var has_enhancement_other = <%=raw h_enhancement[:has_enhancement_other] %>;
+																var enhancement_other = "<%=raw h_enhancement[:enhancement_other] %>";
+																var list_number = "<%= i %>";
+																set_field("Enhancements: ", "enhancement", enhancement_text, "Enhancements", has_enhancement_other, enhancement_other, list_number);
+															</script>
 
-													</div>
-												</div>	
-												<div class="row" style="height: 4px;"></div>
-												<div class="row">
-													<div class="cell-235">
-														<div style="position: relative;">
-															<div style="display: inline-block">
-																<span class="list-field-title">Student Rating </span>
-															</div>
-															<div style="display: inline-block" class="like-icon"></div>
-															<div style="display: inline-block">
-																<span class="list-field-title"> : </span>
-															</div>
-															<div style="display: inline-block">
-																<span id="box_student_rating_listing" class="list-field-text"></span>
+														</div>
+													</div>	
+													<div class="row" style="height: 4px;"></div>
+													<div class="row">
+														<div class="cell-235">
+															<div style="position: relative;">
+																<div style="display: inline-block">
+																	<span class="list-field-title">Student Rating </span>
+																</div>
+																<div style="display: inline-block" class="like-icon"></div>
+																<div style="display: inline-block">
+																	<span class="list-field-title"> : </span>
+																</div>
+																<div style="display: inline-block">
+																	<span id="box_student_rating_listing" class="list-field-text"></span>
+																</div>
 															</div>
 														</div>
-													</div>
-												</div>	
+													</div>	
+												</div>
 											</div>
-										</div>
-										<div class="cell-10"></div>			
-									</div>
-								</div>
-								<div class="table pad-marg-null">
-									<div class="row">
-										<div class="cell-490">
-											<span class="list-field-title">Teacher Rating Total: </span>
-											<span class="list-field-title"> # </span>
-											<span class="list-field-title">&nbsp;&nbsp;&nbsp;</span>
-											<span class="list-field-title">Easy: </span>
-											<span class="list-field-title"> # </span>
-											<span class="list-field-title">&nbsp;&nbsp;&nbsp;</span>
-											<span class="list-field-title">Fit: </span>
-											<span class="list-field-title"> # </span>
-											<span class="list-field-title">&nbsp;&nbsp;&nbsp;</span>
-											<span class="list-field-title">Worked: </span>
-											<span class="list-field-title"> # </span>
+											<div class="cell-10"></div>			
 										</div>
 									</div>
-								</div>
-							</div>
-				   		</div>
-				   	</div> 
-				   	
-			   		<div class="table pad-marg-null">
-			   			<div class="row">
-							<div class="cell-210">
-						    	
-								<div id="render_product_tagline_<%= i %>" class="list-tip-container"></div>
-							    <script id="product_tagline_Template_<%= i %>" type="text/x-jQuery-tmpl">
-									<div id="product_tagline_container_<%= i %>" class="table pad-marg-null list-tip-target">
+									<div class="table pad-marg-null">
 										<div class="row">
-											<div class="list-field-cell-1">
-												<div id="product_tagline_<%= i %>" class="list-field-cell-1a"></div>
+											<div class="cell-490">
+												<span class="list-field-title">Teacher Rating Total: </span>
+												<span class="list-field-title"> # </span>
+												<span class="list-field-title">&nbsp;&nbsp;&nbsp;</span>
+												<span class="list-field-title">Easy: </span>
+												<span class="list-field-title"> # </span>
+												<span class="list-field-title">&nbsp;&nbsp;&nbsp;</span>
+												<span class="list-field-title">Fit: </span>
+												<span class="list-field-title"> # </span>
+												<span class="list-field-title">&nbsp;&nbsp;&nbsp;</span>
+												<span class="list-field-title">Worked: </span>
+												<span class="list-field-title"> # </span>
 											</div>
-											<div class="list-field-cell-2">
-												<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
-											</div>
-											<div class="list-field-cell-3"></div>																		
 										</div>
 									</div>
-								    <div class="list-tip-1 list-tip-pos-1 hidden">
-								    	<div class="list-tip-1-indicator"></div>
-										<span></span>
-								    </div>
-						    	</script>
-						    										    	
-								<script type="text/javascript">
-									var container = "#render_product_tagline_<%= i %>";
-									var ref		  = "#product_tagline_Template_<%= i %>";
-								    $(ref).tmpl().appendTo(container);
+								</div>
+					   		</div>
+					   	</div> 
+					   	
+				   		<div class="table pad-marg-null">
+				   			<div class="row">
+								<div class="cell-210">
+							    	
+									<div id="render_product_tagline_<%= i %>" class="list-tip-container"></div>
+								    <script id="product_tagline_Template_<%= i %>" type="text/x-jQuery-tmpl">
+										<div id="product_tagline_container_<%= i %>" class="table pad-marg-null list-tip-target">
+											<div class="row">
+												<div class="list-field-cell-1">
+													<div id="product_tagline_<%= i %>" class="list-field-cell-1a"></div>
+												</div>
+												<div class="list-field-cell-2">
+													<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
+												</div>
+												<div class="list-field-cell-3"></div>																		
+											</div>
+										</div>
+									    <div class="list-tip-1 list-tip-pos-1 hidden">
+									    	<div class="list-tip-1-indicator"></div>
+											<span></span>
+									    </div>
+							    	</script>
+							    										    	
+									<script type="text/javascript">
+										var container = "#render_product_tagline_<%= i %>";
+										var ref		  = "#product_tagline_Template_<%= i %>";
+									    $(ref).tmpl().appendTo(container);
 
-									<% h_product_tagline = product_tagline_for(publisher_product) %>
-									var product_tagline_text = <%=raw h_product_tagline[:product_tagline_text] %>;
-									var list_number = "<%= i %>";
-								    set_field("", "product_tagline", product_tagline_text, "Tagline", false, "", list_number);
-								</script>
-								
-							</div>					   	
-							<div class="cell-490">
-								<div class="table pad-marg-null">
-									<div class="row">
-										<div class="cell-235"></div>
-										<div class="cell-10"></div>
-										<div class="cell-235">
-											<span class="list-field-title">Product ID: <%= publisher_product.slug %> </span>
+										<% h_product_tagline = product_tagline_for(publisher_product) %>
+										var product_tagline_text = <%=raw h_product_tagline[:product_tagline_text] %>;
+										var list_number = "<%= i %>";
+									    set_field("", "product_tagline", product_tagline_text, "Tagline", false, "", list_number);
+									</script>
+									
+								</div>					   	
+								<div class="cell-490">
+									<div class="table pad-marg-null">
+										<div class="row">
+											<div class="cell-235"></div>
+											<div class="cell-10"></div>
+											<div class="cell-235">
+												<span class="list-field-title">Product ID: <%= publisher_product.slug %> </span>
+											</div>
+											<div class="cell-10"></div>
 										</div>
-										<div class="cell-10"></div>
-									</div>
-								</div>									
+									</div>									
+								</div>					   	
 							</div>					   	
-						</div>					   	
-				   	</div>
-				   	<div style="2px;"></div>
-				   	<div style="background-color: #37633a; width: 100%; height: 2px;"></div>
-					<% end %>
-				
-					<% i += 1 %>					
+					   	</div>
+					   	<div style="2px;"></div>
+					   	<div style="background-color: #37633a; width: 100%; height: 2px;"></div>
+						<% end %>
+					
+						<% i += 1 %>					
 				<% end %>
 
 			<% else %>

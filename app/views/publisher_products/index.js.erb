@@ -2,9 +2,9 @@
 // $("#render_list").html("<#%= escape_javascript(render("publisher_products/list")) %>");
 // $('#will_paginate').html('<#%= escape_javascript(will_paginate @publisher_products) %>');
 // $('#publisher_product_utility_bar_footer .pagination a').attr('data-remote', 'true');
-
 <% if @publisher_products.any? %>
 	$("<%= escape_javascript(render @publisher_products) %>").appendTo("#render_list");
 <% else %>
 	$("#show_more_container").hide();
+	$("#no_more_items").show();
 <% end %>
