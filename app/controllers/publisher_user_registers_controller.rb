@@ -9,8 +9,8 @@ class PublisherUserRegistersController < ApplicationController
   respond_to :html, :js, :json  
 
   # helper_method :sort_column, :sort_direction, :yesno
-
-  before_action :verify_signin, only: [:index]
+  # before_action :verify_signin, only: [:index]
+  before_action :verify_signin
 
 
   def verify_signin
@@ -27,7 +27,8 @@ class PublisherUserRegistersController < ApplicationController
       @user_personal = current_user
       @bd_years = BdYear.all
 
-      gon.user_birthday = {'day': @user_personal.bd_day, 'month': @user_personal.bd_month, 'year': @user_personal.bd_year}
+      # gon.user_birthday = {'day': @user_personal.bd_day, 'month': @user_personal.bd_month, 'year': @user_personal.bd_year}
+      gon.user_birthday = { :day => @user_personal.bd_day, :month => @user_personal.bd_month, :year => @user_personal.bd_year }
 
       gon.user_gender = @user_personal.gender
 

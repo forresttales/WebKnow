@@ -24,7 +24,7 @@
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
 		}
 		.knowcred .title-grey span {color:#333; float:right;}
-		.knowcred #j-col-left {width:550px; float:left;}
+		.knowcred #j-col-left {width:550px; float:left; margin-left: 34px;}
 		.knowcred #j-col-right {width:550px; float:right;}
 		.knowcred .ex-box {width:250px; border:1px solid #333; height:150px; float:left; margin:11px;}.ex-box h2 {font-size:24px; text-align: center;}
 		.knowcred .knowcred-icon {opacity: .45; margin:35px 0 0 125px;}
@@ -53,15 +53,15 @@
 	</style>
 	
 	<div class="knowcred">	
-		<div>
-			<a href="#"><%= image_tag("knowstory-icon-2-w634-h212.png", alt: 'knowstory-icon-2-w634-h212.png', class: 'logo') %></a>
-		</div>
+		<!-- <div>
+			<a href="#"><#%= image_tag("knowstory-icon-2-w634-h212.png", alt: 'knowstory-icon-2-w634-h212.png', class: 'logo') %#></a>
+		</div> -->
 		<div style="20px;"></div>
 
 		<div id="j-col-left">
 			<div id="coming-soon">
 				<p class="title-grey">KnowCred</p>
-				<%= image_tag('avatar-gen-person-icon.png', alt: 'avatar-gen-person-icon.png', class: 'avatar-img-1') %>
+				<%= image_tag('avatars/avatar-gen-person-icon.png', alt: 'avatar-gen-person-icon.png', class: 'avatar-img-1') %>
 				<p style="padding:20px 75px; font-size: 18px;">Earn your credentials, display them, and get them validated.</p>
 			</div>
 		</div>
@@ -84,13 +84,13 @@
 		<div id="knowcred-box">
 			<div id="kc-top">
 				<div class="kc-box">
-					<%= image_tag('kc-a.jpg', alt: 'kc-a.jpg') %>
+					<%= image_tag('knowcred/kc-a.jpg', alt: 'kc-a.jpg') %>
 				</div>
 				<div class="kc-box">
-					<%= image_tag('kc-ribbon.jpg', alt: 'kc-ribbon.jpg') %>
+					<%= image_tag('knowcred/kc-ribbon.jpg', alt: 'kc-ribbon.jpg') %>
 				</div>
 				<div class="kc-box">
-					<%= image_tag('kc-a.jpg', alt: 'kc-a.jpg') %>
+					<%= image_tag('knowcred/kc-a.jpg', alt: 'kc-a.jpg') %>
 				</div>
 			</div>
 			<div style="clear:both;"></div>
@@ -110,7 +110,7 @@
 			<h1 style="font-size:28px; color:#49853f; margin-top:35px;">Validated:</h1>
 			<div id="add-cred">
 				<div class="kc-box val">
-					<%= image_tag('kc-diploma.jpg', alt: 'kc-diploma.jpg') %>
+					<%= image_tag('knowcred/kc-diploma.jpg', alt: 'kc-diploma.jpg') %>
 				</div>
 				<div class="more-arrow">></div>
 				<div style="clear:both;"></div>
@@ -118,10 +118,10 @@
 			<h1 style="font-size:28px; color:#49853f; margin-top:35px;">My Cred:</h1>
 			<div id="add-cred">
 				<div class="kc-box">
-					<%= image_tag('kc-ribbon.jpg', alt: 'kc-ribbon.jpg') %>
+					<%= image_tag('knowcred/kc-ribbon.jpg', alt: 'kc-ribbon.jpg') %>
 				</div>
 				<div class="kc-box">
-					<%= image_tag('kc-star.jpg', alt: 'kc-star.jpg') %>
+					<%= image_tag('knowcred/kc-star.jpg', alt: 'kc-star.jpg') %>
 				</div>
 				<div class="more-arrow">></div>
 				<div style="clear:both;"></div>

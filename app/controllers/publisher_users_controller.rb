@@ -1,7 +1,9 @@
 class PublisherUsersController < ApplicationController
 
-  # require 'RMagick'
-  require 'rmagick'
+  before_filter :force_http
+
+  require 'RMagick'
+  # require 'rmagick'
   
   # layout 'publisher'
   layout 'publisher'
@@ -10,8 +12,8 @@ class PublisherUsersController < ApplicationController
 
   helper_method :sort_column, :sort_direction, :yesno
 
-  before_filter :force_http
-
+  # before_action :verify_signin, only: [:index]
+  before_action :verify_signin
 
   # before_action :signed_in_user, except: [:update_my_story, :upload_publisher_user_image_primary, :upload_publisher_user_logo_image, :edit_image_primary, :destroy_publisher_user_image]
   # before_action :verify_id, except: [:update_my_story, :upload_publisher_user_image_primary, :upload_publisher_user_logo_image, :edit_image_primary, :destroy_publisher_user_image]
@@ -23,60 +25,61 @@ class PublisherUsersController < ApplicationController
 
   @@current_post_user = nil
 
-  def verify_params
+  def verify_signin
+    
+      if !signed_in?
+          redirect_to '/Signin'
+      end
+      
+  end
 
-    # id_passed = params[:id]
-    # if !id_passed.nil?
-        # publisher_user = PublisherUser.friendly.find(id_passed) rescue nil
-        # if !publisher_user.nil?
-            # current_publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
-            # if !(current_publisher_user.id == publisher_user.id)
-              # raise ActionController::RoutingError.new('Not Found')
-            # end        
-        # else
-          # raise ActionController::RoutingError.new('Not Found')
+  # def verify_params
+    # # id_passed = params[:id]
+    # # if !id_passed.nil?
+        # # publisher_user = PublisherUser.friendly.find(id_passed) rescue nil
+        # # if !publisher_user.nil?
+            # # current_publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
+            # # if !(current_publisher_user.id == publisher_user.id)
+              # # raise ActionController::RoutingError.new('Not Found')
+            # # end        
+        # # else
+          # # raise ActionController::RoutingError.new('Not Found')
+        # # end
+    # # else
+        # # # user_my_story_url = '/puid-demo' + current_user.slug
+        # # redirect_to current_user.slug
+    # # end
+  # end    
+
+
+  # def fill_left_directory
+    # @url_user_story = '#'
+    # @url_profile_story = '#'
+    # @url_profile_story_home = '#' 
+    # if signed_in?
+        # # signed in
+        # @url_user_story = current_user.slug
+        # case current_user.profile_type.to_s
+          # when "1"
+              # # student user
+          # when "2"
+              # # teacher user
+          # when "3"
+              # # publisher user
+              # publisher = current_user.publisher
+              # @url_profile_story = publisher.slug
+              # @url_profile_story_home = "Publisher"
+          # when "4"
+              # # institute user
+          # when "5"
+              # # recruiter user
+          # else
+              # #
         # end
     # else
-        # # user_my_story_url = '/puid-demo' + current_user.slug
-        # redirect_to current_user.slug
+        # # not signed
     # end
-    
-  end    
-
-
-  def fill_left_directory
-
-    @url_user_story = '#'
-    @url_profile_story = '#'
-    @url_profile_story_home = '#' 
-
-    if signed_in?
-        # signed in
-        @url_user_story = current_user.slug
-        
-        case current_user.profile_type.to_s
-          when "1"
-              # student user
-          when "2"
-              # teacher user
-          when "3"
-              # publisher user
-              publisher = current_user.publisher
-              @url_profile_story = publisher.slug
-              @url_profile_story_home = "Publisher"
-          when "4"
-              # institute user
-          when "5"
-              # recruiter user
-          else
-              #
-        end
-    else
-        # not signed
-    end
-
-        
-  end
+  # end
 
 
 
@@ -1434,24 +1437,24 @@ class PublisherUsersController < ApplicationController
 
   
   
-  def show_all_images
-    # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
-    # if !publisher_user.nil?
-      # @publisher_user = publisher_user
-      # @publisher_user_id = publisher_user.id
-      # publisher_id = publisher_user.publisher_id
-      # @publisher_id = publisher_id
-      # publisher = Publisher.find_by_id(publisher_id)
-      # if !publisher.nil?
-        # @publisher_user_images = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id)
-        # @publisher_user_image_primary = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id).where( :primary => true ).first        
-      # else
-        # #
-      # end
-    # else
-      # #
-    # end
-  end
+  # def show_all_images
+    # # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
+    # # if !publisher_user.nil?
+      # # @publisher_user = publisher_user
+      # # @publisher_user_id = publisher_user.id
+      # # publisher_id = publisher_user.publisher_id
+      # # @publisher_id = publisher_id
+      # # publisher = Publisher.find_by_id(publisher_id)
+      # # if !publisher.nil?
+        # # @publisher_user_images = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id)
+        # # @publisher_user_image_primary = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id).where( :primary => true ).first        
+      # # else
+        # # #
+      # # end
+    # # else
+      # # #
+    # # end
+  # end
 
 
 
@@ -1700,33 +1703,33 @@ class PublisherUsersController < ApplicationController
 
 
 
-  def upload_publisher_user_image
-    # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
-    # if !publisher_user.nil?
-        # h_publisher_user_image = Hash.new
-        # h_publisher_user_image[:image] = params[:publisher_user_image][:image]
-        # h_publisher_user_image[:user_id] = publisher_user.user_id
-        # h_publisher_user_image[:publisher_id] = publisher_user.publisher_id
-        # h_publisher_user_image[:publisher_user_id] = publisher_user.id
-        # h_publisher_user_image[:primary] = false 
-        # publisher_user_image = PublisherUserImage.new
-        # # publisher_user_image.image = params[:publisher_user_image][:image]
-        # # publisher_user_image.publisher_id = publisher_user.publisher_id
-        # # publisher_user_image.publisher_user_id = publisher_user.id
-        # # @publisher_user_image_primary = PublisherUserImage.create(params[:publisher_profile_image])    
-        # if request.xhr? || remotipart_submitted?
-            # if publisher_user_image.save
-              # @publisher_user_images = publisher_user.publisher_user_images     
-            # else
-              # # error save
-            # end
-        # else
-          # # render text: 'Remote call failed'
-        # end
-    # else
-      # #
-    # end
-  end  
+  # def upload_publisher_user_image
+    # # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first
+    # # if !publisher_user.nil?
+        # # h_publisher_user_image = Hash.new
+        # # h_publisher_user_image[:image] = params[:publisher_user_image][:image]
+        # # h_publisher_user_image[:user_id] = publisher_user.user_id
+        # # h_publisher_user_image[:publisher_id] = publisher_user.publisher_id
+        # # h_publisher_user_image[:publisher_user_id] = publisher_user.id
+        # # h_publisher_user_image[:primary] = false 
+        # # publisher_user_image = PublisherUserImage.new
+        # # # publisher_user_image.image = params[:publisher_user_image][:image]
+        # # # publisher_user_image.publisher_id = publisher_user.publisher_id
+        # # # publisher_user_image.publisher_user_id = publisher_user.id
+        # # # @publisher_user_image_primary = PublisherUserImage.create(params[:publisher_profile_image])    
+        # # if request.xhr? || remotipart_submitted?
+            # # if publisher_user_image.save
+              # # @publisher_user_images = publisher_user.publisher_user_images     
+            # # else
+              # # # error save
+            # # end
+        # # else
+          # # # render text: 'Remote call failed'
+        # # end
+    # # else
+      # # #
+    # # end
+  # end  
 
 
 
@@ -2518,6 +2521,14 @@ class PublisherUsersController < ApplicationController
       # @user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
       # render 'publisher_users/fullscreen', :layout => 'user_fullscreen'      
   # end
+  
+  
+  def knowcred
+    render :layout => 'publisher_users_knowcred'
+  end
+  
+  
+  
   
   private
 
