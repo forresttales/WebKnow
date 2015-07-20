@@ -234,6 +234,9 @@ class UsersController < ApplicationController
 
   def index
 
+    # @logger = TorqueBox::Logger.new( YourModule::YourClass )
+    # @logger.debug("Will code for food")
+        
     # id_passed = params[:id]
     # # redirect_to index_post_publisher_users_path(:id_publisher_user => id_passed)
     # redirect_to index_post_publisher_users_path

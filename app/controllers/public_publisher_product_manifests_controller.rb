@@ -1,6 +1,6 @@
 class PublicPublisherProductManifestsController < ApplicationController
   
-  before_filter :force_http
+  # before_filter :force_http
 
   # include CarrierWave::RMagick
   

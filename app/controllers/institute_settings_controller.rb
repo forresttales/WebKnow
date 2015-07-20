@@ -2,7 +2,7 @@ class InstituteSettingsController < ApplicationController
 
   layout 'institute'
 
-  before_filter :force_http
+  # before_filter :force_http
 
   
   def index

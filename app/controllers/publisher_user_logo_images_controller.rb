@@ -1,8 +1,8 @@
 class PublisherUserLogoImagesController < ApplicationController
 
-  require 'RMagick'
+  #require 'RMagick'
   
-  before_filter :force_http
+  # before_filter :force_http
 
 
 
@@ -21,60 +21,60 @@ class PublisherUserLogoImagesController < ApplicationController
   
   def crop_commit
     
-    # render text: params[:image_id]
-    
-    x = params[:crop_x]
-    y = params[:crop_y]
-    w = params[:crop_w]
-    h = params[:crop_h]
-
-    img = PublisherUserLogoImage.find(params[:image_id])
-    image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
-    
-    # render text: image.filename
-
-    x = x.to_i
-    y = y.to_i
-    w = w.to_i
-    h = h.to_i
-    image_new = image.crop(x, y, w, h)
-
-    new_user_200_200 = image_new.resize_to_fill(200, 200)    
-    new_user_100_100 = image_new.resize_to_fill(100, 100)    
-    # new_user_50_50 = image_new.resize_to_fill(50, 50)
-    # new_user_34_34 = image_new.resize_to_fill(34, 34)
-    
-    user_200_200 = Magick::Image.read("public" + img.image_url(:user_200_200))[0]
-    user_100_100 = Magick::Image.read("public" + img.image_url(:user_100_100))[0]
-    # user_50_50 = Magick::Image.read("public" + img.image_url(:user_50_50))[0]
-    # user_34_34 = Magick::Image.read("public" + img.image_url(:user_34_34))[0]
-
-    # public/uploads/publisher_user_logo_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
-
-    user_200_200_filename = user_200_200.filename
-    user_100_100_filename = user_100_100.filename
-    # user_50_50_filename = user_50_50.filename
-    # user_34_34_filename = user_34_34.filename
-
-    FileUtils.rm_rf(Dir.glob(user_200_200.filename))
-    FileUtils.rm_rf(Dir.glob(user_100_100.filename))
-    # FileUtils.rm_rf(Dir.glob(user_50_50.filename))
-    # FileUtils.rm_rf(Dir.glob(user_34_34.filename))
-    
-    new_user_200_200.write user_200_200_filename
-    new_user_100_100.write user_100_100_filename
-    # new_user_50_50.write user_50_50_filename
-    # new_user_34_34.write user_34_34_filename
-     
-    # # image.recreate_versions!
-    # image_100_100 = nil    
-    # image_50_50 = nil
-    # image_34_34 = nil
-    # profile_100_100 = nil
-    # profile_50_50 = nil
-    # profile_34_34 = nil
-
-    # redirect_to '/Publisher-Admin'    
+    # # render text: params[:image_id]
+#     
+    # x = params[:crop_x]
+    # y = params[:crop_y]
+    # w = params[:crop_w]
+    # h = params[:crop_h]
+# 
+    # img = PublisherUserLogoImage.find(params[:image_id])
+    # image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
+#     
+    # # render text: image.filename
+# 
+    # x = x.to_i
+    # y = y.to_i
+    # w = w.to_i
+    # h = h.to_i
+    # image_new = image.crop(x, y, w, h)
+# 
+    # new_user_200_200 = image_new.resize_to_fill(200, 200)    
+    # new_user_100_100 = image_new.resize_to_fill(100, 100)    
+    # # new_user_50_50 = image_new.resize_to_fill(50, 50)
+    # # new_user_34_34 = image_new.resize_to_fill(34, 34)
+#     
+    # user_200_200 = Magick::Image.read("public" + img.image_url(:user_200_200))[0]
+    # user_100_100 = Magick::Image.read("public" + img.image_url(:user_100_100))[0]
+    # # user_50_50 = Magick::Image.read("public" + img.image_url(:user_50_50))[0]
+    # # user_34_34 = Magick::Image.read("public" + img.image_url(:user_34_34))[0]
+# 
+    # # public/uploads/publisher_user_logo_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
+# 
+    # user_200_200_filename = user_200_200.filename
+    # user_100_100_filename = user_100_100.filename
+    # # user_50_50_filename = user_50_50.filename
+    # # user_34_34_filename = user_34_34.filename
+# 
+    # FileUtils.rm_rf(Dir.glob(user_200_200.filename))
+    # FileUtils.rm_rf(Dir.glob(user_100_100.filename))
+    # # FileUtils.rm_rf(Dir.glob(user_50_50.filename))
+    # # FileUtils.rm_rf(Dir.glob(user_34_34.filename))
+#     
+    # new_user_200_200.write user_200_200_filename
+    # new_user_100_100.write user_100_100_filename
+    # # new_user_50_50.write user_50_50_filename
+    # # new_user_34_34.write user_34_34_filename
+#      
+    # # # image.recreate_versions!
+    # # image_100_100 = nil    
+    # # image_50_50 = nil
+    # # image_34_34 = nil
+    # # profile_100_100 = nil
+    # # profile_50_50 = nil
+    # # profile_34_34 = nil
+# 
+    # # redirect_to '/Publisher-Admin'    
     
   end
 

@@ -2,7 +2,7 @@ class PasswordResetsController < ApplicationController
   
   layout 'password_reset'
   
-  before_filter :force_http
+  # before_filter :force_http
   
   respond_to :html, :js, :json  
 

@@ -2,7 +2,7 @@ class InstitutesController < ApplicationController
   
   layout 'institute'
   
-  before_filter :force_http
+  # before_filter :force_http
   
   #before_filter :confirm_logged_in
   

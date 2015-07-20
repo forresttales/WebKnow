@@ -3,7 +3,7 @@ class PublisherAdminSettingsController < ApplicationController
 
   layout 'publisher'
 
-  before_filter :force_http
+  # before_filter :force_http
 
     
   def index

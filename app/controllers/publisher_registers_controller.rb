@@ -1,6 +1,6 @@
 class PublisherRegistersController < ApplicationController
 
-  before_filter :force_http
+  # before_filter :force_http
 
   layout 'publisher_register'
 

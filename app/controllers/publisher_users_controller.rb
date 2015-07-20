@@ -1,9 +1,11 @@
 class PublisherUsersController < ApplicationController
 
-  before_filter :force_http
+  # before_filter :force_http
 
-  require 'RMagick'
+  #require 'RMagick'
   # require 'rmagick'
+  
+  require 'mini_magick'
   
   # layout 'publisher'
   layout 'publisher'
@@ -493,7 +495,7 @@ class PublisherUsersController < ApplicationController
             # # if !@publisher_user_image_primary.nil?
                 # # @user_avatar = @publisher_user_image_primary.image_url(:user_34_34)
                 # # img = @publisher_user_image_primary
-                # # image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
+                # # image = MiniMagick::Image.read("public" + img.image_url(:user_600_600))[0]
                 # # @image_width = image.columns
                 # # @image_height = image.rows
             # # end
@@ -1524,7 +1526,7 @@ class PublisherUsersController < ApplicationController
               if !user_image_primary.nil? 
                   # @id_image = user_image_primary.id
                   img = user_image_primary
-                  image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
+                  image = MiniMagick::Image.read("public" + img.image_url(:user_600_600))[0]
                   w = image.columns
                   h = image.rows
                   w_max = false
@@ -1640,7 +1642,7 @@ class PublisherUsersController < ApplicationController
               if !user_image_primary.nil? 
                   # @id_image = user_image_primary.id
                   img = user_image_primary
-                  image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
+                  image = MiniMagick::Image.read("public" + img.image_url(:user_600_600))[0]
                   w = image.columns
                   h = image.rows
                   w_max = false
@@ -1763,7 +1765,7 @@ class PublisherUsersController < ApplicationController
                     @publisher_user_logo_image = publisher_user_logo_image
 
                     img = publisher_user_logo_image
-                    image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
+                    image = MiniMagick::Image.read("public" + img.image_url(:user_600_600))[0]
                     w = image.columns
                     h = image.rows
                     w_max = false
@@ -1900,7 +1902,7 @@ class PublisherUsersController < ApplicationController
                     @publisher_user_logo_image = publisher_user_logo_image
 
                     img = publisher_user_logo_image
-                    image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
+                    image = MiniMagick::Image.read("public" + img.image_url(:user_600_600))[0]
                     w = image.columns
                     h = image.rows
                     w_max = false
@@ -2017,7 +2019,7 @@ class PublisherUsersController < ApplicationController
                   # post_user_image = post_user.post_user_images.where("id = ?", post_user_image.id ).first rescue nil     
                   if !post_user_image.nil? 
                       img = post_user_image
-                      image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
+                      image = MiniMagick::Image.read("public" + img.image_url(:user_600_600))[0]
                       w = image.columns
                       h = image.rows
                       w_max = false
@@ -2148,7 +2150,7 @@ class PublisherUsersController < ApplicationController
               # publisher_user_plot_image = publisher_user_plot.publisher_user_plot_images.where("id = ?", publisher_user_plot_image.id ).first rescue nil     
               if !publisher_user_plot_image.nil? 
                   img = publisher_user_plot_image
-                  image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
+                  image = MiniMagick::Image.read("public" + img.image_url(:user_600_600))[0]
                   w = image.columns
                   h = image.rows
                   w_max = false
@@ -2222,107 +2224,178 @@ class PublisherUsersController < ApplicationController
 
   def crop_commit_user
     
-      x = params[:crop_x]
-      y = params[:crop_y]
-      w = params[:crop_w]
-      h = params[:crop_h]
-  
-      # img = PublisherUserImage.find(params[:image_id])
-      img = UserImage.find(params[:image_id])
-      image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
-  
-      # require 'rmagick'
-      # img = Magick::Image.read( 'demo.png' ).first
-      # width = img.columns
-      # height = img.rows
-  
-      # render text: image.filename
-  
-      x = x.to_i
-      y = y.to_i
-      w = w.to_i
-      h = h.to_i
-      image_new = image.crop(x, y, w, h)
-  
-      new_user_200_200 = image_new.resize_to_fill(200, 200)    
-      new_user_100_100 = image_new.resize_to_fill(100, 100)    
-      new_user_50_50 = image_new.resize_to_fill(50, 50)
-      new_user_34_34 = image_new.resize_to_fill(34, 34)
-  
-      user_200_200 = Magick::Image.read("public" + img.image_url(:user_200_200))[0]    
-      user_100_100 = Magick::Image.read("public" + img.image_url(:user_100_100))[0]
-      user_50_50 = Magick::Image.read("public" + img.image_url(:user_50_50))[0]
-      user_34_34 = Magick::Image.read("public" + img.image_url(:user_34_34))[0]
-  
-      # public/uploads/publisher_user_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
-  
-      user_200_200_filename = user_200_200.filename
-      user_100_100_filename = user_100_100.filename
-      user_50_50_filename = user_50_50.filename
-      user_34_34_filename = user_34_34.filename
-  
-      FileUtils.rm_rf(Dir.glob(user_200_200.filename))
-      FileUtils.rm_rf(Dir.glob(user_100_100.filename))
-      FileUtils.rm_rf(Dir.glob(user_50_50.filename))
-      FileUtils.rm_rf(Dir.glob(user_34_34.filename))
-      
-      new_user_200_200.write user_200_200_filename
-      new_user_100_100.write user_100_100_filename
-      new_user_50_50.write user_50_50_filename
-      new_user_34_34.write user_34_34_filename
-  
-      # # image.recreate_versions!
-      # image_100_100 = nil    
-      # image_50_50 = nil
-      # image_34_34 = nil
-      # profile_100_100 = nil
-      # profile_50_50 = nil
-      # profile_34_34 = nil
-  
-      # redirect_to '/Publisher-Admin'    
-  
-      h_crop = Hash.new
-      h_crop[:crop_x] = x
-      h_crop[:crop_y] = y
-      h_crop[:crop_w] = w
-      h_crop[:crop_h] = h
-
-      @post_users = nil    
-      @publisher_user_image_primary = nil
-      # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
-      # if !publisher_user.nil?
-          # publisher_user_images = publisher_user.publisher_user_images rescue nil
-          # if !publisher_user_images.nil?
-              publisher_user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
-              if !publisher_user_image_primary.nil?
-                  if publisher_user_image_primary.update_attributes(h_crop)
-                      @publisher_user_image_primary = publisher_user_image_primary  
-                      @post_users = current_user.feed
-                  else
-                    #
-                  end
-              else
-                #
-              end
-          # else
-            # #
-          # end
-      # else
-        # #
-      # end
-
+      # x = params[:crop_x]
+      # y = params[:crop_y]
+      # w = params[:crop_w]
+      # h = params[:crop_h]
+#   
+      # # img = PublisherUserImage.find(params[:image_id])
+      # img = UserImage.find(params[:image_id])
+      # image = MiniMagick::Image.read("public" + img.image_url(:user_600_600))[0]
+#   
+      # # require 'rmagick'
+      # # img = Magick::Image.read( 'demo.png' ).first
+      # # width = img.columns
+      # # height = img.rows
+#   
+      # # render text: image.filename
+#   
+      # x = x.to_i
+      # y = y.to_i
+      # w = w.to_i
+      # h = h.to_i
+      # image_new = image.crop(x, y, w, h)
+#   
+      # new_user_200_200 = image_new.resize_to_fill(200, 200)    
+      # new_user_100_100 = image_new.resize_to_fill(100, 100)    
+      # new_user_50_50 = image_new.resize_to_fill(50, 50)
+      # new_user_34_34 = image_new.resize_to_fill(34, 34)
+#   
+      # user_200_200 = Magick::Image.read("public" + img.image_url(:user_200_200))[0]    
+      # user_100_100 = Magick::Image.read("public" + img.image_url(:user_100_100))[0]
+      # user_50_50 = Magick::Image.read("public" + img.image_url(:user_50_50))[0]
+      # user_34_34 = Magick::Image.read("public" + img.image_url(:user_34_34))[0]
+#   
+      # # public/uploads/publisher_user_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
+#   
+      # user_200_200_filename = user_200_200.filename
+      # user_100_100_filename = user_100_100.filename
+      # user_50_50_filename = user_50_50.filename
+      # user_34_34_filename = user_34_34.filename
+#   
+      # FileUtils.rm_rf(Dir.glob(user_200_200.filename))
+      # FileUtils.rm_rf(Dir.glob(user_100_100.filename))
+      # FileUtils.rm_rf(Dir.glob(user_50_50.filename))
+      # FileUtils.rm_rf(Dir.glob(user_34_34.filename))
+#       
+      # new_user_200_200.write user_200_200_filename
+      # new_user_100_100.write user_100_100_filename
+      # new_user_50_50.write user_50_50_filename
+      # new_user_34_34.write user_34_34_filename
+#   
+      # # # image.recreate_versions!
+      # # image_100_100 = nil    
+      # # image_50_50 = nil
+      # # image_34_34 = nil
+      # # profile_100_100 = nil
+      # # profile_50_50 = nil
+      # # profile_34_34 = nil
+#   
+      # # redirect_to '/Publisher-Admin'    
+#   
+      # h_crop = Hash.new
+      # h_crop[:crop_x] = x
+      # h_crop[:crop_y] = y
+      # h_crop[:crop_w] = w
+      # h_crop[:crop_h] = h
+# 
+      # @post_users = nil    
       # @publisher_user_image_primary = nil
-      # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
-      # if !publisher_user.nil?
-          # publisher_user_images = publisher_user.publisher_user_images rescue nil
-          # if !publisher_user_images.nil?
-              # publisher_user_image_primary = publisher_user_images.where( :primary => true ).first rescue nil
+      # # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+      # # if !publisher_user.nil?
+          # # publisher_user_images = publisher_user.publisher_user_images rescue nil
+          # # if !publisher_user_images.nil?
+              # publisher_user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
               # if !publisher_user_image_primary.nil?
                   # if publisher_user_image_primary.update_attributes(h_crop)
                       # @publisher_user_image_primary = publisher_user_image_primary  
+                      # @post_users = current_user.feed
                   # else
                     # #
                   # end
+              # else
+                # #
+              # end
+          # # else
+            # # #
+          # # end
+      # # else
+        # # #
+      # # end
+# 
+      # # @publisher_user_image_primary = nil
+      # # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+      # # if !publisher_user.nil?
+          # # publisher_user_images = publisher_user.publisher_user_images rescue nil
+          # # if !publisher_user_images.nil?
+              # # publisher_user_image_primary = publisher_user_images.where( :primary => true ).first rescue nil
+              # # if !publisher_user_image_primary.nil?
+                  # # if publisher_user_image_primary.update_attributes(h_crop)
+                      # # @publisher_user_image_primary = publisher_user_image_primary  
+                  # # else
+                    # # #
+                  # # end
+              # # else
+                # # #
+              # # end
+          # # else
+            # # #
+          # # end
+      # # else
+        # # #
+      # # end
+    
+    
+  end
+
+
+
+  def crop_commit_logo
+    
+      # x = params[:crop_x]
+      # y = params[:crop_y]
+      # w = params[:crop_w]
+      # h = params[:crop_h]
+#   
+      # img = PublisherUserLogoImage.find(params[:image_id])
+      # image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
+#   
+      # x = x.to_i
+      # y = y.to_i
+      # w = w.to_i
+      # h = h.to_i
+      # image_new = image.crop(x, y, w, h)
+#   
+      # new_user_200_200 = image_new.resize_to_fill(200, 200)    
+      # new_user_100_100 = image_new.resize_to_fill(100, 100)    
+      # new_user_50_50 = image_new.resize_to_fill(50, 50)
+      # new_user_34_34 = image_new.resize_to_fill(34, 34)
+#   
+      # user_200_200 = Magick::Image.read("public" + img.image_url(:user_200_200))[0]    
+      # user_100_100 = Magick::Image.read("public" + img.image_url(:user_100_100))[0]
+      # user_50_50 = Magick::Image.read("public" + img.image_url(:user_50_50))[0]
+      # user_34_34 = Magick::Image.read("public" + img.image_url(:user_34_34))[0]
+#   
+      # # public/uploads/publisher_user_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
+#   
+      # user_200_200_filename = user_200_200.filename
+      # user_100_100_filename = user_100_100.filename
+      # user_50_50_filename = user_50_50.filename
+      # user_34_34_filename = user_34_34.filename
+#   
+      # FileUtils.rm_rf(Dir.glob(user_200_200.filename))
+      # FileUtils.rm_rf(Dir.glob(user_100_100.filename))
+      # FileUtils.rm_rf(Dir.glob(user_50_50.filename))
+      # FileUtils.rm_rf(Dir.glob(user_34_34.filename))
+#       
+      # new_user_200_200.write user_200_200_filename
+      # new_user_100_100.write user_100_100_filename
+      # new_user_50_50.write user_50_50_filename
+      # new_user_34_34.write user_34_34_filename
+#   
+      # h_crop = Hash.new
+      # h_crop[:crop_x] = x
+      # h_crop[:crop_y] = y
+      # h_crop[:crop_w] = w
+      # h_crop[:crop_h] = h
+#   
+      # @publisher_user_logo_image = nil
+      # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+      # if !publisher_user.nil?
+          # publisher_user_logo_image = publisher_user.publisher_user_logo_images.first rescue nil
+          # if !publisher_user_logo_image.nil?
+              # if publisher_user_logo_image.update_attributes(h_crop)
+                  # @publisher_user_logo_image = publisher_user_logo_image  
               # else
                 # #
               # end
@@ -2332,77 +2405,6 @@ class PublisherUsersController < ApplicationController
       # else
         # #
       # end
-    
-    
-  end
-
-
-
-  def crop_commit_logo
-    
-      x = params[:crop_x]
-      y = params[:crop_y]
-      w = params[:crop_w]
-      h = params[:crop_h]
-  
-      img = PublisherUserLogoImage.find(params[:image_id])
-      image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
-  
-      x = x.to_i
-      y = y.to_i
-      w = w.to_i
-      h = h.to_i
-      image_new = image.crop(x, y, w, h)
-  
-      new_user_200_200 = image_new.resize_to_fill(200, 200)    
-      new_user_100_100 = image_new.resize_to_fill(100, 100)    
-      new_user_50_50 = image_new.resize_to_fill(50, 50)
-      new_user_34_34 = image_new.resize_to_fill(34, 34)
-  
-      user_200_200 = Magick::Image.read("public" + img.image_url(:user_200_200))[0]    
-      user_100_100 = Magick::Image.read("public" + img.image_url(:user_100_100))[0]
-      user_50_50 = Magick::Image.read("public" + img.image_url(:user_50_50))[0]
-      user_34_34 = Magick::Image.read("public" + img.image_url(:user_34_34))[0]
-  
-      # public/uploads/publisher_user_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
-  
-      user_200_200_filename = user_200_200.filename
-      user_100_100_filename = user_100_100.filename
-      user_50_50_filename = user_50_50.filename
-      user_34_34_filename = user_34_34.filename
-  
-      FileUtils.rm_rf(Dir.glob(user_200_200.filename))
-      FileUtils.rm_rf(Dir.glob(user_100_100.filename))
-      FileUtils.rm_rf(Dir.glob(user_50_50.filename))
-      FileUtils.rm_rf(Dir.glob(user_34_34.filename))
-      
-      new_user_200_200.write user_200_200_filename
-      new_user_100_100.write user_100_100_filename
-      new_user_50_50.write user_50_50_filename
-      new_user_34_34.write user_34_34_filename
-  
-      h_crop = Hash.new
-      h_crop[:crop_x] = x
-      h_crop[:crop_y] = y
-      h_crop[:crop_w] = w
-      h_crop[:crop_h] = h
-  
-      @publisher_user_logo_image = nil
-      publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
-      if !publisher_user.nil?
-          publisher_user_logo_image = publisher_user.publisher_user_logo_images.first rescue nil
-          if !publisher_user_logo_image.nil?
-              if publisher_user_logo_image.update_attributes(h_crop)
-                  @publisher_user_logo_image = publisher_user_logo_image  
-              else
-                #
-              end
-          else
-            #
-          end
-      else
-        #
-      end
     
     
   end

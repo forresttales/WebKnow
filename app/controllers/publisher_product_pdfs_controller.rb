@@ -4,7 +4,7 @@ class PublisherProductPdfsController < ApplicationController
   
   # require 'RMagick'
 
-  before_filter :force_http
+  # before_filter :force_http
 
   respond_to :html, :js, :json  
 

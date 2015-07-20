@@ -4,7 +4,7 @@ class BdYearsController < ApplicationController
 
   layout 'bd_year'
 
-  before_filter :force_http
+  # before_filter :force_http
 
   helper_method :sort_column, :sort_direction, :yesno
 

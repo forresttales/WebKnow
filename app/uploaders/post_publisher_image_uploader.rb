@@ -2,8 +2,8 @@
 
 class PostPublisherImageUploader < CarrierWave::Uploader::Base
 
-  # include CarrierWave::MiniMagick
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+  #include CarrierWave::RMagick
   
   
   storage :file
@@ -25,22 +25,26 @@ class PostPublisherImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :user_34_34 do
-    process :resize_to_fill => [34, 34, gravity = ::Magick::CenterGravity]
+    process :resize_to_fill => [34, 34]
+    # process :resize_to_fill => [34, 34, gravity = ::Magick::CenterGravity]
     # process :resize_to_limit => [34, 34]
   end
 
   version :user_50_50 do
-    process :resize_to_fill => [50, 50, gravity = ::Magick::CenterGravity]
+    process :resize_to_fill => [50, 50]
+    # process :resize_to_fill => [50, 50, gravity = ::Magick::CenterGravity]
     # process :resize_to_limit => [50, 50]
   end
 
   version :user_100_100 do
-    process :resize_to_fill => [100, 100, gravity = ::Magick::CenterGravity]
+    process :resize_to_fill => [100, 100]
+    # process :resize_to_fill => [100, 100, gravity = ::Magick::CenterGravity]
     # process :resize_to_limit => [100, 100]
   end
 
   version :user_200_200 do
-    process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
+    process :resize_to_fill => [200, 200]
+    # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
     # process :resize_to_limit => [200, 200]
   end
 

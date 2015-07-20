@@ -2,7 +2,7 @@ class Journal1posterPositionsController < ApplicationController
 
   layout 'journalposter'
 
-  before_filter :force_http
+  # before_filter :force_http
 
 
 

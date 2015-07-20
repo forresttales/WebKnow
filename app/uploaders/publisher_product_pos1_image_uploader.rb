@@ -2,8 +2,8 @@
 
 class PublisherProductPos1ImageUploader < CarrierWave::Uploader::Base
 
-  # include CarrierWave::MiniMagick
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+  #include CarrierWave::RMagick
 
   
   
@@ -41,7 +41,8 @@ class PublisherProductPos1ImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :image_100_100 do
-    process :resize_to_fill => [100, 100, gravity = ::Magick::CenterGravity]
+    process :resize_to_fill => [100, 100]
+    # process :resize_to_fill => [100, 100, gravity = ::Magick::CenterGravity]
     # process :resize_to_limit => [100, 100]
   end
 
@@ -51,7 +52,8 @@ class PublisherProductPos1ImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :image_200_200 do
-    process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
+    process :resize_to_fill => [200, 200]
+    # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
     # process :resize_to_limit => [200, 200]
   end
 

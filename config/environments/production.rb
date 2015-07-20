@@ -1,4 +1,7 @@
 Webknow::Application.configure do
+
+  # config.logger = TorqueBox::Logger.new
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # config.middleware.insert_before ActionDispatch::Static, Rack::SSL, :exclude => proc { |env| env['HTTPS'] != 'on' }

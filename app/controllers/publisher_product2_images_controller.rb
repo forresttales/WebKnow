@@ -1,10 +1,10 @@
 class PublisherProduct2ImagesController < ApplicationController
   
-  require 'RMagick'
+  #require 'RMagick'
 
   layout 'publisher'
 
-  before_filter :force_http
+  # before_filter :force_http
 
 
   @@publisher_product_id = nil
@@ -210,66 +210,66 @@ class PublisherProduct2ImagesController < ApplicationController
   
   def crop_commit
     
-    # render text: params[:crop_h]
-    
-    x = params[:crop_x]
-    y = params[:crop_y]
-    w = params[:crop_w]
-    h = params[:crop_h]
-
-
-    img = PublisherProduct2Image.find(params[:image_id])
-    image = Magick::Image.read("public" + img.image_url(:image_500_500))[0]
-    
-    # render text: image.filename
-
-    x = x.to_i
-    y = y.to_i
-    w = w.to_i
-    h = h.to_i
-    image_new = image.crop(x, y, w, h)
-
-    # [500, 500]
-    # [200, 200] 
-    # [100, 100]
-    # [50, 50]
-
-    # image_new_exists = false
-    # if !image_new.nil?
-      # image_new_exists = true  
-    # end
-    # render text: image_new_exists
-    
-    image_new_200_200 = image_new.resize_to_fill(200, 200)    
-    image_new_100_100 = image_new.resize_to_fill(100, 100)
-    image_new_50_50 = image_new.resize_to_fill(50, 50)
-    
-    image_200_200 = Magick::Image.read("public" + img.image_url(:image_200_200))[0]
-    image_100_100 = Magick::Image.read("public" + img.image_url(:image_100_100))[0]
-    image_50_50 = Magick::Image.read("public" + img.image_url(:image_50_50))[0]
-
-    # public/uploads/user_profile_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
-
-    image_200_200_filename = image_200_200.filename
-    image_100_100_filename = image_100_100.filename
-    image_50_50_filename = image_50_50.filename
-
-    FileUtils.rm_rf(Dir.glob(image_200_200.filename))
-    FileUtils.rm_rf(Dir.glob(image_100_100.filename))
-    FileUtils.rm_rf(Dir.glob(image_50_50.filename))
-    
-    image_new_200_200.write image_200_200_filename
-    image_new_100_100.write image_100_100_filename
-    image_new_50_50.write image_50_50_filename
-     
-
-    # /publisher_product2_images?publisher_id=1&publisher_product_id=1
-    # @@publisher_product_id = @publisher_product_id 
-    # @@publisher_id = @publisher_id
-
-    # url_redirect = "/Publisher-Product-Image/publisher_product_id=" + @@publisher_id.to_s + "&publisher_product_id=" + @@publisher_product_id.to_s  
-    url_redirect = "/publisher_product2_images?publisher_id=" + @@publisher_id.to_s + "&publisher_product_id=" + @@publisher_product_id.to_s
-    redirect_to url_redirect    
+    # # render text: params[:crop_h]
+#     
+    # x = params[:crop_x]
+    # y = params[:crop_y]
+    # w = params[:crop_w]
+    # h = params[:crop_h]
+# 
+# 
+    # img = PublisherProduct2Image.find(params[:image_id])
+    # image = Magick::Image.read("public" + img.image_url(:image_500_500))[0]
+#     
+    # # render text: image.filename
+# 
+    # x = x.to_i
+    # y = y.to_i
+    # w = w.to_i
+    # h = h.to_i
+    # image_new = image.crop(x, y, w, h)
+# 
+    # # [500, 500]
+    # # [200, 200] 
+    # # [100, 100]
+    # # [50, 50]
+# 
+    # # image_new_exists = false
+    # # if !image_new.nil?
+      # # image_new_exists = true  
+    # # end
+    # # render text: image_new_exists
+#     
+    # image_new_200_200 = image_new.resize_to_fill(200, 200)    
+    # image_new_100_100 = image_new.resize_to_fill(100, 100)
+    # image_new_50_50 = image_new.resize_to_fill(50, 50)
+#     
+    # image_200_200 = Magick::Image.read("public" + img.image_url(:image_200_200))[0]
+    # image_100_100 = Magick::Image.read("public" + img.image_url(:image_100_100))[0]
+    # image_50_50 = Magick::Image.read("public" + img.image_url(:image_50_50))[0]
+# 
+    # # public/uploads/user_profile_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
+# 
+    # image_200_200_filename = image_200_200.filename
+    # image_100_100_filename = image_100_100.filename
+    # image_50_50_filename = image_50_50.filename
+# 
+    # FileUtils.rm_rf(Dir.glob(image_200_200.filename))
+    # FileUtils.rm_rf(Dir.glob(image_100_100.filename))
+    # FileUtils.rm_rf(Dir.glob(image_50_50.filename))
+#     
+    # image_new_200_200.write image_200_200_filename
+    # image_new_100_100.write image_100_100_filename
+    # image_new_50_50.write image_50_50_filename
+#      
+# 
+    # # /publisher_product2_images?publisher_id=1&publisher_product_id=1
+    # # @@publisher_product_id = @publisher_product_id 
+    # # @@publisher_id = @publisher_id
+# 
+    # # url_redirect = "/Publisher-Product-Image/publisher_product_id=" + @@publisher_id.to_s + "&publisher_product_id=" + @@publisher_product_id.to_s  
+    # url_redirect = "/publisher_product2_images?publisher_id=" + @@publisher_id.to_s + "&publisher_product_id=" + @@publisher_product_id.to_s
+    # redirect_to url_redirect    
     
   end
   

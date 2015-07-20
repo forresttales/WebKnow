@@ -1,8 +1,8 @@
 # encoding: utf-8
 class PublisherProductImageUploader < CarrierWave::Uploader::Base
 
-  # include CarrierWave::MiniMagick
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+  #include CarrierWave::RMagick
   
 
   storage :file
@@ -31,7 +31,8 @@ class PublisherProductImageUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [100, 100]
   end
   version :image_50_50 do
-    process :resize_to_fill => [50, 50, gravity = ::Magick::CenterGravity]
+    process :resize_to_fill => [50, 50]
+    # process :resize_to_fill => [50, 50, gravity = ::Magick::CenterGravity]
   end
 
   def crop

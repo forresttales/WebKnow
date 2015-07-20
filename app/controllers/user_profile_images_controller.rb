@@ -1,11 +1,11 @@
 class UserProfileImagesController < ApplicationController
   
-  require 'RMagick'
+  #require 'RMagick'
   
   layout 'user_profile_image'
   # layout 'publisher'
 
-  before_filter :force_http
+  # before_filter :force_http
 
 
 
@@ -91,59 +91,59 @@ class UserProfileImagesController < ApplicationController
   def crop_commit
     
     
-    # render text: params[:image_id]
-    
-    x = params[:crop_x]
-    y = params[:crop_y]
-    w = params[:crop_w]
-    h = params[:crop_h]
-
-    img = UserProfileImage.find(params[:image_id])
-    image = Magick::Image.read("public" + img.image_url(:profile_600_600))[0]
-    
-    # render text: image.filename
-
-    x = x.to_i
-    y = y.to_i
-    w = w.to_i
-    h = h.to_i
-    image_new = image.crop(x, y, w, h)
-
-    image_100_100 = image_new.resize_to_fill(100, 100)    
-    image_50_50 = image_new.resize_to_fill(50, 50)
-    image_34_34 = image_new.resize_to_fill(34, 34)
-    
-    profile_100_100 = Magick::Image.read("public" + img.image_url(:profile_100_100))[0]
-    profile_50_50 = Magick::Image.read("public" + img.image_url(:profile_50_50))[0]
-    profile_34_34 = Magick::Image.read("public" + img.image_url(:profile_34_34))[0]
-
-    # public/uploads/user_profile_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
-
-    profile_100_100_filename = profile_100_100.filename
-    profile_50_50_filename = profile_50_50.filename
-    profile_34_34_filename = profile_34_34.filename
-
-    FileUtils.rm_rf(Dir.glob(profile_100_100.filename))
-    FileUtils.rm_rf(Dir.glob(profile_50_50.filename))
-    FileUtils.rm_rf(Dir.glob(profile_34_34.filename))
-    
-    image_100_100.write profile_100_100_filename
-    image_50_50.write profile_50_50_filename
-    image_34_34.write profile_34_34_filename
-
-
-     
-    # # image.recreate_versions!
-# 
-    # image_100_100 = nil    
-    # image_50_50 = nil
-    # image_34_34 = nil
+    # # render text: params[:image_id]
 #     
-    # profile_100_100 = nil
-    # profile_50_50 = nil
-    # profile_34_34 = nil
+    # x = params[:crop_x]
+    # y = params[:crop_y]
+    # w = params[:crop_w]
+    # h = params[:crop_h]
 # 
-    redirect_to '/Photos'    
+    # img = UserProfileImage.find(params[:image_id])
+    # image = Magick::Image.read("public" + img.image_url(:profile_600_600))[0]
+#     
+    # # render text: image.filename
+# 
+    # x = x.to_i
+    # y = y.to_i
+    # w = w.to_i
+    # h = h.to_i
+    # image_new = image.crop(x, y, w, h)
+# 
+    # image_100_100 = image_new.resize_to_fill(100, 100)    
+    # image_50_50 = image_new.resize_to_fill(50, 50)
+    # image_34_34 = image_new.resize_to_fill(34, 34)
+#     
+    # profile_100_100 = Magick::Image.read("public" + img.image_url(:profile_100_100))[0]
+    # profile_50_50 = Magick::Image.read("public" + img.image_url(:profile_50_50))[0]
+    # profile_34_34 = Magick::Image.read("public" + img.image_url(:profile_34_34))[0]
+# 
+    # # public/uploads/user_profile_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
+# 
+    # profile_100_100_filename = profile_100_100.filename
+    # profile_50_50_filename = profile_50_50.filename
+    # profile_34_34_filename = profile_34_34.filename
+# 
+    # FileUtils.rm_rf(Dir.glob(profile_100_100.filename))
+    # FileUtils.rm_rf(Dir.glob(profile_50_50.filename))
+    # FileUtils.rm_rf(Dir.glob(profile_34_34.filename))
+#     
+    # image_100_100.write profile_100_100_filename
+    # image_50_50.write profile_50_50_filename
+    # image_34_34.write profile_34_34_filename
+# 
+# 
+#      
+    # # # image.recreate_versions!
+# # 
+    # # image_100_100 = nil    
+    # # image_50_50 = nil
+    # # image_34_34 = nil
+# #     
+    # # profile_100_100 = nil
+    # # profile_50_50 = nil
+    # # profile_34_34 = nil
+# # 
+    # redirect_to '/Photos'    
     
   end
 

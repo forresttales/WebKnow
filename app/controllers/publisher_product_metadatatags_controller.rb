@@ -4,7 +4,7 @@ class PublisherProductMetadatatagsController < ApplicationController
 
   @@publisher_product_id = nil
   
-  before_filter :force_http
+  # before_filter :force_http
 
     
   

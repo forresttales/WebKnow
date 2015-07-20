@@ -2,8 +2,8 @@
 
 class PublisherProductPos2ImageUploader < CarrierWave::Uploader::Base
 
-  # include CarrierWave::MiniMagick
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+  #include CarrierWave::RMagick
 
   
   

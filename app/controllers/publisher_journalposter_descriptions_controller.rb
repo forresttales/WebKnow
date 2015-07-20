@@ -2,7 +2,7 @@ class PublisherJournalposterDescriptionsController < ApplicationController
 
   layout 'publisher'
   
-  before_filter :force_http
+  # before_filter :force_http
 
   helper_method :log_available_posters
   

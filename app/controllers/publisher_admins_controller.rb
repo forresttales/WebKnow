@@ -1,12 +1,12 @@
 class PublisherAdminsController < ApplicationController
 
-  require 'RMagick'
+  #require 'RMagick'
   
   layout 'publisher'
 
   #before_filter :confirm_logged_in
 
-  before_filter :force_http
+  # before_filter :force_http
 
     
 

@@ -7,7 +7,7 @@ class PublisherJournalpostersController < ApplicationController
   
   helper_method :sort_column, :sort_direction
 
-  before_filter :force_http
+  # before_filter :force_http
 
   
   def index

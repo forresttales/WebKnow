@@ -2,7 +2,7 @@
 # updates require auto-email response
 class PublisherUserRegistersController < ApplicationController
 
-  before_filter :force_http
+  # before_filter :force_http
 
   layout 'publisher_user_register'
 

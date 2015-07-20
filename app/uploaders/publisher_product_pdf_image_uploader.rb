@@ -1,8 +1,8 @@
 # encoding: utf-8
 class PublisherProductPdfImageUploader < CarrierWave::Uploader::Base
 
-  include CarrierWave::RMagick
-  
+  #include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
 
   storage :file
   # storage :fog

@@ -2,7 +2,7 @@ class PublisherJournalposterProdshotsController < ApplicationController
 
   layout 'publisher'
 
-  before_filter :force_http
+  # before_filter :force_http
 
   @@publisher_journalposter_id = nil
   @@publisher_id = nil

@@ -2,7 +2,7 @@ class PublisherProductAdsController < ApplicationController
 
   layout 'publisher_product_ad'
 
-  before_filter :force_http
+  # before_filter :force_http
 
 
   respond_to :html, :js, :json  
