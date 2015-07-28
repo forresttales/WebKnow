@@ -2233,90 +2233,63 @@ class PublisherUsersController < ApplicationController
   end
 
 
-  def cropped_image(image, params)
-      # image = MiniMagick::Image.open(self.image.path)
-      crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
-      image.crop(crop_params)
-      image
-  end
-
-  def resize_to_fill(image, width, height)
-      cols, rows = image[:dimensions]
-      image.combine_options do |cmd|
-        if width != cols || height != rows
-          scale_x = width/cols.to_f
-          scale_y = height/rows.to_f
-          if scale_x >= scale_y
-            cols = (scale_x * (cols + 0.5)).round
-            rows = (scale_x * (rows + 0.5)).round
-            cmd.resize "#{cols}"
-          else
-            cols = (scale_y * (cols + 0.5)).round
-            rows = (scale_y * (rows + 0.5)).round
-            cmd.resize "x#{rows}"
-          end
-        end
-        cmd.gravity 'Center'
-        cmd.background "rgba(255,255,255,0.0)"
-        cmd.extent "#{width}x#{height}" if cols != width || rows != height
-      end
-      image
-  end
-      
-  # # def resize_to_fill(width, height, gravity = 'Center')
-  # def resize_to_fill(width, height)
-      # gravity = 'Center'
-      # manipulate! do |img|
-          # cols, rows = img[:dimensions]
-          # img.combine_options do |cmd|
-              # if width != cols || height != rows
-                  # scale_x = width/cols.to_f
-                  # scale_y = height/rows.to_f
-                  # if scale_x >= scale_y
-                      # cols = (scale_x * (cols + 0.5)).round
-                      # rows = (scale_x * (rows + 0.5)).round
-                      # cmd.resize "#{cols}"
-                  # else
-                      # cols = (scale_y * (cols + 0.5)).round
-                      # rows = (scale_y * (rows + 0.5)).round
-                      # cmd.resize "x#{rows}"
-                  # end
-              # end
-              # cmd.gravity gravity
-              # cmd.background "rgba(255,255,255,0.0)"
-              # cmd.extent "#{width}x#{height}" if cols != width || rows != height
+  # def cropped_image(image, params)
+      # # image = MiniMagick::Image.open(self.image.path)
+      # crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
+      # image.crop(crop_params)
+      # image
+  # end
+  # def resize_to_fill(image, width, height)
+      # cols, rows = image[:dimensions]
+      # image.combine_options do |cmd|
+        # if width != cols || height != rows
+          # scale_x = width/cols.to_f
+          # scale_y = height/rows.to_f
+          # if scale_x >= scale_y
+            # cols = (scale_x * (cols + 0.5)).round
+            # rows = (scale_x * (rows + 0.5)).round
+            # cmd.resize "#{cols}"
+          # else
+            # cols = (scale_y * (cols + 0.5)).round
+            # rows = (scale_y * (rows + 0.5)).round
+            # cmd.resize "x#{rows}"
           # end
-          # img = yield(img) if block_given?
-          # img
+        # end
+        # cmd.gravity 'Center'
+        # cmd.background "rgba(255,255,255,0.0)"
+        # cmd.extent "#{width}x#{height}" if cols != width || rows != height
       # end
-  # end      
-
+      # image
+  # end
+      
   def crop_commit_user
     
       img = UserImage.find(params[:image_id])
       image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
       # Rails.logger.info "image.details = " + image.details.to_s
       
-      # new_image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # new_image_200_200 = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # new_image_100_100 = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # new_image_50_50   = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # new_image_34_34   = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+
+      # new_image_200_200 = cropped_image(new_image_200_200, params)
+      # new_image_100_100 = cropped_image(new_image_100_100, params)
+      # new_image_50_50   = cropped_image(new_image_50_50, params)
+      # new_image_34_34   = cropped_image(new_image_34_34, params)
+
+      # new_image_200_200 = resize_to_fill(new_image_200_200, 200, 200)
+      # new_image_100_100 = resize_to_fill(new_image_100_100, 100, 100)
+      # new_image_50_50   = resize_to_fill(new_image_50_50, 50, 50)
+      # new_image_34_34   = resize_to_fill(new_image_34_34, 34, 34)
+
+      # new_image_200_200.write image_200_200_path
+      # new_image_100_100.write image_100_100_path
+      # new_image_50_50.write image_50_50_path
+      # new_image_34_34.write image_34_34_path
       
-      new_image_200_200 = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-      new_image_100_100 = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-      new_image_50_50   = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-      new_image_34_34   = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-       
-      # new_image = cropped_image(new_image, params)       
-       
-      new_image_200_200 = cropped_image(new_image_200_200, params)
-      new_image_100_100 = cropped_image(new_image_100_100, params)
-      new_image_50_50   = cropped_image(new_image_50_50, params)
-      new_image_34_34   = cropped_image(new_image_34_34, params)
-      
-      # new_image_200_200 = new_image.resize_to_fill(200, 200)
-      
-      new_image_200_200 = resize_to_fill(new_image_200_200, 200, 200)
-      new_image_100_100 = resize_to_fill(new_image_100_100, 100, 100)
-      new_image_50_50   = resize_to_fill(new_image_50_50, 50, 50)
-      new_image_34_34   = resize_to_fill(new_image_34_34, 34, 34)
+      crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
+      new_image = image.crop(crop_params)
       
       img_name = File.basename(img.image.to_s)
       img_dir = "public" + File.dirname(img.image.to_s)
@@ -2330,12 +2303,16 @@ class PublisherUsersController < ApplicationController
       FileUtils.rm_rf(image_100_100_path) 
       FileUtils.rm_rf(image_50_50_path) 
       FileUtils.rm_rf(image_34_34_path) 
-      
-      new_image_200_200.write image_200_200_path
-      new_image_100_100.write image_100_100_path
-      new_image_50_50.write image_50_50_path
-      new_image_34_34.write image_34_34_path
-  
+
+      new_image.resize('200x200')
+      new_image.write image_200_200_path
+      new_image.resize('100x100')
+      new_image.write image_100_100_path      
+      new_image.resize('50x50')
+      new_image.write image_50_50_path      
+      new_image.resize('34x34')
+      new_image.write image_34_34_path
+
       x = params[:crop_x]
       y = params[:crop_y]
       w = params[:crop_w]
