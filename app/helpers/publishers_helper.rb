@@ -93,7 +93,7 @@ module PublishersHelper
     img = user.user_images.where( :primary => true ).first rescue nil
     # img = PublisherUserImage.where("publisher_user_id = ?", @publisher_user_id).where( :primary => true ).first
     if !img.nil?     
-      post_publisher_comment_avatar_url = img.image_url(:user_34_34)
+      post_publisher_comment_avatar_url = img.image_url(:image_34_34)
     else
       post_publisher_comment_avatar_url = "../images_avatar/avatar-gen-person-w34-h34.png"
     end

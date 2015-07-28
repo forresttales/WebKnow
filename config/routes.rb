@@ -28,9 +28,10 @@ Webknow::Application.routes.draw do
   resources :publisher_user_registers do
       collection do
         post :update_user_personal
+        post :update_user_email
+        post :update_user_password
       end
-  end
-  
+  end  
   
   # match "/Publisher-Settings" => "publisher_registers#index", via: 'get'
   match "/Publisher-Settings-1" => "publisher_registers#register_1", via: 'get'

@@ -47,7 +47,23 @@
 		border: 1px solid #49853F;
 		margin: 0;
 		background-color: #fff;
-	}	
+	}
+	p.error {
+		  font-family: Arial, Helvetica, sans-serif;
+		  font-weight: 700;
+		  font-size: 14px;
+		  color: #f00;
+	}
+	.success-message {
+		  font-family: Arial, Helvetica, sans-serif;
+		  font-weight: 700;
+		  font-size: 14px;
+		  color: #376340;
+		  text-align: right;
+	}
+	.btn-opt-edit {
+		padding: 0;
+	}
 </style>
 
 <div style="height: 12px;"></div>
@@ -56,196 +72,134 @@
 			<div style="float: left; width: 100px;">
 				<span>My Settings</span>
 			</div>
-			<div style="float: right; width: 200px;">
-				<div class="btn-opt-edit-container-outer">
-					<div class="btn-opt-edit-container">
-						<div id="open_edit_story_1" class="btn-opt-edit" tabindex="">
-							Edit
-						</div>
-						<div id="close_edit_story_1" class="btn-opt-edit hidden" tabindex="">
-							Cancel
-						</div>
-					</div>
-				</div>
-			</div>
+			<div style="float: right; width: 200px;"></div>
 			<div style="clear: both;"></div>
 		</div>
-		<!-- <div class="table margin-0">		
-			<div class="row" style="height: 12px;"></div>
-			<div class="row pad-marg-null">
-				<div class="cell-edit-6 text-align-left pad-left-20">
-					<span class="profile-label-1">Email:</span>
-				</div>
-				<div class="cell-edit-7 edit-story-1 hidden">
-					<div class="table pad-marg-null">
-						<div class="row pad-marg-null">
-							<div class="cell-edit-7 position-relative">
-								<div class="position-absolute top-minus-edit-1 right-0">
-									<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_job_title" name="publisher_user[job_title]" tabindex="15" type="text" value="job 1" placeholder="Job Title">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="cell-edit-7 show-story-1">
-					<div class="table pad-marg-null">
-						<div class="row pad-marg-null">
-							<div class="cell-edit-7 position-relative text-align-left">
-								<div class="position-absolute top-minus-edit-2">
-									<span id="span_publisher_user_job_title" class="profile-text-1 color-record">job 1</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row" style="height: 12px;"></div>
-			<div class="row pad-marg-null">
-				<div class="cell-edit-6 text-align-left pad-left-20">
-					<span class="profile-label-1">Password:</span>
-				</div>
-				<div class="cell-edit-7 edit-story-1 hidden">
-					<div class="table pad-marg-null">
-						<div class="row pad-marg-null">
-							<div class="cell-edit-7 position-relative">
-								<div class="position-absolute top-minus-edit-1 right-0">
-									<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_job_title" name="publisher_user[job_title]" tabindex="15" type="text" value="job 1" placeholder="Job Title">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="cell-edit-7 show-story-1">
-					<div class="table pad-marg-null">
-						<div class="row pad-marg-null">
-							<div class="cell-edit-7 position-relative text-align-left">
-								<div class="position-absolute top-minus-edit-2">
-									<span id="span_publisher_user_job_title" class="profile-text-1 color-record">****</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
-
-		<div style="height: 20px"></div>
-		<div class="table">
+		<div style="height: 20px;"></div>
+		<!-- <#%= form_tag({action: 'update_user_email'}, remote: true, 'data-type': "json", id: "change_email_form", class: "table") do %#> -->
+		<%= form_tag({ :action => 'update_user_email' }) do %>
 			<div class="row">
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
 					<label>Change Email:</label>
 				</div>
-				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;"></div>
+				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;">
+					<p id="message_user_email" class="success-message"></p>
+				</div>
+				<div style="display: table-cell; width: 260px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
-			<div class="row">
+			<div class="row">				
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px;">
 					<label>Email:</label>
 				</div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<input class="settings-input" disabled="true" placeholder="<%= @user_personal.email.to_s %>">
-					</div>
-					<!-- <div style="display: table-cell; width: 70px;">
-						<div class="edit-icon"></div>
-					</div> -->
-				</div>			
+				<div style="display: table-cell; width: 240px;">
+					<%= text_field_tag :user_old_email, nil, class: "settings-input", disabled: true, value: @user_personal.email.to_s %>
+				</div>
+				<div id="message_user_old_email" style="display: table-cell; width: 260px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
-			<div class="row">
+			<div class="row">				
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px;">
 					<label>New Email:</label>
 				</div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<input class="settings-input">
-					</div>
-				</div>			
+				<div style="display: table-cell; width: 240px;">
+					<%= text_field_tag :user_new_email, nil, class: "settings-input" %>
+				</div>
+				<div id="message_user_new_email" style="display: table-cell; width: 260px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
 			<div class="row">
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px;"></div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<div class="btn-opt-edit-container-outer">
-							<div class="btn-opt-edit-container">
-								<div class="btn-opt-edit" tabindex="">Save</div>
-							</div>
+				<div style="display: table; width: 160px;">
+					<div class="btn-opt-edit-container-outer">
+						<div class="btn-opt-edit-container">
+							<%= submit_tag("Save", class: "btn-opt-edit", id: "save_user_email", :style => " background: none;  border: none;") %>
 						</div>
 					</div>
-					<div style="display: table-cell; width: 80px;"></div>
 				</div>
+				<div style="display: table-cell; width: 80px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div id="answer"></div>
+			</div>
+		<% end %>
+		<!-- <#%= form_tag({action: 'update_user_password'}, remote: true, 'data-type': "json", id: "change_password_form", class: "table") do %#> -->
+		<%= form_tag({action: 'update_user_password'}) do %>
 			<div class="row">
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
 					<label>Change Password:</label>
 				</div>
-				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;"></div>
+				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;">
+					<p id="message_user_password" class="success-message"></p>
+				</div>
+				<div style="display: table-cell; width: 260px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
-			<div class="row">
+			<div class="row">				
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px;">
 					<label>Old Password:</label>
 				</div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<input class="settings-input" >
-					</div>
+				<div style="display: table-cell; width: 240px;">
+					<%= password_field_tag :user_old_password, nil, :class => "settings-input" %>
 				</div>
+				<div id="message_user_old_password" style="display: table-cell; width: 260px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
-			<div class="row">
+			<div class="row">				
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px;">
 					<label>New Password:</label>
 				</div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<input class="settings-input" >
-					</div>
+				<div style="display: table-cell; width: 240px;">
+					<%= password_field_tag :user_new_password, nil, :class => "settings-input" %>
 				</div>
+				<div id="message_user_new_password" style="display: table-cell; width: 260px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
-			<div class="row">
+			<div class="row">				
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px;">
 					<label>Confirm Password:</label>
 				</div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<input class="settings-input" >
-					</div>
+				<div style="display: table-cell; width: 160px;">
+					<%= password_field_tag :user_confirm_password, nil, :class => "settings-input" %>
 				</div>
+				<div id="message_user_confirm_password" style="display: table-cell; width: 260px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
 			<div class="row">
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px;"></div>
-				<div style="display: table; width: 240px;">
-					<div style="display: table-cell; width: 160px;">
-						<div class="btn-opt-edit-container-outer">
-							<div class="btn-opt-edit-container">
-								<div class="btn-opt-edit" tabindex="">Save</div>
-							</div>
+				<div style="display: table; width: 160px;">
+					<div class="btn-opt-edit-container-outer">
+						<div class="btn-opt-edit-container">
+							<%= submit_tag("Save", class: "btn-opt-edit", id: "save_user_password", :style => " background: none;  border: none;") %> 
 						</div>
 					</div>
-					<div style="display: table-cell; width: 80px;"></div>
 				</div>
+				<div style="display: table-cell; width: 80px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
+			<div class="row">
+				<div id="answer"></div>
+			</div>
+		<% end %>
+		<div id="change_personal_form" class="table">
 			<div class="row">
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
 					<label>Change Personal:</label>
 				</div>
-				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;"></div>
+				<div style="display: table-cell; width: 240px; border-bottom: 1px solid grey;">
+					<p id="message_user_personal" class="success-message"></p>
+				</div>
 			</div>
 			<div class="row" style="height: 12px"></div>
 			<div class="row">
@@ -313,6 +267,7 @@
 						</select>
 					</div>
 				</div>
+				<div style="display: table-cell; width: 260px;"></div>
 			</div>
 			<div class="row" style="height: 12px"></div>
 			<div class="row">
@@ -341,14 +296,15 @@
 					<div style="display: table-cell; width: 220px;">
 						<div class="btn-opt-edit-container-outer">
 							<div class="btn-opt-edit-container">
-								<div id="save_user_personal" class="btn-opt-edit" tabindex="">Save</div>
+								<%= submit_tag("Save", class: "btn-opt-edit", id: "save_user_personal", :style => " background: none;  border: none;") %>
+								<!-- <div id="save_user_personal" class="btn-opt-edit" tabindex="">Save</div> -->
 							</div>
 						</div>
 					</div>
 					<div style="display: table-cell; width: 20px;"></div>
 				</div>
 			</div>
-			<div class="row" style="height: 12px"></div>
+			<div class="row" style="height: 12px"></div>			
 		</div>
 		<div style="height: 20px"></div>
 	</div>
@@ -396,6 +352,9 @@
 		$("#user_bd_day").trigger('chosen:updated');
 	}
 	$(document).ready(function () {
+		//Forms validation
+		passwordFormValidate();
+		emailFormValidate();
 		// Loading birthday
 		var user_birthday = gon.user_birthday;
 		//Initialize dropdowns
@@ -406,7 +365,7 @@
 		set_user_birthday(user_birthday.day,
 						  user_birthday.month,
 						  user_birthday.year);		
-		set_user_gender(gon.user_gender);		
+		set_user_gender(gon.user_gender);
 	});
 	// Dynamic update of birthday dropdown due to selected month
 	$( "#user_bd_month" ).change(function() {
@@ -440,95 +399,143 @@
         	statusCode: {
         	},
 	    	success: function(data) {
-	    		alert(data.status);
+	    		if(data.status != "Update!") {
+	    			// alert(data.status);
+	    			$("#message_user_personal").fadeTo( "slow", 0 , function () {
+	    				$("#message_user_personal").text(data.status).fadeTo( "slow", 1 );
+	    			});
+	    			
+	    		}
+	    		else
+	    			location.href=("/Signin");
         	},
-        	error: function(xhr){ 
-        		alert("AJAX error: " + xhr.statusText);
+        	error: function(xhr){
+    			alert("AJAX error: " + xhr.statusText);
+    			$("#message_user_personal").fadeTo( "slow", 0 );
         	} 
 		});
 	});
+	function stopFormValidation (formID) {
+		$('#' + formID + ' :input').not(':button,:hidden').each( function() {
+			$(this).rules('remove');
+		});
+	}
+	function startPasswordFormValidation () {
+		$("#user_old_password").rules('add', {
+			required: true,
+			minlength: 6
+		});
+		$("#user_new_password").rules('add', {
+			required: true,
+			
+		});
+		$("#user_confirm_password").rules('add', {
+			required: true,
+			minlength: 6,
+			equalTo: "#user_new_password"
+		});
+	}
+	function startEmailFormValidation () {
+		$("#user_new_email").rules('add', {
+			required: true,
+			email: true,
+			maxlength: 50
+		});
+	}
+	// Password form validation starts after first click on submit button
+	$("#save_user_password").one('click', function() {        
+        startPasswordFormValidation();
+    });
+    // Email form validation starts after first click on submit button
+	$("#save_user_email").one('click', function() {
+        startEmailFormValidation();
+    });
+	$("#change_password_form").on("ajax:success",function(event, data, status, xhr) {
+		if(data.status == "Update!") {
+			location.href=("/Signin");
+		} else if (data.status != "Saved!") {
+			$("#message_user_password").text("");
+			$("#message_user_old_password p").text(data.status);
+		} else {
+			// alert(data.status);
+			$("#user_old_password").val("");
+			$("#user_new_password").val("");
+			$("#user_confirm_password").val("");
+			$("#message_user_password").text(data.status).fadeTo( "slow", 1 );
+			// Password validation stops after password was changed	correctly
+			stopFormValidation($(this).attr("id"));
+			
+			$("#save_user_password").one('click', function() {
+				$("#message_user_password").fadeTo( "slow", 0 );
+				startPasswordFormValidation();
+		    });
+		}	
+	});
+	$("#change_email_form").on("ajax:success",function(event, data, status, xhr) {
+		if(data.status == "Update!") {
+			location.href=("/Signin");
+		} else if (data.status != "Saved!") {
+			$("#message_user_email").text("");
+			$("#message_user_new_email p").text(data.status);
+		} else {
+			// alert(data.status);
+			$("#user_old_email").val(data.new_email);
+			$("#user_new_email").val("");
+			$("#message_user_email").text(data.status).fadeTo( "slow", 1 );
+			// Password validation stops after password was changed	correctly
+			stopFormValidation($(this).attr("id"));
+			
+			$("#save_user_email").one('click', function() {
+				$("#message_user_email").fadeTo( "slow", 0 );
+				startEmailFormValidation();
+		    });
+		}	
+	});
+	function passwordFormValidate() {
+		$("#change_password_form").validate({
+			debug: true,
+			onkeyup: false,
+			focusCleanup: true,
+			focusInvalid: false,
+			errorElement: "p",
+			success: "valid",
+			submitHandler: function(form) {
+				$.rails.handleRemote($("#change_password_form"));
+				// form.submit();
+			},
+			errorPlacement: function(error, element) {
+	    		error.appendTo('#message_' + element.attr('id'));
+	    	}
+		});
+	}
+	function emailFormValidate() {
+		$("#change_email_form").validate({
+			debug: true,
+			onkeyup: false,
+			focusCleanup: true,
+			focusInvalid: false,
+			errorElement: "p",
+			success: "valid",
+			submitHandler: function(form) {
+				$.rails.handleRemote($("#change_email_form"));
+				// form.submit();
+			},
+			errorPlacement: function(error, element) {
+	    		error.appendTo('#message_' + element.attr('id'));
+	    	}
+		});
+	}
+	$("#user_old_password").keypress(function(e){
+        if(e.keyCode==13) {
+        	e.preventDefault();
+      		$("#user_new_password").focus();
+        }
+    });
+    $("#user_new_password").keypress(function(e){
+        if(e.keyCode==13) {
+        	e.preventDefault();
+      		$("#user_confirm_password").focus();
+        }
+    });
 </script>
-
-
-
-
-
-
-
-
-<% if false %>
-<% provide(:title, 'Signin and Personal') %>
-
-<style>
-	
-	.title-container {
-		min-height: 100px;
-		border: 2px solid #999;
-		/*opacity: .45;*/
-	}
-	.title-bar {
-		/*padding: 5px 5px 5px 5px;*/
-		padding: 3px;
-		/*border-bottom: 1px solid #ccc;*/
-		background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
-		background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
-		background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
-		background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
-		background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
-	}
-	.title-grey span {
-		color: #333;
-		float: right;
-	}
-	.title-bar span {
-		font-family: Arial, Helvetica, sans-serif;
-		font-size: 16px;
-		font-weight: 400;
-		color: #000;
-	}
-	
-</style>
-
-<style>
-	/*Do not place in the assets pipeline*/
-	.nav-publisher-user-register .drop-11 .drop-11-target {
-		background-color: #e8e8e8;
-	}	
-	
-</style>
-
-<div style="height: 10px;"></div>
-
-<div class="title-container">
-	<div class="title-bar" style="position: relative;">
-		<!-- <p>My Info</p> -->
-		<div style="float: left; width: 300px;">
-			<span>Signin and Personal</span>
-		</div>		
-		<!-- <div style="float: right; width: 200px;">
-			<div class="btn-opt-edit-container-outer">
-				<div class="btn-opt-edit-container">
-					<div id="open_edit_story_1" class="btn-opt-edit" tabindex="">
-						Edit
-					</div>
-					<div id="close_edit_story_1" class="btn-opt-edit hidden" tabindex="">
-						Cancel
-					</div>
-				</div>
-			</div>
-		</div> -->		
-		<div style="clear: both;"></div>
-	</div>
-
-	<div class="table margin-0" style="height: 225px;">
-		<div class="row" style="height: 225px;">
-		</div>
-	</div>
-
-	<div style="height: 4px;"></div>
-
-</div>
-<% end %>
 
