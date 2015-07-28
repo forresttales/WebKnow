@@ -2119,7 +2119,23 @@ cursor: pointer;
 		</div>
 	</div>
 
-	<%= form_for UserImage.new, :url => upload_publisher_user_image_primary_publisher_users_path(@publisher_user_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_publisher_user_image'}, :remote => true do |f| %>
+	<% if false %>
+	<form id="new_publisher_user_image" class="hidden" method="post" enctype="multipart/form-data" data-remote="true" action="/publisher_users/upload_publisher_user_image_primary" accept-charset="UTF-8">
+		<div style="margin:0;padding:0;display:inline">
+			<input type="hidden" value="✓" name="utf8">
+			<!-- <input type="hidden" value="IC786c8YtzgxVDbVC1bw+2oIonuHV7CXBBHyFG6kTXg=" name="authenticity_token"> -->
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		</div>
+		<p>
+			<input id="new_publisher_user_image_image" type="file" name="user_image[image]">
+		</p>
+		<p>
+			<input id="btn_submit_dialog_12" class="btn-submit hidden" type="submit" value="Upload Photo" name="commit">
+		</p>
+	</form>
+	<% end %>
+	
+	<%= form_for UserImage.new, :url => upload_publisher_user_image_primary_publisher_users_path(@publisher_user_image_new), :html => {:multipart => true, :id => 'new_publisher_user_image', :class => 'hidden'}, :remote => true do |f| %>
 	<p>
 		<%= f.file_field :image, :id => 'new_publisher_user_image_image' %>
 	</p>
@@ -2129,7 +2145,7 @@ cursor: pointer;
 		<%= f.submit :id => 'btn_submit_dialog_12', :class => 'btn-submit hidden', :value => 'Upload Photo' %>
 	</p>
 	<% end %>
-
+	
 </div>
 
 <!-- user image - change 13 -->
@@ -4770,6 +4786,71 @@ return result;
 
 var scroll_top = 0; // legacy
 
+
+
+
+  // Parameters: {	"utf8"=>"✓", 
+  			   	// "authenticity_token"=>"IC786c8YtzgxVDbVC1bw+2oIonuHV7CXBBHyFG6kTXg=", 
+  			   	// "user_image"=>{	"image"=>#<ActionDispatch::Http::UploadedFile:0x7db3efd8 @original_filename="P7250021-gs.png", 
+  			   					// @headers="Content-Disposition: form-data; name=\"user_image[image]\"; filename=\"P7250021-gs.png\"\r\nContent-Type: image/png\r\n", 
+  			   					// @tempfile=#<Tempfile:/tmp/RackMultipart20150726-3255-shu6rw>, 
+  			   					// @content_type="image/png">
+  			   				  // }, 
+  			   	// "commit"=>"Upload Photo"
+  			  // }
+
+
+	// <form id="new_publisher_user_image" class="hidden" method="post" enctype="multipart/form-data" data-remote="true" action="/publisher_users/upload_publisher_user_image_primary" accept-charset="UTF-8">
+		// <div style="margin:0;padding:0;display:inline">
+			// <input type="hidden" value="✓" name="utf8">
+			// <!-- <input type="hidden" value="IC786c8YtzgxVDbVC1bw+2oIonuHV7CXBBHyFG6kTXg=" name="authenticity_token"> -->
+			// <input name="authenticity_token" value="<#%= form_authenticity_token %#>" type="hidden">
+		// </div>
+		// <p>
+			// <input id="new_publisher_user_image_image" type="file" name="user_image[image]">
+		// </p>
+		// <p>
+			// <input id="btn_submit_dialog_12" class="btn-submit hidden" type="submit" value="Upload Photo" name="commit">
+		// </p>
+	// </form>
+
+
+	// function uploadPublisherUserImagePrimary() {
+		// // var user_image = $("form#new_publisher_user_image input#new_publisher_user_image_image").val();
+		// var params = $("form#new_publisher_user_image").serialize();
+		// alert(params);
+		// var obj_list = 	'{ "user_image":"' + user_image +
+						// '"}';
+		// var obj = '{ "publisher_user_image": [' +  obj_list + '] }';
+		// $.ajax({
+			// type: 'POST',
+			// // data : JSON.stringify(obj),
+			// data : obj,
+			// url: '/publisher_users/upload_publisher_user_image_primary',
+			// // dataType: "json",
+			// dataType: "script",
+			// contentType: "application/json",
+			// processData: false,
+			// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+			// statusCode: {
+			// // 200:function() { alert("200"); },
+			// // 202:function() { alert("202"); }
+		// },
+		// success: function(data) {
+			// alert('success');
+		// },
+			// error: function(xhr){  alert("error: " + xhr.statusText); }
+		// });
+	// }
+
+
+
+
+
+
+
+
+
 // $(window).load( function() {
 $(document).ready(function () {
 
@@ -5276,32 +5357,38 @@ return false;
 // *****
 // user_image_primary
 
-id_image = gon.id_image;
-
-$(document).on("click", "#btn_dlg_submit_upload_image_primary", function() {
-$("form#new_publisher_user_image input#new_publisher_user_image_image").click();
-});
-$(document).on("change", "form#new_publisher_user_image input#new_publisher_user_image_image", function() {
-$("#dvLoading_12").removeClass("dvLoading-display-none");
-$("form#new_publisher_user_image input#btn_submit_dialog_12").click();
-});
-$(document).on("click", "#figcaption_image_primary_generic", function() {
-$("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
-$("#dialog_12").jqmShow();
-});
-// $(document).on("click", "#btn_photo_primary_new", function() {
-// $("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
-// $("#dialog_12").jqmShow();
-// $("#btn_dlg_submit_upload_image_primary").focus();
-// });
-	$(document).on("btn_photo_primary_new_click", function() {
-	$("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
-	$("#dialog_12").jqmShow();
-	$("#btn_dlg_submit_upload_image_primary").focus();
+	id_image = gon.id_image;
+	
+	$(document).on("click", "#btn_dlg_submit_upload_image_primary", function() {
+		$("form#new_publisher_user_image input#new_publisher_user_image_image").click();
 	});
-$(document).on("click", "#btn_dlg_cancel_upload_image_primary", function() {
-$("#close_form12").trigger('click');
-});
+
+	$(document).on("change", "form#new_publisher_user_image input#new_publisher_user_image_image", function() {
+		$("#dvLoading_12").removeClass("dvLoading-display-none");
+		$("form#new_publisher_user_image input#btn_submit_dialog_12").click();
+		// uploadPublisherUserImagePrimary()
+	});
+
+	$(document).on("click", "#figcaption_image_primary_generic", function() {
+		$("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
+		$("#dialog_12").jqmShow();
+	});
+	// $(document).on("click", "#btn_photo_primary_new", function() {
+	// $("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
+	// $("#dialog_12").jqmShow();
+	// $("#btn_dlg_submit_upload_image_primary").focus();
+	// });
+	$(document).on("btn_photo_primary_new_click", function() {
+		$("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
+		$("#dialog_12").jqmShow();
+		$("#btn_dlg_submit_upload_image_primary").focus();
+	});
+	$(document).on("click", "#btn_dlg_cancel_upload_image_primary", function() {
+		$("#close_form12").trigger('click');
+	});
+
+
+
 
 $(document).on("click", "#btn_dlg_submit_upload_image_primary_change", function() {
 $("form#change_publisher_user_image input#change_publisher_user_image_image").click();

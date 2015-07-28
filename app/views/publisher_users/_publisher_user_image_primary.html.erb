@@ -324,8 +324,8 @@
 		<!-- <div class="container-figure container-figure-1 drop-101-container-target" style="height: 200px;"> -->
 		<!-- <div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-101-container-target"> -->
 		<div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-101" style="position: relative;">
-			<figure class="dialog-11-figure cursor-pointer" data-width="<%= @publisher_user_image_primary.width %>" data-src-600="<%= @publisher_user_image_primary.image_url(:user_600_600) %>">
-				<img id="user_primary_img" class="user-primary-img" alt="" src="<%= @publisher_user_image_primary.image_url(:user_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>" />
+			<figure class="dialog-11-figure cursor-pointer" data-width="<%= @publisher_user_image_primary.width %>" data-src-600="<%= @publisher_user_image_primary.image_url(:image_600_600) %>">
+				<img id="user_primary_img" class="user-primary-img" alt="" src="<%= @publisher_user_image_primary.image_url(:image_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>" />
 				<!-- <input class="container-image-hidden" type="hidden" value="<#%= @publisher_user_image_primary.image_url(:user_600_600) if @publisher_user_image_primary.image? %#>" />
 				<img id="user_primary_img_600" class="hidden" alt="" src="<#%= @publisher_user_image_primary.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %#>" /> -->
 				<figcaption class="edit-image hidden drop-101-target">
@@ -472,134 +472,134 @@
 </script>
 
 
-	<script>
+<script>
 
-		// $(window).load( function() {
-		$(document).ready( function () {				
+	// $(window).load( function() {
+	$(document).ready( function () {				
 
-			$("img").one("load", function() {
-				if((this.id == "user_primary_img") || (this.id == "user_generic_img")) {
-					var img_w = this.width;
-					var img_h = this.height;
+		$("img").one("load", function() {
+			if((this.id == "user_primary_img") || (this.id == "user_generic_img")) {
+				var img_w = this.width;
+				var img_h = this.height;
 
-					$(".container-figure-image-1").css({
-						// width : img_w + 4,
-						// height : img_h + 4
-						width : img_w,
-						height : img_h						
-					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");													
-				}
-				if(this.id == "user_generic_img") {
-					var img_w = this.width;
-					var img_h = this.height;
-					$(".container-figure-image-1").css({
-						// width : img_w + 4,
-						// height : img_h + 4
-						width : img_w,
-						height : img_h						
-					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
-				}				
-				if(this.id == "user_primary_img_600") {
-					var img_w = this.width;
-					var img_h = this.height;
-					$("#figure_dialog_11").css({
-						width : img_w,
-						height : img_h
-					});																			
-				}								
-			}).each(function() {
-			  	if(this.complete) $(this).load();
-			});
-
-			
-			var this_img;			
-			$(".dialog-11-figure").on('click', function(e) {
-				if ( e.target.nodeName == "IMG" ) {
-
-					$("#dialog_overlay").jqmShow();
-					$("#overlay_loading").removeClass("display-none");
-
-					// // alert($(this).attr("id"));
-					// var w = $(this).data("width");
-					// // alert(w);
-					// w += 120;
-					// var w2 = -(w/2);
-					var src_img = $(this).data("src-600");
-					// alert(src_img);
-					$('<img src="'+ src_img +'">').load(function(){
-						$("#figure_dialog_11").append($(this));
-						// var publisher_user_image_primary_url = gon.publisher_user_image_primary_url;
-						// var s_tmpl = "templates/figure_dialog_11";
-						// $.tmpl(s_tmpl, {
-							// src_image: publisher_user_image_primary_url
-						// }).appendTo($("#figure_dialog_11"));
-
-						// $(".jqmWindow-11").css({
-							// 'margin-left' : w2,
-							// 'width' : w  
-						// });
-						$("#overlay_loading").addClass("display-none");
-						$("#dialog_overlay").jqmHide();
-						$("#dialog_11").jqmShow();	
-					}).error(function(){
-						alert('error loading image');
-					});
-				}
-			});
-			$('#dialog_11').jqm({
-				overlay: 84,
-				onShow: function(hash) {
-					hash.w.css('opacity', 1.0).fadeIn(10);
-					hash.o.prependTo('body');
-					hash.w.css('top', '10px');
-				},
-				onHide: function(hash) {
-					hash.o.remove();
-					hash.w.css('top', '-8000px');
-					$("#figure_dialog_11 img").remove();
-					// hash.w.fadeOut('10',function(){ 
-						// hash.o.remove(); 
-					// });
-				}
-			}); 		
-			$('#dialog_overlay').jqm({
-				overlay: 84,
-				onShow: function(hash) {
-					hash.w.css('opacity', 1.0).fadeIn(10);
-					hash.o.prependTo('body');
-					// hash.w.css('top', '0px');
-				},
-				onHide: function(hash) {
-					hash.o.remove();
-					hash.w.css('top', '-8000px');
-				}
-			}); 		
-			
-			$('#dialog_15').jqm({
-				onShow: function(hash) {
-					hash.o.prependTo('body');
-					hash.w.css('top', '-720px');
-					hash.w.css('opacity', 1.0).fadeIn(200);
-					// hash.w.show();
-					$('#dialog_15').animate(
-						{bottom:'-=740', top:'+=740'}, 
-						500, 
-						'easeInOutCirc', 
-						function() {
-							$('#dialog_15').animate(
-								{bottom:'+=4', top:'-=4'}, 
-								100, 
-								'easeInBounce', 
-								function() {
-								}
-							);
-						}
-					);
-				}
-			}); 		
-		
+				$(".container-figure-image-1").css({
+					// width : img_w + 4,
+					// height : img_h + 4
+					width : img_w,
+					height : img_h						
+				}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");													
+			}
+			if(this.id == "user_generic_img") {
+				var img_w = this.width;
+				var img_h = this.height;
+				$(".container-figure-image-1").css({
+					// width : img_w + 4,
+					// height : img_h + 4
+					width : img_w,
+					height : img_h						
+				}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
+			}				
+			if(this.id == "user_primary_img_600") {
+				var img_w = this.width;
+				var img_h = this.height;
+				$("#figure_dialog_11").css({
+					width : img_w,
+					height : img_h
+				});																			
+			}								
+		}).each(function() {
+		  	if(this.complete) $(this).load();
 		});
-	  
 
-	</script>		
+		
+		var this_img;			
+		$(".dialog-11-figure").on('click', function(e) {
+			if ( e.target.nodeName == "IMG" ) {
+
+				$("#dialog_overlay").jqmShow();
+				$("#overlay_loading").removeClass("display-none");
+
+				// // alert($(this).attr("id"));
+				// var w = $(this).data("width");
+				// // alert(w);
+				// w += 120;
+				// var w2 = -(w/2);
+				var src_img = $(this).data("src-600");
+				// alert(src_img);
+				$('<img src="'+ src_img +'">').load(function(){
+					$("#figure_dialog_11").append($(this));
+					// var publisher_user_image_primary_url = gon.publisher_user_image_primary_url;
+					// var s_tmpl = "templates/figure_dialog_11";
+					// $.tmpl(s_tmpl, {
+						// src_image: publisher_user_image_primary_url
+					// }).appendTo($("#figure_dialog_11"));
+
+					// $(".jqmWindow-11").css({
+						// 'margin-left' : w2,
+						// 'width' : w  
+					// });
+					$("#overlay_loading").addClass("display-none");
+					$("#dialog_overlay").jqmHide();
+					$("#dialog_11").jqmShow();	
+				}).error(function(){
+					alert('error loading image');
+				});
+			}
+		});
+		$('#dialog_11').jqm({
+			overlay: 84,
+			onShow: function(hash) {
+				hash.w.css('opacity', 1.0).fadeIn(10);
+				hash.o.prependTo('body');
+				hash.w.css('top', '10px');
+			},
+			onHide: function(hash) {
+				hash.o.remove();
+				hash.w.css('top', '-8000px');
+				$("#figure_dialog_11 img").remove();
+				// hash.w.fadeOut('10',function(){ 
+					// hash.o.remove(); 
+				// });
+			}
+		}); 		
+		$('#dialog_overlay').jqm({
+			overlay: 84,
+			onShow: function(hash) {
+				hash.w.css('opacity', 1.0).fadeIn(10);
+				hash.o.prependTo('body');
+				// hash.w.css('top', '0px');
+			},
+			onHide: function(hash) {
+				hash.o.remove();
+				hash.w.css('top', '-8000px');
+			}
+		}); 		
+		
+		$('#dialog_15').jqm({
+			onShow: function(hash) {
+				hash.o.prependTo('body');
+				hash.w.css('top', '-720px');
+				hash.w.css('opacity', 1.0).fadeIn(200);
+				// hash.w.show();
+				$('#dialog_15').animate(
+					{bottom:'-=740', top:'+=740'}, 
+					500, 
+					'easeInOutCirc', 
+					function() {
+						$('#dialog_15').animate(
+							{bottom:'+=4', top:'-=4'}, 
+							100, 
+							'easeInBounce', 
+							function() {
+							}
+						);
+					}
+				);
+			}
+		}); 		
+	
+	});
+  
+
+</script>		
 

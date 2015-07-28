@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
 //= require jquery.fullscreenslides
+//= require jquery.remotipart
 //= require jquery-tmpl
 //= require_directory ./templates
 

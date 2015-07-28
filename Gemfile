@@ -70,7 +70,7 @@ gem 'torquebox-server', '~> 3.1.2'
 # gem 'torquebox-stomp', '~> 3.1.2'
 # gem 'torquebox-web', '~> 3.1.2'
 
-gem 'nokogiri', '~> 1.6.1-java'
+gem 'nokogiri', '1.6.1-java'
 
 platform :jruby do
   # gem 'activerecord-jdbcsqlite3-adapter'

@@ -317,7 +317,7 @@ module SessionsHelper
       publisher_user_image_primary = PublisherUserImage.where("publisher_user_id = ?", publisher_user_id).where( :primary => true ).first rescue nil
       if !publisher_user_image_primary.nil?
         if publisher_user_image_primary.image?
-          user_avatar = publisher_user_image_primary.image_url(:user_34_34)
+          user_avatar = publisher_user_image_primary.image_url(:image_34_34)
         else
           Rails.logger.info("publisher_user_image_primary image is nil")
         end
@@ -372,7 +372,7 @@ module SessionsHelper
       user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
       if !user_image_primary.nil?
           if user_image_primary.image?
-              user_avatar = user_image_primary.image_url(:user_50_50)
+              user_avatar = user_image_primary.image_url(:image_50_50)
           else
               # Rails.logger.info("user_image_primary image is nil")
           end
