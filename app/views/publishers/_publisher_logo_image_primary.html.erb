@@ -322,8 +322,8 @@
 	<% if @publisher_logo_image_primary %>   				
 	
 		<div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-201" style="position: relative;">
-			<figure class="dialog-11-figure cursor-pointer" data-width="<%= @publisher_logo_image_primary.width %>" data-src-600="<%= @publisher_logo_image_primary.image_url(:user_600_600) %>">
-				<img id="logo_primary_img" class="user-primary-img" alt="" src="<%= @publisher_logo_image_primary.image_url(:user_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_logo_image_primary.image? %>" />
+			<figure class="dialog-11-figure cursor-pointer" data-width="<%= @publisher_logo_image_primary.width %>" data-src-600="<%= @publisher_logo_image_primary.image_url(:image_600_600) %>">
+				<img id="logo_primary_img" class="user-primary-img" alt="" src="<%= @publisher_logo_image_primary.image_url(:image_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_logo_image_primary.image? %>" />
 				<figcaption class="edit-image hidden drop-201-target">
 						<div class="img-1-text">Edit photo</div>
 				</figcaption>

@@ -942,9 +942,9 @@ class PublishersController < ApplicationController
                     @post_publishers = current_user.publisher.feed # .paginate(:page => params[:page], :per_page => 5)  
 
                     img = publisher_logo_image_primary
-                    image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
-                    w = image.columns
-                    h = image.rows
+                    image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+                    w = image.width
+                    h = image.height
                     w_max = false
                     h_max = false
                     w_h_equal = false
@@ -1068,9 +1068,9 @@ class PublishersController < ApplicationController
                     @post_publishers = current_user.publisher.feed # .paginate(:page => params[:page], :per_page => 5)  
 
                     img = publisher_logo_image_primary
-                    image = Magick::Image.read("public" + img.image_url(:user_600_600))[0]
-                    w = image.columns
-                    h = image.rows
+                    image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+                    w = image.width
+                    h = image.height
                     w_max = false
                     h_max = false
                     w_h_equal = false
@@ -1133,6 +1133,104 @@ class PublishersController < ApplicationController
   end  
 
   
+
+  def crop_commit_logo
+    
+      Rails.logger.info "in crop_commit_logo"
+      
+      img = PublisherLogoImage.find(params[:image_id])
+      image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # Rails.logger.info "image.details = " + image.details.to_s
+      
+      # new_image_200_200 = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # new_image_100_100 = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # new_image_50_50   = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # new_image_34_34   = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+
+      # new_image_200_200 = cropped_image(new_image_200_200, params)
+      # new_image_100_100 = cropped_image(new_image_100_100, params)
+      # new_image_50_50   = cropped_image(new_image_50_50, params)
+      # new_image_34_34   = cropped_image(new_image_34_34, params)
+
+      # new_image_200_200 = resize_to_fill(new_image_200_200, 200, 200)
+      # new_image_100_100 = resize_to_fill(new_image_100_100, 100, 100)
+      # new_image_50_50   = resize_to_fill(new_image_50_50, 50, 50)
+      # new_image_34_34   = resize_to_fill(new_image_34_34, 34, 34)
+
+      # new_image_200_200.write image_200_200_path
+      # new_image_100_100.write image_100_100_path
+      # new_image_50_50.write image_50_50_path
+      # new_image_34_34.write image_34_34_path
+      
+      crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
+      new_image = image.crop(crop_params)
+      
+      img_name = File.basename(img.image.to_s)
+      img_dir = "public" + File.dirname(img.image.to_s)
+
+      image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
+      image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
+      image_50_50_path   = img_dir + "/" + "image_50_50_" + img_name
+      image_34_34_path   = img_dir + "/" + "image_34_34_" + img_name
+
+      FileUtils.rm_rf(image_200_200_path) 
+      FileUtils.rm_rf(image_100_100_path) 
+      FileUtils.rm_rf(image_50_50_path) 
+      FileUtils.rm_rf(image_34_34_path) 
+
+      new_image.resize('200x200')
+      new_image.write image_200_200_path
+      new_image.resize('100x100')
+      new_image.write image_100_100_path      
+      new_image.resize('50x50')
+      new_image.write image_50_50_path      
+      new_image.resize('34x34')
+      new_image.write image_34_34_path
+
+      x = params[:crop_x]
+      y = params[:crop_y]
+      w = params[:crop_w]
+      h = params[:crop_h]
+      x = x.to_i
+      y = y.to_i
+      w = w.to_i
+      h = h.to_i
+
+      h_crop = Hash.new
+      h_crop[:crop_x] = x
+      h_crop[:crop_y] = y
+      h_crop[:crop_w] = w
+      h_crop[:crop_h] = h
+
+      @post_publishers = nil    
+
+      @publisher_logo_image_primary = nil
+      publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+      if !publisher.nil?
+          publisher_logo_images = publisher.publisher_logo_images rescue nil
+          if !publisher_logo_images.nil?
+              publisher_logo_image_primary = publisher_logo_images.where( :primary => true ).first rescue nil
+              if !publisher_logo_image_primary.nil?
+                  Rails.logger.info "publisher_logo_image_primary not nil"
+                  if publisher_logo_image_primary.update_attributes(h_crop)
+                      @publisher_logo_image_primary = publisher_logo_image_primary  
+                      @post_publishers = current_user.publisher.feed
+                  else
+                      Rails.logger.info "publisher_logo_image_primary.update_attributes failed"
+                  end
+              else
+                  Rails.logger.info "publisher_logo_image_primary nil"
+              end
+          else
+              Rails.logger.info "publisher_logo_images nil"
+          end
+      else
+          Rails.logger.info "publisher nil"
+      end
+
+
+  end
+
 
   # def crop_commit_logo
 #     
@@ -1238,7 +1336,7 @@ class PublishersController < ApplicationController
   # end
   
   
-  def crop_commit_logo
+  # def crop_commit_logo
     
       # x = params[:crop_x]
       # y = params[:crop_y]
@@ -1351,7 +1449,7 @@ class PublishersController < ApplicationController
       # # end
     
     
-  end
+  # end
 
   
   def dbdelete

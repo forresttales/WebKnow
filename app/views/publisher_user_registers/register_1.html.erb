@@ -76,8 +76,8 @@
 			<div style="clear: both;"></div>
 		</div>
 		<div style="height: 20px;"></div>
-		<!-- <#%= form_tag({action: 'update_user_email'}, remote: true, 'data-type': "json", id: "change_email_form", class: "table") do %#> -->
-		<%= form_tag({action: 'update_user_email'}, format: 'json', id: 'change_email_form', class: 'table', remote: true) do %>
+		<%= form_tag({action: 'update_user_email'}, remote: true, :'data-type' => 'json', id: 'change_email_form', class: 'table') do %>
+		<!-- <#%= form_tag({action: 'update_user_email'}, format: 'json', id: 'change_email_form', class: 'table', remote: true) do %#> -->
 			<div class="row">
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">
@@ -128,7 +128,7 @@
 				<div id="answer"></div>
 			</div>
 		<% end %>
-		<%= form_tag({action: 'update_user_password'}, format: 'json', id: 'change_password_form', class: 'table', remote: true) do %>
+		<%= form_tag({action: 'update_user_password'}, :'data-type' => 'json', id: 'change_password_form', class: 'table', remote: true) do %>
 			<div class="row">
 				<div style="display: table-cell; width: 30px;"></div>
 				<div style="display: table-cell; width: 160px; border-bottom: 1px solid grey;">

@@ -37,7 +37,7 @@ module PublishersHelper
   def post_publisher_avatar_for(publisher, s_rand)
     img = publisher.publisher_logo_images.first rescue nil     
     if !img.nil?     
-      post_publisher_avatar_url = img.image_url(:user_50_50)
+      post_publisher_avatar_url = img.image_url(:image_50_50)
     else
       post_publisher_avatar_url = "../images_avatar/avatar-gen-corp-w50-h50.png"
     end
@@ -47,7 +47,7 @@ module PublishersHelper
   def log_publisher_avatar_for(publisher)
     img = publisher.publisher_logo_images.where( :primary => true ).first     
     if !img.nil?     
-      log_publisher_avatar_url = img.image_url(:user_50_50)
+      log_publisher_avatar_url = img.image_url(:image_50_50)
     else
       log_publisher_avatar_url = "../images_avatar/avatar-gen-corp-w50-h50.png"
     end

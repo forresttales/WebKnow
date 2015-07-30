@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="cell-100percent">
 				<div id="close_form1001" class="form-edit-close jqmClose tip-left-center" tabindex="">
-					<img src="/assets/x_close_white_w20_h20.png" alt="X" height="20px">
+					<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
 				</div>
                 <div class="tip-content">
                     <div class="tooltiptext">Close</div>
@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="cell-100percent">
 				<div id="close_form101" class="form-edit-close jqmClose tip-left-center" tabindex="">
-					<img src="/assets/x_close_white_w20_h20.png" alt="X" height="20px">
+					<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
 				</div>
                 <div class="tip-content">
                     <div class="tooltiptext">Close</div>
@@ -58,7 +58,7 @@
 		</div>
 		<!-- text goes here -->
 		<div id="close_form104" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
-			<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
 		</div>
         <div class="tip-content">
             <div class="tooltiptext">Close</div>
@@ -94,7 +94,7 @@
 		</div>
 		<!-- text goes here -->
 		<div id="close_form105" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
-			<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
 		</div>
         <div class="tip-content">
             <div class="tooltiptext">Close</div>
@@ -131,7 +131,7 @@
 		<div class="row">
 			<div class="cell-100percent">
 				<div id="close_form11" class="form-edit-close jqmClose tip-left-center" tabindex="">
-					<img src="/assets/x_close_white_w20_h20.png" alt="X" height="20px">
+					<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
 				</div>
                 <div class="tip-content">
                     <div class="tooltiptext">Close</div>
@@ -159,7 +159,7 @@
 </div>
 <% end %>
 
-
+<% if false %>
 <div class="jqmWindow jqmWindow-overlay" id="dialog_overlay">
 	<div id="overlay_loading" class="overlay-loading display-none"></div>
 </div>
@@ -187,6 +187,44 @@
 		</figure>
 	</div>
 </div>
+<% end %>
+
+
+<div class="jqmWindow jqmWindow-overlay" id="dialog_overlay">
+	<div id="overlay_loading" class="overlay-loading display-none"></div>
+</div>
+
+<div class="jqmWindow jqmWindow-11" id="dialog_11">
+	<div class="jqmClose ks-tip-container close-container">
+		<div class="ks-tip-target">
+			<%= image_tag('jqModal/close_btn_round_white_w60_h60.png', alt: 'X', class: 'x-close-60-60' ) %>
+		</div>
+	    <div class="ks-tip ks-tip-pos-left-dialog-11 ks-tip-text-dialog-11">
+			Close
+	    </div>				
+	</div>
+	<div style="clear: both;"></div>
+	<div style="width: 600px; margin: 0 auto;">
+		<div class="figure-container" style="width: 100%; background-color: #000;">
+			<figure id="figure_dialog_11" class="dialog-user-image-2">
+				<figcaption id="figcaption_dialog_11" class="expand-image">												
+					<div class="img-2-container image">
+						<% if !@publisher_user_image_primary.nil? %>
+						<a rel="gallery" title="" href="<%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>">									
+							<div id="img_2" class="img-2"></div>
+						</a>
+						<% end %>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div style="width: 100%; min-height: 100px; background-color: #fff;"></div>
+	</div>
+</div>
+
+
+
+
 
 
 <div class="table-profile" style="height: 100%;">

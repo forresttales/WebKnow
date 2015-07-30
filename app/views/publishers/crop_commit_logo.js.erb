@@ -7,9 +7,13 @@
 	alert("Upload error");
 <% end %>
 
-<% if @post_publishers.any? %>
-	$("#render_story_4").html("<%= j render('publishers/story_4') %>");
-	// $("#render_story_4_will_paginate").html("<#%= j render("publisher_users/story_4_will_paginate") %#>");
+<% if !@post_publishers.nil? %>
+	<% if @post_publishers.any? %>
+		$("#render_story_4").html("<%= j render('publishers/story_4') %>");
+		// $("#render_story_4_will_paginate").html("<#%= j render("publisher_users/story_4_will_paginate") %#>");
+	<% else %>
+		// alert('return error post_users');
+	<% end %>
 <% else %>
 	// alert('return error post_users');
 <% end %>
