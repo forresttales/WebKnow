@@ -576,6 +576,11 @@ Webknow::Application.routes.draw do
       post :upload_publisher_logo_image_primary
       post :upload_publisher_logo_image_primary_change
       post :crop_commit_logo
+
+      post :upload_publisher_logo_bkgrnd_image
+      post :destroy_publisher_logo_bkgrnd_image
+      post :crop_publisher_logo_bkgrnd
+
       post :dbdelete
     end
   end

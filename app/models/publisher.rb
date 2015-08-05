@@ -72,6 +72,7 @@ class Publisher < ActiveRecord::Base
 
     has_many :publisher_products, dependent: :destroy    
     has_many :publisher_logo_images, dependent: :destroy
+    has_many :publisher_logo_bkgrnd_images, dependent: :destroy
     # has_many :publisher_journalposters
     # has_many :journalposterpurchases
     has_many :publisher_posters, dependent: :destroy
