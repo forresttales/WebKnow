@@ -1376,8 +1376,56 @@ class PublishersController < ApplicationController
 
   end
 
-  def crop_publisher_logo_bkgrnd
-    
+  def crop_publisher_logo_bkgrnd_image
+      @publisher_logo_bkgrnd_image = nil
+
+      publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+
+      if !publisher.nil?
+          
+          publisher_logo_bkgrnd_images = publisher.publisher_logo_bkgrnd_images
+          img = publisher_logo_bkgrnd_images.find(params[:image_id]) rescue nil
+          
+          if !img.nil?
+              image = MiniMagick::Image.open("public" + img.image_url)
+              image_800_500 = MiniMagick::Image.open("public" + img.image_url(:image_800_500))
+
+              if(image_800_500.width == 800)
+                  crop_scale = image.width / image_800_500.width.to_f
+              else
+                  crop_scale = image.height / image_800_500.height.to_f
+              end
+              
+              crop_x = (params[:crop_x].to_i * crop_scale).to_i
+              crop_y = (params[:crop_y].to_i * crop_scale).to_i
+              crop_w = (params[:crop_w].to_i * crop_scale).to_i
+              crop_h = (params[:crop_h].to_i * crop_scale).to_i
+
+              crop_params = "#{crop_w}x#{crop_h}+#{crop_x}+#{crop_y}"
+              new_image = image.crop(crop_params)
+
+              img_name = File.basename(img.image.to_s)
+              img_dir = "public" + File.dirname(img.image.to_s)
+
+              image_1200_300_path = img_dir + "/" + "image_1200_300_fill_" + img_name
+
+              FileUtils.rm_rf(image_1200_300_path)
+
+              new_image.resize('1200x300')
+              new_image.write image_1200_300_path
+
+              publisher_logo_bkgrnd_image = publisher_logo_bkgrnd_images.where( :primary => true ).last rescue nil
+              if !publisher_logo_bkgrnd_image.nil? 
+                  @publisher_logo_bkgrnd_image = publisher_logo_bkgrnd_image
+              end
+
+          else
+            #Error
+          end
+          
+      end
+      
+
   end
 
 

@@ -1244,9 +1244,9 @@
 		display: none;
 		position: fixed;
 		left: 50%;
-		margin-left: -517px;
-		width: 1034px;
-		height: 600px;
+		margin-left: -417px;
+		width: 834px;
+		height: 650px;
 		background-color: #f6f6f6;
 		color: #333;
 		border: 4px solid #376340;
@@ -1318,21 +1318,21 @@
 			<div style="clear: both;"></div>
 	</div>
 	<div class="background-table-dialog-1">
-			<div class="table-dialog-1">
+		<div class="table-dialog-1">
 			<div class="dialog-msg-container">
 				<span>Delete this background picture?</span>
 			</div>
+		</div>
+	</div>
+	<div style="height: 16px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center;">
+			<span><input id="btn_dlg_submit_delete_logo_bkgrnd_image" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><input id="btn_dlg_cancel_delete_logo_bkgrnd_image" class="btn-pop-dialog jqmClose" type="button" value="Cancel" tabindex=""></span>
 			</div>
 		</div>
-		<div style="height: 16px;"></div>
-		<div class="table-dialog-1">
-			<div class="row">
-				<div class="cell-100percent" style="text-align: center;">
-				<span><input id="btn_dlg_submit_delete_logo_bkgrnd_image" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<span><input id="btn_dlg_cancel_delete_logo_bkgrnd_image" class="btn-pop-dialog jqmClose" type="button" value="Cancel" tabindex=""></span>
-				</div>
-			</div>
 	</div>														   				
 	<div style="height: 20px;"></div>
 	<%= form_for PublisherLogoBkgrndImage.new, :url => destroy_publisher_logo_bkgrnd_image_publishers_path, :html => {:multipart => true, :class => 'hidden', :id => 'destroy_publisher_logo_bkgrnd_image'}, :remote => true do |f| %>
@@ -1359,7 +1359,7 @@
 	<div class="background-table-dialog-3" style="padding: 10px 0 0 0;">
    		<div class="table-dialog-1">
 			<div class="dialog-msg-container">
-				<span>600 X 600 pixels available for maximum size. Below, you may crop and center smaller sizes.</span>
+				<span>Below, you may crop and center background picture.</span>
 			</div>
 			</div>
 		</div>
@@ -1454,45 +1454,29 @@
 	});
 
 	$(document).on("click", "#btn_dlg_submit_delete_logo_bkgrnd_image", function() {
-		// delete_logo_image_primary(id_logo_image);
 		var logo_bkgrnd_id = $('#logo_primary_bkgrnd').attr('data-id');
 		$("form#destroy_publisher_logo_bkgrnd_image input#destroy_publisher_logo_bkgrnd_image_image").val(logo_bkgrnd_id);
 		$("form#destroy_publisher_logo_bkgrnd_image input#btn_submit_dialog_17").click();
 
-	});
-	// $(document).on("click", "#btn_dlg_cancel_delete_logo_image_primary", function() {
-	// 	$("#close_form14").trigger('click');
-	// });		
+	});	
 	$(document).on("btn_logo_bkgrnd_image_delete_click", function() {
 		$("#dialog_17").jqmShow();
-		// $("#btn_dlg_submit_delete_logo_image_primary").focus();
 	});
 
-	// $(document).on("click", "#btn_logo_image_primary_crop", function() {
-		// $("#dialog_15").jqmShow();
-	// });
+	
 	$(document).on("btn_logo_bkgrnd_image_crop_click", function() {
 		$("#dialog_18").jqmShow();
 
-		var image_to_crop = $("#cropbox_logo_bkgrnd");
-			image_to_crop.Jcrop({
-            // jQuery('#cropbox_profile').Jcrop({
-                aspectRatio: 4,
-            	setSelect: [0, 0, 1200, 300],
-	            // onSelect: function(coords){showPreview(coords);},
-			    // onChange: function(coords){showPreview(coords);}
-	            // onSelect: function(coords){showPreview(image_to_crop, coords);},
-			    // onChange: function(coords){showPreview(image_to_crop, coords);}
-                onSelect: showPreview,
-                onChange: showPreview                
-            });
+		$("#cropbox_logo_bkgrnd").Jcrop({
+            aspectRatio: 4,
+        	setSelect: [0, 0, 1200, 300],
+            onSelect: showBkgrndPreview,
+            onChange: showBkgrndPreview                
+        });
 	});
-	// $(document).on("click", "#btn_dlg_submit_crop_logo_image_primary", function() {
-	// 	crop_logo_image_primary();
-	// });
-	// $(document).on("click", "#btn_dlg_cancel_crop_logo_image_primary", function() {
-	// 	$("#close_form15").trigger('click');
-	// });
+	$(document).on("click", "#btn_dlg_submit_crop_logo_bkgrnd", function() {
+		$("#btn_submit_crop_logo_bkgrnd").trigger('click');
+	});
 </script>
 
 <style>

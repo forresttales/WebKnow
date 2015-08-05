@@ -309,7 +309,7 @@
 <div class="drop-namespace202">
 	<% if @publisher_logo_bkgrnd_image %>   				
 		<div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-202" style="position: relative;">
-			<figure class="dialog-11-figure cursor-pointer" data-width="<%= @publisher_logo_bkgrnd_image.width %>" data-src-600="<%= @publisher_logo_bkgrnd_image.image_url(:image_1200_300_fit) %>">
+			<figure class="dialog-11-figure cursor-pointer" data-width="<%= @publisher_logo_bkgrnd_image.width %>" data-src-600="<%= @publisher_logo_bkgrnd_image.image_url(:image_800_500) %>">
 				<img id="logo_primary_bkgrnd" class="user-primary-img" alt="" src="<%= @publisher_logo_bkgrnd_image.image_url(:image_1200_300_fill) + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_logo_bkgrnd_image.image? %>" data-id="<%= @publisher_logo_bkgrnd_image.id %>" />
 				<figcaption class="edit-image hidden drop-202-target">
 					<div class="img-1-text">Edit background picture</div>
@@ -472,7 +472,7 @@
 			if(this.id == "logo_primary_bkgrnd_600") {
 				var img_w = this.width;
 				var img_h = this.height;
-				$("#figure_dialog_11").css({
+				$("#profile_figure_dialog_11").css({
 					width : img_w,
 					height : img_h
 				});																			
@@ -490,7 +490,8 @@
 	
 				var src_img = $(this).data("src-600");
 				$('<img src="'+ src_img +'">').load(function(){
-					$("#figure_dialog_11").append($(this));
+					$("#profile_figure_dialog_11 img").remove();
+					$("#profile_figure_dialog_11").append($(this));
 					$("#overlay_loading").addClass("display-none");
 					$("#dialog_overlay").jqmHide();
 					$("#dialog_11").jqmShow();	
@@ -509,7 +510,7 @@
 			onHide: function(hash) {
 				hash.o.remove();
 				hash.w.css('top', '-8000px');
-				$("#figure_dialog_11 img").remove();
+				$("#profile_figure_dialog_11 img").remove();
 				// hash.w.fadeOut('10',function(){ 
 					// hash.o.remove(); 
 				// });

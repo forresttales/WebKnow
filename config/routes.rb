@@ -579,7 +579,7 @@ Webknow::Application.routes.draw do
 
       post :upload_publisher_logo_bkgrnd_image
       post :destroy_publisher_logo_bkgrnd_image
-      post :crop_publisher_logo_bkgrnd
+      post :crop_publisher_logo_bkgrnd_image
 
       post :dbdelete
     end

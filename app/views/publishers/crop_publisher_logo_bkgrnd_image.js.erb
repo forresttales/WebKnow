@@ -1,1 +1,10 @@
-alert("hi");
+<% if @publisher_logo_bkgrnd_image %>
+	$('#render_publisher_logo_bkgrnd_image').html("<%= j render 'publishers/publisher_logo_bkgrnd_image' %>");
+	// $('#render_publisher_logo_bkgrnd_image_crop').html("<#%= j render 'publishers/publisher_logo_bkgrnd_image_crop' %>");
+
+	$(".edit-image").fadeIn(200).removeClass("hidden");
+	$("#close_form18").trigger('click');
+	$("form#new_publisher_logo_bkgrnd_image input#new_publisher_logo_bkgrnd_image_image").val('');
+<% else %>
+	alert("Update error");
+<% end %>
