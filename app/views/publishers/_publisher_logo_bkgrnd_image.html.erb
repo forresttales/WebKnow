@@ -356,9 +356,9 @@
 			</div>
 		</div>
 	<% else %>
-		<div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-202" style="position: relative; width: 1200px; height: 300px; background-color : lightgrey">
+		<div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-202" style="position: relative; width: 1200px; height: 300px; background-color: grey">
 			<figure class="dialog-11-figure-generic" data-width="1200" data-src-600="">
-				<img id="logo_generic_bkgrnd" class="user-primary-img" alt="" src="" style="width: 1200px; height: 300px" >
+				<img id="logo_generic_bkgrnd" class="user-primary-img" alt="" src="" style="display: block; width: 1200px; height: 300px" >
 				<figcaption class="edit-image hidden cursor-pointer drop-202-target">
 					<div class="img-1-text">Add a background picture</div>
 				</figcaption>
@@ -442,7 +442,6 @@
 	
 </script>
 <script>
-	// $(window).load( function() {
 	$(document).ready( function () {				
 	
 	
@@ -458,25 +457,25 @@
 					height : img_h						
 				}).removeClass("container-figure-image-border-load")/*.addClass("container-figure-image-border")*/;													
 			}
-			if(this.id == "logo_generic_bkgrnd") {
-				var img_w = this.width;
-				var img_h = this.height;
+			// if(this.id == "logo_generic_bkgrnd") {
+			// 	var img_w = this.width;
+			// 	var img_h = this.height;
 
-				$(".container-figure-image-2").css({
-					// width : img_w + 4,
-					// height : img_h + 4
-					width : img_w,
-					height : img_h						
-				}).removeClass("container-figure-image-border-load")/*.addClass("container-figure-image-border")*/;				
-			}				
-			if(this.id == "logo_primary_bkgrnd_600") {
-				var img_w = this.width;
-				var img_h = this.height;
-				$("#profile_figure_dialog_11").css({
-					width : img_w,
-					height : img_h
-				});																			
-			}								
+			// 	$(".container-figure-image-2").css({
+			// 		// width : img_w + 4,
+			// 		// height : img_h + 4
+			// 		width : img_w,
+			// 		height : img_h						
+			// 	}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
+			// }				
+			// if(this.id == "logo_primary_bkgrnd_600") {
+			// 	var img_w = this.width;
+			// 	var img_h = this.height;
+			// 	$("#profile_figure_dialog_11").css({
+			// 		width : img_w,
+			// 		height : img_h
+			// 	});																			
+			// }								
 		}).each(function() {
 		  	if(this.complete) $(this).load();
 		});

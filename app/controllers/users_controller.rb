@@ -597,7 +597,7 @@ class UsersController < ApplicationController
           @publisher = publisher
           publisher_id = publisher.id
 
-          @publisher_logo_bkgrnd_image = PublisherLogoBkgrndImage.where("publisher_id = ?", publisher_id).where( :primary => true ).last rescue nil
+          @publisher_logo_bkgrnd_image = publisher.publisher_logo_bkgrnd_images.where( :primary => true ).last rescue nil
 
           # publisher_logo_image_primary = PublisherLogoImage.where("publisher_id = ?", publisher_id).where( :primary => true ).first rescue nil
           publisher_logo_image_primary = publisher.publisher_logo_images.first rescue nil

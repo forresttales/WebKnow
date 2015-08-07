@@ -1,21 +1,12 @@
 <% if @publisher_logo_bkgrnd_image %>
 	$('#render_publisher_logo_bkgrnd_image').html("<%= j render 'publishers/publisher_logo_bkgrnd_image' %>");
 	$('#render_publisher_logo_bkgrnd_image_crop').html("<%= j render 'publishers/publisher_logo_bkgrnd_image_crop' %>");
-	// $(".container-figure-logo").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
-	// $('#render_publisher_logo_image_primary .container-menu').html("<#%= j render('publishers/publisher_logo_image_primary_menu') %#>");
-	// $('#render_publisher_logo_image_primary_crop').html("<#%= j render('publishers/publisher_logo_image_primary_crop') %>");
-	// id_logo_image = <#%= @id_logo_image %>;
-	// $(".drop-2-container").removeClass("hidden");	
-	// $(".container-figure-logo figure").removeClass("cursor-pointer");
-	// closeAddLogoImagePrimary();
 
 	$("#dvLoading_16").addClass("dvLoading-display-none");
 	$(".edit-image").fadeIn(200).removeClass("hidden");
 	$("#close_form16").trigger('click');
 	// $("#dialog_16").jqmHide();
 	$("form#new_publisher_logo_bkgrnd_image input#new_publisher_logo_bkgrnd_image_image").val('');
-
-	// $('#logo_primary_bkgrnd').attr('data-id' , '<%= @id_logo_bkgrnd_image %>');
 <% else %>
 	alert("Upload error");
 <% end %>

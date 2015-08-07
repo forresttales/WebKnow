@@ -1297,7 +1297,7 @@
 		</div>
 	</div>
 	<%= form_for PublisherLogoBkgrndImage.new, :url => upload_publisher_logo_bkgrnd_image_publishers_path(@publisher_logo_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_publisher_logo_bkgrnd_image'}, :remote => true do |f| %>
-	  <p><%= f.file_field :image, :id => 'new_publisher_logo_bkgrnd_image_image' %></p>
+	  <p><%= f.file_field :image, :id => 'new_publisher_logo_bkgrnd_image_image', accept: 'image/png,image/gif,image/jpeg' %></p>
 	  <p><%= f.submit :id => 'btn_submit_dialog_16', :class => 'btn-submit hidden', :value => 'Upload Photo' %></p>
 	<% end %>
 </div>
