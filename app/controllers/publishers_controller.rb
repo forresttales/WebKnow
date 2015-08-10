@@ -1234,10 +1234,10 @@ class PublishersController < ApplicationController
   def upload_publisher_logo_bkgrnd_image
 
       @publisher_logo_bkgrnd_image = nil
-      @crop_x = 0
-      @crop_y = 0
-      @crop_w = 1200
-      @crop_h = 300
+      @bkgrnd_crop_x = 0
+      @bkgrnd_crop_y = 0
+      @bkgrnd_crop_w = 1200
+      @bkgrnd_crop_h = 300
       
       publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
       if !publisher.nil?
@@ -1246,10 +1246,10 @@ class PublishersController < ApplicationController
           h_publisher_logo_bkgrnd_image[:user_id] = publisher.user_id
           h_publisher_logo_bkgrnd_image[:publisher_id] = publisher.id
           h_publisher_logo_bkgrnd_image[:primary] = true
-          h_publisher_logo_bkgrnd_image[:crop_x] = @crop_x
-          h_publisher_logo_bkgrnd_image[:crop_y] = @crop_y
-          h_publisher_logo_bkgrnd_image[:crop_w] = @crop_w
-          h_publisher_logo_bkgrnd_image[:crop_h] = @crop_h
+          h_publisher_logo_bkgrnd_image[:crop_x] = @bkgrnd_crop_x
+          h_publisher_logo_bkgrnd_image[:crop_y] = @bkgrnd_crop_y
+          h_publisher_logo_bkgrnd_image[:crop_w] = @bkgrnd_crop_w
+          h_publisher_logo_bkgrnd_image[:crop_h] = @bkgrnd_crop_h
           publisher_logo_bkgrnd_image = PublisherLogoBkgrndImage.new(h_publisher_logo_bkgrnd_image)
 
           publisher_logo_bkgrnd_images = publisher.publisher_logo_bkgrnd_images
@@ -1266,59 +1266,35 @@ class PublishersController < ApplicationController
                   publisher_logo_bkgrnd_image = publisher_logo_bkgrnd_images.where( :primary => true ).last rescue nil
                   
                   if !publisher_logo_bkgrnd_image.nil? 
-                      @publisher_logo_bkgrnd_image = publisher_logo_bkgrnd_image 
+                      @publisher_logo_bkgrnd_image = publisher_logo_bkgrnd_image
 
-                  #     img = publisher_logo_image_primary
-                  #     image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                  #     w = image.width
-                  #     h = image.height
-                  #     w_max = false
-                  #     h_max = false
-                  #     w_h_equal = false
-                  #     x = 0
-                  #     y = 0
-                  #     l = 0                    
-                  #     d = 0
-                  #     if ( w == h)
-                  #         w_h_equal = true
-                  #     else
-                  #         if ( w > h )
-                  #           w_max = true
-                  #         else
-                  #           h_max = true
-                  #         end
-                  #     end
-                  #     if w_max
-                  #         d = w - h
-                  #         d = (d/2).round
-                  #         x = d
-                  #         l = h  
-                  #     end
-                  #     if h_max
-                  #         d = h - w
-                  #         d = (d/2).round
-                  #         y = d
-                  #         l = w  
-                  #     end
-                  #     if w_h_equal
-                  #         l = w
-                  #     end
+                      img = publisher_logo_bkgrnd_image
+                      image = MiniMagick::Image.open("public" + img.image_url(:image_800_500))
 
-                  #     @crop_x = x
-                  #     @crop_y = y
-                  #     @crop_w = l
-                  #     @crop_h = l
+                      # Background aspect ratio (1200:300 or 4:1)
+                      bkgrnd_asp_ratio = 4
 
-                  #     h_update = Hash.new
-                  #     h_update[:crop_x] = x
-                  #     h_update[:crop_y] = y
-                  #     h_update[:crop_w] = l
-                  #     h_update[:crop_h] = l
-                  #     if publisher_logo_image_primary.update_attributes(h_update)
-                  #       #                      
-                  #     else
-                  #       #  
-                  #     end
+                      crop_w = image.width
+                      crop_h = image.width / bkgrnd_asp_ratio
+                      crop_x = 0
+                      crop_y = (image.height - crop_h) / 2
+
+                      @bkgrnd_crop_x = crop_x
+                      @bkgrnd_crop_y = crop_y
+                      @bkgrnd_crop_w = crop_w
+                      @bkgrnd_crop_h = crop_h
+
+                      h_update = Hash.new
+                      h_update[:crop_x] = crop_x
+                      h_update[:crop_y] = crop_y
+                      h_update[:crop_w] = crop_w
+                      h_update[:crop_h] = crop_h
+
+                      if publisher_logo_bkgrnd_image.update_attributes(h_update)
+                          #                      
+                      else
+                          #  
+                      end                      
                   end
               else
                 # error save
@@ -1398,6 +1374,18 @@ class PublishersController < ApplicationController
               publisher_logo_bkgrnd_image = publisher_logo_bkgrnd_images.where( :primary => true ).last rescue nil
               if !publisher_logo_bkgrnd_image.nil? 
                   @publisher_logo_bkgrnd_image = publisher_logo_bkgrnd_image
+
+                  h_update = Hash.new
+                  h_update[:crop_x] = params[:crop_x]
+                  h_update[:crop_y] = params[:crop_y]
+                  h_update[:crop_w] = params[:crop_w]
+                  h_update[:crop_h] = params[:crop_h]
+                  
+                  if publisher_logo_bkgrnd_image.update_attributes(h_update)
+                      #                      
+                  else
+                      #  
+                  end
               end
 
           else

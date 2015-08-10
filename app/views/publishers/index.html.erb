@@ -1467,12 +1467,12 @@
 	$(document).on("btn_logo_bkgrnd_image_crop_click", function() {
 		$("#dialog_18").jqmShow();
 
-		$("#cropbox_logo_bkgrnd").Jcrop({
-            aspectRatio: 4,
-        	setSelect: [0, 0, 1200, 300],
-            onSelect: showBkgrndPreview,
-            onChange: showBkgrndPreview                
-        });
+		// $("#cropbox_logo_bkgrnd").Jcrop({
+  //           aspectRatio: 4,
+  //       	setSelect: [0, 0, 1200, 300],
+  //           onSelect: showBkgrndPreview,
+  //           onChange: showBkgrndPreview                
+  //       });
 	});
 	$(document).on("click", "#btn_dlg_submit_crop_logo_bkgrnd", function() {
 		$("#btn_submit_crop_logo_bkgrnd").trigger('click');
