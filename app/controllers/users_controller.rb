@@ -2206,7 +2206,11 @@ class UsersController < ApplicationController
       end
       
       
-  end    
+  end  
+
+  def upload_user_bkgrnd_image
+      
+  end  
     
     
   private

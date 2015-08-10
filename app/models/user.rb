@@ -66,6 +66,7 @@ class User < ActiveRecord::Base
   has_one :issued_gen_id, foreign_key: "user_id"
 
   has_many :user_images
+  has_many :user_bkgrnd_images, dependent: :destroy
   has_many :post_users 
   
   has_many :post_user_likes, dependent: :destroy
