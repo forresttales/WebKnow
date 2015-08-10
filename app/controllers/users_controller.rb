@@ -599,10 +599,17 @@ class UsersController < ApplicationController
 
           @publisher_logo_bkgrnd_image = publisher.publisher_logo_bkgrnd_images.where( :primary => true ).last rescue nil
 
-          @bkgrnd_crop_x = @publisher_logo_bkgrnd_image.crop_x
-          @bkgrnd_crop_y = @publisher_logo_bkgrnd_image.crop_y
-          @bkgrnd_crop_w = @publisher_logo_bkgrnd_image.crop_w
-          @bkgrnd_crop_h = @publisher_logo_bkgrnd_image.crop_h
+          @bkgrnd_crop_x = 0
+          @bkgrnd_crop_y = 0
+          @bkgrnd_crop_w = 1200
+          @bkgrnd_crop_h = 300
+
+          if !@publisher_logo_bkgrnd_image.nil? 
+              @bkgrnd_crop_x = @publisher_logo_bkgrnd_image.crop_x
+              @bkgrnd_crop_y = @publisher_logo_bkgrnd_image.crop_y
+              @bkgrnd_crop_w = @publisher_logo_bkgrnd_image.crop_w
+              @bkgrnd_crop_h = @publisher_logo_bkgrnd_image.crop_h
+          end
 
           # publisher_logo_image_primary = PublisherLogoImage.where("publisher_id = ?", publisher_id).where( :primary => true ).first rescue nil
           publisher_logo_image_primary = publisher.publisher_logo_images.first rescue nil

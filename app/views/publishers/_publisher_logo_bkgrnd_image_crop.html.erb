@@ -34,10 +34,6 @@
 		var insert_bkgrnd_crop_x2 = insert_bkgrnd_crop_x + insert_bkgrnd_crop_w;
 		var insert_bkgrnd_crop_y2 = insert_bkgrnd_crop_y + insert_bkgrnd_crop_h;
 		
-		var max_dim;
-		
-	
-		
         function showBkgrndPreview(coords)
         {
             if (parseInt(coords.w) > 0)
@@ -61,25 +57,10 @@
         }
         
 		$(document).ready(function() {
-			
-			// insert_crop_w = <%= @crop_w %>;
-			// insert_crop_h = <%= @crop_h %>;
-			
-			// if (insert_crop_w > insert_crop_h ) {
-			// 	max_dim = insert_crop_w;
-			// }
-			// else {
-			// 	max_dim = insert_crop_h;
-			// }
 			var image_to_crop = $("#cropbox_logo_bkgrnd");
 			image_to_crop.Jcrop({
-            // jQuery('#cropbox_profile').Jcrop({
                 aspectRatio: 4,
             	setSelect: [insert_bkgrnd_crop_x, insert_bkgrnd_crop_y, insert_bkgrnd_crop_x2, insert_bkgrnd_crop_y2],
-	            // onSelect: function(coords){showPreview(coords);},
-			    // onChange: function(coords){showPreview(coords);}
-	            // onSelect: function(coords){showPreview(image_to_crop, coords);},
-			    // onChange: function(coords){showPreview(image_to_crop, coords);}
                 onSelect: showBkgrndPreview,
                 onChange: showBkgrndPreview                
             });

@@ -1540,18 +1540,19 @@
 			</div>	
 		</div>
 
-		<div class="table margin-0" style="height: 225px;">
-			<div class="row" style="height: 225px;">
-				<div class="cell-edit-1" style="height: 225px; padding: 0 0 0 1px;">
-					<div class="drop">
-						<div id="render_publisher_logo_image_primary">
-							<!-- <#%= render 'publisher_users/publisher_user_image_primary' %#> -->
-							<%= render 'publishers/publisher_logo_image_primary' %>
+		<div class="table margin-0" style="height: 100px; position: relative;">
+			<div class="row" style="height: 100px;">
+				<div class="cell-edit-1" style="height: 100px; padding: 0 0 0 1px;">
+					<div style="position: absolute; bottom: 20px; left: 20px">
+						<div class="drop">
+							<div id="render_publisher_logo_image_primary">
+								<%= render 'publishers/publisher_logo_image_primary' %>
+							</div>
 						</div>
-					</div>
-					<div class="follow-stats-container" style="margin: 0 0 0 10px;">
-						<%= render 'publishers/stats' %>
-					</div>
+						<div class="follow-stats-container" style="margin: 0 0 0 10px;">
+							<%= render 'publishers/stats' %>
+						</div>
+					</div>					
 				</div>
 			</div>
 		</div>
