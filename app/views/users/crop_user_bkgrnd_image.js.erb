@@ -1,11 +1,9 @@
 <% if @user_bkgrnd_image %>
 	$('#render_user_bkgrnd_image').html("<%= j render 'users/user_bkgrnd_image' %>");
-	$('#render_user_bkgrnd_image_crop').html("<%= j render 'users/user_bkgrnd_image_crop' %>");
 
-	$("#dvLoading_16").addClass("dvLoading-display-none");
 	$(".edit-image").fadeIn(200).removeClass("hidden");
-	$("#close_form16").trigger('click');
+	$("#close_form18").trigger('click');
 	$("form#new_user_bkgrnd_image input#new_user_bkgrnd_image_image").val('');
 <% else %>
-	alert("Upload error");
+	alert("Update error");
 <% end %>

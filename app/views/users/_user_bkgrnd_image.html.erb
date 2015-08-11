@@ -309,7 +309,7 @@
 <div class="drop-namespace103">
 	<% if @user_bkgrnd_image %>   				
 		<div class="container-figure-image container-figure-image-border-load container-figure-image-3 drop-103" style="position: relative;">
-			<figure class="dialog-11-figure cursor-pointer" data-width="<%= @user_bkgrnd_image.width %>" data-src-600="<%= @user_bkgrnd_image.image_url(:image_800_500) %>">
+			<figure class="dialog-11-figure cursor-pointer" data-width="<%= @user_bkgrnd_image.width %>" data-src-600="<%= @user_bkgrnd_image.image_url(:image_1200_300_fit) %>">
 				<img id="user_primary_bkgrnd" class="user-primary-img" alt="" src="<%= @user_bkgrnd_image.image_url(:image_1200_300_fill) + '?' + (rand(10..90) * rand(100..900)).to_s if @user_bkgrnd_image.image? %>" data-id="<%= @user_bkgrnd_image.id %>" />
 				<figcaption class="edit-image hidden drop-103-target">
 					<div class="img-1-text">Edit background picture</div>

@@ -2633,7 +2633,7 @@ cursor: pointer;
 		<div class="table-dialog-1">
 			<div class="row">
 				<div class="cell-100percent dialog-msg-container">
-				<span>Upload Background Image</span>
+				<span>Upload Background Picture</span>
 			</div>
 		</div>
 		</div>
@@ -2660,6 +2660,75 @@ cursor: pointer;
 	  <p><%= f.file_field :image, :id => 'new_user_bkgrnd_image_image', accept: 'image/png,image/gif,image/jpeg' %></p>
 	  <p><%= f.submit :id => 'btn_submit_dialog_16', :class => 'btn-submit hidden', :value => 'Upload Photo' %></p>
 	<% end %>
+</div>
+
+<!-- user background image - delete 17 -->
+<div class="jqmWindow jqmWindow-17" id="dialog_17">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<!-- text goes here -->
+			<div id="close_form17" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<%= image_tag('global/x_close_w20_h20.png', alt: 'X', height: '20px' ) %>
+			</div>
+	    <div class="tip-content">
+	        <div class="tooltiptext">Close</div>
+	    </div>																															   					   					
+			<div style="clear: both;"></div>
+	</div>
+	<div class="background-table-dialog-1">
+		<div class="table-dialog-1">
+			<div class="dialog-msg-container">
+				<span>Delete this background picture?</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 16px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center;">
+			<span><input id="btn_dlg_submit_delete_user_bkgrnd_image" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><input id="btn_dlg_cancel_delete_user_bkgrnd_image" class="btn-pop-dialog jqmClose" type="button" value="Cancel" tabindex=""></span>
+			</div>
+		</div>
+	</div>														   				
+	<div style="height: 20px;"></div>
+	<%= form_for UserBkgrndImage.new, :url => destroy_user_bkgrnd_image_users_path, :html => {:multipart => true, :class => 'hidden', :id => 'destroy_user_bkgrnd_image'}, :remote => true do |f| %>
+	  <p><%= f.text_field :id, :id => 'destroy_user_bkgrnd_image_image' %></p>
+	  <p><%= f.submit :id => 'btn_submit_dialog_17', :class => 'btn-submit hidden', :value => 'Delete Photo' %></p>
+	<% end %>
+</div>
+
+<!-- user background image - crop 18 -->
+<div class="jqmWindow jqmWindow-18" id="dialog_18">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<div class="topbar-title">Picture Crop and Center</div>
+			<div id="close_form18" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<%= image_tag('global/x_close_w20_h20.png', alt: 'X', height: '20px' ) %>
+			</div>
+        <div class="tip-content">
+            <div class="tooltiptext">Close</div>
+        </div>																															   					   					
+			<div style="clear: both;"></div>
+	</div>
+	<div class="background-table-dialog-3" style="padding: 10px 0 0 0;">
+   		<div class="table-dialog-1">
+			<div class="dialog-msg-container">
+				<span>Below, you may crop and center background picture.</span>
+			</div>
+			</div>
+		</div>
+		<div style="height: 10px;"></div>
+	<div style="width: 100%; padding: 0 0 0 10px;">
+		<div id="render_user_bkgrnd_image_crop">
+			<%= render 'users/user_bkgrnd_image_crop' %>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript">
@@ -2741,7 +2810,7 @@ cursor: pointer;
 		$("#dialog_16").jqmShow();
 	});
 	$(document).on("click", "#btn_dlg_submit_delete_user_bkgrnd_image", function() {
-		var user_bkgrnd_id = $('#logo_primary_bkgrnd').attr('data-id');
+		var user_bkgrnd_id = $('#user_primary_bkgrnd').attr('data-id');
 		$("form#destroy_user_bkgrnd_image input#destroy_user_bkgrnd_image_image").val(user_bkgrnd_id);
 		$("form#destroy_user_bkgrnd_image input#btn_submit_dialog_17").click();
 	});	

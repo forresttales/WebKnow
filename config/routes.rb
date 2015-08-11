@@ -55,6 +55,8 @@ Webknow::Application.routes.draw do
         post :check_duplicate_signup
 
         post :upload_user_bkgrnd_image
+        post :destroy_user_bkgrnd_image
+        post :crop_user_bkgrnd_image
       end
   
       # scope :module => 'publisher_user' do

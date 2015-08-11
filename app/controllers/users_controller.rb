@@ -1229,6 +1229,7 @@ class UsersController < ApplicationController
         @user = current_user
         @publisher_user = nil
         @publisher_user_image_primary = nil
+        @user_bkgrnd_image = nil
         @user_image_primary = nil
         @post_users = nil
         @post_user = nil
@@ -1252,6 +1253,19 @@ class UsersController < ApplicationController
                 # @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", @publisher_user_id).first
             else
                 Rails.logger.info('publisher was nil')
+            end
+
+            @user_bkgrnd_image = current_user.user_bkgrnd_images.where( :primary => true ).first rescue nil
+            @bkgrnd_crop_x = 0
+            @bkgrnd_crop_y = 0
+            @bkgrnd_crop_w = 1200
+            @bkgrnd_crop_h = 300
+            
+            if !@user_bkgrnd_image.nil?
+                @bkgrnd_crop_x = @user_bkgrnd_image.crop_x
+                @bkgrnd_crop_y = @user_bkgrnd_image.crop_y
+                @bkgrnd_crop_w = @user_bkgrnd_image.crop_w
+                @bkgrnd_crop_h = @user_bkgrnd_image.crop_h
             end
             
             # @publisher_user_plot_text = publisher_user.publisher_user_plot.plot_text
@@ -2209,8 +2223,171 @@ class UsersController < ApplicationController
   end  
 
   def upload_user_bkgrnd_image
+
+      @user_bkgrnd_image = nil
+      @bkgrnd_crop_x = 0
+      @bkgrnd_crop_y = 0
+      @bkgrnd_crop_w = 1200
+      @bkgrnd_crop_h = 300
       
-  end  
+      # publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+      # if !publisher.nil?
+      if signed_in?
+          h_user_bkgrnd_image = Hash.new
+          h_user_bkgrnd_image[:image] = params[:user_bkgrnd_image][:image]
+          h_user_bkgrnd_image[:user_id] = current_user.id
+          # h_user_bkgrnd_image[:publisher_id] = publisher.id
+          h_user_bkgrnd_image[:primary] = true
+          h_user_bkgrnd_image[:crop_x] = @bkgrnd_crop_x
+          h_user_bkgrnd_image[:crop_y] = @bkgrnd_crop_y
+          h_user_bkgrnd_image[:crop_w] = @bkgrnd_crop_w
+          h_user_bkgrnd_image[:crop_h] = @bkgrnd_crop_h
+          user_bkgrnd_image = UserBkgrndImage.new(h_user_bkgrnd_image)
+
+          user_bkgrnd_images = current_user.user_bkgrnd_images
+          user_bkgrnd_image_old = user_bkgrnd_images.where( :primary => true ).first rescue nil
+   
+          if request.xhr? || remotipart_submitted?
+              if user_bkgrnd_image.save
+                  if !user_bkgrnd_image_old.nil?
+                      # TODO Check if image destroyed
+                      # user_bkgrnd_image_old.update_attributes( :primary => false )
+                      user_bkgrnd_image_old.destroy
+                  end
+                  
+                  user_bkgrnd_image = user_bkgrnd_images.where( :primary => true ).last rescue nil
+                  
+                  if !user_bkgrnd_image.nil? 
+                      @user_bkgrnd_image = user_bkgrnd_image
+
+                      img = user_bkgrnd_image
+                      image = MiniMagick::Image.open("public" + img.image_url(:image_800_500))
+
+                      # Background aspect ratio (1200:300 or 4:1)
+                      bkgrnd_asp_ratio = 4
+
+                      crop_w = image.width
+                      crop_h = image.width / bkgrnd_asp_ratio
+                      crop_x = 0
+                      crop_y = (image.height - crop_h) / 2
+
+                      @bkgrnd_crop_x = crop_x
+                      @bkgrnd_crop_y = crop_y
+                      @bkgrnd_crop_w = crop_w
+                      @bkgrnd_crop_h = crop_h
+
+                      h_update = Hash.new
+                      h_update[:crop_x] = crop_x
+                      h_update[:crop_y] = crop_y
+                      h_update[:crop_w] = crop_w
+                      h_update[:crop_h] = crop_h
+
+                      if user_bkgrnd_image.update_attributes(h_update)
+                          #                      
+                      else
+                          #  
+                      end                      
+                  end
+              else
+                # error save
+              end
+          else
+            # 
+          end
+      else
+        #
+      end
+      
+  end
+
+  def destroy_user_bkgrnd_image
+      @user_bkgrnd_image = nil
+
+      # publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+      # if !publisher.nil?
+      if signed_in?
+          user_bkgrnd_images = current_user.user_bkgrnd_images
+          if user_bkgrnd_images.destroy(params[:user_bkgrnd_image][:id])
+              user_bkgrnd_image_new = user_bkgrnd_images.last rescue nil
+              if !user_bkgrnd_image_new.nil?
+                  # TODO Check if attributes updated
+                  user_bkgrnd_image_new.update_attributes( :primary => true )
+              end
+
+              user_bkgrnd_image = user_bkgrnd_images.where( :primary => true ).last rescue nil
+              if !user_bkgrnd_image.nil? 
+                  @user_bkgrnd_image = user_bkgrnd_image
+              end
+          else
+            # Error
+          end
+      end
+  end 
+
+  def crop_user_bkgrnd_image
+
+      @user_bkgrnd_image = nil
+
+      # publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+
+      # if !publisher.nil?
+      if signed_in?
+          
+          user_bkgrnd_images = current_user.user_bkgrnd_images
+          img = user_bkgrnd_images.find(params[:image_id]) rescue nil
+          
+          if !img.nil?
+              image = MiniMagick::Image.open("public" + img.image_url)
+              image_800_500 = MiniMagick::Image.open("public" + img.image_url(:image_800_500))
+
+              if(image.width >= image.height)
+                  crop_scale = image.width / image_800_500.width.to_f
+              else
+                  crop_scale = image.height / image_800_500.height.to_f
+              end
+              
+              crop_x = (params[:crop_x].to_i * crop_scale).to_i
+              crop_y = (params[:crop_y].to_i * crop_scale).to_i
+              crop_w = (params[:crop_w].to_i * crop_scale).to_i
+              crop_h = (params[:crop_h].to_i * crop_scale).to_i
+
+              crop_params = "#{crop_w}x#{crop_h}+#{crop_x}+#{crop_y}"
+              new_image = image.crop(crop_params)
+
+              img_name = File.basename(img.image.to_s)
+              img_dir = "public" + File.dirname(img.image.to_s)
+
+              image_1200_300_path = img_dir + "/" + "image_1200_300_fill_" + img_name
+
+              FileUtils.rm_rf(image_1200_300_path)
+
+              new_image.resize('1200x300')
+              new_image.write image_1200_300_path
+
+              user_bkgrnd_image = user_bkgrnd_images.where( :primary => true ).last rescue nil
+              if !user_bkgrnd_image.nil? 
+                  @user_bkgrnd_image = user_bkgrnd_image
+
+                  h_update = Hash.new
+                  h_update[:crop_x] = params[:crop_x]
+                  h_update[:crop_y] = params[:crop_y]
+                  h_update[:crop_w] = params[:crop_w]
+                  h_update[:crop_h] = params[:crop_h]
+                  
+                  if user_bkgrnd_image.update_attributes(h_update)
+                      #                      
+                  else
+                      #  
+                  end
+              end
+
+          else
+            #Error
+          end
+          
+      end
+
+  end 
     
     
   private
