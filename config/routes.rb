@@ -1,5 +1,7 @@
 Webknow::Application.routes.draw do
 
+  get "messages/index"
+  get "messages/create"
   get "tests/test1"
   get "tests/test_fullscreen"
   get "control_elements/nav_dropdowns"
@@ -16,6 +18,7 @@ Webknow::Application.routes.draw do
     # resources :photos
     # resources :accounts
   # end
+  resources :messages
   
   
   # match "/Settings" => "user_registers#index", via: 'get'

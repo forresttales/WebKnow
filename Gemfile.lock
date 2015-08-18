@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/ryanb/private_pub.git
+  revision: 7ad77617b1f48980d6f114bc96018f2964a07bdc
+  specs:
+    private_pub (1.0.3)
+      faye
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -27,6 +34,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.8)
     annotate (2.6.10)
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
@@ -49,14 +57,35 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     colored (1.2)
+    cookiejar (0.3.2)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     edn (1.0.0)
       parslet (~> 1.4.0)
+    em-http-request (1.1.2)
+      addressable (>= 2.3.4)
+      cookiejar
+      em-socksify (>= 0.3)
+      eventmachine (>= 1.0.3)
+      http_parser.rb (>= 0.6.0)
+    em-socksify (0.3.0)
+      eventmachine (>= 1.0.0.beta.4)
     erubis (2.7.0)
+    eventmachine (1.0.8-java)
     execjs (2.5.2)
     faker (1.4.3)
       i18n (~> 0.5)
+    faye (1.1.2)
+      cookiejar (>= 0.3.0)
+      em-http-request (>= 0.3.0)
+      eventmachine (>= 0.12.0)
+      faye-websocket (>= 0.9.1)
+      multi_json (>= 1.0.0)
+      rack (>= 1.0.0)
+      websocket-driver (>= 0.5.1)
+    faye-websocket (0.10.0)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.5.1)
     gon (5.2.3)
       actionpack (>= 2.3.0)
       json
@@ -65,6 +94,7 @@ GEM
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    http_parser.rb (0.6.0-java)
     i18n (0.7.0)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
@@ -98,7 +128,9 @@ GEM
     polyglot (0.3.5)
     protected_attributes (1.1.3)
       activemodel (>= 4.0.1, < 5.0)
-    rack (1.5.5)
+    puma (2.11.1-java)
+      rack (>= 1.1, < 2.0)
+    rack (1.6.4)
     rack-ssl (1.4.1)
       rack
     rack-test (0.6.3)
@@ -215,6 +247,9 @@ GEM
       jruby-rack (>= 1.1.1, < 1.3)
       rake (>= 0.9.6)
       rubyzip (>= 0.9, < 1.2)
+    websocket-driver (0.6.2-java)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
     will_paginate (3.0.7)
     xml-simple (1.1.5)
 
@@ -241,7 +276,9 @@ DEPENDENCIES
   nokogiri (~> 1.6.1.pre.java)
   paypal-sdk-rest
   pg
+  private_pub!
   protected_attributes
+  puma
   rack-ssl
   rails (= 4.0.4)
   rails_12factor
@@ -260,4 +297,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.10.5
+   1.10.6

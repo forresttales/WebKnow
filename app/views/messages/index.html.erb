@@ -1,0 +1,16 @@
+<h1>Chat</h1>
+
+<ul id="chat">
+  <%= render @messages %>
+</ul>
+
+<%= @hello %>
+
+<%= form_for Message.new, remote: true do |f| %>
+  <%= f.text_field :body %>
+  <%= f.number_field :user_id, style: "display: none", value: current_user.id %>
+  <%= f.submit "Send" %>
+<% end %>
+<br/>
+
+<%= subscribe_to "/messages/new" %>

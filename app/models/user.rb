@@ -80,6 +80,8 @@ class User < ActiveRecord::Base
   
   has_one :publisher_user, dependent: :destroy  
   has_one :publisher
+
+  has_many :messages, dependent: :destroy
   
   
   

@@ -15,6 +15,7 @@
 //= require jquery.fullscreenslides
 //= require jquery.remotipart
 //= require jquery-tmpl
+//= require private_pub
 //= require_directory ./templates
 
 // require slick
