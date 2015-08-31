@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/ryanb/private_pub.git
-  revision: 7ad77617b1f48980d6f114bc96018f2964a07bdc
+  remote: git://github.com/ovinix/private_pub.git
+  revision: 3b0c55a6c7d044ed2a1992dbac2fe17929429a1a
   specs:
     private_pub (1.0.3)
       faye
@@ -128,9 +128,8 @@ GEM
     polyglot (0.3.5)
     protected_attributes (1.1.3)
       activemodel (>= 4.0.1, < 5.0)
-    puma (2.11.1-java)
-      rack (>= 1.1, < 2.0)
-    rack (1.6.4)
+    puma (2.13.4-java)
+    rack (1.5.5)
     rack-ssl (1.4.1)
       rack
     rack-test (0.6.3)

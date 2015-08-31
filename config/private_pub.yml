@@ -1,10 +1,13 @@
 development:
-  server: "http://0.0.0.0:9292/faye"
+  server: "http://0.0.0.0:9293/faye"
   secret_token: "secret"
 test:
-  server: "http://0.0.0.0:9292/faye"
+  server: "http://0.0.0.0:9293/faye"
   secret_token: "secret"
 production:
-  server: "http://example.com/faye"
-  secret_token: "fe86d0992ce61612c0910fca54b70b2012653beeaae9906ff11ba46c76712d72"
+  server: "https://webknow:4443/faye"
+  # secret_token: "fe86d0992ce61612c0910fca54b70b2012653beeaae9906ff11ba46c76712d72"
+  secret_token: "secret"
   signature_expiration: 3600 # one hour
+  cert_path: "/etc/apache2/ssl/server.crt"
+  key_path: "/etc/apache2/ssl/server.key"
