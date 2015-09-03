@@ -1,0 +1,167 @@
+
+<% if false %>
+					<div style="height: 16px;"></div>
+
+					<div class="title-bar-profile-4">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<span>Research</span>		
+								</div>
+								<div class="cell-title-bar-profile-center">
+								</div>
+								<div class="cell-title-bar-profile-right">
+								</div>
+							</div>
+						</div>
+					</div>
+<% end %>
+								
+			   		<div style="height: 20px;"></div>
+			   			
+						<!-- <iframe src="<#%= publisher_product_pdfs_index_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id) %#>" scrolling="no" seamless="seamless" style="width: 640px; height: 350px;">
+						  <p>Your browser does not support iframes.</p>
+						</iframe> -->
+					
+					<div style="position: relative; width: 100%; height: 30px; text-align: center;">
+			   			<div id="title_pdfs" class="title-pdfs" style="display: inline-block; vertical-align: top;">
+			   				<span>Upload PDF of White Papers here</span>
+						</div>
+						<div style="display: inline-block; width: 20px; height: 20px; margin-left: 20px;">
+							<div id="open_info_name_pdf" class="open-info-name-pdf question-icon info-show-20 required-1 pop-info tip-top-center" tabindex="5110"></div>
+			                <div class="tip-content">
+			                    <div class="tooltiptext">What is this?</div>
+			                </div>																								
+						</div>
+					</div>																		
+					<!-- <div style="height: 10px;"></div> -->
+				   	<div id="form_info_name_pdf" class="form-info-name-pdf form-info-outer-pdf pad-marg-null" style="width: 100%;">
+				   		<div class="form-info-inner form-info-inner-pdf">
+				   			<div id="form_info_name_pdf_a">
+						   		<div class="table">
+						   			<div class="row">
+						   				<div class="cell-100percent form-edit-background">
+						   					<div id="close_info_name_pdf" class="close-info-name-pdf form-edit-close pop-info tip-left-center">
+						   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+						   					</div>
+							                <div class="tip-content">
+							                    <div class="tooltiptext">Close</div>
+							                </div>													   																		   					
+						   					<div style="clear: both;"></div>
+						   				</div>
+				   					</div>
+								</div>				   				
+						   		<div class="table">
+						   			<div class="row">
+						   				<div class="cell-100percent form-edit-background">
+											<span class="info-text-2">
+												Research based studies validating the publisher's approach or validating student achievement through use.															
+											</span>
+											<!-- <div>
+												<div><span class="info-text-1">Core</span></div>
+												<div style="padding: 0 0 0 6px;">
+													<span class="info-text-2">
+														Provides content or curriculum that address core subjects.																		
+													</span>
+												</div>
+											</div> -->										   					
+						   				</div>
+				   					</div>
+								</div>				   				
+							</div>
+						</div>
+					</div>
+			   			
+		   			<div id="render_pdfs">
+		   				<%= render 'publisher_product_manifests/list_pdfs'%>							
+					</div>
+						
+					<div style="height: 20px;"></div>						
+
+				   	<div id="form4" class="form-edit-outer form-edit-outer-4">
+				   		<div style="height: 10px;"></div>
+				   		<div class="form-edit-inner form-edit-inner-4">
+				   			<div id="form4a">
+				   				
+				   				<!-- <#%= form_tag url_for(:action => :update_description, :id => ''), :remote => true do %#> -->
+						   		<div class="table">
+						   			<div class="row">
+						   				<div class="cell-100percent">
+						   					<div id="close_form4" class="form-edit-close">
+						   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+						   					</div>
+						   					<div style="clear: both;"></div>
+						   				</div>
+				   					</div>
+								</div>				   				
+								
+								<div class="table">			
+									<div class="row">
+										<div class="cell-25"></div>
+										<div class="cell-650">
+											<!-- <iframe src="<#%= new_publisher_product_pdf_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id) %#>" style="width: 600px; height: 160px;">
+											  <p>Your browser does not support iframes.</p>
+											</iframe> -->
+											<!-- <#%= render 'publisher_product_pdfs/new'%#> -->
+											<%= render 'publisher_product_manifests/new_pdf' %>
+											<!-- <span><#%= link_to "Add a product PDF", new_publisher_product_pdf_path(:publisher_id => @publisher_id, :publisher_product_id => @publisher_product_id, :descr => 1) %#></span> -->
+											<% if false %>												
+											<%= form_tag url_for(:action => :update_topic, :id => ''), :remote => true do %>
+												<%= text_area_tag :topic, @publisher_product_manifest.topic, :class => 'textarea-product-description width-314 height-60', :placeholder => 'Topic' %>
+												<%= hidden_field_tag :publisher_product_manifest_id, @publisher_product_manifest_id %>
+												<%= hidden_field_tag :publisher_product_id, @publisher_product_id %>
+												<%= hidden_field_tag :publisher_id, @publisher_id %>
+												<%= submit_tag 'Save', :id => 'submit_topic_hidden', :class => 'hidden' %>
+											<% end %>
+											<% end %>
+											
+											<% if false %>											
+											<%= form_tag({action: :upload_pdf}, multipart: true) do %>
+												<%= file_field_tag 'upload_file', :class => 'input-upload' %> 
+												<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+												<%= submit_tag "Upload", :class => 'submit-upload' %> 
+											<% end %>
+											<% end %>
+																						
+										</div>
+										<div class="cell-25">
+											<div id="render_" class="render-1"></div>	
+										</div>
+									</div>							
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				   	<div id="form8" class="form-edit-outer form-edit-outer-8">
+				   		<div style="height: 10px;"></div>
+				   		<div class="form-edit-inner form-edit-inner-8">
+				   			<div id="form8a">
+						   		<div class="table">
+						   			<div class="row">
+						   				<div class="cell-100percent">
+						   					<div id="close_form8" class="form-edit-close">
+						   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+						   					</div>
+						   					<div style="clear: both;"></div>
+						   				</div>
+				   					</div>
+								</div>				   				
+								<div class="table">			
+									<div class="row">
+										<div class="cell-25"></div>
+										<div class="cell-650">
+											<div><span>Upload PDF Image - form8</span></div>
+											<br>											
+											<%= render 'publisher_product_manifests/new_pdf_image' %>
+											<input type="hidden" id="id_publisher_product_pdf" value="">
+										</div>
+										<div class="cell-25">
+											<div id="render_" class="render-1"></div>	
+										</div>
+									</div>							
+								</div>
+							</div>
+						</div>
+					</div>

@@ -540,7 +540,8 @@
 					// });
 					$("#overlay_loading").addClass("display-none");
 					$("#dialog_overlay").jqmHide();
-					$("#dialog_11").jqmShow();	
+					$("#dialog_11 .close-container").css({ 'position' : 'fixed' });
+					$("#dialog_11").jqmShow();
 				}).error(function(){
 					alert('error loading image');
 				});

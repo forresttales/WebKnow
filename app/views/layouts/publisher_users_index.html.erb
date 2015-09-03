@@ -72,19 +72,18 @@
 
     </head>
     
-	<body style="margin 0; padding: 0;">
-		<div class="body-wrap-outer">
-			
-		<%= render 'layouts/nav_main' %>
-		<%= render 'layouts/nav_publisher' %>
-		<div class="body-wrap-inner">
-			<%= yield %>
+	<body>
+		<div class="body-wrap">
+			<%= render 'layouts/nav_main' %>
+			<%= render 'layouts/nav_publisher' %>
+			<div class="body-wrap-inner">
+				<%= yield %>
+			</div>
 		</div>
 		
 		<%= render 'layouts/footer' %>
 
 		<% if false %>
-
 		<% if Rails.env.development? %>
 			<div style="width: 100%; position: absolute; bottom: -50px;">
 				<div id="debug">
@@ -92,10 +91,7 @@
 				</div>
 			</div>
 		<% end %>
-		
 		<% end %>
 		
-		</div>
 	</body>
-    
 </html>

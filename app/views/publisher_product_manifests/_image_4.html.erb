@@ -1,268 +1,621 @@
-
-	<style>
-		
-		div.drop-4-container-target  {
-			position: relative;
-		}
-		div.drop-4-container-target .dropOut .triangle {
-			width: 0;
-			height: 0;
-			position: absolute;
-			border-left: 8px solid transparent;
-			border-right: 8px solid transparent;
-			border-bottom: 8px solid white;
-			top: -8px;
-			right: 0px;
-		}
-		div.drop-4-container-target .drop-4-container {
-			width: 140px;
-			position: absolute;
-			z-index: 2;
-			right: 2px;
-			top: -1000px;
-		}
-		div.drop-4-container-target .dropOut {
-			width: 140px;
-			background: #fff;
-			float: left;
-			position: relative;
-			margin-top: 0px;
-			/*opacity: 0;*/
-			opacity: 1;
-			-webkit-border-top-left-radius: 4px;
-			-webkit-border-top-right-radius: 0px;
-			-webkit-border-bottom-right-radius: 4px;
-			-webkit-border-bottom-left-radius: 4px; 			
-			-moz-border-top-left-radius: 4px;
-			-moz-border-top-right-radius: 0px;
-			-moz-border-bottom-right-radius: 4px;
-			-moz-border-bottom-left-radius: 4px; 			
-			border-top-left-radius: 4px;
-			border-top-right-radius: 0px;
-			border-bottom-right-radius: 4px;
-			border-bottom-left-radius: 4px; 			
-			-webkit-box-shadow: 0 1px 6px rgba(0,0,0,.45);
-			-moz-box-shadow: 0 1px 6px rgba(0,0,0,.45);
-			box-shadow: 0 1px 6px rgba(0,0,0,.45);
-			/*display: none !important;
-			visibility: hidden !important;*/
-			/*display: none;*/
-			/*visibility: hidden;*/					
-		}
-		div.drop-4-container-target .dropOut ul {
-			float: left;
-			padding: 10px 0;
-		}
-		div.drop-4-container-target .dropOut ul li {
-			text-align: left;
-			float: left;
-			width: 120px;
-			height: 24px;
-			padding: 4px 0 6px 10px;
-			margin: 3px 10px 3px 10px;
-			-webkit-border-radius: 4px;
-			-moz-border-radius: 4px;
-			border-radius: 4px;
-		}
-		div.drop-4-container-target .dropOut ul li:hover {
-			background: #f2f2f2;
-		}
-		div.drop-4-container-target .dropOut ul li div {
-			color: #376340;	
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 16px;
-			font-weight: 700;
-			width: 100%;
-			height: 24px;
-		}
-		div.drop-4-container-target .dropOut ul li:hover div {
-			color: #376340;	
-			cursor: pointer;
-		}
-		div.drop-4-container-target .drop-4-target:hover + .drop-4-container .dropOut { margin-top: 8px; }
-		div.drop-4-container-target .drop-4-target + .drop-4-container:hover .dropOut { margin-top: 8px; }		
-		
-	</style>
-
-	<style>
+<style>
 	
-		li {list-style-type: none;}
+.drop-namespace104 .drop-hidden {
+  display: none !important;
+    visibility: hidden !important;  
+}
+.drop-namespace104 .drop-clear-both {
+  clear: both;
+}
+
+.drop-namespace104 .drop-104 {
+	width: 200px;
+}
+.drop-namespace104 .drop-104 .drop-104-triangle {
+  	width: 0px;
+  	height: 0px;
+  	border-left: 8px solid transparent;
+  	border-right: 8px solid transparent;
+  	border-bottom: 8px solid #fff;
+  	position: relative;
+  	left: 3px;
+  	float: left;
+}
+.drop-namespace104 .drop-104 .drop-104-box {
+  	width: 200px;
+  	float: left;
+  	/*position: relative;*/
+  	position: absolute;
+  	margin-top: 0px;
+  	-webkit-transition: all .1s ease-out;
+  	-moz-transition: all .1s ease-out;
+  	-ms-transition: all .1s ease-out;
+  	-o-transition: all .1s ease-out;
+  	transition: all .1s ease-out;
+  	z-index: 1;
+}
+.drop-namespace104 .drop-104 .drop-104-container-links {
+}
+.drop-namespace104 .drop-104 .margin-top-hide-1 {
+	margin-top: -16px;
+}
+.drop-namespace104 .drop-104 .margin-top-show-1 {
+	margin-top: -6px;
+}
+.drop-namespace104 .drop-104 .drop-104-link-1 {
+	width: 100%;
+}
+/*.drop-namespace104 .drop-104 .drop-104-target {
+	position: relative;
+  	width: 200px;
+  	height: 19px;
+  	padding: 9px 0px 4px 0px;
+  	text-align: center;
+}
+.drop-namespace104 .drop-104 .drop-104-target:hover {
+  	background: #f6f6f6;
+}*/
+.drop-namespace104 .drop-104 .drop-104-link-1:hover .span-1 {
+}   
+.drop-namespace104 .drop-104 .drop-104-span-1 {
+  	color: #376340; 
+  	font-family: Arial, Helvetica, sans-serif;
+  	font-size: 16px;
+  	font-weight: 700;
+}
+.drop-namespace104 .drop-104 a.drop-104-link-a-1 {
+	text-decoration: none;
+}
+.drop-namespace104 .drop-104 a.drop-104-link-a-1:hover {
+	text-decoration: none;
+}
+.drop-namespace104 .drop-104 .drop-104-border {
+  	-webkit-border-top-left-radius: 4px;
+  	-moz-border-top-left-radius: 4px;
+  	border-top-left-radius: 4px;      
+
+  	-webkit-border-top-right-radius: 4px;
+  	-moz-border-top-right-radius: 4px;
+  	border-top-right-radius: 4px;     
+
+  	-webkit-border-bottom-right-radius: 4px;
+  	-moz-border-bottom-right-radius: 4px;
+  	border-bottom-right-radius: 4px;      
+
+  	-webkit-border-bottom-left-radius: 4px;
+  	-moz-border-bottom-left-radius: 4px;
+  	border-bottom-left-radius: 4px;     
+}
+.drop-namespace104 .drop-104 .drop-104-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+}
+.drop-namespace104 .drop-104 .drop-104-divider-1 {
+  	height: 2px;
+}
+.drop-namespace104 .drop-104 .drop-104-divider-2 {
+  	height: 10px;
+}
+.drop-namespace104 .drop-104 .background-transparent {
+  	background-color: transparent;
+}
+ .drop-namespace104 .background-white {
+  	background-color: #fff;
+}
+.drop-namespace104 .drop-104 .nav-caret-container {
+  	width: 14px;
+  	height: 30px;
+  	padding: 0 0 0 2px;     
+}
+.drop-namespace104 .drop-104 .nav-caret {
+  	width: 0px;
+  	height: 0px;
+  	position: relative;
+  	border-left: 4px solid transparent;
+  	border-right: 4px solid transparent;
+  	margin: 16px 0 0 0px;
+}
+.drop-namespace104 .drop-104 .nav-caret-down {
+  	border-top: 5px solid #999;
+  	border-bottom: 0;     
+}
+.drop-namespace104 .drop-104 .nav-caret-up {
+  	border-bottom: 5px solid #999;
+  	border-top: 0;
+}
+.drop-namespace104 .drop-104 .nav-drop-1:hover {
+  	cursor: pointer;
+}
+.drop-namespace104 .drop-104 .nav-drop-1:hover .nav-avatar img {
+  	border: 2px solid #A9D996;
+}
+.drop-namespace104 .drop-104 .nav-drop-1:hover .nav-caret-down {
+  	border-top: 5px solid #A9D996;
+}
+.drop-namespace104 .drop-104 .nav-drop-1:hover .nav-caret-up {
+  	border-bottom: 5px solid #A9D996;
+}
+.drop-namespace104 .drop-104 .cursor-pointer:hover {
+	cursor: pointer;
+}
+.drop-namespace104 .drop-104-target-icon {
+	display: inline-block;
+}	
+.drop-namespace104 .drop-104-target-text {
+	display: inline-block;
+}	
+.drop-namespace104 .drop-104 a:focus {
+	outline: none;	
+}
+.drop-namespace104 .drop-104 a:active {
+	outline: none;
+}
+.drop-namespace104 .drop-104 a:visited {
+	outline: none;
+}
+.drop-namespace104 .drop-104-table {
+	display: table;
+}
+.drop-namespace104 .drop-104-table-row {
+	display: table-row;
+}
+.drop-namespace104 .drop-104-table-cell-1 {
+	display: table-cell;
+	width: 174px;
+}
+.drop-namespace104 .drop-104-table-cell-2 {
+	display: table-cell;
+	width: 12px;
+}
 	
-	</style>
+.drop-namespace104 .drop-104-1 {
+	text-align: left;
+	width: auto;
+	height: 24px;
+	padding: 4px;
+}
+.drop-namespace104 .drop-104-1:hover {
+  	background: #f6f6f6;
+}
+.drop-namespace104 .drop-104-1-target {
+	position: relative;
+}
+.drop-namespace104 .drop-104-1 .drop-104-1-triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 8px 8px 0;
+	border-color: transparent #ffffff transparent transparent;	
+  	position: relative;
+  	float: left;
+  	left: -8px;
+  	top: 33px;
+}
+.drop-namespace104 .drop-104-1 .drop-104-1-container {
+  	position: relative;
+}
+.drop-namespace104 .drop-104-1 .drop-104-1-box {
+  	width: 200px;
+  	position: absolute;
+  	margin-top: 0px;
+  	-webkit-transition: all .1s ease-out;
+  	-moz-transition: all .1s ease-out;
+  	-ms-transition: all .1s ease-out;
+  	-o-transition: all .1s ease-out;
+  	transition: all .1s ease-out;
+  	z-index: 1;
+}
+.drop-namespace104 .drop-104-1 .drop-104-1-container-links {
+}
+.drop-namespace104 .drop-104-1 .margin-top-hide-1-1 {
+	margin-top: -53px;
+	margin-left: 160px;
+}
+.drop-namespace104 .drop-104-1 .margin-top-show-1-1 {
+	margin-top: -53px;
+	margin-left: 180px;
+}
+.drop-namespace104 .drop-104-1 .drop-104-1-link-1 {
+  	width: 100%;
+}
+.drop-namespace104 .drop-104-1 .drop-104-1-link-1:hover {
+  	background: #f6f6f6;
+}
+.drop-namespace104 .drop-104-1 .drop-104-1-link-1:hover .span-1 {
+}   
+.drop-namespace104 .drop-104-1 .drop-104-1-span-1 {
+  	color: #376340; 
+  	font-family: Arial, Helvetica, sans-serif;
+  	font-size: 16px;
+  	font-weight: 700;
+}
+.drop-namespace104 .drop-104-1 a.drop-104-1-link-a-1 {
+	text-decoration: none;
+}
+.drop-namespace104 .drop-104-1 a.drop-104-1-link-a-1:hover {
+	text-decoration: none;
+}
+.drop-namespace104 .drop-104-1 .drop-104-1-border {
+  	-webkit-border-top-left-radius: 4px;
+  	-moz-border-top-left-radius: 4px;
+  	border-top-left-radius: 4px;      
 
-	<style>
+  	-webkit-border-top-right-radius: 4px;
+  	-moz-border-top-right-radius: 4px;
+  	border-top-right-radius: 4px;     
 
-		.container-figure-image-border-load {
-			border: 2px solid #fff;
-		}	
-		.container-figure-image-border {
-			border: 2px solid #ccc;
+  	-webkit-border-bottom-right-radius: 4px;
+  	-moz-border-bottom-right-radius: 4px;
+  	border-bottom-right-radius: 4px;      
+
+  	-webkit-border-bottom-left-radius: 4px;
+  	-moz-border-bottom-left-radius: 4px;
+  	border-bottom-left-radius: 4px;     
+}
+.drop-namespace104 .drop-104-1 .drop-104-1-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+}
+.drop-namespace104 .drop-104-1 .drop-104-1-divider-1 {
+  	height: 2px;
+}
+.drop-namespace104 .drop-104-1 .drop-104-1-divider-2 {
+  	height: 10px;
+}
+.drop-namespace104 .drop-104-1 .background-transparent {
+  	background-color: transparent;
+}
+.drop-namespace104 .drop-104-1 .background-white {
+  	background-color: #fff;
+}
+.drop-namespace104 .drop-104-1 .nav-caret-container {
+  	width: 14px;
+  	height: 30px;
+  	padding: 0 0 0 2px;     
+}
+.drop-namespace104 .drop-104-1 .nav-caret {
+  	width: 0px;
+  	height: 0px;
+  	position: relative;
+  	border-left: 4px solid transparent;
+  	border-right: 4px solid transparent;
+  	margin: 16px 0 0 0px;
+}
+.drop-namespace104 .drop-104-1 .nav-caret-down {
+  	border-top: 5px solid #999;
+  	border-bottom: 0;     
+}
+.drop-namespace104 .drop-104-1 .nav-caret-up {
+  	border-bottom: 5px solid #999;
+  	border-top: 0;
+}
+.drop-namespace104 .drop-104-1 .nav-drop-1:hover {
+  	cursor: pointer;
+}
+.drop-namespace104 .drop-104-1 .nav-drop-1:hover .nav-avatar img {
+  	border: 2px solid #A9D996;
+}
+.drop-namespace104 .drop-104-1 .nav-drop-1:hover .nav-caret-down {
+  	border-top: 5px solid #A9D996;
+}
+.drop-namespace104 .drop-104-1 .nav-drop-1:hover .nav-caret-up {
+  	border-bottom: 5px solid #A9D996;
+}
+.drop-namespace104 .drop-104-1 .cursor-pointer:hover {
+	cursor: pointer;
+}
+.drop-namespace104 .drop-104-1-target-icon {
+	display: inline-block;
+}	
+.drop-namespace104 .drop-104-1-target-text {
+	display: inline-block;
+	margin: 4px 0px 0px 1px;
+}	
+	
+</style>
+
+<style>
+
+.container-figure-image-border-load {
+	border: 2px solid #fff;
+}	
+.container-figure-image-border {
+	border: 2px solid #ccc;
+}
+.container-figure-image-border-edit {
+	border: 2px solid #fbb040;
+}	
+	
+</style>
+
+
+<div class="drop-namespace104 hidden">
+	<% if @image_4 %>   				
+	
+		<!-- <div class="container-figure container-figure-1 drop-104-container-target" style="height: 200px;"> -->
+		<!-- <div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-104-container-target"> -->
+		<div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-104">
+			<figure class="dialog-11-figure cursor-pointer" data-width="<%= @image_4.width %>" data-src-600="<%= @image_4.image_url(:image_600_600) %>">
+				<img id="image_4_img" class="" alt="" src="<%= @image_4.image_url(:image_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_4.image? %>" />
+				<!-- <input class="container-image-hidden" type="hidden" value="<#%= @image_4.image_url(:user_600_600) if @image_4.image? %#>" />
+				<img id="image_4_img_600" class="hidden" alt="" src="<#%= @image_4.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_4.image? %#>" /> -->
+				<figcaption class="edit-image hidden drop-104-target">
+						<div class="img-1-text">Edit photo</div>
+				</figcaption>
+			</figure>
+	    	<div class="drop-104-container drop-hidden">
+				<div class="drop-104-box background-transparent margin-top-hide-1">
+					<div class="drop-104-triangle"></div>
+					<div style="clear: both;"></div>
+					<div class="drop-104-container-links background-white drop-104-border drop-104-shadow">
+						<div class="drop-104-divider-2"></div>
+						<div class="drop-104-link-1 cursor-pointer" data-id="1">
+							<div class="drop-104-1">
+						    	<div class="drop-104-1-target">
+						    		<div class="drop-104-1-target-text">
+						    			<span class="drop-104-1-span-1">New/Change</span>
+						    		</div>						    		
+						    	</div>
+					    	</div>
+						</div>
+						<div class="drop-104-divider-1"></div>
+						<div class="drop-104-link-1 cursor-pointer" data-id="2">
+							<div class="drop-104-1">
+						    	<div class="drop-104-1-target">
+						    		<div class="drop-104-1-target-text">
+						    			<span class="drop-104-1-span-1">Crop/Center</span>
+						    		</div>						    		
+						    	</div>
+					    	</div>
+						</div>
+						<div class="drop-104-divider-1"></div>
+						<div class="drop-104-link-1 cursor-pointer" data-id="3">
+							<div class="drop-104-1">
+						    	<div class="drop-104-1-target">
+						    		<div class="drop-104-1-target-text">
+						    			<span class="drop-104-1-span-1">Delete</span>
+						    		</div>						    		
+						    	</div>
+					    	</div>
+						</div>
+						<div class="drop-104-divider-2"></div>
+					</div>
+				</div>
+	        </div>
+		</div>
+
+	<% else %>
+
+		<div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-104" style="position: relative;">
+			<figure class="dialog-11-figure-generic" data-width="375" data-src-600="">
+				<img id="image_4_generic_img" class="" alt="" src="<%= image_path('avatars/avatar-gen-product-w375-h300.png') %>" />
+				<figcaption class="edit-image hidden cursor-pointer drop-104-target">
+						<div class="img-1-text">Add a photo</div>
+				</figcaption>
+			</figure>
+	    	<div class="drop-104-container drop-hidden">
+				<div class="drop-104-box background-transparent margin-top-hide-1">
+					<div class="drop-104-triangle"></div>
+					<div style="clear: both;"></div>
+					<div class="drop-104-container-links background-white drop-104-border drop-104-shadow">
+						<div class="drop-104-divider-2"></div>
+						<div class="drop-104-link-1 cursor-pointer" data-id="4">
+							<div class="drop-104-1">
+						    	<div class="drop-104-1-target">
+						    		<div class="drop-104-1-target-text">
+						    			<span class="drop-104-1-span-1">New Photo</span>
+						    		</div>						    		
+						    	</div>
+					    	</div>
+						</div>
+						<div class="drop-104-divider-2"></div>
+					</div>
+				</div>
+	        </div>
+		</div>
+	<% end %>
+</div>
+
+
+<script>
+
+	var drop_visible_namespace104 = false;
+	function drop_show_namespace104() {
+		$(".drop-namespace104 .drop-104-container").removeClass('drop-hidden');
+		$(".drop-namespace104 .drop-104-box").fadeIn(500).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
+		drop_visible_namespace104 = true;			
+	}	
+	function drop_hide_namespace104() {
+		$(".drop-namespace104 .drop-104-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);		
+		drop_visible_namespace104 = false;			
+	}	
+	function drop_toggle_namespace104() {
+		if (drop_visible_namespace104) {
+			drop_hide_namespace104();
 		}
-		.container-figure-image-border-edit {
-			border: 2px solid #fbb040;
-		}	
-		
-	</style>
+		else {
+			drop_close_all_called_namespace104 = false;
+			drop_show_namespace104();
+		}
+	}	
+	
+	function dropCloseAll_namespace104() {
+		drop_close_all_called_namespace104 = true;
+		drop_hide_namespace104();
+	}
+	
+	
+	var drop_close_all_called_namespace104 = false;
+	
+	
+	$(document).ready(function () {				
 
-
-								<% if @image_4 %>   				
-									<!-- <#% rnum = (rand(10..90) * rand(100..900)).to_s %#> -->
-									<div class="container-figure-image container-figure-image-border-load container-figure-image-4 drop-4-container-target">
-										<figure id="figure_image_4" class="dialog-41-figure cursor-pointer drop-4-target">
-											<img id="img_image_4" alt="" src="<%= @image_4.image_url(:image_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_4.image? %>" />
-											<input class="container-image-hidden" type="hidden" value="<%= @image_4.image_url(:image_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_4.image? %>" />
-											<img id="img_4_600" class="hidden" alt="" src="<%= @image_4.image_url(:image_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_4.image? %>" />
-											<figcaption id="figcaption_image_4" class="edit-image hidden">												
-												<!-- <div class="img-1-text">Edit image</div> -->
-											</figcaption>
-										</figure>
-								    	<div class="drop-4-container hidden">
-											<div class="dropOut">
-												<div class="triangle"></div>
-												<ul>
-													<li>
-														<div id="btn_image_4_change">
-															New/Change
-														</div>
-													</li>
-													<!-- <li>
-														<div id="btn_image_4_crop" class="">
-															Crop/Center
-														</div>
-													</li> -->
-													<li>
-														<div id="btn_image_4_delete">
-															Delete
-														</div>
-													</li>
-												</ul>
-											</div>
-								        </div>
-										
-									</div>
-									<div class="float-clear"></div>
-
-								<% else %>
-
-									<div class="container-figure-image container-figure-image-border-load container-figure-image-4 drop-4-container-target">
-										<figure id="figure_image_4_generic" class="dialog-41-figure-generic drop-4-target">
-											<img id="img_image_4_generic" alt="" src="../images_avatar/avatar-gen-corp-w200-h200.png" />
-											<figcaption id="figcaption_image_4_generic" class="edit-image cursor-pointer hidden">
-												<!-- <div class="img-1-container"> -->
-													<!-- <div class="img-1"></div> -->
-													<div class="img-1-text">Add an image</div>
-												<!-- </div> -->
-											</figcaption>
-										</figure>
-								    	<div class="drop-4-container hidden">
-											<div class="dropOut">
-												<div class="triangle"></div>
-												<ul>
-													<li>
-														<div id="btn_image_4_new">
-															New
-														</div>
-													</li>
-												</ul>
-											</div>
-								        </div>
-									</div>
-								
-								<% end %>
-
-
-
-
-	<script>
-
-
-		// $(window).load( function() {
-		$(document).ready( function () {				
-		
-			$("img").one("load", function() {
-				if((this.id == "img_image_4") || (this.id == "img_image_4_generic")) {
-					var img_w = this.width;
-					var img_h = this.height;
-					$("div.drop-4-container-target .drop-4-target").on('mouseenter', function() {
-						$(".drop-4-container").css({ 
-							top : img_h - 14
-						});
-					});
-					$("div.drop-4-container-target .drop-4-target").on('mouseleave', function() {
-						$(".drop-4-container").css({ 
-							top : -1000
-						});
-					});
-					
-					$("div.drop-4-container-target .drop-4-container").on('mouseenter', function() {
-						$(".drop-4-container").css({ 
-							top : img_h - 14
-						});
-					});
-					$("div.drop-4-container-target .drop-4-container").on('mouseleave', function() {
-						$(".drop-4-container").css({ 
-							top : -1000
-						});
-					});
-
-					// $("div#container_image_4 .container-figure-image").css({
-					$(".container-figure-image-4").css({
-						width : img_w + 4,
-						height : img_h + 4
-					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");													
-				}
-				if(this.id == "img_image_4_generic") {
-					var img_w = this.width;
-					var img_h = this.height;
-					$(".container-figure-image-4").css({
-						width : img_w + 4,
-						height : img_h + 4
-					}).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
-				}				
-				if(this.id == "img_4_600") {
-					// alert("user_primary_img width = " + this.width);
-					// alert("user_primary_img height = " + this.height);
-					var img_w = this.width;
-					var img_h = this.height;
-					$("#figure_dialog_41").css({
-						width : img_w,
-						height : img_h
-					});																			
-				}								
-			}).each(function() {
-			  	if(this.complete) $(this).load();
-			});
-		
-		
-			$(".dialog-41-figure").on('click', function(e) {
-				if ( e.target.nodeName == "IMG" ) {
-					var this_src = $(this).find("input.container-image-hidden").attr("value");
-					$("#figure_dialog_41").find("img").attr("src", this_src );
-					var this_delete = $(this).find("div.tip-top-center").html();
-					$("#figure_dialog_41").find("div.tip-top-center").html(this_delete);
-					$("#dialog_41").jqmShow();	
-				}
-			});
-			$('#dialog_41').jqm({
-				onShow: function(hash) {
-					hash.o.prependTo('body');
-					hash.w.css('top', '20px');
-					hash.w.css('opacity', 1.0).fadeIn(200);
-					var img = $("#figure_dialog_41 img");
-					$("<img/>")
-			    		.attr("src", $(img).attr("src"))
-			    		.load(function() {
-			        		img_width = this.width; 
-			        		$("#figure_dialog_41").css({
-			        			// width : this.width 
-			        	});	        		
-			    	});		
-				}
-			}); 		
-			
-			
+		$(document).on('click', function(e) {
+			// var target_namespace104 = $(e.target).parents('#drop_namespace104').attr("id");
+			var target_namespace104 = $(e.target).parents('.drop-namespace104').attr("class");
+			if (target_namespace104 == null) {
+				drop_hide_namespace104();
+			}
 		});
-	  
 
-	</script>		
+		$(".drop-namespace104 .drop-104-target").on('click', function() {
+			drop_toggle_namespace104();
+		});
+		$(".drop-namespace104 .drop-104-link-1[data-id='1']").on("click", function() {
+			dropCloseAll_namespace104();
+			$(document).trigger("btn_image_4_change_click");
+		});
+		$(".drop-namespace104 .drop-104-link-1[data-id='2']").on("click", function() {
+			dropCloseAll_namespace104();
+			$(document).trigger("btn_image_4_crop_click");
+		});
+		$(".drop-namespace104 .drop-104-link-1[data-id='3']").on("click", function() {
+			dropCloseAll_namespace104();
+			$(document).trigger("btn_image_4_delete_click");
+		});
+		$(".drop-namespace104 .drop-104-link-1[data-id='4']").on("click", function() {
+			dropCloseAll_namespace104();
+			$(document).trigger("btn_image_4_new_click");
+		});
 
+	});
+	
+</script>
+
+
+<script>
+
+	// $(window).load( function() {
+	$(document).ready( function () {				
+
+		$("img").one("load", function() {
+			
+			if((this.id == "image_4_img") || (this.id == "image_4_generic_img")) {
+				var img_w = this.width;
+				var img_h = this.height;
+
+				$(".container-figure-image-1").css({
+					// width : img_w + 4,
+					// height : img_h + 4
+					width : img_w,
+					height : img_h						
+				})// .removeClass("container-figure-image-border-load").addClass("container-figure-image-border");													
+			}
+			// if(this.id == "image_4_generic_img") {
+				// var img_w = this.width;
+				// var img_h = this.height;
+				// $(".container-figure-image-1").css({
+					// // width : img_w + 4,
+					// // height : img_h + 4
+					// width : img_w,
+					// height : img_h						
+				// }).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
+			// }				
+			if(this.id == "image_4_img_600") {
+				var img_w = this.width;
+				var img_h = this.height;
+				$("#figure_dialog_11").css({
+					width : img_w,
+					height : img_h
+				});																			
+			}								
+		}).each(function() {
+		  	if(this.complete) {
+		  		$(this).load();
+		  		$(".drop-namespace104").removeClass("hidden");
+		  	}
+		});
+
+		
+		var this_img;			
+		$(".dialog-11-figure").on('click', function(e) {
+			if ( e.target.nodeName == "IMG" ) {
+
+				$("#dialog_overlay").jqmShow();
+				$("#overlay_loading").removeClass("display-none");
+
+				// // alert($(this).attr("id"));
+				// var w = $(this).data("width");
+				// // alert(w);
+				// w += 120;
+				// var w2 = -(w/2);
+				var src_img = $(this).data("src-600");
+				// alert(src_img);
+				$('<img src="'+ src_img +'">').load(function(){
+					$("#figure_dialog_11").append($(this));
+					// var image_4_url = gon.image_4_url;
+					// var s_tmpl = "templates/figure_dialog_11";
+					// $.tmpl(s_tmpl, {
+						// src_image: image_4_url
+					// }).appendTo($("#figure_dialog_11"));
+
+					// $(".jqmWindow-11").css({
+						// 'margin-left' : w2,
+						// 'width' : w  
+					// });
+					$("#overlay_loading").addClass("display-none");
+					$("#dialog_overlay").jqmHide();
+					$("#dialog_11").jqmShow();	
+				}).error(function(){
+					alert('error loading image');
+				});
+			}
+		});
+		$('#dialog_11').jqm({
+			overlay: 84,
+			onShow: function(hash) {
+				hash.w.css('opacity', 1.0).fadeIn(10);
+				hash.o.prependTo('body');
+				hash.w.css('top', '10px');
+			},
+			onHide: function(hash) {
+				hash.o.remove();
+				hash.w.css('top', '-8000px');
+				$("#figure_dialog_11 img").remove();
+				// hash.w.fadeOut('10',function(){ 
+					// hash.o.remove(); 
+				// });
+			}
+		}); 		
+		$('#dialog_overlay').jqm({
+			overlay: 84,
+			onShow: function(hash) {
+				hash.w.css('opacity', 1.0).fadeIn(10);
+				hash.o.prependTo('body');
+				// hash.w.css('top', '0px');
+			},
+			onHide: function(hash) {
+				hash.o.remove();
+				hash.w.css('top', '-8000px');
+			}
+		}); 		
+		
+		$('#dialog_15').jqm({
+			onShow: function(hash) {
+				hash.o.prependTo('body');
+				hash.w.css('top', '-720px');
+				hash.w.css('opacity', 1.0).fadeIn(200);
+				// hash.w.show();
+				$('#dialog_15').animate(
+					{bottom:'-=740', top:'+=740'}, 
+					500, 
+					'easeInOutCirc', 
+					function() {
+						$('#dialog_15').animate(
+							{bottom:'+=4', top:'-=4'}, 
+							100, 
+							'easeInBounce', 
+							function() {
+							}
+						);
+					}
+				);
+			}
+		}); 		
+	
+	});
+  
+
+</script>		

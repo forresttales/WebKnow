@@ -16,7 +16,7 @@
   	z-index: 3001;
 }       
 .jqmWindow-11 {
-  position: fixed;
+  position: absolute;
   top: -8000px;
   left: 0;
   background-color: transparent;
@@ -50,6 +50,7 @@
   top: 0px;
   right: 100px;
   z-index: 1;
+  // position: fixed;
 }
 .jqmWindow-11 .figure-container {
   width: 100%; 

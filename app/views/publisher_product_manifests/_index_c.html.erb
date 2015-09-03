@@ -1,0 +1,963 @@
+<% if false %>
+					<div class="title-bar-profile-2" style="margin: 0;">
+						<div class="tbl-title-bar-profile-2" style="margin: 0;">
+							<div class="row-title-bar-profile" style="margin: 0;">
+								<div class="cell-title-bar-profile-2" style="margin: 0;">
+									<span><em>Premium</em></span>		
+								</div>
+							</div>
+						</div>
+					</div>
+<% end %>
+
+					<div style="height: 10px;"></div>						
+
+					<div>
+				   		<div class="table">
+				   			<div class="row">
+				   				<div class="cell-20"></div>
+								<div class="cell-330">
+									
+									
+									
+							   		<div class="table">
+							   			
+							   			<div class="row">
+											<div class="cell-325">
+												<div class="box-detail">
+													<div class="table box-detail-table-1">
+														<div class="row box-detail-row">
+															<div class="cell-325">
+																<div class="cell-265">
+																	<div class="box-detail-title">
+																		Lesson Plan Subject										
+																	</div>
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_info_lesson_plan_subject" class="question-icon info-show-20 required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <!-- <div class="tooltiptitle"></div> -->
+													                    <div class="tooltiptext">What is this?</div>
+													                </div>																								
+																</div>																		
+																<div class="cell-20 min-h-20 min-w-20">
+																	<!-- <div id="required_lesson_plan_subject" class="required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Required</div>
+													                </div> -->																								
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_edit_lesson_plan_subject" class="edit-icon-right form-edit-open-20 pop-info tip-top-center" tabindex=""></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Edit</div>
+													                </div>																								
+																</div>
+															</div>
+														</div>
+														
+														<div class="row box-detail-row">
+															<div class="cell-325 box-detail-padding">
+																<div id="edit_lesson_plan_subject" class="hidden">
+
+																	<div id="textarea_lesson_plan_subject_containter_edit" class="textarea-subject-container-edit toggle-subject" tabindex="">
+																		<div id="textarea_lesson_plan_subject_edit" class="textarea-subject textarea-subject-edit toggle-subject" contenteditable="true" tabindex=""></div>
+																	</div>		
+
+																	<div style="padding: 4px;">
+																		<div style="display: inline-block;">
+																			<div id="submit_lesson_plan_subject" class="btn-submit-product" tabindex="">Save</div>
+																		</div>
+																		<div style="display: inline-block;">
+																			<div id="cancel_lesson_plan_subject" class="btn-submit-product" tabindex="">Cancel</div>
+																		</div>	
+																	</div>					
+																</div>
+																<div id="show_lesson_plan_subject">
+																	<div class="textarea-subject-container">
+																		<div id="textarea_lesson_plan_subject" class="textarea-subject textarea-subject-show" tabindex=""></div>												
+																	</div>
+																	<!-- <div id="box_topic">
+																		<div id="render_topic_insert">
+																			<#%= render 'publisher_product_manifests/topic'%#>
+																		</div>
+																	</div> -->
+																</div>
+
+																<% if false %>
+																<div id="edit_lesson_plan_subject" class="hidden">																
+																	<%= form_tag url_for(:action => :update_lesson_plan_subject, :id => ''), :remote => true do %>
+																		<%= text_area_tag :lesson_plan_subject, @publisher_product_manifest.lesson_plan_subject, :class => 'textarea-product-description width-314 height-60' %>
+																		<!-- :onkeyup => 'countChar(this)' -->
+																		<!-- <div id="char_num" class="char_num"></div> -->	
+																		<%= hidden_field_tag :publisher_product_manifest_id, @publisher_product_manifest_id %>
+																		<%= hidden_field_tag :publisher_product_id, @publisher_product_id %>
+																		<%= hidden_field_tag :publisher_id, @publisher_id %>
+																		<!-- <#% if @b_lesson_plan_subject %#>
+																		<textarea class="textarea-product-description width-314 height-60" id="publisher_product_manifest_lesson_plan_subject" name="publisher_product_manifest[lesson_plan_subject]" tabindex="13" type="text" value="" placeholder="" onkeyup="countChar_1(this)" ><#%= @publisher_product_manifest.lesson_plan_subject %#></textarea>
+																		<#% else %#>
+																		<textarea class="textarea-product-description width-314 height-60" id="publisher_product_manifest_lesson_plan_subject" name="publisher_product_manifest[lesson_plan_subject]" tabindex="13" type= value="text" placeholder="Lesson Plan Subject" onkeyup="countChar(this)" ></textarea>
+																		<#% end %#> -->
+																		<%= submit_tag 'Save', :id => 'submit_lesson_plan_subject_hidden', :class => 'hidden' %>
+																	<% end %>
+
+																	<div style="padding: 4px;">
+																		<div style="display: inline-block;">
+																			<div id="submit_lesson_plan_subject" class="btn-submit-product" tabindex="">Save</div>
+																		</div>
+																		<div style="display: inline-block;">
+																			<div id="cancel_lesson_plan_subject" class="btn-submit-product" tabindex="">Cancel</div>
+																		</div>	
+																	</div>	
+																</div>
+																<% end %>
+																<!-- <div id="show_lesson_plan_subject">
+																	<div id="box_lesson_plan_subject">
+																		<div id="render_lesson_plan_subject_insert">
+																			<#%= render 'publisher_product_manifests/lesson_plan_subject'%#>
+																		</div>
+																	</div>
+																</div> -->
+															</div>
+														</div>
+														
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+										<div class="row-divider-space-8"></div>
+
+
+							   			<div class="row">
+											<div class="cell-325">
+											   	<div id="form_info_lesson_plan_subject" class="form-info-outer form-info-outer-lesson-plan-subject">
+											   		<div style="height: 10px;"></div>
+											   		<div class="form-info-inner form-info-inner-lesson-plan-subject">
+											   			<div id="form_info_lesson_plan_subject_a">
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+													   					<div id="close_info_lesson_plan_subject" class="form-edit-close pop-info tip-left-center">
+													   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+													   					</div>
+														                <div class="tip-content">
+														                    <div class="tooltiptext">Close</div>
+														                </div>																																					   																		   					
+													   					<div style="clear: both;"></div>
+													   				</div>
+											   					</div>
+															</div>				   				
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+																		<span class="info-text-2">
+																			Lesson plan area under the Subject and Topic such as Science (Subject), 
+																			Geologic Phenomena (Topic), "Volcanoes" (Lesson Plan Subject), etc.
+																		</span>													   					
+													   				</div>
+											   					</div>
+															</div>				   				
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>													
+
+
+
+
+						                  <!-- 
+						                  :lesson_time_hours,
+						                  :lesson_time_minutes,
+						                  :course_time_hours,
+						                  :course_time_days,
+						                  :course_time_months, 
+						                  -->
+
+
+
+										<div class="row-divider-space-8"></div>
+
+							   			<div class="row">
+											<div class="cell-325">
+												<div class="box-detail">
+													<div class="table box-detail-table-1">
+														<div class="row box-detail-row">
+															<div class="cell-325">
+																<div class="cell-265">
+																	<div class="box-detail-title">
+																		Lesson/Course Time Used										
+																	</div>
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_info_lesson_time" class="question-icon info-show-20 required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <!-- <div class="tooltiptitle"></div> -->
+													                    <div class="tooltiptext">What is this?</div>
+													                </div>																								
+																</div>																		
+																<div class="cell-20 min-h-20 min-w-20">
+																	<!-- <div id="required_lesson_plan_subject" class="required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Required</div>
+													                </div> -->																								
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_edit_lesson_time" class="edit-icon-right form-edit-open-20 pop-info tip-top-center" tabindex=""></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Edit</div>
+													                </div>																								
+																</div>
+															</div>
+														</div>
+														
+														<!-- <div class="row box-detail-row"> -->
+														<div class="row">
+															<!-- <div class="cell-325 box-detail-padding"> -->
+															<div class="cell-325">
+																<div id="edit_lesson_time" class="hidden">
+
+																	<div style="height: 16px"></div>
+																	
+																	<div style="width: 100%; padding: 0 0 0 20px;">
+																		<div style="text-align: left; width: 270px; padding: 4px 0 0 0; border-top: 1px solid #FBB040;">
+																			<div class="cb-container-1" id="cb_container_time_per_lesson">
+																				<div class="cb-container-1c">
+																					<span>Time Per Lesson</span>
+																				</div>
+																				<div class="cb-container-1d">
+																					<div id="cb_time_per_lesson" class="cb-button cb-align"></div>
+																				</div>
+																				<input id="cb_publisher_product_manifest_time_per_lesson" name="cb_publisher_product_manifest[time_per_lesson]" type="checkbox" value="" />
+																			</div>
+																		</div>
+																	</div>
+																	
+																	<div style="height: 20px"></div>
+
+																	<div style="width: 100%; padding: 0 10px 0 0;">
+																		<div class="table">
+																			<div class="row">
+																				<div class="cell-125" style="text-align: right;">
+																                	<span id="label_lesson_time_hours" class="label-lesson-time-enabled">Hours</span>
+																                	<input id="number_lesson_time_hours" type="number" max="500" min="0" class="number-lesson-time number-lesson-time-enabled" />
+																				</div>
+																				<div class="cell-10 lesson-time-colon">
+																                	<span>:</span>
+																				</div>
+																				<div class="cell-125">
+																                	<input id="number_lesson_time_minutes" type="number" max="59" min="0" class="number-lesson-time number-lesson-time-enabled" />
+																                	<span id="label_lesson_time_minutes" class="label-lesson-time-enabled">Minutes</span>
+																				</div>
+																				
+																			</div>
+																		</div>
+																	</div>
+
+
+
+
+																	<div style="height: 10px"></div>
+																	
+																	<div style="width: 100%; padding: 0 0 0 20px;">
+																		<div style="text-align: left; width: 270px; padding: 4px 0 0 0; border-top: 1px solid #FBB040;">
+																			<div class="cb-container-1" id="cb_container_time_per_course">
+																				<div class="cb-container-1c">
+																					<span>Time Per Course</span>
+																				</div>
+																				<div class="cb-container-1d">
+																					<div id="cb_time_per_course" class="cb-button cb-align"></div>
+																				</div>
+																				<input id="cb_publisher_product_manifest_time_per_course" name="cb_publisher_product_manifest[time_per_course]" type="checkbox" value="" />
+																			</div>
+																		</div>
+																	</div>
+																	
+																	<div style="height: 20px"></div>
+
+																	<div style="width: 100%; padding: 0 10px 0 0;">
+																		<div class="table">
+																			<div class="row">
+																				<div class="cell-125" style="text-align: right;">
+																                	<span id="label_course_time_months" class="label-lesson-time-enabled">Months</span>
+																                	<input id="number_course_time_months" type="number" max="500" min="0" class="number-lesson-time number-lesson-time-enabled" />
+																				</div>
+																				<div class="cell-10 lesson-time-colon">
+																                	<span>:</span>
+																				</div>
+																				<div class="cell-125">
+																                	<input id="number_course_time_days" type="number" max="500" min="0" class="number-lesson-time number-lesson-time-enabled" />
+																                	<span id="label_course_time_days" class="label-lesson-time-enabled">Days</span>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+
+
+																	
+													                <!-- <div style="height: 6px;"></div>
+																	<div id="incdec">
+																	    <input type="text" value="0" />
+																	    <button id="up" >++</button>
+																	    <button id="down" >- -</button>
+																	</div> -->
+																							                
+																	<div style="height: 6px;"></div>
+																	
+																	<div style="padding: 4px;">
+																		<div style="display: inline-block;">
+																			<div id="submit_lesson_time" class="btn-submit-product" tabindex="">Save</div>
+																		</div>
+																		<div style="display: inline-block;">
+																			<div id="cancel_lesson_time" class="btn-submit-product" tabindex="">Cancel</div>
+																		</div>	
+																	</div>					
+																</div>
+																<div id="show_lesson_time">
+																	<div id="box_lesson_time"></div>
+																	<div id="box_course_time"></div>
+																</div>
+															</div>
+														</div>
+														
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+										<div class="row-divider-space-8"></div>
+
+
+							   			<div class="row">
+											<div class="cell-325">
+											   	<div id="form_info_lesson_time" class="form-info-outer form-info-outer-lesson-time">
+											   		<div style="height: 10px;"></div>
+											   		<div class="form-info-inner form-info-inner-lesson-time">
+											   			<div id="form_info_lesson_time_a">
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+													   					<div id="close_info_lesson_time" class="form-edit-close pop-info tip-left-center">
+													   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+													   					</div>
+														                <div class="tip-content">
+														                    <div class="tooltiptext">Close</div>
+														                </div>																																					   																		   																		   					
+													   					<div style="clear: both;"></div>
+													   				</div>
+											   					</div>
+															</div>				   				
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+																		<span class="info-text-2">
+													   						Estimated lesson-time used for this product or lessons within it.
+																		</span>													   					
+													   				</div>
+											   					</div>
+															</div>				   				
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>													
+
+
+
+
+
+
+										<!-- <div class="row-divider-space-8"></div> -->
+							   			
+									</div>
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+								</div>
+				   				<div class="cell-20"></div>
+								<div class="cell-330">
+							   		<div class="table">
+							   			<div class="row">
+											<div class="cell-325">
+												<div class="box-detail">
+													<div class="table box-detail-table-1">
+														<div class="row box-detail-row">
+															<div class="cell-325">
+																<div class="cell-265">
+																	<div class="box-detail-title">
+																		Platform											
+																	</div>
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_info_platform" class="question-icon info-show-20 required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <!-- <div class="tooltiptitle"></div> -->
+													                    <div class="tooltiptext">What is this?</div>
+													                </div>																								
+																</div>																		
+																<div class="cell-20 min-h-20 min-w-20">
+																	<!-- <div id="required_platform" class="required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Required</div>
+													                </div> -->																								
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_edit_platform" class="edit-icon-right form-edit-open-20 pop-info tip-top-center" tabindex=""></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Edit</div>
+													                </div>																								
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="cell-325">
+																<div id="edit_platform" class="hidden">
+																	<div style="padding: 4px;">
+														          		<select id="publisher_product_platform" name="publisher_product[platform]" data-placeholder="-Select-" class="chosen-select" multiple style="width:314px;" tabindex="">
+																			<% @platforms.each do|platform| %>
+																				<option value="<%= platform.id %>"><%= platform.col_1 %></option>
+																			<% end %>
+														          		</select>
+													          		</div>
+																	<div id="other_platform" class="hidden" style="padding: 4px;">
+																		<input style="width: 314px;" class="input-product height-24" id="publisher_product_platform_other" name="publisher_product[platform_other]" tabindex="10" type="text" value="<%= @publisher_product_platform.platform_other %>" placeholder="Other" />
+																	</div>
+																	<div style="padding: 4px;">
+																		<div style="display: inline-block;">
+																			<div id="submit_platform" class="btn-submit-product" tabindex="">Save</div>
+																		</div>
+																		<div style="display: inline-block;">
+																			<div id="cancel_platform" class="btn-submit-product" tabindex="">Cancel</div>
+																		</div>
+																	</div>	
+																</div>
+																<div id="show_platform">
+																	<div id="box_platform"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<div class="row-divider-space-8"></div>
+
+
+							   			<div class="row">
+											<div class="cell-325">
+											   	<div id="form_info_platform" class="form-info-outer form-info-outer-platform">
+											   		<div style="height: 10px;"></div>
+											   		<div class="form-info-inner form-info-inner-platform">
+											   			<div id="form_info_platform_a">
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+													   					<div id="close_info_platform" class="form-edit-close pop-info tip-left-center">
+													   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+													   					</div>
+														                <div class="tip-content">
+														                    <div class="tooltiptext">Close</div>
+														                </div>													   					
+													   					<div style="clear: both;"></div>
+													   				</div>
+											   					</div>
+															</div>				   				
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+																		<span class="info-text-2">
+																			Platform
+																		</span>													   					
+													   				</div>
+											   					</div>
+															</div>				   				
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>													
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<div class="row-divider-space-8"></div>
+
+							   			<div class="row">
+											<div class="cell-325">
+												<div class="box-detail">
+													<div class="table box-detail-table-1">
+														<div class="row box-detail-row">
+															<div class="cell-325">
+																<div class="cell-265">
+																	<div class="box-detail-title">
+																		File Type											
+																	</div>
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_info_file_type" class="question-icon info-show-20 required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <!-- <div class="tooltiptitle"></div> -->
+													                    <div class="tooltiptext">What is this?</div>
+													                </div>																								
+																</div>																		
+																<div class="cell-20 min-h-20 min-w-20">
+																	<!-- <div id="required_file_type" class="required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Required</div>
+													                </div> -->																								
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_edit_file_type" class="edit-icon-right form-edit-open-20 pop-info tip-top-center" tabindex=""></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Edit</div>
+													                </div>																								
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="cell-325">
+																<div id="edit_file_type" class="hidden">
+																	<div style="padding: 4px;">
+														          		<select id="publisher_product_file_type" name="publisher_product[file_type]" data-placeholder="-Select-" class="chosen-select" multiple style="width:314px;" tabindex="">
+																			<% @file_types.each do|file_type| %>
+																				<option value="<%= file_type.id %>"><%= file_type.col_1 %></option>
+																			<% end %>
+														          		</select>
+																	</div>
+																	<div id="other_file_type" class="hidden" style="padding: 4px;">
+																		<input style="width: 314px;" class="input-product height-24" id="publisher_product_file_type_other" name="publisher_product[file_type_other]" tabindex="10" type="text" value="<%= @publisher_product_file_type.file_type_other %>" placeholder="Other" />
+																	</div>
+																	<div style="padding: 4px;">
+																		<div style="display: inline-block;">
+																			<div id="submit_file_type" class="btn-submit-product" tabindex="">Save</div>
+																		</div>
+																		<div style="display: inline-block;">
+																			<div id="cancel_file_type" class="btn-submit-product" tabindex="">Cancel</div>
+																		</div>	
+																	</div>					
+																</div>
+																<div id="show_file_type">
+																	<div id="box_file_type"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div> 
+											</div>
+										</div>
+										
+										<div class="row-divider-space-8"></div>
+
+
+							   			<div class="row">
+											<div class="cell-325">
+											   	<div id="form_info_file_type" class="form-info-outer form-info-outer-file-type">
+											   		<div style="height: 10px;"></div>
+											   		<div class="form-info-inner form-info-inner-file-type">
+											   			<div id="form_info_file_type_a">
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+													   					<div id="close_info_file_type" class="form-edit-close pop-info tip-left-center">
+													   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+													   					</div>
+														                <div class="tip-content">
+														                    <div class="tooltiptext">Close</div>
+														                </div>													   					
+													   					<div style="clear: both;"></div>
+													   				</div>
+											   					</div>
+															</div>				   				
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+																		<span class="info-text-2">
+																			File Type
+																		</span>													   																		   					
+													   				</div>
+											   					</div>
+															</div>				   				
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>													
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<div class="row-divider-space-8"></div>
+
+							   			<div class="row">
+											<div class="cell-325">
+												<div class="box-detail">
+													<div class="table box-detail-table-1">
+														<div class="row box-detail-row">
+															<div class="cell-325">
+																<div class="cell-265">
+																	<div class="box-detail-title">
+																		Enhancements											
+																	</div>
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_info_enhancement" class="question-icon info-show-20 required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <!-- <div class="tooltiptitle"></div> -->
+													                    <div class="tooltiptext">What is this?</div>
+													                </div>																								
+																</div>																		
+																<div class="cell-20 min-h-20 min-w-20">
+																	<!-- <div id="required_enhancement" class="required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Required</div>
+													                </div> -->																								
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_edit_enhancement" class="edit-icon-right form-edit-open-20 pop-info tip-top-center" tabindex=""></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Edit</div>
+													                </div>																								
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="cell-325">
+																<div id="edit_enhancement" class="hidden">
+																	<div style="padding: 4px;">
+														          		<select id="publisher_product_enhancement" name="publisher_product[enhancement]" data-placeholder="-Select-" class="chosen-select" multiple style="width:314px;" tabindex="">
+																			<% @enhancements.each do|enhancement| %>
+																				<option value="<%= enhancement.id %>"><%= enhancement.col_1 %></option>
+																			<% end %>
+														          		</select>
+																	</div>
+																	<div id="other_enhancement" class="hidden" style="padding: 4px;">
+																		<input style="width: 314px;" class="input-product height-24" id="publisher_product_enhancement_other" name="publisher_product[enhancement_other]" tabindex="10" type="text" value="<%= @publisher_product_enhancement.enhancement_other %>" placeholder="Other" />
+																	</div>
+																	<div style="padding: 4px;">
+																		<div style="display: inline-block;">
+																			<div id="submit_enhancement" class="btn-submit-product" tabindex="">Save</div>
+																		</div>
+																		<div style="display: inline-block;">
+																			<div id="cancel_enhancement" class="btn-submit-product" tabindex="">Cancel</div>
+																		</div>	
+																	</div>					
+																</div>
+																<div id="show_enhancement">
+																	<div id="box_enhancement"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<div class="row-divider-space-8"></div>
+
+
+							   			<div class="row">
+											<div class="cell-325">
+											   	<div id="form_info_enhancement" class="form-info-outer form-info-outer-enhancement">
+											   		<div style="height: 10px;"></div>
+											   		<div class="form-info-inner form-info-inner-enhancement">
+											   			<div id="form_info_enhancement_a">
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+													   					<div id="close_info_enhancement" class="form-edit-close pop-info tip-left-center">
+													   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+													   					</div>
+														                <div class="tip-content">
+														                    <div class="tooltiptext">Close</div>
+														                </div>													   																		   					
+													   					<div style="clear: both;"></div>
+													   				</div>
+											   					</div>
+															</div>				   				
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+																		<div>
+																			<div><span class="info-text-1">Audio</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					Contains any form of audio enhancement including voice-over reading or music.
+																				</span>
+																			</div>
+																			<div class="info-text-spacer"></div>																			
+																			<div><span class="info-text-1">Visuals</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					Contains pictures or graphics to illustrate the subject matter.
+																				</span>
+																			</div>
+																			<div class="info-text-spacer"></div>
+																			<div><span class="info-text-1">Interactive Graphics</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					Contains graphics that are interactive such as grids the student must place a 
+																					line in or draw or some element; or some drag-and-drop or matching that requires 
+																					manual manipulation or choice.
+																				</span>
+																			</div>
+																			<div class="info-text-spacer"></div>																			
+																			<div><span class="info-text-1">Formative Assessments</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					Questions or challenges that assess student learning or show student progress; 
+																					formative assessments can be used to provide ongoing feedback that can be used 
+																					adaptively to direct additional lessons, push the student up a level, or be used
+																					to give metrics to teachers or for the publisher to further adapt the learning experience.
+																				</span>
+																			</div>
+																			<div class="info-text-spacer"></div>																			
+																			<div><span class="info-text-1">Summative Assessments</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					A summative assessment is used to evaluate student learning at the end of an instructional 
+																					unit by comparing it against some standard or benchmark. Examples include final exams, 
+																					final projects, final papers, final recitals, etc.
+																				</span>
+																			</div>
+																			<div class="info-text-spacer"></div>																			
+																			<div><span class="info-text-1">Chunking</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					Chunking refers to a content design approach of breaking up large amounts of information 
+																					into "chunks" in digital presentation such as a single HTML page or lessons. 
+																				</span>
+																			</div>
+																			<div class="info-text-spacer"></div>																			
+																			<div><span class="info-text-1">Labeled per Standard</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					Is the content labeled-by-lesson or section as to what provides material towards which Standard.  
+																				</span>
+																			</div>
+																			<div class="info-text-spacer"></div>																			
+																			<div><span class="info-text-1">Video</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					An educational video
+																				</span>
+																			</div>
+																			<div class="info-text-spacer"></div>																			
+																			<div><span class="info-text-1">Gaming</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					Contains one or more of the following: animation, rewards/bonus/prizes systems, levels, life-span, 
+																					timer-by-activity, opponents, false/true, alternate paths for additional lessons or remedies.
+																				</span>
+																			</div>
+																			<div class="info-text-spacer"></div>																			
+																			<div><span class="info-text-1">Feedback</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					Contains a means for student-teacher interaction or student-to-student project interaction; 
+																					student voting or answering.
+																				</span>
+																			</div>
+																			<div class="info-text-spacer"></div>																			
+																			<div><span class="info-text-1">Metrics</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					Contains a metering function for student progress, telling the student by timer or other element a progress grade.
+																				</span>
+																			</div>
+																			<div class="info-text-spacer"></div>																			
+																			<div><span class="info-text-1">Terminology</span></div>
+																			<div style="padding: 0 0 0 6px;">
+																				<span class="info-text-2">
+																					Contains a terminology appendix or hotlinks on words to their definitions.
+																				</span>
+																			</div>
+																		</div>
+													   				</div>
+											   					</div>
+															</div>				   				
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>			
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										<div class="row-divider-space-8"></div>
+							   			
+							   			<div class="row">
+											<div class="cell-325">
+												<div class="box-detail">
+													<div class="table box-detail-table-1">
+														<div class="row box-detail-row">
+															<div class="cell-325">
+																<div class="cell-265">
+																	<div class="box-detail-title">
+																		Reviewed By											
+																	</div>
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_info_by_review" class="question-icon info-show-20 required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <!-- <div class="tooltiptitle"></div> -->
+													                    <div class="tooltiptext">What is this?</div>
+													                </div>																								
+																</div>																		
+																<div class="cell-20 min-h-20 min-w-20">
+																	<!-- <div id="required_by_review" class="required-1 pop-info tip-top-center"></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Required</div>
+													                </div> -->																								
+																</div>
+																<div class="cell-20 min-h-20 min-w-20">
+																	<div id="open_edit_by_review" class="edit-icon-right form-edit-open-20 pop-info tip-top-center" tabindex=""></div>
+													                <div class="tip-content">
+													                    <div class="tooltiptext">Edit</div>
+													                </div>																								
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="cell-325">
+																<div id="edit_by_review" class="hidden">
+																	<div style="padding: 4px;">
+														          		<select id="publisher_product_by_review" name="publisher_product[by_review]" data-placeholder="-Select-" class="chosen-select" multiple style="width:314px;" tabindex="">
+																			<% @by_reviews.each do|by_review| %>
+																				<option value="<%= by_review.id %>"><%= by_review.col_1 %></option>
+																			<% end %>
+														          		</select>
+																	</div>
+																	<div id="other_by_review" class="hidden" style="padding: 4px;">
+																		<input style="width: 314px;" class="input-product height-24" id="publisher_product_by_review_other" name="publisher_product[by_review_other]" tabindex="10" type="text" value="<%= @publisher_product_by_review.by_review_other %>" placeholder="Other" />
+																	</div>
+																	<div style="padding: 4px;">
+																		<div style="display: inline-block;">
+																			<div id="submit_by_review" class="btn-submit-product" tabindex="">Save</div>
+																		</div>
+																		<div style="display: inline-block;">
+																			<div id="cancel_by_review" class="btn-submit-product" tabindex="">Cancel</div>
+																		</div>	
+																	</div>					
+																</div>
+																<div id="show_by_review">
+																	<div id="box_by_review"></div>
+																</div>
+															</div>
+														</div>
+														
+													</div>
+												</div>
+
+											</div>
+										</div>
+										
+										<div class="row-divider-space-8"></div>
+
+
+							   			<div class="row">
+											<div class="cell-325">
+											   	<div id="form_info_by_review" class="form-info-outer form-info-outer-by-review">
+											   		<div style="height: 10px;"></div>
+											   		<div class="form-info-inner form-info-inner-by-review">
+											   			<div id="form_info_by_review_a">
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+													   					<div id="close_info_by_review" class="form-edit-close pop-info tip-left-center">
+													   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+													   					</div>
+														                <div class="tip-content">
+														                    <div class="tooltiptext">Close</div>
+														                </div>													   																		   					
+													   					<div style="clear: both;"></div>
+													   				</div>
+											   					</div>
+															</div>				   				
+													   		<div class="table">
+													   			<div class="row">
+													   				<div class="cell-100percent form-edit-background">
+																		<span class="info-text-2">
+																			Reviewed by...
+																		</span>													   																		   					
+													   				</div>
+											   					</div>
+															</div>				   				
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>													
+										
+										
+										
+										
+									</div>
+								</div>
+								<div class="cell-20"></div>	
+							</div>
+						</div>		
+					</div>

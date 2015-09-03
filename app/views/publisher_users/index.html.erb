@@ -1602,28 +1602,6 @@ cursor: pointer;
 		padding: 0 4px 0 4px;
 	}
 
-	#coming-soon {
-		margin-top: 25px;
-		min-height: 150px;
-		border: 2px solid #999;
-		opacity: .45;
-	}
-	.title-grey {
-		padding: 5px;
-		border-bottom: 1px solid #ccc;
-		background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
-		background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
-		background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
-		background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
-		background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
-	}
-	.title-grey span {
-		color: #333;
-		float: right;
-	}
-
 </style>
 
 <script id="dropdown-data1-selected" type="text/x-dot-template">
@@ -1998,7 +1976,7 @@ cursor: pointer;
 </div>
 
 <div class="jqmWindow jqmWindow-11" id="dialog_11">
-	<div class="jqmClose ks-tip-container close-container">
+	<div id="close_form11" class="jqmClose ks-tip-container close-container">
 		<div class="ks-tip-target">
 			<%= image_tag('jqModal/close_btn_round_white_w60_h60.png', alt: 'X', class: 'x-close-60-60' ) %>
 		</div>
@@ -2059,6 +2037,7 @@ cursor: pointer;
 	<div class="dialog-topbar-1" style="margin-top:0px;">
 		<div style="height: 63px; width: 60px; float: left; position: absolute;">
 			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+			
 		</div>
 		<!-- text goes here -->
 		<div id="close_form12" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
@@ -2596,7 +2575,30 @@ cursor: pointer;
 		color: #333;
 		float: right;
 	}
-	
+	.title-bar-text-1 {
+	    color: #376340;
+	    font-family: Arial,Helvetica,sans-serif;
+	    font-size: 16px;
+	    font-weight: 700;
+	}
+	.title-grey {
+		padding: 5px;
+		border-bottom: 1px solid #ccc;
+		background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
+		background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
+	}
+	.coming-soon {
+		margin-top: 25px;
+		min-height: 150px;
+		border: 2px solid #999;
+		opacity: .45;
+	}
+			
 </style>
 
 <div class="publisher-users-index">
@@ -2607,7 +2609,7 @@ cursor: pointer;
 		<div class="title-bar" style="position: relative;">
 			<!-- <p>My Info</p> -->
 			<div style="float: left; width: 100px;">
-				<span>My Story</span>
+				<span class="title-bar-text-1">My Story</span>
 			</div>		
 			<div style="float: right; width: 200px;">
 				<div class="btn-opt-edit-container-outer">
@@ -2985,7 +2987,7 @@ cursor: pointer;
 		<div class="title-bar" style="position: relative;">
 			<!-- <p>My Info</p> -->
 			<div style="float: left; width: 100px;">
-				<span>My Interests</span>
+				<span class="title-bar-text-1">My Interests</span>
 			</div>		
 			<div style="float: right; width: 200px;">
 				<div class="btn-opt-edit-container-outer">
@@ -3178,32 +3180,32 @@ cursor: pointer;
 	
 				<div style="width: 550px; border-bottom: 2px solid #eee;"></div>
 	
-				<div id="coming-soon">
+				<div class="coming-soon">
 					<p class="title-grey">
 						My Connections <span>(Coming Soon)</span>
 					</p>
 				</div>
-				<div id="coming-soon">
+				<div class="coming-soon">
 					<p class="title-grey">
 						My Groups <span>(Coming Soon)</span>
 					</p>
 				</div>
-				<div id="coming-soon" style="height:325px;">
+				<div class="coming-soon" style="height:325px;">
 					<p class="title-grey">
 						My Wishlist <span>(Coming Soon)</span>
 					</p>
 				</div>
-				<div id="coming-soon" style="">
+				<div class="coming-soon" style="">
 					<p class="title-grey">
 						KnowCred <span>(Coming Soon)</span>
 					</p>
 				</div>
-				<div id="coming-soon" style="">
+				<div class="coming-soon" style="">
 					<p class="title-grey">
 						Points &amp; Awards <span>(Coming Soon)</span>
 					</p>
 				</div>
-				<div id="coming-soon" style="height:325px;">
+				<div class="coming-soon" style="height:325px;">
 					<p class="title-grey">
 						My Apps &amp; Things <span>(Coming Soon)</span>
 					</p>
@@ -3554,6 +3556,15 @@ cursor: pointer;
 	// $(function(){
 	// $(window).load( function() {
 	$(document).ready(function() {
+
+		$("#dialog_11 .close-container").on('click', function() {
+			// alert('close_form11');
+			$(this).css({ 'position' : 'absolute' });
+		});
+		// $(document).on('click', '#dialog_11 .close-container', function() {				
+			// alert('close_form11');
+			// // $(this).css({ 'position' : 'absolute' });
+		// });
 
 		// $('.image img').fullscreenslides();
 		$('.image div').fullscreenslides();

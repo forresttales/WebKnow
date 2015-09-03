@@ -13,7 +13,7 @@
 		<%= javascript_include_tag "application", "data-turbolinks-track" => false %>
 
 		<%= stylesheet_link_tag "nav_publisher" %>
-		<%= stylesheet_link_tag "publisher_users_index_home" %>
+		<!-- <#%= stylesheet_link_tag "publisher_users_index_home" %#> -->
 		<%= stylesheet_link_tag "slick" %>
 		<%= stylesheet_link_tag "slick-theme" %>
 		
@@ -57,9 +57,6 @@
 		<%= stylesheet_link_tag "publisher-product-manifest" %>
 		<!-- <link rel="stylesheet" href="/assets/publisher-product-manifest.css" type="text/css" /> -->
 
-
-
-
 		<style>
 		
 			#debug {
@@ -83,7 +80,7 @@
 			  content: "";
 			  display: block;
 			}
-			.ks-footer, .body-wrap:after {
+			.body-wrap:after {
 			  height: 150px; 
 			}		
 
@@ -97,7 +94,7 @@
 
     </head>
     
-	<body>
+	<body style="margin 0; padding: 0;">
 		<div class="body-wrap">
 			<%= render 'layouts/nav_main' %>
 			<%= render 'layouts/nav_publisher' %>
@@ -109,7 +106,6 @@
 		<%= render 'layouts/footer' %>
 
 		<% if false %>
-
 		<% if Rails.env.development? %>
 			<div style="width: 100%; position: absolute; bottom: -50px;">
 				<div id="debug">
@@ -117,9 +113,7 @@
 				</div>
 			</div>
 		<% end %>
-		
 		<% end %>
 		
 	</body>
-    
 </html>

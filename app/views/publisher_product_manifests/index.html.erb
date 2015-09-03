@@ -38,556 +38,9 @@
     <script src="/assets/jquery-dropdown-dot.js"></script> -->
 	<!-- <script type="text/javascript" src="../scripts/jquery.tmpl.js"></script> -->
 
-	<style>
-		.preview-pos-load {
-			position: absolute;
-			top: -1000px;
-			/*top: 0px;*/
-		}
-		.preview-pos-ready {
-			position: relative;
-			/*top: 0;*/
-		}
-		.display-none-listing {
-			display: none;	
-		}
-		
-	</style>					
 
 
-	<style>
-		
-		/*.add-description-container-active {
-			min-height: 52px;
-		}
-		.add-description-container-inactive {
-			min-height: 26px;
-			background: url('/assets/background-placeholder-comment-2-w206-h20.png') 3px 4px no-repeat;
-		}*/
-		.textarea-render-1 {
-			position: relative;
-			width: 100%;
-			/*min-height: 26px;*/
-			margin: 0;
-			padding: 0 10px 0 0;
-		}
-		.textarea-render-2 {
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 400;
-		  	/*color: #666;*/
-		  	color: #333;
-			font-size: 13px;
-			width: 579px;
-		    white-space: pre-wrap;
-		    word-wrap: break-word;
-		    overflow-wrap: break-word;		
-		    border: 1px solid transparent;
-			padding: 6px 5px 5px 5px;	    
-		}				
-		.textarea-description-container {
-			border: 1px solid #49853f; /*#2899A1*/ 
-			border-radius: 0px;			
-			min-height: 38px;
-			width: 660px;			
-			background-color: #fff;
-			padding: 5px 0px 4px 5px;
-			margin: 2px 0 0 20px;
-		}
-		.textarea-description-container-edit {
-			border: 1px solid #fbb040; 
-			border-radius: 0px;			
-			min-height: 38px;
-			width: 660px;			
-			background-color: #fff;
-			padding: 5px 0px 4px 5px;
-			margin: 2px 0 0 20px;
-		}
-		.textarea-description-empty {
-			/*min-height: 26px;*/
-			background-image: url('/assets/background-placeholder-description-2-w70-h18.png');
-			/*Who are you? Write the Story of what you know.*/
-			background-repeat: no-repeat;
-			background-position: 3px 5px;
-			/*background-color: #fff;*/
-		}
-		.textarea-description-edit {
-			background-color: #eee;
-			/*min-height: 38px;*/
-		}
-		.textarea-description-show {
-			background-color: #fff;
-			/*min-height: 38px;*/
-		}		
-		/*.textarea-description-inactive {
-			min-height: 26px;
-			background-image: url('/assets/background-placeholder-description-1-w115-h18.png');
-			background-repeat: no-repeat;
-			background-position: 3px 5px;
-			background-color: #fff;
-		}
-		.textarea-description-active {
-			background-color: #eee;
-			min-height: 38px;
-		}*/
-		.textarea-description {
-			vertical-align: text-top;
-			/*overflow: hidden;*/
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 400;
-			font-size: 13px;
-			color: #1B666B;
-			line-height: 100%;
-			padding: 7px 5px 5px 5px;
-			min-height: 26px;
-			width: 648px;			
-			/*white-space: pre;*/
-		    white-space: pre-wrap;
-		    word-wrap: break-word;
-		    overflow-wrap: break-word;									
-		}
-		.textarea-description:focus:hover {
-			outline: none;
-		}
-		.textarea-description:focus {
-			outline: none;
-		}						
-		.textarea-description:hover {
-			outline: none;
-		}		
-		.render-description-image {
-			
-		}
-		.textarea-description-show-text {
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 600;
-			font-size: 13px;
-			color: #888;
-		}
-		
-		.resize-none {
-			resize: none;
-		}
-				
-		.submit-edit-story-2-text {
-			margin: 0;
-		}				
-		.submit-edit-story-2-text-2 {
-			margin: 9px 0 0 0;
-		}				
-		.submit-edit-story-2-loader {
-			width: 32px;
-			height: 32px;
-			background-image: url('/assets/loader_ajax_w32_h32_7.gif');
-			background-repeat: no-repeat;
-			display: inline-block;
-			/*margin: 5px 0 0 0;*/
-			margin: 5px 0 0 0;
-		}	
-		.description-delete {
-			width: 20px;
-			height: 20px;
-			background-image: url('/assets/button_delete_w20_h20.png');
-			background-repeat: no-repeat;
-			display: inline-block;
-			margin: 2px 2px 0 0;			
-		}
-		.description-delete:hover {
-			cursor: pointer;
-		}
-		.description-delete-blank {
-			width: 20px;
-			height: 20px;
-			display: inline-block;
-			margin: 2px 2px 0 0;			
-		}
-		.story-2-attach {
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 400;
-			font-size: 13px;
-			color: #888;
-		}
-		.story-2-attach:hover {
-			cursor: pointer;
-			text-decoration: underline;
-		}
-		
-	</style>
-
-	<style>
-		
-		.textarea-topic-container {
-			border: 1px solid #49853f; /*#2899A1*/ 
-			border-radius: 0px;			
-			min-height: 38px;
-			/*width: 660px;*/
-			width: 314px;			
-			background-color: #fff;
-			padding: 5px 0px 4px 5px;
-			/*margin: 2px 0 0 20px;*/
-			margin: 0;
-		}
-		.textarea-topic-container-edit {
-			border: 1px solid #fbb040; 
-			border-radius: 0px;			
-			min-height: 38px;
-			/*width: 660px;*/			
-			width: 314px;
-			background-color: #fff;
-			padding: 5px 0px 4px 5px;
-			/*margin: 2px 0 0 20px;*/
-			margin: 0px;
-		}
-		.textarea-topic-empty {
-			background-image: url('/assets/background-placeholder-topic-1-w34-h18.png');
-			/*Who are you? Write the Story of what you know.*/
-			background-repeat: no-repeat;
-			background-position: 3px 5px;
-		}
-		.textarea-topic-edit {
-			background-color: #eee;
-		}
-		.textarea-topic-show {
-			background-color: #fff;
-		}		
-		.textarea-topic {
-			vertical-align: text-top;
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 400;
-			font-size: 13px;
-			color: #1B666B;
-			line-height: 100%;
-			padding: 7px 5px 5px 5px;
-			min-height: 26px;
-			/*width: 648px;*/
-			width: 302px;			
-		    white-space: pre-wrap;
-		    word-wrap: break-word;
-		    overflow-wrap: break-word;									
-		}
-		.textarea-topic:focus:hover {
-			outline: none;
-		}
-		.textarea-topic:focus {
-			outline: none;
-		}						
-		.textarea-topic:hover {
-			outline: none;
-		}		
-		.textarea-topic-show-text {
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 600;
-			font-size: 13px;
-			color: #888;
-		}
-		
-	</style>
-
-	<style>
-		
-		.textarea-subject-container {
-			border: 1px solid #49853f; /*#2899A1*/ 
-			border-radius: 0px;			
-			min-height: 38px;
-			/*width: 660px;*/
-			width: 314px;			
-			background-color: #fff;
-			padding: 5px 0px 4px 5px;
-			/*margin: 2px 0 0 20px;*/
-			margin: 0;
-		}
-		.textarea-subject-container-edit {
-			border: 1px solid #fbb040; 
-			border-radius: 0px;			
-			min-height: 38px;
-			/*width: 660px;*/			
-			width: 314px;
-			background-color: #fff;
-			padding: 5px 0px 4px 5px;
-			/*margin: 2px 0 0 20px;*/
-			margin: 0px;
-		}
-		.textarea-subject-empty {
-			background-image: url('/assets/background-placeholder-lesson-plan-subject-1-w123-h18.png');
-			/*Who are you? Write the Story of what you know.*/
-			background-repeat: no-repeat;
-			background-position: 3px 5px;
-		}
-		.textarea-subject-edit {
-			background-color: #eee;
-		}
-		.textarea-subject-show {
-			background-color: #fff;
-		}		
-		.textarea-subject {
-			vertical-align: text-top;
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 400;
-			font-size: 13px;
-			color: #1B666B;
-			line-height: 100%;
-			padding: 7px 5px 5px 5px;
-			min-height: 26px;
-			/*width: 648px;*/
-			width: 302px;			
-		    white-space: pre-wrap;
-		    word-wrap: break-word;
-		    overflow-wrap: break-word;									
-		}
-		.textarea-subject:focus:hover {
-			outline: none;
-		}
-		.textarea-subject:focus {
-			outline: none;
-		}						
-		.textarea-subject:hover {
-			outline: none;
-		}		
-		.textarea-subject-show-text {
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 600;
-			font-size: 13px;
-			color: #888;
-		}
-		
-	</style>
-
-
-	
-	<style>
-		
-		.color-record {
-			/*color: #593E16;*/
-			color: #000;
-		}	
-		.color-no-record {
-			color: #49853f;			
-		}	
-		span.box-odd {
-			color: #593E16;
-		}
-		span.box-even {
-			color: #FBB040;  
-		}
-		span.box-other {
-			color: #A6A6A6;
-		}
-		span.form-text-12 {
-		    font-family: Arial,Helvetica,sans-serif;
-		    font-size: 13px;
-		    font-weight: 700;
-		}
-		div.form-text-list-12 span {
-		    font-family: Arial,Helvetica,sans-serif;
-		    font-size: 13px;
-		    font-weight: 700;
-		}
-		.like-icon {
-			height: 22px;
-			width: 19px;
-			background-image: url("/assets/icon_like_green_w22_h19.png");
-			background-repeat: no-repeat;
-			background-position: 0px 0px;
-			position: relative;
-			top: 6px;
-		}
-		.style-tagline {
-			padding: 1px 1px 1px 8px;
-		}
-		.style-list-field-1 {
-			display: inline-block;
-			padding: 1px 1px 1px 0px;
-		}
-		.style-list-field-1-title {
-			display: inline-block;
-			padding: 1px 1px 1px 8px;
-		}
-		.style-list-field-2 {
-			padding: 1px 1px 1px 0px;
-		}
-		
-		.list-field-title {
-		    font-family: Arial,Helvetica,sans-serif;
-		    font-size: 13px;
-		    font-weight: 700;
-		    color: #888;
-		}
-		.list-field-text {
-		    font-family: Arial,Helvetica,sans-serif;
-		    font-size: 13px;
-		    font-weight: 700;
-		}
-		
-		/*.list-float-right {
-			float: right;
-			padding-right: 8px;	
-		}*/		
-		/*.float-clear {
-			clear: all;
-		}*/
-		
-		.list-field-cell-1 {
-			display: table-cell; 
-			width: 210px;
-			overflow-x: hidden;
-		}
-		.list-field-cell-1a {
-			/*width: 208px;*/
-			width: auto;
-			word-wrap: normal;
-			white-space: nowrap;
-		}
-		.list-field-cell-2 {
-			display: table-cell; 
-			width: 15px;
-		}
-		.list-field-cell-3 {
-			display: table-cell; 
-			width: 10px;
-		}
-		.overflow-hidden-208 {
-			width: 208px;
-			overflow-x: hidden;
-		}
-		.hidden {
-			display: none !important;
-			visibility: hidden !important			
-		}
-		
-	</style>
-	
-	<!-- <style>
-		.tooltip-text-1 {
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 12px;
-			font-weight: 400;					
-			/*color: #37633A;*/
-			color: #fff;	
-			/*background-color: #FAFF94;*/
-			background-color: rgba(0, 0, 0, 0.6);
-			/*background-color: #eee;*/
-			/*border-color: #37633A;*/
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-		}
-		.tip-content { display: none; }
-	</style> -->
-
-	<style>
-
-		.list-tip-container {
-			position: relative;
-		}		
-		.list-tip-target:hover + .list-tip-1 span {
-		}
-		.list-tip-target:hover + .list-tip-1 {
-			display: block;
-		}
-		.list-tip-1 {
-			position: absolute;
-			/*width: 60px;*/
-			height: 24px;
-			background-color: rgba(0, 0, 0, 0.8);
-			border-color: rgba(0, 0, 0, 0.8);
-			/*background-color: rgba(55, 99, 58, 0.9);*/ /*#37633A*/
-			/*border-color: rgba(55, 99, 58, 0.9);*/			
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-			text-align: center;			
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 13px;
-			font-weight: 400;					
-			color: #fff;	
-			padding: 4px;
-			display: none;			
-			width: auto;
-			word-wrap: normal;
-			white-space: nowrap;							
-		}
-		.list-tip-1-indicator {
-			position: absolute;
-			top: 24px;
-			left: 4px;
-			width: 8px;
-			height: 12px;
-			background-image: url("/assets/drop-w8-h12.png");
-		}		
-		.list-tip-34minus {
-			top: -34px;
-		}
-		.list-tip-pos-1 {
-			top: -30px;
-		}
-		.list-tip-target:hover + .list-tip span {
-		}
-		.list-tip-target:hover + .list-tip {
-			display: block;
-		}
-		.list-tip {
-			position: absolute;
-			display: none;							
-		}		
-		.list-tip-delete-post-user-comment {
-			position: absolute;
-			width: 60px;
-			height: 24px;
-			background-color: rgba(0, 0, 0, 0.6);
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-			text-align: center;			
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 11px;
-			font-weight: 400;					
-			color: #fff;	
-			padding: 6px 0 0 0;
-			display: none;
-			top: -36px;
-			left: -20px;		
-			z-index: 1;
-		}		
-		.list-tip-indicator-delete-post-user-comment {
-			position: absolute;
-			top: 24px;
-			left: 27px;
-			width: 8px;
-			height: 12px;
-			background-image: url("/assets/drop-w8-h12.png");
-		}		
-
-		.list-tip-delete-post-user {
-			position: absolute;
-			width: 60px;
-			height: 24px;
-			background-color: rgba(0, 0, 0, 0.6);
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-			text-align: center;			
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 11px;
-			font-weight: 400;					
-			color: #fff;	
-			padding: 6px 0 0 0;
-			display: none;
-			top: -36px;
-			left: -20px;		
-			z-index: 1;
-		}		
-		.list-tip-indicator-delete-post-user {
-			position: absolute;
-			top: 24px;
-			left: 27px;
-			width: 8px;
-			height: 12px;
-			background-image: url("/assets/drop-w8-h12.png");
-		}		
-
-		
-	</style>
-
-
-	<script>
+	<!-- <script>
 
 		function set_by_review_listing(b_has_by_review_listing, list_number) {
 			var list_id = "#by_review_" + list_number;
@@ -708,59 +161,550 @@
 			}
 		}
 		
-	</script>
+	</script> -->
 
 
 
 
+<div class="publisher-product-manifests">
 
 
-
-<% if false %>
-<div class="container">
-	<div class="table-profile">
-		<div class="row-profile">
-			<div style="display: table-cell; width: 200px; vertical-align: top; margin: 0; padding: 0; height: 100%;">
-				<%= render 'share/dir_publishers_left' %>
+	<div class="jqmWindow jqmWindow-overlay" id="dialog_overlay">
+		<div id="overlay_loading" class="overlay-loading display-none"></div>
+	</div>
+	
+	<div class="jqmWindow jqmWindow-11" id="dialog_101_1">
+		<div class="jqmClose ks-tip-container close-container">
+			<div class="ks-tip-target">
+				<%= image_tag('jqModal/close_btn_round_white_w60_h60.png', alt: 'X', class: 'x-close-60-60' ) %>
 			</div>
-			<div class="col-midd-700-borders">
-				<div class="table-profile">
-					<div class="row-profile">
-						<div class="col-midd-700">
-							<%= render 'publisher_product_manifests/index' %>
+		    <div class="ks-tip ks-tip-pos-left-dialog-11 ks-tip-text-dialog-11">
+				Close
+		    </div>				
+		</div>
+		<div style="clear: both;"></div>
+		<div style="width: 600px; margin: 0 auto;">
+			<div class="figure-container" style="width: 100%; background-color: #000;">
+				<figure id="figure_dialog_101_1" class="dialog-user-image-2">
+					<figcaption id="figcaption_dialog_101_1" class="expand-image">												
+						<div class="img-2-container image">
+							<% if !@image_1.nil? %>
+							<a rel="gallery" title="" href="<%= @image_1.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @image_1.image? %>">									
+								<!-- <div id="img_2" class="img-2"></div> -->
+							</a>
+							<% end %>
+						</div>
+					</figcaption>
+				</figure>
+			</div>
+			<div style="width: 100%; min-height: 100px; background-color: #fff;"></div>
+		</div>
+	</div>
+
+
+
+
+	<div class="jqmWindow jqmWindow-1001" id="dialog_1001">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+			</div>
+			<!-- text goes here -->
+			<div id="close_form1001" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<!-- <img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px"> -->
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+			<div class="tip-content">
+				<div class="tooltiptext">
+					Close
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<!-- <div style="height: 20px;"></div> -->
+		<div class="background-table-dialog-1">
+			<div class="table-dialog-1">
+				<div class="row" style="height: 30px;"></div>
+				<div class="row">
+					<div id="dlg_info" class="cell-100percent dialog-msg-container" style="text-align: left;">
+						<!-- <span>This is how to do it...</span> -->
+						<!-- <span><#%= render 'publisher_product_manifests/info_publisher_headline' %#></span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 12px;"></div>
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent dialog-msg-container">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span>
+						<input id="btn_dlg_1001_cancel" class="btn-pop-dialog" type="button" value="Close" tabindex="">
+					</span>
+				</div>
+			</div>
+			<div class="row" style="height: 10px;"></div>
+		</div>
+	</div>
+
+
+	<div class="jqmWindow jqmWindow-101-2" id="dialog_101_2">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+			</div>
+			<!-- text goes here -->
+			<div id="close_form101_2" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<!-- <img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px"> -->
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+			<div class="tip-content">
+				<div class="tooltiptext">
+					Close
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<!-- <div style="height: 20px;"></div> -->
+		<div class="background-table-dialog-1">
+			<div class="table-dialog-1">
+				<div class="row">
+					<div class="cell-100percent dialog-msg-container">
+						<span>Upload Photo</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 12px;"></div>
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent dialog-msg-container">
+					<span>
+						<input id="btn_dlg_101_2_submit" class="btn-pop-dialog" type="button" value="Upload" tabindex="">
+					</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span>
+						<input id="btn_dlg_101_2_cancel" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+					</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 4px"></div>
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent" style="text-align: center; background-color: #f6f6f6;">
+					<div id="dvLoading_12" class="dvLoading-12 dvLoading-display-none"></div>
+				</div>
+			</div>
+		</div>
+	
+		<%= form_for PublisherProductPos1Image.new, :url => upload_image_1_publisher_product_manifests_path(@publisher_product_pos1_image_new), :html => {:multipart => true, :id => 'new_image_1', :class => 'hidden'}, :remote => true do |f| %>
+			<p><%= f.file_field :image, :id => 'new_image_1_image' %></p>
+			<%= f.hidden_field 'publisher_product_id', :value => @publisher_product_id %>
+			<!-- <#%= f.hidden_field 'publisher_id', :value => @publisher_id %#> -->
+			<!-- <#%= f.hidden_field 'primary', :value => true %#> -->
+			<p><%= f.submit :id => 'btn_submit_image_1_new', :class => 'btn-submit hidden', :value => 'Upload Photo' %></p>
+		<% end %>
+		
+	</div>
+
+	<div class="jqmWindow jqmWindow-101-3" id="dialog_101_3">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+			</div>
+			<!-- text goes here -->
+			<div id="close_form101_3" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<!-- <img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px"> -->
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+			<div class="tip-content">
+				<div class="tooltiptext">
+					Close
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<!-- <div style="height: 20px;"></div> -->
+		<div class="background-table-dialog-1">
+			<div class="table-dialog-1">
+				<div class="row">
+					<div class="cell-100percent dialog-msg-container">
+						<span>Upload Photo</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 12px;"></div>
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent dialog-msg-container">
+					<span>
+						<input id="btn_dlg_101_3_submit" class="btn-pop-dialog" type="button" value="Upload" tabindex="">
+					</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span>
+						<input id="btn_dlg_101_3_cancel" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+					</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 4px"></div>
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent" style="text-align: center; background-color: #f6f6f6;">
+					<div id="dvLoading_13" class="dvLoading-13 dvLoading-display-none"></div>
+				</div>
+			</div>
+		</div>
+	
+		<%= form_for PublisherProductPos1Image.new, :url => upload_image_1_change_publisher_product_manifests_path(@publisher_product_pos1_image_change), :html => {:multipart => true, :id => 'change_image_1', :class => 'hidden'}, :remote => true do |f| %>
+			<p><%= f.file_field :image, :id => 'change_image_1_image' %></p>
+			<%= f.hidden_field 'publisher_product_id', :value => @publisher_product_id %>
+			<!-- <#%= f.hidden_field 'publisher_id', :value => @publisher_id %#> -->
+			<!-- <#%= f.hidden_field 'primary', :value => true %#> -->
+			<p><%= f.submit :id => 'btn_submit_image_1_change', :class => 'btn-submit hidden', :value => 'Upload Photo' %></p>
+		<% end %>
+		
+	</div>
+
+
+	<% if false %>
+	<div class="jqmWindow jqmWindow-13" id="dialog_13">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+			</div>
+			<!-- text goes here -->
+			<div id="close_form13" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<!-- <img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px"> -->
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+			<div class="tip-content">
+				<div class="tooltiptext">
+					Close
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<!-- <div style="height: 20px;"></div> -->
+		<div class="background-table-dialog-1">
+			<div class="table-dialog-1">
+				<div class="row">
+					<div class="cell-100percent dialog-msg-container">
+						<span>Upload Photo</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 12px;"></div>
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent dialog-msg-container">
+					<span>
+						<input id="btn_dlg_13_submit" class="btn-pop-dialog" type="button" value="Upload" tabindex="">
+					</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span>
+						<input id="btn_dlg_13_cancel" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+					</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 4px"></div>
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent" style="text-align: center; background-color: #f6f6f6;">
+					<div id="dvLoading_13" class="dvLoading-13 dvLoading-display-none"></div>
+				</div>
+			</div>
+		</div>
+	
+		<%= form_for PublisherProductPos1Image.new, :url => upload_image_1_change_publisher_product_manifests_path(@publisher_product_pos1_image_change), :html => {:multipart => true, :id => 'change_image_1', :class => 'hidden'}, :remote => true do |f| %>
+			<p><%= f.file_field :image, :id => 'change_image_1_image' %></p>
+			<%= f.hidden_field 'publisher_product_id', :value => @publisher_product_id %>
+			<!-- <#%= f.hidden_field 'publisher_id', :value => @publisher_id %#> -->
+			<!-- <#%= f.hidden_field 'primary', :value => true %#> -->
+			<p><%= f.submit :id => 'btn_submit_image_1_change', :class => 'btn-submit hidden', :value => 'Upload Photo' %></p>
+		<% end %>
+		
+	</div>
+	<% end %>
+
+
+	<div class="jqmWindow jqmWindow-101-4" id="dialog_101_4">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+			</div>
+			<!-- text goes here -->
+			<div id="close_form101_4" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+            <div class="tip-content">
+                <div class="tooltiptext">Close</div>
+            </div>																															   					   					
+			<div style="clear: both;"></div>
+		</div>
+		<!-- <div style="height: 20px;"></div> -->
+		<div class="background-table-dialog-1">
+	   		<div class="table-dialog-1">
+				<div class="dialog-msg-container">
+					<span>Delete this image?</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 16px;"></div>
+		<div class="table-dialog-1">
+   			<div class="row">
+   				<div class="cell-100percent" style="text-align: center;">
+					<span><input id="btn_dlg_101_4_submit" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span><input id="btn_dlg_101_4_cancel" class="btn-pop-dialog" type="button" value="Cancel" tabindex=""></span>
+   				</div>
+			</div>
+		</div>														   				
+		<div style="height: 20px;"></div>
+	</div>
+
+	<% if false %>
+	<div class="jqmWindow jqmWindow-14" id="dialog_14">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+			</div>
+			<!-- text goes here -->
+			<div id="close_form14" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+            <div class="tip-content">
+                <div class="tooltiptext">Close</div>
+            </div>																															   					   					
+			<div style="clear: both;"></div>
+		</div>
+		<!-- <div style="height: 20px;"></div> -->
+		<div class="background-table-dialog-1">
+	   		<div class="table-dialog-1">
+				<div class="dialog-msg-container">
+					<span>Delete this image?</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 16px;"></div>
+		<div class="table-dialog-1">
+   			<div class="row">
+   				<div class="cell-100percent" style="text-align: center;">
+					<span><input id="btn_dlg_14_submit" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span><input id="btn_dlg_14_cancel" class="btn-pop-dialog" type="button" value="Cancel" tabindex=""></span>
+   				</div>
+			</div>
+		</div>														   				
+		<div style="height: 20px;"></div>
+	</div>
+	<% end %>
+
+	<div class="jqmWindow jqmWindow-101-5" id="dialog_101_5">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+			</div>
+			<div class="topbar-title">Photo Crop and Center</div>
+			<div id="close_form101_5" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+            <div class="tip-content">
+                <div class="tooltiptext">Close</div>
+            </div>																															   					   					
+			<div style="clear: both;"></div>
+		</div>
+		<div class="background-table-dialog-3" style="padding: 10px 0 0 0;">
+	   		<div class="table-dialog-1">
+				<div class="dialog-msg-container">
+					<span>600 X 600 pixels available for maximum size. Below, you may crop and center smaller sizes.</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 10px;"></div>
+		<div style="width: 100%; padding: 0 0 0 10px;">
+			<div id="render_image_1_crop">
+				<% if !@image_1.nil? %>
+					<%= render 'image_1_crop' %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<% if false %>
+	<div class="jqmWindow jqmWindow-15" id="dialog_15">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+			</div>
+			<div class="topbar-title">Photo Crop and Center</div>
+			<div id="close_form15" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+            <div class="tip-content">
+                <div class="tooltiptext">Close</div>
+            </div>																															   					   					
+			<div style="clear: both;"></div>
+		</div>
+		<div class="background-table-dialog-3" style="padding: 10px 0 0 0;">
+	   		<div class="table-dialog-1">
+				<div class="dialog-msg-container">
+					<span>600 X 600 pixels available for maximum size. Below, you may crop and center smaller sizes.</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 10px;"></div>
+		<div style="width: 100%; padding: 0 0 0 10px;">
+			<div id="render_image_1_crop">
+				<% if !@image_1.nil? %>
+					<%= render 'image_1_crop' %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+	
+
+<style>
+	
+.btn-edit-options-container-outer {
+	position: relative;
+  	width: 100%;
+  	height: 24px;
+}
+.btn-edit-options-container {
+  	background: linear-gradient(#FBB040, #CA8E33);
+  	border-radius: 10px;
+  	width: 150px;
+  	height: 24px;
+}
+.btn-edit-options {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 700;		
+  	color: #eee;
+	text-align: center;	
+  	width: 150px;
+  	height: 24px;
+  	padding-top: 4px;
+  	text-decoration:none;
+  	outline: none;
+}
+.btn-edit-options:focus {
+}
+.btn-edit-options-container:hover { 
+  	box-shadow: 0 1px 1px rgba(255,255,255,0.1), 0 1.5em 1em rgba(255,255,255,0.2) inset;
+  	cursor: pointer;
+}
+.btn-edit-options-container:active .btn-opt-edit { 
+	color: transparent;
+	text-shadow: 1px 1px #fff;
+}
+	
+	
+</style>
+
+
+	<div style="height: 2px;"></div>
+	
+	<!-- <div class="title-container" style="width: 1200px;"> -->
+	<div style="width: 1200px;">
+		<div class="title-bar" style="position: relative;">
+			<div style="display: table; width: 1192px;">
+				<div style="display: table-row;">
+					<div style="display: table-cell; vertical-align: top; width: 300px; text-align: left;">
+						<span class="title-bar-text-1">Product Story</span>
+					</div>
+					<div style="display: table-cell; vertical-align: top; width: 594px; text-align: center;">
+						<span class="title-bar-text-1">id: <%= @publisher_product_gen_id %></span>
+					</div>
+					<div style="display: table-cell; vertical-align: top; width: 300px;">
+						<div class="btn-edit-options-container-outer">
+							
+							<div id="open_edit_mode" class="">
+								<div class="" style="display: table;">
+									<div style="display: table-row;">
+										<div style="display: table-cell; width: 300px;">
+											<div class="btn-edit-options-container" style="float: right;">
+												<div class="btn-edit-options" tabindex="">
+													Show Edit Options
+												</div>
+											</div>
+											<div style="clear: all;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="close_edit_mode" class="hidden">
+								<div class="" style="display: table;">
+									<div style="display: table-row;">
+										<div style="display: table-cell; width: 300px;">
+											<div class="btn-edit-options-container" style="float: right;">
+												<div class="btn-edit-options" tabindex="">
+													Hide Edit Options
+												</div>
+											</div>
+											<div style="clear: all;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- <div id="close_submit_edit_story_1" class="hidden">
+								<div class="" style="display: table;">
+									<div style="display: table-row;">
+										<div style="display: table-cell; width: 90px;"></div>
+										<div style="display: table-cell; width: 80px;">
+											<div class="btn-edit-options-container">
+												<div id="close_edit_mode" class="btn-edit-options" tabindex="" style="display: inline-block;">
+													Cancel
+												</div>
+											</div>
+										</div>
+										<div style="display: table-cell; width: 4px;"></div>
+										<div style="display: table-cell; width: 80px;">
+											<div class="btn-edit-options-container">
+												<div id="submit_edit_mode" class="btn-edit-options" tabindex="" style="display: inline-block;">
+													Save
+												</div>																	
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
 						</div>
 					</div>
-				</div>					
-			</div>
-			<div style="display: table-cell; width: 300px; padding: 0; margin: 0; vertical-align: top; height: 100%;">
-				<div class="" style="width: 200px; height: 50px; position: relative;">
-					<%= render 'share/dir_publishers_right_user_home' %>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<% end %>
-	
-<div class="table-profile" style="height: 100%;">
-	<div class="row-profile">
-		<div class="profile-left-col">
-			<div class="table margin-0">
-				<div class="row">
-					<div class="cell-225">
-						<div style="height: 300px; background-color: #dedede;"></div>						
-					</div>
-					<div class="cell-750">
-						<%= render 'publisher_product_manifests/index' %>
-					</div>	
-					<div class="cell-225">
-						<div style="height: 300px; background-color: #dedede;"></div>
-					</div>					
-				</div>
-			</div>
+		<div>
+			<%= render 'publisher_product_manifests/index_a' %>			
 		</div>
 	</div>
+
 </div>
+
+
+	<script>
+		
+		// *****
+		// universal constants
+		
+		var publisher_product_id = null;
+		
+		// var scrollPos = 0;
+		// var s_scrollPos = null;
+
+		var divHeight_1001 = 0;
+		
+		var info_msg = null;
+
+		
+	</script>
 
 	<script>
 	 
@@ -861,7 +805,7 @@
 
 	</script>
 
-	<script>
+	<!-- <script>
 
 	 	// *****
 	 	// section ProductCorporateLogo
@@ -876,7 +820,7 @@
 			});
 		}
 
-	</script>
+	</script> -->
 
 	<script>
 
@@ -962,11 +906,35 @@
 
 		function show_control(cntrl) {
 			var s_edit = "#edit_" + cntrl;
-			var s_show_open = "#show_" + cntrl + ", #open_edit_" + cntrl;		
-    		$(s_edit).fadeOut(300, function(){
+			// var s_show_open = "#show_" + cntrl + ", #open_edit_" + cntrl;		
+			var s_show = "#show_" + cntrl;
+			var s_open_edit = "#open_edit_" + cntrl;		
+    		$(s_edit).fadeOut(300, function() {
     			$(s_edit).addClass("hidden");
-    			$(s_show_open).fadeIn(1300).removeClass("hidden");
-    			$(s_show_open).fadeIn(1300).removeClass("hidden").removeClass("visibility-hidden");
+    			$(s_show).fadeIn(1300).removeClass("hidden");
+    			$(s_open_edit).fadeIn(1300).removeClass("visibility-hidden");
+    			// $(s_show_open).fadeIn(1300).removeClass("hidden");
+    			// $(s_show_open).fadeIn(1300).removeClass("hidden").removeClass("visibility-hidden");
+    		});
+		}
+		
+		// $("#open_edit_product_headline").click(function(){
+    		// $("#show_product_headline, #open_edit_product_headline").fadeOut(300, function(){
+    			// $("#show_product_headline").addClass("hidden");
+    			// $("#open_edit_product_headline").addClass("visibility-hidden");
+    			// $(".edit-product-headline").fadeIn(1300).removeClass("hidden");
+    		// });
+	  	// });
+		
+		function show_control_class(cntrl, cntrl_class) {
+			var s_edit = ".edit-" + cntrl_class;
+			// var s_show_open = "#show_" + cntrl + ", #open_edit_" + cntrl;
+			var s_show = "#show_" + cntrl;
+			var s_open_edit = "#open_edit_" + cntrl;		
+    		$(s_edit).fadeOut(300, function() {
+    			$(s_edit).addClass("hidden");
+    			$(s_show).fadeIn(1300).removeClass("hidden");
+    			$(s_open_edit).fadeIn(1300).removeClass("visibility-hidden");
     		});
 		}
 
@@ -979,20 +947,20 @@
 			var s_2 = "#box_detail_table_" + cntrl;
 			var s_3 = "#cell_outer_" + cntrl;
 			var s_4 = "#cell_inner_" + cntrl;
-			$(s_1).removeClass("box-detail-2").addClass("box-detail");
-			$(s_2).removeClass("box-detail-table-2").addClass("box-detail-table-1");
-			$(s_3).removeClass("cell-670").addClass("cell-325");
-			$(s_4).removeClass("cell-670").addClass("cell-265");			
+			// $(s_1).removeClass("box-detail-3").addClass("box-detail");
+			// $(s_2).removeClass("box-detail-table-3").addClass("box-detail-table-1");
+			// $(s_3).removeClass("cell-670").addClass("cell-325");
+			// $(s_4).removeClass("cell-670").addClass("cell-265");			
 		}
 		function show_control_standard_edit(cntrl) {
 			var s_1 = "#box_detail_" + cntrl;
 			var s_2 = "#box_detail_table_" + cntrl;
 			var s_3 = "#cell_outer_" + cntrl;
 			var s_4 = "#cell_inner_" + cntrl;
-			$(s_1).removeClass("box-detail").addClass("box-detail-2");
-			$(s_2).removeClass("box-detail-table-1").addClass("box-detail-table-2");
-			$(s_3).removeClass("cell-325").addClass("cell-670");
-			$(s_4).removeClass("cell-265").addClass("cell-670");			
+			// $(s_1).removeClass("box-detail").addClass("box-detail-3");
+			// $(s_2).removeClass("box-detail-table-1").addClass("box-detail-table-3");
+			// $(s_3).removeClass("cell-325").addClass("cell-670");
+			// $(s_4).removeClass("cell-265").addClass("cell-670");			
 		}
 
 	    // $("#open_edit_content_type").removeClass("edit-icon-right").removeClass("pop-info").removeClass("tip").addClass("edit-icon-blank").addClass("visibility-hidden");
@@ -2615,7 +2583,7 @@
 				cntrl = 0;				
 			}
 
-			var formData = { publisher_product_id: <%= @publisher_product_id %>,
+			var formData = { publisher_product_id: publisher_product_id,
 							 control: cntrl 
 						   };
 						   
@@ -2639,9 +2607,168 @@
 	 	// *****
 	 	// section ready / load
 
+		var info_msg_1 = 	'<span>This is the way to do it...</span>';
+
+		var info_msg_2 = 	'<span>Headline for product</span>';
+		
+		var info_msg_3 = 	'<span>Name or title of product</span>';
+		
+		var info_msg_4 = 	'<span>Product version(s)</span>';
+
+		var info_msg_5 = 	'<span>Description</span>';
+
+		var info_msg_6 = 	'<p><strong>Apps</strong></p>' +
+							'<p>A self-contained program or piece of software designed to fulfill a particular educational purpose; an APPlication, especially as downloaded by a user to a mobile device.</p>' +
+							'<br>' +
+							'<p><strong>Assessment/Testing</strong></p>' +
+							'<p>Formative or Summative Assessments, Tests</p>' +
+							'<br>' +
+							'<p><strong>Digital Content</strong></p>' +
+							'<p>Any type of digital content in text that may be audio enhanced, courses, lesson plans</p>' +
+							'<br>' +
+							'<p><strong>Curriculum (Websites)</strong></p>' +
+							'<p>Interactive multimedia curriculum which may have mutliple lessons crossing multiple grades; or other collections of resources like ebooks.</p>' +
+							'<br>' +
+							'<p><strong>eBook</strong></p>' +
+							'<p>A book composed in or converted to digital format for display on a computer screen or handheld device; may contain multimedia including audio enhanced.</p>' +
+							'<br>' +
+							'<p><strong>Learning Games</strong></p>' +
+							'<p>Game-based subject learning including but not limited to physical education.</p>' +
+							'<br>' +
+							'<p><strong>Service</strong></p>' +
+							'<p>Educational services and staffing including special needs teachers, other therapy, trainers, etc. Does not include facilities management, food service, or things not related to teaching and learning.</p>' +
+							'<br>' +
+							'<p><strong>School Management Software</strong></p>' +
+							'<p>Major systems including Learning Management Systems, Student Information Systems or Campus Management Systems related to student and teacher achievement or resources.</p>' +
+							'<br>' +
+							'<p><strong>Technical Skills Software</strong></p>' +
+							'<p>Includes vocational softwares and the student or professional development to learn them.</p>' +
+							'<br>' +
+							'<p><strong>Software Tools (Collaboration, Creation, etc.)</strong></p>' +
+							'<p>Includes collaboration, presentation, instructional creation tools.</p>' +
+							'<br>' +
+							'<p><strong>Video</strong></p>' +
+							'<p>Any video created to be educational.</p>' +
+							'<br>' +
+							'<p><strong>Other</strong></p>' +
+							'<p>Other type that does not fit will into the listed types.</p>' +
+							'<br>';
+
+		var info_msg_7 = 	'<span>General educational subject category</span>';
+
+		var info_msg_8 = 	'<p>Topic area as a sub-section of a subject such as Math (Subject) "Fractions" (Topic),' +  
+							'Social Studies (Subject) "Civil War" (Topic),' +  
+							'History (Subject) "Ancient Greece" (Topic),' + 
+							'or Management (Subject) "Personal Finance" (Topic).</p>'; 
+
+		var info_msg_9 = 	'<span>Select an age range for which the content is appropriate.</span>';
+		
+		var info_msg_10 = 	'<span>Select a grade range for which the content is appropriate.</span>';
+		
+		var info_msg_11 = 	'<p><strong>Market</strong></p>' +
+							'<p>Target buyers of this educational content or curriculum.</p>' +
+							'<br>' +
+							'<p><strong>Consumer</strong></p>' +
+							'<p>Students, parents or individual teachers.</p>' +
+							'<br>' +
+							'<p><strong>Institutions</strong></p>' +
+							'<p>Schools, districts or States.</p>' +
+							'<br>';
+
+		var info_msg_12 = 	'<p>Lesson plan area under the Subject and Topic such as Science (Subject),</p>' +
+							'<p>Geologic Phenomena (Topic), "Volcanoes" (Lesson Plan Subject), etc.</p>' +
+							'<br>';
+
+		var info_msg_13 = 	'<span>Estimated lesson-time used for this product or lessons within it.</span>';
+
+		var info_msg_14 = 	'<span>Platform</span>';
+
+		var info_msg_15 = 	'<span>File Type</span>';
+
+		var info_msg_16 = 	'<p><strong>Audio</strong></p>' +
+							'<p>Contains any form of audio enhancement including voice-over reading or music.</p>' +
+							'<br>' +
+							'<p><strong>Visuals</strong></p>' +
+							'<p>Contains pictures or graphics to illustrate the subject matter.</p>' +
+							'<br>' +
+							'<p><strong>Interactive Graphics</strong></p>' +
+							'<p>Contains graphics that are interactive such as grids the student must place a</p>' +
+							'<p>line in or draw or some element; or some drag-and-drop or matching that requires</p>' +
+							'<p>manual manipulation or choice.</p>' +
+
+							'<p><strong>Formative Assessments</strong></p>' +
+							'<p>Questions or challenges that assess student learning or show student progress;</p>' +
+							'<p>formative assessments can be used to provide ongoing feedback that can be used</p>' +
+							'<p>adaptively to direct additional lessons, push the student up a level, or be used</p>' +
+							'<p>to give metrics to teachers or for the publisher to further adapt the learning experience.</p>' +
+							'<br>' +
+
+							'<p><strong>Summative Assessments</strong></p>' +
+							'<p>A summative assessment is used to evaluate student learning at the end of an instructional</p>' +
+							'<p>unit by comparing it against some standard or benchmark. Examples include final exams,</p>' +
+							'<p>final projects, final papers, final recitals, etc.</p>' +
+							'<br>' +
+
+							'<p><strong>Chunking</strong></p>' +
+							'<p>Chunking refers to a content design approach of breaking up large amounts of information</p>' +
+							'<p>into "chunks" in digital presentation such as a single HTML page or lessons.</p>' +
+							'<br>' +
+
+							'<p><strong>Labeled per Standard</strong></p>' +
+							'<p>Is the content labeled-by-lesson or section as to what provides material towards which Standard.</p>' +
+							'<br>' +
+
+							'<p><strong>Video</strong></p>' +
+							'<p>An educational video</p>' +
+							'<br>' +
+
+							'<p><strong>Gaming</strong></p>' +
+							'<p>Contains one or more of the following: animation, rewards/bonus/prizes systems, levels, life-span,</p>' +
+							'<p>timer-by-activity, opponents, false/true, alternate paths for additional lessons or remedies.</p>' +
+							'<br>' +
+
+							'<p><strong>Feedback</strong></p>' +
+							'<p>Contains a means for student-teacher interaction or student-to-student project interaction;</p>' +
+							'<p>student voting or answering.</p>' +
+							'<br>' +
+
+							'<p><strong>Metrics</strong></p>' +
+							'<p>Contains a metering function for student progress, telling the student by timer or other element a progress grade.</p>' +
+							'<br>' +
+
+							'<p><strong>Terminology</strong></p>' +
+							'<p>Contains a terminology appendix or hotlinks on words to their definitions.</p>' +
+							'<br>';
+
+		var info_msg_17 = 	'<span>Reviewed by...</span>';
+
+		var info_msg_18 = 	'<p>A freemium product is provided with limited features for free and charges for full-feature functionality.</p>';
+
+		var info_msg_19 = 	'<span>Price</span>';
+
+		var info_msg_20 = 	'<span>Core Literacy Standard</span>';
+
+		var info_msg_21 = 	'<span>Core Math Standard</span>';
+		
+		var info_msg_22 = 	'<span>Allow Teacher Ratings</span>';
+		
+		var info_msg_23 = 	'<span>Allow Comments</span>';
+		
+		var info_msg_24 = 	'<span>Allow Student Likes</span>';
+		
+		var info_msg_25 = 	"<p>Research based studies validating the publisher's approach or validating student achievement through use.</p>";
+
+		var info_msg_26 = 	'<span>Corporate URL</span>';
+		
+		var info_msg_27 = 	'<span>Product Tagline</span>';
+		
+		
+		
 		$(window).load( function() {
 		// $(document).ready(function(){
 
+
+			publisher_product_id = gon.publisher_product_id;
 
 			$("#form_listing").removeClass("preview-pos-load").addClass("preview-pos-ready").addClass("display-none-listing");
 
@@ -2658,8 +2785,6 @@
 		    	});
 		  	});	
 
-
-
 			// $(".chosen-select").chosen(); 
 			// $(".chosen-select").chosen({
 				// no_results_text: "no results found" 
@@ -2670,77 +2795,291 @@
 			});
 
 
+		 	// ***** - start
+		 	// section dialogs
+
+			$(document).on('click', '#open_info_product_headline', function() {
+				// s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				// alert(s_scrollPos);
+				// info_msg = "_info_publisher_headline";
+				$("#dlg_info").html(info_msg_2);
+				divHeight_1001 = $("#dialog_1001").height();
+				// alert($("#dialog_1001").height());
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_name_product', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_3);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_versions', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_4);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_description', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_5);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_content_type', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_6);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_category_subject', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_7);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_topic', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_8);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_age_range', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_9);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_grade_range', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_10);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_market_target', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_11);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_lesson_plan_subject', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_12);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_lesson_time', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_13);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_platform', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_14);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_file_type', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_15);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_enhancements', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_16);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_by_review', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_17);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_pricing_model', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_18);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_price', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_19);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_core_literacy_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_20);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_core_math_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_21);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_allow_teacher_rating', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_22);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_allow_comments', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_23);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_allow_student_likes', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_24);
+				$("#dialog_1001").jqmShow();
+			});
+			
+			$(document).on('click', '#open_info_name_pdf', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_25);
+				$("#dialog_1001").jqmShow();
+			});
+
+			$(document).on('click', '#open_info_product_tagline', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_27);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			$(document).on('click', '#open_info_corporate_logo_url', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_26);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			$(document).on("click", '#btn_dlg_1001_cancel', function() {
+				$("#close_form1001").trigger('click');
+			});
+
+			$('#dialog_1001').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					// hash.w.css('top', '-200px');
+					hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+					// hash.w.css('bottom', ($(window).scrollTop() + 10 + $("#dialog_1001").height()).toString() + 'px');
+					hash.w.css('opacity', 1.0).fadeIn(100);
+					// // hash.w.show();
+					// $('#dialog_1001').animate(
+						// // {bottom: '-=20', top:'+=20'},
+						// // { bottom: '-=' + ($(window).scrollTop() + 30).toString() + 'px', top: '+=' + ($(window).scrollTop() + 30).toString() + 'px' }, 
+						// 500, 
+						// 'easeInOutCirc', 
+						// function() {
+							// $('#dialog_1001').animate(
+								// {bottom:'+=4', top:'-=4'}, 
+								// 100, 
+								// 'easeInBounce', 
+								// function() {
+								// }
+							// );
+						// }
+					// );
+				}
+			}); 		
+
+
+
+		 	// section dialogs
+		 	// ***** - end
+
+
+
+
+
 		 	// *****
 		 	// section dialogs
 
-			$('#dialog_12').jqm({
+
+			$('#dialog_101_2').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', '-220px');
-					hash.w.css('opacity', 1.0).fadeIn(200);
-					// hash.w.show();
-					$('#dialog_12').animate(
-						{bottom:'-=230', top:'+=230'}, 
-						500, 
-						'easeInOutCirc', 
-						function() {
-							$('#dialog_12').animate(
-								{bottom:'+=4', top:'-=4'}, 
-								100, 
-								'easeInBounce', 
-								function() {
-								}
-							);
-						}
-					);
+					hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+					hash.w.css('opacity', 1.0).fadeIn(100);
 				}
 			}); 		
 
-			$('#dialog_13').jqm({
+			$('#dialog_101_3').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', '-220px');
-					hash.w.css('opacity', 1.0).fadeIn(200);
-					// hash.w.show();
-					$('#dialog_13').animate(
-						{bottom:'-=230', top:'+=230'}, 
-						500, 
-						'easeInOutCirc', 
-						function() {
-							$('#dialog_13').animate(
-								{bottom:'+=4', top:'-=4'}, 
-								100, 
-								'easeInBounce', 
-								function() {
-								}
-							);
-						}
-					);
+					hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+					hash.w.css('opacity', 1.0).fadeIn(100);
 				}
 			}); 		
 
-			$('#dialog_14').jqm({
+			$('#dialog_101_4').jqm({
 				onShow: function(hash) {
 					hash.o.prependTo('body');
-					hash.w.css('top', '-200px');
-					hash.w.css('opacity', 1.0).fadeIn(200);
-					// hash.w.show();
-					$('#dialog_14').animate(
-						{bottom:'-=210', top:'+=210'}, 
-						500, 
-						'easeInOutCirc', 
-						function() {
-							$('#dialog_14').animate(
-								{bottom:'+=4', top:'-=4'}, 
-								100, 
-								'easeInBounce', 
-								function() {
-								}
-							);
-						}
-					);
+					hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+					hash.w.css('opacity', 1.0).fadeIn(100);
 				}
 			}); 		
+
+			$('#dialog_101_5').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+					hash.w.css('opacity', 1.0).fadeIn(100);
+				}
+			}); 		
+
+			// $('#dialog_13').jqm({
+				// onShow: function(hash) {
+					// hash.o.prependTo('body');
+					// hash.w.css('top', '-220px');
+					// hash.w.css('opacity', 1.0).fadeIn(200);
+					// // hash.w.show();
+					// $('#dialog_13').animate(
+						// {bottom:'-=230', top:'+=230'}, 
+						// 500, 
+						// 'easeInOutCirc', 
+						// function() {
+							// $('#dialog_13').animate(
+								// {bottom:'+=4', top:'-=4'}, 
+								// 100, 
+								// 'easeInBounce', 
+								// function() {
+								// }
+							// );
+						// }
+					// );
+				// }
+			// }); 		
+
+			// $('#dialog_14').jqm({
+				// onShow: function(hash) {
+					// hash.o.prependTo('body');
+					// hash.w.css('top', '-200px');
+					// hash.w.css('opacity', 1.0).fadeIn(200);
+					// // hash.w.show();
+					// $('#dialog_14').animate(
+						// {bottom:'-=210', top:'+=210'}, 
+						// 500, 
+						// 'easeInOutCirc', 
+						// function() {
+							// $('#dialog_14').animate(
+								// {bottom:'+=4', top:'-=4'}, 
+								// 100, 
+								// 'easeInBounce', 
+								// function() {
+								// }
+							// );
+						// }
+					// );
+				// }
+			// }); 		
 
 
 			$('#dialog_22').jqm({
@@ -3213,14 +3552,361 @@
     		});				
 
 
-			set_control_span("name_product", gon.name_product, gon.b_name_product);
-			set_control_required("name_product", gon.b_required_name_product);
+
+			// set_control_span("name_product", gon.name_product, gon.b_name_product);
+			// set_control_required("name_product", gon.b_required_name_product);
 
 			set_control_span("product_tagline", gon.product_tagline, gon.b_product_tagline);
 			set_control_required("product_tagline", gon.b_required_product_tagline);
 
+			// set_control_span("versions", gon.versions, gon.b_versions);
+			// set_control_required("versions", gon.b_required_versions);
+
+
+
+
+
+
+			set_control_span("product_headline", gon.product_headline, gon.b_product_headline);
+			set_control_required("product_headline", gon.b_required_product_headline);
+
+			$("#open_edit_product_headline").click(function(){
+	    		$("#show_product_headline, #open_edit_product_headline").fadeOut(300, function(){
+	    		// $("#span_product_headline, #open_edit_product_headline").fadeOut(300, function(){
+	    			$("#show_product_headline").addClass("hidden");
+	    			// $("#span_product_headline").addClass("hidden");
+	    			$("#open_edit_product_headline").addClass("visibility-hidden");
+	    			// $("#edit_product_headline").fadeIn(1300).removeClass("hidden");
+	    			$(".edit-product-headline").fadeIn(1300).removeClass("hidden");
+	    			// $("#span_product_headline").fadeIn(1300).removeClass("hidden");
+	    		});
+		  	});
+    		$("#submit_product_headline").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_product_headline").click();
+    		});		
+    		$("#cancel_product_headline").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_product_headline").click();
+    		});		
+			$("#cancel_product_headline").on('click', function() {
+				show_control_class("product_headline", "product-headline");
+			});
+			$("#close_info_product_headline").click(function(){
+		    	$("#form_info_product_headline_a").fadeOut(700, function(){ $("#form_info_product_headline").slideUp(400) });
+		  	});
+		  	$("#open_info_product_headline").click(function(){
+		    	$("#form_info_product_headline").slideDown(400, function(){ $("#form_info_product_headline_a").fadeIn( 2000 ) });
+		  	});	    
+
+			$("#submit_product_headline").on('click', function() {
+				// var input_publisher_product_manifest_corporate_logo_url = $("#publisher_product_manifest_corporate_logo_url").val();
+				var input_publisher_product_manifest_product_headline = $("#publisher_product_manifest_product_headline").val();
+				
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id +  		
+						   	   ',  "product_headline":"' + input_publisher_product_manifest_product_headline +
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+			  	$.ajax({
+			    	type: 'POST',
+			    	// data : JSON.stringify(obj),
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_product_headline',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	                	// 200:function() { alert("200"); },
+	                	// 202:function() { alert("202"); }
+	            	},
+	            	success: function(data) {
+						// alert(data.name_first);
+						set_control_span("product_headline", data.product_headline, data.b_product_headline);
+						cancelEditStory4();
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+
+			set_control_span("product_tagline", gon.product_tagline, gon.b_product_tagline);
+			set_control_required("product_tagline", gon.b_required_product_tagline);
+
+			$("#open_edit_product_tagline").click(function(){
+	    		$("#show_product_tagline, #open_edit_product_tagline").fadeOut(300, function(){
+	    		// $("#span_product_tagline, #open_edit_product_tagline").fadeOut(300, function(){
+	    			$("#show_product_tagline").addClass("hidden");
+	    			// $("#span_product_tagline").addClass("hidden");
+	    			$("#open_edit_product_tagline").addClass("visibility-hidden");
+	    			// $("#edit_product_tagline").fadeIn(1300).removeClass("hidden");
+	    			$("#edit_product_tagline").fadeIn(1300).removeClass("hidden");
+	    			// $("#span_product_tagline").fadeIn(1300).removeClass("hidden");
+	    		});
+		  	});
+    		$("#submit_product_tagline").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_product_tagline").click();
+    		});		
+    		$("#cancel_product_tagline").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_product_tagline").click();
+    		});		
+			$("#cancel_product_tagline").on('click', function() {
+				show_control("product_tagline");
+			});
+			$("#close_info_product_tagline").click(function(){
+		    	$("#form_info_product_tagline_a").fadeOut(700, function(){ $("#form_info_product_tagline").slideUp(400) });
+		  	});
+		  	$("#open_info_product_tagline").click(function(){
+		    	$("#form_info_product_tagline").slideDown(400, function(){ $("#form_info_product_tagline_a").fadeIn( 2000 ) });
+		  	});	    
+
+			$("#submit_product_tagline").on('click', function() {
+				// var input_publisher_product_manifest_corporate_logo_url = $("#publisher_product_manifest_corporate_logo_url").val();
+				var input_publisher_product_manifest_product_tagline = $("#publisher_product_manifest_product_tagline").val();
+				
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id +  		
+						   	   ',  "product_tagline":"' + input_publisher_product_manifest_product_tagline +
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+			  	$.ajax({
+			    	type: 'POST',
+			    	// data : JSON.stringify(obj),
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_product_tagline',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	                	// 200:function() { alert("200"); },
+	                	// 202:function() { alert("202"); }
+	            	},
+	            	success: function(data) {
+						// alert(data.name_first);
+						set_control_span("product_tagline", data.product_tagline, data.b_product_tagline);
+						// cancelEditStory4();
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+
+
+
+			// set_control_span("name_product", gon.name_product, gon.b_name_product);
+			// set_control_required("name_product", gon.b_required_name_product);
+
+			set_control_span("name_product", gon.name_product, gon.b_name_product);
+			set_control_required("name_product", gon.b_required_name_product);
+
+			$("#open_edit_name_product").click(function(){
+	    		$("#show_name_product, #open_edit_name_product").fadeOut(300, function(){
+	    		// $("#span_name_product, #open_edit_name_product").fadeOut(300, function(){
+	    			$("#show_name_product").addClass("hidden");
+	    			// $("#span_name_product").addClass("hidden");
+	    			$("#open_edit_name_product").addClass("visibility-hidden");
+	    			// $("#edit_name_product").fadeIn(1300).removeClass("hidden");
+	    			$("#edit_name_product").fadeIn(1300).removeClass("hidden");
+	    			// $("#span_name_product").fadeIn(1300).removeClass("hidden");
+	    		});
+		  	});
+    		$("#submit_name_product").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_name_product").click();
+    		});		
+    		$("#cancel_name_product").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_name_product").click();
+    		});		
+			$("#cancel_name_product").on('click', function() {
+				show_control("name_product");
+			});
+			$("#close_info_name_product").click(function(){
+		    	$("#form_info_name_product_a").fadeOut(700, function(){ $("#form_info_name_product").slideUp(400) });
+		  	});
+		  	$("#open_info_name_product").click(function(){
+		    	$("#form_info_name_product").slideDown(400, function(){ $("#form_info_name_product_a").fadeIn( 2000 ) });
+		  	});	    
+
+			$("#submit_name_product").on('click', function() {
+				// var input_publisher_product_manifest_corporate_logo_url = $("#publisher_product_manifest_corporate_logo_url").val();
+				var input_publisher_product_manifest_name_product = $("#publisher_product_manifest_name_product").val();
+				
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id +  		
+						   	   ',  "name_product":"' + input_publisher_product_manifest_name_product +
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+			  	$.ajax({
+			    	type: 'POST',
+			    	// data : JSON.stringify(obj),
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_name_product',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	                	// 200:function() { alert("200"); },
+	                	// 202:function() { alert("202"); }
+	            	},
+	            	success: function(data) {
+						// alert(data.name_first);
+						set_control_span("name_product", data.name_product, data.b_name_product);
+						// cancelEditStory4();
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+
 			set_control_span("versions", gon.versions, gon.b_versions);
 			set_control_required("versions", gon.b_required_versions);
+
+			$("#open_edit_versions").click(function(){
+	    		$("#show_versions, #open_edit_versions").fadeOut(300, function(){
+	    		// $("#span_versions, #open_edit_versions").fadeOut(300, function(){
+	    			$("#show_versions").addClass("hidden");
+	    			// $("#span_versions").addClass("hidden");
+	    			$("#open_edit_versions").addClass("visibility-hidden");
+	    			// $("#edit_versions").fadeIn(1300).removeClass("hidden");
+	    			$("#edit_versions").fadeIn(1300).removeClass("hidden");
+	    			// $("#span_versions").fadeIn(1300).removeClass("hidden");
+	    		});
+		  	});
+    		$("#submit_versions").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_versions").click();
+    		});		
+    		$("#cancel_versions").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_versions").click();
+    		});		
+			$("#cancel_versions").on('click', function() {
+				show_control("versions");
+			});
+			$("#close_info_versions").click(function(){
+		    	$("#form_info_versions_a").fadeOut(700, function(){ $("#form_info_versions").slideUp(400) });
+		  	});
+		  	$("#open_info_versions").click(function(){
+		    	$("#form_info_versions").slideDown(400, function(){ $("#form_info_versions_a").fadeIn( 2000 ) });
+		  	});	    
+
+			$("#submit_versions").on('click', function() {
+				// var input_publisher_product_manifest_corporate_logo_url = $("#publisher_product_manifest_corporate_logo_url").val();
+				var input_publisher_product_manifest_versions = $("#publisher_product_manifest_versions").val();
+				
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id +  		
+						   	   ',  "versions":"' + input_publisher_product_manifest_versions +
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+			  	$.ajax({
+			    	type: 'POST',
+			    	// data : JSON.stringify(obj),
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_versions',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	                	// 200:function() { alert("200"); },
+	                	// 202:function() { alert("202"); }
+	            	},
+	            	success: function(data) {
+						// alert(data.name_first);
+						set_control_span("versions", data.versions, data.b_versions);
+						// cancelEditStory4();
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+
+
+
+			set_control_span("corporate_logo_url", gon.corporate_logo_url, gon.b_corporate_logo_url);
+			set_control_required("corporate_logo_url", gon.b_required_corporate_logo_url);
+
+			$("#open_edit_corporate_logo_url").click(function(){
+	    		$("#show_corporate_logo_url, #open_edit_corporate_logo_url").fadeOut(300, function(){
+	    		// $("#span_corporate_logo_url, #open_edit_corporate_logo_url").fadeOut(300, function(){
+	    			$("#show_corporate_logo_url").addClass("hidden");
+	    			// $("#span_corporate_logo_url").addClass("hidden");
+	    			$("#open_edit_corporate_logo_url").addClass("visibility-hidden");
+	    			// $("#edit_corporate_logo_url").fadeIn(1300).removeClass("hidden");
+	    			$("#edit_corporate_logo_url").fadeIn(1300).removeClass("hidden");
+	    			// $("#span_corporate_logo_url").fadeIn(1300).removeClass("hidden");
+	    		});
+		  	});
+    		$("#submit_corporate_logo_url").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_corporate_logo_url").click();
+    		});		
+    		$("#cancel_corporate_logo_url").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_corporate_logo_url").click();
+    		});		
+			$("#cancel_corporate_logo_url").on('click', function() {
+				show_control("corporate_logo_url");
+			});
+			$("#close_info_corporate_logo_url").click(function(){
+		    	$("#form_info_corporate_logo_url_a").fadeOut(700, function(){ $("#form_info_corporate_logo_url").slideUp(400) });
+		  	});
+		  	$("#open_info_corporate_logo_url").click(function(){
+		    	$("#form_info_corporate_logo_url").slideDown(400, function(){ $("#form_info_corporate_logo_url_a").fadeIn( 2000 ) });
+		  	});	    
+
+			$("#submit_corporate_logo_url").on('click', function() {
+				// var input_publisher_product_manifest_corporate_logo_url = $("#publisher_product_manifest_corporate_logo_url").val();
+				var input_publisher_product_manifest_corporate_logo_url = $("#publisher_product_manifest_corporate_logo_url").val();
+				
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id +  		
+						   	   ',  "corporate_logo_url":"' + input_publisher_product_manifest_corporate_logo_url +
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+			  	$.ajax({
+			    	type: 'POST',
+			    	// data : JSON.stringify(obj),
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_corporate_logo_url',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	                	// 200:function() { alert("200"); },
+	                	// 202:function() { alert("202"); }
+	            	},
+	            	success: function(data) {
+						// alert(data.name_first);
+						set_control_span("corporate_logo_url", data.corporate_logo_url, data.b_corporate_logo_url);
+						// cancelEditStory4();
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3255,12 +3941,12 @@
 			$("#cancel_content_type").on('click', function() {
 				show_control("content_type");
 			});
-			$("#close_info_content_type").click(function(){
-		    	$("#form_info_content_type_a").fadeOut(700, function(){ $("#form_info_content_type").slideUp(400) });
-		  	});
-		  	$("#open_info_content_type").click(function(){
-		    	$("#form_info_content_type").slideDown(400, function(){ $("#form_info_content_type_a").fadeIn( 2000 ) });
-		  	});	    
+			// $("#close_info_content_type").click(function(){
+		    	// $("#form_info_content_type_a").fadeOut(700, function(){ $("#form_info_content_type").slideUp(400) });
+		  	// });
+		  	// $("#open_info_content_type").click(function(){
+		    	// $("#form_info_content_type").slideDown(400, function(){ $("#form_info_content_type_a").fadeIn( 2000 ) });
+		  	// });	    
 			$("#submit_content_type").on('click', function() {
 				var input_publisher_product_content_type = $("#publisher_product_content_type").val();
 				var input_publisher_product_content_type_other = $("#publisher_product_content_type_other").val();
@@ -3268,7 +3954,7 @@
 				if (input_publisher_product_content_type_other.length > 0) {
 					content_type_other_b = true;
 				}
-				var obj_list = '{  "publisher_product_id":' + <%= @publisher_product_id %> +  
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id +  
 							   ',  "content_type":"' + input_publisher_product_content_type + 
 							   '", "content_type_other_b":' + content_type_other_b + 
 							   ',  "content_type_other":"' + input_publisher_product_content_type_other +
@@ -3341,7 +4027,7 @@
 				if (input_publisher_product_category_subject_other.length > 0) {
 					category_subject_other_b = true;
 				}				
-				var obj_list = '{  "publisher_product_id":' + <%= @publisher_product_id %> +  
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id +  
 							   ',  "category_subject":"' + input_publisher_product_category_subject +
 							   '", "category_subject_other_b":' + category_subject_other_b + 
 							   ',  "category_subject_other":"' + input_publisher_product_category_subject_other +
@@ -3416,15 +4102,15 @@
 	    			$("#topic").focus();
 	    		});
 		  	});
-			$("#close_info_topic").click(function(){
-		    	$("#form_info_topic_a").fadeOut(700, function(){ $("#form_info_topic").slideUp(400) });
-		  	});
-		  	$("#open_info_topic").click(function(){
-		    	$("#form_info_topic").slideDown(400, function(){ $("#form_info_topic_a").fadeIn( 2000 ) });
-		  	});	
+			// $("#close_info_topic").click(function(){
+		    	// $("#form_info_topic_a").fadeOut(700, function(){ $("#form_info_topic").slideUp(400) });
+		  	// });
+		  	// $("#open_info_topic").click(function(){
+		    	// $("#form_info_topic").slideDown(400, function(){ $("#form_info_topic_a").fadeIn( 2000 ) });
+		  	// });	
 			$("#submit_topic").on('click', function() {
 				var input_publisher_product_topic = $("#textarea_topic_edit").html().replace(/\t/g, '\\t');				
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 							   ', "topic":"' + input_publisher_product_topic + 
 							   '"}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -3466,80 +4152,6 @@
 
 
 
-			// if(<#%= @b_lesson_plan_subject %#>) {
-				// $("#render_lesson_plan_subject").html("");
-			// }
-			// else {
-				// $("#render_lesson_plan_subject").addClass("check-required");
-			// }
-			// set_control_required("lesson_plan_subject", <#%= @b_required_lesson_plan_subject %#>);
-    		$("#submit_lesson_plan_subject").keypress(function(e){
-      			if(e.keyCode==13)
-      			$("#submit_lesson_plan_subject").click();
-    		});
-    		// $("#submit_lesson_plan_subject").on('click', function() {
-    			// $("#submit_lesson_plan_subject_hidden").trigger("click");
-    		// });
-    		$("#cancel_lesson_plan_subject").keypress(function(e){
-      			if(e.keyCode==13)
-      			$("#cancel_lesson_plan_subject").click();
-    		});	
-			$("#cancel_lesson_plan_subject").on('click', function() {
-				show_control("lesson_plan_subject");
-			});
-			$("#open_edit_lesson_plan_subject").click(function(){
-	    		$("#show_lesson_plan_subject, #open_edit_lesson_plan_subject").fadeOut(300, function(){
-	    			$("#show_lesson_plan_subject").addClass("hidden");
-	    			$("#open_edit_lesson_plan_subject").addClass("visibility-hidden");
-	    			$("#edit_lesson_plan_subject").fadeIn(1300).removeClass("hidden");
-	    			showEditStory12();	    			
-	    			$("#lesson_plan_subject").focus();
-	    		});
-		  	});    		
-			$("#close_info_lesson_plan_subject").click(function(){
-		    	$("#form_info_lesson_plan_subject_a").fadeOut(700, function(){ $("#form_info_lesson_plan_subject").slideUp(400) });
-		  	});
-		  	$("#open_info_lesson_plan_subject").click(function(){
-		    	$("#form_info_lesson_plan_subject").slideDown(400, function(){ $("#form_info_lesson_plan_subject_a").fadeIn( 2000 ) });
-		  	});	
-			$("#submit_lesson_plan_subject").on('click', function() {
-				var input_publisher_product_subject = $("#textarea_lesson_plan_subject_edit").html().replace(/\t/g, '\\t');				
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
-							   ', "subject":"' + input_publisher_product_subject + 
-							   '"}';      
-			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
-			  	$.ajax({
-			    	type: 'POST',
-			    	data : obj,
-			    	url: '/publisher_product_manifests/update_lesson_plan_subject',			    	
-			    	dataType: "json",
-			    	contentType: "application/json",
-			    	processData: false,
-			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-	            	statusCode: {
-	            	},
-	            	success: function(data) {
-						story_12_lesson_plan_subject_html = data.subject;
-						initRenderTextareaStory12();
-						show_control("lesson_plan_subject");
-						// set_control_required("lesson_plan_subject", data.b_required);						
-						// if (data.lesson_plan_subject.length > 0) {      		
-							// $("#publisher_product_manifest_lesson_plan_subject").attr("value", data.lesson_plan_subject);
-							// $("#render_lesson_plan_subject").removeClass("check-required");
-							// $("#render_lesson_plan_subject").addClass("check-affirm");
-						// }
-						// else {
-							// $("#publisher_product_manifest_lesson_plan_subject").attr("value", "");
-							// $("#render_lesson_plan_subject").removeClass("check-affirm");
-							// $("#render_lesson_plan_subject").addClass("check-required");
-						// }							
-						// $("#focus_51").focus();
-						// set_updated(data.updated);													
-	            	},
-	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
-			  	});
-		  		return false;
-			});
 			
 
 
@@ -3789,7 +4401,7 @@
 					// var input_lesson_time_minutes = $("#number_lesson_time_minutes").val();
 				// }
 					
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 							   ', "time_per_lesson":' + b_time_per_lesson +
 							   ', "lesson_time_hours":' + input_lesson_time_hours +
 							   ', "lesson_time_minutes":' + input_lesson_time_minutes +
@@ -3870,7 +4482,7 @@
 				if (input_publisher_product_platform_other.length > 0) {
 					platform_other_b = true;
 				}				
-				var obj_list = '{  "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id + 
 							   ',  "platform":"' + input_publisher_product_platform + 
 							   '", "platform_other_b":' + platform_other_b + 
 							   ',  "platform_other":"' + input_publisher_product_platform_other + 
@@ -3948,7 +4560,7 @@
 				if (input_publisher_product_file_type_other.length > 0) {
 					file_type_other_b = true;
 				}				
-				var obj_list = '{  "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id + 
 							   ',  "file_type":"' + input_publisher_product_file_type + 
 							   '", "file_type_other_b":' + file_type_other_b + 
 							   ',  "file_type_other":"' + input_publisher_product_file_type_other + 
@@ -4022,7 +4634,7 @@
 				if (input_publisher_product_by_review_other.length > 0) {
 					by_review_other_b = true;
 				}				
-				var obj_list = '{  "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id + 
 							   ',  "by_review":"' + input_publisher_product_by_review + 
 							   '", "by_review_other_b":' + by_review_other_b + 
 							   ',  "by_review_other":"' + input_publisher_product_by_review_other + 
@@ -4097,7 +4709,7 @@
 				if (input_publisher_product_enhancement_other.length > 0) {
 					enhancement_other_b = true;
 				}				
-				var obj_list = '{  "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id + 
 							   ',  "enhancement":"' + input_publisher_product_enhancement + 
 							   '", "enhancement_other_b":' + enhancement_other_b + 
 							   ',  "enhancement_other":"' + input_publisher_product_enhancement_other + 
@@ -4141,12 +4753,13 @@
 			set_control_required("age_range", (gon.b_required_from_age || gon.b_required_to_age));
 
 			$("#open_edit_age_range").click(function(){
-		    	$("#publisher_product_from_age_chosen").css({
-		    		'width':'314px'
-		    	});				
-		    	$("#publisher_product_to_age_chosen").css({
-		    		'width':'314px'
-		    	});				
+				alert('edit age range');
+		    	// $("#publisher_product_from_age_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+		    	// $("#publisher_product_to_age_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
 	    		$("#show_age_range, #open_edit_age_range").fadeOut(300, function(){
 	    			$("#show_from_age").addClass("hidden");
 	    			$("#show_to_age").addClass("hidden");
@@ -4169,18 +4782,18 @@
       			if(e.keyCode==13)
       			$("#cancel_age_range").click();
     		});		
-			$("#close_info_age_range").click(function(){
-		    	$("#form_info_age_range_a").fadeOut(700, function(){ $("#form_info_age_range").slideUp(400) });
-		  	});
-		  	$("#open_info_age_range").click(function(){
-		    	$("#form_info_age_range").slideDown(400, function(){ $("#form_info_age_range_a").fadeIn( 2000 ) });
-		  	});	
+			// $("#close_info_age_range").click(function(){
+		    	// $("#form_info_age_range_a").fadeOut(700, function(){ $("#form_info_age_range").slideUp(400) });
+		  	// });
+		  	// $("#open_info_age_range").click(function(){
+		    	// $("#form_info_age_range").slideDown(400, function(){ $("#form_info_age_range_a").fadeIn( 2000 ) });
+		  	// });	
 			$("#submit_age_range").on('click', function() {
 				var input_publisher_product_from_age = $("#publisher_product_from_age").val();
 				var input_publisher_product_to_age = $("#publisher_product_to_age").val();
 				var obj_list = '{ "from_age":"' + input_publisher_product_from_age +
 							   '", "to_age":"' + input_publisher_product_to_age + 
-							   '", "publisher_product_id":' + <%= @publisher_product_id %> + 							   
+							   '", "publisher_product_id":' + publisher_product_id + 							   
 							   '}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
 			  	$.ajax({
@@ -4247,19 +4860,19 @@
       			if(e.keyCode==13)
       			$("#cancel_grade_range").click();
     		});		
-			$("#close_info_grade_range").click(function(){
-		    	$("#form_info_grade_range_a").fadeOut(700, function(){ $("#form_info_grade_range").slideUp(400) });
-		  	});
-		  	$("#open_info_grade_range").click(function(){
-		    	$("#form_info_grade_range").slideDown(400, function(){ $("#form_info_grade_range_a").fadeIn( 2000 ) });
-		  	});	
+			// $("#close_info_grade_range").click(function(){
+		    	// $("#form_info_grade_range_a").fadeOut(700, function(){ $("#form_info_grade_range").slideUp(400) });
+		  	// });
+		  	// $("#open_info_grade_range").click(function(){
+		    	// $("#form_info_grade_range").slideDown(400, function(){ $("#form_info_grade_range_a").fadeIn( 2000 ) });
+		  	// });	
 			$("#submit_grade_range").on('click', function() {
 				var input_publisher_product_from_grade = $("#publisher_product_from_grade").val();
 				// alert(input_publisher_product_from_grade);
 				var input_publisher_product_to_grade = $("#publisher_product_to_grade").val();
 				var obj_list = '{ "from_grade":"' + input_publisher_product_from_grade + 
 							   '", "to_grade":"' + input_publisher_product_to_grade + 				
-							   '", "publisher_product_id":' + <%= @publisher_product_id %> + 							   							   
+							   '", "publisher_product_id":' + publisher_product_id + 							   							   
 							   '}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
 			  	$.ajax({
@@ -4329,7 +4942,7 @@
 			$("#submit_market_target").on('click', function() {
 				var input_publisher_product_market_target = $("#publisher_product_market_target").val();
 				// alert(input_publisher_product_manifest_market_target);
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 							   ', "market_target":"' + input_publisher_product_market_target + 
 							   '"}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -4399,7 +5012,7 @@
 			$("#submit_pricing_model").on('click', function() {
 				var input_publisher_product_pricing_model = $("#publisher_product_pricing_model").val();
 				// alert(input_publisher_product_pricing_model);
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 							   ', "pricing_model":"' + input_publisher_product_pricing_model + 
 							   '"}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -5047,7 +5660,7 @@
 						$("#render_price_10").removeClass("check-required").addClass("check-affirm");
 					}
 					
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "price_1":' + val_ch_price_1 + 
 								   ', "price_1_dec":' + input_publisher_product_price_price_1_dec + 
 								   ', "price_2":' + val_ch_price_2 + 
@@ -5158,12 +5771,12 @@
       			if(e.keyCode==13)
       			$("#cancel_core_literacy_standard").click();
     		});		
-			$("#close_info_core_literacy_standard").click(function(){
-		    	$("#form_info_core_literacy_standard_a").fadeOut(700, function(){ $("#form_info_core_literacy_standard").slideUp(400) });
-		  	});
-		  	$("#open_info_core_literacy_standard").click(function(){
-		    	$("#form_info_core_literacy_standard").slideDown(400, function(){ $("#form_info_core_literacy_standard_a").fadeIn( 2000 ) });
-		  	});	
+			// $("#close_info_core_literacy_standard").click(function(){
+		    	// $("#form_info_core_literacy_standard_a").fadeOut(700, function(){ $("#form_info_core_literacy_standard").slideUp(400) });
+		  	// });
+		  	// $("#open_info_core_literacy_standard").click(function(){
+		    	// $("#form_info_core_literacy_standard").slideDown(400, function(){ $("#form_info_core_literacy_standard_a").fadeIn( 2000 ) });
+		  	// });	
 			$("#submit_core_literacy_standard").on('click', function() {
 				// submit_core_literacy_standards
 				// alert("submit");
@@ -5187,7 +5800,7 @@
 				
 				// var input_publisher_product_manifest_core_literacy_standard = $("#publisher_product_manifest_core_literacy_standard").val();
 				// alert(input_publisher_product_manifest_core_literacy_standard);
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 							   ', "core_literacy_standard":"' + val + 
 							   '"}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -5279,12 +5892,12 @@
       			if(e.keyCode==13)
       			$("#cancel_core_math_standard").click();
     		});		
-			$("#close_info_core_math_standard").click(function(){
-		    	$("#form_info_core_math_standard_a").fadeOut(700, function(){ $("#form_info_core_math_standard").slideUp(400) });
-		  	});
-		  	$("#open_info_core_math_standard").click(function(){
-		    	$("#form_info_core_math_standard").slideDown(400, function(){ $("#form_info_core_math_standard_a").fadeIn( 2000 ) });
-		  	});	
+			// $("#close_info_core_math_standard").click(function(){
+		    	// $("#form_info_core_math_standard_a").fadeOut(700, function(){ $("#form_info_core_math_standard").slideUp(400) });
+		  	// });
+		  	// $("#open_info_core_math_standard").click(function(){
+		    	// $("#form_info_core_math_standard").slideDown(400, function(){ $("#form_info_core_math_standard_a").fadeIn( 2000 ) });
+		  	// });	
 			$("#submit_core_math_standard").on('click', function() {
 				// submit_core_math_standards
 				// alert("submit");
@@ -5308,7 +5921,7 @@
 				
 				// var input_publisher_product_manifest_core_math_standard = $("#publisher_product_manifest_core_math_standard").val();
 				// alert(input_publisher_product_manifest_core_math_standard);
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 							   ', "core_math_standard":"' + val + 
 							   '"}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
@@ -5342,7 +5955,7 @@
 
 			$("#submit_source_url").on('click', function() {
 				var input_publisher_product_manifest_source_url = $("#publisher_product_manifest_source_url").val();
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 							   ', "source_url":"' + input_publisher_product_manifest_source_url + 
 							   '"}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -5379,7 +5992,7 @@
 			$("#submit_updating_refresh_rate").on('click', function() {
 				var input_publisher_product_manifest_updating_refresh_rate = $("#publisher_product_manifest_updating_refresh_rate").val();
 				// alert(input_publisher_product_manifest_updating_refresh_rate);
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 							   ', "updating_refresh_rate":"' + input_publisher_product_manifest_updating_refresh_rate + 
 							   '"}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -5418,7 +6031,7 @@
 			$("#submit_updating_type").on('click', function() {
 				var input_publisher_product_manifest_updating_type = $("#publisher_product_manifest_updating_type").val();
 				// alert(input_publisher_product_manifest_updating_type);
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 							   ', "updating_type":"' + input_publisher_product_manifest_updating_type + 
 							   '"}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -5457,7 +6070,7 @@
 			$("#submit_character").on('click', function() {
 				var input_publisher_product_manifest_character = $("#publisher_product_manifest_character").val();
 				// alert(input_publisher_product_manifest_character);
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 							   ', "character":"' + input_publisher_product_manifest_character + 
 							   '"}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -5501,7 +6114,7 @@
 				var ch_publisher_product_manifest_reselling = $("#ch_publisher_product_manifest_reselling").is(':checked');
 				if( ch_publisher_product_manifest_reselling !== gon_reselling ) {
 					gon_reselling = ch_publisher_product_manifest_reselling;
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "reselling":' + ch_publisher_product_manifest_reselling + 
 								   '}';      
 				  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -5531,7 +6144,7 @@
 				var ch_publisher_product_manifest_evaluation = $("#ch_publisher_product_manifest_evaluation").is(':checked');
 				if( ch_publisher_product_manifest_evaluation !== gon_evaluation ) {
 					gon_evaluation = ch_publisher_product_manifest_evaluation;
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "evaluation":' + ch_publisher_product_manifest_evaluation + 
 								   '}';      
 				  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -5610,12 +6223,12 @@
 				show_control("allow_teacher_rating");
 				// show_edit_control("allow_teacher_rating", "right");
 			});
-			$("#close_info_allow_teacher_rating").click(function(){
-		    	$("#form_info_allow_teacher_rating_a").fadeOut(700, function(){ $("#form_info_allow_teacher_rating").slideUp(400) });
-		  	});
-		  	$("#open_info_allow_teacher_rating").click(function(){
-		    	$("#form_info_allow_teacher_rating").slideDown(400, function(){ $("#form_info_allow_teacher_rating_a").fadeIn( 2000 ) });
-		  	});	    		
+			// $("#close_info_allow_teacher_rating").click(function(){
+		    	// $("#form_info_allow_teacher_rating_a").fadeOut(700, function(){ $("#form_info_allow_teacher_rating").slideUp(400) });
+		  	// });
+		  	// $("#open_info_allow_teacher_rating").click(function(){
+		    	// $("#form_info_allow_teacher_rating").slideDown(400, function(){ $("#form_info_allow_teacher_rating_a").fadeIn( 2000 ) });
+		  	// });	    		
 
 			$("#cb_container_allow_teacher_rating").on('click', function() {
 				// cb_publisher_product_manifest_allow_teacher_rating
@@ -5682,7 +6295,7 @@
 
 				if(b_allow_teacher_rating_changed || b_user_rating_changed) {
 					
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "allow_teacher_rating":' + cb_publisher_product_manifest_allow_teacher_rating + 
 								   ', "user_rating":"' + input_publisher_product_manifest_user_rating + 
 								   '"}';      
@@ -5748,18 +6361,18 @@
 			$("#close_info_allow_student_likes").click(function(){
 		    	$("#form_info_allow_student_likes_a").fadeOut(700, function(){ $("#form_info_allow_student_likes").slideUp(400) });
 		  	});
-		  	$("#open_info_allow_student_likes").click(function(){
-		    	$("#form_info_allow_student_likes").slideDown(400, function(){ $("#form_info_allow_student_likes_a").fadeIn( 2000 ) });
-		  	});	    		
-			$("#cb_container_allow_student_likes").on('click', function() {
-				// cb_publisher_product_manifest_allow_student_likes
-				set_cb("cb_publisher_product_manifest_allow_student_likes", "cb_allow_student_likes");
-			});
+		  	// $("#open_info_allow_student_likes").click(function(){
+		    	// $("#form_info_allow_student_likes").slideDown(400, function(){ $("#form_info_allow_student_likes_a").fadeIn( 2000 ) });
+		  	// });	    		
+			// $("#cb_container_allow_student_likes").on('click', function() {
+				// // cb_publisher_product_manifest_allow_student_likes
+				// set_cb("cb_publisher_product_manifest_allow_student_likes", "cb_allow_student_likes");
+			// });
 			$("#submit_allow_student_likes").on('click', function() {
 				var cb_publisher_product_manifest_allow_student_likes = $("#cb_publisher_product_manifest_allow_student_likes").is(':checked');
 				if( cb_publisher_product_manifest_allow_student_likes !== gon_allow_student_likes ) {
 					gon_allow_student_likes = cb_publisher_product_manifest_allow_student_likes;
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "allow_student_likes":' + cb_publisher_product_manifest_allow_student_likes + 
 								   '}';      
 				  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -5823,18 +6436,18 @@
 			$("#close_info_allow_comments").click(function(){
 		    	$("#form_info_allow_comments_a").fadeOut(700, function(){ $("#form_info_allow_comments").slideUp(400) });
 		  	});
-		  	$("#open_info_allow_comments").click(function(){
-		    	$("#form_info_allow_comments").slideDown(400, function(){ $("#form_info_allow_comments_a").fadeIn( 2000 ) });
-		  	});	    		
-			$("#cb_container_allow_comments").on('click', function() {
-				// cb_publisher_product_manifest_allow_comments
-				set_cb("cb_publisher_product_manifest_allow_comments", "cb_allow_comments");
-			});
+		  	// $("#open_info_allow_comments").click(function(){
+		    	// $("#form_info_allow_comments").slideDown(400, function(){ $("#form_info_allow_comments_a").fadeIn( 2000 ) });
+		  	// });	    		
+			// $("#cb_container_allow_comments").on('click', function() {
+				// // cb_publisher_product_manifest_allow_comments
+				// set_cb("cb_publisher_product_manifest_allow_comments", "cb_allow_comments");
+			// });
 			$("#submit_allow_comments").on('click', function() {
 				var cb_publisher_product_manifest_allow_comments = $("#cb_publisher_product_manifest_allow_comments").is(':checked');
 				if( cb_publisher_product_manifest_allow_comments !== gon_allow_comments ) {
 					gon_allow_comments = cb_publisher_product_manifest_allow_comments;
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "allow_comments":' + cb_publisher_product_manifest_allow_comments + 
 								   '}';      
 				  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -5907,7 +6520,7 @@
 				var cb_publisher_product_manifest_poster_print_purchase = $("#cb_publisher_product_manifest_poster_print_purchase").is(':checked');
 				if( cb_publisher_product_manifest_poster_print_purchase !== gon_poster_print_purchase ) {
 					gon_poster_print_purchase = cb_publisher_product_manifest_poster_print_purchase;
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "poster_print_purchase":' + cb_publisher_product_manifest_poster_print_purchase + 
 								   '}';      
 				  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -5980,7 +6593,7 @@
 				var cb_publisher_product_manifest_poster_pin_web = $("#cb_publisher_product_manifest_poster_pin_web").is(':checked');
 				if( cb_publisher_product_manifest_poster_pin_web !== gon_poster_pin_web ) {
 					gon_poster_pin_web = cb_publisher_product_manifest_poster_pin_web;
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "poster_pin_web":' + cb_publisher_product_manifest_poster_pin_web + 
 								   '}';      
 				  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -6053,7 +6666,7 @@
 				var cb_publisher_product_manifest_poster_pin_purchase = $("#cb_publisher_product_manifest_poster_pin_purchase").is(':checked');
 				if( cb_publisher_product_manifest_poster_pin_purchase !== gon_poster_pin_purchase ) {
 					gon_poster_pin_purchase = cb_publisher_product_manifest_poster_pin_purchase;
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "poster_pin_purchase":' + cb_publisher_product_manifest_poster_pin_purchase + 
 								   '}';      
 				  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -6174,7 +6787,7 @@
 				
 				if(!arraysAreIdentical(ar_publisher_product_manifest_research, gon_research)) {
 					gon_research = ar_publisher_product_manifest_research;
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "research":"' + input_publisher_product_manifest_research + 
 								   '"}';      
 				  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
@@ -6242,7 +6855,7 @@
 				
 				if(!arraysAreIdentical(ar_public_relations, gon_public_relations)) {
 					gon_public_relations = ar_public_relations;
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "pr_updates_1":' + ch_publisher_product_manifest_pr_updates_1 + 
 								   ', "pr_updates_2":' + ch_publisher_product_manifest_pr_updates_2 + 
 								   ', "pr_updates_3":' + ch_publisher_product_manifest_pr_updates_3 + 
@@ -6336,7 +6949,7 @@
 				
 				if(!arraysAreIdentical(ar_metrics, gon_metrics)) {
 					// gon_metrics = ar_metrics;
-					var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+					var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 								   ', "metrics_1":' + ch_publisher_product_manifest_metrics_1 + 
 								   ', "metrics_2":' + ch_publisher_product_manifest_metrics_2 + 
 								   ', "metrics_3":' + ch_publisher_product_manifest_metrics_3 + 
@@ -6466,7 +7079,7 @@
 			$("#btn_square_purchase").on('click', function() {
 				// var input_amount = $("#amount").val();
 				var input_amount = 23.45;
-				var obj_list = '{ "publisher_product_id":' + <%= @publisher_product_id %> + 
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
 							   ', "amount":' + input_amount + 
 							   '}';      
 			  	var obj = '{ "payment": [' +  obj_list + '] }';                  
@@ -6999,38 +7612,6 @@
 			});
 
 			
-			// onblur="onDivBlur();" 
-			// onmousedown="return cancelEvent(event);" 
-			// onclick="return cancelEvent(event);" 
-			// contentEditable="true" 
-			// onmouseup="saveSelection();" 
-			// onkeyup="saveSelection();" 
-			// onfocus="restoreSelection();"
-
-		    $("#textarea_description_edit").on ('blur', function (e) {
-				onDivBlur_description();
-		    });
-		    $("#textarea_description_edit").on ('mousedown', function (e) {
-				return cancelEvent_description(e);
-		    });
-		    $("#textarea_description_edit").on ('click', function (e) {
-				return cancelEvent_description(e);
-		    });
-		    $("#textarea_description_edit").on ('mouseup', function (e) {
-				saveSelection_description();
-		    });
-		    $("#textarea_description_edit").on ('keyup', function (e) {
-				saveSelection_description();
-		    });
-		    $("#textarea_description_edit").on ('focus', function (e) {
-				restoreSelection_description();
-		    });
-		    $("#textarea_description_edit").on ('keydown', function (e) {
-		    	if( e.keyCode == 9) {
-		    		e.preventDefault();
-					insertTextAtCursor_description("\t");
-		    	}
-		    });
 		
 		
 		
@@ -7064,441 +7645,6 @@
 				
 	</script>
 
-	<script>
-		
-	  	function showEditStory1() {
-			$("#open_edit_story_1, .show-story-1").fadeOut(200, function(){    			
-				$("#open_edit_story_1").addClass("hidden");
-				$("#close_edit_story_1").fadeIn(200).removeClass("hidden");
-				
-    			$(".show-story-1").addClass("hidden");
-    			$(".edit-story-1").fadeIn(300).removeClass("hidden");
-    			
-				// $("#btns_edit_story_1").fadeIn(200).removeClass("hidden");
-				$("#btns_edit_story_1").fadeIn(200).removeClass("visibility-hidden");
-    			
-				$(".edit-image").fadeIn(200).removeClass("hidden");
-				$(".container-figure-image-1 figure").removeClass("cursor-pointer");
-				$(".drop-1-container").removeClass("hidden");
-				$(".container-figure-image-2 figure").removeClass("cursor-pointer");
-				$(".drop-2-container").removeClass("hidden");
-				$(".container-figure-image-3 figure").removeClass("cursor-pointer");
-				$(".drop-3-container").removeClass("hidden");
-    			
-				$(".container-figure-image-1").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
-				$(".container-figure-image-2").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
-				$(".container-figure-image-3").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
-				    			
-				showEditTextareaStory1();				    			
-				    			
-				// $(".edit-image").fadeIn(200).removeClass("hidden");
-				// $(".container-figure figure").removeClass("cursor-pointer");
-				// $(".container-figure-logo figure").removeClass("cursor-pointer");
-				// // $("#drop_container_user_image_primary").addClass("drop");
-				// // $("#drop_container_logo_image").addClass("drop");
-				// // $(".container-menu .dropdownContain").removeClass("hidden");
-				
-				// $(".drop-1-container").removeClass("hidden");
-				// $(".drop-2-container").removeClass("hidden");
-				
-				// showEditImage1();
-								
-    			$("#publisher_name_company").focus();
-				
-    		});
-	  	}
-	  
-	  	function cancelEditStory1() {
-	  		$(".edit-story-1").fadeOut(200, function(){
-    			$(".edit-story-1").addClass("hidden");
-    			$(".show-story-1").removeClass("hidden").fadeIn(300);
-
-				$("#open_edit_story_1").removeClass("hidden").fadeIn(200);
-				$("#close_edit_story_1").addClass("hidden");
-
-				// $("#btns_edit_story_1").removeAttr("style");
-				// $("#btns_edit_story_1").addClass("hidden");
-				$("#btns_edit_story_1").addClass("visibility-hidden");
-
-				$(".edit-image").removeAttr("style");				
-				$(".edit-image").fadeIn(200).addClass("hidden");
-				$(".dialog-11-figure").addClass("cursor-pointer");
-				$(".dialog-21-figure").addClass("cursor-pointer");
-				$(".dialog-31-figure").addClass("cursor-pointer");
-				
-				$(".drop-1-container").addClass("hidden");				
-				$(".drop-2-container").addClass("hidden");				
-				$(".drop-3-container").addClass("hidden");				
-
-				$(".container-figure-image-1").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
-				$(".container-figure-image-2").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
-				$(".container-figure-image-3").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
-
-				cancelEditTextareaStory1();
-				
-				// cancelEditImage1();
-				
-				// $(".edit-image").removeAttr("style");				
-				// $(".edit-image").fadeIn(200).addClass("hidden");
-				// $(".dialog-11-figure").addClass("cursor-pointer");
-				// $(".dialog-21-figure").addClass("cursor-pointer");
-				
-				// $(".drop-1-container").addClass("hidden");				
-				// $(".drop-2-container").addClass("hidden");				
-
-				// $(".container-menu .dropdownContain").addClass("hidden");
-				// $("#drop_container_user_image_primary").removeClass("drop");
-				// $("#drop_container_logo_image").removeClass("drop");
-			});
-	  	}
-
-
-		function partialInitRenderTextareaStory1() {
-			var v = $("#textarea_description").html();
-			// var w = $("#render_description_image").html();
-			var w = "";
-			if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
-				$("#textarea_description").addClass("textarea-description-empty");
-			}
-			else {
-				$("#textarea_description").removeClass("textarea-description-empty");
-			}			
-		}
-
-		function partialInitRenderTextareaStory2Edit() {
-			var v = $("#textarea_description_edit").html();
-			// var w = $("#render_description_image_edit").html();
-			var w = "";
-			if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
-				$("#textarea_description_edit").addClass("textarea-description-empty");
-			}
-			else {
-				$("#textarea_description_edit").removeClass("textarea-description-empty");
-			}			
-		}
-
-		// function init_render_story_2_edit() {
-			// partial_init_render_story_2_edit();
-		// }
-		
-		function initRenderTextareaStory1() {
-			$("#textarea_description").html(story_1_description_html);
-			partialInitRenderTextareaStory1();
-		}
-
-
-	  	function showEditTextareaStory1_1() {
-	  		var textarea_html = $("#textarea_description").html();
-    			$("#textarea_description_edit").html(textarea_html);
-	  			$("#textarea_description_edit").focus();								
-		}
-
-	  	function showEditTextareaStory1() {
-			// $("#open_edit_story_2, .show-story-2").fadeOut(200, function(){    			
-				// $("#open_edit_story_2").addClass("hidden");
-				// $("#close_edit_story_2").fadeIn(200).removeClass("hidden");
-    			// $(".show-story-2").addClass("hidden");
-    			// $(".edit-story-2").fadeIn(300).removeClass("hidden");    	
-    			// $("#textarea_description_edit").html(textarea_html);
-				// $(".btn-textarea-description-story-2-container").removeClass("hidden");
-				// // init_render_story_2_edit();
-	  			// $("#textarea_description_edit").focus();
-	  			showEditTextareaStory1_1();								
-    		// });
-	  	}
-	  	function cancelEditTextareaStory1() {
-	  		// $("#render_description_image").html(""); Must call db delete on image
-	  		// $("#textarea_description").html("");
-			initRenderTextareaStory1();
-			// hideEditTextareaStory1();	
-	  	}
-		function closeEditStory2() {
-			$("#submit_story_2_loader").addClass("hidden");
-			$("#submit_story_2_text").removeClass("hidden");
-			cancelEditStory2();		
-		}
-		function hideEditStory1() {
-	  		$(".edit-story-2").fadeOut(200, function(){
-    			$(".edit-story-2").addClass("hidden");
-    			$(".show-story-2").removeClass("hidden").fadeIn(300);
-				$("#open_edit_story_2").removeClass("hidden").fadeIn(200);
-				$("#close_edit_story_2").addClass("hidden");
-			});			
-		}
-
-
-
-		// function set_listing_name_product(name_product, b_name_product) {
-			// if( b_name_product ) {
-				// $("#listing_name_product").removeClass("color-no-record").addClass("color-record");
-			// }
-			// else {
-				// $("#listing_name_product").removeClass("color-record").addClass("color-no-record");
-			// }
-			// $("#listing_name_product").html(name_product);
-		// }
-		// function set_listing_product_tagline(product_tagline, b_product_tagline) {
-			// if( b_product_tagline ) {
-				// $("#listing_product_tagline").removeClass("color-no-record").addClass("color-record");
-			// }
-			// else {
-				// $("#listing_product_tagline").removeClass("color-record").addClass("color-no-record");
-			// }
-			// $("#listing_product_tagline").html(product_tagline);
-		// }
-		// function set_listing_versions(versions, b_versions) {
-			// if( b_versions ) {
-				// $("#listing_versions").removeClass("color-no-record").addClass("color-record");
-			// }
-			// else {
-				// $("#listing_versions").removeClass("color-record").addClass("color-no-record");
-			// }
-			// $("#listing_versions").html(versions);
-		// }
-		
-
-
-
-		var story_1_description_html = null;
-
-		// $(window).load( function() {
-		$(document).ready(function () {				
-
-			document.body.setAttribute('spellcheck', false);
-			
-			story_1_description_html = "<%= @publisher_product_description_description_text.html_safe %>";
-			initRenderTextareaStory1();
-			
-		  	$("#open_edit_story_1").click(function(){
-				showEditStory1();
-		  	});	
-		  	$("#close_edit_story_1").click(function(){
-				cancelEditStory1();
-		  	});	
-		
-    		$("#cancel_edit_story_1").keypress(function(e){
-      			if(e.keyCode==13)
-      			$("#cancel_edit_story_1").click();
-    		});
-			$("#cancel_edit_story_1").on('click', function() {
-				cancelEditStory1();
-			});
-
-    		$("#submit_edit_story_1").keypress(function(e){
-      			if(e.keyCode==13)
-      			$("#submit_edit_story_1").click();
-    		});
-
-			var obj_list = '{"publisher_product_gen_id":' + <%= @publisher_product_gen_id %> + 
-						   '}';      
-
-			// set_control_span("name_company", gon.name_company, gon.b_name_company);
-			// set_control_span("address1", gon.address1, gon.b_address1);
-			// set_control_span("address2", gon.address2, gon.b_address2);
-			$("#submit_edit_story_1").on('click', function() {
-				var input_publisher_product_manifest_name_product = $("#publisher_product_manifest_name_product").val();
-				var input_publisher_product_manifest_product_tagline = $("#publisher_product_manifest_product_tagline").val();
-				var input_publisher_product_manifest_versions = $("#publisher_product_manifest_versions").val();
-				var input_publisher_product_description = $("#textarea_description_edit").html().replace(/\t/g, '\\t');
-				// var input_publisher_product_description = "line 12345";
-				// alert(input_publisher_product_description);
-				var obj_list = '{  "publisher_product_id":' + <%= @publisher_product_id %> +  
-							   ',  "name_product":"' + input_publisher_product_manifest_name_product +
-							   '", "product_tagline":"' + input_publisher_product_manifest_product_tagline +
-							   '", "versions":"' + input_publisher_product_manifest_versions +
-							   '", "description":"' + input_publisher_product_description +
-							   '"}';      
-			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
-			  	$.ajax({
-			    	type: 'POST',
-			    	// data : JSON.stringify(obj),
-			    	data : obj,
-			    	url: '/publisher_product_manifests/update_story_1',			    	
-			    	dataType: "json",
-			    	contentType: "application/json",
-			    	processData: false,
-			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-	            	statusCode: {
-	                	// 200:function() { alert("200"); },
-	                	// 202:function() { alert("202"); }
-	            	},
-	            	success: function(data) {
-						// alert(data.name_first);
-						set_control_span("name_product", data.name_product, data.b_name_product);
-						set_control_span("product_tagline", data.product_tagline, data.b_product_tagline);
-						set_control_span("versions", data.versions, data.b_versions);
-						story_1_description_html = data.description;
-						initRenderTextareaStory1();
-						renderListingPreview("story_1");
-						cancelEditStory1();
-	            	},
-	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
-			  	});
-		  		return false;
-			});
-
-
-		});
-		
-		
-	</script>
-
-	<script>
-
-		// *****
-		// section image_1
-		
-		var id_image_1 = null;
-		
-		function closeAddImage1() {
-			$("#dvLoading_12").addClass("dvLoading-display-none");
-			$(".edit-image").fadeIn(200).removeClass("hidden");
-			$("#close_form12").trigger('click');
-			$("form#new_image_1 input#new_image_1_image").val('');
-		};	  
-
-		function closeChangeImage1() {
-			$("#dvLoading_13").addClass("dvLoading-display-none");
-			$(".edit-image").fadeIn(200).removeClass("hidden");
-			$("#close_form13").trigger('click');
-			$("form#change_image_1 input#change_image_1_image").val('');
-		};	  
-
-		function closeDeleteImage1() {			
-			$(".edit-image").fadeIn(200).removeClass("hidden");
-			$("#close_form14").trigger('click');
-		};	  
-
-		function closeCropImage1() {
-			$(".edit-image").fadeIn(200).removeClass("hidden");
-			$("#close_form15").trigger('click');
-		};	  
-
-		function deleteImage1(id_image) {
-			var formData = {id:id_image};
-		  	$.ajax({
-		    	type: 'POST',
-		    	data : formData,
-		    	url: '/publisher_product_manifests/destroy_image_1',			    	
-		    	dataType: "script",
-		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-            	statusCode: {
-                	// 200:function() { alert("200"); },
-                	// 202:function() { alert("202"); }
-            	},
-            	success: function(data) {
-					// alert("successful");
-            	},
-            	error: function(xhr){  alert("error: " + xhr.statusText); }        
-		  	});
-		}
-
-		function cropImage1() {
-			// var input_image_id = $("#image_id_logo").val();
-			var input_image_id = $("#cropbox_image_1").val();
-			var input_crop_x = $("#id_crop_x_image_1").val();
-			var input_crop_y = $("#id_crop_y_image_1").val();
-			var input_crop_w = $("#id_crop_w_image_1").val();
-			var input_crop_h = $("#id_crop_h_image_1").val();
-			var formData = { image_id: input_image_id,
-							 publisher_product_id: <%= @publisher_product_id %>, 
-							 crop_x: input_crop_x, 
-							 crop_y: input_crop_y,
-							 crop_w: input_crop_w, 
-							 crop_h: input_crop_h 
-						   };
-		  	$.ajax({
-		    	type: 'POST',
-		    	data : formData,
-		    	url: '/publisher_product_manifests/crop_image_1',	
-		    	// cache: false,		    	
-		    	dataType: "script",
-		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-            	statusCode: {
-                	// 200:function() { alert("200"); },
-                	// 202:function() { alert("202"); }
-            	},
-            	success: function(data) {
-					// alert("successful crop");
-            	},
-            	error: function(xhr){  alert("error: " + xhr.statusText); }        
-		  	});
-	  		// return false;
-		}
-
-		// $(window).load( function() {
-		$(document).ready(function () {				
-
-			// *****
-			// section image_1
-			
-			id_image_1 = gon.id_image_1;
-
-			$(document).on("click", "#btn_image_1_new", function() {				
-				$("form#new_image_1 input#new_image_1_image").val('');
-				$("#dialog_12").jqmShow();
-				$("#btn_dlg_12_submit").focus();
-			});		
-			$(document).on("click", "#figcaption_image_1_generic", function() {
-				$("form#new_image_1 input#new_image_1_image").val('');
-				$("#dialog_12").jqmShow();
-			});		
-			$(document).on("click", "#btn_dlg_12_submit", function() {
-				$("form#new_image_1 input#new_image_1_image").click();
-			});	
-			$(document).on("click", "#btn_dlg_12_cancel", function() {
-				$("#close_form12").trigger('click');
-			});
-			$(document).on("change", "form#new_image_1 input#new_image_1_image", function() {
-				$("#dvLoading_12").removeClass("dvLoading-display-none");
-				// $("form#new_image_1 input#btn_submit_dialog_12").click();
-				$("form#new_image_1 input#btn_submit_image_1_new").click();
-			});
-
-			$(document).on("click", "#btn_image_1_change", function() {				
-				$("form#change_image_1 input#change_image_1_image").val('');
-				$("#dialog_13").jqmShow();
-				$("#btn_dlg_13_submit").focus();
-			});		
-			$(document).on("click", "#btn_dlg_13_submit", function() {
-				$("form#change_image_1 input#change_image_1_image").click();
-			});	
-			$(document).on("change", "form#change_image_1 input#change_image_1_image", function() {
-				$("#dvLoading_13").removeClass("dvLoading-display-none");
-				$("form#change_image_1 input#btn_submit_image_1_change").click();
-			});
-			$(document).on("click", "#btn_dlg_13_cancel", function() {
-				$("#close_form13").trigger('click');
-			});
-
-			$(document).on("click", "#btn_dlg_14_submit", function() {
-				deleteImage1(id_image_1);
-			});
-			$(document).on("click", "#btn_dlg_14_cancel", function() {
-				$("#close_form14").trigger('click');
-			});
-			$(document).on("click", "#btn_image_1_delete", function() {
-				$("#dialog_14").jqmShow();
-				$("#btn_dlg_14_cancel").focus();
-			});			
-
-			$(document).on("click", "#btn_image_1_crop", function() {
-				$("#dialog_15").jqmShow();
-			});
-			$(document).on("click", "#btn_dlg_submit_crop_image_1", function() {
-				cropImage1();
-			});
-			$(document).on("click", "#btn_dlg_cancel_crop_image_1", function() {
-				$("#close_form15").trigger('click');
-			});
-			
-			// section image_1
-			// *****
-
-		});
-		
-
-	</script>
 
 	<script>
 
@@ -7882,7 +8028,7 @@
 			
 			$("#submit_edit_story_4").on('click', function() {
 				var input_publisher_product_manifest_corporate_logo_url = $("#publisher_product_manifest_corporate_logo_url").val();
-				var obj_list = '{  "publisher_product_id":' + <%= @publisher_product_id %> +  					
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id +  					
 							   ',  "corporate_logo_url":"' + input_publisher_product_manifest_corporate_logo_url +
 							   '"}';      
 			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
@@ -8204,7 +8350,7 @@
 		// };	  
 // 
 			function deletePDF(publisher_product_pdf_id) {
-				var formData = { publisher_product_id: <%= @publisher_product_id %>, 
+				var formData = { publisher_product_id: publisher_product_id, 
 								 publisher_product_pdf_id: publisher_product_pdf_id 
 							   };
 			  	$.ajax({
@@ -8224,7 +8370,7 @@
 			}
 
 			function deletePDFImage(publisher_product_pdf_id) {
-				var formData = { publisher_product_id: <%= @publisher_product_id %>, 
+				var formData = { publisher_product_id: publisher_product_id, 
 								 publisher_product_pdf_id: publisher_product_pdf_id 
 							   };
 			  	$.ajax({
@@ -9037,6 +9183,86 @@
 		    });
 		
 			
+			
+			
+			
+			// if(<#%= @b_lesson_plan_subject %#>) {
+				// $("#render_lesson_plan_subject").html("");
+			// }
+			// else {
+				// $("#render_lesson_plan_subject").addClass("check-required");
+			// }
+			// set_control_required("lesson_plan_subject", <#%= @b_required_lesson_plan_subject %#>);
+    		$("#submit_lesson_plan_subject").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_lesson_plan_subject").click();
+    		});
+    		// $("#submit_lesson_plan_subject").on('click', function() {
+    			// $("#submit_lesson_plan_subject_hidden").trigger("click");
+    		// });
+    		$("#cancel_lesson_plan_subject").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_lesson_plan_subject").click();
+    		});	
+			$("#cancel_lesson_plan_subject").on('click', function() {
+				show_control("lesson_plan_subject");
+			});
+			$("#open_edit_lesson_plan_subject").click(function(){
+	    		$("#show_lesson_plan_subject, #open_edit_lesson_plan_subject").fadeOut(300, function(){
+	    			$("#show_lesson_plan_subject").addClass("hidden");
+	    			$("#open_edit_lesson_plan_subject").addClass("visibility-hidden");
+	    			$("#edit_lesson_plan_subject").fadeIn(1300).removeClass("hidden");
+	    			showEditStory12();	    			
+	    			$("#lesson_plan_subject").focus();
+	    		});
+		  	});    		
+			$("#close_info_lesson_plan_subject").click(function(){
+		    	$("#form_info_lesson_plan_subject_a").fadeOut(700, function(){ $("#form_info_lesson_plan_subject").slideUp(400) });
+		  	});
+		  	$("#open_info_lesson_plan_subject").click(function(){
+		    	$("#form_info_lesson_plan_subject").slideDown(400, function(){ $("#form_info_lesson_plan_subject_a").fadeIn( 2000 ) });
+		  	});	
+			$("#submit_lesson_plan_subject").on('click', function() {
+				var input_publisher_product_subject = $("#textarea_lesson_plan_subject_edit").html().replace(/\t/g, '\\t');				
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "subject":"' + input_publisher_product_subject + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_lesson_plan_subject',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						story_12_lesson_plan_subject_html = data.subject;
+						initRenderTextareaStory12();
+						show_control("lesson_plan_subject");
+						// set_control_required("lesson_plan_subject", data.b_required);						
+						// if (data.lesson_plan_subject.length > 0) {      		
+							// $("#publisher_product_manifest_lesson_plan_subject").attr("value", data.lesson_plan_subject);
+							// $("#render_lesson_plan_subject").removeClass("check-required");
+							// $("#render_lesson_plan_subject").addClass("check-affirm");
+						// }
+						// else {
+							// $("#publisher_product_manifest_lesson_plan_subject").attr("value", "");
+							// $("#render_lesson_plan_subject").removeClass("check-affirm");
+							// $("#render_lesson_plan_subject").addClass("check-required");
+						// }							
+						// $("#focus_51").focus();
+						// set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+			
+			
+			
 			// story 12 lesson_plan_subject
 			// *****
 
@@ -9044,4 +9270,1267 @@
 		});
 		
 				
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+		
+		// // *****
+		// // html textarea - subject
+// 
+		// var savedRange_lesson_plan_subject,isInFocus_lesson_plan_subject;
+// 
+ 		// function saveSelection_lesson_plan_subject()
+		// {
+		    // if(window.getSelection)//non IE Browsers
+		    // {
+		        // savedRange_lesson_plan_subject = window.getSelection().getRangeAt(0);
+		    // }
+		    // else if(document.selection)//IE
+		    // { 
+		        // savedRange_lesson_plan_subject = document.selection.createRange();  
+		    // } 
+		// }
+// 		
+		// function restoreSelection_lesson_plan_subject()
+		// {
+		    // isInFocus_lesson_plan_subject = true;
+		    // document.getElementById("textarea_lesson_plan_subject_edit").focus();
+		    // if (savedRange_lesson_plan_subject != null) {
+		        // if (window.getSelection)//non IE and there is already a selection
+		        // {
+		            // var s = window.getSelection();
+		            // if (s.rangeCount > 0) 
+		                // s.removeAllRanges();
+		            // s.addRange(savedRange_lesson_plan_subject);
+		        // }
+		        // else if (document.createRange)//non IE and no selection
+		        // {
+		            // window.getSelection().addRange(savedRange_lesson_plan_subject);
+		        // }
+		        // else if (document.selection)//IE
+		        // {
+		            // savedRange_lesson_plan_subject.select();
+		        // }
+		    // }
+		// }
+// 		
+		// //this part onwards is only needed if you want to restore selection onclick
+		// var isInFocus_lesson_plan_subject = false;
+		// function onDivBlur_lesson_plan_subject()
+		// {
+		    // isInFocus_lesson_plan_subject = false;
+		// }
+// 		
+		// function cancelEvent_lesson_plan_subject(e)
+		// {
+		    // if (isInFocus_lesson_plan_subject == false && savedRange_lesson_plan_subject != null) {
+		        // if (e && e.preventDefault) {
+		            // //alert("FF");
+		            // e.stopPropagation(); // DOM style (return false doesn't always work in FF)
+		            // e.preventDefault();
+		        // }
+		        // else {
+		            // window.event.cancelBubble = true;//IE stopPropagation
+		        // }
+		        // restoreSelection_lesson_plan_subject();
+		        // return false; // false = IE style
+		    // }
+		// }
+// 		
+		// function insertTextAtCursor_lesson_plan_subject(text) {
+		    // var sel, range, html;
+		    // if (window.getSelection) {
+		        // sel = window.getSelection();
+		        // if (sel.getRangeAt && sel.rangeCount) {
+		            // range = sel.getRangeAt(0);
+		            // range.deleteContents();
+		            // range.insertNode( document.createTextNode(text) );
+		            // range.collapse(false);
+		        // }
+		    // } else if (document.selection && document.selection.createRange) {
+		        // document.selection.createRange().text = text;
+		    // }
+		// }			  	
+// 
+		// function doGetCaretPosition (ctrl) {
+			// var CaretPos = 0;   // IE Support
+			// if (document.selection) {
+				// ctrl.focus ();
+				// var Sel = document.selection.createRange ();
+				// Sel.moveStart ('character', -ctrl.value.length);
+				// CaretPos = Sel.text.length;
+			// }
+			// // Firefox support
+			// else if (ctrl.selectionStart || ctrl.selectionStart == '0') {
+				// CaretPos = ctrl.selectionStart;
+			// }
+			// return (CaretPos);
+		// }
+// 		
+// 		
+		// // *****
+		// // story 12 lesson_plan_subject
+// 		
+		// var story_12_lesson_plan_subject_html = null;
+// 		
+		// function partialInitRenderStory12() {
+			// var v = $("#textarea_lesson_plan_subject").html();
+			// if ( (v == "<br>") || (v == "") ) {
+				// $("#textarea_lesson_plan_subject").addClass("textarea-subject-empty");
+			// }
+			// else {
+				// $("#textarea_lesson_plan_subject").removeClass("textarea-subject-empty");
+			// }			
+		// }
+// 
+		// function partialInitRenderStory12Edit() {
+			// var v = $("#textarea_lesson_plan_subject_edit").html();
+			// if ( (v == "<br>") || (v == "") ) {
+				// $("#textarea_lesson_plan_subject_edit").addClass("textarea-subject-empty");
+			// }
+			// else {
+				// $("#textarea_lesson_plan_subject_edit").removeClass("textarea-subject-empty");
+			// }			
+		// }
+// 
+		// function initRenderTextareaStory12() {
+			// $("#textarea_lesson_plan_subject").html(story_12_lesson_plan_subject_html);
+			// // partial_init_render_story_12();
+			// partialInitRenderStory12();
+		// }
+// 
+	  	// function showEditStory12_1() {
+	  		// var textarea_html = $("#textarea_lesson_plan_subject").html();
+    		// $("#textarea_lesson_plan_subject_edit").html(textarea_html);
+	  		// $("#textarea_lesson_plan_subject_edit").focus();								
+		// }
+// 
+	  	// function showEditStory12() {
+	  		// showEditStory12_1();								
+	  	// }
+	  	// // function cancelEditStory12() {
+			// // init_render_story_12();
+			// // hideEditStory12();	
+	  	// // }
+		// // function closeEditStory12() {
+			// // $("#submit_story_12_loader").addClass("hidden");
+			// // $("#submit_story_12_text").removeClass("hidden");
+			// // cancelEditStory12();		
+		// // }
+		// // function hideEditStory12() {
+	  		// // $(".edit-story-2").fadeOut(200, function(){
+    			// // $(".edit-story-2").addClass("hidden");
+    			// // $(".show-story-2").removeClass("hidden").fadeIn(300);
+				// // $("#open_edit_story_12").removeClass("hidden").fadeIn(200);
+				// // $("#close_edit_story_12").addClass("hidden");
+			// // });			
+		// // }
+
+		
+		function partialInitRenderTextareaDescription() {
+			var v = $("#textarea_description").html();
+			// var w = $("#render_description_image").html();
+			var w = "";
+			if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+				$("#textarea_description").addClass("textarea-description-empty");
+			}
+			else {
+				$("#textarea_description").removeClass("textarea-description-empty");
+			}			
+		}
+		
+		function initRenderTextareaDescription() {
+			$("#textarea_description").html(description_html);
+			partialInitRenderTextareaDescription();
+		}
+
+		
+		var description_html = null;
+		
+		
+		// $(window).load( function() {
+		$(document).ready(function () {				
+
+
+			// *****
+			// description
+
+			document.body.setAttribute('spellcheck', false);
+			
+			description_html = "<%= @publisher_product_description_description_text.html_safe %>";
+			initRenderTextareaDescription();
+
+
+			// document.body.setAttribute('spellcheck', false);
+// 
+			// story_12_lesson_plan_subject_html = "<#%= @publisher_product_subject_subject_text.html_safe %#>";
+			// initRenderTextareaStory12();
+
+		    // $("#textarea_lesson_plan_subject_edit").on ('blur', function (e) {
+				// onDivBlur_lesson_plan_subject();
+		    // });
+		    // $("#textarea_lesson_plan_subject_edit").on ('mousedown', function (e) {
+				// return cancelEvent_lesson_plan_subject(e);
+		    // });
+		    // $("#textarea_lesson_plan_subject_edit").on ('click', function (e) {
+				// return cancelEvent_lesson_plan_subject(e);
+		    // });
+		    // $("#textarea_lesson_plan_subject_edit").on ('mouseup', function (e) {
+				// saveSelection_lesson_plan_subject();
+		    // });
+		    // $("#textarea_lesson_plan_subject_edit").on ('keyup', function (e) {
+				// saveSelection_lesson_plan_subject();
+		    // });
+		    // $("#textarea_lesson_plan_subject_edit").on ('focus', function (e) {
+				// restoreSelection_lesson_plan_subject();
+		    // });
+		    // $("#textarea_lesson_plan_subject_edit").on ('keydown', function (e) {
+		    	// if( e.keyCode == 9) {
+		    		// e.preventDefault();
+					// insertTextAtCursor_lesson_plan_subject("\t");
+		    	// }
+		    // });
+		
+			
+			// onblur="onDivBlur();" 
+			// onmousedown="return cancelEvent(event);" 
+			// onclick="return cancelEvent(event);" 
+			// contentEditable="true" 
+			// onmouseup="saveSelection();" 
+			// onkeyup="saveSelection();" 
+			// onfocus="restoreSelection();"
+
+		    $("#textarea_description_edit").on ('blur', function (e) {
+				onDivBlur_description();
+		    });
+		    $("#textarea_description_edit").on ('mousedown', function (e) {
+				return cancelEvent_description(e);
+		    });
+		    $("#textarea_description_edit").on ('click', function (e) {
+				return cancelEvent_description(e);
+		    });
+		    $("#textarea_description_edit").on ('mouseup', function (e) {
+				saveSelection_description();
+		    });
+		    $("#textarea_description_edit").on ('keyup', function (e) {
+				saveSelection_description();
+		    });
+		    $("#textarea_description_edit").on ('focus', function (e) {
+				restoreSelection_description();
+		    });
+		    $("#textarea_description_edit").on ('keydown', function (e) {
+		    	if( e.keyCode == 9) {
+		    		e.preventDefault();
+					insertTextAtCursor_description("\t");
+		    	}
+		    });
+
+			
+			
+			
+    		$("#submit_description").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_description").click();
+    		});
+    		$("#cancel_description").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_description").click();
+    		});	
+			$("#cancel_description").on('click', function() {
+				show_control("description");
+			});
+			$("#open_edit_description").click(function(){
+	    		$("#show_description, #open_edit_description").fadeOut(300, function(){
+	    			$("#show_description").addClass("hidden");
+	    			// $("#open_edit_lesson_plan_subject").addClass("visibility-hidden");
+	    			$("#edit_description").fadeIn(1300).removeClass("hidden");
+	    			// showEditStory12();	    			
+	    			// $("#lesson_plan_subject").focus();
+	    		});
+		  	});    		
+			// $("#close_info_lesson_plan_subject").click(function(){
+		    	// $("#form_info_lesson_plan_subject_a").fadeOut(700, function(){ $("#form_info_lesson_plan_subject").slideUp(400) });
+		  	// });
+		  	// $("#open_info_lesson_plan_subject").click(function(){
+		    	// $("#form_info_lesson_plan_subject").slideDown(400, function(){ $("#form_info_lesson_plan_subject_a").fadeIn( 2000 ) });
+		  	// });	
+			$("#submit_description").on('click', function() {
+				// var input_publisher_product_description = $("#textarea_lesson_plan_subject_edit").html().replace(/\t/g, '\\t');			
+				var input_publisher_product_description = $("#textarea_description_edit").html().replace(/\t/g, '\\t');
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   '", "description":"' + input_publisher_product_description +
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_description',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+						// story_12_lesson_plan_subject_html = data.subject;
+						// initRenderTextareaStory12();
+						show_control("description");
+						// set_control_required("lesson_plan_subject", data.b_required);						
+						// if (data.lesson_plan_subject.length > 0) {      		
+							// $("#publisher_product_manifest_lesson_plan_subject").attr("value", data.lesson_plan_subject);
+							// $("#render_lesson_plan_subject").removeClass("check-required");
+							// $("#render_lesson_plan_subject").addClass("check-affirm");
+						// }
+						// else {
+							// $("#publisher_product_manifest_lesson_plan_subject").attr("value", "");
+							// $("#render_lesson_plan_subject").removeClass("check-affirm");
+							// $("#render_lesson_plan_subject").addClass("check-required");
+						// }							
+						// $("#focus_51").focus();
+						// set_updated(data.updated);													
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+			
+			
+			
+			// story 12 lesson_plan_subject
+			// *****
+
+
+		});
+		
+				
+	</script>
+
+
+
+
+	<!-- <script>
+		
+	  	function showEditStory1() {
+			$("#open_edit_story_1, .show-story-1").fadeOut(200, function(){    			
+				$("#open_edit_story_1").addClass("hidden");
+				// $("#close_edit_story_1").fadeIn(200).removeClass("hidden");
+				// $("#submit_edit_story_1").fadeIn(200).removeClass("hidden");
+				$("#close_submit_edit_story_1").fadeIn(200).removeClass("hidden");
+				
+    			$(".show-story-1").addClass("hidden");
+    			$(".edit-story-1").fadeIn(300).removeClass("hidden");
+    			
+				// $("#btns_edit_story_1").fadeIn(200).removeClass("hidden");
+				$("#btns_edit_story_1").fadeIn(200).removeClass("visibility-hidden");
+    			
+				$(".edit-image").fadeIn(200).removeClass("hidden");
+				// $(".container-figure-image-1 figure").removeClass("cursor-pointer");
+				// $(".drop-1-container").removeClass("hidden");
+				// $(".container-figure-image-2 figure").removeClass("cursor-pointer");
+				// $(".drop-2-container").removeClass("hidden");
+				// $(".container-figure-image-3 figure").removeClass("cursor-pointer");
+				// $(".drop-3-container").removeClass("hidden");
+    			
+				$(".container-figure-image-1").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+				$(".container-figure-image-2").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+				$(".container-figure-image-3").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+				    			
+				showEditTextareaStory1();				    			
+				    			
+				// $(".edit-image").fadeIn(200).removeClass("hidden");
+				// $(".container-figure figure").removeClass("cursor-pointer");
+				// $(".container-figure-logo figure").removeClass("cursor-pointer");
+				// // $("#drop_container_user_image_primary").addClass("drop");
+				// // $("#drop_container_logo_image").addClass("drop");
+				// // $(".container-menu .dropdownContain").removeClass("hidden");
+				
+				// $(".drop-1-container").removeClass("hidden");
+				// $(".drop-2-container").removeClass("hidden");
+				
+				// showEditImage1();
+								
+    			$("#publisher_name_company").focus();
+				
+    		});
+	  	}
+	  
+	  	function cancelEditStory1() {
+	  		$(".edit-story-1").fadeOut(200, function(){
+    			$(".edit-story-1").addClass("hidden");
+    			$(".show-story-1").removeClass("hidden").fadeIn(300);
+
+				$("#open_edit_story_1").removeClass("hidden").fadeIn(200);
+				// $("#close_edit_story_1").addClass("hidden");
+				// $("#submit_edit_story_1").addClass("hidden");
+				$("#close_submit_edit_story_1").addClass("hidden");
+
+				// $("#btns_edit_story_1").removeAttr("style");
+				// $("#btns_edit_story_1").addClass("hidden");
+				$("#btns_edit_story_1").addClass("visibility-hidden");
+
+				$(".edit-image").removeAttr("style");				
+				$(".edit-image").fadeIn(200).addClass("hidden");
+				// $(".dialog-11-figure").addClass("cursor-pointer");
+				// $(".dialog-21-figure").addClass("cursor-pointer");
+				// $(".dialog-31-figure").addClass("cursor-pointer");
+				
+				$(".drop-1-container").addClass("hidden");				
+				$(".drop-2-container").addClass("hidden");				
+				$(".drop-3-container").addClass("hidden");				
+
+				$(".container-figure-image-1").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
+				$(".container-figure-image-2").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
+				$(".container-figure-image-3").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
+
+				cancelEditTextareaStory1();
+				
+				// cancelEditImage1();
+				
+				// $(".edit-image").removeAttr("style");				
+				// $(".edit-image").fadeIn(200).addClass("hidden");
+				// $(".dialog-11-figure").addClass("cursor-pointer");
+				// $(".dialog-21-figure").addClass("cursor-pointer");
+				
+				// $(".drop-1-container").addClass("hidden");				
+				// $(".drop-2-container").addClass("hidden");				
+
+				// $(".container-menu .dropdownContain").addClass("hidden");
+				// $("#drop_container_user_image_primary").removeClass("drop");
+				// $("#drop_container_logo_image").removeClass("drop");
+			});
+	  	}
+
+
+		function partialInitRenderTextareaStory1() {
+			var v = $("#textarea_description").html();
+			// var w = $("#render_description_image").html();
+			var w = "";
+			if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+				$("#textarea_description").addClass("textarea-description-empty");
+			}
+			else {
+				$("#textarea_description").removeClass("textarea-description-empty");
+			}			
+		}
+
+		function partialInitRenderTextareaStory2Edit() {
+			var v = $("#textarea_description_edit").html();
+			// var w = $("#render_description_image_edit").html();
+			var w = "";
+			if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+				$("#textarea_description_edit").addClass("textarea-description-empty");
+			}
+			else {
+				$("#textarea_description_edit").removeClass("textarea-description-empty");
+			}			
+		}
+
+		// function init_render_story_2_edit() {
+			// partial_init_render_story_2_edit();
+		// }
+		
+		function initRenderTextareaStory1() {
+			$("#textarea_description").html(story_1_description_html);
+			partialInitRenderTextareaStory1();
+		}
+
+
+	  	function showEditTextareaStory1_1() {
+	  		var textarea_html = $("#textarea_description").html();
+    			$("#textarea_description_edit").html(textarea_html);
+	  			$("#textarea_description_edit").focus();								
+		}
+
+	  	function showEditTextareaStory1() {
+			// $("#open_edit_story_2, .show-story-2").fadeOut(200, function(){    			
+				// $("#open_edit_story_2").addClass("hidden");
+				// $("#close_edit_story_2").fadeIn(200).removeClass("hidden");
+    			// $(".show-story-2").addClass("hidden");
+    			// $(".edit-story-2").fadeIn(300).removeClass("hidden");    	
+    			// $("#textarea_description_edit").html(textarea_html);
+				// $(".btn-textarea-description-story-2-container").removeClass("hidden");
+				// // init_render_story_2_edit();
+	  			// $("#textarea_description_edit").focus();
+	  			showEditTextareaStory1_1();								
+    		// });
+	  	}
+	  	function cancelEditTextareaStory1() {
+	  		// $("#render_description_image").html(""); Must call db delete on image
+	  		// $("#textarea_description").html("");
+			initRenderTextareaStory1();
+			// hideEditTextareaStory1();	
+	  	}
+		function closeEditStory2() {
+			$("#submit_story_2_loader").addClass("hidden");
+			$("#submit_story_2_text").removeClass("hidden");
+			cancelEditStory2();		
+		}
+		function hideEditStory1() {
+	  		$(".edit-story-2").fadeOut(200, function(){
+    			$(".edit-story-2").addClass("hidden");
+    			$(".show-story-2").removeClass("hidden").fadeIn(300);
+				$("#open_edit_story_2").removeClass("hidden").fadeIn(200);
+				$("#close_edit_story_2").addClass("hidden");
+			});			
+		}
+		function submitEditStory1() {
+			var input_publisher_product_manifest_product_headline = $("#publisher_product_manifest_product_headline").val();
+			var input_publisher_product_manifest_name_product = $("#publisher_product_manifest_name_product").val();
+			var input_publisher_product_manifest_product_tagline = $("#publisher_product_manifest_product_tagline").val();
+			var input_publisher_product_manifest_versions = $("#publisher_product_manifest_versions").val();
+			var input_publisher_product_description = $("#textarea_description_edit").html().replace(/\t/g, '\\t');
+			// var input_publisher_product_description = "line 12345";
+			// alert(input_publisher_product_description);
+			var obj_list = '{  "publisher_product_id":' + publisher_product_id +  
+						   ',  "product_headline":"' + input_publisher_product_manifest_product_headline +
+						   '",  "name_product":"' + input_publisher_product_manifest_name_product +
+						   '", "product_tagline":"' + input_publisher_product_manifest_product_tagline +
+						   '", "versions":"' + input_publisher_product_manifest_versions +
+						   '", "description":"' + input_publisher_product_description +
+						   '"}';      
+		  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+		  	$.ajax({
+		    	type: 'POST',
+		    	// data : JSON.stringify(obj),
+		    	data : obj,
+		    	url: '/publisher_product_manifests/update_story_1',			    	
+		    	dataType: "json",
+		    	contentType: "application/json",
+		    	processData: false,
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert(data.name_first);
+					set_control_span("product_headline", data.product_headline, data.b_product_headline);
+					set_control_span("name_product", data.name_product, data.b_name_product);
+					set_control_span("product_tagline", data.product_tagline, data.b_product_tagline);
+					set_control_span("versions", data.versions, data.b_versions);
+					story_1_description_html = data.description;
+					initRenderTextareaStory1();
+					renderListingPreview("story_1");
+					cancelEditStory1();
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+	  		// return false;
+		}
+
+		// function set_listing_name_product(name_product, b_name_product) {
+			// if( b_name_product ) {
+				// $("#listing_name_product").removeClass("color-no-record").addClass("color-record");
+			// }
+			// else {
+				// $("#listing_name_product").removeClass("color-record").addClass("color-no-record");
+			// }
+			// $("#listing_name_product").html(name_product);
+		// }
+		// function set_listing_product_tagline(product_tagline, b_product_tagline) {
+			// if( b_product_tagline ) {
+				// $("#listing_product_tagline").removeClass("color-no-record").addClass("color-record");
+			// }
+			// else {
+				// $("#listing_product_tagline").removeClass("color-record").addClass("color-no-record");
+			// }
+			// $("#listing_product_tagline").html(product_tagline);
+		// }
+		// function set_listing_versions(versions, b_versions) {
+			// if( b_versions ) {
+				// $("#listing_versions").removeClass("color-no-record").addClass("color-record");
+			// }
+			// else {
+				// $("#listing_versions").removeClass("color-record").addClass("color-no-record");
+			// }
+			// $("#listing_versions").html(versions);
+		// }
+		
+
+
+
+		var story_1_description_html = null;
+		
+		// $(window).load( function() {
+		$(document).ready(function () {				
+
+			document.body.setAttribute('spellcheck', false);
+			
+			story_1_description_html = "<%= @publisher_product_description_description_text.html_safe %>";
+			initRenderTextareaStory1();
+
+    		$("#open_edit_story_1").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#open_edit_story_1").click();
+    		});			
+		  	$("#open_edit_story_1").click(function(){
+				showEditStory1();
+		  	});	
+
+    		$("#close_edit_story_1").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#close_edit_story_1").click();
+    		});			
+		  	$("#close_edit_story_1").click(function(){
+				cancelEditStory1();
+		  	});	
+		  	
+    		$("#submit_edit_story_1").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_edit_story_1").click();
+    		});					  	
+		  	$("#submit_edit_story_1").click(function(){
+				submitEditStory1();
+		  	});	
+		
+    		// $("#cancel_edit_story_1").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#cancel_edit_story_1").click();
+    		// });
+			// $("#cancel_edit_story_1").on('click', function() {
+				// cancelEditStory1();
+			// });
+
+			// var obj_list = '{"publisher_product_gen_id":' + <#%= @publisher_product_gen_id %#> + 
+						   // '}';      
+
+			// // set_control_span("name_company", gon.name_company, gon.b_name_company);
+			// // set_control_span("address1", gon.address1, gon.b_address1);
+			// // set_control_span("address2", gon.address2, gon.b_address2);
+			// $("#submit_edit_story_1").on('click', function() {
+				// var input_publisher_product_manifest_product_headline = $("#publisher_product_manifest_product_headline").val();
+				// var input_publisher_product_manifest_name_product = $("#publisher_product_manifest_name_product").val();
+				// var input_publisher_product_manifest_product_tagline = $("#publisher_product_manifest_product_tagline").val();
+				// var input_publisher_product_manifest_versions = $("#publisher_product_manifest_versions").val();
+				// var input_publisher_product_description = $("#textarea_description_edit").html().replace(/\t/g, '\\t');
+				// // var input_publisher_product_description = "line 12345";
+				// // alert(input_publisher_product_description);
+				// var obj_list = '{  "publisher_product_id":' + publisher_product_id +  
+							   // ',  "product_headline":"' + input_publisher_product_manifest_product_headline +
+							   // ',  "name_product":"' + input_publisher_product_manifest_name_product +
+							   // '", "product_tagline":"' + input_publisher_product_manifest_product_tagline +
+							   // '", "versions":"' + input_publisher_product_manifest_versions +
+							   // '", "description":"' + input_publisher_product_description +
+							   // '"}';      
+			  	// var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+			  	// $.ajax({
+			    	// type: 'POST',
+			    	// // data : JSON.stringify(obj),
+			    	// data : obj,
+			    	// url: '/publisher_product_manifests/update_story_1',			    	
+			    	// dataType: "json",
+			    	// contentType: "application/json",
+			    	// processData: false,
+			    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	// statusCode: {
+	                	// // 200:function() { alert("200"); },
+	                	// // 202:function() { alert("202"); }
+	            	// },
+	            	// success: function(data) {
+						// // alert(data.name_first);
+						// set_control_span("name_product", data.name_product, data.b_name_product);
+						// set_control_span("product_tagline", data.product_tagline, data.b_product_tagline);
+						// set_control_span("versions", data.versions, data.b_versions);
+						// story_1_description_html = data.description;
+						// initRenderTextareaStory1();
+						// renderListingPreview("story_1");
+						// cancelEditStory1();
+	            	// },
+	            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	// });
+		  		// return false;
+			// });
+
+
+		});
+		
+		
+	</script> -->
+
+
+
+
+
+	<script>
+		
+	  	function showEditMode() {
+			$("#open_edit_mode, .show-edit-mode").fadeOut(200, function(){    			
+				$("#open_edit_mode").addClass("hidden");
+				$("#close_edit_mode").fadeIn(200).removeClass("hidden");
+				// $("#submit_edit_story_1").fadeIn(200).removeClass("hidden");
+				// $("#close_submit_edit_story_1").fadeIn(200).removeClass("hidden");
+				
+    			$(".show-edit-mode").addClass("hidden");
+    			// $(".edit-mode").fadeIn(300).removeClass("hidden");
+    			
+				// $("#btns_edit_story_1").fadeIn(200).removeClass("hidden");
+				// $("#btns_edit_story_1").fadeIn(200).removeClass("visibility-hidden");
+    			
+				$(".edit-image").fadeIn(200).removeClass("hidden");
+				// $(".container-figure-image-1 figure").removeClass("cursor-pointer");
+				// $(".drop-1-container").removeClass("hidden");
+				// $(".container-figure-image-2 figure").removeClass("cursor-pointer");
+				// $(".drop-2-container").removeClass("hidden");
+				// $(".container-figure-image-3 figure").removeClass("cursor-pointer");
+				// $(".drop-3-container").removeClass("hidden");
+    			
+				$(".container-figure-image-1").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+				$(".container-figure-image-2").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+				$(".container-figure-image-3").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+				    			
+				// showEditTextareaStory1();				    			
+				    			
+				// $(".edit-image").fadeIn(200).removeClass("hidden");
+				// $(".container-figure figure").removeClass("cursor-pointer");
+				// $(".container-figure-logo figure").removeClass("cursor-pointer");
+				// // $("#drop_container_user_image_primary").addClass("drop");
+				// // $("#drop_container_logo_image").addClass("drop");
+				// // $(".container-menu .dropdownContain").removeClass("hidden");
+				
+				// $(".drop-1-container").removeClass("hidden");
+				// $(".drop-2-container").removeClass("hidden");
+				
+				// showEditImage1();
+								
+    			// $("#publisher_name_company").focus();
+				
+    		});
+	  	}
+	  
+	  	function cancelEditMode() {
+	  		// $(".edit-mode").fadeOut(200, function(){
+    			// $(".edit-mode").addClass("hidden");
+    			$(".show-edit-mode").removeClass("hidden").fadeIn(300);
+
+				$("#open_edit_mode").removeClass("hidden").fadeIn(200);
+				$("#close_edit_mode").addClass("hidden");
+				// $("#submit_edit_story_1").addClass("hidden");
+				// $("#close_submit_edit_story_1").addClass("hidden");
+
+				// $("#btns_edit_story_1").removeAttr("style");
+				// $("#btns_edit_story_1").addClass("hidden");
+				// $("#btns_edit_story_1").addClass("visibility-hidden");
+
+				$(".edit-image").removeAttr("style");				
+				$(".edit-image").fadeIn(200).addClass("hidden");
+				// $(".dialog-11-figure").addClass("cursor-pointer");
+				// $(".dialog-21-figure").addClass("cursor-pointer");
+				// $(".dialog-31-figure").addClass("cursor-pointer");
+				
+				// $(".drop-1-container").addClass("hidden");				
+				// $(".drop-2-container").addClass("hidden");				
+				// $(".drop-3-container").addClass("hidden");				
+
+				$(".container-figure-image-1").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
+				$(".container-figure-image-2").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
+				$(".container-figure-image-3").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
+
+				// cancelEditTextareaStory1();
+				
+				// cancelEditImage1();
+				
+				// $(".edit-image").removeAttr("style");				
+				// $(".edit-image").fadeIn(200).addClass("hidden");
+				// $(".dialog-11-figure").addClass("cursor-pointer");
+				// $(".dialog-21-figure").addClass("cursor-pointer");
+				
+				// $(".drop-1-container").addClass("hidden");				
+				// $(".drop-2-container").addClass("hidden");				
+
+				// $(".container-menu .dropdownContain").addClass("hidden");
+				// $("#drop_container_user_image_primary").removeClass("drop");
+				// $("#drop_container_logo_image").removeClass("drop");
+			// });
+	  	}
+
+
+		function partialInitRenderTextareaStory1() {
+			var v = $("#textarea_description").html();
+			// var w = $("#render_description_image").html();
+			var w = "";
+			if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+				$("#textarea_description").addClass("textarea-description-empty");
+			}
+			else {
+				$("#textarea_description").removeClass("textarea-description-empty");
+			}			
+		}
+
+		function partialInitRenderTextareaStory2Edit() {
+			var v = $("#textarea_description_edit").html();
+			// var w = $("#render_description_image_edit").html();
+			var w = "";
+			if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+				$("#textarea_description_edit").addClass("textarea-description-empty");
+			}
+			else {
+				$("#textarea_description_edit").removeClass("textarea-description-empty");
+			}			
+		}
+
+		// function init_render_story_2_edit() {
+			// partial_init_render_story_2_edit();
+		// }
+		
+		function initRenderTextareaStory1() {
+			$("#textarea_description").html(story_1_description_html);
+			partialInitRenderTextareaStory1();
+		}
+
+
+	  	function showEditTextareaStory1_1() {
+	  		var textarea_html = $("#textarea_description").html();
+    			$("#textarea_description_edit").html(textarea_html);
+	  			$("#textarea_description_edit").focus();								
+		}
+
+	  	function showEditTextareaStory1() {
+			// $("#open_edit_story_2, .show-story-2").fadeOut(200, function(){    			
+				// $("#open_edit_story_2").addClass("hidden");
+				// $("#close_edit_story_2").fadeIn(200).removeClass("hidden");
+    			// $(".show-story-2").addClass("hidden");
+    			// $(".edit-story-2").fadeIn(300).removeClass("hidden");    	
+    			// $("#textarea_description_edit").html(textarea_html);
+				// $(".btn-textarea-description-story-2-container").removeClass("hidden");
+				// // init_render_story_2_edit();
+	  			// $("#textarea_description_edit").focus();
+	  			showEditTextareaStory1_1();								
+    		// });
+	  	}
+	  	function cancelEditTextareaStory1() {
+	  		// $("#render_description_image").html(""); Must call db delete on image
+	  		// $("#textarea_description").html("");
+			initRenderTextareaStory1();
+			// hideEditTextareaStory1();	
+	  	}
+		function closeEditStory2() {
+			$("#submit_story_2_loader").addClass("hidden");
+			$("#submit_story_2_text").removeClass("hidden");
+			cancelEditStory2();		
+		}
+		function hideEditStory1() {
+	  		$(".edit-story-2").fadeOut(200, function(){
+    			$(".edit-story-2").addClass("hidden");
+    			$(".show-story-2").removeClass("hidden").fadeIn(300);
+				$("#open_edit_story_2").removeClass("hidden").fadeIn(200);
+				$("#close_edit_story_2").addClass("hidden");
+			});			
+		}
+		// function submitEditStory1() {
+			// var input_publisher_product_manifest_product_headline = $("#publisher_product_manifest_product_headline").val();
+			// var input_publisher_product_manifest_name_product = $("#publisher_product_manifest_name_product").val();
+			// var input_publisher_product_manifest_product_tagline = $("#publisher_product_manifest_product_tagline").val();
+			// var input_publisher_product_manifest_versions = $("#publisher_product_manifest_versions").val();
+			// var input_publisher_product_description = $("#textarea_description_edit").html().replace(/\t/g, '\\t');
+			// // var input_publisher_product_description = "line 12345";
+			// // alert(input_publisher_product_description);
+			// var obj_list = '{  "publisher_product_id":' + publisher_product_id +  
+						   // ',  "product_headline":"' + input_publisher_product_manifest_product_headline +
+						   // '",  "name_product":"' + input_publisher_product_manifest_name_product +
+						   // '", "product_tagline":"' + input_publisher_product_manifest_product_tagline +
+						   // '", "versions":"' + input_publisher_product_manifest_versions +
+						   // '", "description":"' + input_publisher_product_description +
+						   // '"}';      
+		  	// var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+		  	// $.ajax({
+		    	// type: 'POST',
+		    	// // data : JSON.stringify(obj),
+		    	// data : obj,
+		    	// url: '/publisher_product_manifests/update_story_1',			    	
+		    	// dataType: "json",
+		    	// contentType: "application/json",
+		    	// processData: false,
+		    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	// statusCode: {
+                	// // 200:function() { alert("200"); },
+                	// // 202:function() { alert("202"); }
+            	// },
+            	// success: function(data) {
+					// // alert(data.name_first);
+					// set_control_span("product_headline", data.product_headline, data.b_product_headline);
+					// set_control_span("name_product", data.name_product, data.b_name_product);
+					// set_control_span("product_tagline", data.product_tagline, data.b_product_tagline);
+					// set_control_span("versions", data.versions, data.b_versions);
+					// story_1_description_html = data.description;
+					// initRenderTextareaStory1();
+					// renderListingPreview("story_1");
+					// cancelEditStory1();
+            	// },
+            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	// });
+	  		// // return false;
+		// }
+
+		// function set_listing_name_product(name_product, b_name_product) {
+			// if( b_name_product ) {
+				// $("#listing_name_product").removeClass("color-no-record").addClass("color-record");
+			// }
+			// else {
+				// $("#listing_name_product").removeClass("color-record").addClass("color-no-record");
+			// }
+			// $("#listing_name_product").html(name_product);
+		// }
+		// function set_listing_product_tagline(product_tagline, b_product_tagline) {
+			// if( b_product_tagline ) {
+				// $("#listing_product_tagline").removeClass("color-no-record").addClass("color-record");
+			// }
+			// else {
+				// $("#listing_product_tagline").removeClass("color-record").addClass("color-no-record");
+			// }
+			// $("#listing_product_tagline").html(product_tagline);
+		// }
+		// function set_listing_versions(versions, b_versions) {
+			// if( b_versions ) {
+				// $("#listing_versions").removeClass("color-no-record").addClass("color-record");
+			// }
+			// else {
+				// $("#listing_versions").removeClass("color-record").addClass("color-no-record");
+			// }
+			// $("#listing_versions").html(versions);
+		// }
+		
+
+
+
+		// var story_1_description_html = null;
+		
+		// $(window).load( function() {
+		$(document).ready(function () {				
+
+			document.body.setAttribute('spellcheck', false);
+
+    		$("#open_edit_mode").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#open_edit_mode").click();
+    		});			
+		  	$("#open_edit_mode").click(function(){
+				showEditMode();
+		  	});	
+
+    		$("#close_edit_mode").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#close_edit_mode").click();
+    		});			
+		  	$("#close_edit_mode").click(function(){
+				cancelEditMode();
+		  	});	
+
+			
+			// story_1_description_html = "<#%= @publisher_product_description_description_text.html_safe %#>";
+			// initRenderTextareaStory1();
+
+    		// $("#open_edit_story_1").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#open_edit_story_1").click();
+    		// });			
+		  	// $("#open_edit_story_1").click(function(){
+				// showEditStory1();
+		  	// });	
+
+    		// $("#close_edit_story_1").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#close_edit_story_1").click();
+    		// });			
+		  	// $("#close_edit_story_1").click(function(){
+				// cancelEditStory1();
+		  	// });	
+		  	
+    		// $("#submit_edit_story_1").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#submit_edit_story_1").click();
+    		// });					  	
+		  	// $("#submit_edit_story_1").click(function(){
+				// submitEditStory1();
+		  	// });	
+		
+    		// $("#cancel_edit_story_1").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#cancel_edit_story_1").click();
+    		// });
+			// $("#cancel_edit_story_1").on('click', function() {
+				// cancelEditStory1();
+			// });
+
+			// var obj_list = '{"publisher_product_gen_id":' + <#%= @publisher_product_gen_id %#> + 
+						   // '}';      
+
+			// // set_control_span("name_company", gon.name_company, gon.b_name_company);
+			// // set_control_span("address1", gon.address1, gon.b_address1);
+			// // set_control_span("address2", gon.address2, gon.b_address2);
+			// $("#submit_edit_story_1").on('click', function() {
+				// var input_publisher_product_manifest_product_headline = $("#publisher_product_manifest_product_headline").val();
+				// var input_publisher_product_manifest_name_product = $("#publisher_product_manifest_name_product").val();
+				// var input_publisher_product_manifest_product_tagline = $("#publisher_product_manifest_product_tagline").val();
+				// var input_publisher_product_manifest_versions = $("#publisher_product_manifest_versions").val();
+				// var input_publisher_product_description = $("#textarea_description_edit").html().replace(/\t/g, '\\t');
+				// // var input_publisher_product_description = "line 12345";
+				// // alert(input_publisher_product_description);
+				// var obj_list = '{  "publisher_product_id":' + publisher_product_id +  
+							   // ',  "product_headline":"' + input_publisher_product_manifest_product_headline +
+							   // ',  "name_product":"' + input_publisher_product_manifest_name_product +
+							   // '", "product_tagline":"' + input_publisher_product_manifest_product_tagline +
+							   // '", "versions":"' + input_publisher_product_manifest_versions +
+							   // '", "description":"' + input_publisher_product_description +
+							   // '"}';      
+			  	// var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+			  	// $.ajax({
+			    	// type: 'POST',
+			    	// // data : JSON.stringify(obj),
+			    	// data : obj,
+			    	// url: '/publisher_product_manifests/update_story_1',			    	
+			    	// dataType: "json",
+			    	// contentType: "application/json",
+			    	// processData: false,
+			    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	// statusCode: {
+	                	// // 200:function() { alert("200"); },
+	                	// // 202:function() { alert("202"); }
+	            	// },
+	            	// success: function(data) {
+						// // alert(data.name_first);
+						// set_control_span("name_product", data.name_product, data.b_name_product);
+						// set_control_span("product_tagline", data.product_tagline, data.b_product_tagline);
+						// set_control_span("versions", data.versions, data.b_versions);
+						// story_1_description_html = data.description;
+						// initRenderTextareaStory1();
+						// renderListingPreview("story_1");
+						// cancelEditStory1();
+	            	// },
+	            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	// });
+		  		// return false;
+			// });
+
+
+		});
+		
+		
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+
+		// *****
+		// section image_1
+		
+		var id_image_1 = null;
+		
+		function closeAddImage1() {
+			$("#dvLoading_12").addClass("dvLoading-display-none");
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			$("#close_form101_2").trigger('click');
+			$("form#new_image_1 input#new_image_1_image").val('');
+		};	  
+
+		function closeChangeImage1() {
+			$("#dvLoading_13").addClass("dvLoading-display-none");
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			$("#close_form13").trigger('click');
+			$("form#change_image_1 input#change_image_1_image").val('');
+		};	  
+
+		function closeDeleteImage1() {			
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			$("#close_form14").trigger('click');
+		};	  
+
+		function closeCropImage1() {
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			$("#close_form15").trigger('click');
+		};	  
+
+		function deleteImage1(id_image) {
+			
+			var obj_list = '{  "publisher_product_id":' + publisher_product_id +
+						   ',  "id":' + id_image +
+						   '}';      
+		  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+			
+			// var formData = {id:id_image};
+		  	$.ajax({
+		    	type: 'POST',
+		    	// data : formData,
+		    	data : obj,
+		    	url: '/publisher_product_manifests/destroy_image_1',			    	
+		    	dataType: "script",
+		    	contentType: "application/json",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function cropImage1() {
+			alert("cropImage1");
+			// var input_image_id = $("#image_id_logo").val();
+			var input_image_id = $("#cropbox_image_1").val();
+			var input_crop_x = $("#id_crop_x_image_1").val();
+			var input_crop_y = $("#id_crop_y_image_1").val();
+			var input_crop_w = $("#id_crop_w_image_1").val();
+			var input_crop_h = $("#id_crop_h_image_1").val();
+			var formData = { image_id: input_image_id,
+							 publisher_product_id: publisher_product_id, 
+							 crop_x: input_crop_x, 
+							 crop_y: input_crop_y,
+							 crop_w: input_crop_w, 
+							 crop_h: input_crop_h 
+						   };
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publisher_product_manifests/crop_image_1',	
+		    	// cache: false,		    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful crop");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+	  		// return false;
+		}
+
+
+		// var info_msg = null;
+		
+		// $(window).load( function() {
+		$(document).ready(function () {				
+
+			$('#dialog_overlay').jqm({
+				overlay: 84,
+				onShow: function(hash) {
+					hash.w.css('opacity', 1.0).fadeIn(10);
+					hash.o.prependTo('body');
+					// hash.w.css('top', '0px');
+				},
+				onHide: function(hash) {
+					hash.o.remove();
+					hash.w.css('top', '-8000px');
+				}
+			}); 		
+
+
+			// $(document).on('click', '#open_info_product_headline', function() {
+				// s_scrollPos = (40 + $(window).scrollTop()).toString();
+				// alert(s_scrollPos);
+				// info_msg = "_info_publisher_headline";
+				// $("#dialog_1001").jqmShow();
+			// });
+			// $(document).on("click", '#btn_dlg_1001_cancel', function() {
+				// $("#close_form1001").trigger('click');
+			// });
+
+			// *****
+			// section image_1
+			
+			$("#dialog_101_1 .close-container").on('click', function() {
+			// $(document).on('click', "#dialog_101_1 .close-container", function() {				
+				$("#dialog_101_1 .close-container").css({ 'position' : 'absolute' });
+			});
+
+			id_image_1 = gon.id_image_1;
+
+			$(document).on("btn_image_1_new_click", function() {				
+				$("form#new_image_1 input#new_image_1_image").val('');
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dialog_101_2").jqmShow();
+				$("#btn_dlg_101_2_submit").focus();
+			});		
+			$(document).on("click", "#figcaption_image_1_generic", function() {
+				$("form#new_image_1 input#new_image_1_image").val('');
+				$("#dialog_101_2").jqmShow();
+			});		
+			$(document).on("click", "#btn_dlg_101_2_submit", function() {
+				$("form#new_image_1 input#new_image_1_image").click();
+			});	
+			$(document).on("click", "#btn_dlg_101_2_cancel", function() {
+				$("#close_form101_2").trigger('click');
+			});
+			$(document).on("change", "form#new_image_1 input#new_image_1_image", function() {
+				// alert('on change');
+				$("#dvLoading_12").removeClass("dvLoading-display-none");
+				// $("form#new_image_1 input#btn_submit_dialog_101_2").click();
+				$("form#new_image_1 input#btn_submit_image_1_new").click();
+			});
+
+
+			$(document).on("btn_image_1_change_click", function() {				
+				$("form#change_image_1 input#change_image_1_image").val('');
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dialog_101_3").jqmShow();
+				$("#btn_dlg_101_3_submit").focus();
+			});		
+			$(document).on("click", "#btn_dlg_101_3_submit", function() {
+				$("form#change_image_1 input#change_image_1_image").click();
+			});	
+			$(document).on("change", "form#change_image_1 input#change_image_1_image", function() {
+				$("#dvLoading_13").removeClass("dvLoading-display-none");
+				$("form#change_image_1 input#btn_submit_image_1_change").click();
+			});
+			$(document).on("click", "#btn_dlg_101_3_cancel", function() {
+				$("#close_form101_3").trigger('click');
+			});
+
+			$(document).on("click", "#btn_dlg_101_4_submit", function() {
+				deleteImage1(id_image_1);
+			});
+			$(document).on("click", "#btn_dlg_101_4_cancel", function() {
+				$("#close_form101_4").trigger('click');
+			});
+			$(document).on("btn_image_1_delete_click", function() {
+				$("#dialog_101_4").jqmShow();
+				$("#btn_dlg_101_4_cancel").focus();
+			});			
+
+			$(document).on("btn_image_1_crop_click", function() {
+				$("#dialog_101_5").jqmShow();
+			});
+			$(document).on("click", "#btn_dlg_submit_crop_image_1", function() {
+				cropImage1();
+			});
+			$(document).on("click", "#btn_dlg_cancel_crop_image_1", function() {
+				$("#close_form101_5").trigger('click');
+			});
+			
+			// section image_1
+			// *****
+
+		});
+		
+
 	</script>

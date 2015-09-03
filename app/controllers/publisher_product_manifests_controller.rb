@@ -13,7 +13,7 @@ class PublisherProductManifestsController < ApplicationController
 
 
   before_action :signed_in_user, only: [:index, :index_demo]
-  before_action :fill_left_directory, only: [:index, :index_demo]
+  # before_action :fill_left_directory, only: [:index, :index_demo]
   before_action :verify_params, only: [:index, :index_demo]
 
 
@@ -122,16 +122,13 @@ class PublisherProductManifestsController < ApplicationController
   end
 
 
-  def fill_left_directory
-
-      slug = current_user.slug
-      @url_user_story  = '/' + current_user.slug
-      @url_profile_story = '/' + current_user.publisher.slug
-      
-      # @url_my_story_demo        = '/puid-demo' + slug
-      # @url_corporate_story_demo = '/pcid-demo' + slug
-        
-  end
+  # def fill_left_directory
+      # slug = current_user.slug
+      # @url_user_story  = '/' + current_user.slug
+      # @url_profile_story = '/' + current_user.publisher.slug
+      # # @url_my_story_demo        = '/puid-demo' + slug
+      # # @url_corporate_story_demo = '/pcid-demo' + slug
+  # end
 
     
   # def show_description
@@ -213,7 +210,9 @@ class PublisherProductManifestsController < ApplicationController
       publisher_product = current_user.publisher.publisher_products.where("slug = ?", publisher_product_slug.to_s).first rescue nil
       @publisher_product = publisher_product
       @publisher_product_id = publisher_product.id
-  
+      gon.publisher_product_id = publisher_product.id 
+      @publisher_product_gen_id = publisher_product.slug
+      
       # @publisher_product_pdfs = PublisherProductPdf.where("publisher_product_id = ?", @publisher_product_id)
   
       # @publisher_product_manifest = PublisherProductDescription.where("publisher_product_id = ?", publisher_product.id).first rescue nil
@@ -510,6 +509,19 @@ class PublisherProductManifestsController < ApplicationController
   
   
   
+      # 1 product_headline
+      # @b_product_headline = false
+      gon.product_headline = "Product Headline"
+      gon.b_product_headline = false
+      gon.b_required_product_headline = true
+      # @publisher_product_manifest_product_headline = "Product Name" # to delete      
+      if !((publisher_product_manifest.product_headline.blank?) or (publisher_product_manifest.product_headline.empty?) or (publisher_product_manifest.product_headline.nil?)) 
+          # @publisher_product_manifest_product_headline = publisher_product_manifest.product_headline
+          # @b_product_headline = true
+          gon.product_headline = publisher_product_manifest.product_headline
+          gon.b_product_headline = true
+          gon.b_required_product_headline = false
+      end
       
       # 1 name_product
       # @b_name_product = false
@@ -2679,6 +2691,74 @@ class PublisherProductManifestsController < ApplicationController
       # end
   end
 
+
+  def update_description
+    
+      ar = params[:publisher_product_manifest]
+      h_obj = Hash.new
+      ar.each do |obj|
+        h_obj = obj
+      end
+
+      publisher_product_id = h_obj[:publisher_product_id]
+      description = h_obj[:description]
+  
+      b_description = false
+  
+      # Rails.logger.info("in update @@publisher_product_id = " + @@publisher_product_id.to_s)
+  
+      # publisher_product_id = current_user.publisher.publisher_product_current.current_product_id rescue nil
+      publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil    
+      if !publisher_product.nil?
+          #
+      else
+          Rails.logger.info("publisher_product was nil")
+      end
+
+
+      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
+      if !publisher_product.nil?
+          publisher_product_description = publisher_product.publisher_product_description rescue nil
+          if !publisher_product_description.nil?
+              h_update = Hash.new
+              h_update[:description_text] = description
+              if publisher_product_description.update_attributes(h_update)
+                #
+              else
+                  Rails.logger.info("publisher_product_description update failed")
+              end
+          else
+              Rails.logger.info("publisher_product_description was nil")
+          end
+          
+      else
+         Rails.logger.info("publisher_product was nil")
+      end
+
+      publisher_product_description = publisher_product.publisher_product_description rescue nil
+      if !publisher_product_description.nil?
+          if !((publisher_product_description.description_text.blank?) or (publisher_product_description.description_text.empty?) or (publisher_product_description.description_text.nil?))
+              b_description = true
+          end
+      else
+          Rails.logger.info("publisher_product_description was nil")
+      end
+      
+      respond_to do |format|
+          format.html {}
+          format.json { render :json => { 
+                                          :description => description,
+                                          :b_description => b_description,                                          
+                                          :updated => publisher_product_manifest.updated_at.to_s(:long) 
+                                        } 
+                      }
+      end
+      
+    
+  end
+
+
+
   def update_story_1
     
       ar = params[:publisher_product_manifest]
@@ -2688,6 +2768,7 @@ class PublisherProductManifestsController < ApplicationController
       end
 
       publisher_product_id = h_obj[:publisher_product_id]
+      product_headline = h_obj[:product_headline]
       name_product = h_obj[:name_product]
       product_tagline = h_obj[:product_tagline]
       versions = h_obj[:versions]
@@ -2742,6 +2823,7 @@ class PublisherProductManifestsController < ApplicationController
           publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
           if !publisher_product_manifest.nil?
               h_update_1 = Hash.new
+              h_update_1[:product_headline] = product_headline              
               h_update_1[:name_product] = name_product
               h_update_1[:product_tagline] = product_tagline
               h_update_1[:versions] = versions
@@ -2772,6 +2854,9 @@ class PublisherProductManifestsController < ApplicationController
       
       publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
       if !publisher_product_manifest.nil?
+          if !((publisher_product_manifest.product_headline.blank?) or (publisher_product_manifest.product_headline.empty?) or (publisher_product_manifest.product_headline.nil?))
+              b_product_headline = true
+          end
           if !((publisher_product_manifest.name_product.blank?) or (publisher_product_manifest.name_product.empty?) or (publisher_product_manifest.name_product.nil?))
               b_name_product = true
           end
@@ -2796,7 +2881,10 @@ class PublisherProductManifestsController < ApplicationController
       
       respond_to do |format|
           format.html {}
-          format.json { render :json => { :name_product => name_product,
+          format.json { render :json => { 
+                                          :product_headline => product_headline,
+                                          :b_product_headline => b_product_headline, 
+                                          :name_product => name_product,
                                           :b_name_product => b_name_product, 
                                           :product_tagline => product_tagline,
                                           :b_product_tagline => b_product_tagline,
@@ -2804,7 +2892,9 @@ class PublisherProductManifestsController < ApplicationController
                                           :b_versions => b_versions,
                                           :description => description,
                                           :b_description => b_description,                                          
-                                          :updated => publisher_product_manifest.updated_at.to_s(:long) } }
+                                          :updated => publisher_product_manifest.updated_at.to_s(:long) 
+                                        } 
+                      }
       end
       
       # product_tagline = h_obj[:product_tagline]
@@ -7524,6 +7614,8 @@ class PublisherProductManifestsController < ApplicationController
 
   def upload_image_1
    
+      Rails.logger.info("in upload_image_1")
+   
       @id_image_1 = nil
       @image_1 = nil
       @publisher_product = nil
@@ -7533,8 +7625,9 @@ class PublisherProductManifestsController < ApplicationController
       @crop_h = 200
       
       
-      publisher_product_id = params[:publisher_product_id]
-
+      publisher_product_id = params[:publisher_product_pos1_image][:publisher_product_id]
+      Rails.logger.info("publisher_product_id = " + publisher_product_id.to_s)
+      
       # publisher_product_id = current_user.publisher.publisher_product_current.current_product_id rescue nil    
       
       if !publisher_product_id.nil?
@@ -7559,9 +7652,9 @@ class PublisherProductManifestsController < ApplicationController
           if request.xhr? || remotipart_submitted?
               if publisher_product_pos1_image.save
                   img = publisher_product_pos1_image
-                  image = Magick::Image.read("public" + img.image_url(:image_600_600))[0]
-                  w = image.columns
-                  h = image.rows
+                  image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+                  w = image.width
+                  h = image.height
                   w_max = false
                   h_max = false
                   w_h_equal = false
@@ -7630,7 +7723,7 @@ class PublisherProductManifestsController < ApplicationController
       @crop_w = 200
       @crop_h = 200
       
-      publisher_product_id = params[:publisher_product_id]
+      publisher_product_id = params[:publisher_product_pos1_image][:publisher_product_id]
       if !publisher_product_id.nil?
           #
       else
@@ -7664,9 +7757,9 @@ class PublisherProductManifestsController < ApplicationController
           if request.xhr? || remotipart_submitted?
               if publisher_product_pos1_image.save
                   img = publisher_product_pos1_image
-                  image = Magick::Image.read("public" + img.image_url(:image_600_600))[0]
-                  w = image.columns
-                  h = image.rows
+                  image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+                  w = image.width
+                  h = image.height
                   w_max = false
                   h_max = false
                   w_h_equal = false
@@ -7725,20 +7818,94 @@ class PublisherProductManifestsController < ApplicationController
   end
 
 
+
+
+
+
+
+
+
+
+
+
+
+  # def crop_commit_user
+#     
+      # img = UserImage.find(params[:image_id])
+      # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+# 
+      # crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
+      # new_image = image.crop(crop_params)
+#       
+      # img_name = File.basename(img.image.to_s)
+      # img_dir = "public" + File.dirname(img.image.to_s)
+# 
+      # image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
+      # image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
+      # image_50_50_path   = img_dir + "/" + "image_50_50_" + img_name
+      # image_34_34_path   = img_dir + "/" + "image_34_34_" + img_name
+# 
+      # FileUtils.rm_rf(image_200_200_path) 
+      # FileUtils.rm_rf(image_100_100_path) 
+      # FileUtils.rm_rf(image_50_50_path) 
+      # FileUtils.rm_rf(image_34_34_path) 
+# 
+      # new_image.resize('200x200')
+      # new_image.write image_200_200_path
+      # new_image.resize('100x100')
+      # new_image.write image_100_100_path      
+      # new_image.resize('50x50')
+      # new_image.write image_50_50_path      
+      # new_image.resize('34x34')
+      # new_image.write image_34_34_path
+# 
+      # x = params[:crop_x]
+      # y = params[:crop_y]
+      # w = params[:crop_w]
+      # h = params[:crop_h]
+      # x = x.to_i
+      # y = y.to_i
+      # w = w.to_i
+      # h = h.to_i
+# 
+      # h_crop = Hash.new
+      # h_crop[:crop_x] = x
+      # h_crop[:crop_y] = y
+      # h_crop[:crop_w] = w
+      # h_crop[:crop_h] = h
+# 
+      # @post_users = nil    
+      # @publisher_user_image_primary = nil
+# 
+      # publisher_user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
+      # if !publisher_user_image_primary.nil?
+          # if publisher_user_image_primary.update_attributes(h_crop)
+              # @publisher_user_image_primary = publisher_user_image_primary  
+              # @post_users = current_user.feed
+          # else
+            # #
+          # end
+      # else
+        # #
+      # end
+# 
+# 
+  # end
+
   def crop_image_1
     
       @image_1 = nil    
+      @id_image_1 = nil      
       @publisher_product = nil
       
-      x = params[:crop_x]
-      y = params[:crop_y]
-      w = params[:crop_w]
-      h = params[:crop_h]
-  
-      Rails.logger.info "x = " + params[:crop_x]
-      Rails.logger.info "y = " + params[:crop_y]
-      Rails.logger.info "w = " + params[:crop_w]
-      Rails.logger.info "h = " + params[:crop_h]
+      # x = params[:crop_x]
+      # y = params[:crop_y]
+      # w = params[:crop_w]
+      # h = params[:crop_h]
+      # Rails.logger.info "x = " + params[:crop_x]
+      # Rails.logger.info "y = " + params[:crop_y]
+      # Rails.logger.info "w = " + params[:crop_w]
+      # Rails.logger.info "h = " + params[:crop_h]
       
       publisher_product_id = params[:publisher_product_id]
   
@@ -7748,57 +7915,106 @@ class PublisherProductManifestsController < ApplicationController
           publisher_product_pos1_image = publisher_product.publisher_product_pos1_image rescue nil
           if !publisher_product_pos1_image.nil?
 
-              # img = PublisherProductPos1Image.find(params[:image_id])
-              img = publisher_product_pos1_image
-              image = Magick::Image.read("public" + img.image_url(:image_600_600))[0]
+              # img = publisher_product_pos1_image
+              # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+
+              image = MiniMagick::Image.open("public" + publisher_product_pos1_image.image_url(:image_600_600))
           
+              crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
+              new_image = image.crop(crop_params)
+              
+              # img_name = File.basename(img.image.to_s)
+              # img_dir = "public" + File.dirname(img.image.to_s)
+
+              img_name = File.basename(publisher_product_pos1_image.image.to_s)
+              img_dir = "public" + File.dirname(publisher_product_pos1_image.image.to_s)
+        
+              image_375_300_path = img_dir + "/" + "image_375_300_" + img_name 
+              image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
+              image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
+        
+              FileUtils.rm_rf(image_375_300_path) 
+              FileUtils.rm_rf(image_200_200_path) 
+              FileUtils.rm_rf(image_100_100_path) 
+        
+              new_image.resize('375x300')
+              new_image.write image_375_300_path
+              new_image.resize('200x200')
+              new_image.write image_200_200_path
+              new_image.resize('100x100')
+              new_image.write image_100_100_path      
+        
+              x = params[:crop_x]
+              y = params[:crop_y]
+              w = params[:crop_w]
+              h = params[:crop_h]
               x = x.to_i
               y = y.to_i
               w = w.to_i
               h = h.to_i
-              image_new = image.crop(x, y, w, h)
-          
-              new_image_200_200 = image_new.resize_to_fill(200, 200)    
-              new_image_100_100 = image_new.resize_to_fill(100, 100)    
-              # new_image_50_50 = image_new.resize_to_fill(50, 50)
-              # new_image_34_34 = image_new.resize_to_fill(34, 34)
-          
-              image_200_200 = Magick::Image.read("public" + img.image_url(:image_200_200))[0]    
-              image_100_100 = Magick::Image.read("public" + img.image_url(:image_100_100))[0]
-              # image_50_50 = Magick::Image.read("public" + img.image_url(:image_50_50))[0]
-              # image_34_34 = Magick::Image.read("public" + img.image_url(:image_34_34))[0]
-          
-              image_200_200_filename = image_200_200.filename
-              image_100_100_filename = image_100_100.filename
-              # image_50_50_filename = image_50_50.filename
-              # image_34_34_filename = image_34_34.filename
-          
-              FileUtils.rm_rf(Dir.glob(image_200_200.filename))
-              FileUtils.rm_rf(Dir.glob(image_100_100.filename))
-              # FileUtils.rm_rf(Dir.glob(image_50_50.filename))
-              # FileUtils.rm_rf(Dir.glob(image_34_34.filename))
-              
-              new_image_200_200.write image_200_200_filename
-              new_image_100_100.write image_100_100_filename
-              # new_image_50_50.write image_50_50_filename
-              # new_image_34_34.write image_34_34_filename
-          
+        
               h_crop = Hash.new
               h_crop[:crop_x] = x
               h_crop[:crop_y] = y
               h_crop[:crop_w] = w
               h_crop[:crop_h] = h
+          
+          
+          
+              # x = x.to_i
+              # y = y.to_i
+              # w = w.to_i
+              # h = h.to_i
+              # image_new = image.crop(x, y, w, h)
+#           
+              # new_image_200_200 = image_new.resize_to_fill(200, 200)    
+              # new_image_100_100 = image_new.resize_to_fill(100, 100)    
+              # # new_image_50_50 = image_new.resize_to_fill(50, 50)
+              # # new_image_34_34 = image_new.resize_to_fill(34, 34)
+#           
+              # image_200_200 = Magick::Image.read("public" + img.image_url(:image_200_200))[0]    
+              # image_100_100 = Magick::Image.read("public" + img.image_url(:image_100_100))[0]
+              # # image_50_50 = Magick::Image.read("public" + img.image_url(:image_50_50))[0]
+              # # image_34_34 = Magick::Image.read("public" + img.image_url(:image_34_34))[0]
+#           
+              # image_200_200_filename = image_200_200.filename
+              # image_100_100_filename = image_100_100.filename
+              # # image_50_50_filename = image_50_50.filename
+              # # image_34_34_filename = image_34_34.filename
+#           
+              # FileUtils.rm_rf(Dir.glob(image_200_200.filename))
+              # FileUtils.rm_rf(Dir.glob(image_100_100.filename))
+              # # FileUtils.rm_rf(Dir.glob(image_50_50.filename))
+              # # FileUtils.rm_rf(Dir.glob(image_34_34.filename))
+#               
+              # new_image_200_200.write image_200_200_filename
+              # new_image_100_100.write image_100_100_filename
+              # # new_image_50_50.write image_50_50_filename
+              # # new_image_34_34.write image_34_34_filename
+#           
+              # h_crop = Hash.new
+              # h_crop[:crop_x] = x
+              # h_crop[:crop_y] = y
+              # h_crop[:crop_w] = w
+              # h_crop[:crop_h] = h
         
-              @image_1 = nil    
-              
-              publisher_product_pos1_image_updated = publisher_product.publisher_product_pos1_image rescue nil
-              if !publisher_product_pos1_image_updated.nil?
-                  @id_image_1 = publisher_product_pos1_image_updated.id      
-                  @image_1 = publisher_product_pos1_image_updated
-                  @publisher_product = publisher_product_pos1_image_updated.publisher_product
+              if publisher_product_pos1_image.update_attributes(h_crop)
+                  @id_image_1 = publisher_product_pos1_image.id      
+                  @image_1 = publisher_product_pos1_image
+                  # @publisher_product = publisher_product_pos1_image.publisher_product
+                  @publisher_product = publisher_product
               else
-                  #
+                  Rails.logger.info "publisher_product_pos1_image update_attributes failed"
               end
+              
+              # publisher_product_pos1_image_updated = publisher_product.publisher_product_pos1_image rescue nil
+              # if !publisher_product_pos1_image_updated.nil?
+                  # @id_image_1 = publisher_product_pos1_image_updated.id      
+                  # @image_1 = publisher_product_pos1_image_updated
+                  # @publisher_product = publisher_product_pos1_image_updated.publisher_product
+              # else
+                  # #
+              # end
           else
               Rails.logger.info "publisher_product_pos1_image was nil"
           end
@@ -7862,10 +8078,21 @@ class PublisherProductManifestsController < ApplicationController
 
   def destroy_image_1
 
+      ar = params[:publisher_product_manifest]
+      h_obj = Hash.new
+      ar.each do |obj|
+        h_obj = obj
+      end
+
+      publisher_product_id = h_obj[:publisher_product_id]
+    
+      # publisher_product_id = params[:publisher_product_manifest][:publisher_product_id]
+      # id = params[:publisher_product_manifest][:id]
+
       @image_1 = nil
       @publisher_product = nil
       
-      publisher_product_id = params[:publisher_product_id]
+      # publisher_product_id = params[:publisher_product_id]
       if !publisher_product_id.nil?
           #
       else
@@ -8929,6 +9156,7 @@ class PublisherProductManifestsController < ApplicationController
                                                               :versions,           
                                                               :slugged,              
                                                               :product_tagline,      
+                                                              :product_headline,
                                                               :topic,               
                                                               :lesson_plan_subject,  
                                                               :updating_refresh_rate, 

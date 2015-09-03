@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606031257) do
+ActiveRecord::Schema.define(version: 20150804205541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1888,6 +1888,7 @@ ActiveRecord::Schema.define(version: 20150606031257) do
     t.boolean  "time_per_course",        default: false
     t.string   "product_tagline",        default: ""
     t.string   "source_url",             default: ""
+    t.string   "product_headline",       default: ""
   end
 
   add_index "publisher_product_manifests", ["publisher_id"], name: "index_publisher_product_manifests_on_publisher_id", using: :btree
@@ -2017,6 +2018,8 @@ ActiveRecord::Schema.define(version: 20150606031257) do
     t.integer  "crop_y",               default: 0
     t.integer  "crop_w",               default: 0
     t.integer  "crop_h",               default: 0
+    t.integer  "width",                default: 0
+    t.integer  "height",               default: 0
   end
 
   add_index "publisher_product_pos1_images", ["publisher_product_id"], name: "index_publisher_product_pos1_images_on_publisher_product_id", using: :btree
@@ -2035,6 +2038,8 @@ ActiveRecord::Schema.define(version: 20150606031257) do
     t.integer  "crop_y",               default: 0
     t.integer  "crop_w",               default: 0
     t.integer  "crop_h",               default: 0
+    t.integer  "width",                default: 0
+    t.integer  "height",               default: 0
   end
 
   add_index "publisher_product_pos2_images", ["publisher_product_id"], name: "index_publisher_product_pos2_images_on_publisher_product_id", using: :btree
@@ -2053,6 +2058,8 @@ ActiveRecord::Schema.define(version: 20150606031257) do
     t.integer  "crop_y",               default: 0
     t.integer  "crop_w",               default: 0
     t.integer  "crop_h",               default: 0
+    t.integer  "width",                default: 0
+    t.integer  "height",               default: 0
   end
 
   add_index "publisher_product_pos3_images", ["publisher_product_id"], name: "index_publisher_product_pos3_images_on_publisher_product_id", using: :btree
@@ -2071,6 +2078,8 @@ ActiveRecord::Schema.define(version: 20150606031257) do
     t.integer  "crop_y",               default: 0
     t.integer  "crop_w",               default: 0
     t.integer  "crop_h",               default: 0
+    t.integer  "width",                default: 0
+    t.integer  "height",               default: 0
   end
 
   add_index "publisher_product_pos4_images", ["publisher_product_id"], name: "index_publisher_product_pos4_images_on_publisher_product_id", using: :btree

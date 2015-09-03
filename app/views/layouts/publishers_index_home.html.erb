@@ -33,21 +33,21 @@
 			}
 
 			* {
-			  margin: 0;
+				margin: 0;
 			}
 			html, body {
-			  height: 100%;
+				height: 100%;
 			}
 			.body-wrap {
-			  min-height: 100%;
-			  margin-bottom: -152px; 
+				min-height: 100%;
+				margin-bottom: -152px; 
 			}
 			.body-wrap:after {
-			  content: "";
-			  display: block;
+			  	content: "";
+			  	display: block;
 			}
 			.body-wrap:after {
-			  height: 152px; 
+			  	height: 152px; 
 			}		
 
 			.body-wrap-inner {
@@ -61,18 +61,17 @@
     </head>
     
 	<body>
-		<div class="body-wrap-outer">
-			
-		<%= render 'layouts/nav_main' %>
-		<%= render 'layouts/nav_publisher' %>
-		<div class="body-wrap-inner">
-			<%= yield %>
+		<div class="body-wrap">
+			<%= render 'layouts/nav_main' %>
+			<%= render 'layouts/nav_publisher' %>
+			<div class="body-wrap-inner">
+				<%= yield %>
+			</div>
 		</div>
-		
+			
 		<%= render 'layouts/footer' %>
 
 		<% if false %>
-
 		<% if Rails.env.development? %>
 			<div style="width: 100%; position: absolute; bottom: -50px;">
 				<div id="debug">
@@ -80,10 +79,7 @@
 				</div>
 			</div>
 		<% end %>
-		
 		<% end %>
 		
-		</div>
 	</body>
-    
 </html>
