@@ -146,6 +146,9 @@
 		
 		var margin_left = "";
 		
+		var bgrnd_x = 0;
+		var bgrnd_y = 0;
+		
         function showPreviewImage1(coords)
         {
             if (parseInt(coords.w) > 0)
@@ -167,40 +170,19 @@
 
 				background_position = '-' + Math.round(coords.x) + 'px -' + Math.round(coords.y) + 'px';
 				
-				if (coords.w >= 375) {
-					ratio_width = 375 / image_width_600;
-					ratio_height = 300 / image_height_600;
-					// $("#id_crop_x_image_1_ratio_x").val(ratio_width);
-					// coords_w = Math.round(ratio_width * coords.w).toString() + 'px';
-					// coords_h = Math.round(ratio_width * coords.h).toString() + 'px';
-					$("#id_crop_x_image_1_ratio_x").val(Math.round(image_width_600 - (ratio_width * coords.w)));
-
-					// background_size_x = Math.round(image_width_600 - Math.round(ratio_width * (coords.w - 375)) ).toString() + 'px';
-					// background_size_y = Math.round(image_height_600 - Math.round(ratio_height * Math.abs(coords.h - 300)) ).toString() + 'px';
-
-					background_size_x = (image_width_600 - (coords.w - 375)).toString() + 'px';
-					background_size_y = Math.round((image_height_600 / image_width_600) * (image_width_600 - (coords.w - 375))).toString() + 'px';
-					
-					// background_size_x = Math.round(image_width_600 - (coords.w - 375)).toString() + 'px';
-					// background_size_y = Math.round(image_height_600 - ratio_image_1 * (coords.w - 375)).toString() + 'px';
-					// background_size_y = Math.round((image_height_600 / image_width_600) * background_size_x).toString() + 'px';
-					// background_size_y = Math.round((image_height_600 / image_width_600) * (image_width_600 - (coords.w - 375))).toString() + 'px';
-
-					// coords_h = Math.round(coords.h - (coords.w - 350) * (image_height_600 / image_width_600)).toString() + 'px';
-					// coords_h = Math.round(coords.h - (coords.w - 350) * (coords.h / coords.w)).toString() + 'px';
-					coords_h = Math.round(375 * (coords.h / coords.w)).toString() + 'px';
-					// coords_h = Math.round(coords.h - (350 * (coords.h / coords.w))).toString() + 'px';
+				if (coords.w > 375) {
+					bgrnd_x = image_width_600 * (375/(coords.w * 1.0));
+					background_size_x = Math.round(bgrnd_x).toString() + 'px';
+					background_size_y = Math.round(bgrnd_x * (image_height_600 / (image_width_600 * 1.0))).toString() + 'px';
+					coords_h = Math.round(375 * (coords.h / (coords.w * 1.0))).toString() + 'px';
 					coords_w = '375px';
-					// background_size_w = '725px';
-					// background_size_h = '600px';
-					// margin_left =  '4px';
 				}
 				else if (coords.h > 300){
-					ratio_height = ((coords.h - 300)/300) + 300;
-					coords_w = Math.round(ratio_height * coords.w).toString() + 'px';
-					coords_h = Math.round(ratio_height * coords.h).toString() + 'px';
-					background_size_w = Math.round(ratio_height * coords.w).toString() + 'px';
-					background_size_h = Math.round(ratio_height * coords.h).toString() + 'px';
+					bgrnd_y = image_height_600 * (300/(coords.h * 1.0));
+					background_size_y = Math.round(bgrnd_y).toString() + 'px';
+					background_size_x = Math.round(bgrnd_y * (image_width_600 / (image_height_600 * 1.0))).toString() + 'px';
+					coords_w = Math.round(300 * (coords.w / (coords.h * 1.0))).toString() + 'px';
+					coords_h = '300px';
 				}
 				else {
 					coords_w = coords.w.toString() + 'px';
