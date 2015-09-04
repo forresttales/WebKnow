@@ -148,6 +148,13 @@
 		
 		var bgrnd_x = 0;
 		var bgrnd_y = 0;
+
+		bgrnd_x_1 = 0;;
+		background_size_x_1 = 0;
+		background_size_y_1 = 0;
+		bgrnd_y_2 = 0;
+		background_size_y_2 = 0;
+		background_size_x_2 = 0;
 		
         function showPreviewImage1(coords)
         {
@@ -170,19 +177,41 @@
 
 				background_position = '-' + Math.round(coords.x) + 'px -' + Math.round(coords.y) + 'px';
 				
-				if (coords.w > 375) {
+				if ((coords.w > 375) && (coords.h <= 300)) {
 					bgrnd_x = image_width_600 * (375/(coords.w * 1.0));
 					background_size_x = Math.round(bgrnd_x).toString() + 'px';
 					background_size_y = Math.round(bgrnd_x * (image_height_600 / (image_width_600 * 1.0))).toString() + 'px';
 					coords_h = Math.round(375 * (coords.h / (coords.w * 1.0))).toString() + 'px';
 					coords_w = '375px';
 				}
-				else if (coords.h > 300){
+				else if ((coords.h > 300) && (coords.w <= 375)) {
 					bgrnd_y = image_height_600 * (300/(coords.h * 1.0));
 					background_size_y = Math.round(bgrnd_y).toString() + 'px';
 					background_size_x = Math.round(bgrnd_y * (image_width_600 / (image_height_600 * 1.0))).toString() + 'px';
 					coords_w = Math.round(300 * (coords.w / (coords.h * 1.0))).toString() + 'px';
 					coords_h = '300px';
+				}
+				else if ((coords.w > 375) && (coords.h > 300)) {
+					bgrnd_x_1 = image_width_600 * (375/(coords.w * 1.0));
+					background_size_x_1 = Math.round(bgrnd_x_1);
+					background_size_y_1 = Math.round(bgrnd_x_1 * (image_height_600 / (image_width_600 * 1.0)));
+
+					bgrnd_y_2 = image_height_600 * (300/(coords.h * 1.0));
+					background_size_y_2 = Math.round(bgrnd_y_2);
+					background_size_x_2 = Math.round(bgrnd_y_2 * (image_width_600 / (image_height_600 * 1.0)));
+
+					if (background_size_x_1 < background_size_x_2) {
+						background_size_x = background_size_x_1.toString() + 'px';
+						background_size_y = background_size_y_1.toString() + 'px';
+						coords_h = Math.round(375 * (coords.h / (coords.w * 1.0))).toString() + 'px';
+						coords_w = '375px';
+					}
+					else {
+						background_size_x = background_size_x_2.toString() + 'px';
+						background_size_y = background_size_y_2.toString() + 'px';						
+						coords_w = Math.round(300 * (coords.w / (coords.h * 1.0))).toString() + 'px';
+						coords_h = '300px';
+					}
 				}
 				else {
 					coords_w = coords.w.toString() + 'px';
