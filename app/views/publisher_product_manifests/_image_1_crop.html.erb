@@ -3,7 +3,7 @@
 	.input-crop {
 		width: 70px;	
 	}	
-	.preview-1 {
+	.preview-image-375-300 {
 		width: 0px; 
 		height: 0px; 
 		background-size: 0px 0px;
@@ -13,13 +13,29 @@
 		position: relative; 
 		margin-left: 0px;
 		margin-top: 0px;
-		/*border: 1px solid red;*/
 	}
-	.preview-image-1-375-300-container {
-		/*width:375px; 
-		height:300px; 
-		overflow: hidden;*/
-	}	
+	.preview-image-200-200 {
+		width: 0px; 
+		height: 0px; 
+		background-size: 0px 0px;
+		background-image: url('<%= @image_1.image_url(:image_600_600) %>'); 
+		background-repeat: no-repeat; 
+		background-position: 0px 0px; 
+		position: relative; 
+		margin-left: 0px;
+		margin-top: 0px;
+	}
+	.preview-image-100-100 {
+		width: 0px; 
+		height: 0px; 
+		background-size: 0px 0px;
+		background-image: url('<%= @image_1.image_url(:image_600_600) %>'); 
+		background-repeat: no-repeat; 
+		background-position: 0px 0px; 
+		position: relative; 
+		margin-left: 0px;
+		margin-top: 0px;
+	}
 	
 </style>
 
@@ -27,8 +43,8 @@
 					<% if !@image_1.nil? %>
 
 						<div style="display: inline-block; width: 608px; height: 1px; margin: 0;"></div>
-						<div style="display: inline-block; width: 4px; height: 1px; margin: 0;"></div>
-						<div style="display: inline-block; width: 608px; margin: 0;">
+						<div style="display: inline-block; width: 0px; height: 1px; margin: 0;"></div>
+						<div style="display: inline-block; width: 379px; margin: 0;">
 							<div class="background-table-dialog-2">
 								<div class="dialog-msg-container">
 									<span>Preview</span>
@@ -36,39 +52,44 @@
 			   				</div>
 						</div>
 						<div style="height: 4px;"></div>
-						<div style="display: inline-block; width: 604px; height: 604px; background-color: #aaa; border: 2px solid #376340;">
+						<div style="display: inline-block; width: 600px; height: 600px; background-color: #aaa; border: 2px solid #376340;">
 							<img id="cropbox_image_1" alt="" src="<%= @image_1.image_url(:image_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_1.image? %>" />
 						</div>
 						<div style="display: inline-block; width: 4px; height: 1px;"></div>
-						<div style="display: inline-block; width: 604px; height: auto; vertical-align: top; position: relative;">
-			   				<!-- <div style="height: 4px"></div> -->							
-							<!-- <div style="width:200px; height:200px; overflow:hidden"> -->
-
+						<div style="display: inline-block; width: 382px; height: auto; vertical-align: top; position: relative;">
 							<div style="width: 375px; height: 300px; position: relative; overflow: hidden; border: 2px solid #376340;">
-								<!-- <div style="width: 604px; height: 604px; background-color: #fff; position: relative;"></div> -->
-								<div id="preview_1" class="preview-1"></div>
+								<div id="preview_image_1_375_300" class="preview-image-375-300"></div>
 							</div>									
 
-								bgrd<%= text_field_tag :crop_x, params["crop_x"], id: "id_background_size", class: "input-crop" %><br>
-							  	x_r<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x_image_1_ratio_x", class: "input-crop" %><br>
-
-							  	x<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x_image_1", class: "input-crop" %><br>
-							  	y<%= text_field_tag :crop_y, params["crop_y"], id: "id_crop_y_image_1", class: "input-crop" %><br>
-							  	w<%= text_field_tag :crop_w, params["crop_w"], id: "id_crop_w_image_1", class: "input-crop" %><br>
-							  	h<%= text_field_tag :crop_h, params["crop_h"], id: "id_crop_h_image_1", class: "input-crop" %><br>
-								<%= hidden_field_tag "image_id_image_1", @image_1.id %>
-							
 							<% if false %>
-			   				<div style="height: 4px"></div>			
-			   				<div style="width: 604px; height: 604px; background-color: #ccc; border: 2px solid #376340;">				
-								<!-- <div id="preview_image_1_375_300_container" class="preview-image-1-375-300-container"> -->
-								  <%= image_tag @image_1.image_url(:image_600_600), :id => "preview_image_1_375_300" %>
-								<!-- </div> -->
-							</div>
+							bgrnd<%= text_field_tag :crop_x, params["crop_x"], id: "id_background_size", class: "input-crop" %><br>
+						  	x_r<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x_image_1_ratio_x", class: "input-crop" %><br>
+						  	background_size_x_1<%= text_field_tag :crop_x, params["crop_x"], id: "id_background_size_x_1", class: "input-crop" %><br>
+						  	background_size_x_2<%= text_field_tag :crop_x, params["crop_x"], id: "id_background_size_x_2", class: "input-crop" %><br>
+						  	background_size_y_1<%= text_field_tag :crop_x, params["crop_x"], id: "id_background_size_y_1", class: "input-crop" %><br>
+						  	background_size_y_2<%= text_field_tag :crop_x, params["crop_x"], id: "id_background_size_y_2", class: "input-crop" %><br>
+
+							bgrnd_shift_x<%= text_field_tag :crop_x, params["crop_x"], id: "id_bgrnd_shift_x", class: "input-crop" %><br>
+							bgrnd_shift_y<%= text_field_tag :crop_x, params["crop_x"], id: "id_bgrnd_shift_y", class: "input-crop" %><br>
+							
 							<% end %>
 							
+						  	<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x_image_1", class: "input-crop hidden" %>
+						  	<%= text_field_tag :crop_y, params["crop_y"], id: "id_crop_y_image_1", class: "input-crop hidden" %>
+						  	<%= text_field_tag :crop_w, params["crop_w"], id: "id_crop_w_image_1", class: "input-crop hidden" %>
+						  	<%= text_field_tag :crop_h, params["crop_h"], id: "id_crop_h_image_1", class: "input-crop hidden" %>
+							<%= hidden_field_tag "image_id_image_1", @image_1.id %>
 							
-			   				<div style="height: 4px"></div>							
+			   				<div style="height: 4px"></div>			
+							<div style="width: 200px; height: 200px; position: relative; overflow: hidden; border: 2px solid #376340;">
+								<div id="preview_image_1_200_200" class="preview-image-200-200"></div>
+							</div>									
+			   				<div style="height: 4px"></div>			
+							<div style="width: 100px; height: 100px; position: relative; overflow: hidden; border: 2px solid #376340;">
+								<div id="preview_image_1_100_100" class="preview-image-100-100"></div>
+							</div>									
+			   				
+							<% if false %>			   								
 							<div style="width:200px; height:200px; overflow: hidden">
 							  <%= image_tag @image_1.image_url(:image_600_600), :id => "preview_image_1_200" %>
 							</div>
@@ -76,32 +97,13 @@
 							<div style="width:100px; height:100px; overflow: hidden">
 							  <%= image_tag @image_1.image_url(:image_600_600), :id => "preview_image_1_100" %>
 							</div>
-
-							<!-- <div style="height: 4px"></div>
-							<div id="id_coor_x" style="width:100px; height:20px; overflow:hidden;"></div> -->
-
-							<% if false %>
-							<div style="height: 4px"></div>
-							<div style="width:50px; height:50px; overflow: hidden">
-							  <%= image_tag @image_1.image_url(:image_600_600), :id => "preview_image_1_50" %>
-							</div>
-							<div style="height: 4px"></div>
-							<div style="width:34px; height:34px; overflow: hidden">
-							  <%= image_tag @image_1.image_url(:image_600_600), :id => "preview_image_1_34" %>
-							</div>
 							<% end %>
-							<!-- <div style="height: 4px"></div> -->
-							<!-- <#%= form_tag( crop_commit_user_publisher_users_path, :remote => true ) do %#> -->
-
-							    <!-- <#%= submit_tag '', :id => 'btn_submit_crop_image_primary', :class => 'hidden' %#> -->
-							<!-- <#% end %#> -->	
 							
-			   				<div style="position: absolute; bottom: -80px; right: 0px;">
+			   				<div style="position: absolute; bottom: -60px; right: 0px;">
 								<span><input id="btn_dlg_submit_crop_image_1" class="btn-pop-dialog-1" type="button" value="Save" tabindex=""></span>
 								&nbsp;
 								<span><input id="btn_dlg_cancel_crop_image_1" class="btn-pop-dialog-1" type="button" value="Cancel" tabindex=""></span>
 			   				</div>
-							
 						</div>
 					<% else %>
 						<div> no @image_1</div>
@@ -111,195 +113,307 @@
 	<script>
 		
 		<% if !@image_1.nil? %>
-		var insert_crop_x_image_1 = <%= @image_1.crop_x %>;
-		var insert_crop_y_image_1 = <%= @image_1.crop_y %>;
-		var insert_crop_w_image_1 = <%= @image_1.crop_w %>;
-		var insert_crop_h_image_1 = <%= @image_1.crop_h %>;
+			var insert_crop_x_image_1 = <%= @image_1.crop_x %>;
+			var insert_crop_y_image_1 = <%= @image_1.crop_y %>;
+			var insert_crop_w_image_1 = <%= @image_1.crop_w %>;
+			var insert_crop_h_image_1 = <%= @image_1.crop_h %>;
 		<% else %>
-		var insert_crop_x_image_1 = 0;
-		var insert_crop_y_image_1 = 0;
-		var insert_crop_w_image_1 = 200;
-		var insert_crop_h_image_1 = 200;		
+			var insert_crop_x_image_1 = 0;
+			var insert_crop_y_image_1 = 0;
+			var insert_crop_w_image_1 = 200;
+			var insert_crop_h_image_1 = 200;		
 		<% end %>
-				
-		var insert_crop_x2_image_1 = insert_crop_x_image_1 + insert_crop_w_image_1;
-		var insert_crop_y2_image_1 = insert_crop_y_image_1 + insert_crop_h_image_1;
-		
-		var background_x = "";
-		var background_y = "";
+
+		var image_width_600 	= 0;
+		var image_height_600 	= 0;
 
 		var coords_w = "";
 		var coords_h = "";
 		var coords_x = "";
 		var coords_y = "";
-
-		var background_size 	= "";
-		var background_size_x 	= "";
-		var background_size_y 	= "";
-		
-		var image_width_600 	= 0;
-		var image_height_600 	= 0;
-
-		var ratio_width = 0;
-		var ratio_height = 0;
-		var ratio_image_1 = 0;
-		
-		var margin_left = "";
-		
+		var background_size = "";
+		var background_size_x = "";
+		var background_size_y = "";
 		var bgrnd_x = 0;
 		var bgrnd_y = 0;
+		var bgrnd_x_1 = 0;;
+		var background_size_x_1 = 0;
+		var background_size_y_1 = 0;
+		var bgrnd_y_2 = 0;
+		var background_size_y_2 = 0;
+		var background_size_x_2 = 0;
+		var bgrnd_shift_x = 0;
+		var background_shift_x = "";
+		var bgrnd_shift_y = 0;
+		var background_shift_y = "";
 
-		bgrnd_x_1 = 0;;
-		background_size_x_1 = 0;
-		background_size_y_1 = 0;
-		bgrnd_y_2 = 0;
-		background_size_y_2 = 0;
-		background_size_x_2 = 0;
+		var coords_w_200 = "";
+		var coords_h_200 = "";
+		var coords_x_200 = "";
+		var coords_y_200 = "";
+		var background_size_200 = "";
+		var background_size_x_200 = "";
+		var background_size_y_200 = "";
+		var bgrnd_x_200 = 0;
+		var bgrnd_y_200 = 0;
+		var bgrnd_x_1_200 = 0;;
+		var background_size_x_1_200 = 0;
+		var background_size_y_1_200 = 0;
+		var bgrnd_y_2_200 = 0;
+		var background_size_y_2_200 = 0;
+		var background_size_x_2_200 = 0;
+		var bgrnd_shift_x_200 = 0;
+		var background_shift_x_200 = "";
+		var bgrnd_shift_y_200 = 0;
+		var background_shift_y_200 = "";
+
+		var coords_w_100 = "";
+		var coords_h_100 = "";
+		var coords_x_100 = "";
+		var coords_y_100 = "";
+		var background_size_100 = "";
+		var background_size_x_100 = "";
+		var background_size_y_100 = "";
+		var bgrnd_x_100 = 0;
+		var bgrnd_y_100 = 0;
+		var bgrnd_x_1_100 = 0;;
+		var background_size_x_1_100 = 0;
+		var background_size_y_1_100 = 0;
+		var bgrnd_y_2_100 = 0;
+		var background_size_y_2_100 = 0;
+		var background_size_x_2_100 = 0;
+		var bgrnd_shift_x_100 = 0;
+		var background_shift_x_100 = "";
+		var bgrnd_shift_y_100 = 0;
+		var background_shift_y_100 = "";
+		
+		var insert_crop_x2_image_1 = insert_crop_x_image_1 + insert_crop_w_image_1;
+		var insert_crop_y2_image_1 = insert_crop_y_image_1 + insert_crop_h_image_1;
 		
         function showPreviewImage1(coords)
         {
             if (parseInt(coords.w) > 0)
             {
-
-				// var ratio_width 	= 375 / $('#cropbox_image_1').width();
-				// var ratio_height 	= 300 / $('#cropbox_image_1').height();
-
 				image_width_600	 = $('#cropbox_image_1').width();
 				image_height_600 = $('#cropbox_image_1').height();
 
-				// var ratio_width 	= Math.round(375 / coords.w);
-				// var ratio_height 	= Math.round(300 / coords.h);
-				
+				if ((coords.w > 375) && (coords.h <= 300)) {
+					bgrnd_size_x = image_width_600 * (375 / (coords.w * 1.0));
+					bgrnd_size_y = bgrnd_size_x * (image_height_600 / (image_width_600 * 1.0));
+					coords_h = Math.round(375 * (coords.h / (coords.w * 1.0)));
+					coords_w = 375;
+				}
+				else if ((coords.h > 300) && (coords.w <= 375)) {
+					bgrnd_size_y = image_height_600 * (300 / (coords.h * 1.0));
+					bgrnd_size_x = bgrnd_size_y * (image_width_600 / (image_height_600 * 1.0));
+					coords_w = Math.round(300 * (coords.w / (coords.h * 1.0)));
+					coords_h = 300;
+				}
+				else if ((coords.w > 375) && (coords.h > 300)) {
+					bgrnd_size_x_1 = image_width_600 * (375 / (coords.w * 1.0));
+					background_size_x_1 = Math.round(bgrnd_size_x_1);
+					bgrnd_size_y_1 = bgrnd_size_x_1 * (image_height_600 / (image_width_600 * 1.0));
+					background_size_y_1 = Math.round(bgrnd_size_y_1);
+
+					bgrnd_size_y_2 = image_height_600 * (300 / (coords.h * 1.0));
+					background_size_y_2 = Math.round(bgrnd_size_y_2);
+					bgrnd_size_x_2 = bgrnd_size_y_2 * (image_width_600 / (image_height_600 * 1.0));
+					background_size_x_2 = Math.round(bgrnd_size_x_2);
+
+					if (background_size_x_1 < background_size_x_2) {
+						coords_h = Math.round(375 * (coords.h / (coords.w * 1.0)));
+						coords_w = 375;
+						bgrnd_size_x = background_size_x_1;
+						bgrnd_size_y = background_size_y_1;
+					}
+					else {
+						coords_w = Math.round(300 * (coords.w / (coords.h * 1.0)));
+						coords_h = 300;
+						bgrnd_size_x = background_size_x_2;
+						bgrnd_size_y = background_size_y_2;
+					}
+				}
+				else {
+					coords_w = coords.w;
+					coords_h = coords.h;
+					bgrnd_size_x = image_width_600;
+					bgrnd_size_y = image_height_600;
+				}
+
+				if ((coords.w > 200) && (coords.h <= 200)) {
+					bgrnd_size_x_200 = image_width_600 * (200 / (coords.w * 1.0));
+					bgrnd_size_y_200 = bgrnd_size_x_200 * (image_height_600 / (image_width_600 * 1.0));
+					coords_h_200 = Math.round(200 * (coords.h / (coords.w * 1.0)));
+					coords_w_200 = 200;
+				}
+				else if ((coords.h > 200) && (coords.w <= 200)) {
+					bgrnd_size_y_200 = image_height_600 * (200 / (coords.h * 1.0));
+					bgrnd_size_x_200 = bgrnd_size_y_200 * (image_width_600 / (image_height_600 * 1.0));
+					coords_w_200 = Math.round(200 * (coords.w / (coords.h * 1.0)));
+					coords_h_200 = 200;
+				}
+				else if ((coords.w > 200) && (coords.h > 200)) {
+					bgrnd_size_x_1_200 = image_width_600 * (200 / (coords.w * 1.0));
+					background_size_x_1_200 = Math.round(bgrnd_size_x_1_200);
+					bgrnd_size_y_1_200 = bgrnd_size_x_1_200 * (image_height_600 / (image_width_600 * 1.0));
+					background_size_y_1_200 = Math.round(bgrnd_size_y_1_200);
+
+					bgrnd_size_y_2_200 = image_height_600 * (200 / (coords.h * 1.0));
+					background_size_y_2_200 = Math.round(bgrnd_size_y_2_200);
+					bgrnd_size_x_2_200 = bgrnd_size_y_2_200 * (image_width_600 / (image_height_600 * 1.0));
+					background_size_x_2_200 = Math.round(bgrnd_size_x_2_200);
+
+					if (background_size_x_1_200 < background_size_x_2_200) {
+						coords_h_200 = Math.round(375 * (coords.h / (coords.w * 1.0)));
+						coords_w_200 = 375;
+						bgrnd_size_x_200 = background_size_x_1_200;
+						bgrnd_size_y_200 = background_size_y_1_200;
+
+						coords_h_200 = Math.round(200 * (coords.h / (coords.w * 1.0)));
+						coords_w_200 = 200;
+						bgrnd_size_x_200 = background_size_x_1_200;
+						bgrnd_size_y_200 = background_size_y_1_200;
+					}
+					else {
+						coords_w_200 = Math.round(300 * (coords.w / (coords.h * 1.0)));
+						coords_h_200 = 300;
+						bgrnd_size_x_200 = background_size_x_2_200;
+						bgrnd_size_y_200 = background_size_y_2_200;
+						
+						coords_w_200 = Math.round(200 * (coords.w / (coords.h * 1.0)));
+						coords_h_200 = 200;
+						bgrnd_size_x_200 = background_size_x_2_200;
+						bgrnd_size_y_200 = background_size_y_2_200;
+					}
+				}
+				else {
+					coords_w_200 = coords.w;
+					coords_h_200 = coords.h;
+					bgrnd_size_x_200 = image_width_600;
+					bgrnd_size_y_200 = image_height_600;
+				}
+
+				if ((coords.w > 100) && (coords.h <= 100)) {
+					bgrnd_size_x_100 = image_width_600 * (100 / (coords.w * 1.0));
+					bgrnd_size_y_100 = bgrnd_size_x_100 * (image_height_600 / (image_width_600 * 1.0));
+					coords_h_100 = Math.round(100 * (coords.h / (coords.w * 1.0)));
+					coords_w_100 = 100;
+				}
+				else if ((coords.h > 100) && (coords.w <= 100)) {
+					bgrnd_size_y_100 = image_height_600 * (100 / (coords.h * 1.0));
+					bgrnd_size_x_100 = bgrnd_size_y_100 * (image_width_600 / (image_height_600 * 1.0));
+					coords_w_100 = Math.round(100 * (coords.w / (coords.h * 1.0)));
+					coords_h_100 = 100;
+				}
+				else if ((coords.w > 100) && (coords.h > 100)) {
+					bgrnd_size_x_1_100 = image_width_600 * (100 / (coords.w * 1.0));
+					background_size_x_1_100 = Math.round(bgrnd_size_x_1_100);
+					bgrnd_size_y_1_100 = bgrnd_size_x_1_100 * (image_height_600 / (image_width_600 * 1.0));
+					background_size_y_1_100 = Math.round(bgrnd_size_y_1_100);
+
+					bgrnd_size_y_2_100 = image_height_600 * (100 / (coords.h * 1.0));
+					background_size_y_2_100 = Math.round(bgrnd_size_y_2_100);
+					bgrnd_size_x_2_100 = bgrnd_size_y_2_100 * (image_width_600 / (image_height_600 * 1.0));
+					background_size_x_2_100 = Math.round(bgrnd_size_x_2_100);
+
+					if (background_size_x_1_100 < background_size_x_2_100) {
+						coords_h_100 = Math.round(375 * (coords.h / (coords.w * 1.0)));
+						coords_w_100 = 375;
+						bgrnd_size_x_100 = background_size_x_1_100;
+						bgrnd_size_y_100 = background_size_y_1_100;
+
+						coords_h_100 = Math.round(100 * (coords.h / (coords.w * 1.0)));
+						coords_w_100 = 100;
+						bgrnd_size_x_100 = background_size_x_1_100;
+						bgrnd_size_y_100 = background_size_y_1_100;
+					}
+					else {
+						coords_w_100 = Math.round(300 * (coords.w / (coords.h * 1.0)));
+						coords_h_100 = 300;
+						bgrnd_size_x_100 = background_size_x_2_100;
+						bgrnd_size_y_100 = background_size_y_2_100;
+						
+						coords_w_100 = Math.round(100 * (coords.w / (coords.h * 1.0)));
+						coords_h_100 = 100;
+						bgrnd_size_x_100 = background_size_x_2_100;
+						bgrnd_size_y_100 = background_size_y_2_100;
+					}
+				}
+				else {
+					coords_w_100 = coords.w;
+					coords_h_100 = coords.h;
+					bgrnd_size_x_100 = image_width_600;
+					bgrnd_size_y_100 = image_height_600;
+				}
+
+
+				s_coords_w = coords_w.toString() + 'px';
+				s_coords_h = coords_h.toString() + 'px';
+				background_size = Math.round(bgrnd_size_x).toString() + 'px ' + Math.round(bgrnd_size_y).toString() + 'px';
+				bgrnd_shift_x = coords.x * (bgrnd_size_x / (image_width_600 * 1.0));
+				bgrnd_shift_y = coords.y * (bgrnd_size_y / (image_height_600 * 1.0));
+				background_position = '-' + Math.round(bgrnd_shift_x).toString() + 'px -' + Math.round(bgrnd_shift_y).toString() + 'px';
+
+				s_coords_w_200 = coords_w_200.toString() + 'px';
+				s_coords_h_200 = coords_h_200.toString() + 'px';
+				background_size_200 = Math.round(bgrnd_size_x_200).toString() + 'px ' + Math.round(bgrnd_size_y_200).toString() + 'px';
+				bgrnd_shift_x_200 = coords.x * (bgrnd_size_x_200 / (image_width_600 * 1.0));
+				bgrnd_shift_y_200 = coords.y * (bgrnd_size_y_200 / (image_height_600 * 1.0));
+				background_position_200 = '-' + Math.round(bgrnd_shift_x_200).toString() + 'px -' + Math.round(bgrnd_shift_y_200).toString() + 'px';
+
+				s_coords_w_100 = coords_w_100.toString() + 'px';
+				s_coords_h_100 = coords_h_100.toString() + 'px';
+				background_size_100 = Math.round(bgrnd_size_x_100).toString() + 'px ' + Math.round(bgrnd_size_y_100).toString() + 'px';
+				bgrnd_shift_x_100 = coords.x * (bgrnd_size_x_100 / (image_width_600 * 1.0));
+				bgrnd_shift_y_100 = coords.y * (bgrnd_size_y_100 / (image_height_600 * 1.0));
+				background_position_100 = '-' + Math.round(bgrnd_shift_x_100).toString() + 'px -' + Math.round(bgrnd_shift_y_100).toString() + 'px';
+
+
+                jQuery('#preview_image_1_375_300').css({
+					width: s_coords_w,
+				    height: s_coords_h,
+				    'background-position':background_position,
+				    'background-size':background_size
+                });   
+                
+                jQuery('#preview_image_1_200_200').css({
+					width: s_coords_w_200,
+				    height: s_coords_h_200,
+				    'background-position':background_position_200,
+				    'background-size':background_size_200
+                });                
+
+                jQuery('#preview_image_1_100_100').css({
+					width: coords_w_100,
+				    height: coords_h_100,
+				    'background-position':background_position_100,
+				    'background-size':background_size_100
+                });
+                
 		    	$('#id_crop_x_image_1').val(coords.x);
 		    	$('#id_crop_y_image_1').val(coords.y);
 		    	$('#id_crop_w_image_1').val(coords.w);
 		    	$('#id_crop_h_image_1').val(coords.h);
-
-				background_position = '-' + Math.round(coords.x) + 'px -' + Math.round(coords.y) + 'px';
-				
-				if ((coords.w > 375) && (coords.h <= 300)) {
-					bgrnd_x = image_width_600 * (375/(coords.w * 1.0));
-					background_size_x = Math.round(bgrnd_x).toString() + 'px';
-					background_size_y = Math.round(bgrnd_x * (image_height_600 / (image_width_600 * 1.0))).toString() + 'px';
-					coords_h = Math.round(375 * (coords.h / (coords.w * 1.0))).toString() + 'px';
-					coords_w = '375px';
-				}
-				else if ((coords.h > 300) && (coords.w <= 375)) {
-					bgrnd_y = image_height_600 * (300/(coords.h * 1.0));
-					background_size_y = Math.round(bgrnd_y).toString() + 'px';
-					background_size_x = Math.round(bgrnd_y * (image_width_600 / (image_height_600 * 1.0))).toString() + 'px';
-					coords_w = Math.round(300 * (coords.w / (coords.h * 1.0))).toString() + 'px';
-					coords_h = '300px';
-				}
-				else if ((coords.w > 375) && (coords.h > 300)) {
-					bgrnd_x_1 = image_width_600 * (375/(coords.w * 1.0));
-					background_size_x_1 = Math.round(bgrnd_x_1);
-					background_size_y_1 = Math.round(bgrnd_x_1 * (image_height_600 / (image_width_600 * 1.0)));
-
-					bgrnd_y_2 = image_height_600 * (300/(coords.h * 1.0));
-					background_size_y_2 = Math.round(bgrnd_y_2);
-					background_size_x_2 = Math.round(bgrnd_y_2 * (image_width_600 / (image_height_600 * 1.0)));
-
-					if (background_size_x_1 < background_size_x_2) {
-						background_size_x = background_size_x_1.toString() + 'px';
-						background_size_y = background_size_y_1.toString() + 'px';
-						coords_h = Math.round(375 * (coords.h / (coords.w * 1.0))).toString() + 'px';
-						coords_w = '375px';
-					}
-					else {
-						background_size_x = background_size_x_2.toString() + 'px';
-						background_size_y = background_size_y_2.toString() + 'px';						
-						coords_w = Math.round(300 * (coords.w / (coords.h * 1.0))).toString() + 'px';
-						coords_h = '300px';
-					}
-				}
-				else {
-					coords_w = coords.w.toString() + 'px';
-					coords_h = coords.h.toString() + 'px';
-					background_size_x = $('#cropbox_image_1').width().toString() + 'px';
-					background_size_y = $('#cropbox_image_1').height().toString() + 'px'; 
-				}
-
-				background_size = background_size_x + ' ' + background_size_y;
-				$("#id_background_size").val(background_size);
-				
-				// background_size = '375px 300px';
-				
-                // jQuery('#preview_user_200').css({
-					// width: Math.round(200 / coords.w * $('#cropbox_user').width()) + 'px',
-				    // height: Math.round(200 / coords.h * $('#cropbox_user').height()) + 'px',
+				// $("#id_background_size_x_1").val(background_size_x_1);
+				// $("#id_background_size_x_2").val(background_size_x_2);
+				// $("#id_background_size_y_1").val(background_size_y_1);
+				// $("#id_background_size_y_2").val(background_size_y_2);
+				// $("#id_background_size").val(background_size);				
+				// $("#id_bgrnd_shift_x").val(bgrnd_shift_x);
+				// $("#id_bgrnd_shift_y").val(bgrnd_shift_y);
+                                             
+                // jQuery('#preview_image_1_200').css({
+					// width: Math.round(200 / coords.w * $('#cropbox_image_1').width()) + 'px',
+				    // height: Math.round(200 / coords.h * $('#cropbox_image_1').height()) + 'px',
 				    // marginLeft: '-' + Math.round(200 / coords.w * coords.x) + 'px',
 				    // marginTop: '-' + Math.round(200 / coords.h * coords.y) + 'px'
-                    // // width: Math.round(rx * 200) + 'px',
-                    // // height: Math.round(ry * 200) + 'px',
-                    // // marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-                    // // marginTop: '-' + Math.round(ry * coords.y) + 'px'
+                // });                
+                // jQuery('#preview_image_1_100').css({
+					// width: Math.round(100 / coords.w * $('#cropbox_image_1').width()) + 'px',
+				    // height: Math.round(100 / coords.h * $('#cropbox_image_1').height()) + 'px',
+				    // marginLeft: '-' + Math.round(100 / coords.w * coords.x) + 'px',
+				    // marginTop: '-' + Math.round(100 / coords.h * coords.y) + 'px'
                 // });
-                jQuery('#preview_1').css({
-					width: coords_w,
-				    height: coords_h,
-				    'background-position':background_position,
-				    'background-size':background_size
-				    // 'margin-left':margin_left
-                });                                
-                // jQuery('#preview_1').css({
-				    // 'background-position':'10px 20px'
-                // });                                
-                // jQuery('#preview_image_1_375_300_container').css({
-				    // // height: Math.round(coords.h) + 'px'
-				    // // height: Math.round(300 / coords.h * $('#cropbox_image_1').height()) + 'px'
-				    // // height: Math.round(coords.h * (300 / $('#cropbox_image_1').height())) + 'px'
-				    // // height: Math.round(coords.h * (300 / 375)) + 'px'
-                // });                
-                // jQuery('#preview_image_1_375_300').css({
-					// // width: Math.round(375 / coords.w * $('#cropbox_image_1').width()) + 'px',
-				    // // height: Math.round(300 / coords.h * $('#cropbox_image_1').height()) + 'px',
-// 
-					// width: Math.round(coords.w) + 'px',
-				    // height: Math.round(coords.h) + 'px',
-// 
-				    // // marginLeft: '-' + Math.round(coords.x) + 'px',
-				    // // marginTop: '-' + Math.round(coords.y) + 'px'
-// 
-				    // // marginLeft: '-' + Math.round(375 / coords.w * coords.x) + 'px',
-				    // // marginTop: '-' + Math.round(300 / coords.h * coords.y) + 'px'
-// 
-                    // // width: Math.round(rx * 200) + 'px',
-                    // // height: Math.round(ry * 200) + 'px',
-                    // // marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-                    // // marginTop: '-' + Math.round(ry * coords.y) + 'px'
-                // });                
-                // jQuery('#preview_image_1_375_300').css({
-					// // width: Math.round((200 / coords.w) * $('#cropbox_image_1').width()) + 'px',
-					// // width: Math.round(600 / coords.w * $('#cropbox_image_1').width()) + 'px',
-				    // // height: Math.round(600 / coords.h * $('#cropbox_image_1').height()) + 'px',
-					// width: Math.round(coords.w) + 'px',
-				    // height: Math.round(coords.h) + 'px',
-				    // // marginLeft: '0px',
-				    // // marginTop: '0px'
-				    // marginLeft: '+' + Math.round(coords.x) + 'px',
-				    // marginTop: '+' + Math.round(coords.y) + 'px'
-                    // // width: Math.round(rx * 200) + 'px',
-                    // // height: Math.round(ry * 200) + 'px',
-                    // // marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-                    // // marginTop: '-' + Math.round(ry * coords.y) + 'px'
-                // });                
-                jQuery('#preview_image_1_200').css({
-					width: Math.round(200 / coords.w * $('#cropbox_image_1').width()) + 'px',
-				    height: Math.round(200 / coords.h * $('#cropbox_image_1').height()) + 'px',
-				    marginLeft: '-' + Math.round(200 / coords.w * coords.x) + 'px',
-				    marginTop: '-' + Math.round(200 / coords.h * coords.y) + 'px'
-                    // width: Math.round(rx * 200) + 'px',
-                    // height: Math.round(ry * 200) + 'px',
-                    // marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-                    // marginTop: '-' + Math.round(ry * coords.y) + 'px'
-                });                
-                jQuery('#preview_image_1_100').css({
-					width: Math.round(100 / coords.w * $('#cropbox_image_1').width()) + 'px',
-				    height: Math.round(100 / coords.h * $('#cropbox_image_1').height()) + 'px',
-				    marginLeft: '-' + Math.round(100 / coords.w * coords.x) + 'px',
-				    marginTop: '-' + Math.round(100 / coords.h * coords.y) + 'px'
-                });
                 // jQuery('#preview_image_1_50').css({
 					// width: Math.round(50 / coords.w * $('#cropbox_image_1').width()) + 'px',
 				    // height: Math.round(50 / coords.h * $('#cropbox_image_1').height()) + 'px',
@@ -342,10 +456,8 @@
             	// setSelect: [0, 0, 600, 600],
             	setSelect: [insert_crop_x_image_1, insert_crop_y_image_1, insert_crop_x2_image_1, insert_crop_y2_image_1],
             	// setSelect: [ 238, 0, 300, 300 ],
-            	
 	            // onSelect: function(coords){showPreview(coords);},
 			    // onChange: function(coords){showPreview(coords);}
-			    
 	            // onSelect: function(coords){showPreview(image_to_crop, coords);},
 			    // onChange: function(coords){showPreview(image_to_crop, coords);}
                 onSelect: showPreviewImage1,
@@ -356,10 +468,7 @@
 		
 		// $(window).load( function() {
 		$(document).ready(function () {				
-
 			// alert('insert_crop_x : ' + insert_crop_x);
-			
-			
 		});
 
 		

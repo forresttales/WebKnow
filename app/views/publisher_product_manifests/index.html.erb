@@ -10365,12 +10365,10 @@
 		};	  
 
 		function deleteImage1(id_image) {
-			
 			var obj_list = '{  "publisher_product_id":' + publisher_product_id +
 						   ',  "id":' + id_image +
 						   '}';      
 		  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
-			
 			// var formData = {id:id_image};
 		  	$.ajax({
 		    	type: 'POST',
@@ -10392,8 +10390,6 @@
 		}
 
 		function cropImage1() {
-			alert("cropImage1");
-			// var input_image_id = $("#image_id_logo").val();
 			var input_image_id = $("#cropbox_image_1").val();
 			var input_crop_x = $("#id_crop_x_image_1").val();
 			var input_crop_y = $("#id_crop_y_image_1").val();
