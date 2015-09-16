@@ -8,6 +8,7 @@ Bundler.require(:default, Rails.env)
 
 module Webknow
   class Application < Rails::Application
+  config.autoload_paths << Rails.root.join('app/stomplets')
       # Use TorqueBox::Infinispan::Cache for the Rails cache store
   if defined? TorqueBox::Infinispan::Cache
     config.cache_store = :torquebox_store
@@ -68,7 +69,8 @@ module Webknow
                                   'jquery_ui_1.10.4.js',
                                   'jquery.multiselect.js',
                                   'nav-jquery.js',
-                                  'slick.js'                                  
+                                  'slick.js',
+                                  'stomp.js'                                  
                                   # 'toucheffects.js'
                                 ]
 

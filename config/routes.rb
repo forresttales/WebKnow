@@ -1,5 +1,7 @@
 Webknow::Application.routes.draw do
 
+  get "message/index"
+  get "message/create"
   get "tests/test1"
   get "tests/test_fullscreen"
   get "control_elements/nav_dropdowns"

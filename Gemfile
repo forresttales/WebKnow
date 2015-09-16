@@ -55,6 +55,11 @@ gem 'activerecord-jdbc-adapter', platform: :jruby
 
 gem 'torquebox', '~> 3.1.2'
 gem 'torquebox-server', '~> 3.1.2'
+gem "torquebox-rake-support", '~> 3.1.2'
+gem "torquebox-messaging",    '~> 3.1.2'
+gem "torquebox-stomp",        '~> 3.1.2'
+gem "torquebox-web",          '~> 3.1.2'
+gem "torquebox-cache",        '~> 3.1.2'
 
 # rake rails:template LOCATION=$(torquebox env TORQUEBOX_HOME_RAKE_SUPPORT)/share/rails/template.rb
 # export TORQUEBOX_HOME_RAKE_SUPPORT=/home/clyde/.gem/jruby/1.9.3/gems/torquebox-rake-support-3.1.2

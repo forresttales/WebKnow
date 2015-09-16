@@ -4,6 +4,7 @@ module SessionsHelper
     remember_token = User.new_remember_token
     
     # Rails.logger.info params[:remember_me]
+    session[:remember_token] = remember_token
     
     if params[:remember_me].to_s == "1"
       cookies.permanent[:remember_token] = remember_token
@@ -157,6 +158,7 @@ module SessionsHelper
   def sign_out
     self.current_user = nil
     cookies.delete(:remember_token)
+    session.delete(:remember_token)
     
     
     # session[:username] = nil

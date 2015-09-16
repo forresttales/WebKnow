@@ -254,10 +254,15 @@ DEPENDENCIES
   tabulous
   therubyrhino
   torquebox (~> 3.1.2)
+  torquebox-cache (~> 3.1.2)
+  torquebox-messaging (~> 3.1.2)
+  torquebox-rake-support (~> 3.1.2)
   torquebox-server (~> 3.1.2)
+  torquebox-stomp (~> 3.1.2)
+  torquebox-web (~> 3.1.2)
   uglifier
   warbler
   will_paginate
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
