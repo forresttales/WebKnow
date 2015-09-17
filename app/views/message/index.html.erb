@@ -250,6 +250,7 @@
 	<textarea id="new_message" placeholder="Participate in coversation"></textarea>
 	<br/><br/>
 	<input type="button" onclick="sendMessage()" value="SEND"/>
+	<input id="dialog_id" type="text" value="2"/>
 	<div class="validation">You Are Not Registered</div>
 	<br/>
 	<p class="note">* for any help return to adminstrator..</p>
@@ -287,7 +288,7 @@
 	}
 
 	onMessage = function(msg) { 
-		//alert(msg);
+		alert(msg);
 
 		// var message = String.format('<p>{0}: {1}</p>',
   //                            msg.headers.sender, msg.body);
@@ -311,7 +312,7 @@
 	}
 
 	function sendMessage() {
-		client.send( "/queue/demo", {}, $("#new_message").val() );
+		client.send( "/queue/demo", { dialog_id: $("#dialog_id").val() }, $("#new_message").val() );
 		$("#new_message").val("");
 	}
 

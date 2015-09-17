@@ -2,6 +2,15 @@
 # This is the TorqueBox configuration file. Refer to the TorqueBox
 # documentation at http://torquebox.org/documentation/current/ 
 # for all configuration options.
+topics:
+  /topics/chat:
+
+stomp:
+  stomplets:
+    private:
+      class: DemoStomplet
+      route: /queue/demo
+
 web:
   context: "/"
 
