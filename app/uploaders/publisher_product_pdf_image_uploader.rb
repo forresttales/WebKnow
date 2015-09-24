@@ -8,7 +8,7 @@ class PublisherProductPdfImageUploader < CarrierWave::Uploader::Base
   # storage :fog
 
 
-  process :resize_to_limit => [200, 0]
+  # process :resize_to_limit => [200, 0]
   # process :convert => 'png'
   
   def store_dir
@@ -20,6 +20,12 @@ class PublisherProductPdfImageUploader < CarrierWave::Uploader::Base
 
   def filename
      "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
+
+  version :image_200_270 do
+    process :resize_to_limit => [200, 270]
+    # process :resize_to_fill => [100, 100, gravity = ::Magick::CenterGravity]
+    # process :resize_to_limit => [100, 100]
   end
 
   # version :image_loaded do

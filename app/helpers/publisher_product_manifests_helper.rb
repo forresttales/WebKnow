@@ -1,6 +1,10 @@
 module PublisherProductManifestsHelper
   
-  
+
+  def yesno(x)
+    x ? "Yes" : "No"
+  end
+
   def publisher_product_pdf_image_for(publisher_product_pdf)
     img = publisher_product_pdf.publisher_product_pdf_image
     if !img.nil?     
@@ -11,14 +15,6 @@ module PublisherProductManifestsHelper
     return publisher_product_pdf_image
         
   end  
-
-
-
-
-  def yesno(x)
-    x ? "Yes" : "No"
-  end
-
 
   def product_tagline_for(publisher_product)
     
@@ -34,18 +30,18 @@ module PublisherProductManifestsHelper
       return h_product_tagline      
   end  
 
-  def name_product_for(publisher_product)
+  def product_name_for(publisher_product)
       
-      name_product_text = []
+      product_name_text = []
       publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
       if !publisher_product_manifest.nil? 
-          name_product_text.push(publisher_product_manifest.name_product)
+          product_name_text.push(publisher_product_manifest.product_name)
       end    
       
-      h_name_product = Hash.new
-      h_name_product[:name_product_text] = name_product_text
+      h_product_name = Hash.new
+      h_product_name[:product_name_text] = product_name_text
 
-      return h_name_product      
+      return h_product_name      
   end  
 
   def versions_for(publisher_product)

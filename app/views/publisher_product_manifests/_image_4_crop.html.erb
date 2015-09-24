@@ -1,0 +1,477 @@
+<style>
+
+	.input-crop {
+		width: 70px;	
+	}	
+	.preview-image-4-375-300 {
+		width: 0px; 
+		height: 0px; 
+		background-size: 0px 0px;
+		background-image: url('<%= @image_4.image_url(:image_600_600) %>'); 
+		background-repeat: no-repeat; 
+		background-position: 0px 0px; 
+		position: relative; 
+		margin-left: 0px;
+		margin-top: 0px;
+	}
+	.preview-image-4-200-200 {
+		width: 0px; 
+		height: 0px; 
+		background-size: 0px 0px;
+		background-image: url('<%= @image_4.image_url(:image_600_600) %>'); 
+		background-repeat: no-repeat; 
+		background-position: 0px 0px; 
+		position: relative; 
+		margin-left: 0px;
+		margin-top: 0px;
+	}
+	.preview-image-4-100-100 {
+		width: 0px; 
+		height: 0px; 
+		background-size: 0px 0px;
+		background-image: url('<%= @image_4.image_url(:image_600_600) %>'); 
+		background-repeat: no-repeat; 
+		background-position: 0px 0px; 
+		position: relative; 
+		margin-left: 0px;
+		margin-top: 0px;
+	}
+	
+</style>
+
+
+					<% if !@image_4.nil? %>
+
+						<div style="display: inline-block; width: 608px; height: 1px; margin: 0;"></div>
+						<div style="display: inline-block; width: 0px; height: 1px; margin: 0;"></div>
+						<div style="display: inline-block; width: 379px; margin: 0;">
+							<div class="background-table-dialog-2">
+								<div class="dialog-msg-container">
+									<span>Preview</span>
+								</div>
+			   				</div>
+						</div>
+						<div style="height: 4px;"></div>
+						<div style="display: inline-block; width: 600px; height: 600px; background-color: #aaa; border: 2px solid #376340;">
+							<img id="cropbox_image_4" alt="" src="<%= @image_4.image_url(:image_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_4.image? %>" />
+						</div>
+						<div style="display: inline-block; width: 4px; height: 1px;"></div>
+						<div style="display: inline-block; width: 382px; height: auto; vertical-align: top; position: relative;">
+							<div style="width: 375px; height: 300px; position: relative; overflow: hidden; border: 2px solid #376340;">
+								<div id="preview_image_4_375_300" class="preview-image-4-375-300"></div>
+							</div>									
+
+							<% if false %>
+							bgrnd<%= text_field_tag :crop_x, params["crop_x"], id: "id_background_size", class: "input-crop" %><br>
+						  	x_r<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x_image_4_ratio_x", class: "input-crop" %><br>
+						  	background_size_x_1<%= text_field_tag :crop_x, params["crop_x"], id: "id_background_size_x_1", class: "input-crop" %><br>
+						  	background_size_x_2<%= text_field_tag :crop_x, params["crop_x"], id: "id_background_size_x_2", class: "input-crop" %><br>
+						  	background_size_y_1<%= text_field_tag :crop_x, params["crop_x"], id: "id_background_size_y_1", class: "input-crop" %><br>
+						  	background_size_y_2<%= text_field_tag :crop_x, params["crop_x"], id: "id_background_size_y_2", class: "input-crop" %><br>
+
+							bgrnd_shift_x<%= text_field_tag :crop_x, params["crop_x"], id: "id_bgrnd_shift_x", class: "input-crop" %><br>
+							bgrnd_shift_y<%= text_field_tag :crop_x, params["crop_x"], id: "id_bgrnd_shift_y", class: "input-crop" %><br>
+							
+							<% end %>
+							
+						  	<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x_image_4", class: "input-crop hidden" %>
+						  	<%= text_field_tag :crop_y, params["crop_y"], id: "id_crop_y_image_4", class: "input-crop hidden" %>
+						  	<%= text_field_tag :crop_w, params["crop_w"], id: "id_crop_w_image_4", class: "input-crop hidden" %>
+						  	<%= text_field_tag :crop_h, params["crop_h"], id: "id_crop_h_image_4", class: "input-crop hidden" %>
+							<%= hidden_field_tag "image_id_image_4", @image_4.id %>
+							
+			   				<div style="height: 4px"></div>			
+							<div style="width: 200px; height: 200px; position: relative; overflow: hidden; border: 2px solid #376340;">
+								<div id="preview_image_4_200_200" class="preview-image-4-200-200"></div>
+							</div>									
+			   				<div style="height: 4px"></div>			
+							<div style="width: 100px; height: 100px; position: relative; overflow: hidden; border: 2px solid #376340;">
+								<div id="preview_image_4_100_100" class="preview-image-4-100-100"></div>
+							</div>									
+			   				
+							<% if false %>			   								
+							<div style="width:200px; height:200px; overflow: hidden">
+							  <%= image_tag @image_4.image_url(:image_600_600), :id => "preview_image_4_200" %>
+							</div>
+							<div style="height: 4px"></div>
+							<div style="width:100px; height:100px; overflow: hidden">
+							  <%= image_tag @image_4.image_url(:image_600_600), :id => "preview_image_4_100" %>
+							</div>
+							<% end %>
+							
+			   				<div style="position: absolute; bottom: -60px; right: 0px;">
+								<span><input id="btn_dlg_submit_crop_image_4" class="btn-pop-dialog-1" type="button" value="Save" tabindex=""></span>
+								&nbsp;
+								<span><input id="btn_dlg_cancel_crop_image_4" class="btn-pop-dialog-1" type="button" value="Cancel" tabindex=""></span>
+			   				</div>
+						</div>
+					<% else %>
+						<div> no @image_4</div>
+					<% end %>		
+
+
+	<script>
+		
+		<% if !@image_4.nil? %>
+			var insert_crop_x_image_4 = <%= @image_4.crop_x %>;
+			var insert_crop_y_image_4 = <%= @image_4.crop_y %>;
+			var insert_crop_w_image_4 = <%= @image_4.crop_w %>;
+			var insert_crop_h_image_4 = <%= @image_4.crop_h %>;
+		<% else %>
+			var insert_crop_x_image_4 = 0;
+			var insert_crop_y_image_4 = 0;
+			var insert_crop_w_image_4 = 200;
+			var insert_crop_h_image_4 = 200;		
+		<% end %>
+
+		var image_width_600 	= 0;
+		var image_height_600 	= 0;
+
+		var coords_w = "";
+		var coords_h = "";
+		var coords_x = "";
+		var coords_y = "";
+		var background_size = "";
+		var background_size_x = "";
+		var background_size_y = "";
+		var bgrnd_x = 0;
+		var bgrnd_y = 0;
+		var bgrnd_x_1 = 0;;
+		var background_size_x_1 = 0;
+		var background_size_y_1 = 0;
+		var bgrnd_y_2 = 0;
+		var background_size_y_2 = 0;
+		var background_size_x_2 = 0;
+		var bgrnd_shift_x = 0;
+		var background_shift_x = "";
+		var bgrnd_shift_y = 0;
+		var background_shift_y = "";
+
+		var coords_w_200 = "";
+		var coords_h_200 = "";
+		var coords_x_200 = "";
+		var coords_y_200 = "";
+		var background_size_200 = "";
+		var background_size_x_200 = "";
+		var background_size_y_200 = "";
+		var bgrnd_x_200 = 0;
+		var bgrnd_y_200 = 0;
+		var bgrnd_x_1_200 = 0;;
+		var background_size_x_1_200 = 0;
+		var background_size_y_1_200 = 0;
+		var bgrnd_y_2_200 = 0;
+		var background_size_y_2_200 = 0;
+		var background_size_x_2_200 = 0;
+		var bgrnd_shift_x_200 = 0;
+		var background_shift_x_200 = "";
+		var bgrnd_shift_y_200 = 0;
+		var background_shift_y_200 = "";
+
+		var coords_w_100 = "";
+		var coords_h_100 = "";
+		var coords_x_100 = "";
+		var coords_y_100 = "";
+		var background_size_100 = "";
+		var background_size_x_100 = "";
+		var background_size_y_100 = "";
+		var bgrnd_x_100 = 0;
+		var bgrnd_y_100 = 0;
+		var bgrnd_x_1_100 = 0;;
+		var background_size_x_1_100 = 0;
+		var background_size_y_1_100 = 0;
+		var bgrnd_y_2_100 = 0;
+		var background_size_y_2_100 = 0;
+		var background_size_x_2_100 = 0;
+		var bgrnd_shift_x_100 = 0;
+		var background_shift_x_100 = "";
+		var bgrnd_shift_y_100 = 0;
+		var background_shift_y_100 = "";
+		
+		var insert_crop_x2_image_4 = insert_crop_x_image_4 + insert_crop_w_image_4;
+		var insert_crop_y2_image_4 = insert_crop_y_image_4 + insert_crop_h_image_4;
+		
+        function showPreviewImage4(coords)
+        {
+            if (parseInt(coords.w) > 0)
+            {
+				image_width_600	 = $('#cropbox_image_4').width();
+				image_height_600 = $('#cropbox_image_4').height();
+
+				if ((coords.w > 375) && (coords.h <= 300)) {
+					bgrnd_size_x = image_width_600 * (375 / (coords.w * 1.0));
+					bgrnd_size_y = bgrnd_size_x * (image_height_600 / (image_width_600 * 1.0));
+					coords_h = Math.round(375 * (coords.h / (coords.w * 1.0)));
+					coords_w = 375;
+				}
+				else if ((coords.h > 300) && (coords.w <= 375)) {
+					bgrnd_size_y = image_height_600 * (300 / (coords.h * 1.0));
+					bgrnd_size_x = bgrnd_size_y * (image_width_600 / (image_height_600 * 1.0));
+					coords_w = Math.round(300 * (coords.w / (coords.h * 1.0)));
+					coords_h = 300;
+				}
+				else if ((coords.w > 375) && (coords.h > 300)) {
+					bgrnd_size_x_1 = image_width_600 * (375 / (coords.w * 1.0));
+					background_size_x_1 = Math.round(bgrnd_size_x_1);
+					bgrnd_size_y_1 = bgrnd_size_x_1 * (image_height_600 / (image_width_600 * 1.0));
+					background_size_y_1 = Math.round(bgrnd_size_y_1);
+
+					bgrnd_size_y_2 = image_height_600 * (300 / (coords.h * 1.0));
+					background_size_y_2 = Math.round(bgrnd_size_y_2);
+					bgrnd_size_x_2 = bgrnd_size_y_2 * (image_width_600 / (image_height_600 * 1.0));
+					background_size_x_2 = Math.round(bgrnd_size_x_2);
+
+					if (background_size_x_1 < background_size_x_2) {
+						coords_h = Math.round(375 * (coords.h / (coords.w * 1.0)));
+						coords_w = 375;
+						bgrnd_size_x = background_size_x_1;
+						bgrnd_size_y = background_size_y_1;
+					}
+					else {
+						coords_w = Math.round(300 * (coords.w / (coords.h * 1.0)));
+						coords_h = 300;
+						bgrnd_size_x = background_size_x_2;
+						bgrnd_size_y = background_size_y_2;
+					}
+				}
+				else {
+					coords_w = coords.w;
+					coords_h = coords.h;
+					bgrnd_size_x = image_width_600;
+					bgrnd_size_y = image_height_600;
+				}
+
+				if ((coords.w > 200) && (coords.h <= 200)) {
+					bgrnd_size_x_200 = image_width_600 * (200 / (coords.w * 1.0));
+					bgrnd_size_y_200 = bgrnd_size_x_200 * (image_height_600 / (image_width_600 * 1.0));
+					coords_h_200 = Math.round(200 * (coords.h / (coords.w * 1.0)));
+					coords_w_200 = 200;
+				}
+				else if ((coords.h > 200) && (coords.w <= 200)) {
+					bgrnd_size_y_200 = image_height_600 * (200 / (coords.h * 1.0));
+					bgrnd_size_x_200 = bgrnd_size_y_200 * (image_width_600 / (image_height_600 * 1.0));
+					coords_w_200 = Math.round(200 * (coords.w / (coords.h * 1.0)));
+					coords_h_200 = 200;
+				}
+				else if ((coords.w > 200) && (coords.h > 200)) {
+					bgrnd_size_x_1_200 = image_width_600 * (200 / (coords.w * 1.0));
+					background_size_x_1_200 = Math.round(bgrnd_size_x_1_200);
+					bgrnd_size_y_1_200 = bgrnd_size_x_1_200 * (image_height_600 / (image_width_600 * 1.0));
+					background_size_y_1_200 = Math.round(bgrnd_size_y_1_200);
+
+					bgrnd_size_y_2_200 = image_height_600 * (200 / (coords.h * 1.0));
+					background_size_y_2_200 = Math.round(bgrnd_size_y_2_200);
+					bgrnd_size_x_2_200 = bgrnd_size_y_2_200 * (image_width_600 / (image_height_600 * 1.0));
+					background_size_x_2_200 = Math.round(bgrnd_size_x_2_200);
+
+					if (background_size_x_1_200 < background_size_x_2_200) {
+						coords_h_200 = Math.round(375 * (coords.h / (coords.w * 1.0)));
+						coords_w_200 = 375;
+						bgrnd_size_x_200 = background_size_x_1_200;
+						bgrnd_size_y_200 = background_size_y_1_200;
+
+						coords_h_200 = Math.round(200 * (coords.h / (coords.w * 1.0)));
+						coords_w_200 = 200;
+						bgrnd_size_x_200 = background_size_x_1_200;
+						bgrnd_size_y_200 = background_size_y_1_200;
+					}
+					else {
+						coords_w_200 = Math.round(300 * (coords.w / (coords.h * 1.0)));
+						coords_h_200 = 300;
+						bgrnd_size_x_200 = background_size_x_2_200;
+						bgrnd_size_y_200 = background_size_y_2_200;
+						
+						coords_w_200 = Math.round(200 * (coords.w / (coords.h * 1.0)));
+						coords_h_200 = 200;
+						bgrnd_size_x_200 = background_size_x_2_200;
+						bgrnd_size_y_200 = background_size_y_2_200;
+					}
+				}
+				else {
+					coords_w_200 = coords.w;
+					coords_h_200 = coords.h;
+					bgrnd_size_x_200 = image_width_600;
+					bgrnd_size_y_200 = image_height_600;
+				}
+
+				if ((coords.w > 100) && (coords.h <= 100)) {
+					bgrnd_size_x_100 = image_width_600 * (100 / (coords.w * 1.0));
+					bgrnd_size_y_100 = bgrnd_size_x_100 * (image_height_600 / (image_width_600 * 1.0));
+					coords_h_100 = Math.round(100 * (coords.h / (coords.w * 1.0)));
+					coords_w_100 = 100;
+				}
+				else if ((coords.h > 100) && (coords.w <= 100)) {
+					bgrnd_size_y_100 = image_height_600 * (100 / (coords.h * 1.0));
+					bgrnd_size_x_100 = bgrnd_size_y_100 * (image_width_600 / (image_height_600 * 1.0));
+					coords_w_100 = Math.round(100 * (coords.w / (coords.h * 1.0)));
+					coords_h_100 = 100;
+				}
+				else if ((coords.w > 100) && (coords.h > 100)) {
+					bgrnd_size_x_1_100 = image_width_600 * (100 / (coords.w * 1.0));
+					background_size_x_1_100 = Math.round(bgrnd_size_x_1_100);
+					bgrnd_size_y_1_100 = bgrnd_size_x_1_100 * (image_height_600 / (image_width_600 * 1.0));
+					background_size_y_1_100 = Math.round(bgrnd_size_y_1_100);
+
+					bgrnd_size_y_2_100 = image_height_600 * (100 / (coords.h * 1.0));
+					background_size_y_2_100 = Math.round(bgrnd_size_y_2_100);
+					bgrnd_size_x_2_100 = bgrnd_size_y_2_100 * (image_width_600 / (image_height_600 * 1.0));
+					background_size_x_2_100 = Math.round(bgrnd_size_x_2_100);
+
+					if (background_size_x_1_100 < background_size_x_2_100) {
+						coords_h_100 = Math.round(375 * (coords.h / (coords.w * 1.0)));
+						coords_w_100 = 375;
+						bgrnd_size_x_100 = background_size_x_1_100;
+						bgrnd_size_y_100 = background_size_y_1_100;
+
+						coords_h_100 = Math.round(100 * (coords.h / (coords.w * 1.0)));
+						coords_w_100 = 100;
+						bgrnd_size_x_100 = background_size_x_1_100;
+						bgrnd_size_y_100 = background_size_y_1_100;
+					}
+					else {
+						coords_w_100 = Math.round(300 * (coords.w / (coords.h * 1.0)));
+						coords_h_100 = 300;
+						bgrnd_size_x_100 = background_size_x_2_100;
+						bgrnd_size_y_100 = background_size_y_2_100;
+						
+						coords_w_100 = Math.round(100 * (coords.w / (coords.h * 1.0)));
+						coords_h_100 = 100;
+						bgrnd_size_x_100 = background_size_x_2_100;
+						bgrnd_size_y_100 = background_size_y_2_100;
+					}
+				}
+				else {
+					coords_w_100 = coords.w;
+					coords_h_100 = coords.h;
+					bgrnd_size_x_100 = image_width_600;
+					bgrnd_size_y_100 = image_height_600;
+				}
+
+
+				s_coords_w = coords_w.toString() + 'px';
+				s_coords_h = coords_h.toString() + 'px';
+				background_size = Math.round(bgrnd_size_x).toString() + 'px ' + Math.round(bgrnd_size_y).toString() + 'px';
+				bgrnd_shift_x = coords.x * (bgrnd_size_x / (image_width_600 * 1.0));
+				bgrnd_shift_y = coords.y * (bgrnd_size_y / (image_height_600 * 1.0));
+				background_position = '-' + Math.round(bgrnd_shift_x).toString() + 'px -' + Math.round(bgrnd_shift_y).toString() + 'px';
+
+				s_coords_w_200 = coords_w_200.toString() + 'px';
+				s_coords_h_200 = coords_h_200.toString() + 'px';
+				background_size_200 = Math.round(bgrnd_size_x_200).toString() + 'px ' + Math.round(bgrnd_size_y_200).toString() + 'px';
+				bgrnd_shift_x_200 = coords.x * (bgrnd_size_x_200 / (image_width_600 * 1.0));
+				bgrnd_shift_y_200 = coords.y * (bgrnd_size_y_200 / (image_height_600 * 1.0));
+				background_position_200 = '-' + Math.round(bgrnd_shift_x_200).toString() + 'px -' + Math.round(bgrnd_shift_y_200).toString() + 'px';
+
+				s_coords_w_100 = coords_w_100.toString() + 'px';
+				s_coords_h_100 = coords_h_100.toString() + 'px';
+				background_size_100 = Math.round(bgrnd_size_x_100).toString() + 'px ' + Math.round(bgrnd_size_y_100).toString() + 'px';
+				bgrnd_shift_x_100 = coords.x * (bgrnd_size_x_100 / (image_width_600 * 1.0));
+				bgrnd_shift_y_100 = coords.y * (bgrnd_size_y_100 / (image_height_600 * 1.0));
+				background_position_100 = '-' + Math.round(bgrnd_shift_x_100).toString() + 'px -' + Math.round(bgrnd_shift_y_100).toString() + 'px';
+
+
+                jQuery('#preview_image_4_375_300').css({
+					width: s_coords_w,
+				    height: s_coords_h,
+				    'background-position':background_position,
+				    'background-size':background_size
+                });   
+                
+                jQuery('#preview_image_4_200_200').css({
+					width: s_coords_w_200,
+				    height: s_coords_h_200,
+				    'background-position':background_position_200,
+				    'background-size':background_size_200
+                });                
+
+                jQuery('#preview_image_4_100_100').css({
+					width: coords_w_100,
+				    height: coords_h_100,
+				    'background-position':background_position_100,
+				    'background-size':background_size_100
+                });
+                
+		    	$('#id_crop_x_image_4').val(coords.x);
+		    	$('#id_crop_y_image_4').val(coords.y);
+		    	$('#id_crop_w_image_4').val(coords.w);
+		    	$('#id_crop_h_image_4').val(coords.h);
+				// $("#id_background_size_x_1").val(background_size_x_1);
+				// $("#id_background_size_x_2").val(background_size_x_2);
+				// $("#id_background_size_y_1").val(background_size_y_1);
+				// $("#id_background_size_y_2").val(background_size_y_2);
+				// $("#id_background_size").val(background_size);				
+				// $("#id_bgrnd_shift_x").val(bgrnd_shift_x);
+				// $("#id_bgrnd_shift_y").val(bgrnd_shift_y);
+                                             
+                // jQuery('#preview_image_4_200').css({
+					// width: Math.round(200 / coords.w * $('#cropbox_image_4').width()) + 'px',
+				    // height: Math.round(200 / coords.h * $('#cropbox_image_4').height()) + 'px',
+				    // marginLeft: '-' + Math.round(200 / coords.w * coords.x) + 'px',
+				    // marginTop: '-' + Math.round(200 / coords.h * coords.y) + 'px'
+                // });                
+                // jQuery('#preview_image_4_100').css({
+					// width: Math.round(100 / coords.w * $('#cropbox_image_4').width()) + 'px',
+				    // height: Math.round(100 / coords.h * $('#cropbox_image_4').height()) + 'px',
+				    // marginLeft: '-' + Math.round(100 / coords.w * coords.x) + 'px',
+				    // marginTop: '-' + Math.round(100 / coords.h * coords.y) + 'px'
+                // });
+                // jQuery('#preview_image_4_50').css({
+					// width: Math.round(50 / coords.w * $('#cropbox_image_4').width()) + 'px',
+				    // height: Math.round(50 / coords.h * $('#cropbox_image_4').height()) + 'px',
+				    // marginLeft: '-' + Math.round(50 / coords.w * coords.x) + 'px',
+				    // marginTop: '-' + Math.round(50 / coords.h * coords.y) + 'px'
+                // });
+                // jQuery('#preview_image_4_34').css({
+					// width: Math.round(34 / coords.w * $('#cropbox_image_4').width()) + 'px',
+				    // height: Math.round(34 / coords.h * $('#cropbox_image_4').height()) + 'px',
+				    // marginLeft: '-' + Math.round(34 / coords.w * coords.x) + 'px',
+				    // marginTop: '-' + Math.round(34 / coords.h * coords.y) + 'px'
+                // });
+                
+            }
+        }
+        
+		// jQuery(window).load(function(){
+			// jQuery("#cropbox_profile").each(function() {
+			  // // image_to_crop = $(this);
+			  // image_to_crop = $("#cropbox_profile");
+			  // image_to_crop.Jcrop({
+	          	// aspectRatio: 1,
+	        	// setSelect: [0, 0, 600, 600],
+	            // onSelect: function(coords){showPreview(image_to_crop, coords);},
+			    // onChange: function(coords){showPreview(image_to_crop, coords);}
+			// }
+        // });
+		
+		// jQuery(window).load(function(){
+		jQuery(document).ready(function() {
+			// coords.x = insert_crop_x;
+			// coords.y = insert_crop_y;
+			// coords.w = insert_crop_w;
+			// coords.h = insert_crop_h;
+			
+			var image_to_crop = $("#cropbox_image_4");
+			image_to_crop.Jcrop({
+            // jQuery('#cropbox_profile').Jcrop({
+                // aspectRatio: 375/300,
+            	// setSelect: [0, 0, 600, 600],
+            	setSelect: [insert_crop_x_image_4, insert_crop_y_image_4, insert_crop_x2_image_4, insert_crop_y2_image_4],
+            	// setSelect: [ 238, 0, 300, 300 ],
+	            // onSelect: function(coords){showPreview(coords);},
+			    // onChange: function(coords){showPreview(coords);}
+	            // onSelect: function(coords){showPreview(image_to_crop, coords);},
+			    // onChange: function(coords){showPreview(image_to_crop, coords);}
+                onSelect: showPreviewImage4,
+                onChange: showPreviewImage4                
+            });
+        });
+		
+		
+		// $(window).load( function() {
+		$(document).ready(function () {				
+			// alert('insert_crop_x : ' + insert_crop_x);
+		});
+
+		
+	</script>
+
+

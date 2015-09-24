@@ -62,6 +62,8 @@ GEM
       json
       multi_json
       request_store (>= 1.0.5)
+    haml (4.0.7)
+      tilt
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -230,6 +232,7 @@ DEPENDENCIES
   coffee-rails
   faker
   gon
+  haml
   jbuilder
   jdbc-postgres
   jquery-rails (~> 3.1.2)
@@ -255,6 +258,7 @@ DEPENDENCIES
   therubyrhino
   torquebox (~> 3.1.2)
   torquebox-server (~> 3.1.2)
+  torquebox-stomp
   uglifier
   warbler
   will_paginate

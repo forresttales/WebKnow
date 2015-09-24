@@ -9,3 +9,29 @@ environment:
   RAILS_ENV: production
   # RAILS_ENV: development
   
+
+# # stomp
+# topics:
+  # /topics/chat:
+# 
+# messaging:
+  # /topics/chat: 
+    # RosterTracker:
+      # selector: "roster='join' OR roster='part'"
+      # singleton: true
+# 
+# services:
+  # roster:
+    # service: Roster
+# 
+# stomp:
+  # host: localhost
+  # stomplets:
+    # chat:
+      # class: PublicStomplet
+      # route: /public
+    # private:
+      # class: PrivateStomplet
+      # route: /private
+# web:
+  # host: localhost

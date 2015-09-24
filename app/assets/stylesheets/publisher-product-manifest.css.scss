@@ -2057,7 +2057,7 @@ span.color-no-record {
 .form-edit-background {
  	background-color: #F0E4D3;	
 }
-.edit-options {
+.edit-options-block-1 {
   width: 20px; 
   height: 20px; 
   display: inline-block;
@@ -2640,6 +2640,7 @@ div#container_logo1_image .drop:hover .dropdownContain .dropOut {
 .cursor-pointer {
 	cursor: pointer;	
 }
+
 .jqmWindow-11 {
   display: none;
   position: absolute;
@@ -2650,6 +2651,79 @@ div#container_logo1_image .drop:hover .dropdownContain .dropOut {
   background-color: rgba(0, 0, 0, 0.8);
   color: #333;
   padding: 0px;
+}
+.jqmWindow-51 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 180px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;       
+}
+.jqmWindow-52 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 180px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;       
+}
+.jqmWindow-53 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 180px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;       
+}
+.jqmWindow-54 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 160px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;
+}
+.jqmWindow-55 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 160px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;
+}
+.jqmWindow-101-1 .close-container {
+  height: 60px; 
+  width: 60px; 
+  float: right;
+  top: 0px;
+  right: 100px;
+  z-index: 1;
 }       
 .jqmWindow-101-1 {
   display: none;
@@ -2730,7 +2804,216 @@ div#container_logo1_image .drop:hover .dropdownContain .dropOut {
   // border: 4px solid #376340;
   // padding: 0px;
 // }   
-
+.jqmWindow-102-1 .close-container {
+  height: 60px; 
+  width: 60px; 
+  float: right;
+  top: 0px;
+  right: 100px;
+  z-index: 1;
+}       
+.jqmWindow-102-1 {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -350px;
+  width: 700px;
+  height: 700px;        
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #333;
+  padding: 0px;
+}       
+.jqmWindow-102-2 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 180px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;       
+}   
+.jqmWindow-102-3 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 180px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;       
+}   
+.jqmWindow-102-4 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 160px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;
+}
+.jqmWindow-102-5 {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -509px;
+  width: 1018px;
+  height: 800px;
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;
+}   
+.jqmWindow-103-1 .close-container {
+  height: 60px; 
+  width: 60px; 
+  float: right;
+  top: 0px;
+  right: 100px;
+  z-index: 1;
+}       
+.jqmWindow-103-1 {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -350px;
+  width: 700px;
+  height: 700px;        
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #333;
+  padding: 0px;
+}       
+.jqmWindow-103-2 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 180px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;       
+}   
+.jqmWindow-103-3 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 180px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;       
+}   
+.jqmWindow-103-4 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 160px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;
+}
+.jqmWindow-103-5 {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -509px;
+  width: 1018px;
+  height: 800px;
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;
+}   
+.jqmWindow-104-1 .close-container {
+  height: 60px; 
+  width: 60px; 
+  float: right;
+  top: 0px;
+  right: 100px;
+  z-index: 1;
+}       
+.jqmWindow-104-1 {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -350px;
+  width: 700px;
+  height: 700px;        
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #333;
+  padding: 0px;
+}       
+.jqmWindow-104-2 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 180px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;       
+}   
+.jqmWindow-104-3 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 180px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;       
+}   
+.jqmWindow-104-4 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 160px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;
+}
+.jqmWindow-104-5 {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -509px;
+  width: 1018px;
+  height: 800px;
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;
+}   
 .jqmWindow-1001 {
   display: none;
   position: absolute;
@@ -3757,3 +4040,16 @@ span.bkgrnd-text-1 {
 .form-edit-open-20:hover {
   cursor: pointer;
 }   
+.width-show-1 {
+  width: 364px;  
+}
+.width-show-edit-1 {
+  width: 300px;
+}
+.width-show-2 {
+  width: 392px;  
+}
+.width-show-edit-2 {
+  width: 322px;
+}
+

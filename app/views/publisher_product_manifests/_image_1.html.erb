@@ -8,7 +8,6 @@
 .drop-namespace101 .drop-clear-both {
   clear: both;
 }
-
 .drop-namespace101 .drop-101 {
 	width: 200px;
 }
@@ -25,7 +24,6 @@
 .drop-namespace101 .drop-101 .drop-101-box {
   	width: 200px;
   	float: left;
-  	/*position: relative;*/
   	position: absolute;
   	margin-top: 0px;
   	-webkit-transition: all .1s ease-out;
@@ -46,16 +44,6 @@
 .drop-namespace101 .drop-101 .drop-101-link-1 {
 	width: 100%;
 }
-/*.drop-namespace101 .drop-101 .drop-101-target {
-	position: relative;
-  	width: 200px;
-  	height: 19px;
-  	padding: 9px 0px 4px 0px;
-  	text-align: center;
-}
-.drop-namespace101 .drop-101 .drop-101-target:hover {
-  	background: #f6f6f6;
-}*/
 .drop-namespace101 .drop-101 .drop-101-link-1:hover .span-1 {
 }   
 .drop-namespace101 .drop-101 .drop-101-span-1 {
@@ -168,8 +156,7 @@
 .drop-namespace101 .drop-101-table-cell-2 {
 	display: table-cell;
 	width: 12px;
-}
-	
+}	
 .drop-namespace101 .drop-101-1 {
 	text-align: left;
 	width: auto;
@@ -335,13 +322,9 @@
 <div class="drop-namespace101 hidden">
 	<% if @image_1 %>   				
 	
-		<!-- <div class="container-figure container-figure-1 drop-101-container-target" style="height: 200px;"> -->
-		<!-- <div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-101-container-target"> -->
 		<div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-101" style="position: relative;">
 			<figure class="dialog-101-1-figure cursor-pointer" data-width="<%= @image_1.width %>" data-src-600="<%= @image_1.image_url(:image_600_600) %>">
 				<img id="image_1_img" class="" alt="" src="<%= @image_1.image_url(:image_375_300) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_1.image? %>" />
-				<!-- <input class="container-image-hidden" type="hidden" value="<#%= @image_1.image_url(:user_600_600) if @image_1.image? %#>" />
-				<img id="image_1_img_600" class="hidden" alt="" src="<#%= @image_1.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_1.image? %#>" /> -->
 				<figcaption class="edit-image hidden drop-101-target">
 						<div class="img-1-text">Edit photo</div>
 				</figcaption>
@@ -391,7 +374,7 @@
 
 		<div class="container-figure-image container-figure-image-border-load container-figure-image-1 drop-101" style="position: relative;">
 			<figure class="dialog-101-1-figure-generic" data-width="375" data-src-600="">
-				<img id="image_1_generic_img" class="" alt="" src="<%= image_path('avatars/avatar-gen-product-w375-h300.png') %>" />
+				<img id="image_1_img_generic" class="" alt="" src="<%= image_path('avatars/avatar-gen-product-w375-h300.png') %>" />
 				<figcaption class="edit-image hidden cursor-pointer drop-101-target">
 						<div class="img-1-text">Add a photo</div>
 				</figcaption>
@@ -453,47 +436,8 @@
 	
 	$(document).ready(function () {				
 
-		$(document).on('click', function(e) {
-			// var target_namespace101 = $(e.target).parents('#drop_namespace101').attr("id");
-			var target_namespace101 = $(e.target).parents('.drop-namespace101').attr("class");
-			if (target_namespace101 == null) {
-				drop_hide_namespace101();
-			}
-		});
-
-		$(".drop-namespace101 .drop-101-target").on('click', function() {
-			drop_toggle_namespace101();
-		});
-		$(".drop-namespace101 .drop-101-link-1[data-id='1']").on("click", function() {
-			dropCloseAll_namespace101();
-			$(document).trigger("btn_image_1_change_click");
-		});
-		$(".drop-namespace101 .drop-101-link-1[data-id='2']").on("click", function() {
-			dropCloseAll_namespace101();
-			$(document).trigger("btn_image_1_crop_click");
-		});
-		$(".drop-namespace101 .drop-101-link-1[data-id='3']").on("click", function() {
-			dropCloseAll_namespace101();
-			$(document).trigger("btn_image_1_delete_click");
-		});
-		$(".drop-namespace101 .drop-101-link-1[data-id='4']").on("click", function() {
-			dropCloseAll_namespace101();
-			$(document).trigger("btn_image_1_new_click");
-		});
-
-	});
-	
-</script>
-
-
-<script>
-
-	// $(window).load( function() {
-	$(document).ready( function () {				
-
 		$("img").one("load", function() {
-			
-			if((this.id == "image_1_img") || (this.id == "image_1_generic_img")) {
+			if((this.id == "image_1_img") || (this.id == "image_1_img_generic")) {
 				var img_w = this.width;
 				var img_h = this.height;
 
@@ -529,57 +473,214 @@
 		  	}
 		});
 
-		
-		var this_img;			
-		$(".dialog-101-1-figure").on('click', function(e) {
-			// alert("dialog-11-figure");
-			if ( e.target.nodeName == "IMG" ) {
-
-				$("#dialog_overlay").jqmShow();
-				$("#overlay_loading").removeClass("display-none");
-
-				// // alert($(this).attr("id"));
-				// var w = $(this).data("width");
-				// // alert(w);
-				// w += 120;
-				// var w2 = -(w/2);
-				var src_img = $(this).data("src-600");
-				// alert(src_img);
-				$('<img src="'+ src_img +'">').load(function(){
-					$("#figure_dialog_101_1").append($(this));
-					// var image_1_url = gon.image_1_url;
-					// var s_tmpl = "templates/figure_dialog_101_1";
-					// $.tmpl(s_tmpl, {
-						// src_image: image_1_url
-					// }).appendTo($("#figure_dialog_101_1"));
-
-					// $(".jqmWindow-101-1").css({
-						// 'margin-left' : w2,
-						// 'width' : w  
-					// });
-					$("#overlay_loading").addClass("display-none");
-					$("#dialog_overlay").jqmHide();
-					$("#dialog_101_1").jqmShow();
-					$("#dialog_101_1 .close-container").css({ 'position' : 'fixed' });	
-				}).error(function(){
-					alert('error loading image');
-				});
+		$(document).on('click', function(e) {
+			var target_namespace101 = $(e.target).parents('.drop-namespace101').attr("class");
+			if (target_namespace101 == null) {
+				drop_hide_namespace101();
 			}
 		});
+
+		$(".drop-namespace101 .drop-101-target").on('click', function() {
+			drop_toggle_namespace101();
+		});
+		$(".drop-namespace101 .drop-101-link-1[data-id='1']").on("click", function() {
+			dropCloseAll_namespace101();
+			$(document).trigger("btn_image_1_change_click");
+		});
+		$(".drop-namespace101 .drop-101-link-1[data-id='2']").on("click", function() {
+			dropCloseAll_namespace101();
+			$(document).trigger("btn_image_1_crop_click");
+		});
+		$(".drop-namespace101 .drop-101-link-1[data-id='3']").on("click", function() {
+			dropCloseAll_namespace101();
+			$(document).trigger("btn_image_1_delete_click");
+		});
+		$(".drop-namespace101 .drop-101-link-1[data-id='4']").on("click", function() {
+			dropCloseAll_namespace101();
+			$(document).trigger("btn_image_1_new_click");
+		});
+
+		$("#image_1_img").on("load", function() {
+			var img_w = this.width;
+			var img_h = this.height;
+			$(".container-figure-image-1").css({
+				width : img_w,
+				height : img_h						
+			});													
+		}).each(function() {
+		  	if(this.complete) {
+		  		$(this).load();
+		  		$(".drop-namespace101").removeClass("hidden");
+		  	}
+		});
+
+		$("#image_1_img_generic").on("load", function() {
+			var img_w = this.width;
+			var img_h = this.height;
+			$(".container-figure-image-1").css({
+				width : img_w,
+				height : img_h						
+			});													
+		}).each(function() {
+		  	if(this.complete) {
+		  		$(this).load();
+		  		$(".drop-namespace101").removeClass("hidden");
+		  	}
+		});
+
+		$("#image_1_img_600").on("load", function() {
+			var img_w = this.width;
+			var img_h = this.height;
+			$("#figure_dialog_101_1").css({
+				width : img_w,
+				height : img_h
+			});																			
+		}).each(function() {
+		  	if(this.complete) {
+		  		$(this).load();
+		  	}
+		});
+
+	});
+	
+</script>
+
+
+<!-- <script>
+
+	// $(window).load( function() {
+	$(document).ready( function () {				
+
+		// $("img").one("load", function() {
+			// if((this.id == "image_1_img") || (this.id == "image_1_generic_img")) {
+				// var img_w = this.width;
+				// var img_h = this.height;
+// 
+				// $(".container-figure-image-1").css({
+					// // width : img_w + 4,
+					// // height : img_h + 4
+					// width : img_w,
+					// height : img_h						
+				// })// .removeClass("container-figure-image-border-load").addClass("container-figure-image-border");													
+			// }
+			// // if(this.id == "image_1_generic_img") {
+				// // var img_w = this.width;
+				// // var img_h = this.height;
+				// // $(".container-figure-image-1").css({
+					// // // width : img_w + 4,
+					// // // height : img_h + 4
+					// // width : img_w,
+					// // height : img_h						
+				// // }).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
+			// // }				
+			// if(this.id == "image_1_img_600") {
+				// var img_w = this.width;
+				// var img_h = this.height;
+				// $("#figure_dialog_101_1").css({
+					// width : img_w,
+					// height : img_h
+				// });																			
+			// }								
+		// }).each(function() {
+		  	// if(this.complete) {
+		  		// $(this).load();
+		  		// $(".drop-namespace101").removeClass("hidden");
+		  	// }
+		// });
+
+
+		$("#image_1_img").on("load", function() {
+			var img_w = this.width;
+			var img_h = this.height;
+			$(".container-figure-image-1").css({
+				width : img_w,
+				height : img_h						
+			});													
+		}).each(function() {
+		  	if(this.complete) {
+		  		$(this).load();
+		  		$(".drop-namespace101").removeClass("hidden");
+		  	}
+		});
+
+		$("#image_1_img_generic").on("load", function() {
+			var img_w = this.width;
+			var img_h = this.height;
+			$(".container-figure-image-1").css({
+				width : img_w,
+				height : img_h						
+			});													
+		}).each(function() {
+		  	if(this.complete) {
+		  		$(this).load();
+		  		$(".drop-namespace101").removeClass("hidden");
+		  	}
+		});
+
+		$("#image_1_img_600").on("load", function() {
+			var img_w = this.width;
+			var img_h = this.height;
+			$("#figure_dialog_101_1").css({
+				width : img_w,
+				height : img_h
+			});																			
+		}).each(function() {
+		  	if(this.complete) {
+		  		$(this).load();
+		  	}
+		});
 		
-		$('#dialog_101_1').jqm({
-			overlay: 84,
-			onShow: function(hash) {
-				hash.o.prependTo('body');
-				hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
-				hash.w.css('opacity', 1.0).fadeIn(100);
-			},
-			onHide: function(hash) {
-				hash.o.remove();
-				hash.w.css('top', '-8000px');
-				$("#figure_dialog_101_1 img").remove();
-			}
-		}); 		
+		// // var this_img;			
+		// $(".dialog-101-1-figure").on('click', function(e) {
+			// // alert("dialog-11-figure");
+			// if ( e.target.nodeName == "IMG" ) {
+// 
+				// $("#dialog_overlay").jqmShow();
+				// $("#overlay_loading").removeClass("display-none");
+// 
+				// // // alert($(this).attr("id"));
+				// // var w = $(this).data("width");
+				// // // alert(w);
+				// // w += 120;
+				// // var w2 = -(w/2);
+				// var src_img = $(this).data("src-600");
+				// // alert(src_img);
+				// $('<img src="'+ src_img +'">').load(function(){
+					// $("#figure_dialog_101_1").append($(this));
+					// // var image_1_url = gon.image_1_url;
+					// // var s_tmpl = "templates/figure_dialog_101_1";
+					// // $.tmpl(s_tmpl, {
+						// // src_image: image_1_url
+					// // }).appendTo($("#figure_dialog_101_1"));
+// 
+					// // $(".jqmWindow-101-1").css({
+						// // 'margin-left' : w2,
+						// // 'width' : w  
+					// // });
+					// $("#overlay_loading").addClass("display-none");
+					// $("#dialog_overlay").jqmHide();
+					// $("#dialog_101_1").jqmShow();
+					// $("#dialog_101_1 .close-container").css({ 'position' : 'fixed' });	
+				// }).error(function(){
+					// alert('error loading image');
+				// });
+			// }
+		// });
+// 		
+		// $('#dialog_101_1').jqm({
+			// overlay: 84,
+			// onShow: function(hash) {
+				// hash.o.prependTo('body');
+				// hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+				// hash.w.css('opacity', 1.0).fadeIn(100);
+			// },
+			// onHide: function(hash) {
+				// alert('onHide');
+				// hash.o.remove();
+				// hash.w.css('top', '-8000px');
+				// $("#figure_dialog_101_1 img").remove();
+			// }
+		// }); 		
 		
 		// $('#dialog_101_1').jqm({
 			// overlay: 84,
@@ -598,18 +699,19 @@
 			// }
 		// }); 		
 
-		$('#dialog_overlay').jqm({
-			overlay: 84,
-			onShow: function(hash) {
-				hash.w.css('opacity', 1.0).fadeIn(10);
-				hash.o.prependTo('body');
-				// hash.w.css('top', '0px');
-			},
-			onHide: function(hash) {
-				hash.o.remove();
-				hash.w.css('top', '-8000px');
-			}
-		}); 		
+		// $('#dialog_overlay').jqm({
+			// overlay: 84,
+			// onShow: function(hash) {
+				// hash.w.css('opacity', 1.0).fadeIn(10);
+				// hash.o.prependTo('body');
+				// // hash.w.css('top', '0px');
+			// },
+			// onHide: function(hash) {
+				// hash.o.remove();
+				// hash.w.css('top', '-8000px');
+			// }
+		// }); 		
+
 
 		// $('#dialog_101_5').jqm({
 			// onShow: function(hash) {
@@ -645,5 +747,5 @@
 	});
   
 
-</script>		
+</script> -->		
 

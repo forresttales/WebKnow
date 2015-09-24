@@ -1,0 +1,21 @@
+<h1>Message#index</h1>
+<p>Find me in app/views/message/index.html.erb</p>
+
+<script type="text/javascript">
+ // Stomp client for url 
+ // client = Stomp.client("ws://127.0.0.1:8675",  "v11.stomp");
+ client = Stomp.client("wss://webknow/websockets",  "v11.stomp"); 
+ // Connect to Torquebox, executing the function when connected 
+ client.connect("", "", function(frame) { 
+  // Subscribe to the demo queue to fire callback 
+  client.subscribe("/queue/demo", function(msg) {
+         alert(msg); 
+        }); 
+  // Send a test message 
+  client.send( "/queue/demo", {}, "This is a test of the Demo" ); 
+ }); 
+ // Disconnect client on close 
+ //$(window).unload(function() { 
+  //client.disconnect(); 
+ //});
+</script>

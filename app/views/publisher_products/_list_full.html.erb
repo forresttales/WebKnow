@@ -671,12 +671,12 @@
 													<div class="row">
 														<div class="cell-235">
 
-															<div id="render_name_product_<%= i %>" class="list-tip-container"></div>
-														    <script id="name_product_Template_<%= i %>" type="text/x-jQuery-tmpl">
-																<div id="name_product_container_<%= i %>" class="table pad-marg-null list-tip-target">
+															<div id="render_product_name_<%= i %>" class="list-tip-container"></div>
+														    <script id="product_name_Template_<%= i %>" type="text/x-jQuery-tmpl">
+																<div id="product_name_container_<%= i %>" class="table pad-marg-null list-tip-target">
 																	<div class="row">
 																		<div class="list-field-cell-1">
-																			<div id="name_product_<%= i %>" class="list-field-cell-1a"></div>
+																			<div id="product_name_<%= i %>" class="list-field-cell-1a"></div>
 																		</div>
 																		<div class="list-field-cell-2">
 																			<div class="list-field-ellipsi hidden"><span class="list-field-text">...</span></div>
@@ -690,14 +690,14 @@
 															    </div>
 													    	</script>
 															<script type="text/javascript">
-																var container = "#render_name_product_<%= i %>";
-																var ref		  = "#name_product_Template_<%= i %>";
+																var container = "#render_product_name_<%= i %>";
+																var ref		  = "#product_name_Template_<%= i %>";
 															    $(ref).tmpl().appendTo(container);
 
-																<% h_name_product = name_product_for(publisher_product) %>
-																var name_product_text = <%=raw h_name_product[:name_product_text] %>;
+																<% h_product_name = product_name_for(publisher_product) %>
+																var product_name_text = <%=raw h_product_name[:product_name_text] %>;
 																var list_number = "<%= i %>";
-															    set_field("", "name_product", name_product_text, "Product Name", false, "", list_number);
+															    set_field("", "product_name", product_name_text, "Product Name", false, "", list_number);
 															</script>
 
 														</div>
@@ -1259,7 +1259,7 @@
       	// $(function() {
 
 
-			// set_listing_name_product(gon.name_product, gon.b_name_product);
+			// set_listing_product_name(gon.product_name, gon.b_product_name);
 			// set_category_subject(gon.category_subject, gon.has_category_subject_other);
 
 			// document.oncontextmenu = function() {return false;};
@@ -1320,7 +1320,7 @@
 	<script>
 
 	 	// *****
-	 	// section listing_name_product
+	 	// section listing_product_name
 
 		// .color-record {
 			// color: #185C61;
@@ -1329,14 +1329,14 @@
 			// color: #49853f;			
 		// }	
 
-		function set_listing_name_product(name_product, b_name_product) {
-			if( b_name_product ) {
-				$("#listing_name_product").removeClass("color-no-record").addClass("color-record");
+		function set_listing_product_name(product_name, b_product_name) {
+			if( b_product_name ) {
+				$("#listing_product_name").removeClass("color-no-record").addClass("color-record");
 			}
 			else {
-				$("#listing_name_product").removeClass("color-record").addClass("color-no-record");
+				$("#listing_product_name").removeClass("color-record").addClass("color-no-record");
 			}
-			$("#listing_name_product").html(name_product);
+			$("#listing_product_name").html(product_name);
 		}
 		
 	</script>

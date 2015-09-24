@@ -82,6 +82,28 @@ platform :jruby do
   gem 'warbler' # war file
 end
 
+
+
+# gem 'sinatra'
+gem "haml"
+# gem "jruby-openssl"
+# gem "torquebox",              gem_version
+# gem "torquebox-rake-support", gem_version
+# gem "torquebox-messaging",    gem_version
+# gem "torquebox-stomp",        gem_version
+# gem "torquebox-web",          gem_version
+# gem "torquebox-cache",        gem_version
+# gem "json"
+# gem 'mdp', :git => 'https://github.com/sundbp/mdp.git'
+
+gem "torquebox-stomp"
+
+
+
+
+
+
+
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

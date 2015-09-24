@@ -9,9 +9,12 @@ Bundler.require(:default, Rails.env)
 module Webknow
   class Application < Rails::Application
       # Use TorqueBox::Infinispan::Cache for the Rails cache store
-  if defined? TorqueBox::Infinispan::Cache
-    config.cache_store = :torquebox_store
-  end
+    if defined? TorqueBox::Infinispan::Cache
+      config.cache_store = :torquebox_store
+    end
+  
+    config.autoload_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join('app/stomplets')
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -63,6 +66,7 @@ module Webknow
                                   'jquery.qtip.min.js',
                                   'jquery.selectbox-0.6.1.js',
                                   'jquery.sparkbox-select.js',
+                                  'stomp.js',
                                   'jquery.validate.js', 
                                   'jquery-dropdown-dot.js',
                                   'jquery_ui_1.10.4.js',

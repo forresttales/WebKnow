@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 class PublisherProductPos4ImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
@@ -40,35 +39,43 @@ class PublisherProductPos4ImageUploader < CarrierWave::Uploader::Base
     # # process :resize_to_limit => [50, 50]
   # end
 
-  # version :user_100_100 do
+  version :image_100_100 do
+    process :resize_to_limit => [100, 100]
     # process :resize_to_fill => [100, 100, gravity = ::Magick::CenterGravity]
-    # # process :resize_to_limit => [100, 100]
-  # end
+    # process :resize_to_limit => [100, 100]
+  end
 
   # version :user_100_100_fit do
     # # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
     # process :resize_to_fit => [100, 100]
   # end
 
-  # version :user_200_200 do
+  version :image_200_200 do
+    process :resize_to_limit => [200, 200]
     # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
-    # # process :resize_to_limit => [200, 200]
-  # end
+    # process :resize_to_limit => [200, 200]
+  end
+
+  version :image_345_300 do
+    process :resize_to_limit => [345, 300]
+    # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
+    # process :resize_to_limit => [200, 200]
+  end
 
   # version :user_0_100 do
     # # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
     # process :resize_to_limit => [0, 100]
   # end
 
-  # version :user_200_200_limit do
+  # version :image_200_200_limit do
     # # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
     # process :resize_to_limit => [200, 200]
   # end
 
-  version :image_200_200 do
-    # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
-    process :resize_to_fit => [200, 200]
-  end
+  # version :image_200_200_fit do
+    # # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]
+    # process :resize_to_fit => [200, 200]
+  # end
 
   # version :user_300_300 do
     # # process :resize_to_fill => [200, 200, gravity = ::Magick::CenterGravity]

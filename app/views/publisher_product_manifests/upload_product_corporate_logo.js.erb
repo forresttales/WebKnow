@@ -1,9 +1,0 @@
-// alert('ajax works in upload_product_corporate_logo');
-<% if @publisher_product_corporate_logo %>
-	$('#render_product_corporate_logo').html("<%= j render('publisher_product_descriptions/list_corporate_logo') %>");
-	//closeEditProductLogo();
-	closeAddProductCorporateLogo();
-<% else %>
-	alert("Error in upload of product logo image");
-<% end %>
-$("#dvLoading_81").addClass("dvLoading-display-none");

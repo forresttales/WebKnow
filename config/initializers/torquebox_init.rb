@@ -1,0 +1,1 @@
+Webknow::Application.config.session_store :torquebox_store

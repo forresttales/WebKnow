@@ -4,7 +4,6 @@
 #
 #  id                   :integer          not null, primary key
 #  publisher_id         :integer
-#  name_product         :string(100)
 #  created_at           :datetime
 #  updated_at           :datetime
 #  has_description      :boolean          default(FALSE)
@@ -13,6 +12,7 @@
 #  product_metadata     :string(100)
 #  has_product_metadata :boolean          default(FALSE)
 #  slug                 :string(255)
+#  product_name         :string(255)
 #
 
 class PublisherProduct < ActiveRecord::Base
@@ -20,7 +20,7 @@ class PublisherProduct < ActiveRecord::Base
   attr_accessible :id,
                   :publisher_id,
                   :slug,
-                  :name_product,
+                  :product_name,
                   :has_description,
                   :product_logo,
                   :has_product_logo,

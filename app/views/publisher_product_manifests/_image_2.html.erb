@@ -8,7 +8,6 @@
 .drop-namespace102 .drop-clear-both {
   clear: both;
 }
-
 .drop-namespace102 .drop-102 {
 	width: 200px;
 }
@@ -25,7 +24,6 @@
 .drop-namespace102 .drop-102 .drop-102-box {
   	width: 200px;
   	float: left;
-  	/*position: relative;*/
   	position: absolute;
   	margin-top: 0px;
   	-webkit-transition: all .1s ease-out;
@@ -46,16 +44,6 @@
 .drop-namespace102 .drop-102 .drop-102-link-1 {
 	width: 100%;
 }
-/*.drop-namespace102 .drop-102 .drop-102-target {
-	position: relative;
-  	width: 200px;
-  	height: 19px;
-  	padding: 9px 0px 4px 0px;
-  	text-align: center;
-}
-.drop-namespace102 .drop-102 .drop-102-target:hover {
-  	background: #f6f6f6;
-}*/
 .drop-namespace102 .drop-102 .drop-102-link-1:hover .span-1 {
 }   
 .drop-namespace102 .drop-102 .drop-102-span-1 {
@@ -168,8 +156,7 @@
 .drop-namespace102 .drop-102-table-cell-2 {
 	display: table-cell;
 	width: 12px;
-}
-	
+}	
 .drop-namespace102 .drop-102-1 {
 	text-align: left;
 	width: auto;
@@ -332,16 +319,12 @@
 </style>
 
 
-<div class="drop-namespace102 hidden">
+<div class="drop-namespace102">
 	<% if @image_2 %>   				
 	
-		<!-- <div class="container-figure container-figure-1 drop-102-container-target" style="height: 200px;"> -->
-		<!-- <div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-102-container-target"> -->
-		<div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-102">
-			<figure class="dialog-11-figure cursor-pointer" data-width="<%= @image_2.width %>" data-src-600="<%= @image_2.image_url(:image_600_600) %>">
-				<img id="image_2_img" class="" alt="" src="<%= @image_2.image_url(:image_200_200) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_2.image? %>" />
-				<!-- <input class="container-image-hidden" type="hidden" value="<#%= @image_2.image_url(:user_600_600) if @image_2.image? %#>" />
-				<img id="image_2_img_600" class="hidden" alt="" src="<#%= @image_2.image_url(:user_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_2.image? %#>" /> -->
+		<div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-102" style="position: relative;">
+			<figure class="dialog-102-1-figure cursor-pointer" data-width="<%= @image_2.width %>" data-src-600="<%= @image_2.image_url(:image_600_600) %>">
+				<img id="image_2_img" class="" alt="" src="<%= @image_2.image_url(:image_375_300) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_2.image? %>" />
 				<figcaption class="edit-image hidden drop-102-target">
 						<div class="img-1-text">Edit photo</div>
 				</figcaption>
@@ -390,8 +373,8 @@
 	<% else %>
 
 		<div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-102" style="position: relative;">
-			<figure class="dialog-11-figure-generic" data-width="375" data-src-600="">
-				<img id="image_2_generic_img" class="" alt="" src="<%= image_path('avatars/avatar-gen-product-w200-h200.png') %>" />
+			<figure class="dialog-102-1-figure-generic" data-width="375" data-src-600="">
+				<img id="image_2_img_generic" class="" alt="" src="<%= image_path('avatars/avatar-gen-corp-w375-h300.png') %>" />
 				<figcaption class="edit-image hidden cursor-pointer drop-102-target">
 						<div class="img-1-text">Add a photo</div>
 				</figcaption>
@@ -454,7 +437,6 @@
 	$(document).ready(function () {				
 
 		$(document).on('click', function(e) {
-			// var target_namespace102 = $(e.target).parents('#drop_namespace102').attr("id");
 			var target_namespace102 = $(e.target).parents('.drop-namespace102').attr("class");
 			if (target_namespace102 == null) {
 				drop_hide_namespace102();
@@ -481,47 +463,13 @@
 			$(document).trigger("btn_image_2_new_click");
 		});
 
-	});
-	
-</script>
-
-
-<script>
-
-	// $(window).load( function() {
-	$(document).ready( function () {				
-
-		$("img").one("load", function() {
-			
-			if((this.id == "image_2_img") || (this.id == "image_2_generic_img")) {
-				var img_w = this.width;
-				var img_h = this.height;
-
-				$(".container-figure-image-2").css({
-					// width : img_w + 4,
-					// height : img_h + 4
-					width : img_w,
-					height : img_h						
-				})// .removeClass("container-figure-image-border-load").addClass("container-figure-image-border");													
-			}
-			// if(this.id == "image_2_generic_img") {
-				// var img_w = this.width;
-				// var img_h = this.height;
-				// $(".container-figure-image-2").css({
-					// // width : img_w + 4,
-					// // height : img_h + 4
-					// width : img_w,
-					// height : img_h						
-				// }).removeClass("container-figure-image-border-load").addClass("container-figure-image-border");				
-			// }				
-			if(this.id == "image_2_img_600") {
-				var img_w = this.width;
-				var img_h = this.height;
-				$("#figure_dialog_11").css({
-					width : img_w,
-					height : img_h
-				});																			
-			}								
+		$("#image_2_img").on("load", function() {
+			var img_w = this.width;
+			var img_h = this.height;
+			$(".container-figure-image-2").css({
+				width : img_w,
+				height : img_h						
+			});													
 		}).each(function() {
 		  	if(this.complete) {
 		  		$(this).load();
@@ -529,95 +477,33 @@
 		  	}
 		});
 
-		
-		var this_img;			
-		$(".dialog-11-figure").on('click', function(e) {
-			if ( e.target.nodeName == "IMG" ) {
-
-				$("#dialog_overlay").jqmShow();
-				$("#overlay_loading").removeClass("display-none");
-
-				// // alert($(this).attr("id"));
-				// var w = $(this).data("width");
-				// // alert(w);
-				// w += 120;
-				// var w2 = -(w/2);
-				var src_img = $(this).data("src-600");
-				// alert(src_img);
-				$('<img src="'+ src_img +'">').load(function(){
-					$("#figure_dialog_11").append($(this));
-					// var image_2_url = gon.image_2_url;
-					// var s_tmpl = "templates/figure_dialog_11";
-					// $.tmpl(s_tmpl, {
-						// src_image: image_2_url
-					// }).appendTo($("#figure_dialog_11"));
-
-					// $(".jqmWindow-11").css({
-						// 'margin-left' : w2,
-						// 'width' : w  
-					// });
-					$("#overlay_loading").addClass("display-none");
-					$("#dialog_overlay").jqmHide();
-					$("#dialog_11").jqmShow();	
-				}).error(function(){
-					alert('error loading image');
-				});
-			}
+		$("#image_2_img_generic").on("load", function() {
+			var img_w = this.width;
+			var img_h = this.height;
+			$(".container-figure-image-2").css({
+				width : img_w,
+				height : img_h						
+			});													
+		}).each(function() {
+		  	if(this.complete) {
+		  		$(this).load();
+		  		$(".drop-namespace102").removeClass("hidden");
+		  	}
 		});
-		$('#dialog_11').jqm({
-			overlay: 84,
-			onShow: function(hash) {
-				hash.w.css('opacity', 1.0).fadeIn(10);
-				hash.o.prependTo('body');
-				hash.w.css('top', '10px');
-			},
-			onHide: function(hash) {
-				hash.o.remove();
-				hash.w.css('top', '-8000px');
-				$("#figure_dialog_11 img").remove();
-				// hash.w.fadeOut('10',function(){ 
-					// hash.o.remove(); 
-				// });
-			}
-		}); 		
-		$('#dialog_overlay').jqm({
-			overlay: 84,
-			onShow: function(hash) {
-				hash.w.css('opacity', 1.0).fadeIn(10);
-				hash.o.prependTo('body');
-				// hash.w.css('top', '0px');
-			},
-			onHide: function(hash) {
-				hash.o.remove();
-				hash.w.css('top', '-8000px');
-			}
-		}); 		
-		
-		$('#dialog_15').jqm({
-			onShow: function(hash) {
-				hash.o.prependTo('body');
-				hash.w.css('top', '-720px');
-				hash.w.css('opacity', 1.0).fadeIn(200);
-				// hash.w.show();
-				$('#dialog_15').animate(
-					{bottom:'-=740', top:'+=740'}, 
-					500, 
-					'easeInOutCirc', 
-					function() {
-						$('#dialog_15').animate(
-							{bottom:'+=4', top:'-=4'}, 
-							100, 
-							'easeInBounce', 
-							function() {
-							}
-						);
-					}
-				);
-			}
-		}); 		
-	
+
+		$("#image_2_img_600").on("load", function() {
+			var img_w = this.width;
+			var img_h = this.height;
+			$("#figure_dialog_102_1").css({
+				width : img_w,
+				height : img_h
+			});																			
+		}).each(function() {
+		  	if(this.complete) {
+		  		$(this).load();
+		  	}
+		});
+
 	});
-  
-
-</script>		
-
+	
+</script>

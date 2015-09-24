@@ -10,11 +10,13 @@
 #  description         :string(255)
 #  controller          :string(255)
 #  action              :string(255)
+#  user_id             :integer
 #
 
 class LogError < ActiveRecord::Base
   
-  attr_accessible :profile_index,
+  attr_accessible :user_id,
+                  :profile_index,
                   :profile_description,
                   :controller,
                   :action,

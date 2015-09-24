@@ -7,8 +7,14 @@ Webknow::Application.routes.draw do
   get "control_elements/sticky_footer"
   get "control_elements/sticky_footer_with_icon"
   
-
+  match "/messages" => "messages#index", via: 'get'
+  
+  # root :to => ChatDemo
+  
   root to: 'users#index'
+  # mount ChatDemo.new => '/chatdemo'
+  # match "/chatdemo" => "lib#chatdemo", via: 'get'
+  
   # match "/" => "users#index", via: 'get'
   # get "/", to: "users#index"  
   
@@ -872,21 +878,24 @@ Webknow::Application.routes.draw do
     collection do
       post :update_listing_preview
       # post :reset_current_publisher_product
-      post :update_story_1
+      # post :update_story_1
       # post :update_story_2
-      post :update_story_4
+      # post :update_story_4
       # post :show_description
-      # post :update_name_product
-      # post :update_product_tagline
-      # post :update_versions
+      post :update_product_headline
+      post :update_product_tagline
+      post :update_product_name
+      post :update_versions
+      post :update_corporate_logo_url
+      post :update_pricing_model
+      post :update_price
+      
       post :update_content_type
       post :update_category_subject
       post :update_topic
       post :update_lesson_plan_subject
       post :update_lesson_time
-      # post :update_description
-      # post :update_appropriate_age
-      # post :update_appropriate_grade
+      post :update_description
       post :update_age_range
       post :update_grade_range
       post :update_source_url
@@ -898,8 +907,6 @@ Webknow::Application.routes.draw do
       post :update_character
       post :update_by_review
       post :update_enhancement
-      post :update_pricing_model
-      post :update_price
       post :update_reselling
       post :update_evaluation
       post :update_allow_teacher_rating
@@ -909,7 +916,7 @@ Webknow::Application.routes.draw do
       post :update_public_relations
       post :update_metrics
       post :update_core_supplemental_index
-      post :update_word_description
+      # post :update_word_description
       post :update_core_literacy_standard
       post :update_core_math_standard
       
@@ -931,14 +938,17 @@ Webknow::Application.routes.draw do
 
       post :upload_image_2
       post :upload_image_2_change
+      post :crop_image_2
       post :destroy_image_2
 
       post :upload_image_3
       post :upload_image_3_change
+      post :crop_image_3
       post :destroy_image_3
 
       post :upload_image_4
       post :upload_image_4_change
+      post :crop_image_4
       post :destroy_image_4
 
       post :upload_product1_image
@@ -950,7 +960,6 @@ Webknow::Application.routes.draw do
       post :update_poster_pin_purchase
       post :upload_product_corporate_logo
       post :destroy_product_corporate_logo
-      post :update_corporate_logo_url
       post :dbdelete      
     end
   end

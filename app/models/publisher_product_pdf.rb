@@ -50,15 +50,14 @@ class PublisherProductPdf < ActiveRecord::Base
   # end
 
 
-  before_save do
-    # self.original_file = self.file.original_file
-    # self.name_pdf = File.basename(@publisher_product_pdf_new.file.url)
-    # self.name_pdf = File.basename(@publisher_product_pdf_new).to_s
-    # self.name_pdf = File.basename(upload_pdf_publisher_product_descriptions_path(@publisher_product_pdf_new))
-    # self.name_pdf = File.basename(original_filename, '.*').titleize if original_filename
-
-    # upload_pdf_publisher_product_descriptions_path(@publisher_product_pdf_new)
-  end  
+  # before_save do
+    # # self.original_file = self.file.original_file
+    # # self.name_pdf = File.basename(@publisher_product_pdf_new.file.url)
+    # # self.name_pdf = File.basename(@publisher_product_pdf_new).to_s
+    # # self.name_pdf = File.basename(upload_pdf_publisher_product_descriptions_path(@publisher_product_pdf_new))
+    # # self.name_pdf = File.basename(original_filename, '.*').titleize if original_filename
+    # # upload_pdf_publisher_product_descriptions_path(@publisher_product_pdf_new)
+  # end  
 
   
   def self.dbdelete

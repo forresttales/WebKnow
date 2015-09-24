@@ -1,4 +1,7 @@
-// alert('ajax works in upload_pdf_image');
-$('#render_pdfs').html("<%= j render('publisher_product_manifests/list_pdfs') %>");
+<% if !@errors %>
+	$('#render_pdfs').html("<%= j render('publisher_product_manifests/list_pdfs') %>");
+<% else %>
+	alert("Upload error");
+<% end %>
 closeAddPdfImageChange();
 $("#dvLoading_53").addClass("dvLoading-display-none");

@@ -7,7 +7,6 @@
 #  updated_at             :datetime
 #  publisher_product_id   :integer          default(0)
 #  publisher_id           :integer          default(0)
-#  name_product           :string(255)      default("")
 #  versions               :string(255)      default("")
 #  updating_refresh_rate  :string(255)      default("")
 #  updating_type          :string(255)      default("")
@@ -47,19 +46,18 @@
 #  product_tagline        :string(255)      default("")
 #  source_url             :string(255)      default("")
 #  product_headline       :string(255)      default("")
+#  product_name           :string(255)
 #
 
 class PublisherProductManifest < ActiveRecord::Base
   
   attr_accessible :publisher_product_id,
                   :publisher_id,
-                  :name_product,        
+                  :product_name,        
                   :source_url,           
                   :versions,           
                   :product_tagline,      
                   :product_headline,
-                  # :topic,               
-                  # :lesson_plan_subject,  
                   :updating_refresh_rate, 
                   :updating_type,       
                   :reselling,           

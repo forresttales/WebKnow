@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804205541) do
+ActiveRecord::Schema.define(version: 20150919161701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -732,6 +732,7 @@ ActiveRecord::Schema.define(version: 20150804205541) do
     t.string   "description"
     t.string   "controller"
     t.string   "action"
+    t.integer  "user_id"
   end
 
   create_table "log_publishers", force: true do |t|
@@ -1849,7 +1850,6 @@ ActiveRecord::Schema.define(version: 20150804205541) do
     t.datetime "updated_at"
     t.integer  "publisher_product_id",   default: 0
     t.integer  "publisher_id",           default: 0
-    t.string   "name_product",           default: ""
     t.string   "versions",               default: ""
     t.string   "updating_refresh_rate",  default: ""
     t.string   "updating_type",          default: ""
@@ -1889,6 +1889,7 @@ ActiveRecord::Schema.define(version: 20150804205541) do
     t.string   "product_tagline",        default: ""
     t.string   "source_url",             default: ""
     t.string   "product_headline",       default: ""
+    t.string   "product_name"
   end
 
   add_index "publisher_product_manifests", ["publisher_id"], name: "index_publisher_product_manifests_on_publisher_id", using: :btree
@@ -2213,7 +2214,6 @@ ActiveRecord::Schema.define(version: 20150804205541) do
 
   create_table "publisher_products", force: true do |t|
     t.integer  "publisher_id"
-    t.string   "name_product",         limit: 100
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "has_description",                  default: false
@@ -2222,6 +2222,7 @@ ActiveRecord::Schema.define(version: 20150804205541) do
     t.string   "product_metadata",     limit: 100
     t.boolean  "has_product_metadata",             default: false
     t.string   "slug"
+    t.string   "product_name"
   end
 
   add_index "publisher_products", ["publisher_id"], name: "index_publisher_products_on_publisher_id", using: :btree
