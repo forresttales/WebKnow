@@ -1,0 +1,9 @@
+<% if !@errors %>
+	$('#render_image_5').html("<%= j render('publisher_product_manifests/image_5') %>");
+	// $('#render_listing_preview_image_5').html("<#%= j render('publisher_product_manifests/listing_preview_image_5') %#>");
+	image_5_id = <%= @image_5_id %>;
+	showEditMode();
+	closeCropImage5();	
+<% else %>
+	alert("Upload error");
+<% end %>

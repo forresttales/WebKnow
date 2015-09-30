@@ -1,8 +1,7 @@
-// alert('ajax works in crop_commit_image_3');
 <% if !@errors and @image_3 and @publisher_product %>
 	$('#render_image_3').html("<%= j render('publisher_product_manifests/image_3') %>");
 	// $('#render_listing_preview_image_3').html("<#%= j render('publisher_product_manifests/listing_preview_image_3') %#>");
-	id_image_3 = <%= @id_image_3 %>;
+	image_3_id = <%= @image_3_id %>;
 	closeCropImage3();	
 <% else %>
 	alert("Upload error");

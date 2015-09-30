@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919161701) do
+ActiveRecord::Schema.define(version: 20150926133817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1369,6 +1369,26 @@ ActiveRecord::Schema.define(version: 20150919161701) do
   add_index "publisher_product_appropriate_grades", ["publisher_id"], name: "index_appr_grade_on_publisher_id", using: :btree
   add_index "publisher_product_appropriate_grades", ["publisher_product_id"], name: "index_appr_grade_on_publisher_product_id", using: :btree
 
+  create_table "publisher_product_background1_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",              default: 0
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",              default: false
+    t.integer  "order",                default: 0
+    t.integer  "crop_x",               default: 0
+    t.integer  "crop_y",               default: 0
+    t.integer  "crop_w",               default: 0
+    t.integer  "crop_h",               default: 0
+    t.integer  "width",                default: 0
+    t.integer  "height",               default: 0
+  end
+
+  add_index "publisher_product_background1_images", ["publisher_product_id"], name: "index_pub_prod_bkgrnd1_images_on_pub_prod_id", using: :btree
+
   create_table "publisher_product_by_reviews", force: true do |t|
     t.integer  "publisher_id"
     t.integer  "publisher_product_id"
@@ -2084,6 +2104,25 @@ ActiveRecord::Schema.define(version: 20150919161701) do
   end
 
   add_index "publisher_product_pos4_images", ["publisher_product_id"], name: "index_publisher_product_pos4_images_on_publisher_product_id", using: :btree
+  add_index "publisher_product_pos4_images", ["publisher_product_id"], name: "index_publisher_product_pos5_images_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_pos5_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",              default: 0
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",              default: false
+    t.integer  "order",                default: 0
+    t.integer  "crop_x",               default: 0
+    t.integer  "crop_y",               default: 0
+    t.integer  "crop_w",               default: 0
+    t.integer  "crop_h",               default: 0
+    t.integer  "width",                default: 0
+    t.integer  "height",               default: 0
+  end
 
   create_table "publisher_product_prices", force: true do |t|
     t.integer  "publisher_id"
@@ -2440,6 +2479,24 @@ ActiveRecord::Schema.define(version: 20150919161701) do
     t.integer  "follower_id"
     t.integer  "followed_id"
   end
+
+  create_table "user_background1_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",    default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",    default: false
+    t.integer  "order",      default: 0
+    t.integer  "crop_x",     default: 0
+    t.integer  "crop_y",     default: 0
+    t.integer  "crop_w",     default: 0
+    t.integer  "crop_h",     default: 0
+    t.integer  "width",      default: 0
+    t.integer  "height",     default: 0
+  end
+
+  add_index "user_background1_images", ["user_id"], name: "index_user_background1_images_on_user_id", using: :btree
 
   create_table "user_connections", force: true do |t|
     t.integer  "user_id"

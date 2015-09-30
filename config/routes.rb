@@ -59,6 +59,9 @@ Webknow::Application.routes.draw do
       collection do
         post :update_new_user
         post :check_duplicate_signup
+        post :upload_user_background1_image
+        post :crop_user_background1_image
+        post :destroy_user_background1_image
       end
   
       # scope :module => 'publisher_user' do
@@ -951,15 +954,14 @@ Webknow::Application.routes.draw do
       post :crop_image_4
       post :destroy_image_4
 
-      post :upload_product1_image
-      post :destroy_product1_image
-      post :upload_product2_image
-      post :destroy_product2_image
+      post :upload_image_5
+      post :upload_image_5_change
+      post :crop_image_5
+      post :destroy_image_5
+
       post :update_poster_print_purchase
       post :update_poster_pin_web
       post :update_poster_pin_purchase
-      post :upload_product_corporate_logo
-      post :destroy_product_corporate_logo
       post :dbdelete      
     end
   end

@@ -1,0 +1,76 @@
+<% if @image_5 %>
+	<div style="display: block; width: 800px; height: 500px; background-color: #aaa; border: 2px solid #376340;">
+		<img id="cropbox_image_5" alt="" src="<%= @image_5.image_url(:image_800_500) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_5.image? %>" />
+	</div>
+	<div style="height: 10px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center;">
+			<span><input id="btn_dlg_submit_crop_image_5" class="btn-pop-dialog" type="button" value="Save" tabindex=""></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><input id="btn_dlg_cancel_crop_image_5" class="btn-pop-dialog jqmClose" type="button" value="Cancel" tabindex=""></span>
+			</div>
+		</div>
+	</div>
+	<%= form_tag( crop_image_5_publisher_product_manifests_path, :remote => true ) do %>
+	  	<%= text_field_tag :crop_x, params["crop_x"], id: "id_crop_x_image_5", class: "input-crop hidden" %><br>
+	  	<%= text_field_tag :crop_y, params["crop_y"], id: "id_crop_y_image_5", class: "input-crop hidden" %><br>
+	  	<%= text_field_tag :crop_w, params["crop_w"], id: "id_crop_w_image_5", class: "input-crop hidden" %><br>
+	  	<%= text_field_tag :crop_h, params["crop_h"], id: "id_crop_h_image_5", class: "input-crop hidden" %><br>
+		<%= hidden_field_tag "image_id", @image_5.id %>
+	    <%= submit_tag '', :id => 'btn_submit_crop_image_5', :class => 'hidden' %>
+	<% end %>
+<% else %>
+	<div> no @image_5</div>
+<% end %>
+
+	<script>
+		
+		<% if !@image_5.nil? %>
+			var insert_crop_x_image_5 = <%= @image_5.crop_x %>;
+			var insert_crop_y_image_5 = <%= @image_5.crop_y %>;
+			var insert_crop_w_image_5 = <%= @image_5.crop_w %>;
+			var insert_crop_h_image_5 = <%= @image_5.crop_h %>;
+		<% else %>
+			var insert_crop_x_image_5 = 0;
+			var insert_crop_y_image_5 = 0;
+			var insert_crop_w_image_5 = 200;
+			var insert_crop_h_image_5 = 200;		
+		<% end %>
+		
+		var insert_crop_x2_image_5 = insert_crop_x_image_5 + insert_crop_w_image_5;
+		var insert_crop_y2_image_5 = insert_crop_y_image_5 + insert_crop_h_image_5;
+		
+        function showBkgrndPreview(coords)
+        {
+            if (parseInt(coords.w) > 0)
+            {
+		    	$('#id_crop_x_image_5').val(coords.x);
+		    	$('#id_crop_y_image_5').val(coords.y);
+		    	$('#id_crop_w_image_5').val(coords.w);
+		    	$('#id_crop_h_image_5').val(coords.h);
+
+				// var rx = 400 / coords.w;
+				// var ry = 100 / coords.h;
+
+				// $('#bkgrnd_preview').css({
+				// 	width: Math.round(rx * 800) + 'px',
+				// 	height: Math.round(ry * 450) + 'px',
+				// 	marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+				// 	marginTop: '-' + Math.round(ry * coords.y) + 'px'
+				// });
+                
+            }
+        }
+        
+		$(document).ready(function() {
+			var image_to_crop = $("#cropbox_image_5");
+			image_to_crop.Jcrop({
+                aspectRatio: 4,
+            	setSelect: [insert_crop_x_image_5, insert_crop_y_image_5, insert_crop_x2_image_5, insert_crop_y2_image_5],
+                onSelect: showBkgrndPreview,
+                onChange: showBkgrndPreview                
+            });
+        });
+		
+	</script>

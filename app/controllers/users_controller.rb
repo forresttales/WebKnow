@@ -1217,8 +1217,10 @@ class UsersController < ApplicationController
   end
 
 
+
   def render_index_publisher_user
-    
+
+
         Rails.logger.info('render_index_publisher_user')
         
         # @new_user = false
@@ -1229,6 +1231,7 @@ class UsersController < ApplicationController
         @user = current_user
         @publisher_user = nil
         @publisher_user_image_primary = nil
+        @user_background1_image = nil
         @user_image_primary = nil
         @post_users = nil
         @post_user = nil
@@ -1252,6 +1255,19 @@ class UsersController < ApplicationController
                 # @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", @publisher_user_id).first
             else
                 Rails.logger.info('publisher was nil')
+            end
+
+            @user_background1_image = current_user.user_background1_images.where( :primary => true ).first rescue nil
+            @bkgrnd_crop_x = 0
+            @bkgrnd_crop_y = 0
+            @bkgrnd_crop_w = 1200
+            @bkgrnd_crop_h = 300
+            
+            if !@user_background1_image.nil?
+                @bkgrnd_crop_x = @user_background1_image.crop_x
+                @bkgrnd_crop_y = @user_background1_image.crop_y
+                @bkgrnd_crop_w = @user_background1_image.crop_w
+                @bkgrnd_crop_h = @user_background1_image.crop_h
             end
             
             # @publisher_user_plot_text = publisher_user.publisher_user_plot.plot_text
@@ -1446,8 +1462,242 @@ class UsersController < ApplicationController
         
         
         render 'publisher_users/index', :layout => 'publisher_users_index'
-    
+
   end
+
+
+
+  # def render_index_publisher_user
+#     
+        # Rails.logger.info('render_index_publisher_user')
+#         
+        # # @new_user = false
+        # # if session[:new_user]
+          # # @new_user = true
+        # # end
+#     
+        # @user = current_user
+        # @publisher_user = nil
+        # @publisher_user_image_primary = nil
+        # @user_image_primary = nil
+        # @post_users = nil
+        # @post_user = nil
+        # gon.publisher_user_image_primary_url = nil
+#         
+        # # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+        # publisher_user = current_user.publisher_user        
+        # if !publisher_user.nil?
+            # Rails.logger.info('publisher_user not nil')
+            # @publisher_user = publisher_user
+            # @publisher_id = publisher_user.publisher_id
+            # @publisher_user_id = publisher_user.id
+            # # publisher = Publisher.find_by_id(@publisher_id)
+            # publisher = current_user.publisher
+            # if !publisher.nil?
+                # # Rails.logger.info('publisher not nil')
+                # @publisher_user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
+                # if !@publisher_user_image_primary.nil?
+                  # gon.publisher_user_image_primary_url = @publisher_user_image_primary.image_url()
+                # end
+                # # @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", @publisher_user_id).first
+            # else
+                # Rails.logger.info('publisher was nil')
+            # end
+#             
+            # # @publisher_user_plot_text = publisher_user.publisher_user_plot.plot_text
+            # # @post_user = current_user.post_users.build
+            # # @post_users = current_user.feed.paginate(:page => params[:page], :per_page => 5)
+#         
+            # # @log_users = current_user.post_users.paginate(:page => params[:page], :per_page => 5)
+            # # @log_users = current_user.feed_log
+            # @post_users = current_user.feed_log
+#             
+            # gon.id_image = nil
+            # @crop_x = 0
+            # @crop_y = 0
+            # @crop_w = 200
+            # @crop_h = 200
+            # if !@publisher_user_image_primary.nil? 
+              # gon.id_image = @publisher_user_image_primary.id
+              # @crop_x = @publisher_user_image_primary.crop_x
+              # @crop_y = @publisher_user_image_primary.crop_y
+              # @crop_w = @publisher_user_image_primary.crop_w
+              # @crop_h = @publisher_user_image_primary.crop_h
+            # end
+#         
+            # gon.id_image_logo = nil
+            # @crop_x_logo = 0
+            # @crop_y_logo = 0
+            # @crop_w_logo = 200
+            # @crop_h_logo = 200
+            # if !@publisher_user_logo_image.nil? 
+              # gon.id_image_logo = @publisher_user_logo_image.id
+              # @crop_x_logo = @publisher_user_logo_image.crop_x
+              # @crop_y_logo = @publisher_user_logo_image.crop_y
+              # @crop_w_logo = @publisher_user_logo_image.crop_w
+              # @crop_h_logo = @publisher_user_logo_image.crop_h
+            # end
+#             
+            # gon.new_user = current_user.new_user
+#             
+            # gon.user_name_first = ""
+            # gon.b_user_name_first = false
+            # gon.b_required_user_name_first = true
+            # if !((current_user.name_first.blank?) or (current_user.name_first.empty?) or (current_user.name_first.nil?)) 
+                # gon.user_name_first = current_user.name_first
+                # gon.b_user_name_first = true
+                # gon.b_required_user_name_first = false
+            # end
+#             
+            # gon.user_name_last = ""
+            # gon.b_user_name_last = false
+            # gon.b_required_user_name_last = true
+            # if !((current_user.name_last.blank?) or (current_user.name_last.empty?) or (current_user.name_last.nil?)) 
+                # gon.user_name_last = current_user.name_last
+                # gon.b_user_name_last = true
+                # gon.b_required_user_name_last = false
+            # end
+#         
+            # gon.user_email = ""
+            # gon.b_user_email = false
+            # gon.b_required_user_email = true
+            # if !((current_user.email.blank?) or (current_user.email.empty?) or (current_user.email.nil?)) 
+                # gon.user_email = current_user.email
+                # gon.b_user_email = true
+                # gon.b_required_user_email = false
+            # end
+#           
+            # gon.user_gender = current_user.gender
+            # gon.b_user_gender = true
+            # gon.b_required_user_gender = false
+# 
+            # gon.user_gender_text = current_user.gender_text
+            # gon.b_user_gender_text = true
+            # gon.b_required_user_gender_text = false
+#             
+            # gon.user_bd_day = current_user.bd_day
+            # gon.b_user_bd_day = true
+            # gon.b_required_user_bd_day = false
+# 
+            # gon.user_bd_month = current_user.bd_month
+            # gon.user_bd_month = current_user.bd_month
+            # gon.b_user_bd_month = true
+            # gon.b_required_user_bd_month = false
+#             
+            # gon.user_bd_month_text = current_user.bd_month_text
+            # gon.user_bd_month_text = current_user.bd_month_text
+            # gon.b_user_bd_month_text = true
+            # gon.b_required_user_bd_month_text = false
+#             
+            # gon.user_bd_year = current_user.bd_year
+            # gon.b_user_bd_year = true
+            # gon.b_required_user_bd_year = false
+#             
+#             
+            # gon.name_first = ""
+            # gon.b_name_first = false
+            # gon.b_required_name_first = true
+            # if !((current_user.name_first.blank?) or (current_user.name_first.empty?) or (current_user.name_first.nil?)) 
+                # gon.name_first = current_user.name_first
+                # gon.b_name_first = true
+                # gon.b_required_name_first = false
+            # end
+#             
+            # gon.name_last = ""
+            # gon.b_name_last = false
+            # gon.b_required_name_last = true
+            # if !((current_user.name_last.blank?) or (current_user.name_last.empty?) or (current_user.name_last.nil?)) 
+                # gon.name_last = current_user.name_last
+                # gon.b_name_last = true
+                # gon.b_required_name_last = false
+            # end
+#         
+            # gon.email = ""
+            # gon.b_email = false
+            # gon.b_required_email = true
+            # if !((publisher_user.email.blank?) or (publisher_user.email.empty?) or (publisher_user.email.nil?)) 
+                # gon.email = publisher_user.email
+                # gon.b_email = true
+                # gon.b_required_email = false
+            # end
+#         
+            # gon.location = ""
+            # gon.b_location = false
+            # gon.b_required_location = true
+            # if !((publisher_user.location.blank?) or (publisher_user.location.empty?) or (publisher_user.location.nil?)) 
+                # gon.location = publisher_user.location
+                # gon.b_location = true
+                # gon.b_required_location = false
+            # end
+#         
+            # gon.name_alias = ""
+            # gon.b_name_alias = false
+            # gon.b_required_name_alias = true
+            # if !((publisher_user.name_alias.blank?) or (publisher_user.name_alias.empty?) or (publisher_user.name_alias.nil?)) 
+                # gon.name_alias = publisher_user.name_alias
+                # gon.b_name_alias = true
+                # gon.b_required_name_alias = false
+            # end
+#         
+            # gon.job_title = ""
+            # gon.b_job_title = false
+            # gon.b_required_job_title = true
+            # if !((publisher_user.job_title.blank?) or (publisher_user.job_title.empty?) or (publisher_user.job_title.nil?)) 
+                # gon.job_title = publisher_user.job_title
+                # gon.b_job_title = true
+                # gon.b_required_job_title = false
+            # end
+#         
+            # gon.name_company = ""
+            # gon.b_name_company = false
+            # gon.b_required_name_company = true
+            # if !((publisher_user.name_company.blank?) or (publisher_user.name_company.empty?) or (publisher_user.name_company.nil?)) 
+                # gon.name_company = publisher_user.name_company
+                # gon.b_name_company = true
+                # gon.b_required_name_company = false
+            # end
+#         
+            # gon.time_at_company = ""
+            # gon.b_time_at_company = false
+            # gon.b_required_time_at_company = true
+            # if !((publisher_user.time_at_company.blank?) or (publisher_user.time_at_company.empty?) or (publisher_user.time_at_company.nil?)) 
+                # gon.time_at_company = publisher_user.time_at_company
+                # gon.b_time_at_company = true
+                # gon.b_required_time_at_company = false
+            # end
+#         
+            # gon.website = ""
+            # gon.b_website = false
+            # gon.b_required_website = true
+            # if !((publisher_user.website.blank?) or (publisher_user.website.empty?) or (publisher_user.website.nil?)) 
+                # gon.website = publisher_user.website
+                # gon.b_website = true
+                # gon.b_required_website = false
+            # end
+#         
+            # gon.phone_company = ""
+            # gon.b_phone_company = false
+            # gon.b_required_phone_company = true
+            # if !((publisher_user.phone_company.blank?) or (publisher_user.phone_company.empty?) or (publisher_user.phone_company.nil?)) 
+                # gon.phone_company = publisher_user.phone_company
+                # gon.b_phone_company = true
+                # gon.b_required_phone_company = false
+            # end
+#             
+            # # slug_user = current_user.slug
+            # # @url_my_story_public = '/ppuid' + slug_user
+# 
+# 
+# 
+#             
+        # else
+          # Rails.logger.info('publisher_user was nil') 
+        # end
+#         
+#         
+        # render 'publisher_users/index', :layout => 'publisher_users_index'
+#     
+  # end
 
 
   def render_index_public_publisher_user(user)
@@ -2208,6 +2458,184 @@ class UsersController < ApplicationController
       
   end    
     
+    
+    
+
+  def upload_user_background1_image
+
+      @user_bkgrnd_image = nil
+      @bkgrnd_crop_x = 0
+      @bkgrnd_crop_y = 0
+      @bkgrnd_crop_w = 1200
+      @bkgrnd_crop_h = 300
+      
+      # publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+      # if !publisher.nil?
+      if signed_in?
+          h_user_bkgrnd_image = Hash.new
+          h_user_bkgrnd_image[:image] = params[:user_bkgrnd_image][:image]
+          h_user_bkgrnd_image[:user_id] = current_user.id
+          # h_user_bkgrnd_image[:publisher_id] = publisher.id
+          h_user_bkgrnd_image[:primary] = true
+          h_user_bkgrnd_image[:crop_x] = @bkgrnd_crop_x
+          h_user_bkgrnd_image[:crop_y] = @bkgrnd_crop_y
+          h_user_bkgrnd_image[:crop_w] = @bkgrnd_crop_w
+          h_user_bkgrnd_image[:crop_h] = @bkgrnd_crop_h
+          user_bkgrnd_image = UserBkgrndImage.new(h_user_bkgrnd_image)
+
+          user_bkgrnd_images = current_user.user_bkgrnd_images
+          user_bkgrnd_image_old = user_bkgrnd_images.where( :primary => true ).first rescue nil
+   
+          if request.xhr? || remotipart_submitted?
+              if user_bkgrnd_image.save
+                  if !user_bkgrnd_image_old.nil?
+                      # TODO Check if image destroyed
+                      # user_bkgrnd_image_old.update_attributes( :primary => false )
+                      user_bkgrnd_image_old.destroy
+                  end
+                  
+                  user_bkgrnd_image = user_bkgrnd_images.where( :primary => true ).last rescue nil
+                  
+                  if !user_bkgrnd_image.nil? 
+                      @user_bkgrnd_image = user_bkgrnd_image
+
+                      img = user_bkgrnd_image
+                      image = MiniMagick::Image.open("public" + img.image_url(:image_800_500))
+
+                      # Background aspect ratio (1200:300 or 4:1)
+                      bkgrnd_asp_ratio = 4
+
+                      crop_w = image.width
+                      crop_h = image.width / bkgrnd_asp_ratio
+                      crop_x = 0
+                      crop_y = (image.height - crop_h) / 2
+
+                      @bkgrnd_crop_x = crop_x
+                      @bkgrnd_crop_y = crop_y
+                      @bkgrnd_crop_w = crop_w
+                      @bkgrnd_crop_h = crop_h
+
+                      h_update = Hash.new
+                      h_update[:crop_x] = crop_x
+                      h_update[:crop_y] = crop_y
+                      h_update[:crop_w] = crop_w
+                      h_update[:crop_h] = crop_h
+
+                      if user_bkgrnd_image.update_attributes(h_update)
+                          #                      
+                      else
+                          #  
+                      end                      
+                  end
+              else
+                # error save
+              end
+          else
+            # 
+          end
+      else
+        #
+      end
+      
+  end
+
+  def destroy_user_background1_image
+      @user_bkgrnd_image = nil
+
+      # publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+      # if !publisher.nil?
+      if signed_in?
+          user_bkgrnd_images = current_user.user_bkgrnd_images
+          if user_bkgrnd_images.destroy(params[:user_bkgrnd_image][:id])
+              user_bkgrnd_image_new = user_bkgrnd_images.last rescue nil
+              if !user_bkgrnd_image_new.nil?
+                  # TODO Check if attributes updated
+                  user_bkgrnd_image_new.update_attributes( :primary => true )
+              end
+
+              user_bkgrnd_image = user_bkgrnd_images.where( :primary => true ).last rescue nil
+              if !user_bkgrnd_image.nil? 
+                  @user_bkgrnd_image = user_bkgrnd_image
+              end
+          else
+            # Error
+          end
+      end
+  end 
+
+  def crop_user_background1_image
+
+      @user_bkgrnd_image = nil
+
+      # publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+
+      # if !publisher.nil?
+      if signed_in?
+          
+          user_bkgrnd_images = current_user.user_bkgrnd_images
+          img = user_bkgrnd_images.find(params[:image_id]) rescue nil
+          
+          if !img.nil?
+              image = MiniMagick::Image.open("public" + img.image_url)
+              image_800_500 = MiniMagick::Image.open("public" + img.image_url(:image_800_500))
+
+              if(image.width >= image.height)
+                  crop_scale = image.width / image_800_500.width.to_f
+              else
+                  crop_scale = image.height / image_800_500.height.to_f
+              end
+              
+              crop_x = (params[:crop_x].to_i * crop_scale).to_i
+              crop_y = (params[:crop_y].to_i * crop_scale).to_i
+              crop_w = (params[:crop_w].to_i * crop_scale).to_i
+              crop_h = (params[:crop_h].to_i * crop_scale).to_i
+
+              crop_params = "#{crop_w}x#{crop_h}+#{crop_x}+#{crop_y}"
+              new_image = image.crop(crop_params)
+
+              img_name = File.basename(img.image.to_s)
+              img_dir = "public" + File.dirname(img.image.to_s)
+
+              image_1200_300_path = img_dir + "/" + "image_1200_300_fill_" + img_name
+
+              FileUtils.rm_rf(image_1200_300_path)
+
+              new_image.resize('1200x300')
+              new_image.write image_1200_300_path
+
+              user_bkgrnd_image = user_bkgrnd_images.where( :primary => true ).last rescue nil
+              if !user_bkgrnd_image.nil? 
+                  @user_bkgrnd_image = user_bkgrnd_image
+
+                  h_update = Hash.new
+                  h_update[:crop_x] = params[:crop_x]
+                  h_update[:crop_y] = params[:crop_y]
+                  h_update[:crop_w] = params[:crop_w]
+                  h_update[:crop_h] = params[:crop_h]
+                  
+                  if user_bkgrnd_image.update_attributes(h_update)
+                      #                      
+                  else
+                      #  
+                  end
+              end
+
+          else
+            #Error
+          end
+          
+      end
+
+  end 
+
+
+
+
+
+
+
+
+
     
   private
 

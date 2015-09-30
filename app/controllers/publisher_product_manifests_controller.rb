@@ -205,49 +205,68 @@ class PublisherProductManifestsController < ApplicationController
           image_1 = publisher_product.publisher_product_pos1_image rescue nil
           @image_1 = image_1
           if !image_1.nil?
-            gon.id_image_1 = image_1.id
+            gon.image_1_id = image_1.id
             @crop_x_image_1 = image_1.crop_x
             @crop_y_image_1 = image_1.crop_y
             @crop_w_image_1 = image_1.crop_w
             @crop_h_image_1 = image_1.crop_h
           else
-            gon.id_image_1 = nil
+            gon.image_1_id = nil
           end
               
           image_2 = publisher_product.publisher_product_pos2_image rescue nil
           @image_2 = image_2
           if !image_2.nil?
-            gon.id_image_2 = image_2.id
+            gon.image_2_id = image_2.id
             @crop_x_image_2 = image_2.crop_x
             @crop_y_image_2 = image_2.crop_y
             @crop_w_image_2 = image_2.crop_w
             @crop_h_image_2 = image_2.crop_h
           else
-            gon.id_image_2 = nil
+            gon.image_2_id = nil
           end
           
           image_3 = publisher_product.publisher_product_pos3_image rescue nil
           @image_3 = image_3
           if !image_3.nil?
-            gon.id_image_3 = image_3.id
+            gon.image_3_id = image_3.id
             @crop_x_image_3 = image_3.crop_x
             @crop_y_image_3 = image_3.crop_y
             @crop_w_image_3 = image_3.crop_w
             @crop_h_image_3 = image_3.crop_h
           else
-            gon.id_image_3 = nil
+            gon.image_3_id = nil
           end
     
           image_4 = publisher_product.publisher_product_pos4_image rescue nil
           @image_4 = image_4
           if !image_4.nil?
-            gon.id_image_4 = image_4.id
+            gon.image_4_id = image_4.id
             @crop_x_image_4 = image_4.crop_x
             @crop_y_image_4 = image_4.crop_y
             @crop_w_image_4 = image_4.crop_w
             @crop_h_image_4 = image_4.crop_h
           else
-            gon.id_image_4 = nil
+            gon.image_4_id = nil
+          end
+
+          image_5 = publisher_product.publisher_product_pos5_image rescue nil
+          # @image_5 = image_5
+          if !image_5.nil?
+            @image_5 = image_5
+            gon.image_5_id = image_5.id
+            @image_5_id = image_5.id
+            @image_5_url = image_5.image_url(:image_1200_300_fill) + '?' + (rand(10..90) * rand(100..900)).to_s
+            @crop_x_image_5 = image_5.crop_x
+            @crop_y_image_5 = image_5.crop_y
+            @crop_w_image_5 = image_5.crop_w
+            @crop_h_image_5 = image_5.crop_h
+          else
+            # Rails.logger.info('image_5 was nil in index')
+            @image_5 = nil
+            gon.image_5_id = nil
+            @image_5_id = nil
+            @image_5_url = ActionController::Base.helpers.asset_path('avatars/background-1-w1200-h300.jpg') 
           end
 
 
@@ -298,16 +317,28 @@ class PublisherProductManifestsController < ApplicationController
           # metrics
           # source_url
       
-          # @b_product_headline = false
-          gon.product_headline = "Product Headline"
-          gon.b_product_headline = false
-          gon.b_required_product_headline = true
+          # # @b_product_headline = false
+          # gon.product_headline = "Product Headline"
+          # gon.b_product_headline = false
+          # gon.b_required_product_headline = true
+          # if !((publisher_product_manifest.product_headline.blank?) or (publisher_product_manifest.product_headline.empty?) or (publisher_product_manifest.product_headline.nil?)) 
+              # # @b_product_headline = true
+              # gon.product_headline = publisher_product_manifest.product_headline
+              # gon.b_product_headline = true
+              # gon.b_required_product_headline = false
+              # @publisher_product_manifest_product_headline = publisher_product_manifest.product_headline
+          # end
+          
+          @product_headline = "Product Headline"
+          @b_product_headline = false
+          @b_required_product_headline = true
           if !((publisher_product_manifest.product_headline.blank?) or (publisher_product_manifest.product_headline.empty?) or (publisher_product_manifest.product_headline.nil?)) 
               # @b_product_headline = true
-              gon.product_headline = publisher_product_manifest.product_headline
-              gon.b_product_headline = true
-              gon.b_required_product_headline = false
+              @product_headline = publisher_product_manifest.product_headline
+              @b_product_headline = true
+              @b_required_product_headline = false
           end
+          
           
           gon.product_name = "Product Name"
           gon.b_product_name = false
@@ -7373,7 +7404,7 @@ class PublisherProductManifestsController < ApplicationController
       
       begin
            
-          @id_image_1 = nil
+          @image_1_id = nil
           @image_1 = nil
           @publisher_product = nil
           @crop_x = 0
@@ -7441,7 +7472,7 @@ class PublisherProductManifestsController < ApplicationController
                           h_update[:crop_w] = l
                           h_update[:crop_h] = l
                           if publisher_product_pos1_image.update_attributes(h_update)
-                              @id_image_1 = publisher_product_pos1_image.id      
+                              @image_1_id = publisher_product_pos1_image.id      
                               @image_1 = publisher_product_pos1_image
                               @publisher_product = publisher_product_pos1_image.publisher_product
                           else
@@ -7483,7 +7514,7 @@ class PublisherProductManifestsController < ApplicationController
 
       begin
         
-          @id_image_1 = nil
+          @image_1_id = nil
           @image_1 = nil
           @publisher_product = nil
           @crop_x = 0
@@ -7552,7 +7583,7 @@ class PublisherProductManifestsController < ApplicationController
                                   h_update[:crop_w] = l
                                   h_update[:crop_h] = l
                                   if publisher_product_pos1_image.update_attributes(h_update)
-                                      @id_image_1 = publisher_product_pos1_image.id      
+                                      @image_1_id = publisher_product_pos1_image.id      
                                       @image_1 = publisher_product_pos1_image
                                       @publisher_product = publisher_product_pos1_image.publisher_product
                                   else
@@ -7603,7 +7634,7 @@ class PublisherProductManifestsController < ApplicationController
       begin
         
           @image_1 = nil    
-          @id_image_1 = nil      
+          @image_1_id = nil      
           @publisher_product = nil
           
           # x = params[:crop_x]
@@ -7695,7 +7726,7 @@ class PublisherProductManifestsController < ApplicationController
                   # h_crop[:crop_h] = h
             
                   if publisher_product_pos1_image.update_attributes(h_crop)
-                      @id_image_1 = publisher_product_pos1_image.id      
+                      @image_1_id = publisher_product_pos1_image.id      
                       @image_1 = publisher_product_pos1_image
                       # @publisher_product = publisher_product_pos1_image.publisher_product
                       @publisher_product = publisher_product
@@ -7706,7 +7737,7 @@ class PublisherProductManifestsController < ApplicationController
                   
                   # publisher_product_pos1_image_updated = publisher_product.publisher_product_pos1_image rescue nil
                   # if !publisher_product_pos1_image_updated.nil?
-                      # @id_image_1 = publisher_product_pos1_image_updated.id      
+                      # @image_1_id = publisher_product_pos1_image_updated.id      
                       # @image_1 = publisher_product_pos1_image_updated
                       # @publisher_product = publisher_product_pos1_image_updated.publisher_product
                   # else
@@ -7793,7 +7824,7 @@ class PublisherProductManifestsController < ApplicationController
       
       begin
            
-          @id_image_2 = nil
+          @image_2_id = nil
           @image_2 = nil
           @publisher_product = nil
           @crop_x = 0
@@ -7859,7 +7890,7 @@ class PublisherProductManifestsController < ApplicationController
                           h_update[:crop_w] = l
                           h_update[:crop_h] = l
                           if publisher_product_pos2_image.update_attributes(h_update)
-                              @id_image_2 = publisher_product_pos2_image.id      
+                              @image_2_id = publisher_product_pos2_image.id      
                               @image_2 = publisher_product_pos2_image
                               @publisher_product = publisher_product_pos2_image.publisher_product
                           else
@@ -7901,7 +7932,7 @@ class PublisherProductManifestsController < ApplicationController
 
       begin
         
-          @id_image_2 = nil
+          @image_2_id = nil
           @image_2 = nil
           @publisher_product = nil
           @crop_x = 0
@@ -7970,7 +8001,7 @@ class PublisherProductManifestsController < ApplicationController
                                   h_update[:crop_w] = l
                                   h_update[:crop_h] = l
                                   if publisher_product_pos2_image.update_attributes(h_update)
-                                      @id_image_2 = publisher_product_pos2_image.id      
+                                      @image_2_id = publisher_product_pos2_image.id      
                                       @image_2 = publisher_product_pos2_image
                                       @publisher_product = publisher_product_pos2_image.publisher_product
                                   else
@@ -8021,7 +8052,7 @@ class PublisherProductManifestsController < ApplicationController
       begin
         
           @image_2 = nil    
-          @id_image_2 = nil      
+          @image_2_id = nil      
           @publisher_product = nil
           
           # x = params[:crop_x]
@@ -8072,7 +8103,7 @@ class PublisherProductManifestsController < ApplicationController
                   h_crop[:crop_h] = h
               
                   if publisher_product_pos2_image.update_attributes(h_crop)
-                      @id_image_2 = publisher_product_pos2_image.id      
+                      @image_2_id = publisher_product_pos2_image.id      
                       @image_2 = publisher_product_pos2_image
                       @publisher_product = publisher_product
                   else
@@ -8160,7 +8191,7 @@ class PublisherProductManifestsController < ApplicationController
       
       begin
            
-          @id_image_3 = nil
+          @image_3_id = nil
           @image_3 = nil
           @publisher_product = nil
           @crop_x = 0
@@ -8226,7 +8257,7 @@ class PublisherProductManifestsController < ApplicationController
                           h_update[:crop_w] = l
                           h_update[:crop_h] = l
                           if publisher_product_pos3_image.update_attributes(h_update)
-                              @id_image_3 = publisher_product_pos3_image.id      
+                              @image_3_id = publisher_product_pos3_image.id      
                               @image_3 = publisher_product_pos3_image
                               @publisher_product = publisher_product_pos3_image.publisher_product
                           else
@@ -8268,7 +8299,7 @@ class PublisherProductManifestsController < ApplicationController
 
       begin
         
-          @id_image_3 = nil
+          @image_3_id = nil
           @image_3 = nil
           @publisher_product = nil
           @crop_x = 0
@@ -8337,7 +8368,7 @@ class PublisherProductManifestsController < ApplicationController
                                   h_update[:crop_w] = l
                                   h_update[:crop_h] = l
                                   if publisher_product_pos3_image.update_attributes(h_update)
-                                      @id_image_3 = publisher_product_pos3_image.id      
+                                      @image_3_id = publisher_product_pos3_image.id      
                                       @image_3 = publisher_product_pos3_image
                                       @publisher_product = publisher_product_pos3_image.publisher_product
                                   else
@@ -8388,7 +8419,7 @@ class PublisherProductManifestsController < ApplicationController
       begin
         
           @image_3 = nil    
-          @id_image_3 = nil      
+          @image_3_id = nil      
           @publisher_product = nil
           
           # x = params[:crop_x]
@@ -8439,7 +8470,7 @@ class PublisherProductManifestsController < ApplicationController
                   h_crop[:crop_h] = h
               
                   if publisher_product_pos3_image.update_attributes(h_crop)
-                      @id_image_3 = publisher_product_pos3_image.id      
+                      @image_3_id = publisher_product_pos3_image.id      
                       @image_3 = publisher_product_pos3_image
                       @publisher_product = publisher_product
                   else
@@ -8527,7 +8558,7 @@ class PublisherProductManifestsController < ApplicationController
       
       begin
            
-          @id_image_4 = nil
+          @image_4_id = nil
           @image_4 = nil
           @publisher_product = nil
           @crop_x = 0
@@ -8593,7 +8624,7 @@ class PublisherProductManifestsController < ApplicationController
                           h_update[:crop_w] = l
                           h_update[:crop_h] = l
                           if publisher_product_pos4_image.update_attributes(h_update)
-                              @id_image_4 = publisher_product_pos4_image.id      
+                              @image_4_id = publisher_product_pos4_image.id      
                               @image_4 = publisher_product_pos4_image
                               @publisher_product = publisher_product_pos4_image.publisher_product
                           else
@@ -8635,7 +8666,7 @@ class PublisherProductManifestsController < ApplicationController
 
       begin
         
-          @id_image_4 = nil
+          @image_4_id = nil
           @image_4 = nil
           @publisher_product = nil
           @crop_x = 0
@@ -8704,7 +8735,7 @@ class PublisherProductManifestsController < ApplicationController
                                   h_update[:crop_w] = l
                                   h_update[:crop_h] = l
                                   if publisher_product_pos4_image.update_attributes(h_update)
-                                      @id_image_4 = publisher_product_pos4_image.id      
+                                      @image_4_id = publisher_product_pos4_image.id      
                                       @image_4 = publisher_product_pos4_image
                                       @publisher_product = publisher_product_pos4_image.publisher_product
                                   else
@@ -8755,7 +8786,7 @@ class PublisherProductManifestsController < ApplicationController
       begin
         
           @image_4 = nil    
-          @id_image_4 = nil      
+          @image_4_id = nil      
           @publisher_product = nil
           
           # x = params[:crop_x]
@@ -8806,7 +8837,7 @@ class PublisherProductManifestsController < ApplicationController
                   h_crop[:crop_h] = h
               
                   if publisher_product_pos4_image.update_attributes(h_crop)
-                      @id_image_4 = publisher_product_pos4_image.id      
+                      @image_4_id = publisher_product_pos4_image.id      
                       @image_4 = publisher_product_pos4_image
                       @publisher_product = publisher_product
                   else
@@ -8887,990 +8918,687 @@ class PublisherProductManifestsController < ApplicationController
   end
 
 
-  # def upload_image_2
-#    
-      # @id_image_2 = nil
-      # @image_2 = nil
-      # @publisher_product = nil
-      # @crop_x = 0
-      # @crop_y = 0
-      # @crop_w = 200
-      # @crop_h = 200
-#       
-      # publisher_product_id = params[:publisher_product_pos2_image][:publisher_product_id]
-#       
-      # if !publisher_product_id.nil?
-          # #
-      # else
-          # Rails.logger.info("publisher_product_id was nil")
-      # end
-#       
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-          # h_image = Hash.new
-          # h_image[:image] = params[:publisher_product_pos2_image][:image]
-          # h_image[:publisher_product_id] = publisher_product.id
-          # h_image[:publisher_id] = current_user.publisher.id
-          # h_image[:user_id] = current_user.id
-          # h_image[:crop_x] = @crop_x
-          # h_image[:crop_y] = @crop_y
-          # h_image[:crop_w] = @crop_w
-          # h_image[:crop_h] = @crop_h
-          # publisher_product_pos2_image = PublisherProductPos2Image.new(h_image)
-          # if request.xhr? || remotipart_submitted?
-              # if publisher_product_pos2_image.save
-                  # img = publisher_product_pos2_image
-                  # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                  # w = image.width
-                  # h = image.height
-                  # w_max = false
-                  # h_max = false
-                  # w_h_equal = false
-                  # x = 0
-                  # y = 0
-                  # l = 0                    
-                  # d = 0
-                  # if ( w == h)
-                      # w_h_equal = true
-                  # else
-                      # if ( w > h )
-                        # w_max = true
-                      # else
-                        # h_max = true
-                      # end
-                  # end
-                  # if w_max
-                      # d = w - h
-                      # d = (d/2).round
-                      # x = d
-                      # l = h  
-                  # end
-                  # if h_max
-                      # d = h - w
-                      # d = (d/2).round
-                      # y = d
-                      # l = w  
-                  # end
-                  # if w_h_equal
-                      # l = w
-                  # end
-#   
-                  # h_update = Hash.new
-                  # h_update[:crop_x] = x
-                  # h_update[:crop_y] = y
-                  # h_update[:crop_w] = l
-                  # h_update[:crop_h] = l
-                  # if publisher_product_pos2_image.update_attributes(h_update)
-                      # @id_image_2 = publisher_product_pos2_image.id      
-                      # @image_2 = publisher_product_pos2_image
-                      # @publisher_product = publisher_product_pos2_image.publisher_product
-                  # else
-                      # Rails.logger.info "publisher_product_pos2_image updated failed"
-                  # end
-              # else
-                  # Rails.logger.info "publisher_product_pos2_image save failed"
-              # end
-          # else
-            # # 
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end
-#     
-#     
-  # end
-# 
-# 
-# 
-  # def upload_image_2_change
-# 
-      # @id_image_2 = nil
-      # @image_2 = nil
-      # @publisher_product = nil
-      # @crop_x = 0
-      # @crop_y = 0
-      # @crop_w = 200
-      # @crop_h = 200
-#       
-      # publisher_product_id = params[:publisher_product_pos2_image][:publisher_product_id]
-      # if !publisher_product_id.nil?
-          # #
-      # else
-          # Rails.logger.info("publisher_product_id was nil")
-      # end
-#       
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-# 
-          # publisher_product_pos2_image = publisher_product.publisher_product_pos2_image rescue nil
-          # if !publisher_product_pos2_image.nil?
-              # if publisher_product_pos2_image.destroy
-                  # #
-              # else      
-                  # Rails.logger.info "publisher_product_pos2_image destroy failed"
-              # end
-          # else
-              # Rails.logger.info "publisher_product_pos2_image was nil"
-          # end
-# 
-          # h_image = Hash.new
-          # h_image[:image] = params[:publisher_product_pos2_image][:image]
-          # h_image[:publisher_product_id] = publisher_product.id
-          # h_image[:publisher_id] = current_user.publisher.id
-          # h_image[:user_id] = current_user.id
-          # h_image[:crop_x] = @crop_x
-          # h_image[:crop_y] = @crop_y
-          # h_image[:crop_w] = @crop_w
-          # h_image[:crop_h] = @crop_h
-          # publisher_product_pos2_image = PublisherProductPos2Image.new(h_image)
-          # if request.xhr? || remotipart_submitted?
-              # if publisher_product_pos2_image.save
-                  # img = publisher_product_pos2_image
-                  # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                  # w = image.width
-                  # h = image.height
-                  # w_max = false
-                  # h_max = false
-                  # w_h_equal = false
-                  # x = 0
-                  # y = 0
-                  # l = 0                    
-                  # d = 0
-                  # if ( w == h)
-                      # w_h_equal = true
-                  # else
-                      # if ( w > h )
-                        # w_max = true
-                      # else
-                        # h_max = true
-                      # end
-                  # end
-                  # if w_max
-                      # d = w - h
-                      # d = (d/2).round
-                      # x = d
-                      # l = h  
-                  # end
-                  # if h_max
-                      # d = h - w
-                      # d = (d/2).round
-                      # y = d
-                      # l = w  
-                  # end
-                  # if w_h_equal
-                      # l = w
-                  # end
-#   
-                  # h_update = Hash.new
-                  # h_update[:crop_x] = x
-                  # h_update[:crop_y] = y
-                  # h_update[:crop_w] = l
-                  # h_update[:crop_h] = l
-                  # if publisher_product_pos2_image.update_attributes(h_update)
-                      # @id_image_2 = publisher_product_pos2_image.id      
-                      # @image_2 = publisher_product_pos2_image
-                      # @publisher_product = publisher_product_pos2_image.publisher_product
-                  # else
-                      # Rails.logger.info "publisher_product_pos2_image updated failed"
-                  # end
-              # else
-                  # Rails.logger.info "publisher_product_pos2_image save failed"
-              # end
-          # else
-            # # 
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end
-#         
-#     
-  # end
-# 
-# 
-# 
-  # def crop_image_2
-#     
-      # @image_2 = nil    
-      # @id_image_2 = nil      
-      # @publisher_product = nil
-#       
-      # # x = params[:crop_x]
-      # # y = params[:crop_y]
-      # # w = params[:crop_w]
-      # # h = params[:crop_h]
-      # # Rails.logger.info "x = " + params[:crop_x]
-      # # Rails.logger.info "y = " + params[:crop_y]
-      # # Rails.logger.info "w = " + params[:crop_w]
-      # # Rails.logger.info "h = " + params[:crop_h]
-#       
-      # publisher_product_id = params[:publisher_product_id]
-#   
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-          # # Rails.logger.info "publisher_product was found"
-          # publisher_product_pos2_image = publisher_product.publisher_product_pos2_image rescue nil
-          # if !publisher_product_pos2_image.nil?
-# 
-              # image = MiniMagick::Image.open("public" + publisher_product_pos2_image.image_url(:image_600_600))
-#           
-              # crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
-              # new_image = image.crop(crop_params)
-#               
-              # img_name = File.basename(publisher_product_pos2_image.image.to_s)
-              # img_dir = "public" + File.dirname(publisher_product_pos2_image.image.to_s)
-#         
-              # image_375_300_path = img_dir + "/" + "image_375_300_" + img_name 
-              # image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
-              # image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
-#         
-              # FileUtils.rm_rf(image_375_300_path) 
-              # FileUtils.rm_rf(image_200_200_path) 
-              # FileUtils.rm_rf(image_100_100_path) 
-#         
-              # new_image.resize('375x300')
-              # new_image.write image_375_300_path
-              # new_image.resize('200x200')
-              # new_image.write image_200_200_path
-              # new_image.resize('100x100')
-              # new_image.write image_100_100_path      
-#         
-              # x = params[:crop_x]
-              # y = params[:crop_y]
-              # w = params[:crop_w]
-              # h = params[:crop_h]
-              # x = x.to_i
-              # y = y.to_i
-              # w = w.to_i
-              # h = h.to_i
-#         
-              # h_crop = Hash.new
-              # h_crop[:crop_x] = x
-              # h_crop[:crop_y] = y
-              # h_crop[:crop_w] = w
-              # h_crop[:crop_h] = h
-#         
-              # if publisher_product_pos2_image.update_attributes(h_crop)
-                  # @id_image_2 = publisher_product_pos2_image.id      
-                  # @image_2 = publisher_product_pos2_image
-                  # @publisher_product = publisher_product
-              # else
-                  # Rails.logger.info "publisher_product_pos2_image update_attributes failed"
-              # end
-          # else
-              # Rails.logger.info "publisher_product_pos2_image was nil"
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end      
-#   
-#     
-  # end
-# 
-# 
-# 
-  # def destroy_image_2
-# 
-      # ar = params[:publisher_product_manifest]
-      # h_obj = Hash.new
-      # ar.each do |obj|
-        # h_obj = obj
-      # end
-# 
-      # publisher_product_id = h_obj[:publisher_product_id]
-      # @image_2 = nil
-      # @publisher_product = nil
-#       
-      # if !publisher_product_id.nil?
-          # #
-      # else
-          # Rails.logger.info("publisher_product_id was nil")
-      # end
-#       
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-          # publisher_product_pos2_image = publisher_product.publisher_product_pos2_image rescue nil
-          # if !publisher_product_pos2_image.nil?
-              # if publisher_product_pos2_image.destroy
-                  # @publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-              # else      
-                  # Rails.logger.info "publisher_product_pos2_image destroy failed"
-              # end
-          # else
-              # Rails.logger.info "publisher_product_pos2_image was nil"
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end
-# 
-#     
-  # end
-# 
-# 
-# 
-  # def upload_image_3
-#    
-      # @id_image_3 = nil
-      # @image_3 = nil
-      # @publisher_product = nil
-      # @crop_x = 0
-      # @crop_y = 0
-      # @crop_w = 200
-      # @crop_h = 200
-#       
-      # publisher_product_id = params[:publisher_product_pos3_image][:publisher_product_id]
-#       
-      # if !publisher_product_id.nil?
-          # #
-      # else
-          # Rails.logger.info("publisher_product_id was nil")
-      # end
-#       
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-          # h_image = Hash.new
-          # h_image[:image] = params[:publisher_product_pos3_image][:image]
-          # h_image[:publisher_product_id] = publisher_product.id
-          # h_image[:publisher_id] = current_user.publisher.id
-          # h_image[:user_id] = current_user.id
-          # h_image[:crop_x] = @crop_x
-          # h_image[:crop_y] = @crop_y
-          # h_image[:crop_w] = @crop_w
-          # h_image[:crop_h] = @crop_h
-          # publisher_product_pos3_image = PublisherProductPos3Image.new(h_image)
-          # if request.xhr? || remotipart_submitted?
-              # if publisher_product_pos3_image.save
-                  # img = publisher_product_pos3_image
-                  # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                  # w = image.width
-                  # h = image.height
-                  # w_max = false
-                  # h_max = false
-                  # w_h_equal = false
-                  # x = 0
-                  # y = 0
-                  # l = 0                    
-                  # d = 0
-                  # if ( w == h)
-                      # w_h_equal = true
-                  # else
-                      # if ( w > h )
-                        # w_max = true
-                      # else
-                        # h_max = true
-                      # end
-                  # end
-                  # if w_max
-                      # d = w - h
-                      # d = (d/2).round
-                      # x = d
-                      # l = h  
-                  # end
-                  # if h_max
-                      # d = h - w
-                      # d = (d/2).round
-                      # y = d
-                      # l = w  
-                  # end
-                  # if w_h_equal
-                      # l = w
-                  # end
-#   
-                  # h_update = Hash.new
-                  # h_update[:crop_x] = x
-                  # h_update[:crop_y] = y
-                  # h_update[:crop_w] = l
-                  # h_update[:crop_h] = l
-                  # if publisher_product_pos3_image.update_attributes(h_update)
-                      # @id_image_3 = publisher_product_pos3_image.id      
-                      # @image_3 = publisher_product_pos3_image
-                      # @publisher_product = publisher_product_pos3_image.publisher_product
-                  # else
-                      # Rails.logger.info "publisher_product_pos3_image updated failed"
-                  # end
-              # else
-                  # Rails.logger.info "publisher_product_pos3_image save failed"
-              # end
-          # else
-            # # 
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end
-#     
-#     
-  # end
-# 
-# 
-# 
-  # def upload_image_3_change
-# 
-      # @id_image_3 = nil
-      # @image_3 = nil
-      # @publisher_product = nil
-      # @crop_x = 0
-      # @crop_y = 0
-      # @crop_w = 200
-      # @crop_h = 200
-#       
-      # publisher_product_id = params[:publisher_product_pos3_image][:publisher_product_id]
-      # if !publisher_product_id.nil?
-          # #
-      # else
-          # Rails.logger.info("publisher_product_id was nil")
-      # end
-#       
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-# 
-          # publisher_product_pos3_image = publisher_product.publisher_product_pos3_image rescue nil
-          # if !publisher_product_pos3_image.nil?
-              # if publisher_product_pos3_image.destroy
-                  # #
-              # else      
-                  # Rails.logger.info "publisher_product_pos3_image destroy failed"
-              # end
-          # else
-              # Rails.logger.info "publisher_product_pos3_image was nil"
-          # end
-# 
-          # h_image = Hash.new
-          # h_image[:image] = params[:publisher_product_pos3_image][:image]
-          # h_image[:publisher_product_id] = publisher_product.id
-          # h_image[:publisher_id] = current_user.publisher.id
-          # h_image[:user_id] = current_user.id
-          # h_image[:crop_x] = @crop_x
-          # h_image[:crop_y] = @crop_y
-          # h_image[:crop_w] = @crop_w
-          # h_image[:crop_h] = @crop_h
-          # publisher_product_pos3_image = PublisherProductPos3Image.new(h_image)
-          # if request.xhr? || remotipart_submitted?
-              # if publisher_product_pos3_image.save
-                  # img = publisher_product_pos3_image
-                  # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                  # w = image.width
-                  # h = image.height
-                  # w_max = false
-                  # h_max = false
-                  # w_h_equal = false
-                  # x = 0
-                  # y = 0
-                  # l = 0                    
-                  # d = 0
-                  # if ( w == h)
-                      # w_h_equal = true
-                  # else
-                      # if ( w > h )
-                        # w_max = true
-                      # else
-                        # h_max = true
-                      # end
-                  # end
-                  # if w_max
-                      # d = w - h
-                      # d = (d/2).round
-                      # x = d
-                      # l = h  
-                  # end
-                  # if h_max
-                      # d = h - w
-                      # d = (d/2).round
-                      # y = d
-                      # l = w  
-                  # end
-                  # if w_h_equal
-                      # l = w
-                  # end
-#   
-                  # h_update = Hash.new
-                  # h_update[:crop_x] = x
-                  # h_update[:crop_y] = y
-                  # h_update[:crop_w] = l
-                  # h_update[:crop_h] = l
-                  # if publisher_product_pos3_image.update_attributes(h_update)
-                      # @id_image_3 = publisher_product_pos3_image.id      
-                      # @image_3 = publisher_product_pos3_image
-                      # @publisher_product = publisher_product_pos3_image.publisher_product
-                  # else
-                      # Rails.logger.info "publisher_product_pos3_image updated failed"
-                  # end
-              # else
-                  # Rails.logger.info "publisher_product_pos3_image save failed"
-              # end
-          # else
-            # # 
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end
-#         
-#     
-  # end
-# 
-# 
-# 
-  # def crop_image_3
-#     
-      # @image_3 = nil    
-      # @id_image_3 = nil      
-      # @publisher_product = nil
-#       
-      # # x = params[:crop_x]
-      # # y = params[:crop_y]
-      # # w = params[:crop_w]
-      # # h = params[:crop_h]
-      # # Rails.logger.info "x = " + params[:crop_x]
-      # # Rails.logger.info "y = " + params[:crop_y]
-      # # Rails.logger.info "w = " + params[:crop_w]
-      # # Rails.logger.info "h = " + params[:crop_h]
-#       
-      # publisher_product_id = params[:publisher_product_id]
-#   
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-          # # Rails.logger.info "publisher_product was found"
-          # publisher_product_pos3_image = publisher_product.publisher_product_pos3_image rescue nil
-          # if !publisher_product_pos3_image.nil?
-# 
-              # image = MiniMagick::Image.open("public" + publisher_product_pos3_image.image_url(:image_600_600))
-#           
-              # crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
-              # new_image = image.crop(crop_params)
-#               
-              # img_name = File.basename(publisher_product_pos3_image.image.to_s)
-              # img_dir = "public" + File.dirname(publisher_product_pos3_image.image.to_s)
-#         
-              # image_345_300_path = img_dir + "/" + "image_345_300_" + img_name 
-              # image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
-              # image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
-#         
-              # FileUtils.rm_rf(image_345_300_path) 
-              # FileUtils.rm_rf(image_200_200_path) 
-              # FileUtils.rm_rf(image_100_100_path) 
-#         
-              # new_image.resize('345x300')
-              # new_image.write image_345_300_path
-              # new_image.resize('200x200')
-              # new_image.write image_200_200_path
-              # new_image.resize('100x100')
-              # new_image.write image_100_100_path      
-#         
-              # x = params[:crop_x]
-              # y = params[:crop_y]
-              # w = params[:crop_w]
-              # h = params[:crop_h]
-              # x = x.to_i
-              # y = y.to_i
-              # w = w.to_i
-              # h = h.to_i
-#         
-              # h_crop = Hash.new
-              # h_crop[:crop_x] = x
-              # h_crop[:crop_y] = y
-              # h_crop[:crop_w] = w
-              # h_crop[:crop_h] = h
-#         
-              # if publisher_product_pos3_image.update_attributes(h_crop)
-                  # @id_image_3 = publisher_product_pos3_image.id      
-                  # @image_3 = publisher_product_pos3_image
-                  # @publisher_product = publisher_product
-              # else
-                  # Rails.logger.info "publisher_product_pos3_image update_attributes failed"
-              # end
-          # else
-              # Rails.logger.info "publisher_product_pos3_image was nil"
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end      
-#   
-#     
-  # end
-# 
-# 
-# 
-  # def destroy_image_3
-# 
-      # ar = params[:publisher_product_manifest]
-      # h_obj = Hash.new
-      # ar.each do |obj|
-        # h_obj = obj
-      # end
-# 
-      # publisher_product_id = h_obj[:publisher_product_id]
-      # @image_3 = nil
-      # @publisher_product = nil
-#       
-      # if !publisher_product_id.nil?
-          # #
-      # else
-          # Rails.logger.info("publisher_product_id was nil")
-      # end
-#       
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-          # publisher_product_pos3_image = publisher_product.publisher_product_pos3_image rescue nil
-          # if !publisher_product_pos3_image.nil?
-              # if publisher_product_pos3_image.destroy
-                  # @publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-              # else      
-                  # Rails.logger.info "publisher_product_pos3_image destroy failed"
-              # end
-          # else
-              # Rails.logger.info "publisher_product_pos3_image was nil"
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end
-# 
-#     
-  # end
-# 
-# 
-# 
-  # def upload_image_4
-#    
-      # @id_image_4 = nil
-      # @image_4 = nil
-      # @publisher_product = nil
-      # @crop_x = 0
-      # @crop_y = 0
-      # @crop_w = 200
-      # @crop_h = 200
-#       
-      # publisher_product_id = params[:publisher_product_pos4_image][:publisher_product_id]
-#       
-      # if !publisher_product_id.nil?
-          # #
-      # else
-          # Rails.logger.info("publisher_product_id was nil")
-      # end
-#       
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-          # h_image = Hash.new
-          # h_image[:image] = params[:publisher_product_pos4_image][:image]
-          # h_image[:publisher_product_id] = publisher_product.id
-          # h_image[:publisher_id] = current_user.publisher.id
-          # h_image[:user_id] = current_user.id
-          # h_image[:crop_x] = @crop_x
-          # h_image[:crop_y] = @crop_y
-          # h_image[:crop_w] = @crop_w
-          # h_image[:crop_h] = @crop_h
-          # publisher_product_pos4_image = PublisherProductPos4Image.new(h_image)
-          # if request.xhr? || remotipart_submitted?
-              # if publisher_product_pos4_image.save
-                  # img = publisher_product_pos4_image
-                  # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                  # w = image.width
-                  # h = image.height
-                  # w_max = false
-                  # h_max = false
-                  # w_h_equal = false
-                  # x = 0
-                  # y = 0
-                  # l = 0                    
-                  # d = 0
-                  # if ( w == h)
-                      # w_h_equal = true
-                  # else
-                      # if ( w > h )
-                        # w_max = true
-                      # else
-                        # h_max = true
-                      # end
-                  # end
-                  # if w_max
-                      # d = w - h
-                      # d = (d/2).round
-                      # x = d
-                      # l = h  
-                  # end
-                  # if h_max
-                      # d = h - w
-                      # d = (d/2).round
-                      # y = d
-                      # l = w  
-                  # end
-                  # if w_h_equal
-                      # l = w
-                  # end
-#   
-                  # h_update = Hash.new
-                  # h_update[:crop_x] = x
-                  # h_update[:crop_y] = y
-                  # h_update[:crop_w] = l
-                  # h_update[:crop_h] = l
-                  # if publisher_product_pos4_image.update_attributes(h_update)
-                      # @id_image_4 = publisher_product_pos4_image.id      
-                      # @image_4 = publisher_product_pos4_image
-                      # @publisher_product = publisher_product_pos4_image.publisher_product
-                  # else
-                      # Rails.logger.info "publisher_product_pos4_image updated failed"
-                  # end
-              # else
-                  # Rails.logger.info "publisher_product_pos4_image save failed"
-              # end
-          # else
-            # # 
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end
-#     
-#     
-  # end
-# 
-# 
-# 
-  # def upload_image_4_change
-# 
-      # @id_image_4 = nil
-      # @image_4 = nil
-      # @publisher_product = nil
-      # @crop_x = 0
-      # @crop_y = 0
-      # @crop_w = 200
-      # @crop_h = 200
-#       
-      # publisher_product_id = params[:publisher_product_pos4_image][:publisher_product_id]
-      # if !publisher_product_id.nil?
-          # #
-      # else
-          # Rails.logger.info("publisher_product_id was nil")
-      # end
-#       
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-# 
-          # publisher_product_pos4_image = publisher_product.publisher_product_pos4_image rescue nil
-          # if !publisher_product_pos4_image.nil?
-              # if publisher_product_pos4_image.destroy
-                  # #
-              # else      
-                  # Rails.logger.info "publisher_product_pos4_image destroy failed"
-              # end
-          # else
-              # Rails.logger.info "publisher_product_pos4_image was nil"
-          # end
-# 
-          # h_image = Hash.new
-          # h_image[:image] = params[:publisher_product_pos4_image][:image]
-          # h_image[:publisher_product_id] = publisher_product.id
-          # h_image[:publisher_id] = current_user.publisher.id
-          # h_image[:user_id] = current_user.id
-          # h_image[:crop_x] = @crop_x
-          # h_image[:crop_y] = @crop_y
-          # h_image[:crop_w] = @crop_w
-          # h_image[:crop_h] = @crop_h
-          # publisher_product_pos4_image = PublisherProductPos4Image.new(h_image)
-          # if request.xhr? || remotipart_submitted?
-              # if publisher_product_pos4_image.save
-                  # img = publisher_product_pos4_image
-                  # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                  # w = image.width
-                  # h = image.height
-                  # w_max = false
-                  # h_max = false
-                  # w_h_equal = false
-                  # x = 0
-                  # y = 0
-                  # l = 0                    
-                  # d = 0
-                  # if ( w == h)
-                      # w_h_equal = true
-                  # else
-                      # if ( w > h )
-                        # w_max = true
-                      # else
-                        # h_max = true
-                      # end
-                  # end
-                  # if w_max
-                      # d = w - h
-                      # d = (d/2).round
-                      # x = d
-                      # l = h  
-                  # end
-                  # if h_max
-                      # d = h - w
-                      # d = (d/2).round
-                      # y = d
-                      # l = w  
-                  # end
-                  # if w_h_equal
-                      # l = w
-                  # end
-#   
-                  # h_update = Hash.new
-                  # h_update[:crop_x] = x
-                  # h_update[:crop_y] = y
-                  # h_update[:crop_w] = l
-                  # h_update[:crop_h] = l
-                  # if publisher_product_pos4_image.update_attributes(h_update)
-                      # @id_image_4 = publisher_product_pos4_image.id      
-                      # @image_4 = publisher_product_pos4_image
-                      # @publisher_product = publisher_product_pos4_image.publisher_product
-                  # else
-                      # Rails.logger.info "publisher_product_pos4_image updated failed"
-                  # end
-              # else
-                  # Rails.logger.info "publisher_product_pos4_image save failed"
-              # end
-          # else
-            # # 
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end
-#         
-#     
-  # end
-# 
-# 
-# 
-  # def crop_image_4
-#     
-      # @image_4 = nil    
-      # @id_image_4 = nil      
-      # @publisher_product = nil
-#       
-      # # x = params[:crop_x]
-      # # y = params[:crop_y]
-      # # w = params[:crop_w]
-      # # h = params[:crop_h]
-      # # Rails.logger.info "x = " + params[:crop_x]
-      # # Rails.logger.info "y = " + params[:crop_y]
-      # # Rails.logger.info "w = " + params[:crop_w]
-      # # Rails.logger.info "h = " + params[:crop_h]
-#       
-      # publisher_product_id = params[:publisher_product_id]
-#   
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-          # # Rails.logger.info "publisher_product was found"
-          # publisher_product_pos4_image = publisher_product.publisher_product_pos4_image rescue nil
-          # if !publisher_product_pos4_image.nil?
-# 
-              # image = MiniMagick::Image.open("public" + publisher_product_pos4_image.image_url(:image_600_600))
-#           
-              # crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
-              # new_image = image.crop(crop_params)
-#               
-              # img_name = File.basename(publisher_product_pos4_image.image.to_s)
-              # img_dir = "public" + File.dirname(publisher_product_pos4_image.image.to_s)
-#         
-              # image_345_300_path = img_dir + "/" + "image_345_300_" + img_name 
-              # image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
-              # image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
-#         
-              # FileUtils.rm_rf(image_345_300_path) 
-              # FileUtils.rm_rf(image_200_200_path) 
-              # FileUtils.rm_rf(image_100_100_path) 
-#         
-              # new_image.resize('345x300')
-              # new_image.write image_345_300_path
-              # new_image.resize('200x200')
-              # new_image.write image_200_200_path
-              # new_image.resize('100x100')
-              # new_image.write image_100_100_path      
-#         
-              # x = params[:crop_x]
-              # y = params[:crop_y]
-              # w = params[:crop_w]
-              # h = params[:crop_h]
-              # x = x.to_i
-              # y = y.to_i
-              # w = w.to_i
-              # h = h.to_i
-#         
-              # h_crop = Hash.new
-              # h_crop[:crop_x] = x
-              # h_crop[:crop_y] = y
-              # h_crop[:crop_w] = w
-              # h_crop[:crop_h] = h
-#         
-              # if publisher_product_pos4_image.update_attributes(h_crop)
-                  # @id_image_4 = publisher_product_pos4_image.id      
-                  # @image_4 = publisher_product_pos4_image
-                  # @publisher_product = publisher_product
-              # else
-                  # Rails.logger.info "publisher_product_pos4_image update_attributes failed"
-              # end
-          # else
-              # Rails.logger.info "publisher_product_pos4_image was nil"
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end      
-#   
-#     
-  # end
-# 
-# 
-# 
-  # def destroy_image_4
-# 
-      # ar = params[:publisher_product_manifest]
-      # h_obj = Hash.new
-      # ar.each do |obj|
-        # h_obj = obj
-      # end
-# 
-      # publisher_product_id = h_obj[:publisher_product_id]
-      # @image_4 = nil
-      # @publisher_product = nil
-#       
-      # if !publisher_product_id.nil?
-          # #
-      # else
-          # Rails.logger.info("publisher_product_id was nil")
-      # end
-#       
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-          # publisher_product_pos4_image = publisher_product.publisher_product_pos4_image rescue nil
-          # if !publisher_product_pos4_image.nil?
-              # if publisher_product_pos4_image.destroy
-                  # @publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-              # else      
-                  # Rails.logger.info "publisher_product_pos4_image destroy failed"
-              # end
-          # else
-              # Rails.logger.info "publisher_product_pos4_image was nil"
-          # end
-      # else
-          # Rails.logger.info "publisher_product was nil"
-      # end
-# 
-#     
-  # end
+
+  def upload_image_5
+
+      @errors = false
+      
+      begin
+           
+          @image_5 = nil
+          @image_5_id = nil
+          @image_5_url = nil
+          @publisher_product = nil
+          @crop_x_image_5 = 0
+          @crop_y_image_5 = 0
+          @crop_w_image_5 = 100
+          @crop_h_image_5 = 25
+          
+          publisher_product_id = params[:publisher_product_pos5_image][:publisher_product_id]
+          if !publisher_product_id.nil?
+              publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
+              if !publisher_product.nil?
+                  h_image = Hash.new
+                  h_image[:image] = params[:publisher_product_pos5_image][:image]
+                  h_image[:publisher_product_id] = publisher_product.id
+                  h_image[:publisher_id] = current_user.publisher.id
+                  h_image[:user_id] = current_user.id
+                  h_image[:crop_x] = @crop_x
+                  h_image[:crop_y] = @crop_y
+                  h_image[:crop_w] = @crop_w
+                  h_image[:crop_h] = @crop_h
+                  publisher_product_pos5_image = PublisherProductPos5Image.new(h_image)
+                  if request.xhr? || remotipart_submitted?
+                      if publisher_product_pos5_image.save
+                          img = publisher_product_pos5_image
+                          image = MiniMagick::Image.open("public" + img.image_url(:image_500_500))
+                          w = image.width
+                          h = image.height
+
+                          # # Background aspect ratio (1200:300 or 4:1)
+                          bkgrnd_asp_ratio = 4
+                          crop_w = image.width
+                          crop_h = (image.width / bkgrnd_asp_ratio).round
+                          crop_x = 0
+                          crop_y = ((image.height - crop_h) / 2).round
+
+                          h_update = Hash.new
+                          h_update[:crop_x] = crop_x
+                          h_update[:crop_y] = crop_y
+                          h_update[:crop_w] = crop_w
+                          h_update[:crop_h] = crop_h
+                          
+                          if publisher_product_pos5_image.update_attributes(h_update)
+                              image_5 = publisher_product_pos5_image
+                              if !image_5.nil?
+                                gon.image_5_id = image_5.id
+                                @image_5 = image_5
+                                @image_5_id = image_5.id
+                                @image_5_url = image_5.image_url(:image_1200_300_fill) + '?' + (rand(10..90) * rand(100..900)).to_s
+                                @crop_x_image_5 = image_5.crop_x
+                                @crop_y_image_5 = image_5.crop_y
+                                @crop_w_image_5 = image_5.crop_w
+                                @crop_h_image_5 = image_5.crop_h
+                              else
+                                @image_5 = nil
+                                gon.image_5_id = nil
+                                @image_5_id = nil
+                                @image_5_url = ActionController::Base.helpers.asset_path('avatars/background-1-w1200-h300.jpg') 
+                              end
+
+                              image_1 = publisher_product.publisher_product_pos1_image rescue nil
+                              @image_1 = image_1
+                              if !image_1.nil?
+                                @image_1_id = image_1.id
+                                gon.image_1_id = image_1.id
+                                @crop_x_image_1 = image_1.crop_x
+                                @crop_y_image_1 = image_1.crop_y
+                                @crop_w_image_1 = image_1.crop_w
+                                @crop_h_image_1 = image_1.crop_h
+                              else
+                                @image_1_id = nil
+                                gon.image_1_id = nil
+                              end
+
+                              publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
+                              if !publisher_product_manifest.nil?
+                                  @publisher_product_manifest_product_headline = publisher_product_manifest.product_headline
+                                  @product_headline = "Product Headline"
+                                  @b_product_headline = false
+                                  @b_required_product_headline = true
+                                  if !((publisher_product_manifest.product_headline.blank?) or (publisher_product_manifest.product_headline.empty?) or (publisher_product_manifest.product_headline.nil?)) 
+                                      # @b_product_headline = true
+                                      @product_headline = publisher_product_manifest.product_headline
+                                      @b_product_headline = true
+                                      @b_required_product_headline = false
+                                  end
+                              else
+                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_manifest was nil')
+                                  raise
+                              end
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_pos5_image updated_attributes failed')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5', :description => 'publisher_product_pos5_image save failed')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5', :description => 'request remotipart failed')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5', :description => 'publisher_product was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5', :description => 'publisher_product_id was nil')
+              raise
+          end
+    
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5', :description => e.message.to_s)
+          @errors = true
+          
+      end
+
+    
+  end
 
 
 
-  # def update_listing_preview
-      # publisher_product_id = params[:publisher_product_id]
-      # @control = params[:control]
-      # @publisher_product = nil
-      # publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
-      # if !publisher_product.nil?
-          # @publisher_product = publisher_product
+
+
+
+
+  # def upload_user_background1_image
+# 
+      # @user_bkgrnd_image = nil
+      # @bkgrnd_crop_x = 0
+      # @bkgrnd_crop_y = 0
+      # @bkgrnd_crop_w = 1200
+      # @bkgrnd_crop_h = 300
+#       
+      # # publisher = Publisher.where("user_id = ?", current_user.id).first rescue nil
+      # # if !publisher.nil?
+      # if signed_in?
+          # h_user_bkgrnd_image = Hash.new
+          # h_user_bkgrnd_image[:image] = params[:user_bkgrnd_image][:image]
+          # h_user_bkgrnd_image[:user_id] = current_user.id
+          # # h_user_bkgrnd_image[:publisher_id] = publisher.id
+          # h_user_bkgrnd_image[:primary] = true
+          # h_user_bkgrnd_image[:crop_x] = @bkgrnd_crop_x
+          # h_user_bkgrnd_image[:crop_y] = @bkgrnd_crop_y
+          # h_user_bkgrnd_image[:crop_w] = @bkgrnd_crop_w
+          # h_user_bkgrnd_image[:crop_h] = @bkgrnd_crop_h
+          # user_bkgrnd_image = UserBkgrndImage.new(h_user_bkgrnd_image)
+# 
+          # user_bkgrnd_images = current_user.user_bkgrnd_images
+          # user_bkgrnd_image_old = user_bkgrnd_images.where( :primary => true ).first rescue nil
+#    
+          # if request.xhr? || remotipart_submitted?
+              # if user_bkgrnd_image.save
+                  # if !user_bkgrnd_image_old.nil?
+                      # # TODO Check if image destroyed
+                      # # user_bkgrnd_image_old.update_attributes( :primary => false )
+                      # user_bkgrnd_image_old.destroy
+                  # end
+#                   
+                  # user_bkgrnd_image = user_bkgrnd_images.where( :primary => true ).last rescue nil
+#                   
+                  # if !user_bkgrnd_image.nil? 
+                      # @user_bkgrnd_image = user_bkgrnd_image
+# 
+                      # img = user_bkgrnd_image
+                      # image = MiniMagick::Image.open("public" + img.image_url(:image_800_500))
+# 
+                      # # Background aspect ratio (1200:300 or 4:1)
+                      # bkgrnd_asp_ratio = 4
+# 
+                      # crop_w = image.width
+                      # crop_h = image.width / bkgrnd_asp_ratio
+                      # crop_x = 0
+                      # crop_y = (image.height - crop_h) / 2
+# 
+                      # @bkgrnd_crop_x = crop_x
+                      # @bkgrnd_crop_y = crop_y
+                      # @bkgrnd_crop_w = crop_w
+                      # @bkgrnd_crop_h = crop_h
+# 
+                      # h_update = Hash.new
+                      # h_update[:crop_x] = crop_x
+                      # h_update[:crop_y] = crop_y
+                      # h_update[:crop_w] = crop_w
+                      # h_update[:crop_h] = crop_h
+# 
+                      # if user_bkgrnd_image.update_attributes(h_update)
+                          # #                      
+                      # else
+                          # #  
+                      # end                      
+                  # end
+              # else
+                # # error save
+              # end
+          # else
+            # # 
+          # end
+      # else
+        # #
       # end
-      # # respond_to do |format|
-          # # # format.js { render :action => action_path }              
-              # # # raw javascript to be executed on client-side
-              # # # "alert('Hello Rails');", 
-              # # # send HTTP response code on header
-              # # # :status => 404 # page not found,
-              # # # load /app/views/your-controller/different_action.js.erb
-              # # # :action => "different_action",
-              # # # send json file with @line_item variable as json
-              # # # :json => @line_item,
-              # # # :file => filename,
-              # # # :text => "OK",
-              # # # the :location option to set the HTTP Location header
-              # # # :location => path_to_controller_method_url(argument)
-      # # end
+#       
   # end
+
+
+  def upload_image_5_change
+
+      @errors = false
+
+      begin
+        
+          @image_5_id = nil
+          @image_5 = nil
+          @publisher_product = nil
+          @crop_x = 0
+          @crop_y = 0
+          @crop_w = 200
+          @crop_h = 200
+          
+          publisher_product_id = params[:publisher_product_pos5_image][:publisher_product_id]
+          if !publisher_product_id.nil?
+              publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
+              if !publisher_product.nil?
+                  publisher_product_pos5_image = publisher_product.publisher_product_pos5_image rescue nil
+                  if !publisher_product_pos5_image.nil?
+                      if publisher_product_pos5_image.destroy
+                          #                        
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_pos5_image destroy failed')
+                          raise
+                      end
+                  else
+                      #
+                  end
+                    
+                  h_image = Hash.new
+                  h_image[:image] = params[:publisher_product_pos5_image][:image]
+                  h_image[:publisher_product_id] = publisher_product.id
+                  h_image[:publisher_id] = current_user.publisher.id
+                  h_image[:user_id] = current_user.id
+                  h_image[:crop_x] = @crop_x
+                  h_image[:crop_y] = @crop_y
+                  h_image[:crop_w] = @crop_w
+                  h_image[:crop_h] = @crop_h
+                  publisher_product_pos5_image = PublisherProductPos5Image.new(h_image)
+                  if request.xhr? || remotipart_submitted?
+                      if publisher_product_pos5_image.save
+                        
+                          img = publisher_product_pos5_image
+                          image = MiniMagick::Image.open("public" + img.image_url(:image_800_500))
+                          # w = image.width
+                          # h = image.height
+                          # w_max = false
+                          # h_max = false
+                          # w_h_equal = false
+                          # x = 0
+                          # y = 0
+                          # l = 0                    
+                          # d = 0
+                          # if ( w == h)
+                              # w_h_equal = true
+                          # else
+                              # if ( w > h )
+                                # w_max = true
+                              # else
+                                # h_max = true
+                              # end
+                          # end
+                          # if w_max
+                              # d = w - h
+                              # d = (d/2).round
+                              # x = d
+                              # l = h  
+                          # end
+                          # if h_max
+                              # d = h - w
+                              # d = (d/2).round
+                              # y = d
+                              # l = w  
+                          # end
+                          # if w_h_equal
+                              # l = w
+                          # end
+                          # h_update = Hash.new
+                          # h_update[:crop_x] = x
+                          # h_update[:crop_y] = y
+                          # h_update[:crop_w] = l
+                          # h_update[:crop_h] = l
+                          
+                          # Background aspect ratio (1200:300 or 4:1)
+                          bkgrnd_asp_ratio = 4
+    
+                          crop_w = image.width
+                          crop_h = image.width / bkgrnd_asp_ratio
+                          crop_x = 0
+                          crop_y = (image.height - crop_h) / 2
+    
+                          # @bkgrnd_crop_x = crop_x
+                          # @bkgrnd_crop_y = crop_y
+                          # @bkgrnd_crop_w = crop_w
+                          # @bkgrnd_crop_h = crop_h
+    
+                          h_update = Hash.new
+                          h_update[:crop_x] = crop_x
+                          h_update[:crop_y] = crop_y
+                          h_update[:crop_w] = crop_w
+                          h_update[:crop_h] = crop_h
+                          
+                          if publisher_product_pos5_image.update_attributes(h_update)
+                              image_5 = publisher_product_pos5_image
+                              # @image_5 = image_5
+                              if !image_5.nil?
+                                gon.image_5_id = image_5.id
+                                @image_5_id = image_5.id
+                                @image_5_url = image_5.image_url(:image_1200_300_fill) + '?' + (rand(10..90) * rand(100..900)).to_s
+                                @crop_x_image_5 = image_5.crop_x
+                                @crop_y_image_5 = image_5.crop_y
+                                @crop_w_image_5 = image_5.crop_w
+                                @crop_h_image_5 = image_5.crop_h
+                              else
+                                # Rails.logger.info('image_5 was nil in index')
+                                gon.image_5_id = nil
+                                @image_5_id = nil
+                                @image_5_url = ActionController::Base.helpers.asset_path('avatars/background-1-w1200-h300.jpg') 
+                              end
+
+                              image_1 = publisher_product.publisher_product_pos1_image rescue nil
+                              @image_1 = image_1
+                              if !image_1.nil?
+                                gon.image_1_id = image_1.id
+                                @crop_x_image_1 = image_1.crop_x
+                                @crop_y_image_1 = image_1.crop_y
+                                @crop_w_image_1 = image_1.crop_w
+                                @crop_h_image_1 = image_1.crop_h
+                              else
+                                gon.image_1_id = nil
+                              end
+                              
+                              @publisher_product = publisher_product_pos5_image.publisher_product
+                              publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
+                              if !publisher_product_manifest.nil?
+                                  @publisher_product_manifest_product_headline = publisher_product_manifest.product_headline
+                                  # @b_product_headline = false
+                                  # gon.product_headline = "Product Headline"
+                                  # gon.b_product_headline = false
+                                  # gon.b_required_product_headline = true
+                                  # if !((publisher_product_manifest.product_headline.blank?) or (publisher_product_manifest.product_headline.empty?) or (publisher_product_manifest.product_headline.nil?)) 
+                                      # # @b_product_headline = true
+                                      # gon.product_headline = publisher_product_manifest.product_headline
+                                      # gon.b_product_headline = true
+                                      # gon.b_required_product_headline = false
+                                  # end
+                                  
+                                  @product_headline = "Product Headline"
+                                  @b_product_headline = false
+                                  @b_required_product_headline = true
+                                  if !((publisher_product_manifest.product_headline.blank?) or (publisher_product_manifest.product_headline.empty?) or (publisher_product_manifest.product_headline.nil?)) 
+                                      # @b_product_headline = true
+                                      @product_headline = publisher_product_manifest.product_headline
+                                      @b_product_headline = true
+                                      @b_required_product_headline = false
+                                  end
+                              else
+                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_manifest was nil')
+                                  raise
+                              end
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_pos5_image updated_attributes failed')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_pos5_image save failed')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'request remotipart failed')
+                      raise
+                  end
+                      
+                  # end
+                  # else
+                      # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_pos5_image was nil')
+                      # raise
+                  # end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_id was nil')
+              raise
+          end
+      
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => e.message.to_s)
+          @errors = true
+          
+      end
+        
+    
+  end
+
+
+
+  def crop_image_5
+    
+      @errors = false
+      
+      begin
+        
+          @image_5 = nil    
+          @image_5_id = nil      
+          @publisher_product = nil
+          
+          # x = params[:crop_x]
+          # y = params[:crop_y]
+          # w = params[:crop_w]
+          # h = params[:crop_h]
+          
+          publisher_product_id = params[:publisher_product_id]
+          publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
+          if !publisher_product.nil?
+              # Rails.logger.info "publisher_product was found"
+              publisher_product_pos5_image = publisher_product.publisher_product_pos5_image rescue nil
+              if !publisher_product_pos5_image.nil?
+                  image = MiniMagick::Image.open("public" + publisher_product_pos5_image.image_url)
+                  # image_800_500 = MiniMagick::Image.open("public" + publisher_product_pos5_image.image_url(:image_800_500))
+                  image_500_500 = MiniMagick::Image.open("public" + publisher_product_pos5_image.image_url(:image_500_500))
+                  if(image.width >= image.height)
+                      crop_scale = image.width / image_500_500.width.to_f
+                  else
+                      crop_scale = image.height / image_500_500.height.to_f
+                  end
+                  
+                  crop_x = (params[:crop_x].to_i * crop_scale).to_i
+                  crop_y = (params[:crop_y].to_i * crop_scale).to_i
+                  crop_w = (params[:crop_w].to_i * crop_scale).to_i
+                  crop_h = (params[:crop_h].to_i * crop_scale).to_i
+    
+                  crop_params = "#{crop_w}x#{crop_h}+#{crop_x}+#{crop_y}"
+                  new_image = image.crop(crop_params)
+    
+                  img_name = File.basename(publisher_product_pos5_image.image.to_s)
+                  img_dir = "public" + File.dirname(publisher_product_pos5_image.image.to_s)
+    
+                  image_1200_300_path = img_dir + "/" + "image_1200_300_fill_" + img_name
+    
+                  FileUtils.rm_rf(image_1200_300_path)
+    
+                  new_image.resize('1200x300')
+                  new_image.write image_1200_300_path
+    
+                  # user_bkgrnd_image = publisher_product_pos5_images.where( :primary => true ).last rescue nil
+                  publisher_product_pos5_image = publisher_product.publisher_product_pos5_image rescue nil
+                  if !publisher_product_pos5_image.nil? 
+                      h_update = Hash.new
+                      h_update[:crop_x] = params[:crop_x]
+                      h_update[:crop_y] = params[:crop_y]
+                      h_update[:crop_w] = params[:crop_w]
+                      h_update[:crop_h] = params[:crop_h]
+                      if publisher_product_pos5_image.update_attributes(h_update)
+                          # @image_5 = publisher_product_pos5_image
+                          # @image_5_id = publisher_product_pos5_image.id
+                          
+                          image_5 = publisher_product_pos5_image
+                          if !image_5.nil?
+                            gon.image_5_id = image_5.id
+                            @image_5 = image_5
+                            @image_5_id = image_5.id
+                            @image_5_url = image_5.image_url(:image_1200_300_fill) + '?' + (rand(10..90) * rand(100..900)).to_s
+                            @crop_x_image_5 = image_5.crop_x
+                            @crop_y_image_5 = image_5.crop_y
+                            @crop_w_image_5 = image_5.crop_w
+                            @crop_h_image_5 = image_5.crop_h
+                          else
+                            @image_5 = nil
+                            gon.image_5_id = nil
+                            @image_5_id = nil
+                            @image_5_url = ActionController::Base.helpers.asset_path('avatars/background-1-w1200-h300.jpg') 
+                          end
+                          
+                          image_1 = publisher_product.publisher_product_pos1_image rescue nil
+                          @image_1 = image_1
+                          if !image_1.nil?
+                            gon.image_1_id = image_1.id
+                            @crop_x_image_1 = image_1.crop_x
+                            @crop_y_image_1 = image_1.crop_y
+                            @crop_w_image_1 = image_1.crop_w
+                            @crop_h_image_1 = image_1.crop_h
+                          else
+                            gon.image_1_id = nil
+                          end
+                          
+                          # @publisher_product = publisher_product_pos5_image.publisher_product
+                          publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
+                          if !publisher_product_manifest.nil?
+                              @publisher_product_manifest_product_headline = publisher_product_manifest.product_headline
+                              # Rails.logger.info(publisher_product_manifest.product_headline);
+                              # @b_product_headline = false
+                              # gon.product_headline = "Product Headline"
+                              # gon.b_product_headline = false
+                              # gon.b_required_product_headline = true
+
+                              @product_headline = "Product Headline"
+                              @b_product_headline = false
+                              @b_required_product_headline = true
+                              if !((publisher_product_manifest.product_headline.blank?) or (publisher_product_manifest.product_headline.empty?) or (publisher_product_manifest.product_headline.nil?)) 
+                                  # @b_product_headline = true
+                                  @product_headline = publisher_product_manifest.product_headline
+                                  @b_product_headline = true
+                                  @b_required_product_headline = false
+                              end
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_manifest was nil')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'crop_image_5', :description => 'publisher_product_pos5_image update_attributes failed')
+                          raise
+                      end
+                  end
+                
+                  # image = MiniMagick::Image.open("public" + publisher_product_pos5_image.image_url(:image_600_600))
+                  # crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
+                  # new_image = image.crop(crop_params)
+                  # img_name = File.basename(publisher_product_pos5_image.image.to_s)
+                  # img_dir = "public" + File.dirname(publisher_product_pos5_image.image.to_s)
+                  # image_375_300_path = img_dir + "/" + "image_375_300_" + img_name 
+                  # image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
+                  # image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
+                  # FileUtils.rm_rf(image_375_300_path) 
+                  # FileUtils.rm_rf(image_200_200_path) 
+                  # FileUtils.rm_rf(image_100_100_path) 
+                  # new_image.resize('375x300')
+                  # new_image.write image_375_300_path
+                  # new_image.resize('200x200')
+                  # new_image.write image_200_200_path
+                  # new_image.resize('100x100')
+                  # new_image.write image_100_100_path      
+                  # x = params[:crop_x]
+                  # y = params[:crop_y]
+                  # w = params[:crop_w]
+                  # h = params[:crop_h]
+                  # x = x.to_i
+                  # y = y.to_i
+                  # w = w.to_i
+                  # h = h.to_i
+                  # h_crop = Hash.new
+                  # h_crop[:crop_x] = x
+                  # h_crop[:crop_y] = y
+                  # h_crop[:crop_w] = w
+                  # h_crop[:crop_h] = h
+                  # if publisher_product_pos5_image.update_attributes(h_crop)
+                      # @image_5_id = publisher_product_pos5_image.id      
+                      # @image_5 = publisher_product_pos5_image
+                      # @publisher_product = publisher_product
+                  # else
+                      # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'crop_image_5', :description => 'publisher_product_pos5_image update_attributes failed')
+                      # raise
+                  # end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'crop_image_5', :description => 'publisher_product_pos5_image was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'crop_image_5', :description => 'publisher_product_id was nil')
+              raise
+          end      
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'crop_image_5', :description => e.message.to_s)
+          @errors = true
+          
+      end
+  
+    
+  end
+
+
+
+  def destroy_image_5
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+            h_obj = obj
+          end
+    
+          publisher_product_id = h_obj[:publisher_product_id]
+          @image_5 = nil
+          @publisher_product = nil
+          
+          if !publisher_product_id.nil?
+              publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
+              if !publisher_product.nil?
+                  publisher_product_pos5_image = publisher_product.publisher_product_pos5_image rescue nil
+                  if !publisher_product_pos5_image.nil?
+                      if publisher_product_pos5_image.destroy
+                          @publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
+                          gon.image_5_id = nil
+                          @image_5_id = nil
+                          @image_5_url = ActionController::Base.helpers.asset_path('avatars/background-1-w1200-h300.jpg') 
+                          
+                          image_1 = publisher_product.publisher_product_pos1_image rescue nil
+                          @image_1 = image_1
+                          if !image_1.nil?
+                            gon.image_1_id = image_1.id
+                            @crop_x_image_1 = image_1.crop_x
+                            @crop_y_image_1 = image_1.crop_y
+                            @crop_w_image_1 = image_1.crop_w
+                            @crop_h_image_1 = image_1.crop_h
+                          else
+                            gon.image_1_id = nil
+                          end
+                          
+                          # @publisher_product = publisher_product_pos5_image.publisher_product
+                          publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
+                          if !publisher_product_manifest.nil?
+                              @publisher_product_manifest_product_headline = publisher_product_manifest.product_headline
+                              Rails.logger.info(publisher_product_manifest.product_headline);
+                              # @b_product_headline = false
+                              # gon.product_headline = "Product Headline"
+                              # gon.b_product_headline = false
+                              # gon.b_required_product_headline = true
+
+                              @product_headline = "Product Headline"
+                              @b_product_headline = false
+                              @b_required_product_headline = true
+                              if !((publisher_product_manifest.product_headline.blank?) or (publisher_product_manifest.product_headline.empty?) or (publisher_product_manifest.product_headline.nil?)) 
+                                  # @b_product_headline = true
+                                  @product_headline = publisher_product_manifest.product_headline
+                                  @b_product_headline = true
+                                  @b_required_product_headline = false
+                              end
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_manifest was nil')
+                              raise
+                          end
+                      else      
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'destroy_image_5', :description => 'publisher_product_pos5_image destroy failed')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'destroy_image_5', :description => 'publisher_product_pos5_image was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'destroy_image_5', :description => 'publisher_product was nil')
+                  raise
+              end
+          else
+              Rails.logger.info("publisher_product_id was nil")
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'destroy_image_5', :description => 'publisher_product_id was nil')
+              raise
+          end
+          
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'destroy_image_5', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+    
+  end
 
   
   

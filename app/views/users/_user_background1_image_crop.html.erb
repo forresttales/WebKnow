@@ -1,0 +1,69 @@
+<% if @user_bkgrnd_image %>
+	<div style="display: block; width: 800px; height: 500px; background-color: #aaa; border: 2px solid #376340;">
+		<img id="cropbox_user_bkgrnd" alt="" src="<%= @user_bkgrnd_image.image_url(:image_800_500) + '?' + (rand(10..90) * rand(100..900)).to_s if @user_bkgrnd_image.image? %>" />
+	</div>
+	<div style="height: 10px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center;">
+			<span><input id="btn_dlg_submit_crop_user_bkgrnd" class="btn-pop-dialog" type="button" value="Save" tabindex=""></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<span><input id="btn_dlg_cancel_crop_user_bkgrnd" class="btn-pop-dialog jqmClose" type="button" value="Cancel" tabindex=""></span>
+			</div>
+		</div>
+	</div>
+	<%= form_tag( crop_user_bkgrnd_image_users_path, :remote => true ) do %>
+	  	<%= text_field_tag :crop_x, params["crop_x"], id: "id_bkgrnd_crop_x", class: "input-crop hidden" %><br>
+	  	<%= text_field_tag :crop_y, params["crop_y"], id: "id_bkgrnd_crop_y", class: "input-crop hidden" %><br>
+	  	<%= text_field_tag :crop_w, params["crop_w"], id: "id_bkgrnd_crop_w", class: "input-crop hidden" %><br>
+	  	<%= text_field_tag :crop_h, params["crop_h"], id: "id_bkgrnd_crop_h", class: "input-crop hidden" %><br>
+		<%= hidden_field_tag "image_id", @user_bkgrnd_image.id %>
+	    <%= submit_tag '', :id => 'btn_submit_crop_user_bkgrnd', :class => 'hidden' %>
+	<% end %>
+<% else %>
+	<div> no @user_bkgrnd_image</div>
+<% end %>
+
+	<script>
+		
+		var insert_bkgrnd_crop_x = <%= @bkgrnd_crop_x %>;
+		var insert_bkgrnd_crop_y = <%= @bkgrnd_crop_y %>;
+		var insert_bkgrnd_crop_w = <%= @bkgrnd_crop_w %>;
+		var insert_bkgrnd_crop_h = <%= @bkgrnd_crop_h %>;
+		
+		var insert_bkgrnd_crop_x2 = insert_bkgrnd_crop_x + insert_bkgrnd_crop_w;
+		var insert_bkgrnd_crop_y2 = insert_bkgrnd_crop_y + insert_bkgrnd_crop_h;
+		
+        function showBkgrndPreview(coords)
+        {
+            if (parseInt(coords.w) > 0)
+            {
+		    	$('#id_bkgrnd_crop_x').val(coords.x);
+		    	$('#id_bkgrnd_crop_y').val(coords.y);
+		    	$('#id_bkgrnd_crop_w').val(coords.w);
+		    	$('#id_bkgrnd_crop_h').val(coords.h);
+
+				// var rx = 400 / coords.w;
+				// var ry = 100 / coords.h;
+
+				// $('#bkgrnd_preview').css({
+				// 	width: Math.round(rx * 800) + 'px',
+				// 	height: Math.round(ry * 450) + 'px',
+				// 	marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+				// 	marginTop: '-' + Math.round(ry * coords.y) + 'px'
+				// });
+                
+            }
+        }
+        
+		$(document).ready(function() {
+			var image_to_crop = $("#cropbox_user_bkgrnd");
+			image_to_crop.Jcrop({
+                aspectRatio: 4,
+            	setSelect: [insert_bkgrnd_crop_x, insert_bkgrnd_crop_y, insert_bkgrnd_crop_x2, insert_bkgrnd_crop_y2],
+                onSelect: showBkgrndPreview,
+                onChange: showBkgrndPreview                
+            });
+        });
+		
+	</script>

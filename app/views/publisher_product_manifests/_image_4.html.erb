@@ -301,18 +301,13 @@
 	display: inline-block;
 	margin: 4px 0px 0px 1px;
 }	
-	
-</style>
-
-<style>
-
-.container-figure-image-border-load {
+.drop-namespace104 .container-figure-image-border-load-104 {
 	border: 2px solid #fff;
 }	
-.container-figure-image-border {
-	border: 2px solid #ccc;
+.drop-namespace104 .container-figure-image-border-104 {
+	border: 2px solid #fff;
 }
-.container-figure-image-border-edit {
+.drop-namespace104 .container-figure-image-border-edit-104 {
 	border: 2px solid #fbb040;
 }	
 	
@@ -322,7 +317,7 @@
 <div class="drop-namespace104">
 	<% if @image_4 %>   				
 	
-		<div class="container-figure-image container-figure-image-border-load container-figure-image-4 drop-104" style="position: relative;">
+		<div class="container-figure-image container-figure-image-border-load-104 container-figure-image-4 drop-104" style="position: relative;">
 			<figure class="dialog-104-1-figure cursor-pointer" data-width="<%= @image_4.width %>" data-src-600="<%= @image_4.image_url(:image_600_600) %>">
 				<img id="image_4_img" class="" alt="" src="<%= @image_4.image_url(:image_345_300) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_4.image? %>" />
 				<figcaption class="edit-image hidden drop-104-target">
@@ -372,7 +367,7 @@
 
 	<% else %>
 
-		<div class="container-figure-image container-figure-image-border-load container-figure-image-4 drop-104" style="position: relative;">
+		<div class="container-figure-image container-figure-image-border-load-104 container-figure-image-4 drop-104" style="position: relative;">
 			<figure class="dialog-104-1-figure-generic" data-width="345" data-src-600="">
 				<img id="image_4_img_generic" class="" alt="" src="<%= image_path('avatars/avatar-gen-product-w345-h300.png') %>" />
 				<figcaption class="edit-image hidden cursor-pointer drop-104-target">

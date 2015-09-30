@@ -7,7 +7,6 @@
 		width: 0px; 
 		height: 0px; 
 		background-size: 0px 0px;
-		background-image: url('<%= @image_2.image_url(:image_600_600) %>'); 
 		background-repeat: no-repeat; 
 		background-position: 0px 0px; 
 		position: relative; 
@@ -18,7 +17,6 @@
 		width: 0px; 
 		height: 0px; 
 		background-size: 0px 0px;
-		background-image: url('<%= @image_2.image_url(:image_600_600) %>'); 
 		background-repeat: no-repeat; 
 		background-position: 0px 0px; 
 		position: relative; 
@@ -29,7 +27,6 @@
 		width: 0px; 
 		height: 0px; 
 		background-size: 0px 0px;
-		background-image: url('<%= @image_2.image_url(:image_600_600) %>'); 
 		background-repeat: no-repeat; 
 		background-position: 0px 0px; 
 		position: relative; 
@@ -117,6 +114,9 @@
 			var insert_crop_y_image_2 = <%= @image_2.crop_y %>;
 			var insert_crop_w_image_2 = <%= @image_2.crop_w %>;
 			var insert_crop_h_image_2 = <%= @image_2.crop_h %>;
+			$('.preview-image-2-375-300').css('background-image', 'url(<%= j @image_2.image_url(:image_600_600) %>');
+			$('.preview-image-2-200-200').css('background-image', 'url(<%= j @image_2.image_url(:image_600_600) %>');
+			$('.preview-image-2-100-100').css('background-image', 'url(<%= j @image_2.image_url(:image_600_600) %>');
 		<% else %>
 			var insert_crop_x_image_2 = 0;
 			var insert_crop_y_image_2 = 0;

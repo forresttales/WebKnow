@@ -301,18 +301,13 @@
 	display: inline-block;
 	margin: 4px 0px 0px 1px;
 }	
-	
-</style>
-
-<style>
-
-.container-figure-image-border-load {
+.drop-namespace102 .container-figure-image-border-load-102 {
 	border: 2px solid #fff;
 }	
-.container-figure-image-border {
-	border: 2px solid #ccc;
+.drop-namespace102 .container-figure-image-border-102 {
+	border: 2px solid #fff;
 }
-.container-figure-image-border-edit {
+.drop-namespace102 .container-figure-image-border-edit-102 {
 	border: 2px solid #fbb040;
 }	
 	
@@ -322,7 +317,7 @@
 <div class="drop-namespace102">
 	<% if @image_2 %>   				
 	
-		<div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-102" style="position: relative;">
+		<div class="container-figure-image container-figure-image-border-load-102 container-figure-image-2 drop-102" style="position: relative;">
 			<figure class="dialog-102-1-figure cursor-pointer" data-width="<%= @image_2.width %>" data-src-600="<%= @image_2.image_url(:image_600_600) %>">
 				<img id="image_2_img" class="" alt="" src="<%= @image_2.image_url(:image_375_300) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_2.image? %>" />
 				<figcaption class="edit-image hidden drop-102-target">
@@ -372,7 +367,7 @@
 
 	<% else %>
 
-		<div class="container-figure-image container-figure-image-border-load container-figure-image-2 drop-102" style="position: relative;">
+		<div class="container-figure-image container-figure-image-border-load-102 container-figure-image-2 drop-102" style="position: relative;">
 			<figure class="dialog-102-1-figure-generic" data-width="375" data-src-600="">
 				<img id="image_2_img_generic" class="" alt="" src="<%= image_path('avatars/avatar-gen-corp-w375-h300.png') %>" />
 				<figcaption class="edit-image hidden cursor-pointer drop-102-target">

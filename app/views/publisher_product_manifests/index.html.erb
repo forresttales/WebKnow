@@ -36,7 +36,6 @@
 	text-shadow: 1px 1px #fff;
 }
 	
-	
 </style>
 
 <div class="publisher-product-manifests">
@@ -859,6 +858,231 @@
 
 
 
+
+
+
+
+
+	<% if false %>
+	<div class="jqmWindow jqmWindow-105-1" id="dialog_105_1">
+		<div class="jqmClose ks-tip-container close-container">
+			<div class="ks-tip-target">
+				<%= image_tag('jqModal/close_btn_round_white_w60_h60.png', alt: 'X', class: 'x-close-60-60' ) %>
+			</div>
+		    <div class="ks-tip ks-tip-pos-left-dialog-11 ks-tip-text-dialog-11">
+				Close
+		    </div>				
+		</div>
+		<div style="clear: both;"></div>
+		<div style="width: 600px; margin: 0 auto;">
+			<div class="figure-container" style="width: 100%; background-color: #000;">
+				<figure id="figure_dialog_105_1" class="dialog-user-image-2">
+					<figcaption id="figcaption_dialog_105_1" class="expand-image">												
+						<div class="img-2-container image">
+							<% if !@image_4.nil? %>
+							<a rel="gallery" title="" href="<%= @image_4.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @image_4.image? %>"></a>
+							<% end %>
+						</div>
+					</figcaption>
+				</figure>
+			</div>
+			<div style="width: 100%; min-height: 100px; background-color: #fff;"></div>
+		</div>
+	</div>
+	<% end %>
+	
+	<div class="jqmWindow jqmWindow-105-2" id="dialog_105_2">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="<%= image_path('global/knowstory-icon-2-w60-h63.png') %>" alt="">
+			</div>
+			<div id="close_form105_2" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+			<div class="tip-content">
+				<div class="tooltiptext">
+					Close
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<div class="background-table-dialog-1">
+			<div class="table-dialog-1">
+				<div class="row">
+					<div class="cell-100percent dialog-msg-container">
+						<span>Upload Photo</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 12px;"></div>
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent dialog-msg-container">
+					<span>
+						<input id="btn_dlg_105_2_submit" class="btn-pop-dialog" type="button" value="Upload" tabindex="">
+					</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span>
+						<input id="btn_dlg_105_2_cancel" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+					</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 4px"></div>
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent" style="text-align: center; background-color: #f6f6f6;">
+					<div id="dvLoading_105_2" class="dvLoading-12 dvLoading-display-none"></div>
+				</div>
+			</div>
+		</div>
+		<%= form_for PublisherProductPos5Image.new, :url => upload_image_5_publisher_product_manifests_path(@publisher_product_pos5_image_new), :html => {:multipart => true, :id => 'new_image_5', :class => 'hidden'}, :remote => true do |f| %>
+			<p><%= f.file_field :image, :id => 'new_image_5_image' %></p>
+			<%= f.hidden_field 'publisher_product_id', :value => @publisher_product_id %>
+			<p><%= f.submit :id => 'btn_submit_image_5_new', :class => 'btn-submit hidden', :value => 'Upload Photo' %></p>
+		<% end %>
+	</div>
+
+	<div class="jqmWindow jqmWindow-105-3" id="dialog_105_3">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="<%= image_path('global/knowstory-icon-2-w60-h63.png') %>" alt="">
+			</div>
+			<div id="close_form105_3" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+			<div class="tip-content">
+				<div class="tooltiptext">
+					Close
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<div class="background-table-dialog-1">
+			<div class="table-dialog-1">
+				<div class="row">
+					<div class="cell-100percent dialog-msg-container">
+						<span>Upload Photo</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 12px;"></div>
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent dialog-msg-container">
+					<span>
+						<input id="btn_dlg_105_3_submit" class="btn-pop-dialog" type="button" value="Upload" tabindex="">
+					</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span>
+						<input id="btn_dlg_105_3_cancel" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+					</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 4px"></div>
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent" style="text-align: center; background-color: #f6f6f6;">
+					<div id="dvLoading_13" class="dvLoading-13 dvLoading-display-none"></div>
+				</div>
+			</div>
+		</div>
+		<%= form_for PublisherProductPos5Image.new, :url => upload_image_5_change_publisher_product_manifests_path(@publisher_product_pos5_image_change), :html => {:multipart => true, :id => 'change_image_5', :class => 'hidden'}, :remote => true do |f| %>
+			<p><%= f.file_field :image, :id => 'change_image_5_image' %></p>
+			<%= f.hidden_field 'publisher_product_id', :value => @publisher_product_id %>
+			<p><%= f.submit :id => 'btn_submit_image_5_change', :class => 'btn-submit hidden', :value => 'Upload Photo' %></p>
+		<% end %>
+	</div>
+
+	<div class="jqmWindow jqmWindow-105-4" id="dialog_105_4">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="<%= image_path('global/knowstory-icon-2-w60-h63.png') %>" alt="">
+			</div>
+			<div id="close_form105_4" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+            <div class="tip-content">
+                <div class="tooltiptext">Close</div>
+            </div>																															   					   					
+			<div style="clear: both;"></div>
+		</div>
+		<div class="background-table-dialog-1">
+	   		<div class="table-dialog-1">
+				<div class="dialog-msg-container">
+					<span>Delete this image?</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 16px;"></div>
+		<div class="table-dialog-1">
+   			<div class="row">
+   				<div class="cell-100percent" style="text-align: center;">
+					<span><input id="btn_dlg_105_4_submit" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span><input id="btn_dlg_105_4_cancel" class="btn-pop-dialog" type="button" value="Cancel" tabindex=""></span>
+   				</div>
+			</div>
+		</div>														   				
+		<div style="height: 20px;"></div>
+	</div>
+
+	<div class="jqmWindow jqmWindow-105-5" id="dialog_105_5">
+		<div class="dialog-topbar-1" style="margin-top:0px;">
+			<div style="height: 63px; width: 60px; float: left; position: absolute;">
+				<img src="<%= image_path('global/knowstory-icon-2-w60-h63.png') %>" alt="">
+			</div>
+			<div class="topbar-title">Photo Crop and Center</div>
+			<div id="close_form105_5" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+			</div>
+            <div class="tip-content">
+                <div class="tooltiptext">Close</div>
+            </div>																															   					   					
+			<div style="clear: both;"></div>
+		</div>
+		<div class="background-table-dialog-3" style="padding: 10px 0 0 0;">
+	   		<div class="table-dialog-1">
+				<div class="dialog-msg-container">
+					<span>600 X 600 pixels available for maximum size. Below, you may crop and center smaller sizes.</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 10px;"></div>
+		<div style="width: 100%; padding: 0 0 0 10px;">
+			<div id="render_image_5_crop"><%= render 'publisher_product_manifests/image_5_crop' %></div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<div class="jqmWindow jqmWindow-51" id="dialog_51">
 		<div class="dialog-topbar-1" style="margin-top:0px;">
 			<div style="height: 63px; width: 60px; float: left; position: absolute;">
@@ -1073,6 +1297,40 @@
 	</div>
 
 
+<% if false %>
+<!-- user background image - crop 18 -->
+<div class="jqmWindow jqmWindow-18" id="dialog_18">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<div class="topbar-title">Picture Crop and Center</div>
+			<div id="close_form18" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+				<%= image_tag('global/x_close_w20_h20.png', alt: 'X', height: '20px' ) %>
+			</div>
+        <div class="tip-content">
+            <div class="tooltiptext">Close</div>
+        </div>																															   					   					
+			<div style="clear: both;"></div>
+	</div>
+	<div class="background-table-dialog-3" style="padding: 10px 0 0 0;">
+   		<div class="table-dialog-1">
+			<div class="dialog-msg-container">
+				<span>Below, you may crop and center background picture.</span>
+			</div>
+			</div>
+		</div>
+		<div style="height: 10px;"></div>
+	<div style="width: 100%; padding: 0 0 0 10px;">
+		<div id="render_user_bkgrnd_image_crop">
+			<%= render 'users/user_bkgrnd_image_crop' %>
+		</div>
+	</div>
+</div>
+<% end %>
+
+
+
 	<div style="height: 2px;"></div>
 	
 	<div style="width: 1200px;">
@@ -1269,14 +1527,17 @@
 				$("#close_edit_mode").fadeIn(200).removeClass("hidden");
     			$(".show-edit-mode").addClass("hidden");
 				$(".edit-image").fadeIn(200).removeClass("hidden");
-				$(".container-figure-image-1").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
-				$(".container-figure-image-2").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
-				$(".container-figure-image-3").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+				$(".container-figure-image-1").removeClass("container-figure-image-border-101").addClass("container-figure-image-border-edit-101");
+				$(".container-figure-image-2").removeClass("container-figure-image-border-102").addClass("container-figure-image-border-edit-102");
+				$(".container-figure-image-3").removeClass("container-figure-image-border-103").addClass("container-figure-image-border-edit-103");
+				$(".container-figure-image-4").removeClass("container-figure-image-border-104").addClass("container-figure-image-border-edit-104");
 				$(".edit-options").removeClass("hidden");
 				$("#show_product_tagline_container").removeClass("width-show-1").addClass("width-show-edit-1");
 				$("#show_product_name_container").removeClass("width-show-2").addClass("width-show-edit-2");
 				$("#show_versions_container").removeClass("width-show-2").addClass("width-show-edit-2");
 				$("#show_corporate_logo_url_container").removeClass("width-show-2").addClass("width-show-edit-2");
+				$(".drop-namespace105").removeClass("hidden");
+				$("#background_options").addClass("background-edit-border");
     		});
 	  	}
 	  
@@ -1286,14 +1547,17 @@
 			$("#close_edit_mode").addClass("hidden");
 			$(".edit-image").removeAttr("style");				
 			$(".edit-image").fadeIn(200).addClass("hidden");
-			$(".container-figure-image-1").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
-			$(".container-figure-image-2").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
-			$(".container-figure-image-3").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
+			$(".container-figure-image-1").removeClass("container-figure-image-border-edit-101").addClass("container-figure-image-border-101");
+			$(".container-figure-image-2").removeClass("container-figure-image-border-edit-102").addClass("container-figure-image-border-102");
+			$(".container-figure-image-3").removeClass("container-figure-image-border-edit-103").addClass("container-figure-image-border-103");
+			$(".container-figure-image-4").removeClass("container-figure-image-border-edit-104").addClass("container-figure-image-border-104");
 			$(".edit-options").addClass("hidden");
 			$("#show_product_tagline_container").removeClass("width-show-edit-1").addClass("width-show-1");
 			$("#show_product_name_container").removeClass("width-show-edit-2").addClass("width-show-2");
 			$("#show_versions_container").removeClass("width-show-edit-2").addClass("width-show-2");
 			$("#show_corporate_logo_url_container").removeClass("width-show-edit-2").addClass("width-show-2");
+			$(".drop-namespace105").addClass("hidden");
+			$("#render_image_5").removeClass("background-edit-border");
 	  	}
 
 		var info_msg_1 = 	'<span>This is the way to do it...</span>';
@@ -1512,8 +1776,7 @@
 		  	$("#close_edit_mode").click(function(){
 				cancelEditMode();
 		  	});	
-			
-	
+
 		});
 	  
 	</script>		
@@ -2473,7 +2736,7 @@
 
 		// image_1
 		
-		var id_image_1 = null;
+		var image_1_id = null;
 		
 		function closeAddImage1() {
 			$("#dvLoading_101_2").addClass("dvLoading-display-none");
@@ -2500,12 +2763,12 @@
 			$("#close_form101_5").trigger('click');
 		};	  
 
-		function deleteImage1(id_image) {
+		function deleteImage1(image_id) {
 			var obj_list = '{  "publisher_product_id":' + publisher_product_id +
-						   ',  "id":' + id_image +
+						   ',  "id":' + image_id +
 						   '}';      
 		  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
-			// var formData = {id:id_image};
+			// var formData = {id:image_id};
 		  	$.ajax({
 		    	type: 'POST',
 		    	// data : formData,
@@ -2580,9 +2843,9 @@
 		
 		$(document).ready(function () {				
 
-			id_image_1 = gon.id_image_1;
+			image_1_id = gon.image_1_id;
 
-			$('#render_image_1_crop').html("<%= j render('publisher_product_manifests/render_image_1_crop') %>");
+			$('#render_image_1_crop').html("<%= j render('publisher_product_manifests/image_1_crop') %>");
 
 			$("#dialog_101_1 .close-container").on('click', function() {
 				$("#dialog_101_1 .close-container").css({ 'position' : 'absolute' });
@@ -2691,7 +2954,7 @@
 			});
 
 			$(document).on("click", "#btn_dlg_101_4_submit", function() {
-				deleteImage1(id_image_1);
+				deleteImage1(image_1_id);
 			});
 			$(document).on("click", "#btn_dlg_101_4_cancel", function() {
 				$("#close_form101_4").trigger('click');
@@ -2720,7 +2983,7 @@
 
 		// image_2
 		
-		var id_image_2 = null;
+		var image_2_id = null;
 		
 		function closeAddImage2() {
 			$("#dvLoading_102_2").addClass("dvLoading-display-none");
@@ -2747,9 +3010,9 @@
 			$("#close_form102_5").trigger('click');
 		};	  
 
-		function deleteImage2(id_image) {
+		function deleteImage2(image_id) {
 			var obj_list = '{  "publisher_product_id":' + publisher_product_id +
-						   ',  "id":' + id_image +
+						   ',  "id":' + image_id +
 						   '}';      
 		  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
 		  	$.ajax({
@@ -2798,9 +3061,9 @@
 		
 		$(document).ready(function () {				
 
-			id_image_2 = gon.id_image_2;
+			image_2_id = gon.image_2_id;
 
-			$('#render_image_2_crop').html("<%= j render('publisher_product_manifests/render_image_2_crop') %>");
+			$('#render_image_2_crop').html("<%= j render('publisher_product_manifests/image_2_crop') %>");
 
 			$("#dialog_102_1 .close-container").on('click', function() {
 				$("#dialog_102_1 .close-container").css({ 'position' : 'absolute' });
@@ -2909,7 +3172,7 @@
 			});
 
 			$(document).on("click", "#btn_dlg_102_4_submit", function() {
-				deleteImage2(id_image_2);
+				deleteImage2(image_2_id);
 			});
 			$(document).on("click", "#btn_dlg_102_4_cancel", function() {
 				$("#close_form102_4").trigger('click');
@@ -2938,7 +3201,7 @@
 
 		// image_3
 		
-		var id_image_3 = null;
+		var image_3_id = null;
 		
 		function closeAddImage3() {
 			$("#dvLoading_103_2").addClass("dvLoading-display-none");
@@ -2965,9 +3228,9 @@
 			$("#close_form103_5").trigger('click');
 		};	  
 
-		function deleteImage3(id_image) {
+		function deleteImage3(image_id) {
 			var obj_list = '{  "publisher_product_id":' + publisher_product_id +
-						   ',  "id":' + id_image +
+						   ',  "id":' + image_id +
 						   '}';      
 		  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
 		  	$.ajax({
@@ -3016,9 +3279,9 @@
 		
 		$(document).ready(function () {				
 
-			id_image_3 = gon.id_image_3;
+			image_3_id = gon.image_3_id;
 
-			$('#render_image_3_crop').html("<%= j render('publisher_product_manifests/render_image_3_crop') %>");
+			$('#render_image_3_crop').html("<%= j render('publisher_product_manifests/image_3_crop') %>");
 			
 			$("#dialog_103_1 .close-container").on('click', function() {
 				$("#dialog_103_1 .close-container").css({ 'position' : 'absolute' });
@@ -3127,7 +3390,7 @@
 			});
 
 			$(document).on("click", "#btn_dlg_103_4_submit", function() {
-				deleteImage3(id_image_3);
+				deleteImage3(image_3_id);
 			});
 			$(document).on("click", "#btn_dlg_103_4_cancel", function() {
 				$("#close_form103_4").trigger('click');
@@ -3156,7 +3419,7 @@
 
 		// image_4
 		
-		var id_image_4 = null;
+		var image_4_id = null;
 		
 		function closeAddImage4() {
 			$("#dvLoading_104_2").addClass("dvLoading-display-none");
@@ -3183,9 +3446,9 @@
 			$("#close_form104_5").trigger('click');
 		};	  
 
-		function deleteImage4(id_image) {
+		function deleteImage4(image_id) {
 			var obj_list = '{  "publisher_product_id":' + publisher_product_id +
-						   ',  "id":' + id_image +
+						   ',  "id":' + image_id +
 						   '}';      
 		  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
 		  	$.ajax({
@@ -3234,9 +3497,9 @@
 		
 		$(document).ready(function () {				
 
-			id_image_4 = gon.id_image_4;
+			image_4_id = gon.image_4_id;
 
-			$('#render_image_4_crop').html("<%= j render('publisher_product_manifests/render_image_4_crop') %>");
+			$('#render_image_4_crop').html("<%= j render('publisher_product_manifests/image_4_crop') %>");
 			
 			$("#dialog_104_1 .close-container").on('click', function() {
 				$("#dialog_104_1 .close-container").css({ 'position' : 'absolute' });
@@ -3345,7 +3608,7 @@
 			});
 
 			$(document).on("click", "#btn_dlg_104_4_submit", function() {
-				deleteImage4(id_image_4);
+				deleteImage4(image_4_id);
 			});
 			$(document).on("click", "#btn_dlg_104_4_cancel", function() {
 				$("#close_form104_4").trigger('click');
@@ -3371,6 +3634,227 @@
 	</script>
 
 	<script>
+
+		// image_5
+		
+		var image_5_id = null;
+		
+		function closeAddImage5() {
+			$("#dvLoading_105_2").addClass("dvLoading-display-none");
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			$("#close_form105_2").trigger('click');
+			$("form#new_image_5 input#new_image_5_image").val('');
+		};	  
+
+		function closeChangeImage5() {
+			$("#dvLoading_105_3").addClass("dvLoading-display-none");
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			$("#close_form105_3").trigger('click');
+			$("form#change_image_5 input#change_image_5_image").val('');
+		};	  
+
+		function closeDeleteImage5() {			
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			$("#close_form105_4").trigger('click');
+		};	  
+
+		function closeCropImage5() {
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			$(".container-figure-image-5").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+			$("#close_form105_5").trigger('click');
+		};	  
+
+		function deleteImage5(image_id) {
+			var obj_list = '{  "publisher_product_id":' + publisher_product_id +
+						   ',  "id":' + image_id +
+						   '}';      
+		  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : obj,
+		    	url: '/publisher_product_manifests/destroy_image_5',			    	
+		    	dataType: "script",
+		    	contentType: "application/json",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+            	},
+            	success: function(data) {
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function cropImage5() {
+			var input_image_id = $("#cropbox_image_5").val();
+			var input_crop_x = $("#id_crop_x_image_5").val();
+			var input_crop_y = $("#id_crop_y_image_5").val();
+			var input_crop_w = $("#id_crop_w_image_5").val();
+			var input_crop_h = $("#id_crop_h_image_5").val();
+			var formData = { image_id: input_image_id,
+							 publisher_product_id: publisher_product_id, 
+							 crop_x: input_crop_x, 
+							 crop_y: input_crop_y,
+							 crop_w: input_crop_w, 
+							 crop_h: input_crop_h 
+						   };
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publisher_product_manifests/crop_image_5',	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+            	},
+            	success: function(data) {
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+	  		// return false;
+		}
+
+		
+		$(document).ready(function () {				
+
+			image_5_id = gon.image_5_id;
+
+			// $('#render_image_5_crop').html("<#%= j render('publisher_product_manifests/image_5_crop') %#>");
+			// $('#render_image_5').css('background-image', 'url(<#%= j asset_path("avatars/background-1-w1200-h300.jpg") %#>)');
+			// $('#render_image_5').css('background-image', 'url(<#%= j asset_path(@image_5.image_url(:image_1200_300)) %#>)');
+			// $('#render_image_5').css('background-image', 'url("/assets/avatars/background-1-w1200-h300.jpg")');
+			
+			$("#dialog_105_1 .close-container").on('click', function() {
+				$("#dialog_105_1 .close-container").css({ 'position' : 'absolute' });
+			});
+			
+			$(document).on('click', '.dialog-105-1-figure', function(e) {
+				if ( e.target.nodeName == "IMG" ) {
+					$("#dialog_overlay").jqmShow();
+					$("#overlay_loading").removeClass("display-none");
+					var src_img = $(this).data("src-600");
+					$('<img src="'+ src_img +'">').load(function(){
+						$("#figure_dialog_105_1").append($(this));
+						$("#overlay_loading").addClass("display-none");
+						$("#dialog_overlay").jqmHide();
+						$("#dialog_105_1").jqmShow();
+					}).error(function(){
+						alert('error loading image');
+					});
+				}
+			});
+			
+			$('#dialog_105_1').jqm({
+				overlay: 84,
+				onShow: function(hash) {
+					$("#dialog_105_1 .close-container").css({ 'position' : 'fixed' });
+					hash.o.prependTo('body');
+					hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+					hash.w.css('opacity', 1.0).fadeIn(100);
+				},
+				onHide: function(hash) {
+					$("#dialog_105_1 .close-container").css({ 'position' : 'absolute' });
+					hash.o.remove();
+					hash.w.css('top', '-8000px');
+					$("#figure_dialog_105_1 img").remove();
+				}
+			}); 		
+			
+			$('#dialog_105_2').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+					hash.w.css('opacity', 1.0).fadeIn(100);
+				}
+			}); 		
+
+			$('#dialog_105_3').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+					hash.w.css('opacity', 1.0).fadeIn(100);
+				}
+			}); 		
+
+			$('#dialog_105_4').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+					hash.w.css('opacity', 1.0).fadeIn(100);
+				}
+			}); 		
+
+			$('#dialog_105_5').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+					hash.w.css('opacity', 1.0).fadeIn(100);
+				}
+			}); 		
+
+			$(document).on("btn_image_5_new_click", function() {				
+				$("form#new_image_5 input#new_image_5_image").val('');
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dialog_105_2").jqmShow();
+				$("#btn_dlg_105_2_submit").focus();
+			});		
+			$(document).on("click", "#figcaption_image_5_generic", function() {
+				$("form#new_image_5 input#new_image_5_image").val('');
+				$("#dialog_105_2").jqmShow();
+			});		
+			$(document).on("click", "#btn_dlg_105_2_submit", function() {
+				$("form#new_image_5 input#new_image_5_image").click();
+			});	
+			$(document).on("click", "#btn_dlg_105_2_cancel", function() {
+				$("#close_form105_2").trigger('click');
+			});
+			$(document).on("change", "form#new_image_5 input#new_image_5_image", function() {
+				$("#dvLoading_105_2").removeClass("dvLoading-display-none");
+				$("form#new_image_5 input#btn_submit_image_5_new").click();
+			});
+
+			$(document).on("btn_image_5_change_click", function() {				
+				$("form#change_image_5 input#change_image_5_image").val('');
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dialog_105_3").jqmShow();
+				$("#btn_dlg_105_3_submit").focus();
+			});		
+			$(document).on("click", "#btn_dlg_105_3_submit", function() {
+				$("form#change_image_5 input#change_image_5_image").click();
+			});	
+			$(document).on("change", "form#change_image_5 input#change_image_5_image", function() {
+				$("#dvLoading_105_3").removeClass("dvLoading-display-none");
+				$("form#change_image_5 input#btn_submit_image_5_change").click();
+			});
+			$(document).on("click", "#btn_dlg_105_3_cancel", function() {
+				$("#close_form105_3").trigger('click');
+			});
+
+			$(document).on("click", "#btn_dlg_105_4_submit", function() {
+				deleteImage5(image_5_id);
+			});
+			$(document).on("click", "#btn_dlg_105_4_cancel", function() {
+				$("#close_form105_4").trigger('click');
+			});
+			$(document).on("btn_image_5_delete_click", function() {
+				$("#dialog_105_4").jqmShow();
+				$("#btn_dlg_105_4_cancel").focus();
+			});			
+
+			$(document).on("btn_image_5_crop_click", function() {
+				$("#dialog_105_5").jqmShow();
+			});
+			$(document).on("click", "#btn_dlg_submit_crop_image_5", function() {
+				cropImage5();
+			});
+			$(document).on("click", "#btn_dlg_cancel_crop_image_5", function() {
+				$("#close_form105_5").trigger('click');
+			});
+			
+
+		});
+		
+	</script>
+
+	<!-- <script>
 		
 		// product_headline
 		
@@ -3438,7 +3922,7 @@
 
 		});
 				
-	</script>
+	</script> -->
 
 	<script>
 		
@@ -7252,7 +7736,7 @@
 				
 	</script>
 
-	<script>
+	<!-- <script>
 		
 		// source_url *dormant
 		
@@ -7306,9 +7790,9 @@
 
 		});
 				
-	</script>
+	</script> -->
 
-	<script>
+	<!-- <script>
 		
 		// updating_refresh_rate *dormant
 		
@@ -7385,9 +7869,9 @@
 
 		});
 				
-	</script>
+	</script> -->
 
-	<script>
+	<!-- <script>
 		
 		// updating_type *dormant
 		
@@ -7454,9 +7938,9 @@
 
 		});
 				
-	</script>
+	</script> -->
 
-	<script>
+	<!-- <script>
 		
 		// character *dormant
 		
@@ -7521,9 +8005,9 @@
 
 		});
 				
-	</script>
+	</script> -->
 
-	<script>
+	<!-- <script>
 		
 		// reselling *dormant
 		
@@ -7567,9 +8051,9 @@
 
 		});
 				
-	</script>
+	</script> -->
 
-	<script>
+	<!-- <script>
 		
 		// evaluation *dormant
 		
@@ -7616,9 +8100,9 @@
 
 		});
 				
-	</script>
+	</script> -->
 
-	<script>
+	<!-- <script>
 		
 		// research *dormant
 		
@@ -7695,9 +8179,9 @@
 
 		});
 				
-	</script>
+	</script> -->
 
-	<script>
+	<!-- <script>
 		
 		// public_relations *dormant
 		
@@ -7788,9 +8272,9 @@
 
 		});
 				
-	</script>
+	</script> -->
 
-	<script>
+	<!-- <script>
 		
 		// metrics *dormant
 		
@@ -7900,9 +8384,9 @@
 
 		});
 				
-	</script>
+	</script> -->
 
-	<script>
+	<!-- <script>
 		
 		// square_purchase *dormant
 		
@@ -7935,7 +8419,7 @@
 
 		});
 				
-	</script>
+	</script> -->
 
 	<!-- <script>
 		

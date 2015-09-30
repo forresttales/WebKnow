@@ -43,6 +43,7 @@ class PublisherProduct < ActiveRecord::Base
   has_one :publisher_product_pos2_image, dependent: :destroy
   has_one :publisher_product_pos3_image, dependent: :destroy
   has_one :publisher_product_pos4_image, dependent: :destroy
+  has_one :publisher_product_pos5_image, dependent: :destroy
   # has_one :publisher_product_metadatatag
   has_one :publisher_product_content_type, dependent: :destroy
   has_one :publisher_product_category_subject, dependent: :destroy

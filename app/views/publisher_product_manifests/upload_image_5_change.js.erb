@@ -1,0 +1,27 @@
+<% if !@errors %>
+	$('#render_image_5').html("<%= j render('publisher_product_manifests/image_5') %>");
+	$('#render_image_5_crop').html("<%= j render('publisher_product_manifests/image_5_crop') %>");
+	// $(".container-figure-image-5").removeClass("container-figure-image-border-load").addClass("container-figure-image-border-edit");	
+	// $('#render_image_5_crop').html("<#%= j render('publisher_product_manifests/image_5_crop') %#>");
+	image_5_id = <%= @image_5_id %>;
+	// $(".drop-5-container").removeClass("hidden");
+	showEditMode();
+	closeChangeImage5();
+<% else %>
+	closeChangeImage5();
+	alert("Upload error");
+<% end %>
+
+<% if false %>
+<% if @user_bkgrnd_image %>
+	$('#render_user_bkgrnd_image').html("<%= j render 'users/user_bkgrnd_image' %>");
+	$('#render_user_bkgrnd_image_crop').html("<%= j render 'users/user_bkgrnd_image_crop' %>");
+
+	$("#dvLoading_16").addClass("dvLoading-display-none");
+	$(".edit-image").fadeIn(200).removeClass("hidden");
+	$("#close_form16").trigger('click');
+	$("form#new_user_bkgrnd_image input#new_user_bkgrnd_image_image").val('');
+<% else %>
+	alert("Upload error");
+<% end %>
+<% end %>

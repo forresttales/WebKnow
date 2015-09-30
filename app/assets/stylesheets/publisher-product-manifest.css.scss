@@ -3014,6 +3014,76 @@ div#container_logo1_image .drop:hover .dropdownContain .dropOut {
   border: 4px solid #376340;
   padding: 0px;
 }   
+.jqmWindow-105-1 .close-container {
+  height: 60px; 
+  width: 60px; 
+  float: right;
+  top: 0px;
+  right: 100px;
+  z-index: 1;
+}       
+.jqmWindow-105-1 {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -350px;
+  width: 700px;
+  height: 700px;        
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #333;
+  padding: 0px;
+}       
+.jqmWindow-105-2 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 180px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;       
+}   
+.jqmWindow-105-3 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 180px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;       
+}   
+.jqmWindow-105-4 {
+  display: none;
+  position: absolute;
+  top:30%;
+  left: 50%;
+  margin-left: -200px;        
+  width: 400px;
+  height: 160px;        
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;
+}
+.jqmWindow-105-5 {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -509px;
+  width: 1042px;
+  height: 626px;
+  background-color: #f6f6f6;
+  color: #333;
+  border: 4px solid #376340;
+  padding: 0px;
+}   
 .jqmWindow-1001 {
   display: none;
   position: absolute;
@@ -4053,3 +4123,22 @@ span.bkgrnd-text-1 {
   width: 322px;
 }
 
+.text-edit-background {
+  width: 130px;
+  height: 70px;
+  background-image: asset-url("avatars/background-overlay-2-w130-h70.png");
+  position: relative;
+  bottom: 80px;
+  left: 600px;
+  text-align: center;
+  padding: 14px 0px 0px 0px;
+} 
+.text-edit-background span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+} 
+.text-edit-background:hover {
+  cursor: pointer;
+} 

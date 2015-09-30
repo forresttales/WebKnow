@@ -1,0 +1,2 @@
+module PublisherProductPos5ImagesHelper
+end

@@ -1,0 +1,2 @@
+class UserBackground1ImagesController < ApplicationController
+end

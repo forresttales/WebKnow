@@ -1,0 +1,6244 @@
+<% provide(:title, 'My Story') %>
+
+<% if false %>
+<script src="../scripts/dot.js"></script>
+<script src="../scripts/jquery-dropdown-dot.js"></script>
+
+<script src="/assets/jqModal.js"></script>
+<script src="/assets/jquery.easing.1.3.js"></script>
+<link rel="stylesheet" href="/assets/jqModal.css" />
+<script src="../jcrop/js/jquery.Jcrop.js"></script>
+<script type="text/javascript">
+	jQuery(function($) {
+		$('#target').Jcrop();
+	}); 
+</script>
+<link rel="stylesheet" href="../jcrop/css/jquery.Jcrop.css" type="text/css" />
+<link rel="stylesheet" href="../styles/ks-profile.css" />
+
+<link rel="stylesheet" type="text/css" href="../styles/fullscreenstyle.css">
+</link>
+<script src="../scripts/jquery.fullscreenslides.js"></script>
+<% end %>
+
+<style>
+	.btn-follow-container-outer {
+		position: relative;
+		width: 100%;
+		height: 20px;
+	}
+	.btn-follow-container {
+		position: relative;
+		background: linear-gradient(#FBB040, #CA8E33);
+		border-radius: 2px;
+		width: 50px;
+		height: 20px;
+	}
+	.btn-follow {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 10px;
+		font-weight: 400;
+		color: #eee;
+		text-align: center;
+		width: 50px;
+		height: 20px;
+		padding-top: 6px;
+		text-decoration: none;
+		outline: none;
+	}
+	.btn-follow:focus {
+	}
+	.btn-follow-container:hover {
+		box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), inset 0 1.5em 1em rgba(255,255,255,0.2);
+		cursor: pointer;
+	}
+	.btn-follow-container:active .btn-follow {
+		color: transparent;
+		text-shadow: 1px 1px #fff;
+	}
+
+</style>
+
+<!-- <style>
+.icon-like, .icon-unlike {
+background-image: url('/assets/like-and-unlike-buttons-w80-h58.png');
+background-repeat: no-repeat;
+display: inline-block;
+}
+.icon-like {
+height: 26px;
+width: 23px;
+background-position: -1px -4px;
+}
+.icon-unlike {
+height: 26px;
+width: 23px;
+background-position: -1px -30px;
+}
+.icon-like:hover, .icon-unlike:hover {
+cursor: pointer;
+}
+</style> -->
+
+<style>
+	.post-user-span-2 {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		color: #37633a;
+		font-size: 11px;
+	}
+	.post-user-span-2:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+	.post-user-span-3 {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		color: #37633a;
+		font-size: 11px;
+	}
+
+</style>
+
+<style>
+	.tooltip-text-1 {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		font-weight: 400;
+		/*color: #37633A;*/
+		color: #fff;
+		/*background-color: #FAFF94;*/
+		background-color: rgba(0, 0, 0, 0.6);
+		/*background-color: #eee;*/
+		/*border-color: #37633A;*/
+		border-color: rgba(0, 0, 0, 0.6);
+		border-radius: 3px;
+		box-shadow: 0px 2px 2px #aaa;
+	}
+	.tip-content {
+		display: none;
+	}
+
+</style>
+
+<style>
+	.input-home {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		color: #888;
+		font-weight: 700;
+		font-size: 13px;
+		width: 260px;
+		height: 24px;
+		border-style: solid;
+		border-radius: 0px;
+		background-color: #f6f6f6;
+		border-color: #478A3E;
+		border-width: 1px;
+		padding-left: 4px;
+	}
+	.input-home:focus {
+		border-color: #478A3E;
+		color: #11520B;
+		font-weight: 700;
+		/*-webkit-box-shadow: 0 0 10px #88E87B;
+		 -moz-box-shadow: 0 0 10px #88E87B;
+		 box-shadow: 0 0 10px #88E87B;*/
+	}
+
+	.input-home:focus, .input-home:hover {
+		border-color: #478A3E;
+		/*color: #000;*/
+		-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		-moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+	}
+	.input-home:focus:hover {
+		border-color: #478A3E;
+		/*color: #000;*/
+		-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		-moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+	}
+	.input-home:hover {
+		-webkit-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
+		-moz-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
+		box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
+	}
+	.input-home-short {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		color: #888;
+		font-weight: 700;
+		font-size: 13px;
+		/*width: 160px;*/
+		height: 24px;
+		border-style: solid;
+		border-radius: 0px;
+		background-color: #fff;
+		border: 1px solid #478A3E;
+		padding-left: 4px;
+	}
+	.input-home-short:focus {
+		border-color: #478A3E;
+		color: #11520B;
+		font-weight: 700;
+		/*-webkit-box-shadow: 0 0 10px #88E87B;
+		 -moz-box-shadow: 0 0 10px #88E87B;
+		 box-shadow: 0 0 10px #88E87B;*/
+	}
+	/*Main bright green:  65/183/55		#41B737
+	 Med dark green: 55/99/58			#37633A*/
+	.input-home-short:focus, .input-home-short:hover {
+		border-color: #478A3E;
+		/*color: #000;*/
+		-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		-moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+	}
+	.input-home-short:focus:hover {
+		border-color: #478A3E;
+		/*color: #000;*/
+		-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		-moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+	}
+	.input-home-short:hover {
+		-webkit-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
+		-moz-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
+		box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
+	}
+	::-webkit-input-placeholder {
+		color: #778899; /*#C0C0C0;*/
+	}
+
+	:-moz-placeholder {
+		color: #778899; /*#C0C0C0;*/
+	}
+
+	::-moz-placeholder {
+		color: #778899; /*#C0C0C0;*/
+	}
+
+	:-ms-input-placeholder {
+		color: #778899; /*#C0C0C0;*/
+	}
+
+	.input-home-exp {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		color: #404040;
+		font-size: 16px;
+		width: 100px;
+		height: 24px;
+		border-style: solid;
+		border-radius: 0px;
+		background-color: #fff;
+		border-color: #478A3E;
+		border-width: 1px;
+		padding-left: 6px;
+	}
+	.input-home-exp:focus {
+		border-color: #478A3E;
+		color: #000;
+		-webkit-box-shadow: 0 0 10px #88E87B;
+		-moz-box-shadow: 0 0 10px #88E87B;
+		box-shadow: 0 0 10px #88E87B;
+	}
+	.input-label-home, .input-label-home-dark {
+		color: #49853F;
+	}
+	.input-label-home {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		/*color: #ccc;*/
+		width: 160px;
+		height: 18px;
+	}
+	.input-label-home-a {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		color: #1f7c82;
+	}
+	.input-label-home-a:hover {
+		color: #1f7c82;
+	}
+	.input-label-home-a:focus {
+		color: #1f7c82;
+		text-shadow: 1px 1px #34922C;
+	}
+	.input-label-home-dark {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		/*color: #888;*/
+		width: 160px;
+		height: 18px;
+	}
+	.signin-btn-home {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		height: 27px;
+		width: 76px;
+		border: 2px solid #11520B;
+		text-align: center;
+		color: #49853f;
+		background-color: transparent;
+	}
+	.signin-btn-home:hover {
+		color: #fff;
+		cursor: pointer;
+		background-color: #49853f;
+		text-shadow: 1px 1px #34922C;
+	}
+	.signin-btn-home:focus {
+		outline: none;
+		text-shadow: 1px 1px #34922C;
+		box-shadow: 0 0 14px #eee;
+	}
+	.signin-btn-home:select {
+		outline: none;
+		text-shadow: 1px 1px #34922C;
+		box-shadow: 0 0 14px #eee;
+	}
+
+	.signup-btn-home-div {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		height: 27px;
+		width: 76px;
+		text-align: center;
+		padding-top: 2px;
+		border: 2px solid #11520B;
+		/*color: #49853f;
+		 background-color: transparent;*/
+		color: #fff;
+		background-color: #49853f;
+		/*text-shadow: 1px 1px #34922C;*/
+	}
+	a.signup-btn-home-a {
+		text-decoration: none;
+		float: right;
+		/*right: -90px;*/
+	}
+	a.signup-btn-home-a:select {
+		color: transparent;
+		text-shadow: 1px 1px #49853f;
+	}
+	.signup-btn-home-div:hover {
+		/*color: #fff;*/
+		cursor: pointer;
+		/*background-color: #49853f;
+		 text-shadow: 1px 1px #34922C;*/
+		color: #49853f;
+		background-color: transparent;
+	}
+	.signup-btn-home-div:focus {
+		outline: none;
+		/*text-shadow: 1px 1px #34922C;*/
+		color: transparent;
+		text-shadow: 1px 1px #49853f;
+		box-shadow: 0 0 14px #eee;
+	}
+	.signup-btn-home-div:select {
+		outline: none;
+		/*text-shadow: 1px 1px #34922C;*/
+		text-shadow: 1px 1px #49853f;
+		box-shadow: 0 0 14px #eee;
+	}
+
+	.sign-btn-home:select {
+		background: #CCC;
+		color: #5F7A2A;
+		box-shadow: inset 0 1px 0 rgba(200,200,200,0.2);
+	}
+	.space-home {
+		height: 6px;
+	}
+	.form-home-table {
+		display: table;
+		margin: 0 auto;
+	}
+	.form-home-row {
+		display: table-row;
+	}
+	.form-home-cell-1 {
+		display: table-cell;
+		width: 160px;
+	}
+	.form-home-cell-2 {
+		display: table-cell;
+		width: 160px;
+	}
+	.form-home-cell-submit {
+		display: table-cell;
+		width: 500px;
+		text-align: center;
+	}
+	.form-home-cell-3 {
+		display: table-cell;
+		width: 60px;
+	}
+	.form-home-table-bd {
+		display: table;
+		margin: 0 auto;
+	}
+	.form-home-row-bd {
+		display: table-row;
+	}
+	.form-home-cell-bd-space {
+		display: table-cell;
+		width: 30px;
+	}
+	.form-home-cell-bd {
+		display: table-cell;
+		width: 70px;
+	}
+	.form-home-cell-bd-why {
+		display: table-cell;
+		width: 160px;
+		padding-left: 20px;
+	}
+	.form-home-cell-month {
+		display: table-cell;
+		width: 60px;
+	}
+	.form-home-cell-day {
+		display: table-cell;
+		width: 60px;
+	}
+	.form-home-cell-year {
+		display: table-cell;
+		width: 60px;
+	}
+	.form-home-cell-profile-type {
+		display: table-cell;
+		width: 60px;
+	}
+	.form-home-table-gender {
+		display: table;
+	}
+	.form-home-row-gender {
+		display: table-row;
+	}
+	.form-home-cell-gender-1 {
+		display: table-cell;
+	}
+	.form-home-cell-gender-2 {
+		display: table-cell;
+	}
+	.form-home-cell-profile-type-1 {
+		display: table-cell;
+		width: 70px;
+	}
+	.form-home-row-space {
+		height: 4px;
+	}
+	.signup-btn-home {
+		background-color: #49853F;
+		border: 3px groove #11520B;
+		border-radius: 6px 6px 6px 6px;
+		color: #FFFFFF;
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		font-weight: bold;
+		height: 55px;
+		letter-spacing: 1.5px;
+		width: 260px;
+	}
+	.signup-btn-home:hover {
+		color: #49853F;
+		background-color: #FFF;
+		text-shadow: 0 1px #34922C;
+		box-shadow: 0px 0px 2px 2px #CCC inset;
+		cursor: pointer;
+	}
+	.signup-btn-home:focus {
+		box-shadow: 0 0 10px #29731F;
+		text-shadow: 1px 1px #34922C;
+		outline: none;
+	}
+	.go-btn-home {
+		background-color: #F69010;
+		border-radius: 0 12px 0 12px;
+	}
+
+	.go-btn-home {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		color: #11520B;
+		height: 24px;
+		width: 50px;
+		/*background-color: #D98D2D;*/
+		border: 2px solid #11520B;
+		/*border-radius: 12px;*/
+		margin-top: 10px;
+		padding-bottom: 1px;
+		margin-left: 6px;
+		background-color: #F69010;
+		border-radius: 0 12px 0 12px;
+	}
+	.go-btn-home:hover {
+		color: #fff;
+		background-color: #E3AC66;
+		text-shadow: 1px 1px #34922C;
+		cursor: pointer;
+	}
+	.go-btn-home:focus {
+		box-shadow: 0 0 10px #29731F;
+		text-shadow: 1px 1px #34922C;
+		outline: none;
+	}
+
+</style>
+
+<style>
+	/*input[type=checkbox] {
+	 display:none;
+	 }*/
+	input[type=radio] {
+		display: none;
+	}
+	.rd-button {
+		width: 18px;
+		height: 18px;
+		border-style: solid;
+		border-width: 2px;
+		border-color: #11520B;
+		border-radius: 18px;
+		margin-bottom: -4px;
+		display: inline-block;
+		margin-right: 0px;
+		cursor: pointer;
+	}
+	.rd-button:focus {
+		box-shadow: 0 0 10px #2899A1; /*#29731F;*/
+		outline: none;
+	}
+	.rd-button:hover {
+		box-shadow: 0 0 10px #1F7C82;
+		outline: none;
+	}
+	.rd-button:select {
+		/*box-shadow: 0 0 10px #2899A1;*/ /*#29731F;*/
+		outline: none;
+	}
+	.rd-background {
+		background-color: #2899A1; /*#3DC8D1;*/ /*#1F7C82;*/ /*#A5E5B4*/
+	}
+	.input-home-short:focus, .input-home-short:hover {
+		border-color: #478A3E;
+		/*color: #000;*/
+		-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		-moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+	}
+	.input-home-short:focus:hover {
+		border-color: #478A3E;
+		/*color: #000;*/
+		-webkit-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		-moz-box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		box-shadow: inset 0 0 1px 1px #41B737; /*#3DC8D1;*/
+	}
+	.input-home-short:hover {
+		-webkit-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
+		-moz-box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
+		box-shadow: inset 0 0 1px 1px #37633A; /*#185C61;*/
+	}
+
+</style>
+
+<style>
+
+	.dropdown-1 {
+		width: 120px;
+	}
+	.dropdown-2 {
+		width: 106px;
+	}
+	.dropdown-3 {
+		width: 106px;
+	}
+	.dropdown {
+		font-family: msyh, Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		color: #11520B;
+		background-color: #FFF;
+		border: 2px solid #11520B;
+		border-radius: 4px;
+		height: 24px;
+		position: relative;
+		padding-top: 0px;
+		padding-left: 12px;
+		margin-right: 2px;
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+		text-decoration: none;
+		outline: none;
+		z-index: 1;
+	}
+	.dropdown:focus {
+		color: #1f7c82;
+		/*background-color:#072C53;*/
+		/*-webkit-box-shadow: 0 0 25px #ccc;
+		 -moz-box-shadow: 0 0 25px #ccc;
+		 box-shadow: 0 0 25px #ccc;*/
+		-webkit-box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		-moz-box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-o-transform: scale(1.03);
+		-ms-transform: scale(1.03);
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-o-transform: scale(1.03);
+		-ms-transform: scale(1.03);
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-o-transform: scale(1.03);
+		-ms-transform: scale(1.03);
+		transform: scale(1.03);
+		outline: none;
+	}
+	.dropdown:focus:hover {
+		color: #1f7c82;
+		-webkit-box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		-moz-box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		box-shadow: 0 0 1px 1px #41B737; /*#3DC8D1;*/
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-o-transform: scale(1.03);
+		-ms-transform: scale(1.03);
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-o-transform: scale(1.03);
+		-ms-transform: scale(1.03);
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-o-transform: scale(1.03);
+		-ms-transform: scale(1.03);
+		transform: scale(1.03);
+		outline: none;
+	}
+	.dropdown:hover {
+		color: #1f7c82;
+		-webkit-box-shadow: 0 0 1px 1px #37633A; /*#185C61;*/
+		-moz-box-shadow: 0 0 1px 1px #37633A; /*#185C61;*/
+		box-shadow: 0 0 1px 1px #37633A; /*#185C61;*/
+	}
+	.dropdown.focus > .selected, .dropdown:focus > .selected {
+		outline: none;
+	}
+	.dropdown > .selected:hover, .dropdown > .selected:focus {
+		/*cursor: pointer;*/
+	}
+	/*.dropdown1 > .selected i {*/
+	.dropdown > .selected .down-caret {
+		position: absolute;
+		top: 0px;
+		right: 4px;
+		bottom: 0;
+		width: 12px;
+		/*height: 20px;*/
+		line-height: 20px;
+		border-left: 2px solid #11520B;
+		text-align: center;
+		/*color: #999;*/
+		color: #11520B;
+	}
+	.dropdown.open > .selected {
+		-webkit-border-radius: 4px 4px 0px 0px;
+		border-radius: 4px 4px 0px 0px;
+	}
+	.dropdown ul {
+		display: none;
+		position: absolute;
+		left: 0;
+		top: 100%;
+		width: 100%;
+		background: #FFF;
+		/*z-index: 1;    */
+		border: 1px solid #333;
+		border-top: none;
+		-webkit-border-radius: 0px 0px 4px 4px;
+		border-radius: 0px 0px 4px 4px;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		line-height: 1;
+		-webkit-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.2);
+		box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.2);
+		/*max-height: 300px;*/
+		/*overflow: auto;*/
+		overflow-y: scroll;
+		overflow-x: hidden;
+		/*max-height: 300px;*/
+		margin: 0;
+		padding-left: 6px;
+	}
+	.dropdown .dropdown-1 ul {
+		/*height: 200px;*/
+	}
+	.dropdown .dropdown-2 ul {
+		/*height: 200px;*/
+	}
+	.dropdown .dropdown-3 ul {
+		/*height: 200px;*/
+	}
+	.dropdown ul li.selected {
+		/*color: #ACDDE3;*/
+		color: #000;
+		/*background: #005C9E;*/
+		background: #FFF;
+	}
+	.dropdown ul li:last-child.selected {
+		-webkit-border-radius: 0px 0px 4px 4px;
+		border-radius: 0px 0px 4px 4px;
+	}
+	.dropdown ul li {
+		position: relative;
+		display: block;
+		text-decoration: none;
+		color: #1f7c82;
+		/*padding: 4px 4px;   */
+		padding-left: 4px;
+	}
+	.dropdown ul li:first-child {
+		color: #838383;
+	}
+	.dropdown ul li:first-child.selected {
+		color: #838383;
+	}
+	.dropdown ul li.hover {
+		background: #fff;
+		color: #49853f;
+		font-weight: bold;
+	}
+
+</style>
+
+<style>
+	.ks-tip-container {
+		position: relative;
+	}
+	.ks-tip-target:hover + .ks-tip-1 span {
+	}
+	.ks-tip-target:hover + .ks-tip-1 {
+		display: block;
+	}
+	.ks-tip-1 {
+		position: absolute;
+		width: 60px;
+		height: 24px;
+		background-color: rgba(0, 0, 0, 0.6);
+		border-color: rgba(0, 0, 0, 0.6);
+		border-radius: 3px;
+		box-shadow: 0px 2px 2px #aaa;
+		text-align: center;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 11px;
+		font-weight: 400;
+		color: #fff;
+		padding: 6px 0 0 0;
+		display: none;
+	}
+	.ks-tip-1-indicator {
+		position: absolute;
+		top: 24px;
+		left: 4px;
+		width: 8px;
+		height: 12px;
+		background-image: url("/assets/drop-w8-h12.png");
+	}
+	.ks-tip-34minus {
+		top: -34px;
+	}
+
+	.ks-tip-target:hover + .ks-tip span {
+	}
+	.ks-tip-target:hover + .ks-tip {
+		display: block;
+	}
+	.ks-tip {
+		position: absolute;
+		display: none;
+	}
+	.ks-tip-delete-post-user-comment {
+		position: absolute;
+		width: 60px;
+		height: 24px;
+		background-color: rgba(0, 0, 0, 0.6);
+		border-color: rgba(0, 0, 0, 0.6);
+		border-radius: 3px;
+		box-shadow: 0px 2px 2px #aaa;
+		text-align: center;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 11px;
+		font-weight: 400;
+		color: #fff;
+		padding: 6px 0 0 0;
+		display: none;
+		top: -36px;
+		left: -20px;
+		z-index: 1;
+	}
+	.ks-tip-indicator-delete-post-user-comment {
+		position: absolute;
+		top: 24px;
+		left: 27px;
+		width: 8px;
+		height: 12px;
+		background-image: url("/assets/drop-w8-h12.png");
+	}
+
+	.ks-tip-delete-post-user {
+		position: absolute;
+		width: 60px;
+		height: 24px;
+		background-color: rgba(0, 0, 0, 0.6);
+		border-color: rgba(0, 0, 0, 0.6);
+		border-radius: 3px;
+		box-shadow: 0px 2px 2px #aaa;
+		text-align: center;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 11px;
+		font-weight: 400;
+		color: #fff;
+		padding: 6px 0 0 0;
+		display: none;
+		top: -36px;
+		left: -20px;
+		z-index: 1;
+	}
+	.ks-tip-indicator-delete-post-user {
+		position: absolute;
+		top: 24px;
+		left: 27px;
+		width: 8px;
+		height: 12px;
+		background-image: url("/assets/drop-w8-h12.png");
+	}
+
+	/*.ks-tip-2 {
+	 position: absolute;
+	 width: 200px;
+	 height: 100px;
+	 background-color: rgba(0, 0, 0, 0.6);
+	 border-color: rgba(0, 0, 0, 0.6);
+	 border-radius: 3px;
+	 box-shadow: 0px 2px 2px #aaa;
+	 text-align: center;
+	 display: none;
+	 }*/
+	.hidden {
+		display: none !important;
+		visibility: hidden !important
+	}
+	.dialog-span-1 {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 10px;
+		font-weight: 200;
+		color: #333;
+		height: 12px;
+	}
+	.dialog-span-1:hover {
+		text-decoration: underline;
+	}
+
+</style>
+
+<style>
+	.btn-submit-story-1 {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 20px;
+		text-align: center;
+		padding-top: 8px;
+		color: #fff;
+		display: inline-block;
+		text-decoration: none;
+		width: 100px;
+		height: 30px;
+		/*background: linear-gradient(#F0A546, #D98D2D);*/
+		/*background: linear-gradient(#F0A546, #BD7A26);*/
+		/*background: linear-gradient(#1F7C82, #1C7278);*/
+		background: linear-gradient(#fbb040, #ca8e33) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		border-radius: 3px;
+	}
+	.btn-submit-story-1:focus {
+		/*-webkit-box-shadow: 0 0 2px 2px #FAC582;
+		 -moz-box-shadow: 0 0 2px 2px #FAC582;
+		 box-shadow: 0 0 2px 2px #FAC582;*/
+		background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		outline: none;
+	}
+	.btn-submit-story-1:hover {
+		box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), inset 0 1.5em 1em rgba(255,255,255,0.2);
+		cursor: pointer;
+	}
+	.btn-submit-story-1:active {
+		/*box-shadow: inset 0 1px 1px rgba(255,255,255,0.0),
+		 inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 color: #fff;
+		 background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+		outline: none;
+	}
+	.btn-submit-story-2 {
+		position: relative;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 20px;
+		text-align: center;
+		color: #fff;
+		display: inline-block;
+		text-decoration: none;
+		width: 100px;
+		height: 30px;
+		/*background: linear-gradient(#F0A546, #D98D2D);*/
+		/*background: linear-gradient(#F0A546, #BD7A26);*/
+		/*background: linear-gradient(#1F7C82, #1C7278);*/
+		background: linear-gradient(#fbb040, #ca8e33) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		border-radius: 3px;
+	}
+	.btn-submit-story-2:focus {
+		/*-webkit-box-shadow: 0 0 2px 2px #FAC582;
+		 -moz-box-shadow: 0 0 2px 2px #FAC582;
+		 box-shadow: 0 0 2px 2px #FAC582;*/
+		background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		outline: none;
+	}
+	.btn-submit-story-2:hover {
+		box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), inset 0 1.5em 1em rgba(255,255,255,0.2);
+		cursor: pointer;
+	}
+	.btn-submit-story-2:active {
+		/*box-shadow: inset 0 1px 1px rgba(255,255,255,0.0),
+		 inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 color: #fff;
+		 background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+		outline: none;
+	}
+	.btn-submit-story-3 {
+		position: relative;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 20px;
+		text-align: center;
+		color: #fff;
+		display: inline-block;
+		text-decoration: none;
+		width: 100px;
+		height: 30px;
+		padding: 8px 0 0 0;
+		/*background: linear-gradient(#F0A546, #D98D2D);*/
+		/*background: linear-gradient(#F0A546, #BD7A26);*/
+		/*background: linear-gradient(#1F7C82, #1C7278);*/
+		background: linear-gradient(#fbb040, #ca8e33) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		border-radius: 3px;
+	}
+	.btn-submit-story-3:focus {
+		/*-webkit-box-shadow: 0 0 2px 2px #FAC582;
+		 -moz-box-shadow: 0 0 2px 2px #FAC582;
+		 box-shadow: 0 0 2px 2px #FAC582;*/
+		background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		outline: none;
+	}
+	.btn-submit-story-3:hover {
+		box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), inset 0 1.5em 1em rgba(255,255,255,0.2);
+		cursor: pointer;
+	}
+	.btn-submit-story-3:active {
+		/*box-shadow: inset 0 1px 1px rgba(255,255,255,0.0),
+		 inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 color: #fff;
+		 background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+		outline: none;
+	}
+
+</style>
+
+<style>
+	/*.add-post-user-container-active {
+	 min-height: 52px;
+	 }
+	 .add-post-user-container-inactive {
+	 min-height: 26px;
+	 background: url('/assets/background-placeholder-comment-2-w206-h20.png') 3px 4px no-repeat;
+	 }*/
+	.textarea-add-post-user-container {
+		border: 1px solid #49853f;
+		border-radius: 0px;
+		min-height: 26px;
+		/*width: 591px;*/
+		background-color: #fff;
+		padding: 4px 0px 4px 5px;
+	}
+	.textarea-add-post-user-inactive {
+		min-height: 26px;
+		background-image: url('/assets/background-placeholder-comment-2-w206-h20.png');
+		background-repeat: no-repeat;
+		background-position: 3px 4px;
+		background-color: #fff;
+	}
+	.textarea-add-post-user-active {
+		background-color: #eee;
+		min-height: 52px;
+	}
+	.textarea-add-post-user {
+		vertical-align: text-top;
+		/*overflow: hidden;*/
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		font-size: 13px;
+		color: #1B666B;
+		line-height: 100%;
+		padding: 6px 5px 5px 5px;
+		min-height: 26px;
+		width: 500px;	/*579*/
+		/*white-space: pre;*/
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+	}
+	.textarea-add-post-user:focus:hover {
+		outline: none;
+	}
+	.textarea-add-post-user:focus {
+		outline: none;
+	}
+	.textarea-add-post-user:hover {
+		outline: none;
+	}
+	.render-add-post-user-image {
+
+	}
+	.textarea-add-post-user-show-text {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 600;
+		font-size: 13px;
+		color: #888;
+	}
+
+	.resize-none {
+		resize: none;
+	}
+
+	.submit-edit-story-4-text {
+		margin: 0;
+	}
+	.submit-edit-story-4-text-2 {
+		margin: 9px 0 0 0;
+	}
+	.submit-edit-story-4-loader {
+		width: 32px;
+		height: 32px;
+		background-image: url('/assets/loader_ajax_w32_h32_7.gif');
+		background-repeat: no-repeat;
+		display: inline-block;
+		/*margin: 5px 0 0 0;*/
+		margin: 5px 0 0 0;
+	}
+	.post-user-delete {
+		width: 20px;
+		height: 20px;
+		background-image: url('/assets/button_delete_w20_h20.png');
+		background-repeat: no-repeat;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+	.post-user-delete:hover {
+		cursor: pointer;
+	}
+	.post-user-delete-blank {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+	.post-user-comment-delete-blank {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+
+	.post-user-comment-delete-container {
+		width: 20px;
+		height: 20px;
+		margin: 2px 2px 0 0;
+	}
+	.post-user-comment-delete {
+		width: 20px;
+		height: 20px;
+		background-image: url('/assets/button_delete_w20_h20.png');
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+	.post-user-comment-delete:hover {
+		cursor: pointer;
+	}
+	.post-user-comment-delete-blank {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+
+	.story-4-attach {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		font-size: 13px;
+		color: #888;
+	}
+	.story-4-attach:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+</style>
+
+<style>
+	/*.add-user-plot-container-active {
+	 min-height: 52px;
+	 }
+	 .add-user-plot-container-inactive {
+	 min-height: 26px;
+	 background: url('/assets/background-placeholder-comment-2-w206-h20.png') 3px 4px no-repeat;
+	 }*/
+	.textarea-render-1 {
+		position: relative;
+		width: 100%;
+		/*min-height: 26px;*/
+		margin: 0;
+		padding: 0 10px 0 0;
+	}
+	.textarea-render-2 {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		/*color: #666;*/
+		color: #333;
+		font-size: 13px;
+		width: 579px;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		border: 1px solid transparent;
+		padding: 6px 5px 5px 5px;
+	}
+	.textarea-user-plot-container {
+		/*border: 1px solid #2899A1;*/
+		border: 1px solid #49853f;
+		border-radius: 0px;
+		min-height: 38px;
+		width: 515px;	/*660*/
+		background-color: #fff;
+		padding: 5px 0px 4px 5px;
+		margin: 2px 0 0 20px;
+	}
+	.textarea-user-plot-container-edit {
+		border: 1px solid #fbb040;
+		border-radius: 0px;
+		min-height: 38px;
+		width: 515px;	/*660*/
+		background-color: #fff;
+		padding: 5px 0px 4px 5px;
+		margin: 2px 0 0 20px;
+	}
+	.textarea-user-plot-empty {
+		/*min-height: 26px;*/
+		background-image: url('/assets/background-placeholder-user-plot-1-w282-h18.png');
+		/*Who are you? Write the Story of what you know.*/
+		background-repeat: no-repeat;
+		background-position: 3px 5px;
+		/*background-color: #fff;*/
+	}
+	.textarea-user-plot-edit {
+		background-color: #eee;
+		/*min-height: 38px;*/
+	}
+	.textarea-user-plot-show {
+		background-color: #fff;
+		/*min-height: 38px;*/
+	}
+	/*.textarea-user-plot-inactive {
+	 min-height: 26px;
+	 background-image: url('/assets/background-placeholder-user-plot-1-w115-h18.png');
+	 background-repeat: no-repeat;
+	 background-position: 3px 5px;
+	 background-color: #fff;
+	 }
+	 .textarea-user-plot-active {
+	 background-color: #eee;
+	 min-height: 38px;
+	 }*/
+	.textarea-user-plot {
+		vertical-align: text-top;
+		/*overflow: hidden;*/
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		font-size: 13px;
+		color: #1B666B;
+		line-height: 100%;
+		padding: 7px 5px 5px 5px;
+		min-height: 26px;
+		width: 503px;	/*648*/
+		/*white-space: pre;*/
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+	}
+	.textarea-user-plot:focus:hover {
+		outline: none;
+	}
+	.textarea-user-plot:focus {
+		outline: none;
+	}
+	.textarea-user-plot:hover {
+		outline: none;
+	}
+	.render-user-plot-image {
+
+	}
+	.textarea-user-plot-show-text {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 600;
+		font-size: 13px;
+		color: #888;
+	}
+
+	.resize-none {
+		resize: none;
+	}
+
+	.submit-edit-story-2-text {
+		margin: 0;
+	}
+	.submit-edit-story-2-text-2 {
+		margin: 9px 0 0 0;
+	}
+	.submit-edit-story-2-loader {
+		width: 32px;
+		height: 32px;
+		background-image: url('/assets/loader_ajax_w32_h32_7.gif');
+		background-repeat: no-repeat;
+		display: inline-block;
+		/*margin: 5px 0 0 0;*/
+		margin: 5px 0 0 0;
+	}
+	.user-plot-delete {
+		width: 20px;
+		height: 20px;
+		background-image: url('/assets/button_delete_w20_h20.png');
+		background-repeat: no-repeat;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+	.user-plot-delete:hover {
+		cursor: pointer;
+	}
+	.user-plot-delete-blank {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+	.user-plot-comment-delete-blank {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+
+	.user-plot-comment-delete-container {
+		width: 20px;
+		height: 20px;
+		margin: 2px 2px 0 0;
+	}
+	.user-plot-comment-delete {
+		width: 20px;
+		height: 20px;
+		background-image: url('/assets/button_delete_w20_h20.png');
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+	.user-plot-comment-delete:hover {
+		cursor: pointer;
+	}
+	.user-plot-comment-delete-blank {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+
+	.story-2-attach {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		font-size: 13px;
+		color: #888;
+	}
+	.story-2-attach:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+</style>
+
+<style>
+	/*.add-user-interest-container-active {
+	 min-height: 52px;
+	 }
+	 .add-user-interest-container-inactive {
+	 min-height: 26px;
+	 background: url('/assets/background-placeholder-comment-2-w206-h20.png') 3px 4px no-repeat;
+	 }*/
+	.textarea-render-1 {
+		position: relative;
+		width: 100%;
+		/*min-height: 26px;*/
+		margin: 0;
+		padding: 0 10px 0 0;
+	}
+	.textarea-render-2 {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		/*color: #666;*/
+		color: #333;
+		font-size: 13px;
+		width: 579px;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		border: 1px solid transparent;
+		padding: 6px 5px 5px 5px;
+	}
+	.textarea-user-interest-container {
+		border: 1px solid #49853f;
+		border-radius: 0px;
+		min-height: 38px;
+		width: 515px;	/*660*/
+		background-color: #fff;
+		padding: 5px 0px 4px 5px;
+		margin: 2px 0 0 20px;
+	}
+	.textarea-user-interest-container-edit {
+		border: 1px solid #fbb040;
+		border-radius: 0px;
+		min-height: 38px;
+		width: 515px;	/*660*/
+		background-color: #fff;
+		padding: 5px 0px 4px 5px;
+		margin: 2px 0 0 20px;
+	}
+	.textarea-user-interest-empty {
+		/*min-height: 26px;*/
+		background-image: url('/assets/background-placeholder-user-interest-1-w232-h18.png');
+		background-repeat: no-repeat;
+		background-position: 3px 5px;
+		/*background-color: #fff;*/
+	}
+	.textarea-user-interest-edit {
+		background-color: #eee;
+		/*min-height: 38px;*/
+	}
+	.textarea-user-interest-show {
+		background-color: #fff;
+		/*min-height: 38px;*/
+	}
+	/*.textarea-user-interest-inactive {
+	 min-height: 26px;
+	 background-image: url('/assets/background-placeholder-user-interest-1-w115-h18.png');
+	 background-repeat: no-repeat;
+	 background-position: 3px 5px;
+	 background-color: #fff;
+	 }
+	 .textarea-user-interest-active {
+	 background-color: #eee;
+	 min-height: 38px;
+	 }*/
+	.textarea-user-interest {
+		vertical-align: text-top;
+		/*overflow: hidden;*/
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		font-size: 13px;
+		color: #1B666B;
+		line-height: 100%;
+		padding: 7px 5px 5px 5px;
+		min-height: 26px;
+		width: 503px; /*648*/
+		/*white-space: pre;*/
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+	}
+	.textarea-user-interest:focus:hover {
+		outline: none;
+	}
+	.textarea-user-interest:focus {
+		outline: none;
+	}
+	.textarea-user-interest:hover {
+		outline: none;
+	}
+	.render-user-interest-image {
+
+	}
+	.textarea-user-interest-show-text {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 600;
+		font-size: 13px;
+		color: #888;
+	}
+
+	.resize-none {
+		resize: none;
+	}
+
+	.submit-edit-story-3-text {
+		margin: 2px 0 0 0;
+	}
+	.submit-edit-story-3-text-2 {
+		margin: 2px 0 0 0;
+	}
+	.submit-edit-story-3-loader {
+		width: 32px;
+		height: 32px;
+		background-image: url('/assets/loader_ajax_w32_h32_7.gif');
+		background-repeat: no-repeat;
+		display: inline-block;
+		/*margin: 5px 0 0 0;*/
+		margin: 5px 0 0 0;
+	}
+	.user-interest-delete {
+		width: 20px;
+		height: 20px;
+		background-image: url('/assets/button_delete_w20_h20.png');
+		background-repeat: no-repeat;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+	.user-interest-delete:hover {
+		cursor: pointer;
+	}
+	.user-interest-delete-blank {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+	.user-interest-comment-delete-blank {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+
+	.user-interest-comment-delete-container {
+		width: 20px;
+		height: 20px;
+		margin: 2px 2px 0 0;
+	}
+	.user-interest-comment-delete {
+		width: 20px;
+		height: 20px;
+		background-image: url('/assets/button_delete_w20_h20.png');
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+	.user-interest-comment-delete:hover {
+		cursor: pointer;
+	}
+	.user-interest-comment-delete-blank {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin: 2px 2px 0 0;
+	}
+
+	.story-3-attach {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		font-size: 13px;
+		color: #888;
+	}
+	.story-3-attach:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+</style>
+
+<style>
+	.add-comment-container-active {
+		min-height: 52px;
+	}
+	.add-comment-container-inactive {
+		min-height: 26px;
+		background: url('/assets/background-placeholder-comment-1-w98-h18.png') 3px 4px no-repeat;
+		/*background-repeat: no-repeat;*/
+	}
+	.add-comment-container {
+		border-radius: 0px;
+		/*min-height: 26px;*/
+		width: 100%;
+	}
+	.add-comment-container:focus {
+		outline: 0;
+	}
+	.add-comment-container:hover {
+		outline: 0;
+	}
+	.add-comment-container:focus:hover {
+		outline: 0;
+	}
+	.add-comment-container:active {
+		outline: 0;
+	}
+	.textarea-add-comment-container {
+		border: 1px solid #49853f;
+		border-radius: 0px;
+		width: 542px;
+	}
+	.textarea-add-comment {
+		background-color: #fff;
+		color: #1B666B;
+		/*resize: none;*/
+		vertical-align: text-top;
+		/*overflow: hidden;*/
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		font-size: 13px;
+		line-height: 100%;
+		padding: 6px 5px 5px 5px;
+		min-height: 26px;
+		width: 540px;
+		/*white-space: pre;*/
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+	}
+	.textarea-add-comment:focus:hover {
+		outline: none;
+	}
+	.textarea-add-comment:focus {
+		outline: none;
+	}
+	.textarea-add-comment:hover {
+		outline: none;
+	}
+
+	.btn-add-comment-story-4 {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		text-align: center;
+		padding: 4px 0 0 0;
+		color: #fff;
+		display: inline-block;
+		text-decoration: none;
+		width: 50px;
+		height: 20px;
+		/*background: linear-gradient(#F0A546, #D98D2D);*/
+		/*background: linear-gradient(#F0A546, #BD7A26);*/
+		/*background: linear-gradient(#1F7C82, #1C7278);*/
+		background: linear-gradient(#fbb040, #ca8e33) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		border-radius: 3px;
+	}
+	.btn-add-comment-story-4:focus {
+		/*-webkit-box-shadow: 0 0 2px 2px #FAC582;
+		 -moz-box-shadow: 0 0 2px 2px #FAC582;
+		 box-shadow: 0 0 2px 2px #FAC582;*/
+		background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		outline: none;
+	}
+	.btn-add-comment-story-4:hover {
+		box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), inset 0 1.5em 1em rgba(255,255,255,0.2);
+		cursor: pointer;
+	}
+	.btn-add-comment-story-4:active {
+		/*box-shadow: inset 0 1px 1px rgba(255,255,255,0.0),
+		 inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 color: #fff;
+		 background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+		outline: none;
+	}
+
+	/*.btn-story-4-attach-text {
+	 font-family: Arial, Helvetica, sans-serif;
+	 font-weight: 600;
+	 font-size: 18px;
+	 color: #fff;
+	 }*/
+	.btn-add-comment-story-4-loader {
+		width: 16px;
+		height: 11px;
+		background-image: url('/assets/loader_ajax_w16_h11_blue.gif');
+		background-repeat: no-repeat;
+		display: inline-block;
+		margin: 5px 0 0 5px;
+	}
+	.add-comment-text-1 span {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: 400;
+		font-size: 13px;
+		color: #1B666B;
+		line-height: 100%;
+	}
+
+	.add-comment-border-top {
+		background: linear-gradient(to bottom, #49853f 0%, #ffffff 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		/*border-bottom: 1px solid #eee;*/
+		height: 8px;
+		margin-left: 0;
+		padding-left: 0;
+		padding-top: 0;
+		position: relative;
+		width: 100%;
+	}
+
+	.textarea-add-comment-parent {
+		width: 100%;
+		background-color: #eee;
+		padding: 0 4px 0 4px;
+	}
+
+</style>
+
+<script id="dropdown-data1-selected" type="text/x-dot-template">
+	{{=it.label}}<div class="down-caret">&#9660;</div>
+</script>
+
+<script id="dropdown-data1" type="text/x-dot-template">
+	<div class="dropdown dropdown-1" id="dropdown1" tabindex="606">
+	<div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+	<ul style="height: 200px;">
+	{{~it.items :item:index}}
+	<li data-index="{{=index}}">{{=item.label}}</li>
+	{{~}}
+	</ul>
+	</div>
+</script>
+
+<script id="dropdown-data2-selected" type="text/x-dot-template">
+	{{=it.label}}<div class="down-caret">&#9660;</div>
+</script>
+
+<script id="dropdown-data2" type="text/x-dot-template">
+	<div class="dropdown dropdown-2" id="dropdown2" tabindex="607">
+	<div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+	<ul style="height: 200px;">
+	{{~it.items :item:index}}
+	<li data-index="{{=index}}">{{=item.label}}</li>
+	{{~}}
+	</ul>
+	</div>
+</script>
+
+<script id="dropdown-data3-selected" type="text/x-dot-template">
+	{{=it.label}}<div class="down-caret">&#9660;</div>
+</script>
+
+<script id="dropdown-data3" type="text/x-dot-template">
+	<div class="dropdown dropdown-3" id="dropdown3" tabindex="608">
+	<div class="selected">{{=it.selected.label}}<div class="down-caret">&#9660;</div></div>
+	<ul style="height: 200px;">
+	{{~it.items :item:index}}
+	<li data-index="{{=index}}">{{=item.label}}</li>
+	{{~}}
+	</ul>
+	</div>
+</script>
+
+<style>
+	.dialog-msg-container-2 {
+		display: inline-block;
+		height: 30px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		position: absolute;
+	}
+	.dialog-msg-container-3 {
+		text-align: center;
+	}
+	.dialog-msg-container-3 span {
+		font-family: quattrocento, sans;
+		font-size: 18px;
+		font-weight: 400;
+		color: #376340;
+	}
+
+</style>
+
+<div class="jqmWindow jqmWindow-201" id="dialog_201">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<!-- text goes here -->
+		<div id="close_form201" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+		</div>
+		<div class="tip-content">
+			<div class="tooltiptext">
+				Close
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- <div style="height: 20px;"></div> -->
+	<div class="background-table-dialog-1">
+		<div class="table-dialog-1">
+			<div class="dialog-msg-container-3">
+				<span>Welcome to Know Story</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 16px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="dialog-msg-container-3" style="width: 100%; text-align: center;">
+				<span>Use the 'Edit' buttons to enter your story.</span>
+			</div>
+		</div>
+
+		<!-- JOUT 24 Mar 15
+		<div class="row">
+		<div style="height: 10px;"></div>
+		<div class="dialog-msg-container-3" style="width: 100%; text-align: center;">
+		<span>When done updating your story, check out the following pages:</span>
+		</div>
+		</div>
+		<div class="row">
+		<div style="height: 10px;"></div>
+		<div class="dialog-msg-container-3" style="width: 100%; text-align: center;">
+		<span>"My Home": This page shows all the traffic for your account.</span>
+		</div>
+		</div>
+		<div class="row">
+		<div class="dialog-msg-container-3" style="width: 100%; text-align: center;">
+
+		<span>"Corporate Home": This shows the traffic for your Corporate Story.</span>
+		</div>
+		</div>
+		<div class="row">
+		<div class="dialog-msg-container-3" style="width: 100%; text-align: center;">
+		<span>"Corporate Story": This is where you can update details about your company.</span>
+		</div>
+		</div>
+		<div class="row">
+		<div class="dialog-msg-container-3" style="width: 100%; text-align: center;">
+		<span>"Product Story": This is where you can upload your products to display them.</span>
+		</div>
+		<div style="height: 10px;"></div>
+		</div> -->
+
+		<div style="height: 2px;"></div>
+		<div class="row">
+			<div class="" style="width: 100%; text-align: center; position: relative; height: 40px;">
+				<div class="dialog-msg-container-2" style="width: 130px; top: 6px; left: 275px;">
+					Don't show this again:
+				</div>
+				<div class="dialog-msg-container-2" style="width: 20px; top: 0px; left: 405px;">
+					<%= check_box_tag :new_user %>
+				</div>
+			</div>
+		</div>
+		<div style="height: 6px;"></div>
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center;">
+				<span>
+					<input id="btn_dlg_submit_new_user_msg" class="btn-pop-dialog" type="button" value="OK" tabindex="">
+				</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 20px;"></div>
+</div>
+
+<div class="jqmWindow jqmWindow-1001" id="dialog_1001">
+	<div class="table-dl-form-1001">
+		<div class="row">
+			<div class="cell-100percent">
+				<div id="close_form1001" class="form-edit-close jqmClose tip-left-center" tabindex="">
+					<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
+				</div>
+				<div class="tip-content">
+					<div class="tooltiptext">
+						Close
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+	</div>
+	<div style="width: 100%; text-align: center;">
+		<div style="height: 20px;"></div>
+		<div id="dialog_1001_content_container" class="">
+			<figure id="profile_figure_dialog_1001" class="dialog-user-image">
+				<img alt="" src="" />
+			</figure>
+		</div>
+		<div style="height: 50px;"></div>
+	</div>
+</div>
+
+<div class="jqmWindow jqmWindow-101" id="dialog_101">
+	<div class="table-dl-form-101">
+		<div class="row">
+			<div class="cell-100percent">
+				<div id="close_form101" class="form-edit-close jqmClose tip-left-center" tabindex="">
+					<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
+				</div>
+				<div class="tip-content">
+					<div class="tooltiptext">
+						Close
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+	</div>
+	<div style="width: 100%; text-align: center;">
+		<div style="height: 20px;"></div>
+		<div id="dialog_101_content_container" class="">
+			<!-- <figure id="profile_figure_dialog_101" class="dialog-user-image">
+			<img alt="" src="" />
+			</figure> -->
+		</div>
+	</div>
+</div>
+
+<div class="jqmWindow jqmWindow-104" id="dialog_104">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<!-- text goes here -->
+		<div id="close_form104" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+		</div>
+		<div class="tip-content">
+			<div class="tooltiptext">
+				Close
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- <div style="height: 20px;"></div> -->
+	<div class="background-table-dialog-1">
+		<div class="table-dialog-1">
+			<div class="dialog-msg-container">
+				<span>Delete this status?</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 16px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center;">
+				<span>
+					<input id="btn_dlg_submit_delete_post" class="btn-pop-dialog" type="button" value="Delete" tabindex="">
+				</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>
+					<input id="btn_dlg_cancel_delete_post" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+				</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 20px;"></div>
+</div>
+
+<div class="jqmWindow jqmWindow-105" id="dialog_105">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<!-- text goes here -->
+		<div id="close_form105" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+		</div>
+		<div class="tip-content">
+			<div class="tooltiptext">
+				Close
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- <div style="height: 20px;"></div> -->
+	<div class="background-table-dialog-1">
+		<div class="table-dialog-1">
+			<div class="dialog-msg-container">
+				<span>Delete this comment?</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 16px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center;">
+				<span>
+					<input id="btn_dlg_submit_delete_comment" class="btn-pop-dialog" type="button" value="Delete" tabindex="">
+				</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>
+					<input id="btn_dlg_cancel_delete_comment" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+				</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 20px;"></div>
+</div>
+
+<!-- <style>
+	figure.dialog-user-image-2 {
+		position: relative;
+		margin: 0 auto;
+	}
+	figure.dialog-user-image-2 img {
+		/*border: 1px solid #aaa;*/
+	}
+	figcaption.expand-image {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		height: 100%;
+		width: 100%;
+		/*display: none !important;
+		 visibility: hidden !important*/
+		/*background: url("/assets/background-000000-o100-w10-h10.png") repeat;*/
+	}
+	figcaption.expand-image div.img-2-container {
+		position: relative;
+		width: 100%;
+		height: auto;
+	}
+	figcaption.expand-image div.img-2-container div.img-2 {
+		position: absolute;
+		top: 14px;
+		right: 14px;
+		width: 48px;
+		height: 48px;
+		margin: auto;
+		background: url("/assets/icon_expand_w48_h48.png") no-repeat;
+		opacity: 0;
+	}
+	figure.dialog-user-image-2 figcaption:hover div a div.img-2 {
+		-webkit-opacity: 0.5;
+		-moz-opacity: 0.5;
+		opacity: 0.5;
+		-webkit-transition: all 1s ease;
+		-moz-transition: all 1s ease;
+		-ms-transition: all 1s ease;
+		-o-transition: all 1s ease;
+		transition: all 1s ease;
+	}
+
+</style> -->
+
+<% if false %>
+<!-- user image - show 11 -->
+<div class="jqmWindow jqmWindow-11" id="dialog_11">
+	<div class="table-dl-form-1">
+		<div class="row">
+			<div class="cell-100percent">
+				<div id="close_form11" class="form-edit-close jqmClose tip-left-center" tabindex="">
+					<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
+				</div>
+				<div class="tip-content">
+					<div class="tooltiptext">
+						Close
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="pad-left-20"> -->
+	<div style="width: 100%; text-align: center;">
+		<div style="height: 20px;"></div>
+		<figure id="figure_dialog_11" class="dialog-user-image-2">
+			<img alt="" src="" class="dialog-user-image-hover" />
+			<figcaption id="figcaption_dialog_11" class="expand-image">
+				<div class="img-2-container image">
+					<% if !@publisher_user_image_primary.nil? %>
+					<a rel="gallery" title="" href="<%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>"> <div id="img_2" class="img-2"></div> </a>
+					<% end %>
+				</div>
+			</figcaption>
+		</figure>
+	</div>
+</div>
+<% end %>
+
+<div class="jqmWindow jqmWindow-overlay" id="dialog_overlay">
+	<div id="overlay_loading" class="overlay-loading display-none"></div>
+</div>
+
+<div class="jqmWindow jqmWindow-11" id="dialog_11">
+	<div id="close_form11" class="jqmClose ks-tip-container close-container">
+		<div class="ks-tip-target">
+			<%= image_tag('jqModal/close_btn_round_white_w60_h60.png', alt: 'X', class: 'x-close-60-60' ) %>
+		</div>
+	    <div class="ks-tip ks-tip-pos-left-dialog-11 ks-tip-text-dialog-11">
+			Close
+	    </div>				
+	</div>
+	<div style="clear: both;"></div>
+	<div style="width: 600px; margin: 0 auto;">
+		<div class="figure-container" style="width: 100%; background-color: #000;">
+			<figure id="figure_dialog_11" class="dialog-user-image-2">
+				<figcaption id="figcaption_dialog_11" class="expand-image">												
+					<div class="img-2-container image">
+						<% if !@publisher_user_image_primary.nil? %>
+						<a rel="gallery" title="" href="<%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>">									
+							<div id="img_2" class="img-2"></div>
+						</a>
+						<% end %>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div style="width: 100%; min-height: 100px; background-color: #fff;"></div>
+	</div>
+</div>
+
+<% if false %>
+<div class="jqmWindow jqmWindow-11" id="dialog_11">
+	<div class="jqmClose ks-tip-container close-container">
+		<div class="ks-tip-target">
+			<%= image_tag('jqModal/close_btn_round_white_w60_h60.png', alt: 'X', class: 'x-close-60-60' ) %>
+		</div>
+	    <div class="ks-tip ks-tip-pos-left-dialog-11 ks-tip-text-dialog-11">
+			Close
+	    </div>				
+	</div>
+	<div style="clear: both;"></div>
+	<div class="figure-container">
+		<figure id="figure_dialog_11" class="dialog-user-image-2">
+			<figcaption id="figcaption_dialog_11" class="expand-image">												
+				<div class="img-2-container image">
+					<% if !@publisher_user_image_primary.nil? %>
+					<a rel="gallery" title="" href="<%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>">									
+						<div id="img_2" class="img-2"></div>
+					</a>
+					<% end %>
+				</div>
+			</figcaption>
+		</figure>
+	</div>
+	<div style="width: 600px; min-height: 100px; background-color: #fff;"></div>
+</div>
+<% end %>
+
+
+<!-- user image - upload 12 -->
+<div class="jqmWindow jqmWindow-12" id="dialog_12">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+			
+		</div>
+		<!-- text goes here -->
+		<div id="close_form12" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+		</div>
+		<div class="tip-content">
+			<div class="tooltiptext">
+				Close
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- <div style="height: 20px;"></div> -->
+	<div class="background-table-dialog-1">
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent dialog-msg-container">
+					<span>Upload Photo</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="height: 12px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent dialog-msg-container">
+				<span>
+					<input id="btn_dlg_submit_upload_image_primary" class="btn-pop-dialog" type="button" value="Upload" tabindex="">
+				</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>
+					<input id="btn_dlg_cancel_upload_image_primary" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+				</span>
+			</div>
+		</div>
+	</div>
+	<!-- D1yHRJtLZof/HKsEdJSSSVpPC6mAzZfe9CqwtTjzGvs -->
+	<!--
+	<form id="new_publisher_user_image" class="new_publisher_user_image" method="post" enctype="multipart/form-data" data-remote="true" action="/publisher_users/upload_publisher_user_image_primary" accept-charset="UTF-8">
+	<div style="margin:0;padding:0;display:inline">
+	<input type="hidden" value="✓" name="utf8">
+	<input type="hidden" value="D1yHRJtLZof/HKsEdJSSSVpPC6mAzZfe9CqwtTjzGvs=" name="authenticity_token">
+	</div>
+	<p>
+	<input id="publisher_user_image_image" type="file" name="publisher_user_image[image]">
+	</p>
+	<p>
+	<input class="btn-submit" type="submit" value="Upload Photo" name="commit">
+	</p>
+	</form>
+	-->
+	<div style="height: 4px"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center; background-color: #f6f6f6;">
+				<div id="dvLoading_12" class="dvLoading-12 dvLoading-display-none"></div>
+			</div>
+		</div>
+	</div>
+
+	<% if false %>
+	<form id="new_publisher_user_image" class="hidden" method="post" enctype="multipart/form-data" data-remote="true" action="/publisher_users/upload_publisher_user_image_primary" accept-charset="UTF-8">
+		<div style="margin:0;padding:0;display:inline">
+			<input type="hidden" value="✓" name="utf8">
+			<!-- <input type="hidden" value="IC786c8YtzgxVDbVC1bw+2oIonuHV7CXBBHyFG6kTXg=" name="authenticity_token"> -->
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		</div>
+		<p>
+			<input id="new_publisher_user_image_image" type="file" name="user_image[image]">
+		</p>
+		<p>
+			<input id="btn_submit_dialog_12" class="btn-submit hidden" type="submit" value="Upload Photo" name="commit">
+		</p>
+	</form>
+	<% end %>
+	
+	<%= form_for UserImage.new, :url => upload_publisher_user_image_primary_publisher_users_path(@publisher_user_image_new), :html => {:multipart => true, :id => 'new_publisher_user_image', :class => 'hidden'}, :remote => true do |f| %>
+	<p>
+		<%= f.file_field :image, :id => 'new_publisher_user_image_image' %>
+	</p>
+	<!-- <#%= f.hidden_field 'publisher_id', :value => @publisher_id %#>
+	<#%= f.hidden_field 'primary', :value => true %#> -->
+	<p>
+		<%= f.submit :id => 'btn_submit_dialog_12', :class => 'btn-submit hidden', :value => 'Upload Photo' %>
+	</p>
+	<% end %>
+	
+</div>
+
+<!-- user image - change 13 -->
+<div class="jqmWindow jqmWindow-13" id="dialog_13">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<!-- text goes here -->
+		<div id="close_form13" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+		</div>
+		<div class="tip-content">
+			<div class="tooltiptext">
+				Close
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- <div style="height: 20px;"></div> -->
+	<div class="background-table-dialog-1">
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent dialog-msg-container">
+					<span>Change Photo</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="height: 12px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent dialog-msg-container">
+				<span>
+					<input id="btn_dlg_submit_upload_image_primary_change" class="btn-pop-dialog" type="button" value="Upload" tabindex="">
+				</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>
+					<input id="btn_dlg_cancel_upload_image_primary_change" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+				</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 4px"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center; background-color: #f6f6f6;">
+				<div id="dvLoading_13" class="dvLoading-13 dvLoading-display-none"></div>
+			</div>
+		</div>
+	</div>
+
+	<%= form_for UserImage.new, :url => upload_publisher_user_image_primary_change_publisher_users_path(@publisher_user_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'change_publisher_user_image'}, :remote => true do |f| %>
+	<p>
+		<%= f.file_field :image, :id => 'change_publisher_user_image_image' %>
+	</p>
+	<!-- <#%= f.hidden_field 'publisher_id', :value => @publisher_id %#>
+	<#%= f.hidden_field 'primary', :value => true %#> -->
+	<p>
+		<%= f.submit :id => 'btn_submit_dialog_13', :class => 'btn-submit hidden', :value => 'Upload Photo' %>
+	</p>
+	<% end %>
+
+</div>
+
+<!-- user image - delete 14 -->
+<div class="jqmWindow jqmWindow-14" id="dialog_14">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<!-- text goes here -->
+		<div id="close_form14" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+		</div>
+		<div class="tip-content">
+			<div class="tooltiptext">
+				Close
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- <div style="height: 20px;"></div> -->
+	<div class="background-table-dialog-1">
+		<div class="table-dialog-1">
+			<div class="dialog-msg-container">
+				<span>Delete this photo?</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 16px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center;">
+				<span>
+					<input id="btn_dlg_submit_delete_image_primary" class="btn-pop-dialog" type="button" value="Delete" tabindex="">
+				</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>
+					<input id="btn_dlg_cancel_delete_image_primary" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+				</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 20px;"></div>
+</div>
+
+<!-- user image - crop 15 -->
+<div class="jqmWindow jqmWindow-15" id="dialog_15">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<div class="topbar-title">
+			Photo Crop and Center
+		</div>
+		<div id="close_form15" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+		</div>
+		<div class="tip-content">
+			<div class="tooltiptext">
+				Close
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- <div style="height: 20px;"></div> -->
+	<div class="background-table-dialog-3" style="padding: 10px 0 0 0;">
+		<div class="table-dialog-1">
+			<div class="dialog-msg-container">
+				<span>600 X 600 pixels available for maximum size. Below, you may crop and center smaller sizes.</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 10px;"></div>
+	<div style="width: 100%; padding: 0 0 0 10px;">
+		<div id="render_publisher_user_image_primary_crop">
+			<%= render 'publisher_users/publisher_user_image_primary_crop' %>
+		</div>
+	</div>
+</div>
+
+<!-- logo image - show 21 -->
+<div class="jqmWindow jqmWindow-21" id="dialog_21">
+	<div class="jqmClose ks-tip-container close-container">
+		<div class="ks-tip-target">
+			<%= image_tag('jqModal/close_btn_round_white_w60_h60.png', alt: 'X', class: 'x-close-60-60' ) %>
+		</div>
+	    <div class="ks-tip ks-tip-pos-left-dialog-21 ks-tip-text-dialog-21">
+			Close
+	    </div>				
+	</div>
+	<div style="clear: both;"></div>
+	<div style="width: 600px; margin: 0 auto;">
+		<div class="figure-container" style="width: 100%; background-color: #000;">
+			<figure id="figure_dialog_21" class="dialog-user-image-2">
+				<figcaption id="figcaption_dialog_21" class="expand-image">												
+					<div class="img-2-container image">
+						<% if !@publisher_user_logo_image.nil? %>
+						<a rel="gallery" title="" href="<%= @publisher_user_logo_image.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_logo_image.image? %>">									
+							<div id="img_2" class="img-2"></div>
+						</a>
+						<% end %>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div style="width: 100%; min-height: 100px; background-color: #fff;"></div>
+	</div>
+</div>
+
+<% if false %>
+<!-- logo image - show 21 -->
+<div class="jqmWindow jqmWindow-21" id="dialog_21">
+	<div class="table-dl-form-1">
+		<div class="row">
+			<div class="cell-100percent">
+				<div id="close_form21" class="form-edit-close jqmClose tip-left-center" tabindex="">
+					<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
+				</div>
+				<div class="tip-content">
+					<div class="tooltiptext">
+						Close
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="pad-left-20"> -->
+	<div style="width: 100%; text-align: center;">
+		<div style="height: 20px;"></div>
+		<!-- <div class="profile-grid profile-cs-style-3"> -->
+		<!-- <div class="container-figure container-figure-1"> -->
+		<div class="">
+			<figure id="profile_figure_dialog_21" class="dialog-user-image">
+				<img alt="" src="" />
+				<!-- <figcaption class="figcaption-2">
+				<div class="tip-top-center"></div>
+				<div class="tip-content">
+				<div class="tooltiptext">Delete</div>
+				</div>
+				</figcaption> -->
+			</figure>
+		</div>
+	</div>
+</div>
+<% end %>
+
+<!-- logo image - upload 22 -->
+<div class="jqmWindow jqmWindow-22" id="dialog_22">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<!-- text goes here -->
+		<div id="close_form22" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+		</div>
+		<div class="tip-content">
+			<div class="tooltiptext">
+				Close
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- <div style="height: 20px;"></div> -->
+	<div class="background-table-dialog-1">
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent dialog-msg-container">
+					<span>Upload Company Logo Photo</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="height: 12px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent dialog-msg-container">
+				<span>
+					<input id="btn_dlg_submit_upload_image_logo" class="btn-pop-dialog" type="button" value="Upload" tabindex="">
+				</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>
+					<input id="btn_dlg_cancel_upload_image_logo" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+				</span>
+			</div>
+		</div>
+	</div>
+	<!-- D1yHRJtLZof/HKsEdJSSSVpPC6mAzZfe9CqwtTjzGvs -->
+	<!--
+	<form id="new_publisher_user_image" class="new_publisher_user_image" method="post" enctype="multipart/form-data" data-remote="true" action="/publisher_users/upload_publisher_user_image_primary" accept-charset="UTF-8">
+	<div style="margin:0;padding:0;display:inline">
+	<input type="hidden" value="✓" name="utf8">
+	<input type="hidden" value="D1yHRJtLZof/HKsEdJSSSVpPC6mAzZfe9CqwtTjzGvs=" name="authenticity_token">
+	</div>
+	<p>
+	<input id="publisher_user_image_image" type="file" name="publisher_user_image[image]">
+	</p>
+	<p>
+	<input class="btn-submit" type="submit" value="Upload Photo" name="commit">
+	</p>
+	</form>
+	-->
+	<div style="height: 4px"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center; background-color: #f6f6f6;">
+				<div id="dvLoading_22" class="dvLoading-22 dvLoading-display-none"></div>
+			</div>
+		</div>
+	</div>
+
+	<%= form_for PublisherUserLogoImage.new, :url => upload_publisher_user_logo_image_publisher_users_path(@publisher_user_logo_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_publisher_user_logo_image'}, :remote => true do |f| %>
+	<p>
+		<%= f.file_field :image, :id => 'new_publisher_user_logo_image_image' %>
+	</p>
+	<!-- <#%= f.hidden_field 'publisher_id', :value => @publisher_id %#>
+	<#%= f.hidden_field 'primary', :value => true %#> -->
+	<p>
+		<%= f.submit :id => 'btn_submit_dialog_22', :class => 'btn-submit hidden', :value => 'Upload Photo' %>
+	</p>
+	<% end %>
+
+</div>
+
+<!-- logo image - change 23 -->
+<div class="jqmWindow jqmWindow-23" id="dialog_23">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<!-- text goes here -->
+		<div id="close_form23" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+		</div>
+		<div class="tip-content">
+			<div class="tooltiptext">
+				Close
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- <div style="height: 20px;"></div> -->
+	<div class="background-table-dialog-1">
+		<div class="table-dialog-1">
+			<div class="row">
+				<div class="cell-100percent dialog-msg-container">
+					<span>Change Logo Photo</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="height: 12px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent dialog-msg-container">
+				<span>
+					<input id="btn_dlg_submit_upload_logo_image_change" class="btn-pop-dialog" type="button" value="Upload" tabindex="">
+				</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>
+					<input id="btn_dlg_cancel_upload_logo_image_change" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+				</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 4px"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center; background-color: #f6f6f6;">
+				<div id="dvLoading_23" class="dvLoading-23 dvLoading-display-none"></div>
+			</div>
+		</div>
+	</div>
+
+	<%= form_for PublisherUserLogoImage.new, :url => upload_publisher_user_logo_image_change_publisher_users_path(@publisher_user_logo_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'change_publisher_user_logo_image'}, :remote => true do |f| %>
+	<p>
+		<%= f.file_field :image, :id => 'change_publisher_user_logo_image_image' %>
+	</p>
+	<!-- <#%= f.hidden_field 'publisher_id', :value => @publisher_id %#>
+	<#%= f.hidden_field 'primary', :value => true %#> -->
+	<p>
+		<%= f.submit :id => 'btn_submit_dialog_23', :class => 'btn-submit hidden', :value => 'Upload Photo' %>
+	</p>
+	<% end %>
+
+</div>
+
+<!-- logo image - delete 24 -->
+<div class="jqmWindow jqmWindow-24" id="dialog_24">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<!-- text goes here -->
+		<div id="close_form24" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+		</div>
+		<div class="tip-content">
+			<div class="tooltiptext">
+				Close
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- <div style="height: 20px;"></div> -->
+	<div class="background-table-dialog-1">
+		<div class="table-dialog-1">
+			<div class="dialog-msg-container">
+				<span>Delete this photo?</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 16px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center;">
+				<span>
+					<input id="btn_dlg_submit_delete_logo_image" class="btn-pop-dialog" type="button" value="Delete" tabindex="">
+				</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>
+					<input id="btn_dlg_cancel_delete_logo_image" class="btn-pop-dialog" type="button" value="Cancel" tabindex="">
+				</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 20px;"></div>
+</div>
+
+<!-- logo image - crop 25 -->
+<div class="jqmWindow jqmWindow-25" id="dialog_25">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+		</div>
+		<div class="topbar-title">
+			Photo Crop and Center
+		</div>
+		<div id="close_form25" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+		</div>
+		<div class="tip-content">
+			<div class="tooltiptext">
+				Close
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- <div style="height: 20px;"></div> -->
+	<div class="background-table-dialog-3" style="padding: 10px 0 0 0;">
+		<div class="table-dialog-1">
+			<div class="dialog-msg-container">
+				<span>600 X 600 pixels available for maximum size. Below, you may crop and center smaller sizes.</span>
+			</div>
+		</div>
+	</div>
+	<div style="height: 10px;"></div>
+	<div style="width: 100%; padding: 0 0 0 10px;">
+		<div id="render_publisher_user_logo_image_crop">
+			<%= render 'publisher_users/publisher_user_logo_image_crop' %>
+		</div>
+	</div>
+</div>
+
+<style>
+	
+	.title-container {
+		min-height: 100px;
+		border: 2px solid #999;
+		/*opacity: .45;*/
+	}
+	.title-bar {
+		/*padding: 5px 5px 5px 5px;*/
+		padding: 3px;
+		/*border-bottom: 1px solid #ccc;*/
+		background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
+		background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
+	}
+	.title-grey span {
+		color: #333;
+		float: right;
+	}
+	.title-bar-text-1 {
+	    color: #376340;
+	    font-family: Arial,Helvetica,sans-serif;
+	    font-size: 16px;
+	    font-weight: 700;
+	}
+	.title-grey {
+		padding: 5px;
+		border-bottom: 1px solid #ccc;
+		background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
+		background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
+	}
+	.coming-soon {
+		margin-top: 25px;
+		min-height: 150px;
+		border: 2px solid #999;
+		opacity: .45;
+	}
+			
+</style>
+
+<div class="publisher-users-index">
+
+	<div style="height: 10px;"></div>
+	
+	<div class="title-container">
+		<div class="title-bar" style="position: relative;">
+			<!-- <p>My Info</p> -->
+			<div style="float: left; width: 100px;">
+				<span class="title-bar-text-1">My Story</span>
+			</div>		
+			<div style="float: right; width: 200px;">
+				<div class="btn-opt-edit-container-outer">
+					<div class="btn-opt-edit-container">
+						<div id="open_edit_story_1" class="btn-opt-edit" tabindex="">
+							Edit
+						</div>
+						<div id="close_edit_story_1" class="btn-opt-edit hidden" tabindex="">
+							Cancel
+						</div>
+					</div>
+				</div>
+			</div>		
+			<div style="clear: both;"></div>
+		</div>
+	
+		<div class="table margin-0" style="height: 225px;">
+			<div class="row" style="height: 225px;">
+				<!-- <div class="cell-edit-1 padding-left-4" id="container_user_image_primary" style="height: 260px;"> -->
+				<div class="cell-edit-1" style="height: 225px; padding: 0 0 0 1px;">
+					<!-- <div id="drop_container_user_image_primary" class="drop float-left width-200"> -->
+					<!-- <div class="drop float-left width-200"> -->
+					<div class="drop">
+						<!-- <div class="float-left width-200"> -->
+						<div id="render_publisher_user_image_primary">
+							<!-- <div class="container-image"> -->
+							<%= render 'publisher_users/publisher_user_image_primary' %>
+							<!-- </div> -->
+							<!-- <div class="container-menu">
+							<#%= render 'publisher_users/publisher_user_image_primary_menu' %#>
+							</div> -->
+						</div>
+					</div>
+					<!-- <div class="float-clear"></div> -->
+					<div class="follow-stats-container" style="margin: 0 0 0 10px;">
+						<%= render 'users/stats' %>
+					</div>
+				</div>
+				<div class="cell-edit-2">
+					<div class="table pad-marg-null">
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-3 text-align-left">
+								<span class="profile-label-1">Name:</span>
+							</div>
+							<div class="cell-edit-4 edit-story-1 hidden">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-5 position-relative">
+											<div class="position-absolute top-minus-edit-1">
+												<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_name_first" name="publisher_user[name_first]" tabindex="10" type="text" value="<%= @user.name_first %>" placeholder="First Name" />
+											</div>
+										</div>
+										<div class="cell-edit-5 position-relative">
+											<div class="position-absolute top-minus-edit-1">
+												<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_name_last" name="publisher_user[name_last]" tabindex="11" type="text" value="<%= @user.name_last %>" placeholder="Last Name" />
+											</div>
+										</div>
+										<div class="cell-25"></div>
+									</div>
+								</div>
+							</div>
+							<div class="cell-edit-4 show-story-1">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-4 position-relative text-align-left">
+											<div class="position-absolute top-minus-edit-2">
+												<span id="span_publisher_user_name_first" class="profile-text-1"></span>
+												&nbsp;&nbsp;
+												<span id="span_publisher_user_name_last" class="profile-text-1"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+	
+						<div class="row pad-marg-null">
+							<div class="cell-edit-3 text-align-left">
+								<span class="profile-label-1">Email:</span>
+							</div>
+							<div class="cell-edit-4 edit-story-1 hidden">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-4 position-relative">
+											<div class="position-absolute top-minus-edit-1">
+												<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_email" name="publisher_user[email]" tabindex="12" type="text" value="<%= @publisher_user.email %>" placeholder="Email" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cell-edit-4 show-story-1">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-4 position-relative text-align-left">
+											<div class="position-absolute top-minus-edit-2">
+												<span id="span_publisher_user_email" class="profile-text-1"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-3 text-align-left">
+								<span class="profile-label-1">Location:</span>
+							</div>
+							<div class="cell-edit-4 edit-story-1 hidden">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-4 position-relative">
+											<div class="position-absolute top-minus-edit-1">
+												<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_location" name="publisher_user[location]" tabindex="13" type="text" value="<%= @publisher_user.location %>" placeholder="Location" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cell-edit-4 show-story-1">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-4 position-relative text-align-left">
+											<div class="position-absolute top-minus-edit-2">
+												<span id="span_publisher_user_location" class="profile-text-1"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-3 text-align-left">
+								<span class="profile-label-1">Alias:</span>
+							</div>
+							<div class="cell-edit-4 edit-story-1 hidden">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-4 position-relative">
+											<div class="position-absolute top-minus-edit-1">
+												<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_name_alias" name="publisher_user[name_alias]" tabindex="14" type="text" value="<%= @publisher_user.name_alias %>" placeholder="User Alias" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cell-edit-4 show-story-1">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-4 position-relative text-align-left">
+											<div class="position-absolute top-minus-edit-2">
+												<span id="span_publisher_user_name_alias" class="profile-text-1"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+	
+	
+	
+	
+	
+	
+	
+			</div>
+		</div>
+	
+		<div style="height: 4px;"></div>
+	
+		<div class="table pad-marg-edit-1" style="height: 200px;">
+			<div class="row">
+				<div class="cell-edit-2">
+					<div class="table pad-marg-null">
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-2">
+	
+								<div class="table pad-marg-null">
+									<div class="row">
+										<div class="cell-edit-6 text-align-left pad-left-20">
+											<span class="profile-label-1">Job Title:</span>
+										</div>
+										<div class="cell-edit-7 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative">
+														<div class="position-absolute top-minus-edit-1 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_job_title" name="publisher_user[job_title]" tabindex="15" type="text" value="<%= @publisher_user.job_title %>" placeholder="Job Title" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-edit-7 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative text-align-left">
+														<div class="position-absolute top-minus-edit-2">
+															<span id="span_publisher_user_job_title" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+	
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-2">
+	
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-6 text-align-left pad-left-20">
+											<span class="profile-label-1">Company:</span>
+										</div>
+										<div class="cell-edit-7 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative">
+														<div class="position-absolute top-minus-edit-1 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_name_company" name="publisher_user[name_company]" tabindex="16" type="text" value="<%= @publisher_user.name_company %>" placeholder="Company" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-edit-7 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative text-align-left">
+														<div class="position-absolute top-minus-edit-2">
+															<span id="span_publisher_user_name_company" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+	
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-2">
+	
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-6 text-align-left pad-left-20">
+											<span class="profile-label-1">Website:</span>
+										</div>
+										<div class="cell-edit-7 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative">
+														<div class="position-absolute top-minus-edit-1 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_website" name="publisher_user[website]" tabindex="18" type="text" value="<%= @publisher_user.website %>" placeholder="MyCompany@here.com" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-edit-7 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative text-align-left">
+														<div class="position-absolute top-minus-edit-2">
+															<span id="span_publisher_user_website" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-2">
+	
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-6 text-align-left pad-left-20">
+											<span class="profile-label-1">Phone:</span>
+										</div>
+										<div class="cell-edit-7 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative">
+														<div class="position-absolute top-minus-edit-1 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-edit-1 height-edit-1" id="publisher_user_phone_company" name="publisher_user[phone_company]" tabindex="19" type="text" value="<%= @publisher_user.phone_company %>" placeholder="555-555-5555" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-edit-7 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative text-align-left">
+														<div class="position-absolute top-minus-edit-2">
+															<span id="span_publisher_user_phone_company" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+					</div>
+	
+				</div>
+				
+				<!-- <div class="cell-edit-1" id="container_logo_image">
+					<div class="float-right">
+						<div id="render_publisher_user_logo_image" style="margin: 0 1px 0 0;">
+							<#%= render 'publisher_users/publisher_user_logo_image' %#>
+						</div>
+					</div>
+					<div class="float-clear"></div>
+				</div> -->
+	
+			</div>
+		</div>
+		
+		
+		<div style="height: 10px;"></div>
+	
+		<div style="width: 550px; height: 60px; text-align: center;">
+			<div class="table">
+				<div class="row">
+					<div id="btns_edit_story_1" class="cell-700 visibility-hidden">
+						<div style="display: inline-block;">
+							<div id="cancel_edit_story_1" class="btn-submit-story-1" tabindex="51">
+								Cancel
+							</div>
+						</div>
+						<div style="display: inline-block;">
+							<div id="submit_edit_story_1" class="btn-submit-story-1" tabindex="52">
+								Save
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+	</div>
+	
+	<div style="height: 10px;"></div>
+	
+	<div class="title-container">
+		<div class="title-bar" style="position: relative;">
+			<!-- <p>My Info</p> -->
+			<div style="float: left; width: 100px;">
+				<span class="title-bar-text-1">My Interests</span>
+			</div>		
+			<div style="float: right; width: 200px;">
+				<div class="btn-opt-edit-container-outer">
+					<div class="btn-opt-edit-container">
+						<div id="open_edit_story_3" class="btn-opt-edit" tabindex="">
+							Edit
+						</div>
+						<div id="close_edit_story_3" class="btn-opt-edit hidden" tabindex="">
+							Cancel
+						</div>
+					</div>
+				</div>
+			</div>		
+			<div style="clear: both;"></div>
+		</div>
+		
+		<div class="table margin-0">
+			<div class="row">
+				<div class="cell-100percent">
+					<div style="height: 10px;"></div>
+					<div class="edit-story-3 hidden" style="min-height: 120px;">
+	
+						<% if false %>
+						<!-- <textarea class="textarea-edit width-660 height-300" tabindex="" type="text" value="" placeholder="Corporate Story" disabled="disabled"> -->
+						<div class="pad-left-20">
+							<%= form_tag url_for(:controller => :publisher_users, :action => :update_story_3), :remote => true do %>
+							<%= text_area_tag :story_interest, @publisher_user.story_interest, :class => 'resize-none input-profile-1 input-profile-color-1 profile-text-1 width-660 height-200', :placeholder => 'My KnowStory Plot', :spellcheck => false %>
+							<!-- :onkeyup => 'countChar(this)' -->
+							<!-- <div id="char_num" class="char_num"></div> -->
+							<%= submit_tag 'Save', :id => 'submit_edit_story_3_hidden', :class => 'hidden' %>
+							<% end %>
+						</div>
+						<% end %>
+	
+						<%= form_for PublisherUserInterest.new, :url => update_publisher_user_interest_publisher_users_path(@publisher_user_interest_new), :html => {:multipart => true, :class => '', :id => 'new_publisher_user_interest'}, :remote => true do |f| %>
+						<%= f.hidden_field :interest_text %>
+						<%= f.submit :id => 'submit_story_3_hidden', :class => 'btn-submit hidden', :value => '' %>
+						<% end %>
+	
+						<!-- <div id="render_story_3_edit"><#%= render 'publisher_users/story_3_edit' %#></div> -->
+						<div id="textarea_publisher_user_interest_containter_edit" class="textarea-user-interest-container-edit toggle-user-interest" tabindex="">
+							<div id="render_publisher_user_interest_image_edit" class="render-user-interest-image"></div>
+							<div id="textarea_publisher_user_interest_edit" class="textarea-user-interest textarea-user-interest-edit toggle-user-interest" contenteditable="true" tabindex=""></div>
+						</div>
+	
+						<div class="btn-textarea-user-interest-story-3-container hidden" style="width: 515px; margin: 0 0 0 20px;">
+							<div style="height: 10px;"></div>
+							<div id="drop_container_story_3_attach" class="drop float-left width-200">
+								<% if false %>
+								<%= render 'publisher_users/publisher_user_interest_attach_menu' %>
+								<%= form_for PublisherUserInterestImage.new, :url => upload_publisher_user_interest_image_publisher_users_path(@publisher_user_interest_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_publisher_user_interest_image'}, :remote => true do |f| %>
+								<p>
+									<%= f.file_field :image, :id => 'new_publisher_user_interest_image_image' %>
+								</p>
+								<p>
+									<%= f.submit :id => 'btn_submit_publisher_user_interest_image', :class => 'btn-submit hidden', :value => '' %>
+								</p>
+								<% end %>
+								<% end %>
+							</div>
+							<div id="submit_story_3" class="btn-submit-story-3 float-right toggle-user-interest" tabindex="">
+								<div id="submit_story_3_text" class="submit-edit-story-3-text-2">
+									Save
+								</div>
+								<div id="submit_story_3_loader" class="submit-edit-story-3-loader hidden"></div>
+							</div>
+							<div class="float-right" style="display: inline-block; width: 6px; height: 1px"></div>
+							<div id="cancel_story_3" class="btn-submit-story-1 float-right toggle-user-interest" tabindex="">
+								<div id="cancel_story_3_text" class="submit-edit-story-3-text">
+									Cancel
+								</div>
+								<div id="cancel_story_3_loader" class="submit-edit-story-3-loader hidden"></div>
+							</div>
+						</div>
+	
+						<!-- <div style="height: 10px;"></div> -->
+	
+						<!-- <div class="text-align-center" style="width: 700px; height: 60px;">
+						<div class="table">
+						<div class="row">
+						<div id="btns_edit_story_3" class="cell-700">
+						<div style="display: inline-block;">
+						<div id="cancel_edit_story_3" class="btn-submit-story-1" tabindex="">Cancel</div>
+						</div>
+						<div style="display: inline-block;">
+						<div id="submit_edit_story_3" class="btn-submit-story-1" tabindex="">Save</div>
+						</div>
+						</div>
+						</div>
+						</div>
+						</div> -->
+					</div>
+					<div class="show-story-3" style="min-height: 120px;">
+						<!-- <div class="text-align-left"> -->
+						<!-- <div class="textarea-user-interest-container">
+						<#%= render 'publisher_users/story_3_edit' %#>
+						</div> -->
+						<div class="textarea-user-interest-container">
+							<div id="render_publisher_user_interest_image" class="render-user-interest-image"></div>
+							<div id="textarea_publisher_user_interest" class="textarea-user-interest textarea-user-interest-show" tabindex=""></div>
+						</div>
+						<!-- <#%= render 'publisher_users/story_3'%#> -->
+						<!-- </div> -->
+						<!-- </div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+	</div>
+	
+	<div style="height: 10px;"></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="table-profile" style="height: 100%;">
+		<div class="row-profile">
+			<div class="profile-left-col">
+	
+	
+				<div style="height: 20px;"></div>
+				<div class="publisher-item-border">
+	
+	
+	
+	
+	
+	
+	
+	
+					<% if false %>
+					<div class="table margin-0">
+						<div class="row">
+							<div class="cell-100percent">
+								<div style="height: 10px;"></div>
+								<div class="edit-story-3  height-250 hidden">
+									<!-- <textarea class="textarea-edit width-660 height-300" tabindex="" type="text" value="" placeholder="Corporate Story" disabled="disabled"> -->
+									<div class="pad-left-20">
+										<%= form_tag url_for(:controller => :publisher_users, :action => :update_story_3), :remote => true do %>
+										<%= text_area_tag :story_interest, @publisher_user.story_interest, :class => 'resize-none input-profile-1 input-profile-color-1 profile-text-1 width-660 height-200', :placeholder => 'What I know / What I can do / Interests' %>
+										<!-- :onkeyup => 'countChar(this)' -->
+										<!-- <div id="char_num" class="char_num"></div> -->
+										<%= submit_tag 'Save', :id => 'submit_edit_story_3_hidden', :class => 'hidden' %>
+										<% end %>
+									</div>
+									<div style="height: 10px;"></div>
+									<div class="text-align-center" style="width: 550px; height: 60px;">
+										<div class="table">
+											<div class="row">
+												<!-- <div id="btns_edit_story_3" class="cell-700 visibility-hidden"> -->
+												<div id="btns_edit_story_3" class="cell-700">
+													<div style="display: inline-block;">
+														<div id="cancel_edit_story_3" class="btn-submit-story-1" tabindex="">
+															Cancel
+														</div>
+													</div>
+													<div style="display: inline-block;">
+														<div id="submit_edit_story_3" class="btn-submit-story-1" tabindex="">
+															Save
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="show-story-3 height-250">
+									<div class="text-align-left pad-left-20">
+										<div id="render_story_3">
+											<%= render 'publisher_users/story_3'%>
+										</div>
+										<!-- <textarea id="publisher_story_corporate" class="textarea-edit input-profile-1 input-profile-color-1 width-660 height-300" tabindex="" type="text" placeholder="Corporate Story"><#%= @publisher_story_corporate %#></textarea> -->
+									</div>
+									<!-- <span id="span_story_corporate" class="profile-text-1"></span> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<% end %>
+	
+					<div style="height: 20px;"></div>
+				</div><!-- End border div -->
+	
+				<div style="width: 550px; border-bottom: 2px solid #eee;"></div>
+	
+				<div class="coming-soon">
+					<p class="title-grey">
+						My Connections <span>(Coming Soon)</span>
+					</p>
+				</div>
+				<div class="coming-soon">
+					<p class="title-grey">
+						My Groups <span>(Coming Soon)</span>
+					</p>
+				</div>
+				<div class="coming-soon" style="height:325px;">
+					<p class="title-grey">
+						My Wishlist <span>(Coming Soon)</span>
+					</p>
+				</div>
+				<div class="coming-soon" style="">
+					<p class="title-grey">
+						KnowCred <span>(Coming Soon)</span>
+					</p>
+				</div>
+				<div class="coming-soon" style="">
+					<p class="title-grey">
+						Points &amp; Awards <span>(Coming Soon)</span>
+					</p>
+				</div>
+				<div class="coming-soon" style="height:325px;">
+					<p class="title-grey">
+						My Apps &amp; Things <span>(Coming Soon)</span>
+					</p>
+				</div>
+	
+				<!-- <div style="height: 20px;"></div>
+				<div class="table pad-marg-null">
+				<div class="row">
+				<div class="cell-100percent">
+				<div class="pad-left-20">
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #185C61;"></div>
+				&nbsp;
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #1B666B;"></div>
+				&nbsp;
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #1F7C82;"></div>
+				&nbsp;
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #2899A1;"></div>
+				&nbsp;
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #3DC8D1;"></div>
+				</div>
+				</div>
+				</div>
+				</div>
+				<div style="height: 20px;"></div>
+				<div class="table pad-marg-null">
+				<div class="row">
+				<div class="cell-100percent">
+				<div class="pad-left-20">
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #BD7A26;"></div>
+				&nbsp;
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #D98D2D;"></div>
+				&nbsp;
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #FAC582;"></div>
+				</div>
+				</div>
+				</div>
+				</div>
+				<div style="height: 20px;"></div>
+				<div class="table pad-marg-null">
+				<div class="row">
+				<div class="cell-100percent">
+				<div class="pad-left-20">
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #11520B;"></div>
+				&nbsp;
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #478A3E;"></div>
+				</div>
+				</div>
+				</div>
+				</div>
+				<div style="height: 20px;"></div>
+				<div class="table pad-marg-null">
+				<div class="row">
+				<div class="cell-100percent">
+				<div class="pad-left-20">
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #376340;"></div>
+				&nbsp;
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #49853f;"></div>
+				&nbsp;
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #8eb388;"></div>
+				&nbsp;
+				<div style="display: inline-block; width: 30px; height: 30px; background-color: #c0e7bd;"></div>
+				</div>
+				</div>
+				</div>
+				</div>
+				<div style="height:200px;"></div> -->
+	
+				<!-- <div class="delete-record"style="width: 100%; text-align: center;">
+				<h5>
+				<#% delete_all_msg = "Delete all records and reset index in PublisherUserImages?" %#>
+				<#%= button_to "Delete All Records and Reset Index in PublisherUserImages", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'btn-reset' %#>
+				</h5>
+				</div> -->
+			</div>
+	
+			<div style="display: table-cell; width:25px;"></div>
+			<!-- This adds small space in middle of columns-->
+	
+	
+			<% if false %>
+			<div style="" id="right-column-home-publisher">
+				<div class="" style="height: 50px; position: relative;">
+	
+					<!-- 24 Mar 15 Activity moved to here renamed share-->
+	
+					<div class="publisher-item-border" style="margin-bottom:25px;">
+	
+						<div class="title-bar-profile-1 title-bar-profile-1-top-border add-border-right-section">
+							<div class="tbl-title-bar-profile">
+								<div class="row-title-bar-profile">
+									<div class="cell-title-bar-profile-left-long padding-left-8">
+										<div class="position-relative">
+											<div class="position-absolute top-minus-24">
+												<span>Share</span>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="cell-title-bar-profile-center">
+									<span></span>
+									</div> -->
+									<div class="cell-title-bar-profile-right">
+										<div class="btn-opt-edit-container-outer">
+											<!-- <div class="btn-opt-edit-container">
+											<div id="open_edit_story_4" class="btn-opt-edit" tabindex="">
+											Edit
+											</div>
+											<div id="close_edit_story_4" class="btn-opt-edit hidden" tabindex="">
+											Cancel
+											</div>
+											</div> -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="table margin-0" style="width: 550px; height: auto;">
+							<div class="row">
+								<div class="cell-100percent add-border-right-section">
+									<div style="height: 10px;"></div>
+									<div class="edit-story-4 textarea-add-post-user-parent" style="float: right; padding: 0 20px 0 0;">
+	
+										<%= form_for PostUserComment.new, :url => create_post_user_comment_publisher_users_path(@post_user_comment_new), :html => {:multipart => true, :class => '', :id => 'new_post_user_comment'}, :remote => true do |f| %>
+										<%= f.hidden_field :comment_text %>
+										<%= f.hidden_field :post_user_id %>
+										<%= f.submit :id =>'submit_post_user_comment_hidden', :class => 'btn-submit hidden toggle-comment', :value => '' %>
+										<% end %>
+	
+										<%= form_for PostUser.new, :url => create_post_user_publisher_users_path(@post_user_new), :html => {:multipart => true, :class => '', :id => 'new_post_user'}, :remote => true do |f| %>
+										<%= f.hidden_field :post_text %>
+										<%= f.submit :id => 'submit_story_4_hidden', :class => 'btn-submit hidden', :value => '' %>
+										<% end %>
+	
+										<div class="textarea-add-post-user-container toggle-post-user" tabindex="">
+											<div id="render_post_user_image" class="render-post-user-image"></div>
+											<div id="textarea_add_post_user" class="textarea-add-post-user toggle-post-user textarea-add-post-user-inactive" contenteditable="true" tabindex="101">
+												<br>
+											</div>
+										</div>
+	
+										<div class="btn-textarea-add-post-user-story-4-container hidden">
+											<div style="height: 10px;"></div>
+											<div id="drop_container_story_4_attach" class="drop float-left width-200">
+												<%= render 'publisher_users/post_user_attach_menu' %>
+	
+												<%= form_for PostUserImage.new, :url => upload_post_user_image_publisher_users_path(@post_user_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_post_user_image'}, :remote => true do |f| %>
+												<p>
+													<%= f.file_field :image, :id => 'new_post_user_image_image' %>
+												</p>
+												<!-- <#%= f.hidden_field :post_user_id, :val => nil %#> -->
+												<p>
+													<%= f.submit :id => 'btn_submit_post_user_image', :class => 'btn-submit hidden', :value => '' %>
+												</p>
+												<% end %>
+											</div>
+											<div id="submit_story_4" class="btn-submit-story-2 float-right toggle-post-user" tabindex="103">
+												<div id="submit_story_4_text" class="submit-edit-story-4-text-2">
+													Add
+												</div>
+												<div id="submit_story_4_loader" class="submit-edit-story-4-loader hidden"></div>
+											</div>
+											<div class="float-right" style="display: inline-block; width: 6px; height: 1px"></div>
+											<div id="cancel_story_4" class="btn-submit-story-1 float-right toggle-post-user" tabindex="102">
+												<div id="cancel_story_4_text" class="submit-edit-story-4-text">
+													Cancel
+												</div>
+												<div id="cancel_story_4_loader" class="submit-edit-story-4-loader hidden"></div>
+											</div>
+										</div>
+									</div>
+									<div style="clear: both;"></div>
+	
+									<!-- <div id="btn_test" style="width: 20px; height: 10px; background-color: red;"></div> -->
+	
+									<div style="height: 30px;"></div>
+	
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End activity Section-->
+	
+					<!-- Mystory section moved here 24 mar 15-->
+	
+					<div class="publisher-item-border" style="padding-bottom:30px;">
+	
+						<div class="title-bar-profile-1 title-bar-profile-1-top-border">
+							<div class="tbl-title-bar-profile">
+								<div class="row-title-bar-profile">
+									<div class="cell-title-bar-profile-left-long padding-left-8">
+										<div class="position-relative">
+											<div class="position-absolute top-minus-24">
+												<span>My Story</span>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="cell-title-bar-profile-center">
+									<span></span>
+									</div> -->
+									<div class="cell-title-bar-profile-right">
+										<div class="btn-opt-edit-container-outer">
+											<div class="btn-opt-edit-container">
+												<div id="open_edit_story_2" class="btn-opt-edit" tabindex="">
+													Edit
+												</div>
+												<div id="close_edit_story_2" class="btn-opt-edit hidden" tabindex="">
+													Cancel
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="table margin-0">
+							<div class="row">
+								<div class="cell-100percent">
+									<div style="height: 10px;"></div>
+									<div class="edit-story-2 hidden">
+	
+										<% if false %>
+										<!-- <textarea class="textarea-edit width-660 height-300" tabindex="" type="text" value="" placeholder="Corporate Story" disabled="disabled"> -->
+										<div class="pad-left-20">
+											<%= form_tag url_for(:controller => :publisher_users, :action => :update_story_2), :remote => true do %>
+											<%= text_area_tag :story_plot, @publisher_user.story_plot, :class => 'resize-none input-profile-1 input-profile-color-1 profile-text-1 width-660 height-200', :placeholder => 'My KnowStory Plot', :spellcheck => false %>
+											<!-- :onkeyup => 'countChar(this)' -->
+											<!-- <div id="char_num" class="char_num"></div> -->
+											<%= submit_tag 'Save', :id => 'submit_edit_story_2_hidden', :class => 'hidden' %>
+											<% end %>
+										</div>
+										<% end %>
+	
+										<%= form_for PublisherUserPlot.new, :url => update_publisher_user_plot_publisher_users_path(@publisher_user_plot_new), :html => {:multipart => true, :class => '', :id => 'new_publisher_user_plot'}, :remote => true do |f| %>
+										<%= f.hidden_field :plot_text %>
+										<%= f.submit :id => 'submit_story_2_hidden', :class => 'btn-submit hidden', :value => '' %>
+										<% end %>
+	
+										<!-- <div id="render_story_2_edit"><#%= render 'publisher_users/story_2_edit' %#></div> -->
+										<div id="textarea_publisher_user_plot_containter_edit" class="textarea-user-plot-container-edit toggle-user-plot" tabindex="">
+											<div id="render_publisher_user_plot_image_edit" class="render-user-plot-image"></div>
+											<div id="textarea_publisher_user_plot_edit" class="textarea-user-plot textarea-user-plot-edit toggle-user-plot" contenteditable="true" tabindex=""></div>
+										</div>
+	
+										<div class="btn-textarea-user-plot-story-2-container hidden" style="width: 515px; margin: 0 0 0 20px;">
+											<div style="height: 10px;"></div>
+											<div id="drop_container_story_2_attach" class="drop float-left width-200">
+												<% if false %>
+												<%= render 'publisher_users/publisher_user_plot_attach_menu' %>
+												<%= form_for PublisherUserPlotImage.new, :url => upload_publisher_user_plot_image_publisher_users_path(@publisher_user_plot_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_publisher_user_plot_image'}, :remote => true do |f| %>
+												<p>
+													<%= f.file_field :image, :id => 'new_publisher_user_plot_image_image' %>
+												</p>
+												<p>
+													<%= f.submit :id => 'btn_submit_publisher_user_plot_image', :class => 'btn-submit hidden', :value => '' %>
+												</p>
+												<% end %>
+												<% end %>
+											</div>
+											<div id="submit_story_2" class="btn-submit-story-2 float-right toggle-user-plot" tabindex="">
+												<div id="submit_story_2_text" class="submit-edit-story-2-text-2">
+													Save
+												</div>
+												<div id="submit_story_2_loader" class="submit-edit-story-2-loader hidden"></div>
+											</div>
+											<div class="float-right" style="display: inline-block; width: 6px; height: 1px"></div>
+											<div id="cancel_story_2" class="btn-submit-story-1 float-right toggle-user-plot" tabindex="">
+												<div id="cancel_story_2_text" class="submit-edit-story-2-text">
+													Cancel
+												</div>
+												<div id="cancel_story_2_loader" class="submit-edit-story-2-loader hidden"></div>
+											</div>
+										</div>
+	
+										<!-- <div style="height: 10px;"></div> -->
+	
+										<!-- <div class="text-align-center" style="width: 700px; height: 60px;">
+										<div class="table">
+										<div class="row">
+										<div id="btns_edit_story_2" class="cell-700">
+										<div style="display: inline-block;">
+										<div id="cancel_edit_story_2" class="btn-submit-story-1" tabindex="">Cancel</div>
+										</div>
+										<div style="display: inline-block;">
+										<div id="submit_edit_story_2" class="btn-submit-story-1" tabindex="">Save</div>
+										</div>
+										</div>
+										</div>
+										</div>
+										</div> -->
+									</div>
+									<div class="show-story-2">
+										<!-- <div class="text-align-left"> -->
+										<!-- <div class="textarea-user-plot-container">
+										<#%= render 'publisher_users/story_2_edit' %#>
+										</div> -->
+										<div class="textarea-user-plot-container">
+											<div id="render_publisher_user_plot_image" class="render-user-plot-image"></div>
+											<div id="textarea_publisher_user_plot" class="textarea-user-plot textarea-user-plot-show" tabindex=""></div>
+										</div>
+										<!-- <#%= render 'publisher_users/story_2'%#> -->
+										<!-- </div> -->
+										<!-- </div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Mystory section-->
+	
+					<!-- KnowCred Section -->
+					<div id="coming-soon" style="">
+						<p class="title-grey">
+							KnowCred <span>(Coming Soon)</span>
+						</p>
+					</div><!-- End KnowCred Section -->
+	
+					<!-- Points & Awards Section -->
+					<div id="coming-soon" style="">
+						<p class="title-grey">
+							Points &amp; Awards <span>(Coming Soon)</span>
+						</p>
+					</div><!-- End Points & Awards Section -->
+	
+					<div id="coming-soon" style="height:325px;">
+						<p class="title-grey">
+							My Apps &amp; Things <span>(Coming Soon)</span>
+						</p>
+					</div>
+	
+				</div>
+			</div>
+			<% end %>
+			
+			
+			
+		</div>
+	</div>
+
+
+</div>
+
+
+<script>
+	// *****
+	// full screen image gallery
+
+	// $(function(){
+	// $(window).load( function() {
+	$(document).ready(function() {
+
+		$("#dialog_11 .close-container").on('click', function() {
+			// alert('close_form11');
+			$(this).css({ 'position' : 'absolute' });
+		});
+		// $(document).on('click', '#dialog_11 .close-container', function() {				
+			// alert('close_form11');
+			// // $(this).css({ 'position' : 'absolute' });
+		// });
+
+		// $('.image img').fullscreenslides();
+		$('.image div').fullscreenslides();
+
+		var $container = $('#fullscreenSlideshowContainer');
+		$container.bind("init", function() {
+			$container.append('<div class="ui" id="fs-close">&times;</div>').append('<div class="ui" id="fs-loader">Loading...</div>');
+			// .append('<div class="ui" id="fs-prev">&lt;</div>')
+			// .append('<div class="ui" id="fs-next">&gt;</div>')
+			// .append('<div class="ui" id="fs-caption"><span></span></div>');
+
+			// $('#fs-prev').click(function(){
+			// $container.trigger("prevSlide");
+			// });
+			// $('#fs-next').click(function(){
+			// $container.trigger("nextSlide");
+			// });
+			$('#fs-close').click(function() {
+				$container.trigger("close");
+			});
+		}).bind("startLoading", function() {
+			$('#fs-loader').show();
+		}).bind("stopLoading", function() {
+			$('#fs-loader').hide();
+		});
+		// .bind("startOfSlide", function(event, slide) {
+		// $('#fs-caption span').text(slide.title);
+		// $('#fs-caption').show();
+		// })
+		// .bind("endOfSlide", function(event, slide) {
+		// $('#fs-caption').hide();
+		// });
+
+	});
+
+</script>
+
+<script>
+	// *****
+	// post_user_like
+
+	function create_post_user_like(id, nlist) {
+		// alert("create_post_user_like(post_user_id)");
+		var formData = {
+			post_user_id : id,
+			n_list : nlist
+		};
+		$.ajax({
+			type : 'POST',
+			data : formData,
+			url : '/publisher_users/create_post_user_like',
+			dataType : "script",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+	}
+
+	function delete_post_user_like(id, nlist) {
+		// alert("delete_post_user_like(post_user_id)");
+		var formData = {
+			post_user_id : id,
+			n_list : nlist
+		};
+		$.ajax({
+			type : 'POST',
+			data : formData,
+			url : '/publisher_users/destroy_post_user_like',
+			dataType : "script",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+	}
+
+</script>
+
+<script>
+	// *****
+	// post_user
+
+	var b_edit_post_user = false;
+	var post_user_id_delete = null;
+
+	function edit_textarea_post_user() {
+		b_edit_post_user = true;
+		$("#textarea_add_post_user").removeClass("textarea-add-post-user-inactive").addClass("textarea-add-post-user-active");
+		$(".btn-textarea-add-post-user-story-4-container").removeClass("hidden");
+	}
+
+	function reset_textarea_post_user() {
+		$("#render_post_user_image").html("");
+		$("#textarea_add_post_user").html("<br>");
+		$(".btn-textarea-add-post-user-story-4-container").addClass("hidden");
+		$("#textarea_add_post_user").removeClass("textarea-add-post-user-active").addClass("textarea-add-post-user-inactive");
+		// $("#textarea_add_post_user").focus();
+		// if ($ttpost != null) {
+		b_edit_post_user = false;
+		// $bbpost.addClass("hidden");
+		// $ttpost.removeClass("textarea-add-post-user-active").addClass("textarea-add-post-user-inactive");
+		// $ttpost.html("<br>");
+		// $ttpost.focus();
+		// $ttpost = null;
+		// $bbpost = null;
+		// }
+	}
+
+	function delete_post_user(id) {
+		// alert("delete_post_user");
+		var formData = {
+			post_user_id : id
+		};
+		$.ajax({
+			type : 'POST',
+			data : formData,
+			url : '/publisher_users/destroy_post_user',
+			dataType : "script",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+	}
+
+	function cancel_post_user() {
+		// alert("delete_post_user");
+		// var formData = {post_user_id:id};
+		$.ajax({
+			type : 'POST',
+			// data : formData,
+			url : '/publisher_users/cancel_post_user',
+			dataType : "script",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+	}
+
+	function cancel_post_user_on_close() {
+		var w = $("#render_post_user_image").html();
+		if (!((w == "<br>") || (w == "") )) {
+			$.ajax({
+				type : 'POST',
+				url : '/publisher_users/cancel_post_user_on_close',
+				dataType : "script",
+				async : false,
+				beforeSend : function(xhr) {
+					xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+				} // ,
+			});
+		}
+	}
+
+	var drop_story_4_attach_visible = false;
+	var btn_1_drop_add_post_user_image_clicked = false;
+
+	function drop_story_4_attach_show() {
+		$("#drop_story_4_attach").addClass('drop');
+		$("#container_drop_story_4_attach").removeClass('hidden');
+		$("#drop_story_4_attach div div.dropdownContain div.dropOut").fadeIn(200, function() {
+			$(this).css({
+				'margin-top' : 10
+			});
+		});
+		$("#caret_story_4_attach").removeClass("nav-caret-down").addClass("nav-caret-up");
+		drop_story_4_attach_visible = true;
+	}
+
+	function drop_story_4_attach_hide() {
+		// alert('drop_story_4_attach_hide');
+		$("#drop_story_4_attach").removeClass('drop');
+		$("#container_drop_story_4_attach").addClass('hidden');
+		drop_story_4_attach_visible = false;
+		// $("#render_nav_avatar").removeClass("avatar-focus");
+		// $("#nav_caret_container").removeClass("nav-caret-focus");
+		$("#drop_story_4_attach div div.dropdownContain div.dropOut").css({
+			'margin-top' : 0
+		});
+		$("#caret_story_4_attach").removeClass("nav-caret-up").addClass("nav-caret-down");
+
+		if (btn_1_drop_add_post_user_image_clicked == true) {
+			btn_1_drop_add_post_user_image_clicked = false;
+			// alert('btn_1_drop_add_post_user_image_clicked == true');
+			$("form#new_post_user_image input#new_post_user_image_image").click();
+		}
+	}
+
+	function drop_toggle_story_4_attach() {
+		if (drop_story_4_attach_visible) {
+			drop_story_4_attach_hide();
+		} else {
+			drop_story_4_attach_show();
+		}
+	}
+
+</script>
+
+<script>
+	// *****
+	// post_user_comment
+
+	var post_user_comment_comment_id_delete = null;
+	var post_user_comment_post_user_id_delete = null;
+
+	function delete_post_user_comment() {
+		// alert("delete_post_user_comment");
+		var formData = {
+			post_user_comment_id : post_user_comment_comment_id_delete,
+			post_user_id : post_user_comment_post_user_id_delete
+		};
+		$.ajax({
+			type : 'POST',
+			data : formData,
+			url : '/publisher_users/destroy_post_user_comment',
+			dataType : "script",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+	}
+
+	function reset_post_user_comment_delete() {
+		post_user_comment_comment_id_delete = null;
+		post_user_comment_post_user_id_delete = null;
+	}
+
+	var a_comments = [];
+
+	function edit_textarea_comment($t, $b) {
+		// textarea_add_comment_<#%= post_user.id %#>
+		// btn_add_comment_<#%= post_user.id %#>
+		b_comments = [];
+		var is_open = false;
+		for ( i = 0; i < a_comments.length; i++) {
+			var $t_held = a_comments[i][0];
+			if ($t.attr("id") == $t_held.attr("id")) {
+				is_open = true;
+			} else {
+				var $b_held = a_comments[i][1];
+				var v = $t_held.html();
+				if ((v == "<br>") || (v == "")) {
+					$b_held.addClass("hidden");
+					$t_held.removeClass("add-comment-container-active").addClass("add-comment-container-inactive");
+					$t_held.html("<br>");
+				} else {
+					var b = [];
+					b.push($t_held);
+					b.push($b_held);
+					b_comments.push(b);
+				}
+			}
+		}
+		var c = [];
+		c.push($t);
+		c.push($b);
+		b_comments.push(c);
+		if (!is_open) {
+			$t.removeClass("add-comment-container-inactive").addClass("add-comment-container-active");
+			$b.removeClass("hidden");
+		}
+		a_comments = b_comments;
+	}
+
+	function reset_textarea_comment() {
+		b_comments = [];
+		for ( i = 0; i < a_comments.length; i++) {
+			$t = a_comments[i][0];
+			$b = a_comments[i][1];
+			var v = $t.html();
+			if ((v == "<br>") || (v == "")) {
+				$b.addClass("hidden");
+				$t.removeClass("add-comment-container-active").addClass("add-comment-container-inactive");
+				$t.html("<br>");
+			} else {
+				var b = [];
+				b.push($t);
+				b.push($b);
+				b_comments.push(b);
+			}
+		}
+		a_comments = b_comments;
+	}
+
+	function reset_textarea_comment_callback(post_user_id) {
+		var t_id = "textarea_add_comment_" + post_user_id;
+		b_comments = [];
+		for ( i = 0; i < a_comments.length; i++) {
+			var $t_held = a_comments[i][0];
+			if (!(t_id == $t_held.attr("id") )) {
+				var b = [];
+				var $b_held = a_comments[i][1];
+				b.push($t_held);
+				b.push($b_held);
+				b_comments.push(b);
+			}
+		}
+		a_comments = b_comments;
+		var $t = $("#" + t_id);
+		var b_id = "#btn_add_comment_" + post_user_id;
+		var $b = $(b_id);
+		$b.addClass("hidden");
+		$t.removeClass("add-comment-container-active").addClass("add-comment-container-inactive");
+		$t.html("<br>");
+		$t.focus();
+	}
+
+</script>
+
+<script>
+	// function getScrollPos() {
+	// return $(window).scrollTop();
+	// }
+
+	var user_slug =  
+ <%= @user.slug %>
+	;
+
+	var scroll_top = 0;
+
+</script>
+
+<script>
+	// *****
+	// publisher_user_interest
+
+	function show_edit_story_3() {
+		$("#open_edit_story_3, .show-story-3").fadeOut(200, function() {
+			$("#open_edit_story_3").addClass("hidden");
+			$("#close_edit_story_3").fadeIn(200).removeClass("hidden");
+			$(".show-story-3").addClass("hidden");
+			$(".edit-story-3").fadeIn(300).removeClass("hidden");
+			// $("#btns_edit_story_3").fadeIn(200).removeClass("visibility-hidden");
+		});
+	}
+
+	function cancel_edit_story_3() {
+		$(".edit-story-3").fadeOut(200, function() {
+			$(".edit-story-3").addClass("hidden");
+			$(".show-story-3").removeClass("hidden").fadeIn(300);
+			$("#open_edit_story_3").removeClass("hidden").fadeIn(200);
+			$("#close_edit_story_3").addClass("hidden");
+			// $("#btns_edit_story_1").removeAttr("style");
+			// $("#btns_edit_story_1").addClass("hidden");
+			// $("#btns_edit_story_3").addClass("visibility-hidden");
+		});
+	}
+
+</script>
+
+<script type="text/javascript">
+	// *****
+	// html textarea - post_user
+
+	var savedRange_post_user, isInFocus_post_user;
+
+	function saveSelection_post_user() {
+		if (window.getSelection)//non IE Browsers
+		{
+			savedRange_post_user = window.getSelection().getRangeAt(0);
+		} else if (document.selection)//IE
+		{
+			savedRange_post_user = document.selection.createRange();
+		}
+	}
+
+	function restoreSelection_post_user() {
+		isInFocus_post_user = true;
+		document.getElementById("textarea_add_post_user").focus();
+		if (savedRange_post_user != null) {
+			if (window.getSelection)//non IE and there is already a selection
+			{
+				var s = window.getSelection();
+				if (s.rangeCount > 0)
+					s.removeAllRanges();
+				s.addRange(savedRange_post_user);
+			} else if (document.createRange)//non IE and no selection
+			{
+				window.getSelection().addRange(savedRange_post_user);
+			} else if (document.selection)//IE
+			{
+				savedRange_post_user.select();
+			}
+		}
+	}
+
+	//this part onwards is only needed if you want to restore selection onclick
+	var isInFocus_post_user = false;
+	function onDivBlur_post_user() {
+		isInFocus_post_user = false;
+	}
+
+	function cancelEvent_post_user(e) {
+		if (isInFocus_post_user == false && savedRange_post_user != null) {
+			if (e && e.preventDefault) {
+				//alert("FF");
+				e.stopPropagation();
+				// DOM style (return false doesn't always work in FF)
+				e.preventDefault();
+			} else {
+				window.event.cancelBubble = true;
+				//IE stopPropagation
+			}
+			restoreSelection_post_user();
+			return false;
+			// false = IE style
+		}
+	}
+
+	function insertTextAtCursor_post_user(text) {
+		var sel, range, html;
+		if (window.getSelection) {
+			sel = window.getSelection();
+			if (sel.getRangeAt && sel.rangeCount) {
+				range = sel.getRangeAt(0);
+				range.deleteContents();
+				range.insertNode(document.createTextNode(text));
+				range.collapse(false);
+			}
+		} else if (document.selection && document.selection.createRange) {
+			document.selection.createRange().text = text;
+		}
+	}
+
+</script>
+
+<script type="text/javascript">
+	// *****
+	// html textarea - publisher_user_plot
+
+	var savedRange_publisher_user_plot, isInFocus_publisher_user_plot;
+
+	function saveSelection_publisher_user_plot() {
+		if (window.getSelection)//non IE Browsers
+		{
+			savedRange_publisher_user_plot = window.getSelection().getRangeAt(0);
+		} else if (document.selection)//IE
+		{
+			savedRange_publisher_user_plot = document.selection.createRange();
+		}
+	}
+
+	function restoreSelection_publisher_user_plot() {
+		isInFocus_publisher_user_plot = true;
+		document.getElementById("textarea_publisher_user_plot_edit").focus();
+		if (savedRange_publisher_user_plot != null) {
+			if (window.getSelection)//non IE and there is already a selection
+			{
+				var s = window.getSelection();
+				if (s.rangeCount > 0)
+					s.removeAllRanges();
+				s.addRange(savedRange_publisher_user_plot);
+			} else if (document.createRange)//non IE and no selection
+			{
+				window.getSelection().addRange(savedRange_publisher_user_plot);
+			} else if (document.selection)//IE
+			{
+				savedRange_publisher_user_plot.select();
+			}
+		}
+	}
+
+	//this part onwards is only needed if you want to restore selection onclick
+	var isInFocus_publisher_user_plot = false;
+	function onDivBlur_publisher_user_plot() {
+		isInFocus_publisher_user_plot = false;
+	}
+
+	function cancelEvent_publisher_user_plot(e) {
+		if (isInFocus_publisher_user_plot == false && savedRange_publisher_user_plot != null) {
+			if (e && e.preventDefault) {
+				//alert("FF");
+				e.stopPropagation();
+				// DOM style (return false doesn't always work in FF)
+				e.preventDefault();
+			} else {
+				window.event.cancelBubble = true;
+				//IE stopPropagation
+			}
+			restoreSelection_publisher_user_plot();
+			return false;
+			// false = IE style
+		}
+	}
+
+	function insertTextAtCursor_publisher_user_plot(text) {
+		var sel, range, html;
+		if (window.getSelection) {
+			sel = window.getSelection();
+			if (sel.getRangeAt && sel.rangeCount) {
+				range = sel.getRangeAt(0);
+				range.deleteContents();
+				range.insertNode(document.createTextNode(text));
+				range.collapse(false);
+			}
+		} else if (document.selection && document.selection.createRange) {
+			document.selection.createRange().text = text;
+		}
+	}
+
+</script>
+
+<script type="text/javascript">
+	// *****
+	// html textarea - publisher_user_interest
+
+	var savedRange_publisher_user_interest, isInFocus_publisher_user_interest;
+
+	function saveSelection_publisher_user_interest() {
+		if (window.getSelection)//non IE Browsers
+		{
+			savedRange_publisher_user_interest = window.getSelection().getRangeAt(0);
+		} else if (document.selection)//IE
+		{
+			savedRange_publisher_user_interest = document.selection.createRange();
+		}
+	}
+
+	function restoreSelection_publisher_user_interest() {
+		isInFocus_publisher_user_interest = true;
+		document.getElementById("textarea_publisher_user_interest_edit").focus();
+		if (savedRange_publisher_user_interest != null) {
+			if (window.getSelection)//non IE and there is already a selection
+			{
+				var s = window.getSelection();
+				if (s.rangeCount > 0)
+					s.removeAllRanges();
+				s.addRange(savedRange_publisher_user_interest);
+			} else if (document.createRange)//non IE and no selection
+			{
+				window.getSelection().addRange(savedRange_publisher_user_interest);
+			} else if (document.selection)//IE
+			{
+				savedRange_publisher_user_interest.select();
+			}
+		}
+	}
+
+	//this part onwards is only needed if you want to restore selection onclick
+	var isInFocus_publisher_user_interest = false;
+	function onDivBlur_publisher_user_interest() {
+		isInFocus_publisher_user_interest = false;
+	}
+
+	function cancelEvent_publisher_user_interest(e) {
+		if (isInFocus_publisher_user_interest == false && savedRange_publisher_user_interest != null) {
+			if (e && e.preventDefault) {
+				//alert("FF");
+				e.stopPropagation();
+				// DOM style (return false doesn't always work in FF)
+				e.preventDefault();
+			} else {
+				window.event.cancelBubble = true;
+				//IE stopPropagation
+			}
+			restoreSelection_publisher_user_interest();
+			return false;
+			// false = IE style
+		}
+	}
+
+	function insertTextAtCursor_publisher_user_interest(text) {
+		var sel, range, html;
+		if (window.getSelection) {
+			sel = window.getSelection();
+			if (sel.getRangeAt && sel.rangeCount) {
+				range = sel.getRangeAt(0);
+				range.deleteContents();
+				range.insertNode(document.createTextNode(text));
+				range.collapse(false);
+			}
+		} else if (document.selection && document.selection.createRange) {
+			document.selection.createRange().text = text;
+		}
+	}
+
+</script>
+
+<!-- <script>
+
+// *****
+// absolute mouse position
+
+(function($){
+$.mlp = {x:0,y:0}; // Mouse Last Position
+function documentHandler(){
+var $current = this === document ? $(this) : $(this).contents();
+$current.mousemove(function(e){jQuery.mlp = {x:e.pageX,y:e.pageY}});
+$current.find("iframe").load(documentHandler);
+}
+$(documentHandler);
+$.fn.ismouseover = function(overThis) {
+// alert('called');
+var result = false;
+this.eq(0).each(function() {
+// var $current = $(this).is("iframe") ? $(this).contents().find("body") : $(this);
+var $current = $(this);
+// var $current = $("#profile_figure");
+var offset = $current.offset();
+// alert($.mlp.x);
+// alert(offset.left);
+
+result = (offset.left <= $.mlp.x) && ((offset.left + $current.outerWidth()) > $.mlp.x) && (offset.top <= $.mlp.y) && ((offset.top + $current.outerHeight()) > $.mlp.y);
+
+// result = 2 > 1;
+
+// if ((offset.left <= $.mlp.x) && ((offset.left + $current.outerWidth()) > $.mlp.x) && (offset.top <= $.mlp.y) && ((offset.top + $current.outerHeight()) > $.mlp.y)) {
+// result = true;
+// }
+// else {
+// result = true;
+// }
+});
+// return "just return this";
+// if (result) {
+// alert('true');
+// }
+// else {
+// alert('false');
+// }
+return result;
+};
+})(jQuery);
+
+// function ismouseover(obj) {
+// var result = false;
+// this.eq(0).each(function() {
+// var $current = $(this).is("iframe") ? $(this).contents().find("body") : $(this);
+// // var $current = $(this);
+// // var $current = $("#profile_figure");
+// var offset = $current.offset();
+// result =    offset.left<=$.mlp.x && offset.left + $current.outerWidth() > $.mlp.x &&
+// offset.top<=$.mlp.y && offset.top + $current.outerHeight() > $.mlp.y;
+// });
+// return result;
+// // alert('called');
+// // return obj.attr("id");
+// }
+
+</script> -->
+
+<script>
+	// *****
+	// story 6 user info
+
+	function show_edit_story_6() {
+		$("#open_edit_story_6, .show-story-6").fadeOut(200, function() {
+			$("#open_edit_story_6").addClass("hidden");
+			$("#close_edit_story_6").fadeIn(200).removeClass("hidden");
+
+			$(".show-story-6").addClass("hidden");
+			$(".edit-story-6").fadeIn(300).removeClass("hidden");
+
+			$("#btns_edit_story_6").fadeIn(200).removeClass("visibility-hidden");
+
+			$("#user_name_first").focus();
+		});
+	}
+
+	function cancel_edit_story_6() {
+		$(".edit-story-6").fadeOut(200, function() {
+			$(".edit-story-6").addClass("hidden");
+			$(".show-story-6").removeClass("hidden").fadeIn(300);
+
+			$("#open_edit_story_6").removeClass("hidden").fadeIn(200);
+			$("#close_edit_story_6").addClass("hidden");
+
+			$("#btns_edit_story_6").addClass("visibility-hidden");
+		});
+	}
+
+	var rd_gender_clicked = false;
+	$("#user_gender_0").on("change", function() {
+		// $('#user_address').focus();
+		if (rd_gender_clicked == false) {
+			validateRadio1();
+			rd_gender_clicked = true;
+		}
+	});
+	$("#user_gender_1").on("change", function() {
+		// $('#user_address').focus();
+		if (rd_gender_clicked == false) {
+			validateRadio1();
+			rd_gender_clicked = true;
+		}
+	});
+
+	// function validateRadio1() {
+	// return isChecked;
+	// }
+
+	function set_rd_1() {
+		var rd = "#user_gender_0";
+		var sd = "#rd_gender_male";
+		$(rd).prop('checked', true);
+		$(sd).addClass("rd-background");
+	}
+
+	function unset_rd_1() {
+		var sd = "#rd_gender_male";
+		$(sd).removeClass("rd-background");
+	}
+
+	function set_rd_2() {
+		var rd = "#user_gender_1";
+		var sd = "#rd_gender_female";
+		$(rd).prop('checked', true);
+		$(sd).addClass("rd-background");
+	}
+
+	function unset_rd_2() {
+		var sd = "#rd_gender_female";
+		$(sd).removeClass("rd-background");
+	}
+
+	function rd_gender(caller) {
+		switch (caller) {
+			case 'male':
+				set_rd_1();
+				unset_rd_2();
+				break;
+			case 'female':
+				set_rd_2();
+				unset_rd_1();
+				break;
+
+			default:
+			//
+		}
+		// if (rd_gender_clicked == false) {
+		// validateRadio1();
+		// rd_gender_clicked = true;
+		// }
+	}
+
+</script>
+
+<script>
+	// *****
+	// likes
+
+	function create_log_user_like(id, nlist) {
+		// alert("create_post_user_like(post_user_id)");
+		var formData = {
+			post_user_id : id,
+			n_list : nlist
+		};
+		$.ajax({
+			type : 'POST',
+			data : formData,
+			url : '/publisher_users/create_log_user_like',
+			dataType : "script",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+	}
+
+	function delete_log_user_like(id, nlist) {
+		// alert("delete_post_user_like(post_user_id)");
+		var formData = {
+			post_user_id : id,
+			n_list : nlist
+		};
+		$.ajax({
+			type : 'POST',
+			data : formData,
+			url : '/publisher_users/destroy_log_user_like',
+			dataType : "script",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+	}
+
+</script>
+
+<script>
+	// *****
+	// user_image_primary
+
+	var id_image = null;
+
+	function closeShowPhotoPrimary() {
+		$("#close_form11").trigger('click');
+	};
+	function closeShowImageLogo() {
+		$("#close_form21").trigger('click');
+	};
+
+	function closeAddImagePrimary() {
+		// alert('closeAddImagePrimary()');
+		$("#dvLoading_12").addClass("dvLoading-display-none");
+		$(".edit-image").fadeIn(200).removeClass("hidden");
+		// $(".dropdownContain").removeClass("hidden");
+		// $(".container-figure figure").removeClass("cursor-pointer");
+		// $("#drop_container_user_image_primary").addClass("drop");
+		// $(".container-menu .dropdownContain").removeClass("hidden");
+		$("#close_form12").trigger('click');
+		$("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
+	};
+
+	function closeChangeImagePrimary() {
+		$("#dvLoading_13").addClass("dvLoading-display-none");
+		$(".edit-image").fadeIn(200).removeClass("hidden");
+		// $("#drop_container_user_image_primary").addClass("drop");
+		// $(".container-menu .dropdownContain").removeClass("hidden");
+		$("#close_form13").trigger('click');
+		$("form#change_publisher_user_image input#change_publisher_user_image_image").val('');
+	};
+
+	function closeDeleteImagePrimary() {
+		$(".edit-image").fadeIn(200).removeClass("hidden");
+		// $("#drop_container_user_image_primary").addClass("drop");
+		// $("#figcaption_image_primary_generic").removeClass("hidden");
+		// $(".container-menu .dropdownContain").removeClass("hidden");
+		$("#close_form14").trigger('click');
+		// jQuery(document).trigger( click_delete_image_primary );
+	};
+
+	function closeCropImagePrimary() {
+		// alert('closeCropImagePrimary()');
+		$(".edit-image").fadeIn(200).removeClass("hidden");
+		// $("#drop_container_user_image_primary").addClass("drop");
+		// $(".container-menu .dropdownContain").removeClass("hidden");
+		$("#close_form15").trigger('click');
+	};
+
+	function delete_image_primary(id_image) {
+		// var input_user_name_first = $("#user_name_first").val();
+		// var obj_list = '{"publisher_product_description_id":' + <#%= @publisher_product_description_id %#> +
+		// ', "publisher_product_id":' + <#%= @publisher_product_id %#> +
+		// ', "publisher_id":' + <#%= @publisher_id %#> +
+		// ', "name_first":"' + input_publisher_product_description_name_first +
+		// '"}';
+
+		var formData = {
+			id : id_image
+		};
+
+		// $.ajax({
+		// url : "AJAX_POST_URL",
+		// type: "POST",
+		// data : formData,
+		// success: function(data, textStatus, jqXHR)
+		// {
+		// //data - response from server
+		// },
+		// error: function (jqXHR, textStatus, errorThrown)
+		// {
+		// }
+		// });
+
+		// var input_user_name_first = "Clyde";
+		// var input_id_image = id_image;
+		// var obj_list = '{"name_first":"' + input_user_name_first +
+		// '"}';
+		// var obj_list = '{"id_image":' + input_id_image +
+		// '}';
+		// var obj = '{ "publisher_user": [' +  obj_list + '] }';
+		$.ajax({
+			type : 'POST',
+			// data : JSON.stringify(obj),
+			// data : obj,
+			data : formData,
+			url : '/publisher_users/destroy_publisher_user_image',
+			// dataType: "json",
+			// contentType: "application/json",
+			dataType : "script",
+			// contentType: "application/js",
+			// processData: false,
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+		// return false;
+	}
+
+	function crop_image_primary() {
+		var input_image_id = $("#image_id").val();
+		var input_crop_x = $("#id_crop_x").val();
+		var input_crop_y = $("#id_crop_y").val();
+		var input_crop_w = $("#id_crop_w").val();
+		var input_crop_h = $("#id_crop_h").val();
+		var formData = {
+			image_id : input_image_id,
+			crop_x : input_crop_x,
+			crop_y : input_crop_y,
+			crop_w : input_crop_w,
+			crop_h : input_crop_h
+		};
+		$.ajax({
+			type : 'POST',
+			data : formData,
+			url : '/publisher_users/crop_commit_user',
+			// cache: false,
+			dataType : "script",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful crop");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+		// return false;
+	}
+
+</script>
+
+<script>
+	// *****
+	// publisher_user_log_image_primary
+
+	var id_image_logo = null;
+
+	function closeAddLogoImage() {
+		// alert('closeAddLogoImage()');
+		$("#dvLoading_22").addClass("dvLoading-display-none");
+		$(".edit-image").fadeIn(200).removeClass("hidden");
+		// $("#drop_container_logo_image").addClass("drop");
+		// $(".container-menu .dropdownContain").removeClass("hidden");
+		$("#close_form22").trigger('click');
+		$("form#new_publisher_user_logo_image input#new_publisher_user_logo_image_image").val('');
+	};
+
+	function closeChangeLogoImage() {
+		$("#dvLoading_23").addClass("dvLoading-display-none");
+		$(".edit-image").fadeIn(200).removeClass("hidden");
+		// $("#drop_container_logo_image").addClass("drop");
+		// $(".container-menu .dropdownContain").removeClass("hidden");
+		$("#close_form23").trigger('click');
+		$("form#change_publisher_user_logo_image input#change_publisher_user_logo_image_image").val('');
+	};
+
+	function closeDeleteLogoImage() {
+		$(".edit-image").fadeIn(200).removeClass("hidden");
+		// $("#drop_container_logo_image").addClass("drop");
+		// $(".container-menu .dropdownContain").removeClass("hidden");
+		$("#close_form24").trigger('click');
+	};
+
+	function closeCropLogoImage() {
+		$(".edit-image").fadeIn(200).removeClass("hidden");
+		// $("#drop_container_logo_image").addClass("drop");
+		// $(".container-menu .dropdownContain").removeClass("hidden");
+		$("#close_form25").trigger('click');
+	};
+
+	function delete_logo_image(id_image) {
+		var formData = {
+			id : id_image
+		};
+		$.ajax({
+			type : 'POST',
+			data : formData,
+			url : '/publisher_users/destroy_publisher_user_logo_image',
+			dataType : "script",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+	}
+
+	function crop_image_logo() {
+		var input_image_id = $("#image_id_logo").val();
+		var input_crop_x = $("#id_crop_x_logo").val();
+		var input_crop_y = $("#id_crop_y_logo").val();
+		var input_crop_w = $("#id_crop_w_logo").val();
+		var input_crop_h = $("#id_crop_h_logo").val();
+		var formData = {
+			image_id : input_image_id,
+			crop_x : input_crop_x,
+			crop_y : input_crop_y,
+			crop_w : input_crop_w,
+			crop_h : input_crop_h
+		};
+		$.ajax({
+			type : 'POST',
+			data : formData,
+			url : '/publisher_users/crop_commit_logo',
+			// cache: false,
+			dataType : "script",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful crop");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+		// return false;
+	}
+
+</script>
+
+<script>
+	// *****
+	// story 1 publisher_user info
+
+	function show_edit_story_1() {
+		$("#open_edit_story_1, .show-story-1").fadeOut(200, function() {
+			$("#open_edit_story_1").addClass("hidden");
+			$("#close_edit_story_1").fadeIn(200).removeClass("hidden");
+
+			$(".show-story-1").addClass("hidden");
+			$(".edit-story-1").fadeIn(300).removeClass("hidden");
+
+			// $("#btns_edit_story_1").fadeIn(200).removeClass("hidden");
+			$("#btns_edit_story_1").fadeIn(200).removeClass("visibility-hidden");
+
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			$(".container-figure figure").removeClass("cursor-pointer");
+			$(".container-figure-logo figure").removeClass("cursor-pointer");
+
+			$(".container-figure-image-1").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+			$(".container-figure-image-2").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+
+			// $("#drop_container_user_image_primary").addClass("drop");
+			// $("#drop_container_logo_image").addClass("drop");
+
+			// $(".container-menu .dropdownContain").removeClass("hidden");
+
+			// $(".drop-1-container").removeClass("hidden");
+			// $(".drop-2-container").removeClass("hidden");
+
+			$("#user_name_first").focus();
+
+		});
+	}
+
+	function cancel_edit_story_1() {
+		$(".edit-story-1").fadeOut(200, function() {
+			$(".edit-story-1").addClass("hidden");
+			$(".show-story-1").removeClass("hidden").fadeIn(300);
+
+			$("#open_edit_story_1").removeClass("hidden").fadeIn(200);
+			$("#close_edit_story_1").addClass("hidden");
+
+			// $("#btns_edit_story_1").removeAttr("style");
+			// $("#btns_edit_story_1").addClass("hidden");
+			$("#btns_edit_story_1").addClass("visibility-hidden");
+
+			$(".edit-image").removeAttr("style");
+			$(".edit-image").fadeIn(200).addClass("hidden");
+			$(".dialog-11-figure").addClass("cursor-pointer");
+			$(".dialog-21-figure").addClass("cursor-pointer");
+
+			$(".container-figure-image-1").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
+			$(".container-figure-image-2").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
+
+			// $(".drop-1-container").addClass("hidden");
+			// $(".drop-2-container").addClass("hidden");
+
+			// $(".container-menu .dropdownContain").addClass("hidden");
+			// $("#drop_container_user_image_primary").removeClass("drop");
+			// $("#drop_container_logo_image").removeClass("drop");
+		});
+	}
+
+</script>
+
+<script>
+	// *****
+	// on open flash messages
+
+	function update_new_user() {
+		var formData = {
+			new_user : false
+		};
+		$.ajax({
+			type : 'POST',
+			data : formData,
+			url : '/users/update_new_user',
+			dataType : "script",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			statusCode : {
+				// 200:function() { alert("200"); },
+				// 202:function() { alert("202"); }
+			},
+			success : function(data) {
+				// alert("successful");
+			},
+			error : function(xhr) {
+				alert("error: " + xhr.statusText);
+			}
+		});
+	}
+
+</script>
+
+<script>
+	// function set_control_required(cntrl, b) {
+	// // alert('set_control_required');
+	// var s_cntrl = "#required_" + cntrl;
+	// if(b) {
+	// $(s_cntrl).addClass("check-required").removeClass("display-none");
+	// }
+	// else {
+	// $(s_cntrl).removeClass("check-required").addClass("display-none");
+	// }
+	// }
+
+	function set_control_span(cntrl, s, b) {
+		var s_cntrl = "#span_" + cntrl;
+		// alert(s_cntrl);
+		// alert(s);
+		$(s_cntrl).html(s);
+		if (b) {
+			$(s_cntrl).removeClass("color-no-record").addClass("color-record");
+		} else {
+			$(s_cntrl).removeClass("color-record").addClass("color-no-record");
+		}
+	}
+
+	function show_control(cntrl) {
+		var s_edit = "#edit_" + cntrl;
+		var s_show_open = "#show_" + cntrl + ", #open_edit_" + cntrl;
+		$(s_edit).fadeOut(300, function() {
+			$(s_edit).addClass("hidden");
+			$(s_show_open).fadeIn(200).removeClass("hidden");
+			$(s_show_open).fadeIn(200).removeClass("hidden").removeClass("visibility-hidden");
+		});
+	}
+
+	var user_slug =  
+ <%= @user.slug %>;
+
+var scroll_top = 0; // legacy
+
+
+
+
+  // Parameters: {	"utf8"=>"✓", 
+  			   	// "authenticity_token"=>"IC786c8YtzgxVDbVC1bw+2oIonuHV7CXBBHyFG6kTXg=", 
+  			   	// "user_image"=>{	"image"=>#<ActionDispatch::Http::UploadedFile:0x7db3efd8 @original_filename="P7250021-gs.png", 
+  			   					// @headers="Content-Disposition: form-data; name=\"user_image[image]\"; filename=\"P7250021-gs.png\"\r\nContent-Type: image/png\r\n", 
+  			   					// @tempfile=#<Tempfile:/tmp/RackMultipart20150726-3255-shu6rw>, 
+  			   					// @content_type="image/png">
+  			   				  // }, 
+  			   	// "commit"=>"Upload Photo"
+  			  // }
+
+
+	// <form id="new_publisher_user_image" class="hidden" method="post" enctype="multipart/form-data" data-remote="true" action="/publisher_users/upload_publisher_user_image_primary" accept-charset="UTF-8">
+		// <div style="margin:0;padding:0;display:inline">
+			// <input type="hidden" value="✓" name="utf8">
+			// <!-- <input type="hidden" value="IC786c8YtzgxVDbVC1bw+2oIonuHV7CXBBHyFG6kTXg=" name="authenticity_token"> -->
+			// <input name="authenticity_token" value="<#%= form_authenticity_token %#>" type="hidden">
+		// </div>
+		// <p>
+			// <input id="new_publisher_user_image_image" type="file" name="user_image[image]">
+		// </p>
+		// <p>
+			// <input id="btn_submit_dialog_12" class="btn-submit hidden" type="submit" value="Upload Photo" name="commit">
+		// </p>
+	// </form>
+
+
+	// function uploadPublisherUserImagePrimary() {
+		// // var user_image = $("form#new_publisher_user_image input#new_publisher_user_image_image").val();
+		// var params = $("form#new_publisher_user_image").serialize();
+		// alert(params);
+		// var obj_list = 	'{ "user_image":"' + user_image +
+						// '"}';
+		// var obj = '{ "publisher_user_image": [' +  obj_list + '] }';
+		// $.ajax({
+			// type: 'POST',
+			// // data : JSON.stringify(obj),
+			// data : obj,
+			// url: '/publisher_users/upload_publisher_user_image_primary',
+			// // dataType: "json",
+			// dataType: "script",
+			// contentType: "application/json",
+			// processData: false,
+			// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+			// statusCode: {
+			// // 200:function() { alert("200"); },
+			// // 202:function() { alert("202"); }
+		// },
+		// success: function(data) {
+			// alert('success');
+		// },
+			// error: function(xhr){  alert("error: " + xhr.statusText); }
+		// });
+	// }
+
+
+
+
+
+
+
+
+
+// $(window).load( function() {
+$(document).ready(function () {
+
+// $.ajaxSetup({cache: false});
+
+document.body.setAttribute('spellcheck', false);
+
+// *****
+// on open flash messages
+
+$(document).on("click", "#btn_dlg_submit_new_user_msg", function() {
+var ch_new_user = $("#new_user").is(':checked');
+if (ch_new_user) {
+// alert(ch_new_user);
+update_new_user();
+$("#close_form201").trigger('click');
+}
+else {
+$("#close_form201").trigger('click');
+}
+});
+
+// on open flash messages
+// *****
+
+// *****
+// dialogs
+
+$('#dialog_201').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+hash.w.css('top', '-200px');
+hash.w.css('opacity', 1.0).fadeIn(200);
+// hash.w.show();
+$('#dialog_201').animate(
+{bottom:'-=220', top:'+=220'},
+500,
+'easeInOutCirc',
+function() {
+$('#dialog_201').animate(
+{bottom:'+=4', top:'-=4'},
+100,
+'easeInBounce',
+function() {
+}
+);
+}
+);
+}
+});
+
+$('#dialog_12').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+hash.w.css('top', '-220px');
+hash.w.css('opacity', 1.0).fadeIn(200);
+// hash.w.show();
+$('#dialog_12').animate(
+{bottom:'-=230', top:'+=230'},
+500,
+'easeInOutCirc',
+function() {
+$('#dialog_12').animate(
+{bottom:'+=4', top:'-=4'},
+100,
+'easeInBounce',
+function() {
+}
+);
+}
+);
+}
+});
+
+$('#dialog_22').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+hash.w.css('top', '-220px');
+hash.w.css('opacity', 1.0).fadeIn(200);
+// hash.w.show();
+$('#dialog_22').animate(
+{bottom:'-=230', top:'+=230'},
+500,
+'easeInOutCirc',
+function() {
+$('#dialog_22').animate(
+{bottom:'+=4', top:'-=4'},
+100,
+'easeInBounce',
+function() {
+}
+);
+}
+);
+}
+});
+
+$('#dialog_13').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+hash.w.css('top', '-220px');
+hash.w.css('opacity', 1.0).fadeIn(200);
+// hash.w.show();
+$('#dialog_13').animate(
+{bottom:'-=230', top:'+=230'},
+500,
+'easeInOutCirc',
+function() {
+$('#dialog_13').animate(
+{bottom:'+=4', top:'-=4'},
+100,
+'easeInBounce',
+function() {
+}
+);
+}
+);
+}
+});
+
+$('#dialog_23').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+hash.w.css('top', '-220px');
+hash.w.css('opacity', 1.0).fadeIn(200);
+// hash.w.show();
+$('#dialog_23').animate(
+{bottom:'-=230', top:'+=230'},
+500,
+'easeInOutCirc',
+function() {
+$('#dialog_23').animate(
+{bottom:'+=4', top:'-=4'},
+100,
+'easeInBounce',
+function() {
+}
+);
+}
+);
+}
+});
+
+$('#dialog_14').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+hash.w.css('top', '-200px');
+hash.w.css('opacity', 1.0).fadeIn(200);
+// hash.w.show();
+$('#dialog_14').animate(
+{bottom:'-=210', top:'+=210'},
+500,
+'easeInOutCirc',
+function() {
+$('#dialog_14').animate(
+{bottom:'+=4', top:'-=4'},
+100,
+'easeInBounce',
+function() {
+}
+);
+}
+);
+}
+});
+
+$('#dialog_24').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+hash.w.css('top', '-200px');
+hash.w.css('opacity', 1.0).fadeIn(200);
+// hash.w.show();
+$('#dialog_24').animate(
+{bottom:'-=210', top:'+=210'},
+500,
+'easeInOutCirc',
+function() {
+$('#dialog_24').animate(
+{bottom:'+=4', top:'-=4'},
+100,
+'easeInBounce',
+function() {
+}
+);
+}
+);
+}
+});
+
+$(document).on('click_2001', function() {
+var s = "#dialog_2001_content";
+// scroll_top = $(window).scrollTop();
+var content = $(this).find(s).html();
+$("#dialog_2001_content_container").html(content);
+$("#dialog_2001").jqmShow();
+});
+$('#dialog_2001').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+// hash.w.css('top', 40 + scroll_top);
+hash.w.css('top', 20);
+hash.w.css('opacity', 1.0).fadeIn(200);
+}
+});
+
+$(document).on('click_2002', function() {
+var s = "#dialog_2002_content";
+// scroll_top = $(window).scrollTop();
+var content = $(this).find(s).html();
+$("#dialog_2002_content_container").html(content);
+$("#dialog_2002").jqmShow();
+});
+$('#dialog_2002').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+// hash.w.css('top', 40 + scroll_top);
+hash.w.css('top', 20);
+hash.w.css('opacity', 1.0).fadeIn(200);
+}
+});
+
+// $(document).on('click_1001', function() {
+// scroll_top = $(window).scrollTop();
+// });
+$(document).on('click_101', function(e, id) {
+var s = "div#" + id;
+// scroll_top = $(window).scrollTop();
+var content = $(this).find(s).html();
+$("#dialog_101_content_container").html(content);
+$("#dialog_101").jqmShow();
+});
+$('#dialog_101').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+// hash.w.css('top', 40 + scroll_top);
+hash.w.css('top', 20);
+hash.w.css('opacity', 1.0).fadeIn(200);
+}
+});
+
+$(document).on('click_104', function() {
+$("#dialog_104").jqmShow();
+});
+$('#dialog_104').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+hash.w.css('top', 20);
+hash.w.css('opacity', 1.0).fadeIn(200);
+}
+});
+
+$(document).on('click_105', function() {
+$("#dialog_105").jqmShow();
+});
+$('#dialog_105').jqm({
+onShow: function(hash) {
+hash.o.prependTo('body');
+hash.w.css('top', 20);
+hash.w.css('opacity', 1.0).fadeIn(200);
+}
+});
+
+// $("#img_2").on('click', function() {
+// $("#profile_figure_dialog_11_link").click();
+// // window.location = "publisher_users/fullscreen";
+// });
+
+// dialogs
+// *****
+
+// *****
+// story 1 publisher_user info
+
+$("#open_edit_story_1").click(function(){
+show_edit_story_1();
+});
+$("#close_edit_story_1").click(function(){
+cancel_edit_story_1();
+});
+$("#cancel_edit_story_1").keypress(function(e){
+if(e.keyCode==13)
+$("#cancel_edit_story_1").click();
+});
+$("#cancel_edit_story_1").on('click', function() {
+cancel_edit_story_1();
+});
+
+// set_control_required("name_first", gon.b_required_name_first);
+$("#submit_edit_story_1").keypress(function(e){
+if(e.keyCode==13)
+$("#submit_edit_story_1").click();
+});
+
+set_control_span("publisher_user_name_first", gon.name_first, gon.b_name_first);
+set_control_span("publisher_user_name_last", gon.name_last, gon.b_name_last);
+set_control_span("publisher_user_email", gon.email, gon.b_email);
+set_control_span("publisher_user_location", gon.location, gon.b_location);
+set_control_span("publisher_user_name_alias", gon.name_alias, gon.b_name_alias);
+set_control_span("publisher_user_job_title", gon.job_title, gon.b_job_title);
+set_control_span("publisher_user_name_company", gon.name_company, gon.b_name_company);
+set_control_span("publisher_user_time_at_company", gon.time_at_company, gon.b_time_at_company);
+set_control_span("publisher_user_website", gon.website, gon.b_website);
+set_control_span("publisher_user_phone_company", gon.phone_company, gon.b_phone_company);
+
+$("#submit_edit_story_1").on('click', function() {
+var input_user_name_first = $("#publisher_user_name_first").val();
+var input_user_name_last = $("#publisher_user_name_last").val();
+var input_publisher_user_email = $("#publisher_user_email").val();
+var input_publisher_user_location = $("#publisher_user_location").val();
+var input_publisher_user_name_alias = $("#publisher_user_name_alias").val();
+var input_publisher_user_job_title = $("#publisher_user_job_title").val();
+var input_publisher_user_name_company = $("#publisher_user_name_company").val();
+var input_publisher_user_time_at_company = $("#publisher_user_time_at_company").val();
+var input_publisher_user_website = $("#publisher_user_website").val();
+var input_publisher_user_phone_company = $("#publisher_user_phone_company").val();
+
+// var obj_list = '{"publisher_product_description_id":' + <#%= @publisher_product_description_id %#> +
+// ', "publisher_product_id":' + <#%= @publisher_product_id %#> +
+// ', "publisher_id":' + <#%= @publisher_id %#> +
+// ', "name_first":"' + input_publisher_product_description_name_first +
+// '"}';
+var obj_list = '{ "name_first":"' + input_user_name_first +
+'", "name_last":"' + input_user_name_last +
+'", "email":"' + input_publisher_user_email +
+'", "location":"' + input_publisher_user_location +
+'", "name_alias":"' + input_publisher_user_name_alias +
+'", "job_title":"' + input_publisher_user_job_title +
+'", "name_company":"' + input_publisher_user_name_company +
+'", "time_at_company":"' + input_publisher_user_time_at_company +
+'", "website":"' + input_publisher_user_website +
+'", "phone_company":"' + input_publisher_user_phone_company +
+'"}';
+var obj = '{ "publisher_user": [' +  obj_list + '] }';
+$.ajax({
+type: 'POST',
+// data : JSON.stringify(obj),
+data : obj,
+url: '/publisher_users/update_story_1',
+dataType: "json",
+contentType: "application/json",
+processData: false,
+beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+statusCode: {
+// 200:function() { alert("200"); },
+// 202:function() { alert("202"); }
+},
+success: function(data) {
+// alert(data.name_first);
+set_control_span("publisher_user_name_first", data.name_first, data.b_name_first);
+set_control_span("publisher_user_name_last", data.name_last, data.b_name_last);
+set_control_span("publisher_user_email", data.email, data.b_email);
+set_control_span("publisher_user_location", data.location, data.b_location);
+set_control_span("publisher_user_name_alias", data.name_alias, data.b_name_alias);
+set_control_span("publisher_user_job_title", data.job_title, data.b_job_title);
+set_control_span("publisher_user_name_company", data.name_company, data.b_name_company);
+set_control_span("publisher_user_time_at_company", data.time_at_company, data.b_time_at_company);
+set_control_span("publisher_user_website", data.website, data.b_website);
+set_control_span("publisher_user_phone_company", data.phone_company, data.b_phone_company);
+cancel_edit_story_1();
+// // set_control_required("name_first", data.b_required);
+// show_control("name_first");
+// $("#btns_edit_story_1").addClass("hidden");
+// $("#open_edit_story_1").removeClass("hidden");
+},
+error: function(xhr){  alert("error: " + xhr.statusText); }
+});
+return false;
+});
+
+// story 1 publisher_user info
+// *****
+
+// *****
+// story 6 user info
+
+// $('select').dropdown({
+// 'changed': function(data) {
+// }
+// });
+
+$('#user_gender_0').prop('checked', false);
+$('#user_gender_1').prop('checked', false);
+
+$('#rd_gender_male_container').on('click', function() {
+rd_gender('male');
+});
+$('#rd_gender_female_container').on('click', function() {
+rd_gender('female');
+});
+
+$('#rd_gender_male_container').keypress(function(e){
+if(e.keyCode==13)
+$('#rd_gender_male').click();
+});
+$('#rd_gender_female_container').keypress(function(e){
+if(e.keyCode==13)
+$('#rd_gender_female').click();
+});
+
+$("#open_edit_story_6").click(function(){
+show_edit_story_6();
+});
+$("#close_edit_story_6").click(function(){
+cancel_edit_story_6();
+});
+$("#cancel_edit_story_6").keypress(function(e){
+if(e.keyCode==13)
+$("#cancel_edit_story_6").click();
+});
+$("#cancel_edit_story_6").on('click', function() {
+cancel_edit_story_6();
+});
+
+$("#submit_edit_story_6").keypress(function(e){
+if(e.keyCode==13)
+$("#submit_edit_story_6").click();
+});
+
+set_control_span("user_name_first", gon.user_name_first, gon.b_user_name_first);
+set_control_span("user_name_last", gon.user_name_last, gon.b_user_name_last);
+set_control_span("user_email", gon.user_email, gon.b_user_email);
+set_control_span("user_gender_text", gon.user_gender_text, gon.b_user_gender_text);
+set_control_span("user_bd_month_text", gon.user_bd_month_text, gon.b_user_bd_month_text);
+set_control_span("user_bd_day", gon.user_bd_day, gon.b_user_bd_day);
+set_control_span("user_bd_year", gon.user_bd_year, gon.b_user_bd_year);
+
+// $("input[name='gender']:checked").val(gon.user_gender);
+
+var s_bd_month_dropdown1 = "#dropdown1 ul [data-index='" + gon.user_bd_month + "']";
+$(s_bd_month_dropdown1).addClass("selected");
+$("#dropdown1 div.selected").html(gon.user_bd_month_text + '<div class="down-caret">&#9660;</div>');
+$("#dropdown1 ul [data-index='0']").removeClass("selected");
+
+var s_bd_day_dropdown2 = "#dropdown2 ul [data-index='" + gon.user_bd_day + "']";
+$(s_bd_day_dropdown2).addClass("selected");
+$("#dropdown2 div.selected").html(gon.user_bd_day + '<div class="down-caret">&#9660;</div>');
+$("#dropdown2 ul [data-index='0']").removeClass("selected");
+
+var s_bd_year_dropdown3 = "#dropdown3 ul [data-index='" + gon.user_bd_year + "']";
+$(s_bd_year_dropdown3).addClass("selected");
+$("#dropdown3 div.selected").html(gon.user_bd_year + '<div class="down-caret">&#9660;</div>');
+$("#dropdown3 ul [data-index='0']").removeClass("selected");
+
+$("select#user_bd_month").val(gon.user_bd_month);
+$("select#user_bd_day").val(gon.user_bd_day);
+$("select#user_bd_year").val(gon.user_bd_year);
+
+rd_gender(gon.user_gender_text.toLowerCase());
+
+$("#submit_edit_story_6").on('click', function() {
+// alert($("input[name='gender']:checked").val());
+// alert($("select#user_bd_month").attr("value"));
+// alert($("select#user_bd_day").attr("value"));
+// alert($("select#user_bd_year").attr("value"));
+var input_user_name_first = $("#user_name_first").val();
+var input_user_name_last = $("#user_name_last").val();
+var input_user_email = $("#user_email").val();
+var input_user_gender = $("input[name='gender']:checked").val();
+var input_user_bd_month = $("#user_bd_month").val();
+var input_user_bd_day = $("#user_bd_day").val();
+var input_user_bd_year = $("#user_bd_year").val();
+var obj_list = '{ "name_first":"' + input_user_name_first +
+'", "name_last":"' + input_user_name_last +
+'", "email":"' + input_user_email +
+'", "gender":' + input_user_gender +
+', "bd_month":' + input_user_bd_month +
+', "bd_day":' + input_user_bd_day +
+', "bd_year":' + input_user_bd_year +
+'}';
+var obj = '{ "user": [' +  obj_list + '] }';
+$.ajax({
+type: 'POST',
+// data : JSON.stringify(obj),
+data : obj,
+url: '/publisher_users/update_story_6',
+dataType: "json",
+contentType: "application/json",
+processData: false,
+beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+statusCode: {
+// 200:function() { alert("200"); },
+// 202:function() { alert("202"); }
+},
+success: function(data) {
+// alert(data.name_first);
+set_control_span("user_name_first", data.name_first, data.b_name_first);
+set_control_span("user_name_last", data.name_last, data.b_name_last);
+set_control_span("user_email", data.email, data.b_email);
+set_control_span("user_gender_text", data.gender_text, data.b_gender_text);
+set_control_span("user_bd_month_text", data.bd_month_text, data.b_month_text);
+set_control_span("user_bd_day", data.bd_day, data.b_day);
+set_control_span("user_bd_year", data.bd_year, data.b_year);
+
+cancel_edit_story_6();
+},
+error: function(xhr){  alert("error: " + xhr.statusText); }
+});
+return false;
+});
+
+// story 6 user info
+// *****
+
+// *****
+// user_image_primary
+
+	id_image = gon.id_image;
+	
+	$(document).on("click", "#btn_dlg_submit_upload_image_primary", function() {
+		$("form#new_publisher_user_image input#new_publisher_user_image_image").click();
+	});
+
+	$(document).on("change", "form#new_publisher_user_image input#new_publisher_user_image_image", function() {
+		$("#dvLoading_12").removeClass("dvLoading-display-none");
+		$("form#new_publisher_user_image input#btn_submit_dialog_12").click();
+		// uploadPublisherUserImagePrimary()
+	});
+
+	$(document).on("click", "#figcaption_image_primary_generic", function() {
+		$("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
+		$("#dialog_12").jqmShow();
+	});
+	// $(document).on("click", "#btn_photo_primary_new", function() {
+	// $("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
+	// $("#dialog_12").jqmShow();
+	// $("#btn_dlg_submit_upload_image_primary").focus();
+	// });
+	$(document).on("btn_photo_primary_new_click", function() {
+		$("form#new_publisher_user_image input#new_publisher_user_image_image").val('');
+		$("#dialog_12").jqmShow();
+		$("#btn_dlg_submit_upload_image_primary").focus();
+	});
+	$(document).on("click", "#btn_dlg_cancel_upload_image_primary", function() {
+		$("#close_form12").trigger('click');
+	});
+
+
+
+
+$(document).on("click", "#btn_dlg_submit_upload_image_primary_change", function() {
+$("form#change_publisher_user_image input#change_publisher_user_image_image").click();
+});
+$(document).on("change", "form#change_publisher_user_image input#change_publisher_user_image_image", function() {
+$("#dvLoading_13").removeClass("dvLoading-display-none");
+$("form#change_publisher_user_image input#btn_submit_dialog_13").click();
+});
+	$(document).on("btn_photo_primary_change_click", function() {
+		$("form#change_publisher_user_image input#change_publisher_user_image_image").val('');
+		$("#dialog_13").jqmShow();
+		$("#btn_dlg_submit_upload_image_primary_change").focus();
+	});
+$(document).on("click", "#btn_dlg_cancel_upload_image_primary_change", function() {
+$("#close_form13").trigger('click');
+});
+
+$(document).on("click", "#btn_dlg_submit_delete_image_primary", function() {
+delete_image_primary(id_image);
+});
+$(document).on("click", "#btn_dlg_cancel_delete_image_primary", function() {
+$("#close_form14").trigger('click');
+});
+	$(document).on("btn_photo_primary_delete_click", function() {
+		$("#dialog_14").jqmShow();
+		$("#btn_dlg_submit_delete_image_primary").focus();
+	});
+
+	$(document).on("btn_photo_primary_crop_click", function() {
+		$("#dialog_15").jqmShow();
+	});
+$(document).on("click", "#btn_dlg_submit_crop_image_primary", function() {
+crop_image_primary();
+});
+$(document).on("click", "#btn_dlg_cancel_crop_image_primary", function() {
+$("#close_form15").trigger('click');
+});
+
+// user_image_primary
+// *****
+
+// *****
+// publisher_user_logo_image_primary
+
+id_image_logo = gon.id_image_logo;
+
+$(document).on("click", "#btn_dlg_submit_upload_image_logo", function() {
+$("form#new_publisher_user_logo_image input#new_publisher_user_logo_image_image").click();
+});
+$(document).on("change", "form#new_publisher_user_logo_image input#new_publisher_user_logo_image_image", function() {
+$("#dvLoading_22").removeClass("dvLoading-display-none");
+$("form#new_publisher_user_logo_image input#btn_submit_dialog_22").click();
+});
+$(document).on("click", "#figcaption_logo_image_generic", function() {
+$("form#new_publisher_user_logo_image input#new_publisher_user_logo_image_image").val('');
+$("#dialog_22").jqmShow();
+});
+$(document).on("click", "#btn_photo_logo_new", function() {
+$("form#new_publisher_user_logo_image input#new_publisher_user_logo_image_image").val('');
+$("#dialog_22").jqmShow();
+});
+$(document).on("click", "#btn_dlg_cancel_upload_image_logo", function() {
+$("#close_form22").trigger('click');
+});
+
+$(document).on("click", "#btn_dlg_submit_upload_logo_image_change", function() {
+$("form#change_publisher_user_logo_image input#change_publisher_user_logo_image_image").click();
+});
+$(document).on("change", "form#change_publisher_user_logo_image input#change_publisher_user_logo_image_image", function() {
+$("#dvLoading_23").removeClass("dvLoading-display-none");
+$("form#change_publisher_user_logo_image input#btn_submit_dialog_23").click();
+});
+	$(document).on("btn_photo_logo_change_click", function() {
+		$("form#change_publisher_user_logo_image input#change_publisher_user_logo_image_image").val('');
+		$("#dialog_23").jqmShow();
+		$("#btn_dlg_submit_upload_logo_image_change").focus();
+	});
+$(document).on("click", "#btn_dlg_cancel_upload_logo_image_change", function() {
+$("#close_form23").trigger('click');
+});
+
+$(document).on("click", "#btn_dlg_submit_delete_logo_image", function() {
+delete_logo_image(id_image_logo);
+});
+$(document).on("click", "#btn_dlg_cancel_delete_logo_image", function() {
+$("#close_form24").trigger('click');
+});
+	$(document).on("btn_photo_logo_delete_click", function() {
+		$("#dialog_24").jqmShow();
+		$("#btn_dlg_submit_delete_logo_image").focus();
+	});
+
+	$(document).on("btn_photo_logo_crop_click", function() {
+		$("#dialog_25").jqmShow();
+	});
+$(document).on("click", "#btn_dlg_submit_crop_logo_image", function() {
+crop_image_logo();
+// $("#btn_submit_crop_image_primary").click();
+});
+$(document).on("click", "#btn_dlg_cancel_crop_logo_image", function() {
+$("#close_form25").trigger('click');
+});
+
+// publisher_user_logo_image_primary
+// *****
+
+// *****
+// post likes
+
+$(document).on("click", ".btn-submit-post-user-like-create", function() {
+var id = $(this).find("input[name='post_user_id_hidden']").attr("value");
+var nlist = $(this).attr("name");
+create_post_user_like(id, nlist);
+});
+$(document).on("click", ".btn-submit-post-user-like-delete", function() {
+var id = $(this).find("input[name='post_user_id_hidden']").attr("value");
+var nlist = $(this).attr("name");
+delete_post_user_like(id, nlist);
+});
+
+// post likes
+// *****
+
+// *****
+// post comments
+
+$(document).on("click", ".textarea-add-comment", function() {
+// if (!b_edit_comment) {
+$p = $(this).closest(".textarea-add-comment-parent");
+$b = $p.find(".btn-add-comment-story-4-container");
+edit_textarea_comment($(this), $b);
+// }
+});
+$(document).on("keyup", ".textarea-add-comment", function() {
+// var v = $(this).html();
+// if ((v == "<br>") || (v == "")) {
+reset_textarea_comment();
+// }
+});
+$(document).on("keydown", ".textarea-add-comment", function() {
+// if (!b_edit_comment) {
+$p = $(this).closest(".textarea-add-comment-parent");
+$b = $p.find(".btn-add-comment-story-4-container");
+edit_textarea_comment($(this), $b);
+// }
+});
+$(document).on('click', function(e) {
+var $t = $(e.target);
+if (!$t.hasClass("toggle-comment")) {
+reset_textarea_comment();
+}
+});
+
+$(document).on("click", "#btn_dlg_submit_delete_comment", function() {
+// var o_target = $(e.target).parents('.nav-drop-1').attr('id');
+delete_post_user_comment();
+});
+$(document).on("click", "#btn_dlg_cancel_delete_comment", function() {
+$("#close_form105").trigger('click');
+});
+$(document).on("click", ".post-user-comment-delete", function() {
+post_user_comment_comment_id_delete = $(this).find(".comment-id").attr("name");
+post_user_comment_post_user_id_delete = $(this).find(".post-user-id").attr("name");
+// $("#dialog_104").jqmShow();
+$(document).trigger('click_105');
+$("#btn_dlg_cancel_delete_comment").focus();
+});
+
+// post comments
+// *****
+
+// ************************************************************************************************
+// story 4 posts
+
+$("#render_story_4").html("<%= j render("publisher_users/story_4") %>");
+	$("#render_story_4_post_users_count").html("<%= j render("publisher_users/story_4_post_users_count") %>");
+
+	$(document).on("click", ".textarea-add-post-user", function() {
+	if (!b_edit_post_user) {
+	// $p = $(this).closest(".textarea-add-post-user-parent");
+	// $b = $p.find(".btn-textarea-add-post-user-story-4-container"); // btn-textarea-add-post-user-story-4-container
+	// edit_textarea_post_user($(this), $b);
+	edit_textarea_post_user();
+	}
+	});
+	$(document).on("keyup", ".textarea-add-post-user", function() {
+	// var v = $(this).html();
+	// var $p = $(this).parent();
+	// var $q = $p.find(".render-post-user-image");
+	// var w = $q.html();
+	var v = $("#textarea_add_post_user").html();
+	var w = $("#render_post_user_image").html();
+	if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+	reset_textarea_post_user();
+	}
+	});
+	$(document).on("keydown", ".textarea-add-post-user", function() {
+	if (!b_edit_post_user) {
+	// $p = $(this).closest(".textarea-add-post-user-parent");
+	// $b = $p.find(".btn-textarea-add-post-user-story-4-container");
+	// edit_textarea_post_user($(this), $b);
+	edit_textarea_post_user();
+	}
+	});
+	$(document).on('click', function(e) {
+	var $t = $(e.target);
+	var c = ":" + $t.attr("class") + ":";
+	if ( (c !== ":undefined:") && (c !== ":btn-submit hidden:") ) {
+	if ( !( ($t.hasClass("div-link")) || ($t.hasClass("toggle-post-user"))  || ($t.parents().hasClass("toggle-post-user") ) ) ) {
+	var v = $("#textarea_add_post_user").html();
+	var w = $("#render_post_user_image").html();
+	if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+	// alert("triggered by = " + c);
+	reset_textarea_post_user();
+	}
+	}
+	}
+	});
+
+	// onblur="onDivBlur();"
+	// onmousedown="return cancelEvent(event);"
+	// onclick="return cancelEvent(event);"
+	// contentEditable="true"
+	// onmouseup="saveSelection();"
+	// onkeyup="saveSelection();"
+	// onfocus="restoreSelection();"
+
+	$("#textarea_add_post_user").on ('blur', function (e) {
+	onDivBlur_post_user();
+	});
+	$("#textarea_add_post_user").on ('mousedown', function (e) {
+	return cancelEvent_post_user(e);
+	});
+	$("#textarea_add_post_user").on ('click', function (e) {
+	return cancelEvent_post_user(e);
+	});
+	$("#textarea_add_post_user").on ('mouseup', function (e) {
+	saveSelection_post_user();
+	});
+	$("#textarea_add_post_user").on ('keyup', function (e) {
+	saveSelection_post_user();
+	});
+	$("#textarea_add_post_user").on ('focus', function (e) {
+	restoreSelection_post_user();
+	});
+	$("#textarea_add_post_user").on ('keydown', function (e) {
+	if( e.keyCode == 9) {
+	e.preventDefault();
+	insertTextAtCursor_post_user("\t");
+	}
+	});
+
+	$(document).on("click", "#btn_dlg_submit_delete_post", function() {
+	delete_post_user(post_user_id_delete);
+	});
+	$(document).on("click", "#btn_dlg_cancel_delete_post", function() {
+	$("#close_form104").trigger('click');
+	});
+	$(document).on("click", ".post-user-delete", function() {
+	post_user_id_delete = $(this).find(".post-user-id").attr("name");
+	// $("#dialog_104").jqmShow();
+	$(document).trigger('click_104');
+	$("#btn_dlg_cancel_delete_post").focus();
+	});
+
+	$("#submit_story_4").keypress(function(e){
+	if(e.keyCode==13)
+	$("#submit_story_4").click();
+	});
+	$("#submit_story_4").on('click', function() {
+	var c = $("#textarea_add_post_user").html().replace(/\t/g, '        ');
+	$("#post_user_post_text").val(c);
+	// $("#post_user_id").val(post_user_created_id);
+	$("#submit_story_4_text").addClass("hidden");
+	$("#submit_story_4_loader").removeClass("hidden");
+	$("#submit_story_4_hidden").click();
+	});
+
+	$("#cancel_story_4").keypress(function(e){
+	if(e.keyCode==13)
+	$("#cancel_story_4").click();
+	});
+	$("#cancel_story_4").on('click', function() {
+	cancel_post_user();
+	// $("#submit_story_4_text").addClass("hidden");
+	// $("#submit_story_4_loader").removeClass("hidden");
+	});
+
+	// $("#submit_edit_story_4").keypress(function(e){
+	// if(e.keyCode==13)
+	// $("#submit_edit_story_4").click();
+	// });
+	// $("#submit_edit_story_4").on('click', function() {
+	// $("#submit_edit_story_4_hidden").click();
+	// });
+
+	// story 4 posts
+	// ************************************************************************************************
+
+
+	// $("#render_story_5").html("<#%= j render("publisher_users/story_5") %#>");
+	// $("#render_story_5_log_users_count").html("<#%= j render("publisher_users/story_5_log_users_count") %#>");
+	// $("#render_story_5_will_paginate").html("<#%= j render("publisher_users/story_5_will_paginate") %#>");
+
+	// $(document).on("click", ".btn-submit-log-user-like-create", function() {
+	// var id = $(this).find("input[name='log_user_id_hidden']").attr("value");
+	// var nlist = $(this).attr("name");
+	// create_log_user_like(id, nlist);
+	// });
+	// $(document).on("click", ".btn-submit-log-user-like-delete", function() {
+	// var id = $(this).find("input[name='log_user_id_hidden']").attr("value");
+	// var nlist = $(this).attr("name");
+	// delete_log_user_like(id, nlist);
+	// });
+
+	// $(document).on("click", ".digg_pagination a", function() {
+	// $("#paginate_loading_story_5").removeClass("hidden");
+	// var s_href = this.href;
+	// var n = s_href.indexOf("page=");
+	// var s_page = s_href.substr(n, s_href.length-1);
+	// s_url = '/publisher_users/get_feed_log?' + s_page
+	// $.getScript(s_url);
+	// var push_url = '/' + user_slug + '?' + s_page
+	// // history.pushState(null, document.title, this.href);
+	// history.pushState(null, null, push_url);
+	// return false;
+	// });
+
+	// *****
+	// story 2 publisher_user_plot
+
+	story_2_publisher_user_plot_html = "<%= @publisher_user.publisher_user_plot.plot_text.html_safe %>";
+	init_render_story_2();
+
+	$("#open_edit_story_2").click(function(){
+	show_edit_story_2();
+	});
+	$("#close_edit_story_2").click(function(){
+	cancel_edit_story_2();
+	});
+	$("#cancel_edit_story_2").keypress(function(e){
+	if(e.keyCode==13)
+	$("#cancel_edit_story_2").click();
+	});
+	$("#cancel_edit_story_2").on('click', function() {
+	cancel_edit_story_2();
+	});
+
+	// $("#submit_edit_story_2").keypress(function(e){
+	// if(e.keyCode==13)
+	// $("#submit_edit_story_2").click();
+	// });
+	// $("#submit_edit_story_2").on('click', function() {
+	// $("#submit_edit_story_2_hidden").click();
+	// });
+
+	// $("#render_story_2").html("<#%= j render("publisher_users/story_2") %#>");
+	// $(document).on("click", ".textarea-user-plot", function() {
+	// $(document).on("click", "#textarea_publisher_user_plot_container_edit", function() {
+	// // if (!b_edit_publisher_user_plot) {
+	// // // $p = $(this).closest(".textarea-user-plot-parent");
+	// // // $b = $p.find(".btn-textarea-user-plot-story-4-container"); // btn-textarea-user-plot-story-4-container
+	// // // edit_textarea_publisher_user_plot($(this), $b);
+	// // edit_textarea_publisher_user_plot();
+	// // }
+	// partial_init_render_story_2_edit();
+	// });
+	// $(document).on("keydown", "#textarea_publisher_user_plot_edit", function() {
+	// $("#textarea_publisher_user_plot_edit").removeClass("textarea-user-plot-empty");
+	// });
+	// $(document).on("keyup", "#textarea_publisher_user_plot_edit", function() {
+	// partial_init_render_story_2_edit();
+	// });
+	// $(document).on("focus", "#textarea_publisher_user_plot_edit", function() {
+	// partial_init_render_story_2_edit();
+	// });
+
+	// $(document).on("keydown", ".textarea-user-plot", function() {
+	// if (!b_edit_publisher_user_plot) {
+	// // $p = $(this).closest(".textarea-user-plot-parent");
+	// // $b = $p.find(".btn-textarea-user-plot-story-4-container");
+	// // edit_textarea_publisher_user_plot($(this), $b);
+	// edit_textarea_publisher_user_plot();
+	// }
+	// });
+	// $(document).on('click', function(e) {
+	// var $t = $(e.target);
+	// var c = ":" + $t.attr("class") + ":";
+	// if ( (c !== ":undefined:") && (c !== ":btn-submit hidden:") ) {
+	// if ( !( ($t.hasClass("div-link")) || ($t.hasClass("toggle-user-plot"))  || ($t.parents().hasClass("toggle-user-plot") ) ) ) {
+	// var v = $("#textarea_publisher_user_plot").html();
+	// var w = $("#render_publisher_user_plot_image").html();
+	// if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+	// // alert("triggered by = " + c);
+	// reset_textarea_publisher_user_plot();
+	// }
+	// }
+	// }
+	// });
+
+	// onblur="onDivBlur();"
+	// onmousedown="return cancelEvent(event);"
+	// onclick="return cancelEvent(event);"
+	// contentEditable="true"
+	// onmouseup="saveSelection();"
+	// onkeyup="saveSelection();"
+	// onfocus="restoreSelection();"
+
+	$("#textarea_publisher_user_plot_edit").on ('blur', function (e) {
+	onDivBlur_publisher_user_plot();
+	});
+	$("#textarea_publisher_user_plot_edit").on ('mousedown', function (e) {
+	return cancelEvent_publisher_user_plot(e);
+	});
+	$("#textarea_publisher_user_plot_edit").on ('click', function (e) {
+	return cancelEvent_publisher_user_plot(e);
+	});
+	$("#textarea_publisher_user_plot_edit").on ('mouseup', function (e) {
+	saveSelection_publisher_user_plot();
+	});
+	$("#textarea_publisher_user_plot_edit").on ('keyup', function (e) {
+	saveSelection_publisher_user_plot();
+	});
+	$("#textarea_publisher_user_plot_edit").on ('focus', function (e) {
+	restoreSelection_publisher_user_plot();
+	});
+	$("#textarea_publisher_user_plot_edit").on ('keydown', function (e) {
+	if( e.keyCode == 9) {
+	e.preventDefault();
+	insertTextAtCursor_publisher_user_plot("\t");
+	}
+	});
+
+	$("#submit_story_2").keypress(function(e){
+	if(e.keyCode==13)
+	$("#submit_story_2").click();
+	});
+	$("#submit_story_2").on('click', function() {
+	var c = $("#textarea_publisher_user_plot_edit").html().replace(/\t/g, '        ');
+	$("#publisher_user_plot_plot_text").val(c);
+	$("#submit_story_2_text").addClass("hidden");
+	$("#submit_story_2_loader").removeClass("hidden");
+	$("#submit_story_2_hidden").click();
+	});
+
+	$("#cancel_story_2").keypress(function(e){
+	if(e.keyCode==13)
+	$("#cancel_story_2").click();
+	});
+	$("#cancel_story_2").on('click', function() {
+	cancel_edit_story_2();
+	});
+
+	// story 2 publisher_user_plot
+	// *****
+
+	// *****
+	// story 3 publisher_user_interest
+
+	$("#open_edit_story_3").click(function(){
+	show_edit_story_3();
+	});
+	$("#close_edit_story_3").click(function(){
+	cancel_edit_story_3();
+	});
+	$("#cancel_edit_story_3").keypress(function(e){
+	if(e.keyCode==13)
+	$("#cancel_edit_story_3").click();
+	});
+	$("#cancel_edit_story_3").on('click', function() {
+	cancel_edit_story_3();
+	});
+	$("#submit_edit_story_3").keypress(function(e){
+	if(e.keyCode==13)
+	$("#submit_edit_story_3").click();
+	});
+	$("#submit_edit_story_3").on('click', function() {
+	$("#submit_edit_story_3_hidden").click();
+	});
+
+	story_3_publisher_user_interest_html = "<%= @publisher_user.publisher_user_interest.interest_text.html_safe %>";
+	init_render_story_3();
+
+	$("#open_edit_story_3").click(function(){
+	show_edit_story_3();
+	});
+	$("#close_edit_story_3").click(function(){
+	cancel_edit_story_3();
+	});
+	$("#cancel_edit_story_3").keypress(function(e){
+	if(e.keyCode==13)
+	$("#cancel_edit_story_3").click();
+	});
+	$("#cancel_edit_story_3").on('click', function() {
+	cancel_edit_story_3();
+	});
+
+	$("#textarea_publisher_user_interest_edit").on ('blur', function (e) {
+	onDivBlur_publisher_user_interest();
+	});
+	$("#textarea_publisher_user_interest_edit").on ('mousedown', function (e) {
+	return cancelEvent_publisher_user_interest(e);
+	});
+	$("#textarea_publisher_user_interest_edit").on ('click', function (e) {
+	return cancelEvent_publisher_user_interest(e);
+	});
+	$("#textarea_publisher_user_interest_edit").on ('mouseup', function (e) {
+	saveSelection_publisher_user_interest();
+	});
+	$("#textarea_publisher_user_interest_edit").on ('keyup', function (e) {
+	saveSelection_publisher_user_interest();
+	});
+	$("#textarea_publisher_user_interest_edit").on ('focus', function (e) {
+	restoreSelection_publisher_user_interest();
+	});
+	$("#textarea_publisher_user_interest_edit").on ('keydown', function (e) {
+	if( e.keyCode == 9) {
+	e.preventDefault();
+	insertTextAtCursor_publisher_user_interest("\t");
+	}
+	});
+
+	$("#submit_story_3").keypress(function(e){
+	if(e.keyCode==13)
+	$("#submit_story_3").click();
+	});
+	$("#submit_story_3").on('click', function() {
+	var c = $("#textarea_publisher_user_interest_edit").html().replace(/\t/g, '        ');
+	$("#publisher_user_interest_interest_text").val(c);
+	$("#submit_story_3_text").addClass("hidden");
+	$("#submit_story_3_loader").removeClass("hidden");
+	$("#submit_story_3_hidden").click();
+	});
+
+	$("#cancel_story_3").keypress(function(e){
+	if(e.keyCode==13)
+	$("#cancel_story_3").click();
+	});
+	$("#cancel_story_3").on('click', function() {
+	cancel_edit_story_3();
+	});
+
+	// story 3 publisher_user_interest
+	// *****
+
+	});
+
+	$(window).on('beforeunload', function(){
+	cancel_post_user_on_close();
+	});
+
+	$(window).load( function() {
+	// $(document).ready(function () {
+	if (gon.new_user.toString() == 'true') {
+	$("#dialog_201").jqmShow();
+	}
+	});
+
+</script>
+
+<script>
+	// *****
+	// story 3 publisher_user_interest
+
+	var story_3_publisher_user_interest_html = null;
+
+	function partial_init_render_story_3() {
+		var v = $("#textarea_publisher_user_interest").html();
+		var w = $("#render_publisher_user_interest_image").html();
+		if (((v == "<br>") || (v == "")) && ((w == "<br>") || (w == ""))) {
+			$("#textarea_publisher_user_interest").addClass("textarea-user-interest-empty");
+		} else {
+			$("#textarea_publisher_user_interest").removeClass("textarea-user-interest-empty");
+		}
+	}
+
+	function partial_init_render_story_3_edit() {
+		var v = $("#textarea_publisher_user_interest_edit").html();
+		var w = $("#render_publisher_user_interest_image_edit").html();
+		if (((v == "<br>") || (v == "")) && ((w == "<br>") || (w == ""))) {
+			$("#textarea_publisher_user_interest_edit").addClass("textarea-user-interest-empty");
+		} else {
+			$("#textarea_publisher_user_interest_edit").removeClass("textarea-user-interest-empty");
+		}
+	}
+
+	// function init_render_story_3_edit() {
+	// partial_init_render_story_3_edit();
+	// }
+
+	function init_render_story_3() {
+		$("#textarea_publisher_user_interest").html(story_3_publisher_user_interest_html);
+		partial_init_render_story_3();
+	}
+
+	function show_edit_story_3() {
+		var textarea_html = $("#textarea_publisher_user_interest").html();
+		$("#open_edit_story_3, .show-story-3").fadeOut(200, function() {
+			$("#open_edit_story_3").addClass("hidden");
+			$("#close_edit_story_3").fadeIn(200).removeClass("hidden");
+			$(".show-story-3").addClass("hidden");
+			$(".edit-story-3").fadeIn(300).removeClass("hidden");
+			$("#textarea_publisher_user_interest_edit").html(textarea_html);
+			$(".btn-textarea-user-interest-story-3-container").removeClass("hidden");
+			// init_render_story_3_edit();
+			$("#textarea_publisher_user_interest_edit").focus();
+		});
+	}
+
+	function cancel_edit_story_3() {
+		// $("#render_publisher_user_interest_image").html(""); Must call db delete on image
+		// $("#textarea_publisher_user_interest").html("");
+		init_render_story_3();
+		hide_edit_story_3();
+	}
+
+	function close_edit_story_3() {
+		$("#submit_story_3_loader").addClass("hidden");
+		$("#submit_story_3_text").removeClass("hidden");
+		partial_init_render_story_3();
+		hide_edit_story_3();
+	}
+
+	function hide_edit_story_3() {
+		$(".edit-story-3").fadeOut(200, function() {
+			$(".edit-story-3").addClass("hidden");
+			$(".show-story-3").removeClass("hidden").fadeIn(300);
+			$("#open_edit_story_3").removeClass("hidden").fadeIn(200);
+			$("#close_edit_story_3").addClass("hidden");
+		});
+	}
+
+	// var publisher_user_interest_id_delete = null;
+
+	var drop_story_3_attach_visible = false;
+	var btn_1_drop_publisher_user_interest_image_clicked = false;
+
+	function drop_story_3_attach_show() {
+		$("#drop_story_3_attach").addClass('drop');
+		$("#container_drop_story_3_attach").removeClass('hidden');
+		$("#drop_story_3_attach div div.dropdownContain div.dropOut").fadeIn(200, function() {
+			$(this).css({
+				'margin-top' : 10
+			});
+		});
+		$("#caret_story_3_attach").removeClass("nav-caret-down").addClass("nav-caret-up");
+		drop_story_3_attach_visible = true;
+	}
+
+	function drop_story_3_attach_hide() {
+		$("#drop_story_3_attach").removeClass('drop');
+		$("#container_drop_story_3_attach").addClass('hidden');
+		drop_story_3_attach_visible = false;
+		$("#drop_story_3_attach div div.dropdownContain div.dropOut").css({
+			'margin-top' : 0
+		});
+		$("#caret_story_3_attach").removeClass("nav-caret-up").addClass("nav-caret-down");
+
+		if (btn_1_drop_publisher_user_interest_image_clicked == true) {
+			btn_1_drop_publisher_user_interest_image_clicked = false;
+			$("form#new_publisher_user_interest_image input#new_publisher_user_interest_image_image").click();
+		}
+	}
+
+	function drop_toggle_story_3_attach() {
+		if (drop_story_3_attach_visible) {
+			drop_story_3_attach_hide();
+		} else {
+			drop_story_3_attach_show();
+		}
+	}
+
+</script>
+
+<script>
+	// *****
+	// story 2 publisher_user_plot
+
+	var story_2_publisher_user_plot_html = null;
+
+	function partial_init_render_story_2() {
+		var v = $("#textarea_publisher_user_plot").html();
+		var w = $("#render_publisher_user_plot_image").html();
+		if (((v == "<br>") || (v == "")) && ((w == "<br>") || (w == ""))) {
+			$("#textarea_publisher_user_plot").addClass("textarea-user-plot-empty");
+		} else {
+			$("#textarea_publisher_user_plot").removeClass("textarea-user-plot-empty");
+		}
+	}
+
+	function partial_init_render_story_2_edit() {
+		var v = $("#textarea_publisher_user_plot_edit").html();
+		var w = $("#render_publisher_user_plot_image_edit").html();
+		if (((v == "<br>") || (v == "")) && ((w == "<br>") || (w == ""))) {
+			$("#textarea_publisher_user_plot_edit").addClass("textarea-user-plot-empty");
+		} else {
+			$("#textarea_publisher_user_plot_edit").removeClass("textarea-user-plot-empty");
+		}
+	}
+
+	// function init_render_story_2_edit() {
+	// partial_init_render_story_2_edit();
+	// }
+
+	function init_render_story_2() {
+		$("#textarea_publisher_user_plot").html(story_2_publisher_user_plot_html);
+		partial_init_render_story_2();
+	}
+
+	function show_edit_story_2() {
+		var textarea_html = $("#textarea_publisher_user_plot").html();
+		$("#open_edit_story_2, .show-story-2").fadeOut(200, function() {
+			$("#open_edit_story_2").addClass("hidden");
+			$("#close_edit_story_2").fadeIn(200).removeClass("hidden");
+			$(".show-story-2").addClass("hidden");
+			$(".edit-story-2").fadeIn(300).removeClass("hidden");
+			$("#textarea_publisher_user_plot_edit").html(textarea_html);
+			$(".btn-textarea-user-plot-story-2-container").removeClass("hidden");
+			// init_render_story_2_edit();
+			$("#textarea_publisher_user_plot_edit").focus();
+		});
+	}
+
+	function cancel_edit_story_2() {
+		// $("#render_publisher_user_plot_image").html(""); Must call db delete on image
+		// $("#textarea_publisher_user_plot").html("");
+		init_render_story_2();
+		hide_edit_story_2();
+	}
+
+	function close_edit_story_2() {
+		$("#submit_story_2_loader").addClass("hidden");
+		$("#submit_story_2_text").removeClass("hidden");
+		partial_init_render_story_2();
+		hide_edit_story_2();
+	}
+
+	function hide_edit_story_2() {
+		$(".edit-story-2").fadeOut(200, function() {
+			$(".edit-story-2").addClass("hidden");
+			$(".show-story-2").removeClass("hidden").fadeIn(300);
+			$("#open_edit_story_2").removeClass("hidden").fadeIn(200);
+			$("#close_edit_story_2").addClass("hidden");
+		});
+	}
+
+	// var b_edit_publisher_user_plot = false;
+	var publisher_user_plot_id_delete = null;
+
+	// function edit_textarea_publisher_user_plot() {
+	// b_edit_publisher_user_plot = true;
+	// $("#textarea_publisher_user_plot").removeClass("textarea-user-plot-inactive").addClass("textarea-user-plot-active");
+	// // $(".btn-textarea-user-plot-story-2-container").removeClass("hidden");
+	// }
+	// function reset_textarea_publisher_user_plot() {
+	// $("#render_publisher_user_plot_image").html("");
+	// $("#textarea_publisher_user_plot").html("<br>");
+	// $(".btn-textarea-user-plot-story-2-container").addClass("hidden");
+	// $("#textarea_publisher_user_plot").removeClass("textarea-user-plot-active").addClass("textarea-user-plot-inactive");
+	// b_edit_publisher_user_plot = false;
+	// }
+
+	// function delete_publisher_user_plot(id) {
+	// var formData = {publisher_user_plot_id:id};
+	// $.ajax({
+	// type: 'POST',
+	// data : formData,
+	// url: '/publisher_users/destroy_publisher_user_plot',
+	// dataType: "script",
+	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	// statusCode: {
+	// },
+	// success: function(data) {
+	// },
+	// error: function(xhr){  alert("error: " + xhr.statusText); }
+	// });
+	// }
+	// function cancel_publisher_user_plot() {
+	// $.ajax({
+	// type: 'POST',
+	// url: '/publisher_users/cancel_publisher_user_plot',
+	// dataType: "script",
+	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	// statusCode: {
+	// },
+	// success: function(data) {
+	// },
+	// error: function(xhr){  alert("error: " + xhr.statusText); }
+	// });
+	// }
+	// function cancel_publisher_user_plot_on_close() {
+	// var w = $("#render_publisher_user_plot_image").html();
+	// if ( !( (w == "<br>") || (w == "") ) ) {
+	// $.ajax({
+	// type: 'POST',
+	// url: '/publisher_users/cancel_publisher_user_plot_on_close',
+	// dataType: "script",
+	// async: false,
+	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))} // ,
+	// });
+	// }
+	// }
+
+	var drop_story_2_attach_visible = false;
+	var btn_1_drop_publisher_user_plot_image_clicked = false;
+
+	function drop_story_2_attach_show() {
+		$("#drop_story_2_attach").addClass('drop');
+		$("#container_drop_story_2_attach").removeClass('hidden');
+		$("#drop_story_2_attach div div.dropdownContain div.dropOut").fadeIn(200, function() {
+			$(this).css({
+				'margin-top' : 10
+			});
+		});
+		$("#caret_story_2_attach").removeClass("nav-caret-down").addClass("nav-caret-up");
+		drop_story_2_attach_visible = true;
+	}
+
+	function drop_story_2_attach_hide() {
+		$("#drop_story_2_attach").removeClass('drop');
+		$("#container_drop_story_2_attach").addClass('hidden');
+		drop_story_2_attach_visible = false;
+		$("#drop_story_2_attach div div.dropdownContain div.dropOut").css({
+			'margin-top' : 0
+		});
+		$("#caret_story_2_attach").removeClass("nav-caret-up").addClass("nav-caret-down");
+
+		if (btn_1_drop_publisher_user_plot_image_clicked == true) {
+			btn_1_drop_publisher_user_plot_image_clicked = false;
+			$("form#new_publisher_user_plot_image input#new_publisher_user_plot_image_image").click();
+		}
+	}
+
+	function drop_toggle_story_2_attach() {
+		if (drop_story_2_attach_visible) {
+			drop_story_2_attach_hide();
+		} else {
+			drop_story_2_attach_show();
+		}
+	}
+
+</script>
