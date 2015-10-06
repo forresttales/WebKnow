@@ -15,6 +15,8 @@ module Webknow
   
     config.autoload_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('app/stomplets')
+    # config.autoload_paths << Rails.root.join('app/uploaders')
+    # config.load_paths << "#{Rails.root}/app/uploaders"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -66,13 +68,13 @@ module Webknow
                                   'jquery.qtip.min.js',
                                   'jquery.selectbox-0.6.1.js',
                                   'jquery.sparkbox-select.js',
-                                  'stomp.js',
                                   'jquery.validate.js', 
                                   'jquery-dropdown-dot.js',
                                   'jquery_ui_1.10.4.js',
                                   'jquery.multiselect.js',
                                   'nav-jquery.js',
-                                  'slick.js'                                  
+                                  'slick.js',
+                                  'stomp.js'                                                                    
                                   # 'toucheffects.js'
                                 ]
 

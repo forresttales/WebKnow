@@ -8,7 +8,9 @@ Webknow::Application.routes.draw do
   get "control_elements/sticky_footer_with_icon"
   
   match "/messages" => "messages#index", via: 'get'
-  
+  # get "messages/index"
+  get "messages/create"
+
   # root :to => ChatDemo
   
   root to: 'users#index'

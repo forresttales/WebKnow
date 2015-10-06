@@ -35,3 +35,21 @@ environment:
       # route: /private
 # web:
   # host: localhost
+
+
+topics:
+  /topics/chat:
+
+stomp:
+  stomplets:
+    private:
+      class: DemoStomplet
+      route: /queue/demo
+
+web:
+  context: "/"
+
+environment:
+  RAILS_ENV: production
+  # RAILS_ENV: development
+  

@@ -8439,16 +8439,16 @@ class PublisherProductManifestsController < ApplicationController
                   img_name = File.basename(publisher_product_pos3_image.image.to_s)
                   img_dir = "public" + File.dirname(publisher_product_pos3_image.image.to_s)
             
-                  image_375_300_path = img_dir + "/" + "image_375_300_" + img_name 
+                  image_345_300_path = img_dir + "/" + "image_345_300_" + img_name 
                   image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
                   image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
             
-                  FileUtils.rm_rf(image_375_300_path) 
+                  FileUtils.rm_rf(image_345_300_path) 
                   FileUtils.rm_rf(image_200_200_path) 
                   FileUtils.rm_rf(image_100_100_path) 
             
-                  new_image.resize('375x300')
-                  new_image.write image_375_300_path
+                  new_image.resize('345x300')
+                  new_image.write image_345_300_path
                   new_image.resize('200x200')
                   new_image.write image_200_200_path
                   new_image.resize('100x100')
@@ -8806,16 +8806,16 @@ class PublisherProductManifestsController < ApplicationController
                   img_name = File.basename(publisher_product_pos4_image.image.to_s)
                   img_dir = "public" + File.dirname(publisher_product_pos4_image.image.to_s)
             
-                  image_375_300_path = img_dir + "/" + "image_375_300_" + img_name 
+                  image_345_300_path = img_dir + "/" + "image_345_300_" + img_name 
                   image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
                   image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
             
-                  FileUtils.rm_rf(image_375_300_path) 
+                  FileUtils.rm_rf(image_345_300_path) 
                   FileUtils.rm_rf(image_200_200_path) 
                   FileUtils.rm_rf(image_100_100_path) 
             
-                  new_image.resize('375x300')
-                  new_image.write image_375_300_path
+                  new_image.resize('345x300')
+                  new_image.write image_345_300_path
                   new_image.resize('200x200')
                   new_image.write image_200_200_path
                   new_image.resize('100x100')
@@ -9013,11 +9013,11 @@ class PublisherProductManifestsController < ApplicationController
                                       @b_required_product_headline = false
                                   end
                               else
-                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_manifest was nil')
+                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5', :description => 'publisher_product_manifest was nil')
                                   raise
                               end
                           else
-                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5_change', :description => 'publisher_product_pos5_image updated_attributes failed')
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_image_5', :description => 'publisher_product_pos5_image updated_attributes failed')
                               raise
                           end
                       else
@@ -9240,6 +9240,7 @@ class PublisherProductManifestsController < ApplicationController
                               # @image_5 = image_5
                               if !image_5.nil?
                                 gon.image_5_id = image_5.id
+                                @image_5 = image_5
                                 @image_5_id = image_5.id
                                 @image_5_url = image_5.image_url(:image_1200_300_fill) + '?' + (rand(10..90) * rand(100..900)).to_s
                                 @crop_x_image_5 = image_5.crop_x
