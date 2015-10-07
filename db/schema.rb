@@ -1160,6 +1160,25 @@ ActiveRecord::Schema.define(version: 20150926133817) do
 
   add_index "publisher_journalposters", ["publisher_id"], name: "index_publisher_journalposters_on_publisher_id", using: :btree
 
+  create_table "publisher_logo_bkgrnd_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "width",        default: 0
+    t.integer  "height",       default: 0
+    t.integer  "user_id",      default: 0
+    t.integer  "publisher_id", default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",      default: false
+    t.integer  "order",        default: 0
+    t.integer  "crop_x",       default: 0
+    t.integer  "crop_y",       default: 0
+    t.integer  "crop_w",       default: 0
+    t.integer  "crop_h",       default: 0
+  end
+
+  add_index "publisher_logo_bkgrnd_images", ["publisher_id"], name: "index_publisher_logo_bkgrnd_images_on_publisher_id", using: :btree
+
   create_table "publisher_logo_images", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"

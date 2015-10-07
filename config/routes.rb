@@ -7,7 +7,7 @@ Webknow::Application.routes.draw do
   get "control_elements/sticky_footer"
   get "control_elements/sticky_footer_with_icon"
   
-  match "/messages" => "messages#index", via: 'get'
+  match "/Messages" => "publisher_user_messages#index", via: 'get'
   # get "messages/index"
   get "messages/create"
 
