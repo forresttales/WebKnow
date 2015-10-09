@@ -287,11 +287,11 @@
 		var message = String.format('<div class="Area Message">' + 
 										'<div class="L">' + 
 											'<a href="{0}">' +
-											'<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrEyVlaWx0_FK_sz86j-CnUC_pfEqw_Xq_xZUm5CMIyEI_-X2hRUpx1BHL"/>' +
-											'<div class="tooltip">{1}</div></a>' +
+											'<img src="{1}"/>' +
+											'<div class="tooltip">{2}</div></a>' +
 										'</div>' +
-										'<div class="text R textR">{2}</div>' +
-									'</div>', "/" + msg.headers.sender_slug, msg.headers.sender, msg.body);
+										'<div class="text R textR">{3}</div>' +
+									'</div>', "/" + msg.headers.sender_slug, msg.headers.user_image, msg.headers.sender, msg.body);
 		$(".container").append($(message));
 		var container = $('.container'),
     		scrollTo = $('.Message').last();

@@ -65,11 +65,13 @@ class DemoStomplet < TorqueBox::Stomp::JmsStomplet
     remember_token = session[:remember_token]
     
     if signed_in?( remember_token )
-      user = current_user( remember_token )   
+      user = current_user( remember_token ) 
 
       stomp_message.headers['sender'] = user.name_first + " " + user.name_last
       stomp_message.headers['sender_id'] = user.id.to_s
       stomp_message.headers['sender_slug'] = user.slug.to_s
+      user_image = user.user_images.where( :primary => true ).first.image_url(:image_200_200) rescue "/images_avatar/avatar-gen-person-w200-h200.png"
+      stomp_message.headers['user_image'] = user_image
       # stomp_message.headers['dialog_id'] = 1.to_s
 
       send_to( @destination, stomp_message )
@@ -79,9 +81,7 @@ class DemoStomplet < TorqueBox::Stomp::JmsStomplet
   def on_subscribe(subscriber)
     remember_token = subscriber.session[:remember_token]
 
-    if signed_in?( remember_token )
-      Rails.logger.info "Subscribed: " + subscriber.to_s    
-      
+    if signed_in?( remember_token )      
       subscribe_to( subscriber, 
                   @destination, 
                   "dialog_id='1'" )

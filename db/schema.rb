@@ -753,6 +753,15 @@ ActiveRecord::Schema.define(version: 20150926133817) do
 
   add_index "log_users", ["user_id"], name: "index_log_users_on_user_id", using: :btree
 
+  create_table "messages", force: true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
   create_table "paintings", force: true do |t|
     t.integer  "gallery_id"
     t.string   "name"
@@ -2516,6 +2525,24 @@ ActiveRecord::Schema.define(version: 20150926133817) do
   end
 
   add_index "user_background1_images", ["user_id"], name: "index_user_background1_images_on_user_id", using: :btree
+
+  create_table "user_bkgrnd_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "width",      default: 0
+    t.integer  "height",     default: 0
+    t.integer  "user_id",    default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",    default: false
+    t.integer  "order",      default: 0
+    t.integer  "crop_x",     default: 0
+    t.integer  "crop_y",     default: 0
+    t.integer  "crop_w",     default: 0
+    t.integer  "crop_h",     default: 0
+  end
+
+  add_index "user_bkgrnd_images", ["user_id"], name: "index_user_bkgrnd_images_on_user_id", using: :btree
 
   create_table "user_connections", force: true do |t|
     t.integer  "user_id"
