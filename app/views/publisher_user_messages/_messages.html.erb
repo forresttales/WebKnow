@@ -1,0 +1,16 @@
+<% if @messages %>	
+	<% @messages.each do |message| %>
+		<div class="Area Message">
+			<div class="L">
+				<% message_author = User.where(:id => message.user_id).first %>
+				<% message_user_slug = message_author.slug %>
+				<a href=<%= message_user_slug %>>
+				<% message_user_image = message_author.user_images.where( :primary => true ).first.image_url(:image_200_200) rescue "/images_avatar/avatar-gen-person-w200-h200.png" %>
+				<img src=<%= message_user_image %>/>
+				<% message_sender = message_author.name_first + " " + message_author.name_last %>
+				<div class="tooltip"><%= message_sender %></div></a>
+			</div>
+			<div class="text R textR"><%= message.body %></div>
+		</div>
+	<% end %>
+<% end %>

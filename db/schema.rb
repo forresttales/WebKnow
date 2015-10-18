@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926133817) do
+ActiveRecord::Schema.define(version: 20151015105831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 20150926133817) do
     t.integer  "year_value", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "conversations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dialog_id",             default: 0
+    t.integer  "user_id",               default: 0
+    t.integer  "start_from_message_id", default: 0
+    t.boolean  "owner",                 default: false
   end
 
   create_table "core_literacy_standards", force: true do |t|
@@ -754,13 +763,12 @@ ActiveRecord::Schema.define(version: 20150926133817) do
   add_index "log_users", ["user_id"], name: "index_log_users_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
-    t.text     "body"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "dialog_id",  default: 0
+    t.integer  "user_id",    default: 0
+    t.string   "body"
   end
-
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "paintings", force: true do |t|
     t.integer  "gallery_id"

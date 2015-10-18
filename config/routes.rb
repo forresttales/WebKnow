@@ -8,8 +8,15 @@ Webknow::Application.routes.draw do
   get "control_elements/sticky_footer_with_icon"
   
   match "/Messages" => "publisher_user_messages#index", via: 'get'
+  
+  resources :publisher_user_messages do
+      collection do
+        post :open_conversation
+        post :send_message
+      end
+  end 
   # get "messages/index"
-  get "messages/create"
+  # get "messages/create"
 
   # root :to => ChatDemo
   

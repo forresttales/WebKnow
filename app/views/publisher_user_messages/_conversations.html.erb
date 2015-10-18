@@ -1,0 +1,6 @@
+<div class="container" style="background: beige ">
+	<% for dialog in current_user.conversations %>
+		<div>Dialog: <%= dialog.dialog_id %></div>
+		<div>Owner: <%= dialog.owner.to_s %></div>
+	<% end %>
+</div>

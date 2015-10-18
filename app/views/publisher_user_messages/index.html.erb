@@ -15,7 +15,7 @@
 	}
 	.container
 	{
-	  width:450px;
+	  width:600px;
 	  cursor:default;
 	  margin:20px auto;
 	  max-height:500px;
@@ -180,7 +180,7 @@
 	{
 	  text-decoration:none;
 	}
-	.Area input[type=button]
+	.Area input[type=button], .Area input[type=submit]
 	{
 	  font-size:12px;
 	  padding:5px;
@@ -192,7 +192,7 @@
 	  border:1px solid transparent;
 	  float:left;
 	}
-	.Area input[type=button]:hover
+	.Area input[type=button]:hover, .Area input[type=submit]:hover
 	{
 	  color:#fff;
 	  border:1px solid #ccc;
@@ -200,7 +200,7 @@
 	    -moz-transition: all 1.5s;
 	    transition: all 1.5s;
 	  background-color:#9F6905;
-	} 
+	}
 	.validation
 	{
 	  float:left;
@@ -221,34 +221,56 @@
 </style>
 
 <!-- <div class="header">Conversation</div> -->
-<div class="container">
-	<!-- <div class="Area">
-		<div class="L">
-			<a href="https://twitter.com/SamiMassadeh">
-			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrEyVlaWx0_FK_sz86j-CnUC_pfEqw_Xq_xZUm5CMIyEI_-X2hRUpx1BHL"/>
-			<div class="tooltip">Sami Massadeh - 28 Years<br/>Doctor <br/>Jordan</div></a>
+<div style="position: relative;">
+	<div style="float: left; width: 150px">
+		<%= render 'users' %>
+		<%= render 'conversations' %>
+	</div>
+	<div style="width: 50px"></div>
+	<div style="float: right">
+		<div style="display: inline">Current dialog_id:</div>
+		<div id="current_dialog_id" style="display: inline"></div>
+		<div id="dialog_container" class="container">
+			<div id="dialog_id_1" style="background: lightgreen"></div>
+			<div id="dialog_id_0" style="background: lightblue"></div>
+			<div id="dialog_id_2"></div>
+			<!-- <div class="Area">
+				<div class="L">
+					<a href="https://twitter.com/SamiMassadeh">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrEyVlaWx0_FK_sz86j-CnUC_pfEqw_Xq_xZUm5CMIyEI_-X2hRUpx1BHL"/>
+					<div class="tooltip">Sami Massadeh - 28 Years<br/>Doctor <br/>Jordan</div></a>
+				</div>
+				<div class="text R textR">Hi Mariam, How Are You?
+				</div>
+			</div>
+			<div class="Area"> 
+				<div class="R">
+					<a href="https://twitter.com/MariamMassadeh">
+					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSxU35znsBhAWQd5BouLIVtH1P4WNa0JZ_XXpyViHOIARbM2igbNgC6_kp5"/>
+					<div class="tooltip">Mariam Massadeh - 23 Years<br/>Computer Engineer<br/>Jordan</div></a>
+				</div>    
+				<div class="text L textL">Hi Sami, Fine, Thank You, How Are You?
+				</div>        
+			</div> --> 
 		</div>
-		<div class="text R textR">Hi Mariam, How Are You?
+		<div class="Area">
+			<!-- <textarea id="new_message" placeholder="Participate in coversation"></textarea>
+			<br/><br/> -->
+			<input type="button" onclick="sendMessage()" value="OLD SEND"/>
+			<br/><br/>
+			<%= form_tag({action: 'send_message'}, remote: true) do %>
+				<%= hidden_field_tag :dialog_id, @last_dialog.dialog_id %>
+				<%= text_area_tag :new_message, nil, :placeholder => "Participate in coversation" %>
+				<br/><br/>
+				<%= submit_tag("SEND") %>
+			<% end %>
+			<input id="input_dialog_id" type="text" value="1"/>
+			<div class="validation">You Are Not Registered</div>
+			<br/>
+			<p class="note">* for any help return to adminstrator..</p>
 		</div>
 	</div>
-	<div class="Area"> 
-		<div class="R">
-			<a href="https://twitter.com/MariamMassadeh">
-			<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSxU35znsBhAWQd5BouLIVtH1P4WNa0JZ_XXpyViHOIARbM2igbNgC6_kp5"/>
-			<div class="tooltip">Mariam Massadeh - 23 Years<br/>Computer Engineer<br/>Jordan</div></a>
-		</div>    
-		<div class="text L textL">Hi Sami, Fine, Thank You, How Are You?
-		</div>        
-	</div> --> 
-</div>
-<div class="Area">
-	<textarea id="new_message" placeholder="Participate in coversation"></textarea>
-	<br/><br/>
-	<input type="button" onclick="sendMessage()" value="SEND"/>
-	<input id="dialog_id" type="text" value="2"/>
-	<div class="validation">You Are Not Registered</div>
-	<br/>
-	<p class="note">* for any help return to adminstrator..</p>
+	<div style="clear: both"></div>
 </div>
 
 <script type="text/javascript">
@@ -291,13 +313,18 @@
 											'<div class="tooltip">{2}</div></a>' +
 										'</div>' +
 										'<div class="text R textR">{3}</div>' +
-									'</div>', "/" + msg.headers.sender_slug, msg.headers.user_image, msg.headers.sender, msg.body);
-		$(".container").append($(message));
-		var container = $('.container'),
-    		scrollTo = $('.Message').last();
-		container.animate({
-		    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-		}, 500);
+									'</div>', "/" + msg.headers.sender_slug, msg.headers.sender_image, msg.headers.sender, msg.body);
+		// var dialog_container = $("#dialog_id_" + msg.headers.dialog_id);
+		var dialog_container = $("#dialog_container");
+
+		if(dialog_container.length != 0) {
+			dialog_container.append($(message));
+			var container = $('.container'),
+	    		scrollTo = $('.Message').last();
+			container.animate({
+			    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+			}, 500);
+		}
 	}
 	function sendMessage() {
 		client.send( "/queue/demo", { dialog_id: $("#dialog_id").val() }, $("#new_message").val() );
