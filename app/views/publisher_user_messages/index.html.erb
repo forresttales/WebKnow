@@ -259,7 +259,7 @@
 			<input type="button" onclick="sendMessage()" value="OLD SEND"/>
 			<br/><br/>
 			<%= form_tag({action: 'send_message'}, remote: true) do %>
-				<%= hidden_field_tag :dialog_id, @last_dialog.dialog_id %>
+				<%= hidden_field_tag :dialog_id, @last_dialog_id %>
 				<%= text_area_tag :new_message, nil, :placeholder => "Participate in coversation" %>
 				<br/><br/>
 				<%= submit_tag("SEND") %>
@@ -274,12 +274,13 @@
 </div>
 
 <script type="text/javascript">
+	var subscription = null;
 	// Stomp client for url 
 	client = Stomp.client("wss://webknow/websockets", "v11.stomp");  
 	// Connect to Torquebox, executing the function when connected 
 	client.connect("", "", function(frame) { 
 		// Subscribe to the demo queue to fire callback 
-		client.subscribe("/queue/demo", onMessage); 
+		subscription = client.subscribe("/queue/demo", onMessage); 
 		// Send a test message 
 		client.send( "/queue/demo", {}, "This is a test of the Demo" ); 
 	}); 
@@ -306,24 +307,59 @@
 		// alert(msg);
 		// var message = String.format('<p>{0}: {1}</p>',
   //                            msg.headers.sender, msg.body);
-		var message = String.format('<div class="Area Message">' + 
-										'<div class="L">' + 
-											'<a href="{0}">' +
-											'<img src="{1}"/>' +
-											'<div class="tooltip">{2}</div></a>' +
-										'</div>' +
-										'<div class="text R textR">{3}</div>' +
-									'</div>', "/" + msg.headers.sender_slug, msg.headers.sender_image, msg.headers.sender, msg.body);
-		// var dialog_container = $("#dialog_id_" + msg.headers.dialog_id);
-		var dialog_container = $("#dialog_container");
+		if (msg.headers.recipient == null) {
+			var message = String.format('<div class="Area Message">' + 
+											'<div class="L">' + 
+												'<a href="{0}">' +
+												'<img src="{1}"/>' +
+												'<div class="tooltip">{2}</div></a>' +
+											'</div>' +
+											'<div class="text R textR">{3}</div>' +
+										'</div>', "/" + msg.headers.sender_slug, msg.headers.sender_image, msg.headers.sender, msg.body);
+			
+			// var dialog_container = $("#dialog_id_" + msg.headers.dialog_id);
+			var dialog_container = $("#dialog_container");
 
-		if(dialog_container.length != 0) {
-			dialog_container.append($(message));
-			var container = $('.container'),
-	    		scrollTo = $('.Message').last();
-			container.animate({
-			    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-			}, 500);
+			if(dialog_container.length != 0) {
+				dialog_container.append($(message));
+				var container = $('.container'),
+		    		scrollTo = $('.Message').last();
+				container.animate({
+				    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+				}, 500);
+			}
+		} else 
+		{
+			// Resubscribing due to opening a new dialog
+			resubscribe();
+			// Showing a new message or notification
+			// TODO
+
+			// Showing message
+			var message = String.format('<div class="Area Message">' + 
+											'<div class="L">' + 
+												'<a href="{0}">' +
+												'<img src="{1}"/>' +
+												'<div class="tooltip">{2}</div></a>' +
+											'</div>' +
+											'<div class="text R textR">{3}</div>' +
+										'</div>', "/" + msg.headers.sender_slug, msg.headers.sender_image, msg.headers.sender, msg.body);
+			$('#dialog_id').val(msg.headers.dialog_id);
+			$('#current_dialog_id').html(msg.headers.dialog_id);
+			// var dialog_container = $("#dialog_id_" + msg.headers.dialog_id);
+			var dialog_container = $("#dialog_container");
+
+			if(dialog_container.length != 0) {
+				dialog_container.append($(message));
+				var container = $('.container'),
+		    		scrollTo = $('.Message').last();
+				container.animate({
+				    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+				}, 500);
+			}
+
+			// Showing just notification
+
 		}
 	}
 	function sendMessage() {
@@ -334,4 +370,10 @@
 		sendMessage();
 		return false;
 	});
+	function resubscribe() {
+		// Unsubscribing subscription
+		subscription.unsubscribe();
+		// Subscribe to the demo queue to fire callback 
+		subscription = client.subscribe("/queue/demo", onMessage);
+	}
 </script>

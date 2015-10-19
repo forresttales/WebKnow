@@ -8,21 +8,18 @@ class PublisherUserMessagesController < ApplicationController
   	# Thread.new do
   	# 	listen
   	# end
-  	@last_dialog = current_user.conversations.last
+  	# TODO
+  	@last_dialog_id = current_user.conversations.last.dialog_id rescue -1
   end
 
   def send_message
-  	@smth = "send_message"
-  	Rails.logger.info @smth
   	# Get dialog_id and message body from ajax
   	dialog_id = params[:dialog_id]
   	message = params[:new_message]
-  	Rails.logger.info dialog_id
-  	Rails.logger.info message
+
   	# Save to database
   	entry = Message.new(:dialog_id => dialog_id, :user_id => current_user.id, :body => message)
 	entry.save
-	Rails.logger.info "Saved"
 
   	# Publish message to existing channel
   	user_image = current_user.user_images.where( :primary => true ).first.image_url(:image_200_200) rescue "/images_avatar/avatar-gen-person-w200-h200.png"
@@ -40,31 +37,39 @@ class PublisherUserMessagesController < ApplicationController
   	sender_user_id = params[:sender_user_id]
   	recipient_user_id = params[:recipient_user_id]
   	@messages = nil
+  	@resubscribe = false
 
   	# Check if conversation exists
   	if sender_user_id != recipient_user_id
 	  	@dialog_id = get_private_dialog(sender_user_id, recipient_user_id)
 	  	if @dialog_id == -1
 	  		# Get maximum dialog_id from Conversation model
-			dialog_id_new = Conversation.maximum("dialog_id") + 1
-	  		
+			@dialog_id = Conversation.maximum("dialog_id") + 1
+
+			# Add two new entries for sender and recipient
+			entry = Conversation.new(:dialog_id => @dialog_id, :user_id => sender_user_id, :owner => true)
+			entry.save
+
+			entry = Conversation.new(:dialog_id => @dialog_id, :user_id => recipient_user_id)
+			entry.save
+
+			# Save message to database
+			entry = Message.new(:dialog_id => @dialog_id, :user_id => current_user.id, :body => "New dialog_id is: " + @dialog_id.to_s)
+			entry.save
+
+		  	# Send resubscribe message to sender and recipient personal channels
 	  		user_image = current_user.user_images.where( :primary => true ).first.image_url(:image_200_200) rescue "/images_avatar/avatar-gen-person-w200-h200.png"
-	  		fetch( '/topics/chat' ).publish( "Need to create! Possible dialog_id: " + dialog_id_new.to_s, 
+	  		fetch( '/topics/chat' ).publish( "New dialog_id is: " + @dialog_id.to_s, 
 	                                    	:properties=>{ 
 	                                        :sender => current_user.name_first + " " + current_user.name_last,
 	                                        :sender_id => current_user.id.to_s,
 	                                        :sender_slug => current_user.slug.to_s,
 	                                        :sender_image => user_image,
-	                                        :dialog_id => "0"
+	                                        :recipient => recipient_user_id.to_s,
+	                                        :dialog_id => @dialog_id.to_s
 	                                       } )
-		  	# Add two new entries for sender and recipient
-		  	# entry = Conversation.new(:dialog_id => dialog_id_new, :user_id => sender_user_id, :owner => true)
-			# entry.save
-
-			# entry = Conversation.new(:dialog_id => dialog_id_new, :user_id => recipient_user_id)
-			# entry.save
-
-		  	# Send resubscribe message to sender and recipient personal channels
+	  		@resubscribe = true
+		  	
 	  	else
 	  		# Publish message to existing channel
 	  		# user_image = current_user.user_images.where( :primary => true ).first.image_url(:image_200_200) rescue "/images_avatar/avatar-gen-person-w200-h200.png"
@@ -76,8 +81,10 @@ class PublisherUserMessagesController < ApplicationController
 	    #                                     :sender_image => user_image,
 	    #                                     :dialog_id => dialog_id.to_s
 	    #                                    } )
-	  		@messages = Message.where(:dialog_id => @dialog_id)
+	  		# @messages = Message.where(:dialog_id => @dialog_id)
+	  		@resubscribe = false
 	  	end
+	  	@messages = Message.where(:dialog_id => @dialog_id)
 	end
 
   end
