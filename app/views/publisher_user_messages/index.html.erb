@@ -274,20 +274,112 @@
 </div>
 
 <script type="text/javascript">
-	var subscription = null;
-	// Stomp client for url 
-	client = Stomp.client("wss://webknow/websockets", "v11.stomp");  
-	// Connect to Torquebox, executing the function when connected 
-	client.connect("", "", function(frame) { 
-		// Subscribe to the demo queue to fire callback 
-		subscription = client.subscribe("/queue/demo", onMessage); 
-		// Send a test message 
-		client.send( "/queue/demo", {}, "This is a test of the Demo" ); 
-	}); 
-	// Disconnect client on close 
-	$(window).unload(function() { 
-		client.disconnect(); 
-	});
+	// var subscription = null;
+	// // Stomp client for url 
+	// client = Stomp.client("wss://webknow/websockets", "v11.stomp");  
+	// // Connect to Torquebox, executing the function when connected 
+	// client.connect("", "", function(frame) { 
+	// 	// Subscribe to the demo queue to fire callback 
+	// 	subscription = client.subscribe("/queue/demo", onMessage); 
+	// 	// Send a test message 
+	// 	client.send( "/queue/demo", {}, "This is a test of the Demo" ); 
+	// }); 
+	// // Disconnect client on close 
+	// $(window).unload(function() { 
+	// 	client.disconnect(); 
+	// });
+	// String.format = function() {
+	//     // The string containing the format items (e.g. "{0}")
+	//     // will and always has to be the first argument.
+	//     var theString = arguments[0];
+	    
+	//     // start with the second argument (i = 1)
+	//     for (var i = 1; i < arguments.length; i++) {
+	//         // "gm" = RegEx options for Global search (more than one instance)
+	//         // and for Multiline search
+	//         var regEx = new RegExp("\\{" + (i - 1) + "\\}", "gm");
+	//         theString = theString.replace(regEx, arguments[i]);
+	//     }
+	    
+	//     return theString;
+	// }
+	// onMessage = function(msg) { 
+	// 	// alert(msg);
+	// 	// var message = String.format('<p>{0}: {1}</p>',
+ //  //                            msg.headers.sender, msg.body);
+	// 	if (msg.headers.recipient == null) {
+	// 		var message = String.format('<div class="Area Message">' + 
+	// 										'<div class="L">' + 
+	// 											'<a href="{0}">' +
+	// 											'<img src="{1}"/>' +
+	// 											'<div class="tooltip">{2}</div></a>' +
+	// 										'</div>' +
+	// 										'<div class="text R textR">{3}</div>' +
+	// 									'</div>', "/" + msg.headers.sender_slug, msg.headers.sender_image, msg.headers.sender, msg.body);
+			
+	// 		// var dialog_container = $("#dialog_id_" + msg.headers.dialog_id);
+	// 		var dialog_container = $("#dialog_container");
+
+	// 		if(dialog_container.length != 0) {
+	// 			dialog_container.append($(message));
+	// 			var container = $('.container'),
+	// 	    		scrollTo = $('.Message').last();
+	// 			container.animate({
+	// 			    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+	// 			}, 500);
+	// 		}
+	// 	} else 
+	// 	{
+	// 		// Resubscribing due to opening a new dialog
+	// 		resubscribe();
+	// 		// Showing a new message or notification
+	// 		// TODO
+
+	// 		// Showing message
+	// 		var message = String.format('<div class="Area Message">' + 
+	// 										'<div class="L">' + 
+	// 											'<a href="{0}">' +
+	// 											'<img src="{1}"/>' +
+	// 											'<div class="tooltip">{2}</div></a>' +
+	// 										'</div>' +
+	// 										'<div class="text R textR">{3}</div>' +
+	// 									'</div>', "/" + msg.headers.sender_slug, msg.headers.sender_image, msg.headers.sender, msg.body);
+	// 		$('#dialog_id').val(msg.headers.dialog_id);
+	// 		$('#current_dialog_id').html(msg.headers.dialog_id);
+	// 		// var dialog_container = $("#dialog_id_" + msg.headers.dialog_id);
+	// 		var dialog_container = $("#dialog_container");
+
+	// 		if(dialog_container.length != 0) {
+	// 			dialog_container.append($(message));
+	// 			var container = $('.container'),
+	// 	    		scrollTo = $('.Message').last();
+	// 			container.animate({
+	// 			    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+	// 			}, 500);
+	// 		}
+
+	// 		// Showing just notification
+
+	// 	}
+	// }
+	function sendMessage() {
+		// client.send( "/queue/demo", { dialog_id: $("#dialog_id").val() }, $("#new_message").val() );
+		stompSendMessage($("#dialog_id").val(), $("#new_message").val())
+		$("#new_message").val("");
+	}
+	// $('#messageForm').submit(function () {
+	// 	sendMessage();
+	// 	return false;
+	// });
+	// function resubscribe() {
+	// 	// Unsubscribing subscription
+	// 	subscription.unsubscribe();
+	// 	// Subscribe to the demo queue to fire callback 
+	// 	subscription = client.subscribe("/queue/demo", onMessage);
+	// }
+</script>
+<!-- STOMP helpers -->
+<script type="text/javascript">
 	String.format = function() {
 	    // The string containing the format items (e.g. "{0}")
 	    // will and always has to be the first argument.
@@ -303,11 +395,51 @@
 	    
 	    return theString;
 	}
-	onMessage = function(msg) { 
-		// alert(msg);
-		// var message = String.format('<p>{0}: {1}</p>',
-  //                            msg.headers.sender, msg.body);
-		if (msg.headers.recipient == null) {
+</script>
+<!-- STOMP region -->
+<script type="text/javascript">
+	var stompClient;
+	var stompSubscribtion;
+
+	function stompConnect() {
+		// Stomp client for url 
+	    stompClient = Stomp.client("wss://webknow/websockets", "v11.stomp"); 
+	    // Connect to Torquebox, executing the function when connected 
+	    stompClient.connect('', '', stompSuccessCallback, stompFailureCallback);
+	}
+
+	function stompResubscribe() {
+		// Unsubscribing subscription
+		stompSubscribtion.unsubscribe();
+		// Subscribe to the demo queue to fire callback 
+		stompSubscribtion = stompClient.subscribe("/queue/demo", stompMessageCallback);
+	}
+
+	function stompDisconnect() {
+		stompClient.disconnect();
+	}
+
+	// Recommended to use <#%= form_tag({action: 'send_message'}, remote: true) do %>
+	function stompSendMessage(dialog_id, simpleMessage) {
+		stompClient.send( "/queue/demo", { dialog_id: dialog_id }, simpleMessage );
+	}
+
+	var stompSuccessCallback = function (frame) {
+	    console.log('STOMP: Connection successful');
+	    // Subscribe to the demo queue to fire callback 
+		stompSubscribtion = stompClient.subscribe("/queue/demo", stompMessageCallback); 
+		// Send a test message 
+		stompClient.send( "/queue/demo", {}, "This is a test of the Demo" ); 
+	}
+
+	var stompFailureCallback = function (error) {
+	    console.log('STOMP: ' + error);
+	    setTimeout(stompConnect, 10000);
+	    console.log('STOMP: Reconecting in 10 seconds');
+	}
+
+	var stompMessageCallback = function (stompMessage) {
+		if (stompMessage.headers.recipient == null) {
 			var message = String.format('<div class="Area Message">' + 
 											'<div class="L">' + 
 												'<a href="{0}">' +
@@ -315,9 +447,9 @@
 												'<div class="tooltip">{2}</div></a>' +
 											'</div>' +
 											'<div class="text R textR">{3}</div>' +
-										'</div>', "/" + msg.headers.sender_slug, msg.headers.sender_image, msg.headers.sender, msg.body);
+										'</div>', "/" + stompMessage.headers.sender_slug, stompMessage.headers.sender_image, stompMessage.headers.sender, stompMessage.body);
 			
-			// var dialog_container = $("#dialog_id_" + msg.headers.dialog_id);
+			// var dialog_container = $("#dialog_id_" + stompMessage.headers.dialog_id);
 			var dialog_container = $("#dialog_container");
 
 			if(dialog_container.length != 0) {
@@ -331,7 +463,7 @@
 		} else 
 		{
 			// Resubscribing due to opening a new dialog
-			resubscribe();
+			stompResubscribe();
 			// Showing a new message or notification
 			// TODO
 
@@ -343,10 +475,10 @@
 												'<div class="tooltip">{2}</div></a>' +
 											'</div>' +
 											'<div class="text R textR">{3}</div>' +
-										'</div>', "/" + msg.headers.sender_slug, msg.headers.sender_image, msg.headers.sender, msg.body);
-			$('#dialog_id').val(msg.headers.dialog_id);
-			$('#current_dialog_id').html(msg.headers.dialog_id);
-			// var dialog_container = $("#dialog_id_" + msg.headers.dialog_id);
+										'</div>', "/" + stompMessage.headers.sender_slug, stompMessage.headers.sender_image, stompMessage.headers.sender, stompMessage.body);
+			$('#dialog_id').val(stompMessage.headers.dialog_id);
+			$('#current_dialog_id').html(stompMessage.headers.dialog_id);
+			// var dialog_container = $("#dialog_id_" + stompMessage.headers.dialog_id);
 			var dialog_container = $("#dialog_container");
 
 			if(dialog_container.length != 0) {
@@ -359,21 +491,12 @@
 			}
 
 			// Showing just notification
-
 		}
 	}
-	function sendMessage() {
-		client.send( "/queue/demo", { dialog_id: $("#dialog_id").val() }, $("#new_message").val() );
-		$("#new_message").val("");
-	}
-	$('#messageForm').submit(function () {
-		sendMessage();
-		return false;
+
+	stompConnect();
+
+	$(window).unload(function() { 
+		stompDisconnect(); 
 	});
-	function resubscribe() {
-		// Unsubscribing subscription
-		subscription.unsubscribe();
-		// Subscribe to the demo queue to fire callback 
-		subscription = client.subscribe("/queue/demo", onMessage);
-	}
 </script>
