@@ -44,7 +44,7 @@ class PublisherUserMessagesController < ApplicationController
 	  	@dialog_id = get_private_dialog(sender_user_id, recipient_user_id)
 	  	if @dialog_id == -1
 	  		# Get maximum dialog_id from Conversation model
-			@dialog_id = Conversation.maximum("dialog_id") + 1
+			@dialog_id = (Conversation.maximum("dialog_id") + 1) rescue 1
 
 			# Add two new entries for sender and recipient
 			entry = Conversation.new(:dialog_id => @dialog_id, :user_id => sender_user_id, :owner => true)
