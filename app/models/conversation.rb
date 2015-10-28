@@ -20,5 +20,5 @@ class Conversation < ActiveRecord::Base
 					:created_at,
 					:updated_at
 
-	has_many :messages, foreign_key: "dialog_id"
+	has_many :messages, foreign_key: "dialog_id", :primary_key => 'dialog_id'
 end

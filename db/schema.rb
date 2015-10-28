@@ -2534,24 +2534,6 @@ ActiveRecord::Schema.define(version: 20151023105831) do
 
   add_index "user_background1_images", ["user_id"], name: "index_user_background1_images_on_user_id", using: :btree
 
-  create_table "user_bkgrnd_images", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "width",      default: 0
-    t.integer  "height",     default: 0
-    t.integer  "user_id",    default: 0
-    t.string   "image"
-    t.string   "image_name"
-    t.boolean  "primary",    default: false
-    t.integer  "order",      default: 0
-    t.integer  "crop_x",     default: 0
-    t.integer  "crop_y",     default: 0
-    t.integer  "crop_w",     default: 0
-    t.integer  "crop_h",     default: 0
-  end
-
-  add_index "user_bkgrnd_images", ["user_id"], name: "index_user_bkgrnd_images_on_user_id", using: :btree
-
   create_table "user_connections", force: true do |t|
     t.integer  "user_id"
     t.integer  "connection_id"

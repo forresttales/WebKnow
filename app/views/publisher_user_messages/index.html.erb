@@ -16,6 +16,7 @@
 	.container
 	{
 	  width:600px;
+	  /*width: 100%;*/
 	  cursor:default;
 	  margin:20px auto;
 	  max-height:500px;
@@ -221,6 +222,15 @@
 </style>
 
 <!-- <div class="header">Conversation</div> -->
+<div style="display: table; height: 50%; width: 100%;">
+	<div style="display: table-cell; width: 225px; vertical-align: top;">
+		<%= render 'user_list' %>
+	</div>
+	<div style="display: table-cell; width: 750px; vertical-align: top;">
+		<%= render 'conversation_list' %>
+	</div>
+	<div style="display: table-cell; width: 225px; vertical-align: top; background: lightgray"></div>
+</div>
 <div style="position: relative;">
 	<div style="float: left; width: 150px">
 		<%= render 'users' %>

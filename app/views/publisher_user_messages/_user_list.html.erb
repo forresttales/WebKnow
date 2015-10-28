@@ -1,0 +1,27 @@
+<!--<script type="text/javascript">
+	function createConversation (obj) {
+		var recipient_user_id = $(obj).children(".user_id").attr("data-user-id");
+		client.send( "/queue/demo", { recipient: recipient_user_id}, recipient_user_id );
+	}
+	function onClick () {
+		//$("#dialog_container").html("<#%= j render('publisher_user_messages/messages') %>");
+		//alert("hi!");
+	}
+</script>-->
+
+<div class="container" style="padding: 5px; width: 225px; background: aliceblue ">
+	<% User.all.each do |user| %>
+		<div style="display: block">
+			<div><%= user.username %></div>
+			<div style="display: inline">User ID:</div>
+			<div class="user_id" data-user-id=<%= user.id %> style="display: inline"><%= user.id %></div>
+			<!--<#%= form_tag({action: 'open_conversation'}, remote: true, :'data-type' => 'json', :style => "display: inline; float: right") do %>-->
+			<%= form_tag({action: 'open_conversation'}, remote: true, :style => "display: inline; float: right") do %>
+				<%= hidden_field_tag :sender_user_id, current_user.id %>
+				<%= hidden_field_tag :recipient_user_id, user.id %>
+				<%= submit_tag("Open dialog", :style => " background: none; ", :onclick => "onClick()") %>
+			<% end %>
+			<p>&nbsp;</p>
+		</div>		
+	<% end %>
+</div>
