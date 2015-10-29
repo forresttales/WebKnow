@@ -12,6 +12,12 @@ class PublisherUserMessagesController < ApplicationController
   	@last_dialog_id = current_user.conversations.last.dialog_id rescue -1
   end
 
+  def view_conversations
+  	respond_to do |format|
+	  format.js
+	end
+  end
+
   def send_message
   	# Get dialog_id and message body from ajax
   	dialog_id = params[:dialog_id]
@@ -31,6 +37,11 @@ class PublisherUserMessagesController < ApplicationController
                                 :sender_image => user_image,
                                 :dialog_id => dialog_id.to_s
                                } )
+  end
+
+  def open_dialog_by_id
+  	@dialog_id = params[:dialog_id]
+  	@messages = Message.where(:dialog_id => @dialog_id).order(:id) 	
   end
 
   def open_conversation
@@ -84,7 +95,7 @@ class PublisherUserMessagesController < ApplicationController
 	  		# @messages = Message.where(:dialog_id => @dialog_id)
 	  		@resubscribe = false
 	  	end
-	  	@messages = Message.where(:dialog_id => @dialog_id)
+	  	@messages = Message.where(:dialog_id => @dialog_id).order(:id) 
 	end
 
   end

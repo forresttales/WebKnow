@@ -15,8 +15,8 @@
 	}
 	.container
 	{
-	  width:600px;
-	  /*width: 100%;*/
+	  /*width:600px;*/
+	  width: 100%;
 	  cursor:default;
 	  margin:20px auto;
 	  max-height:500px;
@@ -52,6 +52,7 @@
 	.L
 	{
 	  float:left;
+	  position: relative;
 	}
 	.Area img
 	{
@@ -74,12 +75,14 @@
 	.R
 	{
 	    float:right;
+	    position: relative;
 	}
 	.text
 	{
-		color: #a4a4a4;
+		/*color: #a4a4a4;*/
+		color: #376340;
 		font-family: tahoma;
-		font-size: 13px;
+		font-size: 14px;
 		font-weight:lighter;
 		line-height: 30px;
 		width:300px;
@@ -87,7 +90,8 @@
 		background-color:rgba(255, 255, 255, 0.6);
 		margin-top:10px;
 		border-radius:5px;
-		padding:5px;  
+		padding:5px;
+		word-wrap: break-word; 
 	}
 	.Area textarea
 	{
@@ -133,6 +137,8 @@
 	  margin-top:-70px;
 	  display:none;
 	  color:#545454;
+	  white-space: nowrap;
+	  z-index: 1;
 	}
 	.R .tooltip:before
 	{
@@ -142,7 +148,7 @@
 	    height: 1px;
 	    border: 5px solid transparent;
 	    border-right-color: #9F6905;
-	    margin-top: 10px;
+	    /*margin-top: 10px;*/
 	    margin-left: -17px;
 	}
 	.R:hover .tooltip
@@ -161,6 +167,8 @@
 	  margin-top:-70px;
 	  display:none;  
 	  color:#545454;
+	  white-space: nowrap;
+	  z-index: 1;
 	}
 	.L .tooltip:before
 	{
@@ -170,7 +178,7 @@
 	    height: 1px;
 	    border: 5px solid transparent;
 	    border-right-color: #9F6905;
-	    margin-top: 10px;
+	    /*margin-top: 10px;*/
 	    margin-left: -17px;
 	}
 	.L:hover .tooltip
@@ -221,65 +229,21 @@
 	}
 </style>
 
-<!-- <div class="header">Conversation</div> -->
-<div style="display: table; height: 50%; width: 100%;">
+<div style="display: table; height: 100%; width: 100%;">
 	<div style="display: table-cell; width: 225px; vertical-align: top;">
-		<%= render 'user_list' %>
+		<%= render 'users' %>
 	</div>
-	<div style="display: table-cell; width: 750px; vertical-align: top;">
-		<%= render 'conversation_list' %>
+	<div id="main_container" style="display: table-cell; width: 750px; vertical-align: top;">
+		<%= render 'conversations' %>
 	</div>
 	<div style="display: table-cell; width: 225px; vertical-align: top; background: lightgray"></div>
 </div>
 <div style="position: relative;">
 	<div style="float: left; width: 150px">
-		<%= render 'users' %>
-		<%= render 'conversations' %>
+		<!-- <#%= render 'users' %> -->
+		<!-- <#%= render 'conversations' %> -->
 	</div>
 	<div style="width: 50px"></div>
-	<div style="float: right">
-		<div style="display: inline">Current dialog_id:</div>
-		<div id="current_dialog_id" style="display: inline"></div>
-		<div id="dialog_container" class="container">
-			<div id="dialog_id_1" style="background: lightgreen"></div>
-			<div id="dialog_id_0" style="background: lightblue"></div>
-			<div id="dialog_id_2"></div>
-			<!-- <div class="Area">
-				<div class="L">
-					<a href="https://twitter.com/SamiMassadeh">
-					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrEyVlaWx0_FK_sz86j-CnUC_pfEqw_Xq_xZUm5CMIyEI_-X2hRUpx1BHL"/>
-					<div class="tooltip">Sami Massadeh - 28 Years<br/>Doctor <br/>Jordan</div></a>
-				</div>
-				<div class="text R textR">Hi Mariam, How Are You?
-				</div>
-			</div>
-			<div class="Area"> 
-				<div class="R">
-					<a href="https://twitter.com/MariamMassadeh">
-					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSxU35znsBhAWQd5BouLIVtH1P4WNa0JZ_XXpyViHOIARbM2igbNgC6_kp5"/>
-					<div class="tooltip">Mariam Massadeh - 23 Years<br/>Computer Engineer<br/>Jordan</div></a>
-				</div>    
-				<div class="text L textL">Hi Sami, Fine, Thank You, How Are You?
-				</div>        
-			</div> --> 
-		</div>
-		<div class="Area">
-			<!-- <textarea id="new_message" placeholder="Participate in coversation"></textarea>
-			<br/><br/> -->
-			<input type="button" onclick="sendMessage()" value="OLD SEND"/>
-			<br/><br/>
-			<%= form_tag({action: 'send_message'}, remote: true) do %>
-				<%= hidden_field_tag :dialog_id, @last_dialog_id %>
-				<%= text_area_tag :new_message, nil, :placeholder => "Participate in coversation" %>
-				<br/><br/>
-				<%= submit_tag("SEND") %>
-			<% end %>
-			<input id="input_dialog_id" type="text" value="1"/>
-			<div class="validation">You Are Not Registered</div>
-			<br/>
-			<p class="note">* for any help return to adminstrator..</p>
-		</div>
-	</div>
 	<div style="clear: both"></div>
 </div>
 
@@ -449,27 +413,28 @@
 	}
 
 	var stompMessageCallback = function (stompMessage) {
-		if (stompMessage.headers.recipient == null) {
-			var message = String.format('<div class="Area Message">' + 
-											'<div class="L">' + 
-												'<a href="{0}">' +
-												'<img src="{1}"/>' +
-												'<div class="tooltip">{2}</div></a>' +
-											'</div>' +
-											'<div class="text R textR">{3}</div>' +
-										'</div>', "/" + stompMessage.headers.sender_slug, stompMessage.headers.sender_image, stompMessage.headers.sender, stompMessage.body);
-			
+		if (stompMessage.headers.recipient == null) {			
 			// var dialog_container = $("#dialog_id_" + stompMessage.headers.dialog_id);
-			var dialog_container = $("#dialog_container");
+			if ($("#dialog_id").val() == stompMessage.headers.dialog_id) {
+				var message = String.format('<div class="Area Message">' + 
+												'<div class="L">' + 
+													'<a href="{0}">' +
+													'<img src="{1}"/>' +
+													'<div class="tooltip">{2}</div></a>' +
+												'</div>' +
+												'<div class="text R textR">{3}</div>' +
+											'</div>', "/" + stompMessage.headers.sender_slug, stompMessage.headers.sender_image, stompMessage.headers.sender, stompMessage.body);
+				var dialog_container = $("#dialog_container");
 
-			if(dialog_container.length != 0) {
-				dialog_container.append($(message));
-				var container = $('.container'),
-		    		scrollTo = $('.Message').last();
-				container.animate({
-				    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-				}, 500);
-			}
+				if(dialog_container.length != 0) {
+					dialog_container.append($(message));
+					var container = $('#dialog_container'),
+			    		scrollTo = $('.Message').last();
+					container.animate({
+					    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+					}, 500);
+				}
+			}			
 		} else 
 		{
 			// Resubscribing due to opening a new dialog

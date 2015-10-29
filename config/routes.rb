@@ -12,7 +12,9 @@ Webknow::Application.routes.draw do
   resources :publisher_user_messages do
       collection do
         post :open_conversation
+        post :open_dialog_by_id
         post :send_message
+        post :view_conversations
       end
   end 
   # get "messages/index"

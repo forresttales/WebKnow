@@ -1,16 +1,103 @@
-<% if @messages %>	
-	<% @messages.each do |message| %>
-		<div class="Area Message">
-			<div class="L">
-				<% message_author = User.where(:id => message.user_id).first %>
-				<% message_user_slug = message_author.slug %>
-				<a href=<%= message_user_slug %>>
-				<% message_user_image = message_author.user_images.where( :primary => true ).first.image_url(:image_200_200) rescue "/images_avatar/avatar-gen-person-w200-h200.png" %>
-				<img src=<%= message_user_image %>/>
-				<% message_sender = message_author.name_first + " " + message_author.name_last %>
-				<div class="tooltip"><%= message_sender %></div></a>
-			</div>
-			<div class="text R textR"><%= message.body %></div>
+<% if @messages %>
+	<style type="text/css">
+		.btn-opt-edit-container {
+		    background: linear-gradient(#FBB040, #CA8E33);
+		    border-radius: 10px;
+		    width: 80px;
+		    height: 24px;
+		}
+		.btn-opt-edit-container:hover {
+		    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.1), 0 1.5em 1em rgba(255, 255, 255, 0.2) inset;
+		    cursor: pointer;
+		}
+		.btn-opt-edit {
+		    font-family: Arial, Helvetica, sans-serif;
+		    font-size: 14px;
+		    font-weight: 700;
+		    color: #eee;
+		    text-align: center;
+		    width: 80px;
+		    height: 24px;
+		    padding-top: 4px;
+		    text-decoration: none;
+		    outline: none;
+		}
+	</style>
+
+	<div style="padding: 5px; width: 750px; cursor:default; margin:20px auto;">
+		<div style="display: inline-block">
+			<%= link_to ("<div class=\"btn-opt-edit-container\"><div class=\"btn-opt-edit\">Go Back</div></div>").html_safe, {:action => :view_conversations}, :remote => true, :method => :post, :style => "width: 80px; height: 24px; text-decoration: none; color: white" %>
 		</div>
-	<% end %>
+		<div style="display: inline-block">
+			<div style="padding: 0px 20px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #37633a; display: inline">
+				<% Conversation.where(:dialog_id => @dialog_id).each do |conversation| %>
+					<% if conversation.user_id != current_user.id %>
+						<%= User.where(:id => conversation.user_id).first.name_first + " " %>
+					<% end %>
+				<% end %>
+			</div>	
+			<div style="font-size:12px; color: lightgrey; display: inline">Current dialog_id:</div>
+			<div id="current_dialog_id" style="font-size:12px; color: lightgrey;  display: inline"></div>			
+		</div>	
+		<div id="dialog_container" class="container" style="width: 750px">
+			<!-- <div class="Area">
+				<div class="L">
+					<a href="https://twitter.com/SamiMassadeh">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrEyVlaWx0_FK_sz86j-CnUC_pfEqw_Xq_xZUm5CMIyEI_-X2hRUpx1BHL"/>
+					<div class="tooltip">Sami Massadeh - 28 Years<br/>Doctor <br/>Jordan</div></a>
+				</div>
+				<div class="text R textR">Hi Mariam, How Are You?
+				</div>
+			</div>
+			<div class="Area"> 
+				<div class="R">
+					<a href="https://twitter.com/MariamMassadeh">
+					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSxU35znsBhAWQd5BouLIVtH1P4WNa0JZ_XXpyViHOIARbM2igbNgC6_kp5"/>
+					<div class="tooltip">Mariam Massadeh - 23 Years<br/>Computer Engineer<br/>Jordan</div></a>
+				</div>    
+				<div class="text L textL">Hi Sami, Fine, Thank You, How Are You?
+				</div>        
+			</div> -->
+			<% @messages.each do |message| %>
+				<% if message.unread == true  && message.user_id != current_user.id %>
+					<% message.update_attribute(:unread, false) %>
+				<% end %>
+				<div class="Area Message">
+					<div class="L">
+						<% message_author = User.where(:id => message.user_id).first %>
+						<% message_user_slug = message_author.slug %>
+						<a href=<%= message_user_slug %>>
+						<% message_user_image = message_author.user_images.where( :primary => true ).first.image_url(:image_200_200) rescue "/images_avatar/avatar-gen-person-w200-h200.png" %>
+						<img src=<%= message_user_image %>/>
+						<% message_sender = message_author.name_first + " " + message_author.name_last %>
+						<div class="tooltip"><%= message_sender %></div></a>
+					</div>
+					<div class="text R textR"><%= message.body %></div>
+				</div>
+			<% end %>
+		</div>
+		<div class="Area">
+			<!-- <textarea id="new_message" placeholder="Participate in coversation"></textarea>
+			<br/><br/> -->
+			<input type="button" onclick="sendMessage()" value="OLD SEND"/>
+			<br/><br/>
+			<%= form_tag({action: 'send_message'}, remote: true) do %>
+				<%= hidden_field_tag :dialog_id, @dialog_id %>
+				<%= text_area_tag :new_message, nil, :placeholder => "Participate in coversation" %>
+				<br/><br/>
+				<%= submit_tag("SEND") %>
+			<% end %>
+			<!-- <input id="input_dialog_id" type="text" value="1"/> -->
+			<div class="validation">You Are Not Registered</div>
+			<br/>
+			<p class="note">* for any help return to adminstrator..</p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function onBackToConversations (argument) {
+			// $('#main_container').html("<#%= j render('publisher_user_messages/conversations') %>");
+		}
+	</script>
 <% end %>
+

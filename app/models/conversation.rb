@@ -21,4 +21,5 @@ class Conversation < ActiveRecord::Base
 					:updated_at
 
 	has_many :messages, foreign_key: "dialog_id", :primary_key => 'dialog_id'
+	belongs_to :users
 end
