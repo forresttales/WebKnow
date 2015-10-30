@@ -42,7 +42,7 @@
 	.Area
 	{
 	  margin:0 auto;
-	  width:400px;
+	  width:500px;
 	  background-color:rgba(240, 240, 240, 0.2);
 	  display:table;
 	  padding:5px;
@@ -85,7 +85,7 @@
 		font-size: 14px;
 		font-weight:lighter;
 		line-height: 30px;
-		width:300px;
+		width:400px;
 		border:1px solid #f0f0f0;
 		background-color:rgba(255, 255, 255, 0.6);
 		margin-top:10px;
@@ -415,7 +415,40 @@
 	var stompMessageCallback = function (stompMessage) {
 		if (stompMessage.headers.recipient == null) {			
 			// var dialog_container = $("#dialog_id_" + stompMessage.headers.dialog_id);
-			if ($("#dialog_id").val() == stompMessage.headers.dialog_id) {
+			if ( $(".container").find("[data-dialog-id='" + stompMessage.headers.dialog_id + "']").length != 0 ) 
+			{	// If conversations rendered
+				// var conversation_container = $(".container").find("[data-dialog-id='" + stompMessage.headers.dialog_id + "']");
+				// var c_unread_c = conversation_container.find("#conversation_unread");
+				// var conversation_unread = (isNaN(parseInt(c_unread_c.text()))) ? 1 : parseInt(c_unread_c.text()) + 1;
+				// // var conversation_unread = parseInt(c_unread_c.text()) + 1;
+				// c_unread_c.text("+" + conversation_unread);
+				// var c_body_c = conversation_container.find("#conversation_body");
+				// c_body_c.css('font-weight', '700');
+				// c_body_c.text(stompMessage.body);
+
+				// var c_time_c = conversation_container.find("#conversation_time");
+				// var months = [ "January", "February", "March", "April", "May", "June", 
+				// "July", "August", "September", "October", "November", "December" ];
+				// var dNow = new Date();
+				// var localdate = (months[dNow.getMonth()]) + 
+				// ' ' + dNow.getDate() + 
+				// ', ' + dNow.getFullYear() + 
+				// ' ' + dNow.getHours() + 
+				// ':' + (( dNow.getMinutes() < 10 ) ? "0" + dNow.getMinutes() : dNow.getMinutes());
+				// c_time_c.text(localdate);
+
+				// Temporary solution
+				$.ajax({
+					type : 'POST',
+					data : '',
+					url : '/publisher_user_messages/view_conversations',
+					dataType : "script",
+					beforeSend : function(xhr) {
+						xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+					}
+				});
+			} else if ($("#dialog_id").val() == stompMessage.headers.dialog_id) 
+			{	// If messages rendered
 				var message = String.format('<div class="Area Message">' + 
 												'<div class="L">' + 
 													'<a href="{0}">' +
@@ -434,7 +467,28 @@
 					    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
 					}, 500);
 				}
-			}			
+			} else
+			{
+				$.ajax({
+					type : 'POST',
+					data : '',
+					url : '/publisher_user_messages/view_conversations',
+					dataType : "script",
+					beforeSend : function(xhr) {
+						xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+					}
+					// statusCode : {
+					// 	// 200:function() { alert("200"); },
+					// 	// 202:function() { alert("202"); }
+					// },
+					// success : function(data) {
+					// 	// alert("successful");
+					// },
+					// error : function(xhr) {
+					// 	alert("error: " + xhr.statusText);
+					// }
+				});
+			}	
 		} else 
 		{
 			// Resubscribing due to opening a new dialog

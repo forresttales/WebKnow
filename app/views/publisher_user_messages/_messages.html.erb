@@ -24,21 +24,23 @@
 		}
 	</style>
 
-	<div style="padding: 5px; width: 750px; cursor:default; margin:20px auto;">
-		<div style="display: inline-block">
-			<%= link_to ("<div class=\"btn-opt-edit-container\"><div class=\"btn-opt-edit\">Go Back</div></div>").html_safe, {:action => :view_conversations}, :remote => true, :method => :post, :style => "width: 80px; height: 24px; text-decoration: none; color: white" %>
-		</div>
-		<div style="display: inline-block">
-			<div style="padding: 0px 20px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #37633a; display: inline">
-				<% Conversation.where(:dialog_id => @dialog_id).each do |conversation| %>
-					<% if conversation.user_id != current_user.id %>
-						<%= User.where(:id => conversation.user_id).first.name_first + " " %>
+	<div style="width: 750px; cursor:default; margin: 20px auto;">
+		<div style="margin: auto; padding: 10px; background: beige">
+			<div style="display: inline-block">
+				<%= link_to ("<div class=\"btn-opt-edit-container\"><div class=\"btn-opt-edit\">Go Back</div></div>").html_safe, {:action => :view_conversations}, :remote => true, :method => :post, :style => "width: 80px; height: 24px; text-decoration: none; color: white" %>
+			</div>
+			<div style="display: inline-block">
+				<div style="padding: 0px 20px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #37633a; display: inline">
+					<% Conversation.where(:dialog_id => @dialog_id).each do |conversation| %>
+						<% if conversation.user_id != current_user.id %>
+							<%= User.where(:id => conversation.user_id).first.name_first + " " %>
+						<% end %>
 					<% end %>
-				<% end %>
-			</div>	
-			<div style="font-size:12px; color: lightgrey; display: inline">Current dialog_id:</div>
-			<div id="current_dialog_id" style="font-size:12px; color: lightgrey;  display: inline"></div>			
-		</div>	
+				</div>	
+				<div style="font-size:12px; color: lightgrey; display: inline">Current dialog_id:</div>
+				<div id="current_dialog_id" style="font-size:12px; color: lightgrey;  display: inline"></div>			
+			</div>
+		</div>			
 		<div id="dialog_container" class="container" style="width: 750px">
 			<!-- <div class="Area">
 				<div class="L">

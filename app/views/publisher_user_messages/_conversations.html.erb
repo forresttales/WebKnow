@@ -18,7 +18,7 @@
 	<% for dialog in sorted_conversations %>
 		<!-- <div>Dialog: <#%= dialog.dialog_id %></div>
 		<div>Owner: <#%= dialog.owner.to_s %></div> -->
-		<div class="conversation-row" onclick="onOpenConversation(this)" style="">
+		<div class="conversation-row" style="" data-dialog-id="<%= dialog.dialog_id %>" >
 			<% user_id = Conversation.where(:dialog_id => dialog.dialog_id).where.not(:user_id => current_user.id ).first.user_id %>
 			<% user = User.where(:id => user_id).first %>
 			<% last_message = Message.where(:dialog_id => dialog.dialog_id).last %>
@@ -27,21 +27,21 @@
 				<%= image_tag(user_image.to_s) %>
 			</div>
 			<div style="display: table-cell; width: 175px; vertical-align: middle;">
-				<a href=<%= user.slug %> style="display: block; width: 175px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= user.name_first + " " + user.name_last %></a>
-				<div style="color: grey"><%= I18n.l last_message.created_at, :format => :long %></div>
+				<a href=<%= user.slug %> style="display: inline; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= user.name_first + " " + user.name_last %></a>
+				<div id="conversation_time" style="color: grey"><%= I18n.l last_message.created_at, :format => :long %></div>
 			</div>
 			<% style = "" %>
 			<% if last_message.unread == true && last_message.user_id != current_user.id %>
 				<% style = "font-weight: 700;" %>
 			<% end %>
-			<div style="display: table-cell; width: 400px; vertical-align: middle; color: #376340; <%= style.to_s %>" ><%=last_message.body%></div>
-			<div style="display: table-cell; vertical-align: middle; color: #376340; <%= style.to_s %>" >
+			<div id="conversation_body" style="display: table-cell; width: 400px; vertical-align: middle; color: #376340; <%= style.to_s %>" ><%=last_message.body%></div>
+			<div id="conversation_unread" style="display: table-cell; vertical-align: middle; color: #376340; font-weight: 700;" >
 				<% unread_messages = dialog.messages.where(:unread => true).where.not(:user_id => current_user.id).size %>
 				<% if unread_messages > 0 %>
 					+<%= unread_messages %>
 				<% end %>
 			</div>
-			<%= form_tag({action: 'open_dialog_by_id'}, remote: true, :style => "visibility: hidden; display: inline; float: right") do %>
+			<%= form_tag({action: 'open_dialog_by_id'}, remote: true, :style => "display: none; float: right") do %>
 				<%= hidden_field_tag :sender_user_id, current_user.id %>
 				<%= hidden_field_tag :recipient_user_id, user.id %>
 				<%= hidden_field_tag :dialog_id, dialog.dialog_id %>
@@ -53,7 +53,15 @@
 </div>
 
 <script type="text/javascript">
-	function onOpenConversation (argument) {
-		$(argument).find("form").submit();
-	}
+	// function onOpenConversation (argument) {
+	// 	if ( !$(argument).is( "a" ) )
+	// 		$(argument).find("form").submit();
+	// }
+
+	$( ".conversation-row" ).click(function( event ) {
+	  var target = $( event.target );
+	  if ( !target.is( "a" ) ) {
+	    $(event.currentTarget).find("form").submit();
+	  }
+	});
 </script>
