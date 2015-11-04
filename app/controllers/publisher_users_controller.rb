@@ -2121,7 +2121,51 @@ class PublisherUsersController < ApplicationController
       end    
 
       @post_user_images = create_post_user_image
-  end  
+  end
+
+
+  def upload_post_user_file
+
+    @post_user_files = nil
+
+    if @@current_post_user.nil?
+      add_post_user
+    end 
+
+    Rails.logger.info params.to_yaml
+    post_user = @@current_post_user
+    Rails.logger.info('post_user id = ' + post_user.id.to_s)
+
+    if !post_user.nil?
+
+      h_post_user_file = Hash.new
+      h_post_user_file[:user_id] = current_user.id
+      h_post_user_file[:post_user_id] = post_user.id
+      h_post_user_file[:file] = params[:post_user_file][:file]
+      h_post_user_file[:file_name] = params[:post_user_file][:file].original_filename.to_s
+      
+      # post_user_image = PostUserImage.new(h_post_user_file)
+      post_user_file = post_user.post_user_files.build(h_post_user_file)
+
+      if request.xhr? || remotipart_submitted?
+        if post_user_file.save
+          if !post_user_file.nil?
+            @post_user_files = post_user_file.post_user.post_user_files
+          else
+            Rails.logger.info "post_user_file = nil"
+          end
+        else
+          Rails.logger.info "post_user_file: save error"
+        end
+      else
+        #
+      end
+
+    else
+      Rails.logger.info "post_user = nil"
+    end
+
+  end
 
 
   def upload_publisher_user_plot_image

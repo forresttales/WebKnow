@@ -219,6 +219,15 @@
 								<div id="div_story_4_attach_2" class="div-link">
 									Attach file
 								</div>
+								<%= form_for PostUserFile.new, :url => upload_post_user_file_publisher_users_path, :html => {:multipart => true, :class => 'hidden', :id => 'new_post_user_file'}, :remote => true do |f| %>
+								  <%= f.file_field :file, :id => 'new_post_user_file_file', 
+								  	:accept => "text/plain, 
+								  	application/pdf, 
+								  	application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+								  	application/msword,
+								  	.docx, .doc" %>
+								  <%= f.submit :id => 'btn_submit_post_user_file', :class => 'btn-submit hidden', :value => '' %>
+								<% end %>
 								<div class="drop-divider-1"></div>
 							</div>
 						</div>
@@ -333,10 +342,18 @@
 			// });
 			
 			
-			$("#div_story_4_attach_2").on('click', function() {
-				alert('in development');
-				drop_story_4_attach_hide();
-				// window.location = document.getElementById('div-nav-2a').href;				
+			// $("#div_story_4_attach_2").on('click', function() {
+			// 	// alert('in development');
+			// 	drop_story_4_attach_hide();
+			// 	$("form#new_post_user_file input#new_post_user_file_file").click();				
+			// 	// window.location = document.getElementById('div-nav-2a').href;				
+			// });
+
+			$(document).on("click", "#div_story_4_attach_2", function(e) {
+				$("form#new_post_user_file input#new_post_user_file_file").click();
+			});	
+			$(document).on("change", "form#new_post_user_file input#new_post_user_file_file", function(e) {
+				$("form#new_post_user_file input#btn_submit_post_user_file").click();
 			});
 
 

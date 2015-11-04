@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926133817) do
+ActiveRecord::Schema.define(version: 20151104121837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 20150926133817) do
     t.integer  "year_value", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "conversations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dialog_id",             default: 0
+    t.integer  "user_id",               default: 0
+    t.integer  "start_from_message_id", default: 0
+    t.boolean  "owner",                 default: false
   end
 
   create_table "core_literacy_standards", force: true do |t|
@@ -753,6 +762,15 @@ ActiveRecord::Schema.define(version: 20150926133817) do
 
   add_index "log_users", ["user_id"], name: "index_log_users_on_user_id", using: :btree
 
+  create_table "messages", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dialog_id",  default: 0
+    t.integer  "user_id",    default: 0
+    t.text     "body"
+    t.boolean  "unread",     default: true
+  end
+
   create_table "paintings", force: true do |t|
     t.integer  "gallery_id"
     t.string   "name"
@@ -826,6 +844,16 @@ ActiveRecord::Schema.define(version: 20150926133817) do
 
   add_index "post_user_comments", ["post_user_id"], name: "index_post_user_comments_on_post_user_id", using: :btree
   add_index "post_user_comments", ["user_id"], name: "index_post_user_comments_on_user_id", using: :btree
+
+  create_table "post_user_files", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",      default: 0
+    t.integer  "post_user_id", default: 0
+    t.string   "file"
+    t.string   "file_name"
+    t.integer  "order",        default: 0
+  end
 
   create_table "post_user_images", force: true do |t|
     t.datetime "created_at"
@@ -1159,6 +1187,25 @@ ActiveRecord::Schema.define(version: 20150926133817) do
   end
 
   add_index "publisher_journalposters", ["publisher_id"], name: "index_publisher_journalposters_on_publisher_id", using: :btree
+
+  create_table "publisher_logo_bkgrnd_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "width",        default: 0
+    t.integer  "height",       default: 0
+    t.integer  "user_id",      default: 0
+    t.integer  "publisher_id", default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",      default: false
+    t.integer  "order",        default: 0
+    t.integer  "crop_x",       default: 0
+    t.integer  "crop_y",       default: 0
+    t.integer  "crop_w",       default: 0
+    t.integer  "crop_h",       default: 0
+  end
+
+  add_index "publisher_logo_bkgrnd_images", ["publisher_id"], name: "index_publisher_logo_bkgrnd_images_on_publisher_id", using: :btree
 
   create_table "publisher_logo_images", force: true do |t|
     t.datetime "created_at"

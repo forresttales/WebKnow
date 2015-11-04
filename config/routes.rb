@@ -99,6 +99,7 @@ Webknow::Application.routes.draw do
           post :upload_publisher_user_logo_image_change
           post :upload_publisher_user_image
           post :upload_post_user_image
+          post :upload_post_user_file
           post :upload_publisher_user_plot_image
           post :upload_publisher_user_interest_image
           post :crop_commit_user

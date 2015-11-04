@@ -10,6 +10,7 @@
 					<% @nlist += 1 %>
 					<% @post_user = post_user %>
 					<% @post_user_images = post_user.post_user_images %>
+					<% @post_user_files = post_user.post_user_files %>
 					<% @post_user_comments = post_user.post_user_comments.order('created_at DESC') %>
 					<div class="table post-user-list-1" style="background-color: transparent;">
 						<div class="row">
@@ -59,6 +60,7 @@
 										<%= render 'publisher_users/post_user_image' %>
 										<div class="post-user-span-1"><%= post_user.post_text.html_safe %></div>
 										<!-- <textarea class="textarea-show textarea-show-text" style="width: 100%; overflow: visible;" tabindex="13" type="text" value="" placeholder="" disabled="disabled"><#%= post_user.post_text %#></textarea> -->
+										<%= render 'publisher_users/post_user_file' %>
 									</div>
 									<div class="post-user-list-1b-3">
 										<div class="table" style="height: 30px; margin: 0 0 10px 0;">

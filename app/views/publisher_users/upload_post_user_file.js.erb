@@ -1,0 +1,8 @@
+<% if !@post_user_files.nil? && @post_user_files.any? %>
+	$('#render_post_user_file').html("<%= j render('publisher_users/post_user_file') %>");
+	$("#btn_story_4_attach_loader").addClass("hidden");
+	$("#btn_story_4_attach_text").removeClass("hidden");
+	$("#textarea_add_post_user").focus();
+<% else %>
+	alert("Upload error");
+<% end %>

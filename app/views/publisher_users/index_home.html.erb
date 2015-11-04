@@ -125,68 +125,68 @@
 
 	
 <% if false %>
-<!-- user image - show 11 -->			
-<div class="jqmWindow jqmWindow-11" id="dialog_11">
-	<div class="table-dl-form-1">
-		<div class="row">
-			<div class="cell-100percent">
-				<div id="close_form11" class="form-edit-close jqmClose tip-left-center" tabindex="">
-					<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
+	<!-- user image - show 11 -->			
+	<div class="jqmWindow jqmWindow-11" id="dialog_11">
+		<div class="table-dl-form-1">
+			<div class="row">
+				<div class="cell-100percent">
+					<div id="close_form11" class="form-edit-close jqmClose tip-left-center" tabindex="">
+						<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
+					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					
+					<div style="clear: both;"></div>
 				</div>
-                <div class="tip-content">
-                    <div class="tooltiptext">Close</div>
-                </div>																															   					
-				<div style="clear: both;"></div>
 			</div>
+		</div>				   				
+		<!-- <div class="pad-left-20"> -->
+		<div style="width: 100%; text-align: center;">
+			<div style="height: 20px;"></div>
+			<figure id="figure_dialog_11" class="dialog-user-image-2">
+				<img alt="" src="" class="dialog-user-image-hover" />
+				<figcaption id="figcaption_dialog_11" class="expand-image">												
+					<div class="img-2-container image">
+						<% if !@publisher_user_image_primary.nil? %>
+						<a rel="gallery" title="" href="<%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>">									
+							<div id="img_2" class="img-2"></div>
+						</a>
+						<% end %>
+					</div>
+				</figcaption>
+			</figure>
 		</div>
-	</div>				   				
-	<!-- <div class="pad-left-20"> -->
-	<div style="width: 100%; text-align: center;">
-		<div style="height: 20px;"></div>
-		<figure id="figure_dialog_11" class="dialog-user-image-2">
-			<img alt="" src="" class="dialog-user-image-hover" />
-			<figcaption id="figcaption_dialog_11" class="expand-image">												
-				<div class="img-2-container image">
-					<% if !@publisher_user_image_primary.nil? %>
-					<a rel="gallery" title="" href="<%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>">									
-						<div id="img_2" class="img-2"></div>
-					</a>
-					<% end %>
-				</div>
-			</figcaption>
-		</figure>
 	</div>
-</div>
 <% end %>
 
 <% if false %>
-<div class="jqmWindow jqmWindow-overlay" id="dialog_overlay">
-	<div id="overlay_loading" class="overlay-loading display-none"></div>
-</div>
-<div class="jqmWindow jqmWindow-11" id="dialog_11">
-	<div class="jqmClose ks-tip-container close-container">
-		<div class="ks-tip-target">
-			<%= image_tag('jqModal/close_btn_round_white_w60_h60.png', alt: 'X', class: 'x-close-60-60' ) %>
+	<div class="jqmWindow jqmWindow-overlay" id="dialog_overlay">
+		<div id="overlay_loading" class="overlay-loading display-none"></div>
+	</div>
+	<div class="jqmWindow jqmWindow-11" id="dialog_11">
+		<div class="jqmClose ks-tip-container close-container">
+			<div class="ks-tip-target">
+				<%= image_tag('jqModal/close_btn_round_white_w60_h60.png', alt: 'X', class: 'x-close-60-60' ) %>
+			</div>
+		    <div class="ks-tip ks-tip-pos-left-dialog-11 ks-tip-text-dialog-11">
+				Close
+		    </div>				
 		</div>
-	    <div class="ks-tip ks-tip-pos-left-dialog-11 ks-tip-text-dialog-11">
-			Close
-	    </div>				
+		<div style="clear: both;"></div>
+		<div class="figure-container">
+			<figure id="figure_dialog_11" class="dialog-user-image-2">
+				<figcaption id="figcaption_dialog_11" class="expand-image">												
+					<div class="img-2-container image">
+						<% if !@publisher_user_image_primary.nil? %>
+						<a rel="gallery" title="" href="<%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>">									
+							<div id="img_2" class="img-2"></div>
+						</a>
+						<% end %>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
 	</div>
-	<div style="clear: both;"></div>
-	<div class="figure-container">
-		<figure id="figure_dialog_11" class="dialog-user-image-2">
-			<figcaption id="figcaption_dialog_11" class="expand-image">												
-				<div class="img-2-container image">
-					<% if !@publisher_user_image_primary.nil? %>
-					<a rel="gallery" title="" href="<%= @publisher_user_image_primary.image_url() + '?' + (rand(10..90) * rand(100..900)).to_s if @publisher_user_image_primary.image? %>">									
-						<div id="img_2" class="img-2"></div>
-					</a>
-					<% end %>
-				</div>
-			</figcaption>
-		</figure>
-	</div>
-</div>
 <% end %>
 
 
@@ -320,6 +320,7 @@
 												<div class="textarea-add-post-user-container toggle-post-user" tabindex="">
 													<div id="render_post_user_image" class="render-post-user-image"></div>
 													<div id="textarea_add_post_user" class="textarea-add-post-user toggle-post-user textarea-add-post-user-inactive" contenteditable="true" tabindex="101"><br></div>
+													<div id="render_post_user_file" class="render-post-user-image"></div>
 												</div>
 													
 												<div class="btn-textarea-add-post-user-story-4-container hidden">
@@ -331,7 +332,7 @@
 														  <p><%= f.file_field :image, :id => 'new_post_user_image_image' %></p>
 														  <!-- <#%= f.hidden_field :post_user_id, :val => nil %#> -->
 														  <p><%= f.submit :id => 'btn_submit_post_user_image', :class => 'btn-submit hidden', :value => '' %></p>
-														<% end %>
+														<% end %>														
 													</div>
 													<!-- <div id="submit_story_4" class="btn-submit-story-2 float-right toggle-post-user" tabindex="103"> -->
 													<div id="submit_story_4" class="btn-1 float-right toggle-post-user" tabindex="103">
@@ -782,6 +783,7 @@
 		}		
 		function reset_textarea_post_user() {
 			$("#render_post_user_image").html("");
+			$("#render_post_user_file").html("");
 			$("#textarea_add_post_user").html("<br>");
 			$(".btn-textarea-add-post-user-story-4-container").addClass("hidden");
 			$("#textarea_add_post_user").removeClass("textarea-add-post-user-active").addClass("textarea-add-post-user-inactive");
@@ -899,7 +901,8 @@
 				// var w = $q.html();
 				var v = $("#textarea_add_post_user").html();
 				var w = $("#render_post_user_image").html();
-				if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+				var y = $("#render_post_user_file").html();
+				if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) && ((y == "<br>") || (y == "")) ) {
 					reset_textarea_post_user();
 				}
 			});
@@ -920,7 +923,8 @@
 					if ( !( ($t.hasClass("div-link")) || ($t.hasClass("toggle-post-user"))  || ($t.parents().hasClass("toggle-post-user") ) ) ) {
 						var v = $("#textarea_add_post_user").html();
 						var w = $("#render_post_user_image").html();
-						if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+						var y = $("#render_post_user_file").html();
+						if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) && ((y == "<br>") || (y == "")) ) {
 							// alert("triggered by = " + c);
 							reset_textarea_post_user();
 						}
