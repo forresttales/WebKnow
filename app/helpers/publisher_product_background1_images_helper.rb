@@ -1,2 +1,0 @@
-module PublisherProductBackground1ImagesHelper
-end

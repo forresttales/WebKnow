@@ -38,6 +38,7 @@
 	
 </style>
 
+
 <div class="publisher-product-manifests">
 
 	<div class="jqmWindow jqmWindow-overlay" id="dialog_overlay">
@@ -1330,9 +1331,7 @@
 <% end %>
 
 
-
 	<div style="height: 2px;"></div>
-	
 	<div style="width: 1200px;">
 		<div class="title-bar" style="position: relative;">
 			<div style="display: table; width: 1192px;">
@@ -1346,12 +1345,12 @@
 					<div style="display: table-cell; vertical-align: top; width: 300px;">
 						<div class="btn-edit-options-container-outer">
 							
-							<div id="open_edit_mode" class="">
+							<div class="btn-open-edit-mode-container">
 								<div class="" style="display: table;">
 									<div style="display: table-row;">
 										<div style="display: table-cell; width: 300px;">
 											<div class="btn-edit-options-container" style="float: right;">
-												<div class="btn-edit-options" tabindex="">
+												<div id="open_edit_mode" class="btn-edit-options" tabindex="">
 													Show Edit Options
 												</div>
 											</div>
@@ -1360,12 +1359,12 @@
 									</div>
 								</div>
 							</div>
-							<div id="close_edit_mode" class="hidden">
+							<div class="btn-close-edit-mode-container hidden">
 								<div class="" style="display: table;">
 									<div style="display: table-row;">
 										<div style="display: table-cell; width: 300px;">
 											<div class="btn-edit-options-container" style="float: right;">
-												<div class="btn-edit-options" tabindex="">
+												<div id="close_edit_mode" class="btn-edit-options" tabindex="">
 													Hide Edit Options
 												</div>
 											</div>
@@ -1520,17 +1519,160 @@
 			}					
 		}
 
+		image_1_width  		= null;
+		image_1_height 		= null;
+		image_1_width_edit 	= null;
+		image_1_height_edit = null;
+		function editImage_1_init(w, h, w_edit, h_edit) {
+			image_1_width 		= w;
+			image_1_height 		= h;
+			image_1_width_edit 	= w_edit;
+			image_1_height_edit = h_edit;
+		}
+		function editImage_1_initDimensions(img_w_edit, img_h_edit) {
+			$(".drop-namespace101 .figure-image-1-edit").css({
+				// width : img_w_edit,
+				height : img_h_edit						
+			});
+			$(".drop-namespace101 figcaption.edit-image-1").css({
+				width : img_w_edit,
+				height : img_h_edit						
+			});
+		}
+	  	function showEditMode_image_1() {
+			$(".edit-image-1").fadeIn(200).removeClass("hidden");
+			$(".container-figure-image-1 figure").addClass("figure-image-1-edit");				
+			editImage_1_initDimensions(image_1_width_edit, image_1_height_edit);
+		}
+	  	function cancelEditMode_image_1() {
+			$(".container-figure-image-1 figure").removeClass("figure-image-1-edit");
+			$(".container-figure-image-1 figure").removeAttr("style");
+			$(".edit-image-1").removeAttr("style");				
+			$(".edit-image-1").fadeIn(200).addClass("hidden");			
+		}
+		
+	  	// function showEditMode_image_1() {
+			// editImage_1_initDimensions(image_1_width_edit, image_1_height_edit);
+			// $(".edit-image-1").fadeIn(200).removeClass("hidden");
+			// $(".container-figure-image-1 figure").addClass("figure-image-1-edit");				
+		// }
+	  	// function cancelEditMode_image_1() {
+			// $(".container-figure-image-1 figure").removeClass("figure-image-1-edit");
+			// $(".edit-image-1").removeAttr("style");				
+			// $(".edit-image-1").fadeIn(200).addClass("hidden");			
+		// }
 
+		image_2_width  		= null;
+		image_2_height 		= null;
+		image_2_width_edit 	= null;
+		image_2_height_edit = null;
+		function editImage_2_init(w, h, w_edit, h_edit) {
+			image_2_width 		= w;
+			image_2_height 		= h;
+			image_2_width_edit 	= w_edit;
+			image_2_height_edit = h_edit;
+		}
+		function editImage_2_initDimensions(img_w_edit, img_h_edit) {
+			$(".drop-namespace102 .figure-image-2-edit").css({
+				// width : img_w_edit,
+				height : img_h_edit						
+			});
+			$(".drop-namespace102 figcaption.edit-image-2").css({
+				width : img_w_edit,
+				height : img_h_edit						
+			});
+		}
+	  	function showEditMode_image_2() {
+			$(".edit-image-2").fadeIn(200).removeClass("hidden");
+			$(".container-figure-image-2 figure").addClass("figure-image-2-edit");				
+			editImage_2_initDimensions(image_2_width_edit, image_2_height_edit);
+		}
+	  	function cancelEditMode_image_2() {
+			$(".container-figure-image-2 figure").removeClass("figure-image-2-edit");
+			$(".container-figure-image-2 figure").removeAttr("style");
+			$(".edit-image-2").removeAttr("style");				
+			$(".edit-image-2").fadeIn(200).addClass("hidden");			
+		}
+
+		image_3_width  		= null;
+		image_3_height 		= null;
+		image_3_width_edit 	= null;
+		image_3_height_edit = null;
+		function editImage_3_init(w, h, w_edit, h_edit) {
+			image_3_width 		= w;
+			image_3_height 		= h;
+			image_3_width_edit 	= w_edit;
+			image_3_height_edit = h_edit;
+		}
+		function editImage_3_initDimensions(img_w_edit, img_h_edit) {
+			$(".drop-namespace103 .figure-image-3-edit").css({
+				// width : img_w_edit,
+				height : img_h_edit						
+			});
+			$(".drop-namespace103 figcaption.edit-image-3").css({
+				width : img_w_edit,
+				height : img_h_edit						
+			});
+		}
+	  	function showEditMode_image_3() {
+			$(".edit-image-3").fadeIn(200).removeClass("hidden");
+			$(".container-figure-image-3 figure").addClass("figure-image-3-edit");				
+			editImage_3_initDimensions(image_3_width_edit, image_3_height_edit);
+		}
+	  	function cancelEditMode_image_3() {
+			$(".container-figure-image-3 figure").removeClass("figure-image-3-edit");
+			$(".container-figure-image-3 figure").removeAttr("style");
+			$(".edit-image-3").removeAttr("style");				
+			$(".edit-image-3").fadeIn(200).addClass("hidden");			
+		}
+
+		image_4_width  		= null;
+		image_4_height 		= null;
+		image_4_width_edit 	= null;
+		image_4_height_edit = null;
+		function editImage_4_init(w, h, w_edit, h_edit) {
+			image_4_width 		= w;
+			image_4_height 		= h;
+			image_4_width_edit 	= w_edit;
+			image_4_height_edit = h_edit;
+		}
+		function editImage_4_initDimensions(img_w_edit, img_h_edit) {
+			$(".drop-namespace104 .figure-image-4-edit").css({
+				// width : img_w_edit,
+				height : img_h_edit						
+			});
+			$(".drop-namespace104 figcaption.edit-image-4").css({
+				width : img_w_edit,
+				height : img_h_edit						
+			});
+		}
+	  	function showEditMode_image_4() {
+			$(".edit-image-4").fadeIn(200).removeClass("hidden");
+			$(".container-figure-image-4 figure").addClass("figure-image-4-edit");				
+			editImage_4_initDimensions(image_4_width_edit, image_4_height_edit);
+		}
+	  	function cancelEditMode_image_4() {
+			$(".container-figure-image-4 figure").removeClass("figure-image-4-edit");
+			$(".container-figure-image-4 figure").removeAttr("style");
+			$(".edit-image-4").removeAttr("style");				
+			$(".edit-image-4").fadeIn(200).addClass("hidden");			
+		}
+		
 	  	function showEditMode() {
-			$("#open_edit_mode, .show-edit-mode").fadeOut(200, function(){    			
-				$("#open_edit_mode").addClass("hidden");
-				$("#close_edit_mode").fadeIn(200).removeClass("hidden");
-    			$(".show-edit-mode").addClass("hidden");
+			// $("#open_edit_mode, .show-edit-mode").fadeOut(200, function(){
+			$(".btn-open-edit-mode-container").fadeOut(200, function(){    			
+				// $("#open_edit_mode").addClass("hidden");
+				$(".btn-open-edit-mode-container").addClass("hidden");
+				// $("#close_edit_mode").fadeIn(200).removeClass("hidden");
+				$(".btn-close-edit-mode-container").fadeIn(200).removeClass("hidden");
+    			// $(".show-edit-mode").addClass("hidden");
 				$(".edit-image").fadeIn(200).removeClass("hidden");
-				$(".container-figure-image-1").removeClass("container-figure-image-border-101").addClass("container-figure-image-border-edit-101");
-				$(".container-figure-image-2").removeClass("container-figure-image-border-102").addClass("container-figure-image-border-edit-102");
-				$(".container-figure-image-3").removeClass("container-figure-image-border-103").addClass("container-figure-image-border-edit-103");
-				$(".container-figure-image-4").removeClass("container-figure-image-border-104").addClass("container-figure-image-border-edit-104");
+
+
+				// $(".container-figure-image-1").removeClass("container-figure-image-border-101").addClass("container-figure-image-border-edit-101");
+				// $(".container-figure-image-2").removeClass("container-figure-image-border-102").addClass("container-figure-image-border-edit-102");
+				// $(".container-figure-image-3").removeClass("container-figure-image-border-103").addClass("container-figure-image-border-edit-103");
+				// $(".container-figure-image-4").removeClass("container-figure-image-border-104").addClass("container-figure-image-border-edit-104");
 				$(".edit-options").removeClass("hidden");
 				$("#show_product_tagline_container").removeClass("width-show-1").addClass("width-show-edit-1");
 				$("#show_product_name_container").removeClass("width-show-2").addClass("width-show-edit-2");
@@ -1538,19 +1680,44 @@
 				$("#show_corporate_logo_url_container").removeClass("width-show-2").addClass("width-show-edit-2");
 				$(".drop-namespace105").removeClass("hidden");
 				$("#background_options").addClass("background-edit-border");
+				
+				$("#span_product_headline").addClass("box-detail-color-edit");
+				
+				$(".box-detail-title").removeClass("box-detail-title-color").addClass("box-detail-title-color-edit");
+				$(".box-detail").removeClass("box-detail-color").addClass("box-detail-color-edit");
+				$(".input-container-1").removeClass("input-container-1-color").addClass("input-container-1-color-edit-open");
+				
+				showEditMode_image_1();
+				showEditMode_image_2();
+				showEditMode_image_3();
+				showEditMode_image_4();				
     		});
 	  	}
 	  
 	  	function cancelEditMode() {
-			$(".show-edit-mode").removeClass("hidden").fadeIn(300);
-			$("#open_edit_mode").removeClass("hidden").fadeIn(200);
-			$("#close_edit_mode").addClass("hidden");
+
+			hideEditId_10();
+			hideEditId_11();
+			
+			// show_control("product_tagline");
+			// $("#cancel_product_tagline").click();
+			
+			
+			
+			
+			
+
+			// $(".show-edit-mode").removeClass("hidden").fadeIn(300);
+			// $("#open_edit_mode").removeClass("hidden").fadeIn(200);
+			$(".btn-open-edit-mode-container").removeClass("hidden").fadeIn(200);
+			// $("#close_edit_mode").addClass("hidden");
+			$(".btn-close-edit-mode-container").addClass("hidden");
 			$(".edit-image").removeAttr("style");				
 			$(".edit-image").fadeIn(200).addClass("hidden");
-			$(".container-figure-image-1").removeClass("container-figure-image-border-edit-101").addClass("container-figure-image-border-101");
-			$(".container-figure-image-2").removeClass("container-figure-image-border-edit-102").addClass("container-figure-image-border-102");
-			$(".container-figure-image-3").removeClass("container-figure-image-border-edit-103").addClass("container-figure-image-border-103");
-			$(".container-figure-image-4").removeClass("container-figure-image-border-edit-104").addClass("container-figure-image-border-104");
+			// $(".container-figure-image-1").removeClass("container-figure-image-border-edit-101").addClass("container-figure-image-border-101");
+			// $(".container-figure-image-2").removeClass("container-figure-image-border-edit-102").addClass("container-figure-image-border-102");
+			// $(".container-figure-image-3").removeClass("container-figure-image-border-edit-103").addClass("container-figure-image-border-103");
+			// $(".container-figure-image-4").removeClass("container-figure-image-border-edit-104").addClass("container-figure-image-border-104");
 			$(".edit-options").addClass("hidden");
 			$("#show_product_tagline_container").removeClass("width-show-edit-1").addClass("width-show-1");
 			$("#show_product_name_container").removeClass("width-show-edit-2").addClass("width-show-2");
@@ -1558,6 +1725,22 @@
 			$("#show_corporate_logo_url_container").removeClass("width-show-edit-2").addClass("width-show-2");
 			$(".drop-namespace105").addClass("hidden");
 			$("#render_image_5").removeClass("background-edit-border");
+
+			$("#span_product_headline").removeClass("box-detail-color-edit");
+			
+			$(".box-detail-title").removeClass("box-detail-title-color-edit").addClass("box-detail-title-color");
+			$(".box-detail").removeClass("box-detail-color-edit").addClass("box-detail-color");
+			$(".input-container-1").removeClass("input-container-1-color-edit-open").addClass("input-container-1-color");			
+				
+			cancelEditMode_image_1();
+			cancelEditMode_image_2();
+			cancelEditMode_image_3();
+			cancelEditMode_image_4();
+					
+			hideEditId_1();
+			// hideEditId_10();
+			
+			
 	  	}
 
 		var info_msg_1 = 	'<span>This is the way to do it...</span>';
@@ -1761,21 +1944,36 @@
 				}
 			}); 		
 
-    		$("#open_edit_mode").keypress(function(e){
+			// btn-open-edit-mode-container
+    		$(".btn-open-edit-mode-container").keypress(function(e){
       			if(e.keyCode==13)
-      			$("#open_edit_mode").click();
+      			$(".btn-open-edit-mode-container").click();
     		});			
-		  	$("#open_edit_mode").click(function(){
+		  	$(".btn-open-edit-mode-container").click(function(){
 				showEditMode();
 		  	});	
-
-    		$("#close_edit_mode").keypress(function(e){
+    		$(".btn-close-edit-mode-container").keypress(function(e){
       			if(e.keyCode==13)
-      			$("#close_edit_mode").click();
+      			$(".btn-close-edit-mode-container").click();
     		});			
-		  	$("#close_edit_mode").click(function(){
+		  	$(".btn-close-edit-mode-container").click(function(){
 				cancelEditMode();
 		  	});	
+
+    		// $("#open_edit_mode").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#open_edit_mode").click();
+    		// });			
+		  	// $("#open_edit_mode").click(function(){
+				// showEditMode();
+		  	// });	
+    		// $("#close_edit_mode").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#close_edit_mode").click();
+    		// });			
+		  	// $("#close_edit_mode").click(function(){
+				// cancelEditMode();
+		  	// });	
 
 		});
 	  
@@ -2181,9 +2379,10 @@
 			return (CaretPos);
 		}
 		
-	  	function showEditDescription() {
-    		$("#textarea_description_edit").html(description_html);
-		}
+	  	// function showEditDescription() {
+    		// $("#textarea_description_edit").html(description_html);
+			// $("#textarea_description").focus();								    		
+		// }
 		
 		function partialInitRenderTextareaDescription() {
 			var v = $("#textarea_description").html();
@@ -2201,8 +2400,44 @@
 			partialInitRenderTextareaDescription();
 		}
 
+
+		function showEditId_101() {
+			$("#control_101_show").addClass("hidden");
+			$("#control_101_edit").fadeIn(1300).removeClass("hidden");
+			$("#textarea_description_edit").html(description_html);
+			$("#textarea_description").focus();								    		
+		}
+	
+		function hideEditId_101() {
+			$('#control_101_edit').fadeOut(300, function() {
+				$('#control_101_edit').addClass("hidden");
+				$('#control_101_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
 		
 		$(document).ready(function () {				
+
+
+			$(document).on('click', '.control-101-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-101-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_101_edit').hasClass('hidden')) {
+							$('.control-101-edit-options').removeClass('hidden');
+							showEditId_101();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-101-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_101();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_description', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -2254,16 +2489,18 @@
       			$("#cancel_description").click();
     		});	
 			$("#cancel_description").on('click', function() {
-				show_control("description");
+				// show_control("description");
+				control_101_cancel_clicked = true;
+				hideEditId_101();
 			});
-			$("#open_edit_description").click(function(){
-	    		$("#show_description, #open_edit_description").fadeOut(300, function(){
-	    			$("#show_description").addClass("hidden");
-	    			$("#edit_description").fadeIn(1300).removeClass("hidden");
-	    			showEditDescription();	    	
-	    			$("#textarea_description").focus();								
-	    		});
-		  	});    		
+			// $("#open_edit_description").click(function(){
+	    		// $("#show_description, #open_edit_description").fadeOut(300, function(){
+	    			// $("#show_description").addClass("hidden");
+	    			// $("#edit_description").fadeIn(1300).removeClass("hidden");
+	    			// showEditDescription();	    	
+	    			// $("#textarea_description").focus();								
+	    		// });
+		  	// });    		
 			$("#submit_description").on('click', function() {
 				var input_publisher_product_description = $("#textarea_description_edit").html().replace(/\t/g, '\\t');
 				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
@@ -2284,225 +2521,12 @@
 	            		if (!data.b_error) {
 							description_html = data.description;
 							initRenderTextareaDescription();
-							show_control("description");
+							// show_control("description");
+							hideEditId_101();
 	            		}
 	            		else {
-	            			show_control("description");
-							alert('An error occured while updating this field.');	            			
-	            		}
-	            	},
-	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
-			  	});
-		  		return false;
-			});
-			
-
-		});
-		
-				
-	</script>
-
-	<script>
-		
-		// lesson_plan_subject
-
-		var lesson_plan_subject_html = null;
-		var savedRange_lesson_plan_subject,isInFocus_lesson_plan_subject;
-
- 		function saveSelection_lesson_plan_subject()
-		{
-		    if(window.getSelection)//non IE Browsers
-		    {
-		        savedRange_lesson_plan_subject = window.getSelection().getRangeAt(0);
-		    }
-		    else if(document.selection)//IE
-		    { 
-		        savedRange_lesson_plan_subject = document.selection.createRange();  
-		    } 
-		}
-		
-		function restoreSelection_lesson_plan_subject()
-		{
-		    isInFocus_lesson_plan_subject = true;
-		    document.getElementById("textarea_lesson_plan_subject_edit").focus();
-		    if (savedRange_lesson_plan_subject != null) {
-		        if (window.getSelection)//non IE and there is already a selection
-		        {
-		            var s = window.getSelection();
-		            if (s.rangeCount > 0) 
-		                s.removeAllRanges();
-		            s.addRange(savedRange_lesson_plan_subject);
-		        }
-		        else if (document.createRange)//non IE and no selection
-		        {
-		            window.getSelection().addRange(savedRange_lesson_plan_subject);
-		        }
-		        else if (document.selection)//IE
-		        {
-		            savedRange_lesson_plan_subject.select();
-		        }
-		    }
-		}
-		
-		//this part onwards is only needed if you want to restore selection onclick
-		var isInFocus_lesson_plan_subject = false;
-		function onDivBlur_lesson_plan_subject()
-		{
-		    isInFocus_lesson_plan_subject = false;
-		}
-		
-		function cancelEvent_lesson_plan_subject(e)
-		{
-		    if (isInFocus_lesson_plan_subject == false && savedRange_lesson_plan_subject != null) {
-		        if (e && e.preventDefault) {
-		            e.stopPropagation(); // DOM style (return false doesn't always work in FF)
-		            e.preventDefault();
-		        }
-		        else {
-		            window.event.cancelBubble = true;//IE stopPropagation
-		        }
-		        restoreSelection_lesson_plan_subject();
-		        return false; // false = IE style
-		    }
-		}
-		
-		function insertTextAtCursor_lesson_plan_subject(text) {
-		    var sel, range, html;
-		    if (window.getSelection) {
-		        sel = window.getSelection();
-		        if (sel.getRangeAt && sel.rangeCount) {
-		            range = sel.getRangeAt(0);
-		            range.deleteContents();
-		            range.insertNode( document.createTextNode(text) );
-		            range.collapse(false);
-		        }
-		    } else if (document.selection && document.selection.createRange) {
-		        document.selection.createRange().text = text;
-		    }
-		}			  	
-
-		function doGetCaretPosition (ctrl) {
-			var CaretPos = 0;   // IE Support
-			if (document.selection) {
-				ctrl.focus ();
-				var Sel = document.selection.createRange ();
-				Sel.moveStart ('character', -ctrl.value.length);
-				CaretPos = Sel.text.length;
-			}
-			// Firefox support
-			else if (ctrl.selectionStart || ctrl.selectionStart == '0') {
-				CaretPos = ctrl.selectionStart;
-			}
-			return (CaretPos);
-		}
-
-	  	function showEditLessonPlanSubject() {
-    		$("#textarea_lesson_plan_subject_edit").html(lesson_plan_subject_html);
-		}
-		
-		function partialInitRenderTextareaLessonPlanSubject() {
-			var v = $("#textarea_lesson_plan_subject").html();
-			var w = "";
-			if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
-				$("#textarea_lesson_plan_subject").addClass("textarea-lesson-plan-subject-empty");
-			}
-			else {
-				$("#textarea_lesson_plan_subject").removeClass("textarea-lesson-plan-subject-empty");
-			}			
-		}
-		
-		function initRenderTextareaLessonPlanSubject() {
-			$("#textarea_lesson_plan_subject").html(lesson_plan_subject_html);
-			partialInitRenderTextareaLessonPlanSubject();
-		}
-
-		
-		$(document).ready(function () {				
-
-			$(document).on('click', '#open_info_lesson_plan_subject', function() {
-				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
-				$("#dlg_info").html(info_msg_12);
-				$("#dialog_1001").jqmShow();
-			});
-
-			lesson_plan_subject_html = "<%= @publisher_product_subject_subject_text.html_safe %>";
-			initRenderTextareaLessonPlanSubject();
-
-			// onblur="onDivBlur();" 
-			// onmousedown="return cancelEvent(event);" 
-			// onclick="return cancelEvent(event);" 
-			// contentEditable="true" 
-			// onmouseup="saveSelection();" 
-			// onkeyup="saveSelection();" 
-			// onfocus="restoreSelection();"
-
-		    $("#textarea_lesson_plan_subject_edit").on ('blur', function (e) {
-				onDivBlur_lesson_plan_subject();
-		    });
-		    $("#textarea_lesson_plan_subject_edit").on ('mousedown', function (e) {
-				return cancelEvent_lesson_plan_subject(e);
-		    });
-		    $("#textarea_lesson_plan_subject_edit").on ('click', function (e) {
-				return cancelEvent_lesson_plan_subject(e);
-		    });
-		    $("#textarea_lesson_plan_subject_edit").on ('mouseup', function (e) {
-				saveSelection_lesson_plan_subject();
-		    });
-		    $("#textarea_lesson_plan_subject_edit").on ('keyup', function (e) {
-				saveSelection_lesson_plan_subject();
-		    });
-		    $("#textarea_lesson_plan_subject_edit").on ('focus', function (e) {
-				restoreSelection_lesson_plan_subject();
-		    });
-		    $("#textarea_lesson_plan_subject_edit").on ('keydown', function (e) {
-		    	if( e.keyCode == 9) {
-		    		e.preventDefault();
-					insertTextAtCursor_lesson_plan_subject("\t");
-		    	}
-		    });
-    		$("#submit_lesson_plan_subject").keypress(function(e){
-      			if(e.keyCode==13)
-      			$("#submit_lesson_plan_subject").click();
-    		});
-    		$("#cancel_lesson_plan_subject").keypress(function(e){
-      			if(e.keyCode==13)
-      			$("#cancel_lesson_plan_subject").click();
-    		});	
-			$("#cancel_lesson_plan_subject").on('click', function() {
-				show_control("lesson_plan_subject");
-			});
-			$("#open_edit_lesson_plan_subject").click(function(){
-	    		$("#show_lesson_plan_subject, #open_edit_lesson_plan_subject").fadeOut(300, function(){
-	    			$("#show_lesson_plan_subject").addClass("hidden");
-	    			$("#edit_lesson_plan_subject").fadeIn(1300).removeClass("hidden");
-	    			showEditLessonPlanSubject();	    	
-	    			$("#textarea_lesson_plan_subject").focus();								
-	    		});
-		  	});    		
-			$("#submit_lesson_plan_subject").on('click', function() {
-				var input_publisher_product_subject = $("#textarea_lesson_plan_subject_edit").html().replace(/\t/g, '\\t');
-				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
-							   ', "subject":"' + input_publisher_product_subject +
-							   '"}';      
-			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
-			  	$.ajax({
-			    	type: 'POST',
-			    	data : obj,
-			    	url: '/publisher_product_manifests/update_lesson_plan_subject',			    	
-			    	dataType: "json",
-			    	contentType: "application/json",
-			    	processData: false,
-			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-	            	statusCode: {
-	            	},
-	            	success: function(data) {
-	            		if (!data.b_error) {
-							lesson_plan_subject_html = data.subject;
-							initRenderTextareaLessonPlanSubject();
-							show_control("lesson_plan_subject");
-	            		}
-	            		else {
-	            			show_control("lesson_plan_subject");
+	            			hideEditId_101();
+	            			// show_control("description");
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -2631,8 +2655,44 @@
 			partialInitRenderTextareaTopic();
 		}
 
+
+		function showEditId_102() {
+			$("#control_102_show").addClass("hidden");
+			$("#control_102_edit").fadeIn(1300).removeClass("hidden");
+			$("#textarea_topic_edit").html(description_html);
+			$("#textarea_topic").focus();								    		
+		}
+	
+		function hideEditId_102() {
+			$('#control_102_edit').fadeOut(300, function() {
+				$('#control_102_edit').addClass("hidden");
+				$('#control_102_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
 		
 		$(document).ready(function () {				
+
+
+			$(document).on('click', '.control-102-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-102-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_102_edit').hasClass('hidden')) {
+							$('.control-102-edit-options').removeClass('hidden');
+							showEditId_102();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-102-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_102();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_topic', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -2684,16 +2744,17 @@
       			$("#cancel_topic").click();
     		});	
 			$("#cancel_topic").on('click', function() {
-				show_control("topic");
+				// show_control("topic");
+				hideEditId_102();
 			});
-			$("#open_edit_topic").click(function(){
-	    		$("#show_topic, #open_edit_topic").fadeOut(300, function(){
-	    			$("#show_topic").addClass("hidden");
-	    			$("#edit_topic").fadeIn(1300).removeClass("hidden");
-	    			showEditTopic();	    	
-	    			$("#textarea_topic").focus();								
-	    		});
-		  	});    		
+			// $("#open_edit_topic").click(function(){
+	    		// $("#show_topic, #open_edit_topic").fadeOut(300, function(){
+	    			// $("#show_topic").addClass("hidden");
+	    			// $("#edit_topic").fadeIn(1300).removeClass("hidden");
+	    			// showEditTopic();	    	
+	    			// $("#textarea_topic").focus();								
+	    		// });
+		  	// });    		
 			$("#submit_topic").on('click', function() {
 				var input_publisher_product_topic = $("#textarea_topic_edit").html().replace(/\t/g, '\\t');
 				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
@@ -2714,10 +2775,267 @@
 	            		if (!data.b_error) {
 							topic_html = data.topic;
 							initRenderTextareaTopic();
-							show_control("topic");
+							// show_control("topic");
+							hideEditId_102();
 	            		}
 	            		else {
-	            			show_control("topic");
+	            			// show_control("topic");
+	            			hideEditId_102();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+			
+
+		});
+		
+				
+	</script>
+
+	<script>
+		
+		// lesson_plan_subject
+
+		var lesson_plan_subject_html = null;
+		var savedRange_lesson_plan_subject,isInFocus_lesson_plan_subject;
+
+ 		function saveSelection_lesson_plan_subject()
+		{
+		    if(window.getSelection)//non IE Browsers
+		    {
+		        savedRange_lesson_plan_subject = window.getSelection().getRangeAt(0);
+		    }
+		    else if(document.selection)//IE
+		    { 
+		        savedRange_lesson_plan_subject = document.selection.createRange();  
+		    } 
+		}
+		
+		function restoreSelection_lesson_plan_subject()
+		{
+		    isInFocus_lesson_plan_subject = true;
+		    document.getElementById("textarea_lesson_plan_subject_edit").focus();
+		    if (savedRange_lesson_plan_subject != null) {
+		        if (window.getSelection)//non IE and there is already a selection
+		        {
+		            var s = window.getSelection();
+		            if (s.rangeCount > 0) 
+		                s.removeAllRanges();
+		            s.addRange(savedRange_lesson_plan_subject);
+		        }
+		        else if (document.createRange)//non IE and no selection
+		        {
+		            window.getSelection().addRange(savedRange_lesson_plan_subject);
+		        }
+		        else if (document.selection)//IE
+		        {
+		            savedRange_lesson_plan_subject.select();
+		        }
+		    }
+		}
+		
+		//this part onwards is only needed if you want to restore selection onclick
+		var isInFocus_lesson_plan_subject = false;
+		function onDivBlur_lesson_plan_subject()
+		{
+		    isInFocus_lesson_plan_subject = false;
+		}
+		
+		function cancelEvent_lesson_plan_subject(e)
+		{
+		    if (isInFocus_lesson_plan_subject == false && savedRange_lesson_plan_subject != null) {
+		        if (e && e.preventDefault) {
+		            e.stopPropagation(); // DOM style (return false doesn't always work in FF)
+		            e.preventDefault();
+		        }
+		        else {
+		            window.event.cancelBubble = true;//IE stopPropagation
+		        }
+		        restoreSelection_lesson_plan_subject();
+		        return false; // false = IE style
+		    }
+		}
+		
+		function insertTextAtCursor_lesson_plan_subject(text) {
+		    var sel, range, html;
+		    if (window.getSelection) {
+		        sel = window.getSelection();
+		        if (sel.getRangeAt && sel.rangeCount) {
+		            range = sel.getRangeAt(0);
+		            range.deleteContents();
+		            range.insertNode( document.createTextNode(text) );
+		            range.collapse(false);
+		        }
+		    } else if (document.selection && document.selection.createRange) {
+		        document.selection.createRange().text = text;
+		    }
+		}			  	
+
+		function doGetCaretPosition (ctrl) {
+			var CaretPos = 0;   // IE Support
+			if (document.selection) {
+				ctrl.focus ();
+				var Sel = document.selection.createRange ();
+				Sel.moveStart ('character', -ctrl.value.length);
+				CaretPos = Sel.text.length;
+			}
+			// Firefox support
+			else if (ctrl.selectionStart || ctrl.selectionStart == '0') {
+				CaretPos = ctrl.selectionStart;
+			}
+			return (CaretPos);
+		}
+
+	  	function showEditLessonPlanSubject() {
+    		$("#textarea_lesson_plan_subject_edit").html(lesson_plan_subject_html);
+		}
+		
+		function partialInitRenderTextareaLessonPlanSubject() {
+			var v = $("#textarea_lesson_plan_subject").html();
+			var w = "";
+			if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+				$("#textarea_lesson_plan_subject").addClass("textarea-lesson-plan-subject-empty");
+			}
+			else {
+				$("#textarea_lesson_plan_subject").removeClass("textarea-lesson-plan-subject-empty");
+			}			
+		}
+		
+		function initRenderTextareaLessonPlanSubject() {
+			$("#textarea_lesson_plan_subject").html(lesson_plan_subject_html);
+			partialInitRenderTextareaLessonPlanSubject();
+		}
+
+
+		function showEditId_103() {
+			$("#control_103_show").addClass("hidden");
+			$("#control_103_edit").fadeIn(1300).removeClass("hidden");
+			$("#textarea_lesson_plan_subject_edit").html(description_html);
+			$("#textarea_lesson_plan_subject").focus();								    		
+		}
+	
+		function hideEditId_103() {
+			$('#control_103_edit').fadeOut(300, function() {
+				$('#control_103_edit').addClass("hidden");
+				$('#control_103_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
+		$(document).ready(function () {				
+
+
+			$(document).on('click', '.control-103-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-103-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_103_edit').hasClass('hidden')) {
+							$('.control-103-edit-options').removeClass('hidden');
+							showEditId_103();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-103-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_103();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_lesson_plan_subject', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_12);
+				$("#dialog_1001").jqmShow();
+			});
+
+			lesson_plan_subject_html = "<%= @publisher_product_subject_subject_text.html_safe %>";
+			initRenderTextareaLessonPlanSubject();
+
+			// onblur="onDivBlur();" 
+			// onmousedown="return cancelEvent(event);" 
+			// onclick="return cancelEvent(event);" 
+			// contentEditable="true" 
+			// onmouseup="saveSelection();" 
+			// onkeyup="saveSelection();" 
+			// onfocus="restoreSelection();"
+
+		    $("#textarea_lesson_plan_subject_edit").on ('blur', function (e) {
+				onDivBlur_lesson_plan_subject();
+		    });
+		    $("#textarea_lesson_plan_subject_edit").on ('mousedown', function (e) {
+				return cancelEvent_lesson_plan_subject(e);
+		    });
+		    $("#textarea_lesson_plan_subject_edit").on ('click', function (e) {
+				return cancelEvent_lesson_plan_subject(e);
+		    });
+		    $("#textarea_lesson_plan_subject_edit").on ('mouseup', function (e) {
+				saveSelection_lesson_plan_subject();
+		    });
+		    $("#textarea_lesson_plan_subject_edit").on ('keyup', function (e) {
+				saveSelection_lesson_plan_subject();
+		    });
+		    $("#textarea_lesson_plan_subject_edit").on ('focus', function (e) {
+				restoreSelection_lesson_plan_subject();
+		    });
+		    $("#textarea_lesson_plan_subject_edit").on ('keydown', function (e) {
+		    	if( e.keyCode == 9) {
+		    		e.preventDefault();
+					insertTextAtCursor_lesson_plan_subject("\t");
+		    	}
+		    });
+    		$("#submit_lesson_plan_subject").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_lesson_plan_subject").click();
+    		});
+    		$("#cancel_lesson_plan_subject").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_lesson_plan_subject").click();
+    		});	
+			$("#cancel_lesson_plan_subject").on('click', function() {
+				// show_control("lesson_plan_subject");
+				control_103_cancel_clicked = true;
+				hideEditId_103();				
+			});
+			// $("#open_edit_lesson_plan_subject").click(function(){
+	    		// $("#show_lesson_plan_subject, #open_edit_lesson_plan_subject").fadeOut(300, function(){
+	    			// $("#show_lesson_plan_subject").addClass("hidden");
+	    			// $("#edit_lesson_plan_subject").fadeIn(1300).removeClass("hidden");
+	    			// showEditLessonPlanSubject();	    	
+	    			// $("#textarea_lesson_plan_subject").focus();								
+	    		// });
+		  	// });    		
+			$("#submit_lesson_plan_subject").on('click', function() {
+				var input_publisher_product_subject = $("#textarea_lesson_plan_subject_edit").html().replace(/\t/g, '\\t');
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "subject":"' + input_publisher_product_subject +
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_lesson_plan_subject',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+							lesson_plan_subject_html = data.subject;
+							initRenderTextareaLessonPlanSubject();
+							// show_control("lesson_plan_subject");
+							// show_control("description");
+							hideEditId_103();							
+	            		}
+	            		else {
+	            			// show_control("lesson_plan_subject");
+	            			hideEditId_103();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -2851,7 +3169,8 @@
 				$("#dialog_101_1 .close-container").css({ 'position' : 'absolute' });
 			});
 
-			$(".dialog-101-1-figure").on('click', function(e) {
+			// $(".dialog-101-1-figure").on('click', function(e) {
+			$(document).on('click', '.dialog-101-1-figure', function(e) {
 				if ( e.target.nodeName == "IMG" ) {
 					$("#dialog_overlay").jqmShow();
 					$("#overlay_loading").removeClass("display-none");
@@ -3853,6 +4172,131 @@
 		});
 		
 	</script>
+	
+	<script>
+		
+		// product_headline
+		
+		function showEditId_16() {
+			$("#control_16_show").addClass("hidden");
+			$("#control_16_edit_1").fadeIn(1300).removeClass("hidden");
+			$("#control_16_edit_2").fadeIn(1300).removeClass("hidden");
+			// alert(product_headline);
+			// set_control_span("product_headline", product_headline, b_product_headline);
+			$("#publisher_product_manifest_product_headline").val(product_headline);		
+			$("#publisher_product_manifest_product_headline").focus();	
+		}
+	
+		function hideEditId_16() {
+			$('#control_16_edit_1, #control_16_edit_2').fadeOut(300, function() {
+				$('#control_16_edit_1').addClass("hidden");
+				$('#control_16_edit_2').addClass("hidden");
+				$('#control_16_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		var product_headline = null;
+		var b_product_headline = null;
+		var b_required_product_headline = null;
+
+		
+		$(document).ready(function(){
+
+			product_headline = "<%= @publisher_product_manifest.product_headline %>";
+			b_product_headline = <%= @b_product_headline %>;
+			b_required_product_headline = <%= @b_required_product_headline %>;
+	
+			$(document).on('click', '.control-16-edit', function(event) {
+				// alert($(".btn-open-edit-mode-container").hasClass("hidden"));
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-16-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_16_edit_1').hasClass('hidden')) {
+							$('.control-16-edit-options').removeClass('hidden');
+							showEditId_16();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-16-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_16();
+							}
+						}
+					}
+				}
+			});
+
+	
+			$(document).on('click', '#open_info_product_headline', function() {
+				$("#dlg_info").html(info_msg_2);
+				divHeight_1001 = $("#dialog_1001").height();
+				$("#dialog_1001").jqmShow();
+			});
+	
+			// alert('gon.product_headline = ' + gon.product_headline);
+			// set_control_span("product_headline", gon.product_headline, gon.b_product_headline);
+			// set_control_required("product_headline", gon.b_required_product_headline);
+	
+			set_control_span("product_headline", product_headline, b_product_headline);
+			set_control_required("product_headline", b_required_product_headline);
+			// $("#open_edit_product_headline").click(function(){
+	    		// $("#show_product_headline, #open_edit_product_headline").fadeOut(300, function(){
+	    			// $("#show_product_headline").addClass("hidden");
+	    			// $("#open_edit_product_headline").addClass("visibility-hidden");
+	    			// $(".edit-product-headline").fadeIn(1300).removeClass("hidden");
+	    		// });
+		  	// });
+			$("#submit_product_headline").keypress(function(e){
+	  			if(e.keyCode==13)
+	  			$("#submit_product_headline").click();
+			});		
+			$("#cancel_product_headline").keypress(function(e){
+	  			if(e.keyCode==13)
+	  			$("#cancel_product_headline").click();
+			});		
+			$("#cancel_product_headline").on('click', function() {
+				show_control_class("product_headline", "product-headline");
+				// hideEditId_16();
+			});
+			$("#submit_product_headline").on('click', function() {
+				var input_publisher_product_manifest_product_headline = $("#publisher_product_manifest_product_headline").val();
+				var obj_list = '{  "publisher_product_id":' + publisher_product_id +  		
+						   	   ',  "product_headline":"' + input_publisher_product_manifest_product_headline +
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
+			  	$.ajax({
+			    	type: 'POST',
+			    	// data : JSON.stringify(obj),
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_product_headline',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	                	// 200:function() { alert("200"); }, 202:function() { alert("202"); }
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+							set_control_span("product_headline", data.product_headline, data.b_product_headline);
+							show_control_class("product_headline", "product-headline");
+							hideEditId_16();
+	            		}
+	            		else {
+							show_control_class("product_headline", "product-headline");
+							hideEditId_16();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+	
+	
+		});
+				
+	</script>
 
 	<!-- <script>
 		
@@ -3928,7 +4372,54 @@
 		
 		// product_tagline
 		
+		function showEditId_10() {
+			$("#control_10_show").addClass("hidden");
+			$("#control_10_edit").fadeIn(1300).removeClass("hidden");
+			// alert(product_tagline);
+			// set_control_span("product_tagline", product_tagline, b_product_tagline);
+			$("#publisher_product_manifest_product_tagline").val(product_tagline);		
+			$("#publisher_product_manifest_product_tagline").focus();	
+		}
+	
+		function hideEditId_10() {
+			$('#control_10_edit').fadeOut(300, function() {
+				$('#control_10_edit').addClass("hidden");
+				$('#control_10_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+
+		// var product_tagline = gon.product_tagline;
+		// var b_product_tagline = gon.b_product_tagline;
+		var product_tagline = null;
+		var b_product_tagline = null;
+		var b_required_product_tagline = null;
+		
 		$(document).ready(function(){
+
+			product_tagline = "<%= @publisher_product_manifest.product_tagline %>";
+			b_product_tagline = <%= @b_product_tagline %>;
+			b_required_product_tagline = <%= @b_required_product_tagline %>;
+
+			$(document).on('click', '.control-10-edit', function(event) {
+				// alert($(".btn-open-edit-mode-container").hasClass("hidden"));
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-10-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_10_edit').hasClass('hidden')) {
+							$('.control-10-edit-options').removeClass('hidden');
+							showEditId_10();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-10-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_10();
+							}
+						}
+					}
+				}
+			});
 
 			$(document).on('click', '#open_info_product_tagline', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -3936,15 +4427,17 @@
 				$("#dialog_1001").jqmShow();
 			});
 
-			set_control_span("product_tagline", gon.product_tagline, gon.b_product_tagline);
-			set_control_required("product_tagline", gon.b_required_product_tagline);
-			$("#open_edit_product_tagline").click(function(){
-	    		$("#show_product_tagline, #open_edit_product_tagline").fadeOut(300, function(){
-	    			$("#show_product_tagline").addClass("hidden");
-	    			$("#open_edit_product_tagline").addClass("visibility-hidden");
-	    			$("#edit_product_tagline").fadeIn(1300).removeClass("hidden");
-	    		});
-		  	});
+			// set_control_span("product_tagline", gon.product_tagline, gon.b_product_tagline);
+			set_control_span("product_tagline", product_tagline, b_product_tagline);
+			// set_control_required("product_tagline", gon.b_required_product_tagline);
+			set_control_required("product_tagline", b_required_product_tagline);
+			// $("#open_edit_product_tagline").click(function(){
+	    		// $("#show_product_tagline, #open_edit_product_tagline").fadeOut(300, function(){
+	    			// $("#show_product_tagline").addClass("hidden");
+	    			// $("#open_edit_product_tagline").addClass("visibility-hidden");
+	    			// $("#edit_product_tagline").fadeIn(1300).removeClass("hidden");
+	    		// });
+		  	// });
     		$("#submit_product_tagline").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_product_tagline").click();
@@ -3954,7 +4447,8 @@
       			$("#cancel_product_tagline").click();
     		});		
 			$("#cancel_product_tagline").on('click', function() {
-				show_control("product_tagline");
+				// show_control("product_tagline");
+				hideEditId_10();
 			});
 			$("#submit_product_tagline").on('click', function() {
 				var input_publisher_product_manifest_product_tagline = $("#publisher_product_manifest_product_tagline").val();
@@ -3975,10 +4469,14 @@
 	            	success: function(data) {
 	            		if (!data.b_error) {
 							set_control_span("product_tagline", data.product_tagline, data.b_product_tagline);
-							show_control("product_tagline");
+							// show_control("product_tagline");
+							// $("#cancel_product_tagline").click();
+							product_tagline = data.product_tagline;
+							hideEditId_10();
 	            		}
 	            		else {
-							show_control("product_tagline");
+							// show_control("product_tagline");
+							hideEditId_10();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -3994,8 +4492,51 @@
 	<script>
 		
 		// product_name
+
+		function showEditId_11() {
+			$("#control_11_show").addClass("hidden");
+			$("#control_11_edit").fadeIn(1300).removeClass("hidden");
+			$("#publisher_product_manifest_product_name").val(product_name);		
+			$("#publisher_product_manifest_product_name").focus();	
+		}
+	
+		function hideEditId_11() {
+			$('#control_11_edit').fadeOut(300, function() {
+				$('#control_11_edit').addClass("hidden");
+				$('#control_11_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+
+		var product_name = null;
+		var b_product_name = null;
+		var b_required_product_name = null;
 		
 		$(document).ready(function(){
+
+			product_name = "<%= @publisher_product_manifest.product_name %>";
+			b_product_name = <%= @b_product_name %>;
+			b_required_product_name = <%= @b_required_product_name %>;
+
+			$(document).on('click', '.control-11-edit', function(event) {
+				// alert($(".btn-open-edit-mode-container").hasClass("hidden"));
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-11-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_11_edit').hasClass('hidden')) {
+							$('.control-11-edit-options').removeClass('hidden');
+							showEditId_11();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-11-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_11();
+							}
+						}
+					}
+				}
+			});
 
 			$(document).on('click', '#open_info_product_name', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -4003,8 +4544,8 @@
 				$("#dialog_1001").jqmShow();
 			});
 
-			set_control_span("product_name", gon.product_name, gon.b_product_name);
-			set_control_required("product_name", gon.b_required_product_name);
+			set_control_span("product_name", product_name, b_product_name);
+			set_control_required("product_name", b_required_product_name);
 			$("#open_edit_product_name").click(function(){
 	    		$("#show_product_name, #open_edit_product_name").fadeOut(300, function(){
 	    			$("#show_product_name").addClass("hidden");
@@ -4021,7 +4562,8 @@
       			$("#cancel_product_name").click();
     		});		
 			$("#cancel_product_name").on('click', function() {
-				show_control("product_name");
+				// show_control("product_name");
+				hideEditId_11();
 			});
 			$("#close_info_product_name").click(function(){
 		    	$("#form_info_product_name_a").fadeOut(700, function(){ $("#form_info_product_name").slideUp(400) });
@@ -4049,10 +4591,14 @@
 	            	success: function(data) {
 	            		if (!data.b_error) {
 							set_control_span("product_name", data.product_name, data.b_product_name);
-							show_control("product_name");
+							// show_control("product_name");
+							// $("#cancel_product_name").click();
+							hideEditId_11();
+							product_name = data.product_name;
 	            		}
 	            		else {
-							show_control("product_name");
+							// show_control("product_name");
+							hideEditId_11();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -4069,7 +4615,50 @@
 		
 		// versions
 		
+		function showEditId_12() {
+			$("#control_12_show").addClass("hidden");
+			$("#control_12_edit").fadeIn(1300).removeClass("hidden");
+			$("#publisher_product_manifest_versions").val(versions);		
+			$("#publisher_product_manifest_versions").focus();	
+		}
+	
+		function hideEditId_12() {
+			$('#control_12_edit').fadeOut(300, function() {
+				$('#control_12_edit').addClass("hidden");
+				$('#control_12_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+
+		var versions = null;
+		var b_versions = null;
+		var b_required_versions = null;
+		
 		$(document).ready(function(){
+
+			versions = "<%= @publisher_product_manifest.versions %>";
+			b_versions = <%= @b_versions %>;
+			b_required_versions = <%= @b_required_versions %>;
+
+			$(document).on('click', '.control-12-edit', function(event) {
+				// alert($(".btn-open-edit-mode-container").hasClass("hidden"));
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-12-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_12_edit').hasClass('hidden')) {
+							$('.control-12-edit-options').removeClass('hidden');
+							showEditId_12();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-12-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_12();
+							}
+						}
+					}
+				}
+			});
 
 			$(document).on('click', '#open_info_versions', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -4077,8 +4666,8 @@
 				$("#dialog_1001").jqmShow();
 			});
 
-			set_control_span("versions", gon.versions, gon.b_versions);
-			set_control_required("versions", gon.b_required_versions);
+			set_control_span("versions", versions, b_versions);
+			set_control_required("versions", b_required_versions);
 			$("#open_edit_versions").click(function(){
 	    		$("#show_versions, #open_edit_versions").fadeOut(300, function(){
 	    			$("#show_versions").addClass("hidden");
@@ -4095,7 +4684,8 @@
       			$("#cancel_versions").click();
     		});		
 			$("#cancel_versions").on('click', function() {
-				show_control("versions");
+				// show_control("versions");
+				hideEditId_12();
 			});
 			$("#submit_versions").on('click', function() {
 				var input_publisher_product_manifest_versions = $("#publisher_product_manifest_versions").val();
@@ -4116,10 +4706,14 @@
 	            	success: function(data) {
 	            		if (!data.b_error) {
 							set_control_span("versions", data.versions, data.b_versions);
-							show_control("versions");
+							// show_control("versions");
+							// $("#cancel_versions").click();
+							hideEditId_12();
+							versions = data.versions;
 	            		}
 	            		else {
-							show_control("versions");
+							// show_control("versions");
+							hideEditId_12();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -4136,7 +4730,50 @@
 		
 		// corporate_logo_url
 		
+		function showEditId_13() {
+			$("#control_13_show").addClass("hidden");
+			$("#control_13_edit").fadeIn(1300).removeClass("hidden");
+			$("#publisher_product_manifest_corporate_logo_url").val(corporate_logo_url);		
+			$("#publisher_product_manifest_corporate_logo_url").focus();	
+		}
+	
+		function hideEditId_13() {
+			$('#control_13_edit').fadeOut(300, function() {
+				$('#control_13_edit').addClass("hidden");
+				$('#control_13_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+
+		var corporate_logo_url = null;
+		var b_corporate_logo_url = null;
+		var b_required_corporate_logo_url = null;
+		
 		$(document).ready(function(){
+
+			corporate_logo_url = "<%= @publisher_product_manifest.corporate_logo_url %>";
+			b_corporate_logo_url = <%= @b_corporate_logo_url %>;
+			b_required_corporate_logo_url = <%= @b_required_corporate_logo_url %>;
+
+			$(document).on('click', '.control-13-edit', function(event) {
+				// alert($(".btn-open-edit-mode-container").hasClass("hidden"));
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-13-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_13_edit').hasClass('hidden')) {
+							$('.control-13-edit-options').removeClass('hidden');
+							showEditId_13();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-13-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_13();
+							}
+						}
+					}
+				}
+			});
 
 			$(document).on('click', '#open_info_corporate_logo_url', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -4144,8 +4781,8 @@
 				$("#dialog_1001").jqmShow();
 			});
 
-			set_control_span("corporate_logo_url", gon.corporate_logo_url, gon.b_corporate_logo_url);
-			set_control_required("corporate_logo_url", gon.b_required_corporate_logo_url);
+			set_control_span("corporate_logo_url", corporate_logo_url, b_corporate_logo_url);
+			set_control_required("corporate_logo_url", b_required_corporate_logo_url);
 			$("#open_edit_corporate_logo_url").click(function(){
 	    		$("#show_corporate_logo_url, #open_edit_corporate_logo_url").fadeOut(300, function(){
 	    			$("#show_corporate_logo_url").addClass("hidden");
@@ -4162,7 +4799,8 @@
       			$("#cancel_corporate_logo_url").click();
     		});		
 			$("#cancel_corporate_logo_url").on('click', function() {
-				show_control("corporate_logo_url");
+				// show_control("corporate_logo_url");
+				hideEditId_13();
 			});
 			$("#submit_corporate_logo_url").on('click', function() {
 				var input_publisher_product_manifest_corporate_logo_url = $("#publisher_product_manifest_corporate_logo_url").val();
@@ -4183,10 +4821,13 @@
 	            	success: function(data) {
 	            		if (!data.b_error) {
 							set_control_span("corporate_logo_url", data.corporate_logo_url, data.b_corporate_logo_url);
-							show_control("corporate_logo_url");
+							// show_control("corporate_logo_url");
+							hideEditId_13();
+							$("#cancel_corporate_logo_url").click();
 	            		}
 	            		else {
-							show_control("corporate_logo_url");
+							// show_control("corporate_logo_url");
+							hideEditId_13();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -4236,7 +4877,47 @@
 			}
 		}
 		
+		
+		function showEditId_14() {
+			$("#control_14_show").addClass("hidden");
+			$("#control_14_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_pricing_model_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		$("#publisher_product_pricing_model").trigger("chosen:updated");
+		}
+	
+		function hideEditId_14() {
+			$('#control_14_edit').fadeOut(300, function() {
+				$('#control_14_edit').addClass("hidden");
+				$('#control_14_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-14-edit', function(event) {
+				// alert($(".btn-open-edit-mode-container").hasClass("hidden"));
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-14-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_14_edit').hasClass('hidden')) {
+							$('.control-14-edit-options').removeClass('hidden');
+							showEditId_14();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-14-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_14();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_pricing_model', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -4249,23 +4930,24 @@
 			var gon_pricing_model_text = gon.pricing_model_text;
 			set_pricing_model_text(gon_pricing_model_text);
 			set_control_required("pricing_model", gon.b_required_pricing_model);			
-			$("#open_edit_pricing_model").click(function(){
-		    	$("#publisher_product_pricing_model_chosen").css({
-		    		'width':'314px'
-		    	});				
-	    		$("#show_pricing_model, #open_edit_pricing_model").fadeOut(300, function(){
-	    			$("#show_pricing_model").addClass("hidden");
-	    			$("#open_edit_pricing_model").addClass("visibility-hidden");
-	    			$("#edit_pricing_model").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_pricing_model").trigger("chosen:updated");
-	    		});
-		  	});
+			// $("#open_edit_pricing_model").click(function(){
+		    	// $("#publisher_product_pricing_model_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+	    		// $("#show_pricing_model, #open_edit_pricing_model").fadeOut(300, function(){
+	    			// $("#show_pricing_model").addClass("hidden");
+	    			// $("#open_edit_pricing_model").addClass("visibility-hidden");
+	    			// $("#edit_pricing_model").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_pricing_model").trigger("chosen:updated");
+	    		// });
+		  	// });
     		$("#submit_pricing_model").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_pricing_model").click();
     		});			
 			$("#cancel_pricing_model").on('click', function() {
-				show_control("pricing_model");
+				// show_control("pricing_model");
+				hideEditId_14();
 			});
     		$("#cancel_pricing_model").keypress(function(e){
       			if(e.keyCode==13)
@@ -4297,12 +4979,14 @@
 	            		if (!data.b_error) {
 							set_pricing_model(data.g_pricing_model);
 							set_pricing_model_text(data.g_pricing_model_text);
-							show_control("pricing_model");
+							// show_control("pricing_model");
+							hideEditId_14();
 							set_control_required("pricing_model", data.b_required);
 							// renderListingPreview("pricing_model");												
 	            		}
 	            		else {
-							show_control("pricing_model");
+							// show_control("pricing_model");
+							hideEditId_14();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -4548,7 +5232,49 @@
 			}
 		}
 		
+		
+		function showEditId_15() {
+			$("#control_15_show").addClass("hidden");
+			$("#control_15_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#span_price_1").focus();	
+    		// $("#show_price_model, #open_edit_price").fadeOut(300, function(){
+    			// $("#show_price").addClass("hidden");
+    			// $("#open_edit_price").addClass("visibility-hidden");
+    			$("#edit_price").fadeIn(1300).removeClass("hidden");
+    		// });
+		}
+	
+		function hideEditId_15() {
+			$('#control_15_edit').fadeOut(300, function() {
+				$('#control_15_edit').addClass("hidden");
+				$('#control_15_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-15-edit', function(event) {
+				// alert($(".btn-open-edit-mode-container").hasClass("hidden"));
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-15-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_15_edit').hasClass('hidden')) {
+							$('.control-15-edit-options').removeClass('hidden');
+							showEditId_15();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-15-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_15();
+							}
+						}
+					}
+				}
+			});
+
 
 			var gon_price = gon.price;
 			set_price(gon_price);
@@ -4774,7 +5500,8 @@
       			$("#submit_price").click();
     		});			
 			$("#cancel_price").on('click', function() {
-				show_control("price");
+				// show_control("price");
+				hideEditId_15();
 			});
     		$("#cancel_price").keypress(function(e){
       			if(e.keyCode==13)
@@ -5191,11 +5918,13 @@
 		            	success: function(data) {
 		            		if (!data.b_error) {
 								set_price(data.g_price);
-								show_control("price");
+								// show_control("price");
+								hideEditId_15();
 								set_control_required("price", data.b_required);				
 		            		}
 		            		else {
-								show_control("price");
+								// show_control("price");
+								hideEditId_15();
 								alert('An error occured while updating this field.');
 							}	            			
 	            		},
@@ -5271,7 +6000,47 @@
 			}
 		}
 		
+		
+		function showEditId_104() {
+			$("#control_104_show").addClass("hidden");
+			$("#control_104_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_content_type_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		$("#publisher_product_content_type").trigger("chosen:updated");
+			
+		}
+	
+		function hideEditId_104() {
+			$('#control_104_edit').fadeOut(300, function() {
+				$('#control_104_edit').addClass("hidden");
+				$('#control_104_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-104-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-104-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_104_edit').hasClass('hidden')) {
+							$('.control-104-edit-options').removeClass('hidden');
+							showEditId_104();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-104-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_104();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_content_type', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -5282,22 +6051,23 @@
   			$("#publisher_product_content_type").on('change', function(evt, params) {
   				other_selected_content_type(params.selected, params.deselected);
   			});
+  			
 			var gon_content_type = gon.content_type;
 			set_content_type(gon.content_type, gon.has_content_type_other);
 			var gon_content_type_text = gon.content_type_text;
 			set_content_type_text(gon_content_type_text, gon.has_content_type_other, gon.content_type_other);
 			set_control_required("content_type", gon.b_required_content_type);			
-			$("#open_edit_content_type").click(function(){
-		    	$("#publisher_product_content_type_chosen").css({
-		    		'width':'314px'
-		    	});				
-	    		$("#show_content_type, #open_edit_content_type").fadeOut(300, function(){
-	    			$("#show_content_type").addClass("hidden");
-	    			$("#open_edit_content_type").addClass("visibility-hidden");
-	    			$("#edit_content_type").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_content_type").trigger("chosen:updated");
-	    		});
-		  	});
+			// $("#open_edit_content_type").click(function(){
+		    	// $("#publisher_product_content_type_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+	    		// $("#show_content_type, #open_edit_content_type").fadeOut(300, function(){
+	    			// $("#show_content_type").addClass("hidden");
+	    			// $("#open_edit_content_type").addClass("visibility-hidden");
+	    			// $("#edit_content_type").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_content_type").trigger("chosen:updated");
+	    		// });
+		  	// });
     		$("#submit_content_type").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_content_type").click();
@@ -5307,7 +6077,8 @@
       			$("#cancel_content_type").click();
     		});		
 			$("#cancel_content_type").on('click', function() {
-				show_control("content_type");
+				// show_control("content_type");
+				hideEditId_104();
 			});
 			$("#submit_content_type").on('click', function() {
 				var input_publisher_product_content_type = $("#publisher_product_content_type").val();
@@ -5336,11 +6107,14 @@
 	            		if (!data.b_error) {
 							set_content_type(data.content_type, data.has_content_type_other);
 							set_content_type_text(data.content_type_text, data.has_content_type_other, data.content_type_other);
-							show_control("content_type");
+							// show_control("content_type");
+							// showEditId_104();
+							hideEditId_104();
 							set_control_required("content_type", data.b_required);						
 	            		}
 	            		else {
-							show_control("content_type");
+							// show_control("content_type");
+							hideEditId_104();
 							alert('An error occured while updating this field.');
 						}	            			
 	            	},
@@ -5413,7 +6187,46 @@
 			}
 		}
 		
+		
+		function showEditId_105() {
+			$("#control_105_show").addClass("hidden");
+			$("#control_105_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_category_subject_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		$("#publisher_product_category_subject").trigger("chosen:updated");
+		}
+	
+		function hideEditId_105() {
+			$('#control_105_edit').fadeOut(300, function() {
+				$('#control_105_edit').addClass("hidden");
+				$('#control_105_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+		
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-105-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-105-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_105_edit').hasClass('hidden')) {
+							$('.control-105-edit-options').removeClass('hidden');
+							showEditId_105();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-105-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_105();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_category_subject', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -5429,17 +6242,17 @@
 			var gon_category_subject_text = gon.category_subject_text;
 			set_category_subject_text(gon_category_subject_text, gon.has_category_subject_other, gon.category_subject_other);
 			set_control_required("category_subject", gon.b_required_category_subject);			
-			$("#open_edit_category_subject").click(function(){
-		    	$("#publisher_product_category_subject_chosen").css({
-		    		'width':'314px'
-		    	});				
-	    		$("#show_category_subject, #open_edit_category_subject").fadeOut(300, function(){
-	    			$("#show_category_subject").addClass("hidden");
-	    			$("#open_edit_category_subject").addClass("visibility-hidden");
-	    			$("#edit_category_subject").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_category_subject").trigger("chosen:updated");
-	    		});
-		  	});
+			// $("#open_edit_category_subject").click(function(){
+		    	// $("#publisher_product_category_subject_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+	    		// $("#show_category_subject, #open_edit_category_subject").fadeOut(300, function(){
+	    			// $("#show_category_subject").addClass("hidden");
+	    			// $("#open_edit_category_subject").addClass("visibility-hidden");
+	    			// $("#edit_category_subject").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_category_subject").trigger("chosen:updated");
+	    		// });
+		  	// });
     		$("#submit_category_subject").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_category_subject").click();
@@ -5449,7 +6262,8 @@
       			$("#cancel_category_subject").click();
     		});	
 			$("#cancel_category_subject").on('click', function() {
-				show_control("category_subject");
+				// show_control("category_subject");
+				hideEditId_105();
 			});    			
 			$("#close_info_category_subject").click(function(){
 		    	$("#form_info_category_subject_a").fadeOut(700, function(){ $("#form_info_category_subject").slideUp(400) });
@@ -5484,12 +6298,14 @@
 	            		if (!data.b_error) {
 							set_category_subject(data.category_subject, data.has_category_subject_other);
 							set_category_subject_text(data.category_subject_text, data.has_category_subject_other, data.category_subject_other);
-							show_control("category_subject");
+							// show_control("category_subject");
 							set_control_required("category_subject", data.b_required);		
 							// renderListingPreview("category_subject");
+							hideEditId_105();
 	            		}
 	            		else {
-							show_control("category_subject");
+							// show_control("category_subject");
+							hideEditId_105();
 							alert('An error occured while updating this field.');
 						}	            			
 	            	},
@@ -5620,7 +6436,73 @@
 			}
 		}
 		
+		
+		$("#open_edit_age_range").click(function(){
+	    	$("#publisher_product_from_age_chosen").css({
+	    		'width':'314px'
+	    	});				
+	    	$("#publisher_product_to_age_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		$("#show_age_range, #open_edit_age_range").fadeOut(300, function(){
+    			$("#show_from_age").addClass("hidden");
+    			$("#show_to_age").addClass("hidden");
+    			$("#open_edit_age_range").addClass("visibility-hidden");
+    			$("#edit_age_range").fadeIn(1300).removeClass("hidden");
+    			$("#publisher_product_from_age").trigger("chosen:updated");
+    			$("#publisher_product_to_age").trigger("chosen:updated");	    			
+    		});
+	  	});
+		
+		function showEditId_106() {
+			$("#control_106_show").addClass("hidden");
+			$("#control_106_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_from_age_chosen").css({
+	    		'width':'314px'
+	    	});				
+	    	$("#publisher_product_to_age_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		// $("#show_age_range, #open_edit_age_range").fadeOut(300, function(){
+    			// $("#show_from_age").addClass("hidden");
+    			// $("#show_to_age").addClass("hidden");
+    			// $("#open_edit_age_range").addClass("visibility-hidden");
+    			// $("#edit_age_range").fadeIn(1300).removeClass("hidden");
+    			$("#publisher_product_from_age").trigger("chosen:updated");
+    			$("#publisher_product_to_age").trigger("chosen:updated");	    			
+    		// });
+		}
+	
+		function hideEditId_106() {
+			$('#control_106_edit').fadeOut(300, function() {
+				$('#control_106_edit').addClass("hidden");
+				$('#control_106_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-106-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-106-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_106_edit').hasClass('hidden')) {
+							$('.control-106-edit-options').removeClass('hidden');
+							showEditId_106();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-106-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_106();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_age_range', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -5636,28 +6518,29 @@
 			var gon_to_age_text = gon.to_age_text;
 			set_age_range_text(gon_from_age_text, gon_to_age_text);
 			set_control_required("age_range", (gon.b_required_from_age || gon.b_required_to_age));
-			$("#open_edit_age_range").click(function(){
-		    	$("#publisher_product_from_age_chosen").css({
-		    		'width':'314px'
-		    	});				
-		    	$("#publisher_product_to_age_chosen").css({
-		    		'width':'314px'
-		    	});				
-	    		$("#show_age_range, #open_edit_age_range").fadeOut(300, function(){
-	    			$("#show_from_age").addClass("hidden");
-	    			$("#show_to_age").addClass("hidden");
-	    			$("#open_edit_age_range").addClass("visibility-hidden");
-	    			$("#edit_age_range").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_from_age").trigger("chosen:updated");
-	    			$("#publisher_product_to_age").trigger("chosen:updated");	    			
-	    		});
-		  	});
+			// $("#open_edit_age_range").click(function(){
+		    	// $("#publisher_product_from_age_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+		    	// $("#publisher_product_to_age_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+	    		// $("#show_age_range, #open_edit_age_range").fadeOut(300, function(){
+	    			// $("#show_from_age").addClass("hidden");
+	    			// $("#show_to_age").addClass("hidden");
+	    			// $("#open_edit_age_range").addClass("visibility-hidden");
+	    			// $("#edit_age_range").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_from_age").trigger("chosen:updated");
+	    			// $("#publisher_product_to_age").trigger("chosen:updated");	    			
+	    		// });
+		  	// });
     		$("#submit_from_age").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_from_age").click();
     		});			
 			$("#cancel_age_range").on('click', function() {
-				show_control("age_range");
+				// show_control("age_range");
+				hideEditId_106();
 			});
     		$("#cancel_age_range").keypress(function(e){
       			if(e.keyCode==13)
@@ -5685,13 +6568,15 @@
 	            		if (!data.b_error) {
 							set_from_age(data.g_from_age);
 							set_to_age(data.g_to_age);
-							show_control("age_range");
+							// show_control("age_range");
+							hideEditId_106();
 							set_age_range_text(data.g_from_age_text, data.g_to_age_text);
 							set_control_required("age_range", (data.b_required_from_age || data.b_required_to_age));
 							// renderListingPreview("age_range");
 	            		}
 	            		else {
-							show_control("age_range");
+							// show_control("age_range");
+							hideEditId_106();
 							alert('An error occured while updating this field.');
 						}	            			
 	            	},
@@ -5822,7 +6707,56 @@
 			}
 		}
 		
+		
+		function showEditId_107() {
+			$("#control_107_show").addClass("hidden");
+			$("#control_107_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_from_grade_chosen").css({
+	    		'width':'314px'
+	    	});				
+	    	$("#publisher_product_to_grade_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		// $("#show_grade_range, #open_edit_grade_range").fadeOut(300, function(){
+    			// $("#show_from_grade").addClass("hidden");
+    			// $("#show_to_grade").addClass("hidden");
+    			// $("#open_edit_grade_range").addClass("visibility-hidden");
+    			// $("#edit_grade_range").fadeIn(1300).removeClass("hidden");
+    			$("#publisher_product_from_grade").trigger("chosen:updated");
+    			$("#publisher_product_to_grade").trigger("chosen:updated");	    			
+    		// });
+		}
+	
+		function hideEditId_107() {
+			$('#control_107_edit').fadeOut(300, function() {
+				$('#control_107_edit').addClass("hidden");
+				$('#control_107_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-107-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-107-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_107_edit').hasClass('hidden')) {
+							$('.control-107-edit-options').removeClass('hidden');
+							showEditId_107();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-107-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_107();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_grade_range', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -5839,28 +6773,29 @@
 			set_grade_range_text(gon_from_grade_text, gon_to_grade_text);
 			set_control_required("grade_range", (gon.b_required_from_grade || gon.b_required_to_grade));
 			
-			$("#open_edit_grade_range").click(function(){
-		    	$("#publisher_product_from_grade_chosen").css({
-		    		'width':'314px'
-		    	});				
-		    	$("#publisher_product_to_grade_chosen").css({
-		    		'width':'314px'
-		    	});				
-	    		$("#show_grade_range, #open_edit_grade_range").fadeOut(300, function(){
-	    			$("#show_from_grade").addClass("hidden");
-	    			$("#show_to_grade").addClass("hidden");
-	    			$("#open_edit_grade_range").addClass("visibility-hidden");
-	    			$("#edit_grade_range").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_from_grade").trigger("chosen:updated");
-	    			$("#publisher_product_to_grade").trigger("chosen:updated");	    			
-	    		});
-		  	});
+			// $("#open_edit_grade_range").click(function(){
+		    	// $("#publisher_product_from_grade_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+		    	// $("#publisher_product_to_grade_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+	    		// $("#show_grade_range, #open_edit_grade_range").fadeOut(300, function(){
+	    			// $("#show_from_grade").addClass("hidden");
+	    			// $("#show_to_grade").addClass("hidden");
+	    			// $("#open_edit_grade_range").addClass("visibility-hidden");
+	    			// $("#edit_grade_range").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_from_grade").trigger("chosen:updated");
+	    			// $("#publisher_product_to_grade").trigger("chosen:updated");	    			
+	    		// });
+		  	// });
     		$("#submit_from_grade").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_from_grade").click();
     		});			
 			$("#cancel_grade_range").on('click', function() {
-				show_control("grade_range");
+				// show_control("grade_range");
+				hideEditId_107();
 			});
     		$("#cancel_grade_range").keypress(function(e){
       			if(e.keyCode==13)
@@ -5888,13 +6823,15 @@
 	            		if (!data.b_error) {
 							set_from_grade(data.g_from_grade);
 							set_to_grade(data.g_to_grade);
-							show_control("grade_range");
+							// show_control("grade_range");
+							hideEditId_107();
 							set_grade_range_text(data.g_from_grade_text, data.g_to_grade_text);
 							set_control_required("grade_range", (data.b_required_from_grade || data.b_required_to_grade));
 							// renderListingPreview("grade_range");
 	            		}
 	            		else {
-							show_control("grade_range");
+							// show_control("grade_range");
+							hideEditId_107();
 							alert('An error occured while updating this field.');
 						}	            			
 	            	},
@@ -5942,7 +6879,54 @@
 			}
 		}
 		
+		
+		function showEditId_108() {
+			$("#control_108_show").addClass("hidden");
+			$("#control_108_edit").fadeIn(1300).removeClass("hidden");
+
+			// $("#open_edit_market_target").click(function(){
+		    	$("#publisher_product_market_target_chosen").css({
+		    		'width':'314px'
+		    	});				
+	    		// $("#show_market_target, #open_edit_market_target").fadeOut(300, function(){
+	    			// $("#show_market_target").addClass("hidden");
+	    			// $("#open_edit_market_target").addClass("visibility-hidden");
+	    			// $("#edit_market_target").fadeIn(1300).removeClass("hidden");
+	    			$("#publisher_product_market_target").trigger("chosen:updated");
+	    		// });
+		  	// });
+		}
+	
+		function hideEditId_108() {
+			$('#control_108_edit').fadeOut(300, function() {
+				$('#control_108_edit').addClass("hidden");
+				$('#control_108_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-108-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-108-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_108_edit').hasClass('hidden')) {
+							$('.control-108-edit-options').removeClass('hidden');
+							showEditId_108();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-108-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_108();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_market_target', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -5955,23 +6939,24 @@
 			var gon_market_target_text = gon.market_target_text;
 			set_market_target_text(gon_market_target_text);
 			set_control_required("market_target", gon.b_required_market_target);			
-			$("#open_edit_market_target").click(function(){
-		    	$("#publisher_product_market_target_chosen").css({
-		    		'width':'314px'
-		    	});				
-	    		$("#show_market_target, #open_edit_market_target").fadeOut(300, function(){
-	    			$("#show_market_target").addClass("hidden");
-	    			$("#open_edit_market_target").addClass("visibility-hidden");
-	    			$("#edit_market_target").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_market_target").trigger("chosen:updated");
-	    		});
-		  	});
+			// $("#open_edit_market_target").click(function(){
+		    	// $("#publisher_product_market_target_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+	    		// $("#show_market_target, #open_edit_market_target").fadeOut(300, function(){
+	    			// $("#show_market_target").addClass("hidden");
+	    			// $("#open_edit_market_target").addClass("visibility-hidden");
+	    			// $("#edit_market_target").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_market_target").trigger("chosen:updated");
+	    		// });
+		  	// });
     		$("#submit_market_target").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_market_target").click();
     		});			
 			$("#cancel_market_target").on('click', function() {
-				show_control("market_target");
+				// show_control("market_target");
+				hideEditId_108();
 			});
     		$("#cancel_market_target").keypress(function(e){
       			if(e.keyCode==13)
@@ -6003,12 +6988,14 @@
 	            		if (!data.b_error) {
 							set_market_target(data.g_market_target);
 							set_market_target_text(data.g_market_target_text);
-							show_control("market_target");
+							// show_control("market_target");
+							hideEditId_108();
 							set_control_required("market_target", data.b_required);			
 							// renderListingPreview("market_target");									
 	            		}
 	            		else {
-							show_control("market_target");
+							// show_control("market_target");
+							hideEditId_108();
 							alert('An error occured while updating this field.');
 						}	            			
 	            	},
@@ -6067,7 +7054,46 @@
 			$("#box_course_time").html(s_html);
 		}
 		
+		
+		function showEditId_109() {
+			$("#control_109_show").addClass("hidden");
+			$("#control_109_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_market_target_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		$("#publisher_product_market_target").trigger("chosen:updated");
+		}
+	
+		function hideEditId_109() {
+			$('#control_109_edit').fadeOut(300, function() {
+				$('#control_109_edit').addClass("hidden");
+				$('#control_109_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-109-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-109-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_109_edit').hasClass('hidden')) {
+							$('.control-109-edit-options').removeClass('hidden');
+							showEditId_109();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-109-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_109();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_lesson_time', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -6076,15 +7102,16 @@
 			});
 
 			$("#cancel_lesson_time").on('click', function() {
-				show_control("lesson_time");
+				// show_control("lesson_time");
+				hideEditId_109();
 			});
-			$("#open_edit_lesson_time").click(function(){
-	    		$("#show_lesson_time, #open_edit_lesson_time").fadeOut(300, function(){
-	    			$("#show_lesson_time").addClass("hidden");
-	    			$("#open_edit_lesson_time").addClass("visibility-hidden");
-	    			$("#edit_lesson_time").fadeIn(1300).removeClass("hidden");
-	    		});
-		  	});    		
+			// $("#open_edit_lesson_time").click(function(){
+	    		// $("#show_lesson_time, #open_edit_lesson_time").fadeOut(300, function(){
+	    			// $("#show_lesson_time").addClass("hidden");
+	    			// $("#open_edit_lesson_time").addClass("visibility-hidden");
+	    			// $("#edit_lesson_time").fadeIn(1300).removeClass("hidden");
+	    		// });
+		  	// });    		
 			$("#close_info_lesson_time").click(function(){
 		    	$("#form_info_lesson_time_a").fadeOut(700, function(){ $("#form_info_lesson_time").slideUp(400) });
 		  	});
@@ -6203,10 +7230,12 @@
 	            		if (!data.b_error) {
 							set_lesson_time(data.time_per_lesson, data.lesson_time_hours, data.lesson_time_minutes);
 							set_course_time(data.time_per_course, data.course_time_months, data.course_time_days);
-							show_control("lesson_time");
+							// show_control("lesson_time");
+							hideEditId_109();
 	            		}
 	            		else {
-							show_control("lesson_time");
+							// show_control("lesson_time");
+							hideEditId_109();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -6279,7 +7308,46 @@
 			}
 		}
 		
+		
+		function showEditId_110() {
+			$("#control_110_show").addClass("hidden");
+			$("#control_110_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_platform_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		$("#publisher_product_platform").trigger("chosen:updated");
+		}
+	
+		function hideEditId_110() {
+			$('#control_110_edit').fadeOut(300, function() {
+				$('#control_110_edit').addClass("hidden");
+				$('#control_110_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-110-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-110-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_110_edit').hasClass('hidden')) {
+							$('.control-110-edit-options').removeClass('hidden');
+							showEditId_110();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-110-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_110();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_platform', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -6295,17 +7363,17 @@
 			var gon_platform_text = gon.platform_text;
 			set_platform_text(gon_platform_text, gon.has_platform_other, gon.platform_other);
 			set_control_required("platform", gon.b_required_platform);			
-			$("#open_edit_platform").click(function(){
-		    	$("#publisher_product_platform_chosen").css({
-		    		'width':'314px'
-		    	});				
-	    		$("#show_platform, #open_edit_platform").fadeOut(300, function(){
-	    			$("#show_platform").addClass("hidden");
-	    			$("#open_edit_platform").addClass("visibility-hidden");
-	    			$("#edit_platform").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_platform").trigger("chosen:updated");
-	    		});
-		  	});
+			// $("#open_edit_platform").click(function(){
+		    	// $("#publisher_product_platform_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+	    		// $("#show_platform, #open_edit_platform").fadeOut(300, function(){
+	    			// $("#show_platform").addClass("hidden");
+	    			// $("#open_edit_platform").addClass("visibility-hidden");
+	    			// $("#edit_platform").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_platform").trigger("chosen:updated");
+	    		// });
+		  	// });
     		$("#submit_platform").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_platform").click();
@@ -6315,7 +7383,8 @@
       			$("#cancel_platform").click();
     		});		
 			$("#cancel_platform").on('click', function() {
-				show_control("platform");
+				// show_control("platform");
+				hideEditId_110();
 			});
 			$("#close_info_platform").click(function(){
 		    	$("#form_info_platform_a").fadeOut(700, function(){ $("#form_info_platform").slideUp(400) });
@@ -6350,12 +7419,14 @@
 	            		if (!data.b_error) {
 							set_platform(data.platform, data.has_platform_other);
 							set_platform_text(data.platform_text, data.has_platform_other, data.platform_other);
-							show_control("platform");
+							// show_control("platform");
+							hideEditId_110();
 							set_control_required("platform", data.b_required);		
 							// renderListingPreview("platform");
 	            		}
 	            		else {
-							show_control("platform");
+							// show_control("platform");
+							hideEditId_110();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -6428,7 +7499,53 @@
 			}
 		}
 		
+		
+		function showEditId_111() {
+			$("#control_111_show").addClass("hidden");
+			$("#control_111_edit").fadeIn(1300).removeClass("hidden");
+			// $("#open_edit_file_type").click(function(){
+		    	$("#publisher_product_file_type_chosen").css({
+		    		'width':'314px'
+		    	});				
+	    		// $("#show_file_type, #open_edit_file_type").fadeOut(300, function(){
+	    			// $("#show_file_type").addClass("hidden");
+	    			// $("#open_edit_file_type").addClass("visibility-hidden");
+	    			// $("#edit_file_type").fadeIn(1300).removeClass("hidden");
+	    			$("#publisher_product_file_type").trigger("chosen:updated");
+	    		// });
+		  	// });
+		}
+	
+		function hideEditId_111() {
+			$('#control_111_edit').fadeOut(300, function() {
+				$('#control_111_edit').addClass("hidden");
+				$('#control_111_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-111-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-111-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_111_edit').hasClass('hidden')) {
+							$('.control-111-edit-options').removeClass('hidden');
+							showEditId_111();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-111-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_111();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_file_type', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -6464,7 +7581,8 @@
       			$("#cancel_file_type").click();
     		});		
 			$("#cancel_file_type").on('click', function() {
-				show_control("file_type");
+				// show_control("file_type");
+				hideEditId_111();
 			});
 			$("#close_info_file_type").click(function(){
 		    	$("#form_info_file_type_a").fadeOut(700, function(){ $("#form_info_file_type").slideUp(400) });
@@ -6499,12 +7617,14 @@
 	            		if (!data.b_error) {
 							set_file_type(data.file_type, data.has_file_type_other);
 							set_file_type_text(data.file_type_text, data.has_file_type_other, data.file_type_other);
-							show_control("file_type");
+							// show_control("file_type");
+							hideEditId_111();
 							set_control_required("file_type", data.b_required);	
 							// renderListingPreview("file_type");											
 	            		}
 	            		else {
-							show_control("file_type");
+							// show_control("file_type");
+							hideEditId_111();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -6577,7 +7697,46 @@
 			}
 		}
 		
+		
+		function showEditId_112() {
+			$("#control_112_show").addClass("hidden");
+			$("#control_112_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_enhancement_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		$("#publisher_product_enhancement").trigger("chosen:updated");
+		}
+	
+		function hideEditId_112() {
+			$('#control_112_edit').fadeOut(300, function() {
+				$('#control_112_edit').addClass("hidden");
+				$('#control_112_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-112-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-112-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_112_edit').hasClass('hidden')) {
+							$('.control-112-edit-options').removeClass('hidden');
+							showEditId_112();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-112-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_112();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_enhancement', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -6593,23 +7752,24 @@
 			var gon_enhancement_text = gon.enhancement_text;
 			set_enhancement_text(gon_enhancement_text, gon.has_enhancement_other, gon.enhancement_other);
 			set_control_required("enhancement", gon.b_required_enhancement);			
-			$("#open_edit_enhancement").click(function(){
-		    	$("#publisher_product_enhancement_chosen").css({
-		    		'width':'314px'
-		    	});				
-	    		$("#show_enhancement, #open_edit_enhancement").fadeOut(300, function(){
-	    			$("#show_enhancement").addClass("hidden");
-	    			$("#open_edit_enhancement").addClass("visibility-hidden");
-	    			$("#edit_enhancement").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_enhancement").trigger("chosen:updated");
-	    		});
-		  	});
+			// $("#open_edit_enhancement").click(function(){
+		    	// $("#publisher_product_enhancement_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+	    		// $("#show_enhancement, #open_edit_enhancement").fadeOut(300, function(){
+	    			// $("#show_enhancement").addClass("hidden");
+	    			// $("#open_edit_enhancement").addClass("visibility-hidden");
+	    			// $("#edit_enhancement").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_enhancement").trigger("chosen:updated");
+	    		// });
+		  	// });
     		$("#submit_enhancement").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_enhancement").click();
     		});			
 			$("#cancel_enhancement").on('click', function() {
-				show_control("enhancement");
+				// show_control("enhancement");
+				hideEditId_112();
 			});
     		$("#cancel_enhancement").keypress(function(e){
       			if(e.keyCode==13)
@@ -6642,12 +7802,14 @@
 	            		if (!data.b_error) {
 							set_enhancement(data.enhancement, data.has_enhancement_other);
 							set_enhancement_text(data.enhancement_text, data.has_enhancement_other, data.enhancement_other);
-							show_control("enhancement");
+							// show_control("enhancement");
+							hideEditId_112();
 							set_control_required("enhancement", data.b_required);		
 							// renderListingPreview("enhancement");										
 	            		}
 	            		else {
-							show_control("enhancement");
+							// show_control("enhancement");
+							hideEditId_112();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -6719,7 +7881,46 @@
 			}
 		}
 		
+		
+		function showEditId_113() {
+			$("#control_113_show").addClass("hidden");
+			$("#control_113_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_by_review_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		$("#publisher_product_by_review").trigger("chosen:updated");
+		}
+	
+		function hideEditId_113() {
+			$('#control_113_edit').fadeOut(300, function() {
+				$('#control_113_edit').addClass("hidden");
+				$('#control_113_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-113-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-113-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_113_edit').hasClass('hidden')) {
+							$('.control-113-edit-options').removeClass('hidden');
+							showEditId_113();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-113-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_113();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_by_review', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -6735,19 +7936,20 @@
 			var gon_by_review_text = gon.by_review_text;
 			set_by_review_text(gon_by_review_text, gon.has_by_review_other, gon.by_review_other);
 			set_control_required("by_review", gon.b_required_by_review);			
-			$("#open_edit_by_review").click(function(){
-		    	$("#publisher_product_by_review_chosen").css({
-		    		'width':'314px'
-		    	});				
-	    		$("#show_by_review, #open_edit_by_review").fadeOut(300, function(){
-	    			$("#show_by_review").addClass("hidden");
-	    			$("#open_edit_by_review").addClass("visibility-hidden");
-	    			$("#edit_by_review").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_by_review").trigger("chosen:updated");
-	    		});
-		  	});
+			// $("#open_edit_by_review").click(function(){
+		    	// $("#publisher_product_by_review_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+	    		// $("#show_by_review, #open_edit_by_review").fadeOut(300, function(){
+	    			// $("#show_by_review").addClass("hidden");
+	    			// $("#open_edit_by_review").addClass("visibility-hidden");
+	    			// $("#edit_by_review").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_by_review").trigger("chosen:updated");
+	    		// });
+		  	// });
 			$("#cancel_by_review").on('click', function() {
-				show_control("by_review");
+				// show_control("by_review");
+				hideEditId_113();
 			});
     		$("#submit_by_review").keypress(function(e){
       			if(e.keyCode==13)
@@ -6790,12 +7992,14 @@
 	            		if (!data.b_error) {
 							set_by_review(data.by_review, data.has_by_review_other);
 							set_by_review_text(data.by_review_text, data.has_by_review_other, data.by_review_other);
-							show_control("by_review");
+							// show_control("by_review");
+							hideEditId_113();
 							set_control_required("by_review", data.b_required);			
 							// renderListingPreview("by_review");			
 	            		}
 	            		else {
-							show_control("by_review");
+							// show_control("by_review");
+							hideEditId_113();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -6843,7 +8047,43 @@
 			$("#publisher_product_manifest_user_rating").trigger("chosen:updated");
 		}
 		
+		
+		function showEditId_114() {
+			$("#control_114_show").addClass("hidden");
+			$("#control_114_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_allow_teacher_rating").trigger("chosen:updated");
+		}
+	
+		function hideEditId_114() {
+			$('#control_114_edit').fadeOut(300, function() {
+				$('#control_114_edit').addClass("hidden");
+				$('#control_114_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-114-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-114-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_114_edit').hasClass('hidden')) {
+							$('.control-114-edit-options').removeClass('hidden');
+							showEditId_114();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-114-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_114();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_allow_teacher_rating', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -6857,14 +8097,14 @@
 			set_allow_teacher_rating(gon_allow_teacher_rating);
 			$("#cb_publisher_product_manifest_allow_teacher_rating").attr('checked', gon_allow_teacher_rating);
 			set_cb_init("cb_publisher_product_manifest_allow_teacher_rating", "cb_allow_teacher_rating");			
-			$("#open_edit_allow_teacher_rating").click(function(){
-	    		$("#show_allow_teacher_rating, #open_edit_allow_teacher_rating").fadeOut(300, function(){
-	    			$("#show_allow_teacher_rating").addClass("hidden");
-	    			$("#open_edit_allow_teacher_rating").addClass("visibility-hidden");
-	    			$("#edit_allow_teacher_rating").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_allow_teacher_rating").trigger("chosen:updated");
-	    		});
-		  	});
+			// $("#open_edit_allow_teacher_rating").click(function(){
+	    		// $("#show_allow_teacher_rating, #open_edit_allow_teacher_rating").fadeOut(300, function(){
+	    			// $("#show_allow_teacher_rating").addClass("hidden");
+	    			// $("#open_edit_allow_teacher_rating").addClass("visibility-hidden");
+	    			// $("#edit_allow_teacher_rating").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_allow_teacher_rating").trigger("chosen:updated");
+	    		// });
+		  	// });
     		$("#submit_allow_teacher_rating").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_allow_teacher_rating").click();
@@ -6874,7 +8114,8 @@
       			$("#cancel_allow_teacher_rating").click();
     		});		
 			$("#cancel_allow_teacher_rating").on('click', function() {
-				show_control("allow_teacher_rating");
+				// show_control("allow_teacher_rating");
+				hideEditId_114();
 			});
 			$("#cb_container_allow_teacher_rating").on('click', function() {
 				set_cb("cb_publisher_product_manifest_allow_teacher_rating", "cb_allow_teacher_rating");
@@ -6938,10 +8179,12 @@
 								}
 								gon_allow_teacher_rating = data.allow_teacher_rating;
 								set_allow_teacher_rating(gon_allow_teacher_rating);
-								show_control("allow_teacher_rating");										
+								// show_control("allow_teacher_rating");			
+								hideEditId_114();							
 		            		}
 		            		else {
-								show_control("allow_teacher_rating");										
+								// show_control("allow_teacher_rating");
+								hideEditId_114();										
 								alert('An error occured while updating this field.');	            			
 		            		}
 		            	},
@@ -6976,7 +8219,43 @@
 			}
 		}
 		
+		
+		function showEditId_115() {
+			$("#control_115_show").addClass("hidden");
+			$("#control_115_edit").fadeIn(1300).removeClass("hidden");
+			$("#edit_allow_comments").fadeIn(1300).removeClass("hidden");
+		}
+	
+		function hideEditId_115() {
+			$('#control_115_edit').fadeOut(300, function() {
+				$('#control_115_edit').addClass("hidden");
+				$('#control_115_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-115-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-115-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_115_edit').hasClass('hidden')) {
+							$('.control-115-edit-options').removeClass('hidden');
+							showEditId_115();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-115-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_115();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_allow_comments', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -6988,13 +8267,13 @@
 			set_allow_comments(gon_allow_comments);
 			$("#cb_publisher_product_manifest_allow_comments").attr('checked', gon_allow_comments);
 			set_cb_init("cb_publisher_product_manifest_allow_comments", "cb_allow_comments");			
-			$("#open_edit_allow_comments").click(function(){
-	    		$("#show_allow_comments, #open_edit_allow_comments").fadeOut(300, function(){
-	    			$("#show_allow_comments").addClass("hidden");
-	    			$("#open_edit_allow_comments").addClass("visibility-hidden");
-	    			$("#edit_allow_comments").fadeIn(1300).removeClass("hidden");
-	    		});
-		  	});
+			// $("#open_edit_allow_comments").click(function(){
+	    		// $("#show_allow_comments, #open_edit_allow_comments").fadeOut(300, function(){
+	    			// $("#show_allow_comments").addClass("hidden");
+	    			// $("#open_edit_allow_comments").addClass("visibility-hidden");
+	    			// $("#edit_allow_comments").fadeIn(1300).removeClass("hidden");
+	    		// });
+		  	// });
     		$("#submit_allow_comments").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_allow_comments").click();
@@ -7004,7 +8283,8 @@
       			$("#cancel_allow_comments").click();
     		});		
 			$("#cancel_allow_comments").on('click', function() {
-				show_control("allow_comments");
+				// show_control("allow_comments");
+				hideEditId_115();
 			});
 			$("#cb_container_allow_comments").on('click', function() {
 				set_cb("cb_publisher_product_manifest_allow_comments", "cb_allow_comments");
@@ -7031,10 +8311,12 @@
 		            		if (!data.b_error) {
 								gon_allow_comments = data.allow_comments;
 								set_allow_comments(gon_allow_comments);
-								show_control("allow_comments");										
+								// show_control("allow_comments");				
+								hideEditId_115();						
 		            		}
 		            		else {
-								show_control("allow_comments");										
+								// show_control("allow_comments");
+								hideEditId_115();										
 								alert('An error occured while updating this field.');	            			
 		            		}
 		            	},
@@ -7073,7 +8355,43 @@
 			}
 		}
 		
+		
+		function showEditId_116() {
+			$("#control_116_show").addClass("hidden");
+			$("#control_116_edit").fadeIn(1300).removeClass("hidden");
+			$("#edit_allow_student_likes").fadeIn(1300).removeClass("hidden");
+		}
+	
+		function hideEditId_116() {
+			$('#control_116_edit').fadeOut(300, function() {
+				$('#control_116_edit').addClass("hidden");
+				$('#control_116_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-116-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-116-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_116_edit').hasClass('hidden')) {
+							$('.control-116-edit-options').removeClass('hidden');
+							showEditId_116();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-116-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_116();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_allow_student_likes', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -7085,13 +8403,13 @@
 			set_allow_student_likes(gon_allow_student_likes);
 			$("#cb_publisher_product_manifest_allow_student_likes").attr('checked', gon_allow_student_likes);
 			set_cb_init("cb_publisher_product_manifest_allow_student_likes", "cb_allow_student_likes");			
-			$("#open_edit_allow_student_likes").click(function(){
-	    		$("#show_allow_student_likes, #open_edit_allow_student_likes").fadeOut(300, function(){
-	    			$("#show_allow_student_likes").addClass("hidden");
-	    			$("#open_edit_allow_student_likes").addClass("visibility-hidden");
-	    			$("#edit_allow_student_likes").fadeIn(1300).removeClass("hidden");
-	    		});
-		  	});
+			// $("#open_edit_allow_student_likes").click(function(){
+	    		// $("#show_allow_student_likes, #open_edit_allow_student_likes").fadeOut(300, function(){
+	    			// $("#show_allow_student_likes").addClass("hidden");
+	    			// $("#open_edit_allow_student_likes").addClass("visibility-hidden");
+	    			// $("#edit_allow_student_likes").fadeIn(1300).removeClass("hidden");
+	    		// });
+		  	// });
     		$("#submit_allow_student_likes").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_allow_student_likes").click();
@@ -7101,7 +8419,8 @@
       			$("#cancel_allow_student_likes").click();
     		});		
 			$("#cancel_allow_student_likes").on('click', function() {
-				show_control("allow_student_likes");
+				// show_control("allow_student_likes");
+				hideEditId_116();
 			});
 			$("#cb_container_allow_student_likes").on('click', function() {
 				set_cb("cb_publisher_product_manifest_allow_student_likes", "cb_allow_student_likes");
@@ -7128,10 +8447,12 @@
 		            		if (!data.b_error) {
 								gon_allow_student_likes = data.allow_student_likes;
 								set_allow_student_likes(gon_allow_student_likes);
-								show_control("allow_student_likes");										
+								// show_control("allow_student_likes");			
+								hideEditId_116();							
 		            		}
 		            		else {
-								show_control("allow_student_likes");										
+								// show_control("allow_student_likes");
+								hideEditId_116();										
 								alert('An error occured while updating this field.');	            			
 		            		}
 		            	},
@@ -7189,7 +8510,52 @@
 			}
 		}
 		
+		
+		function showEditId_117() {
+			$("#control_117_show").addClass("hidden");
+			$("#control_117_edit").fadeIn(1300).removeClass("hidden");
+			show_control_standard_edit("core_literacy_standard");
+	    	$("#publisher_product_core_literacy_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		// $("#show_core_literacy_standard, #open_edit_core_literacy_standard").fadeOut(300, function(){
+    			// $("#show_core_literacy_standard").addClass("hidden");
+    			// $("#open_edit_core_literacy_standard").addClass("visibility-hidden");
+    			// $("#edit_core_literacy_standard").fadeIn(1300).removeClass("hidden");
+    			$("#publisher_product_core_literacy_standard").trigger("chosen:updated");
+    		// });
+		}
+	
+		function hideEditId_117() {
+			$('#control_117_edit').fadeOut(300, function() {
+				$('#control_117_edit').addClass("hidden");
+				$('#control_117_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-117-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-117-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_117_edit').hasClass('hidden')) {
+							$('.control-117-edit-options').removeClass('hidden');
+							showEditId_117();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-117-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_117();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_core_literacy_standard', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -7202,25 +8568,26 @@
 			set_core_literacy_standard(gon_core_literacy_standard);
 			var gon_core_literacy_standard_text = gon.core_literacy_standard_text;
 			set_core_literacy_standard_text(gon_core_literacy_standard_text);
-			$("#open_edit_core_literacy_standard").click(function(){
-				show_control_standard_edit("core_literacy_standard");
-		    	$("#publisher_product_core_literacy_standard_chosen").css({
-		    		'width':'314px'
-		    	});				
-	    		$("#show_core_literacy_standard, #open_edit_core_literacy_standard").fadeOut(300, function(){
-	    			$("#show_core_literacy_standard").addClass("hidden");
-	    			$("#open_edit_core_literacy_standard").addClass("visibility-hidden");
-	    			$("#edit_core_literacy_standard").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_core_literacy_standard").trigger("chosen:updated");
-	    		});
-		  	});
+			// $("#open_edit_core_literacy_standard").click(function(){
+				// show_control_standard_edit("core_literacy_standard");
+		    	// $("#publisher_product_core_literacy_standard_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+	    		// $("#show_core_literacy_standard, #open_edit_core_literacy_standard").fadeOut(300, function(){
+	    			// $("#show_core_literacy_standard").addClass("hidden");
+	    			// $("#open_edit_core_literacy_standard").addClass("visibility-hidden");
+	    			// $("#edit_core_literacy_standard").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_core_literacy_standard").trigger("chosen:updated");
+	    		// });
+		  	// });
     		$("#submit_core_literacy_standard").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_core_literacy_standard").click();
     		});			
 			$("#cancel_core_literacy_standard").on('click', function() {
 				show_control_standard("core_literacy_standard");
-				show_control("core_literacy_standard");
+				// show_control("core_literacy_standard");
+				hideEditId_117();
 			});
     		$("#cancel_core_literacy_standard").keypress(function(e){
       			if(e.keyCode==13)
@@ -7259,10 +8626,12 @@
 							show_control_standard("core_literacy_standard");	            		
 							set_core_literacy_standard(data.g_core_literacy_standard);
 							set_core_literacy_standard_text(data.g_core_literacy_standard_text);
-							show_control("core_literacy_standard");
+							// show_control("core_literacy_standard");
+							hideEditId_117();
 	            		}
 	            		else {
-							show_control("core_literacy_standard");
+							// show_control("core_literacy_standard");
+							hideEditId_117();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -7315,7 +8684,47 @@
 			}
 		}
 		
+		
+		function showEditId_118() {
+			$("#control_118_show").addClass("hidden");
+			$("#control_118_edit").fadeIn(1300).removeClass("hidden");
+			show_control_standard_edit("core_math_standard");
+	    	$("#publisher_product_core_math_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		$("#publisher_product_core_math_standard").trigger("chosen:updated");
+		}
+	
+		function hideEditId_118() {
+			$('#control_118_edit').fadeOut(300, function() {
+				$('#control_118_edit').addClass("hidden");
+				$('#control_118_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-118-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-118-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_118_edit').hasClass('hidden')) {
+							$('.control-118-edit-options').removeClass('hidden');
+							showEditId_118();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-118-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_118();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_core_math_standard', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -7328,25 +8737,26 @@
 			set_core_math_standard(gon_core_math_standard);
 			var gon_core_math_standard_text = gon.core_math_standard_text;
 			set_core_math_standard_text(gon_core_math_standard_text);
-			$("#open_edit_core_math_standard").click(function(){
-				show_control_standard_edit("core_math_standard");
-		    	$("#publisher_product_core_math_standard_chosen").css({
-		    		'width':'314px'
-		    	});				
-	    		$("#show_core_math_standard, #open_edit_core_math_standard").fadeOut(300, function(){
-	    			$("#show_core_math_standard").addClass("hidden");
-	    			$("#open_edit_core_math_standard").addClass("visibility-hidden");
-	    			$("#edit_core_math_standard").fadeIn(1300).removeClass("hidden");
-	    			$("#publisher_product_core_math_standard").trigger("chosen:updated");
-	    		});
-		  	});
+			// $("#open_edit_core_math_standard").click(function(){
+				// show_control_standard_edit("core_math_standard");
+		    	// $("#publisher_product_core_math_standard_chosen").css({
+		    		// 'width':'314px'
+		    	// });				
+	    		// $("#show_core_math_standard, #open_edit_core_math_standard").fadeOut(300, function(){
+	    			// $("#show_core_math_standard").addClass("hidden");
+	    			// $("#open_edit_core_math_standard").addClass("visibility-hidden");
+	    			// $("#edit_core_math_standard").fadeIn(1300).removeClass("hidden");
+	    			// $("#publisher_product_core_math_standard").trigger("chosen:updated");
+	    		// });
+		  	// });
     		$("#submit_core_math_standard").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_core_math_standard").click();
     		});			
 			$("#cancel_core_math_standard").on('click', function() {
 				show_control_standard("core_math_standard");
-				show_control("core_math_standard");
+				// show_control("core_math_standard");
+				hideEditId_118();
 			});
     		$("#cancel_core_math_standard").keypress(function(e){
       			if(e.keyCode==13)
@@ -7386,10 +8796,12 @@
 							show_control_standard("core_math_standard");	            		
 							set_core_math_standard(data.g_core_math_standard);
 							set_core_math_standard_text(data.g_core_math_standard_text);
-							show_control("core_math_standard");
+							// show_control("core_math_standard");
+							hideEditId_118();
 	            		}
 	            		else {
-							show_control("core_math_standard");
+							// show_control("core_math_standard");
+							hideEditId_118();
 							alert('An error occured while updating this field.');	            			
 	            		}
 	            	},
@@ -7437,7 +8849,43 @@
 			$("#box_status_square_options").html(s_options);
 		}
 		
+		
+		function showEditId_119() {
+			$("#control_119_show").addClass("hidden");
+			$("#control_119_edit").fadeIn(1300).removeClass("hidden");
+			$("#edit_poster_print_purchase").fadeIn(1300).removeClass("hidden");
+		}
+	
+		function hideEditId_119() {
+			$('#control_119_edit').fadeOut(300, function() {
+				$('#control_119_edit').addClass("hidden");
+				$('#control_119_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-119-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-119-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_119_edit').hasClass('hidden')) {
+							$('.control-119-edit-options').removeClass('hidden');
+							showEditId_119();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-119-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_119();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_poster_print_purchase', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -7449,13 +8897,13 @@
 			set_poster_print_purchase(gon_poster_print_purchase);
 			$("#cb_publisher_product_manifest_poster_print_purchase").attr('checked', gon_poster_print_purchase);
 			set_cb_init("cb_publisher_product_manifest_poster_print_purchase", "cb_poster_print_purchase");			
-			$("#open_edit_poster_print_purchase").click(function(){
-	    		$("#show_poster_print_purchase, #open_edit_poster_print_purchase").fadeOut(300, function(){
-	    			$("#show_poster_print_purchase").addClass("hidden");
-	    			$("#open_edit_poster_print_purchase").addClass("visibility-hidden");
-	    			$("#edit_poster_print_purchase").fadeIn(1300).removeClass("hidden");
-	    		});
-		  	});
+			// $("#open_edit_poster_print_purchase").click(function(){
+	    		// $("#show_poster_print_purchase, #open_edit_poster_print_purchase").fadeOut(300, function(){
+	    			// $("#show_poster_print_purchase").addClass("hidden");
+	    			// $("#open_edit_poster_print_purchase").addClass("visibility-hidden");
+	    			// $("#edit_poster_print_purchase").fadeIn(1300).removeClass("hidden");
+	    		// });
+		  	// });
     		$("#submit_poster_print_purchase").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_poster_print_purchase").click();
@@ -7465,7 +8913,8 @@
       			$("#cancel_poster_print_purchase").click();
     		});		
 			$("#cancel_poster_print_purchase").on('click', function() {
-				show_control("poster_print_purchase");
+				// show_control("poster_print_purchase");
+				hideEditId_119();
 			});
 			$("#cb_container_poster_print_purchase").on('click', function() {
 				set_cb("cb_publisher_product_manifest_poster_print_purchase", "cb_poster_print_purchase");
@@ -7492,10 +8941,12 @@
 		            		if (!data.b_error) {
 								gon_poster_print_purchase = data.poster_print_purchase;
 								set_poster_print_purchase(gon_poster_print_purchase);
-								show_control("poster_print_purchase");										
+								// show_control("poster_print_purchase");		
+								hideEditId_119();								
 		            		}
 		            		else {
-								show_control("poster_print_purchase");										
+								// show_control("poster_print_purchase");
+								hideEditId_119();										
 								alert('An error occured while updating this field.');	            			
 		            		}
 		            	},
@@ -7549,7 +9000,43 @@
 			$("#box_status_pin_web_options").html(s_options);			
 		}
 		
+		
+		function showEditId_120() {
+			$("#control_120_show").addClass("hidden");
+			$("#control_120_edit").fadeIn(1300).removeClass("hidden");
+			$("#edit_poster_pin_web").fadeIn(1300).removeClass("hidden");
+		}
+	
+		function hideEditId_120() {
+			$('#control_120_edit').fadeOut(300, function() {
+				$('#control_120_edit').addClass("hidden");
+				$('#control_120_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-120-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-120-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_120_edit').hasClass('hidden')) {
+							$('.control-120-edit-options').removeClass('hidden');
+							showEditId_120();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-120-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_120();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_poster_pin_web', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -7561,13 +9048,13 @@
 			set_poster_pin_web(gon_poster_pin_web);
 			$("#cb_publisher_product_manifest_poster_pin_web").attr('checked', gon_poster_pin_web);
 			set_cb_init("cb_publisher_product_manifest_poster_pin_web", "cb_poster_pin_web");			
-			$("#open_edit_poster_pin_web").click(function(){
-	    		$("#show_poster_pin_web, #open_edit_poster_pin_web").fadeOut(300, function(){
-	    			$("#show_poster_pin_web").addClass("hidden");
-	    			$("#open_edit_poster_pin_web").addClass("visibility-hidden");
-	    			$("#edit_poster_pin_web").fadeIn(1300).removeClass("hidden");
-	    		});
-		  	});
+			// $("#open_edit_poster_pin_web").click(function(){
+	    		// $("#show_poster_pin_web, #open_edit_poster_pin_web").fadeOut(300, function(){
+	    			// $("#show_poster_pin_web").addClass("hidden");
+	    			// $("#open_edit_poster_pin_web").addClass("visibility-hidden");
+	    			// $("#edit_poster_pin_web").fadeIn(1300).removeClass("hidden");
+	    		// });
+		  	// });
     		$("#submit_poster_pin_web").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_poster_pin_web").click();
@@ -7577,7 +9064,8 @@
       			$("#cancel_poster_pin_web").click();
     		});		
 			$("#cancel_poster_pin_web").on('click', function() {
-				show_control("poster_pin_web");
+				// show_control("poster_pin_web");
+				hideEditId_120();
 			});
 			$("#cb_container_poster_pin_web").on('click', function() {
 				set_cb("cb_publisher_product_manifest_poster_pin_web", "cb_poster_pin_web");
@@ -7604,10 +9092,12 @@
 		            		if (!data.b_error) {
 								gon_poster_pin_web = data.poster_pin_web;
 								set_poster_pin_web(gon_poster_pin_web);
-								show_control("poster_pin_web");										
+								// show_control("poster_pin_web");					
+								hideEditId_120();					
 		            		}
 		            		else {
-								show_control("poster_pin_web");										
+								// show_control("poster_pin_web");
+								hideEditId_120();										
 								alert('An error occured while updating this field.');	            			
 		            		}
 		            	},
@@ -7660,7 +9150,43 @@
 			$("#box_status_pin_print_options").html(s_options);						
 		}
 		
+		
+		function showEditId_121() {
+			$("#control_121_show").addClass("hidden");
+			$("#control_121_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#edit_poster_pin_purchase").fadeIn(1300).removeClass("hidden");
+		}
+	
+		function hideEditId_121() {
+			$('#control_121_edit').fadeOut(300, function() {
+				$('#control_121_edit').addClass("hidden");
+				$('#control_121_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		
 		$(document).ready(function(){
+
+
+			$(document).on('click', '.control-121-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-121-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_121_edit').hasClass('hidden')) {
+							$('.control-121-edit-options').removeClass('hidden');
+							showEditId_121();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-121-cancel-button');
+							// var b_save_button_clicked   = $(event.target).hasClass('control-1-save-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_121();
+							}
+						}
+					}
+				}
+			});
+
 
 			$(document).on('click', '#open_info_poster_pin_purchase', function() {
 				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
@@ -7672,13 +9198,13 @@
 			set_poster_pin_purchase(gon_poster_pin_purchase);
 			$("#cb_publisher_product_manifest_poster_pin_purchase").attr('checked', gon_poster_pin_purchase);
 			set_cb_init("cb_publisher_product_manifest_poster_pin_purchase", "cb_poster_pin_purchase");			
-			$("#open_edit_poster_pin_purchase").click(function(){
-	    		$("#show_poster_pin_purchase, #open_edit_poster_pin_purchase").fadeOut(300, function(){
-	    			$("#show_poster_pin_purchase").addClass("hidden");
-	    			$("#open_edit_poster_pin_purchase").addClass("visibility-hidden");
-	    			$("#edit_poster_pin_purchase").fadeIn(1300).removeClass("hidden");
-	    		});
-		  	});
+			// $("#open_edit_poster_pin_purchase").click(function(){
+	    		// $("#show_poster_pin_purchase, #open_edit_poster_pin_purchase").fadeOut(300, function(){
+	    			// $("#show_poster_pin_purchase").addClass("hidden");
+	    			// $("#open_edit_poster_pin_purchase").addClass("visibility-hidden");
+	    			// $("#edit_poster_pin_purchase").fadeIn(1300).removeClass("hidden");
+	    		// });
+		  	// });
     		$("#submit_poster_pin_purchase").keypress(function(e){
       			if(e.keyCode==13)
       			$("#submit_poster_pin_purchase").click();
@@ -7688,7 +9214,8 @@
       			$("#cancel_poster_pin_purchase").click();
     		});		
 			$("#cancel_poster_pin_purchase").on('click', function() {
-				show_control("poster_pin_purchase");
+				// show_control("poster_pin_purchase");
+				hideEditId_121();
 			});
 			$("#cb_container_poster_pin_purchase").on('click', function() {
 				set_cb("cb_publisher_product_manifest_poster_pin_purchase", "cb_poster_pin_purchase");
@@ -7715,10 +9242,12 @@
 		            		if (!data.b_error) {
 								gon_poster_pin_purchase = data.poster_pin_purchase;
 								set_poster_pin_purchase(gon_poster_pin_purchase);
-								show_control("poster_pin_purchase");										
+								// show_control("poster_pin_purchase");
+								hideEditId_121();										
 		            		}
 		            		else {
-								show_control("poster_pin_purchase");										
+								// show_control("poster_pin_purchase");
+								hideEditId_121();										
 								alert('An error occured while updating this field.');	            			
 		            		}
 		            	},
@@ -7735,6 +9264,78 @@
 		});
 				
 	</script>
+
+	<script>
+		
+		$(window).load( function() {
+		
+			// alert('load');
+			
+			$('#body').removeClass('body-visibility-hidden');
+		
+			// function preload(arrayOfImages) {
+			    // $(arrayOfImages).each(function(){
+			        // $('<img/>')[0].src = this;
+			        // // Alternatively you could use:
+			        // // (new Image()).src = this;
+			    // });
+			// }
+			// // Usage:
+			// preload([
+			    // 'img/imageName.jpg',
+			    // 'img/anotherOne.jpg',
+			    // 'img/blahblahblah.jpg'
+			// ]);		
+		
+		
+			// function preload(arrayOfImages) {
+			    // $(arrayOfImages).each(function() {
+			        // $('<img/>')[0].src = this;
+			    // });
+			// }
+			// preload([
+			    // '<#%= @image_5_url %#>'
+			// ]);		
+			// $('#render_image_5').html("<#%= j render('publisher_product_manifests/image_5') %#>");
+			// // document.getElementById("preload-01").style.background = "url(<#%= @image_5_url %#>) no-repeat";
+			// $("#preload-01").on("load", function() {
+				// document.getElementById("preload-01").style.background = "url(<#%= @image_5_url %#>) no-repeat";
+			// }).each(function() {
+			  	// if(this.complete) {
+			  		// alert('complete 5');
+			  		// // $('#render_image_5').css('background-image', 'url(<#%= @image_5_url %#>)');
+			  		// // $(this).load();
+			  	// }
+			// });
+
+
+
+			
+			// $('#render_image_5').css('background-image', 'url(<#%= @image_5_url %#>)');
+			
+			// $("#image_5_img").on("load", function() {
+				// // var img_w = this.width;
+				// // var img_h = this.height;
+				// // $(".container-figure-image-5").css({
+					// // width : img_w,
+					// // height : img_h						
+				// // });													
+			// }).each(function() {
+			  	// if(this.complete) {
+			  		// alert('complete 5');
+			  		// // $('#render_image_5').css('background-image', 'url(<#%= @image_5_url %#>)');
+			  		// $(this).load();
+			  		// $(".drop-namespace105").removeClass("hidden");
+			  	// }
+			// });
+
+		});
+
+		
+	</script>
+
+
+
 
 	<!-- <script>
 		

@@ -738,7 +738,7 @@ class PublisherUsersController < ApplicationController
 
 
 
-  def update_story_1
+  def update_story_4
     
     ar = params[:publisher_user]
     h_obj = Hash.new
@@ -1054,33 +1054,29 @@ class PublisherUsersController < ApplicationController
   end
 
 
-  def update_publisher_user_interest
-
-    interest_text = params[:publisher_user_interest][:interest_text]
-    h_publisher_user_interest = Hash.new
-    h_publisher_user_interest[:interest_text] = interest_text
-    # publisher_user_interest = UserPlot.where("publisher_user_interest_id = ?", current_user.publisher_user.publisher_user_interest.id).first rescue nil
-    publisher_user_interest = current_user.publisher_user.publisher_user_interest rescue nil
-    if !publisher_user_interest.nil?
-        if publisher_user_interest.update_attributes(h_publisher_user_interest)
-            #
-        else
-            Rails.logger.info('publisher_user_interest update failed')
-        end
-    else
-        Rails.logger.info('publisher_user_interest = nil')      
-    end
-
-    @publisher_user = nil
-    publisher_user = current_user.publisher_user rescue nil
-    if !publisher_user.nil?
-        @publisher_user = publisher_user
-    else
-        # error
-    end
-    
-    
-  end
+  # def update_publisher_user_interest
+    # interest_text = params[:publisher_user_interest][:interest_text]
+    # h_publisher_user_interest = Hash.new
+    # h_publisher_user_interest[:interest_text] = interest_text
+    # # publisher_user_interest = UserPlot.where("publisher_user_interest_id = ?", current_user.publisher_user.publisher_user_interest.id).first rescue nil
+    # publisher_user_interest = current_user.publisher_user.publisher_user_interest rescue nil
+    # if !publisher_user_interest.nil?
+        # if publisher_user_interest.update_attributes(h_publisher_user_interest)
+            # #
+        # else
+            # Rails.logger.info('publisher_user_interest update failed')
+        # end
+    # else
+        # Rails.logger.info('publisher_user_interest = nil')      
+    # end
+    # @publisher_user = nil
+    # publisher_user = current_user.publisher_user rescue nil
+    # if !publisher_user.nil?
+        # @publisher_user = publisher_user
+    # else
+        # # error
+    # end
+  # end
   
   # def update_story_2
     # # ar = params[:publisher]
@@ -1112,272 +1108,117 @@ class PublisherUsersController < ApplicationController
     # end
   # end
   
-
-  def update_story_3
-    
-    # ar = params[:publisher]
-    # h_obj = Hash.new
-    # ar.each do |obj|
-      # h_obj = obj
-    # end
-    # story_interest = h_obj[:story_interest]
-
-    story_interest = params[:story_interest]
-    
-    h_publisher_user = Hash.new
-    h_publisher_user[:story_interest] = story_interest
-    
-    publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
-    if !publisher_user.nil?
-        if publisher_user.update_attributes(h_publisher_user)
-            #
-        else
-            # Rails.logger.info('user update failed')
-        end
-    else
-        # Rails.logger.info('user = nil')      
-    end
-    
-    
-    publisher_user = nil    
-    @publisher_user = nil
-    publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
-    if !publisher_user.nil?
-      @publisher_user = publisher_user
-    else
-      #
-    end
-    
-    
-  end
   
-
-  def create_post_user_comment
+  
+  def update_publisher_user_interest
     
-      ar = params[:post_user_comment]
-      h_obj = Hash.new
-      ar.each do |obj|
-        h_obj = obj
-      end
-    
-      @post_user_comments = nil
-      @post_user_id = nil
-
-      post_user_id = h_obj[:post_user_id]
-      # post_user_id = params[:post_user_comment][:post_user_id]
-      # @post_user = nil
-      # @b_has_like = false
-            
-      h_post_user_comment = Hash.new
-      h_post_user_comment[:post_user_id] = post_user_id
-      h_post_user_comment[:user_id] = current_user.id
-      # h_post_user_comment[:comment_text] = params[:post_user_comment][:comment_text]
-      h_post_user_comment[:comment_text] = h_obj[:comment_text]
-
-      if !post_user_id.nil?
-          post_user = PostUser.where("id = ?", post_user_id).first rescue nil
-          if !post_user.nil?
-              post_user_comment = post_user.post_user_comments.build(h_post_user_comment)
-              if post_user_comment.save
-                  @post_user_comments = post_user.post_user_comments.order('created_at DESC')
-                  @post_user_id = post_user_id                    
-              else
-                  #
-              end
-          else
-              #
-          end  
-      else
-          #
-      end
+      Rails.logger.info('update_publisher_user_interest')
       
-    
-  end
-  
-  
-  def destroy_post_user_comment
-    
-    @post_user_comments = nil
-    @post_user_id = nil
-    
-    post_user_comment_id = params[:post_user_comment_id]
-    post_user_id = params[:post_user_id]
-    
-    post_user_comment = current_user.post_user_comments.where("id = ?", post_user_comment_id).first rescue nil
-    if !post_user_comment.nil?
-        if post_user_comment.destroy
-            post_user = PostUser.where("id = ?", post_user_id).first rescue nil
-            if !post_user.nil?
-                @post_user_comments = post_user.post_user_comments.order('created_at DESC')
-                @post_user_id = post_user.id                
-            else
-                #
-            end
-        else
-            #
-        end
-    else
-        #
-    end
-
-    
-  end
-  
-  
-  def add_post_user
-
-      b_save = false
-      
-      post_user = current_user.post_users.build
-      if post_user.save
-          # @post_user = current_user.post_users.build
-          # @post_users = current_user.feed.paginate(:page => params[:page], :per_page => 100)
-          @@current_post_user = post_user
-          # @post_users = current_user.feed
-          b_save = true    
-      else
-        # @feed_items = []
-      end
-      
-      return b_save
-  end
-
-
-  def cancel_post_user
-      if @@current_post_user
-          @@current_post_user.destroy
-      end    
-      @@current_post_user = nil
-  end
-
-
-  def cancel_post_user_on_close
-      Rails.logger.info('cancel_post_user_on_close called')
-      if @@current_post_user
-          if @@current_post_user.destroy
-              # Rails.logger.info('@@current_post_user.destroy successful')
-          else
-              # Rails.logger.info('@@current_post_user.destroy failed')
+      begin
+        
+          ar = params[:publisher_user]
+          h_obj = Hash.new
+          ar.each do |obj|
+            h_obj = obj
           end
-      else
-          Rails.logger.info('@@current_post_user = nil')
-      end    
-      @@current_post_user = nil
-  end
-
-
-
-  def create_post_user
-
-      ar = params[:post_user]
-      h_obj = Hash.new
-      ar.each do |obj|
-        h_obj = obj
-      end
-
-      @post_users = nil
-      # Rails.logger.info('in create_post_user - ' + h_obj[:post_text])
+    
+          # publisher_product_id = h_obj[:publisher_product_id]
+          interest_text = h_obj[:interest_text]
       
-      h_post_user = Hash.new
-      h_post_user[:post_text] = h_obj[:post_text]
-
-      if @@current_post_user.nil?
-          post_user = current_user.post_users.build(h_post_user)
-          if post_user.save
-              #
-          else
-              # @feed_items = []
-          end
-      else
-          @@current_post_user.update_attributes(h_post_user)        
-      end
-
-      @@current_post_user = nil
-      @post_users = current_user.feed.paginate(:page => params[:page], :per_page => 100)
-    
-  end
-  
-
-  def destroy_post_user
-    
-    post_user_id = params[:post_user_id]
-    post_user = current_user.post_users.where("id = ?", post_user_id).first rescue nil
-    if !post_user.nil?
-        if post_user.destroy
-            @post_users = current_user.feed.paginate(:page => params[:page], :per_page => 100)
-        else
-            #
-        end
-    else
-        #
-    end
-    
-    
-  end
-
-
-  
-  def create_post_user_like
-
-      @nlist = params[:n_list]
-      post_user_id = params[:post_user_id]
-      @post_user = nil
-      @b_has_like = false
-            
-      h_post_user_like = Hash.new
-      h_post_user_like[:post_user_id] = post_user_id
-      h_post_user_like[:user_id] = current_user.id
-      post_user_like = PostUserLike.new(h_post_user_like)
-      # post_user_like = current_user.post_users.build(post_user_like_params)
-      if post_user_like.save
-          post_user = PostUser.find_by_id(post_user_id) rescue nil
-          if !post_user.nil?
-              # Rails.logger.info('post_user not nil')
-              @post_user = post_user
-              @b_has_like = true
-          else
-              # Rails.logger.info('post_user = nil')
-          end          
-      else
-          #
-      end
-
-      
-  end
-  
-  
-  def destroy_post_user_like
-    
-      @nlist = params[:n_list]
-      post_user_id = params[:post_user_id]
-      @post_user = nil
-      @b_has_like = true
-      
-      post_user_likes = PostUserLike.where('post_user_id = ?', post_user_id)
-      if post_user_likes.any?
-          post_user_like = post_user_likes.where('user_id = ?', current_user.id).first rescue nil
-          if !post_user_like.nil?
-              if post_user_like.destroy
-                  post_user = PostUser.find(post_user_id) rescue nil
-                  if !post_user.nil?
-                      @post_user = post_user
-                      @b_has_like = false
+          b_interest_text = false
+          b_required = false
+          b_error = true
+          publisher_user_interest_text = nil
+          
+          # publisher_product_id = current_user.publisher.publisher_product_current.current_product_id rescue nil
+          publisher_user = current_user.publisher_user rescue nil
+          if !publisher_user.nil?
+              publisher_user_interest = publisher_user.publisher_user_interest rescue nil            
+              if !publisher_user_interest.nil?  
+                  h_update = Hash.new
+                  h_update[:interest_text] = interest_text
+                  if publisher_user_interest.update_attributes(h_update)
+                      publisher_user_interest_text_updated = publisher_user_interest.interest_text rescue nil
+                      if !publisher_user_interest_text_updated.nil?
+                          if !((publisher_user_interest_text_updated.blank?) or (publisher_user_interest_text_updated.empty?) or (publisher_user_interest_text_updated.nil?))
+                              publisher_user_interest_text = publisher_user_interest_text_updated 
+                              b_interest_text = true
+                              b_required = false      
+                          else
+                              b_interest_text = false
+                              b_required = false
+                          end
+                          
+                          respond_to do |format|
+                              format.html {}
+                              format.json { render :json => { :interest_text => publisher_user_interest_text,
+                                                              :b_interest_text => b_interest_text,
+                                                              :b_required => b_required,  
+                                                              :b_error => false,                                        
+                                                              :updated => publisher_user.updated_at.to_s(:long) } }
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'update_story_3', :description => 'publisher_user_interest_text_updated was nil')
+                          raise
+                      end
                   else
-                      #
-                  end          
-                  # Rails.logger.info "post_user_like destroyed"
-              else      
-                  # Rails.logger.info "publisher_user_logo_image destroy failed"
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'update_story_3', :description => 'publisher_user update_attributes failed')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'update_story_3', :description => 'publisher_user_interest was nil')
+                  raise
               end
           else
-              # Rails.logger.info "post_user_like = nil"
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'update_story_3', :description => 'publisher_user was nil')
+              raise
           end
-      else
-          #
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'update_story_3', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
       end
 
     
   end
+  
+
+  # def update_story_3
+    # # ar = params[:publisher]
+    # # h_obj = Hash.new
+    # # ar.each do |obj|
+      # # h_obj = obj
+    # # end
+    # # story_interest = h_obj[:story_interest]
+    # story_interest = params[:story_interest]
+    # h_publisher_user = Hash.new
+    # h_publisher_user[:story_interest] = story_interest
+    # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+    # if !publisher_user.nil?
+        # if publisher_user.update_attributes(h_publisher_user)
+            # #
+        # else
+            # # Rails.logger.info('user update failed')
+        # end
+    # else
+        # # Rails.logger.info('user = nil')      
+    # end
+    # publisher_user = nil    
+    # @publisher_user = nil
+    # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+    # if !publisher_user.nil?
+      # @publisher_user = publisher_user
+    # else
+      # #
+    # end
+  # end
+  
+
 
   
 
@@ -1464,255 +1305,234 @@ class PublisherUsersController < ApplicationController
 
 
 
-  def destroy_publisher_user_image
-
-    @post_users = nil
-    @publisher_user_image = nil
-    publisher_user_image = UserImage.find(params[:id]) rescue nil
-    if !publisher_user_image.nil?
-        if publisher_user_image.destroy
-            @post_users = current_user.feed
-        else      
-            #
-        end
-    else
-      #
-    end
-
-    
-  end
+  # def destroy_publisher_user_image
+    # @post_users = nil
+    # @publisher_user_image = nil
+    # publisher_user_image = UserImage.find(params[:id]) rescue nil
+    # if !publisher_user_image.nil?
+        # if publisher_user_image.destroy
+            # @post_users = current_user.feed
+        # else      
+            # #
+        # end
+    # else
+      # #
+    # end
+  # end
   
 
 
-  def destroy_publisher_user_logo_image
-    
-    @publisher_user_logo_image = nil
-    publisher_user_logo_image = PublisherUserLogoImage.find(params[:id]) rescue nil
-    if !publisher_user_logo_image.nil?
-        if publisher_user_logo_image.destroy
-            # 
-        else      
-            # Rails.logger.info "publisher_user_logo_image destroy failed"
-        end
-    else
-        #Rails.logger.info "publisher_user_logo_image = nil"
-    end
-
-    
-  end
+  # def destroy_publisher_user_logo_image
+    # @publisher_user_logo_image = nil
+    # publisher_user_logo_image = PublisherUserLogoImage.find(params[:id]) rescue nil
+    # if !publisher_user_logo_image.nil?
+        # if publisher_user_logo_image.destroy
+            # # 
+        # else      
+            # # Rails.logger.info "publisher_user_logo_image destroy failed"
+        # end
+    # else
+        # #Rails.logger.info "publisher_user_logo_image = nil"
+    # end
+  # end
   
 
   
-  def upload_publisher_user_image_primary
-
-      Rails.logger.info "in upload_publisher_user_image_primary"
-      
-      @post_users = nil
-
-      @id_image = nil
-      @crop_x = 0
-      @crop_y = 0
-      @crop_w = 200
-      @crop_h = 200
-      
-      h_user_image = Hash.new
-      h_user_image[:user_id] = current_user.id
-      h_user_image[:image] = params[:user_image][:image]
-      h_user_image[:primary] = true
-      h_user_image[:crop_x] = @crop_x
-      h_user_image[:crop_y] = @crop_y
-      h_user_image[:crop_w] = @crop_w
-      h_user_image[:crop_h] = @crop_h
-      
-      @publisher_user_image_primary = nil
-      user_image = UserImage.new(h_user_image)
-      if request.xhr? || remotipart_submitted?
-          if user_image.save
-              user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil     
-              if !user_image_primary.nil? 
-                  # @id_image = user_image_primary.id
-                  img = user_image_primary
-                  # image = MiniMagick::Image.read("public" + img.image_url(:image_600_600))[0]
-                  image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                  #w = image.columns
-                  #h = image.rows
-                  w = image.width
-                  h = image.height
-                  # Rails.logger.info "w = " + w.to_s
-                  # Rails.logger.info "h = " + h.to_s
-                  w_max = false
-                  h_max = false
-                  w_h_equal = false
-                  x = 0
-                  y = 0
-                  l = 0                    
-                  d = 0
-                  if ( w == h)
-                      w_h_equal = true
-                  else
-                      if ( w > h )
-                        w_max = true
-                      else
-                        h_max = true
-                      end
-                  end
-                  if w_max
-                      d = w - h
-                      d = (d/2).round
-                      x = d
-                      l = h  
-                  end
-                  if h_max
-                      d = h - w
-                      d = (d/2).round
-                      y = d
-                      l = w  
-                  end
-                  if w_h_equal
-                      l = w
-                  end
-                  @crop_x = x
-                  @crop_y = y
-                  @crop_w = l
-                  @crop_h = l
-                  h_update = Hash.new
-                  h_update[:crop_x] = x
-                  h_update[:crop_y] = y
-                  h_update[:crop_w] = l
-                  h_update[:crop_h] = l
-                  if user_image_primary.update_attributes(h_update)
-                    #                      
-                  else
-                    #  
-                  end
-                  @publisher_user_image_primary = user_image_primary
-                  @post_users = current_user.feed
-              end
-          else
-            # error save
-          end
-      else
-        # 
-      end
-
-
-  end  
-  
-
-
-  def upload_publisher_user_image_primary_change
-
-      @post_users = nil
-
-      @publisher_user_image = nil
-      publisher_user_image = current_user.user_images.where( :primary => true ).first
-      if !publisher_user_image.nil?
-          if publisher_user_image.destroy
-              #
-          else      
-              #
-          end
-      else
-        #
-      end
-  
-      # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
-      # if !publisher_user.nil?
-          # publisher_user_images = publisher_user.publisher_user_images     
-          # publisher_user_image_primary = publisher_user_images.where( :primary => true ).first
-          # if !publisher_user_image_primary.nil?
-              # if publisher_user_image_primary.destroy
-              # else      
-                # #
+  # def upload_publisher_user_image_primary
+      # Rails.logger.info "in upload_publisher_user_image_primary"
+      # @post_users = nil
+      # @id_image = nil
+      # @crop_x = 0
+      # @crop_y = 0
+      # @crop_w = 200
+      # @crop_h = 200
+      # h_user_image = Hash.new
+      # h_user_image[:user_id] = current_user.id
+      # h_user_image[:image] = params[:user_image][:image]
+      # h_user_image[:primary] = true
+      # h_user_image[:crop_x] = @crop_x
+      # h_user_image[:crop_y] = @crop_y
+      # h_user_image[:crop_w] = @crop_w
+      # h_user_image[:crop_h] = @crop_h
+      # @publisher_user_image_primary = nil
+      # user_image = UserImage.new(h_user_image)
+      # if request.xhr? || remotipart_submitted?
+          # if user_image.save
+              # user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil     
+              # if !user_image_primary.nil? 
+                  # # @id_image = user_image_primary.id
+                  # img = user_image_primary
+                  # # image = MiniMagick::Image.read("public" + img.image_url(:image_600_600))[0]
+                  # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+                  # #w = image.columns
+                  # #h = image.rows
+                  # w = image.width
+                  # h = image.height
+                  # # Rails.logger.info "w = " + w.to_s
+                  # # Rails.logger.info "h = " + h.to_s
+                  # w_max = false
+                  # h_max = false
+                  # w_h_equal = false
+                  # x = 0
+                  # y = 0
+                  # l = 0                    
+                  # d = 0
+                  # if ( w == h)
+                      # w_h_equal = true
+                  # else
+                      # if ( w > h )
+                        # w_max = true
+                      # else
+                        # h_max = true
+                      # end
+                  # end
+                  # if w_max
+                      # d = w - h
+                      # d = (d/2).round
+                      # x = d
+                      # l = h  
+                  # end
+                  # if h_max
+                      # d = h - w
+                      # d = (d/2).round
+                      # y = d
+                      # l = w  
+                  # end
+                  # if w_h_equal
+                      # l = w
+                  # end
+                  # @crop_x = x
+                  # @crop_y = y
+                  # @crop_w = l
+                  # @crop_h = l
+                  # h_update = Hash.new
+                  # h_update[:crop_x] = x
+                  # h_update[:crop_y] = y
+                  # h_update[:crop_w] = l
+                  # h_update[:crop_h] = l
+                  # if user_image_primary.update_attributes(h_update)
+                    # #                      
+                  # else
+                    # #  
+                  # end
+                  # @publisher_user_image_primary = user_image_primary
+                  # @post_users = current_user.feed
               # end
           # else
-            # #
+            # # error save
           # end
+      # else
+        # # 
       # end
-
-      @id_image = nil
-      @crop_x = 0
-      @crop_y = 0
-      @crop_w = 200
-      @crop_h = 200
-      
-      h_user_image = Hash.new
-      h_user_image[:user_id] = current_user.id
-      h_user_image[:image] = params[:user_image][:image]
-      h_user_image[:primary] = true
-      h_user_image[:crop_x] = @crop_x
-      h_user_image[:crop_y] = @crop_y
-      h_user_image[:crop_w] = @crop_w
-      h_user_image[:crop_h] = @crop_h
-      
-      @publisher_user_image_primary = nil
-      user_image = UserImage.new(h_user_image)
-      if request.xhr? || remotipart_submitted?
-          if user_image.save
-              user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil     
-              if !user_image_primary.nil? 
-                  # @id_image = user_image_primary.id
-                  img = user_image_primary
-                  image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                  w = image.width
-                  h = image.height
-                  w_max = false
-                  h_max = false
-                  w_h_equal = false
-                  x = 0
-                  y = 0
-                  l = 0                    
-                  d = 0
-                  if ( w == h)
-                      w_h_equal = true
-                  else
-                      if ( w > h )
-                        w_max = true
-                      else
-                        h_max = true
-                      end
-                  end
-                  if w_max
-                      d = w - h
-                      d = (d/2).round
-                      x = d
-                      l = h  
-                  end
-                  if h_max
-                      d = h - w
-                      d = (d/2).round
-                      y = d
-                      l = w  
-                  end
-                  if w_h_equal
-                      l = w
-                  end
-                  @crop_x = x
-                  @crop_y = y
-                  @crop_w = l
-                  @crop_h = l
-                  h_update = Hash.new
-                  h_update[:crop_x] = x
-                  h_update[:crop_y] = y
-                  h_update[:crop_w] = l
-                  h_update[:crop_h] = l
-                  if user_image_primary.update_attributes(h_update)
-                    #                      
-                  else
-                    #  
-                  end
-                  @publisher_user_image_primary = user_image_primary
-                  @post_users = current_user.feed
-              end
-          else
-            # error save
-          end
-      else
-        # 
-      end
+  # end  
+  
 
 
-  end  
+  # def upload_publisher_user_image_primary_change
+      # @post_users = nil
+      # @publisher_user_image = nil
+      # publisher_user_image = current_user.user_images.where( :primary => true ).first
+      # if !publisher_user_image.nil?
+          # if publisher_user_image.destroy
+              # #
+          # else      
+              # #
+          # end
+      # else
+        # #
+      # end
+      # # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+      # # if !publisher_user.nil?
+          # # publisher_user_images = publisher_user.publisher_user_images     
+          # # publisher_user_image_primary = publisher_user_images.where( :primary => true ).first
+          # # if !publisher_user_image_primary.nil?
+              # # if publisher_user_image_primary.destroy
+              # # else      
+                # # #
+              # # end
+          # # else
+            # # #
+          # # end
+      # # end
+      # @id_image = nil
+      # @crop_x = 0
+      # @crop_y = 0
+      # @crop_w = 200
+      # @crop_h = 200
+      # h_user_image = Hash.new
+      # h_user_image[:user_id] = current_user.id
+      # h_user_image[:image] = params[:user_image][:image]
+      # h_user_image[:primary] = true
+      # h_user_image[:crop_x] = @crop_x
+      # h_user_image[:crop_y] = @crop_y
+      # h_user_image[:crop_w] = @crop_w
+      # h_user_image[:crop_h] = @crop_h
+      # @publisher_user_image_primary = nil
+      # user_image = UserImage.new(h_user_image)
+      # if request.xhr? || remotipart_submitted?
+          # if user_image.save
+              # user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil     
+              # if !user_image_primary.nil? 
+                  # # @id_image = user_image_primary.id
+                  # img = user_image_primary
+                  # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+                  # w = image.width
+                  # h = image.height
+                  # w_max = false
+                  # h_max = false
+                  # w_h_equal = false
+                  # x = 0
+                  # y = 0
+                  # l = 0                    
+                  # d = 0
+                  # if ( w == h)
+                      # w_h_equal = true
+                  # else
+                      # if ( w > h )
+                        # w_max = true
+                      # else
+                        # h_max = true
+                      # end
+                  # end
+                  # if w_max
+                      # d = w - h
+                      # d = (d/2).round
+                      # x = d
+                      # l = h  
+                  # end
+                  # if h_max
+                      # d = h - w
+                      # d = (d/2).round
+                      # y = d
+                      # l = w  
+                  # end
+                  # if w_h_equal
+                      # l = w
+                  # end
+                  # @crop_x = x
+                  # @crop_y = y
+                  # @crop_w = l
+                  # @crop_h = l
+                  # h_update = Hash.new
+                  # h_update[:crop_x] = x
+                  # h_update[:crop_y] = y
+                  # h_update[:crop_w] = l
+                  # h_update[:crop_h] = l
+                  # if user_image_primary.update_attributes(h_update)
+                    # #                      
+                  # else
+                    # #  
+                  # end
+                  # @publisher_user_image_primary = user_image_primary
+                  # @post_users = current_user.feed
+              # end
+          # else
+            # # error save
+          # end
+      # else
+        # # 
+      # end
+  # end  
 
 
 
@@ -1746,100 +1566,12 @@ class PublisherUsersController < ApplicationController
 
 
 
-  def upload_publisher_user_logo_image
-    
-    @id_image_logo = nil
-    @crop_x_logo = 0
-    @crop_y_logo = 0
-    @crop_w_logo = 200
-    @crop_h_logo = 200
-    
-    publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
-    if !publisher_user.nil?
-        h_publisher_user_logo_image = Hash.new
-        h_publisher_user_logo_image[:image] = params[:publisher_user_logo_image][:image]
-        h_publisher_user_logo_image[:user_id] = publisher_user.user_id
-        h_publisher_user_logo_image[:publisher_id] = publisher_user.publisher_id
-        h_publisher_user_logo_image[:publisher_user_id] = publisher_user.id
-        h_publisher_user_logo_image[:crop_x] = @crop_x
-        h_publisher_user_logo_image[:crop_y] = @crop_y
-        h_publisher_user_logo_image[:crop_w] = @crop_w
-        h_publisher_user_logo_image[:crop_h] = @crop_h
-        publisher_user_logo_image = PublisherUserLogoImage.new(h_publisher_user_logo_image)
-
-        if request.xhr? || remotipart_submitted?
-            if publisher_user_logo_image.save
-                publisher_user_logo_image = publisher_user.publisher_user_logo_images.first rescue nil
-                if !publisher_user_logo_image.nil? 
-
-                    @id_image_logo = publisher_user_logo_image.id
-                    @publisher_user_logo_image = publisher_user_logo_image
-
-                    img = publisher_user_logo_image
-                    image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                    w = image.width
-                    h = image.height
-                    w_max = false
-                    h_max = false
-                    w_h_equal = false
-                    x = 0
-                    y = 0
-                    l = 0                    
-                    d = 0
-                    if ( w == h)
-                        w_h_equal = true
-                    else
-                        if ( w > h )
-                          w_max = true
-                        else
-                          h_max = true
-                        end
-                    end
-                    if w_max
-                        d = w - h
-                        d = (d/2).round
-                        x = d
-                        l = h  
-                    end
-                    if h_max
-                        d = h - w
-                        d = (d/2).round
-                        y = d
-                        l = w  
-                    end
-                    if w_h_equal
-                        l = w
-                    end
-
-                    @crop_x_logo = x
-                    @crop_y_logo = y
-                    @crop_w_logo = l
-                    @crop_h_logo = l
-
-                    h_update = Hash.new
-                    h_update[:crop_x] = x
-                    h_update[:crop_y] = y
-                    h_update[:crop_w] = l
-                    h_update[:crop_h] = l
-                    if publisher_user_logo_image.update_attributes(h_update)
-                      #                      
-                    else
-                      #  
-                    end
-                    
-                else
-                  Rails.logger.info "publisher_user_logo_image = nil"
-                end
-            else
-              # error save
-            end
-        else
-          # 
-        end
-    else
-      #
-    end
-    
+  # def upload_publisher_user_logo_image
+    # @id_image_logo = nil
+    # @crop_x_logo = 0
+    # @crop_y_logo = 0
+    # @crop_w_logo = 200
+    # @crop_h_logo = 200
     # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
     # if !publisher_user.nil?
         # h_publisher_user_logo_image = Hash.new
@@ -1847,390 +1579,218 @@ class PublisherUsersController < ApplicationController
         # h_publisher_user_logo_image[:user_id] = publisher_user.user_id
         # h_publisher_user_logo_image[:publisher_id] = publisher_user.publisher_id
         # h_publisher_user_logo_image[:publisher_user_id] = publisher_user.id
-        # # h_publisher_user_logo_image[:primary] = false 
+        # h_publisher_user_logo_image[:crop_x] = @crop_x
+        # h_publisher_user_logo_image[:crop_y] = @crop_y
+        # h_publisher_user_logo_image[:crop_w] = @crop_w
+        # h_publisher_user_logo_image[:crop_h] = @crop_h
         # publisher_user_logo_image = PublisherUserLogoImage.new(h_publisher_user_logo_image)
         # if request.xhr? || remotipart_submitted?
             # if publisher_user_logo_image.save
-              # # @publisher_user_logo_images = publisher_user.publisher_user_images.first     
-              # # @publisher_user_logo_image = @publisher_user_logo_images.where().first
-              # @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", publisher_user.id).first rescue nil
+                # publisher_user_logo_image = publisher_user.publisher_user_logo_images.first rescue nil
+                # if !publisher_user_logo_image.nil? 
+                    # @id_image_logo = publisher_user_logo_image.id
+                    # @publisher_user_logo_image = publisher_user_logo_image
+                    # img = publisher_user_logo_image
+                    # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+                    # w = image.width
+                    # h = image.height
+                    # w_max = false
+                    # h_max = false
+                    # w_h_equal = false
+                    # x = 0
+                    # y = 0
+                    # l = 0                    
+                    # d = 0
+                    # if ( w == h)
+                        # w_h_equal = true
+                    # else
+                        # if ( w > h )
+                          # w_max = true
+                        # else
+                          # h_max = true
+                        # end
+                    # end
+                    # if w_max
+                        # d = w - h
+                        # d = (d/2).round
+                        # x = d
+                        # l = h  
+                    # end
+                    # if h_max
+                        # d = h - w
+                        # d = (d/2).round
+                        # y = d
+                        # l = w  
+                    # end
+                    # if w_h_equal
+                        # l = w
+                    # end
+                    # @crop_x_logo = x
+                    # @crop_y_logo = y
+                    # @crop_w_logo = l
+                    # @crop_h_logo = l
+                    # h_update = Hash.new
+                    # h_update[:crop_x] = x
+                    # h_update[:crop_y] = y
+                    # h_update[:crop_w] = l
+                    # h_update[:crop_h] = l
+                    # if publisher_user_logo_image.update_attributes(h_update)
+                      # #                      
+                    # else
+                      # #  
+                    # end
+                # else
+                  # Rails.logger.info "publisher_user_logo_image = nil"
+                # end
             # else
               # # error save
             # end
         # else
-          # # render text: 'Remote call failed'
+          # # 
         # end
     # else
       # #
     # end
-    
-
-  end  
-
-
-
-  def upload_publisher_user_logo_image_change
-
-    publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
-    if !publisher_user.nil?
-        publisher_user_logo_images = publisher_user.publisher_user_logo_images     
-        publisher_user_logo_image = publisher_user_logo_images.first
-        if !publisher_user_logo_image.nil?
-            if publisher_user_logo_image.destroy
-            else      
-              #
-            end
-        else
-            #
-        end
-    end
-
-
-    @id_image_logo = nil
-    @crop_x_logo = 0
-    @crop_y_logo = 0
-    @crop_w_logo = 200
-    @crop_h_logo = 200
-    
-    if !publisher_user.nil?
-        h_publisher_user_logo_image = Hash.new
-        h_publisher_user_logo_image[:image] = params[:publisher_user_logo_image][:image]
-        h_publisher_user_logo_image[:user_id] = publisher_user.user_id
-        h_publisher_user_logo_image[:publisher_id] = publisher_user.publisher_id
-        h_publisher_user_logo_image[:publisher_user_id] = publisher_user.id
-        h_publisher_user_logo_image[:crop_x] = @crop_x
-        h_publisher_user_logo_image[:crop_y] = @crop_y
-        h_publisher_user_logo_image[:crop_w] = @crop_w
-        h_publisher_user_logo_image[:crop_h] = @crop_h
-        publisher_user_logo_image = PublisherUserLogoImage.new(h_publisher_user_logo_image)
-
-        if request.xhr? || remotipart_submitted?
-            if publisher_user_logo_image.save
-                publisher_user_logo_image = publisher_user.publisher_user_logo_images.first rescue nil
-                if !publisher_user_logo_image.nil? 
-
-                    @id_image_logo = publisher_user_logo_image.id
-                    @publisher_user_logo_image = publisher_user_logo_image
-
-                    img = publisher_user_logo_image
-                    image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                    w = image.width
-                    h = image.height
-                    w_max = false
-                    h_max = false
-                    w_h_equal = false
-                    x = 0
-                    y = 0
-                    l = 0                    
-                    d = 0
-                    if ( w == h)
-                        w_h_equal = true
-                    else
-                        if ( w > h )
-                          w_max = true
-                        else
-                          h_max = true
-                        end
-                    end
-                    if w_max
-                        d = w - h
-                        d = (d/2).round
-                        x = d
-                        l = h  
-                    end
-                    if h_max
-                        d = h - w
-                        d = (d/2).round
-                        y = d
-                        l = w  
-                    end
-                    if w_h_equal
-                        l = w
-                    end
-
-                    @crop_x_logo = x
-                    @crop_y_logo = y
-                    @crop_w_logo = l
-                    @crop_h_logo = l
-
-                    h_update = Hash.new
-                    h_update[:crop_x] = x
-                    h_update[:crop_y] = y
-                    h_update[:crop_w] = l
-                    h_update[:crop_h] = l
-                    if publisher_user_logo_image.update_attributes(h_update)
-                      #                      
-                    else
-                      #  
-                    end
-                else
-                  Rails.logger.info "publisher_user_logo_image = nil"
-                end
-            else
-              # error save
-            end
-        else
-          # 
-        end
-    else
-      #
-    end
-
-    # respond_to do |format|
-      # format.html
-      # # format.js
-      # # format.js { render :js => "window.location.replace('#{article_path(@article)}');"}
-      # format.js { render :js => { :id_image => id_image,
-                                  # :crop_x => crop_x,
-                                  # :crop_y => crop_y,
-                                  # :crop_w => crop_w,
-                                  # :crop_h => crop_h
-                                # }
-                # }
-    # end
-
-
-  end  
+    # # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+    # # if !publisher_user.nil?
+        # # h_publisher_user_logo_image = Hash.new
+        # # h_publisher_user_logo_image[:image] = params[:publisher_user_logo_image][:image]
+        # # h_publisher_user_logo_image[:user_id] = publisher_user.user_id
+        # # h_publisher_user_logo_image[:publisher_id] = publisher_user.publisher_id
+        # # h_publisher_user_logo_image[:publisher_user_id] = publisher_user.id
+        # # # h_publisher_user_logo_image[:primary] = false 
+        # # publisher_user_logo_image = PublisherUserLogoImage.new(h_publisher_user_logo_image)
+        # # if request.xhr? || remotipart_submitted?
+            # # if publisher_user_logo_image.save
+              # # # @publisher_user_logo_images = publisher_user.publisher_user_images.first     
+              # # # @publisher_user_logo_image = @publisher_user_logo_images.where().first
+              # # @publisher_user_logo_image = PublisherUserLogoImage.where("publisher_user_id = ?", publisher_user.id).first rescue nil
+            # # else
+              # # # error save
+            # # end
+        # # else
+          # # # render text: 'Remote call failed'
+        # # end
+    # # else
+      # # #
+    # # end
+  # end  
 
 
 
-  def create_post_user_image
-    
-      post_user_images = nil
-    
-      @id_image = nil
-      @crop_x = 0
-      @crop_y = 0
-      @crop_w = 200
-      @crop_h = 200
-
-    
-      # post_user = current_user.post_users.where("id = ?", post_user_id).first rescue nil
-      post_user = @@current_post_user
-      Rails.logger.info('post_user id = ' + post_user.id.to_s)
-    
-      if !post_user.nil?
-        
-          h_post_user_image = Hash.new
-          h_post_user_image[:user_id] = current_user.id
-          h_post_user_image[:post_user_id] = post_user.id
-          h_post_user_image[:image] = params[:post_user_image][:image]
-          # h_post_user_image[:primary] = true
-          h_post_user_image[:crop_x] = @crop_x
-          h_post_user_image[:crop_y] = @crop_y
-          h_post_user_image[:crop_w] = @crop_w
-          h_post_user_image[:crop_h] = @crop_h
-          
-          # post_user_image = PostUserImage.new(h_post_user_image)
-          post_user_image = post_user.post_user_images.build(h_post_user_image)
-          
-          if request.xhr? || remotipart_submitted?
-              if post_user_image.save
-                  # post_user = current_user.post_users.where("id = ?", post_user.id ).first rescue nil
-                  # post_user_image = post_user.post_user_images.where("id = ?", post_user_image.id ).first rescue nil     
-                  if !post_user_image.nil? 
-                      img = post_user_image
-                      image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                      w = image.width
-                      h = image.height
-                      w_max = false
-                      h_max = false
-                      w_h_equal = false
-                      x = 0
-                      y = 0
-                      l = 0                    
-                      d = 0
-                      if ( w == h)
-                          w_h_equal = true
-                      else
-                          if ( w > h )
-                            w_max = true
-                          else
-                            h_max = true
-                          end
-                      end
-                      if w_max
-                          d = w - h
-                          d = (d/2).round
-                          x = d
-                          l = h  
-                      end
-                      if h_max
-                          d = h - w
-                          d = (d/2).round
-                          y = d
-                          l = w  
-                      end
-                      if w_h_equal
-                          l = w
-                      end
-                      @crop_x = x
-                      @crop_y = y
-                      @crop_w = l
-                      @crop_h = l
-                      h_update = Hash.new
-                      h_update[:crop_x] = x
-                      h_update[:crop_y] = y
-                      h_update[:crop_w] = l
-                      h_update[:crop_h] = l
-                      if post_user_image.update_attributes(h_update)
-                        #                      
-                      else
-                        #  
-                      end
-                      # post_user = post_user_image.post_user
-                      post_user_images = post_user_image.post_user.post_user_images
-                      # @post_user_created_id = post_user.id
-                  else
-                      Rails.logger.info "post_user_image = nil"
-                  end
-              else
-                # error save
-              end
-          else
-            # 
-          end
-      else
-          Rails.logger.info "post_user = nil"
-      end
-    
-    
-      return post_user_images
-  end
-
-
-
-
-
-  def upload_post_user_image
-
-      @post_user_images = nil
-      
-      # Rails.logger.info "current_post_user = " + @@post_user_id_created.to_s
-      # if @@current_post_user.nil?
-        # if add_post_user
-            # Rails.logger.info "after add_post_user, current_post_user.id = " + @@current_post_user.id
-            # post_user_images = create_post_user_image(@@current_user)          
+  # def upload_publisher_user_logo_image_change
+    # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+    # if !publisher_user.nil?
+        # publisher_user_logo_images = publisher_user.publisher_user_logo_images     
+        # publisher_user_logo_image = publisher_user_logo_images.first
+        # if !publisher_user_logo_image.nil?
+            # if publisher_user_logo_image.destroy
+            # else      
+              # #
+            # end
+        # else
+            # #
         # end
-      # else
-        # post_user_images = create_post_user_image(@@post_user_id_created)
-      # end    
-
-      if @@current_post_user.nil?
-        add_post_user
-      end    
-
-      @post_user_images = create_post_user_image
-  end  
-
-
-  def upload_publisher_user_plot_image
-    
-      publisher_user_plot_image = nil
-    
-      @id_image = nil
-      @crop_x = 0
-      @crop_y = 0
-      @crop_w = 200
-      @crop_h = 200
-
-    
-      # post_user = current_user.post_users.where("id = ?", post_user_id).first rescue nil
-      # post_user = @@current_post_user
-      # Rails.logger.info('post_user id = ' + post_user.id.to_s)
-    
-        
-      h_publisher_user_plot_image = Hash.new
-      h_publisher_user_plot_image[:user_id] = current_user.id
-      h_publisher_user_plot_image[:publisher_id] = current_user.pubisher.id
-      h_publisher_user_plot_image[:publisher_user_id] = current_user.pubisher_user.id
-      h_publisher_user_plot_image[:publisher_user_plot_id] = current_user.publisher_user.publisher_user_plot.id
-      h_publisher_user_plot_image[:image] = params[:publisher_user_plot_image][:image]
-      h_publisher_user_plot_image[:primary] = true
-      h_publisher_user_plot_image[:crop_x] = @crop_x
-      h_publisher_user_plot_image[:crop_y] = @crop_y
-      h_publisher_user_plot_image[:crop_w] = @crop_w
-      h_publisher_user_plot_image[:crop_h] = @crop_h
-      
-      # publisher_user_plot_image = PostUserImage.new(h_publisher_user_plot_image)
-      publisher_user_plot_image = current_user.publisher_user.publisher_user_plot.publisher_user_plot_images.build(h_publisher_user_plot_image)
-      
-      if request.xhr? || remotipart_submitted?
-          if publisher_user_plot_image.save
-              # publisher_user_plot = current_user.publisher_user_plots.where("id = ?", publisher_user_plot.id ).first rescue nil
-              # publisher_user_plot_image = publisher_user_plot.publisher_user_plot_images.where("id = ?", publisher_user_plot_image.id ).first rescue nil     
-              if !publisher_user_plot_image.nil? 
-                  img = publisher_user_plot_image
-                  image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-                  w = image.width
-                  h = image.height
-                  w_max = false
-                  h_max = false
-                  w_h_equal = false
-                  x = 0
-                  y = 0
-                  l = 0                    
-                  d = 0
-                  if ( w == h)
-                      w_h_equal = true
-                  else
-                      if ( w > h )
-                        w_max = true
-                      else
-                        h_max = true
-                      end
-                  end
-                  if w_max
-                      d = w - h
-                      d = (d/2).round
-                      x = d
-                      l = h  
-                  end
-                  if h_max
-                      d = h - w
-                      d = (d/2).round
-                      y = d
-                      l = w  
-                  end
-                  if w_h_equal
-                      l = w
-                  end
-                  @crop_x = x
-                  @crop_y = y
-                  @crop_w = l
-                  @crop_h = l
-                  h_update = Hash.new
-                  h_update[:crop_x] = x
-                  h_update[:crop_y] = y
-                  h_update[:crop_w] = l
-                  h_update[:crop_h] = l
-                  if publisher_user_plot_image.update_attributes(h_update)
-                    #                      
-                  else
-                    #  
-                  end
-                  # publisher_user_plot = publisher_user_plot_image.publisher_user_plot
-                  # publisher_user_plot_images = publisher_user_plot_image.publisher_user_plot.publisher_user_plot_images
-                  publisher_user_plot_image = current_user.publisher_user.publisher_user_plot.publisher_user_plot_images.where("primary = ?", true).first rescue nil
-                  # @publisher_user_plot_created_id = publisher_user_plot.id
-              else
-                  Rails.logger.info "publisher_user_plot_image = nil"
-              end
-          else
-            # error save
-          end
-      else
-        # 
-      end
-    
-      @publisher_user_plot_image = publisher_user_plot_image
-
-    
-  end
+    # end
+    # @id_image_logo = nil
+    # @crop_x_logo = 0
+    # @crop_y_logo = 0
+    # @crop_w_logo = 200
+    # @crop_h_logo = 200
+    # if !publisher_user.nil?
+        # h_publisher_user_logo_image = Hash.new
+        # h_publisher_user_logo_image[:image] = params[:publisher_user_logo_image][:image]
+        # h_publisher_user_logo_image[:user_id] = publisher_user.user_id
+        # h_publisher_user_logo_image[:publisher_id] = publisher_user.publisher_id
+        # h_publisher_user_logo_image[:publisher_user_id] = publisher_user.id
+        # h_publisher_user_logo_image[:crop_x] = @crop_x
+        # h_publisher_user_logo_image[:crop_y] = @crop_y
+        # h_publisher_user_logo_image[:crop_w] = @crop_w
+        # h_publisher_user_logo_image[:crop_h] = @crop_h
+        # publisher_user_logo_image = PublisherUserLogoImage.new(h_publisher_user_logo_image)
+        # if request.xhr? || remotipart_submitted?
+            # if publisher_user_logo_image.save
+                # publisher_user_logo_image = publisher_user.publisher_user_logo_images.first rescue nil
+                # if !publisher_user_logo_image.nil? 
+                    # @id_image_logo = publisher_user_logo_image.id
+                    # @publisher_user_logo_image = publisher_user_logo_image
+                    # img = publisher_user_logo_image
+                    # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+                    # w = image.width
+                    # h = image.height
+                    # w_max = false
+                    # h_max = false
+                    # w_h_equal = false
+                    # x = 0
+                    # y = 0
+                    # l = 0                    
+                    # d = 0
+                    # if ( w == h)
+                        # w_h_equal = true
+                    # else
+                        # if ( w > h )
+                          # w_max = true
+                        # else
+                          # h_max = true
+                        # end
+                    # end
+                    # if w_max
+                        # d = w - h
+                        # d = (d/2).round
+                        # x = d
+                        # l = h  
+                    # end
+                    # if h_max
+                        # d = h - w
+                        # d = (d/2).round
+                        # y = d
+                        # l = w  
+                    # end
+                    # if w_h_equal
+                        # l = w
+                    # end
+                    # @crop_x_logo = x
+                    # @crop_y_logo = y
+                    # @crop_w_logo = l
+                    # @crop_h_logo = l
+                    # h_update = Hash.new
+                    # h_update[:crop_x] = x
+                    # h_update[:crop_y] = y
+                    # h_update[:crop_w] = l
+                    # h_update[:crop_h] = l
+                    # if publisher_user_logo_image.update_attributes(h_update)
+                      # #                      
+                    # else
+                      # #  
+                    # end
+                # else
+                  # Rails.logger.info "publisher_user_logo_image = nil"
+                # end
+            # else
+              # # error save
+            # end
+        # else
+          # # 
+        # end
+    # else
+      # #
+    # end
+    # # respond_to do |format|
+      # # format.html
+      # # # format.js
+      # # # format.js { render :js => "window.location.replace('#{article_path(@article)}');"}
+      # # format.js { render :js => { :id_image => id_image,
+                                  # # :crop_x => crop_x,
+                                  # # :crop_y => crop_y,
+                                  # # :crop_w => crop_w,
+                                  # # :crop_h => crop_h
+                                # # }
+                # # }
+    # # end
+  # end  
 
 
-  def upload_publisher_user_interest_image
-  end
+
 
 
   # def cropped_image(image, params)
@@ -2262,160 +1822,143 @@ class PublisherUsersController < ApplicationController
       # image
   # end
       
-  def crop_commit_user
-    
-      img = UserImage.find(params[:image_id])
-      image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-      # Rails.logger.info "image.details = " + image.details.to_s
-      
-      # new_image_200_200 = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-      # new_image_100_100 = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-      # new_image_50_50   = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-      # new_image_34_34   = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
-
-      # new_image_200_200 = cropped_image(new_image_200_200, params)
-      # new_image_100_100 = cropped_image(new_image_100_100, params)
-      # new_image_50_50   = cropped_image(new_image_50_50, params)
-      # new_image_34_34   = cropped_image(new_image_34_34, params)
-
-      # new_image_200_200 = resize_to_fill(new_image_200_200, 200, 200)
-      # new_image_100_100 = resize_to_fill(new_image_100_100, 100, 100)
-      # new_image_50_50   = resize_to_fill(new_image_50_50, 50, 50)
-      # new_image_34_34   = resize_to_fill(new_image_34_34, 34, 34)
-
-      # new_image_200_200.write image_200_200_path
-      # new_image_100_100.write image_100_100_path
-      # new_image_50_50.write image_50_50_path
-      # new_image_34_34.write image_34_34_path
-      
-      crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
-      new_image = image.crop(crop_params)
-      
-      img_name = File.basename(img.image.to_s)
-      img_dir = "public" + File.dirname(img.image.to_s)
-
-      image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
-      image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
-      image_50_50_path   = img_dir + "/" + "image_50_50_" + img_name
-      image_34_34_path   = img_dir + "/" + "image_34_34_" + img_name
-
-      FileUtils.rm_rf(image_200_200_path) 
-      FileUtils.rm_rf(image_100_100_path) 
-      FileUtils.rm_rf(image_50_50_path) 
-      FileUtils.rm_rf(image_34_34_path) 
-
-      new_image.resize('200x200')
-      new_image.write image_200_200_path
-      new_image.resize('100x100')
-      new_image.write image_100_100_path      
-      new_image.resize('50x50')
-      new_image.write image_50_50_path      
-      new_image.resize('34x34')
-      new_image.write image_34_34_path
-
-      x = params[:crop_x]
-      y = params[:crop_y]
-      w = params[:crop_w]
-      h = params[:crop_h]
-      x = x.to_i
-      y = y.to_i
-      w = w.to_i
-      h = h.to_i
-
-      h_crop = Hash.new
-      h_crop[:crop_x] = x
-      h_crop[:crop_y] = y
-      h_crop[:crop_w] = w
-      h_crop[:crop_h] = h
-
-      @post_users = nil    
-      @publisher_user_image_primary = nil
-
-      publisher_user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
-      if !publisher_user_image_primary.nil?
-          if publisher_user_image_primary.update_attributes(h_crop)
-              @publisher_user_image_primary = publisher_user_image_primary  
-              @post_users = current_user.feed
-          else
-            #
-          end
-      else
-        #
-      end
-
-
-  end
-
-
-
-  def crop_commit_logo
-    
+  # def crop_commit_user
+      # img = UserImage.find(params[:image_id])
+      # image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # # Rails.logger.info "image.details = " + image.details.to_s
+      # # new_image_200_200 = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # # new_image_100_100 = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # # new_image_50_50   = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # # new_image_34_34   = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+      # # new_image_200_200 = cropped_image(new_image_200_200, params)
+      # # new_image_100_100 = cropped_image(new_image_100_100, params)
+      # # new_image_50_50   = cropped_image(new_image_50_50, params)
+      # # new_image_34_34   = cropped_image(new_image_34_34, params)
+      # # new_image_200_200 = resize_to_fill(new_image_200_200, 200, 200)
+      # # new_image_100_100 = resize_to_fill(new_image_100_100, 100, 100)
+      # # new_image_50_50   = resize_to_fill(new_image_50_50, 50, 50)
+      # # new_image_34_34   = resize_to_fill(new_image_34_34, 34, 34)
+      # # new_image_200_200.write image_200_200_path
+      # # new_image_100_100.write image_100_100_path
+      # # new_image_50_50.write image_50_50_path
+      # # new_image_34_34.write image_34_34_path
+      # crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
+      # new_image = image.crop(crop_params)
+      # img_name = File.basename(img.image.to_s)
+      # img_dir = "public" + File.dirname(img.image.to_s)
+      # image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
+      # image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
+      # image_50_50_path   = img_dir + "/" + "image_50_50_" + img_name
+      # image_34_34_path   = img_dir + "/" + "image_34_34_" + img_name
+      # FileUtils.rm_rf(image_200_200_path) 
+      # FileUtils.rm_rf(image_100_100_path) 
+      # FileUtils.rm_rf(image_50_50_path) 
+      # FileUtils.rm_rf(image_34_34_path) 
+      # new_image.resize('200x200')
+      # new_image.write image_200_200_path
+      # new_image.resize('100x100')
+      # new_image.write image_100_100_path      
+      # new_image.resize('50x50')
+      # new_image.write image_50_50_path      
+      # new_image.resize('34x34')
+      # new_image.write image_34_34_path
       # x = params[:crop_x]
       # y = params[:crop_y]
       # w = params[:crop_w]
       # h = params[:crop_h]
-#   
-      # img = PublisherUserLogoImage.find(params[:image_id])
-      # image = Magick::Image.read("public" + img.image_url(:image_600_600))[0]
-#   
       # x = x.to_i
       # y = y.to_i
       # w = w.to_i
       # h = h.to_i
-      # image_new = image.crop(x, y, w, h)
-#   
-      # new_user_200_200 = image_new.resize_to_fill(200, 200)    
-      # new_user_100_100 = image_new.resize_to_fill(100, 100)    
-      # new_user_50_50 = image_new.resize_to_fill(50, 50)
-      # new_user_34_34 = image_new.resize_to_fill(34, 34)
-#   
-      # user_200_200 = Magick::Image.read("public" + img.image_url(:user_200_200))[0]    
-      # user_100_100 = Magick::Image.read("public" + img.image_url(:user_100_100))[0]
-      # user_50_50 = Magick::Image.read("public" + img.image_url(:user_50_50))[0]
-      # user_34_34 = Magick::Image.read("public" + img.image_url(:user_34_34))[0]
-#   
-      # # public/uploads/publisher_user_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
-#   
-      # user_200_200_filename = user_200_200.filename
-      # user_100_100_filename = user_100_100.filename
-      # user_50_50_filename = user_50_50.filename
-      # user_34_34_filename = user_34_34.filename
-#   
-      # FileUtils.rm_rf(Dir.glob(user_200_200.filename))
-      # FileUtils.rm_rf(Dir.glob(user_100_100.filename))
-      # FileUtils.rm_rf(Dir.glob(user_50_50.filename))
-      # FileUtils.rm_rf(Dir.glob(user_34_34.filename))
-#       
-      # new_user_200_200.write user_200_200_filename
-      # new_user_100_100.write user_100_100_filename
-      # new_user_50_50.write user_50_50_filename
-      # new_user_34_34.write user_34_34_filename
-#   
       # h_crop = Hash.new
       # h_crop[:crop_x] = x
       # h_crop[:crop_y] = y
       # h_crop[:crop_w] = w
       # h_crop[:crop_h] = h
-#   
-      # @publisher_user_logo_image = nil
-      # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
-      # if !publisher_user.nil?
-          # publisher_user_logo_image = publisher_user.publisher_user_logo_images.first rescue nil
-          # if !publisher_user_logo_image.nil?
-              # if publisher_user_logo_image.update_attributes(h_crop)
-                  # @publisher_user_logo_image = publisher_user_logo_image  
-              # else
-                # #
-              # end
+      # @post_users = nil    
+      # @publisher_user_image_primary = nil
+      # publisher_user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
+      # if !publisher_user_image_primary.nil?
+          # if publisher_user_image_primary.update_attributes(h_crop)
+              # @publisher_user_image_primary = publisher_user_image_primary  
+              # @post_users = current_user.feed
           # else
             # #
           # end
       # else
         # #
       # end
-    
-    
-  end
+  # end
+
+
+
+  # def crop_commit_logo
+      # # x = params[:crop_x]
+      # # y = params[:crop_y]
+      # # w = params[:crop_w]
+      # # h = params[:crop_h]
+# #   
+      # # img = PublisherUserLogoImage.find(params[:image_id])
+      # # image = Magick::Image.read("public" + img.image_url(:image_600_600))[0]
+# #   
+      # # x = x.to_i
+      # # y = y.to_i
+      # # w = w.to_i
+      # # h = h.to_i
+      # # image_new = image.crop(x, y, w, h)
+# #   
+      # # new_user_200_200 = image_new.resize_to_fill(200, 200)    
+      # # new_user_100_100 = image_new.resize_to_fill(100, 100)    
+      # # new_user_50_50 = image_new.resize_to_fill(50, 50)
+      # # new_user_34_34 = image_new.resize_to_fill(34, 34)
+# #   
+      # # user_200_200 = Magick::Image.read("public" + img.image_url(:user_200_200))[0]    
+      # # user_100_100 = Magick::Image.read("public" + img.image_url(:user_100_100))[0]
+      # # user_50_50 = Magick::Image.read("public" + img.image_url(:user_50_50))[0]
+      # # user_34_34 = Magick::Image.read("public" + img.image_url(:user_34_34))[0]
+# #   
+      # # # public/uploads/publisher_user_image/image/1/profile_100_100_c4d7e6e7-0773-48d0-b582-1899274ef21f.jpg
+# #   
+      # # user_200_200_filename = user_200_200.filename
+      # # user_100_100_filename = user_100_100.filename
+      # # user_50_50_filename = user_50_50.filename
+      # # user_34_34_filename = user_34_34.filename
+# #   
+      # # FileUtils.rm_rf(Dir.glob(user_200_200.filename))
+      # # FileUtils.rm_rf(Dir.glob(user_100_100.filename))
+      # # FileUtils.rm_rf(Dir.glob(user_50_50.filename))
+      # # FileUtils.rm_rf(Dir.glob(user_34_34.filename))
+# #       
+      # # new_user_200_200.write user_200_200_filename
+      # # new_user_100_100.write user_100_100_filename
+      # # new_user_50_50.write user_50_50_filename
+      # # new_user_34_34.write user_34_34_filename
+# #   
+      # # h_crop = Hash.new
+      # # h_crop[:crop_x] = x
+      # # h_crop[:crop_y] = y
+      # # h_crop[:crop_w] = w
+      # # h_crop[:crop_h] = h
+# #   
+      # # @publisher_user_logo_image = nil
+      # # publisher_user = PublisherUser.where("user_id = ?", current_user.id).first rescue nil
+      # # if !publisher_user.nil?
+          # # publisher_user_logo_image = publisher_user.publisher_user_logo_images.first rescue nil
+          # # if !publisher_user_logo_image.nil?
+              # # if publisher_user_logo_image.update_attributes(h_crop)
+                  # # @publisher_user_logo_image = publisher_user_logo_image  
+              # # else
+                # # #
+              # # end
+          # # else
+            # # #
+          # # end
+      # # else
+        # # #
+      # # end
+#     
+#     
+  # end
 
 
   def dbdelete
@@ -2537,6 +2080,1081 @@ class PublisherUsersController < ApplicationController
     render :layout => 'publisher_users_knowcred'
   end
   
+
+  
+  def upload_background_1_image
+    
+      @errors = false
+      
+      begin
+           
+          # @background_image_1 = nil
+          # @background_image_1_id = nil
+          # @background_image_1_url = nil
+          # @publisher_product = nil
+          # @crop_x_background_image_1 = 0
+          # @crop_y_background_image_1 = 0
+          # @crop_w_background_image_1 = 100
+          # @crop_h_background_image_1 = 25
+          
+          if request.xhr? || remotipart_submitted?
+              image = params[:publisher_user_background_image][:image]
+              if !image.nil?
+                  publisher = current_user.publisher rescue nil
+                  if !publisher.nil?
+                      publisher_user = current_user.publisher_user rescue nil
+                      if !publisher_user.nil?
+                          h_new = Hash.new
+                          h_new[:user_id] = current_user.id
+                          h_new[:publisher_id] = publisher.id
+                          h_new[:publisher_user_id] = publisher_user.id
+                          h_new[:image] = image
+                          h_new[:primary] = true
+                          # h_image[:crop_x] = @crop_x
+                          # h_image[:crop_y] = @crop_y
+                          # h_image[:crop_w] = @crop_w
+                          # h_image[:crop_h] = @crop_h
+                          publisher_user_background_image = PublisherUserBackgroundImage.new(h_new)
+                          if publisher_user_background_image.save
+                              img = publisher_user_background_image
+                              image = MiniMagick::Image.open("public" + img.image_url(:image_500_500))
+                              w = image.width
+                              h = image.height
+    
+                              # # Background aspect ratio (1200:300 or 4:1)
+                              bkgrnd_asp_ratio = 4
+                              crop_w = image.width
+                              crop_h = (image.width / bkgrnd_asp_ratio).round
+                              crop_x = 0
+                              crop_y = ((image.height - crop_h) / 2).round
+    
+                              h_update = Hash.new
+                              h_update[:crop_x] = crop_x
+                              h_update[:crop_y] = crop_y
+                              h_update[:crop_w] = crop_w
+                              h_update[:crop_h] = crop_h
+                              
+                              if publisher_user_background_image.update_attributes(h_update)
+                                  gon.background_1_image_id = publisher_user_background_image.id
+                                  @background_1_image = publisher_user_background_image
+                                  @background_1_image_id = publisher_user_background_image.id
+                                  @background_1_image_url = publisher_user_background_image.image_url(:image_1200_300_fill) + '?' + (rand(10..90) * rand(100..900)).to_s
+                                  @crop_x_background_1_image = publisher_user_background_image.crop_x
+                                  @crop_y_background_1_image = publisher_user_background_image.crop_y
+                                  @crop_w_background_1_image = publisher_user_background_image.crop_w
+                                  @crop_h_background_1_image = publisher_user_background_image.crop_h
+
+                                  primary_1_image = publisher_user.publisher_user_images.where(:primary => true).first rescue nil
+                                  @primary_1_image = primary_1_image
+                                  if !primary_1_image.nil?
+                                    @primary_1_image_id = primary_1_image.id
+                                    gon.primary_1_image_id = primary_1_image.id
+                                    @crop_x_primary_1_image = primary_1_image.crop_x
+                                    @crop_y_primary_1_image = primary_1_image.crop_y
+                                    @crop_w_primary_1_image = primary_1_image.crop_w
+                                    @crop_h_primary_1_image = primary_1_image.crop_h
+                                  else
+                                    @primary_1_image_id = nil
+                                    gon.primary_1_image_id = nil
+                                  end
+                              else
+                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1', :description => 'publisher_user_background_image updated_attributes failed')
+                                  raise
+                              end
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1', :description => 'publisher_user_background_image save failed')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1', :description => 'publisher_user was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1', :description => 'publisher was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1', :description => 'image was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1', :description => 'request remotipart failed')
+              raise
+          end
+    
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1', :description => e.message.to_s)
+          @errors = true
+          
+      end
+
+    
+  end
+
+
+
+  def upload_background_1_image_change
+
+      @errors = false
+      
+      begin
+           
+          if request.xhr? || remotipart_submitted?
+              image = params[:publisher_user_background_image][:image]
+              if !image.nil?
+                  background_image_id_delete = params[:publisher_user_background_image][:background_image_1_id]
+                  if !background_image_id_delete.nil?
+                      publisher = current_user.publisher rescue nil
+                      if !publisher.nil?
+                          publisher_user = current_user.publisher_user rescue nil
+                          if !publisher_user.nil?
+                              publisher_user_background_image_delete = publisher_user.publisher_user_background_images.where("id = ?", background_image_id_delete).first rescue nil
+                              if !publisher_user_background_image_delete.nil?
+                                  if publisher_user_background_image_delete.destroy
+                                      h_new = Hash.new
+                                      h_new[:user_id] = current_user.id
+                                      h_new[:publisher_id] = publisher.id
+                                      h_new[:publisher_user_id] = publisher_user.id
+                                      h_new[:image] = image
+                                      h_new[:primary] = true
+                                      # h_image[:crop_x] = @crop_x
+                                      # h_image[:crop_y] = @crop_y
+                                      # h_image[:crop_w] = @crop_w
+                                      # h_image[:crop_h] = @crop_h
+                                      publisher_user_background_image = PublisherUserBackgroundImage.new(h_new)
+                                      if publisher_user_background_image.save
+                                          img = publisher_user_background_image
+                                          image = MiniMagick::Image.open("public" + img.image_url(:image_500_500))
+                                          w = image.width
+                                          h = image.height
+                
+                                          # # Background aspect ratio (1200:300 or 4:1)
+                                          bkgrnd_asp_ratio = 4
+                                          crop_w = image.width
+                                          crop_h = (image.width / bkgrnd_asp_ratio).round
+                                          crop_x = 0
+                                          crop_y = ((image.height - crop_h) / 2).round
+                
+                                          h_update = Hash.new
+                                          h_update[:crop_x] = crop_x
+                                          h_update[:crop_y] = crop_y
+                                          h_update[:crop_w] = crop_w
+                                          h_update[:crop_h] = crop_h
+                                          
+                                          if publisher_user_background_image.update_attributes(h_update)
+                                              gon.background_1_image_id = publisher_user_background_image.id
+                                              @background_1_image = publisher_user_background_image
+                                              @background_1_image_id = publisher_user_background_image.id
+                                              @background_1_image_url = publisher_user_background_image.image_url(:image_1200_300_fill) + '?' + (rand(10..90) * rand(100..900)).to_s
+                                              @crop_x_background_1_image = publisher_user_background_image.crop_x
+                                              @crop_y_background_1_image = publisher_user_background_image.crop_y
+                                              @crop_w_background_1_image = publisher_user_background_image.crop_w
+                                              @crop_h_background_1_image = publisher_user_background_image.crop_h
+            
+                                              primary_1_image = publisher_user.publisher_user_images.where(:primary => true).first rescue nil
+                                              @primary_1_image = primary_1_image
+                                              if !primary_1_image.nil?
+                                                @primary_1_image_id = primary_1_image.id
+                                                gon.primary_1_image_id = primary_1_image.id
+                                                @crop_x_primary_1_image = primary_1_image.crop_x
+                                                @crop_y_primary_1_image = primary_1_image.crop_y
+                                                @crop_w_primary_1_image = primary_1_image.crop_w
+                                                @crop_h_primary_1_image = primary_1_image.crop_h
+                                              else
+                                                @primary_1_image_id = nil
+                                                gon.primary_1_image_id = nil
+                                              end
+                                          else
+                                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1_change', :description => 'publisher_user_background_image updated_attributes failed')
+                                              raise
+                                          end
+                                      else
+                                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1_change', :description => 'publisher_user_background_image save failed')
+                                          raise
+                                      end
+                                  else
+                                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1_change', :description => 'publisher_user_background_image_delete destroy failed')
+                                      raise
+                                  end
+                              else
+                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1_change', :description => 'publisher_user_background_image_delete was nil')
+                                  raise
+                              end
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1_change', :description => 'publisher_user was nil')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1_change', :description => 'publisher was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1_change', :description => 'background_image_id_delete was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1_change', :description => 'image was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1_change', :description => 'request remotipart failed')
+              raise
+          end
+    
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_background_image_1_change', :description => e.message.to_s)
+          @errors = true
+          
+      end
+
+
+  end
+  
+  
+
+  def crop_background_1_image
+
+      @errors = false
+      
+      begin
+        
+          background_image_id = params[:background_image_id]
+          params_crop_x = params[:crop_x]
+          params_crop_y = params[:crop_y]
+          params_crop_w = params[:crop_w]
+          params_crop_h = params[:crop_h]
+
+          @background_1_image = nil
+          @background_1_image_id = nil
+          gon.background_1_image_id = nil
+
+          @primary_1_image_id = nil
+          gon.primary_1_image_id = nil
+
+
+          if !background_image_id.nil?
+              if !params_crop_x.nil?
+                  if !params_crop_y.nil?
+                      if !params_crop_w.nil?
+                          if !params_crop_h.nil?
+                              publisher_user = current_user.publisher_user
+                              if !publisher_user.nil?
+                                  publisher_user_background_image = publisher_user.publisher_user_background_images.where("id = ?", background_image_id).first rescue nil
+                                  # Rails.logger.info("publisher_user_background_image.image_url = " + publisher_user_background_image.image_url.to_s)
+                                  if !publisher_user_background_image.nil?
+                                      image = MiniMagick::Image.open("public" + publisher_user_background_image.image_url)
+                                      image_500_500 = MiniMagick::Image.open("public" + publisher_user_background_image.image_url(:image_500_500))
+                                      if(image.width >= image.height)
+                                          crop_scale = image.width / image_500_500.width.to_f
+                                      else
+                                          crop_scale = image.height / image_500_500.height.to_f
+                                      end
+                                      
+                                      crop_x = (params_crop_x.to_i * crop_scale).to_i
+                                      crop_y = (params_crop_y.to_i * crop_scale).to_i
+                                      crop_w = (params_crop_w.to_i * crop_scale).to_i
+                                      crop_h = (params_crop_h.to_i * crop_scale).to_i
+                        
+                                      crop_params = "#{crop_w}x#{crop_h}+#{crop_x}+#{crop_y}"
+                                      new_image = image.crop(crop_params)
+                        
+                                      img_name = File.basename(publisher_user_background_image.image.to_s)
+                                      img_dir = "public" + File.dirname(publisher_user_background_image.image.to_s)
+                        
+                                      image_1200_300_path = img_dir + "/" + "image_1200_300_fill_" + img_name
+                        
+                                      FileUtils.rm_rf(image_1200_300_path)
+                        
+                                      new_image.resize('1200x300')
+                                      new_image.write image_1200_300_path
+                        
+                                      publisher_user_background_image_cropped = publisher_user.publisher_user_background_images.where("id = ?", background_image_id).first rescue nil
+                                      if !publisher_user_background_image_cropped.nil? 
+                                          h_update = Hash.new
+                                          h_update[:crop_x] = params_crop_x
+                                          h_update[:crop_y] = params_crop_y
+                                          h_update[:crop_w] = params_crop_w
+                                          h_update[:crop_h] = params_crop_h
+                                          if publisher_user_background_image_cropped.update_attributes(h_update)
+                                              background_1_image = publisher_user_background_image_cropped
+                                              if !background_1_image.nil?
+                                                  gon.background_1_image_id = background_1_image.id
+                                                  @background_1_image = background_1_image
+                                                  @background_1_image_id = background_1_image.id
+                                                  @background_1_image_url = background_1_image.image_url(:image_1200_300_fill) + '?' + (rand(10..90) * rand(100..900)).to_s
+                                                  @crop_x_background_1_image = background_1_image.crop_x
+                                                  @crop_y_background_1_image = background_1_image.crop_y
+                                                  @crop_w_background_1_image = background_1_image.crop_w
+                                                  @crop_h_background_1_image = background_1_image.crop_h
+                                              else
+                                                  @background_1_image_url = ActionController::Base.helpers.asset_path('avatars/background-1-w1200-h300.jpg') 
+                                              end
+                                              
+                                              primary_1_image = publisher_user.publisher_user_images.where(:primary => true).first rescue nil
+                                              @primary_1_image = primary_1_image
+                                              if !primary_1_image.nil?
+                                                  @primary_1_image_id = primary_1_image.id
+                                                  gon.primary_1_image_id = primary_1_image.id
+                                                  @crop_x_primary_1_image = primary_1_image.crop_x
+                                                  @crop_y_primary_1_image = primary_1_image.crop_y
+                                                  @crop_w_primary_1_image = primary_1_image.crop_w
+                                                  @crop_h_primary_1_image = primary_1_image.crop_h
+                                              end
+                                          else
+                                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_background_1_image', :description => 'publisher_user_background_image_cropped update_attributes failed')
+                                              raise
+                                          end
+                                      else
+                                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_background_1_image', :description => 'publisher_user_background_image_cropped was nil')
+                                          raise
+                                      end
+                                  else
+                                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_background_1_image', :description => 'publisher_user_background_image was nil')
+                                      raise
+                                  end
+                              else
+                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_background_1_image', :description => 'publisher_user was nil')
+                                  raise
+                              end
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_background_1_image', :description => 'params_crop_h was nil')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_background_1_image', :description => 'params_crop_w was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_background_1_image', :description => 'params_crop_y was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_background_1_image', :description => 'params_crop_x was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_background_1_image', :description => 'background_image_id was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_background_1_image', :description => e.message.to_s)
+          @errors = true
+          
+      end
+
+
+  end
+
+  
+
+  def destroy_background_1_image
+    
+    
+      begin
+        
+          ar = params[:publisher_user]
+          h_obj = Hash.new
+          ar.each do |obj|
+            h_obj = obj
+          end
+    
+          background_image_id = h_obj[:background_image_1_id]
+          image_id = h_obj[:image_1_id]
+
+          gon.primary_1_image_id = nil
+          
+          
+          if !background_image_id.nil?
+              publisher_user = current_user.publisher_user rescue nil
+              if !publisher_user.nil?
+                  publisher_user_background_image = publisher_user.publisher_user_background_images.where("id = ?", background_image_id).first rescue nil
+                  if !publisher_user_background_image.nil?
+                      if publisher_user_background_image.destroy
+                          @background_1_image = nil
+                          gon.background_1_image_id = nil
+                          @background_1_image_url = ActionController::Base.helpers.asset_path('avatars/background-1-w1200-h300.jpg') 
+                          
+                          primary_1_image = publisher_user.publisher_user_images.where("id = ?", image_id).first rescue nil
+                          @primary_1_image = primary_1_image
+                          if !primary_1_image.nil?
+                            gon.primary_1_image_id = primary_1_image.id
+                            @crop_x_primary_1_image = primary_1_image.crop_x
+                            @crop_y_primary_1_image = primary_1_image.crop_y
+                            @crop_w_primary_1_image = primary_1_image.crop_w
+                            @crop_h_primary_1_image = primary_1_image.crop_h
+                          end
+                      else      
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destroy_background_1_image', :description => 'publisher_user_background_image destroy failed')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destroy_background_1_image', :description => 'publisher_user_background_image was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destroy_background_1_image', :description => 'publisher_user was nil')
+                  raise
+              end              
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destroy_background_1_image', :description => 'background_image_id was nil')
+              raise
+          end
+          
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destroy_background_1_image', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+    
+    
+  end
+
+
+
+  def upload_primary_1_image
+
+      @errors = false
+      
+      begin
+
+          if request.xhr? || remotipart_submitted?
+           
+              @primary_1_image_id = nil
+              @primary_1_image = nil
+              @primary_1_crop_x = 0
+              @primary_1_crop_y = 0
+              @primary_1_crop_w = 200
+              @primary_1_crop_h = 200
+              @list_1_images = nil
+              
+              image = params[:publisher_user_image][:image]
+              # primary = params[:publisher_user_image][:primary]
+              # @primary = false              
+              # if primary.to_s == 'false'
+                  # # Rails.logger.info "primary was sent = " + primary.to_s
+                  # primary = false
+              # elsif primary.to_s == '-_-----
+                  # # Rails.logger.info "primary was sent = " + primary.to_s
+                  # primary = true
+              # end
+              # # Rails.logger.info "primary = " + primary.to_s
+              
+              if !image.nil?
+                  publisher = current_user.publisher rescue nil
+                  if !publisher.nil?
+                      publisher_user = current_user.publisher_user rescue nil
+                      if !publisher_user.nil?
+                          h_new = Hash.new
+                          h_new[:user_id] = current_user.id
+                          h_new[:publisher_id] = publisher.id
+                          h_new[:publisher_user_id] = publisher_user.id
+                          h_new[:image] = image
+                          h_new[:primary] = true
+                          publisher_user_image = PublisherUserImage.new(h_new)
+                          if publisher_user_image.save
+                              img = publisher_user_image
+                              image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+                              w = image.width
+                              h = image.height
+                              w_max = false
+                              h_max = false
+                              w_h_equal = false
+                              x = 0
+                              y = 0
+                              l = 0                    
+                              d = 0
+                              if ( w == h)
+                                  w_h_equal = true
+                              else
+                                  if ( w > h )
+                                    w_max = true
+                                  else
+                                    h_max = true
+                                  end
+                              end
+                              if w_max
+                                  d = w - h
+                                  d = (d/2).round
+                                  x = d
+                                  l = h  
+                              end
+                              if h_max
+                                  d = h - w
+                                  d = (d/2).round
+                                  y = d
+                                  l = w  
+                              end
+                              if w_h_equal
+                                  l = w
+                              end
+              
+                              h_update = Hash.new
+                              h_update[:crop_x] = x
+                              h_update[:crop_y] = y
+                              h_update[:crop_w] = l
+                              h_update[:crop_h] = l
+                              if publisher_user_image.update_attributes(h_update)
+                                  @primary_1_image = publisher_user_image
+                                  @primary_1_image_id = publisher_user_image.id
+                                  
+                                  publisher_user_images = publisher_user.publisher_user_images rescue nil
+                                  if !publisher_user_images.nil?
+                                      @list_1_images = publisher_user_images                                    
+                                  else
+                                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image', :description => 'publisher_user_images was nil')
+                                      raise
+                                  end
+                                  # publisher_user_images = publisher_user.publisher_user_images.order('created_at DESC') rescue nil
+                                  # if !publisherUserImages.nil?
+                                      # @publisher_user_images = publisher_user_images
+                                  # else
+                                      # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_image_1', :description => 'publisher_user_images was nil')
+                                      # raise
+                                  # end
+                              else
+                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image', :description => 'publisher_user_image update_attributes failed')
+                                  raise
+                              end
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image', :description => 'publisher_user_image save failed')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image', :description => 'publisher_user was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image', :description => 'publisher was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image', :description => 'image was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image', :description => 'request remotipart failed')
+              raise
+          end
+    
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image', :description => e.message.to_s)
+          @errors = true
+          
+      end
+
+    
+  end
+
+
+
+  def upload_primary_1_image_change
+
+      @errors = false
+      
+      begin
+
+          if request.xhr? || remotipart_submitted?
+           
+              @primary_1_image_id = nil
+              @primary_1_image = nil
+              @primary_1_crop_x = 0
+              @primary_1_crop_y = 0
+              @primary_1_crop_w = 200
+              @primary_1_crop_h = 200
+              @list_1_images = nil
+              
+              image = params[:publisher_user_image][:image]
+              image_id_delete = params[:publisher_user_image][:image_id_delete]
+              if !image.nil?
+                  if !image_id_delete.nil?
+                      publisher = current_user.publisher rescue nil
+                      if !publisher.nil?
+                          publisher_user = current_user.publisher_user rescue nil
+                          if !publisher_user.nil?
+                              image_delete = publisher_user.publisher_user_images.where("id = ?", image_id_delete).first rescue nil
+                              if !image_delete.nil?
+                                  if image_delete.destroy
+                                      h_new = Hash.new
+                                      h_new[:user_id] = current_user.id
+                                      h_new[:publisher_id] = publisher.id
+                                      h_new[:publisher_user_id] = publisher_user.id
+                                      h_new[:image] = image
+                                      publisher_user_image = PublisherUserImage.new(h_new)
+                                      if publisher_user_image.save
+                                          img = publisher_user_image
+                                          image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+                                          w = image.width
+                                          h = image.height
+                                          w_max = false
+                                          h_max = false
+                                          w_h_equal = false
+                                          x = 0
+                                          y = 0
+                                          l = 0                    
+                                          d = 0
+                                          if ( w == h)
+                                              w_h_equal = true
+                                          else
+                                              if ( w > h )
+                                                w_max = true
+                                              else
+                                                h_max = true
+                                              end
+                                          end
+                                          if w_max
+                                              d = w - h
+                                              d = (d/2).round
+                                              x = d
+                                              l = h  
+                                          end
+                                          if h_max
+                                              d = h - w
+                                              d = (d/2).round
+                                              y = d
+                                              l = w  
+                                          end
+                                          if w_h_equal
+                                              l = w
+                                          end
+                          
+                                          h_update = Hash.new
+                                          h_update[:crop_x] = x
+                                          h_update[:crop_y] = y
+                                          h_update[:crop_w] = l
+                                          h_update[:crop_h] = l
+                                          if publisher_user_image.update_attributes(h_update)
+                                              @primary_1_image = publisher_user_image
+                                              @primary_1_image_id = publisher_user_image.id      
+                                              
+                                              publisher_user_images = publisher_user.publisher_user_images rescue nil
+                                              if !publisher_user_images.nil?
+                                                  @list_1_images = publisher_user_images                                    
+                                              else
+                                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image_change', :description => 'publisher_user_images was nil')
+                                                  raise
+                                              end
+                                          else
+                                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image_change', :description => 'publisher_user_image update_attributes failed')
+                                              raise
+                                          end
+                                      else
+                                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image_change', :description => 'publisher_user_image save failed')
+                                          raise
+                                      end
+                                  else
+                                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image_change', :description => 'image_delete destroy failed')
+                                      raise
+                                  end          
+                              else
+                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image_change', :description => 'image_delete was nil')
+                                  raise
+                              end
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image_change', :description => 'publisher_user was nil')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image_change', :description => 'publisher was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image_change', :description => 'image_id_delete was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image_change', :description => 'image was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image_change', :description => 'request remotipart failed')
+              raise
+          end
+    
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_primary_1_image_change', :description => e.message.to_s)
+          @errors = true
+          
+      end
+        
+    
+  end
+
+
+
+  def crop_primary_1_image
+    
+      @errors = false
+      
+      begin
+        
+          image_id = params[:image_id]
+          params_crop_x = params[:crop_x]
+          params_crop_y = params[:crop_y]
+          params_crop_w = params[:crop_w]
+          params_crop_h = params[:crop_h]
+
+          if !image_id.nil?
+              if !params_crop_x.nil?
+                  if !params_crop_y.nil?
+                      if !params_crop_w.nil?
+                          if !params_crop_h.nil?
+                              publisher_user = current_user.publisher_user
+                              if !publisher_user.nil?
+                                  publisher_user_image = publisher_user.publisher_user_images.where("id = ?", image_id).first rescue nil
+                                  if !publisher_user_image.nil?
+                                      # image = MiniMagick::Image.open("public" + publisher_user_image.image_url)
+                                      # image_600_600 = MiniMagick::Image.open("public" + publisher_user_image.image_url(:image_600_600))
+                                      image = MiniMagick::Image.open("public" + publisher_user_image.image_url(:image_600_600))
+                                  
+                                      crop_params = "#{params_crop_w}x#{params_crop_h}+#{params_crop_x}+#{params_crop_y}"
+                                      new_image = image.crop(crop_params)
+                        
+                                      img_name = File.basename(publisher_user_image.image.to_s)
+                                      img_dir = "public" + File.dirname(publisher_user_image.image.to_s)
+                                
+                                      image_200_200_path = img_dir + "/" + "image_200_200_" + img_name 
+                                      image_100_100_path = img_dir + "/" + "image_100_100_" + img_name
+                                      image_50_50_path = img_dir + "/" + "image_50_50_" + img_name
+                                
+                                      FileUtils.rm_rf(image_200_200_path) 
+                                      FileUtils.rm_rf(image_100_100_path)
+                                      FileUtils.rm_rf(image_50_50_path) 
+                                
+                                      new_image.resize('200x200')
+                                      new_image.write image_200_200_path
+                                      new_image.resize('100x100')
+                                      new_image.write image_100_100_path      
+                                      new_image.resize('50x50')
+                                      new_image.write image_50_50_path      
+                                
+                                      x = params_crop_x
+                                      y = params_crop_y
+                                      w = params_crop_w
+                                      h = params_crop_h
+                                      x = x.to_i
+                                      y = y.to_i
+                                      w = w.to_i
+                                      h = h.to_i
+                                
+                                      h_crop = Hash.new
+                                      h_crop[:crop_x] = x
+                                      h_crop[:crop_y] = y
+                                      h_crop[:crop_w] = w
+                                      h_crop[:crop_h] = h
+                                
+                                      if publisher_user_image.update_attributes(h_crop)
+                                          @primary_1_image = publisher_user_image
+                                          @primary_1_image_id = publisher_user_image.id      
+                                      else
+                                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_primary_1_image', :description => 'publisher_user_image update_attributes failed')
+                                          raise
+                                      end
+                                  else
+                                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_primary_1_image', :description => 'publisher_user_image was nil')
+                                      raise
+                                  end
+                              else
+                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_primary_1_image', :description => 'publisher_user was nil')
+                                  raise
+                              end      
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_primary_1_image', :description => 'params_crop_h was nil')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_primary_1_image', :description => 'params_crop_w was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_primary_1_image', :description => 'params_crop_y was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_primary_1_image', :description => 'params_crop_x was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_primary_1_image', :description => 'image_id was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'crop_primary_1_image', :description => e.message.to_s)
+          @errors = true
+          
+      end
+  
+    
+  end
+
+
+
+  def destroy_primary_1_image
+
+      begin
+        
+          ar = params[:publisher_user]
+          h_obj = Hash.new
+          ar.each do |obj|
+            h_obj = obj
+          end
+    
+          image_id = h_obj[:image_id]
+          @primary_1_image = nil
+          gon.primary_1_image_id = nil
+          
+          publisher_user = current_user.publisher_user rescue nil
+          if !publisher_user.nil?
+              if !image_id.nil?
+                  publisher_user_image = current_user.publisher_user.publisher_user_images.where("id = ?", image_id).first rescue nil
+                  if !publisher_user_image.nil?
+                      publisher_user_images = publisher_user.publisher_user_images rescue nil
+                      if !publisher_user_images.nil?                            
+                          if publisher_user_image.destroy
+                              @list_1_images = publisher_user_images                            
+                          else      
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_primary_1_image', :description => 'publisher_user_image destroy failed')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_primary_1_image', :description => 'publisher_user_images was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_primary_1_image', :description => 'publisher_user_image was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_primary_1_image', :description => 'image_id was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_primary_1_image', :description => 'publisher_user was nil')
+              raise
+          end
+                    
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_primary_1_image', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+    
+  end
+
+
+
+  def upload_list_1_image
+
+      @errors = false
+      
+      begin
+
+          if request.xhr? || remotipart_submitted?
+           
+              @list_1_image_id = nil
+              @list_1_image = nil
+              @list_1_images = nil
+              @list_1_crop_x = 0
+              @list_1_crop_y = 0
+              @list_1_crop_w = 200
+              @list_1_crop_h = 200
+              
+              image = params[:publisher_user_image][:image]
+
+              
+              if !image.nil?
+                  publisher = current_user.publisher rescue nil
+                  if !publisher.nil?
+                      publisher_user = current_user.publisher_user rescue nil
+                      if !publisher_user.nil?
+                          h_new = Hash.new
+                          h_new[:user_id] = current_user.id
+                          h_new[:publisher_id] = publisher.id
+                          h_new[:publisher_user_id] = publisher_user.id
+                          h_new[:image] = image
+                          h_new[:primary] = false
+                          publisher_user_image = PublisherUserImage.new(h_new)
+                          if publisher_user_image.save
+                              img = publisher_user_image
+                              image = MiniMagick::Image.open("public" + img.image_url(:image_600_600))
+                              w = image.width
+                              h = image.height
+                              w_max = false
+                              h_max = false
+                              w_h_equal = false
+                              x = 0
+                              y = 0
+                              l = 0                    
+                              d = 0
+                              if ( w == h)
+                                  w_h_equal = true
+                              else
+                                  if ( w > h )
+                                    w_max = true
+                                  else
+                                    h_max = true
+                                  end
+                              end
+                              if w_max
+                                  d = w - h
+                                  d = (d/2).round
+                                  x = d
+                                  l = h  
+                              end
+                              if h_max
+                                  d = h - w
+                                  d = (d/2).round
+                                  y = d
+                                  l = w  
+                              end
+                              if w_h_equal
+                                  l = w
+                              end
+              
+                              h_update = Hash.new
+                              h_update[:crop_x] = x
+                              h_update[:crop_y] = y
+                              h_update[:crop_w] = l
+                              h_update[:crop_h] = l
+                              if publisher_user_image.update_attributes(h_update)
+                                  @list_1_image = publisher_user_image
+                                  @list_1_image_id = publisher_user_image.id
+                                  
+                                  publisher_user_images = publisher_user.publisher_user_images rescue nil
+                                  if !publisher_user_images.nil?
+                                      @list_1_images = publisher_user_images
+                                  else
+                                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_list_1_image', :description => 'publisher_user_images was nil')
+                                      raise
+                                  end
+                                  # publisher_user_images = publisher_user.publisher_user_images.order('created_at DESC') rescue nil
+                                  # if !publisherUserImages.nil?
+                                      # @publisher_user_images = publisher_user_images
+                                  # else
+                                      # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_image_1', :description => 'publisher_user_images was nil')
+                                      # raise
+                                  # end
+                              else
+                                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_list_1_image', :description => 'publisher_user_image update_attributes failed')
+                                  raise
+                              end
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_list_1_image', :description => 'publisher_user_image save failed')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_list_1_image', :description => 'publisher_user was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_list_1_image', :description => 'publisher was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_list_1_image', :description => 'image was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_list_1_image', :description => 'request remotipart failed')
+              raise
+          end
+    
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'upload_list_1_image', :description => e.message.to_s)
+          @errors = true
+          
+      end
+
+    
+  end
+
+
+
+  def destroy_list_1_image
+
+      begin
+        
+          ar = params[:publisher_user]
+          h_obj = Hash.new
+          ar.each do |obj|
+            h_obj = obj
+          end
+    
+          image_id = h_obj[:image_id]
+          @list_1_image = nil
+          gon.list_1_image_id = nil
+          @primary = nil
+          @list_1_images = nil
+          
+          publisher_user = current_user.publisher_user rescue nil
+          if !publisher_user.nil?
+              if !image_id.nil?
+                  publisher_user_image = publisher_user.publisher_user_images.where("id = ?", image_id).first rescue nil
+                  if !publisher_user_image.nil?
+                      primary = publisher_user_image.primary rescue nil
+                      
+                      Rails.logger.info "primary = " + primary.to_s
+                          
+                      publisher_user_images = publisher_user.publisher_user_images rescue nil
+                      if !publisher_user_images.nil?                            
+                          if publisher_user_image.destroy
+                              @primary = primary
+                              @list_1_images = publisher_user_images                                               
+                          else      
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_list_1_image', :description => 'publisher_user_image destroy failed')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_list_1_image', :description => 'publisher_user_images was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_list_1_image', :description => 'publisher_user_image was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_list_1_image', :description => 'image_id was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_list_1_image', :description => 'publisher_user was nil')
+              raise
+          end
+          
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_users', :action => 'destory_list_1_image', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+    
+  end
+
+
+  def cancel_post_user_on_close
+    
+  end
   
   
   

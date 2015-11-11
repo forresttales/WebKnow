@@ -1,0 +1,15 @@
+<% if @messages %>
+	$('#main_container').html("<%= j render('publisher_user_messages/messages') %>");
+	$('#dialog_id').val("<%= @dialog_id %>");
+	$('#current_dialog_id').html("<%= @dialog_id %>");
+	var container = $('#dialog_container'),
+		scrollTo = $('.Message').last();
+	container.animate({
+	    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+	}, 500);
+<% else %>
+	$('#main_container').html("");
+	$('#current_dialog_id').html("");
+	// $('#dialog_id').val("<%= @dialog_id %>");
+	// $('#current_dialog_id').html("<%= @dialog_id %>");
+<% end %>

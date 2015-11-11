@@ -2062,11 +2062,66 @@ span.color-no-record {
   height: 20px; 
   display: inline-block;
 }
+// .input-profile-color-1 {
+    // background-color: #fff;
+    // border-color: #fbb040;
+    // color: #37633a;
+// }
+// .input-container-1-color {
+    // border-color: #49853f;
+// }
+// .input-container-1-color-edit-open {
+    // border-color: #fbb040;
+// }
+// .input-container-1-color-edit {
+    // background-color: #fff;
+    // border-color: #fbb040;
+    // color: #37633a;
+// }
+.input-container-1-color-edit-open {
+    border-color: #fbb040;
+}
+.input-container-1-color {
+    border-color: #49853f;
+}
+.input-container-1 {
+    background-color: #fff;
+    color: #37633a;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+.input-container-1-edit {
+    background-color: #fff;
+    color: #37633a;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fbb040;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+.box-detail-color {
+  border: 1px solid #49853f;
+}
+.box-detail-color-edit {
+  border: 1px solid #fbb040;
+}
 .box-detail {
 	width: 400px;
-	border: 1px solid #49853f;
+	// border: 1px solid #49853f;
 	position: relative;
 	padding: 0;
+}
+.box-detail-edit {
+  width: 400px;
+  // border: 1px solid #fbb040;
+  position: relative;
+  padding: 0;
 }
 .box-detail-2 {
 	width: 400px;
@@ -2080,6 +2135,12 @@ span.color-no-record {
   position: relative;
   padding: 0;
 }
+.box-detail-title-color {
+  background-color: #37633A;
+}
+.box-detail-title-color-edit {
+  background-color: #fbb040;
+}
 .box-detail-title {
 	height: 16px;
 	width: auto;
@@ -2087,12 +2148,20 @@ span.color-no-record {
 	color: #fff;
 	font-weight: 400;
 	font-size: 14px;
-	background-color: #37633A;
-	// position: absolute;
-	// top: 0;
-	// left: 0px;
+	// background-color: #37633A;
 	padding: 4px;		
 	margin: 0px;			
+}
+.box-detail-title-edit {
+  height: 16px;
+  width: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  // background-color: #fbb040;
+  padding: 4px;   
+  margin: 0px;      
 }
 .box-detail-title-large {
 	height: 24px;
@@ -2495,7 +2564,6 @@ input[type=checkbox] {
 .listing-space {
 	height: 30px;	
 }
-
 figcaption.edit-image {		
 	display: block;
 	position: absolute;
@@ -4142,3 +4210,4 @@ span.bkgrnd-text-1 {
 .text-edit-background:hover {
   cursor: pointer;
 } 
+

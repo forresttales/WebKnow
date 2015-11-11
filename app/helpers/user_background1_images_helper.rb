@@ -1,2 +1,0 @@
-module UserBackground1ImagesHelper
-end

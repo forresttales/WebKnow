@@ -6,12 +6,28 @@ Webknow::Application.routes.draw do
   get "control_elements/dynamic_edit_box"
   get "control_elements/sticky_footer"
   get "control_elements/sticky_footer_with_icon"
+  get "gamma_images/index"
   
-  match "/messages" => "messages#index", via: 'get'
+  
+  match "/Messages" => "publisher_user_messages#index", via: 'get'
+  
+  resources :publisher_user_messages do
+      collection do
+        post :open_conversation
+        post :open_dialog_by_id
+        post :send_message
+        post :view_conversations
+      end
+  end 
   # get "messages/index"
-  get "messages/create"
+  # get "messages/create"
 
-  # root :to => ChatDemo
+  # root :to => ChatDemo  
+  
+  # match "/messages" => "messages#index", via: 'get'
+  # # get "messages/index"
+  # get "messages/create"
+  # # root :to => ChatDemo
   
   root to: 'users#index'
   # mount ChatDemo.new => '/chatdemo'
@@ -73,36 +89,36 @@ Webknow::Application.routes.draw do
 
   resources :publisher_users do
       collection do
-          # post :get_post_feed
-          post :update_story_1
           post :update_story_2
           post :update_story_3
-          post :update_story_6
-          # post :add_post_user
-          post :create_post_user
-          post :destroy_post_user
-          post :cancel_post_user
-          post :cancel_post_user_on_close
-          post :create_post_user_like
-          post :destroy_post_user_like
+          post :update_story_4
           post :create_log_user_like
           post :destroy_log_user_like      
-          post :create_post_user_comment
-          post :destroy_post_user_comment
-          post :update_publisher_user_plot
           post :update_publisher_user_interest
-          post :destroy_publisher_user_image
-          post :destroy_publisher_user_logo_image
-          post :upload_publisher_user_image_primary
-          post :upload_publisher_user_logo_image
-          post :upload_publisher_user_image_primary_change
-          post :upload_publisher_user_logo_image_change
-          post :upload_publisher_user_image
-          post :upload_post_user_image
-          post :upload_publisher_user_plot_image
-          post :upload_publisher_user_interest_image
-          post :crop_commit_user
-          post :crop_commit_logo
+          # post :destroy_publisher_user_image
+          # post :destroy_publisher_user_logo_image
+          # post :upload_publisher_user_image_primary
+          # post :upload_publisher_user_logo_image
+          # post :upload_publisher_user_image_primary_change
+          # post :upload_publisher_user_logo_image_change
+          # post :upload_publisher_user_image
+          # post :upload_publisher_user_interest_image
+          
+          post :upload_background_1_image
+          post :upload_background_1_image_change
+          post :crop_background_1_image
+          post :destroy_background_1_image
+
+          post :upload_primary_1_image
+          post :upload_primary_1_image_change
+          post :crop_primary_1_image
+          post :destroy_primary_1_image
+
+          post :upload_list_1_image
+          post :destroy_list_1_image
+          
+          post :cancel_post_user_on_close
+          
           post :dbdelete      
       end
 
@@ -122,10 +138,36 @@ Webknow::Application.routes.draw do
   # get "publisher_users/index_home"
   # get "index_home", to: "publisher_users#index_home", as: :publisher_users_index_home
 
+
+
+  resources :publisher_user_homes do
+      collection do
+          post :update_story_4
+          post :create_post_user
+          post :destroy_post_user
+          post :cancel_post_user
+          post :cancel_post_user_on_close
+          post :create_post_user_like
+          post :destroy_post_user_like
+
+          post :create_post_user_comment
+          post :destroy_post_user_comment
+          post :update_publisher_user_plot
+          post :upload_post_user_image
+          post :upload_publisher_user_plot_image
+          
+          post :dbdelete      
+      end
+
+  end
+
+
+
+
+
+
+
   match "/:id" => "public_publisher_product_manifests#index", via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/}
-
-
-
 
 
 

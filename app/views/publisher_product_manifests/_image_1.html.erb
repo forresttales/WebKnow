@@ -311,17 +311,60 @@
 	border: 2px solid #fbb040;
 }	
 	
+.drop-namespace101 figure img,
+ .drop-namespace101 figure {
+  border: medium none; 
+  overflow: hidden;
+} 
+.drop-namespace101 .figure-image-1-edit {
+  border: 2px solid #fbb040;
+} 
+.drop-namespace101 .figure-image-1-edit img {
+  margin-top: -2px;
+  margin-right: -2px;
+  margin-bottom: -4px;
+  margin-left: -2px;
+} 
+.drop-namespace101 figcaption.edit-image-1 {   
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  text-align: center;
+  background: url("/assets/forms/background-000000-o100-w10-h10.png") repeat;
+}
+.drop-namespace101 figcaption.edit-image-1 div.img-1-container {
+  position: relative;
+  top: 46%;
+  height: auto;
+}     
+.drop-namespace101 figcaption.edit-image-1 div.img-1-container div.img-1 {
+  width: 72px;
+  height: 60px;
+  margin: auto;
+  background: url("/assets/forms/logo_camera_1_w72_h60.png") no-repeat;
+}     
+.drop-namespace101 figcaption.edit-image-1 div.img-1-container div.img-1-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #fff;
+}     
+	
+	
 </style>
 
 
-<div class="drop-namespace101 hidden">
+<div class="drop-namespace101">
 	<% if @image_1 %>   				
 	
 		<div class="container-figure-image container-figure-image-border-load-101 container-figure-image-1 drop-101" style="position: relative; z-index: 2;">
 			<figure class="dialog-101-1-figure cursor-pointer" data-width="<%= @image_1.width %>" data-src-600="<%= @image_1.image_url(:image_600_600) %>">
 				<img id="image_1_img" class="" alt="" src="<%= @image_1.image_url(:image_375_300) + '?' + (rand(10..90) * rand(100..900)).to_s if @image_1.image? %>" />
-				<figcaption class="edit-image hidden drop-101-target">
-						<div class="img-1-text">Edit photo</div>
+				<figcaption class="edit-image-1 hidden drop-101-target">
+						<div class="img-1-container">
+							<!-- <div class="img-1"></div> -->
+							<div class="img-1-text">Edit photo</div>
+						</div>
 				</figcaption>
 			</figure>
 	    	<div class="drop-101-container drop-hidden">
@@ -370,7 +413,7 @@
 		<div class="container-figure-image container-figure-image-border-load-101 container-figure-image-1 drop-101" style="position: relative;">
 			<figure class="dialog-101-1-figure-generic" data-width="375" data-src-600="">
 				<img id="image_1_img_generic" class="" alt="" src="<%= image_path('avatars/avatar-gen-product-w375-h300.png') %>" />
-				<figcaption class="edit-image hidden cursor-pointer drop-101-target">
+				<figcaption class="edit-image-1 hidden cursor-pointer drop-101-target">
 						<div class="img-1-text">Add a photo</div>
 				</figcaption>
 			</figure>
@@ -431,42 +474,56 @@
 	
 	$(document).ready(function () {				
 
-		$("img").one("load", function() {
-			if((this.id == "image_1_img") || (this.id == "image_1_img_generic")) {
-				var img_w = this.width;
-				var img_h = this.height;
-
-				$(".container-figure-image-1").css({
-					// width : img_w + 4,
-					// height : img_h + 4
-					width : img_w,
-					height : img_h						
-				})// .removeClass("container-figure-image-border-load-101").addClass("container-figure-image-border-101");													
-			}
-			// if(this.id == "image_1_generic_img") {
+		// $("img").one("load", function() {
+			// if((this.id == "image_1_img") || (this.id == "image_1_img_generic")) {
 				// var img_w = this.width;
 				// var img_h = this.height;
+// 
 				// $(".container-figure-image-1").css({
 					// // width : img_w + 4,
 					// // height : img_h + 4
 					// width : img_w,
 					// height : img_h						
-				// }).removeClass("container-figure-image-border-load-101").addClass("container-figure-image-border-101");				
-			// }				
-			if(this.id == "image_1_img_600") {
-				var img_w = this.width;
-				var img_h = this.height;
-				$("#figure_dialog_101_1").css({
-					width : img_w,
-					height : img_h
-				});																			
-			}								
-		}).each(function() {
-		  	if(this.complete) {
-		  		$(this).load();
-		  		$(".drop-namespace101").removeClass("hidden");
-		  	}
-		});
+				// })// .removeClass("container-figure-image-border-load-101").addClass("container-figure-image-border-101");
+// 				
+				// var img_w_edit = img_w - 4;
+				// var img_h_edit = img_h - 4;
+				// // alert(img_h_edit);
+				// $(".drop-namespace101 .figure-image-1-edit").css({
+					// // width : img_w_edit,
+					// height : img_h_edit						
+				// });
+				// $(".drop-namespace101 figcaption.edit-image-1").css({
+					// width : img_w_edit,
+					// height : img_h_edit						
+				// });
+// 				
+				// editImage_1_init(img_w, img_h, img_w_edit, img_h_edit);
+			// }
+			// // if(this.id == "image_1_generic_img") {
+				// // var img_w = this.width;
+				// // var img_h = this.height;
+				// // $(".container-figure-image-1").css({
+					// // // width : img_w + 4,
+					// // // height : img_h + 4
+					// // width : img_w,
+					// // height : img_h						
+				// // }).removeClass("container-figure-image-border-load-101").addClass("container-figure-image-border-101");				
+			// // }				
+			// // if(this.id == "image_1_img_600") {
+				// // var img_w = this.width;
+				// // var img_h = this.height;
+				// // $("#figure_dialog_101_1").css({
+					// // width : img_w,
+					// // height : img_h
+				// // });																			
+			// // }								
+		// }).each(function() {
+		  	// if(this.complete) {
+		  		// $(this).load();
+		  		// $(".drop-namespace101").removeClass("hidden");
+		  	// }
+		// });
 
 		$(document).on('click', function(e) {
 			var target_namespace101 = $(e.target).parents('.drop-namespace101').attr("class");
@@ -496,16 +553,30 @@
 		});
 
 		$("#image_1_img").on("load", function() {
+			// alert('image_1_img load');
 			var img_w = this.width;
 			var img_h = this.height;
 			$(".container-figure-image-1").css({
 				width : img_w,
 				height : img_h						
-			});													
+			});			
+
+			var img_w_edit = img_w - 4;
+			var img_h_edit = img_h - 4;
+			$(".drop-namespace101 .figure-image-1-edit").css({
+				// width : img_w_edit,
+				height : img_h_edit						
+			});
+			$(".drop-namespace101 figcaption.edit-image-1").css({
+				width : img_w_edit,
+				height : img_h_edit						
+			});
+			
+			editImage_1_init(img_w, img_h, img_w_edit, img_h_edit);
 		}).each(function() {
 		  	if(this.complete) {
 		  		$(this).load();
-		  		$(".drop-namespace101").removeClass("hidden");
+		  		// $(".drop-namespace101").removeClass("hidden");
 		  	}
 		});
 
@@ -515,11 +586,24 @@
 			$(".container-figure-image-1").css({
 				width : img_w,
 				height : img_h						
-			});													
+			});
+
+			var img_w_edit = img_w - 4;
+			var img_h_edit = img_h - 4;
+			$(".drop-namespace101 .figure-image-1-edit").css({
+				// width : img_w_edit,
+				height : img_h_edit						
+			});
+			$(".drop-namespace101 figcaption.edit-image-1").css({
+				width : img_w_edit,
+				height : img_h_edit						
+			});
+			
+			editImage_1_init(img_w, img_h, img_w_edit, img_h_edit);
 		}).each(function() {
 		  	if(this.complete) {
 		  		$(this).load();
-		  		$(".drop-namespace101").removeClass("hidden");
+		  		// $(".drop-namespace101").removeClass("hidden");
 		  	}
 		});
 
@@ -533,6 +617,7 @@
 		}).each(function() {
 		  	if(this.complete) {
 		  		$(this).load();
+		  		// $(".drop-namespace101").removeClass("hidden");
 		  	}
 		});
 

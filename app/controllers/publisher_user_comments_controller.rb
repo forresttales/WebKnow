@@ -1,0 +1,2 @@
+class PublisherUserCommentsController < ApplicationController
+end

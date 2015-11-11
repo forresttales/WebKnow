@@ -1,0 +1,2 @@
+class PublisherUserBackgroundImagesController < ApplicationController
+end

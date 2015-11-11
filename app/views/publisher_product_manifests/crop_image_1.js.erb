@@ -1,8 +1,10 @@
-<% if !@errors and @image_1 and @publisher_product %>
+<% if !@errors %>
 	$('#render_image_1').html("<%= j render('publisher_product_manifests/image_1') %>");
 	// $('#render_listing_preview_image_1').html("<#%= j render('publisher_product_manifests/listing_preview_image_1') %#>");
 	image_1_id = <%= @image_1_id %>;
+	showEditMode_image_1();
 	closeCropImage1();	
+	$(".drop-namespace101").removeClass("hidden");
 <% else %>
 	alert("Upload error");
 <% end %>

@@ -117,6 +117,7 @@ module Webknow
                                   'nav_publisher_user_register.css',
                                   'profile-new.css',
                                   'publisher_users_index_home.css',
+                                  'publisher_users_index.css',
                                   'publisher-product-manifest.css',
                                   'slick.css',
                                   'slick-theme.css',

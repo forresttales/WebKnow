@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="utf-8">
+  		<title><%= full_title(yield(:title)) %></title>
+  		
+		<%= favicon_link_tag source='global/knowstory-icon-fav.png' %>
+	  	<%= csrf_meta_tags %>
+	  	<%= render 'layouts/shim' %>  
+
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/modernizr.custom.70736.js"></script>
+		<script src="/js/jquery.masonry.min.js"></script>
+		<script src="/js/jquery.history.js"></script>
+		<script src="/js/js-url.min.js"></script>
+		<script src="/js/jquerypp.custom.js"></script>
+		<script src="/js/gamma.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+		<noscript><link rel="stylesheet" type="text/css" href="/css/noJS.css"/></noscript>
+		<!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
+
+		<% if false %>
+		<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => false %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => false %>
+		<% end %>
+
+		<!-- <style>
+		
+			#debug {
+				background-color: red;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size: 16px;
+				color: #000;
+			}
+			* {
+			  margin: 0;
+			}
+			html, body {
+			  height: 100%;
+			}
+			.body-wrap {
+			  min-height: 100%;
+			  margin-bottom: -152px; 
+			}
+			.body-wrap:after {
+			  content: "";
+			  display: block;
+			}
+			.body-wrap:after {
+			  height: 152px; 
+			}		
+			.body-wrap-inner {
+				/*width: 1200px;*/ 
+				height: 100%; 
+				margin: 0px auto;
+			}
+			
+		</style> -->
+		
+    </head>
+
+	<body>
+		<%= yield %>
+	</body>
+
+	<% if false %>
+	<body>
+		<div class="body-wrap">
+			<%= render 'layouts/nav_main' %>
+			<%= render 'layouts/nav_publisher' %>
+			<div class="body-wrap-inner">
+				<%= yield %>
+			</div>
+		</div>
+		
+		<%= render 'layouts/footer' %>
+
+		<% if false %>
+		<% if Rails.env.development? %>
+			<div style="width: 100%; position: absolute; bottom: -50px;">
+				<div id="debug">
+					<%= debug(params) %>
+				</div>
+			</div>
+		<% end %>
+		<% end %>
+		
+	</body>
+	<% end %>
+	
+</html>

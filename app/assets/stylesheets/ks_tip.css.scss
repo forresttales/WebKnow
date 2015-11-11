@@ -55,7 +55,7 @@
   position: absolute;
   width: 72px;
   height: 16px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   border-color: rgba(0, 0, 0, 0.6);
   border-top-left-radius: 3px;
   border-top-right-radius: 0px;
@@ -71,7 +71,7 @@
   display: none;
   top: -30px;
   right: -20px;    
-  z-index: 1;
+  z-index: 2;
 }   
 .ks-tip-indicator-2 {
   width: 0;

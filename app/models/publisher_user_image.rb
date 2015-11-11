@@ -16,6 +16,8 @@
 #  crop_y            :integer          default(0)
 #  crop_w            :integer          default(0)
 #  crop_h            :integer          default(0)
+#  width             :integer          default(0)
+#  height            :integer          default(0)
 #
 
 class PublisherUserImage < ActiveRecord::Base
@@ -33,9 +35,10 @@ class PublisherUserImage < ActiveRecord::Base
                   :crop_y,
                   :crop_w,
                   :crop_h,
+                  :width,
+                  :height,
                   :created_at,
                   :updated_at 
-  
   
 
   mount_uploader :image, PublisherUserImageUploader

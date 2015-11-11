@@ -353,6 +353,10 @@
 </style>
 	
 	
+<!-- <div id="preload-01" style="width: 1200px; height: 300px;"></div> -->
+
+<div style="height: 10px;"></div>	
+	
 <div id="image_5_container" class="image-5-container" style="display: table-cell; vertical-align: bottom; width: 1200px; height: 300px;">
 	<div class="drop-namespace105 hidden">
 		<div id="background_options" class="text-edit-background drop-105">
@@ -428,33 +432,36 @@
 			<div style="display: table-row;">
 				<div class="" style="display: table-cell; width: 400px;"></div>
 				<div style="display: table-cell; width: 800px; height: 32px; text-align: center;">
-					<div id="edit_product_headline" class="edit-product-headline hidden" style="display: inline-block;">
+					<!-- <div id="edit_product_headline" class="control-16-edit edit-product-headline hidden" style="display: inline-block;"> -->
+					<div id="control_16_edit_1" class="control-16-edit hidden" style="display: inline-block;">
 						<input class="input-profile-2 bkgrnd-text-1-input input-profile-color-1" style="width: 700px; height: 26px; padding: 1px 2px 0px 2px; text-align: center;" id="publisher_product_manifest_product_headline" name="publisher_product_manifest[product_headline]" tabindex="12" type="text" value="<%= @product_headline %>" placeholder="Product Headline" />
 					</div>
-					<div id="show_product_headline" style="display: inline-block;">
-						<div class="" style="width: 650px; height: 32px; padding: 0; border-color: transparent;">
+					<!-- <div id="show_product_headline" class="control-16-edit" style="display: inline-block;"> -->
+					<div id="control_16_show" class="control-16-edit" style="display: inline-block;">
+						<!-- <div class="" style="width: 650px; height: 32px; padding: 0; border-color: transparent;"> -->
+						<div class="" style="width: 650px; height: 32px; padding: 0;">
 							<!-- <span id="span_product_headline" class="bkgrnd-text-1 product-headline" style="background-color: #000; opacity: 0.5; padding-left: 4px; padding-right: 4px;"></span> -->
 							<span id="span_product_headline" class="bkgrnd-text-1 product-headline" style="background-color: rgba(0,0,0,0.5); padding-left: 4px; padding-right: 4px;"></span>
 						</div>
 					</div>
-					<div class="edit-options float-right hidden" style="height: 30px; background-color: #fff; display: inline-block;">
+					<div class="control-16-edit-options edit-options float-right hidden" style="height: 30px; background-color: #fff; display: inline-block;">
 						<div class="edit-options-block-1">
 							<div id="required_product_headline" class="required-1"></div>
 						</div>
 						<div class="edit-options-block-1 ks-tip-container">
-							<div id="open_info_product_headline" class="question-icon info-show-20 required-1 ks-tip-target"></div>
+							<div id="open_info_product_headline" class="question-icon info-show-20 required-1 ks-tip-target control-16-info-button"></div>
 						    <div class="ks-tip ks-tip-2">
 						    	<div class="ks-tip-indicator-2"></div>
 								What is this?
 						    </div>				
 						</div>																		
-						<div class="edit-options-block-1 ks-tip-container">
+						<!-- <div class="edit-options-block-1 ks-tip-container">
 							<div id="open_edit_product_headline" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
 						    <div class="ks-tip ks-tip-3">
 						    	<div class="ks-tip-indicator-3"></div>
 								Edit
 						    </div>				
-						</div>
+						</div> -->
 					</div>
 					<div class="float-clear"></div>
 				</div>
@@ -462,13 +469,13 @@
 		</div>
 	</div>
 
-	<div class="edit-product-headline hidden" style="position: absolute; bottom: 232px; right: 81px; width: 121px; background-color: #fff;">
+	<div  id="control_16_edit_2" class="control-16-edit edit-product-headline hidden" style="position: absolute; bottom: 232px; right: 81px; width: 121px; background-color: #fff;">
 		<div style="padding: 4px;">
 			<div style="display: inline-block;">
-				<div id="submit_product_headline" class="btn-submit-product" tabindex="">Save</div>
+				<div id="submit_product_headline" class="control-16-save-button btn-submit-product" tabindex="">Save</div>
 			</div>
 			<div style="display: inline-block;">
-				<div id="cancel_product_headline" class="btn-submit-product" tabindex="">Cancel</div>
+				<div id="cancel_product_headline" class="control-16-cancel-button btn-submit-product" tabindex="">Cancel</div>
 			</div>	
 		</div>																													
 	</div>
@@ -482,6 +489,29 @@
 		</div>
 	</div>							
 </div>
+
+
+
+<% if false %>
+<div class="hidden">
+	<script type="text/javascript">
+		<!--//--><![CDATA[//><!--
+
+			if (document.images) {
+				img1 = new Image();
+				// img2 = new Image();
+				// img3 = new Image();
+
+				img1.src = "<%= @image_5_url %>";
+				// img2.src = "http://domain.tld/path/to/image-002.gif";
+				// img3.src = "http://domain.tld/path/to/image-003.gif";
+				alert('images');
+			}
+
+		//--><!]]>
+	</script>
+</div>
+<% end %>
 
 
 
@@ -517,6 +547,66 @@
 	
 	
 	$(document).ready(function () {				
+
+
+		// #preload-01 { background: url(http://domain.tld/image-01.png) no-repeat -9999px -9999px; }
+		// #preload-02 { background: url(http://domain.tld/image-02.png) no-repeat -9999px -9999px; }
+		// #preload-03 { background: url(http://domain.tld/image-03.png) no-repeat -9999px -9999px; }
+
+		// function preloader() {
+			// if (document.getElementById) {
+				// document.getElementById("preload-01").style.background = "url(http://domain.tld/image-01.png) no-repeat -9999px -9999px";
+				// document.getElementById("preload-02").style.background = "url(http://domain.tld/image-02.png) no-repeat -9999px -9999px";
+				// document.getElementById("preload-03").style.background = "url(http://domain.tld/image-03.png) no-repeat -9999px -9999px";
+			// }
+		// }
+		// function addLoadEvent(func) {
+			// var oldonload = window.onload;
+			// if (typeof window.onload != 'function') {
+				// window.onload = func;
+			// } else {
+				// window.onload = function() {
+					// if (oldonload) {
+						// oldonload();
+					// }
+					// func();
+				// }
+			// }
+		// }
+		// addLoadEvent(preloader);
+
+
+		// function preloader() {
+			// // alert('preloader');
+			// // if (document.images) {
+				// // img5 = new Image();
+				// // // img2 = new Image();
+				// // // img3 = new Image();
+				// // img5.src = "<#%= @image_5_url %#>";
+				// // // img2.src = "http://domain.tld/path/to/image-002.gif";
+				// // // img3.src = "http://domain.tld/path/to/image-003.gif";
+				// // alert('images');
+			// // }
+			// if (document.getElementById) {
+				// alert('getElementById');
+				// document.getElementById("preload-01").style.background = "url(<#%= @image_5_url %#>) no-repeat";
+			// }
+		// }
+		// function addLoadEvent(func) {
+			// var oldonload = window.onload;
+			// if (typeof window.onload != 'function') {
+				// window.onload = func;
+			// } else {
+				// window.onload = function() {
+					// if (oldonload) {
+						// oldonload();
+					// }
+					// func();
+				// }
+			// }
+		// }
+		// addLoadEvent(preloader);
+
 
 		// $('#render_image_5').css('background-image', 'url("/assets/avatars/background-1-w1200-h300.jpg")');
 		$('#render_image_5').css('background-image', 'url(<%= @image_5_url %>)');
@@ -573,32 +663,34 @@
 		});
 
 		// $("#image_5_img").on("load", function() {
-			// var img_w = this.width;
-			// var img_h = this.height;
-			// $(".container-figure-image-5").css({
-				// width : img_w,
-				// height : img_h						
-			// });													
+			// // var img_w = this.width;
+			// // var img_h = this.height;
+			// // $(".container-figure-image-5").css({
+				// // width : img_w,
+				// // height : img_h						
+			// // });													
 		// }).each(function() {
 		  	// if(this.complete) {
+		  		// alert('complete 5');
+		  		// // $('#render_image_5').css('background-image', 'url(<#%= @image_5_url %#>)');
 		  		// $(this).load();
 		  		// $(".drop-namespace105").removeClass("hidden");
 		  	// }
 		// });
 
-		// $("#image_5_img_generic").on("load", function() {
-			// var img_w = this.width;
-			// var img_h = this.height;
-			// $(".container-figure-image-5").css({
-				// width : img_w,
-				// height : img_h						
-			// });													
-		// }).each(function() {
-		  	// if(this.complete) {
-		  		// $(this).load();
-		  		// $(".drop-namespace105").removeClass("hidden");
-		  	// }
-		// });
+		$("#image_5_img_generic").on("load", function() {
+			var img_w = this.width;
+			var img_h = this.height;
+			$(".container-figure-image-5").css({
+				width : img_w,
+				height : img_h						
+			});													
+		}).each(function() {
+		  	if(this.complete) {
+		  		$(this).load();
+		  		$(".drop-namespace105").removeClass("hidden");
+		  	}
+		});
 
 		// $("#image_5_img_600").on("load", function() {
 			// var img_w = this.width;
@@ -617,77 +709,3 @@
 	
 </script>
 
-<script>
-	
-	// product_headline
-	
-	$(document).ready(function(){
-
-		$(document).on('click', '#open_info_product_headline', function() {
-			$("#dlg_info").html(info_msg_2);
-			divHeight_1001 = $("#dialog_1001").height();
-			$("#dialog_1001").jqmShow();
-		});
-
-		// alert('gon.product_headline = ' + gon.product_headline);
-		// set_control_span("product_headline", gon.product_headline, gon.b_product_headline);
-		// set_control_required("product_headline", gon.b_required_product_headline);
-
-		set_control_span("product_headline", "<%= @product_headline %>", <%= @b_product_headline %>);
-		set_control_required("product_headline", <%= @b_required_product_headline %>);
-
-		$("#open_edit_product_headline").click(function(){
-    		$("#show_product_headline, #open_edit_product_headline").fadeOut(300, function(){
-    			$("#show_product_headline").addClass("hidden");
-    			$("#open_edit_product_headline").addClass("visibility-hidden");
-    			$(".edit-product-headline").fadeIn(1300).removeClass("hidden");
-    		});
-	  	});
-		$("#submit_product_headline").keypress(function(e){
-  			if(e.keyCode==13)
-  			$("#submit_product_headline").click();
-		});		
-		$("#cancel_product_headline").keypress(function(e){
-  			if(e.keyCode==13)
-  			$("#cancel_product_headline").click();
-		});		
-		$("#cancel_product_headline").on('click', function() {
-			show_control_class("product_headline", "product-headline");
-		});
-		$("#submit_product_headline").on('click', function() {
-			var input_publisher_product_manifest_product_headline = $("#publisher_product_manifest_product_headline").val();
-			var obj_list = '{  "publisher_product_id":' + publisher_product_id +  		
-					   	   ',  "product_headline":"' + input_publisher_product_manifest_product_headline +
-						   '"}';      
-		  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';       
-		  	$.ajax({
-		    	type: 'POST',
-		    	// data : JSON.stringify(obj),
-		    	data : obj,
-		    	url: '/publisher_product_manifests/update_product_headline',			    	
-		    	dataType: "json",
-		    	contentType: "application/json",
-		    	processData: false,
-		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-            	statusCode: {
-                	// 200:function() { alert("200"); }, 202:function() { alert("202"); }
-            	},
-            	success: function(data) {
-            		if (!data.b_error) {
-						set_control_span("product_headline", data.product_headline, data.b_product_headline);
-						show_control_class("product_headline", "product-headline");
-            		}
-            		else {
-						show_control_class("product_headline", "product-headline");
-						alert('An error occured while updating this field.');	            			
-            		}
-            	},
-            	error: function(xhr){  alert("error: " + xhr.statusText); }        
-		  	});
-	  		return false;
-		});
-
-
-	});
-			
-</script>

@@ -340,38 +340,61 @@ class PublisherProductManifestsController < ApplicationController
           end
           
           
-          gon.product_name = "Product Name"
-          gon.b_product_name = false
-          gon.b_required_product_name = true
+          # gon.product_name = "Product Name"
+          # gon.b_product_name = false
+          # gon.b_required_product_name = true
+          # gon.product_name = "Product Name"
+          @b_product_name = false
+          @b_required_product_name = true
           if !((publisher_product_manifest.product_name.blank?) or (publisher_product_manifest.product_name.empty?) or (publisher_product_manifest.product_name.nil?)) 
-              gon.product_name = publisher_product_manifest.product_name
-              gon.b_product_name = true
-              gon.b_required_product_name = false
+              # gon.product_name = publisher_product_manifest.product_name
+              # gon.b_product_name = true
+              # gon.b_required_product_name = false
+              @b_product_name = true
+              @b_required_product_name = false
           end
       
-          gon.product_tagline = "Tagline"
-          gon.b_product_tagline = false
-          gon.b_required_product_tagline = true        
+          # gon.product_tagline = "Tagline"
+          # gon.b_product_tagline = false
+          @b_product_tagline = false
+          # gon.b_required_product_tagline = true        
+          @b_required_product_tagline = true
           if !((@publisher_product_manifest.product_tagline.blank?) or (@publisher_product_manifest.product_tagline.empty?) or (@publisher_product_manifest.product_tagline.nil?)) 
-              gon.product_tagline = publisher_product_manifest.product_tagline
-              gon.b_product_tagline = true
-              gon.b_required_product_tagline = false              
+              # gon.product_tagline = publisher_product_manifest.product_tagline
+              # gon.b_product_tagline = true
+              @b_product_tagline = true
+              # gon.b_required_product_tagline = false
+              @b_required_product_tagline = false              
           end
-      
-          gon.versions = "Version"
-          gon.b_versions = false
-          gon.b_required_versions = true                
+
+          @b_versions = false
+          @b_required_versions = true
           if !((@publisher_product_manifest.versions.blank?) or (@publisher_product_manifest.versions.empty?) or (@publisher_product_manifest.versions.nil?)) 
-              gon.versions = publisher_product_manifest.versions
-              gon.b_versions = true
-              gon.b_required_versions = false        
+              @b_versions = true
+              @b_required_versions = false              
           end
       
-          gon.corporate_logo_url = "www.OurCorporation.com"
-          gon.b_corporate_logo_url = false
-          if !((publisher_product_manifest.corporate_logo_url.blank?) or (publisher_product_manifest.corporate_logo_url.empty?) or (publisher_product_manifest.corporate_logo_url.nil?)) 
-              gon.corporate_logo_url = publisher_product_manifest.corporate_logo_url
-              gon.b_corporate_logo_url = true
+          # gon.versions = "Version"
+          # gon.b_versions = false
+          # gon.b_required_versions = true                
+          # if !((@publisher_product_manifest.versions.blank?) or (@publisher_product_manifest.versions.empty?) or (@publisher_product_manifest.versions.nil?)) 
+              # gon.versions = publisher_product_manifest.versions
+              # gon.b_versions = true
+              # gon.b_required_versions = false        
+          # end
+      
+          # gon.corporate_logo_url = "www.OurCorporation.com"
+          # gon.b_corporate_logo_url = false
+          # if !((publisher_product_manifest.corporate_logo_url.blank?) or (publisher_product_manifest.corporate_logo_url.empty?) or (publisher_product_manifest.corporate_logo_url.nil?)) 
+              # gon.corporate_logo_url = publisher_product_manifest.corporate_logo_url
+              # gon.b_corporate_logo_url = true
+          # end
+
+          @b_corporate_logo_url = false
+          @b_required_corporate_logo_url = true
+          if !((@publisher_product_manifest.corporate_logo_url.blank?) or (@publisher_product_manifest.corporate_logo_url.empty?) or (@publisher_product_manifest.corporate_logo_url.nil?)) 
+              @b_corporate_logo_url = true
+              @b_required_corporate_logo_url = false              
           end
 
           @b_required_lesson_time = false    
@@ -1965,6 +1988,9 @@ class PublisherProductManifestsController < ApplicationController
           publisher_id = h_obj[:publisher_id]
           publisher_product_id = h_obj[:publisher_product_id]
           product_headline = h_obj[:product_headline]
+          
+          b_error = true
+          
           publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
           if !publisher_product.nil?
               publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
@@ -2037,6 +2063,9 @@ class PublisherProductManifestsController < ApplicationController
           publisher_id = h_obj[:publisher_id]
           publisher_product_id = h_obj[:publisher_product_id]
           product_tagline = h_obj[:product_tagline]
+          
+          b_error = true
+          
           publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
           if !publisher_product.nil?
               publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
@@ -2110,6 +2139,9 @@ class PublisherProductManifestsController < ApplicationController
           publisher_id = h_obj[:publisher_id]
           publisher_product_id = h_obj[:publisher_product_id]
           product_name = h_obj[:product_name]
+          
+          b_error = true
+          
           publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
           if !publisher_product.nil?
               publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
@@ -2183,6 +2215,9 @@ class PublisherProductManifestsController < ApplicationController
           publisher_id = h_obj[:publisher_id]
           publisher_product_id = h_obj[:publisher_product_id]
           versions = h_obj[:versions]
+          
+          b_error = true
+          
           publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
           if !publisher_product.nil?
               publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
@@ -2255,6 +2290,9 @@ class PublisherProductManifestsController < ApplicationController
           publisher_id = h_obj[:publisher_id]
           publisher_product_id = h_obj[:publisher_product_id]
           corporate_logo_url = h_obj[:corporate_logo_url]
+          
+          b_error = true
+          
           publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first rescue nil
           if !publisher_product.nil?
               publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
@@ -2331,6 +2369,8 @@ class PublisherProductManifestsController < ApplicationController
           course_time_months = h_obj[:course_time_months]
           course_time_days = h_obj[:course_time_days]
           
+          b_error = true
+          
           publisher_product_manifest = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first.publisher_product_manifest rescue nil
           if !publisher_product_manifest.nil?
               h_update = Hash.new
@@ -2395,6 +2435,7 @@ class PublisherProductManifestsController < ApplicationController
       
           publisher_product_id = h_obj[:publisher_product_id]
           allow_teacher_rating = h_obj[:allow_teacher_rating]
+          b_error = true
       
           # publisher_product_manifest = PublisherProductManifest.find(publisher_product_manifest_id)
           publisher_product_manifest = current_user.publisher.publisher_products.where("id =?", publisher_product_id).first.publisher_product_manifest rescue nil
@@ -2482,6 +2523,7 @@ class PublisherProductManifestsController < ApplicationController
       
           publisher_product_id = h_obj[:publisher_product_id]
           allow_comments = h_obj[:allow_comments]
+          b_error = true
       
           publisher_product_manifest = current_user.publisher.publisher_products.where("id =?", publisher_product_id).first.publisher_product_manifest rescue nil
           if !publisher_product_manifest.nil?
@@ -2537,6 +2579,7 @@ class PublisherProductManifestsController < ApplicationController
       
           publisher_product_id = h_obj[:publisher_product_id]
           allow_student_likes = h_obj[:allow_student_likes]
+          b_error = true
       
           publisher_product_manifest = current_user.publisher.publisher_products.where("id =?", publisher_product_id).first.publisher_product_manifest rescue nil
           if !publisher_product_manifest.nil?
@@ -2592,6 +2635,7 @@ class PublisherProductManifestsController < ApplicationController
       
           publisher_product_id = h_obj[:publisher_product_id]
           poster_print_purchase = h_obj[:poster_print_purchase]
+          b_error = true
       
           publisher_product_manifest = current_user.publisher.publisher_products.where("id =?", publisher_product_id).first.publisher_product_manifest rescue nil
           if !publisher_product_manifest.nil?
@@ -2646,7 +2690,8 @@ class PublisherProductManifestsController < ApplicationController
       
           publisher_product_id = h_obj[:publisher_product_id]
           poster_pin_web = h_obj[:poster_pin_web]
-      
+          b_error = true
+          
           publisher_product_manifest = current_user.publisher.publisher_products.where("id =?", publisher_product_id).first.publisher_product_manifest rescue nil
           if !publisher_product_manifest.nil?
               h_update = Hash.new
@@ -2700,6 +2745,7 @@ class PublisherProductManifestsController < ApplicationController
       
           publisher_product_id = h_obj[:publisher_product_id]
           poster_pin_purchase = h_obj[:poster_pin_purchase]
+          b_error = true
       
           publisher_product_manifest = current_user.publisher.publisher_products.where("id =?", publisher_product_id).first.publisher_product_manifest rescue nil
           if !publisher_product_manifest.nil?
@@ -2711,7 +2757,7 @@ class PublisherProductManifestsController < ApplicationController
                       respond_to do |format|
                         format.html {}
                         format.json { render :json => { :poster_pin_purchase => publisher_product_manifest_updated.poster_pin_purchase,
-                                                        :b_error => true,
+                                                        :b_error => false,
                                                         :updated => publisher_product_manifest_updated.updated_at.to_s(:long) } }      
                       end
                   else

@@ -281,112 +281,236 @@ module SessionsHelper
   
   
   def avatar34
-      avatar34 = user_34_avatar
-      # avatar34 = nil
-      return avatar34
+      
+      begin    
+    
+          avatar34 = user_34_avatar
+          return avatar34
+      
+      rescue StandardError => e
+          LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar34', :description => e.message.to_s)
+      end
+
+      
   end
+
   
   
   def user_34_avatar
-    
-      user = self.current_user
-      avatar = nil
-      if !user.nil?
-        user_id = user.id
-        case user.profile_type.to_s  
-          when "1"  # student
-          when "2" # teacher
-          when "3" # publisher
-            avatar = avatar_34_publisher(user_id)         
-          when "4" # institute
-          when "5" # recruiter
+
+      begin
+        
+          avatar = nil
+          user = self.current_user rescue nil
+          if !user.nil?
+              user_id = user.id
+              case user.profile_type.to_s  
+                  when "1"  # student
+                  when "2" # teacher
+                  when "3" # publisher
+                      avatar = avatar_34_publisher(user_id)         
+                  when "4" # institute
+                  when "5" # recruiter
+                  else
+                      #        
+              end
           else
-            #        
-        end
-      else
-        Rails.logger.info("current_user is nil")
+              LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'user_34_avatar', :description => 'user was nil')            
+              raise
+          end
+          
+          return avatar
+
+      rescue StandardError => e
+          LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'user_34_avatar', :description => e.message.to_s)
       end
-      
-      return avatar
+
       
   end
   
+
   
   def avatar_34_publisher(user_id)
 
-    user_avatar = nil
-    publisher_user = PublisherUser.where("user_id = ?", user_id).first
-    if !publisher_user.nil?
-      publisher_user_id = publisher_user.id
-      publisher_user_image_primary = PublisherUserImage.where("publisher_user_id = ?", publisher_user_id).where( :primary => true ).first rescue nil
-      if !publisher_user_image_primary.nil?
-        if publisher_user_image_primary.image?
-          user_avatar = publisher_user_image_primary.image_url(:image_34_34)
-        else
-          Rails.logger.info("publisher_user_image_primary image is nil")
-        end
-      else
-        Rails.logger.info("publisher_user_image_primary is nil")
-      end 
-    else
-      Rails.logger.info("publisher_user is nil")
-      # user_avatar = avatar_generic_1_w34_h34.png
-    end
-    
-    return user_avatar
+      begin
+        
+          user_avatar = nil
+          # publisher_user = PublisherUser.where("user_id = ?", user_id).first rescue nil
+          publisher_user = current_user.publisher_user rescue nil
+          if !publisher_user.nil?
+              # publisher_user_id = publisher_user.id rescue nil
+              # publisher_user_image_primary = PublisherUserImage.where("publisher_user_id = ?", publisher_user_id).where( :primary => true ).first rescue nil
+              publisher_user_image_primary = publisher_user.publisher_user_images.where( :primary => true ).first rescue nil
+              if !publisher_user_image_primary.nil?
+                  if publisher_user_image_primary.image?
+                      image_34 = publisher_user_image_primary.image_url(:image_34_34) rescue nil
+                      if !image_34.nil?
+                          user_avatar = image_34
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar_34_publisher(user_id)', :description => 'image_34 was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar_34_publisher(user_id)', :description => 'publisher_user_image_primary.image was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar_34_publisher(user_id)', :description => 'publisher_user_image_primary was nil')
+                  raise
+              end 
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar_34_publisher(user_id)', :description => 'publisher_user was nil')
+              raise
+          end
+        
+          return user_avatar
+      
+      rescue StandardError => e
+          LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar_34_publisher(user_id)', :description => e.message.to_s)
+      end
+
         
   end
   
 
+
   def avatar50
-      avatar50 = user_50_avatar
-      # avatar50 = nil
-      return avatar50
+      
+      begin    
+    
+          avatar50 = user_50_avatar
+          return avatar50
+      
+      rescue StandardError => e
+          LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar50', :description => e.message.to_s)
+      end
+
+      
   end
+
   
   
   def user_50_avatar
-    
-      user = self.current_user
-      avatar = nil
-      if !user.nil?
-        avatar = avatar_50_user(user.id)
-        # case user.profile_type.to_s  
-          # when "1"  # student
-          # when "2" # teacher
-          # when "3" # publisher
-            # avatar = avatar_50_publisher(user_id)         
-          # when "4" # institute
-          # when "5" # recruiter
-          # else
-            # #        
-        # end
-      else
-        # Rails.logger.info("current_user is nil")
+
+      begin
+        
+          avatar = nil
+          user = self.current_user rescue nil
+          if !user.nil?
+              user_id = user.id
+              case user.profile_type.to_s  
+                  when "1"  # student
+                  when "2" # teacher
+                  when "3" # publisher
+                      avatar = avatar_50_publisher(user_id)         
+                  when "4" # institute
+                  when "5" # recruiter
+                  else
+                      #        
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'user_50_avatar', :description => 'user was nil')            
+              raise
+          end
+          
+          return avatar
+
+      rescue StandardError => e
+          LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'user_50_avatar', :description => e.message.to_s)
       end
-      
-      return avatar
+
       
   end
   
 
-  def avatar_50_user(user_id)
+  
+  def avatar_50_publisher(user_id)
 
-      user_avatar = nil
-      user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
-      if !user_image_primary.nil?
-          if user_image_primary.image?
-              user_avatar = user_image_primary.image_url(:image_50_50)
+      begin
+        
+          user_avatar = nil
+          # publisher_user = PublisherUser.where("user_id = ?", user_id).first rescue nil
+          publisher_user = current_user.publisher_user rescue nil
+          if !publisher_user.nil?
+              # publisher_user_id = publisher_user.id rescue nil
+              # publisher_user_image_primary = PublisherUserImage.where("publisher_user_id = ?", publisher_user_id).where( :primary => true ).first rescue nil
+              publisher_user_image_primary = publisher_user.publisher_user_images.where( :primary => true ).first rescue nil
+              if !publisher_user_image_primary.nil?
+                  if publisher_user_image_primary.image?
+                      image_50 = publisher_user_image_primary.image_url(:image_50_50) rescue nil
+                      if !image_50.nil?
+                          user_avatar = image_50
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar_50_publisher(user_id)', :description => 'image_50 was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar_50_publisher(user_id)', :description => 'publisher_user_image_primary.image was nil')
+                      raise
+                  end
+              else
+                  user_avatar = nil
+                  # LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar_50_publisher(user_id)', :description => 'publisher_user_image_primary was nil')
+                  # raise
+              end 
           else
-              # Rails.logger.info("user_image_primary image is nil")
+              LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar_50_publisher(user_id)', :description => 'publisher_user was nil')
+              raise
           end
-      else
-          # Rails.logger.info("user_image_primary is nil")
-      end 
+        
+          return user_avatar
       
-      return user_avatar
+      rescue StandardError => e
+          LogError.create(:user_id => current_user.id, :profile_index => current_user.profile_type, :profile_description => current_user.profile_type_text, :controller => 'sessions_helper', :action => 'avatar_50_publisher(user_id)', :description => e.message.to_s)
+      end
+
         
   end
+
+
+
+
+  
+
+  # def avatar50
+      # avatar50 = user_50_avatar
+      # return avatar50
+  # end
+  # def user_50_avatar
+      # user = self.current_user
+      # avatar = nil
+      # if !user.nil?
+        # avatar = avatar_50_user(user.id)
+        # # case user.profile_type.to_s  
+          # # when "1"  # student
+          # # when "2" # teacher
+          # # when "3" # publisher
+            # # avatar = avatar_50_publisher(user_id)         
+          # # when "4" # institute
+          # # when "5" # recruiter
+          # # else
+            # # #        
+        # # end
+      # else
+        # # Rails.logger.info("current_user is nil")
+      # end
+      # return avatar
+  # end
+  # def avatar_50_user(user_id)
+      # user_avatar = nil
+      # user_image_primary = current_user.user_images.where( :primary => true ).first rescue nil
+      # if !user_image_primary.nil?
+          # if user_image_primary.image?
+              # user_avatar = user_image_primary.image_url(:image_50_50)
+          # else
+              # # Rails.logger.info("user_image_primary image is nil")
+          # end
+      # else
+          # # Rails.logger.info("user_image_primary is nil")
+      # end 
+      # return user_avatar
+  # end
+  
   
   # def avatar_50_publisher(user_id)
     # user_avatar = nil

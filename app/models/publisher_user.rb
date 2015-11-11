@@ -49,7 +49,8 @@ class PublisherUser < ActiveRecord::Base
   belongs_to :user
   
   has_many :publisher_user_images, dependent: :destroy
-  has_many :publisher_user_logo_images, dependent: :destroy
+  has_many :publisher_user_background_images, dependent: :destroy
+  # has_many :publisher_user_logo_images, dependent: :destroy
   
   has_one :publisher_user_plot, dependent: :destroy
   has_one :publisher_user_interest, dependent: :destroy

@@ -68,6 +68,10 @@ class User < ActiveRecord::Base
   has_many :user_images
   has_many :post_users 
   
+  has_many :conversations #, dependent: :destroy
+  has_many :messages #, dependent: :destroy
+  # has_many :messages , :through => :conversations
+    
   has_many :post_user_likes, dependent: :destroy
   has_many :post_user_comments, dependent: :destroy
   has_many :log_users, dependent: :destroy    # ? possibly delete this

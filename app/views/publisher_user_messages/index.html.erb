@@ -1,0 +1,512 @@
+<!-- Template from http://www.bypeople.com/simple-chat-conversation/ -->
+
+<style type="text/css">
+	.header
+	{
+	  font-size:26px;
+	  margin:0 auto;
+	  text-align:center;
+	  color:#9F6905;
+	  font-weight:lighter;
+	  background-color:#f0f0f0;
+	  height:50px;
+	  line-height:50px;
+	  border-bottom:1px solid #9F6905;
+	}
+	.container
+	{
+	  /*width:600px;*/
+	  width: 100%;
+	  cursor:default;
+	  margin:20px auto;
+	  max-height:500px;
+	  overflow-y:scroll;
+	}
+	.container::-webkit-scrollbar 
+	{
+	width: 3px;
+	max-width: 3px;
+	height: auto;
+	max-height: 8px;
+	}
+	.container::-webkit-scrollbar-thumb 
+	{
+	background: #f0f0f0;
+	border-radius: 5px;
+	max-width: 3px;
+	}
+	.container::-webkit-scrollbar-track {
+	background: #9F6905;
+	  border-radius:5px;
+	}
+	.Area
+	{
+	  margin:0 auto;
+	  width:500px;
+	  background-color:rgba(240, 240, 240, 0.2);
+	  display:table;
+	  padding:5px;
+	  border-radius:5px;
+	  margin-bottom:10px;
+	}
+	.L
+	{
+	  float:left;
+	  position: relative;
+	}
+	.Area img
+	{
+	  width:50px;
+	  height:50px;
+	  border-radius:50%;
+	  border:2px solid #f0f0ff;
+	  padding:5px;    
+	}
+	.Area img:hover
+	{
+	    -moz-box-shadow: 0 5px 5px rgba(223, 120, 8, 1);
+		-webkit-box-shadow: 0 5px 5px rgba(223, 120, 8, 1);
+		box-shadow: 0 5px 5px rgba(223, 120, 8, 1);
+	    -webkit-transition: all 1.5s;
+	    -moz-transition: all 1.5s;
+	    transition: all 1.5s;
+		cursor:pointer;
+	}
+	.R
+	{
+	    float:right;
+	    position: relative;
+	}
+	.text
+	{
+		/*color: #a4a4a4;*/
+		color: #376340;
+		font-family: tahoma;
+		font-size: 14px;
+		font-weight:lighter;
+		line-height: 30px;
+		width:400px;
+		border:1px solid #f0f0f0;
+		background-color:rgba(255, 255, 255, 0.6);
+		margin-top:10px;
+		border-radius:5px;
+		padding:5px;
+		word-wrap: break-word; 
+	}
+	.Area textarea
+	{
+	  font-size:12px;
+	  width:90%;
+	  max-width:90%;
+	  min-width:90%;
+	  padding:5%;
+	  border-radius:5px;
+	  border:1px solid #f0f0f1;
+	  max-height:50px;
+	  height:50px;
+	  min-height:50px;
+	  background-color:#333;
+	  color:#fff;
+	  outline:none;
+	  border:1px solid transparent;
+	  resize:none;
+	}
+	.Area textarea:focus
+	{
+		color:#333;
+		border:1px solid #ccc;
+		-webkit-transition: all 1.5s;
+		-moz-transition: all 1.5s;
+		transition: all 1.5s;
+		background-color:#fff;
+	}
+	.Area .note
+	{
+	  color:#9F6905;
+	  font-size:10px;
+	}
+	.R .tooltip
+	{
+	  font-size:10px;
+	  position:absolute;
+	  background-color:#fff;
+	  padding:5px;
+	  border-radius:5px;
+	  border:2px solid #9F6905;
+	  margin-left:70px;
+	  margin-top:-70px;
+	  display:none;
+	  color:#545454;
+	  white-space: nowrap;
+	  z-index: 1;
+	}
+	.R .tooltip:before
+	{
+	    content: '';
+	    position: absolute;
+	    width: 1px;
+	    height: 1px;
+	    border: 5px solid transparent;
+	    border-right-color: #9F6905;
+	    /*margin-top: 10px;*/
+	    margin-left: -17px;
+	}
+	.R:hover .tooltip
+	{
+	  display:block;
+	}
+	.L .tooltip
+	{
+	  font-size:10px;
+	  position:absolute;
+	  background-color:#fff;
+	  padding:5px;
+	  border-radius:5px;
+	  border:2px solid #9F6905;
+	  margin-left:70px;
+	  margin-top:-70px;
+	  display:none;  
+	  color:#545454;
+	  white-space: nowrap;
+	  z-index: 1;
+	}
+	.L .tooltip:before
+	{
+	    content: '';
+	    position: absolute;
+	    width: 1px;
+	    height: 1px;
+	    border: 5px solid transparent;
+	    border-right-color: #9F6905;
+	    /*margin-top: 10px;*/
+	    margin-left: -17px;
+	}
+	.L:hover .tooltip
+	{
+	  display:block;
+	}
+	a
+	{
+	  text-decoration:none;
+	}
+	.Area input[type=button], .Area input[type=submit]
+	{
+	  font-size:12px;
+	  padding:5px;
+	  border-radius:5px;
+	  border:1px solid #f0f0f1;
+	  background-color:#333;
+	  color:#fff;
+	  outline:none;
+	  border:1px solid transparent;
+	  float:left;
+	}
+	.Area input[type=button]:hover, .Area input[type=submit]:hover
+	{
+	  color:#fff;
+	  border:1px solid #ccc;
+	     -webkit-transition: all 1.5s;
+	    -moz-transition: all 1.5s;
+	    transition: all 1.5s;
+	  background-color:#9F6905;
+	}
+	.validation
+	{
+	  float:left;
+	  background-color:#ccc;
+	  border-radius:5px;
+	  padding:5px;
+	  font-size:12px;
+	  line-height:14px;
+	  height:0px;
+	  margin-left:5px;
+	  display:none;
+	}
+	br
+	{
+	  clear:both;
+	  height:20px;
+	}
+</style>
+
+<div style="display: table; height: 100%; width: 100%;">
+	<div style="display: table-cell; width: 225px; vertical-align: top;">
+		<%= render 'users' %>
+	</div>
+	<div id="main_container" style="display: table-cell; width: 750px; vertical-align: top;">
+		<%= render 'conversations' %>
+	</div>
+	<div style="display: table-cell; width: 225px; vertical-align: top; background: lightgray"></div>
+</div>
+<div style="position: relative;">
+	<div style="float: left; width: 150px">
+		<!-- <#%= render 'users' %> -->
+		<!-- <#%= render 'conversations' %> -->
+	</div>
+	<div style="width: 50px"></div>
+	<div style="clear: both"></div>
+</div>
+
+<script type="text/javascript">
+	// var subscription = null;
+	// // Stomp client for url 
+	// client = Stomp.client("wss://webknow/websockets", "v11.stomp");  
+	// // Connect to Torquebox, executing the function when connected 
+	// client.connect("", "", function(frame) { 
+	// 	// Subscribe to the demo queue to fire callback 
+	// 	subscription = client.subscribe("/queue/demo", onMessage); 
+	// 	// Send a test message 
+	// 	client.send( "/queue/demo", {}, "This is a test of the Demo" ); 
+	// }); 
+	// // Disconnect client on close 
+	// $(window).unload(function() { 
+	// 	client.disconnect(); 
+	// });
+	// String.format = function() {
+	//     // The string containing the format items (e.g. "{0}")
+	//     // will and always has to be the first argument.
+	//     var theString = arguments[0];
+	    
+	//     // start with the second argument (i = 1)
+	//     for (var i = 1; i < arguments.length; i++) {
+	//         // "gm" = RegEx options for Global search (more than one instance)
+	//         // and for Multiline search
+	//         var regEx = new RegExp("\\{" + (i - 1) + "\\}", "gm");
+	//         theString = theString.replace(regEx, arguments[i]);
+	//     }
+	    
+	//     return theString;
+	// }
+	// onMessage = function(msg) { 
+	// 	// alert(msg);
+	// 	// var message = String.format('<p>{0}: {1}</p>',
+ //  //                            msg.headers.sender, msg.body);
+	// 	if (msg.headers.recipient == null) {
+	// 		var message = String.format('<div class="Area Message">' + 
+	// 										'<div class="L">' + 
+	// 											'<a href="{0}">' +
+	// 											'<img src="{1}"/>' +
+	// 											'<div class="tooltip">{2}</div></a>' +
+	// 										'</div>' +
+	// 										'<div class="text R textR">{3}</div>' +
+	// 									'</div>', "/" + msg.headers.sender_slug, msg.headers.sender_image, msg.headers.sender, msg.body);
+			
+	// 		// var dialog_container = $("#dialog_id_" + msg.headers.dialog_id);
+	// 		var dialog_container = $("#dialog_container");
+	// 		if(dialog_container.length != 0) {
+	// 			dialog_container.append($(message));
+	// 			var container = $('.container'),
+	// 	    		scrollTo = $('.Message').last();
+	// 			container.animate({
+	// 			    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+	// 			}, 500);
+	// 		}
+	// 	} else 
+	// 	{
+	// 		// Resubscribing due to opening a new dialog
+	// 		resubscribe();
+	// 		// Showing a new message or notification
+	// 		// TODO
+	// 		// Showing message
+	// 		var message = String.format('<div class="Area Message">' + 
+	// 										'<div class="L">' + 
+	// 											'<a href="{0}">' +
+	// 											'<img src="{1}"/>' +
+	// 											'<div class="tooltip">{2}</div></a>' +
+	// 										'</div>' +
+	// 										'<div class="text R textR">{3}</div>' +
+	// 									'</div>', "/" + msg.headers.sender_slug, msg.headers.sender_image, msg.headers.sender, msg.body);
+	// 		$('#dialog_id').val(msg.headers.dialog_id);
+	// 		$('#current_dialog_id').html(msg.headers.dialog_id);
+	// 		// var dialog_container = $("#dialog_id_" + msg.headers.dialog_id);
+	// 		var dialog_container = $("#dialog_container");
+	// 		if(dialog_container.length != 0) {
+	// 			dialog_container.append($(message));
+	// 			var container = $('.container'),
+	// 	    		scrollTo = $('.Message').last();
+	// 			container.animate({
+	// 			    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+	// 			}, 500);
+	// 		}
+	// 		// Showing just notification
+	// 	}
+	// }
+	function sendMessage() {
+		// client.send( "/queue/demo", { dialog_id: $("#dialog_id").val() }, $("#new_message").val() );
+		stompSendMessage($("#dialog_id").val(), $("#new_message").val())
+		$("#new_message").val("");
+	}
+	// $('#messageForm').submit(function () {
+	// 	sendMessage();
+	// 	return false;
+	// });
+	// function resubscribe() {
+	// 	// Unsubscribing subscription
+	// 	subscription.unsubscribe();
+	// 	// Subscribe to the demo queue to fire callback 
+	// 	subscription = client.subscribe("/queue/demo", onMessage);
+	// }
+</script>
+<!-- STOMP helpers -->
+<script type="text/javascript">
+	String.format = function() {
+	    // The string containing the format items (e.g. "{0}")
+	    // will and always has to be the first argument.
+	    var theString = arguments[0];
+	    
+	    // start with the second argument (i = 1)
+	    for (var i = 1; i < arguments.length; i++) {
+	        // "gm" = RegEx options for Global search (more than one instance)
+	        // and for Multiline search
+	        var regEx = new RegExp("\\{" + (i - 1) + "\\}", "gm");
+	        theString = theString.replace(regEx, arguments[i]);
+	    }
+	    
+	    return theString;
+	}
+</script>
+<!-- STOMP region -->
+<script type="text/javascript">
+	var stompClient;
+	var stompSubscribtion;
+	function stompConnect() {
+		// Stomp client for url 
+	    // stompClient = Stomp.client("wss://webknow/websockets", "v11.stomp");
+	    stompClient = Stomp.client("wss://webknow/websockets", "v11.stomp"); 
+	    // Connect to Torquebox, executing the function when connected 
+	    stompClient.connect('', '', stompSuccessCallback, stompFailureCallback);
+	}
+	function stompResubscribe() {
+		// Unsubscribing subscription
+		stompSubscribtion.unsubscribe();
+		// Subscribe to the demo queue to fire callback 
+		stompSubscribtion = stompClient.subscribe("/queue/demo", stompMessageCallback);
+	}
+	function stompDisconnect() {
+		stompClient.disconnect();
+	}
+	// Recommended to use <#%= form_tag({action: 'send_message'}, remote: true) do %>
+	function stompSendMessage(dialog_id, simpleMessage) {
+		stompClient.send( "/queue/demo", { dialog_id: dialog_id }, simpleMessage );
+	}
+	var stompSuccessCallback = function (frame) {
+	    console.log('STOMP: Connection successful');
+	    // Subscribe to the demo queue to fire callback 
+		stompSubscribtion = stompClient.subscribe("/queue/demo", stompMessageCallback); 
+		// Send a test message 
+		stompClient.send( "/queue/demo", {}, "This is a test of the Demo" ); 
+	}
+	var stompFailureCallback = function (error) {
+	    console.log('STOMP: ' + error);
+	    setTimeout(stompConnect, 10000);
+	    console.log('STOMP: Reconecting in 10 seconds');
+	}
+	var stompMessageCallback = function (stompMessage) {
+		if (stompMessage.headers.recipient == null) {			
+			// var dialog_container = $("#dialog_id_" + stompMessage.headers.dialog_id);
+			if ( $(".container").find("[data-dialog-id='" + stompMessage.headers.dialog_id + "']").length != 0 ) 
+			{	// If conversations rendered
+				// var conversation_container = $(".container").find("[data-dialog-id='" + stompMessage.headers.dialog_id + "']");
+				// var c_unread_c = conversation_container.find("#conversation_unread");
+				// var conversation_unread = (isNaN(parseInt(c_unread_c.text()))) ? 1 : parseInt(c_unread_c.text()) + 1;
+				// // var conversation_unread = parseInt(c_unread_c.text()) + 1;
+				// c_unread_c.text("+" + conversation_unread);
+				// var c_body_c = conversation_container.find("#conversation_body");
+				// c_body_c.css('font-weight', '700');
+				// c_body_c.text(stompMessage.body);
+				// var c_time_c = conversation_container.find("#conversation_time");
+				// var months = [ "January", "February", "March", "April", "May", "June", 
+				// "July", "August", "September", "October", "November", "December" ];
+				// var dNow = new Date();
+				// var localdate = (months[dNow.getMonth()]) + 
+				// ' ' + dNow.getDate() + 
+				// ', ' + dNow.getFullYear() + 
+				// ' ' + dNow.getHours() + 
+				// ':' + (( dNow.getMinutes() < 10 ) ? "0" + dNow.getMinutes() : dNow.getMinutes());
+				// c_time_c.text(localdate);
+				// Temporary solution
+				$.ajax({
+					type : 'POST',
+					data : '',
+					url : '/publisher_user_messages/view_conversations',
+					dataType : "script",
+					beforeSend : function(xhr) {
+						xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+					}
+				});
+			} else if ($("#dialog_id").val() == stompMessage.headers.dialog_id) 
+			{	// If messages rendered
+				var message = String.format('<div class="Area Message">' + 
+												'<div class="L">' + 
+													'<a href="{0}">' +
+													'<img src="{1}"/>' +
+													'<div class="tooltip">{2}</div></a>' +
+												'</div>' +
+												'<div class="text R textR">{3}</div>' +
+											'</div>', "/" + stompMessage.headers.sender_slug, stompMessage.headers.sender_image, stompMessage.headers.sender, stompMessage.body);
+				var dialog_container = $("#dialog_container");
+				if(dialog_container.length != 0) {
+					dialog_container.append($(message));
+					var container = $('#dialog_container'),
+			    		scrollTo = $('.Message').last();
+					container.animate({
+					    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+					}, 500);
+				}
+			} else
+			{
+				$.ajax({
+					type : 'POST',
+					data : '',
+					url : '/publisher_user_messages/view_conversations',
+					dataType : "script",
+					beforeSend : function(xhr) {
+						xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+					}
+					// statusCode : {
+					// 	// 200:function() { alert("200"); },
+					// 	// 202:function() { alert("202"); }
+					// },
+					// success : function(data) {
+					// 	// alert("successful");
+					// },
+					// error : function(xhr) {
+					// 	alert("error: " + xhr.statusText);
+					// }
+				});
+			}	
+		} else 
+		{
+			// Resubscribing due to opening a new dialog
+			stompResubscribe();
+			// Showing a new message or notification
+			// TODO
+			// Showing message
+			var message = String.format('<div class="Area Message">' + 
+											'<div class="L">' + 
+												'<a href="{0}">' +
+												'<img src="{1}"/>' +
+												'<div class="tooltip">{2}</div></a>' +
+											'</div>' +
+											'<div class="text R textR">{3}</div>' +
+										'</div>', "/" + stompMessage.headers.sender_slug, stompMessage.headers.sender_image, stompMessage.headers.sender, stompMessage.body);
+			$('#dialog_id').val(stompMessage.headers.dialog_id);
+			$('#current_dialog_id').html(stompMessage.headers.dialog_id);
+			// var dialog_container = $("#dialog_id_" + stompMessage.headers.dialog_id);
+			var dialog_container = $("#dialog_container");
+			if(dialog_container.length != 0) {
+				dialog_container.append($(message));
+				var container = $('.container'),
+		    		scrollTo = $('.Message').last();
+				container.animate({
+				    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+				}, 500);
+			}
+			// Showing just notification
+		}
+	}
+	stompConnect();
+	$(window).unload(function() { 
+		stompDisconnect(); 
+	});
+</script>

@@ -7,7 +7,7 @@
 #  updated_at          :datetime
 #  profile_index       :integer          default(0)
 #  profile_description :string(255)
-#  description         :string(255)
+#  description         :text
 #  controller          :string(255)
 #  action              :string(255)
 #  user_id             :integer

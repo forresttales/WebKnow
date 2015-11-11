@@ -91,12 +91,16 @@
 				height: 100%; 
 				margin: 0px auto;
 			}
+
+			.body-visibility-hidden {
+				visibility: hidden;
+			}
 			
 		</style>
 
     </head>
     
-	<body style="margin 0; padding: 0;">
+	<body id="body" class="body-visibility-hidden" style="margin 0; padding: 0;">
 		<div class="body-wrap">
 			<%= render 'layouts/nav_main' %>
 			<%= render 'layouts/nav_publisher' %>

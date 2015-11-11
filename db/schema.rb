@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926133817) do
+ActiveRecord::Schema.define(version: 20151108095545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 20150926133817) do
     t.integer  "year_value", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "conversations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dialog_id",             default: 0
+    t.integer  "user_id",               default: 0
+    t.integer  "start_from_message_id", default: 0
+    t.boolean  "owner",                 default: false
   end
 
   create_table "core_literacy_standards", force: true do |t|
@@ -729,7 +738,7 @@ ActiveRecord::Schema.define(version: 20150926133817) do
     t.datetime "updated_at"
     t.integer  "profile_index",       default: 0
     t.string   "profile_description"
-    t.string   "description"
+    t.text     "description"
     t.string   "controller"
     t.string   "action"
     t.integer  "user_id"
@@ -752,6 +761,16 @@ ActiveRecord::Schema.define(version: 20150926133817) do
   end
 
   add_index "log_users", ["user_id"], name: "index_log_users_on_user_id", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",         default: 0
+    t.text     "body"
+    t.boolean  "unread",          default: true
+    t.integer  "dialog_id",       default: 0
+    t.integer  "conversation_id", default: 0
+  end
 
   create_table "paintings", force: true do |t|
     t.integer  "gallery_id"
@@ -1368,26 +1387,6 @@ ActiveRecord::Schema.define(version: 20150926133817) do
 
   add_index "publisher_product_appropriate_grades", ["publisher_id"], name: "index_appr_grade_on_publisher_id", using: :btree
   add_index "publisher_product_appropriate_grades", ["publisher_product_id"], name: "index_appr_grade_on_publisher_product_id", using: :btree
-
-  create_table "publisher_product_background1_images", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id",              default: 0
-    t.integer  "publisher_id",         default: 0
-    t.integer  "publisher_product_id", default: 0
-    t.string   "image"
-    t.string   "image_name"
-    t.boolean  "primary",              default: false
-    t.integer  "order",                default: 0
-    t.integer  "crop_x",               default: 0
-    t.integer  "crop_y",               default: 0
-    t.integer  "crop_w",               default: 0
-    t.integer  "crop_h",               default: 0
-    t.integer  "width",                default: 0
-    t.integer  "height",               default: 0
-  end
-
-  add_index "publisher_product_background1_images", ["publisher_product_id"], name: "index_pub_prod_bkgrnd1_images_on_pub_prod_id", using: :btree
 
   create_table "publisher_product_by_reviews", force: true do |t|
     t.integer  "publisher_id"
@@ -2302,6 +2301,24 @@ ActiveRecord::Schema.define(version: 20150926133817) do
 
   add_index "publisher_settings", ["publisher_id"], name: "index_publisher_settings_on_publisher_id", using: :btree
 
+  create_table "publisher_user_background_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",           default: 0
+    t.integer  "publisher_id",      default: 0
+    t.integer  "publisher_user_id", default: 0
+    t.string   "image"
+    t.string   "image_name"
+    t.boolean  "primary",           default: false
+    t.integer  "order",             default: 0
+    t.integer  "crop_x",            default: 0
+    t.integer  "crop_y",            default: 0
+    t.integer  "crop_w",            default: 0
+    t.integer  "crop_h",            default: 0
+    t.integer  "width",             default: 0
+    t.integer  "height",            default: 0
+  end
+
   create_table "publisher_user_images", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -2316,7 +2333,11 @@ ActiveRecord::Schema.define(version: 20150926133817) do
     t.integer  "crop_y",            default: 0
     t.integer  "crop_w",            default: 0
     t.integer  "crop_h",            default: 0
+    t.integer  "width",             default: 0
+    t.integer  "height",            default: 0
   end
+
+  add_index "publisher_user_images", ["publisher_user_id"], name: "index_publisher_user_images_on_publisher_user_id", using: :btree
 
   create_table "publisher_user_interest_images", force: true do |t|
     t.datetime "created_at"

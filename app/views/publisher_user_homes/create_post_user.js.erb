@@ -1,0 +1,17 @@
+// alert('ajax works in create_post_user');
+<% if @post_users.any? %>
+	$("#render_story_4").html("<%= j render('publisher_user_homes/story_4') %>");
+	$("#render_story_4_post_users_count").html("<%= j render('publisher_user_homes/story_4_post_users_count') %>");
+	// $("#render_story_4_will_paginate").html("<#%= j render("publisher_users/story_4_will_paginate") %#>");
+	$("#submit_story_4_loader").addClass("hidden");
+	$("#submit_story_4_text").removeClass("hidden");
+	
+	$("#render_post_user_image").html('');
+	reset_textarea_post_user();
+	// $("#textarea_addpost").html('');
+	// $("#render_post_user_image").html('');
+	// post_user_created_id = 0;
+	// $("#textarea_addpost").focus();
+<% else %>
+	// alert('return error');
+<% end %>
