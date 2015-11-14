@@ -1,0 +1,117 @@
+<style type="text/css">
+	.user-row {
+	    display: table;
+	    height: 100%;
+	    width: 100%;
+	    cursor: pointer;
+	    font-size: 14px;
+	    font-family: Arial, Helvetica, sans-serif;
+	    color: #376340;
+	}
+	.user-row:hover {
+		background: white;
+	}
+	.btn-opt-edit-container {
+	    background: linear-gradient(#FBB040, #CA8E33);
+	    border-radius: 10px;
+	    width: 80px;
+	    height: 24px;
+	}
+	.btn-opt-edit {
+	    font-family: Arial, Helvetica, sans-serif;
+	    font-size: 14px;
+	    font-weight: 700;
+	    color: #eee;
+	    text-align: center;
+	    width: 80px;
+	    height: 24px;
+	    padding-top: 4px;
+	    text-decoration: none;
+	    outline: none;
+	}
+</style>
+
+
+
+<div style="display: table; height: 100%; width: 100%; margin: 20px auto">
+	<div style="display: table-cell; width: 225px; vertical-align: top;">
+		<div class="container" style="padding: 5px; width: 225px; background: aliceblue ">
+			<% User.all.order(:id).each do |user| %>
+				<div class="user-row">
+					<div style="display: table-cell; width: 50px; vertical-align: middle;">				
+
+				    	<% case user.profile_type.to_s %>  
+				      	<% 	when "1" %>
+				      	<%    	user_image = user.user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %>
+				      	<%   when "2"%>
+				      	<%    	user_image = user.user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %>
+				      	<%   when "3"%>
+				      	<%    	user_image = user.publisher_user.publisher_user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %>
+				      	<%   when "4"%>
+				      	<%    	user_image = user.user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %>
+				      	<%   when "5"%>
+				      	<%    	user_image = user.user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %>
+				      	<%   else %>
+				      	<% end %>
+
+						<!-- <#% user_image = user.user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %#> -->
+						<%= image_tag(user_image.to_s) %>
+					</div>
+					<div style="display: table-cell; width: 175px; vertical-align: middle; padding: 5px;">
+						<a href=<%= user.slug %> style="display: inline; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= user.name_first.to_s + " " + user.name_last.to_s %></a>
+						<div style="font-size: 12px">
+							<!-- <div><#%= user.username %#></div> -->
+							<div style="display: inline">User ID:</div>
+							<div class="user_id" data-user-id=<%= user.id %> style="display: inline"><%= user.id %></div>
+						</div>				
+						<!-- <div id="conversation_time" style="color: grey"><#%= I18n.l last_message.created_at, :format => :long %></div> -->
+					</div>
+					<!--<#%= form_tag({action: 'open_conversation'}, remote: true, :'data-type' => 'json', :style => "display: inline; float: right") do %>-->
+					<!-- #%= form_tag({action: 'open_conversation'}, remote: true, :style => "display: none; float: right;") do %>
+						<#%= hidden_field_tag :sender_user_id, current_user.id %>
+						<#%= hidden_field_tag :recipient_user_id, user.id %>
+						<#%= submit_tag("Open dialog", :style => " background: none; ", :onclick => "onClick()") %>
+					<#% end %> -->
+				</div>
+				<hr>		
+			<% end %>
+		</div>
+	</div>
+	<div id="main_container" style="display: table-cell; width: 750px; vertical-align: top;">
+		<div style="margin: auto; width: 80%;">
+			<!--<#%= form_tag({action: 'open_conversation'}, remote: true, :'data-type' => 'json', :style => "display: inline; float: right") do %>-->
+			<%= form_tag({action: 'search_people'}, id: "search_form", remote: true, :style => "margin: auto 20px; float: left") do %>
+				<%= hidden_field_tag :sender_user_id, current_user.id %>
+				<%=text_field_tag :search_query, value = nil, style: "height:20px; width: 400px; padding: 5px; border-radius:5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340;", placeholder: "search"%>
+				<!-- <#%= hidden_field_tag :recipient_user_id, user.id %> -->
+				<%= submit_tag("Search", :style => "display: none") %> 
+				<div onclick="onSearchClick()" style="float: right; margin: 5px" class="btn-opt-edit-container">
+					<div class="btn-opt-edit">Search</div>
+				</div>
+			<% end %>
+			<div style="clear: both; height: 20px;"></div>
+			<div id="result_container">
+				<!-- <#%= render 'people_search_result' %> -->
+			</div>
+		</div>			
+	</div>
+	<div style="display: table-cell; width: 225px; vertical-align: top; background: lightgray"></div>
+</div>
+
+<script type="text/javascript">
+	// $( ".user-row" ).click(function( event ) {
+	//   var target = $( event.target );
+	//   if ( !target.is( "a" ) ) {
+	//     $(event.currentTarget).find("form").submit();
+	//   }
+	// });
+
+	function onSearchClick () {
+		// (event.currentTarget).find("form").submit();
+		$("#search_form").submit();
+	}
+
+	$('#search_query').on('input', function() {
+		onSearchClick();
+	});
+</script>

@@ -1,0 +1,5 @@
+<% if @search_results.present? %>
+	$('#result_container').html("<%= j render('user_lists/people_search_result') %>");
+<% else %>
+	$('#result_container').html("");
+<% end %>

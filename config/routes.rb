@@ -19,6 +19,15 @@ Webknow::Application.routes.draw do
         post :view_conversations
       end
   end 
+
+  match "/People-Search" => "user_lists#index", via: 'get'
+
+  resources :user_lists do
+      collection do
+        post :search_people
+      end
+  end 
+
   # get "messages/index"
   # get "messages/create"
 
