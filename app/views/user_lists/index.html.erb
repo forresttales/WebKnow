@@ -35,7 +35,8 @@
 
 <div style="display: table; height: 100%; width: 100%; margin: 20px auto">
 	<div style="display: table-cell; width: 225px; vertical-align: top;">
-		<div class="container" style="padding: 5px; width: 225px; background: aliceblue ">
+		<% if false %>
+		<div class="container" style="padding: 5px; width: 225px; background: aliceblue ">			
 			<% User.all.order(:id).each do |user| %>
 				<div class="user-row">
 					<div style="display: table-cell; width: 50px; vertical-align: middle;">				
@@ -75,7 +76,9 @@
 				</div>
 				<hr>		
 			<% end %>
+			
 		</div>
+		<% end %>
 	</div>
 	<div id="main_container" style="display: table-cell; width: 750px; vertical-align: top;">
 		<div style="margin: auto; width: 80%;">

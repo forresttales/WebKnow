@@ -1,7 +1,7 @@
 <% @search_results.each do |user| %>
 	<div class="user-row">
 		<div style="display: table-cell; width: 175px; vertical-align: middle; padding: 5px;">
-			<a href=<%= user.slug %> style="display: inline; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= user.name_first.to_s + " " + user.name_last.to_s %></a>
+			<a href="<%= user.slug %>" style="display: inline; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= user.name_first.to_s + " " + user.name_last.to_s %></a>
 			<div style="font-size: 12px">
 				<!-- <div><#%= user.username %#></div> -->
 				<div style="display: inline">User ID:</div>
@@ -10,3 +10,22 @@
 		</div>
 	</div>
 <% end %>
+<%= will_paginate @search_results, :inner_window=> 2, :params => {:controller => 'user_lists'} %>
+<script type="text/javascript">
+	$('.pagination a').attr('data-remote', 'true');
+
+	function setAjaxPagination() {
+		$('.pagination a').click ( function( event ){
+			event.preventDefault();
+			event.stopImmediatePropagation();
+
+			$.ajax({
+				method: "POST",
+			  	url: $(this).attr('href'),
+			  	data: { search_query: $("#search_query").val() },
+			  	dataType: "script" });
+		});
+	}
+	setAjaxPagination();
+</script>
+ 

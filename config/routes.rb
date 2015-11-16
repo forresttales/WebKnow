@@ -21,6 +21,7 @@ Webknow::Application.routes.draw do
   end 
 
   match "/People-Search" => "user_lists#index", via: 'get'
+  match "/People-Search" => "user_lists#search_people", via: 'post'
 
   resources :user_lists do
       collection do
