@@ -2,7 +2,7 @@
 	.user-row {
 	    display: table;
 	    height: 100%;
-	    width: 100%;
+	    /*width: 100%;*/
 	    cursor: pointer;
 	    font-size: 14px;
 	    font-family: Arial, Helvetica, sans-serif;
@@ -29,9 +29,23 @@
 	    text-decoration: none;
 	    outline: none;
 	}
+
+	.btn-clear-search-field {
+		position: absolute;
+		top: 12px;
+		right: 100px;
+		display: block;
+		width: 12px;
+		height: 12px;
+		background: url(/assets/chosen-sprite.png) -42px 1px no-repeat;
+		font-size: 1px;
+		cursor: pointer;
+	}
+
+	.btn-clear-search-field:hover {
+		background: url(/assets/chosen-sprite.png) -42px -10px no-repeat;
+	}
 </style>
-
-
 
 <div style="display: table; height: 100%; width: 100%;">
 	<div style="display: table-cell; width: 225px; vertical-align: top;">
@@ -83,9 +97,16 @@
 	<div id="main_container" style="display: table-cell; width: 750px; vertical-align: top;">
 		<div style="margin: 20px auto; width: 80%;" >
 			<!--<#%= form_tag({action: 'open_conversation'}, remote: true, :'data-type' => 'json', :style => "display: inline; float: right") do %>-->
-			<%= form_tag({action: 'search_people'}, id: "search_form", remote: true, :style => "margin: auto 20px; float: left") do %>
+			<%= form_tag({action: 'search_people'}, id: "search_form", remote: true, :style => "margin: auto 20px; float: left; position: relative;") do %>
 				<%= hidden_field_tag :sender_user_id, current_user.id %>
+				<%= hidden_field_tag :search_age_from, value = nil %>
+				<%= hidden_field_tag :search_age_to, value = nil %>
+				<%= hidden_field_tag :search_gender, value = nil %>
+				<%= hidden_field_tag :search_bd_year, value = nil %>
+				<%= hidden_field_tag :search_bd_month, value = nil %>
+				<%= hidden_field_tag :search_bd_day, value = nil %>
 				<%=text_field_tag :search_query, value = nil, style: "height:20px; width: 400px; padding: 5px; border-radius:5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340;", placeholder: "Start typing a name..."%>
+				<div class="btn-clear-search-field" onclick="onClearSearchField()"></div>
 				<!-- <#%= hidden_field_tag :recipient_user_id, user.id %> -->
 				<%= submit_tag("Search", :style => "display: none") %> 
 				<div onclick="onSearchClick()" style="float: right; margin: 5px" class="btn-opt-edit-container">
@@ -242,8 +263,17 @@
 		}
 	}
 
+	function get_user_gender() {
+		if( $(".rd-background").attr('id') == "gender_female" ) {
+			return 1;
+		} else if ( $(".rd-background").attr('id') == "gender_male" ) {
+			return 0;
+		};
+		return null;
+	}
+
 	$(document).ready(function () {
-		set_user_gender(3);
+		set_user_gender(2);
 		//Initialize dropdowns
 		$(".chosen-select").chosen({
 			disable_search_threshold: 100,
@@ -252,20 +282,49 @@
 	});
 
 	function onSearchClick () {
-		// (event.currentTarget).find("form").submit();
+		// Setting search filter
+		if ($("#user_from_age").val())
+			$("#search_age_from").val($("#user_from_age").val());
+		else
+			$("#search_age_from").val(null);	
+		
+		if ($("#user_to_age").val())
+			$("#search_age_to").val($("#user_to_age").val());
+		else
+			$("#search_age_to").val(null);		
+		
+		var searchGender = get_user_gender();
+		if (searchGender == 1 || searchGender == 0)
+			$("#search_gender").val(searchGender);
+		else
+			$("#search_gender").val(null);		
+		
+		if ($("#user_bd_year").val())
+			$("#search_bd_year").val($("#user_bd_year").val());
+		else
+			$("#search_bd_year").val(null);		
+		
+		if ($("#user_bd_month").val())
+			$("#search_bd_month").val($("#user_bd_month").val());
+		else
+			$("#search_bd_month").val(null);			
+		
+		if ($("#user_bd_day").val())
+			$("#search_bd_day").val($("#user_bd_day").val());
+		else
+			$("#search_bd_day").val(null);
+		
 		$("#search_form").submit();
+	}
+
+	function onClearSearchField() {
+		$("#search_query").val("");
+
+		onSearchClick();
 	}
 
 	$('#search_query').on('input', function() {
 		onSearchClick();
-	});
-
-	// Radio button click
-	$(".gender_block .rd-button").click(function() {
-		$(".rd-button").each ( function () {
-			$(this).removeClass("rd-background");
-		});
-		$(this).addClass("rd-background");
 	});
 
 	function update_to_age_select (min_value) {
@@ -307,18 +366,43 @@
 		$("#user_bd_day").trigger('chosen:updated');
 	}
 
+	// Updating search results
+	$( "#user_bd_year" ).change(function() {
+		onSearchClick ();
+	});
+
 	// Dynamic update of birthday dropdown due to selected month
 	$( "#user_bd_month" ).change(function() {
 		update_bd_day_select($("#user_bd_month").val());
+
+		onSearchClick ();
+	});
+
+	$( "#user_bd_day" ).change(function() {
+		onSearchClick ();
 	});
 
 	// Dynamic update of 'to Age' due to selected 'from Age'
 	$( "#user_from_age" ).change(function() {
 		update_to_age_select($("#user_from_age").val());
+
+		onSearchClick ();
 	});
 
 	// Dynamic update of 'from Age' due to selected 'to Age'
 	$( "#user_to_age" ).change(function() {
 		update_from_age_select($("#user_to_age").val());
+
+		onSearchClick ();
+	});
+
+	// Radio button click
+	$(".gender_block .rd-button").click(function() {
+		$(".gender_block .rd-button").each ( function () {
+			$(this).removeClass("rd-background");
+		});
+		$(this).addClass("rd-background");
+
+		onSearchClick ();
 	});
 </script>
