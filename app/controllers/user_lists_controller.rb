@@ -3,7 +3,7 @@ class UserListsController < ApplicationController
 	before_action :signed_in_user
 
 	def index
-		
+		@bd_years = BdYear.all
 	end
 
 	def search_people
