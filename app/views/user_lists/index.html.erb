@@ -32,7 +32,7 @@
 
 	.btn-clear-search-field {
 		position: absolute;
-		top: 12px;
+		top: 11px;
 		right: 100px;
 		display: block;
 		width: 12px;
@@ -44,6 +44,22 @@
 
 	.btn-clear-search-field:hover {
 		background: url(/assets/chosen-sprite.png) -42px -10px no-repeat;
+	}
+
+	.search-image-search-field {
+		position: absolute;
+		top: 10px;
+		left: 7px;
+		display: block;
+		width: 12px;
+		height: 12px;
+		background: url(/assets/chosen-sprite.png) -34px -24px no-repeat;
+		font-size: 1px;
+		cursor: text;
+		-moz-transform: scaleX(-1);
+		-o-transform: scaleX(-1);
+		-webkit-transform: scaleX(-1);
+		transform: scaleX(-1);
 	}
 </style>
 
@@ -105,9 +121,10 @@
 				<%= hidden_field_tag :search_bd_year, value = nil %>
 				<%= hidden_field_tag :search_bd_month, value = nil %>
 				<%= hidden_field_tag :search_bd_day, value = nil %>
-				<%=text_field_tag :search_query, value = nil, style: "height:20px; width: 400px; padding: 5px; border-radius:5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340;", placeholder: "Start typing a name..."%>
+				<%= hidden_field_tag :search_profile_type, value = nil %>
+				<div class="search-image-search-field"></div>
+				<%=text_field_tag :search_query, value = nil, style: "height:20px; width: 400px; padding: 5px 5px 5px 22px; border-radius:5px; border: 1px solid #49853f; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340;", placeholder: "Start typing a name..."%>
 				<div class="btn-clear-search-field" onclick="onClearSearchField()"></div>
-				<!-- <#%= hidden_field_tag :recipient_user_id, user.id %> -->
 				<%= submit_tag("Search", :style => "display: none") %> 
 				<div onclick="onSearchClick()" style="float: right; margin: 5px" class="btn-opt-edit-container">
 					<div class="btn-opt-edit">Search</div>
@@ -142,7 +159,7 @@
 				</div>
 			</div>
 			<div style="height: 10px"></div>
-			<div class="gender_block">
+			<div class="gender-block">
 				<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Gender:</label>
 				<div style="height: 10px"></div>
 				<div>
@@ -183,18 +200,18 @@
 				<div id="bd_month" style="width: 70px; color: grey; ">
 					<select data-placeholder="Choose a Month" id="user_bd_month" name="user[bd_month]" class="chosen-select" style="width: 180px;">
 						<option value=""></option>
-						<option value="1">Jan</option>
-						<option value="2">Feb</option>
-						<option value="3">Mar</option>
-						<option value="4">Apr</option>
+						<option value="1">January</option>
+						<option value="2">February</option>
+						<option value="3">March</option>
+						<option value="4">April</option>
 						<option value="5">May</option>
-						<option value="6">Jun</option>
-						<option value="7">Jul</option>
-						<option value="8">Aug</option>
-						<option value="9">Sep</option>
-						<option value="10">Oct</option>
-						<option value="11">Nov</option>
-						<option value="12">Dec</option>
+						<option value="6">June</option>
+						<option value="7">July</option>
+						<option value="8">August</option>
+						<option value="9">September</option>
+						<option value="10">October</option>
+						<option value="11">November</option>
+						<option value="12">December</option>
 					</select>
 				</div>
 				<div style="height: 5px"></div>
@@ -234,6 +251,47 @@
 						<option value="31">31</option>
 					</select>
 				</div>
+			</div>
+			<div style="height: 10px"></div>
+			<div class="profile-type-block">
+				<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Profile type:</label>
+				<div style="height: 10px"></div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_student" data-profile-type="1" class="rd-button"></div>
+					</div>
+					<div style="height: 20px; display: inline-block;">Student</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_teacher" data-profile-type="2" class="rd-button"></div>
+					</div>			
+					<div style="height: 20px; display: inline-block;">Teacher</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_publisher" data-profile-type="3" class="rd-button"></div>
+					</div>			
+					<div style="height: 20px; display: inline-block;">Publisher</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_institute" data-profile-type="4" class="rd-button"></div>
+					</div>			
+					<div style="height: 20px; display: inline-block;">Institute</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_recruiter" data-profile-type="5" class="rd-button"></div>
+					</div>			
+					<div style="height: 20px; display: inline-block;">Recruiter</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_any" data-profile-type="6" class="rd-button"></div>
+					</div>
+					<div style="height: 20px; display: inline-block;">Any</div>
+				</div>
 			</div>			
 		</div>
 	</div>
@@ -264,17 +322,70 @@
 	}
 
 	function get_user_gender() {
-		if( $(".rd-background").attr('id') == "gender_female" ) {
+		if( $(".gender-block .rd-background").attr('id') == "gender_female" ) {
 			return 1;
-		} else if ( $(".rd-background").attr('id') == "gender_male" ) {
+		} else if ( $(".gender-block .rd-background").attr('id') == "gender_male" ) {
 			return 0;
 		};
 		return null;
 	}
 
+	function set_profile_type (profile_type) {
+		// Setting user gender
+		if(profile_type == 1) {
+			$('#profile_student').addClass("rd-background");
+			$('#profile_teacher').removeClass("rd-background");
+			$('#profile_publisher').removeClass("rd-background");
+			$('#profile_institute').removeClass("rd-background");
+			$('#profile_recruiter').removeClass("rd-background");
+			$('#profile_any').removeClass("rd-background");
+		} else if(profile_type == 2) {
+			$('#profile_student').removeClass("rd-background");
+			$('#profile_teacher').addClass("rd-background");
+			$('#profile_publisher').removeClass("rd-background");
+			$('#profile_institute').removeClass("rd-background");
+			$('#profile_recruiter').removeClass("rd-background");
+			$('#profile_any').removeClass("rd-background");
+		} else if(profile_type == 3) {
+			$('#profile_student').removeClass("rd-background");
+			$('#profile_teacher').removeClass("rd-background");
+			$('#profile_publisher').addClass("rd-background");
+			$('#profile_institute').removeClass("rd-background");
+			$('#profile_recruiter').removeClass("rd-background");
+			$('#profile_any').removeClass("rd-background");
+		} else if(profile_type == 4) {
+			$('#profile_student').removeClass("rd-background");
+			$('#profile_teacher').removeClass("rd-background");
+			$('#profile_publisher').removeClass("rd-background");
+			$('#profile_institute').addClass("rd-background");
+			$('#profile_recruiter').removeClass("rd-background");
+			$('#profile_any').removeClass("rd-background");
+		} else if(profile_type == 5) {
+			$('#profile_student').removeClass("rd-background");
+			$('#profile_teacher').removeClass("rd-background");
+			$('#profile_publisher').removeClass("rd-background");
+			$('#profile_institute').removeClass("rd-background");
+			$('#profile_recruiter').addClass("rd-background");
+			$('#profile_any').removeClass("rd-background");
+		} else {
+			$('#profile_student').removeClass("rd-background");
+			$('#profile_teacher').removeClass("rd-background");
+			$('#profile_publisher').removeClass("rd-background");
+			$('#profile_institute').removeClass("rd-background");
+			$('#profile_recruiter').removeClass("rd-background");
+			$('#profile_any').addClass("rd-background");
+		}
+	}
+
+	function get_profile_type () {
+		return parseInt($(".profile-type-block .rd-background").attr('data-profile-type'));
+	}
+
 	$(document).ready(function () {
+		// Initilize radio buttons
 		set_user_gender(2);
-		//Initialize dropdowns
+		set_profile_type(6);
+		// Initialize dropdowns
 		$(".chosen-select").chosen({
 			disable_search_threshold: 100,
 			allow_single_deselect: true
@@ -313,6 +424,12 @@
 			$("#search_bd_day").val($("#user_bd_day").val());
 		else
 			$("#search_bd_day").val(null);
+
+		var searchProfileType = get_profile_type();
+		if (searchProfileType >= 1 && searchProfileType <= 5)
+			$("#search_profile_type").val(searchProfileType);
+		else
+			$("#search_profile_type").val(null);
 		
 		$("#search_form").submit();
 	}
@@ -328,20 +445,20 @@
 	});
 
 	function update_to_age_select (min_value) {
-		$("#user_to_age option").show();
+		$("#user_to_age option").css("display", "block");
 		for (var i = 10; i < min_value; i++) {
 			var selector = "#user_to_age option[value=" + i + "]";
-			$(selector).hide();
+			$(selector).css("display", "none");
 		};
 		// Updating dropdown
 		$("#user_to_age").trigger('chosen:updated');
 	}
 
 	function update_from_age_select (max_value) {
-		$("#user_from_age option").show();
+		$("#user_from_age option").css("display", "block");
 		for (var i = parseInt(max_value) + 1; i <= 99; i++) {
 			var selector = "#user_from_age option[value=" + i + "]";
-			$(selector).hide();
+			$(selector).css("display", "none");
 		};
 		// Updating dropdown
 		$("#user_from_age").trigger('chosen:updated');
@@ -349,18 +466,18 @@
 
 	function update_bd_day_select(selected_month_value) {
 		if (selected_month_value == 2) {
-        	$("#user_bd_day option[value=30]").hide();
-        	$("#user_bd_day option[value=31]").hide();
+        	$("#user_bd_day option[value=30]").css("display", "none");
+        	$("#user_bd_day option[value=31]").css("display", "none");
 		} else if ( selected_month_value == 4 || 
 					selected_month_value == 6 || 
 					selected_month_value == 9 || 
 					selected_month_value == 11 ) 
 		{
-			$("#user_bd_day option[value=30]").show();
-        	$("#user_bd_day option[value=31]").hide();
+			$("#user_bd_day option[value=30]").css("display", "block");
+        	$("#user_bd_day option[value=31]").css("display", "none");
 		} else {
-			$("#user_bd_day option[value=30]").show();
-        	$("#user_bd_day option[value=31]").show();
+			$("#user_bd_day option[value=30]").css("display", "block");
+        	$("#user_bd_day option[value=31]").css("display", "block");
 		}
 		// Updating dropdown
 		$("#user_bd_day").trigger('chosen:updated');
@@ -396,9 +513,19 @@
 		onSearchClick ();
 	});
 
-	// Radio button click
-	$(".gender_block .rd-button").click(function() {
-		$(".gender_block .rd-button").each ( function () {
+	// Gender radio button click
+	$(".gender-block .rd-button").click(function() {
+		$(".gender-block .rd-button").each ( function () {
+			$(this).removeClass("rd-background");
+		});
+		$(this).addClass("rd-background");
+
+		onSearchClick ();
+	});
+
+	// Profile type radio button click
+	$(".profile-type-block .rd-button").click(function() {
+		$(".profile-type-block .rd-button").each ( function () {
 			$(this).removeClass("rd-background");
 		});
 		$(this).addClass("rd-background");
