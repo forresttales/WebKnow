@@ -191,7 +191,7 @@
 				<div id="bd_year" style="width: 70px; color: grey; ">
 					<select data-placeholder="Choose a Year" id="user_bd_year" name="user[bd_year]" class="chosen-select" style="width: 180px;">
 						<option value=""></option>
-						<% @bd_years.each do|bd_year| %>
+						<% BdYear.all.each do|bd_year| %>
 							<option value="<%= bd_year.year %>"><%= bd_year.year %></option>
 						<% end %>
 					</select>
