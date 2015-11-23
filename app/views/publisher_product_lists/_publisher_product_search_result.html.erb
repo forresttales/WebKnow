@@ -1,0 +1,74 @@
+<% @search_results.each do |publisher_product| %>
+	<div class="user-row">
+		<div style="display: table-cell; width: 50px; vertical-align: middle;">
+	      	<% product_image = publisher_product.publisher_product_pos1_image.image_url(:image_100_100) rescue "/images_avatar/avatar-gen-product-w100-h100.png" %>
+	      	<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" style="display: inline; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+				<%= image_tag(product_image.to_s) %>
+			</a>
+		</div>
+		<div style="display: table-cell; width: 175px; vertical-align: middle; padding: 5px;">
+			<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" style="display: inline; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= publisher_product.publisher_product_manifest.product_name.to_s %></a>
+			<div style="font-size: 12px">
+				<!-- <div><#%= user.username %#></div> -->
+				<div style="display: inline">Product ID:</div>
+				<div class="user_id" data-product-id=<%= publisher_product.id %> style="display: inline"><%= publisher_product.id %></div>
+			</div>
+		</div>
+	</div>
+<% end %>
+<div style="height: 10px"></div>
+<%= will_paginate @search_results, :inner_window=> 2, :params => {:controller => 'publisher_product_lists'} %>
+<script type="text/javascript">
+	$('.pagination a').attr('data-remote', 'true');
+
+	function setAjaxPagination() {
+		$('.pagination a').click ( function( event ){
+			event.preventDefault();
+			event.stopImmediatePropagation();
+
+			// Setting search filter
+			var search_age_from = "";
+			if ($("#user_from_age").val())
+				search_age_from = $("#user_from_age").val();
+			
+			var search_age_to = "";
+			if ($("#user_to_age").val())
+				search_age_to = $("#user_to_age").val();	
+			
+			var search_gender = "";
+			var searchGender = get_user_gender();
+			if (searchGender == 1 || searchGender == 0)
+				search_gender = searchGender;	
+			
+			var search_bd_year = "";
+			if ($("#user_bd_year").val())
+				search_bd_year = $("#user_bd_year").val();
+			
+			var search_bd_month = "";
+			if ($("#user_bd_month").val())
+				search_bd_month = $("#user_bd_month").val();
+			
+			var search_bd_day = "";
+			if ($("#user_bd_day").val())
+				search_bd_day = $("#user_bd_day").val();
+
+			var order = '{ "search_age_from": "' + search_age_from + '"' +
+					', "search_age_to": "' + search_age_to + '"' +
+					', "search_gender": "' + search_gender + '"' +
+					', "search_bd_year": "' + search_bd_year + '"' +
+					', "search_bd_month": "' + search_bd_month + '"' +
+					', "search_bd_day": "' + search_bd_day + '"' +
+					', "search_query": "' + $("#search_query").val() + '"' +
+					'}';
+
+			$.ajax({
+				method: "POST",
+			  	url: $(this).attr('href'),
+			  	data: order,
+			  	contentType: "application/json",
+			  	dataType: "script" });
+		});
+	}
+	setAjaxPagination();
+</script>
+ 
