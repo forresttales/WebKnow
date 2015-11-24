@@ -8,26 +8,44 @@ class PublisherProductListsController < ApplicationController
 
 	def search_publisher_product
 
+		@search_results = nil
+		search_query = ""
+
 		# Get search_query from ajax
-	    search_query = params[:search_query]
+		if params[:search_query].present?
+			search_query = params[:search_query]
+		end
 
-	    Rails.logger.info search_query
+    	# @search_results = User.where("name_first ilike :sq or name_last ilike :sq or name_first || ' ' || name_last ilike :sq", sq: "%#{search_query}%").paginate(page: params[:page], per_page: 15)
+    	temp_results = PublisherProduct.joins(:publisher_product_manifest).where("publisher_product_manifests.product_name ilike :sq", sq: "%#{search_query}%")
 
-	    @search_results = nil
+    	if params[:search_subjects].present?
+    		Rails.logger.info params[:search_subjects].to_yaml
+    		search_subjects_query = ""
+    		params[:search_subjects].each do |subject_id|
+    			if search_subjects_query.present?
+    				search_subjects_query += " and "
+    			end
+    			search_subjects_query += "publisher_product_category_subjects.category_subject_" + subject_id + " = true"
+    		end
 
-	    # Search in database
-	    if search_query.present?
-	    	Rails.logger.info "search_query.present"
-	    	# @search_results = User.where("name_first ilike :sq or name_last ilike :sq or name_first || ' ' || name_last ilike :sq", sq: "%#{search_query}%").paginate(page: params[:page], per_page: 15)
-	    	temp_results = PublisherProduct.joins(:publisher_product_manifest).where("publisher_product_manifests.product_name ilike :sq", sq: "%#{search_query}%")
+    		subject_and_results = temp_results.joins(:publisher_product_category_subject).where(search_subjects_query)
 
-	    	Rails.logger.info temp_results
+    		search_or_subjects_query = ""
+    		params[:search_subjects].each do |subject_id|
+    			if search_or_subjects_query.present?
+    				search_or_subjects_query += " or "
+    			end
+    			search_or_subjects_query += "publisher_product_category_subjects.category_subject_" + subject_id + " = true"
+    		end
 
-	    	@search_results = temp_results.paginate(page: params[:page], per_page: 15)
+    		subject_or_results = temp_results.joins(:publisher_product_category_subject).where(search_or_subjects_query).where.not(search_subjects_query)
 
-	    	Rails.logger.info @search_results.present?
-	    end
-		
+    		temp_results = subject_and_results.merge(subject_or_results)
+    	end
+
+    	@search_results = temp_results.paginate(page: params[:page], per_page: 5)
+
 	end
 
 end
