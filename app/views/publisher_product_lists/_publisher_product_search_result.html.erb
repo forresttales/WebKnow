@@ -27,14 +27,26 @@
 <script type="text/javascript">
 	$('.pagination a').attr('data-remote', 'true');
 
+	function convertArrayToJSONArray (array) {
+		var result = "";
+		if (array) {
+			$.each(array, function( index, value ) {
+				if (result != "")
+					result += ","
+				result += '"' + value + '"'
+			});
+		}
+
+		return result;
+	}
+
 	function setAjaxPagination() {
 		$('.pagination a').click ( function( event ){
 			event.preventDefault();
 			event.stopImmediatePropagation();
 
 			// Setting search filter
-
-			var order = '{ "search_subjects": "' + "1" + '"' +
+			var order = '{ "search_subjects": [' + convertArrayToJSONArray($("#search_subjects").val()) + ']' +
 					', "search_query": "' + $("#search_query").val() + '"' +
 					'}';
 
