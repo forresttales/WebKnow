@@ -34,7 +34,7 @@ class PublisherProductManifestsController < ApplicationController
                                   current_user_publisher_privileges = current_user_publisher.publisher_privileges rescue nil
                                   # Rails.logger.info("current_user_publisher_privileges = " + current_user_publisher_privileges.length.to_s)
                                   if !current_user_publisher_privileges.nil?
-                                      if current_user_publisher_privileges.any?
+                                      # if current_user_publisher_privileges.any?
                                           current_user_publisher_privilege = current_user_publisher_privileges.where("publisher_user_id=?", current_user_publisher_user.id).first rescue nil
                                           # Rails.logger.info('current_user_publisher_user.id = ' + current_user_publisher_user.id.to_s)
                                           # note - the index 'publisher_privilege_on_publisher_id' is NOT forced to be unique. This might need to be changed.
@@ -67,14 +67,14 @@ class PublisherProductManifestsController < ApplicationController
                                               # display public page
                                               redirect_to '/' + id_passed
                                           end                                      
-                                      else
-                                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'index', :description => 'current_user_publisher_privileges any failed')                                        
-                                          Rails.logger.info("current_user_publisher_privileges any failed")
-                                          # Again, this should NEVER happen. There should always be 1 record for the publisher account initiator
-                                          # -> log error
-                                          # display public page
-                                          redirect_to '/' + id_passed
-                                      end
+                                      # else
+                                          # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'index', :description => 'current_user_publisher_privileges any failed')                                        
+                                          # Rails.logger.info("current_user_publisher_privileges any failed")
+                                          # # Again, this should NEVER happen. There should always be 1 record for the publisher account initiator
+                                          # # -> log error
+                                          # # display public page
+                                          # redirect_to '/' + id_passed
+                                      # end
                                   else
                                       LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'index', :description => 'current_user_publisher_privileges was nil')
                                       # Rails.logger.info("current_user_publisher_privileges was nil")
@@ -200,8 +200,13 @@ class PublisherProductManifestsController < ApplicationController
           # publisher_product_pos3_image image_3
           # publisher_product_pos4_image image_4
                      
-          @publisher_product_pdfs = publisher_product.publisher_product_pdfs
-      
+          publisher_product_pdfs = publisher_product.publisher_product_pdfs.order(created_at: :asc) rescue nil
+          @publisher_product_pdfs = publisher_product_pdfs
+          gon.publisher_product_pdfs_count = 0
+          if !publisher_product_pdfs.nil?
+              gon.publisher_product_pdfs_count = publisher_product_pdfs.count 
+          end
+          
           image_1 = publisher_product.publisher_product_pos1_image rescue nil
           @image_1 = image_1
           if !image_1.nil?
@@ -406,11 +411,11 @@ class PublisherProductManifestsController < ApplicationController
           gon.course_time_days = @publisher_product_manifest.course_time_days
 
           gon.allow_teacher_rating = @publisher_product_manifest.allow_teacher_rating
-          a_user_rating = Array.new
-          a_user_rating.push(@publisher_product_manifest.user_rating_1)   
-          a_user_rating.push(@publisher_product_manifest.user_rating_2)   
-          a_user_rating.push(@publisher_product_manifest.user_rating_3)   
-          gon.user_rating = a_user_rating
+          # a_user_rating = Array.new
+          # a_user_rating.push(@publisher_product_manifest.user_rating_1)   
+          # a_user_rating.push(@publisher_product_manifest.user_rating_2)   
+          # a_user_rating.push(@publisher_product_manifest.user_rating_3)   
+          # gon.user_rating = a_user_rating
 
           gon.allow_comments = @publisher_product_manifest.allow_comments
       
@@ -1761,6 +1766,7 @@ class PublisherProductManifestsController < ApplicationController
           @b_core_literacy_standard = true
           gon.core_literacy_standard = []
           gon.core_literacy_standard_text = []
+          gon.core_literacy_standards_count = @core_literacy_standards.count 
           if @publisher_product_core_literacy_standards.any?
             i = 0
             ii = 0
@@ -1781,6 +1787,7 @@ class PublisherProductManifestsController < ApplicationController
           @b_core_math_standard = true
           gon.core_math_standard = []
           gon.core_math_standard_text = []
+          gon.core_math_standards_count = @core_math_standards.count
           if @publisher_product_core_math_standards.any?
             i = 0
             ii = 0
@@ -2447,39 +2454,39 @@ class PublisherProductManifestsController < ApplicationController
               h_update[:user_rating_2] = false
               h_update[:user_rating_3] = false
           
-              if allow_teacher_rating
-                user_rating = h_obj[:user_rating]
-                ar_user_rating = Array.new    
-                ar_user_rating = user_rating.split(',')
-                ar_user_rating.each do |rating|
-                  case rating.to_s  
-                    when "1"
-                      h_update[:user_rating_1] = true
-                    when "2"
-                      h_update[:user_rating_2] = true
-                    when "3"
-                      h_update[:user_rating_3] = true
-                    else
-                      #        
-                  end
-                end
-              end
+              # if allow_teacher_rating
+                # user_rating = h_obj[:user_rating]
+                # ar_user_rating = Array.new    
+                # ar_user_rating = user_rating.split(',')
+                # ar_user_rating.each do |rating|
+                  # case rating.to_s  
+                    # when "1"
+                      # h_update[:user_rating_1] = true
+                    # when "2"
+                      # h_update[:user_rating_2] = true
+                    # when "3"
+                      # h_update[:user_rating_3] = true
+                    # else
+                      # #        
+                  # end
+                # end
+              # end
             
               if publisher_product_manifest.update_attributes(h_update)
                   publisher_product_manifest_updated = current_user.publisher.publisher_products.where("id =?", publisher_product_id).first.publisher_product_manifest rescue nil
                   if !publisher_product_manifest_updated.nil?              
-                      # h_update = nil
-                      # ar_user_rating = nil
-                      gon.user_rating = []
-                      # h_user_rating[:allow_teacher_rating] = publisher_product_manifest_updated.allow_teacher_rating
-                      gon.user_rating[0] = publisher_product_manifest_updated.user_rating_1
-                      gon.user_rating[1] = publisher_product_manifest_updated.user_rating_2
-                      gon.user_rating[2] = publisher_product_manifest_updated.user_rating_3
+                      # # h_update = nil
+                      # # ar_user_rating = nil
+                      # gon.user_rating = []
+                      # # h_user_rating[:allow_teacher_rating] = publisher_product_manifest_updated.allow_teacher_rating
+                      # gon.user_rating[0] = publisher_product_manifest_updated.user_rating_1
+                      # gon.user_rating[1] = publisher_product_manifest_updated.user_rating_2
+                      # gon.user_rating[2] = publisher_product_manifest_updated.user_rating_3
                       
                       respond_to do |format|
                         format.html {}
                         format.json { render :json => { :allow_teacher_rating => publisher_product_manifest_updated.allow_teacher_rating,
-                                                        :user_rating => gon.user_rating,
+                                                        # :user_rating => gon.user_rating,
                                                         :b_error => false,
                                                         :updated => publisher_product_manifest_updated.updated_at.to_s(:long) } }      
                       end
@@ -3256,9 +3263,9 @@ class PublisherProductManifestsController < ApplicationController
                       
                       respond_to do |format|
                         format.html {}
-                        format.json { render :json => { :g_pricing_model => gon.pricing_model,
-                                                        :g_pricing_model_text => gon.pricing_model_text,
-                                                        :b_required => b_required,
+                        format.json { render :json => { :pricing_model => gon.pricing_model,
+                                                        :pricing_model_text => gon.pricing_model_text,
+                                                        :b_required_pricing_model => b_required,
                                                         :b_error => false,
                                                         :updated => publisher_product_pricing_model_updated.updated_at.to_s(:long) } }
                       end
@@ -5317,8 +5324,8 @@ class PublisherProductManifestsController < ApplicationController
                       
                       respond_to do |format|
                         format.html {}
-                        format.json { render :json => { :g_market_target => gon.market_target,
-                                                        :g_market_target_text => gon.market_target_text,
+                        format.json { render :json => { :market_target => gon.market_target,
+                                                        :market_target_text => gon.market_target_text,
                                                         :b_required => b_required,
                                                         :b_error => false,
                                                         :updated => publisher_product_market_target_updated.updated_at.to_s(:long) } }
@@ -6177,8 +6184,8 @@ class PublisherProductManifestsController < ApplicationController
           
               respond_to do |format|
                 format.html {}
-                format.json { render :json => { :g_core_literacy_standard => gon.core_literacy_standard,
-                                                :g_core_literacy_standard_text => gon.core_literacy_standard_text,
+                format.json { render :json => { :core_literacy_standard => gon.core_literacy_standard,
+                                                :core_literacy_standard_text => gon.core_literacy_standard_text,
                                                 :b_error => false,
                                                 :updated => updated } }
               end
@@ -6269,8 +6276,8 @@ class PublisherProductManifestsController < ApplicationController
           
               respond_to do |format|
                 format.html {}
-                format.json { render :json => { :g_core_math_standard => gon.core_math_standard,
-                                                :g_core_math_standard_text => gon.core_math_standard_text,
+                format.json { render :json => { :core_math_standard => gon.core_math_standard,
+                                                :core_math_standard_text => gon.core_math_standard_text,
                                                 :b_error => false,
                                                 :updated => updated } }
               end
@@ -6905,8 +6912,13 @@ class PublisherProductManifestsController < ApplicationController
                               image = MiniMagick::Image.open(image_file)
                               FileUtils.rm_rf(image_file)
                               pdf_thumb.write image_file
-                              @publisher_product_pdfs = publisher_product_pdfs
+                              @publisher_product_pdfs = publisher_product_pdfs.order(created_at: :asc)
     
+                              gon.publisher_product_pdfs_count = 0
+                              if !publisher_product_pdfs.nil?
+                                  gon.publisher_product_pdfs_count = publisher_product_pdfs.count 
+                              end
+
                               # image = Magick::Image.read("public" + publisher_product_pdf_image.image_url)[0]
                               # Rails.logger.info("image_file = " + image_file.to_s)
                               # image_file = public/uploads/publisher_product_pdf_image/image/13/c49164c5-8079-42e4-91c0-ce6ca347e413.png
@@ -7185,7 +7197,7 @@ class PublisherProductManifestsController < ApplicationController
                               if request.xhr? || remotipart_submitted?
                                   if publisher_product_pdf_image.save
                                       # Rails.logger.info("publisher_product_pdf_image save successful")
-                                      @publisher_product_pdfs = publisher_product.publisher_product_pdfs rescue nil
+                                      @publisher_product_pdfs = publisher_product.publisher_product_pdfs.order(created_at: :asc) rescue nil
                                   else
                                       LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_pdf_image', :description => 'publisher_product_pdf_image save failed')
                                       raise
@@ -7263,7 +7275,7 @@ class PublisherProductManifestsController < ApplicationController
                               # publisher_product_pdf_image = PublisherProductPdfImage.new(h_pdf)
                               if request.xhr? || remotipart_submitted?
                                   if publisher_product_pdf_image_new.save
-                                      @publisher_product_pdfs = publisher_product.publisher_product_pdfs rescue nil
+                                      @publisher_product_pdfs = publisher_product.publisher_product_pdfs.order(created_at: :asc) rescue nil
                                   else
                                       LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'upload_pdf_image', :description => 'publisher_product_pdf_image save failed')
                                       raise
@@ -7324,10 +7336,15 @@ class PublisherProductManifestsController < ApplicationController
                           if !publisher_product_pdf_image.nil?
                               if publisher_product_pdf_image.destroy
                                   if publisher_product_pdf.destroy
-                                      @publisher_product_pdfs = publisher_product.publisher_product_pdfs rescue nil
+                                      publisher_product_pdfs = publisher_product.publisher_product_pdfs.order(created_at: :asc) rescue nil
+                                      @publisher_product_pdfs = publisher_product_pdfs
+                                      publisher_product_pdfs_count = 0
+                                      if !publisher_product_pdfs.nil?
+                                          publisher_product_pdfs_count = publisher_product_pdfs.count  
+                                      end
                                       respond_to do |format|
                                           format.html {}
-                                          format.json { render :json => { :b_error => false } }
+                                          format.json { render :json => { :b_error => false, :publisher_product_pdfs_count => publisher_product_pdfs_count } }
                                       end
                                   else
                                       LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'destroy_pdf', :description => 'publisher_product_pdf destroy failed')
@@ -7339,7 +7356,7 @@ class PublisherProductManifestsController < ApplicationController
                               end
                           else
                               if publisher_product_pdf.destroy
-                                  @publisher_product_pdfs = publisher_product.publisher_product_pdfs rescue nil
+                                  @publisher_product_pdfs = publisher_product.publisher_product_pdfs.order(created_at: :asc) rescue nil
                                   respond_to do |format|
                                       format.html {}
                                       format.json { render :json => { :b_error => false } }
@@ -7399,7 +7416,7 @@ class PublisherProductManifestsController < ApplicationController
                           publisher_product_pdf_image = publisher_product_pdf.publisher_product_pdf_image
                           if !publisher_product_pdf_image.nil?
                               if publisher_product_pdf_image.destroy
-                                  @publisher_product_pdfs = publisher_product.publisher_product_pdfs rescue nil
+                                  @publisher_product_pdfs = publisher_product.publisher_product_pdfs.order(created_at: :asc) rescue nil
                                   respond_to do |format|
                                       format.html {}
                                       format.json { render :json => { :b_error => false } }

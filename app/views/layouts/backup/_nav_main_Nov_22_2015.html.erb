@@ -50,34 +50,22 @@
 										Profile
 									</a>
 								</div>
-								<div class="drop-divider-2"></div>
+								<div class="drop-divider-3"></div>
 								<div id="div-nav-3" class="div-link">
 									<a href="/Signout" id="div-nav-3a">
 										Sign out
 									</a>
 								</div>
-								<div class="drop-divider-2"></div>
+								<div class="drop-divider-4"></div>
 								<div id="div-nav-4" class="div-link">
 									<a href="/Posters-Demo" id="div-nav-4a">
 										Posters
 									</a>
 								</div>
-								<div class="drop-divider-2"></div>
-								<div id="div-nav-5" class="div-link">
+								<div class="drop-divider-5"></div>
+								<div id="div-nav-5" class="div-link" style="margin-bottom: 10px;">
 									<a href="/Members" id="div-nav-5a">
 										Members
-									</a>
-								</div>
-								<div class="drop-divider-2"></div>
-								<div id="div-nav-6" class="div-link">
-									<a href="/People-Search" id="div-nav-6a">
-										People Search
-									</a>
-								</div>
-								<div class="drop-divider-2"></div>
-								<div id="div-nav-7" class="div-link" style="margin-bottom: 10px;">
-									<a href="/Product-Search" id="div-nav-7a">
-										Product Search
 									</a>
 								</div>
 								<div class="drop-divider-1"></div>
@@ -127,7 +115,9 @@
 <div style="clear: both;"></div>
 
 <script>
+
 	var drop_visible = false;
+
 	function drop_show() {
 		$("#li_drop_1").addClass('drop');
 		$("#container_drop").removeClass('hidden');
@@ -158,6 +148,7 @@
 			drop_show();
 		}
 	}	
+
 	// function test() {
 		// var obj = {
 			// "one",
@@ -180,20 +171,25 @@
 			// alert( key + ": " + value );
 		// });
 	// }
+
+
 	// $(window).load( function() {
 	$(document).ready(function () {				
+
 		$(document).on('click', function(e) {
 			var o_target = $(e.target).parents('.nav-drop-1').attr('id');
 			if (o_target == null) {
 				drop_hide();
 			}
 		});
+
 		$("#container_couple_1").on('click', function() {
 			$("#render_nav_avatar").addClass("avatar-focus");
 			$("#nav_caret").addClass("nav-caret-focus");
 			drop_toggle_1();
 		});
 		
+
 		$('#div-nav-1').on('click', function() {
 			drop_hide();
 			window.location = document.getElementById('div-nav-1a').href;				
@@ -210,18 +206,9 @@
 			drop_hide();
 			window.location = document.getElementById('div-nav-4a').href;				
 		});
-		$('#div-nav-5').on('click', function() {
-			drop_hide();
-			window.location = document.getElementById('div-nav-5a').href;				
-		});
-		$('#div-nav-6').on('click', function() {
-			drop_hide();
-			window.location = document.getElementById('div-nav-6a').href;				
-		});
-		$('#div-nav-7').on('click', function() {
-			drop_hide();
-			window.location = document.getElementById('div-nav-7a').href;				
-		});
+
+
+		
 	});
 	
 	

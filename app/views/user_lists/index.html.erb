@@ -1,0 +1,447 @@
+
+<div style="display: table; height: 100%; width: 100%;">
+	<div style="display: table-cell; width: 225px; vertical-align: top;">
+		<% if false %>
+		<div class="container" style="padding: 5px; width: 225px; background: aliceblue ">			
+			<% User.all.order(:id).each do |user| %>
+				<div class="user-row">
+					<div style="display: table-cell; width: 50px; vertical-align: middle;">				
+
+				    	<% case user.profile_type.to_s %>  
+				      	<% 	when "1" %>
+				      	<%    	user_image = user.user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %>
+				      	<%   when "2"%>
+				      	<%    	user_image = user.user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %>
+				      	<%   when "3"%>
+				      	<%    	user_image = user.publisher_user.publisher_user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %>
+				      	<%   when "4"%>
+				      	<%    	user_image = user.user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %>
+				      	<%   when "5"%>
+				      	<%    	user_image = user.user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %>
+				      	<%   else %>
+				      	<% end %>
+
+						<!-- <#% user_image = user.user_images.where( :primary => true ).first.image_url(:image_50_50) rescue "/images_avatar/avatar-gen-person-w50-h50.png" %#> -->
+						<%= image_tag(user_image.to_s) %>
+					</div>
+					<div style="display: table-cell; width: 175px; vertical-align: middle; padding: 5px;">
+						<a href=<%= user.slug %> style="display: inline; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= user.name_first.to_s + " " + user.name_last.to_s %></a>
+						<div style="font-size: 12px">
+							<!-- <div><#%= user.username %#></div> -->
+							<div style="display: inline">User ID:</div>
+							<div class="user_id" data-user-id=<%= user.id %> style="display: inline"><%= user.id %></div>
+						</div>				
+						<!-- <div id="conversation_time" style="color: grey"><#%= I18n.l last_message.created_at, :format => :long %></div> -->
+					</div>
+					<!--<#%= form_tag({action: 'open_conversation'}, remote: true, :'data-type' => 'json', :style => "display: inline; float: right") do %>-->
+					<!-- #%= form_tag({action: 'open_conversation'}, remote: true, :style => "display: none; float: right;") do %>
+						<#%= hidden_field_tag :sender_user_id, current_user.id %>
+						<#%= hidden_field_tag :recipient_user_id, user.id %>
+						<#%= submit_tag("Open dialog", :style => " background: none; ", :onclick => "onClick()") %>
+					<#% end %> -->
+				</div>
+				<hr>		
+			<% end %>
+			
+		</div>
+		<% end %>
+	</div>
+	<div id="main_container" style="display: table-cell; width: 750px; vertical-align: top;">
+		<div style="margin: 20px auto; width: 80%;" >
+			<!--<#%= form_tag({action: 'open_conversation'}, remote: true, :'data-type' => 'json', :style => "display: inline; float: right") do %>-->
+			<%= form_tag({action: 'search_people'}, id: "search_form", remote: true, :style => "margin: auto 20px; float: left; position: relative;") do %>
+				<%= hidden_field_tag :sender_user_id, current_user.id %>
+				<%= hidden_field_tag :search_age_from, value = nil %>
+				<%= hidden_field_tag :search_age_to, value = nil %>
+				<%= hidden_field_tag :search_gender, value = nil %>
+				<%= hidden_field_tag :search_bd_year, value = nil %>
+				<%= hidden_field_tag :search_bd_month, value = nil %>
+				<%= hidden_field_tag :search_bd_day, value = nil %>
+				<%= hidden_field_tag :search_profile_type, value = nil %>
+				<div class="search-image-search-field"></div>
+				<%=text_field_tag :search_query, value = nil, style: "height:20px; width: 400px; padding: 5px 5px 5px 22px; border-radius:5px; border: 1px solid #49853f; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340; outline: none;", placeholder: "Start typing a name..."%>
+				<div class="btn-clear-search-field" onclick="onClearSearchField()"></div>
+				<%= submit_tag("Search", :style => "display: none") %> 
+				<div onclick="onSearchClick()" style="float: right; margin: 5px" class="btn-opt-edit-container">
+					<div class="btn-opt-edit">Search</div>
+				</div>
+			<% end %>
+			<div style="clear: both; height: 20px;"></div>
+			<div id="result_container">
+				<!-- <#%= render 'people_search_result' %> -->
+			</div>
+		</div>			
+	</div>
+	<div style="display: table-cell; width: 225px; vertical-align: top; ">
+		<div style="padding: 20px 22.5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340; background: #F7F7F7" >
+			<div>
+				<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Age:</label>
+				<div style="height: 10px"></div>
+				<div>
+					<!-- <div style="display: inline-block">From</div> -->
+					<select data-placeholder="From" id="user_from_age" name="user[from_age]" class="chosen-select" style="width: 82.5px; display: inline-block">
+						<option value=""></option>
+						<% (10..99).each do |age| %>
+							<option value="<%= age %>"><%= age %></option>
+						<% end %>
+					</select>
+					<div style="display: inline-block"> - </div>
+					<select data-placeholder="To" id="user_to_age" name="user[to_age]" class="chosen-select" style="width: 82.5px; display: inline-block">
+						<option value=""></option>
+						<% (10..99).each do |age| %>
+							<option value="<%= age %>"><%= age %></option>
+						<% end %>
+					</select>		
+				</div>
+			</div>
+			<div style="height: 10px"></div>
+			<div class="gender-block">
+				<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Gender:</label>
+				<div style="height: 10px"></div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="gender_male" class="rd-button"></div>
+						<!-- <input name="user[gender]" type="radio" value="0"> -->
+					</div>
+					<div style="height: 20px; display: inline-block;">Male</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="gender_female"  class="rd-button"></div>
+						<!-- <input name="user[gender]" type="radio" value="1"> -->
+					</div>			
+					<div style="height: 20px; display: inline-block;">Female</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="gender_any" class="rd-button"></div>
+						<!-- <input name="user[gender]" type="radio" value="0"> -->
+					</div>
+					<div style="height: 20px; display: inline-block;">Any</div>
+				</div>
+			</div>			
+			<div style="height: 10px"></div>		
+			<div>
+				<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Birthday:</label>
+				<div style="height: 10px"></div>
+				<div id="bd_year" style="width: 70px; color: grey; ">
+					<select data-placeholder="Choose a Year" id="user_bd_year" name="user[bd_year]" class="chosen-select" style="width: 180px;">
+						<option value=""></option>
+						<% BdYear.all.each do|bd_year| %>
+							<option value="<%= bd_year.year %>"><%= bd_year.year %></option>
+						<% end %>
+					</select>
+				</div>
+				<div style="height: 5px"></div>
+				<div id="bd_month" style="width: 70px; color: grey; ">
+					<select data-placeholder="Choose a Month" id="user_bd_month" name="user[bd_month]" class="chosen-select" style="width: 180px;">
+						<option value=""></option>
+						<option value="1">January</option>
+						<option value="2">February</option>
+						<option value="3">March</option>
+						<option value="4">April</option>
+						<option value="5">May</option>
+						<option value="6">June</option>
+						<option value="7">July</option>
+						<option value="8">August</option>
+						<option value="9">September</option>
+						<option value="10">October</option>
+						<option value="11">November</option>
+						<option value="12">December</option>
+					</select>
+				</div>
+				<div style="height: 5px"></div>
+				<div id="bd_day" style="width: 70px; color: grey; ">
+					<select data-placeholder="Choose a Day" id="user_bd_day" name="user[bd_day]" class="chosen-select" style="width: 180px;">
+						<option value=""></option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+						<option value="24">24</option>
+						<option value="25">25</option>
+						<option value="26">26</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+						<option value="29">29</option>
+						<option value="30">30</option>
+						<option value="31">31</option>
+					</select>
+				</div>
+			</div>
+			<div style="height: 10px"></div>
+			<div class="profile-type-block">
+				<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Profile type:</label>
+				<div style="height: 10px"></div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_student" data-profile-type="1" class="rd-button"></div>
+					</div>
+					<div style="height: 20px; display: inline-block;">Student</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_teacher" data-profile-type="2" class="rd-button"></div>
+					</div>			
+					<div style="height: 20px; display: inline-block;">Teacher</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_publisher" data-profile-type="3" class="rd-button"></div>
+					</div>			
+					<div style="height: 20px; display: inline-block;">Publisher</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_institute" data-profile-type="4" class="rd-button"></div>
+					</div>			
+					<div style="height: 20px; display: inline-block;">Institute</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_recruiter" data-profile-type="5" class="rd-button"></div>
+					</div>			
+					<div style="height: 20px; display: inline-block;">Recruiter</div>
+				</div>
+				<div>
+					<div style="width: 20px; text-align: left; padding-right: 0px; display: inline-block;">
+						<div id="profile_any" data-profile-type="6" class="rd-button"></div>
+					</div>
+					<div style="height: 20px; display: inline-block;">Any</div>
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	// $( ".user-row" ).click(function( event ) {
+	//   var target = $( event.target );
+	//   if ( !target.is( "a" ) ) {
+	//     $(event.currentTarget).find("form").submit();
+	//   }
+	// });
+	function set_user_gender(user_gender) {
+		// Setting user gender
+		if(user_gender == 0) {
+			$('#gender_male').addClass("rd-background");
+			$('#gender_female').removeClass("rd-background");
+			$('#gender_any').removeClass("rd-background");
+		} else if(user_gender == 1) {
+			$('#gender_female').addClass("rd-background");
+			$('#gender_male').removeClass("rd-background");
+			$('#gender_any').removeClass("rd-background");
+		} else {
+			$('#gender_any').addClass("rd-background");
+			$('#gender_male').removeClass("rd-background");
+			$('#gender_female').removeClass("rd-background");
+		}
+	}
+	function get_user_gender() {
+		if( $(".gender-block .rd-background").attr('id') == "gender_female" ) {
+			return 1;
+		} else if ( $(".gender-block .rd-background").attr('id') == "gender_male" ) {
+			return 0;
+		};
+		return null;
+	}
+	function set_profile_type (profile_type) {
+		// Setting user gender
+		if(profile_type == 1) {
+			$('#profile_student').addClass("rd-background");
+			$('#profile_teacher').removeClass("rd-background");
+			$('#profile_publisher').removeClass("rd-background");
+			$('#profile_institute').removeClass("rd-background");
+			$('#profile_recruiter').removeClass("rd-background");
+			$('#profile_any').removeClass("rd-background");
+		} else if(profile_type == 2) {
+			$('#profile_student').removeClass("rd-background");
+			$('#profile_teacher').addClass("rd-background");
+			$('#profile_publisher').removeClass("rd-background");
+			$('#profile_institute').removeClass("rd-background");
+			$('#profile_recruiter').removeClass("rd-background");
+			$('#profile_any').removeClass("rd-background");
+		} else if(profile_type == 3) {
+			$('#profile_student').removeClass("rd-background");
+			$('#profile_teacher').removeClass("rd-background");
+			$('#profile_publisher').addClass("rd-background");
+			$('#profile_institute').removeClass("rd-background");
+			$('#profile_recruiter').removeClass("rd-background");
+			$('#profile_any').removeClass("rd-background");
+		} else if(profile_type == 4) {
+			$('#profile_student').removeClass("rd-background");
+			$('#profile_teacher').removeClass("rd-background");
+			$('#profile_publisher').removeClass("rd-background");
+			$('#profile_institute').addClass("rd-background");
+			$('#profile_recruiter').removeClass("rd-background");
+			$('#profile_any').removeClass("rd-background");
+		} else if(profile_type == 5) {
+			$('#profile_student').removeClass("rd-background");
+			$('#profile_teacher').removeClass("rd-background");
+			$('#profile_publisher').removeClass("rd-background");
+			$('#profile_institute').removeClass("rd-background");
+			$('#profile_recruiter').addClass("rd-background");
+			$('#profile_any').removeClass("rd-background");
+		} else {
+			$('#profile_student').removeClass("rd-background");
+			$('#profile_teacher').removeClass("rd-background");
+			$('#profile_publisher').removeClass("rd-background");
+			$('#profile_institute').removeClass("rd-background");
+			$('#profile_recruiter').removeClass("rd-background");
+			$('#profile_any').addClass("rd-background");
+		}
+	}
+	function get_profile_type () {
+		return parseInt($(".profile-type-block .rd-background").attr('data-profile-type'));
+	}
+	$(document).ready(function () {
+		// Initilize radio buttons
+		set_user_gender(2);
+		set_profile_type(6);
+		// Initialize dropdowns
+		$(".chosen-select").chosen({
+			disable_search_threshold: 100,
+			allow_single_deselect: true
+		});
+	});
+	function onSearchClick () {
+		// Setting search filter
+		if ($("#user_from_age").val())
+			$("#search_age_from").val($("#user_from_age").val());
+		else
+			$("#search_age_from").val(null);	
+		
+		if ($("#user_to_age").val())
+			$("#search_age_to").val($("#user_to_age").val());
+		else
+			$("#search_age_to").val(null);		
+		
+		var searchGender = get_user_gender();
+		if (searchGender == 1 || searchGender == 0)
+			$("#search_gender").val(searchGender);
+		else
+			$("#search_gender").val(null);		
+		
+		if ($("#user_bd_year").val())
+			$("#search_bd_year").val($("#user_bd_year").val());
+		else
+			$("#search_bd_year").val(null);		
+		
+		if ($("#user_bd_month").val())
+			$("#search_bd_month").val($("#user_bd_month").val());
+		else
+			$("#search_bd_month").val(null);			
+		
+		if ($("#user_bd_day").val())
+			$("#search_bd_day").val($("#user_bd_day").val());
+		else
+			$("#search_bd_day").val(null);
+		var searchProfileType = get_profile_type();
+		if (searchProfileType >= 1 && searchProfileType <= 5)
+			$("#search_profile_type").val(searchProfileType);
+		else
+			$("#search_profile_type").val(null);
+		
+		$("#search_form").submit();
+	}
+	function onClearSearchField() {
+		$("#search_query").val("");
+		onSearchClick();
+	}
+	$('#search_query').on('input', function() {
+		onSearchClick();
+	});
+	function update_to_age_select (min_value) {
+		$("#user_to_age option").css("display", "block");
+		for (var i = 10; i < min_value; i++) {
+			var selector = "#user_to_age option[value=" + i + "]";
+			$(selector).css("display", "none");
+		};
+		// Updating dropdown
+		$("#user_to_age").trigger('chosen:updated');
+	}
+	function update_from_age_select (max_value) {
+		$("#user_from_age option").css("display", "block");
+		for (var i = parseInt(max_value) + 1; i <= 99; i++) {
+			var selector = "#user_from_age option[value=" + i + "]";
+			$(selector).css("display", "none");
+		};
+		// Updating dropdown
+		$("#user_from_age").trigger('chosen:updated');
+	}
+	function update_bd_day_select(selected_month_value) {
+		if (selected_month_value == 2) {
+        	$("#user_bd_day option[value=30]").css("display", "none");
+        	$("#user_bd_day option[value=31]").css("display", "none");
+		} else if ( selected_month_value == 4 || 
+					selected_month_value == 6 || 
+					selected_month_value == 9 || 
+					selected_month_value == 11 ) 
+		{
+			$("#user_bd_day option[value=30]").css("display", "block");
+        	$("#user_bd_day option[value=31]").css("display", "none");
+		} else {
+			$("#user_bd_day option[value=30]").css("display", "block");
+        	$("#user_bd_day option[value=31]").css("display", "block");
+		}
+		// Updating dropdown
+		$("#user_bd_day").trigger('chosen:updated');
+	}
+	// Updating search results
+	$( "#user_bd_year" ).change(function() {
+		onSearchClick ();
+	});
+	// Dynamic update of birthday dropdown due to selected month
+	$( "#user_bd_month" ).change(function() {
+		update_bd_day_select($("#user_bd_month").val());
+		onSearchClick ();
+	});
+	$( "#user_bd_day" ).change(function() {
+		onSearchClick ();
+	});
+	// Dynamic update of 'to Age' due to selected 'from Age'
+	$( "#user_from_age" ).change(function() {
+		update_to_age_select($("#user_from_age").val());
+		onSearchClick ();
+	});
+	// Dynamic update of 'from Age' due to selected 'to Age'
+	$( "#user_to_age" ).change(function() {
+		update_from_age_select($("#user_to_age").val());
+		onSearchClick ();
+	});
+	// Gender radio button click
+	$(".gender-block .rd-button").click(function() {
+		$(".gender-block .rd-button").each ( function () {
+			$(this).removeClass("rd-background");
+		});
+		$(this).addClass("rd-background");
+		onSearchClick ();
+	});
+	// Profile type radio button click
+	$(".profile-type-block .rd-button").click(function() {
+		$(".profile-type-block .rd-button").each ( function () {
+			$(this).removeClass("rd-background");
+		});
+		$(this).addClass("rd-background");
+		onSearchClick ();
+	});
+</script>

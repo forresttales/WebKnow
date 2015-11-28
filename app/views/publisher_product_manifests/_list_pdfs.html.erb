@@ -596,27 +596,67 @@
 												<div class="table pad-marg-null">
 													<div class="row">
 														<div class="cell-370">															
-															<div id="edit_name_pdf_<%= i %>" class="hidden">
+															<!-- <div id="edit_name_pdf_<#%= i %#>" class="hidden"> -->
+															<div id="control_201_edit_<%= i %>" class="control-201-edit hidden" data-i="<%= i %>">
 
 																<div style="width: 332px;">
-																	<input id="publisher_product_pdf_name_pdf_<%= i %>" name="<%= i %>" data-i="<%= i %>" style="width: 332px;" class="publisher-product-pdf-name-pdf input-product height-24" tabindex="5100" type="text" value="<%= publisher_product_pdf.name_pdf %>" placeholder="" />
+																	<input id="publisher_product_pdf_name_pdf_<%= i %>" name="<%= i %>" data-i="<%= i %>" style="width: 364px; height: 16px; padding: 3px 4px 0px 4px;" class="input-container-1-edit" tabindex="" type="text" value="<%= publisher_product_pdf.name_pdf %>" placeholder="" />
 																</div>
 																<div class="width-200 box-detail-padding">
 																	<div style="display: inline-block;">
-																		<div id="submit_name_pdf_<%= i %>" name="<%= i %>" data-i="<%= i %>" class="submit-name-pdf btn-submit-product" tabindex="5130">
+																		<div id="submit_name_pdf_<%= i %>" name="<%= i %>" data-i="<%= i %>" class="control-201-save-button submit-name-pdf btn-submit-product" tabindex="5130">
 																			Save
 																			<div data-id-pdf="<%= publisher_product_pdf.id %>" data-id-product="<%= publisher_product_pdf.publisher_product.id %>" class="hidden-pdf-id hidden"></div>
 																		</div>
 																	</div>
 																	<div style="display: inline-block;">
-																		<div id="cancel_name_pdf_<%= i %>" name="<%= i %>" data-i="<%= i %>" class="cancel-name-pdf btn-submit-product" tabindex="5140">Cancel</div>
+																		<div id="cancel_name_pdf_<%= i %>" name="<%= i %>" data-i="<%= i %>" class="control-201-cancel-button cancel-name-pdf btn-submit-product" tabindex="5140">Cancel</div>
 																	</div>
 																</div>
 																
 															</div>
-															<div id="show_name_pdf_<%= i %>">
-																<span id="span_name_pdf_<%= i %>" class="form-text-16"><%= publisher_product_pdf.name_pdf %></span>
+															<!-- <div id="show_name_pdf_<#%= i %#>"> -->
+															<div id="control_201_show_<%= i %>" class="control-201-edit" data-i="<%= i %>">
+																
+																<div id="show_pdf_container_<%= i %>" class="input-container-1 input-container-1-color width-show-1" style="height: 16px; padding: 3px 4px 0px 4px;">
+																	<p id="span_name_pdf_<%= i %>" class="profile-text-1"><%= publisher_product_pdf.name_pdf %></p>
+																</div>
+																
+																<!-- <span id="span_name_pdf_<%= i %>" class="form-text-16"><%= publisher_product_pdf.name_pdf %></span> -->
 															</div>
+															
+															
+															
+															<% if false %>															
+															<div id="control_10_edit" class="control-10-edit hidden" style="display: inline-block;">
+																<div style="padding: 0px;">
+																	<input class="input-container-1-edit width-show-edit-1" style="height: 18px; padding: 1px 2px 0px 4px;" id="publisher_product_manifest_product_tagline" name="publisher_product_manifest[product_tagline]" tabindex="12" type="text" value="<%= @publisher_product_manifest.product_tagline %>" placeholder="Tagline" />
+																</div>
+																<div style="padding: 2px 0px 6px 0px;">
+																	<div style="display: inline-block;">
+																		<div id="submit_product_tagline" class="control-10-save-button btn-submit-product" tabindex="">Save</div>
+																	</div>
+																	<div style="display: inline-block;">
+																		<div id="cancel_product_tagline" class="control-10-cancel-button btn-submit-product" tabindex="">Cancel</div>
+																	</div>	
+																</div>												
+															</div>
+															<!-- <div id="show_product_tagline" style="display: inline-block;"> -->
+															<div id="control_10_show" class="control-10-edit" style="display: inline-block;">
+																<div id="show_product_tagline_container" class="input-container-1 input-container-1-color width-show-1" style="height: 16px; padding: 3px 4px 0px 4px;">
+																	<p id="span_product_tagline" class="profile-text-1"></p>
+																</div>
+															</div>
+															<% end %>
+															
+															
+															
+															
+															
+															
+															
+															
+															
 															<div style="height: 40px;"></div>
 															<div class="edit-options hidden">
 																
@@ -632,6 +672,8 @@
 															</div>
 														</div>
 														<div class="cell-60 edit-options hidden">
+															
+															<% if false %>
 															<div class="cell-20 min-h-20 min-w-20">
 																<!-- <div id="open_info_name_pdf_<#%= i %#>" name="<#%= i %#>" class="open-info-name-pdf question-icon info-show-20 required-1 pop-info tip-top-center" tabindex="5110"></div>
 												                <div class="tip-content">
@@ -651,6 +693,8 @@
 																	Edit
 												                </div>																								
 															</div>
+															<% end %>
+															
 														</div>
 													</div>		
 												</div>
@@ -682,56 +726,49 @@
 			// $("#close_form51").trigger('click');
 		// };	  
 		
-		function set_pdf(a_name_pdf) {
-			// var s_id = "";
-			var s_name_pdf = "";
-			var b_name_pdf = false;
-			for( var i = 0; i < a_name_pdf.length; i++ ) {
-				// s_id = "#span_name_pdf_" + i;
-				s_name_pdf = a_name_pdf[i];
-				if(s_name_pdf.length > 0) {
-					b_name_pdf = true;
-				}
-				else {
-					b_name_pdf = false;
-					s_name_pdf = "PDF Name";
-				}
-				set_pdf_id(i, s_name_pdf, b_name_pdf);
-				// $(s_id).html(s_name_pdf);
-			}
-		}
-
-		
-		function show_pdf(n) {
-			var n_name = n
-
-			// var list_num = "div#list_num_" + n_name.toString() + " ";
-			// var l1 = list_num + ".edit-image";
-			// var l2 = list_num + ".container-figure-image-5 figure";
-			// var l3 = list_num + ".drop-5-container";
-			// var l4 = list_num + ".container-figure-image-5";
-			var s_name_pdf = "name_pdf_" + n_name.toString();
-
-			show_control_pdf(s_name_pdf);
-			
-			// $(l1).removeAttr("style");				
-			// $(l1).fadeIn(200).addClass("hidden");
-			// $(l2).addClass("cursor-pointer");
-			// $(l3).addClass("hidden");			
-			// $(l4).removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");					
-		}
-
-		
-		function show_control_pdf(cntrl) {
-			// alert(cntrl);
-			var s_edit = "#edit_" + cntrl;
-			var s_show_open = "#show_" + cntrl + ", #open_edit_" + cntrl;		
-    		$(s_edit).fadeOut(300, function(){
-    			$(s_edit).addClass("hidden");
-    			$(s_show_open).fadeIn(1300).removeClass("hidden");
-    			$(s_show_open).fadeIn(1300).removeClass("hidden").removeClass("visibility-hidden");
-    		});
-		}
+		// function set_pdf(a_name_pdf) {
+			// // var s_id = "";
+			// var s_name_pdf = "";
+			// var b_name_pdf = false;
+			// for( var i = 0; i < a_name_pdf.length; i++ ) {
+				// // s_id = "#span_name_pdf_" + i;
+				// s_name_pdf = a_name_pdf[i];
+				// if(s_name_pdf.length > 0) {
+					// b_name_pdf = true;
+				// }
+				// else {
+					// b_name_pdf = false;
+					// s_name_pdf = "PDF Name";
+				// }
+				// set_pdf_id(i, s_name_pdf, b_name_pdf);
+				// // $(s_id).html(s_name_pdf);
+			// }
+		// }
+		// function show_pdf(n) {
+			// var n_name = n
+			// // var list_num = "div#list_num_" + n_name.toString() + " ";
+			// // var l1 = list_num + ".edit-image";
+			// // var l2 = list_num + ".container-figure-image-5 figure";
+			// // var l3 = list_num + ".drop-5-container";
+			// // var l4 = list_num + ".container-figure-image-5";
+			// var s_name_pdf = "name_pdf_" + n_name.toString();
+			// show_control_pdf(s_name_pdf);
+			// // $(l1).removeAttr("style");				
+			// // $(l1).fadeIn(200).addClass("hidden");
+			// // $(l2).addClass("cursor-pointer");
+			// // $(l3).addClass("hidden");			
+			// // $(l4).removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");					
+		// }
+		// function show_control_pdf(cntrl) {
+			// // alert(cntrl);
+			// var s_edit = "#edit_" + cntrl;
+			// var s_show_open = "#show_" + cntrl + ", #open_edit_" + cntrl;		
+    		// $(s_edit).fadeOut(300, function(){
+    			// $(s_edit).addClass("hidden");
+    			// $(s_show_open).fadeIn(1300).removeClass("hidden");
+    			// $(s_show_open).fadeIn(1300).removeClass("hidden").removeClass("visibility-hidden");
+    		// });
+		// }
 
 		function set_pdf_id(n_name, name_pdf, b_name_pdf) {
 			var s_id = "#span_name_pdf_" + n_name;
@@ -744,10 +781,6 @@
 			$(s_id).html(name_pdf);
 		}
 
-
-		
-		
-		
 		
 		// var drop_visible_namespace501 = false;
 		var drop_visible_namespace501_i = -1;
@@ -802,12 +835,76 @@
 			// drop_visible_namespace501_i = -1;
 		}
 		
-		
 		// var drop_close_all_called_namespace501 = false;
+		
+		
+		function showEditId_201(i) {
+			var id_show = "#control_201_show_" + i.toString();
+			var id_edit = "#control_201_edit_" + i.toString();
+			$(id_show).addClass("hidden");
+			$(id_edit).fadeIn(1300).removeClass("hidden");
+		}
+	
+		function hideEditId_201(i) {
+			var id_show = "#control_201_show_" + i.toString();
+			var id_edit = "#control_201_edit_" + i.toString();
+			$(id_edit).fadeOut(300, function() {
+				$(id_edit).addClass("hidden");
+				$(id_show).fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function hideEditId_201_all() {
+			var cnt = publisher_product_pdfs_count;
+			for (i = 0; i < cnt; i++) {
+				var id_show = "#control_201_show_" + i.toString();
+				var id_edit = "#control_201_edit_" + i.toString();
+				// $(id_edit).fadeOut(300, function() {
+					$(id_edit).addClass("hidden");
+					$(id_show).removeClass("hidden");
+				// });
+			}
+		}
+
+		function clearEditId_201(i) {
+			var id = '#publisher_product_pdf_name_pdf_' + i.toString(); 
+			var id_show_value = '#span_name_pdf_' + i.toString();
+			var show_value = $(id_show_value).html();
+			$(id).val(show_value);
+		}
+
+		// function addEditId_201(i, name_pdf) {
+			// var id_show_value = '#span_name_pdf_' + i.toString();
+			// $(id).val(name_pdf);
+		// }
 		
 		
 		
 		$(document).ready( function () {				
+		
+			publisher_product_pdfs_count = gon.publisher_product_pdfs_count;
+		
+			$(document).on('click', '.control-201-edit', function(event) {
+				i = $(this).data('i');
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					// var b_info_button_clicked   = $(event.target).hasClass('control-201-info-button');
+					// if (!b_info_button_clicked) {
+						var id_show = "#control_201_show_" + i.toString();
+						var id_edit = "#control_201_edit_" + i.toString();
+						if ($(id_edit).hasClass('hidden')) {
+							// $('.control-16-edit-options').removeClass('hidden');
+							showEditId_201(i);
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-201-cancel-button');
+							if (b_cancel_button_clicked) {
+								clearEditId_201(i);
+								hideEditId_201(i);
+							}
+						}
+					// }
+				}
+			});
 		
 		
 			$(document).on('click', function(e) {
@@ -929,9 +1026,6 @@
 			}).each(function() {
 			  	if(this.complete) $(this).load();
 			});
-		
-		
-		
 		
 		
 		
@@ -1132,13 +1226,16 @@
 	            		if (!data.b_error) {
 		            		set_pdf_id(data.n_name, data.name_pdf, data.b_name_pdf);
 							// var s_name_pdf = "name_pdf_" + data.n_name.toString();
-							// set_control_span(s_name_pdf, s, b)
+							// // set_control_span(s_name_pdf, s, b)
 							// show_control_pdf(s_name_pdf);
-							show_pdf(data.n_name);
-							// show_control_pdf("name_pdf_0");
+							// show_pdf(data.n_name);
+
+							// addEditId_201(data.n_name, data.name_pdf);
+							hideEditId_201(data.n_name);
 	            		}
 	            		else {
-							show_pdf(data.n_name);
+							// show_pdf(data.n_name);
+							hideEditId_201(data.n_name);
 							alert('An error occured while updating this field.');
 						}	            			
 	            	},

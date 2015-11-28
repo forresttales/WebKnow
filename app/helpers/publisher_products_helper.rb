@@ -19,7 +19,11 @@ module PublisherProductsHelper
       product_tagline_text = []
       publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
       if !publisher_product_manifest.nil? 
-          product_tagline_text.push(publisher_product_manifest.product_tagline)
+          product_tagline = publisher_product_manifest.product_tagline
+          if ((product_tagline.blank?) or (product_tagline.nil?))
+              product_tagline = ""
+          end
+          product_tagline_text.push(product_tagline)
       end    
       
       h_product_tagline = Hash.new
@@ -33,7 +37,12 @@ module PublisherProductsHelper
       product_name_text = []
       publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
       if !publisher_product_manifest.nil? 
-          product_name_text.push(publisher_product_manifest.product_name)
+          product_name = publisher_product_manifest.product_name
+          if ((product_name.blank?) or (product_name.nil?))
+              product_name = ""
+          end
+          # Rails.logger.info("product_name = " + publisher_product_manifest.product_name.to_s)
+          product_name_text.push(product_name)
       end    
       
       h_product_name = Hash.new
@@ -47,7 +56,11 @@ module PublisherProductsHelper
       versions_text = []
       publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
       if !publisher_product_manifest.nil? 
-          versions_text.push(publisher_product_manifest.versions)
+          versions = publisher_product_manifest.versions
+          if ((versions.blank?) or (versions.nil?))
+              versions = ""
+          end
+          versions_text.push(versions)
       end    
       
       h_versions = Hash.new

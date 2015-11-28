@@ -19,6 +19,34 @@ Webknow::Application.routes.draw do
         post :view_conversations
       end
   end 
+  
+  
+  match "/People-Search" => "user_lists#index", via: 'get'
+  match "/People-Search" => "user_lists#search_people", via: 'post'
+  resources :user_lists do
+      collection do
+        post :search_people
+      end
+  end 
+    
+
+  # match "/Product-Search" => "product_lists#index", via: 'get'
+  # match "/Product-Search" => "product_lists#search_product", via: 'post'
+  # resources :product_lists do
+      # collection do
+        # post :search_product
+      # end
+  # end 
+
+
+  match "/Product-Search" => "publisher_product_lists#index", via: 'get'
+  match "/Product-Search" => "publisher_product_lists#search_publisher_product", via: 'post'
+  resources :publisher_product_lists do
+      collection do
+        post :search_publisher_product
+      end
+  end
+    
   # get "messages/index"
   # get "messages/create"
 

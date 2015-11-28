@@ -2081,6 +2081,9 @@ span.color-no-record {
 .input-container-1-color-edit-open {
     border-color: #fbb040;
 }
+.input-container-1-color-edit-open:hover {
+    cursor: pointer;
+}
 .input-container-1-color {
     border-color: #49853f;
 }
@@ -2564,33 +2567,33 @@ input[type=checkbox] {
 .listing-space {
 	height: 30px;	
 }
-figcaption.edit-image {		
-	display: block;
-	position: absolute;
-	top: auto;
-	left: 0;
-	text-align: center;
-	height: 100%;
-	width: 100%;
-	bottom: 0;
-	background: asset-url("forms/background-000000-o100-w10-h10.png") repeat;
-}
-figcaption.edit-image div.img-1-container {
-	position: relative;
-	top: 30%;
-	height: auto;
-}			
-figcaption.edit-image div.img-1-container div.img-1 {
-	width: 72px;
-	height: 60px;
-	margin: auto;
-	background: asset-url("forms/logo_camera_1_w72_h60.png") no-repeat;
-}			
-figcaption.edit-image div.img-1-container div.img-1-text {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	color: #fff;
-}			
+// figcaption.edit-image {		
+	// display: block;
+	// position: absolute;
+	// top: auto;
+	// left: 0;
+	// text-align: center;
+	// height: 100%;
+	// width: 100%;
+	// bottom: 0;
+	// background: asset-url("forms/background-000000-o100-w10-h10.png") repeat;
+// }
+// figcaption.edit-image div.img-1-container {
+	// position: relative;
+	// top: 30%;
+	// height: auto;
+// }			
+// figcaption.edit-image div.img-1-container div.img-1 {
+	// width: 72px;
+	// height: 60px;
+	// margin: auto;
+	// background: asset-url("forms/logo_camera_1_w72_h60.png") no-repeat;
+// }			
+// figcaption.edit-image div.img-1-container div.img-1-text {
+	// font-family: Arial, Helvetica, sans-serif;
+	// font-size: 14px;
+	// color: #fff;
+// }			
 
 div#container_logo1_image .drop {
 	position: relative;

@@ -1,0 +1,202 @@
+<style type="text/css">
+	.product-row {
+	    display: table;
+	    height: 100%;
+	    width: 100%;
+	    cursor: pointer;
+	    font-size: 14px;
+	    font-family: Arial, Helvetica, sans-serif;
+	    color: #376340;
+	    border-top: 2px solid #337633;
+	    padding: 10px 0px;
+	    min-height: 200px;
+	}
+	.product-row:hover {
+		background: white;
+	}
+	.btn-opt-edit-container {
+	    background: linear-gradient(#FBB040, #CA8E33);
+	    border-radius: 10px;
+	    width: 80px;
+	    height: 24px;
+	}
+	.btn-opt-edit {
+	    font-family: Arial, Helvetica, sans-serif;
+	    font-size: 14px;
+	    font-weight: 700;
+	    color: #eee;
+	    text-align: center;
+	    width: 80px;
+	    height: 24px;
+	    padding-top: 4px;
+	    text-decoration: none;
+	    outline: none;
+	}
+	.btn-clear-search-field {
+		position: absolute;
+		top: 11px;
+		right: 100px;
+		display: block;
+		width: 12px;
+		height: 11px;
+		background: url(/assets/chosen-sprite.png);
+		background-repeat: no-repeat;
+    	background-position: -42px 1px;
+		font-size: 1px;
+		cursor: pointer;
+	}
+	.btn-clear-search-field:hover {
+		background: url(/assets/chosen-sprite.png);
+		background-repeat: no-repeat;
+    	background-position: -42px -10px;
+	}
+	.search-image-search-field {
+		position: absolute;
+		top: 10px;
+		left: 7px;
+		display: block;
+		width: 12px;
+		height: 12px;
+		background: url(/assets/chosen-sprite.png);
+		background-repeat: no-repeat;
+    	background-position: -34px -24px;
+		font-size: 1px;
+		cursor: text;
+		-moz-transform: scaleX(-1);
+		-o-transform: scaleX(-1);
+		-webkit-transform: scaleX(-1);
+		transform: scaleX(-1);
+	}
+	.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+		color: #999;
+	}
+</style>
+
+<style>
+	
+	.search-field-tag {
+		height: 20px; 
+		width: 400px; 
+		padding: 5px 5px 5px 22px; 
+		border-radius:5px; 
+		border: 1px solid #49853f; 
+		font-size: 14px; 
+		font-family: Arial, Helvetica, sans-serif; 
+		color: #376340; 
+		outline: none;
+	}
+	
+</style>
+
+<div style="min-height: 1200px;">
+	<div style="display: table; height: 100%; width: 100%;">
+		<%= form_tag({action: 'search_publisher_product'}, id: "search_form", remote: true) do %>
+		<div style="display: table-cell; width: 225px; vertical-align: top;"></div>
+		<div id="main_container" style="display: table-cell; width: 750px; vertical-align: top;">
+			<div style="margin: 20px auto; width: 80%;" >
+				<div style="margin: auto 20px; float: left; position: relative;">
+					<div class="search-image-search-field"></div>
+					<%=text_field_tag :search_query, value = nil, style: "", class: 'search-field-tag', placeholder: "Start typing a product name...", tabindex: '101', :onkeyup => 'onSearchClick()', :autofocus => true %>
+					<div class="btn-clear-search-field" onclick="onClearSearchField()"></div>
+					<%= submit_tag("Search", :style => "display: none") %> 
+					<div id="id_search_1" onclick="onSearchClick()" style="float: right; margin: 5px" class="btn-opt-edit-container" tabindex="102">
+						<div class="btn-opt-edit">Search</div>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<div id="result_container" style="margin: 20px auto; width: 730px;" >
+				
+			</div>		
+		</div>
+		<div style="display: table-cell; width: 225px; vertical-align: top; ">
+			<div style="padding: 20px 22.5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340; background: #F7F7F7" >
+				<div>
+					<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Subjects:</label>
+					<div style="height: 10px"></div>
+					<!-- <#%= collection_select :subject, :id, Dtab4let.all, :id, :col_1,  {:include_blank => false}, {"data-placeholder" => "Choose a subject", :class => "chosen-select", :style => "width: 180px;" ,:multiple => true} %> -->
+					<%= select_tag "search_subjects", options_from_collection_for_select(Dtab4let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any subjects" %>
+				</div>
+			</div>
+			<div style="height: 10px"></div>
+			<div style="padding: 20px 22.5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340; background: #F7F7F7" >
+				<div>
+					<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Platforms:</label>
+					<div style="height: 10px"></div>
+					<!-- <#%= collection_select :subject, :id, Dtab4let.all, :id, :col_1,  {:include_blank => false}, {"data-placeholder" => "Choose a subject", :class => "chosen-select", :style => "width: 180px;" ,:multiple => true} %> -->
+					<%= select_tag "search_platforms", options_from_collection_for_select(Dtab3let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any platforms" %>
+				</div>
+			</div>
+			<div style="height: 10px"></div>
+			<div id="id_search_2" class="btn-opt-edit-container" tabindex="102" style="float: right; margin: 5px">
+				<div class="btn-opt-edit">Search</div>
+			</div>		
+			
+		</div>
+		<% end %>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function setClearSearchFieldButton () {
+		if ($("#search_query").val()) {
+			$("form .btn-clear-search-field").css("display", "block");
+		} else{
+			$("form .btn-clear-search-field").css("display", "none");
+		}
+	}
+
+	function onSearchClick () {		
+		$("#search_form").submit();
+	}
+	function onClearSearchField() {
+		$("#search_query").val("");
+		setClearSearchFieldButton();
+		onSearchClick();
+	}
+
+	$(document).ready(function () {
+		// Initialize dropdowns
+		$(".chosen-select").chosen({
+			disable_search_threshold: 100,
+			allow_single_deselect: true
+		});
+
+		setClearSearchFieldButton();
+		onSearchClick();
+
+		$('#search_query').on('input', function() {
+			setClearSearchFieldButton();
+			// onSearchClick();
+		});
+
+	    $('#id_search_1').keypress(function(e) {
+	        if(e.keyCode==13) {
+	        	onSearchClick ();
+	        }            
+	    });
+
+	    $('#id_search_2').click( function() {
+	        onSearchClick ();
+	    });
+	    $('#id_search_2').keypress(function(e) {
+	        if(e.keyCode==13) {
+	        	onSearchClick ();
+	        }            
+	    });
+	
+		// // Updating search results
+		// $( "#search_subjects" ).change(function() {
+			// onSearchClick ();
+		// });	
+		// $( "#search_platforms" ).change(function() {
+			// onSearchClick ();
+		// });	
+
+
+
+
+	});
+
+
+</script>

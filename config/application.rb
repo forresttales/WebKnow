@@ -115,6 +115,7 @@ module Webknow
                                   'nav_publisher_product_summary.css',
                                   'nav_publisher_register.css',
                                   'nav_publisher_user_register.css',
+                                  'product_lists.css',
                                   'profile-new.css',
                                   'publisher_users_index_home.css',
                                   'publisher_users_index.css',
@@ -125,6 +126,7 @@ module Webknow
                                   'static_pages.css',
                                   # 'table.css',
                                   'users.css',
+                                  'user_lists.css',
                                   'z_custom_mtablets_tabs.css',
                                   'z_custom_mtablets.css'
                                 ]

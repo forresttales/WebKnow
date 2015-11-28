@@ -344,11 +344,17 @@
   margin: auto;
   background: url("/assets/forms/logo_camera_1_w72_h60.png") no-repeat;
 }     
-.drop-namespace102 figcaption.edit-image-2 div.img-2-container div.img-2-text {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  color: #fff;
+.drop-namespace102 .img-2-text {
+  	font-family: Arial, Helvetica, sans-serif;
+  	font-size: 14px;
+  	color: #fff;
+    height: 18px;
+    left: 50%;
+    position: relative;
+    top: 45%;
+    transform: translateX(-50%);
 }     
+
 	
 </style>
 
@@ -413,7 +419,7 @@
 			<figure class="dialog-102-1-figure-generic" data-width="375" data-src-600="">
 				<img id="image_2_img_generic" class="" alt="" src="<%= image_path('avatars/avatar-gen-corp-w375-h300.png') %>" />
 				<figcaption class="edit-image-2 hidden cursor-pointer drop-102-target">
-						<div class="img-1-text">Add a photo</div>
+						<div class="img-2-text">Add a photo</div>
 				</figcaption>
 			</figure>
 	    	<div class="drop-102-container drop-hidden">

@@ -1,0 +1,148 @@
+<% @search_results.each do |publisher_product| %>
+	<div class="product-row">
+		<div style="display: table-cell; width: 200px; vertical-align: top;">
+	      	<% product_image = publisher_product.publisher_product_pos1_image.image_url(:image_200_200) rescue "/images_avatar/avatar-gen-product-w200-h200.png" %>
+	      	<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>">
+				<%= image_tag product_image.to_s, :style => "border: solid 1px #aaa;" %>
+			</a>
+			<div style="min-height: 10px; padding: 5px 0px;">
+				<%= publisher_product.publisher_product_manifest.product_tagline %>
+			</div>
+		</div>
+		<div style="display: table-cell; width: 265px; vertical-align: top;">
+			<div style="padding: 0px 0px 0px 15px;">
+				<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" style="display: block; width: 250px; font-size: 16px; color: #47a447;"><%= publisher_product.publisher_product_manifest.product_name.to_s %></a>
+				<div style="height: 5px"></div>
+				<div style="font-size: 14px; line-height: 1.4;">
+					<% product_subjects = category_subject_for(publisher_product)[:category_subject_text] %>
+					<% product_other_subjects = category_subject_for(publisher_product)[:category_subject_other] %>
+					<% product_subjects.push(product_other_subjects) if product_other_subjects.present? %>
+					<% if product_subjects.present? %>
+						<div>
+							<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Subject(s):</div>
+							<div  style="display: inline-block">
+								<% product_subjects.first(3).each do |subject_text| %>
+									<div><%= subject_text %></div>
+								<% end %>
+							</div>
+						</div>
+					<% end %>
+					<% age_range_text = age_range_for(publisher_product)[:age_range_text] %>
+					<% if age_range_text.present? %>
+						<div>
+							<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Age Range:</div>
+							<div style="display: inline-block; width: 145px;">
+								<%= age_range_text.join(" ") %>
+							</div>
+						</div>
+					<% end %>
+					<% grade_range_text = grade_range_for(publisher_product)[:grade_range_text] %>
+					<% if grade_range_text.present? %>
+						<div>
+							<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Grade Range:</div>
+							<div style="display: inline-block; width: 145px;">
+								<%= grade_range_text.join(" ") %>
+							</div>
+						</div>
+					<% end %>
+					<% market_target_text = market_target_for(publisher_product)[:market_target_text] %>
+					<% if market_target_text.present? %>
+						<div>
+							<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Target Market:</div>
+							<div style="display: inline-block; width: 145px;">
+								<%= market_target_text.join(" ") %>
+							</div>
+						</div>
+					<% end %>
+					<% pricing_model_text = pricing_model_for(publisher_product)[:pricing_model_text] %>
+					<% if pricing_model_text.present? %>
+						<div>
+							<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Pricing Model:</div>
+							<div style="display: inline-block; width: 145px;">
+								<%= pricing_model_text.join(" ") %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>			
+		</div>
+		<div style="display: table-cell; width: 265px; vertical-align: top;">
+			<div style="padding: 0px 0px 0px 15px;">
+				<div style="font-size: 14px; line-height: 1.43;">
+					<% enhancement_text = enhancement_for(publisher_product)[:enhancement_text] %>
+					<% enhancement_other_text = enhancement_for(publisher_product)[:enhancement_other] %>
+					<% enhancement_text.push(enhancement_other_text) if enhancement_other_text.present? %>
+					<% if enhancement_text.present? %>
+						<div>
+							<div style="display: block; vertical-align: top; font-weight: 700; color: #333;">Enhancement(s):</div>
+							<div  style="display: block">
+								<% enhancement_text.first(3).each do |enhancement| %>
+									<div><%= enhancement %></div>
+								<% end %>
+							</div>
+						</div>
+					<% end %>
+					<% platform_text = platform_for(publisher_product)[:platform_text] %>
+					<% platform_other_text = platform_for(publisher_product)[:platform_other] %>
+					<% platform_text.push(platform_other_text) if platform_other_text.present? %>
+					<% if platform_text.present? %>
+						<div>
+							<div style="display: block; vertical-align: top; font-weight: 700; color: #333;">Platforms Available:</div>
+							<div style="display: block;">
+								<% platform_text.first(3).each do |platform| %>
+									<div><%= platform %></div>
+								<% end %>
+							</div>
+						</div>
+					<% end %>
+					<% file_type_text = file_type_for(publisher_product)[:file_type_text] %>
+					<% file_type_other_text = file_type_for(publisher_product)[:file_type_other] %>
+					<% file_type_text.push(file_type_other_text) if file_type_other_text.present? %>
+					<% if file_type_text.present? %>
+						<div>
+							<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">File Type:</div>
+							<div style="display: inline-block; width: 145px;">
+								<% file_type_text.first(3).each do |file_type| %>
+									<div><%= file_type %></div>
+								<% end %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>
+<div style="height: 10px"></div>
+<%= will_paginate @search_results, :inner_window=> 2, :params => {:controller => 'publisher_product_lists'} %>
+<script type="text/javascript">
+	$('.pagination a').attr('data-remote', 'true');
+	function convertArrayToJSONArray (array) {
+		var result = "";
+		if (array) {
+			$.each(array, function( index, value ) {
+				if (result != "")
+					result += ","
+				result += '"' + value + '"'
+			});
+		}
+		return result;
+	}
+	function setAjaxPagination() {
+		$('.pagination a').click ( function( event ){
+			event.preventDefault();
+			event.stopImmediatePropagation();
+			// Setting search filter
+			var order = '{ "search_subjects": [' + convertArrayToJSONArray($("#search_subjects").val()) + ']' +
+					', "search_query": "' + $("#search_query").val() + '"' +
+					'}';
+			$.ajax({
+				method: "POST",
+			  	url: $(this).attr('href'),
+			  	data: order,
+			  	contentType: "application/json",
+			  	dataType: "script" });
+		});
+	}
+	setAjaxPagination();
+</script>
