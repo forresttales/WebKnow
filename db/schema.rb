@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108095545) do
+ActiveRecord::Schema.define(version: 20151130054843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1333,6 +1333,18 @@ ActiveRecord::Schema.define(version: 20151108095545) do
   add_index "publisher_product2_images", ["publisher_id"], name: "index_publisher_product2_images_on_publisher_id", using: :btree
   add_index "publisher_product2_images", ["publisher_product_id"], name: "index_publisher_product2_images_on_publisher_product_id", using: :btree
 
+  create_table "publisher_product_age_ranges", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "age_from",             default: 0
+    t.integer  "age_to",               default: 0
+    t.boolean  "required",             default: false
+  end
+
+  add_index "publisher_product_age_ranges", ["publisher_product_id"], name: "index_age_ranges_on_publisher_product_id", using: :btree
+
   create_table "publisher_product_appropriate_ages", force: true do |t|
     t.integer  "publisher_id"
     t.integer  "publisher_product_id"
@@ -1762,6 +1774,18 @@ ActiveRecord::Schema.define(version: 20151108095545) do
   end
 
   add_index "publisher_product_from_grades", ["publisher_product_id"], name: "index_from_grades_on_publisher_product_id", using: :btree
+
+  create_table "publisher_product_grade_ranges", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id"
+    t.integer  "publisher_product_id"
+    t.integer  "grade_from",           default: 0
+    t.integer  "grade_to",             default: 0
+    t.boolean  "required",             default: false
+  end
+
+  add_index "publisher_product_grade_ranges", ["publisher_product_id"], name: "index_grade_ranges_on_publisher_product_id", using: :btree
 
   create_table "publisher_product_images", force: true do |t|
     t.integer  "publisher_id"

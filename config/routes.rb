@@ -912,9 +912,10 @@ Webknow::Application.routes.draw do
   # match '/Publisher-Add-Product', to: 'publisher_products#new', via: 'get'
   # match "/Publisher-Products-Edit/:id/edit" => "publisher_products#edit", via: 'post'
   # match "/publisher_products/:id" => "publisher_products#update", via: 'get'
-
   resources :publisher_products do
     collection do
+      post :search_publisher_product
+      post :destroy_publisher_product
       post :dbdelete
     end
   end

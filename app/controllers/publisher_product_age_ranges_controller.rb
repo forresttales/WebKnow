@@ -1,0 +1,2 @@
+class PublisherProductAgeRangesController < ApplicationController
+end

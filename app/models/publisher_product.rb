@@ -49,10 +49,12 @@ class PublisherProduct < ActiveRecord::Base
   has_one :publisher_product_category_subject, dependent: :destroy
   # has_one :publisher_product_appropriate_grade
   # has_one :publisher_product_appropriate_age
-  has_one :publisher_product_from_age, dependent: :destroy
-  has_one :publisher_product_to_age, dependent: :destroy
-  has_one :publisher_product_from_grade, dependent: :destroy
-  has_one :publisher_product_to_grade, dependent: :destroy    
+  # has_one :publisher_product_from_age, dependent: :destroy
+  # has_one :publisher_product_to_age, dependent: :destroy
+  # has_one :publisher_product_from_grade, dependent: :destroy
+  # has_one :publisher_product_to_grade, dependent: :destroy
+  has_one :publisher_product_age_range, dependent: :destroy
+  has_one :publisher_product_grade_range, dependent: :destroy      
   has_one :publisher_product_market_target, dependent: :destroy
   has_one :publisher_product_platform, dependent: :destroy
   has_one :publisher_product_file_type, dependent: :destroy

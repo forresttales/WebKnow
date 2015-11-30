@@ -113,10 +113,32 @@
 				</div>
 			</div>
 		</div>
+		<div class="product-row">
+			<div style="display: table-cell; width: 200px; vertical-align: top;"></div>			
+			<div style="display: table-cell; width: 265px; vertical-align: top;">
+				<div style="padding: 0px 0px 0px 15px;">Product ID: <%= publisher_product.slug %></div>
+			</div>
+			<div style="display: table-cell; width: 265px; vertical-align: top;">
+				<div style="padding: 0px 0px 0px 15px;">
+					
+					<% if false %>
+				   	<% delete_msg = "Delete ID: " + reg_event.id.to_s + " ?" %>
+					<%= button_to "Delete", {:action => 'destroy', :id => reg_event.id}, :method => :delete, :data => { confirm: delete_msg }, :class => 'delete-btn' %>
+					<% end %>
+					
+					<div data-delete="<%= publisher_product.id %>" style="" class="btn-opt-edit-container btn-delete-product">
+						<div class="btn-opt-edit">Delete</div>
+					</div>
+				</div>
+			</div>
+		</div>		
 	</div>
 <% end %>
+
 <div style="height: 10px"></div>
+
 <%= will_paginate @search_results, :inner_window=> 2, :params => {:controller => 'publisher_product_lists'} %>
+
 <script type="text/javascript">
 	$('.pagination a').attr('data-remote', 'true');
 	function convertArrayToJSONArray (array) {

@@ -1,18 +1,20 @@
 <style type="text/css">
-	.product-row {
+	.product-table {
 	    display: table;
-	    height: 100%;
 	    width: 100%;
+	    height: 210px;	    
 	    cursor: pointer;
 	    font-size: 14px;
 	    font-family: Arial, Helvetica, sans-serif;
 	    color: #376340;
 	    border-top: 2px solid #337633;
 	    padding: 10px 0px;
-	    min-height: 200px;
 	}
-	.product-row:hover {
+	.product-table:hover {
 		background: white;
+	}
+	.product-row {
+	    display: table-row;
 	}
 	.btn-opt-edit-container {
 	    background: linear-gradient(#FBB040, #CA8E33);
@@ -86,6 +88,10 @@
 		outline: none;
 	}
 	
+	select::-ms-expand {
+	    display: none;
+	}
+	
 </style>
 
 <div style="min-height: 1200px;">
@@ -99,7 +105,7 @@
 					<%=text_field_tag :search_query, value = nil, style: "", class: 'search-field-tag', placeholder: "Start typing a product name...", tabindex: '101', :onkeyup => 'onSearchClick()', :autofocus => true %>
 					<div class="btn-clear-search-field" onclick="onClearSearchField()"></div>
 					<%= submit_tag("Search", :style => "display: none") %> 
-					<div id="id_search_1" onclick="onSearchClick()" style="float: right; margin: 5px" class="btn-opt-edit-container" tabindex="102">
+					<div id="id_search_1" style="float: right; margin: 5px" class="btn-opt-edit-container" tabindex="102">
 						<div class="btn-opt-edit">Search</div>
 					</div>
 				</div>
@@ -109,28 +115,79 @@
 				
 			</div>		
 		</div>
-		<div style="display: table-cell; width: 225px; vertical-align: top; ">
+		<div style="display: table-cell; width: 300px; vertical-align: top; ">
 			<div style="padding: 20px 22.5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340; background: #F7F7F7" >
 				<div>
 					<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Subjects:</label>
-					<div style="height: 10px"></div>
+					<div style="height: 4px"></div>
 					<!-- <#%= collection_select :subject, :id, Dtab4let.all, :id, :col_1,  {:include_blank => false}, {"data-placeholder" => "Choose a subject", :class => "chosen-select", :style => "width: 180px;" ,:multiple => true} %> -->
 					<%= select_tag "search_subjects", options_from_collection_for_select(Dtab4let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any subjects" %>
 				</div>
-			</div>
-			<div style="height: 10px"></div>
-			<div style="padding: 20px 22.5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340; background: #F7F7F7" >
+				<div style="height: 20px"></div>
 				<div>
 					<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Platforms:</label>
-					<div style="height: 10px"></div>
+					<div style="height: 4px"></div>
 					<!-- <#%= collection_select :subject, :id, Dtab4let.all, :id, :col_1,  {:include_blank => false}, {"data-placeholder" => "Choose a subject", :class => "chosen-select", :style => "width: 180px;" ,:multiple => true} %> -->
 					<%= select_tag "search_platforms", options_from_collection_for_select(Dtab3let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any platforms" %>
 				</div>
+				<div style="height: 20px"></div>
+				<div>
+					<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Age:</label>
+					<div style="height: 4px"></div>
+					<div>
+
+						<div style="display: inline-block; padding: 0px;">
+							<!-- <div style="width: 40px;"><span>From:</span></div> -->
+							<%= hidden_field_tag :search_from_age, value = nil %>
+			          		<select id="publisher_product_from_age" name="publisher_product[from_age]" data-placeholder="From" class="chosen-select" style="width:110px;" tabindex="">
+								<option value=""></option>
+								<% @from_ages.each do|from_age| %>
+									<option value="<%= from_age.id %>"><%= from_age.col_1 %></option>
+								<% end %>
+			          		</select>
+						</div>
+						<div style="display: inline-block; width: 4px; text-align: center;"> - </div>
+						<div style="display: inline-block; padding: 0px;">
+							<!-- <div style="width: 40px;"><span>To:</span></div> -->
+							<%= hidden_field_tag :search_to_age, value = nil %>
+			          		<select id="publisher_product_to_age" name="publisher_product[to_age]" data-placeholder="To" class="chosen-select" style="width:110px;" tabindex="">
+								<option value=""></option>
+								<% @to_ages.each do|to_age| %>
+									<option value="<%= to_age.id %>"><%= to_age.col_1 %></option>
+								<% end %>
+			          		</select>
+						</div>
+
+						<% if false %>
+						<!-- <div style="display: inline-block">From</div> -->
+						<%= hidden_field_tag :search_from_age, value = nil %>
+						<select data-placeholder="From" id="publisher_product_from_age" name="publisher_product[from_age]" class="chosen-select" style="width: 82.5px; display: inline-block">
+							<option value=""></option>
+							<% (10..99).each do |age| %>
+								<option value="<%= age %>"><%= age %></option>
+							<% end %>
+						</select>
+						<div style="display: inline-block"> - </div>
+						<%= hidden_field_tag :search_to_age, value = nil %>
+						<select data-placeholder="To" id="publisher_product_to_age" name="publisher_product[to_age]" class="chosen-select" style="width: 82.5px; display: inline-block">
+							<option value=""></option>
+							<% (10..99).each do |age| %>
+								<option value="<%= age %>"><%= age %></option>
+							<% end %>
+						</select>
+						<% end %>
+								
+					</div>
+				</div>
+				<div style="height: 20px"></div>
+				<div id="id_search_2" class="btn-opt-edit-container" tabindex="102" style="float: right; margin: 5px">
+					<div class="btn-opt-edit">Search</div>
+				</div>		
+				<div style="height: 20px"></div>
+
 			</div>
-			<div style="height: 10px"></div>
-			<div id="id_search_2" class="btn-opt-edit-container" tabindex="102" style="float: right; margin: 5px">
-				<div class="btn-opt-edit">Search</div>
-			</div>		
+			
+			
 			
 		</div>
 		<% end %>
@@ -138,6 +195,7 @@
 </div>
 
 <script type="text/javascript">
+
 	function setClearSearchFieldButton () {
 		if ($("#search_query").val()) {
 			$("form .btn-clear-search-field").css("display", "block");
@@ -147,15 +205,56 @@
 	}
 
 	function onSearchClick () {		
+		
+		if ($("#publisher_product_from_age").val()) {
+			$("#search_from_age").val($("#publisher_product_from_age").val());
+		} else {
+			$("#search_from_age").val(null);
+		}	
+		
+		if ($("#publisher_product_to_age").val()) {
+			$("#search_to_age").val($("#publisher_product_to_age").val());
+		} else {
+			$("#search_to_age").val(null);
+		}		
+		
 		$("#search_form").submit();
 	}
+	
 	function onClearSearchField() {
 		$("#search_query").val("");
 		setClearSearchFieldButton();
 		onSearchClick();
 	}
 
+	function update_to_age_select (min_value) {
+		// // alert("'" + min_value + "'");
+		// if(min_value == '') {
+			// // alert("'" + min_value + "'");
+			// // <abbr class="search-choice-close"></abbr>
+			// // $("#publisher_product_to_age_chosen abbr.search-choice-close").click();
+			// min_value = 20;
+			// // $("#publisher_product_to_age_chosen [abbr]").click();
+		// }
+		$("#publisher_product_to_age option").css("display", "block");
+		for (var i = 1; i < min_value; i++) {
+			var selector = "#publisher_product_to_age option[value=" + i + "]";
+			$(selector).css("display", "none");
+		};
+		$("#publisher_product_to_age").trigger('chosen:updated');
+	}
+	function update_from_age_select (max_value) {
+		$("#publisher_product_from_age option").css("display", "block");
+		for (var i = parseInt(max_value) + 1; i < 21; i++) {
+			var selector = "#publisher_product_from_age option[value=" + i + "]";
+			$(selector).css("display", "none");
+		};
+		$("#publisher_product_from_age").trigger('chosen:updated');
+	}
+
+
 	$(document).ready(function () {
+		
 		// Initialize dropdowns
 		$(".chosen-select").chosen({
 			disable_search_threshold: 100,
@@ -170,6 +269,9 @@
 			// onSearchClick();
 		});
 
+	    $('#id_search_1').click( function() {
+	        onSearchClick ();
+	    });
 	    $('#id_search_1').keypress(function(e) {
 	        if(e.keyCode==13) {
 	        	onSearchClick ();
@@ -193,6 +295,36 @@
 			// onSearchClick ();
 		// });	
 
+		$("#publisher_product_from_age").change(function() {
+			var v = $("#publisher_product_from_age").val();
+			if(v != '') {
+				update_to_age_select($("#publisher_product_from_age").val());
+				// onSearchClick ();
+			}
+		});
+		$("#publisher_product_to_age").change(function() {
+			var v = $("#publisher_product_to_age").val();
+			if(v != '') {
+				update_from_age_select($("#publisher_product_to_age").val());
+				// onSearchClick ();
+			}
+		});
+
+		// $("#publisher_product_to_age").change(function() {
+			// update_from_age_select($("#publisher_product_to_age").val());
+			// // onSearchClick ();
+		// });
+
+		
+		// this code depends on the modification of the function Chosen.prototype.container_mouseup in chosen.jquery.js 
+		$(document).on('publisher_product_from_age_chosen_abbr', function(e, evt) {
+			$('#publisher_product_to_age').val('').trigger('chosen:updated');
+			// var classList = $('#publisher_product_to_age_chosen abbr').attr('class').split(/\s+/);
+			// $.each(classList, function(index, item) {
+				// alert(index);
+				// alert(item);
+			// });			
+		});
 
 
 

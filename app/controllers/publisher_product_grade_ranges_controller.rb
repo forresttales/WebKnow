@@ -1,0 +1,2 @@
+class PublisherProductGradeRangesController < ApplicationController
+end

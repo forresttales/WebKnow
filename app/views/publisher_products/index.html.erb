@@ -1,926 +1,441 @@
 <% provide(:title, 'Products List') %>
 
-	<!-- <script src="/assets/jqModal.js"></script>
-	<script src="/assets/jquery.easing.1.3.js"></script>
-	<link rel="stylesheet" href="/assets/jqModal.css" /> -->
+<style type="text/css">
+	.product-table {
+	    display: table;
+	    width: 100%;
+	    height: 210px;
+	    cursor: pointer;
+	    font-size: 14px;
+	    font-family: Arial, Helvetica, sans-serif;
+	    color: #376340;
+	    border-top: 2px solid #337633;
+	    padding: 10px 0px;
+	}
+	.product-table:hover {
+		background: white;
+	}
+	.product-row {
+	    display: table-row;
+	}
+	.btn-opt-edit-container {
+	    background: linear-gradient(#FBB040, #CA8E33);
+	    border-radius: 10px;
+	    width: 80px;
+	    height: 24px;
+	}
+	.btn-opt-edit {
+	    font-family: Arial, Helvetica, sans-serif;
+	    font-size: 14px;
+	    font-weight: 700;
+	    color: #eee;
+	    text-align: center;
+	    width: 80px;
+	    height: 24px;
+	    padding-top: 4px;
+	    text-decoration: none;
+	    outline: none;
+	}
+	.btn-clear-search-field {
+		position: absolute;
+		top: 11px;
+		right: 100px;
+		display: block;
+		width: 12px;
+		height: 11px;
+		background: url(/assets/chosen-sprite.png);
+		background-repeat: no-repeat;
+    	background-position: -42px 1px;
+		font-size: 1px;
+		cursor: pointer;
+	}
+	.btn-clear-search-field:hover {
+		background: url(/assets/chosen-sprite.png);
+		background-repeat: no-repeat;
+    	background-position: -42px -10px;
+	}
+	.search-image-search-field {
+		position: absolute;
+		top: 10px;
+		left: 7px;
+		display: block;
+		width: 12px;
+		height: 12px;
+		background: url(/assets/chosen-sprite.png);
+		background-repeat: no-repeat;
+    	background-position: -34px -24px;
+		font-size: 1px;
+		cursor: text;
+		-moz-transform: scaleX(-1);
+		-o-transform: scaleX(-1);
+		-webkit-transform: scaleX(-1);
+		transform: scaleX(-1);
+	}
+	.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+		color: #999;
+	}
+</style>
 
-	<!-- <script src="../jcrop/js/jquery.Jcrop.js"></script>
-	<script type="text/javascript">
-	  jQuery(function($){
-	    $('#target').Jcrop();
-	  });
-	</script>
-	<link rel="stylesheet" href="../jcrop/css/jquery.Jcrop.css" type="text/css" /> -->
-  	<!-- <script src="/assets/jquery.qtip.min.js" type="text/javascript"></script>
-  	<link rel="stylesheet" href="/assets/jquery.qtip.min.css"> -->
-
-
-	<!-- <script src="/assets/jquery.colorbox.js"></script>
-	<link rel="stylesheet" href="/assets/colorbox.css" /> -->
+<style>
 	
-  	<link rel="stylesheet" href="../styles/chosen/chosen.css">
-  	<script src="/assets/chosen.jquery.js" type="text/javascript"></script>
-  	<!-- <script src="/assets/toucheffects.js" type="text/javascript"></script> -->
+	.search-field-tag {
+		height: 20px; 
+		width: 400px; 
+		padding: 5px 5px 5px 22px; 
+		border-radius:5px; 
+		border: 1px solid #49853f; 
+		font-size: 14px; 
+		font-family: Arial, Helvetica, sans-serif; 
+		color: #376340; 
+		outline: none;
+	}
 	
+	.jqmWindow-101-4 {
+	  	display: none;
+	  	/*position: absolute;*/
+	  	position: fixed;
+	  	top:30%;
+		left: 50%;
+		margin-left: -200px;		    
+	  	width: 400px;
+	  	height: 160px;		    
+	  	background-color: #f6f6f6;
+	  	color: #333;
+	  	border: 4px solid #376340;
+	  	padding: 0px;
+	}
 	
-	<!-- <link rel="stylesheet" href="../styles/digg-pagination.css" /> -->
-	<!-- <link rel="stylesheet" href="../styles/ks-profile.css" /> -->
-	
-	<!-- <script type="text/javascript" src="../scripts/jquery.tmpl.js"></script> -->
-	
- 	<!-- <style>
-		*, *:after, *:before {
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-		}
-		.clearfix:before, .clearfix:after { content: " "; display: table; }
-		.clearfix:after { clear: both; }
-		a, a:focus {
-			text-decoration: none;
-			outline: none;
-		}
-	</style> -->
-	
- 	<style>
-
-		.publisher-product-list-grid {
-			padding: 0px 0px 0px 0px;
-			/*max-width: 1300px;*/
-			margin: 0 auto;
-			list-style: none;
-			/*text-align: center;*/
-		}
-		.publisher-product-list-grid li {
-			display: inline-block;
-			width: 100px;
-			/*height: 300px;*/
-			margin: 0;
-			padding: 0px 0px 0px 0px;
-			position: relative;
-			text-align: center;
-		}
-		.publisher-product-list-grid-small li {
-			display: inline-block;
-			/*height: 300px;*/
-			margin: 0;
-			padding: 0px 0px 0px 0px;
-			position: relative;
-			text-align: center;
-		}
-		.publisher-product-list-grid figure {
-			margin: 0;
-			position: relative;
-			/*height: 300px;*/
-			/*padding-left: 6px;*/
-			padding-top: 0px;	
-			background-color: #fff;
-			/*border: 1px solid #ccc;*/
-		}
-		.publisher-product-list-grid figure img {
-			max-width: 100%;
-			display: block;
-			position: relative;
-		}
-		.publisher-product-list-grid figcaption {
-			position: absolute;
-			text-align: right;
-			/*font-family: 'Quattrocento Sans', sans-serif;*/
-			font-family: Arial, Helvetica, sans-serif;
-		    font-size: 14px;
-			font-weight: 200;					  				
-			top: 0;
-			/*left: 0;*/
-			padding: 10px;
-			background: #000;
-		}
-		.publisher-product-list-grid figcaption a {
-			color: #fff;
-		}
-		.publisher-product-list-grid figcaption a:hover{
-			color: #fff;
-		}
-		.publisher-product-list-caption figure {
-			overflow: hidden;
-		}
-		.publisher-product-list-caption figure img {
-			-webkit-transition: -webkit-transform 0.2s;
-			-moz-transition: -moz-transform 0.2s;
-			transition: transform 0.2s;
-		}
-		.no-touch .publisher-product-list-caption figure:hover img,
-		.publisher-product-list-caption figure.cs-hover img {
-			/*-webkit-transform: translateY(0px);
-			-moz-transform: translateY(0px);
-			-ms-transform: translateY(0px);
-			transform: translateY(0px);*/
-			
-			/*-webkit-transform: translateY(-6px);
-			-moz-transform: translateY(-6px);
-			-ms-transform: translateY(-6px);
-			transform: translateY(-6px);*/
-		}
-		.publisher-product-list-caption figcaption {
-			height: 34px;
-			width: 100%;
-			top: auto;
-			bottom: 0;
-			opacity: 0;
-			-webkit-transform: translateY(100%);
-			-moz-transform: translateY(100%);
-			-ms-transform: translateY(100%);
-			transform: translateY(100%);
-			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
-			-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
-			transition: transform 0.4s, opacity 0.1s 0.3s;
-		}
-		.no-touch .publisher-product-list-caption figure:hover figcaption,
-		.publisher-product-list-caption figure.cs-hover figcaption {
-			opacity: .8;
-			-webkit-transform: translateY(0px);
-			-moz-transform: translateY(0px);
-			-ms-transform: translateY(0px);
-			transform: translateY(0px);
-			-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
-			-moz-transition: -moz-transform 0.4s, opacity 0.1s;
-			transition: transform 0.4s, opacity 0.1s;
-		}
-		/*.publisher-product-list-caption figcaption a {
-			position: absolute;
-			bottom: 20px;
-			right: 20px;
-		}*/
-		@media screen and (max-width: 31.5em) {
-			.publisher-product-list-grid {
-				padding: 0px 0px 0px 0px;
-			}
-			.publisher-product-list-grid li {
-				width: 100%;
-				min-width: 30px;
-			}
-		}
- 		
- 	</style>
-
-	<style>
-		
-		.publisher-products-list-1 {
-			width: 100%; 
-			height: 109px; 
-			padding: 4px;
-			position: relative;
-			background-color: #fff;
-			border-bottom: 1px solid #ccc;
-		}
-		.publisher-products-list-1:hover {
-			background-color: #F8F8F8;
-		}
-		.publisher-products-list-2-left {
- 			display: inline-block;		
- 			position: absolute;
- 			top: 0px;
- 			left: 0px;
- 			height: 100%;
- 			padding-left: 2px;
-    		/*white-space: nowrap;
-    		text-align: center; 
-    		margin: 1em 0;*/
-		}
-		.publisher-products-list-2-right {
- 			display: inline-block;		
- 			position: absolute;
- 			top: 0px;
- 			right: 0px;
- 			height: 100%;
- 			padding-right: 2px; 		
-		}
-		.publisher-products-list-3 {
- 			display: inline-block; 
- 			position: absolute;
- 			top: 0px;
- 			left: 108px;
- 			width: 378px;
- 			height: 100%;
- 			padding-left: 8px;
-		}
-		.publisher-products-list-4 {
- 			display: inline-block; 
- 			width: 360px;
- 			
-		}
-		/*.publisher-products-list-5 {
- 			display: inline-block;
- 			width: 50px; 
-		}*/
-		/*.publisher-product-list-top-border {
-			height: 2px;
-			width: 100%;
-			border-bottom: 2px solid #ccc;
-			position: absolute;
-			top: -1px;
-		}*/
-		.helper {
-		    display: inline-block;
-		    height: 100%;
-		    vertical-align: middle;
-		}		
-		.div-img {
-			display: inline-block;
-		    /*background: #3A6F9A;*/
-		    background: transparent;
-		    vertical-align: middle;
-		    max-height: 100px;
-		    max-width: 100px;
-		}
-
-	</style>
-	
-	<style>
-		
-		.btn-submit {
-			background-color: green;
-			color: #fff;
-		}
-		.display-none {
-			display: none;
-		}
-		.submit-search {
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 400;
-			font-size: 14px;			
-			height: 22px; 
-			width: 100px; 
-			background-color: #888; 
-			color: #fff; 
-			text-align: center;
-			padding: 4px 0 0 0;
-		}
-		.submit-search:hover {
-			cursor: pointer;
-		}
-				
-	</style>
-
-	<style>
-
-		.ks-tip-container {
-			position: relative;
-		}		
-		.ks-tip-target:hover + .ks-tip-1 span {
-		}
-		.ks-tip-target:hover + .ks-tip-1 {
-			display: block;
-		}
-		.ks-tip-1 {
-			position: absolute;
-			width: 60px;
-			height: 24px;
-			background-color: rgba(0, 0, 0, 0.6);
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-			text-align: center;			
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 11px;
-			font-weight: 400;					
-			color: #fff;	
-			padding: 6px 0 0 0;
-			display: none;							
-		}
-		.ks-tip-1-indicator {
-			position: absolute;
-			top: 24px;
-			left: 4px;
-			width: 8px;
-			height: 12px;
-			background-image: url("/assets/drop-w8-h12.png");
-		}		
-		.ks-tip-34minus {
-			top: -34px;
-		}
-
-		.ks-tip-target:hover + .ks-tip span {
-		}
-		.ks-tip-target:hover + .ks-tip {
-			display: block;
-		}
-		.ks-tip {
-			position: absolute;
-			display: none;							
-		}		
-		.ks-tip-delete-post-user-comment {
-			position: absolute;
-			width: 60px;
-			height: 24px;
-			background-color: rgba(0, 0, 0, 0.6);
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-			text-align: center;			
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 11px;
-			font-weight: 400;					
-			color: #fff;	
-			padding: 6px 0 0 0;
-			display: none;
-			top: -36px;
-			left: -20px;		
-			z-index: 1;
-		}		
-		.ks-tip-indicator-delete-post-user-comment {
-			position: absolute;
-			top: 24px;
-			left: 27px;
-			width: 8px;
-			height: 12px;
-			background-image: url("/assets/drop-w8-h12.png");
-		}		
-
-		.ks-tip-delete-post-user {
-			position: absolute;
-			width: 60px;
-			height: 24px;
-			background-color: rgba(0, 0, 0, 0.6);
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-			text-align: center;			
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 11px;
-			font-weight: 400;					
-			color: #fff;	
-			padding: 6px 0 0 0;
-			display: none;
-			top: -36px;
-			left: -20px;		
-			z-index: 1;
-		}		
-		.ks-tip-indicator-delete-post-user {
-			position: absolute;
-			top: 24px;
-			left: 27px;
-			width: 8px;
-			height: 12px;
-			background-image: url("/assets/drop-w8-h12.png");
-		}		
-
-		/*.ks-tip-2 {
-			position: absolute;
-			width: 200px;
-			height: 100px;
-			background-color: rgba(0, 0, 0, 0.6);
-			border-color: rgba(0, 0, 0, 0.6);
-			border-radius: 3px;
-			box-shadow: 0px 2px 2px #aaa;
-			text-align: center;
-			display: none;				
-		}*/
-		.hidden {
-			display: none !important;
-			visibility: hidden !important			
-		}
-		.dialog-span-1 {
-			font-family:Arial, Helvetica, sans-serif;
-			font-size: 10px;
-			font-weight: 200;					
-			color: #333;		
-			height: 12px;		
-		}
-		.dialog-span-1:hover {
-			text-decoration: underline;
-		}
-		
-	</style>
-
-	<style>
-		
-		.publisher-products-add {
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 400;
-		  	color: #666;
-			font-size: 14px;		   			
-		}
-		.publisher-products-add:hover {
-		  	cursor:pointer;
-		  	text-decoration: underline;
-		}
-		.unbutton-prod-list {
-		    background: none;
-		    border: none;
-		    padding: 0;
-		    margin: 0;
-		    overflow: visible;   /* IE hack to avoid extra button width */
-		  	font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 400;
-		  	color: #666;
-			font-size: 14px;		   
-		}		
-		.unbutton-prod-list:hover {
-		  	cursor:pointer;
-		  	text-decoration: underline;
-		}		
-		.publisher-product-list-span {
-			font-family: Arial, Helvetica, sans-serif;
-		  	font-weight: 400;
-		  	color: #666;
-			font-size: 14px;		   			
-		}
-		
-	</style>
-
-	<style>
-		
-		/*@import url(http://www.google.com/fonts#QuickUsePlace:quickUse/Family:Istok+Web);*/
-		
-		div.jp-cell-list {
-			height: 180px;
-			width: 540px;
-			padding-left: 10px;
-			padding-top: 10px;
-			vertical-align: top;
-	    	/*cursor: pointer;*/
-	    	background-color: #fff;
-	    	border: solid 4px #aaa;
-	    	border-radius: 4px;
-		}
-		div.jp-cell-list:hover {
-	    	/*background-color: #eee;*/	    	
-		}
-		span.jp-cell-list-text-1 {
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-	  		font-family: Arial, Helvetica, sans-serif;
-	        font-size: 14px;
-	    	color: #214025;
-	    	font-weight: 400;			
-		}
-		.jp-cell-list-link {
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-	  		font-family: Arial, Helvetica, sans-serif;
-	        font-size: 13px;
-	    	color: #9F6720;
-	    	font-weight: 400;			
-		}
-		.jp-cell-list-link:hover {
-	  		/*font-family: 'QuickUsePlace', sans-serif;*/
-	  		font-family: Arial, Helvetica, sans-serif;
-	        font-size: 13px;
-	    	color: #9F6720;
-	    	font-weight: 400;			
-		}
-		/*.jp-cell-list-delete-btn {
-		  	display: inline-block;
-		  	text-decoration: none; 
-		  	width: 50px;
-		  	height: 20px;
-		  	background: inherit;
-		  	border-width: 0px;
-	  		font-family: Arial, Helvetica, sans-serif;
-	        font-size: 13px;
-	    	color: #9F6720;
-	    	font-weight: 400;					  	
-		}
-		.jp-cell-list-delete-btn:focus {
-		}
-		.jp-cell-list-delete-btn:hover { 
-		  	text-decoration: underline;
-		  	cursor: pointer; 
-		}
-		.jp-cell-list-delete-btn:active { 
-		  	text-decoration: underline; 
-		}*/
-		span.jp-title {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 24px;
-			color: #D98D2D;
-		}
-		span.jp-title-sub {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 18px;
-			color: #A9D996;
-		}
-		.jp-btn {
-		  	/*display: inline-block;*/
-		  	text-decoration: none; 
-		  	/*width: 38px;*/
-		  	height: 20px;
-		  	background: inherit;
-		  	border-width: 0px;
-	  		font-family: Arial, Helvetica, sans-serif;
-	        font-size: 13px;
-	    	color: #9F6720;
-	    	font-weight: 400;					  	
-		}
-		.jp-btn:focus {
-		}
-		.jp-btn:hover { 
-		  	text-decoration: underline;
-		  	cursor: pointer; 
-		}
-		.jp-btn:active { 
-		  	text-decoration: underline; 
-		}
-		span.jp-not-purchased {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #FA7D7D;			
-		}
-		span.jp-purchased {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #A9D996;			
-		}
-		span.jp-missing {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 14px;
-			color: #C9AB00;			
-		}		
-		.jp-listbox {
-			height: 150px;
-			width: 290px;			
-		}
-		.jp-listbox-1 {
-			height: 130px; 
-			width: 290px;			
-		}
-		.jp-listbox-2 {
-			height: 10px; 
-			width: 290px; 
-			text-align: right;			
-		}
-
-		ul.jp-edit-instr {margin-bottom:30px;}
-
-		ul.jp-edit-instr li {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 18px;
-			color: #444;
-			width: 500px;
-			margin-left: 60px;
-			line-height: 1.1em;
-			padding-bottom:15px;
-		}
-		
-	</style>
-	
-	
-<%= form_tag return_profile_users_members_path, :id => 'form_return_profile_users', :remote => true do %>
-	<%= hidden_field_tag :profile_user_type %>
-	<%= submit_tag 'Submit', id: 'submit_profile_user_hidden', class: 'display-none' %>
-<% end %>									
-
-<%= form_tag return_profiles_members_path, :id => 'form_return_profiles', :remote => true do %>
-	<%= hidden_field_tag :profile_type %>
-	<%= submit_tag 'Submit', id: 'submit_profile_hidden', class: 'display-none' %>
-<% end %>									
-	
-<div class="table-profile" style="height: 100%;">
-	<div class="row-profile">
-		<div class="profile-left-col">
-
-			<div class="table margin-0">
-				<div class="row">
-					<div class="cell-225" style="height: 260px; padding: 0 0 0 1px;">
-						<div style="height: 300px; background-color: #dedede;"></div>						
-					</div>
-					<div class="cell-750">
-
-						<div class="post-column">
+</style>
 
 
-
-							<div class="table margin-0">
-								<div class="row">
-									<div class="cell-100percent">
-										<div style="height: 10px;"></div>
-										
-									
-										<% if current_user.email == "b@b.com" %>
-										<div style="width: 100%; text-align: center;">
-											<h5>
-											   	<% delete_all_msg = "Delete all Publisher Product records and reset indices?" %>
-												<%= button_to "Delete All Records and Reset Indices", {:action => 'dbdelete'}, :method => :post, data: { confirm: delete_all_msg }, :class => 'reset-db-btn-long' %>
-											</h5>
-										</div>
-										<% end %>
-										
-										<!-- <div class="pad-left-20">
-											<span class="jp-title">Products</span>
-										</div> -->
-										
-										<div class="line-space-20"></div>
-										<h2 style="text-decoration: underline; text-align: center;">Instructions:</h2>
-										<ul class="jp-edit-instr" style="margin-bottom: 30px;">
-											<li>1. Click Add Product to add a product to your listing</li>
-											<li>2. Then Click on that listing to be taken to its page. From there you can add all the details about this product</li>
-											<li>&bull; Each product is added individually. If you need to upload products in bulk, this is a premium service we offer</li>
-											<li>&bull; If you need help or have questions, please <a target="_blank" href="http://thelearningcounsel.com/ContactUs" style="color:#49853f;">Contact Us</a></li>						
-										</ul>
-											
-										<div style="height: 10px;"></div>				
-										
-										<div class="show-story-3">
-											<div class="text-align-left">
-												<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
-													
-													<div style="margin: 0;">													
-														<div class="publisher-product-utility-bar light">
-															<!-- <div id="render_story_4_post_users_count" style="padding-left: 10px; padding-top: 10px;"></div> -->
-															
-															<!-- <div style="padding-left: 10px; padding-top: 10px;"> -->
-															<div style="padding-left: 130px; padding-top: 10px;">
-																<!-- <div style="display: inline-block;">
-																	<span>Products Count: </span>
-																</div>
-																<div id="render_record_count" style="display: inline-block;">
-																	<span></span>
-																</div> -->
-																
-		
-			<style>
-				
-				.btn-opt-add-spacer {
-					display: inline-block; 
-					width: 430px;
-				}
-				.btn-opt-add-container-outer {
-					position: relative;
-				  	height: 24px;
-					display: inline-block; 
-					width: 122px; 
-					height: 26px; 
-					margin: 2px 0 0 0;		  	
-				}
-				.btn-opt-add-container {
-				  	background: linear-gradient(#FBB040, #CA8E33);
-				  	border-radius: 10px;
-				  	width: 120px;
-				  	height: 24px;
-				}
-				.btn-opt-add {
-					font-family: Arial, Helvetica, sans-serif;
-					font-size: 14px;
-					font-weight: 700;		
-				  	color: #eee;
-					text-align: center;	
-				  	width: 120px;
-				  	height: 24px;
-				  	padding-top: 4px;
-				  	text-decoration:none;
-				  	outline: none;
-				}
-				.btn-opt-add:focus {
-				}
-				.btn-opt-add-container:hover { 
-				  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
-				  inset 0 1.5em 1em rgba(255,255,255,0.2);
-				  cursor: pointer;
-				}
-				.btn-opt-add-container:active .btn-opt-edit { 
-					color: transparent;
-					text-shadow: 1px 1px #fff;
-				}
-				
-			</style>											
-			
-																<div class="btn-opt-add-spacer"></div>
-																<div class="btn-opt-add-container-outer">
-																	<div class="btn-opt-add-container">
-																		<!-- <div id="btn_add_prod" id="open_edit_story_1" class="btn-opt-add" tabindex=""> -->
-																		<div id="btn_add_prod" class="btn-opt-add" tabindex="">
-																			Add Product
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div id="im_top_sh" style="display: block;"></div>
-													</div>
-													
-													<div id="render_list" style="position: relative;"></div>
-													
-												</div>
-											</div>
-										</div>
-										
-										
-										
-										
-									</div>
-								</div>
-							</div>
-							
-							<div class="show-story-3">
-								<div class="text-align-left">
-									<div class="post-user-sub-container" id="sub_container">
-										<div id="render_story_4" style="height: auto;"></div>
-									</div>
-								</div>
-							</div>
-							
-						</div>
-
-					</div>	
-
-					<div class="cell-225">
-						<div style="height: 300px; background-color: #dedede;"></div>
-					</div>					
-					
-				</div>
+<div class="jqmWindow jqmWindow-101-4" id="dialog_101_4">
+	<div class="dialog-topbar-1" style="margin-top:0px;">
+		<div style="height: 63px; width: 60px; float: left; position: absolute;">
+			<img src="<%= image_path('global/knowstory-icon-2-w60-h63.png') %>" alt="">
+		</div>
+		<div id="close_form101_4" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+			<img src="<%= image_path('global/x_close_w20_h20.png') %>" alt="X" height="20px">
+		</div>
+        <div class="tip-content">
+            <div class="tooltiptext">Close</div>
+        </div>																															   					   					
+		<div style="clear: both;"></div>
+	</div>
+	<div class="background-table-dialog-1">
+   		<div class="table-dialog-1">
+			<div class="dialog-msg-container">
+				<span>Delete this product?</span>
 			</div>
 		</div>
 	</div>
+	<div style="height: 16px;"></div>
+	<div class="table-dialog-1">
+		<div class="row">
+			<div class="cell-100percent" style="text-align: center;">
+				<span><input id="btn_dlg_101_4_submit" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span><input id="btn_dlg_101_4_cancel" class="btn-pop-dialog" type="button" value="Cancel" tabindex=""></span>
+			</div>
+		</div>
+	</div>														   				
+	<div style="height: 20px;"></div>
 </div>
 
-<div style="height: 40px;"></div>
 
-<% if false %>
-		<div class="table-profile" style="height: 100%;">
-			<div class="row-profile">
-				<div style="display: table-cell; width: 200px; vertical-align: top; margin: 0; padding: 0; height: 100%;">
-					<%= render 'share/dir_publishers_left' %>
-				</div>
-				<div class="profile-mid-col-700">
-
-					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
-						<div class="tbl-title-bar-profile">
-							<div class="row-title-bar-profile">
-								<div class="cell-title-bar-profile-left-long padding-left-8">
-									<div class="position-relative">
-										<div class="position-absolute top-minus-24">												
-											<span>Products</span>
-										</div>
-									</div>		
-								</div>
-								<div class="cell-title-bar-profile-right">
-									<div class="btn-opt-edit-container-outer">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-	
-					<div class="table margin-0" style="height: auto;">
-						<div class="row">
-							<div class="cell-100percent"></div>
-						</div>
-					</div>
-					<!-- <div style="height: 20px;"></div> -->
-				</div>
-				
-				<div style="display: table-cell; width: 300px; padding: 0; margin: 0; vertical-align: top; height: 100%;">
-					<div class="" style="width: 200px; height: 50px; position: relative;">
-						<%= render 'share/dir_publishers_right_user_home' %>
+<div style="min-height: 1200px;">
+	<div style="display: table; height: 100%; width: 100%;">
+		<%= form_tag({action: 'search_publisher_product'}, id: "search_form", remote: true) do %>
+		<div style="display: table-cell; width: 225px; vertical-align: top;"></div>
+		<div id="main_container" style="display: table-cell; width: 750px; vertical-align: top;">
+			<div style="margin: 20px auto; width: 80%;" >
+				<div style="margin: auto 20px; float: left; position: relative;">
+					<div class="search-image-search-field"></div>
+					<%=text_field_tag :search_query, value = nil, style: "", class: 'search-field-tag', placeholder: "Start typing a product name...", tabindex: '101', :onkeyup => 'onSearchClick()', :autofocus => true %>
+					<div class="btn-clear-search-field" onclick="onClearSearchField()"></div>
+					<%= submit_tag("Search", :style => "display: none") %> 
+					<div id="id_search_1" style="float: right; margin: 5px" class="btn-opt-edit-container" tabindex="102">
+						<div class="btn-opt-edit">Search</div>
 					</div>
 				</div>
-				
-				<!-- <div style="display: table-cell; width: 300px; padding: 0; margin: 0; vertical-align: top; height: 100%;">
-					<div class="table-profile">
-						<div class="row-profile" style="height: 20px;">
-							<div class="col-gen"></div>
-						</div>							
-						<div class="row-profile">
-							<div class="col-right">
-				          		<select id="select_user" name="select_user_name" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex="">
-										<option value="0">-Select-</option>
-										<option value="1">All Users</option>
-										<option value="2">Publishers</option>
-										<option value="3">Students</option>
-										<option value="4">Teachers</option>
-										<option value="5">Schools</option>
-										<option value="6">Recruiters</option>										
-				          		</select>
-								<div style="height: 30px;"></div>
-								<div id="submit_user_profile" class="submit-search">
-									Search
-								</div>
-							</div>
-						</div>
-						<div class="row-profile" style="height: 20px;">
-							<div class="col-gen"></div>
-						</div>							
-						<div class="row-profile">
-							<div class="col-right">
-				          		<select id="select_profile" name="select_profile_name" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex="">
-										<option value="0">-Select-</option>
-										<option value="1">Students</option>
-										<option value="2">Teachers</option>
-										<option value="3">Publishers</option>
-										<option value="4">Schools</option>
-										<option value="5">Recruiters</option>										
-				          		</select>
-								<div style="height: 30px;"></div>
-								<div id="submit_profile" class="submit-search">
-									Search
-								</div>
-							</div>
-						</div>
-					</div>		
-				</div> -->
-				
-				
-			</div>								
+				<div style="clear: both;"></div>
+			</div>
+			<div id="result_container" style="margin: 20px auto; width: 730px;"></div>		
 		</div>
-		<div style="height: 20px;"></div>
-<% end %>
+		<div style="display: table-cell; width: 300px; vertical-align: top; ">
+			<div style="padding: 20px 22.5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340; background: #F7F7F7" >
+				<div>
+					<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Subjects:</label>
+					<div style="height: 4px"></div>
+					<!-- <#%= collection_select :subject, :id, Dtab4let.all, :id, :col_1,  {:include_blank => false}, {"data-placeholder" => "Choose a subject", :class => "chosen-select", :style => "width: 180px;" ,:multiple => true} %> -->
+					<%= select_tag "search_subjects", options_from_collection_for_select(Dtab4let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any subjects" %>
+				</div>
+				<div style="height: 20px"></div>
+				<div>
+					<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Platforms:</label>
+					<div style="height: 4px"></div>
+					<!-- <#%= collection_select :subject, :id, Dtab4let.all, :id, :col_1,  {:include_blank => false}, {"data-placeholder" => "Choose a subject", :class => "chosen-select", :style => "width: 180px;" ,:multiple => true} %> -->
+					<%= select_tag "search_platforms", options_from_collection_for_select(Dtab3let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any platforms" %>
+				</div>
+				<div style="height: 20px"></div>
+				<div>
+					<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Age:</label>
+					<div style="height: 4px"></div>
+					<div>
 
+						<div style="display: inline-block; padding: 0px;">
+							<!-- <div style="width: 40px;"><span>From:</span></div> -->
+							<%= hidden_field_tag :search_from_age, value = nil %>
+			          		<select id="publisher_product_from_age" name="publisher_product[from_age]" data-placeholder="From" class="chosen-select" style="width:110px;" tabindex="">
+								<option value=""></option>
+								<% @from_ages.each do|from_age| %>
+									<option value="<%= from_age.id %>"><%= from_age.col_1 %></option>
+								<% end %>
+			          		</select>
+						</div>
+						<div style="display: inline-block; width: 4px; text-align: center;"> - </div>
+						<div style="display: inline-block; padding: 0px;">
+							<!-- <div style="width: 40px;"><span>To:</span></div> -->
+							<%= hidden_field_tag :search_to_age, value = nil %>
+			          		<select id="publisher_product_to_age" name="publisher_product[to_age]" data-placeholder="To" class="chosen-select" style="width:110px;" tabindex="">
+								<option value=""></option>
+								<% @to_ages.each do|to_age| %>
+									<option value="<%= to_age.id %>"><%= to_age.col_1 %></option>
+								<% end %>
+			          		</select>
+						</div>
 
-	<script>
+						<% if false %>
+						<!-- <div style="display: inline-block">From</div> -->
+						<%= hidden_field_tag :search_from_age, value = nil %>
+						<select data-placeholder="From" id="publisher_product_from_age" name="publisher_product[from_age]" class="chosen-select" style="width: 82.5px; display: inline-block">
+							<option value=""></option>
+							<% (10..99).each do |age| %>
+								<option value="<%= age %>"><%= age %></option>
+							<% end %>
+						</select>
+						<div style="display: inline-block"> - </div>
+						<%= hidden_field_tag :search_to_age, value = nil %>
+						<select data-placeholder="To" id="publisher_product_to_age" name="publisher_product[to_age]" class="chosen-select" style="width: 82.5px; display: inline-block">
+							<option value=""></option>
+							<% (10..99).each do |age| %>
+								<option value="<%= age %>"><%= age %></option>
+							<% end %>
+						</select>
+						<% end %>
+								
+					</div>
+				</div>
+				<div style="height: 20px"></div>
+				<div id="id_search_2" class="btn-opt-edit-container" tabindex="102" style="float: right; margin: 5px">
+					<div class="btn-opt-edit">Search</div>
+				</div>		
+				<div style="height: 20px"></div>
 
-			  	
-		// $(window).load( function() {
-		$(document).ready(function () {				
-
-
-			$("#render_list").html("<%= escape_javascript(render("publisher_products/list_full")) %>");				
-				
-			$('#btn_add_prod').on('click', function() {
-				// alert('btn_add_prod');
-			   	$.post("publisher_products/create", null, null, "script");
-			});
-
-			// $('#publisher_product_utility_bar_footer .pagination a').attr('data-remote', 'true');
-
-			// $('#render_record_count span').html("<#%= @publisher_products.count %#>");
-
-
-			$(".chosen-select").chosen({disable_search_threshold: 40});
-
-			$("#select_user").val(1)
-			$('#select_user').trigger('chosen:updated');
-
+			</div>
 			
-			$("#submit_user_profile").on('click', function() {
-				alert('click');
-				$("#profile_user_type").val($("#select_user").val());
-				$("#submit_profile_user_hidden").click();
-			});
+			
+			
+		</div>
+		<% end %>
+	</div>
+</div>
 
-			$("#submit_profile").on('click', function() {
-				var profile_type = $("#select_profile").val();
-				// $("#profile_type").val($("#select_profile").val());
-				
-				switch (profile_type)
-				{
-				  case '1':
-				  	break;
-				  case '2':
-				  	break;
-				  case '3':
-						$("#submit_publishers").click();
-				  	break;
+<script type="text/javascript">
+
+	function setClearSearchFieldButton () {
+		if ($("#search_query").val()) {
+			$("form .btn-clear-search-field").css("display", "block");
+		} else{
+			$("form .btn-clear-search-field").css("display", "none");
+		}
+	}
+
+	function onSearchClick () {		
+		
+		// if ($("#publisher_product_from_age").val()) {
+			// $("#search_from_age").val($("#publisher_product_from_age").val());
+		// } else {
+			// $("#search_from_age").val(null);
+		// }	
+		// if ($("#publisher_product_to_age").val()) {
+			// $("#search_to_age").val($("#publisher_product_to_age").val());
+		// } else {
+			// $("#search_to_age").val(null);
+		// }		
+		
+		$("#search_form").submit();
+	}
 	
-				  default:
-				  //
-				}
-				
-			});
+	function onClearSearchField() {
+		$("#search_query").val("");
+		setClearSearchFieldButton();
+		onSearchClick();
+	}
+
+	function update_to_age_select (min_value) {
+		// // alert("'" + min_value + "'");
+		// if(min_value == '') {
+			// // alert("'" + min_value + "'");
+			// // <abbr class="search-choice-close"></abbr>
+			// // $("#publisher_product_to_age_chosen abbr.search-choice-close").click();
+			// min_value = 20;
+			// // $("#publisher_product_to_age_chosen [abbr]").click();
+		// }
+		$("#publisher_product_to_age option").css("display", "block");
+		for (var i = 1; i < min_value; i++) {
+			var selector = "#publisher_product_to_age option[value=" + i + "]";
+			$(selector).css("display", "none");
+		};
+		$("#publisher_product_to_age").trigger('chosen:updated');
+	}
+	function update_from_age_select (max_value) {
+		$("#publisher_product_from_age option").css("display", "block");
+		for (var i = parseInt(max_value) + 1; i < 21; i++) {
+			var selector = "#publisher_product_from_age option[value=" + i + "]";
+			$(selector).css("display", "none");
+		};
+		$("#publisher_product_from_age").trigger('chosen:updated');
+	}
+
+	function deletePublisherProduct(publisher_product_id) {
+		var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+					   '}';      
+	  	var obj = '{ "publisher_product": [' +  obj_list + '] }';                  
+	  	$.ajax({
+	    	type: 'POST',
+	    	data : obj,
+	    	url: '/publisher_products/destroy_publisher_product',	
+	    	// cache: false,		    	
+	    	// dataType: "script",
+	    	dataType: "json",
+			contentType: "application/json",	    	
+			processData: false,	    	
+	    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        	statusCode: {
+        	},
+        	success: function(data) {
+        		if (!data.b_error) {
+        			alert('delete successful');
+        		}
+        		else {
+					alert('An error occured while deleting this product.');	            			
+        		}
+        	},
+        	error: function(xhr){  alert("error: " + xhr.statusText); }        
+	  	});
+  		// return false;
+	}
 
 
-            // $('.tip').each(function() {
-                // var tipContent = $(this).next('.tip-content').html();
-                // $(this).qtip({
-                	// style: { classes: 'tooltip-text-1' },
-                    // content: tipContent,
-                    // show: 'mouseover',
-                    // hide: 'mouseout'
-                // })
-            // });			
-            // $('.tip-bottom-center').each(function() {
-                // var tipContent = $(this).next('.tip-content').html();
-                // $(this).qtip({
-                	// style: { classes: 'tooltip-text-1' },
-                    // content: tipContent,
-                    // show: 'mouseover',
-                    // hide: 'mouseout',
-				    // position: {
-				        // my: 'top center',
-				        // at: 'bottom center'
-				        // // target: $('.tip-bottom-center')
-    				// }                    
-                // })
-            // });			
-            // $('.tip-top-center').each(function() {
-                // var tipContent = $(this).next('.tip-content').html();
-                // $(this).qtip({
-                	// style: { classes: 'tooltip-text-1' },
-                    // content: tipContent,
-                    // show: 'mouseover',
-                    // hide: 'mouseout',
-				    // position: {
-				        // my: 'bottom center',
-				        // at: 'top center'
-				        // // target: $('.tip-top-center')
-    				// }                    
-                // })
-            // });			
+	var id_publisher_product = null;
+
+	
+	$(document).ready(function () {
 		
-		
+		// Initialize dropdowns
+		$(".chosen-select").chosen({
+			disable_search_threshold: 100,
+			allow_single_deselect: true
 		});
 
-	  
-	</script>
+		setClearSearchFieldButton();
+		onSearchClick();
+
+		$('#search_query').on('input', function() {
+			setClearSearchFieldButton();
+			// onSearchClick();
+		});
+
+	    $('#id_search_1').click( function() {
+	        onSearchClick ();
+	    });
+	    $('#id_search_1').keypress(function(e) {
+	        if(e.keyCode==13) {
+	        	onSearchClick ();
+	        }            
+	    });
+
+	    $('#id_search_2').click( function() {
+	        onSearchClick ();
+	    });
+	    $('#id_search_2').keypress(function(e) {
+	        if(e.keyCode==13) {
+	        	onSearchClick ();
+	        }            
+	    });
+	
+		// // Updating search results
+		// $( "#search_subjects" ).change(function() {
+			// onSearchClick ();
+		// });	
+		// $( "#search_platforms" ).change(function() {
+			// onSearchClick ();
+		// });	
+
+		$("#publisher_product_from_age").change(function() {
+			var v = $("#publisher_product_from_age").val();
+			if(v != '') {
+				update_to_age_select($("#publisher_product_from_age").val());
+				// onSearchClick ();
+			}
+		});
+		$("#publisher_product_to_age").change(function() {
+			var v = $("#publisher_product_to_age").val();
+			if(v != '') {
+				update_from_age_select($("#publisher_product_to_age").val());
+				// onSearchClick ();
+			}
+		});
+
+		// $("#publisher_product_to_age").change(function() {
+			// update_from_age_select($("#publisher_product_to_age").val());
+			// // onSearchClick ();
+		// });
+
+		
+		// this code depends on the modification of the function Chosen.prototype.container_mouseup in chosen.jquery.js 
+		$(document).on('publisher_product_from_age_chosen_abbr', function(e, evt) {
+			$('#publisher_product_to_age').val('').trigger('chosen:updated');
+			// var classList = $('#publisher_product_to_age_chosen abbr').attr('class').split(/\s+/);
+			// $.each(classList, function(index, item) {
+				// alert(index);
+				// alert(item);
+			// });			
+		});
+
+		// $(document).on('click', '.btn-delete-product', function() {
+			// var publisher_product_id = $(this).data('delete');
+			// // alert(publisher_product_id);
+			// deletePublisherProduct(publisher_product_id);
+			// onSearchClick();
+		// });
 
 
+		$('#dialog_101_4').jqm({
+			onShow: function(hash) {
+				hash.o.prependTo('body');
+				hash.w.css('top', ($(window).scrollTop() + 10).toString() + 'px');
+				hash.w.css('opacity', 1.0).fadeIn(100);
+			}
+		}); 		
+		
+		$(document).on("click", "#btn_dlg_101_4_submit", function() {
+			// deletePublisherProduct(id_publisher_product);
+			alert(id_publisher_product);			
+			// onSearchClick();
+		});
+		$(document).on("click", "#btn_dlg_101_4_cancel", function() {
+			$("#close_form101_4").trigger('click');
+		});
+		// $(document).on("btn_image_1_delete_click", function() {
+		$(document).on('click', '.btn-delete-product', function() {
+			id_publisher_product = $(this).data('delete');
+			$("#dialog_101_4").jqmShow();
+			$("#btn_dlg_101_4_cancel").focus();
+		});			
 
 
+	});
 
+
+</script>

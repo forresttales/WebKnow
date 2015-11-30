@@ -917,270 +917,26 @@ class PublisherProductManifestsController < ApplicationController
               end        
           end
 
-          @publisher_product_from_age = publisher_product.publisher_product_from_age
-          a_from_ages = Array.new
+          # a_from_ages = Array.new
           @from_ages = return_all_dtab8lets
-          @from_ages.each do |from_age|
-            a_from_ages.push(from_age)
-          end
+          # @from_ages.each do |from_age|
+            # a_from_ages.push(from_age)
+          # end
           gon.from_age = []
           gon.from_age_text = []    
-          gon.b_required_from_age = @publisher_product_from_age.required           
-          if (@publisher_product_from_age.age_1 or
-              @publisher_product_from_age.age_2 or
-              @publisher_product_from_age.age_3 or
-              @publisher_product_from_age.age_4 or
-              @publisher_product_from_age.age_5 or
-              @publisher_product_from_age.age_6 or
-              @publisher_product_from_age.age_7 or
-              @publisher_product_from_age.age_8 or
-              @publisher_product_from_age.age_9 or
-              @publisher_product_from_age.age_10 or
-              @publisher_product_from_age.age_11 or
-              @publisher_product_from_age.age_12 or
-              @publisher_product_from_age.age_13 or
-              @publisher_product_from_age.age_14 or
-              @publisher_product_from_age.age_15 or
-              @publisher_product_from_age.age_16 or
-              @publisher_product_from_age.age_17 or
-              @publisher_product_from_age.age_18 or
-              @publisher_product_from_age.age_19 or
-              @publisher_product_from_age.age_20)
-              # gon.b_required_from_age = false
-              b = @publisher_product_from_age.age_1
-              gon.from_age[0] = b
-              if b
-                gon.from_age_text.push(a_from_ages[0].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_2
-              gon.from_age[1] = b
-              if b
-                gon.from_age_text.push(a_from_ages[1].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_3
-              gon.from_age[2] = b
-              if b
-                gon.from_age_text.push(a_from_ages[2].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_4
-              gon.from_age[3] = b
-              if b
-                gon.from_age_text.push(a_from_ages[3].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_5
-              gon.from_age[4] = b
-              if b
-                gon.from_age_text.push(a_from_ages[4].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_6
-              gon.from_age[5] = b
-              if b
-                gon.from_age_text.push(a_from_ages[5].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_7
-              gon.from_age[6] = b
-              if b
-                gon.from_age_text.push(a_from_ages[6].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_8
-              gon.from_age[7] = b
-              if b
-                gon.from_age_text.push(a_from_ages[7].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_9
-              gon.from_age[8] = b
-              if b
-                gon.from_age_text.push(a_from_ages[8].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_10
-              gon.from_age[9] = b
-              if b
-                gon.from_age_text.push(a_from_ages[9].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_11
-              gon.from_age[10] = b
-              if b
-                gon.from_age_text.push(a_from_ages[10].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_12
-              gon.from_age[11] = b
-              if b
-                gon.from_age_text.push(a_from_ages[11].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_13
-              gon.from_age[12] = b
-              if b
-                gon.from_age_text.push(a_from_ages[12].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_14
-              gon.from_age[13] = b
-              if b
-                gon.from_age_text.push(a_from_ages[13].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_15
-              gon.from_age[14] = b
-              if b
-                gon.from_age_text.push(a_from_ages[14].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_16
-              gon.from_age[15] = b
-              if b
-                gon.from_age_text.push(a_from_ages[15].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_17
-              gon.from_age[16] = b
-              if b
-                gon.from_age_text.push(a_from_ages[16].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_18
-              gon.from_age[17] = b
-              if b
-                gon.from_age_text.push(a_from_ages[17].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_19
-              gon.from_age[18] = b
-              if b
-                gon.from_age_text.push(a_from_ages[18].col_1)                            
-              end        
-              b = @publisher_product_from_age.age_20
-              gon.from_age[19] = b
-              if b
-                gon.from_age_text.push(a_from_ages[19].col_1)                            
-              end        
-          end
-          @publisher_product_to_age = publisher_product.publisher_product_to_age
-          a_to_ages = Array.new
+          # gon.b_required_from_age = publisher_product.publisher_product_age_range.required
+          
+          # a_to_ages = Array.new
           @to_ages = return_all_dtab8lets
-          @to_ages.each do |to_age|
-            a_to_ages.push(to_age)
-          end
+          # @to_ages.each do |to_age|
+            # a_to_ages.push(to_age)
+          # end
           gon.to_age = []
           gon.to_age_text = []    
-          gon.b_required_from_age = @publisher_product_to_age.required           
-          if (@publisher_product_to_age.age_1 or
-              @publisher_product_to_age.age_2 or
-              @publisher_product_to_age.age_3 or
-              @publisher_product_to_age.age_4 or
-              @publisher_product_to_age.age_5 or
-              @publisher_product_to_age.age_6 or
-              @publisher_product_to_age.age_7 or
-              @publisher_product_to_age.age_8 or
-              @publisher_product_to_age.age_9 or
-              @publisher_product_to_age.age_10 or
-              @publisher_product_to_age.age_11 or
-              @publisher_product_to_age.age_12 or
-              @publisher_product_to_age.age_13 or
-              @publisher_product_to_age.age_14 or
-              @publisher_product_to_age.age_15 or
-              @publisher_product_to_age.age_16 or
-              @publisher_product_to_age.age_17 or
-              @publisher_product_to_age.age_18 or
-              @publisher_product_to_age.age_19 or
-              @publisher_product_to_age.age_20)
-              # gon.b_required_to_age = false
-              b = @publisher_product_to_age.age_1
-              gon.to_age[0] = b
-              if b
-                gon.to_age_text.push(a_to_ages[0].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_2
-              gon.to_age[1] = b
-              if b
-                gon.to_age_text.push(a_to_ages[1].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_3
-              gon.to_age[2] = b
-              if b
-                gon.to_age_text.push(a_to_ages[2].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_4
-              gon.to_age[3] = b
-              if b
-                gon.to_age_text.push(a_to_ages[3].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_5
-              gon.to_age[4] = b
-              if b
-                gon.to_age_text.push(a_to_ages[4].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_6
-              gon.to_age[5] = b
-              if b
-                gon.to_age_text.push(a_to_ages[5].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_7
-              gon.to_age[6] = b
-              if b
-                gon.to_age_text.push(a_to_ages[6].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_8
-              gon.to_age[7] = b
-              if b
-                gon.to_age_text.push(a_to_ages[7].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_9
-              gon.to_age[8] = b
-              if b
-                gon.to_age_text.push(a_to_ages[8].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_10
-              gon.to_age[9] = b
-              if b
-                gon.to_age_text.push(a_to_ages[9].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_11
-              gon.to_age[10] = b
-              if b
-                gon.to_age_text.push(a_to_ages[10].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_12
-              gon.to_age[11] = b
-              if b
-                gon.to_age_text.push(a_to_ages[11].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_13
-              gon.to_age[12] = b
-              if b
-                gon.to_age_text.push(a_to_ages[12].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_14
-              gon.to_age[13] = b
-              if b
-                gon.to_age_text.push(a_to_ages[13].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_15
-              gon.to_age[14] = b
-              if b
-                gon.to_age_text.push(a_to_ages[14].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_16
-              gon.to_age[15] = b
-              if b
-                gon.to_age_text.push(a_to_ages[15].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_17
-              gon.to_age[16] = b
-              if b
-                gon.to_age_text.push(a_to_ages[16].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_18
-              gon.to_age[17] = b
-              if b
-                gon.to_age_text.push(a_to_ages[17].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_19
-              gon.to_age[18] = b
-              if b
-                gon.to_age_text.push(a_to_ages[18].col_1)                            
-              end        
-              b = @publisher_product_to_age.age_20
-              gon.to_age[19] = b
-              if b
-                gon.to_age_text.push(a_to_ages[19].col_1)                            
-              end        
-          end
-          
-          @publisher_product_from_grade = publisher_product.publisher_product_from_grade
+          # gon.b_required_to_age = publisher_product.publisher_product_age_range.required           
+
+
+
           a_from_grades = Array.new
           @from_grades_ordered = return_all_dtab9lets_ordered
           @from_grades = return_all_dtab9lets
@@ -1189,106 +945,8 @@ class PublisherProductManifestsController < ApplicationController
           end
           gon.from_grade = []
           gon.from_grade_text = []    
-          gon.b_required_from_grade = @publisher_product_from_grade.required           
-          if (@publisher_product_from_grade.grade_1 or
-              @publisher_product_from_grade.grade_2 or
-              @publisher_product_from_grade.grade_3 or
-              @publisher_product_from_grade.grade_4 or
-              @publisher_product_from_grade.grade_5 or
-              @publisher_product_from_grade.grade_6 or
-              @publisher_product_from_grade.grade_7 or
-              @publisher_product_from_grade.grade_8 or
-              @publisher_product_from_grade.grade_9 or
-              @publisher_product_from_grade.grade_10 or
-              @publisher_product_from_grade.grade_11 or
-              @publisher_product_from_grade.grade_12 or
-              @publisher_product_from_grade.grade_13 or
-              @publisher_product_from_grade.grade_14 or
-              @publisher_product_from_grade.grade_15 or
-              @publisher_product_from_grade.grade_16)
-              # gon.b_required_from_grade = false
-              b = @publisher_product_from_grade.grade_1
-              gon.from_grade[0] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[0].col_1)            
-              end        
-              b = @publisher_product_from_grade.grade_2
-              gon.from_grade[1] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[1].col_1)                       
-              end        
-              b = @publisher_product_from_grade.grade_3
-              gon.from_grade[2] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[2].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_4
-              gon.from_grade[3] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[3].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_5
-              gon.from_grade[4] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[4].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_6
-              gon.from_grade[5] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[5].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_7
-              gon.from_grade[6] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[6].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_8
-              gon.from_grade[7] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[7].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_9
-              gon.from_grade[8] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[8].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_10
-              gon.from_grade[9] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[9].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_11
-              gon.from_grade[10] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[10].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_12
-              gon.from_grade[11] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[11].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_13
-              gon.from_grade[12] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[12].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_14
-              gon.from_grade[13] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[13].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_15
-              gon.from_grade[14] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[14].col_1)                            
-              end        
-              b = @publisher_product_from_grade.grade_16
-              gon.from_grade[15] = b
-              if b
-                gon.from_grade_text.push(a_from_grades[15].col_1)                            
-              end        
-          end
-          @publisher_product_to_grade = publisher_product.publisher_product_to_grade
+          # gon.b_required_from_grade = publisher_product.publisher_product_grade_range.required           
+
           a_to_grades = Array.new
           @to_grades_ordered = return_all_dtab9lets_ordered
           @to_grades = return_all_dtab9lets
@@ -1297,105 +955,491 @@ class PublisherProductManifestsController < ApplicationController
           end
           gon.to_grade = []
           gon.to_grade_text = []    
-          gon.b_required_to_grade = @publisher_product_to_grade.required           
-          if (@publisher_product_to_grade.grade_1 or
-              @publisher_product_to_grade.grade_2 or
-              @publisher_product_to_grade.grade_3 or
-              @publisher_product_to_grade.grade_4 or
-              @publisher_product_to_grade.grade_5 or
-              @publisher_product_to_grade.grade_6 or
-              @publisher_product_to_grade.grade_7 or
-              @publisher_product_to_grade.grade_8 or
-              @publisher_product_to_grade.grade_9 or
-              @publisher_product_to_grade.grade_10 or
-              @publisher_product_to_grade.grade_11 or
-              @publisher_product_to_grade.grade_12 or
-              @publisher_product_to_grade.grade_13 or
-              @publisher_product_to_grade.grade_14 or
-              @publisher_product_to_grade.grade_15 or
-              @publisher_product_to_grade.grade_16)
-              # gon.b_required_to_grade = false
-              b = @publisher_product_to_grade.grade_1
-              gon.to_grade[0] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[0].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_2
-              gon.to_grade[1] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[1].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_3
-              gon.to_grade[2] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[2].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_4
-              gon.to_grade[3] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[3].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_5
-              gon.to_grade[4] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[4].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_6
-              gon.to_grade[5] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[5].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_7
-              gon.to_grade[6] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[6].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_8
-              gon.to_grade[7] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[7].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_9
-              gon.to_grade[8] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[8].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_10
-              gon.to_grade[9] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[9].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_11
-              gon.to_grade[10] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[10].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_12
-              gon.to_grade[11] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[11].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_13
-              gon.to_grade[12] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[12].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_14
-              gon.to_grade[13] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[13].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_15
-              gon.to_grade[14] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[14].col_1)                            
-              end        
-              b = @publisher_product_to_grade.grade_16
-              gon.to_grade[15] = b
-              if b
-                gon.to_grade_text.push(a_to_grades[15].col_1)                            
-              end        
-          end
+          # gon.b_required_to_grade = publisher_product.publisher_product_grade_range.required           
+
+
+          # @publisher_product_from_age = publisher_product.publisher_product_from_age
+          # a_from_ages = Array.new
+          # @from_ages = return_all_dtab8lets
+          # @from_ages.each do |from_age|
+            # a_from_ages.push(from_age)
+          # end
+          # gon.from_age = []
+          # gon.from_age_text = []    
+          # gon.b_required_from_age = @publisher_product_from_age.required           
+          # if (@publisher_product_from_age.age_1 or
+              # @publisher_product_from_age.age_2 or
+              # @publisher_product_from_age.age_3 or
+              # @publisher_product_from_age.age_4 or
+              # @publisher_product_from_age.age_5 or
+              # @publisher_product_from_age.age_6 or
+              # @publisher_product_from_age.age_7 or
+              # @publisher_product_from_age.age_8 or
+              # @publisher_product_from_age.age_9 or
+              # @publisher_product_from_age.age_10 or
+              # @publisher_product_from_age.age_11 or
+              # @publisher_product_from_age.age_12 or
+              # @publisher_product_from_age.age_13 or
+              # @publisher_product_from_age.age_14 or
+              # @publisher_product_from_age.age_15 or
+              # @publisher_product_from_age.age_16 or
+              # @publisher_product_from_age.age_17 or
+              # @publisher_product_from_age.age_18 or
+              # @publisher_product_from_age.age_19 or
+              # @publisher_product_from_age.age_20)
+              # # gon.b_required_from_age = false
+              # b = @publisher_product_from_age.age_1
+              # gon.from_age[0] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[0].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_2
+              # gon.from_age[1] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[1].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_3
+              # gon.from_age[2] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[2].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_4
+              # gon.from_age[3] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[3].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_5
+              # gon.from_age[4] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[4].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_6
+              # gon.from_age[5] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[5].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_7
+              # gon.from_age[6] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[6].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_8
+              # gon.from_age[7] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[7].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_9
+              # gon.from_age[8] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[8].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_10
+              # gon.from_age[9] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[9].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_11
+              # gon.from_age[10] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[10].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_12
+              # gon.from_age[11] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[11].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_13
+              # gon.from_age[12] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[12].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_14
+              # gon.from_age[13] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[13].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_15
+              # gon.from_age[14] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[14].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_16
+              # gon.from_age[15] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[15].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_17
+              # gon.from_age[16] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[16].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_18
+              # gon.from_age[17] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[17].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_19
+              # gon.from_age[18] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[18].col_1)                            
+              # end        
+              # b = @publisher_product_from_age.age_20
+              # gon.from_age[19] = b
+              # if b
+                # gon.from_age_text.push(a_from_ages[19].col_1)                            
+              # end        
+          # end
+          # @publisher_product_to_age = publisher_product.publisher_product_to_age
+          # a_to_ages = Array.new
+          # @to_ages = return_all_dtab8lets
+          # @to_ages.each do |to_age|
+            # a_to_ages.push(to_age)
+          # end
+          # gon.to_age = []
+          # gon.to_age_text = []    
+          # gon.b_required_from_age = @publisher_product_to_age.required           
+          # if (@publisher_product_to_age.age_1 or
+              # @publisher_product_to_age.age_2 or
+              # @publisher_product_to_age.age_3 or
+              # @publisher_product_to_age.age_4 or
+              # @publisher_product_to_age.age_5 or
+              # @publisher_product_to_age.age_6 or
+              # @publisher_product_to_age.age_7 or
+              # @publisher_product_to_age.age_8 or
+              # @publisher_product_to_age.age_9 or
+              # @publisher_product_to_age.age_10 or
+              # @publisher_product_to_age.age_11 or
+              # @publisher_product_to_age.age_12 or
+              # @publisher_product_to_age.age_13 or
+              # @publisher_product_to_age.age_14 or
+              # @publisher_product_to_age.age_15 or
+              # @publisher_product_to_age.age_16 or
+              # @publisher_product_to_age.age_17 or
+              # @publisher_product_to_age.age_18 or
+              # @publisher_product_to_age.age_19 or
+              # @publisher_product_to_age.age_20)
+              # # gon.b_required_to_age = false
+              # b = @publisher_product_to_age.age_1
+              # gon.to_age[0] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[0].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_2
+              # gon.to_age[1] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[1].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_3
+              # gon.to_age[2] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[2].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_4
+              # gon.to_age[3] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[3].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_5
+              # gon.to_age[4] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[4].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_6
+              # gon.to_age[5] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[5].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_7
+              # gon.to_age[6] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[6].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_8
+              # gon.to_age[7] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[7].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_9
+              # gon.to_age[8] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[8].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_10
+              # gon.to_age[9] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[9].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_11
+              # gon.to_age[10] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[10].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_12
+              # gon.to_age[11] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[11].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_13
+              # gon.to_age[12] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[12].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_14
+              # gon.to_age[13] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[13].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_15
+              # gon.to_age[14] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[14].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_16
+              # gon.to_age[15] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[15].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_17
+              # gon.to_age[16] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[16].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_18
+              # gon.to_age[17] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[17].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_19
+              # gon.to_age[18] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[18].col_1)                            
+              # end        
+              # b = @publisher_product_to_age.age_20
+              # gon.to_age[19] = b
+              # if b
+                # gon.to_age_text.push(a_to_ages[19].col_1)                            
+              # end        
+          # end
+#           
+          # @publisher_product_from_grade = publisher_product.publisher_product_from_grade
+          # a_from_grades = Array.new
+          # @from_grades_ordered = return_all_dtab9lets_ordered
+          # @from_grades = return_all_dtab9lets
+          # @from_grades.each do |from_grade|
+            # a_from_grades.push(from_grade)
+          # end
+          # gon.from_grade = []
+          # gon.from_grade_text = []    
+          # gon.b_required_from_grade = @publisher_product_from_grade.required           
+          # if (@publisher_product_from_grade.grade_1 or
+              # @publisher_product_from_grade.grade_2 or
+              # @publisher_product_from_grade.grade_3 or
+              # @publisher_product_from_grade.grade_4 or
+              # @publisher_product_from_grade.grade_5 or
+              # @publisher_product_from_grade.grade_6 or
+              # @publisher_product_from_grade.grade_7 or
+              # @publisher_product_from_grade.grade_8 or
+              # @publisher_product_from_grade.grade_9 or
+              # @publisher_product_from_grade.grade_10 or
+              # @publisher_product_from_grade.grade_11 or
+              # @publisher_product_from_grade.grade_12 or
+              # @publisher_product_from_grade.grade_13 or
+              # @publisher_product_from_grade.grade_14 or
+              # @publisher_product_from_grade.grade_15 or
+              # @publisher_product_from_grade.grade_16)
+              # # gon.b_required_from_grade = false
+              # b = @publisher_product_from_grade.grade_1
+              # gon.from_grade[0] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[0].col_1)            
+              # end        
+              # b = @publisher_product_from_grade.grade_2
+              # gon.from_grade[1] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[1].col_1)                       
+              # end        
+              # b = @publisher_product_from_grade.grade_3
+              # gon.from_grade[2] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[2].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_4
+              # gon.from_grade[3] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[3].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_5
+              # gon.from_grade[4] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[4].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_6
+              # gon.from_grade[5] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[5].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_7
+              # gon.from_grade[6] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[6].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_8
+              # gon.from_grade[7] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[7].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_9
+              # gon.from_grade[8] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[8].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_10
+              # gon.from_grade[9] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[9].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_11
+              # gon.from_grade[10] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[10].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_12
+              # gon.from_grade[11] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[11].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_13
+              # gon.from_grade[12] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[12].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_14
+              # gon.from_grade[13] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[13].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_15
+              # gon.from_grade[14] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[14].col_1)                            
+              # end        
+              # b = @publisher_product_from_grade.grade_16
+              # gon.from_grade[15] = b
+              # if b
+                # gon.from_grade_text.push(a_from_grades[15].col_1)                            
+              # end        
+          # end
+          # @publisher_product_to_grade = publisher_product.publisher_product_to_grade
+          # a_to_grades = Array.new
+          # @to_grades_ordered = return_all_dtab9lets_ordered
+          # @to_grades = return_all_dtab9lets
+          # @to_grades.each do |to_grade|
+            # a_to_grades.push(to_grade)
+          # end
+          # gon.to_grade = []
+          # gon.to_grade_text = []    
+          # gon.b_required_to_grade = @publisher_product_to_grade.required           
+          # if (@publisher_product_to_grade.grade_1 or
+              # @publisher_product_to_grade.grade_2 or
+              # @publisher_product_to_grade.grade_3 or
+              # @publisher_product_to_grade.grade_4 or
+              # @publisher_product_to_grade.grade_5 or
+              # @publisher_product_to_grade.grade_6 or
+              # @publisher_product_to_grade.grade_7 or
+              # @publisher_product_to_grade.grade_8 or
+              # @publisher_product_to_grade.grade_9 or
+              # @publisher_product_to_grade.grade_10 or
+              # @publisher_product_to_grade.grade_11 or
+              # @publisher_product_to_grade.grade_12 or
+              # @publisher_product_to_grade.grade_13 or
+              # @publisher_product_to_grade.grade_14 or
+              # @publisher_product_to_grade.grade_15 or
+              # @publisher_product_to_grade.grade_16)
+              # # gon.b_required_to_grade = false
+              # b = @publisher_product_to_grade.grade_1
+              # gon.to_grade[0] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[0].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_2
+              # gon.to_grade[1] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[1].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_3
+              # gon.to_grade[2] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[2].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_4
+              # gon.to_grade[3] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[3].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_5
+              # gon.to_grade[4] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[4].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_6
+              # gon.to_grade[5] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[5].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_7
+              # gon.to_grade[6] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[6].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_8
+              # gon.to_grade[7] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[7].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_9
+              # gon.to_grade[8] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[8].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_10
+              # gon.to_grade[9] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[9].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_11
+              # gon.to_grade[10] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[10].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_12
+              # gon.to_grade[11] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[11].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_13
+              # gon.to_grade[12] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[12].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_14
+              # gon.to_grade[13] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[13].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_15
+              # gon.to_grade[14] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[14].col_1)                            
+              # end        
+              # b = @publisher_product_to_grade.grade_16
+              # gon.to_grade[15] = b
+              # if b
+                # gon.to_grade_text.push(a_to_grades[15].col_1)                            
+              # end        
+          # end
+          
+          
+          
           
           @publisher_product_market_target = publisher_product.publisher_product_market_target
           a_market_targets = Array.new
@@ -9675,8 +9719,6 @@ class PublisherProductManifestsController < ApplicationController
       # format.js { redirect_to('/Publishers') }
     # end
   end
-
-
 
 
 

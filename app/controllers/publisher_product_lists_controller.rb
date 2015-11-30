@@ -5,6 +5,10 @@ class PublisherProductListsController < ApplicationController
 
 
   def index
+    
+      @from_ages = return_all_dtab8lets
+      @to_ages = return_all_dtab8lets
+      
   end
 
 
@@ -45,6 +49,35 @@ class PublisherProductListsController < ApplicationController
           # temp_results = PublisherProduct.all.joins(:publisher_product_platform).where(search_or_platforms_query)
       end
 
+      if params[:search_from_age].present?
+          search_or_from_age_query = "" 
+          # Rails.logger.info('params[:search_from_age] = ' + params[:search_from_age].to_s)
+          from_age_id = params[:search_from_age]
+          search_or_from_age_query += " or " if search_or_from_age_query.present?
+          search_or_from_age_query += "publisher_product_from_ages.age_" + from_age_id + " = true"
+          # Rails.logger.info('search_or_from_age_query = ' + search_or_from_age_query)
+          temp_results = temp_results.joins(:publisher_product_from_age).where(search_or_from_age_query)
+      end
+
+      if params[:search_to_age].present?
+          search_or_to_age_query = "" 
+          to_age_id = params[:search_to_age]
+          search_or_to_age_query += " or " if search_or_to_age_query.present?
+          search_or_to_age_query += "publisher_product_to_ages.age_" + to_age_id + " = true"
+          temp_results = temp_results.joins(:publisher_product_to_age).where(search_or_to_age_query)
+      end
+
+      # if params[:search_age_to].present?
+        # # today_date = Date.today
+        # # max_bd_date = today_date.ago( (params["search_age_to"].to_i + 1).years )
+        # # max_bd_year = max_bd_date.year
+        # # max_bd_month = max_bd_date.month
+        # # max_bd_day = max_bd_date.day
+        # # temp_results = temp_results.where("bd_year >= ?", max_bd_year)
+        # # temp_results = temp_results.where.not("bd_year = ? and bd_month < ?", max_bd_year, max_bd_month)
+        # # temp_results = temp_results.where.not("bd_year = ? and bd_month = ? and bd_day < ?", max_bd_year, max_bd_month, max_bd_day)
+      # end
+
       # search_or_platforms_query = ""
       # # subject_or_results = temp_results.joins(:publisher_product_category_subject).where(search_or_subjects_query)
       # # SELECT  "publisher_products".* FROM "publisher_products"  WHERE (publisher_product_category_subjects.category_subject_2 = true)
@@ -66,6 +99,21 @@ class PublisherProductListsController < ApplicationController
 
   end
 
+
+  private
+
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+  
+    def return_all_dtab8lets      
+      return Dtab8let.order(sort_column_dtab8let + " " + sort_direction)
+    end
+    def sort_column_dtab8let
+      Dtab8let.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+  
 
 
 end

@@ -30,32 +30,160 @@ class PublisherProductsController < ApplicationController
   
   def index
 
-    # ar = Array.new
-    # c = ActiveRecord::Base.connection
-    # c.tables.collect do |t|  
-      # columns = c.columns(t).collect(&:name).select {|x| x.ends_with?("_id" || x.ends_with("_type"))}
-      # indexed_columns = c.indexes(t).collect(&:columns).flatten.uniq
-      # unindexed = columns - indexed_columns
-      # unless unindexed.empty?
-        # ar.push("#{t}: #{unindexed.join(", ")}")
+      # ar = Array.new
+      # c = ActiveRecord::Base.connection
+      # c.tables.collect do |t|  
+        # columns = c.columns(t).collect(&:name).select {|x| x.ends_with?("_id" || x.ends_with("_type"))}
+        # indexed_columns = c.indexes(t).collect(&:columns).flatten.uniq
+        # unindexed = columns - indexed_columns
+        # unless unindexed.empty?
+          # ar.push("#{t}: #{unindexed.join(", ")}")
+        # end
       # end
-    # end
-    # render text: ar
-
-    gon.publisher_product_id = 0
-    
-    publisher_user = current_user.publisher_user
-    @publisher_id = publisher_user.publisher.id
-    publisher = Publisher.find_by_id(@publisher_id)
-
-    publisher = publisher_user.publisher
-    
-    # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction) # .paginate(:per_page => 200, :page => params[:page])
-    
-    @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction)
+      # render text: ar
+  
+      gon.publisher_product_id = 0
+      
+      publisher_user = current_user.publisher_user
+      @publisher_id = publisher_user.publisher.id
+      publisher = Publisher.find_by_id(@publisher_id)
+  
+      publisher = publisher_user.publisher
+      
+      # @publisher_products = PublisherProduct.where("publisher_id = ?", @publisher_id).order(sort_column + " " + sort_direction) # .paginate(:per_page => 200, :page => params[:page])
+      
+      @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction)
+      
+      @from_ages = return_all_dtab8lets
+      @to_ages = return_all_dtab8lets
     
     
   end
+  
+  
+  
+  def search_publisher_product
+
+      @search_results = nil
+
+
+      temp_results = PublisherProduct.all
+
+      search_query = ""
+      # Get search_query from ajax
+      if params[:search_query].present?
+          search_query = params[:search_query] 
+          temp_results = PublisherProduct.joins(:publisher_product_manifest).where("publisher_product_manifests.product_name ilike :sq", sq: "%#{search_query}%")
+      end
+
+      if params[:search_subjects].present?
+          search_or_subjects_query = ""
+          params[:search_subjects].each do |subject_id|
+              Rails.logger.info('subject_id = ' + subject_id.to_s)
+              search_or_subjects_query += " or " if search_or_subjects_query.present?
+              search_or_subjects_query += "publisher_product_category_subjects.category_subject_" + subject_id + " = true"
+          end
+          temp_results = temp_results.joins(:publisher_product_category_subject).where(search_or_subjects_query)
+          # temp_results = PublisherProduct.all.joins(:publisher_product_category_subject).where(search_or_subjects_query)
+      end
+
+      if params[:search_platforms].present?
+          search_or_platforms_query = ""
+          params[:search_platforms].each do |platform_id|
+              Rails.logger.info('platform_id = ' + platform_id.to_s)
+              search_or_platforms_query += " or " if search_or_platforms_query.present?
+              search_or_platforms_query += "publisher_product_platforms.platform_" + platform_id + " = true"
+          end
+          temp_results = temp_results.joins(:publisher_product_platform).where(search_or_platforms_query)
+          # temp_results = PublisherProduct.all.joins(:publisher_product_platform).where(search_or_platforms_query)
+      end
+
+      if params[:search_from_age].present?
+          search_or_from_age_query = "" 
+          # Rails.logger.info('params[:search_from_age] = ' + params[:search_from_age].to_s)
+          from_age_id = params[:search_from_age]
+          search_or_from_age_query += " or " if search_or_from_age_query.present?
+          search_or_from_age_query += "publisher_product_from_ages.age_" + from_age_id + " = true"
+          # Rails.logger.info('search_or_from_age_query = ' + search_or_from_age_query)
+          temp_results = temp_results.joins(:publisher_product_from_age).where(search_or_from_age_query)
+      end
+
+      if params[:search_to_age].present?
+          search_or_to_age_query = "" 
+          to_age_id = params[:search_to_age]
+          search_or_to_age_query += " or " if search_or_to_age_query.present?
+          search_or_to_age_query += "publisher_product_to_ages.age_" + to_age_id + " = true"
+          temp_results = temp_results.joins(:publisher_product_to_age).where(search_or_to_age_query)
+      end
+
+      @search_results = temp_results.paginate(page: params[:page], per_page: 5)
+
+
+  end
+  
+  
+  
+  def destroy_publisher_product
+
+      begin
+                
+          ar = params[:publisher_product]
+          h_obj = Hash.new
+          ar.each do |obj|
+            h_obj = obj
+          end
+    
+          publisher_product_id = h_obj[:publisher_product_id]
+                
+          # publisher_product_id = params[:publisher_product_id]
+          # Rails.logger.info("publisher_product_id = " + publisher_product_id.to_s)
+                              
+          if !publisher_product_id.nil?
+              publisher = current_user.publisher rescue nil
+              if !publisher.nil?
+                  publisher_products = publisher.publisher_products
+                  if !publisher_products.nil?
+                      publisher_product = publisher_products.where("id = ?", publisher_product_id).first rescue nil
+                      if !publisher_product.nil?
+                          if publisher_product.destroy
+                              respond_to do |format|
+                                  format.html {}
+                                  format.json { render :json => { :b_error => false } }
+                              end
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product', :action => 'destroy_publisher_product', :description => 'publisher_product destroy failed')
+                              raise
+                          end
+                      else
+                          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product', :action => 'destroy_publisher_product', :description => 'publisher_product was nil')
+                          raise
+                      end
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product', :action => 'destroy_publisher_product', :description => 'publisher_products was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product', :action => 'destroy_publisher_product', :description => 'publisher was nil')
+                  raise
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product', :action => 'destroy_publisher_product', :description => 'publisher_product_id passed was nil')
+              raise
+          end
+      
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product', :action => 'destroy_publisher_product', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+      
+  end
+  
   
   
   def new
@@ -468,7 +596,7 @@ class PublisherProductsController < ApplicationController
                                                 :has_product_logo,
                                                 :product_metadata,
                                                 :has_product_metadata                                                
-                                              )
+                                               )
                                         
     end
 
@@ -476,10 +604,20 @@ class PublisherProductsController < ApplicationController
       PublisherProduct.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
     
+    # def sort_direction
+      # %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+    # end
+  
     def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
   
-  
+    def return_all_dtab8lets      
+      return Dtab8let.order(sort_column_dtab8let + " " + sort_direction)
+    end
+    def sort_column_dtab8let
+      Dtab8let.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
   
 end
