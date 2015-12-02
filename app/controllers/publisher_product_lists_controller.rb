@@ -15,7 +15,7 @@ class PublisherProductListsController < ApplicationController
 
   def search_publisher_product
 
-      @search_results = nil
+      @publisher_products = nil
 
 
       temp_results = PublisherProduct.all
@@ -95,7 +95,7 @@ class PublisherProductListsController < ApplicationController
       # temp_results = subject_or_results
 
 
-      @search_results = temp_results.paginate(page: params[:page], per_page: 5)
+      @publisher_products = temp_results.paginate(page: params[:page], per_page: 5)
 
   end
 

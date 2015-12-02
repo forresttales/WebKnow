@@ -193,7 +193,7 @@ Webknow::Application.routes.draw do
 
 
 
-
+  # match '/Publisher-Product-Manifest-id:id', to: 'publisher_product_manifests#index', via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/}
 
   match "/:id" => "public_publisher_product_manifests#index", via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/}
 
@@ -938,7 +938,8 @@ Webknow::Application.routes.draw do
 
   # get "publisher_product_description" => 'publisher_product_descriptions#index'
   # get "publisher_product_descriptions/show"
-  match '/Publisher-Product-Manifest-id:id', to: 'publisher_product_manifests#index', via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/}
+  # match '/Publisher-Product-Manifest-id:id', to: 'publisher_product_manifests#index', via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/}
+  match '/Publisher-Product-Manifest-id:id', to: 'publisher_product_manifests#index', via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/}
   # match '/Product-Description', to: 'publisher_product_descriptions#index_description', via: 'get'
   # get "publisher_product_manifests/index_manifest"
   # match '/Product-Description', to: 'publisher_product_descriptions#show_description', via: 'post' 

@@ -1,9 +1,10 @@
-<% @search_results.each do |publisher_product| %>
+<% @publisher_products.each do |publisher_product| %>
 	<div class="product-table">
 		<div class="product-row">
-			<div style="display: table-cell; width: 200px; vertical-align: top;">
+			<div style="display: table-cell; width: 200px; height: 210px; vertical-align: top;">
+				<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
 		      	<% product_image = publisher_product.publisher_product_pos1_image.image_url(:image_200_200) rescue "/images_avatar/avatar-gen-product-w200-h200.png" %>
-		      	<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>">
+		      	
 					<%= image_tag product_image.to_s, :style => "border: solid 1px #aaa;" %>
 				</a>
 				<!-- <div style="min-height: 10px; padding: 5px 0px;">
@@ -11,8 +12,9 @@
 				</div> -->
 			</div>
 			<div style="display: table-cell; width: 265px; vertical-align: top;">
-				<div style="padding: 0px 0px 0px 15px;">
-					<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" style="display: block; width: 250px; font-size: 16px; color: #47a447;"><%= publisher_product.publisher_product_manifest.product_name.to_s %></a>
+				<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
+				<div style="height: 100%; padding: 0px 0px 0px 15px;">
+					<div style="display: block; width: 250px; font-size: 16px; color: #47a447;"><%= publisher_product.publisher_product_manifest.product_name.to_s %></div>
 					<div style="height: 5px"></div>
 					<div style="font-size: 14px; line-height: 1.4;">
 						<% product_subjects = category_subject_for(publisher_product)[:category_subject_text] %>
@@ -21,7 +23,7 @@
 						<% if product_subjects.present? %>
 							<div>
 								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Subject(s):</div>
-								<div  style="display: inline-block">
+								<div  style="display: inline-block" class="list-items-1">
 									<% product_subjects.first(3).each do |subject_text| %>
 										<div><%= subject_text %></div>
 									<% end %>
@@ -32,7 +34,7 @@
 						<% if age_range_text.present? %>
 							<div>
 								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Age Range:</div>
-								<div style="display: inline-block; width: 145px;">
+								<div style="display: inline-block; width: 145px;" class="list-items-1">
 									<%= age_range_text.join(" ") %>
 								</div>
 							</div>
@@ -41,7 +43,7 @@
 						<% if grade_range_text.present? %>
 							<div>
 								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Grade Range:</div>
-								<div style="display: inline-block; width: 145px;">
+								<div style="display: inline-block; width: 145px;" class="list-items-1">
 									<%= grade_range_text.join(" ") %>
 								</div>
 							</div>
@@ -50,7 +52,7 @@
 						<% if market_target_text.present? %>
 							<div>
 								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Target Market:</div>
-								<div style="display: inline-block; width: 145px;">
+								<div style="display: inline-block; width: 145px;" class="list-items-1">
 									<%= market_target_text.join(" ") %>
 								</div>
 							</div>
@@ -59,16 +61,18 @@
 						<% if pricing_model_text.present? %>
 							<div>
 								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Pricing Model:</div>
-								<div style="display: inline-block; width: 145px;">
+								<div style="display: inline-block; width: 145px;" class="list-items-1">
 									<%= pricing_model_text.join(" ") %>
 								</div>
 							</div>
 						<% end %>
 					</div>
-				</div>			
+				</div>
+				</a>
 			</div>
 			<div style="display: table-cell; width: 265px; vertical-align: top;">
-				<div style="padding: 0px 0px 0px 15px;">
+				<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
+				<div style="height: 100%; padding: 0px 0px 0px 15px;">
 					<div style="font-size: 14px; line-height: 1.43;">
 						<% enhancement_text = enhancement_for(publisher_product)[:enhancement_text] %>
 						<% enhancement_other_text = enhancement_for(publisher_product)[:enhancement_other] %>
@@ -76,7 +80,7 @@
 						<% if enhancement_text.present? %>
 							<div>
 								<div style="display: block; vertical-align: top; font-weight: 700; color: #333;">Enhancement(s):</div>
-								<div  style="display: block">
+								<div  style="display: block" class="list-items-1">
 									<% enhancement_text.first(3).each do |enhancement| %>
 										<div><%= enhancement %></div>
 									<% end %>
@@ -89,7 +93,7 @@
 						<% if platform_text.present? %>
 							<div>
 								<div style="display: block; vertical-align: top; font-weight: 700; color: #333;">Platforms Available:</div>
-								<div style="display: block;">
+								<div style="display: block;" class="list-items-1">
 									<% platform_text.first(3).each do |platform| %>
 										<div><%= platform %></div>
 									<% end %>
@@ -102,7 +106,7 @@
 						<% if file_type_text.present? %>
 							<div>
 								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">File Type:</div>
-								<div style="display: inline-block; width: 145px;">
+								<div style="display: inline-block; width: 145px;" class="list-items-1">
 									<% file_type_text.first(3).each do |file_type| %>
 										<div><%= file_type %></div>
 									<% end %>
@@ -111,12 +115,32 @@
 						<% end %>
 					</div>
 				</div>
+				</a>
 			</div>
 		</div>
+		<div class="product-row">
+			
+			<div style="display: table-cell; width: 200px; height: 100%; vertical-align: bottom;">
+				<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
+					<div style="width: 200px; height: 100%;"></div>
+				</a>
+			</div>			
+			<div style="display: table-cell; width: 265px; height: 100%; vertical-align: bottom;">
+				<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline list-items-2">
+					<div style="padding: 0px 0px 0px 15px; height: 100%;">Product ID: <%= publisher_product.slug %></div>
+				</a>
+			</div>
+			<div style="display: table-cell; width: 265px; vertical-align: bottom;">
+			</div>
+		</div>		
+		
 	</div>
 <% end %>
+
 <div style="height: 10px"></div>
-<%= will_paginate @search_results, :inner_window=> 2, :params => {:controller => 'publisher_product_lists'} %>
+
+<%= will_paginate @publisher_products, :inner_window=> 2, :params => {:controller => 'publisher_product_lists'} %>
+
 <script type="text/javascript">
 	$('.pagination a').attr('data-remote', 'true');
 	function convertArrayToJSONArray (array) {

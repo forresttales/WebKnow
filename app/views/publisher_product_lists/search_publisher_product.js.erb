@@ -1,4 +1,4 @@
-<% if @search_results.present? %>
+<% if @publisher_products.present? %>
 	$('#result_container').html("<%= j render('publisher_product_lists/publisher_product_search_result') %>");
 <% else %>
 	$('#result_container').html("");

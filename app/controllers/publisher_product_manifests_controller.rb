@@ -44,7 +44,7 @@ class PublisherProductManifestsController < ApplicationController
                                                   if b_current_user_publisher_privilege_level_2                          
                                                       # user is a member of this publisher with edit privilege
                                                   else
-                                                      # Rails.logger.info("b_current_user_publisher_user_level_2 false")
+                                                      Rails.logger.info("b_current_user_publisher_user_level_2 false")
                                                       # Rails.logger.info("current_user_publisher_user_id = " + current_user.publisher_user.id.to_s)
                                                       # user is a member of this publisher, but does not have administrative privilege to edit product forms
                                                       # display public page
@@ -93,23 +93,23 @@ class PublisherProductManifestsController < ApplicationController
                                   redirect_to '/' + id_passed
                               end
                           else
-                              # Rails.logger.info("b_current_user_owns false")
+                              Rails.logger.info("b_current_user_owns false")
                               # user is a publisher, but does not own this product
                               # display public page
                               redirect_to '/' + id_passed
                           end
                     else
-                        # Rails.logger.info("current_user_publisher returned nil")
+                        Rails.logger.info("current_user_publisher returned nil")
                         # user not even a publisher
                         # display public page
                     end
               else
-                  # Rails.logger.info("b_signed_in false")
+                  Rails.logger.info("b_signed_in false")
                   # display public page
                   redirect_to '/' + id_passed
               end    
           else
-              # Rails.logger.info("b_issued_publisher_product_id_exists false")
+              Rails.logger.info("b_issued_publisher_product_id_exists false")
               if b_signed_in
                 # error message -> 'URL not found
                 redirect_to request.referrer  

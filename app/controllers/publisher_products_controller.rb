@@ -64,16 +64,17 @@ class PublisherProductsController < ApplicationController
   
   def search_publisher_product
 
-      @search_results = nil
+      @publisher_products = nil
 
 
-      temp_results = PublisherProduct.all
+      # temp_results = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction)
+      temp_results = current_user.publisher.publisher_products rescue nil
 
       search_query = ""
       # Get search_query from ajax
       if params[:search_query].present?
           search_query = params[:search_query] 
-          temp_results = PublisherProduct.joins(:publisher_product_manifest).where("publisher_product_manifests.product_name ilike :sq", sq: "%#{search_query}%")
+          temp_results = temp_results.joins(:publisher_product_manifest).where("publisher_product_manifests.product_name ilike :sq", sq: "%#{search_query}%")
       end
 
       if params[:search_subjects].present?
@@ -116,7 +117,7 @@ class PublisherProductsController < ApplicationController
           temp_results = temp_results.joins(:publisher_product_to_age).where(search_or_to_age_query)
       end
 
-      @search_results = temp_results.paginate(page: params[:page], per_page: 5)
+      @publisher_products = temp_results.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 5)
 
 
   end
@@ -263,23 +264,23 @@ class PublisherProductsController < ApplicationController
                                         publisher_product_category_subject = PublisherProductCategorySubject.new(h_new)
                                         if publisher_product_category_subject.save
                           
-                                            publisher_product_appropriate_age = PublisherProductAppropriateAge.new(h_new)
-                                            if publisher_product_appropriate_age.save
+                                            # publisher_product_appropriate_age = PublisherProductAppropriateAge.new(h_new)
+                                            # if publisher_product_appropriate_age.save
                           
-                                                publisher_product_from_age = PublisherProductFromAge.new(h_new)
-                                                if publisher_product_from_age.save
+                                                # publisher_product_from_age = PublisherProductFromAge.new(h_new)
+                                                # if publisher_product_from_age.save
                     
-                                                    publisher_product_to_age = PublisherProductToAge.new(h_new)
-                                                    if publisher_product_to_age.save
+                                                    publisher_product_age_range = PublisherProductAgeRange.new(h_new)
+                                                    if publisher_product_age_range.save
                           
-                                                        publisher_product_appropriate_grade = PublisherProductAppropriateGrade.new(h_new)
-                                                        if publisher_product_appropriate_grade.save
+                                                        # publisher_product_appropriate_grade = PublisherProductAppropriateGrade.new(h_new)
+                                                        # if publisher_product_appropriate_grade.save
                                     
-                                                            publisher_product_from_grade = PublisherProductFromGrade.new(h_new)
-                                                            if publisher_product_from_grade.save
+                                                            # publisher_product_from_grade = PublisherProductFromGrade.new(h_new)
+                                                            # if publisher_product_from_grade.save
                                     
-                                                                publisher_product_to_grade = PublisherProductToGrade.new(h_new)
-                                                                if publisher_product_to_grade.save
+                                                                publisher_product_grade_range = PublisherProductGradeRange.new(h_new)
+                                                                if publisher_product_grade_range.save
                           
                                                                     publisher_product_market_target = PublisherProductMarketTarget.new(h_new)
                                                                     if publisher_product_market_target.save
@@ -308,7 +309,8 @@ class PublisherProductsController < ApplicationController
                                                                                                     publisher_product_by_review = PublisherProductByReview.new(h_new)
                                                                                                     if publisher_product_by_review.save
                                                     
-                                                                                                        @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
+                                                                                                        # @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page])
+                                                                                                        @publisher_products = current_user.publisher.publisher_products.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 5)
                                                                                                         respond_to do |format|
                                                                                                           format.html
                                                                                                           format.js
@@ -342,23 +344,23 @@ class PublisherProductsController < ApplicationController
                                                                         Rails.logger.info('save publisher_product_market_target failed')
                                                                     end
                                                                 else
-                                                                    Rails.logger.info('save publisher_product_from_grade failed')
+                                                                    Rails.logger.info('save publisher_product_grade_range failed')
                                                                 end
-                                                            else
-                                                                Rails.logger.info('save publisher_product_from_grade failed')
-                                                            end
-                                                        else
-                                                            Rails.logger.info('save publisher_product_appropriate_grade failed')
-                                                        end
+                                                            # else
+                                                                # Rails.logger.info('save publisher_product_from_grade failed')
+                                                            # end
+                                                        # else
+                                                            # Rails.logger.info('save publisher_product_appropriate_grade failed')
+                                                        # end
                                                     else
-                                                        Rails.logger.info('save publisher_product_from_age failed')
+                                                        Rails.logger.info('save publisher_product_age_range failed')
                                                     end
-                                                else
-                                                    Rails.logger.info('save publisher_product_from_age failed')
-                                                end
-                                            else
-                                                Rails.logger.info('save publisher_product_appropriate_age failed')
-                                            end
+                                                # else
+                                                    # Rails.logger.info('save publisher_product_from_age failed')
+                                                # end
+                                            # else
+                                                # Rails.logger.info('save publisher_product_appropriate_age failed')
+                                            # end
                                         else
                                             Rails.logger.info('save publisher_product_category_subject failed')
                                         end
@@ -604,13 +606,13 @@ class PublisherProductsController < ApplicationController
       PublisherProduct.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
     
-    # def sort_direction
-      # %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
-    # end
-  
     def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
+  
+    # def sort_direction
+      # %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    # end
   
     def return_all_dtab8lets      
       return Dtab8let.order(sort_column_dtab8let + " " + sort_direction)

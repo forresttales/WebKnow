@@ -4,16 +4,11 @@
 	.product-table {
 	    display: table;
 	    width: 100%;
-	    height: 210px;
-	    cursor: pointer;
 	    font-size: 14px;
 	    font-family: Arial, Helvetica, sans-serif;
 	    color: #376340;
 	    border-top: 2px solid #337633;
 	    padding: 10px 0px;
-	}
-	.product-table:hover {
-		background: white;
 	}
 	.product-row {
 	    display: table-row;
@@ -92,8 +87,8 @@
 	
 	.jqmWindow-101-4 {
 	  	display: none;
-	  	/*position: absolute;*/
-	  	position: fixed;
+	  	position: absolute;
+	  	/*position: fixed;*/
 	  	top:30%;
 		left: 50%;
 		margin-left: -200px;		    
@@ -105,7 +100,70 @@
 	  	padding: 0px;
 	}
 	
+	a.a-no-underline {
+		text-decoration: none;
+	}
+	a:focus {
+		outline: 0;
+	}
+	.list-items-1 {
+		color: #376340;
+    	font-family: Arial,Helvetica,sans-serif;
+    	font-size: 14px;		
+	}
+	.list-items-2 {
+		color: #0f0f0f;
+    	font-family: Arial,Helvetica,sans-serif;
+    	font-size: 14px;		
+	}
+	
 </style>
+
+<style>
+	
+	.btn-opt-add-spacer {
+		display: inline-block; 
+		width: 430px;
+	}
+	.btn-opt-add-container-outer {
+		position: relative;
+	  	height: 24px;
+		display: inline-block; 
+		width: 122px; 
+		height: 26px; 
+		margin: 2px 0 0 0;		  	
+	}
+	.btn-opt-add-container {
+	  	background: linear-gradient(#FBB040, #CA8E33);
+	  	border-radius: 10px;
+	  	width: 120px;
+	  	height: 24px;
+	}
+	.btn-opt-add {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		font-weight: 700;		
+	  	color: #eee;
+		text-align: center;	
+	  	width: 120px;
+	  	height: 24px;
+	  	padding-top: 4px;
+	  	text-decoration:none;
+	  	outline: none;
+	}
+	.btn-opt-add:focus {
+	}
+	.btn-opt-add-container:hover { 
+	  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+	  inset 0 1.5em 1em rgba(255,255,255,0.2);
+	  cursor: pointer;
+	}
+	.btn-opt-add-container:active .btn-opt-edit { 
+		color: transparent;
+		text-shadow: 1px 1px #fff;
+	}
+	
+</style>											
 
 
 <div class="jqmWindow jqmWindow-101-4" id="dialog_101_4">
@@ -147,6 +205,47 @@
 		<%= form_tag({action: 'search_publisher_product'}, id: "search_form", remote: true) do %>
 		<div style="display: table-cell; width: 225px; vertical-align: top;"></div>
 		<div id="main_container" style="display: table-cell; width: 750px; vertical-align: top;">
+			
+			<div class="line-space-20"></div>
+			<h2 style="text-decoration: underline; text-align: center;">Instructions:</h2>
+			<ul class="jp-edit-instr" style="margin-bottom: 30px;">
+				<li>1. Click Add Product to add a product to your listing</li>
+				<li>2. Then Click on that listing to be taken to its page. From there you can add all the details about this product</li>
+				<li>&bull; Each product is added individually. If you need to upload products in bulk, this is a premium service we offer</li>
+				<li>&bull; If you need help or have questions, please <a target="_blank" href="http://thelearningcounsel.com/ContactUs" style="color:#49853f;">Contact Us</a></li>						
+			</ul>
+			<div style="height: 10px;"></div>				
+			<div class="show-story-3">
+				<div class="text-align-left">
+					<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
+						<div style="margin: 0;">													
+							<div class="publisher-product-utility-bar light">
+								<!-- <div id="render_story_4_post_users_count" style="padding-left: 10px; padding-top: 10px;"></div> -->
+								<!-- <div style="padding-left: 10px; padding-top: 10px;"> -->
+								<div style="padding-left: 130px; padding-top: 10px;">
+									<!-- <div style="display: inline-block;">
+										<span>Products Count: </span>
+									</div>
+									<div id="render_record_count" style="display: inline-block;">
+										<span></span>
+									</div> -->
+									<div class="btn-opt-add-spacer"></div>
+									<div class="btn-opt-add-container-outer">
+										<div class="btn-opt-add-container">
+											<!-- <div id="btn_add_prod" id="open_edit_story_1" class="btn-opt-add" tabindex=""> -->
+											<div id="btn_add_prod" class="btn-opt-add" tabindex="">
+												Add Product
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="im_top_sh" style="display: block;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 			<div style="margin: 20px auto; width: 80%;" >
 				<div style="margin: auto 20px; float: left; position: relative;">
 					<div class="search-image-search-field"></div>
@@ -341,6 +440,11 @@
 		setClearSearchFieldButton();
 		onSearchClick();
 
+		$('#btn_add_prod').on('click', function() {
+			// alert('btn_add_prod');
+		   	$.post("publisher_products/create", null, null, "script");
+		});
+
 		$('#search_query').on('input', function() {
 			setClearSearchFieldButton();
 			// onSearchClick();
@@ -420,9 +524,10 @@
 		}); 		
 		
 		$(document).on("click", "#btn_dlg_101_4_submit", function() {
-			// deletePublisherProduct(id_publisher_product);
-			alert(id_publisher_product);			
-			// onSearchClick();
+			$("#close_form101_4").trigger('click');
+			deletePublisherProduct(id_publisher_product);
+			// alert(id_publisher_product);			
+			onSearchClick();
 		});
 		$(document).on("click", "#btn_dlg_101_4_cancel", function() {
 			$("#close_form101_4").trigger('click');
