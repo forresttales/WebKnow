@@ -33,7 +33,7 @@
   right: 100px;
   display: block;
   width: 12px;
-  height: 12px;
+  height: 11px;
   // background: asset-url('chosen/chosen-sprite.png') -42px 1px no-repeat;
   background-image: asset-url("chosen/chosen-sprite.png");    
   background-repeat: no-repeat;
@@ -45,7 +45,7 @@
 .btn-clear-search-field:hover {
   background-image: asset-url("chosen/chosen-sprite.png");    
   background-repeat: no-repeat;
-  background-position: -42px 10px;
+  background-position: -42px -10px;
 }
 .search-image-search-field {
   position: absolute;
@@ -56,11 +56,26 @@
   height: 12px;
   background-image: asset-url("chosen/chosen-sprite.png");    
   background-repeat: no-repeat;
-  background-position: -34px 24px;
+  background-position: -34px -24px;
   font-size: 1px;
   cursor: text;
   -moz-transform: scaleX(-1);
   -o-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+}
+.search-query-tag {
+  height:20px;
+  width: 400px;
+  padding: 5px 5px 5px 22px;
+  border-radius:5px;
+  border: 1px solid #49853f;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #376340;
+  outline: none;
+}
+.search-query-tag:focus {
+  -moz-box-shadow: 0 0 1px 1px #64B469;
+    box-shadow: 0 0 1px 1px #64B469;
 }

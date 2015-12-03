@@ -120,6 +120,7 @@ module Webknow
                                   'publisher_users_index_home.css',
                                   'publisher_users_index.css',
                                   'publisher-product-manifest.css',
+                                  'publisher_product_lists.css',
                                   'slick.css',
                                   'slick-theme.css',
                                   'slideshow.css',

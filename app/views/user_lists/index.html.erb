@@ -1,3 +1,4 @@
+<% provide(:title, 'People Search') %>
 
 <div style="display: table; height: 100%; width: 100%;">
 	<div style="display: table-cell; width: 225px; vertical-align: top;">
@@ -59,7 +60,7 @@
 				<%= hidden_field_tag :search_bd_day, value = nil %>
 				<%= hidden_field_tag :search_profile_type, value = nil %>
 				<div class="search-image-search-field"></div>
-				<%=text_field_tag :search_query, value = nil, style: "height:20px; width: 400px; padding: 5px 5px 5px 22px; border-radius:5px; border: 1px solid #49853f; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340; outline: none;", placeholder: "Start typing a name..."%>
+				<%=text_field_tag :search_query, value = nil, class: "search-query-tag", placeholder: "Start typing a name...", :autofocus => true %>
 				<div class="btn-clear-search-field" onclick="onClearSearchField()"></div>
 				<%= submit_tag("Search", :style => "display: none") %> 
 				<div onclick="onSearchClick()" style="float: right; margin: 5px" class="btn-opt-edit-container">
@@ -240,6 +241,13 @@
 	//     $(event.currentTarget).find("form").submit();
 	//   }
 	// });
+	function setClearSearchFieldButton () {
+		if ($("#search_query").val()) {
+			$("form .btn-clear-search-field").css("display", "block");
+		} else{
+			$("form .btn-clear-search-field").css("display", "none");
+		}
+	}
 	function set_user_gender(user_gender) {
 		// Setting user gender
 		if(user_gender == 0) {
@@ -322,6 +330,8 @@
 			disable_search_threshold: 100,
 			allow_single_deselect: true
 		});
+
+		setClearSearchFieldButton();
 	});
 	function onSearchClick () {
 		// Setting search filter
@@ -365,9 +375,11 @@
 	}
 	function onClearSearchField() {
 		$("#search_query").val("");
+		setClearSearchFieldButton();
 		onSearchClick();
 	}
 	$('#search_query').on('input', function() {
+		setClearSearchFieldButton();
 		onSearchClick();
 	});
 	function update_to_age_select (min_value) {
