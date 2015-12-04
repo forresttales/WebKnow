@@ -70,11 +70,35 @@
 			</div>
 			<div style="height: 10px"></div>
 			<div>
+				<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Content Types:</label>
+				<div style="height: 10px"></div>
+				<%= select_tag "search_content_types", options_from_collection_for_select(Dtab2let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any content types" %>
+			</div>
+			<div style="height: 10px"></div>
+			<div>
+				<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Enhancements:</label>
+				<div style="height: 10px"></div>
+				<%= select_tag "search_enhancements", options_from_collection_for_select(Dtab6let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any enhancements" %>
+			</div>
+			<div style="height: 10px"></div>		
+			<div>
 				<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Platforms:</label>
 				<div style="height: 10px"></div>
 				<%= select_tag "search_platforms", options_from_collection_for_select(Dtab3let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any platforms" %>
 			</div>
-			<div style="height: 10px"></div>		
+			<div style="height: 10px"></div>
+			<div>
+				<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">File Types:</label>
+				<div style="height: 10px"></div>
+				<%= select_tag "search_file_types", options_from_collection_for_select(Dtab1let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any file types" %>
+			</div>
+			<div style="height: 10px"></div>
+			<div>
+				<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Core Literacy Standards:</label>
+				<div style="height: 10px"></div>
+				<%= select_tag "search_core_literacy_standards", options_from_collection_for_select(CoreLiteracyStandard.all, "id", "dot_not"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any" %>
+			</div>
+			<div style="height: 10px"></div>	
 		</div>
 	</div>
 	<% end %>
@@ -163,6 +187,22 @@
 	});
 
 	$( "#search_platforms" ).change(function() {
+		onSearchClick ();
+	});
+
+	$( "#search_content_types" ).change(function() {
+		onSearchClick ();
+	});
+
+	$( "#search_file_types" ).change(function() {
+		onSearchClick ();
+	});
+
+	$( "#search_enhancements" ).change(function() {
+		onSearchClick ();
+	});
+
+	$( "#search_core_literacy_standards" ).change(function() {
 		onSearchClick ();
 	});
 
