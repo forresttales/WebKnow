@@ -26,6 +26,7 @@ Webknow::Application.routes.draw do
   resources :user_lists do
       collection do
         post :search_people
+        post :add_friend # => '/People-Search#add_friend', :as => 'add_friend'
       end
   end 
     

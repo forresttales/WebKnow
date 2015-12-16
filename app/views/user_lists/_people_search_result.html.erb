@@ -26,6 +26,11 @@
 				<div style="display: inline">User ID:</div>
 				<div class="user_id" data-user-id=<%= user.id %> style="display: inline"><%= user.id %></div>
 			</div>
+			<% if PublisherUserFriendship.exists?(:user_id => current_user.id, :friend_id => user.id) %>
+				<!-- <#%= link_to "Remove Friend", {:action => "remove_friend", :friend_id => user.id}, :remote => true, :method => :post, :id => "user_id_#{user.id}" %> -->
+			<% else %>
+				<%= link_to "Add Friend", {:action => "add_friend", :friend_id => user.id}, :remote => true, :method => :post, :id => "user_id_#{user.id}" %>
+			<% end %>			
 		</div>
 	</div>
 <% end %>

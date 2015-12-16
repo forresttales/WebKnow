@@ -62,7 +62,14 @@ class UserListsController < ApplicationController
       end
 
   end
-  
-  
+
+  def add_friend
+
+    if params[:friend_id].present?
+      @new_friend = User.find_by_id(params[:friend_id].to_i)
+      current_user.publisher_user_friendships.request(current_user, @new_friend)
+    end
+
+  end
 
 end

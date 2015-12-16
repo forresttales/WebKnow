@@ -71,6 +71,9 @@ class User < ActiveRecord::Base
   has_many :conversations #, dependent: :destroy
   has_many :messages #, dependent: :destroy
   # has_many :messages , :through => :conversations
+
+  has_many :publisher_user_friendships
+  has_many :friends, :through => :publisher_user_friendships
     
   has_many :post_user_likes, dependent: :destroy
   has_many :post_user_comments, dependent: :destroy

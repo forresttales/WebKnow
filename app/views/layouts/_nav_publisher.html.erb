@@ -254,7 +254,8 @@
 		drop_visible_namespace1 = true;			
 	}	
 	function drop_hide_namespace1() {
-		$("#drop_namespace1 .drop-1-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);		
+		$("#drop_namespace1 .drop-1-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1")/*.fadeOut(50)*/;
+		$("#drop_namespace1 .drop-1-container").addClass('drop-hidden');
 		drop_visible_namespace1 = false;			
 	}	
 	function drop_toggle_namespace1() {
