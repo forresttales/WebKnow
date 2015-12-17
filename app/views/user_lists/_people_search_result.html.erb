@@ -25,12 +25,22 @@
 				<!-- <div><#%= user.username %#></div> -->
 				<div style="display: inline">User ID:</div>
 				<div class="user_id" data-user-id=<%= user.id %> style="display: inline"><%= user.id %></div>
-			</div>
-			<% if PublisherUserFriendship.exists?(:user_id => current_user.id, :friend_id => user.id) %>
-				<%= link_to "Remove Friend", {:action => "remove_friend", :friend_id => user.id}, :remote => true, :method => :post, :id => "user-id-#{user.id}" %>
-			<% else %>
-				<%= link_to "Add Friend", {:action => "add_friend", :friend_id => user.id}, :remote => true, :method => :post, :id => "user-id-#{user.id}" %>
-			<% end %>			
+			</div>			
+		</div>
+		<div style="display: table-cell; width: 175px; vertical-align: middle; padding: 5px;">
+			<div id="user-id-<%= user.id %>">
+				<% if PublisherUserFriendship.exists?(:user_id => current_user.id, :friend_id => user.id) %>
+					<% if PublisherUserFriendship.exists?(:user_id => current_user.id, :friend_id => user.id, :status => 'requested')%>
+						<%= link_to "Accept Friendship", {:action => "accept_friend", :friend_id => user.id}, :remote => true, :method => :post %>
+						</br>
+						<%= link_to "Block User", {:action => "remove_friend", :friend_id => user.id}, :remote => true, :method => :post %>
+					<% else %>
+						<%= link_to "Remove Friend", {:action => "remove_friend", :friend_id => user.id}, :remote => true, :method => :post %>
+					<% end %>
+				<% else %>
+					<%= link_to "Add Friend", {:action => "add_friend", :friend_id => user.id}, :remote => true, :method => :post %>
+				<% end %>
+			</div>		
 		</div>
 	</div>
 <% end %>

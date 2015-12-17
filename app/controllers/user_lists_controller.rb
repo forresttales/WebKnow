@@ -67,7 +67,7 @@ class UserListsController < ApplicationController
 
     if params[:friend_id].present?
       @new_friend = User.find_by_id(params[:friend_id].to_i)
-      PublisherUserFriendship.request(current_user, @new_friend)
+      @result = PublisherUserFriendship.request(current_user, @new_friend)
     end
 
   end
@@ -76,9 +76,18 @@ class UserListsController < ApplicationController
 
     if params[:friend_id].present?
       @old_friend = User.find_by_id(params[:friend_id].to_i)
-      PublisherUserFriendship.remove(current_user, @old_friend)
+      @result = PublisherUserFriendship.remove(current_user, @old_friend)
     end
 
+  end
+
+  def accept_friend
+
+    if params[:friend_id].present?
+      @new_friend = User.find_by_id(params[:friend_id].to_i)
+      @result = PublisherUserFriendship.accept(current_user, @new_friend)
+    end
+    
   end
 
 end
