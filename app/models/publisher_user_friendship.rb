@@ -8,12 +8,14 @@
 #  user_id           :integer          default(0)
 #  friend_id      	 :integer          default(0)
 #  status            :string(255)      default("")
+#  accepted_at       :datetime
 #
 
 class PublisherUserFriendship < ActiveRecord::Base
 	attr_accessible :user_id,
 					:friend_id,
-					:status		# can be 'pending', 'requested', 'accepted'
+					:status,		# can be 'pending', 'requested', 'accepted'
+					:accepted_at
 
 
 	belongs_to :user
@@ -34,14 +36,16 @@ class PublisherUserFriendship < ActiveRecord::Base
 
 	def self.accept(user, friend)
 		transaction do
-			accept_one_side(user, friend)
-			accept_one_side(friend, user)
+			accepted_at = Time.now
+			accept_one_side(user, friend, accepted_at)
+			accept_one_side(friend, user, accepted_at)
 		end
 	end
 
-	def self.accept_one_side(user, friend)
+	def self.accept_one_side(user, friend, accepted_at)
 		request = find_by_user_id_and_friend_id(user, friend)
 		request.status = 'accepted'
+		request.accepted_at = accepted_at
 		request.save!
 	end
 
