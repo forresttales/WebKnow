@@ -34,7 +34,6 @@ class PublisherUserFriendship < ActiveRecord::Base
 
 	def self.accept(user, friend)
 		transaction do
-			accepted_at = Time.now
 			accept_one_side(user, friend)
 			accept_one_side(friend, user)
 		end
@@ -44,6 +43,20 @@ class PublisherUserFriendship < ActiveRecord::Base
 		request = find_by_user_id_and_friend_id(user, friend)
 		request.status = 'accepted'
 		request.save!
+	end
+
+	def self.remove(user, friend)
+		unless user == friend or !PublisherUserFriendship.exists?(:user_id => user.id, :friend_id => friend.id)
+			transaction do
+				remove_one_side(user, friend)
+				remove_one_side(friend, user)
+			end
+		end
+	end
+
+	def self.remove_one_side(user, friend)
+		request = find_by_user_id_and_friend_id(user, friend)
+		request.destroy!
 	end
 
 

@@ -1,0 +1,1 @@
+$("#user-id-<%= @old_friend.id %>").replaceWith("<%= j link_to 'Add Friend', {:action => 'add_friend', :friend_id => @old_friend.id}, :remote => true, :method => :post, :id => 'user-id-' + @old_friend.id.to_s %>");
