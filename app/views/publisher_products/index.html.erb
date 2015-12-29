@@ -1,18 +1,74 @@
 <% provide(:title, 'Products List') %>
 
 <style type="text/css">
-	.product-table {
+
+	.product-list-main {
+	    border-top: 2px solid #337633;
+	    padding-top: 2px 0px;
+	}
+	.product-list-divider {
+		height: 2px;
+		background-color: #337633;
+	    margin: 2px 2px 2px 0px;
+	    width: 734px;
+	}
+	.product-list-text-1 {
+	    font-size: 14px;
+	    font-family: Arial, Helvetica, sans-serif;
+	    /*color: #376340;*/
+ 		font-weight: 700; 
+ 		color: #333;	    
+	}
+	.product-list-text-2 {
+	    font-size: 16px;
+	    font-family: Arial, Helvetica, sans-serif;
+ 		font-weight: 700; 
+ 		color: #47a447;	    
+	}
+	/*.list-items-1 {*/
+	.product-list-text-3 {
+		color: #376340;
+    	font-family: Arial,Helvetica,sans-serif;
+    	font-size: 14px;		
+	}
+	/*.list-items-2 {*/
+	.product-list-text-4 {
+		color: #0f0f0f;
+    	font-family: Arial,Helvetica,sans-serif;
+    	font-size: 14px;		
+	}
+	
+	.product-list-table-1 {
+		display: table;
+		vertical-align: top;
+		/*margin-left: 3px;*/
+		table-layout: fixed;
+		line-height: 0;
+		/*border-spacing: 0;*/
+		/*border-collapse: collapse;*/
+	}
+	.product-list-row-1 {
+		display: table-row;
+		vertical-align: top;
+		margin: 0;
+	}	
+	.product-list-cell-1 {
+		display: table-cell;
+		vertical-align: top;
+		margin: 0;
+	}
+	/*.product-table {
 	    display: table;
 	    width: 100%;
 	    font-size: 14px;
 	    font-family: Arial, Helvetica, sans-serif;
 	    color: #376340;
 	    border-top: 2px solid #337633;
-	    padding: 10px 0px;
+	    padding: 2px 0px;
 	}
 	.product-row {
 	    display: table-row;
-	}
+	}*/
 	.btn-opt-edit-container {
 	    background: linear-gradient(#FBB040, #CA8E33);
 	    border-radius: 10px;
@@ -20,6 +76,18 @@
 	    height: 24px;
 	}
 	.btn-opt-edit {
+	    font-family: Arial, Helvetica, sans-serif;
+	    font-size: 14px;
+	    font-weight: 700;
+	    color: #eee;
+	    text-align: center;
+	    width: 80px;
+	    height: 24px;
+	    padding-top: 12px;
+	    text-decoration: none;
+	    outline: none;
+	}
+	.btn-opt-edit-1 {
 	    font-family: Arial, Helvetica, sans-serif;
 	    font-size: 14px;
 	    font-weight: 700;
@@ -89,7 +157,7 @@
 	  	display: none;
 	  	position: absolute;
 	  	/*position: fixed;*/
-	  	top:30%;
+	  	top:40%;
 		left: 50%;
 		margin-left: -200px;		    
 	  	width: 400px;
@@ -105,16 +173,6 @@
 	}
 	a:focus {
 		outline: 0;
-	}
-	.list-items-1 {
-		color: #376340;
-    	font-family: Arial,Helvetica,sans-serif;
-    	font-size: 14px;		
-	}
-	.list-items-2 {
-		color: #0f0f0f;
-    	font-family: Arial,Helvetica,sans-serif;
-    	font-size: 14px;		
 	}
 	
 </style>
@@ -163,6 +221,29 @@
 		text-shadow: 1px 1px #fff;
 	}
 	
+	.test-background {
+		background-color: #eee;	
+	}
+	
+	span.new-product-text-1 {
+    	color: #fff;
+    	font-family: Arial,Helvetica,sans-serif;
+    	font-size: 14px;
+    	font-weight: 700;		
+	}
+	span.new-product-text-2 {
+    	color: #fff;
+    	font-family: Arial,Helvetica,sans-serif;
+    	font-size: 20px;
+    	font-weight: 700;		
+	}
+	div.new-product-text-1-container {
+		position: relative;
+	}
+	div.new-product-text-2-container {
+		position: relative;
+	}
+	
 </style>											
 
 
@@ -200,144 +281,226 @@
 </div>
 
 
-<div style="min-height: 1200px;">
-	<div style="display: table; height: 100%; width: 100%;">
-		<%= form_tag({action: 'search_publisher_product'}, id: "search_form", remote: true) do %>
-		<div style="display: table-cell; width: 225px; vertical-align: top;"></div>
-		<div id="main_container" style="display: table-cell; width: 750px; vertical-align: top;">
-			
-			<div class="line-space-20"></div>
-			<h2 style="text-decoration: underline; text-align: center;">Instructions:</h2>
-			<ul class="jp-edit-instr" style="margin-bottom: 30px;">
-				<li>1. Click Add Product to add a product to your listing</li>
-				<li>2. Then Click on that listing to be taken to its page. From there you can add all the details about this product</li>
-				<li>&bull; Each product is added individually. If you need to upload products in bulk, this is a premium service we offer</li>
-				<li>&bull; If you need help or have questions, please <a target="_blank" href="http://thelearningcounsel.com/ContactUs" style="color:#49853f;">Contact Us</a></li>						
-			</ul>
-			<div style="height: 10px;"></div>				
-			<div class="show-story-3">
-				<div class="text-align-left">
-					<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
-						<div style="margin: 0;">													
-							<div class="publisher-product-utility-bar light">
-								<!-- <div id="render_story_4_post_users_count" style="padding-left: 10px; padding-top: 10px;"></div> -->
-								<!-- <div style="padding-left: 10px; padding-top: 10px;"> -->
-								<div style="padding-left: 130px; padding-top: 10px;">
-									<!-- <div style="display: inline-block;">
-										<span>Products Count: </span>
-									</div>
-									<div id="render_record_count" style="display: inline-block;">
-										<span></span>
-									</div> -->
-									<div class="btn-opt-add-spacer"></div>
-									<div class="btn-opt-add-container-outer">
-										<div class="btn-opt-add-container">
-											<!-- <div id="btn_add_prod" id="open_edit_story_1" class="btn-opt-add" tabindex=""> -->
-											<div id="btn_add_prod" class="btn-opt-add" tabindex="">
-												Add Product
-											</div>
-										</div>
-									</div>
+<div style="position: fixed; top: 110px;">
+	<div style="position: relative;">
+		<div style="display: table; height: 100%; width: 100%;">
+			<%= form_tag({action: 'search_publisher_product'}, id: "search_form", remote: true) do %>
+			<div style="display: table-cell; width: 156px; vertical-align: top;">
+				<!-- <div style="width: 156px; position: fixed; top: 110px;"> -->
+				<div style="width: 156px;">
+					<div style="width: 156px; background-color: #f7f7f7;">
+					<!-- <div style="width: 153px; background-color: #f7f7f7;"> -->
+						<div style="height: 4px;"></div>
+						<div class="btn-opt-add-container-outer">
+							<div class="btn-opt-add-container">
+								<!-- <div id="btn_add_prod" id="open_edit_story_1" class="btn-opt-add" tabindex=""> -->
+								<div id="btn_add_prod" class="btn-opt-add" tabindex="">
+									Add Product
 								</div>
 							</div>
-							<div id="im_top_sh" style="display: block;"></div>
 						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div style="margin: 20px auto; width: 80%;" >
-				<div style="margin: auto 20px; float: left; position: relative;">
-					<div class="search-image-search-field"></div>
-					<%=text_field_tag :search_query, value = nil, style: "", class: 'search-field-tag', placeholder: "Start typing a product name...", tabindex: '101', :onkeyup => 'onSearchClick()', :autofocus => true %>
-					<div class="btn-clear-search-field" onclick="onClearSearchField()"></div>
-					<%= submit_tag("Search", :style => "display: none") %> 
-					<div id="id_search_1" style="float: right; margin: 5px" class="btn-opt-edit-container" tabindex="102">
-						<div class="btn-opt-edit">Search</div>
-					</div>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			<div id="result_container" style="margin: 20px auto; width: 730px;"></div>		
-		</div>
-		<div style="display: table-cell; width: 300px; vertical-align: top; ">
-			<div style="padding: 20px 22.5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340; background: #F7F7F7" >
-				<div>
-					<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Subjects:</label>
-					<div style="height: 4px"></div>
-					<!-- <#%= collection_select :subject, :id, Dtab4let.all, :id, :col_1,  {:include_blank => false}, {"data-placeholder" => "Choose a subject", :class => "chosen-select", :style => "width: 180px;" ,:multiple => true} %> -->
-					<%= select_tag "search_subjects", options_from_collection_for_select(Dtab4let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any subjects" %>
-				</div>
-				<div style="height: 20px"></div>
-				<div>
-					<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Platforms:</label>
-					<div style="height: 4px"></div>
-					<!-- <#%= collection_select :subject, :id, Dtab4let.all, :id, :col_1,  {:include_blank => false}, {"data-placeholder" => "Choose a subject", :class => "chosen-select", :style => "width: 180px;" ,:multiple => true} %> -->
-					<%= select_tag "search_platforms", options_from_collection_for_select(Dtab3let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any platforms" %>
-				</div>
-				<div style="height: 20px"></div>
-				<div>
-					<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Age:</label>
-					<div style="height: 4px"></div>
-					<div>
-
-						<div style="display: inline-block; padding: 0px;">
-							<!-- <div style="width: 40px;"><span>From:</span></div> -->
-							<%= hidden_field_tag :search_from_age, value = nil %>
-			          		<select id="publisher_product_from_age" name="publisher_product[from_age]" data-placeholder="From" class="chosen-select" style="width:110px;" tabindex="">
-								<option value=""></option>
-								<% @from_ages.each do|from_age| %>
-									<option value="<%= from_age.id %>"><%= from_age.col_1 %></option>
-								<% end %>
-			          		</select>
-						</div>
-						<div style="display: inline-block; width: 4px; text-align: center;"> - </div>
-						<div style="display: inline-block; padding: 0px;">
-							<!-- <div style="width: 40px;"><span>To:</span></div> -->
-							<%= hidden_field_tag :search_to_age, value = nil %>
-			          		<select id="publisher_product_to_age" name="publisher_product[to_age]" data-placeholder="To" class="chosen-select" style="width:110px;" tabindex="">
-								<option value=""></option>
-								<% @to_ages.each do|to_age| %>
-									<option value="<%= to_age.id %>"><%= to_age.col_1 %></option>
-								<% end %>
-			          		</select>
-						</div>
-
+						<div style="height: 10px;"></div>
+						
 						<% if false %>
-						<!-- <div style="display: inline-block">From</div> -->
-						<%= hidden_field_tag :search_from_age, value = nil %>
-						<select data-placeholder="From" id="publisher_product_from_age" name="publisher_product[from_age]" class="chosen-select" style="width: 82.5px; display: inline-block">
-							<option value=""></option>
-							<% (10..99).each do |age| %>
-								<option value="<%= age %>"><%= age %></option>
-							<% end %>
-						</select>
-						<div style="display: inline-block"> - </div>
-						<%= hidden_field_tag :search_to_age, value = nil %>
-						<select data-placeholder="To" id="publisher_product_to_age" name="publisher_product[to_age]" class="chosen-select" style="width: 82.5px; display: inline-block">
-							<option value=""></option>
-							<% (10..99).each do |age| %>
-								<option value="<%= age %>"><%= age %></option>
-							<% end %>
-						</select>
+						<h2 style="text-decoration: underline; text-align: center;">Instructions:</h2>
+						<ul class="jp-edit-instr" style="margin-bottom: 30px;">
+							<li>1. Click Add Product to add a product to your listing</li>
+							<li>2. Then Click on that listing to be taken to its page. From there you can add all the details about this product</li>
+							<li>&bull; Each product is added individually. If you need to upload products in bulk, this is a premium service we offer</li>
+							<li>&bull; If you need help or have questions, please <a target="_blank" href="http://thelearningcounsel.com/ContactUs" style="color:#49853f;">Contact Us</a></li>						
+						</ul>
+						<div style="height: 10px;"></div>
 						<% end %>
-								
+										
 					</div>
 				</div>
-				<div style="height: 20px"></div>
-				<div id="id_search_2" class="btn-opt-edit-container" tabindex="102" style="float: right; margin: 5px">
-					<div class="btn-opt-edit">Search</div>
-				</div>		
-				<div style="height: 20px"></div>
-
 			</div>
-			
-			
-			
+			<div style="display: table-cell; width: 2px; vertical-align: top;">
+				<div id="table_cell_1" style="width: 2px; background-color: #e3e3e3; position: fixed; top: 110px;"></div>
+			</div>
+			<div id="main_container" style="display: table-cell; width: 740px; vertical-align: top; z-index: 0; height: auto; position: relative;">
+				<!-- <div style="height: 120px;"></div> -->
+	
+				<% if false %>			
+				<div class="show-story-3">
+					<div class="text-align-left">
+						<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
+							<div style="margin: 0;">													
+								<div class="publisher-product-utility-bar light">
+									<!-- <div id="render_story_4_post_users_count" style="padding-left: 10px; padding-top: 10px;"></div> -->
+									<!-- <div style="padding-left: 10px; padding-top: 10px;"> -->
+									<div style="padding-left: 130px; padding-top: 10px;">
+										<!-- <div style="display: inline-block;">
+											<span>Products Count: </span>
+										</div>
+										<div id="render_record_count" style="display: inline-block;">
+											<span></span>
+										</div> -->
+										<div class="btn-opt-add-spacer"></div>
+									</div>
+								</div>
+								<div id="im_top_sh" style="display: block;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% end %>
+				
+				<% if false %>
+				<div style="margin: 20px auto; width: 100%;" >
+					<div style="margin: auto 20px; float: left; position: relative;">
+						<div class="search-image-search-field"></div>
+						<%=text_field_tag :search_query, value = nil, style: "", class: 'search-field-tag', placeholder: "Start typing a product name...", tabindex: '101', :onkeyup => 'onSearchClick()', :autofocus => true %>
+						<div class="btn-clear-search-field" onclick="onClearSearchField()"></div>
+						<%= submit_tag("Search", :style => "display: none") %> 
+						<div id="id_search_1" style="float: right; margin: 5px" class="btn-opt-edit-container" tabindex="102">
+							<div class="btn-opt-edit-1">Search</div>
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+				<% end %>
+				
+				<!-- <div id="result_container_outer" style="margin-top: 0px; width: 740px; height: auto;"> -->
+				<!-- <div id="result_container_outer" style="position: fixed; margin-top: 0px; width: 740px; height: auto;">
+					<div id="result_container" style="padding-left: 3px; padding-right: 3px;"></div>
+				</div> -->
+				
+				<!-- <div id="result_container" style="margin: 0 auto; width: 740px; padding-left: 3px; padding-right: 3px; border-left: 2px solid #ccc; border-right: 2px solid #ccc; height: auto;"></div> -->
+			</div>
+			<div style="display: table-cell; width: 2px; vertical-align: top;">
+				<div id="table_cell_3" style="width: 2px; background-color: #e3e3e3; position: fixed; top: 110px;"></div>
+			</div>
+			<div style="display: table-cell; width: 300px; vertical-align: top;">
+				<!-- <div style="width: 255px; position: fixed; top: 110px;" > -->
+				<div style="width: 255px;" >
+					<div style="width: 255px; margin-left: 0px; padding: 20px 22.5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340; background: #F7F7F7;">
+					<!-- <div style="width: 249px; margin-left: 0px; padding: 20px 22.5px; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #376340; background: #F7F7F7;" > -->
+						<div>
+							<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Subjects:</label>
+							<div style="height: 4px"></div>
+							<!-- <#%= collection_select :subject, :id, Dtab4let.all, :id, :col_1,  {:include_blank => false}, {"data-placeholder" => "Choose a subject", :class => "chosen-select", :style => "width: 180px;" ,:multiple => true} %> -->
+							<%= select_tag "search_subjects", options_from_collection_for_select(Dtab4let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any subjects" %>
+						</div>
+						<div style="height: 20px"></div>
+						<div>
+							<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Platforms:</label>
+							<div style="height: 4px"></div>
+							<!-- <#%= collection_select :subject, :id, Dtab4let.all, :id, :col_1,  {:include_blank => false}, {"data-placeholder" => "Choose a subject", :class => "chosen-select", :style => "width: 180px;" ,:multiple => true} %> -->
+							<%= select_tag "search_platforms", options_from_collection_for_select(Dtab3let.all, "id", "col_1"), multiple: true, class: 'chosen-select', :style => "width: 180px;", "data-placeholder" => "Choose any platforms" %>
+						</div>
+						<div style="height: 20px"></div>
+						<div>
+							<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Age:</label>
+							<div style="height: 4px"></div>
+							<div>
+		
+								<div style="display: inline-block; padding: 0px;">
+									<!-- <div style="width: 40px;"><span>From:</span></div> -->
+									<%= hidden_field_tag :search_from_age, value = nil %>
+					          		<select id="publisher_product_from_age" name="publisher_product[from_age]" data-placeholder="From" class="chosen-select" style="width:110px;" tabindex="">
+										<option value=""></option>
+										<% @from_ages.each do|from_age| %>
+											<option value="<%= from_age.id %>"><%= from_age.col_1 %></option>
+										<% end %>
+					          		</select>
+								</div>
+								<div style="display: inline-block; width: 4px; text-align: center;"> - </div>
+								<div style="display: inline-block; padding: 0px;">
+									<!-- <div style="width: 40px;"><span>To:</span></div> -->
+									<%= hidden_field_tag :search_to_age, value = nil %>
+					          		<select id="publisher_product_to_age" name="publisher_product[to_age]" data-placeholder="To" class="chosen-select" style="width:110px;" tabindex="">
+										<option value=""></option>
+										<% @to_ages.each do|to_age| %>
+											<option value="<%= to_age.id %>"><%= to_age.col_1 %></option>
+										<% end %>
+					          		</select>
+								</div>
+		
+								<% if false %>
+								<!-- <div style="display: inline-block">From</div> -->
+								<%= hidden_field_tag :search_from_age, value = nil %>
+								<select data-placeholder="From" id="publisher_product_from_age" name="publisher_product[from_age]" class="chosen-select" style="width: 82.5px; display: inline-block">
+									<option value=""></option>
+									<% (10..99).each do |age| %>
+										<option value="<%= age %>"><%= age %></option>
+									<% end %>
+								</select>
+								<div style="display: inline-block"> - </div>
+								<%= hidden_field_tag :search_to_age, value = nil %>
+								<select data-placeholder="To" id="publisher_product_to_age" name="publisher_product[to_age]" class="chosen-select" style="width: 82.5px; display: inline-block">
+									<option value=""></option>
+									<% (10..99).each do |age| %>
+										<option value="<%= age %>"><%= age %></option>
+									<% end %>
+								</select>
+								<% end %>
+										
+							</div>
+						</div>
+						<div style="height: 20px"></div>
+						<div id="id_search_2" class="btn-opt-edit-container" tabindex="102" style="float: right; margin: 5px">
+							<div class="btn-opt-edit">Search</div>
+						</div>		
+						<div style="height: 20px"></div>
+		
+					</div>
+				</div>
+				
+				
+			</div>
+			<% end %>
 		</div>
-		<% end %>
 	</div>
 </div>
+
+
+
+<div id="result_container_outer" style="width: 740px; padding: 0px 300px 0px 158px;">
+	<div id="result_container" style="padding-left: 3px; padding-right: 3px; padding-top: 110px;"></div>
+</div>
+
+
+
+
+
+
+
+
+<% if false %>
+	<div style="height: 60px; width: 100%; position: fixed; bottom: 0px;">
+		<div style="display: table;">
+			<div style="display: table-row;">
+				<div style="display: table-cell; width: 156px; vertical-align: top;"></div>
+				<div style="display: table-cell; width: 2px; vertical-align: top;"></div>
+				<div style="display: table-cell; width: 740px; vertical-align: top;">
+					<div style="height: 50px; width: 740px;">
+						<div style="position: relative;">
+							<div style="height: 50px; width: 740px; background-color: #e3e3e3; position: absolute; left: 0px;">
+								<%= will_paginate @publisher_products, :inner_window=> 2, :params => {:controller => 'publisher_product_lists'} %>
+							</div>
+						</div>
+					</div>		
+				</div>
+				<div style="display: table-cell; width: 2px; vertical-align: top;"></div>
+				<div style="display: table-cell; width: 300px; vertical-align: top;"></div>
+			</div>
+			<div style="display: table-row;">
+				<div style="display: table-cell; width: 156px; vertical-align: top;"></div>
+				<div style="display: table-cell; width: 2px; vertical-align: top;"></div>
+				<div style="display: table-cell; width: 740px; vertical-align: top;">
+					<div style="height: 50px; width: 740px;">
+						<div style="position: relative;">
+							<div style="height: 10px; width: 740px; background-color: #fff; position: absolute; left: 0px;"></div>
+						</div>
+					</div>		
+				</div>
+				<div style="display: table-cell; width: 2px; vertical-align: top;"></div>
+				<div style="display: table-cell; width: 300px; vertical-align: top;"></div>
+			</div>
+		</div>
+	</div>
+<% end %>
 
 <script type="text/javascript">
 
@@ -414,7 +577,7 @@
         	},
         	success: function(data) {
         		if (!data.b_error) {
-        			alert('delete successful');
+        			// alert('delete successful');
         		}
         		else {
 					alert('An error occured while deleting this product.');	            			
@@ -425,11 +588,25 @@
   		// return false;
 	}
 
+	function resizeContainer() {
+        var body_height = $(window).height();
+        // var result_container_height = bodyheight - 262;
+        var cell_height = body_height - 120;
+        // $("#result_container_outer").height(cell_height + 0);
+        $("#table_cell_1").height(cell_height);
+        $("#table_cell_3").height(cell_height);
+	}
+
 
 	var id_publisher_product = null;
 
 	
 	$(document).ready(function () {
+
+
+	    $(window).resize(function() {
+			resizeContainer();
+	    });
 		
 		// Initialize dropdowns
 		$(".chosen-select").chosen({
@@ -542,5 +719,8 @@
 
 	});
 
-
+	$(window).load( function() {
+		resizeContainer();
+	});
+	
 </script>

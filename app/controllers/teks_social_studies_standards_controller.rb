@@ -1,0 +1,2 @@
+class TeksSocialStudiesStandardsController < ApplicationController
+end

@@ -13,12 +13,17 @@
 #  has_product_metadata :boolean          default(FALSE)
 #  slug                 :string(255)
 #  product_name         :string(255)
+#  has_required_1       :boolean          default(FALSE)
+#  has_required_2       :boolean          default(FALSE)
+#  has_required_3       :boolean          default(FALSE)
+#  has_required_4       :boolean          default(FALSE)
+#  is_edited_1          :boolean          default(FALSE)
+#  is_edited_2          :boolean          default(FALSE)
 #
 
 class PublisherProduct < ActiveRecord::Base
   
-  attr_accessible :id,
-                  :publisher_id,
+  attr_accessible :publisher_id,
                   :slug,
                   :product_name,
                   :has_description,
@@ -26,8 +31,12 @@ class PublisherProduct < ActiveRecord::Base
                   :has_product_logo,
                   :product_metadata,
                   :has_product_metadata,
-                  :created_at,
-                  :updated_at 
+                  :has_required_1,
+                  :has_required_2,
+                  :has_required_3,
+                  :has_required_4,
+                  :is_edited_1,
+                  :is_edited_2
   
   
   belongs_to :publisher

@@ -1,0 +1,2 @@
+class TeksCareerTechEdStandardsController < ApplicationController
+end

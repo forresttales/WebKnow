@@ -1,0 +1,2 @@
+class PublisherProductTeksTechnologyStandardsController < ApplicationController
+end

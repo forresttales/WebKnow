@@ -1,0 +1,2 @@
+class TeksEnglishStandardsController < ApplicationController
+end

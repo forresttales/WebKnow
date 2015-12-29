@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130054843) do
+ActiveRecord::Schema.define(version: 20151220163920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -2207,6 +2207,162 @@ ActiveRecord::Schema.define(version: 20151130054843) do
   add_index "publisher_product_subjects", ["publisher_id"], name: "index_publisher_product_subjects_on_publisher_id", using: :btree
   add_index "publisher_product_subjects", ["publisher_product_id"], name: "index_on_publisher_product_subjects_on_publisher_product_id", using: :btree
 
+  create_table "publisher_product_teks_career_dev_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_career_tech_ed_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_economics_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_english_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_fine_arts_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_health_ed_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_languages_non_eng_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_math_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_physical_ed_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_science_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_second_language_eng_span_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_social_studies_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
+  create_table "publisher_product_teks_technology_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publisher_id",         default: 0
+    t.integer  "publisher_product_id", default: 0
+    t.integer  "id_standard",          default: 0
+    t.integer  "chapter",              default: 0
+    t.integer  "section",              default: 0
+    t.string   "section_text",         default: ""
+    t.string   "uri",                  default: ""
+  end
+
   create_table "publisher_product_to_ages", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -2285,6 +2441,12 @@ ActiveRecord::Schema.define(version: 20151130054843) do
     t.boolean  "has_product_metadata",             default: false
     t.string   "slug"
     t.string   "product_name"
+    t.boolean  "has_required_1",                   default: false
+    t.boolean  "has_required_2",                   default: false
+    t.boolean  "has_required_3",                   default: false
+    t.boolean  "has_required_4",                   default: false
+    t.boolean  "is_edited_1",                      default: false
+    t.boolean  "is_edited_2",                      default: false
   end
 
   add_index "publisher_products", ["publisher_id"], name: "index_publisher_products_on_publisher_id", using: :btree
@@ -2523,6 +2685,136 @@ ActiveRecord::Schema.define(version: 20151130054843) do
     t.datetime "updated_at"
     t.integer  "follower_id"
     t.integer  "followed_id"
+  end
+
+  create_table "teks_career_dev_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_career_tech_ed_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_economics_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_english_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_fine_arts_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_health_ed_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_languages_non_eng_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_math_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_physical_ed_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_science_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_second_language_eng_span_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_social_studies_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
+  end
+
+  create_table "teks_technology_standards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order",        default: 0
+    t.string   "section_text", default: ""
+    t.integer  "chapter",      default: 0
+    t.integer  "section",      default: 0
+    t.string   "uri",          default: ""
   end
 
   create_table "user_background1_images", force: true do |t|

@@ -1,6 +1,6 @@
 class PublisherProductsController < ApplicationController
   
-  layout 'publisher_product'
+  layout 'publisher_product_fixed'
 
   respond_to :html, :js, :json  
 

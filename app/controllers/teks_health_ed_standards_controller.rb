@@ -1,0 +1,2 @@
+class TeksHealthEdStandardsController < ApplicationController
+end

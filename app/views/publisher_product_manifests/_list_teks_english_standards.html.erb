@@ -1,0 +1,122 @@
+
+		<div id="scroll2" class="tablebox-header">
+			<table id="tbl-1" class="tbltablets" title="Tablets">    	  
+				<thead>
+			  		<tr align="left">
+			    		<th class="member-table" id="th_view" field="view" style="width: 50px; padding-left: 10px;"><div class="header-shift"><h4></h4></div></th>
+			    		<th class="member-table" id="th_id" field="id" style="width: 50px;"><div id="id" class="header-shift"><h4><%= sortable "id", "ID" %></div></th>
+			    		<th class="member-table" id="th_section_text" field="section_text" style="width: 200px;"><div id="section_text" class="header-shift"><h4><%= sortable "section_text", "Section" %></h4></div></th>
+			    		<th class="member-table" id="th_uri" field="uri" style="width: 300px;"><div id="uri" class="header-shift"><h4><%= sortable "uri", "URI" %></h4></div></th>
+			  		</tr>
+			  	</thead>
+			</table>
+		</div>
+		<div id="scroll1" class="tablebox" onscroll="scrollPos();">	
+			<% if @teks_english_standards.any? %>
+				<%= hidden_field_tag :direction, params[:direction] %>
+				<%= hidden_field_tag :sort, params[:sort] %>	
+				<table class="tbltablets">
+					<tbody>
+					<% @teks_english_standards.each do |teks_english_standard| %>
+				  		<tr align="left">
+						    <td class="core-sel-mat" name="<%= teks_english_standard.id %>" style="width: 50px; padding-left: 10px;">
+								<div class="cb-container-1d">
+									<div id="cb_teks_english_standard_<%= teks_english_standard.id %>" name="teks_english_standard_<%= teks_english_standard.id %>" class="cb-button cb-align-core core-math-standard" tabindex=""></div>
+								</div>
+					    		<input id="ch_teks_english_standard_<%= teks_english_standard.id %>" name="publisher_product_description_teks_english_standard" type="checkbox" value="<%= teks_english_standard.id %>" />
+						    </td>
+						    <td style="width: 50px;" name="<%= teks_english_standard.id %>" class="core-sel-mat"><span class="member-table"><%= teks_english_standard.id %></span></td>
+						    <td style="width: 200px;" name="<%= teks_english_standard.id %>" class="core-sel-mat"><span class="member-table"><%= teks_english_standard.section_text %></span></td>
+						    <td style="width: 300px;" class="core-uri"><span class="member-table"><a href="<%= teks_english_standard.uri%>"><%= teks_english_standard.uri%></a></span></td>
+				  		</tr>
+					<% end %>
+					</tbody>	
+				</table>			
+				<%= will_paginate @teks_english_standards %>
+			<% else %>
+				<h3>No record for TEKS English Standards</h3>
+			<% end %>
+		</div>
+   
+	<script>
+		
+        function scrollPos() {
+            $("#pos1").html($("#scroll1").scrollLeft());
+            $("#scroll2").scrollLeft($("#scroll1").scrollLeft());
+        }
+		
+		function moveScroll() {
+			$("#scroll1").scrollLeft($("#pos1").html());
+			$("#scroll2").scrollLeft($("#pos1").html());			
+		}
+
+		$(function() {
+
+			jQuery.ajaxSetup({
+			    'beforeSend': function(xhr) {
+			        xhr.setRequestHeader("Accept", "text/javascript")
+			    }
+			});
+		
+    		var $cols = $('colgroup');
+
+			$("table.tbltablets tr:nth-child(even)").addClass('gray');
+			$("table.tbltablets tr:nth-child(odd)").addClass('white');
+
+			var cell;
+			var cellIndex;
+			var row;
+			var rowIndex;
+			var header;
+			var cellTh;
+			var cellIndexTh;
+			
+			$("table.tbltablets td").mouseover ( function () {
+				
+				cell = $(this).closest('td');
+				cellIndex = cell[0].cellIndex;
+				cellIndex += 1;
+				row = cell.closest('tr');
+				rowIndex = row[0].rowIndex;
+		
+				if (rowIndex % 2 === 0) {
+					row.removeClass('gray').addClass('hover-row');					
+				}
+				else {
+					row.removeClass('white').addClass('hover-row');										
+				}		
+			}).mouseout( function(){
+				if (rowIndex % 2 === 0) {
+					row.removeClass('hover-row').addClass('gray');					
+				}
+				else {
+					row.removeClass('hover-row').addClass('gray');					
+				}		
+			});
+			
+			var rowSelect = -1;			
+			
+			$(".core-sel-mat").on('click', function () {
+				var id = $(this).attr("name");
+				var cb = "cb_teks_english_standard_" + id.toString();
+				var ch = "ch_teks_english_standard_" + id.toString();
+				set_cb(ch, cb);
+			});
+			
+			$(document).on('click', function(mtab1let) {
+				elem = mtab1let.target.className;
+				if ((elem === 'hover-col') || (elem === 'delete-btn') || (elem === 'member-table')) {
+					//
+				}
+				else {
+					$("table.tbltablets tr").removeClass('row-select');					
+				}
+			});
+			
+			
+		});
+
+			
+	</script>
+
+

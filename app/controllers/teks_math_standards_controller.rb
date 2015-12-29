@@ -1,0 +1,2 @@
+class TeksMathStandardsController < ApplicationController
+end

@@ -1,0 +1,2 @@
+module PublisherProductTeksSecondLanguageEngSpanStandardsHelper
+end

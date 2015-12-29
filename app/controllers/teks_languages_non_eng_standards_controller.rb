@@ -1,0 +1,2 @@
+class TeksLanguagesNonEngStandardsController < ApplicationController
+end

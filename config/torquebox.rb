@@ -1,7 +1,24 @@
 TorqueBox.configure do 
+
     stomplet DemoStomplet do 
         route '/queue/demo' 
-    end 
+    end
+
+    web do
+      context "/"
+      static "public"      
+      host "webknow"
+    end
+    
+    # web do
+      # # rackup "alternative/path/to/my_config.ru"
+      # # context "/app-one"
+      # # static "public"
+      # # host "www.host-one.com"
+      # context "/"
+      # host "webknow"
+    # end
+  
 end
 
 # TorqueBox.configure do

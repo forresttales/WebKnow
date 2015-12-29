@@ -1881,7 +1881,9 @@ span.color-no-record {
 #form_info_description,		
 #form_info_corporate_logo_url,		
 #form_info_core_literacy_standard,
-#form_info_core_math_standard {
+#form_info_core_math_standard,
+#form_info_teks_english_standard,
+#form_info_teks_math_standard {  
 	display: none;
 }
 .form-info-name-pdf {
@@ -2167,14 +2169,14 @@ span.color-no-record {
   margin: 0px;      
 }
 .box-detail-title-large {
-	height: 24px;
-	width: 330px;
+	height: 22px;
+	width: 100%;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #fff;
 	font-weight: 400;
 	font-size: 14px;
 	background-color: #A6A6A6;
-	padding: 5px 4px 2px 4px;		
+	padding: 8px 1px 0px;		
 	margin: 0;
 	text-align: center;			
 }

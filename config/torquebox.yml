@@ -4,6 +4,8 @@
 # for all configuration options.
 web:
   context: "/"
+  static: public
+  host: webknow
 
 environment:
   RAILS_ENV: production
@@ -46,10 +48,10 @@ stomp:
       class: DemoStomplet
       route: /queue/demo
 
-web:
-  context: "/"
+# web:
+  # context: "/"
 
-environment:
-  RAILS_ENV: production
-  # RAILS_ENV: development
+# environment:
+  # RAILS_ENV: production
+  # # RAILS_ENV: development
   

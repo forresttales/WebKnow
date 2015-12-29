@@ -1,0 +1,2 @@
+module PublisherProductTeksSocialStudiesStandardsHelper
+end

@@ -1,0 +1,2 @@
+class TeksEconomicsStandardsController < ApplicationController
+end

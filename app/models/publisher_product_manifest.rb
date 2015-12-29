@@ -92,9 +92,7 @@ class PublisherProductManifest < ActiveRecord::Base
                   :course_time_days,
                   :course_time_months,
                   :time_per_lesson,
-                  :time_per_course,
-                  :created_at,
-                  :updated_at 
+                  :time_per_course
 
 
   belongs_to :publisher_product

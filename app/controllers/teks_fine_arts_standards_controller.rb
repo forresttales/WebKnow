@@ -1,0 +1,2 @@
+class TeksFineArtsStandardsController < ApplicationController
+end

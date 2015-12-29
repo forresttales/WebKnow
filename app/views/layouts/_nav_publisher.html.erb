@@ -10,7 +10,6 @@
 				    			<span class="drop-1-span-1">My Story</span>
 				    		</div>						    		
 				    	</div>
-				    	
 				    	<div class="drop-1-container drop-hidden">
 							<div class="drop-1-box background-transparent margin-top-hide-1">
 								<div class="drop-1-triangle"></div>
@@ -93,7 +92,6 @@
 								</div>
 							</div>
 				        </div>
-				        
 				    </div>
 				</div>
 		  	</div>
@@ -250,11 +248,13 @@
 	var drop_visible_namespace1 = false;
 	function drop_show_namespace1() {
 		$("#drop_namespace1 .drop-1-container").removeClass('drop-hidden');
-		$("#drop_namespace1 .drop-1-box").fadeIn(500).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
+		$("#drop_namespace1 .drop-1-box").fadeIn(1).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
 		drop_visible_namespace1 = true;			
 	}	
 	function drop_hide_namespace1() {
-		$("#drop_namespace1 .drop-1-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);		
+		$("#drop_namespace1 .drop-1-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);
+		// $("#drop_namespace1 .drop-1-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1");	
+		// $("#drop_namespace1 .drop-1-container").addClass('drop-hidden');
 		drop_visible_namespace1 = false;			
 	}	
 	function drop_toggle_namespace1() {
@@ -313,7 +313,7 @@
 	var drop_visible_namespace2 = false;
 	function drop_show_namespace2() {
 		$("#drop_namespace2 .drop-2-container").removeClass('drop-hidden');
-		$("#drop_namespace2 .drop-2-box").fadeIn(500).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
+		$("#drop_namespace2 .drop-2-box").fadeIn(1).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
 		drop_visible_namespace2 = true;			
 	}	
 	function drop_hide_namespace2() {
@@ -370,7 +370,7 @@
 	var drop_visible_namespace3 = false;
 	function drop_show_namespace3() {
 		$("#drop_namespace3 .drop-3-container").removeClass('drop-hidden');
-		$("#drop_namespace3 .drop-3-box").fadeIn(500).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
+		$("#drop_namespace3 .drop-3-box").fadeIn(1).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
 		drop_visible_namespace3 = true;			
 	}	
 	function drop_hide_namespace3() {

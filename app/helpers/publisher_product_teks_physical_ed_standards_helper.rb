@@ -1,0 +1,2 @@
+module PublisherProductTeksPhysicalEdStandardsHelper
+end

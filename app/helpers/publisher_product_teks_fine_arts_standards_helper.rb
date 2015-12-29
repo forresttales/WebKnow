@@ -1,0 +1,2 @@
+module PublisherProductTeksFineArtsStandardsHelper
+end

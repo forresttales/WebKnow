@@ -1036,19 +1036,56 @@
 									<div class="cell-325">
 										<!-- <div id="edit_age_range" class="hidden"> -->
 										<div id="control_106_edit" class="hidden">
-											<div style="padding: 4px;">
-												<div style="display: inline-block; width: 40px;"><span>From:</span></div>
-								          		<select id="publisher_product_from_age" name="publisher_product[from_age]" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex="">
-													<option value="0">-Select-</option>
+											
+											<% if false %>
+											<div>
+												<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Age:</label>
+												<div style="height: 4px"></div>
+												<div>
+							
+													<div style="display: inline-block; padding: 0px;">
+														<!-- <div style="width: 40px;"><span>From:</span></div> -->
+														<%= hidden_field_tag :search_from_age, value = nil %>
+										          		<select id="publisher_product_from_age" name="publisher_product[from_age]" data-placeholder="From" class="chosen-select-age-range" style="width:110px;" tabindex="">
+															<option value=""></option>
+															<% @from_ages.each do|from_age| %>
+																<option value="<%= from_age.id %>"><%= from_age.col_1 %></option>
+															<% end %>
+										          		</select>
+													</div>
+													<div style="display: inline-block; width: 4px; text-align: center;"> - </div>
+													<div style="display: inline-block; padding: 0px;">
+														<!-- <div style="width: 40px;"><span>To:</span></div> -->
+														<%= hidden_field_tag :search_to_age, value = nil %>
+										          		<select id="publisher_product_to_age" name="publisher_product[to_age]" data-placeholder="To" class="chosen-select-age-range" style="width:110px;" tabindex="">
+															<option value=""></option>
+															<% @to_ages.each do|to_age| %>
+																<option value="<%= to_age.id %>"><%= to_age.col_1 %></option>
+															<% end %>
+										          		</select>
+													</div>
+												</div>
+											</div>
+											<% end %>
+											
+											
+											<div style="display: inline-block; padding: 4px;">
+												<!-- <div style="display: inline-block; width: 40px;"><span>From:</span></div> -->
+								          		<!-- <select id="publisher_product_from_age" name="publisher_product[from_age]" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex=""> -->
+								          		<select data-placeholder="From" id="publisher_product_from_age" name="publisher_product[from_age]" class="chosen-select-age-range" style="width: 110px;">
+													<!-- <option value="0">-Select-</option> -->
+													<option value=""></option>
 													<% @from_ages.each do|from_age| %>
 														<option value="<%= from_age.id %>"><%= from_age.col_1 %></option>
 													<% end %>
 								          		</select>
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block; width: 40px;"><span>To:</span></div>
-								          		<select id="publisher_product_to_age" name="publisher_product[to_age]" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex="">
-													<option value="0">-Select-</option>
+											<div style="display: inline-block; width: 4px; text-align: center;"> - </div>
+											<div style="display: inline-block; padding: 4px;">
+												<!-- <div style="display: inline-block; width: 40px;"><span>To:</span></div> -->
+								          		<!-- <select id="publisher_product_to_age" name="publisher_product[to_age]" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex=""> -->
+								          		<select data-placeholder="To" id="publisher_product_to_age" name="publisher_product[to_age]" class="chosen-select-age-range" style="width: 110px;">
+													<option value=""></option>
 													<% @to_ages.each do|to_age| %>
 														<option value="<%= to_age.id %>"><%= to_age.col_1 %></option>
 													<% end %>
@@ -1061,7 +1098,8 @@
 												<div style="display: inline-block;">
 													<div id="cancel_age_range" class="btn-submit-product control-106-cancel-button" tabindex="">Cancel</div>
 												</div>	
-											</div>					
+											</div>			
+													
 										</div>
 										<!-- <div id="show_age_range" style="padding: 0 0 0 0px;"> -->
 										<div id="control_106_show">
@@ -1973,11 +2011,32 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+
 <div style="height: 30px;"></div>
 <div style="display: table;">
 	<div style="display: table-row;">
 		<div class="" style="display: table-cell; vertical-align: top; width: 850px;">
-			<div style="height: 30px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="" style="display: table-cell; vertical-align: top; width: 670px;">
+						<div class="box-detail-title-large">
+							Core Standards											
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="height: 10px;"></div>
+<div style="display: table;">
+	<div style="display: table-row;">
+		<div class="" style="display: table-cell; vertical-align: top; width: 850px;">
 	   		<div class="table">
 	   			<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
@@ -2151,6 +2210,973 @@
 					</div>
 				</div>
 			</div>
+
+		</div>
+	</div>
+</div>			
+
+<div style="height: 30px;"></div>
+
+<!-- 
+122 english
+123 math							
+124 science
+125 social_studies
+126 languages_non_eng
+127 health_ed
+128 physical_ed
+129 fine_arts
+130 economics
+131 technology 		  	
+132 career_dev
+133 second_language_eng_span		  	
+134 career_tech_ed
+-->
+
+<div style="display: table;">
+	<div style="display: table-row;">
+		<div class="" style="display: table-cell; vertical-align: top; width: 850px;">
+	   		<div class="table">
+	   			<div class="row">
+					<div class="" style="display: table-cell; vertical-align: top; width: 670px;">
+						<div class="box-detail-title-large">
+							Texas Essential Knowledge and Skills									
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="height: 10px;"></div>
+
+<div style="display: table;">
+	<div style="display: table-row;">
+		<div class="" style="display: table-cell; vertical-align: top; width: 850px;">
+	   		<div class="table">
+
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_english_standard" class="box-detail-3 control-122-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_english_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_english_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												English Language Arts and Reading										
+											</div>														
+										</div>													
+										<div class="control-122-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_english_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_english_standard" class="question-icon info-show-20 required-1 ks-tip-target control-122-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_english_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_122_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_english_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_english_standard" class="btn-submit-product control-122-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_english_standard" class="btn-submit-product control-122-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_122_show">
+											<div id="box_teks_english_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	   			<!-- <div class="row">
+					<div class="cell-20"></div>
+					<div class="cell-670">
+					   	<div id="form_info_teks_english_standard" class="form-info-outer-teks-english-standard" style="width: 670px;">
+					   		<div style="height: 10px;"></div>
+					   		<div class="form-info-inner form-info-inner-teks-english-standard">
+					   			<div id="form_info_teks_english_standard_a">
+							   		<div class="table">
+							   			<div class="row">
+							   				<div class="cell-100percent form-edit-background">
+							   					<div id="close_info_teks_english_standard" class="form-edit-close tip-left-center">
+							   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+							   					</div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Close</div>
+								                </div>													   																		   					
+							   					<div style="clear: both;"></div>
+							   				</div>
+					   					</div>
+									</div>				   				
+							   		<div class="table">
+							   			<div class="row">
+							   				<div class="cell-100percent form-edit-background">
+												<span class="info-text-2">
+													TEKS English Standards																		
+												</span>
+							   				</div>
+					   					</div>
+									</div>				   				
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> -->
+			</div>
+			
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_math_standard" class="box-detail-3 control-123-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_math_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_math_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Mathematics									
+											</div>														
+										</div>													
+										<div class="control-123-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_math_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_math_standard" class="question-icon info-show-20 required-1 ks-tip-target control-123-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_math_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_123_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_math_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_math_standard" class="btn-submit-product control-123-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_math_standard" class="btn-submit-product control-123-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_123_show">
+											<div id="box_teks_math_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_science_standard" class="box-detail-3 control-124-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_science_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_science_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Science									
+											</div>														
+										</div>													
+										<div class="control-124-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_science_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_science_standard" class="question-icon info-show-20 required-1 ks-tip-target control-124-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_science_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_124_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_science_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_science_standard" class="btn-submit-product control-124-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_science_standard" class="btn-submit-product control-124-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_124_show">
+											<div id="box_teks_science_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_social_studies_standard" class="box-detail-3 control-125-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_social_studies_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_social_studies_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Social Studies									
+											</div>														
+										</div>													
+										<div class="control-125-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_social_studies_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_social_studies_standard" class="question-icon info-show-20 required-1 ks-tip-target control-125-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_social_studies_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_125_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_social_studies_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_social_studies_standard" class="btn-submit-product control-125-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_social_studies_standard" class="btn-submit-product control-125-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_125_show">
+											<div id="box_teks_social_studies_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_languages_non_eng_standard" class="box-detail-3 control-126-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_languages_non_eng_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_languages_non_eng_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Languages Other Than English										
+											</div>														
+										</div>													
+										<div class="control-126-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_languages_non_eng_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_languages_non_eng_standard" class="question-icon info-show-20 required-1 ks-tip-target control-126-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_languages_non_eng_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_126_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_languages_non_eng_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_languages_non_eng_standard" class="btn-submit-product control-126-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_languages_non_eng_standard" class="btn-submit-product control-126-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_126_show">
+											<div id="box_teks_languages_non_eng_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_health_ed_standard" class="box-detail-3 control-127-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_health_ed_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_health_ed_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Health Education									
+											</div>														
+										</div>													
+										<div class="control-127-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_health_ed_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_health_ed_standard" class="question-icon info-show-20 required-1 ks-tip-target control-127-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_health_ed_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_127_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_health_ed_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_health_ed_standard" class="btn-submit-product control-127-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_health_ed_standard" class="btn-submit-product control-127-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_127_show">
+											<div id="box_teks_health_ed_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_physical_ed_standard" class="box-detail-3 control-128-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_physical_ed_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_physical_ed_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Physical Education								
+											</div>														
+										</div>													
+										<div class="control-128-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_physical_ed_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_physical_ed_standard" class="question-icon info-show-20 required-1 ks-tip-target control-128-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_physical_ed_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_128_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_physical_ed_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_physical_ed_standard" class="btn-submit-product control-128-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_physical_ed_standard" class="btn-submit-product control-128-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_128_show">
+											<div id="box_teks_physical_ed_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_fine_arts_standard" class="box-detail-3 control-129-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_fine_arts_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_fine_arts_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Fine Arts							
+											</div>														
+										</div>													
+										<div class="control-129-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_fine_arts_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_fine_arts_standard" class="question-icon info-show-20 required-1 ks-tip-target control-129-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_fine_arts_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_129_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_fine_arts_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_fine_arts_standard" class="btn-submit-product control-129-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_fine_arts_standard" class="btn-submit-product control-129-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_129_show">
+											<div id="box_teks_fine_arts_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_economics_standard" class="box-detail-3 control-130-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_economics_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_economics_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Economics with Emphasis on the Free Enterprise System and Its Benefits								
+											</div>														
+										</div>													
+										<div class="control-130-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_economics_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_economics_standard" class="question-icon info-show-20 required-1 ks-tip-target control-130-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_economics_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_130_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_economics_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_economics_standard" class="btn-submit-product control-130-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_economics_standard" class="btn-submit-product control-130-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_130_show">
+											<div id="box_teks_economics_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_technology_standard" class="box-detail-3 control-131-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_technology_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_technology_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Technology Applications										
+											</div>														
+										</div>													
+										<div class="control-131-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_technology_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_technology_standard" class="question-icon info-show-20 required-1 ks-tip-target control-131-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_technology_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_131_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_technology_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_technology_standard" class="btn-submit-product control-131-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_technology_standard" class="btn-submit-product control-131-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_131_show">
+											<div id="box_teks_technology_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_career_dev_standard" class="box-detail-3 control-132-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_career_dev_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_career_dev_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Career Development											
+											</div>														
+										</div>													
+										<div class="control-132-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_career_dev_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_career_dev_standard" class="question-icon info-show-20 required-1 ks-tip-target control-132-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_career_dev_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_132_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_career_dev_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_career_dev_standard" class="btn-submit-product control-132-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_career_dev_standard" class="btn-submit-product control-132-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_132_show">
+											<div id="box_teks_career_dev_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_second_language_eng_span_standard" class="box-detail-3 control-133-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_second_language_eng_span_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_second_language_eng_span_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Spanish Language Arts and English as a Second Language											
+											</div>														
+										</div>													
+										<div class="control-133-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_second_language_eng_span_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_second_language_eng_span_standard" class="question-icon info-show-20 required-1 ks-tip-target control-133-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_second_language_eng_span_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_133_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_second_language_eng_span_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_second_language_eng_span_standard" class="btn-submit-product control-133-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_second_language_eng_span_standard" class="btn-submit-product control-133-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_133_show">
+											<div id="box_teks_second_language_eng_span_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	   		<div style="height: 10px;"></div>
+	   		<div class="table">
+	   			<div class="row">
+					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
+						<div id="box_detail_teks_career_tech_ed_standard" class="box-detail-3 control-134-edit" style="background-color: #fff;">
+							<div id="box_detail_table_teks_career_tech_ed_standard" class="table box-detail-table-3">
+								<div class="row box-detail-row">
+									<div id="cell_outer_teks_career_tech_ed_standard" class="cell-670">
+										<div id="cell_inner_core_literacy_standard" class="float-left">
+											<div class="box-detail-title box-detail-title-color">
+												Career and Technical Education											
+											</div>														
+										</div>													
+										<div class="control-134-edit-options edit-options float-right hidden">
+											<div class="edit-options-block-1">
+												<div id="required_teks_career_tech_ed_standard" class="required-1"></div>
+								                <div class="tip-content">
+								                    <div class="tooltiptext">Required</div>
+								                </div>																								
+											</div>
+											<div class="edit-options-block-1 ks-tip-container">
+												<div id="open_info_teks_career_tech_ed_standard" class="question-icon info-show-20 required-1 ks-tip-target control-134-info-button"></div>
+											    <div class="ks-tip ks-tip-2">
+											    	<div class="ks-tip-indicator-2"></div>
+													What is this?
+											    </div>				
+											</div>																		
+											<!-- <div class="edit-options-block-1 ks-tip-container">
+												<div id="open_edit_teks_career_tech_ed_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
+											    <div class="ks-tip ks-tip-3">
+											    	<div class="ks-tip-indicator-3"></div>
+													Edit
+											    </div>				
+											</div> -->
+										</div>
+										<div class="float-clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="table box-detail-table-3">
+								<div class="row">
+									<div class="cell-670">
+										<div id="control_134_edit" class="hidden">
+											<div class="row-divider-space-8"></div>
+											<div id="tablets" style="margin-left: 20px;">
+												<%= render 'publisher_product_manifests/list_teks_career_tech_ed_standards' %>
+											</div>		
+											<div style="height:30px;"></div>
+											<div style="display: inline-block; margin-left: 20px;">
+												<div id="submit_teks_career_tech_ed_standard" class="btn-submit-product control-134-save-button" tabindex="">Save</div>
+											</div>
+											<div style="display: inline-block;">
+												<div id="cancel_teks_career_tech_ed_standard" class="btn-submit-product control-134-cancel-button" tabindex="">Cancel</div>
+											</div>	
+											<div style="height:8px;"></div>
+										</div>
+										<div id="control_134_show">
+											<div id="box_teks_career_tech_ed_standard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		  	<!-- 
+		  	122 english
+		  	123 math							
+		  	124 science
+		  	125 social_studies
+		  	126 languages_non_eng
+		  	127 health_ed
+		  	128 physical_ed
+		  	129 fine_arts
+		  	130 economics
+		  	131 technology 		  	
+		  	132 career_dev
+		  	133 second_language_eng_span		  	
+		  	134 career_tech_ed
+		  	-->
+
+			
+			
 			<div style="height: 70px;"></div>
 			<div class="table">
 	   			<div class="row">
@@ -2240,6 +3266,8 @@
 	</div>
 </div>
 <div style="height: 50px;"></div>
+
+<% if false %>
 <div style="display: table;">
 	<div style="display: table-row;">
 		<div class="" style="display: table-cell; vertical-align: top; width: 850px;">
@@ -2511,3 +3539,5 @@
 	</div>
 </div>
 <div style="height: 100px;"></div>
+<% end %>
+

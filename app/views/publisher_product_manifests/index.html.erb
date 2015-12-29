@@ -1714,6 +1714,7 @@
 			hideEditId_103();
 			hideEditId_104();
 			hideEditId_105();
+			hideEditId_106();
 			
 			hideEditId_108();
 			hideEditId_109();
@@ -1729,6 +1730,21 @@
 			hideEditId_119();
 			hideEditId_120();
 			hideEditId_121();
+
+			hideEditId_122();
+			hideEditId_123();
+			hideEditId_124();
+			hideEditId_125();
+			hideEditId_126();
+			hideEditId_127();
+			hideEditId_128();
+			hideEditId_129();
+			hideEditId_130();
+			hideEditId_131();
+			hideEditId_132();
+			hideEditId_133();
+			hideEditId_134();
+
 			hideEditId_201_all();
 			
 			// show_control("product_tagline");
@@ -1764,6 +1780,13 @@
 				$('#span_product_headline').removeClass('product-headline-2');
 			}
 			$('#span_product_headline').removeClass('cursor-pointer');
+				
+			// set_from_age(from_age);
+			// set_to_age(to_age);
+			// set_age_range_text(from_age_text, to_age_text);
+			// set_control_required("age_range", (b_required_from_age || b_required_to_age));
+			// update_from_age_select (i_to_age);
+			// update_to_age_select (i_from_age);
 				
 			cancelEditMode_image_1();
 			cancelEditMode_image_2();
@@ -1910,9 +1933,9 @@
 
 		var info_msg_19 = 	'<span>Price</span>';
 
-		var info_msg_20 = 	'<span>Core Literacy Standard</span>';
+		var info_msg_20 = 	'<span>Core Literacy Standards</span>';
 
-		var info_msg_21 = 	'<span>Core Math Standard</span>';
+		var info_msg_21 = 	'<span>Core Math Standards</span>';
 		
 		var info_msg_22 = 	'<span>Allow Teacher Ratings</span>';
 		
@@ -1931,6 +1954,9 @@
 		var info_msg_29 = 	'<span>Poster Pin</span>';
 		
 		var info_msg_30 = 	'<span>Poster Pin Purchase</span>';
+		
+		var info_msg_31 = 	'<span>TEKS English Standards</span>';
+
 		
 		var publisher_product_id = null;
 		var divHeight_1001 = 0;
@@ -4338,6 +4364,7 @@
 							}
 							set_control_span("product_headline", data.product_headline, data.b_product_headline);
 							show_control_class("product_headline", "product-headline");
+							product_headline = data.product_headline;
 							hideEditId_16();
 							
 							if (product_headline.length > 0) {
@@ -6514,6 +6541,7 @@
 		// from_age to_age
 		
 		function set_from_age(from_age) {
+			// alert(from_age);
 			var elmnt = document.getElementById("publisher_product_from_age");
 			for(var i = 0; i < from_age.length; i++) {
 				if( from_age[i] ) {
@@ -6630,10 +6658,12 @@
 		
 		$("#open_edit_age_range").click(function(){
 	    	$("#publisher_product_from_age_chosen").css({
-	    		'width':'314px'
+	    		// 'width':'314px'
+	    		'width':'110px'
 	    	});				
 	    	$("#publisher_product_to_age_chosen").css({
-	    		'width':'314px'
+	    		// 'width':'314px'
+	    		'width':'110px'
 	    	});				
     		$("#show_age_range, #open_edit_age_range").fadeOut(300, function(){
     			$("#show_from_age").addClass("hidden");
@@ -6649,10 +6679,12 @@
 			$("#control_106_show").addClass("hidden");
 			$("#control_106_edit").fadeIn(1300).removeClass("hidden");
 	    	$("#publisher_product_from_age_chosen").css({
-	    		'width':'314px'
+	    		// 'width':'314px'
+	    		'width':'110px'
 	    	});				
 	    	$("#publisher_product_to_age_chosen").css({
-	    		'width':'314px'
+	    		// 'width':'314px'
+	    		'width':'110px'
 	    	});				
     		// $("#show_age_range, #open_edit_age_range").fadeOut(300, function(){
     			// $("#show_from_age").addClass("hidden");
@@ -6669,11 +6701,83 @@
 				$('#control_106_edit').addClass("hidden");
 				$('#control_106_show').fadeIn(1300).removeClass("hidden");
 			});
+			
+			set_from_age(from_age);
+			set_to_age(to_age);
+			set_age_range_text(from_age_text, to_age_text);
+			set_control_required("age_range", (b_required_from_age || b_required_to_age));
+			update_from_age_select (i_to_age);
+			update_to_age_select (i_from_age);
 		}
 
+		function setClearSearchFieldButton () {
+			if ($("#search_query").val()) {
+				$("form .btn-clear-search-field").css("display", "block");
+			} else{
+				$("form .btn-clear-search-field").css("display", "none");
+			}
+		}
+	
+		function onClearSearchField() {
+			$("#search_query").val("");
+			setClearSearchFieldButton();
+			// onSearchClick();
+		}
+
+		function update_to_age_select (min_value) {
+			$("#publisher_product_to_age option").css("display", "block");
+			for (var i = 1; i < min_value; i++) {
+				var selector = "#publisher_product_to_age option[value=" + i + "]";
+				$(selector).css("display", "none");
+			};
+			$("#publisher_product_to_age").trigger('chosen:updated');
+		}
+		function update_from_age_select (max_value) {
+			$("#publisher_product_from_age option").css("display", "block");
+			for (var i = parseInt(max_value) + 1; i < 21; i++) {
+				var selector = "#publisher_product_from_age option[value=" + i + "]";
+				$(selector).css("display", "none");
+			};
+			$("#publisher_product_from_age").trigger('chosen:updated');
+		}
+
+
+		var from_age = null;
+		var from_age_text = null;
+		var to_age = null;
+		var to_age_text = null;
+		var i_from_age = null;
+		var i_to_age = null;
+		b_required_from_age = null;
+		b_required_to_age = null; 
+
+		
 		
 		$(document).ready(function(){
 
+			$(".chosen-select-age-range").chosen({
+				disable_search_threshold: 100,
+				allow_single_deselect: true
+			});
+
+			$("#publisher_product_from_age").change(function() {
+				var v = $("#publisher_product_from_age").val();
+				if(v == '0') {
+					update_to_age_select('0');
+				}
+				else {
+					update_to_age_select($("#publisher_product_from_age").val());
+				}
+			});
+			$("#publisher_product_to_age").change(function() {
+				var v = $("#publisher_product_to_age").val();
+				if(v == '0') {
+					update_from_age_select('18');
+				}
+				else {
+					update_from_age_select($("#publisher_product_to_age").val());
+				}
+			});
 
 			$(document).on('click', '.control-106-edit', function(event) {
 				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
@@ -6701,14 +6805,24 @@
 				$("#dialog_1001").jqmShow();
 			});
 
-			var gon_from_age = gon.from_age;
-			set_from_age(gon_from_age);
-			var gon_from_age_text = gon.from_age_text;
-			var gon_to_age = gon.to_age;
-			set_to_age(gon_to_age);
-			var gon_to_age_text = gon.to_age_text;
-			set_age_range_text(gon_from_age_text, gon_to_age_text);
-			set_control_required("age_range", (gon.b_required_from_age || gon.b_required_to_age));
+			from_age = gon.from_age;
+			set_from_age(from_age);
+			from_age_text = gon.from_age_text;
+			to_age = gon.to_age;
+			set_to_age(to_age);
+			to_age_text = gon.to_age_text;
+			set_age_range_text(from_age_text, to_age_text);
+			b_required_from_age = gon.b_required_from_age;
+			b_required_to_age = gon.b_required_to_age; 
+			set_control_required("age_range", (b_required_from_age || b_required_to_age));
+
+			i_from_age = gon.i_from_age;
+			i_to_age = gon.i_to_age;
+			update_from_age_select (i_to_age);
+			update_to_age_select (i_from_age);
+						
+			// setClearSearchFieldButton();
+			
 			// $("#open_edit_age_range").click(function(){
 		    	// $("#publisher_product_from_age_chosen").css({
 		    		// 'width':'314px'
@@ -6757,13 +6871,22 @@
 	            	},
 	            	success: function(data) {
 	            		if (!data.b_error) {
-							set_from_age(data.g_from_age);
-							set_to_age(data.g_to_age);
-							// show_control("age_range");
+	            			from_age = data.from_age;
+	            			to_age = data.to_age;
+	            			from_age_text = data.from_age_text;
+	            			to_age_text = data.to_age_text;
+	            			b_required_from_age = data.b_required_from_age;
+	            			b_required_to_age = data.b_required_to_age;
+	            			i_from_age = data.i_from_age;
+	            			i_to_age = data.i_to_age;
+	            			
+							set_from_age(from_age);
+							set_to_age(to_age);
 							hideEditId_106();
-							set_age_range_text(data.g_from_age_text, data.g_to_age_text);
-							set_control_required("age_range", (data.b_required_from_age || data.b_required_to_age));
-							// renderListingPreview("age_range");
+							set_age_range_text(from_age_text, to_age_text);
+							set_control_required("age_range", (b_required_from_age || b_required_to_age));
+							update_from_age_select (i_to_age);
+							update_to_age_select (i_from_age);
 	            		}
 	            		else {
 							// show_control("age_range");
@@ -9475,6 +9598,2225 @@
 				
 	</script>
 
+  	<!-- 
+  	122 english
+  	123 math              
+  	124 science
+  	125 social_studies
+  	126 languages_non_eng
+  	127 health_ed
+  	128 physical_ed
+  	129 fine_arts
+  	130 economics
+  	131 technology        
+  	132 career_dev
+  	133 second_language_eng_span        
+  	134 career_tech_ed
+  	-->
+
+	<script>
+		
+		// 122 teks_english_standards
+		
+		function clearTeksEnglishStandard() {
+			for(var i = 1; i < gon.teks_english_standards_count + 1; i++) {
+				sb = "#cb_teks_english_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksEnglishStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_english_standard_" + standard[i].toString();
+				sb = "#cb_teks_english_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksEnglishStandardText(teks_english_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_english_standard_text.length; i++) {
+				s = teks_english_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_english_standard").html(s_html);
+			
+			if (teks_english_standard_text.length > 0) {
+				$("#box_teks_english_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_english_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_122() {
+			$("#control_122_show").addClass("hidden");
+			$("#control_122_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_english_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksEnglishStandard();
+    		initTeksEnglishStandard();    		
+		}
+	
+		function hideEditId_122() {
+			$('#control_122_edit').fadeOut(300, function() {
+				$('#control_122_edit').addClass("hidden");
+				$('#control_122_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksEnglishStandard() {
+			setTeksEnglishStandard(teks_english_standard);
+			setTeksEnglishStandardText(teks_english_standard_text);
+		}
+
+
+		var teks_english_standard = null;
+		var teks_english_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-122-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-122-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_122_edit').hasClass('hidden')) {
+							$('.control-122-edit-options').removeClass('hidden');
+							showEditId_122();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-122-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_122();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_english_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_english_standard = gon.teks_english_standard;
+			teks_english_standard_text = gon.teks_english_standard_text;
+
+			initTeksEnglishStandard();
+
+    		$("#submit_teks_english_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_english_standard").click();
+    		});			
+			$("#cancel_teks_english_standard").on('click', function() {
+				show_control_standard("teks_english_standard");
+				hideEditId_122();
+			});
+    		$("#cancel_teks_english_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_english_standard").click();
+    		});		
+			$("#submit_teks_english_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_english_standards_count = <%= @teks_english_standards.count %>;
+				for(var i = 1; i < teks_english_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_english_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_english_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_english_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_english_standard = data.teks_english_standard;
+							teks_english_standard_text = data.teks_english_standard_text;
+	            			initTeksEnglishStandard();
+							hideEditId_122();
+	            		}
+	            		else {
+							hideEditId_122();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 123 teks_math_standards
+		
+		function clearTeksMathStandard() {
+			for(var i = 1; i < gon.teks_math_standards_count + 1; i++) {
+				sb = "#cb_teks_math_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksMathStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_math_standard_" + standard[i].toString();
+				sb = "#cb_teks_math_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksMathStandardText(teks_math_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_math_standard_text.length; i++) {
+				s = teks_math_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_math_standard").html(s_html);
+			
+			if (teks_math_standard_text.length > 0) {
+				$("#box_teks_math_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_math_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_123() {
+			$("#control_123_show").addClass("hidden");
+			$("#control_123_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_math_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksMathStandard();
+    		initTeksMathStandard();    		
+		}
+	
+		function hideEditId_123() {
+			$('#control_123_edit').fadeOut(300, function() {
+				$('#control_123_edit').addClass("hidden");
+				$('#control_123_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksMathStandard() {
+			setTeksMathStandard(teks_math_standard);
+			setTeksMathStandardText(teks_math_standard_text);
+		}
+
+
+		var teks_math_standard = null;
+		var teks_math_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-123-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-123-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_123_edit').hasClass('hidden')) {
+							$('.control-123-edit-options').removeClass('hidden');
+							showEditId_123();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-123-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_123();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_math_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_math_standard = gon.teks_math_standard;
+			teks_math_standard_text = gon.teks_math_standard_text;
+
+			initTeksMathStandard();
+
+    		$("#submit_teks_math_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_math_standard").click();
+    		});			
+			$("#cancel_teks_math_standard").on('click', function() {
+				show_control_standard("teks_math_standard");
+				hideEditId_123();
+			});
+    		$("#cancel_teks_math_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_math_standard").click();
+    		});		
+			$("#submit_teks_math_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_math_standards_count = <%= @teks_math_standards.count %>;
+				for(var i = 1; i < teks_math_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_math_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_math_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_math_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_math_standard = data.teks_math_standard;
+							teks_math_standard_text = data.teks_math_standard_text;
+	            			initTeksMathStandard();
+							hideEditId_123();
+	            		}
+	            		else {
+							hideEditId_123();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 124 teks_science_standards
+		
+		function clearTeksScienceStandard() {
+			for(var i = 1; i < gon.teks_science_standards_count + 1; i++) {
+				sb = "#cb_teks_science_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksScienceStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_science_standard_" + standard[i].toString();
+				sb = "#cb_teks_science_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksScienceStandardText(teks_science_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_science_standard_text.length; i++) {
+				s = teks_science_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_science_standard").html(s_html);
+			
+			if (teks_science_standard_text.length > 0) {
+				$("#box_teks_science_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_science_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_124() {
+			$("#control_124_show").addClass("hidden");
+			$("#control_124_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_science_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksScienceStandard();
+    		initTeksScienceStandard();    		
+		}
+	
+		function hideEditId_124() {
+			$('#control_124_edit').fadeOut(300, function() {
+				$('#control_124_edit').addClass("hidden");
+				$('#control_124_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksScienceStandard() {
+			setTeksScienceStandard(teks_science_standard);
+			setTeksScienceStandardText(teks_science_standard_text);
+		}
+
+
+		var teks_science_standard = null;
+		var teks_science_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-124-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-124-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_124_edit').hasClass('hidden')) {
+							$('.control-124-edit-options').removeClass('hidden');
+							showEditId_124();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-124-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_124();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_science_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_science_standard = gon.teks_science_standard;
+			teks_science_standard_text = gon.teks_science_standard_text;
+
+			initTeksScienceStandard();
+
+    		$("#submit_teks_science_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_science_standard").click();
+    		});			
+			$("#cancel_teks_science_standard").on('click', function() {
+				show_control_standard("teks_science_standard");
+				hideEditId_124();
+			});
+    		$("#cancel_teks_science_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_science_standard").click();
+    		});		
+			$("#submit_teks_science_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_science_standards_count = <%= @teks_science_standards.count %>;
+				for(var i = 1; i < teks_science_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_science_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_science_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_science_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_science_standard = data.teks_science_standard;
+							teks_science_standard_text = data.teks_science_standard_text;
+	            			initTeksScienceStandard();
+							hideEditId_124();
+	            		}
+	            		else {
+							hideEditId_124();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 125 teks_social_studies_standards
+		
+		function clearTeksSocialStudiesStandard() {
+			for(var i = 1; i < gon.teks_social_studies_standards_count + 1; i++) {
+				sb = "#cb_teks_social_studies_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksSocialStudiesStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_social_studies_standard_" + standard[i].toString();
+				sb = "#cb_teks_social_studies_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksSocialStudiesStandardText(teks_social_studies_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_social_studies_standard_text.length; i++) {
+				s = teks_social_studies_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_social_studies_standard").html(s_html);
+			
+			if (teks_social_studies_standard_text.length > 0) {
+				$("#box_teks_social_studies_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_social_studies_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_125() {
+			$("#control_125_show").addClass("hidden");
+			$("#control_125_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_social_studies_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksSocialStudiesStandard();
+    		initTeksSocialStudiesStandard();    		
+		}
+	
+		function hideEditId_125() {
+			$('#control_125_edit').fadeOut(300, function() {
+				$('#control_125_edit').addClass("hidden");
+				$('#control_125_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksSocialStudiesStandard() {
+			setTeksSocialStudiesStandard(teks_social_studies_standard);
+			setTeksSocialStudiesStandardText(teks_social_studies_standard_text);
+		}
+
+
+		var teks_social_studies_standard = null;
+		var teks_social_studies_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-125-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-125-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_125_edit').hasClass('hidden')) {
+							$('.control-125-edit-options').removeClass('hidden');
+							showEditId_125();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-125-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_125();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_social_studies_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_social_studies_standard = gon.teks_social_studies_standard;
+			teks_social_studies_standard_text = gon.teks_social_studies_standard_text;
+
+			initTeksSocialStudiesStandard();
+
+    		$("#submit_teks_social_studies_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_social_studies_standard").click();
+    		});			
+			$("#cancel_teks_social_studies_standard").on('click', function() {
+				show_control_standard("teks_social_studies_standard");
+				hideEditId_125();
+			});
+    		$("#cancel_teks_social_studies_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_social_studies_standard").click();
+    		});		
+			$("#submit_teks_social_studies_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_social_studies_standards_count = <%= @teks_social_studies_standards.count %>;
+				for(var i = 1; i < teks_social_studies_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_social_studies_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_social_studies_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_social_studies_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_social_studies_standard = data.teks_social_studies_standard;
+							teks_social_studies_standard_text = data.teks_social_studies_standard_text;
+	            			initTeksSocialStudiesStandard();
+							hideEditId_125();
+	            		}
+	            		else {
+							hideEditId_125();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 126 teks_languages_non_eng_standards
+		
+		function clearTeksLanguagesNonEngStandard() {
+			for(var i = 1; i < gon.teks_languages_non_eng_standards_count + 1; i++) {
+				sb = "#cb_teks_languages_non_eng_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksLanguagesNonEngStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_languages_non_eng_standard_" + standard[i].toString();
+				sb = "#cb_teks_languages_non_eng_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksLanguagesNonEngStandardText(teks_languages_non_eng_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_languages_non_eng_standard_text.length; i++) {
+				s = teks_languages_non_eng_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_languages_non_eng_standard").html(s_html);
+			
+			if (teks_languages_non_eng_standard_text.length > 0) {
+				$("#box_teks_languages_non_eng_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_languages_non_eng_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_126() {
+			$("#control_126_show").addClass("hidden");
+			$("#control_126_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_languages_non_eng_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksLanguagesNonEngStandard();
+    		initTeksLanguagesNonEngStandard();    		
+		}
+	
+		function hideEditId_126() {
+			$('#control_126_edit').fadeOut(300, function() {
+				$('#control_126_edit').addClass("hidden");
+				$('#control_126_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksLanguagesNonEngStandard() {
+			setTeksLanguagesNonEngStandard(teks_languages_non_eng_standard);
+			setTeksLanguagesNonEngStandardText(teks_languages_non_eng_standard_text);
+		}
+
+
+		var teks_languages_non_eng_standard = null;
+		var teks_languages_non_eng_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-126-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-126-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_126_edit').hasClass('hidden')) {
+							$('.control-126-edit-options').removeClass('hidden');
+							showEditId_126();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-126-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_126();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_languages_non_eng_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_languages_non_eng_standard = gon.teks_languages_non_eng_standard;
+			teks_languages_non_eng_standard_text = gon.teks_languages_non_eng_standard_text;
+
+			initTeksLanguagesNonEngStandard();
+
+    		$("#submit_teks_languages_non_eng_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_languages_non_eng_standard").click();
+    		});			
+			$("#cancel_teks_languages_non_eng_standard").on('click', function() {
+				show_control_standard("teks_languages_non_eng_standard");
+				hideEditId_126();
+			});
+    		$("#cancel_teks_languages_non_eng_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_languages_non_eng_standard").click();
+    		});		
+			$("#submit_teks_languages_non_eng_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_languages_non_eng_standards_count = <%= @teks_languages_non_eng_standards.count %>;
+				for(var i = 1; i < teks_languages_non_eng_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_languages_non_eng_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_languages_non_eng_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_languages_non_eng_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_languages_non_eng_standard = data.teks_languages_non_eng_standard;
+							teks_languages_non_eng_standard_text = data.teks_languages_non_eng_standard_text;
+	            			initTeksLanguagesNonEngStandard();
+							hideEditId_126();
+	            		}
+	            		else {
+							hideEditId_126();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 127 teks_health_ed_standards
+		
+		function clearTeksHealthEdStandard() {
+			for(var i = 1; i < gon.teks_health_ed_standards_count + 1; i++) {
+				sb = "#cb_teks_health_ed_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksHealthEdStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_health_ed_standard_" + standard[i].toString();
+				sb = "#cb_teks_health_ed_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksHealthEdStandardText(teks_health_ed_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_health_ed_standard_text.length; i++) {
+				s = teks_health_ed_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_health_ed_standard").html(s_html);
+			
+			if (teks_health_ed_standard_text.length > 0) {
+				$("#box_teks_health_ed_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_health_ed_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_127() {
+			$("#control_127_show").addClass("hidden");
+			$("#control_127_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_health_ed_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksHealthEdStandard();
+    		initTeksHealthEdStandard();    		
+		}
+	
+		function hideEditId_127() {
+			$('#control_127_edit').fadeOut(300, function() {
+				$('#control_127_edit').addClass("hidden");
+				$('#control_127_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksHealthEdStandard() {
+			setTeksHealthEdStandard(teks_health_ed_standard);
+			setTeksHealthEdStandardText(teks_health_ed_standard_text);
+		}
+
+
+		var teks_health_ed_standard = null;
+		var teks_health_ed_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-127-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-127-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_127_edit').hasClass('hidden')) {
+							$('.control-127-edit-options').removeClass('hidden');
+							showEditId_127();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-127-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_127();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_health_ed_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_health_ed_standard = gon.teks_health_ed_standard;
+			teks_health_ed_standard_text = gon.teks_health_ed_standard_text;
+
+			initTeksHealthEdStandard();
+
+    		$("#submit_teks_health_ed_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_health_ed_standard").click();
+    		});			
+			$("#cancel_teks_health_ed_standard").on('click', function() {
+				show_control_standard("teks_health_ed_standard");
+				hideEditId_127();
+			});
+    		$("#cancel_teks_health_ed_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_health_ed_standard").click();
+    		});		
+			$("#submit_teks_health_ed_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_health_ed_standards_count = <%= @teks_health_ed_standards.count %>;
+				for(var i = 1; i < teks_health_ed_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_health_ed_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_health_ed_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_health_ed_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_health_ed_standard = data.teks_health_ed_standard;
+							teks_health_ed_standard_text = data.teks_health_ed_standard_text;
+	            			initTeksHealthEdStandard();
+							hideEditId_127();
+	            		}
+	            		else {
+							hideEditId_127();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 128 teks_physical_ed_standards
+		
+		function clearTeksPhysicalEdStandard() {
+			for(var i = 1; i < gon.teks_physical_ed_standards_count + 1; i++) {
+				sb = "#cb_teks_physical_ed_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksPhysicalEdStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_physical_ed_standard_" + standard[i].toString();
+				sb = "#cb_teks_physical_ed_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksPhysicalEdStandardText(teks_physical_ed_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_physical_ed_standard_text.length; i++) {
+				s = teks_physical_ed_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_physical_ed_standard").html(s_html);
+			
+			if (teks_physical_ed_standard_text.length > 0) {
+				$("#box_teks_physical_ed_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_physical_ed_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_128() {
+			$("#control_128_show").addClass("hidden");
+			$("#control_128_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_physical_ed_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksPhysicalEdStandard();
+    		initTeksPhysicalEdStandard();    		
+		}
+	
+		function hideEditId_128() {
+			$('#control_128_edit').fadeOut(300, function() {
+				$('#control_128_edit').addClass("hidden");
+				$('#control_128_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksPhysicalEdStandard() {
+			setTeksPhysicalEdStandard(teks_physical_ed_standard);
+			setTeksPhysicalEdStandardText(teks_physical_ed_standard_text);
+		}
+
+
+		var teks_physical_ed_standard = null;
+		var teks_physical_ed_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-128-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-128-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_128_edit').hasClass('hidden')) {
+							$('.control-128-edit-options').removeClass('hidden');
+							showEditId_128();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-128-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_128();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_physical_ed_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_physical_ed_standard = gon.teks_physical_ed_standard;
+			teks_physical_ed_standard_text = gon.teks_physical_ed_standard_text;
+
+			initTeksPhysicalEdStandard();
+
+    		$("#submit_teks_physical_ed_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_physical_ed_standard").click();
+    		});			
+			$("#cancel_teks_physical_ed_standard").on('click', function() {
+				show_control_standard("teks_physical_ed_standard");
+				hideEditId_128();
+			});
+    		$("#cancel_teks_physical_ed_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_physical_ed_standard").click();
+    		});		
+			$("#submit_teks_physical_ed_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_physical_ed_standards_count = <%= @teks_physical_ed_standards.count %>;
+				for(var i = 1; i < teks_physical_ed_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_physical_ed_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_physical_ed_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_physical_ed_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_physical_ed_standard = data.teks_physical_ed_standard;
+							teks_physical_ed_standard_text = data.teks_physical_ed_standard_text;
+	            			initTeksPhysicalEdStandard();
+							hideEditId_128();
+	            		}
+	            		else {
+							hideEditId_128();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 129 teks_fine_arts_standards
+		
+		function clearTeksFineArtsStandard() {
+			for(var i = 1; i < gon.teks_fine_arts_standards_count + 1; i++) {
+				sb = "#cb_teks_fine_arts_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksFineArtsStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_fine_arts_standard_" + standard[i].toString();
+				sb = "#cb_teks_fine_arts_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksFineArtsStandardText(teks_fine_arts_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_fine_arts_standard_text.length; i++) {
+				s = teks_fine_arts_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_fine_arts_standard").html(s_html);
+			
+			if (teks_fine_arts_standard_text.length > 0) {
+				$("#box_teks_fine_arts_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_fine_arts_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_129() {
+			$("#control_129_show").addClass("hidden");
+			$("#control_129_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_fine_arts_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksFineArtsStandard();
+    		initTeksFineArtsStandard();    		
+		}
+	
+		function hideEditId_129() {
+			$('#control_129_edit').fadeOut(300, function() {
+				$('#control_129_edit').addClass("hidden");
+				$('#control_129_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksFineArtsStandard() {
+			setTeksFineArtsStandard(teks_fine_arts_standard);
+			setTeksFineArtsStandardText(teks_fine_arts_standard_text);
+		}
+
+
+		var teks_fine_arts_standard = null;
+		var teks_fine_arts_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-129-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-129-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_129_edit').hasClass('hidden')) {
+							$('.control-129-edit-options').removeClass('hidden');
+							showEditId_129();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-129-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_129();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_fine_arts_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_fine_arts_standard = gon.teks_fine_arts_standard;
+			teks_fine_arts_standard_text = gon.teks_fine_arts_standard_text;
+
+			initTeksFineArtsStandard();
+
+    		$("#submit_teks_fine_arts_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_fine_arts_standard").click();
+    		});			
+			$("#cancel_teks_fine_arts_standard").on('click', function() {
+				show_control_standard("teks_fine_arts_standard");
+				hideEditId_129();
+			});
+    		$("#cancel_teks_fine_arts_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_fine_arts_standard").click();
+    		});		
+			$("#submit_teks_fine_arts_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_fine_arts_standards_count = <%= @teks_fine_arts_standards.count %>;
+				for(var i = 1; i < teks_fine_arts_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_fine_arts_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_fine_arts_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_fine_arts_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_fine_arts_standard = data.teks_fine_arts_standard;
+							teks_fine_arts_standard_text = data.teks_fine_arts_standard_text;
+	            			initTeksFineArtsStandard();
+							hideEditId_129();
+	            		}
+	            		else {
+							hideEditId_129();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 130 teks_economics_standards
+		
+		function clearTeksEconomicsStandard() {
+			for(var i = 1; i < gon.teks_economics_standards_count + 1; i++) {
+				sb = "#cb_teks_economics_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksEconomicsStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_economics_standard_" + standard[i].toString();
+				sb = "#cb_teks_economics_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksEconomicsStandardText(teks_economics_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_economics_standard_text.length; i++) {
+				s = teks_economics_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_economics_standard").html(s_html);
+			
+			if (teks_economics_standard_text.length > 0) {
+				$("#box_teks_economics_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_economics_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_130() {
+			$("#control_130_show").addClass("hidden");
+			$("#control_130_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_economics_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksEconomicsStandard();
+    		initTeksEconomicsStandard();    		
+		}
+	
+		function hideEditId_130() {
+			$('#control_130_edit').fadeOut(300, function() {
+				$('#control_130_edit').addClass("hidden");
+				$('#control_130_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksEconomicsStandard() {
+			setTeksEconomicsStandard(teks_economics_standard);
+			setTeksEconomicsStandardText(teks_economics_standard_text);
+		}
+
+
+		var teks_economics_standard = null;
+		var teks_economics_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-130-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-130-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_130_edit').hasClass('hidden')) {
+							$('.control-130-edit-options').removeClass('hidden');
+							showEditId_130();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-130-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_130();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_economics_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_economics_standard = gon.teks_economics_standard;
+			teks_economics_standard_text = gon.teks_economics_standard_text;
+
+			initTeksEconomicsStandard();
+
+    		$("#submit_teks_economics_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_economics_standard").click();
+    		});			
+			$("#cancel_teks_economics_standard").on('click', function() {
+				show_control_standard("teks_economics_standard");
+				hideEditId_130();
+			});
+    		$("#cancel_teks_economics_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_economics_standard").click();
+    		});		
+			$("#submit_teks_economics_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_economics_standards_count = <%= @teks_economics_standards.count %>;
+				for(var i = 1; i < teks_economics_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_economics_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_economics_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_economics_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_economics_standard = data.teks_economics_standard;
+							teks_economics_standard_text = data.teks_economics_standard_text;
+	            			initTeksEconomicsStandard();
+							hideEditId_130();
+	            		}
+	            		else {
+							hideEditId_130();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 131 teks_technology_standards
+		
+		function clearTeksTechnologyStandard() {
+			for(var i = 1; i < gon.teks_technology_standards_count + 1; i++) {
+				sb = "#cb_teks_technology_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksTechnologyStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_technology_standard_" + standard[i].toString();
+				sb = "#cb_teks_technology_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksTechnologyStandardText(teks_technology_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_technology_standard_text.length; i++) {
+				s = teks_technology_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_technology_standard").html(s_html);
+			
+			if (teks_technology_standard_text.length > 0) {
+				$("#box_teks_technology_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_technology_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_131() {
+			$("#control_131_show").addClass("hidden");
+			$("#control_131_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_technology_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksTechnologyStandard();
+    		initTeksTechnologyStandard();    		
+		}
+	
+		function hideEditId_131() {
+			$('#control_131_edit').fadeOut(300, function() {
+				$('#control_131_edit').addClass("hidden");
+				$('#control_131_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksTechnologyStandard() {
+			setTeksTechnologyStandard(teks_technology_standard);
+			setTeksTechnologyStandardText(teks_technology_standard_text);
+		}
+
+
+		var teks_technology_standard = null;
+		var teks_technology_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-131-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-131-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_131_edit').hasClass('hidden')) {
+							$('.control-131-edit-options').removeClass('hidden');
+							showEditId_131();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-131-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_131();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_technology_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_technology_standard = gon.teks_technology_standard;
+			teks_technology_standard_text = gon.teks_technology_standard_text;
+
+			initTeksTechnologyStandard();
+
+    		$("#submit_teks_technology_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_technology_standard").click();
+    		});			
+			$("#cancel_teks_technology_standard").on('click', function() {
+				show_control_standard("teks_technology_standard");
+				hideEditId_131();
+			});
+    		$("#cancel_teks_technology_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_technology_standard").click();
+    		});		
+			$("#submit_teks_technology_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_technology_standards_count = <%= @teks_technology_standards.count %>;
+				for(var i = 1; i < teks_technology_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_technology_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_technology_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_technology_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_technology_standard = data.teks_technology_standard;
+							teks_technology_standard_text = data.teks_technology_standard_text;
+	            			initTeksTechnologyStandard();
+							hideEditId_131();
+	            		}
+	            		else {
+							hideEditId_131();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 132 teks_career_dev_standards
+		
+		function clearTeksCareerDevStandard() {
+			for(var i = 1; i < gon.teks_career_dev_standards_count + 1; i++) {
+				sb = "#cb_teks_career_dev_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksCareerDevStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_career_dev_standard_" + standard[i].toString();
+				sb = "#cb_teks_career_dev_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksCareerDevStandardText(teks_career_dev_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_career_dev_standard_text.length; i++) {
+				s = teks_career_dev_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_career_dev_standard").html(s_html);
+			
+			if (teks_career_dev_standard_text.length > 0) {
+				$("#box_teks_career_dev_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_career_dev_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_132() {
+			$("#control_132_show").addClass("hidden");
+			$("#control_132_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_career_dev_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksCareerDevStandard();
+    		initTeksCareerDevStandard();    		
+		}
+	
+		function hideEditId_132() {
+			$('#control_132_edit').fadeOut(300, function() {
+				$('#control_132_edit').addClass("hidden");
+				$('#control_132_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksCareerDevStandard() {
+			setTeksCareerDevStandard(teks_career_dev_standard);
+			setTeksCareerDevStandardText(teks_career_dev_standard_text);
+		}
+
+
+		var teks_career_dev_standard = null;
+		var teks_career_dev_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-132-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-132-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_132_edit').hasClass('hidden')) {
+							$('.control-132-edit-options').removeClass('hidden');
+							showEditId_132();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-132-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_132();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_career_dev_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_career_dev_standard = gon.teks_career_dev_standard;
+			teks_career_dev_standard_text = gon.teks_career_dev_standard_text;
+
+			initTeksCareerDevStandard();
+
+    		$("#submit_teks_career_dev_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_career_dev_standard").click();
+    		});			
+			$("#cancel_teks_career_dev_standard").on('click', function() {
+				show_control_standard("teks_career_dev_standard");
+				hideEditId_132();
+			});
+    		$("#cancel_teks_career_dev_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_career_dev_standard").click();
+    		});		
+			$("#submit_teks_career_dev_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_career_dev_standards_count = <%= @teks_career_dev_standards.count %>;
+				for(var i = 1; i < teks_career_dev_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_career_dev_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_career_dev_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_career_dev_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_career_dev_standard = data.teks_career_dev_standard;
+							teks_career_dev_standard_text = data.teks_career_dev_standard_text;
+	            			initTeksCareerDevStandard();
+							hideEditId_132();
+	            		}
+	            		else {
+							hideEditId_132();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 133 teks_second_language_eng_span_standards
+		
+		function clearTeksSecondLanguageEngSpanStandard() {
+			for(var i = 1; i < gon.teks_second_language_eng_span_standards_count + 1; i++) {
+				sb = "#cb_teks_second_language_eng_span_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksSecondLanguageEngSpanStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_second_language_eng_span_standard_" + standard[i].toString();
+				sb = "#cb_teks_second_language_eng_span_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksSecondLanguageEngSpanStandardText(teks_second_language_eng_span_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_second_language_eng_span_standard_text.length; i++) {
+				s = teks_second_language_eng_span_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_second_language_eng_span_standard").html(s_html);
+			
+			if (teks_second_language_eng_span_standard_text.length > 0) {
+				$("#box_teks_second_language_eng_span_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_second_language_eng_span_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_133() {
+			$("#control_133_show").addClass("hidden");
+			$("#control_133_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_second_language_eng_span_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksSecondLanguageEngSpanStandard();
+    		initTeksSecondLanguageEngSpanStandard();    		
+		}
+	
+		function hideEditId_133() {
+			$('#control_133_edit').fadeOut(300, function() {
+				$('#control_133_edit').addClass("hidden");
+				$('#control_133_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksSecondLanguageEngSpanStandard() {
+			setTeksSecondLanguageEngSpanStandard(teks_second_language_eng_span_standard);
+			setTeksSecondLanguageEngSpanStandardText(teks_second_language_eng_span_standard_text);
+		}
+
+
+		var teks_second_language_eng_span_standard = null;
+		var teks_second_language_eng_span_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-133-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-133-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_133_edit').hasClass('hidden')) {
+							$('.control-133-edit-options').removeClass('hidden');
+							showEditId_133();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-133-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_133();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_second_language_eng_span_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_second_language_eng_span_standard = gon.teks_second_language_eng_span_standard;
+			teks_second_language_eng_span_standard_text = gon.teks_second_language_eng_span_standard_text;
+
+			initTeksSecondLanguageEngSpanStandard();
+
+    		$("#submit_teks_second_language_eng_span_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_second_language_eng_span_standard").click();
+    		});			
+			$("#cancel_teks_second_language_eng_span_standard").on('click', function() {
+				show_control_standard("teks_second_language_eng_span_standard");
+				hideEditId_133();
+			});
+    		$("#cancel_teks_second_language_eng_span_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_second_language_eng_span_standard").click();
+    		});		
+			$("#submit_teks_second_language_eng_span_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_second_language_eng_span_standards_count = <%= @teks_second_language_eng_span_standards.count %>;
+				for(var i = 1; i < teks_second_language_eng_span_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_second_language_eng_span_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_second_language_eng_span_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_second_language_eng_span_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_second_language_eng_span_standard = data.teks_second_language_eng_span_standard;
+							teks_second_language_eng_span_standard_text = data.teks_second_language_eng_span_standard_text;
+	            			initTeksSecondLanguageEngSpanStandard();
+							hideEditId_133();
+	            		}
+	            		else {
+							hideEditId_133();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+	<script>
+		
+		// 134 teks_career_tech_ed_standards
+		
+		function clearTeksCareerTechEdStandard() {
+			for(var i = 1; i < gon.teks_career_tech_ed_standards_count + 1; i++) {
+				sb = "#cb_teks_career_tech_ed_standard_" + i.toString();
+				$(sb).removeClass("cb-background");
+			}
+		}	
+		
+		function setTeksCareerTechEdStandard(standard) {
+			var e = "";
+			var s = "";
+			var sb = "";
+			for(var i = 0; i < standard.length; i++) {
+				s = "ch_teks_career_tech_ed_standard_" + standard[i].toString();
+				sb = "#cb_teks_career_tech_ed_standard_" + standard[i].toString();
+				$(sb).addClass("cb-background");
+				$(sb).prop('checked', true);
+			}
+		}	
+		
+		function setTeksCareerTechEdStandardText(teks_career_tech_ed_standard_text) {
+			s = "";
+			s_html = "";
+			for(var i = 0; i < teks_career_tech_ed_standard_text.length; i++) {
+				s = teks_career_tech_ed_standard_text[i];
+	 			if (i%2 == 0 ? true : false) {
+	 				s_html += '<span class="box-odd">' + s + '</span><br> ';
+	 			}
+	 			else {
+	 				s_html += '<span class="box-even">' + s + '</span><br> ';
+	 			}
+			}
+			
+			$("#box_teks_career_tech_ed_standard").html(s_html);
+			
+			if (teks_career_tech_ed_standard_text.length > 0) {
+				$("#box_teks_career_tech_ed_standard").addClass("box-detail-padding");
+			}
+			else {
+				$("#box_teks_career_tech_ed_standard").removeClass("box-detail-padding");
+			}
+		}
+		
+		
+		function showEditId_134() {
+			$("#control_134_show").addClass("hidden");
+			$("#control_134_edit").fadeIn(1300).removeClass("hidden");
+	    	$("#publisher_product_teks_career_tech_ed_standard_chosen").css({
+	    		'width':'314px'
+	    	});				
+    		clearTeksCareerTechEdStandard();
+    		initTeksCareerTechEdStandard();    		
+		}
+	
+		function hideEditId_134() {
+			$('#control_134_edit').fadeOut(300, function() {
+				$('#control_134_edit').addClass("hidden");
+				$('#control_134_show').fadeIn(1300).removeClass("hidden");
+			});
+		}
+
+		function initTeksCareerTechEdStandard() {
+			setTeksCareerTechEdStandard(teks_career_tech_ed_standard);
+			setTeksCareerTechEdStandardText(teks_career_tech_ed_standard_text);
+		}
+
+
+		var teks_career_tech_ed_standard = null;
+		var teks_career_tech_ed_standard_text = null;
+
+		
+		$(document).ready(function(){
+
+			$(document).on('click', '.control-134-edit', function(event) {
+				if ($(".btn-open-edit-mode-container").hasClass("hidden")) {
+					var b_info_button_clicked   = $(event.target).hasClass('control-134-info-button');
+					if (!b_info_button_clicked) {
+						if ($('#control_134_edit').hasClass('hidden')) {
+							$('.control-134-edit-options').removeClass('hidden');
+							showEditId_134();
+						}
+						else {
+							var b_cancel_button_clicked = $(event.target).hasClass('control-134-cancel-button');
+							if (b_cancel_button_clicked) {
+								hideEditId_134();
+							}
+						}
+					}
+				}
+			});
+
+			$(document).on('click', '#open_info_teks_career_tech_ed_standard', function() {
+				s_scrollPos = (10 + $(window).scrollTop()).toString() + 'px';
+				$("#dlg_info").html(info_msg_31);
+				$("#dialog_1001").jqmShow();
+			});
+
+
+			teks_career_tech_ed_standard = gon.teks_career_tech_ed_standard;
+			teks_career_tech_ed_standard_text = gon.teks_career_tech_ed_standard_text;
+
+			initTeksCareerTechEdStandard();
+
+    		$("#submit_teks_career_tech_ed_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_teks_career_tech_ed_standard").click();
+    		});			
+			$("#cancel_teks_career_tech_ed_standard").on('click', function() {
+				show_control_standard("teks_career_tech_ed_standard");
+				hideEditId_134();
+			});
+    		$("#cancel_teks_career_tech_ed_standard").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_teks_career_tech_ed_standard").click();
+    		});		
+			$("#submit_teks_career_tech_ed_standard").on('click', function() {
+				var val = "";
+				var s = "";				
+				var teks_career_tech_ed_standards_count = <%= @teks_career_tech_ed_standards.count %>;
+				for(var i = 1; i < teks_career_tech_ed_standards_count + 1; i++ )
+				{
+					s = "#ch_teks_career_tech_ed_standard_" + i.toString();
+					if ($(s).is(':checked')) {
+						val += "," + i.toString();
+					}
+				}
+				if (val.length > 1) {
+					val = val.slice(1, val.length);
+				}
+				var obj_list = '{ "publisher_product_id":' + publisher_product_id + 
+							   ', "teks_career_tech_ed_standard":"' + val + 
+							   '"}';      
+			  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';     
+			  	$.ajax({
+			    	type: 'POST',
+			    	data : obj,
+			    	url: '/publisher_product_manifests/update_teks_career_tech_ed_standard',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	            	},
+	            	success: function(data) {
+	            		if (!data.b_error) {
+	            			
+							teks_career_tech_ed_standard = data.teks_career_tech_ed_standard;
+							teks_career_tech_ed_standard_text = data.teks_career_tech_ed_standard_text;
+	            			initTeksCareerTechEdStandard();
+							hideEditId_134();
+	            		}
+	            		else {
+							hideEditId_134();
+							alert('An error occured while updating this field.');	            			
+	            		}
+	            	},
+	            	error: function(xhr){ alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+		});
+				
+	</script>
+
+  	<!-- 
+  	122 english
+  	123 math              
+  	124 science
+  	125 social_studies
+  	126 languages_non_eng
+  	127 health_ed
+  	128 physical_ed
+  	129 fine_arts
+  	130 economics
+  	131 technology        
+  	132 career_dev
+  	133 second_language_eng_span        
+  	134 career_tech_ed
+  	-->
+
+
+
+
 	<script>
 		
 		// poster_print_purchase
@@ -9986,8 +12328,6 @@
 		
 		$(window).load( function() {
 		
-			// alert('load');
-			
 			$('#body').removeClass('body-visibility-hidden');
 		
 			// function preload(arrayOfImages) {
@@ -10773,8 +13113,32 @@
 	<!-- <script>
 
 		function reset_current_publisher_product() {
+			// var obj_list = '{"publisher_product_gen_id":' + <#%= @publisher_product_gen_id %#> + 
+						   // '}';      
+		  	// var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
+			// $.ajax({
+		    	// type: 'POST',
+		    	// // data : JSON.stringify(obj),
+		    	// data : obj,
+				// url: '/publisher_product_manifests/reset_current_publisher_product',			    	
+		    	// dataType: "json",
+		    	// contentType: "application/json",
+		    	// processData: false,
+		    	// async: false,
+		    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	        	// statusCode: {
+	            	// // 200:function() { alert("200"); }, 202:function() { alert("202"); }
+	        	// },
+	        	// success: function(data) {
+	        	// },
+	        	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+			// });
+		}
 
-			var obj_list = '{"publisher_product_gen_id":' + <#%= @publisher_product_gen_id %#> + 
+
+		function setRequired() {
+			var obj_list = '{ "publisher_id":' + <%= @publisher_id %> +
+						   ', "publisher_product_id":' + <%= @publisher_product_id %> + 
 						   '}';      
 		  	var obj = '{ "publisher_product_manifest": [' +  obj_list + '] }';                  
 
@@ -10782,7 +13146,7 @@
 		    	type: 'POST',
 		    	// data : JSON.stringify(obj),
 		    	data : obj,
-				url: '/publisher_product_manifests/reset_current_publisher_product',			    	
+				url: '/publisher_product_manifests/set_required',			    	
 		    	dataType: "json",
 		    	contentType: "application/json",
 		    	processData: false,
@@ -10797,8 +13161,12 @@
 			});
 		}
 
-		// $(window).on('beforeunload', function(){
+
+		$(window).on('beforeunload', function(){
 			// reset_current_publisher_product();
-		// });
+			alert('beforeunload');
+			setRequired();
+		});
+
 
 	</script> -->

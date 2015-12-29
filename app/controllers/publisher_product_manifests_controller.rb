@@ -15,6 +15,8 @@ class PublisherProductManifestsController < ApplicationController
   @@publisher_product_gen_id = nil
   @@publisher_product_manifest_id = nil
 
+  @@was_edited = false
+
 
   def verify_params
     
@@ -112,7 +114,8 @@ class PublisherProductManifestsController < ApplicationController
               Rails.logger.info("b_issued_publisher_product_id_exists false")
               if b_signed_in
                 # error message -> 'URL not found
-                redirect_to request.referrer  
+                # redirect_to request.referrer  
+                redirect_to '/Publisher-Product-Listings'
               else
                 redirect_to '/'
               end
@@ -917,23 +920,92 @@ class PublisherProductManifestsController < ApplicationController
               end        
           end
 
-          # a_from_ages = Array.new
-          @from_ages = return_all_dtab8lets
-          # @from_ages.each do |from_age|
-            # a_from_ages.push(from_age)
-          # end
+
+
+
+
+
+
+
+          # # a_from_ages = Array.new
+          # @from_ages = return_all_dtab8lets
+          # # @from_ages.each do |from_age|
+            # # a_from_ages.push(from_age)
+          # # end
+          # gon.from_age = []
+          # gon.from_age_text = []    
+          # # gon.b_required_from_age = publisher_product.publisher_product_age_range.required
+          # # a_to_ages = Array.new
+          # @to_ages = return_all_dtab8lets
+          # # @to_ages.each do |to_age|
+            # # a_to_ages.push(to_age)
+          # # end
+          # gon.to_age = []
+          # gon.to_age_text = []    
+          # # gon.b_required_to_age = publisher_product.publisher_product_age_range.required           
+
+
+
+
+          age_range_table = return_all_dtab8lets
+          @from_ages = age_range_table
+          @to_ages = age_range_table
+          # b_required_from_age and b_required_to_age are only for fields in the view
+          # they do not exist in the model, only b_required
+          b_required_from_age = false
+          b_required_to_age = true
+          b_updated_age_range = true
+          
+          publisher_product_age_range = publisher_product.publisher_product_age_range rescue nil
+          from_age = publisher_product_age_range.age_from
+          to_age = publisher_product_age_range.age_to
+
+          # Rails.logger.info("from_age = " + from_age.to_s)
+          # Rails.logger.info("to_age = " + to_age.to_s)
+
+          gon.i_from_age = from_age
+          gon.i_to_age = to_age
+
+          from_age = from_age - 1
+          to_age = to_age - 1
+
+          b_required = publisher_product_age_range.required
+          b_required_from_age = b_required
+          b_required_to_age = b_required
+          
+          a_from_ages = Array.new
+          from_ages = age_range_table
+          from_ages.each do |age|
+          # from_ages.each_with_index do |age , index|
+            # Rails.logger.info("age index = " + index.to_s)
+            # if (index != 0)
+              a_from_ages.push(age)
+            # end
+          end
+
           gon.from_age = []
           gon.from_age_text = []    
-          # gon.b_required_from_age = publisher_product.publisher_product_age_range.required
-          
-          # a_to_ages = Array.new
-          @to_ages = return_all_dtab8lets
-          # @to_ages.each do |to_age|
-            # a_to_ages.push(to_age)
-          # end
           gon.to_age = []
           gon.to_age_text = []    
-          # gon.b_required_to_age = publisher_product.publisher_product_age_range.required           
+          
+          z = 18
+          for i in 0..z
+              gon.from_age[i] = false
+              gon.to_age[i] = false
+          end
+
+          gon.from_age[from_age] = true
+          gon.from_age_text.push(a_from_ages[from_age].col_1)                            
+          gon.to_age[to_age] = true
+          gon.to_age_text.push(a_from_ages[to_age].col_1) # a_to_ages is the same as a_from_ages
+          
+
+
+
+
+
+
+
 
 
 
@@ -1846,6 +1918,308 @@ class PublisherProductManifestsController < ApplicationController
             #
           end
 
+          # 122 english
+          # 123 math              
+          # 124 science
+          # 125 social_studies
+          # 126 languages_non_eng
+          # 127 health_ed
+          # 128 physical_ed
+          # 129 fine_arts
+          # 130 economics
+          # 131 technology        
+          # 132 career_dev
+          # 133 second_language_eng_span        
+          # 134 career_tech_ed
+
+          @publisher_product_teks_english_standards = PublisherProductTeksEnglishStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_english_standards = TeksEnglishStandard.order(sort_column_teks_english + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_english_standards = Array.new
+          @b_teks_english_standard = true
+          gon.teks_english_standard = []
+          gon.teks_english_standard_text = []
+          gon.teks_english_standards_count = @teks_english_standards.count
+          if @publisher_product_teks_english_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_english_standards.each do |c|
+                  gon.teks_english_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_english_standards[i] = @teks_english_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_english_standard_text = a_teks_english_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_math_standards = PublisherProductTeksMathStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_math_standards = TeksMathStandard.order(sort_column_teks_math + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_math_standards = Array.new
+          @b_teks_math_standard = true
+          gon.teks_math_standard = []
+          gon.teks_math_standard_text = []
+          gon.teks_math_standards_count = @teks_math_standards.count
+          if @publisher_product_teks_math_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_math_standards.each do |c|
+                  gon.teks_math_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_math_standards[i] = @teks_math_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_math_standard_text = a_teks_math_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_science_standards = PublisherProductTeksScienceStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_science_standards = TeksScienceStandard.order(sort_column_teks_science + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_science_standards = Array.new
+          @b_teks_science_standard = true
+          gon.teks_science_standard = []
+          gon.teks_science_standard_text = []
+          gon.teks_science_standards_count = @teks_science_standards.count
+          if @publisher_product_teks_science_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_science_standards.each do |c|
+                  gon.teks_science_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_science_standards[i] = @teks_science_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_science_standard_text = a_teks_science_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_social_studies_standards = PublisherProductTeksSocialStudiesStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_social_studies_standards = TeksSocialStudiesStandard.order(sort_column_teks_social_studies + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_social_studies_standards = Array.new
+          @b_teks_social_studies_standard = true
+          gon.teks_social_studies_standard = []
+          gon.teks_social_studies_standard_text = []
+          gon.teks_social_studies_standards_count = @teks_social_studies_standards.count
+          if @publisher_product_teks_social_studies_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_social_studies_standards.each do |c|
+                  gon.teks_social_studies_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_social_studies_standards[i] = @teks_social_studies_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_social_studies_standard_text = a_teks_social_studies_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_languages_non_eng_standards = PublisherProductTeksLanguagesNonEngStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_languages_non_eng_standards = TeksLanguagesNonEngStandard.order(sort_column_teks_languages_non_eng + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_languages_non_eng_standards = Array.new
+          @b_teks_languages_non_eng_standard = true
+          gon.teks_languages_non_eng_standard = []
+          gon.teks_languages_non_eng_standard_text = []
+          gon.teks_languages_non_eng_standards_count = @teks_languages_non_eng_standards.count
+          if @publisher_product_teks_languages_non_eng_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_languages_non_eng_standards.each do |c|
+                  gon.teks_languages_non_eng_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_languages_non_eng_standards[i] = @teks_languages_non_eng_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_languages_non_eng_standard_text = a_teks_languages_non_eng_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_health_ed_standards = PublisherProductTeksHealthEdStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_health_ed_standards = TeksHealthEdStandard.order(sort_column_teks_health_ed + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_health_ed_standards = Array.new
+          @b_teks_health_ed_standard = true
+          gon.teks_health_ed_standard = []
+          gon.teks_health_ed_standard_text = []
+          gon.teks_health_ed_standards_count = @teks_health_ed_standards.count
+          if @publisher_product_teks_health_ed_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_health_ed_standards.each do |c|
+                  gon.teks_health_ed_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_health_ed_standards[i] = @teks_health_ed_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_health_ed_standard_text = a_teks_health_ed_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_physical_ed_standards = PublisherProductTeksPhysicalEdStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_physical_ed_standards = TeksPhysicalEdStandard.order(sort_column_teks_physical_ed + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_physical_ed_standards = Array.new
+          @b_teks_physical_ed_standard = true
+          gon.teks_physical_ed_standard = []
+          gon.teks_physical_ed_standard_text = []
+          gon.teks_physical_ed_standards_count = @teks_physical_ed_standards.count
+          if @publisher_product_teks_physical_ed_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_physical_ed_standards.each do |c|
+                  gon.teks_physical_ed_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_physical_ed_standards[i] = @teks_physical_ed_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_physical_ed_standard_text = a_teks_physical_ed_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_fine_arts_standards = PublisherProductTeksFineArtsStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_fine_arts_standards = TeksFineArtsStandard.order(sort_column_teks_fine_arts + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_fine_arts_standards = Array.new
+          @b_teks_fine_arts_standard = true
+          gon.teks_fine_arts_standard = []
+          gon.teks_fine_arts_standard_text = []
+          gon.teks_fine_arts_standards_count = @teks_fine_arts_standards.count
+          if @publisher_product_teks_fine_arts_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_fine_arts_standards.each do |c|
+                  gon.teks_fine_arts_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_fine_arts_standards[i] = @teks_fine_arts_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_fine_arts_standard_text = a_teks_fine_arts_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_economics_standards = PublisherProductTeksEconomicsStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_economics_standards = TeksEconomicsStandard.order(sort_column_teks_economics + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_economics_standards = Array.new
+          @b_teks_economics_standard = true
+          gon.teks_economics_standard = []
+          gon.teks_economics_standard_text = []
+          gon.teks_economics_standards_count = @teks_economics_standards.count
+          if @publisher_product_teks_economics_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_economics_standards.each do |c|
+                  gon.teks_economics_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_economics_standards[i] = @teks_economics_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_economics_standard_text = a_teks_economics_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_technology_standards = PublisherProductTeksTechnologyStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_technology_standards = TeksTechnologyStandard.order(sort_column_teks_technology + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_technology_standards = Array.new
+          @b_teks_technology_standard = true
+          gon.teks_technology_standard = []
+          gon.teks_technology_standard_text = []
+          gon.teks_technology_standards_count = @teks_technology_standards.count
+          if @publisher_product_teks_technology_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_technology_standards.each do |c|
+                  gon.teks_technology_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_technology_standards[i] = @teks_technology_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_technology_standard_text = a_teks_technology_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_career_dev_standards = PublisherProductTeksCareerDevStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_career_dev_standards = TeksCareerDevStandard.order(sort_column_teks_career_dev + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_career_dev_standards = Array.new
+          @b_teks_career_dev_standard = true
+          gon.teks_career_dev_standard = []
+          gon.teks_career_dev_standard_text = []
+          gon.teks_career_dev_standards_count = @teks_career_dev_standards.count
+          if @publisher_product_teks_career_dev_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_career_dev_standards.each do |c|
+                  gon.teks_career_dev_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_career_dev_standards[i] = @teks_career_dev_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_career_dev_standard_text = a_teks_career_dev_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_second_language_eng_span_standards = PublisherProductTeksSecondLanguageEngSpanStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_second_language_eng_span_standards = TeksSecondLanguageEngSpanStandard.order(sort_column_teks_second_language_eng_span + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_second_language_eng_span_standards = Array.new
+          @b_teks_second_language_eng_span_standard = true
+          gon.teks_second_language_eng_span_standard = []
+          gon.teks_second_language_eng_span_standard_text = []
+          gon.teks_second_language_eng_span_standards_count = @teks_second_language_eng_span_standards.count
+          if @publisher_product_teks_second_language_eng_span_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_second_language_eng_span_standards.each do |c|
+                  gon.teks_second_language_eng_span_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_second_language_eng_span_standards[i] = @teks_second_language_eng_span_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_second_language_eng_span_standard_text = a_teks_second_language_eng_span_standards
+          else
+              #
+          end
+
+          @publisher_product_teks_career_tech_ed_standards = PublisherProductTeksCareerTechEdStandard.where("publisher_product_id = ?", publisher_product.id).except('order').order("id ASC")
+          @teks_career_tech_ed_standards = TeksCareerTechEdStandard.order(sort_column_teks_career_tech_ed + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page])
+          a_teks_career_tech_ed_standards = Array.new
+          @b_teks_career_tech_ed_standard = true
+          gon.teks_career_tech_ed_standard = []
+          gon.teks_career_tech_ed_standard_text = []
+          gon.teks_career_tech_ed_standards_count = @teks_career_tech_ed_standards.count
+          if @publisher_product_teks_career_tech_ed_standards.any?
+              i = 0
+              ii = 0
+              @publisher_product_teks_career_tech_ed_standards.each do |c|
+                  gon.teks_career_tech_ed_standard[i] = c.id_standard
+                  ii = c.id_standard - 1
+                  a_teks_career_tech_ed_standards[i] = @teks_career_tech_ed_standards[ii].section_text
+                  i += 1
+              end
+              gon.teks_career_tech_ed_standard_text = a_teks_career_tech_ed_standards
+          else
+              #
+          end
+
+          # 122 english
+          # 123 math              
+          # 124 science
+          # 125 social_studies
+          # 126 languages_non_eng
+          # 127 health_ed
+          # 128 physical_ed
+          # 129 fine_arts
+          # 130 economics
+          # 131 technology        
+          # 132 career_dev
+          # 133 second_language_eng_span        
+          # 134 career_tech_ed
+
+
           @publisher_product_by_review = publisher_product.publisher_product_by_review
           a_by_reviews = Array.new
           @by_reviews = return_all_dtab7lets
@@ -2023,7 +2397,88 @@ class PublisherProductManifestsController < ApplicationController
 
     
   end
+
   
+
+  def required_text_field(obj)
+    
+      # if !((publisher_product_manifest.product_headline.blank?) or (publisher_product_manifest.product_headline.empty?) or (publisher_product_manifest.product_headline.nil?)) 
+          # b_product_headline = true
+      # end
+      begin
+
+          b_obj = false
+          if !((obj.blank?) or (obj.empty?) or (obj.nil?)) 
+              b_obj = true
+          end
+        
+          return b_obj
+
+      rescue StandardError => e
+          LogError.create(:user_id => 0, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'set_required', :description => e.message.to_s)
+      end      
+      
+      
+  end
+
+
+
+  def set_required
+
+      begin
+            
+          if @@was_edited
+
+              publisher_product_manifest_id = @@publisher_product_manifest_id
+              Rails.logger.info('publisher_product_manifest_id held = ' + publisher_product_manifest_id.to_s)
+            
+              ar = params[:publisher_product_manifest]
+              h_obj = Hash.new
+              ar.each do |obj|
+                  h_obj = obj
+              end
+        
+              publisher_id = h_obj[:publisher_id]
+              publisher_product_id = h_obj[:publisher_product_id]
+            
+              publisher_product = current_user.publisher.publisher_products.where("id = ?", publisher_product_id.to_s).first rescue nil
+              if !publisher_product.nil?
+                  publisher_product_manifest = publisher_product.publisher_product_manifest rescue nil
+                  if !publisher_product_manifest.nil?
+
+                      publisher_product_manifest_id = publisher_product_manifest.id
+                      Rails.logger.info('publisher_product_manifest_id found = ' + publisher_product_manifest_id.to_s) 
+
+                      # product_headline
+                      b_product_headline = required_text_field(publisher_product_manifest.product_headline)            
+                      if b_product_headline
+                          h_update = Hash.new
+                          h_update[:has_required_1] = true
+                          if publisher_product.update_attributes(h_update)
+                              #
+                          else
+                              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'set_required', :description => 'publisher_product_manifest was nil')
+                              raise
+                          end
+                      end            
+                    
+                  else
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'set_required', :description => 'publisher_product_manifest was nil')
+                      raise
+                  end
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'set_required', :description => 'publisher_product was nil')
+                  raise
+              end
+          end  
+
+      rescue StandardError => e
+          LogError.create(:user_id => 0, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'set_required', :description => e.message.to_s)
+      end      
+
+    
+  end
+
 
 
   def update_product_headline
@@ -2064,6 +2519,9 @@ class PublisherProductManifestsController < ApplicationController
                           b_required = false      
                       end
                     
+                      @@was_edited = true
+                      set_required
+                      
                       respond_to do |format|
                           format.html {}
                           format.json { render :json => { :b_product_headline => b_product_headline, 
@@ -4231,6 +4689,577 @@ class PublisherProductManifestsController < ApplicationController
 
 
 
+  # def update_age_range
+#     
+      # begin
+#         
+          # ar = params[:publisher_product_manifest]
+          # h_obj = Hash.new
+          # ar.each do |obj|
+            # h_obj = obj
+          # end
+#       
+          # publisher_product_id = h_obj[:publisher_product_id]
+#           
+          # from_age = h_obj[:from_age]
+          # ar_from_ages = Array.new
+          # ar_from_ages = from_age.split(',')
+#       
+          # to_age = h_obj[:to_age]
+          # ar_to_ages = Array.new
+          # ar_to_ages = to_age.split(',')
+#     
+          # # catch exceptional
+          # b_required_from_age = false
+          # b_required_to_age = false   
+          # z = ar_from_ages.length - 1 # length for single dropdown will always be 1, and z will be 0 for the first array element
+          # for i in 0..z
+            # if ((ar_from_ages[i].to_s == '0') and (ar_to_ages[i].to_s == '0'))
+                # b_required_from_age = true
+                # b_required_to_age = true      
+            # elsif ((ar_from_ages[i].to_s == '19') or (ar_to_ages[i].to_s == '19'))
+                # ar_from_ages[i] = '19'
+                # ar_to_ages[i] = '0'
+            # elsif ((ar_from_ages[i].to_s == '20') or (ar_to_ages[i].to_s == '20'))
+                # ar_from_ages[i] = '20'
+                # ar_to_ages[i] = '0'
+            # elsif (ar_from_ages[i].to_s == ar_to_ages[i].to_s)
+                # ar_to_ages[i] = 0
+            # elsif ((ar_from_ages[i].to_s != '19') and (ar_from_ages[i].to_s != '20'))
+                # v1 = ar_from_ages[i].to_i
+                # v2 = ar_to_ages[i].to_i
+                # if (v1 > v2)
+                  # ar_from_ages[i] = v2.to_s
+                  # ar_to_ages[i] = v1.to_s
+                # elsif ((ar_from_ages[i].to_s == '0') and (ar_to_ages[i].to_s != '0'))
+                  # ar_from_ages[i] = v2.to_s
+                  # ar_to_ages[i] = v1.to_s              
+                # end
+            # end
+          # end
+#       
+          # h_from_age = Hash.new
+          # h_from_age[:age_1] = false
+          # h_from_age[:age_2] = false
+          # h_from_age[:age_3] = false
+          # h_from_age[:age_4] = false
+          # h_from_age[:age_5] = false
+          # h_from_age[:age_6] = false
+          # h_from_age[:age_7] = false
+          # h_from_age[:age_8] = false
+          # h_from_age[:age_9] = false
+          # h_from_age[:age_10] = false
+          # h_from_age[:age_11] = false
+          # h_from_age[:age_12] = false
+          # h_from_age[:age_13] = false
+          # h_from_age[:age_14] = false
+          # h_from_age[:age_15] = false
+          # h_from_age[:age_16] = false
+          # h_from_age[:age_17] = false
+          # h_from_age[:age_18] = false
+          # h_from_age[:age_19] = false
+          # h_from_age[:age_20] = false
+#       
+          # ar_from_ages.each do |age|
+            # case age.to_s  
+              # when "1"
+                # h_from_age[:age_1] = true
+              # when "2"
+                # h_from_age[:age_2] = true
+              # when "3"
+                # h_from_age[:age_3] = true
+              # when "4"
+                # h_from_age[:age_4] = true
+              # when "5"
+                # h_from_age[:age_5] = true
+              # when "6"
+                # h_from_age[:age_6] = true
+              # when "7"
+                # h_from_age[:age_7] = true
+              # when "8"
+                # h_from_age[:age_8] = true
+              # when "9"
+                # h_from_age[:age_9] = true
+              # when "10"
+                # h_from_age[:age_10] = true
+              # when "11"
+                # h_from_age[:age_11] = true
+              # when "12"
+                # h_from_age[:age_12] = true
+              # when "13"
+                # h_from_age[:age_13] = true
+              # when "14"
+                # h_from_age[:age_14] = true
+              # when "15"
+                # h_from_age[:age_15] = true
+              # when "16"
+                # h_from_age[:age_16] = true
+              # when "17"
+                # h_from_age[:age_17] = true
+              # when "18"
+                # h_from_age[:age_18] = true
+              # when "19"
+                # h_from_age[:age_19] = true
+              # when "20"
+                # h_from_age[:age_20] = true
+              # else
+                # #        
+            # end
+          # end
+#     
+          # h_to_age = Hash.new
+          # h_to_age[:age_1] = false
+          # h_to_age[:age_2] = false
+          # h_to_age[:age_3] = false
+          # h_to_age[:age_4] = false
+          # h_to_age[:age_5] = false
+          # h_to_age[:age_6] = false
+          # h_to_age[:age_7] = false
+          # h_to_age[:age_8] = false
+          # h_to_age[:age_9] = false
+          # h_to_age[:age_10] = false
+          # h_to_age[:age_11] = false
+          # h_to_age[:age_12] = false
+          # h_to_age[:age_13] = false
+          # h_to_age[:age_14] = false
+          # h_to_age[:age_15] = false
+          # h_to_age[:age_16] = false
+          # h_to_age[:age_17] = false
+          # h_to_age[:age_18] = false
+          # h_to_age[:age_19] = false
+          # h_to_age[:age_20] = false
+#       
+          # ar_to_ages.each do |age|
+            # case age.to_s  
+              # when "1"
+                # h_to_age[:age_1] = true
+              # when "2"
+                # h_to_age[:age_2] = true
+              # when "3"
+                # h_to_age[:age_3] = true
+              # when "4"
+                # h_to_age[:age_4] = true
+              # when "5"
+                # h_to_age[:age_5] = true
+              # when "6"
+                # h_to_age[:age_6] = true
+              # when "7"
+                # h_to_age[:age_7] = true
+              # when "8"
+                # h_to_age[:age_8] = true
+              # when "9"
+                # h_to_age[:age_9] = true
+              # when "10"
+                # h_to_age[:age_10] = true
+              # when "11"
+                # h_to_age[:age_11] = true
+              # when "12"
+                # h_to_age[:age_12] = true
+              # when "13"
+                # h_to_age[:age_13] = true
+              # when "14"
+                # h_to_age[:age_14] = true
+              # when "15"
+                # h_to_age[:age_15] = true
+              # when "16"
+                # h_to_age[:age_16] = true
+              # when "17"
+                # h_to_age[:age_17] = true
+              # when "18"
+                # h_to_age[:age_18] = true
+              # when "19"
+                # h_to_age[:age_19] = true
+              # when "20"
+                # h_to_age[:age_20] = true
+              # else
+                # #        
+            # end
+          # end
+#     
+          # h_from_age[:required] = b_required_from_age
+          # gon.from_age = []
+          # gon.from_age_text = []    
+#           
+          # h_to_age[:required] = b_required_to_age
+          # gon.to_age = []
+          # gon.to_age_text = []    
+#       
+          # b_updated_from_age = false
+          # b_updated_to_age = false
+#       
+          # publisher_product_from_age = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first.publisher_product_from_age rescue nil
+          # if !publisher_product_from_age.nil?
+              # if publisher_product_from_age.update_attributes(h_from_age)
+                  # publisher_product_from_age = nil
+                  # publisher_product_from_age_updated = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first.publisher_product_from_age rescue nil
+                  # if !publisher_product_from_age_updated.nil?
+#                     
+                      # a_from_ages = Array.new
+                      # from_ages = return_all_dtab8lets
+                      # from_ages.each do |age|
+                        # a_from_ages.push(age)
+                      # end
+#                       
+                      # if (publisher_product_from_age_updated.age_1 or
+                          # publisher_product_from_age_updated.age_2 or
+                          # publisher_product_from_age_updated.age_3 or
+                          # publisher_product_from_age_updated.age_4 or
+                          # publisher_product_from_age_updated.age_5 or
+                          # publisher_product_from_age_updated.age_6 or
+                          # publisher_product_from_age_updated.age_7 or
+                          # publisher_product_from_age_updated.age_8 or
+                          # publisher_product_from_age_updated.age_9 or
+                          # publisher_product_from_age_updated.age_10 or
+                          # publisher_product_from_age_updated.age_11 or
+                          # publisher_product_from_age_updated.age_12 or
+                          # publisher_product_from_age_updated.age_13 or
+                          # publisher_product_from_age_updated.age_14 or
+                          # publisher_product_from_age_updated.age_15 or
+                          # publisher_product_from_age_updated.age_16 or
+                          # publisher_product_from_age_updated.age_17 or
+                          # publisher_product_from_age_updated.age_18 or
+                          # publisher_product_from_age_updated.age_19 or
+                          # publisher_product_from_age_updated.age_20)
+#                   
+                          # # b_required_from_age = false
+#                               
+                          # b = publisher_product_from_age_updated.age_1
+                          # gon.from_age[0] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[0].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_2
+                          # gon.from_age[1] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[1].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_3
+                          # gon.from_age[2] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[2].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_4
+                          # gon.from_age[3] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[3].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_5
+                          # gon.from_age[4] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[4].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_6
+                          # gon.from_age[5] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[5].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_7
+                          # gon.from_age[6] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[6].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_8
+                          # gon.from_age[7] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[7].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_9
+                          # gon.from_age[8] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[8].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_10
+                          # gon.from_age[9] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[9].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_11
+                          # gon.from_age[10] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[10].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_12
+                          # gon.from_age[11] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[11].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_13
+                          # gon.from_age[12] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[12].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_14
+                          # gon.from_age[13] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[13].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_15
+                          # gon.from_age[14] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[14].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_16
+                          # gon.from_age[15] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[15].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_17
+                          # gon.from_age[16] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[16].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_from_age_updated.age_18
+                          # gon.from_age[17] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[17].col_1)                            
+                          # end        
+#     
+                          # b = publisher_product_from_age_updated.age_19
+                          # gon.from_age[18] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[18].col_1)                            
+                          # end        
+#     
+                          # b = publisher_product_from_age_updated.age_20
+                          # gon.from_age[19] = b
+                          # if b
+                            # gon.from_age_text.push(a_from_ages[19].col_1)                            
+                          # end        
+#                           
+                          # b_updated_from_age = true                      
+                      # end
+                  # else
+                      # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_from_age_updated was nil')
+                      # raise
+                  # end          
+              # else
+                  # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_from_age update_attributes failed')
+                  # raise
+              # end          
+          # else
+              # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_from_age was nil')
+              # raise
+          # end
+#               
+          # publisher_product_to_age = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first.publisher_product_to_age rescue nil          
+          # if !publisher_product_to_age.nil?
+              # if publisher_product_to_age.update_attributes(h_to_age)
+                  # publisher_product_to_age = nil
+                  # publisher_product_to_age_updated = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first.publisher_product_to_age rescue nil
+                  # if !publisher_product_to_age_updated.nil?
+#                     
+                      # a_to_ages = Array.new
+                      # to_ages = return_all_dtab8lets
+                      # to_ages.each do |age|
+                        # a_to_ages.push(age)
+                      # end
+#                       
+                      # if (publisher_product_to_age_updated.age_1 or
+                          # publisher_product_to_age_updated.age_2 or
+                          # publisher_product_to_age_updated.age_3 or
+                          # publisher_product_to_age_updated.age_4 or
+                          # publisher_product_to_age_updated.age_5 or
+                          # publisher_product_to_age_updated.age_6 or
+                          # publisher_product_to_age_updated.age_7 or
+                          # publisher_product_to_age_updated.age_8 or
+                          # publisher_product_to_age_updated.age_9 or
+                          # publisher_product_to_age_updated.age_10 or
+                          # publisher_product_to_age_updated.age_11 or
+                          # publisher_product_to_age_updated.age_12 or
+                          # publisher_product_to_age_updated.age_13 or
+                          # publisher_product_to_age_updated.age_14 or
+                          # publisher_product_to_age_updated.age_15 or
+                          # publisher_product_to_age_updated.age_16 or
+                          # publisher_product_to_age_updated.age_17 or
+                          # publisher_product_to_age_updated.age_18 or
+                          # publisher_product_to_age_updated.age_19 or
+                          # publisher_product_to_age_updated.age_20)
+#                   
+                          # # b_required_to_age = false
+#                               
+                          # b = publisher_product_to_age_updated.age_1
+                          # gon.to_age[0] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[0].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_2
+                          # gon.to_age[1] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[1].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_3
+                          # gon.to_age[2] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[2].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_4
+                          # gon.to_age[3] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[3].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_5
+                          # gon.to_age[4] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[4].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_6
+                          # gon.to_age[5] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[5].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_7
+                          # gon.to_age[6] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[6].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_8
+                          # gon.to_age[7] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[7].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_9
+                          # gon.to_age[8] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[8].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_10
+                          # gon.to_age[9] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[9].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_11
+                          # gon.to_age[10] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[10].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_12
+                          # gon.to_age[11] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[11].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_13
+                          # gon.to_age[12] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[12].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_14
+                          # gon.to_age[13] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[13].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_15
+                          # gon.to_age[14] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[14].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_16
+                          # gon.to_age[15] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[15].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_17
+                          # gon.to_age[16] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[16].col_1)                            
+                          # end        
+#                   
+                          # b = publisher_product_to_age_updated.age_18
+                          # gon.to_age[17] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[17].col_1)                            
+                          # end        
+#     
+                          # b = publisher_product_to_age_updated.age_19
+                          # gon.to_age[18] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[18].col_1)                            
+                          # end        
+                          # b = publisher_product_to_age_updated.age_20
+                          # gon.to_age[19] = b
+                          # if b
+                            # gon.to_age_text.push(a_to_ages[19].col_1)                            
+                          # end
+                      # end
+#                       
+                      # b_updated_to_age = true
+                  # else
+                      # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_to_age_updated was nil')
+                      # raise
+                  # end          
+              # else
+                  # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_to_age update_attributes failed')
+                  # raise
+              # end          
+          # else
+              # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_to_age was nil')
+              # raise
+          # end
+#       
+          # if (b_updated_from_age and b_updated_to_age)       
+              # respond_to do |format|
+                # format.html {}
+                # format.json { render :json => { :g_from_age => gon.from_age,
+                                                # :g_from_age_text => gon.from_age_text,
+                                                # :b_required_from_age => b_required_from_age,
+                                                # :g_to_age => gon.to_age,
+                                                # :g_to_age_text => gon.to_age_text,
+                                                # :b_required_to_age => b_required_to_age,
+                                                # :b_error => false,
+                                                # :updated => publisher_product_from_age_updated.updated_at.to_s(:long) } }
+              # end
+          # else
+              # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'b_updated_from_age and b_updated_to_age was false')
+              # raise
+          # end
+#     
+      # rescue StandardError => e
+# 
+          # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => e.message.to_s)
+          # respond_to do |format|
+              # format.html {}
+              # format.json { render :json => { :b_error => true } }
+          # end
+# 
+      # end
+#     
+#     
+  # end
+
+
+
   def update_age_range
     
       begin
@@ -4242,7 +5271,11 @@ class PublisherProductManifestsController < ApplicationController
           end
       
           publisher_product_id = h_obj[:publisher_product_id]
-          
+          from_age = h_obj[:from_age]
+          to_age = h_obj[:to_age]
+
+
+
           from_age = h_obj[:from_age]
           ar_from_ages = Array.new
           ar_from_ages = from_age.split(',')
@@ -4250,537 +5283,136 @@ class PublisherProductManifestsController < ApplicationController
           to_age = h_obj[:to_age]
           ar_to_ages = Array.new
           ar_to_ages = to_age.split(',')
+
+          from_age = from_age.to_i
+          to_age = to_age.to_i
     
-          # catch exceptional
+          Rails.logger.info("from_age = " + from_age.to_s)
+          Rails.logger.info("to_age = " + to_age.to_s)
+    
+          # from_age = from_age.to_i - 1
+          # to_age = to_age.to_i - 1
+          if ((from_age == 0) and (to_age > 0))
+              from_age = to_age
+          end
+          if ((from_age > 0) and (to_age == 0))
+              to_age = from_age
+          end
+
+          # this assumes that there will be no failure when saving from_age and to_age
+          # else, update_attributes() would need to be called twice
+          b_required = true
+          if ((from_age > 0) and (to_age > 0))
+              b_required = false
+          end
+
+
+          # b_required_from_age and b_required_to_age are only for fields in the view
+          # they do not exist in the model, only b_required
           b_required_from_age = false
-          b_required_to_age = false   
-          z = ar_from_ages.length - 1 # length for single dropdown will always be 1, and z will be 0 for the first array element
-          for i in 0..z
-            if ((ar_from_ages[i].to_s == '0') and (ar_to_ages[i].to_s == '0'))
-                b_required_from_age = true
-                b_required_to_age = true      
-            elsif ((ar_from_ages[i].to_s == '19') or (ar_to_ages[i].to_s == '19'))
-                ar_from_ages[i] = '19'
-                ar_to_ages[i] = '0'
-            elsif ((ar_from_ages[i].to_s == '20') or (ar_to_ages[i].to_s == '20'))
-                ar_from_ages[i] = '20'
-                ar_to_ages[i] = '0'
-            elsif (ar_from_ages[i].to_s == ar_to_ages[i].to_s)
-                ar_to_ages[i] = 0
-            elsif ((ar_from_ages[i].to_s != '19') and (ar_from_ages[i].to_s != '20'))
-                v1 = ar_from_ages[i].to_i
-                v2 = ar_to_ages[i].to_i
-                if (v1 > v2)
-                  ar_from_ages[i] = v2.to_s
-                  ar_to_ages[i] = v1.to_s
-                elsif ((ar_from_ages[i].to_s == '0') and (ar_to_ages[i].to_s != '0'))
-                  ar_from_ages[i] = v2.to_s
-                  ar_to_ages[i] = v1.to_s              
-                end
-            end
-          end
-      
-          h_from_age = Hash.new
-          h_from_age[:age_1] = false
-          h_from_age[:age_2] = false
-          h_from_age[:age_3] = false
-          h_from_age[:age_4] = false
-          h_from_age[:age_5] = false
-          h_from_age[:age_6] = false
-          h_from_age[:age_7] = false
-          h_from_age[:age_8] = false
-          h_from_age[:age_9] = false
-          h_from_age[:age_10] = false
-          h_from_age[:age_11] = false
-          h_from_age[:age_12] = false
-          h_from_age[:age_13] = false
-          h_from_age[:age_14] = false
-          h_from_age[:age_15] = false
-          h_from_age[:age_16] = false
-          h_from_age[:age_17] = false
-          h_from_age[:age_18] = false
-          h_from_age[:age_19] = false
-          h_from_age[:age_20] = false
-      
-          ar_from_ages.each do |age|
-            case age.to_s  
-              when "1"
-                h_from_age[:age_1] = true
-              when "2"
-                h_from_age[:age_2] = true
-              when "3"
-                h_from_age[:age_3] = true
-              when "4"
-                h_from_age[:age_4] = true
-              when "5"
-                h_from_age[:age_5] = true
-              when "6"
-                h_from_age[:age_6] = true
-              when "7"
-                h_from_age[:age_7] = true
-              when "8"
-                h_from_age[:age_8] = true
-              when "9"
-                h_from_age[:age_9] = true
-              when "10"
-                h_from_age[:age_10] = true
-              when "11"
-                h_from_age[:age_11] = true
-              when "12"
-                h_from_age[:age_12] = true
-              when "13"
-                h_from_age[:age_13] = true
-              when "14"
-                h_from_age[:age_14] = true
-              when "15"
-                h_from_age[:age_15] = true
-              when "16"
-                h_from_age[:age_16] = true
-              when "17"
-                h_from_age[:age_17] = true
-              when "18"
-                h_from_age[:age_18] = true
-              when "19"
-                h_from_age[:age_19] = true
-              when "20"
-                h_from_age[:age_20] = true
-              else
-                #        
-            end
-          end
-    
-          h_to_age = Hash.new
-          h_to_age[:age_1] = false
-          h_to_age[:age_2] = false
-          h_to_age[:age_3] = false
-          h_to_age[:age_4] = false
-          h_to_age[:age_5] = false
-          h_to_age[:age_6] = false
-          h_to_age[:age_7] = false
-          h_to_age[:age_8] = false
-          h_to_age[:age_9] = false
-          h_to_age[:age_10] = false
-          h_to_age[:age_11] = false
-          h_to_age[:age_12] = false
-          h_to_age[:age_13] = false
-          h_to_age[:age_14] = false
-          h_to_age[:age_15] = false
-          h_to_age[:age_16] = false
-          h_to_age[:age_17] = false
-          h_to_age[:age_18] = false
-          h_to_age[:age_19] = false
-          h_to_age[:age_20] = false
-      
-          ar_to_ages.each do |age|
-            case age.to_s  
-              when "1"
-                h_to_age[:age_1] = true
-              when "2"
-                h_to_age[:age_2] = true
-              when "3"
-                h_to_age[:age_3] = true
-              when "4"
-                h_to_age[:age_4] = true
-              when "5"
-                h_to_age[:age_5] = true
-              when "6"
-                h_to_age[:age_6] = true
-              when "7"
-                h_to_age[:age_7] = true
-              when "8"
-                h_to_age[:age_8] = true
-              when "9"
-                h_to_age[:age_9] = true
-              when "10"
-                h_to_age[:age_10] = true
-              when "11"
-                h_to_age[:age_11] = true
-              when "12"
-                h_to_age[:age_12] = true
-              when "13"
-                h_to_age[:age_13] = true
-              when "14"
-                h_to_age[:age_14] = true
-              when "15"
-                h_to_age[:age_15] = true
-              when "16"
-                h_to_age[:age_16] = true
-              when "17"
-                h_to_age[:age_17] = true
-              when "18"
-                h_to_age[:age_18] = true
-              when "19"
-                h_to_age[:age_19] = true
-              when "20"
-                h_to_age[:age_20] = true
-              else
-                #        
-            end
-          end
-    
-          h_from_age[:required] = b_required_from_age
-          gon.from_age = []
-          gon.from_age_text = []    
+          b_required_to_age = true
           
-          h_to_age[:required] = b_required_to_age
-          gon.to_age = []
-          gon.to_age_text = []    
-      
-          b_updated_from_age = false
-          b_updated_to_age = false
-      
-          publisher_product_from_age = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first.publisher_product_from_age rescue nil
-          if !publisher_product_from_age.nil?
-              if publisher_product_from_age.update_attributes(h_from_age)
-                  publisher_product_from_age = nil
-                  publisher_product_from_age_updated = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first.publisher_product_from_age rescue nil
-                  if !publisher_product_from_age_updated.nil?
-                    
+          b_updated_age_range = true
+          gon.from_age = 0
+          gon.from_age_text = ''
+          gon.to_age = 0
+          gon.to_age_text = ''
+          b_error = true
+          i_from_age = 0
+          i_to_age = 0
+          updated = nil
+
+          publisher_product_age_range = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first.publisher_product_age_range rescue nil
+          if !publisher_product_age_range.nil?
+              h_age_range = Hash.new
+              h_age_range[:age_from] = from_age
+              h_age_range[:age_to] = to_age
+              h_age_range[:required] = b_required
+              if publisher_product_age_range.update_attributes(h_age_range)
+                  publisher_product_age_range = nil
+                  publisher_product_age_range_updated = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first.publisher_product_age_range rescue nil
+                  if !publisher_product_age_range_updated.nil?
+
                       a_from_ages = Array.new
                       from_ages = return_all_dtab8lets
                       from_ages.each do |age|
                         a_from_ages.push(age)
                       end
+
+                      # a_to_ages = Array.new
+                      # to_ages = return_all_dtab8lets
+                      # to_ages.each do |age|
+                        # a_to_ages.push(age)
+                      # end
+
+                      gon.from_age = []
+                      gon.from_age_text = []    
+                      gon.to_age = []
+                      gon.to_age_text = []    
                       
-                      if (publisher_product_from_age_updated.age_1 or
-                          publisher_product_from_age_updated.age_2 or
-                          publisher_product_from_age_updated.age_3 or
-                          publisher_product_from_age_updated.age_4 or
-                          publisher_product_from_age_updated.age_5 or
-                          publisher_product_from_age_updated.age_6 or
-                          publisher_product_from_age_updated.age_7 or
-                          publisher_product_from_age_updated.age_8 or
-                          publisher_product_from_age_updated.age_9 or
-                          publisher_product_from_age_updated.age_10 or
-                          publisher_product_from_age_updated.age_11 or
-                          publisher_product_from_age_updated.age_12 or
-                          publisher_product_from_age_updated.age_13 or
-                          publisher_product_from_age_updated.age_14 or
-                          publisher_product_from_age_updated.age_15 or
-                          publisher_product_from_age_updated.age_16 or
-                          publisher_product_from_age_updated.age_17 or
-                          publisher_product_from_age_updated.age_18 or
-                          publisher_product_from_age_updated.age_19 or
-                          publisher_product_from_age_updated.age_20)
-                  
-                          # b_required_from_age = false
-                              
-                          b = publisher_product_from_age_updated.age_1
-                          gon.from_age[0] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[0].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_2
-                          gon.from_age[1] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[1].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_3
-                          gon.from_age[2] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[2].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_4
-                          gon.from_age[3] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[3].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_5
-                          gon.from_age[4] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[4].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_6
-                          gon.from_age[5] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[5].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_7
-                          gon.from_age[6] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[6].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_8
-                          gon.from_age[7] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[7].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_9
-                          gon.from_age[8] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[8].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_10
-                          gon.from_age[9] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[9].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_11
-                          gon.from_age[10] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[10].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_12
-                          gon.from_age[11] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[11].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_13
-                          gon.from_age[12] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[12].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_14
-                          gon.from_age[13] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[13].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_15
-                          gon.from_age[14] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[14].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_16
-                          gon.from_age[15] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[15].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_17
-                          gon.from_age[16] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[16].col_1)                            
-                          end        
-                  
-                          b = publisher_product_from_age_updated.age_18
-                          gon.from_age[17] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[17].col_1)                            
-                          end        
-    
-                          b = publisher_product_from_age_updated.age_19
-                          gon.from_age[18] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[18].col_1)                            
-                          end        
-    
-                          b = publisher_product_from_age_updated.age_20
-                          gon.from_age[19] = b
-                          if b
-                            gon.from_age_text.push(a_from_ages[19].col_1)                            
-                          end        
-                          
-                          b_updated_from_age = true                      
+                      from_age = publisher_product_age_range_updated.age_from
+                      to_age = publisher_product_age_range_updated.age_to
+                      
+                      z = 18
+                      for i in 0..z
+                          gon.from_age[i] = false
+                          gon.to_age[i] = false
                       end
+
+                      i_from_age = from_age
+                      i_to_age = to_age
+                      
+                      from_age = from_age -1
+                      to_age = to_age -1
+                      
+                      gon.from_age[from_age] = true
+                      gon.from_age_text.push(a_from_ages[from_age].col_1)                            
+                      gon.to_age[to_age] = true
+                      gon.to_age_text.push(a_from_ages[to_age].col_1) # a_to_ages is the same as a_from_ages
+                      
+                      # if ((from_age.to_s == '0') and (to_age.to_s == '0'))
+                          # b_required_from_age = true
+                          # b_required_to_age = true      
+                      # end
+                      
+                      # b = publisher_product_from_age_updated.age_1
+                      # gon.from_age[0] = b
+                      # if b
+                        # gon.from_age_text.push(a_from_ages[0].col_1)                            
+                      # end        
+
+                      b_required_to_age = false
+                      b_updated_age_range = false
+
+                      b_updated_age_range = true                      
+
                   else
-                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_from_age_updated was nil')
+                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_age_range_updated was nil')
                       raise
                   end          
               else
-                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_from_age update_attributes failed')
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_age_range update_attributes failed')
                   raise
               end          
           else
-              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_from_age was nil')
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_age_range was nil')
               raise
           end
               
-          publisher_product_to_age = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first.publisher_product_to_age rescue nil          
-          if !publisher_product_to_age.nil?
-              if publisher_product_to_age.update_attributes(h_to_age)
-                  publisher_product_to_age = nil
-                  publisher_product_to_age_updated = current_user.publisher.publisher_products.where("id = ?", publisher_product_id).first.publisher_product_to_age rescue nil
-                  if !publisher_product_to_age_updated.nil?
-                    
-                      a_to_ages = Array.new
-                      to_ages = return_all_dtab8lets
-                      to_ages.each do |age|
-                        a_to_ages.push(age)
-                      end
-                      
-                      if (publisher_product_to_age_updated.age_1 or
-                          publisher_product_to_age_updated.age_2 or
-                          publisher_product_to_age_updated.age_3 or
-                          publisher_product_to_age_updated.age_4 or
-                          publisher_product_to_age_updated.age_5 or
-                          publisher_product_to_age_updated.age_6 or
-                          publisher_product_to_age_updated.age_7 or
-                          publisher_product_to_age_updated.age_8 or
-                          publisher_product_to_age_updated.age_9 or
-                          publisher_product_to_age_updated.age_10 or
-                          publisher_product_to_age_updated.age_11 or
-                          publisher_product_to_age_updated.age_12 or
-                          publisher_product_to_age_updated.age_13 or
-                          publisher_product_to_age_updated.age_14 or
-                          publisher_product_to_age_updated.age_15 or
-                          publisher_product_to_age_updated.age_16 or
-                          publisher_product_to_age_updated.age_17 or
-                          publisher_product_to_age_updated.age_18 or
-                          publisher_product_to_age_updated.age_19 or
-                          publisher_product_to_age_updated.age_20)
-                  
-                          # b_required_to_age = false
-                              
-                          b = publisher_product_to_age_updated.age_1
-                          gon.to_age[0] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[0].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_2
-                          gon.to_age[1] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[1].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_3
-                          gon.to_age[2] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[2].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_4
-                          gon.to_age[3] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[3].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_5
-                          gon.to_age[4] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[4].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_6
-                          gon.to_age[5] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[5].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_7
-                          gon.to_age[6] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[6].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_8
-                          gon.to_age[7] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[7].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_9
-                          gon.to_age[8] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[8].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_10
-                          gon.to_age[9] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[9].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_11
-                          gon.to_age[10] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[10].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_12
-                          gon.to_age[11] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[11].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_13
-                          gon.to_age[12] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[12].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_14
-                          gon.to_age[13] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[13].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_15
-                          gon.to_age[14] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[14].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_16
-                          gon.to_age[15] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[15].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_17
-                          gon.to_age[16] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[16].col_1)                            
-                          end        
-                  
-                          b = publisher_product_to_age_updated.age_18
-                          gon.to_age[17] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[17].col_1)                            
-                          end        
-    
-                          b = publisher_product_to_age_updated.age_19
-                          gon.to_age[18] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[18].col_1)                            
-                          end        
-                          b = publisher_product_to_age_updated.age_20
-                          gon.to_age[19] = b
-                          if b
-                            gon.to_age_text.push(a_to_ages[19].col_1)                            
-                          end
-                      end
-                      
-                      b_updated_to_age = true
-                  else
-                      LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_to_age_updated was nil')
-                      raise
-                  end          
-              else
-                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_to_age update_attributes failed')
-                  raise
-              end          
-          else
-              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'publisher_product_to_age was nil')
-              raise
-          end
       
-          if (b_updated_from_age and b_updated_to_age)       
+          if b_updated_age_range       
               respond_to do |format|
                 format.html {}
-                format.json { render :json => { :g_from_age => gon.from_age,
-                                                :g_from_age_text => gon.from_age_text,
+                format.json { render :json => { :from_age => gon.from_age,
+                                                :from_age_text => gon.from_age_text,
                                                 :b_required_from_age => b_required_from_age,
-                                                :g_to_age => gon.to_age,
-                                                :g_to_age_text => gon.to_age_text,
+                                                :to_age => gon.to_age,
+                                                :to_age_text => gon.to_age_text,
                                                 :b_required_to_age => b_required_to_age,
                                                 :b_error => false,
-                                                :updated => publisher_product_from_age_updated.updated_at.to_s(:long) } }
+                                                :i_from_age => i_from_age,
+                                                :i_to_age => i_to_age,
+                                                :updated => publisher_product_age_range_updated.updated_at.to_s(:long) } }
               end
           else
               LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_age_range', :description => 'b_updated_from_age and b_updated_to_age was false')
@@ -4799,6 +5431,32 @@ class PublisherProductManifestsController < ApplicationController
     
     
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6342,6 +7000,1218 @@ class PublisherProductManifestsController < ApplicationController
 
 
   end
+
+
+
+  # 122 english
+  # 123 math              
+  # 124 science
+  # 125 social_studies
+  # 126 languages_non_eng
+  # 127 health_ed
+  # 128 physical_ed
+  # 129 fine_arts
+  # 130 economics
+  # 131 technology        
+  # 132 career_dev
+  # 133 second_language_eng_span        
+  # 134 career_tech_ed
+
+  def update_teks_english_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_english_standard = h_obj[:teks_english_standard]
+          
+          if PublisherProductTeksEnglishStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_english_standard', :description => 'publisher_product_teks_english_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_english_standards = Array.new
+          ar_teks_english_standards = teks_english_standard.split(',')
+          
+          ar_teks_english_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_english_standard = PublisherProductTeksEnglishStandard.new(h_new)
+              if publisher_product_teks_english_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_english_standard', :description => 'publisher_product_teks_english_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_english_standard = nil
+          end
+          
+          publisher_product_teks_english_standards_updated = PublisherProductTeksEnglishStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_english_standards = TeksEnglishStandard.order(sort_column_teks_english + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_english_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_english_standards_updated.nil?) and (!teks_english_standards.nil?))      
+              updated = nil
+              a_teks_english_standards = Array.new    
+              teks_english_standard = []
+              teks_english_standard_text = []
+              if publisher_product_teks_english_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_english_standards_updated.each do |c|
+                    teks_english_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_english_standards[i] = teks_english_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_english_standard_text = a_teks_english_standards
+                  updated = publisher_product_teks_english_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_english_standard => teks_english_standard,
+                                                :teks_english_standard_text => teks_english_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_english_standard', :description => 'publisher_product_teks_english_standards_updated or teks_english_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_english_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_math_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_math_standard = h_obj[:teks_math_standard]
+          
+          if PublisherProductTeksEnglishStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_math_standard', :description => 'publisher_product_teks_math_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_math_standards = Array.new
+          ar_teks_math_standards = teks_math_standard.split(',')
+          
+          ar_teks_math_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_math_standard = PublisherProductTeksEnglishStandard.new(h_new)
+              if publisher_product_teks_math_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_math_standard', :description => 'publisher_product_teks_math_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_math_standard = nil
+          end
+          
+          publisher_product_teks_math_standards_updated = PublisherProductTeksEnglishStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_math_standards = TeksEnglishStandard.order(sort_column_teks_math + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_math_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_math_standards_updated.nil?) and (!teks_math_standards.nil?))      
+              updated = nil
+              a_teks_math_standards = Array.new    
+              teks_math_standard = []
+              teks_math_standard_text = []
+              if publisher_product_teks_math_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_math_standards_updated.each do |c|
+                    teks_math_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_math_standards[i] = teks_math_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_math_standard_text = a_teks_math_standards
+                  updated = publisher_product_teks_math_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_math_standard => teks_math_standard,
+                                                :teks_math_standard_text => teks_math_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_math_standard', :description => 'publisher_product_teks_math_standards_updated or teks_math_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_math_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_science_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_science_standard = h_obj[:teks_science_standard]
+          
+          if PublisherProductTeksScienceStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_science_standard', :description => 'publisher_product_teks_science_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_science_standards = Array.new
+          ar_teks_science_standards = teks_science_standard.split(',')
+          
+          ar_teks_science_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_science_standard = PublisherProductTeksScienceStandard.new(h_new)
+              if publisher_product_teks_science_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_science_standard', :description => 'publisher_product_teks_science_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_science_standard = nil
+          end
+          
+          publisher_product_teks_science_standards_updated = PublisherProductTeksScienceStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_science_standards = TeksScienceStandard.order(sort_column_teks_science + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_science_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_science_standards_updated.nil?) and (!teks_science_standards.nil?))      
+              updated = nil
+              a_teks_science_standards = Array.new    
+              teks_science_standard = []
+              teks_science_standard_text = []
+              if publisher_product_teks_science_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_science_standards_updated.each do |c|
+                    teks_science_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_science_standards[i] = teks_science_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_science_standard_text = a_teks_science_standards
+                  updated = publisher_product_teks_science_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_science_standard => teks_science_standard,
+                                                :teks_science_standard_text => teks_science_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_science_standard', :description => 'publisher_product_teks_science_standards_updated or teks_science_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_science_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_social_studies_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_social_studies_standard = h_obj[:teks_social_studies_standard]
+          
+          if PublisherProductTeksSocialStudiesStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_social_studies_standard', :description => 'publisher_product_teks_social_studies_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_social_studies_standards = Array.new
+          ar_teks_social_studies_standards = teks_social_studies_standard.split(',')
+          
+          ar_teks_social_studies_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_social_studies_standard = PublisherProductTeksSocialStudiesStandard.new(h_new)
+              if publisher_product_teks_social_studies_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_social_studies_standard', :description => 'publisher_product_teks_social_studies_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_social_studies_standard = nil
+          end
+          
+          publisher_product_teks_social_studies_standards_updated = PublisherProductTeksSocialStudiesStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_social_studies_standards = TeksSocialStudiesStandard.order(sort_column_teks_social_studies + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_social_studies_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_social_studies_standards_updated.nil?) and (!teks_social_studies_standards.nil?))      
+              updated = nil
+              a_teks_social_studies_standards = Array.new    
+              teks_social_studies_standard = []
+              teks_social_studies_standard_text = []
+              if publisher_product_teks_social_studies_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_social_studies_standards_updated.each do |c|
+                    teks_social_studies_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_social_studies_standards[i] = teks_social_studies_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_social_studies_standard_text = a_teks_social_studies_standards
+                  updated = publisher_product_teks_social_studies_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_social_studies_standard => teks_social_studies_standard,
+                                                :teks_social_studies_standard_text => teks_social_studies_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_social_studies_standard', :description => 'publisher_product_teks_social_studies_standards_updated or teks_social_studies_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_social_studies_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_languages_non_eng_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_languages_non_eng_standard = h_obj[:teks_languages_non_eng_standard]
+          
+          if PublisherProductTeksLanguagesNonEngStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_languages_non_eng_standard', :description => 'publisher_product_teks_languages_non_eng_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_languages_non_eng_standards = Array.new
+          ar_teks_languages_non_eng_standards = teks_languages_non_eng_standard.split(',')
+          
+          ar_teks_languages_non_eng_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_languages_non_eng_standard = PublisherProductTeksLanguagesNonEngStandard.new(h_new)
+              if publisher_product_teks_languages_non_eng_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_languages_non_eng_standard', :description => 'publisher_product_teks_languages_non_eng_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_languages_non_eng_standard = nil
+          end
+          
+          publisher_product_teks_languages_non_eng_standards_updated = PublisherProductTeksLanguagesNonEngStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_languages_non_eng_standards = TeksLanguagesNonEngStandard.order(sort_column_teks_languages_non_eng + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_languages_non_eng_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_languages_non_eng_standards_updated.nil?) and (!teks_languages_non_eng_standards.nil?))      
+              updated = nil
+              a_teks_languages_non_eng_standards = Array.new    
+              teks_languages_non_eng_standard = []
+              teks_languages_non_eng_standard_text = []
+              if publisher_product_teks_languages_non_eng_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_languages_non_eng_standards_updated.each do |c|
+                    teks_languages_non_eng_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_languages_non_eng_standards[i] = teks_languages_non_eng_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_languages_non_eng_standard_text = a_teks_languages_non_eng_standards
+                  updated = publisher_product_teks_languages_non_eng_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_languages_non_eng_standard => teks_languages_non_eng_standard,
+                                                :teks_languages_non_eng_standard_text => teks_languages_non_eng_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_languages_non_eng_standard', :description => 'publisher_product_teks_languages_non_eng_standards_updated or teks_languages_non_eng_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_languages_non_eng_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_health_ed_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_health_ed_standard = h_obj[:teks_health_ed_standard]
+          
+          if PublisherProductTeksHealthEdStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_health_ed_standard', :description => 'publisher_product_teks_health_ed_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_health_ed_standards = Array.new
+          ar_teks_health_ed_standards = teks_health_ed_standard.split(',')
+          
+          ar_teks_health_ed_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_health_ed_standard = PublisherProductTeksHealthEdStandard.new(h_new)
+              if publisher_product_teks_health_ed_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_health_ed_standard', :description => 'publisher_product_teks_health_ed_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_health_ed_standard = nil
+          end
+          
+          publisher_product_teks_health_ed_standards_updated = PublisherProductTeksHealthEdStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_health_ed_standards = TeksHealthEdStandard.order(sort_column_teks_health_ed + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_health_ed_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_health_ed_standards_updated.nil?) and (!teks_health_ed_standards.nil?))      
+              updated = nil
+              a_teks_health_ed_standards = Array.new    
+              teks_health_ed_standard = []
+              teks_health_ed_standard_text = []
+              if publisher_product_teks_health_ed_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_health_ed_standards_updated.each do |c|
+                    teks_health_ed_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_health_ed_standards[i] = teks_health_ed_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_health_ed_standard_text = a_teks_health_ed_standards
+                  updated = publisher_product_teks_health_ed_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_health_ed_standard => teks_health_ed_standard,
+                                                :teks_health_ed_standard_text => teks_health_ed_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_health_ed_standard', :description => 'publisher_product_teks_health_ed_standards_updated or teks_health_ed_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_health_ed_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_physical_ed_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_physical_ed_standard = h_obj[:teks_physical_ed_standard]
+          
+          if PublisherProductTeksPhysicalEdStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_physical_ed_standard', :description => 'publisher_product_teks_physical_ed_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_physical_ed_standards = Array.new
+          ar_teks_physical_ed_standards = teks_physical_ed_standard.split(',')
+          
+          ar_teks_physical_ed_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_physical_ed_standard = PublisherProductTeksPhysicalEdStandard.new(h_new)
+              if publisher_product_teks_physical_ed_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_physical_ed_standard', :description => 'publisher_product_teks_physical_ed_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_physical_ed_standard = nil
+          end
+          
+          publisher_product_teks_physical_ed_standards_updated = PublisherProductTeksPhysicalEdStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_physical_ed_standards = TeksPhysicalEdStandard.order(sort_column_teks_physical_ed + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_physical_ed_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_physical_ed_standards_updated.nil?) and (!teks_physical_ed_standards.nil?))      
+              updated = nil
+              a_teks_physical_ed_standards = Array.new    
+              teks_physical_ed_standard = []
+              teks_physical_ed_standard_text = []
+              if publisher_product_teks_physical_ed_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_physical_ed_standards_updated.each do |c|
+                    teks_physical_ed_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_physical_ed_standards[i] = teks_physical_ed_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_physical_ed_standard_text = a_teks_physical_ed_standards
+                  updated = publisher_product_teks_physical_ed_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_physical_ed_standard => teks_physical_ed_standard,
+                                                :teks_physical_ed_standard_text => teks_physical_ed_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_physical_ed_standard', :description => 'publisher_product_teks_physical_ed_standards_updated or teks_physical_ed_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_physical_ed_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_fine_arts_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_fine_arts_standard = h_obj[:teks_fine_arts_standard]
+          
+          if PublisherProductTeksFineArtsStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_fine_arts_standard', :description => 'publisher_product_teks_fine_arts_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_fine_arts_standards = Array.new
+          ar_teks_fine_arts_standards = teks_fine_arts_standard.split(',')
+          
+          ar_teks_fine_arts_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_fine_arts_standard = PublisherProductTeksFineArtsStandard.new(h_new)
+              if publisher_product_teks_fine_arts_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_fine_arts_standard', :description => 'publisher_product_teks_fine_arts_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_fine_arts_standard = nil
+          end
+          
+          publisher_product_teks_fine_arts_standards_updated = PublisherProductTeksFineArtsStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_fine_arts_standards = TeksFineArtsStandard.order(sort_column_teks_fine_arts + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_fine_arts_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_fine_arts_standards_updated.nil?) and (!teks_fine_arts_standards.nil?))      
+              updated = nil
+              a_teks_fine_arts_standards = Array.new    
+              teks_fine_arts_standard = []
+              teks_fine_arts_standard_text = []
+              if publisher_product_teks_fine_arts_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_fine_arts_standards_updated.each do |c|
+                    teks_fine_arts_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_fine_arts_standards[i] = teks_fine_arts_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_fine_arts_standard_text = a_teks_fine_arts_standards
+                  updated = publisher_product_teks_fine_arts_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_fine_arts_standard => teks_fine_arts_standard,
+                                                :teks_fine_arts_standard_text => teks_fine_arts_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_fine_arts_standard', :description => 'publisher_product_teks_fine_arts_standards_updated or teks_fine_arts_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_fine_arts_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_economics_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_economics_standard = h_obj[:teks_economics_standard]
+          
+          if PublisherProductTeksEconomicsStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_economics_standard', :description => 'publisher_product_teks_economics_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_economics_standards = Array.new
+          ar_teks_economics_standards = teks_economics_standard.split(',')
+          
+          ar_teks_economics_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_economics_standard = PublisherProductTeksEconomicsStandard.new(h_new)
+              if publisher_product_teks_economics_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_economics_standard', :description => 'publisher_product_teks_economics_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_economics_standard = nil
+          end
+          
+          publisher_product_teks_economics_standards_updated = PublisherProductTeksEconomicsStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_economics_standards = TeksEconomicsStandard.order(sort_column_teks_economics + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_economics_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_economics_standards_updated.nil?) and (!teks_economics_standards.nil?))      
+              updated = nil
+              a_teks_economics_standards = Array.new    
+              teks_economics_standard = []
+              teks_economics_standard_text = []
+              if publisher_product_teks_economics_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_economics_standards_updated.each do |c|
+                    teks_economics_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_economics_standards[i] = teks_economics_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_economics_standard_text = a_teks_economics_standards
+                  updated = publisher_product_teks_economics_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_economics_standard => teks_economics_standard,
+                                                :teks_economics_standard_text => teks_economics_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_economics_standard', :description => 'publisher_product_teks_economics_standards_updated or teks_economics_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_economics_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_technology_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_technology_standard = h_obj[:teks_technology_standard]
+          
+          if PublisherProductTeksTechnologyStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_technology_standard', :description => 'publisher_product_teks_technology_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_technology_standards = Array.new
+          ar_teks_technology_standards = teks_technology_standard.split(',')
+          
+          ar_teks_technology_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_technology_standard = PublisherProductTeksTechnologyStandard.new(h_new)
+              if publisher_product_teks_technology_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_technology_standard', :description => 'publisher_product_teks_technology_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_technology_standard = nil
+          end
+          
+          publisher_product_teks_technology_standards_updated = PublisherProductTeksTechnologyStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_technology_standards = TeksTechnologyStandard.order(sort_column_teks_technology + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_technology_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_technology_standards_updated.nil?) and (!teks_technology_standards.nil?))      
+              updated = nil
+              a_teks_technology_standards = Array.new    
+              teks_technology_standard = []
+              teks_technology_standard_text = []
+              if publisher_product_teks_technology_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_technology_standards_updated.each do |c|
+                    teks_technology_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_technology_standards[i] = teks_technology_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_technology_standard_text = a_teks_technology_standards
+                  updated = publisher_product_teks_technology_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_technology_standard => teks_technology_standard,
+                                                :teks_technology_standard_text => teks_technology_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_technology_standard', :description => 'publisher_product_teks_technology_standards_updated or teks_technology_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_technology_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_career_dev_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_career_dev_standard = h_obj[:teks_career_dev_standard]
+          
+          if PublisherProductTeksCareerDevStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_career_dev_standard', :description => 'publisher_product_teks_career_dev_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_career_dev_standards = Array.new
+          ar_teks_career_dev_standards = teks_career_dev_standard.split(',')
+          
+          ar_teks_career_dev_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_career_dev_standard = PublisherProductTeksCareerDevStandard.new(h_new)
+              if publisher_product_teks_career_dev_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_career_dev_standard', :description => 'publisher_product_teks_career_dev_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_career_dev_standard = nil
+          end
+          
+          publisher_product_teks_career_dev_standards_updated = PublisherProductTeksCareerDevStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_career_dev_standards = TeksCareerDevStandard.order(sort_column_teks_career_dev + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_career_dev_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_career_dev_standards_updated.nil?) and (!teks_career_dev_standards.nil?))      
+              updated = nil
+              a_teks_career_dev_standards = Array.new    
+              teks_career_dev_standard = []
+              teks_career_dev_standard_text = []
+              if publisher_product_teks_career_dev_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_career_dev_standards_updated.each do |c|
+                    teks_career_dev_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_career_dev_standards[i] = teks_career_dev_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_career_dev_standard_text = a_teks_career_dev_standards
+                  updated = publisher_product_teks_career_dev_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_career_dev_standard => teks_career_dev_standard,
+                                                :teks_career_dev_standard_text => teks_career_dev_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_career_dev_standard', :description => 'publisher_product_teks_career_dev_standards_updated or teks_career_dev_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_career_dev_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_second_language_eng_span_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_second_language_eng_span_standard = h_obj[:teks_second_language_eng_span_standard]
+          
+          if PublisherProductTeksSecondLanguageEngSpanStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_second_language_eng_span_standard', :description => 'publisher_product_teks_second_language_eng_span_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_second_language_eng_span_standards = Array.new
+          ar_teks_second_language_eng_span_standards = teks_second_language_eng_span_standard.split(',')
+          
+          ar_teks_second_language_eng_span_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_second_language_eng_span_standard = PublisherProductTeksSecondLanguageEngSpanStandard.new(h_new)
+              if publisher_product_teks_second_language_eng_span_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_second_language_eng_span_standard', :description => 'publisher_product_teks_second_language_eng_span_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_second_language_eng_span_standard = nil
+          end
+          
+          publisher_product_teks_second_language_eng_span_standards_updated = PublisherProductTeksSecondLanguageEngSpanStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_second_language_eng_span_standards = TeksSecondLanguageEngSpanStandard.order(sort_column_teks_second_language_eng_span + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_second_language_eng_span_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_second_language_eng_span_standards_updated.nil?) and (!teks_second_language_eng_span_standards.nil?))      
+              updated = nil
+              a_teks_second_language_eng_span_standards = Array.new    
+              teks_second_language_eng_span_standard = []
+              teks_second_language_eng_span_standard_text = []
+              if publisher_product_teks_second_language_eng_span_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_second_language_eng_span_standards_updated.each do |c|
+                    teks_second_language_eng_span_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_second_language_eng_span_standards[i] = teks_second_language_eng_span_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_second_language_eng_span_standard_text = a_teks_second_language_eng_span_standards
+                  updated = publisher_product_teks_second_language_eng_span_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_second_language_eng_span_standard => teks_second_language_eng_span_standard,
+                                                :teks_second_language_eng_span_standard_text => teks_second_language_eng_span_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_second_language_eng_span_standard', :description => 'publisher_product_teks_second_language_eng_span_standards_updated or teks_second_language_eng_span_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_second_language_eng_span_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+
+  def update_teks_career_tech_ed_standard
+
+      begin
+        
+          ar = params[:publisher_product_manifest]
+          h_obj = Hash.new
+          ar.each do |obj|
+              h_obj = obj
+          end
+      
+          publisher_product_id = h_obj[:publisher_product_id]
+          teks_career_tech_ed_standard = h_obj[:teks_career_tech_ed_standard]
+          
+          if PublisherProductTeksCareerTechEdStandard.delete_record(publisher_product_id.to_s)
+              #
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_career_tech_ed_standard', :description => 'publisher_product_teks_career_tech_ed_standard delete_record failed')
+              raise
+          end
+      
+          ar_teks_career_tech_ed_standards = Array.new
+          ar_teks_career_tech_ed_standards = teks_career_tech_ed_standard.split(',')
+          
+          ar_teks_career_tech_ed_standards.each do |i|
+              h_new = Hash.new
+              h_new[:publisher_id] = current_user.publisher.id
+              h_new[:publisher_product_id] = publisher_product_id
+              h_new[:id_standard] = i.to_i
+              
+              publisher_product_teks_career_tech_ed_standard = PublisherProductTeksCareerTechEdStandard.new(h_new)
+              if publisher_product_teks_career_tech_ed_standard.save
+                  #
+              else
+                  LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_career_tech_ed_standard', :description => 'publisher_product_teks_career_tech_ed_standard save failed')
+                  raise
+              end
+              
+              publisher_product_teks_career_tech_ed_standard = nil
+          end
+          
+          publisher_product_teks_career_tech_ed_standards_updated = PublisherProductTeksCareerTechEdStandard.where("publisher_product_id = ?", publisher_product_id).except('order').order("id ASC") rescue nil
+          teks_career_tech_ed_standards = TeksCareerTechEdStandard.order(sort_column_teks_career_tech_ed + " " + sort_direction).paginate(:per_page => 10000, :page => params[:page]) rescue nil
+          # date_0 = Time.zone.parse('2000-01-01 00:00:00')
+          # publisher_product_teks_career_tech_ed_standard_updated.updated_at = date_0
+          if ((!publisher_product_teks_career_tech_ed_standards_updated.nil?) and (!teks_career_tech_ed_standards.nil?))      
+              updated = nil
+              a_teks_career_tech_ed_standards = Array.new    
+              teks_career_tech_ed_standard = []
+              teks_career_tech_ed_standard_text = []
+              if publisher_product_teks_career_tech_ed_standards_updated.any?
+                  i = 0
+                  ii = 0
+                  publisher_product_teks_career_tech_ed_standards_updated.each do |c|
+                    teks_career_tech_ed_standard[i] = c.id_standard
+                    ii = c.id_standard - 1
+                    a_teks_career_tech_ed_standards[i] = teks_career_tech_ed_standards[ii].section_text
+                    i += 1
+                  end
+                  teks_career_tech_ed_standard_text = a_teks_career_tech_ed_standards
+                  updated = publisher_product_teks_career_tech_ed_standards_updated[0].updated_at.to_s(:long)
+              else
+                #
+              end
+          
+              respond_to do |format|
+                format.html {}
+                format.json { render :json => { :teks_career_tech_ed_standard => teks_career_tech_ed_standard,
+                                                :teks_career_tech_ed_standard_text => teks_career_tech_ed_standard_text,
+                                                :b_error => false,
+                                                :updated => updated } }
+              end
+          else
+              LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_career_tech_ed_standard', :description => 'publisher_product_teks_career_tech_ed_standards_updated or teks_career_tech_ed_standards was nil')
+              raise
+          end
+
+      rescue StandardError => e
+
+          LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'publisher_product_manifest', :action => 'update_teks_career_tech_ed_standard', :description => e.message.to_s)
+          respond_to do |format|
+              format.html {}
+              format.json { render :json => { :b_error => true } }
+          end
+
+      end
+
+
+  end
+
+
+  # 122 english
+  # 123 math              
+  # 124 science
+  # 125 social_studies
+  # 126 languages_non_eng
+  # 127 health_ed
+  # 128 physical_ed
+  # 129 fine_arts
+  # 130 economics
+  # 131 technology        
+  # 132 career_dev
+  # 133 second_language_eng_span        
+  # 134 career_tech_ed
 
 
 
@@ -9790,6 +11660,73 @@ class PublisherProductManifestsController < ApplicationController
       CoreMathStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
 
+    # english
+    # math
+    # career_dev
+    # career_tech_ed
+    # economics
+    # fine_arts
+    # health_ed
+    # languages_non_eng
+    # physical_ed
+    # science
+    # second_language_eng_span
+    # social_studies
+    # technology
+
+    def sort_column_teks_english
+      TeksEnglishStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_math
+      TeksMathStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_career_dev
+      TeksCareerDevStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_career_tech_ed
+      TeksCareerTechEdStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_economics
+      TeksEconomicsStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_fine_arts
+      TeksFineArtsStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_health_ed
+      TeksHealthEdStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_languages_non_eng
+      TeksLanguagesNonEngStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_physical_ed
+      TeksPhysicalEdStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_science
+      TeksScienceStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_second_language_eng_span
+      TeksSecondLanguageEngSpanStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_social_studies
+      TeksSocialStudiesStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column_teks_technology
+      TeksTechnologyStandard.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+
     # def sortable_core_math(column, title = nil)
       # title ||= column.titleize
       # css_class = column == sort_column_core_math ? "current #{sort_direction}" : nil
@@ -9857,7 +11794,7 @@ class PublisherProductManifestsController < ApplicationController
     end
 
     def return_all_dtab8lets      
-      return Dtab8let.order(sort_column_dtab8let + " " + sort_direction)
+      return Dtab8let.where(:id => 1..18).order(sort_column_dtab8let + " " + sort_direction) rescue nil
     end
     def sort_column_dtab8let
       Dtab8let.column_names.include?(params[:sort]) ? params[:sort] : "id"
@@ -9889,3 +11826,4 @@ class PublisherProductManifestsController < ApplicationController
 
       
 end
+

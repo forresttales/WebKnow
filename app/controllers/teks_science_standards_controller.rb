@@ -1,0 +1,2 @@
+class TeksScienceStandardsController < ApplicationController
+end

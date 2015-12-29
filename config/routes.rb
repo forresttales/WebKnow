@@ -997,6 +997,34 @@ Webknow::Application.routes.draw do
       post :update_core_literacy_standard
       post :update_core_math_standard
       
+      # english
+      # math
+      # career_dev
+      # career_tech_ed
+      # economics
+      # fine_arts
+      # health_ed
+      # languages_non_eng
+      # physical_ed
+      # science
+      # second_language_eng_span
+      # social_studies
+      # technology
+      
+      post :update_teks_english_standard
+      post :update_teks_math_standard
+      post :update_teks_career_dev_standard
+      post :update_teks_career_tech_ed_standard
+      post :update_teks_economics_standard
+      post :update_teks_fine_arts_standard
+      post :update_teks_health_ed_standard
+      post :update_teks_languages_non_eng_standard
+      post :update_teks_physical_ed_standard
+      post :update_teks_science_standard
+      post :update_teks_second_language_eng_span_standard
+      post :update_teks_social_studies_standard
+      post :update_teks_technology_standard
+      
       post :update_name_pdf
       post :upload_pdf
       post :upload_pdf_image
@@ -1037,6 +1065,8 @@ Webknow::Application.routes.draw do
       post :update_poster_pin_web
       post :update_poster_pin_purchase
       post :dbdelete      
+      
+      post :set_required
     end
   end
 

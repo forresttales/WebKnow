@@ -1,156 +1,202 @@
+<!-- <div style="height: 110px;"></div> -->
+<div class="product-list-divider"></div>
 <% @publisher_products.each do |publisher_product| %>
-	<div class="product-table">
-		<div class="product-row">
-			<div style="display: table-cell; width: 200px; height: 210px; vertical-align: top;">
+<!-- <div class="product-list-main"> -->
+	<div style="background-color: #f8f8f8;">
+		<div class="product-list-table-1" style="position: relative;">
+			<% if !publisher_product.has_required_1 %>
 				<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
-		      	<% product_image = publisher_product.publisher_product_pos1_image.image_url(:image_200_200) rescue "/images_avatar/avatar-gen-product-w200-h200.png" %>
-		      	
-					<%= image_tag product_image.to_s, :style => "border: solid 1px #aaa;" %>
+					<div style="position: absolute; top: 76px; left: 256px; background-color: rgba(0, 0, 0, 0.5); width: 300px; height: 40px; text-align: center; padding-top: 16px;">
+						<div class="new-product-text-2-container"><span class="new-product-text-2">Product created</span></div>
+						<div style="height: 20px;"></div>
+						<div class="new-product-text-1-container"><span class="new-product-text-1">Select to add and edit information</span></div>
+					</div>		
 				</a>
-				<!-- <div style="min-height: 10px; padding: 5px 0px;">
-					<#%= publisher_product.publisher_product_manifest.product_tagline %#>
-				</div> -->
-			</div>
-			<div style="display: table-cell; width: 265px; vertical-align: top;">
-				<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
-				<div style="height: 100%; padding: 0px 0px 0px 15px;">
-					<div style="display: block; width: 250px; font-size: 16px; color: #47a447;"><%= publisher_product.publisher_product_manifest.product_name.to_s %></div>
-					<div style="height: 5px"></div>
-					<div style="font-size: 14px; line-height: 1.4;">
-						<% product_subjects = category_subject_for(publisher_product)[:category_subject_text] %>
-						<% product_other_subjects = category_subject_for(publisher_product)[:category_subject_other] %>
-						<% product_subjects.push(product_other_subjects) if product_other_subjects.present? %>
-						<% if product_subjects.present? %>
-							<div>
-								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Subject(s):</div>
-								<div  style="display: inline-block" class="list-items-1">
-									<% product_subjects.first(3).each do |subject_text| %>
-										<div><%= subject_text %></div>
-									<% end %>
-								</div>
-							</div>
-						<% end %>
-						<% age_range_text = age_range_for(publisher_product)[:age_range_text] %>
-						<% if age_range_text.present? %>
-							<div>
-								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Age Range:</div>
-								<div style="display: inline-block; width: 145px;" class="list-items-1">
-									<%= age_range_text.join(" ") %>
-								</div>
-							</div>
-						<% end %>
-						<% grade_range_text = grade_range_for(publisher_product)[:grade_range_text] %>
-						<% if grade_range_text.present? %>
-							<div>
-								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Grade Range:</div>
-								<div style="display: inline-block; width: 145px;" class="list-items-1">
-									<%= grade_range_text.join(" ") %>
-								</div>
-							</div>
-						<% end %>
-						<% market_target_text = market_target_for(publisher_product)[:market_target_text] %>
-						<% if market_target_text.present? %>
-							<div>
-								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Target Market:</div>
-								<div style="display: inline-block; width: 145px;" class="list-items-1">
-									<%= market_target_text.join(" ") %>
-								</div>
-							</div>
-						<% end %>
-						<% pricing_model_text = pricing_model_for(publisher_product)[:pricing_model_text] %>
-						<% if pricing_model_text.present? %>
-							<div>
-								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">Pricing Model:</div>
-								<div style="display: inline-block; width: 145px;" class="list-items-1">
-									<%= pricing_model_text.join(" ") %>
-								</div>
-							</div>
-						<% end %>
-					</div>
+			<% end %>
+			<div class="product-list-row-1">
+				<div class="product-list-cell-1" style="width: 200px; height: 200px; vertical-align: top;">
+					<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
+			      		<% product_image = publisher_product.publisher_product_pos1_image.image_url(:image_200_200) rescue "/images_avatar/avatar-gen-product-w200-h200.png" %>
+						<!-- <#%= image_tag product_image.to_s, :style => "border: solid 1px #aaa;" %#> -->
+						<%= image_tag product_image.to_s %>
+					</a>
+					<!-- <div style="min-height: 10px; padding: 5px 0px;">
+						<#%= publisher_product.publisher_product_manifest.product_tagline %#>
+					</div> -->
 				</div>
-				</a>
-			</div>
-			<div style="display: table-cell; width: 265px; vertical-align: top;">
-				<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
-				<div style="height: 100%; padding: 0px 0px 0px 15px;">
-					<div style="font-size: 14px; line-height: 1.43;">
-						<% enhancement_text = enhancement_for(publisher_product)[:enhancement_text] %>
-						<% enhancement_other_text = enhancement_for(publisher_product)[:enhancement_other] %>
-						<% enhancement_text.push(enhancement_other_text) if enhancement_other_text.present? %>
-						<% if enhancement_text.present? %>
-							<div>
-								<div style="display: block; vertical-align: top; font-weight: 700; color: #333;">Enhancement(s):</div>
-								<div  style="display: block" class="list-items-1">
-									<% enhancement_text.first(3).each do |enhancement| %>
-										<div><%= enhancement %></div>
-									<% end %>
+				<div class="product-list-cell-1" style="width: 265px; height: 200px; vertical-align: top;">
+					<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
+					<!-- <div style="height: 200px; padding: 0px;" class="test-background"> -->
+					<div style="height: 200px; padding-left: 2px; margin: 0px;" class="">
+						<div style="height: 12px;"></div>
+						<div class="product-list-text-2" style="display: block; width: 250px;"><%= publisher_product.publisher_product_manifest.product_name.to_s %></div>
+						<div style="height: 5px"></div>
+						<div style="font-size: 14px; line-height: 1.4;">
+							<% product_subjects = category_subject_for(publisher_product)[:category_subject_text] %>
+							<% product_other_subjects = category_subject_for(publisher_product)[:category_subject_other] %>
+							<% product_subjects.push(product_other_subjects) if product_other_subjects.present? %>
+							<% if product_subjects.present? %>
+								<div>
+									<div class="product-list-text-1" style="display: inline-block; width: 100px; vertical-align: top;">Subject(s):</div>
+									<div  style="display: inline-block" class="product-list-text-3">
+										<% product_subjects.first(3).each do |subject_text| %>
+											<div><%= subject_text %></div>
+										<% end %>
+									</div>
 								</div>
-							</div>
-						<% end %>
-						<% platform_text = platform_for(publisher_product)[:platform_text] %>
-						<% platform_other_text = platform_for(publisher_product)[:platform_other] %>
-						<% platform_text.push(platform_other_text) if platform_other_text.present? %>
-						<% if platform_text.present? %>
-							<div>
-								<div style="display: block; vertical-align: top; font-weight: 700; color: #333;">Platforms Available:</div>
-								<div style="display: block;" class="list-items-1">
-									<% platform_text.first(3).each do |platform| %>
-										<div><%= platform %></div>
-									<% end %>
+							<% end %>
+							<% age_range_text = age_range_for(publisher_product)[:age_range_text] %>
+							<% if age_range_text.present? %>
+								<div>
+									<div class="product-list-text-1" style="display: inline-block; width: 100px; vertical-align: top;">Age Range:</div>
+									<div style="display: inline-block; width: 145px;" class="product-list-text-3">
+										<%= age_range_text.join(" ") %>
+									</div>
 								</div>
-							</div>
-						<% end %>
-						<% file_type_text = file_type_for(publisher_product)[:file_type_text] %>
-						<% file_type_other_text = file_type_for(publisher_product)[:file_type_other] %>
-						<% file_type_text.push(file_type_other_text) if file_type_other_text.present? %>
-						<% if file_type_text.present? %>
-							<div>
-								<div style="display: inline-block; width: 100px; vertical-align: top; font-weight: 700; color: #333;">File Type:</div>
-								<div style="display: inline-block; width: 145px;" class="list-items-1">
-									<% file_type_text.first(3).each do |file_type| %>
-										<div><%= file_type %></div>
-									<% end %>
+							<% end %>
+							<% grade_range_text = grade_range_for(publisher_product)[:grade_range_text] %>
+							<% if grade_range_text.present? %>
+								<div>
+									<div class="product-list-text-1" style="display: inline-block; width: 100px; vertical-align: top;">Grade Range:</div>
+									<div style="display: inline-block; width: 145px;" class="product-list-text-3">
+										<%= grade_range_text.join(" ") %>
+									</div>
 								</div>
-							</div>
-						<% end %>
+							<% end %>
+							<% market_target_text = market_target_for(publisher_product)[:market_target_text] %>
+							<% if market_target_text.present? %>
+								<div>
+									<div class="product-list-text-1" style="display: inline-block; width: 100px; vertical-align: top;">Target Market:</div>
+									<div style="display: inline-block; width: 145px;" class="product-list-text-3">
+										<%= market_target_text.join(" ") %>
+									</div>
+								</div>
+							<% end %>
+							<% pricing_model_text = pricing_model_for(publisher_product)[:pricing_model_text] %>
+							<% if pricing_model_text.present? %>
+								<div>
+									<div class="product-list-text-1" style="display: inline-block; width: 100px; vertical-align: top;">Pricing Model:</div>
+									<div style="display: inline-block; width: 145px;" class="product-list-text-3">
+										<%= pricing_model_text.join(" ") %>
+									</div>
+								</div>
+							<% end %>
+						</div>
 					</div>
+					</a>
 				</div>
-				</a>
+				<div class="product-list-cell-1" style="width: 265px; height: 200px; vertical-align: top;">
+					<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
+					<div style="height: 200px; padding: 0px; margin: 0px;" class="">
+						<div style="height: 3px;"></div>
+						<div style="font-size: 14px; line-height: 1.43;">
+							<% enhancement_text = enhancement_for(publisher_product)[:enhancement_text] %>
+							<% enhancement_other_text = enhancement_for(publisher_product)[:enhancement_other] %>
+							<% enhancement_text.push(enhancement_other_text) if enhancement_other_text.present? %>
+							<% if enhancement_text.present? %>
+								<div>
+									<div class="product-list-text-1" style="display: block; vertical-align: top;">Enhancement(s):</div>
+									<div  style="display: block" class="product-list-text-3">
+										<% enhancement_text.first(3).each do |enhancement| %>
+											<div><%= enhancement %></div>
+										<% end %>
+									</div>
+								</div>
+							<% end %>
+							<% platform_text = platform_for(publisher_product)[:platform_text] %>
+							<% platform_other_text = platform_for(publisher_product)[:platform_other] %>
+							<% platform_text.push(platform_other_text) if platform_other_text.present? %>
+							<% if platform_text.present? %>
+								<div>
+									<div class="product-list-text-1" style="display: block; vertical-align: top;">Platforms Available:</div>
+									<div style="display: block;" class="product-list-text-3">
+										<% platform_text.first(3).each do |platform| %>
+											<div><%= platform %></div>
+										<% end %>
+									</div>
+								</div>
+							<% end %>
+							<% file_type_text = file_type_for(publisher_product)[:file_type_text] %>
+							<% file_type_other_text = file_type_for(publisher_product)[:file_type_other] %>
+							<% file_type_text.push(file_type_other_text) if file_type_other_text.present? %>
+							<% if file_type_text.present? %>
+								<div>
+									<div class="product-list-text-1" style="display: inline-block; width: 100px; vertical-align: top;">File Type:</div>
+									<div style="display: inline-block; width: 145px;" class="product-list-text-3">
+										<% file_type_text.first(3).each do |file_type| %>
+											<div><%= file_type %></div>
+										<% end %>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</div>
+					</a>
+				</div>
 			</div>
 		</div>
-		<div class="product-row">
-			
-			<div style="display: table-cell; width: 200px; height: 100%; vertical-align: bottom;">
-				<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
-					<div style="width: 200px; height: 100%;"></div>
-				</a>
-			</div>			
-			<div style="display: table-cell; width: 265px; height: 100%; vertical-align: bottom;">
-				<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline list-items-2">
-					<div style="padding: 0px 0px 0px 15px; height: 100%;">Product ID: <%= publisher_product.slug %></div>
-				</a>
-			</div>
-			<div style="display: table-cell; width: 265px; vertical-align: bottom;">
-				<div style="padding: 0px 0px 0px 15px;">
-					
-					<% if false %>
-				   	<% delete_msg = "Delete ID: " + reg_event.id.to_s + " ?" %>
-					<%= button_to "Delete", {:action => 'destroy', :id => reg_event.id}, :method => :delete, :data => { confirm: delete_msg }, :class => 'delete-btn' %>
-					<% end %>
-					
-					<div data-delete="<%= publisher_product.id %>" style="" class="btn-opt-edit-container btn-delete-product">
-						<div class="btn-opt-edit">Delete</div>
+		<div class="product-list-table-1"
+			<div class="product-list-row-1">
+				<div class="product-list-cell-1" style="width: 200px; height: 30px;">
+					<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
+						<div style="width: 200px; height: 30px; margin: 0px;" class=""></div>
+					</a>
+				</div>			
+				<div class="product-list-cell-1" style="width: 440px; height: 30px;">
+					<a href="<%= 'Publisher-Product-Manifest-id' + publisher_product.slug %>" class="a-no-underline">
+						<div style="height: 30px; position: relative; padding-left: 4px;">
+							<div style="position: absolute; bottom: 3px; line-height: 14px;" class="product-list-text-4">Product ID: <%= publisher_product.slug %></div>						
+						</div>
+					</a>
+				</div>
+				<div class="product-list-cell-1" style="width: 90px; height: 30px;">
+					<div class="" style="position: relative; height: 30px; margin: 0px;">
+						<div style="position: absolute; bottom: 3px; height: 24px; right: 4px;">
+							<% if false %>
+						   	<% delete_msg = "Delete ID: " + reg_event.id.to_s + " ?" %>
+							<%= button_to "Delete", {:action => 'destroy', :id => reg_event.id}, :method => :delete, :data => { confirm: delete_msg }, :class => 'delete-btn' %>
+							<% end %>
+							
+							<div data-delete="<%= publisher_product.id %>" style="" class="btn-opt-edit-container btn-delete-product">
+								<div class="btn-opt-edit">Delete</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>		
-		
+			</div>		
+		</div>
 	</div>
+	<div class="product-list-divider"></div>
+	
+<!-- </div> -->
+
 <% end %>
 
-<div style="height: 10px"></div>
+<div style="height: 60px;"></div>
 
-<%= will_paginate @publisher_products, :inner_window=> 2, :params => {:controller => 'publisher_product_lists'} %>
+<!-- <div style="height: 50px; width: 750px; background-color: red; position: fixed; bottom: 0px;"></div> -->
+
+<!-- <#%= will_paginate @publisher_products, :inner_window=> 2, :params => {:controller => 'publisher_product_lists'} %#> -->
+
+
+<div style="height: 60px; width: 100%; position: fixed; bottom: 0px;">
+	<div style="height: 50px; width: 740px;">
+		<div style="position: relative;">
+			<div style="height: 50px; width: 740px; background-color: #e3e3e3; position: absolute; left: -3px;">
+				<%= will_paginate @publisher_products, :inner_window=> 2, :params => {:controller => 'publisher_product_lists'} %>
+			</div>
+		</div>
+	</div>		
+	<div style="height: 10px; width: 740px;">
+		<div style="position: relative;">
+			<div style="height: 10px; width: 740px; background-color: #fff; position: absolute; left: -3px;"></div>
+		</div>
+	</div>		
+</div>
+
+
+
+
 
 <script type="text/javascript">
 	$('.pagination a').attr('data-remote', 'true');
