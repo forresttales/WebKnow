@@ -13,7 +13,8 @@
 		<%= javascript_include_tag "application", "data-turbolinks-track" => false %>
 
 		<%= stylesheet_link_tag "user_lists" %>
-		<%= stylesheet_link_tag "nav_publisher" %>
+		<%= stylesheet_link_tag "nav_main_fixed" %>
+		<%= stylesheet_link_tag "nav_publisher_fixed" %>
 		<%= stylesheet_link_tag "publisher_users_index_home" %>
 		<%= stylesheet_link_tag "publisher_users_index" %>
 		<%= stylesheet_link_tag "slick" %>
@@ -53,7 +54,7 @@
 			html, body {
 			  height: 100%;
 			}
-			.body-wrap {
+			/*.body-wrap {
 			  min-height: 100%;
 			  margin-bottom: -152px; 
 			}
@@ -63,7 +64,7 @@
 			}
 			.body-wrap:after {
 			  height: 152px; 
-			}		
+			}	*/	
 			.body-wrap-inner {
 				width: 1200px; 
 				height: 100%; 
@@ -81,14 +82,14 @@
 	<!-- <body id="body" class="body-visibility-hidden"> -->
 	<body id="body" class="">
 		<div class="body-wrap">
-			<%= render 'layouts/nav_main' %>
-			<%= render 'layouts/nav_publisher' %>
+			<%= render 'layouts/nav_main_fixed' %>
+			<%= render 'layouts/nav_publisher_fixed' %>
 			<div class="body-wrap-inner">
 				<%= yield %>
 			</div>
 		</div>
 		
-		<%= render 'layouts/footer' %>
+		<!-- <#%= render 'layouts/footer' %> -->
 
 		<% if false %>
 		<% if Rails.env.development? %>
