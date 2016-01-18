@@ -1,0 +1,496 @@
+
+<style>
+	.drop-publisher-users-indexLUF .drop-hidden {
+	display: none !important;
+	visibility: hidden !important;  
+	}
+	.drop-publisher-users-indexLUF .drop-clear-both {
+	clear: both;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF {
+	width: 100px;
+	height: 100px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .drop-LUF-triangle {
+	width: 0px;
+	height: 0px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #fff;
+	position: relative;
+	left: 3px;
+	float: left;
+	bottom: -1px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .drop-LUF-box {
+	width: 96px;
+	float: left;
+	/*position: relative;*/
+	position: absolute;
+	margin-top: 0px;
+	-webkit-transition: all .1s ease-out;
+	-moz-transition: all .1s ease-out;
+	-ms-transition: all .1s ease-out;
+	-o-transition: all .1s ease-out;
+	transition: all .1s ease-out;
+	z-index: 1;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .drop-LUF-container-links {
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .margin-top-hide-1 {
+	margin-top: -16px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .margin-top-show-1 {
+	margin-top: -6px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .drop-LUF-link-1 {
+	width: 100%;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .drop-LUF-link-1:hover .span-1 {
+	}   
+	.drop-publisher-users-indexLUF .drop-LUF .drop-LUF-span-1 {
+	color: #376340; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF a.drop-LUF-link-a-1 {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF a.drop-LUF-link-a-1:hover {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .drop-LUF-border {
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;      
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;     
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-bottom-right-radius: 4px;
+	border-bottom-right-radius: 4px;      
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-bottom-left-radius: 4px;
+	border-bottom-left-radius: 4px;     
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .drop-LUF-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .drop-LUF-divider-1 {
+	height: 2px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .drop-LUF-divider-2 {
+	height: 10px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .background-transparent {
+	background-color: transparent;
+	}
+	.drop-publisher-users-indexLUF .background-white {
+	background-color: #fff;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .nav-caret-container {
+	width: 14px;
+	height: 30px;
+	padding: 0 0 0 2px;     
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .nav-caret {
+	width: 0px;
+	height: 0px;
+	position: relative;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	margin: 16px 0 0 0px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .nav-caret-down {
+	border-top: 5px solid #999;
+	border-bottom: 0;     
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .nav-caret-up {
+	border-bottom: 5px solid #999;
+	border-top: 0;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .nav-drop-1:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .nav-drop-1:hover .nav-avatar img {
+	border: 2px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .nav-drop-1:hover .nav-caret-down {
+	border-top: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .nav-drop-1:hover .nav-caret-up {
+	border-bottom: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF .cursor-pointer:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-target-icon {
+	display: inline-block;
+	}	
+	.drop-publisher-users-indexLUF .drop-LUF-target-text {
+	display: inline-block;
+	}	
+	.drop-publisher-users-indexLUF .drop-LUF a:focus {
+	outline: none;	
+	}
+	.drop-publisher-users-indexLUF .drop-LUF a:active {
+	outline: none;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF a:visited {
+	outline: none;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-table {
+	display: table;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-table-row {
+	display: table-row;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-table-cell-1 {
+	display: table-cell;
+	width: 174px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-table-cell-2 {
+	display: table-cell;
+	width: 12px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 {
+	text-align: left;
+	width: auto;
+	height: 24px;
+	padding: 4px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1:hover {
+	background: #f6f6f6;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1-target {
+	position: relative;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 8px 8px 0;
+	border-color: transparent #ffffff transparent transparent;	
+	position: relative;
+	float: left;
+	left: -8px;
+	top: 33px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-container {
+	position: relative;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-box {
+	width: 200px;
+	position: absolute;
+	margin-top: 0px;
+	-webkit-transition: all .1s ease-out;
+	-moz-transition: all .1s ease-out;
+	-ms-transition: all .1s ease-out;
+	-o-transition: all .1s ease-out;
+	transition: all .1s ease-out;
+	z-index: 1;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-container-links {
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .margin-top-hide-1-1 {
+	margin-top: -53px;
+	margin-left: 160px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .margin-top-show-1-1 {
+	margin-top: -53px;
+	margin-left: 180px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-link-1 {
+	width: 100%;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-link-1:hover {
+	background: #f6f6f6;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-link-1:hover .span-1 {
+	}   
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-span-1 {
+	color: #376340; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 a.drop-LUF-1-link-a-1 {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 a.drop-LUF-1-link-a-1:hover {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-border {
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;      
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;     
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-bottom-right-radius: 4px;
+	border-bottom-right-radius: 4px;      
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-bottom-left-radius: 4px;
+	border-bottom-left-radius: 4px;     
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-divider-1 {
+	height: 2px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .drop-LUF-1-divider-2 {
+	height: 10px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .background-transparent {
+	background-color: transparent;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .background-white {
+	background-color: #fff;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .nav-caret-container {
+	width: 14px;
+	height: 30px;
+	padding: 0 0 0 2px;     
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .nav-caret {
+	width: 0px;
+	height: 0px;
+	position: relative;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	margin: 16px 0 0 0px;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .nav-caret-down {
+	border-top: 5px solid #999;
+	border-bottom: 0;     
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .nav-caret-up {
+	border-bottom: 5px solid #999;
+	border-top: 0;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .nav-drop-1:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .nav-drop-1:hover .nav-avatar img {
+	border: 2px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .nav-drop-1:hover .nav-caret-down {
+	border-top: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .nav-drop-1:hover .nav-caret-up {
+	border-bottom: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1 .cursor-pointer:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUF .drop-LUF-1-target-icon {
+	display: inline-block;
+	}	
+	.drop-publisher-users-indexLUF .drop-LUF-1-target-text {
+	display: inline-block;
+	margin: 4px 0px 0px 1px;
+	}	
+
+	.drop-publisher-users-indexLUF figure img,
+	 .drop-publisher-users-indexLUF figure {
+		border: medium none; 
+		overflow: hidden;
+		height: 100px;
+	}	
+	.drop-publisher-users-indexLUF .figure-LUF-image-edit {
+		height: 96px;
+		border: 2px solid #fbb040;
+	}	
+	.drop-publisher-users-indexLUF .figure-LUF-image-edit img {
+		margin: -2px;
+	}	
+    	
+</style>
+
+<style>
+	
+	table.LUF-table-1 tbody tr td div {
+		width: 160px;
+	} 
+		
+</style>
+
+
+<div>
+	<table class="LUF-table-1">
+		<tbody>
+			<% user_friends = @public_user.get_relate_user_friends rescue nil %>
+			<% if user_friends.any? %>
+				<% number_images = user_friends.count %>
+				<% cnt_images = 0 %>
+				<% cnt = 0 %>
+				<% i = 0 %>
+				<% user_friends.each do |user_friend| %>
+					<% user_friend_id = user_friend.id rescue nil %>
+					<% if !user_friend_id.nil? %>
+						<% user_friend_1_id = user_friend.friend_1_id rescue nil %>
+						<% user_friend_2_id = user_friend.friend_2_id rescue nil %>
+						<% if ((!user_friend_1_id.nil?) and (!user_friend_2_id.nil?)) %>
+							<% if @public_user.id != user_friend.friend_1_id %>
+							<%    user_id = user_friend.friend_1_id %>
+							<% else %>
+							<%    user_id = user_friend.friend_2_id %>
+							<% end %>
+							<% user = User.find_by_id(user_id) rescue nil %>
+							<% if !user.nil? %>
+								<% publisher_user = user.publisher_user rescue nil%>
+								<% if !publisher_user.nil? %>
+									<% user_image_primary = publisher_user.publisher_user_images.where( :primary => true ).first rescue nil %>
+									<% if !user_image_primary.nil? %>
+										<% cnt_images += 1 %>   				
+										<% cnt += 1 %>
+										<% if cnt == 1 %>				
+										<tr>
+										<% end %>
+											<td>
+												<div class="drop-namespaceLUF drop-publisher-users-indexLUF" style="width: 102px; height: 102px;" data-i="<%= i %>">
+													<div class="container-figure-image container-figure-image-border-load-LUF container-figure-LUF-image drop-LUF" style="position: relative;">	
+														<figure class="dialog-LUF-1-figure cursor-pointer" data-width="<%= user_image_primary.width %>" data-src-600="<%= user_image_primary.image_url(:image_600_600) %>">
+															<img id="" class="" alt="" src="<%= user_image_primary.image_url(:image_100_100) + '?' + (rand(10..90) * rand(100..900)).to_s if user_image_primary.image? %>" />
+															<figcaption class="figcaption-edit-LUF-image hidden drop-LUF-target" data-i="<%= i %>">
+																	<div class="img-1-text">Options</div>
+															</figcaption>
+														</figure>
+												    	<div class="drop-LUF-container drop-hidden">
+															<div class="drop-LUF-box background-transparent margin-top-hide-1">
+																<div class="drop-LUF-triangle"></div>
+																<div style="clear: both;"></div>
+																<div class="drop-LUF-container-links background-white drop-LUF-border drop-LUF-shadow">
+																	<div class="drop-LUF-divider-2"></div>
+																	<div class="drop-LUF-link-1 cursor-pointer" data-id="4" data-id-luf-friend="<%= user_friend_id %>" data-id-luf-user="<%= user.id %>">
+																		<div class="drop-LUF-1">
+																	    	<div class="drop-LUF-1-target">
+																	    		<div class="drop-LUF-1-target-text">
+																	    			<span class="drop-LUF-1-span-1">Delete from friends</span>
+																	    		</div>						    		
+																	    	</div>
+																    	</div>
+																	</div>
+																	<div class="drop-301-divider-2"></div>
+																</div>
+															</div>
+												        </div>
+													</div>
+												</div>
+											</td>
+											<% i += 1 %>
+										<% if cnt_images == number_images   %>
+										<%     if cnt == 1                  %>
+											<td></td><td></td>
+										</tr>
+										<%     elsif cnt == 2               %>
+											<td></td>
+										</tr>
+										<%     elsif cnt == 3               %>
+											</tr>
+										<%     end                          %>
+										<% elsif cnt == 3                   %>
+										</tr>
+										<% cnt = 0                          %>
+										<% end                              %>
+									<% else%>
+										<div>user_image_primary was nil</div>						
+									<% end %>
+								<% else %>
+									<div>publisher_user was nil</div>
+								<% end %>
+							<% else %>
+								<div>user was nil</div>
+							<% end %>
+						<% else %>
+							<div>friend_1_id or friend_2_id was nil</div>
+						<% end %>
+					<% else %>
+						<div>user_friend_id was nil</div>
+					<% end %>
+				<% end %>
+			<% else %>
+				<div>No friends</div>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div style="height: 4px;"></div>
+
+
+<script>
+
+		var drop_visible_namespaceLUF_i = -1;
+		function drop_show_namespaceLUF(i) {
+			if (drop_visible_namespaceLUF_i > -1) {
+				drop_hide_namespaceLUF(drop_visible_namespaceLUF_i);
+			}
+			var s_container = ".drop-namespaceLUF[data-i=" + i.toString() + "] .drop-LUF-container";
+			$(s_container).removeClass('drop-hidden');
+			var s_box = ".drop-namespaceLUF[data-i=" + i.toString() + "] .drop-LUF-box";
+			$(s_box).fadeIn(1).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
+			drop_visible_namespaceLUF_i = i;			
+		}	
+		function drop_hide_namespaceLUF(i) {
+			var s_box = ".drop-namespaceLUF[data-i=" + i.toString() + "] .drop-LUF-box";
+			$(s_box).addClass("margin-top-hide-1").fadeOut(50);		
+			drop_visible_namespaceLUF_i = -1;			
+		}	
+		function drop_hide_namespaceLUF() {
+			$(".drop-namespaceLUF .drop-LUF-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);
+			$(".drop-namespaceLUF .drop-LUF-box").addClass("margin-top-hide-1").fadeOut(50);		
+			drop_visible_namespaceLUF_i = -1;			
+		}	
+		function drop_toggle_namespaceLUF(i) {
+			if (drop_visible_namespaceLUF_i == i) {
+				drop_hide_namespaceLUF(i);
+			}
+			else {
+				drop_show_namespaceLUF(i);
+			}
+		}	
+		
+		function dropCloseAll_namespaceLUF() {
+			drop_hide_namespaceLUF();
+		}
+	
+	
+	$(document).ready(function () {				
+
+			$(document).on('click', function(e) {
+				var target_namespaceLUF = $(e.target).parents('.drop-namespaceLUF').attr("class");
+				if (target_namespaceLUF == null) {
+					dropCloseAll_namespaceLUF();
+				}
+			});
+		
+			$(".drop-namespaceLUF .drop-LUF-target").on('click', function() {
+				var i = $(this).data('i');
+				drop_toggle_namespaceLUF(i);
+			});
+
+			$(".drop-namespaceLUF .drop-LUF-link-1[data-id='4']").on("click", function() {
+				dropCloseAll_namespaceLUF();
+				var id_LUF_friend = $(this).data('id-luf-friend');
+				var id_LUF_user = $(this).data('id-luf-user');
+				
+				var a_id_LUF = new Array();				
+				a_id_LUF.push(id_LUF_friend);
+				a_id_LUF.push(id_LUF_user);
+				
+				$(document).trigger({
+					type:"btn_LUF_remove_click",
+				  	id_LUF: a_id_LUF
+				});				
+			});		
+
+	});
+	
+</script>

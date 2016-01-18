@@ -1,0 +1,39 @@
+<style>
+	
+	.user-friend-invitation {
+	    color: #7E87FC;
+	    font-family: Arial,Helvetica,sans-serif;
+	    font-size: 10px;
+	    font-weight: 400;
+	    height: 20px;
+	    outline: medium none;
+	    padding-top: 4px;
+	    text-align: center;
+	    text-decoration: none;
+	    width: 200px;
+	}
+	
+</style>
+<% if !@b_relate_user_friend %>
+	<% if !@relate_user_friend_invitation_exists %>
+		<div id="btn_submit_user_friend_invitation" class="btn-user-friend-invitation-container-outer">
+			<div class="btn-user-friend-invitation-container">
+				<div class="btn-user-friend-invitation" tabindex="">
+					Send friend request							
+				</div>
+			</div>
+		</div>
+	<% else %>
+		<% if @relate_user_friend_invitation_sent %>
+			<div class="user-friend-invitation">Friend request sent</div>
+		<% else %>
+			<% if @relate_user_friend_invitation_received %>
+				<div class="user-friend-invitation">This user sent you a friendship invitation</div>
+			<% else %>
+				<div>Something bad happened</div>
+			<% end %>
+		<% end %>
+	<% end %>
+<% else %>
+	<div class="user-friend-invitation">Already friend</div>
+<% end %>

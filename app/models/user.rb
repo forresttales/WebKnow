@@ -63,7 +63,17 @@ class User < ActiveRecord::Base
   # extend FriendlyId
   # friendly_id :id, use: [:slugged, :history]
   
+  # has_many :user_friendships
+  # has_many :user_friends, :through => :user_friendships
+  
+  # has_many :friendships
+  # has_many :friends, :through => :friendships
+  # has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  # has_many :inverse_friends, :through => :inverse_friendships, :source => :user  
+  
   has_one :issued_gen_id, foreign_key: "user_id"
+
+  has_many :user_friends, dependent: :destroy
 
   has_many :user_images
   has_many :post_users 
@@ -81,8 +91,22 @@ class User < ActiveRecord::Base
   has_many :reverse_relate_follows, foreign_key: "followed_id", class_name: "RelateFollow", dependent: :destroy
   has_many :followers, through: :reverse_relate_follows, source: :follower
   
-  
-  has_one :publisher_user, dependent: :destroy  
+  has_many :relate_user_friend_invitations, foreign_key: "user_friend_from_id", dependent: :destroy
+  has_many :user_friend_to_users, through: :relate_user_friend_invitations, source: :user_friend_to
+  has_many :reverse_relate_user_friend_invitations, foreign_key: "user_friend_to_id", class_name: "RelateUserFriendInvitation", dependent: :destroy
+  has_many :user_friend_from_users, through: :reverse_relate_user_friend_invitations, source: :user_friend_from
+
+  has_many :relate_user_friend_blocks, foreign_key: "user_id", dependent: :destroy
+  has_many :user_blocks, through: :relate_user_friend_blocks, source: :user_block
+  has_many :reverse_relate_user_friend_blocks, foreign_key: "user_block_id", class_name: "RelateUserFriendBlock", dependent: :destroy
+  has_many :users, through: :reverse_relate_user_friend_blocks, source: :user
+
+  has_many :relate_user_friends, foreign_key: "friend_1_id", dependent: :destroy
+  has_many :user_friend_2_users, through: :relate_user_friends, source: :friend_2
+  has_many :reverse_relate_user_friends, foreign_key: "friend_2_id", class_name: "RelateUserFriend", dependent: :destroy
+  has_many :user_friend_1_users, through: :reverse_relate_user_friends, source: :friend_1
+
+  has_one :publisher_user, dependent: :destroy
   has_one :publisher
   
   
@@ -148,6 +172,49 @@ class User < ActiveRecord::Base
     LogUser.from_log_by(self)
   end
   
+
+  def get_relate_user_friends
+    RelateUserFriend.from_relate_user_friends_by(self)
+  end
+
+  def get_relate_user_friend(current_user_id, user_id)
+    # Rails.logger.info('get_relate_user_friend user_id = ' + user_id.to_s)
+    # Rails.logger.info('get_relate_user_friend current_user_id = ' + current_user_id.to_s)
+    RelateUserFriend.from_relate_user_friend_by(current_user_id, user_id)
+  end
+
+  def get_relate_user_friend_invitation
+    RelateUserFriendInvitation.from_relate_user_friend_invitation_by(self)
+  end
+  # def get_relate_user_friend_invitation_received(user)
+    # RelateUserFriendInvitation.from_relate_user_friend_invitation_received_by(user)
+  # end
+
+  def get_relate_user_friend_invitation_sent(user)
+    RelateUserFriendInvitation.from_relate_user_friend_invitation_sent_by(user)
+  end
+
+  def get_relate_user_friend_invitations_received
+    RelateUserFriendInvitation.from_relate_user_friend_invitations_received_by(self)
+  end
+
+  def get_relate_user_friend_invitations_sent
+    RelateUserFriendInvitation.from_relate_user_friend_invitations_sent_by(self)
+  end
+
+  # def return_user_friend
+    # RelateUserFriend.return_user_friend_by(user_id, other_user_id)
+  # end
+
+
+
+  # def user_friend_invitations_received
+      # RelateUserFriendInvitation.user_friend_invitations_received(self)  
+  # end  
+  
+  # def user_friend_invitations_sent
+      # RelateUserFriendInvitation.user_friend_invitations_sent(self)  
+  # end  
   
   
   def self.dbdelete

@@ -1,2 +1,0 @@
-class ProfileRecruitersController < ApplicationController
-end

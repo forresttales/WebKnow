@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151220163920) do
+ActiveRecord::Schema.define(version: 20160108061730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -845,6 +845,16 @@ ActiveRecord::Schema.define(version: 20151220163920) do
 
   add_index "post_user_comments", ["post_user_id"], name: "index_post_user_comments_on_post_user_id", using: :btree
   add_index "post_user_comments", ["user_id"], name: "index_post_user_comments_on_user_id", using: :btree
+
+  create_table "post_user_files", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "post_user_id"
+    t.string   "file"
+    t.string   "file_name"
+    t.integer  "order"
+  end
 
   create_table "post_user_images", force: true do |t|
     t.datetime "created_at"
@@ -2687,6 +2697,27 @@ ActiveRecord::Schema.define(version: 20151220163920) do
     t.integer  "followed_id"
   end
 
+  create_table "relate_user_friend_blocks", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",       default: 0
+    t.integer  "user_block_id", default: 0
+  end
+
+  create_table "relate_user_friend_invitations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_friend_from_id", default: 0
+    t.integer  "user_friend_to_id",   default: 0
+  end
+
+  create_table "relate_user_friends", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "friend_1_id", default: 0
+    t.integer  "friend_2_id", default: 0
+  end
+
   create_table "teks_career_dev_standards", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -2844,6 +2875,28 @@ ActiveRecord::Schema.define(version: 20151220163920) do
 
   add_index "user_connections", ["connection_id"], name: "index_user_connections_on_connection_id", using: :btree
   add_index "user_connections", ["user_id"], name: "index_user_connections_on_user_id", using: :btree
+
+  create_table "user_friends", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",          default: 0
+    t.integer  "friend_id",        default: 0
+    t.integer  "status",           default: 0
+    t.string   "status_text",      default: ""
+    t.integer  "user_initiate_id", default: 0
+  end
+
+  create_table "user_friendships", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",          default: 0
+    t.integer  "status",           default: 0
+    t.string   "status_text",      default: ""
+    t.datetime "accepted_at"
+    t.datetime "invitation_at"
+    t.integer  "user_initiate_id", default: 0
+    t.integer  "user_friend_id",   default: 0
+  end
 
   create_table "user_groups", force: true do |t|
     t.integer  "user_id"

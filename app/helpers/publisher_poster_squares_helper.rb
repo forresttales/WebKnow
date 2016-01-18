@@ -1,2 +1,0 @@
-module PublisherPosterSquaresHelper
-end

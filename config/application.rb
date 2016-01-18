@@ -12,11 +12,15 @@ module Webknow
     if defined? TorqueBox::Infinispan::Cache
       config.cache_store = :torquebox_store
     end
-  
+
+    config.autoload_paths << Rails.root.join('app/publisher/controllers')
+    config.autoload_paths << Rails.root.join('app/publisher/helpers')
+    config.autoload_paths << Rails.root.join('app/user/controllers')
+    config.autoload_paths << Rails.root.join('app/user/helpers')
+
     config.autoload_paths << Rails.root.join('lib')
-    config.autoload_paths << Rails.root.join('app/stomplets')
-    # config.autoload_paths << Rails.root.join('app/uploaders')
-    # config.load_paths << "#{Rails.root}/app/uploaders"
+    # config.autoload_paths << Rails.root.join('app/stomplets')
+    config.autoload_paths << Rails.root.join('app', 'stomplets')
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -121,6 +125,8 @@ module Webknow
                                   'profile-new.css',
                                   'publisher_users_index_home.css',
                                   'publisher_users_index.css',
+                                  'public_publisher_users_index.css',
+                                  'public_publisher_users_index_signedout.css',
                                   'publisher-product-manifest.css',
                                   'slick.css',
                                   'slick-theme.css',

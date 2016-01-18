@@ -54,6 +54,7 @@ class PublisherUser < ActiveRecord::Base
   
   has_one :publisher_user_plot, dependent: :destroy
   has_one :publisher_user_interest, dependent: :destroy
+  
 
 
   

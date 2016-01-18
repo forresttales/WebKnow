@@ -1,0 +1,3 @@
+<% if @result.present? %>
+	$("#user-id-<%= @old_user_friend.id %>").html("<%= j link_to 'Add Friend', {:action => 'add_user_friend', :user_friend_id => @old_user_friend.id}, :remote => true, :method => :post, :id => 'user-id-' + @old_user_friend.id.to_s %>");
+<% end %>

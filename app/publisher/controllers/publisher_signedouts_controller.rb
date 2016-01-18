@@ -1,0 +1,2 @@
+class PublisherSignedoutsController < ApplicationController
+end

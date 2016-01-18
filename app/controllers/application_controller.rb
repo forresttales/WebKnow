@@ -3,8 +3,26 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  include SessionsHelper  
+  include SessionsHelper
 
+  include UsersIndexPublisherUserHelper
+  include UsersIndexPublisherUserHomeHelper  
+  include UsersIndexPublisherUserPublicHelper
+  include UsersIndexPublisherUserSignedoutHelper
+
+  include UsersIndexPublisherHelper
+  include UsersIndexPublisherHomeHelper  
+  include UsersIndexPublisherPublicHelper
+  include UsersIndexPublisherSignedoutHelper
+
+  # include User::UsersIndexPublisherUserHelper
+  # include User::UsersIndexPublisherUserHomeHelper  
+  # include User::UsersIndexPublisherUserPublicHelper
+  # include User::UsersIndexPublisherUserSignedoutHelper
+  # include User::UsersIndexPublisherHelper
+  # include User::UsersIndexPublisherHomeHelper  
+  # include User::UsersIndexPublisherPublicHelper
+  # include User::UsersIndexPublisherSignedoutHelper
   
   def force_http
     if request.ssl? && Rails.env.production?

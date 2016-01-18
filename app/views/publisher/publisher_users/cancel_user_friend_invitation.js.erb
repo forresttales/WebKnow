@@ -1,0 +1,6 @@
+// alert('ajax works in publisher_users/cancel_user_friend_invitation');
+<% if !@errors %>
+	$('#render_list_user_friend_invitations_sent').html("<%= j render('publisher_users/list_user_friend_invitations_sent') %>");
+<% else %>
+	alert("Upload error");
+<% end %>

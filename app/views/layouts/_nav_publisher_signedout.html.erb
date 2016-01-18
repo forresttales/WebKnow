@@ -1,0 +1,174 @@
+<style type="text/css">
+.nav-publisher .div-link {
+	text-align: left;
+	float: left;
+	width: 100%;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.nav-publisher .div-link:hover {
+	background: #f6f6f6;
+}
+.nav-publisher .div-link a {
+	color: #376340; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	display: block;
+	line-height: 24px;
+	padding: 4px 15px;
+}
+.nav-publisher .div-link:hover a {
+	color: #376340; 
+	text-decoration: none;
+}
+.nav-publisher .drop-1-box div {
+	float: left;
+}
+.nav-publisher .drop-2-box div {
+	float: left;
+}
+.nav-publisher .drop-3-box div {
+	float: left;
+}
+</style>
+
+<div class="nav-publisher">
+	<div class="nav-publisher-inner">
+		
+		<% if false %>
+		<div class="nav-publisher-list">
+			<div class="nav-publisher-item-1">
+				<div id="drop_namespace1" class="drop-1">
+					<div class="drop-1-couple">
+				    	<div class="drop-1-target cursor-pointer">
+				    		<div class="drop-1-target-text">
+				    			<span class="drop-1-span-1">My Story</span>
+				    		</div>						    		
+				    	</div>
+				    	<div class="drop-1-container drop-hidden">
+							<div class="drop-1-box background-transparent margin-top-hide-1">
+								<div class="drop-1-triangle"></div>
+								<div style="clear: both;"></div>
+								<div class="drop-container-links background-white drop-1-border drop-1-shadow">
+									<div class="div-link" style="margin-top: 10px">
+										<a href="/" >
+											Home/Activity
+										</a>
+									</div>
+									<div class="div-link">
+										<a href="/<%= current_user.slug %>" >
+											My Story
+								    	</a>
+									</div>
+									<div class="div-link">
+										<a href="/Settings-1" >
+											My Settings
+								    	</a>
+									</div>
+									<div class="div-link">
+										<a href="/Journal" >
+											Journal
+								    	</a>
+									</div>
+									<div class="div-link">
+										<a href="/KnowCred" >
+											KnowCred
+								    	</a>
+									</div>
+									<div class="div-link" style="margin-bottom: 10px">
+										<a href="/Messages" >
+											My Mail
+								    	</a>
+									</div>
+								</div>
+							</div>
+				        </div>
+				    </div>
+				</div>
+		  	</div>
+			<div class="nav-publisher-item-1">
+				<div id="drop_namespace2" class="drop-2">
+					<div class="drop-2-couple">
+				    	<div class="drop-2-target cursor-pointer">
+				    		<div class="drop-2-target-text">
+				    			<span class="drop-2-span-1">Corporate Story</span>
+				    		</div>						    		
+				    	</div>
+				    	<div class="drop-2-container drop-hidden">
+							<div class="drop-2-box background-transparent margin-top-hide-1">
+								<div class="drop-2-triangle"></div>
+								<div style="clear: both;"></div>
+								<div class="drop-container-links background-white drop-2-border drop-2-shadow">
+									<div class="div-link" style="margin-top: 10px">
+										<a href="/Publisher" >
+											Home/Activity
+								    	</a>
+									</div>
+									<div class="div-link">
+										<a href="<%= current_user.publisher.slug %>" >
+											Corporate Story
+								    	</a>
+									</div>
+									<div class="div-link" style="margin-bottom: 10px">
+										<a href="/Publisher-Settings-1" >
+											Settings
+								    	</a>
+									</div>
+								</div>
+							</div>
+				        </div>
+				    </div>
+				</div>
+		  	</div>
+			<div class="nav-publisher-item-1">
+				<div id="drop_namespace3" class="drop-3">
+					<div class="drop-3-couple">
+				    	<div class="drop-3-target cursor-pointer">
+				    		<div class="drop-3-target-text">
+				    			<span class="drop-3-span-1">Products</span>
+				    		</div>						    		
+				    	</div>
+				    	<div class="drop-3-container drop-hidden">
+							<div class="drop-3-box background-transparent margin-top-hide-1">
+								<div class="drop-3-triangle"></div>
+								<div style="clear: both;"></div>
+								<div class="drop-container-links background-white drop-3-border drop-3-shadow">
+									<div class="div-link" style="margin-top: 10px">
+										<a href="/Publisher-Product-Listings" class="drop-3-1-link-a-1">
+											Product List
+								    	</a>
+									</div>
+									<div class="div-link">
+										<a href="/Advertisements" class="drop-3-1-link-a-1">
+											Product Summary
+								    	</a>
+									</div>
+									<div class="div-link">
+										<a href="/Publisher-Advertise" class="drop-3-1-link-a-1">
+											Create Ads
+								    	</a>
+									</div>
+									<div class="div-link" style="margin-bottom: 10px">
+										<a href="/How-to-Advertise" class="drop-3-1-link-a-1">
+											How to Advertise
+								    	</a>
+									</div>
+								</div>
+							</div>
+				        </div>
+				    </div>
+				</div>
+		  	</div>
+		</div>
+		<% end %>
+		
+	</div>
+</div>	
+
+<!-- <script>
+	$(document).ready(function () {				
+	});	
+</script> -->
+

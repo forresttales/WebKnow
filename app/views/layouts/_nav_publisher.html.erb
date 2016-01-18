@@ -1,3 +1,38 @@
+<style type="text/css">
+.nav-publisher .div-link {
+	text-align: left;
+	float: left;
+	width: 100%;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.nav-publisher .div-link:hover {
+	background: #f6f6f6;
+}
+.nav-publisher .div-link a {
+	color: #376340; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	display: block;
+	line-height: 24px;
+	padding: 4px 15px;
+}
+.nav-publisher .div-link:hover a {
+	color: #376340; 
+	text-decoration: none;
+}
+.nav-publisher .drop-1-box div {
+	float: left;
+}
+.nav-publisher .drop-2-box div {
+	float: left;
+}
+.nav-publisher .drop-3-box div {
+	float: left;
+}
+</style>
 
 <div class="nav-publisher">
 	<div class="nav-publisher-inner">
@@ -14,81 +49,37 @@
 							<div class="drop-1-box background-transparent margin-top-hide-1">
 								<div class="drop-1-triangle"></div>
 								<div style="clear: both;"></div>
-								<div class="drop-1-container-links background-white drop-1-border drop-1-shadow">
-									<div class="drop-1-divider-2"></div>
-									<div class="drop-1-link-1 cursor-pointer" data-id="1">
-										<a href="/" class="drop-1-1-link-a-1">
-											<div class="drop-1-1">
-										    	<div class="drop-1-1-target">
-										    		<div class="drop-1-1-target-text">
-										    			<span class="drop-1-1-span-1">Home/Activity</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+								<div class="drop-container-links background-white drop-1-border drop-1-shadow">
+									<div class="div-link" style="margin-top: 10px">
+										<a href="/" >
+											Home/Activity
+										</a>
+									</div>
+									<div class="div-link">
+										<a href="/<%= current_user.slug %>" >
+											My Story
 								    	</a>
 									</div>
-									<div class="drop-1-divider-1"></div>
-									<div class="drop-1-link-1 cursor-pointer" data-id="2">
-										<a href="/<%= current_user.slug %>" class="drop-1-1-link-a-1">
-											<div class="drop-1-1">
-										    	<div class="drop-1-1-target">
-										    		<div class="drop-1-1-target-text">
-										    			<span class="drop-1-1-span-1">My Story</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+									<div class="div-link">
+										<a href="/Settings-1" >
+											My Settings
 								    	</a>
 									</div>
-
-									<div class="drop-1-divider-1"></div>
-									<div class="drop-1-link-1 cursor-pointer" data-id="3">
-										<a href="/Settings-1" class="drop-1-1-link-a-1">
-											<div class="drop-1-1">
-										    	<div class="drop-1-1-target">
-										    		<div class="drop-1-1-target-text">
-										    			<span class="drop-1-1-span-1">My Settings</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+									<div class="div-link">
+										<a href="/Journal" >
+											Journal
 								    	</a>
 									</div>
-									<div class="drop-1-divider-1"></div>
-									<div class="drop-1-link-1 cursor-pointer" data-id="4">
-										<a href="/Journal" class="drop-1-1-link-a-1">
-											<div class="drop-1-1">
-										    	<div class="drop-1-1-target">
-										    		<div class="drop-1-1-target-text">
-										    			<span class="drop-1-1-span-1">Journal</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+									<div class="div-link">
+										<a href="/KnowCred" >
+											KnowCred
 								    	</a>
 									</div>
-									<div class="drop-1-divider-1"></div>
-									<div class="drop-1-link-1 cursor-pointer" data-id="5">
-										<a href="/KnowCred" class="drop-1-1-link-a-1">
-											<div class="drop-1-1">
-										    	<div class="drop-1-1-target">
-										    		<div class="drop-1-1-target-text">
-										    			<span class="drop-1-1-span-1">KnowCred</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+									<div class="div-link" style="margin-bottom: 10px">
+										<a href="/Messages" >
+											My Mail
 								    	</a>
 									</div>
-									<div class="drop-1-divider-1"></div>
-									<div class="drop-1-link-1 cursor-pointer" data-id="6">
-										<a href="/Messages" class="drop-1-1-link-a-1">
-											<div class="drop-1-1">
-										    	<div class="drop-1-1-target">
-										    		<div class="drop-1-1-target-text">
-										    			<span class="drop-1-1-span-1">My Mail</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
-								    	</a>
-									</div>
-									<div class="drop-1-divider-2"></div>
 								</div>
 							</div>
 				        </div>
@@ -107,65 +98,28 @@
 							<div class="drop-2-box background-transparent margin-top-hide-1">
 								<div class="drop-2-triangle"></div>
 								<div style="clear: both;"></div>
-								<div class="drop-2-container-links background-white drop-2-border drop-2-shadow">
-									<div class="drop-2-divider-2"></div>
-									<div class="drop-2-link-1 cursor-pointer" data-id="1">
-										<a href="/Publisher" class="drop-2-1-link-a-1">
-											<div class="drop-2-1">
-										    	<div class="drop-2-1-target">
-										    		<div class="drop-2-1-target-text">
-										    			<span class="drop-2-1-span-1">Home/Activity</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+								<div class="drop-container-links background-white drop-2-border drop-2-shadow">
+									<div class="div-link" style="margin-top: 10px">
+										<a href="/Publisher" >
+											Home/Activity
 								    	</a>
 									</div>
-									<div class="drop-2-divider-1"></div>
-									<div class="drop-2-link-1 cursor-pointer" data-id="2">
-										<a href="<%= current_user.publisher.slug %>" class="drop-2-1-link-a-1">
-											<div class="drop-2-1">
-										    	<div class="drop-2-1-target">
-										    		<div class="drop-2-1-target-text">
-										    			<span class="drop-2-1-span-1">Corporate Story</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+									<div class="div-link">
+										<a href="<%= current_user.publisher.slug %>" >
+											Corporate Story
 								    	</a>
 									</div>
-									<div class="drop-2-divider-1"></div>
-									<div class="drop-2-link-1 cursor-pointer" data-id="4">
-										<a href="/Publisher-Settings-1" class="drop-2-1-link-a-1">
-											<div class="drop-2-1">
-										    	<div class="drop-2-1-target">
-										    		<div class="drop-2-1-target-text">
-										    			<span class="drop-2-1-span-1">Settings</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+									<div class="div-link" style="margin-bottom: 10px">
+										<a href="/Publisher-Settings-1" >
+											Settings
 								    	</a>
 									</div>
-									<div class="drop-2-divider-2"></div>
 								</div>
 							</div>
 				        </div>
 				    </div>
 				</div>
 		  	</div>
-		  	
-			<!-- <div class="nav-publisher-item-1">
-				<div id="drop_namespace3" class="drop-3">
-					<div class="drop-3-couple">
-						<a href="/Publisher-Product-Listings">
-				    	<div class="drop-3-target cursor-pointer">
-				    		<div class="drop-3-target-text">
-				    			<span class="drop-3-span-1">Products</span>
-				    		</div>						    		
-				    	</div>
-				    	</a>
-				    </div>
-				</div>
-		  	</div> -->
-		  	
 			<div class="nav-publisher-item-1">
 				<div id="drop_namespace3" class="drop-3">
 					<div class="drop-3-couple">
@@ -178,73 +132,38 @@
 							<div class="drop-3-box background-transparent margin-top-hide-1">
 								<div class="drop-3-triangle"></div>
 								<div style="clear: both;"></div>
-								<div class="drop-3-container-links background-white drop-3-border drop-3-shadow">
-									<div class="drop-3-divider-2"></div>
-									<div class="drop-3-link-1 cursor-pointer" data-id="1">
+								<div class="drop-container-links background-white drop-3-border drop-3-shadow">
+									<div class="div-link" style="margin-top: 10px">
 										<a href="/Publisher-Product-Listings" class="drop-3-1-link-a-1">
-											<div class="drop-3-1">
-										    	<div class="drop-3-1-target">
-										    		<div class="drop-3-1-target-text">
-										    			<span class="drop-3-1-span-1">Product List</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+											Product List
 								    	</a>
 									</div>
-									<div class="drop-3-divider-1"></div>
-									<div class="drop-3-link-1 cursor-pointer" data-id="2">
+									<div class="div-link">
 										<a href="/Advertisements" class="drop-3-1-link-a-1">
-											<div class="drop-3-1">
-										    	<div class="drop-3-1-target">
-										    		<div class="drop-3-1-target-text">
-										    			<span class="drop-3-1-span-1">Product Summary</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+											Product Summary
 								    	</a>
 									</div>
-									<div class="drop-3-divider-1"></div>
-									<div class="drop-3-link-1 cursor-pointer" data-id="3">
+									<div class="div-link">
 										<a href="/Publisher-Advertise" class="drop-3-1-link-a-1">
-											<div class="drop-3-1">
-										    	<div class="drop-3-1-target">
-										    		<div class="drop-3-1-target-text">
-										    			<span class="drop-3-1-span-1">Create Ads</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+											Create Ads
 								    	</a>
 									</div>
-									<div class="drop-3-divider-1"></div>
-									<div class="drop-3-link-1 cursor-pointer" data-id="4">
+									<div class="div-link" style="margin-bottom: 10px">
 										<a href="/How-to-Advertise" class="drop-3-1-link-a-1">
-											<div class="drop-3-1">
-										    	<div class="drop-3-1-target">
-										    		<div class="drop-3-1-target-text">
-										    			<span class="drop-3-1-span-1">How to Advertise</span>
-										    		</div>						    		
-										    	</div>
-									    	</div>
+											How to Advertise
 								    	</a>
 									</div>
-									<div class="drop-2-divider-2"></div>
 								</div>
 							</div>
 				        </div>
 				    </div>
 				</div>
 		  	</div>
-		  	
-		  	
-		  	
-		  	
 		</div>
 	</div>
 </div>	
 
-
 <script>
-
 	var drop_visible_namespace1 = false;
 	function drop_show_namespace1() {
 		$("#drop_namespace1 .drop-1-container").removeClass('drop-hidden');
@@ -252,9 +171,9 @@
 		drop_visible_namespace1 = true;			
 	}	
 	function drop_hide_namespace1() {
-		$("#drop_namespace1 .drop-1-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);
-		// $("#drop_namespace1 .drop-1-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1");	
-		// $("#drop_namespace1 .drop-1-container").addClass('drop-hidden');
+		// $("#drop_namespace1 .drop-1-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);
+		$("#drop_namespace1 .drop-1-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1");
+		$("#drop_namespace1 .drop-1-container").addClass('drop-hidden');
 		drop_visible_namespace1 = false;			
 	}	
 	function drop_toggle_namespace1() {
@@ -262,54 +181,26 @@
 			drop_hide_namespace1();
 		}
 		else {
-			drop_close_all_called_1 = false;
 			drop_show_namespace1();
 		}
-	}	
-	
-	function dropCloseAll_1() {
-		drop_close_all_called_1 = true;
-		drop_hide_namespace1();
 	}
-	
-	
-	var drop_close_all_called_1 = false;
-	
-	
 	$(document).ready(function () {				
-
 		$(document).on('click', function(e) {
 			var target_namespace1 = $(e.target).parents('#drop_namespace1').attr("id");
 			if (target_namespace1 == null) {
 				drop_hide_namespace1();
 			}
 		});
-
 		$("#drop_namespace1 .drop-1-target").on('click', function() {
 			drop_toggle_namespace1();
 		});
-		$("#drop_namespace1 .drop-1-link-1[data-id='1']").on("click", function() {
-			dropCloseAll_1();
+		$("#drop_namespace1 .drop-container-links").on("click", function() {
+			drop_toggle_namespace1();
 		});
-		$("#drop_namespace1 .drop-1-link-1[data-id='2']").on("click", function() {
-			dropCloseAll_1();
-		});
-		$("#drop_namespace1 .drop-1-link-1[data-id='3']").on("click", function() {
-			dropCloseAll_1();
-		});
-		$("#drop_namespace1 .drop-1-link-1[data-id='4']").on("click", function() {
-			dropCloseAll_1();
-		});
-		$("#drop_namespace1 .drop-1-link-1[data-id='5']").on("click", function() {
-			dropCloseAll_1();
-		});
-
-	});
-	
+	});	
 </script>
 
 <script>
-
 	var drop_visible_namespace2 = false;
 	function drop_show_namespace2() {
 		$("#drop_namespace2 .drop-2-container").removeClass('drop-hidden');
@@ -317,7 +208,9 @@
 		drop_visible_namespace2 = true;			
 	}	
 	function drop_hide_namespace2() {
-		$("#drop_namespace2 .drop-2-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);		
+		// $("#drop_namespace2 .drop-2-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);
+		$("#drop_namespace2 .drop-2-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1");
+		$("#drop_namespace2 .drop-2-container").addClass('drop-hidden');					
 		drop_visible_namespace2 = false;			
 	}	
 	function drop_toggle_namespace2() {
@@ -325,48 +218,27 @@
 			drop_hide_namespace2();
 		}
 		else {
-			drop_close_all_called_2 = false;
 			drop_show_namespace2();
 		}
-	}	
-	
-	function dropCloseAll_2() {
-		drop_close_all_called_2 = true;
-		drop_hide_namespace2();
 	}
 	
-	
-	var drop_close_all_called_2 = false;
-	
-	
 	$(document).ready(function () {				
-
 		$(document).on('click', function(e) {
 			var target_namespace2 = $(e.target).parents('#drop_namespace2').attr("id");
 			if (target_namespace2 == null) {
 				drop_hide_namespace2();
 			}
 		});
-
 		$("#drop_namespace2 .drop-2-target").on('click', function() {
 			drop_toggle_namespace2();
 		});
-		$("#drop_namespace2 .drop-2-link-1[data-id='1']").on("click", function() {
-			dropCloseAll_2();
+		$("#drop_namespace2 .drop-container-links").on("click", function() {
+			drop_toggle_namespace2();
 		});
-		$("#drop_namespace2 .drop-2-link-1[data-id='2']").on("click", function() {
-			dropCloseAll_2();
-		});
-		$("#drop_namespace2 .drop-2-link-1[data-id='3']").on("click", function() {
-			dropCloseAll_2();
-		});
-
-	});
-	
+	});	
 </script>
 
 <script>
-
 	var drop_visible_namespace3 = false;
 	function drop_show_namespace3() {
 		$("#drop_namespace3 .drop-3-container").removeClass('drop-hidden');
@@ -382,45 +254,23 @@
 			drop_hide_namespace3();
 		}
 		else {
-			drop_close_all_called_3 = false;
 			drop_show_namespace3();
 		}
 	}	
 	
-	function dropCloseAll_3() {
-		drop_close_all_called_3 = true;
-		drop_hide_namespace3();
-	}
-	
-	
-	var drop_close_all_called_3 = false;
-	
-	
 	$(document).ready(function () {				
-
 		$(document).on('click', function(e) {
 			var target_namespace3 = $(e.target).parents('#drop_namespace3').attr("id");
 			if (target_namespace3 == null) {
 				drop_hide_namespace3();
 			}
 		});
-
 		$("#drop_namespace3 .drop-3-target").on('click', function() {
 			drop_toggle_namespace3();
 		});
-		$("#drop_namespace3 .drop-3-link-1[data-id='1']").on("click", function() {
-			dropCloseAll_3();
+		$("#drop_namespace3 .drop-container-links").on("click", function() {
+			drop_toggle_namespace3();
 		});
-		$("#drop_namespace3 .drop-3-link-1[data-id='2']").on("click", function() {
-			dropCloseAll_3();
-		});
-		$("#drop_namespace3 .drop-3-link-1[data-id='3']").on("click", function() {
-			dropCloseAll_3();
-		});
-		$("#drop_namespace3 .drop-3-link-1[data-id='4']").on("click", function() {
-			dropCloseAll_3();
-		});
-
 	});
 	
 </script>

@@ -20,7 +20,7 @@ class PostUser < ActiveRecord::Base
   has_many :post_user_likes, dependent: :destroy
   has_many :post_user_images, dependent: :destroy
   has_many :post_user_comments, dependent: :destroy
-  
+  has_many :post_user_files, dependent: :destroy
   # has_many :post_user_images
   
   default_scope -> { order('created_at DESC') }

@@ -152,6 +152,40 @@
   position: absolute;
 }   
 
+.ks-tip-delete-post-user-2 {
+  position: absolute;
+  width: 46px;
+  height: 16px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-color: rgba(0, 0, 0, 0.6);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  box-shadow: 0px 2px 2px #aaa;
+  text-align: center;     
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 400;         
+  color: #fff;  
+  padding: 6px 0 0 0;
+  display: none;
+  top: -28px;
+  right: -14px;    
+  z-index: 1;
+}   
+.ks-tip-indicator-delete-post-user-2 {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 6px 0px 7px;
+  border-color: rgba(0, 0, 0, 0.5) transparent transparent transparent;
+  top: 22px;
+  right: 16px;
+  position: absolute;
+}   
+
+
 .ks-tip-delete-post-user-comment {
   position: absolute;
   width: 46px;

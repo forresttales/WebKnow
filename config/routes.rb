@@ -1,5 +1,7 @@
 Webknow::Application.routes.draw do
 
+  root to: 'users#index'
+
   get "tests/test1"
   get "tests/test_fullscreen"
   get "control_elements/nav_dropdowns"
@@ -7,6 +9,29 @@ Webknow::Application.routes.draw do
   get "control_elements/sticky_footer"
   get "control_elements/sticky_footer_with_icon"
   get "gamma_images/index"
+  
+  
+  
+  # match "/:id" => "publisher_users#index", via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][3][0-9][0-9][0-9][0-9][0-9][0-9]+/}
+  # match "/:id" => "public_publisher_users#index", via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][3][0-9][0-9][0-9][0-9][0-9][0-9]+/}
+  # match "/:id" => "publishers#index", via: 'get', constraints: {id: /[0-9][0-9][0-9][0-9][0-9][0-9][3][0-9][0-9][0-9][0-9]+/}
+  
+  
+  
+  resources :public_publisher_users do
+    # member do
+      # get :index, path: ''
+    # end
+
+    collection do
+      post :create_user_friend_invitation
+    end
+  end
+  
+  
+  
+  
+  
   
   
   match "/Messages" => "publisher_user_messages#index", via: 'get'
@@ -26,6 +51,9 @@ Webknow::Application.routes.draw do
   resources :user_lists do
       collection do
         post :search_people
+        post :add_user_friend # => '/People-Search#add_friend', :as => 'add_friend'        
+        post :remove_user_friend
+        post :accept_user_friend        
       end
   end 
     
@@ -57,7 +85,7 @@ Webknow::Application.routes.draw do
   # get "messages/create"
   # # root :to => ChatDemo
   
-  root to: 'users#index'
+  
   # mount ChatDemo.new => '/chatdemo'
   # match "/chatdemo" => "lib#chatdemo", via: 'get'
   
@@ -94,63 +122,165 @@ Webknow::Application.routes.draw do
   
   
   
-  
+  # scope "/user" do
+    # resources :publisher_user, :publisher_user_homes
+  # end  
   
     
   # match "/:id" => "users#index", via: 'get'
   resources :users do
+
       member do
         get :following, :followers
+        # get :index_publisher_users
       end
+      
       collection do
         post :update_new_user
         post :check_duplicate_signup
         post :upload_user_background1_image
         post :crop_user_background1_image
         post :destroy_user_background1_image
+        post :reset_users
+        post :dbdelete      
       end
   
       # scope :module => 'publisher_user' do
     
   end
 
+  # namespace :publisher do
+    
+    resource :publisher_users do
+        collection do
+            post :update_story_2
+            post :update_story_3
+            post :update_story_4
+            post :create_log_user_like
+            post :destroy_log_user_like      
+            post :update_publisher_user_interest
+            # post :destroy_publisher_user_image
+            # post :destroy_publisher_user_logo_image
+            # post :upload_publisher_user_image_primary
+            # post :upload_publisher_user_logo_image
+            # post :upload_publisher_user_image_primary_change
+            # post :upload_publisher_user_logo_image_change
+            # post :upload_publisher_user_image
+            # post :upload_publisher_user_interest_image
+            
+            post :upload_background_1_image
+            post :upload_background_1_image_change
+            post :crop_background_1_image
+            post :destroy_background_1_image
+  
+            post :upload_primary_1_image
+            post :upload_primary_1_image_change
+            post :crop_primary_1_image
+            post :destroy_primary_1_image
+  
+            post :upload_list_1_image
+            post :destroy_list_1_image
+            
+            post :upload_post_user_file
+            
+            post :cancel_post_user_on_close
+            
+            post :add_user_friend
+            post :remove_user_friend
+            post :cancel_user_friend_invitation
+            
+            post :dbdelete      
+        end
+    end
+    
+    resources :publisher_user_homes do
+        collection do
+            post :update_story_4
+            post :create_post_user
+            post :destroy_post_user
+            post :destroy_post_user_image          
+            post :destroy_post_user_file
+            post :cancel_post_user
+            post :cancel_post_user_on_close
+            post :create_post_user_like
+            post :destroy_post_user_like
+            post :create_post_user_comment
+            post :destroy_post_user_comment
+            post :update_publisher_user_plot
+            post :upload_post_user_image
+            post :upload_post_user_file
+            post :upload_publisher_user_plot_image
+            post :test_download
+            post :dbdelete      
+        end
+    end
+    
+    
+  # end  
+  
 
-  resources :publisher_users do
-      collection do
-          post :update_story_2
-          post :update_story_3
-          post :update_story_4
-          post :create_log_user_like
-          post :destroy_log_user_like      
-          post :update_publisher_user_interest
-          # post :destroy_publisher_user_image
-          # post :destroy_publisher_user_logo_image
-          # post :upload_publisher_user_image_primary
-          # post :upload_publisher_user_logo_image
-          # post :upload_publisher_user_image_primary_change
-          # post :upload_publisher_user_logo_image_change
-          # post :upload_publisher_user_image
-          # post :upload_publisher_user_interest_image
-          
-          post :upload_background_1_image
-          post :upload_background_1_image_change
-          post :crop_background_1_image
-          post :destroy_background_1_image
 
-          post :upload_primary_1_image
-          post :upload_primary_1_image_change
-          post :crop_primary_1_image
-          post :destroy_primary_1_image
 
-          post :upload_list_1_image
-          post :destroy_list_1_image
-          
-          post :cancel_post_user_on_close
-          
-          post :dbdelete      
-      end
 
-  end
+
+
+  # match '/publisher_users/index/:id', :to => 'publisher_users#index', :as => 'MyStory', :via => [:get]
+  # match '/MyStory:id', :to => 'publisher_users#show', :via => [:get]
+  # match '/publisher_users/:id', :to => 'publisher_users#show', :via => [:get]
+  # match '/publisher_users/index/:id', :to => 'publisher_users#index', :via => [:get]
+
+  # match '/:id', :to => 'publisher_users#show', :as => 'publisher_users_show', :via => [:get]
+  # resource :publisher_users, :path => 'publisher_users/show' do
+    # resource :publisher_users, :path => ''
+  # end  
+# 
+# 
+  # resources :publisher_users do
+      # collection do
+          # post :update_story_2
+          # post :update_story_3
+          # post :update_story_4
+          # post :create_log_user_like
+          # post :destroy_log_user_like      
+          # post :update_publisher_user_interest
+          # # post :destroy_publisher_user_image
+          # # post :destroy_publisher_user_logo_image
+          # # post :upload_publisher_user_image_primary
+          # # post :upload_publisher_user_logo_image
+          # # post :upload_publisher_user_image_primary_change
+          # # post :upload_publisher_user_logo_image_change
+          # # post :upload_publisher_user_image
+          # # post :upload_publisher_user_interest_image
+#           
+          # post :upload_background_1_image
+          # post :upload_background_1_image_change
+          # post :crop_background_1_image
+          # post :destroy_background_1_image
+# 
+          # post :upload_primary_1_image
+          # post :upload_primary_1_image_change
+          # post :crop_primary_1_image
+          # post :destroy_primary_1_image
+# 
+          # post :upload_list_1_image
+          # post :destroy_list_1_image
+#           
+          # post :upload_post_user_file
+#           
+          # post :cancel_post_user_on_close
+#           
+          # post :dbdelete      
+      # end
+# 
+  # end
+
+
+
+
+
+
+
+
 
   match '/KnowCred', to: 'publisher_users#knowcred', via: 'get'
   match '/Journal', to: 'publisher_users#journal', via: 'get'
@@ -173,6 +303,10 @@ Webknow::Application.routes.draw do
           post :update_story_4
           post :create_post_user
           post :destroy_post_user
+
+          post :destroy_post_user_image          
+          post :destroy_post_user_file
+          
           post :cancel_post_user
           post :cancel_post_user_on_close
           post :create_post_user_like
@@ -182,11 +316,18 @@ Webknow::Application.routes.draw do
           post :destroy_post_user_comment
           post :update_publisher_user_plot
           post :upload_post_user_image
+          
+          post :upload_post_user_file
+          
           post :upload_publisher_user_plot_image
+          
+          post :test_download
           
           post :dbdelete      
       end
-
+      # member do
+          # post :test_download
+      # end
   end
 
 
@@ -368,20 +509,12 @@ Webknow::Application.routes.draw do
   
   get "diagnostics/rmagick"
   
-  # match '/', to: 'users#index', via: 'get'
-  match '/About', to: 'users#about', via: 'get'  
-  match '/reset', to: 'users#reset', via: 'get'  
-  get "users/index_publisher"
-  match '/Signin', to: 'users#new', via: 'get'
-  match '/Learn-More', to: 'users#learn_more', via: 'get'
-  
-  # match '/id:id', to: 'users#index', via: 'get'
-  
-
 
   # match '/Signin', to: 'sessions#new', via: 'get'
-  match '/Signout', to: 'sessions#destroy', via: 'get'  
-  resources :sessions, only: [:new, :create, :destroy]
+  match '/Signout', to: 'sessions#destroy', via: 'get'
+  #namespace :session do  
+    resources :sessions, only: [:new, :create, :destroy]
+  #end
 
 
   resources :password_resets do
@@ -393,13 +526,6 @@ Webknow::Application.routes.draw do
 
 
 
-  resources :users do
-    collection do
-      post :reset_users
-      post :dbdelete      
-    end
-  end  
-  resources :users
 
   
   
@@ -1628,12 +1754,30 @@ Webknow::Application.routes.draw do
   # post "public_publisher_users/index"
 
 
-  match "/Publisher" => "users#render_index_publisher_home", via: 'get'
+  # match "/Publisher" => "users#render_index_publisher_home", via: 'get'
+  match "/Publisher" => "users#index_publisher_home", via: 'get'
 
 
   # constraints(id: /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]+/) do
     # resources :photos
     # resources :accounts
+  # end
+
+  # namespace :publisher do  
+    # resources :publisher_product_currents
+  # end
+
+
+
+  match '/About', to: 'users#about', via: 'get'  
+  match '/reset', to: 'users#reset', via: 'get'  
+  get "users/index_publisher"
+  match '/Learn-More', to: 'users#learn_more', via: 'get'
+
+  match '/Signin', to: 'users#new', via: 'get'
+  
+  # namespace :user do  
+    # resources :users
   # end
 
   # this must be last
@@ -1643,6 +1787,24 @@ Webknow::Application.routes.draw do
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  # match '/:id', :to => 'publisher_users#show', :as => 'publisher_users_show', :via => [:get]
+  # resource :publisher_users, :path => 'publisher_users/show' do
+    # resource :publisher_users, :path => ''
+  # end  
+  # resource :publisher_users, :path => '' do
+    # resource :questions, :path => ''
+  # end  
+    
   # #*********************************************************************
   # # mtables
 #   

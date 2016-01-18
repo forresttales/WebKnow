@@ -1,0 +1,26 @@
+<% if @post_user.post_user_files.any? %>
+	<% post_user_id = @post_user.id %>
+	<% post_user_post_user_files = @post_user.post_user_files %>
+	<div style="font-family: Arial, Helvetica, sans-serif; font-weight: 400; color: #333; font-size: 13px; border: 1px solid transparent; padding: 6px 5px 5px 5px;">
+		<p style="color: #37633a">Attached files:</p>
+		<!-- <#% @post_user_files.each do |post_user_file| %#> -->
+		<% post_user_post_user_files.each do |post_user_file| %>
+			<div style="padding: 5px 0px 0px 5px">
+				<% if false %>
+				<a href="<%= post_user_file.file%>">
+					<div><%= post_user_file.file_name.to_s %></div>
+				</a>
+
+				<%= link_to('file to download', { :action => 'test_download', :controller => 'publisher_user_homes', :id => post_user_file.id, :class => '' } ) %>
+
+				<div class="post-user-file btn-post-user-file" data-post-user-id="<%= post_user_id %>" data-post-user-file-id="<%= post_user_file.id %>"><%= post_user_file.file_name.to_s %></div>
+				<% end %>
+				
+			   	<!-- <#% delete_msg = "Delete ID: " + teks_career_dev_standard.id.to_s + " ?" %#> -->
+				<!-- <#%= button_to "File to download", { :controller => 'publisher_user_homes', :action => 'test_download', :post_user_file_id => post_user_file.id }, :method => :get, data: {}, :class => 'delete-btn', :remote => true %#> -->
+				<%= button_to post_user_file.file_name.to_s, { :controller => 'publisher_user_homes', :action => 'test_download', :post_user_id => post_user_id, :post_user_file_id => post_user_file.id }, :method => :post, :class => 'btn-post-user-file', :remote => false %>
+				
+			</div>	
+		<% end %>
+	</div>
+<% end %>

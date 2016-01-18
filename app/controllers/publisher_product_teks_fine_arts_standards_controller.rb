@@ -1,2 +1,0 @@
-class PublisherProductTeksFineArtsStandardsController < ApplicationController
-end

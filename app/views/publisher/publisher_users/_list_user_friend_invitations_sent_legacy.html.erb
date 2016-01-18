@@ -1,0 +1,114 @@
+<style>
+	
+	table.list-1-image-table-1 tbody tr td div {
+		margin: 1px;
+	} 
+	/** {
+	    margin: 0;
+	    padding: 0;
+	}*/
+	/*.myDIV {
+	    width: 100px;
+	    height: 100px;
+	    box-shadow: 0px 0px 0px 4px #fbb040 inset;	
+	    margin: 4px;
+	}*/
+		
+</style>
+
+
+<div>
+	<table class="list-1-image-table-1">
+		<tbody>
+
+			<% if !@user.user_friend_to_users.nil? %>
+				<div style="margin: 0px;">
+				<% cnt = 0 																			%>					
+				<!-- <#% user_friend_invitations_sent = @user_friend_invitations_sent						%#> -->
+				<% user_friend_invitations_sent = @user.user_friend_to_users						%>
+				<% user_friend_invitations_sent.each do |user_friend_invitation_sent| 				%>
+				<% 		user_id = user_friend_invitation_sent.id	   								%>				
+				<% 		user = User.find_by_id(user_id) rescue nil									%>
+				<%		if !user.nil?																%>
+				<% 			cnt += 1																%>
+				<%			if cnt == 1																%>			
+				<%			end																		%>
+				<%			user_image_primary = user.publisher_user.publisher_user_images.where( :primary => true ).first 	%>
+						<div class="" style="display: inline-block; width: 100px; height: 120px; margin: 2px; float: left; position: relative;">
+							<a href="<%= user.slug %>" class="underline-none" style="width: 100px; height: 120px;">
+								<div style="margin: 0; padding: 0; width: 100px; height: 100px;">
+				<% 			if !user_image_primary.nil? 											%>
+									<img alt="" src="<%= user_image_primary.image_url(:image_100_100) if user_image_primary.image? %>" width="100px" height="100px" style="margin: 0;" />
+				<%			else																	%>
+									<img alt="" src="../images_avatar/avatar_generic_1_w100_h100.png" width="100px" height="100px" style="margin: 0;" />				
+				<% 			end																		%>
+								</div>
+								<div class="" style="width: 100%; height: 14px; margin: 0; padding: 0;">
+									<!-- <span class="dialog-span-1"><#%= user.name_first %#> </span> -->
+									<span class="dialog-span-1" style="margin: 0; vertical-align: top;"><%= user.name_last %></span>
+								</div>											
+							</a>
+						</div>
+				<%			if cnt == 4																%>
+				<%				cnt = 0 															%>			
+						<div></div>		
+				<%			end																		%>
+				<%		end																			%>
+				<% end 																				%>
+				</div>
+				<div style="clear: both;"></div>
+
+				
+				
+			<% else %>
+				<div>No friend invitations sent</div>
+			<% end %>
+
+		</tbody>
+	</table>
+</div>
+<div style="height: 4px;"></div>
+
+
+
+<% if false %>
+<script>
+
+  	function setImgLast() {
+  		setTimeout(function(){
+			var a_img = document.getElementsByClassName("profile-figure-list");
+			var len = a_img.length;
+			var list_width = 0;
+			for( var i = 0; i < len; i++ ) {
+				list_width += a_img[i].clientWidth;
+				if( list_width > 692 ) {
+					a_img[i].setAttribute("id", "list_img_last");
+					i = len;
+				}
+			}
+			var div_pos = $("#render_publisher_user_images").position();
+			var img_pos = $("#list_img_last").position();
+			var div_pos_left = div_pos.left;
+			var img_pos_left = img_pos.left;
+			var rel_pos_left = img_pos_left - div_pos_left;
+			var adj_pos_left = 16;
+			var del_pos_left = 692 - rel_pos_left - adj_pos_left;
+	  		$("#list_img_last figcaption.figcaption-2").css({
+	  			left : del_pos_left
+	  		});
+  		},500);
+  	}
+
+  
+  
+	// $(window).load( function() {
+	$(document).ready(function () {				
+	
+		setImgLast();
+	
+	});
+  
+</script>		
+
+<% end %>
+

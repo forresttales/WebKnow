@@ -1,0 +1,12 @@
+// alert('ajax works in publisher_users/add_user_friend');
+<% if !@errors %>
+	<% if !@b_relate_user_friend_invitation_cancelled %>
+		$('#render_list_user_friends').html("<%= j render('publisher_users/list_user_friends') %>");
+		$('#render_list_user_friend_invitations_received').html("<%= j render('publisher_users/list_user_friend_invitations_received') %>");
+	<% else %>
+		alert("User has cancelled invitation");
+		$('#render_list_user_friend_invitations_received').html("<%= j render('publisher_users/list_user_friend_invitations_received') %>");
+	<% end %>
+<% else %>
+	alert("Upload error");
+<% end %>

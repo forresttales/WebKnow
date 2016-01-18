@@ -1,2 +1,0 @@
-class TeksFineArtsStandardsController < ApplicationController
-end

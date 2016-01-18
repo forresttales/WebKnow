@@ -1,0 +1,228 @@
+<style>
+	/*
+	#D98D2D	knowstory logo orange
+	#96C785 knowstory logo green dark 
+	#A9D996 knowstory logo green light
+	#214025 footer green
+	background-color: rgba( 65, 183, 55, 0.92); nav green
+	background-color: #41B737;	nav green		
+	*/ 
+</style>
+	
+<div class="nav-main">
+	<div class="nav-main-inner">
+		<!-- <ul id="menu"> -->
+		<ul>
+		    <li class="icon">
+		    	<!-- <img src="/assets/knowstory-icon-2-w224-h75.png" alt="" height="75px"> -->
+		    	<%= image_tag('global/knowstory-icon-2-w224-h75.png', alt: '', width: "224px", height: "75px" ) %>
+		    </li>
+	      	<% if signed_in? %>
+		    <!-- <div id="top-search-box">		
+				<div>
+					<span class="container-right-1-span-1">
+						<a href="/Members">Search other Members</a>
+					</span>
+				</div>
+			</div> -->
+		    <li class="nav-drop-1" id="li_drop_1" style="float: right; margin: 0;">
+		    	<div id="container_couple_1" class="">
+			    	<div id="render_nav_avatar" class="nav-avatar" style="display: inline-block;">
+			    		<%= render 'layouts/nav_avatar' %>
+			    	</div>
+			    	<div id="nav_caret_container" class="nav-caret-container" style="display: inline-block;">
+			    		<div id="nav_caret" class="nav-caret nav-caret-down"></div>
+			    	</div>
+			    	<div id="container_drop" class="dropdownContain hidden">
+						<div id="container_dropOut" class="dropOut background-transparent">
+							<div class="triangle"></div>
+							<div style="clear: both;"></div>
+							<div class="container-links background-white border-drop drop-shadow">
+								<div class="drop-divider-1"></div>
+								<div id="div-nav-1" class="div-link" style="margin-top: 10px;">
+									<a href="/" id="div-nav-1a">
+										Home
+									</a>
+								</div>
+								<div class="drop-divider-2"></div>
+								<div id="div-nav-2" class="div-link">
+									<a href="/<%= current_user.slug%>" id="div-nav-2a">
+										Profile
+									</a>
+								</div>
+								<div class="drop-divider-2"></div>
+								<div id="div-nav-3" class="div-link">
+									<a href="/Signout" id="div-nav-3a">
+										Sign out
+									</a>
+								</div>
+								<div class="drop-divider-2"></div>
+								<div id="div-nav-4" class="div-link">
+									<a href="/Posters-Demo" id="div-nav-4a">
+										Posters
+									</a>
+								</div>
+								<div class="drop-divider-2"></div>
+								<div id="div-nav-5" class="div-link">
+									<a href="/Members" id="div-nav-5a">
+										Members
+									</a>
+								</div>
+								<div class="drop-divider-2"></div>
+								<div id="div-nav-6" class="div-link">
+									<a href="/People-Search" id="div-nav-6a">
+										People Search
+									</a>
+								</div>
+								<div class="drop-divider-2"></div>
+								<div id="div-nav-7" class="div-link" style="margin-bottom: 10px;">
+									<a href="/Product-Search" id="div-nav-7a">
+										Product Search
+									</a>
+								</div>
+								<div class="drop-divider-1"></div>
+							</div>
+						</div>
+			        </div>
+		        </div>
+		        
+		    </li>
+		    <!-- <li style="float: right; margin: 10px 10 0 0;">
+				<a href="/">
+					<img src="../assets_knowstory/icons/publisher.png">
+				</a>
+		    </li> -->
+		    <li class="ks-nav-title-1">
+				<% if current_user.profile_type == 1 %>
+					<a href="/Student">
+			    		<span>Student</span>
+					</a>
+				<% end %>
+				<% if current_user.profile_type == 2 %>
+					<a href="/Teacher">
+			    		<span>Teacher</span>
+					</a>
+				<% end %>
+				<% if current_user.profile_type == 3 %>
+					<a href="/Publisher">
+			    		<span>Publisher</span>
+					</a>
+				<% end %>
+				<% if current_user.profile_type == 4 %>
+					<a href="/Institute">
+			    		<span>Institute</span>
+					</a>
+				<% end %>
+				<% if current_user.profile_type == 5 %>
+					<a href="/Recruiter">
+			    		<span>Recruiter</span>
+					</a>
+				<% end %>
+	
+		    </li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<div style="clear: both;"></div>
+
+<script>
+	var drop_visible = false;
+	function drop_show() {
+		$("#li_drop_1").addClass('drop');
+		$("#container_drop").removeClass('hidden');
+		$(".nav-main ul li div.dropdownContain div.dropOut").fadeIn(200, function() {
+			$(this).css({ 
+				'margin-top' : 12
+			});
+		});
+		$("#nav_caret").removeClass("nav-caret-down").addClass("nav-caret-up");
+		drop_visible = true;			
+	}	
+	function drop_hide() {
+		$("#li_drop_1").removeClass('drop');
+		$("#container_drop").addClass('hidden');
+		drop_visible = false;			
+		// $("#render_nav_avatar").removeClass("avatar-focus");
+		// $("#nav_caret_container").removeClass("nav-caret-focus");
+		$(".nav-main ul li div.dropdownContain div.dropOut").css({
+			'margin-top' : 0
+		});
+		$("#nav_caret").removeClass("nav-caret-up").addClass("nav-caret-down");
+	}	
+	function drop_toggle_1() {
+		if (drop_visible) {
+			drop_hide();
+		}
+		else {
+			drop_show();
+		}
+	}	
+	// function test() {
+		// var obj = {
+			// "one",
+			// "two"
+		// };
+		// $.each( obj, function( value) {
+			// alert( value );
+		// });
+		
+		// $.each( [ "a", "b", "c" ], function( i, l ){
+			// // alert( "Index #" + i + ": " + l );
+			// alert( l );
+		// });
+					
+		// var obj = {
+			// "flammable": "inflammable",
+			// "duh": "no duh"
+		// };
+		// $.each( obj, function( key, value ) {
+			// alert( key + ": " + value );
+		// });
+	// }
+	// $(window).load( function() {
+	$(document).ready(function () {				
+		$(document).on('click', function(e) {
+			var o_target = $(e.target).parents('.nav-drop-1').attr('id');
+			if (o_target == null) {
+				drop_hide();
+			}
+		});
+		$("#container_couple_1").on('click', function() {
+			$("#render_nav_avatar").addClass("avatar-focus");
+			$("#nav_caret").addClass("nav-caret-focus");
+			drop_toggle_1();
+		});
+		
+		$('#div-nav-1').on('click', function() {
+			drop_hide();
+			window.location = document.getElementById('div-nav-1a').href;				
+		});
+		$('#div-nav-2').on('click', function() {
+			drop_hide();
+			window.location = document.getElementById('div-nav-2a').href;				
+		});
+		$('#div-nav-3').on('click', function() {
+			drop_hide();
+			window.location = document.getElementById('div-nav-3a').href;				
+		});
+		$('#div-nav-4').on('click', function() {
+			drop_hide();
+			window.location = document.getElementById('div-nav-4a').href;				
+		});
+		$('#div-nav-5').on('click', function() {
+			drop_hide();
+			window.location = document.getElementById('div-nav-5a').href;				
+		});
+		$('#div-nav-6').on('click', function() {
+			drop_hide();
+			window.location = document.getElementById('div-nav-6a').href;				
+		});
+		$('#div-nav-7').on('click', function() {
+			drop_hide();
+			window.location = document.getElementById('div-nav-7a').href;				
+		});
+	});
+	
+	
+</script>

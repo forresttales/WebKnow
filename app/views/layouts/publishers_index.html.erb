@@ -79,14 +79,12 @@
 			
 		<%= render 'layouts/footer' %>
 
-		<% if false %>
 		<% if Rails.env.development? %>
 			<div style="width: 100%; position: absolute; bottom: -50px;">
 				<div id="debug">
 					<%= debug(params) %>
 				</div>
 			</div>
-		<% end %>
 		<% end %>
 		
 	</body>

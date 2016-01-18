@@ -1,0 +1,140 @@
+<% provide(:title, 'KnowCred') %>
+
+	
+	<style>
+
+		.knowcred {
+			width: 1125px;
+			margin: 0 auto;
+		}	
+		.knowcred #top-bar .logo {
+		    max-width: 250px;
+		}
+		.knowcred .j-coming-soon {font-size:32px; text-align: center; color:#333; opacity:.45; margin-top:5px;}
+		.knowcred #coming-soon {margin-top: 25px; min-height:200px; border:2px solid #999; opacity: .45;}
+	 	.knowcred .title-grey {
+	 		padding:5px;
+			border-bottom:1px solid #ccc;
+			background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
+			background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+			background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+			background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+			background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
+		}
+		.knowcred .title-grey span {color:#333; float:right;}
+		.knowcred #j-col-left {width:550px; float:left; margin-left: 34px;}
+		.knowcred #j-col-right {width:550px; float:right;}
+		.knowcred .ex-box {width:250px; border:1px solid #333; height:150px; float:left; margin:11px;}.ex-box h2 {font-size:24px; text-align: center;}
+		.knowcred .knowcred-icon {opacity: .45; margin:35px 0 0 125px;}
+	
+		.knowcred #knowcred-box {opacity:.45;}
+		.knowcred #kc-top { width: 1125px; margin:0 auto;}
+		.knowcred .kc-box {height:250px; width:300px; border:1px solid #333; margin:10px 35px; float:left;}
+		.knowcred .kc-box img {width: 240px; margin:15px 0 0 30px;}
+		.knowcred #add-cred {border-top:2px solid #333; border-bottom: 2px solid #333; }
+		.knowcred .add-box {height:150px; width:300px; border:1px solid #333; margin:10px 35px; float:left;}
+		.knowcred .val {border:1px solid #000;
+			-moz-box-shadow: 0 0 5px 5px #49853f;
+		-webkit-box-shadow: 0 0 5px 5px #49853f;
+		box-shadow: 0 0 5px 5px #49853f;
+		} 
+		.knowcred .add-box:hover {cursor: pointer;}
+		.knowcred .add-box p {font-size: 32px; color:#49853f; text-align:center; margin-top:35px;}
+		.knowcred .more-arrow {font-size:15em; float:right; color:#49853f;}
+		
+		.knowcred .avatar-img-1 {
+			width:125px; 
+			margin:10px 10px 0; 
+			float:left;
+		}
+		
+	</style>
+	
+	<div class="knowcred">	
+		<!-- <div>
+			<a href="#"><#%= image_tag("knowstory-icon-2-w634-h212.png", alt: 'knowstory-icon-2-w634-h212.png', class: 'logo') %#></a>
+		</div> -->
+		<div style="20px;"></div>
+
+		<div id="j-col-left">
+			<div id="coming-soon">
+				<p class="title-grey">KnowCred</p>
+				<%= image_tag('avatars/avatar-gen-person-icon.png', alt: 'avatar-gen-person-icon.png', class: 'avatar-img-1') %>
+				<p style="padding:20px 75px; font-size: 18px;">Earn your credentials, display them, and get them validated.</p>
+			</div>
+		</div>
+		
+		<% if false %>
+		<div id="j-col-left">
+			<%= image_tag('knowcred.jpg', alt: 'knowcred.jpg') %>
+		</div>
+		<div id="j-col-right">
+			<div id="coming-soon">
+				<p class="title-grey">KnowCred</p>
+				<%= image_tag('avatar-gen-person-icon.png', alt: 'avatar-gen-person-icon.png', class: 'avatar-img-1') %>
+				<p style="padding:20px 75px; font-size: 18px;">Earn your credentials, display them, and get them validated.</p>
+			</div>
+		</div>
+		<% end %>
+		
+		<div style="clear:both; height:5px; margin-bottom:35px;"></div>
+		<h1 class="j-coming-soon">KnowCred is coming soon</h1>
+		<div id="knowcred-box">
+			<div id="kc-top">
+				<div class="kc-box">
+					<%= image_tag('knowcred/kc-a.jpg', alt: 'kc-a.jpg') %>
+				</div>
+				<div class="kc-box">
+					<%= image_tag('knowcred/kc-ribbon.jpg', alt: 'kc-ribbon.jpg') %>
+				</div>
+				<div class="kc-box">
+					<%= image_tag('knowcred/kc-a.jpg', alt: 'kc-a.jpg') %>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+			<h1 style="font-size:28px; color:#49853f; margin-top:35px;">Add a Cred:</h1>
+			<div id="add-cred">
+				<div class="add-box">
+					<p>Select Institution</p>
+				</div>
+				<div class="add-box">
+					<p>Choose Badge Icon<br/> &amp; Cred Type</p>
+				</div>
+				<div class="add-box">
+					<p>Enter Details</p>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<h1 style="font-size:28px; color:#49853f; margin-top:35px;">Validated:</h1>
+			<div id="add-cred">
+				<div class="kc-box val">
+					<%= image_tag('knowcred/kc-diploma.jpg', alt: 'kc-diploma.jpg') %>
+				</div>
+				<div class="more-arrow">></div>
+				<div style="clear:both;"></div>
+			</div>
+			<h1 style="font-size:28px; color:#49853f; margin-top:35px;">My Cred:</h1>
+			<div id="add-cred">
+				<div class="kc-box">
+					<%= image_tag('knowcred/kc-ribbon.jpg', alt: 'kc-ribbon.jpg') %>
+				</div>
+				<div class="kc-box">
+					<%= image_tag('knowcred/kc-star.jpg', alt: 'kc-star.jpg') %>
+				</div>
+				<div class="more-arrow">></div>
+				<div style="clear:both;"></div>
+			</div>
+		</div>
+		<div style="clear:both; margin-bottom:50px; height:10px;"></div>
+	</div>	
+
+	<script>
+
+		$(window).load( function() {
+		//$(document).ready(function(){
+						
+		});
+	
+	</script>

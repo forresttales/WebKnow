@@ -1,2 +1,0 @@
-class PublisherProductPos4ImagesController < ApplicationController
-end

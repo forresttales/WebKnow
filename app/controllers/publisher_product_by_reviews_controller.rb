@@ -1,2 +1,0 @@
-class PublisherProductByReviewsController < ApplicationController
-end

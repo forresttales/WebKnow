@@ -1,2 +1,0 @@
-class TeksLanguagesNonEngStandardsController < ApplicationController
-end

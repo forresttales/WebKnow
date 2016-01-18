@@ -1,2 +1,0 @@
-class TeksSecondLanguageEngSpanStandardsController < ApplicationController
-end

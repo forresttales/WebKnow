@@ -1,0 +1,4344 @@
+<% provide(:title, 'Corporate Story') %>
+
+	<% if false %>
+	<script src="/assets/jqModal.js"></script>
+	<script src="/assets/jquery.easing.1.3.js"></script>
+	<link rel="stylesheet" href="/assets/jqModal.css" />
+	<script src="../jcrop/js/jquery.Jcrop.js"></script>
+	<script type="text/javascript">
+	  jQuery(function($){
+	    $('#target').Jcrop();
+	  });
+	</script>
+	<link rel="stylesheet" href="../jcrop/css/jquery.Jcrop.css" type="text/css" />
+  	<script src="/assets/jquery.qtip.min.js" type="text/javascript"></script>
+  	<link rel="stylesheet" href="/assets/jquery.qtip.min.css">
+
+
+	<script src="/assets/jquery.colorbox.js"></script>
+	<link rel="stylesheet" href="/assets/colorbox.css" />
+	
+	<!-- <link rel="stylesheet" href="../styles/digg-pagination.css" /> -->
+	<link rel="stylesheet" href="../styles/ks-profile.css" />
+	
+	<!-- <script type="text/javascript" src="../scripts/slidedeck.jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="../styles/slidedeck.skin.css" media="screen,handheld" /> -->
+
+
+	<!-- <script src="/assets/jqModal.js"></script> -->
+	<!-- <script src="/assets/jquery.easing.1.3.js"></script> -->
+	<!-- <link rel="stylesheet" href="/assets/jqModal.css" /> -->
+	<!-- <script src="/assets/jquery.validate.js"></script> -->
+	<% end %>
+
+	<style>
+		
+		.btn-follow-container-outer {
+			position: relative;
+		  	width: 100%;
+		  	height: 20px;
+		}
+		.btn-follow-container {
+			position: relative;
+		  	background: linear-gradient(#FBB040, #CA8E33);
+		  	border-radius: 2px;
+		  	width: 50px;
+		  	height: 20px;
+		}
+		.btn-follow {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 10px;
+			font-weight: 400;		
+		  	color: #eee;
+			text-align: center;	
+		  	width: 50px;
+		  	height: 20px;
+		  	padding-top: 6px;
+		  	text-decoration:none;
+		  	outline: none;
+		}
+		.btn-follow:focus {
+		}
+		.btn-follow-container:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-follow-container:active .btn-follow { 
+			color: transparent;
+			text-shadow: 1px 1px #fff;
+		}
+		
+	</style>
+
+	<style>
+		
+		.follow-stats-container-publisher {
+			height: 28px;
+			width: 60px;
+		}
+		
+	</style>
+	<!-- <style>
+		.icon-like, .icon-unlike {
+			background-image: url('/assets/like-and-unlike-buttons-w80-h58.png');
+			background-repeat: no-repeat;
+			display: inline-block;
+		}
+		.icon-like {
+		  height: 26px;
+		  width: 23px;
+		  background-position: -1px -4px;			
+		}
+		.icon-unlike {
+		  height: 26px;
+		  width: 23px;
+		  background-position: -1px -30px;			
+		}
+		.icon-like:hover, .icon-unlike:hover {
+			cursor: pointer;
+		}
+	</style> -->								
+
+	<style>
+		
+		.post-user-span-2 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #37633a;
+			font-size: 11px;
+		}
+		.post-user-span-2:hover {
+			cursor: pointer;
+			text-decoration:underline;	
+		}		
+		.post-user-span-3 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	color: #37633a;
+			font-size: 11px;
+		}
+		
+	</style>
+	
+	<style>
+		
+		.tooltip-text-1 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 12px;
+			font-weight: 400;					
+			/*color: #37633A;*/
+			color: #fff;	
+			/*background-color: #FAFF94;*/
+			background-color: rgba(0, 0, 0, 0.6);
+			/*background-color: #eee;*/
+			/*border-color: #37633A;*/
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+		}
+		.tip-content { display: none; }
+		
+	</style>
+	
+	<style>
+		
+		.jqmWindow-101 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -250px;
+		    width: 500px;
+			height: auto;		    
+		    /*background-color: rgba(0, 0, 0, 0.8);*/
+		    background-color: #fff;
+		    color: #333;
+		    padding: 0px;
+		}				
+		.table-dl-form-101 {
+			display: table;
+			vertical-align: top;
+			width: 500px;	
+		}
+
+		.jqmWindow-1001 {
+		    display: none;
+		    position: absolute;
+		    left: 50%;
+		    margin-left: -400px;
+		    width: 800px;
+			height: auto;		    
+		    /*background-color: rgba(0, 0, 0, 0.8);*/
+		    background-color: #fff;
+		    color: #333;
+		    padding: 0px;
+		}				
+		.table-dl-form-1001 {
+			display: table;
+			vertical-align: top;
+			width: 800px;	
+		}
+
+
+		.jqmWindow-104 {
+		    display: none;
+		    position: absolute;
+		    /*top:30%;*/
+			left: 50%;
+			margin-left: -200px;		    
+		    width: 400px;
+			height: 160px;		    
+		    background-color: #f6f6f6;
+		    color: #333;
+		    border: 4px solid #376340; /*rgba(55,99,64,1)*/
+		    padding: 0px;
+		}		
+		.jqmWindow-105 {
+		    display: none;
+		    position: absolute;
+		    /*top:30%;*/
+			left: 50%;
+			margin-left: -200px;		    
+		    width: 400px;
+			height: 160px;		    
+		    background-color: #f6f6f6;
+		    color: #333;
+		    border: 4px solid #376340; /*rgba(55,99,64,1)*/
+		    padding: 0px;
+		}		
+
+		/*.jqmWindow-1001 {
+		    display: none;
+		    position: absolute;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 700px;		    
+		    background-color: rgba(0, 0, 0, 0.8);
+		    color: #333;
+		    padding: 0px;
+		}*/				
+
+		
+	</style>
+	
+	<style>
+
+		.ks-tip-container {
+			position: relative;
+		}		
+		.ks-tip-target:hover + .ks-tip-1 span {
+		}
+		.ks-tip-target:hover + .ks-tip-1 {
+			display: block;
+		}
+		.ks-tip-1 {
+			position: absolute;
+			width: 60px;
+			height: 24px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;			
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			font-weight: 400;					
+			color: #fff;	
+			padding: 6px 0 0 0;
+			display: none;							
+		}
+		.ks-tip-1-indicator {
+			position: absolute;
+			top: 24px;
+			left: 4px;
+			width: 8px;
+			height: 12px;
+			background-image: url("/assets/drop-w8-h12.png");
+		}		
+		.ks-tip-34minus {
+			top: -34px;
+		}
+
+		.ks-tip-target:hover + .ks-tip span {
+		}
+		.ks-tip-target:hover + .ks-tip {
+			display: block;
+		}
+		.ks-tip {
+			position: absolute;
+			display: none;							
+		}		
+		.ks-tip-delete-post-user-comment {
+			position: absolute;
+			width: 60px;
+			height: 24px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;			
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			font-weight: 400;					
+			color: #fff;	
+			padding: 6px 0 0 0;
+			display: none;
+			top: -36px;
+			left: -20px;		
+			z-index: 1;
+		}		
+		.ks-tip-indicator-delete-post-user-comment {
+			position: absolute;
+			top: 24px;
+			left: 27px;
+			width: 8px;
+			height: 12px;
+			background-image: url("/assets/drop-w8-h12.png");
+		}		
+
+		.ks-tip-delete-post-user {
+			position: absolute;
+			width: 60px;
+			height: 24px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;			
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			font-weight: 400;					
+			color: #fff;	
+			padding: 6px 0 0 0;
+			display: none;
+			top: -36px;
+			left: -20px;		
+			z-index: 1;
+		}		
+		.ks-tip-indicator-delete-post-user {
+			position: absolute;
+			top: 24px;
+			left: 27px;
+			width: 8px;
+			height: 12px;
+			background-image: url("/assets/drop-w8-h12.png");
+		}		
+
+		/*.ks-tip-2 {
+			position: absolute;
+			width: 200px;
+			height: 100px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-color: rgba(0, 0, 0, 0.6);
+			border-radius: 3px;
+			box-shadow: 0px 2px 2px #aaa;
+			text-align: center;
+			display: none;				
+		}*/
+		.hidden {
+			display: none !important;
+			visibility: hidden !important			
+		}
+		.dialog-span-1 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 10px;
+			font-weight: 200;					
+			color: #333;		
+			height: 12px;		
+		}
+		.dialog-span-1:hover {
+			text-decoration: underline;
+		}
+		
+	</style>
+
+	<style>
+		
+		/*.add-post-user-container-active {
+			min-height: 52px;
+		}
+		.add-post-user-container-inactive {
+			min-height: 26px;
+			background: url('/assets/background-placeholder-comment-2-w206-h20.png') 3px 4px no-repeat;
+		}*/
+		.textarea-add-post-user-container {
+			border: 1px solid #49853f;
+			border-radius: 0px;			
+			min-height: 26px;
+			width: 591px;			
+			background-color: #fff;
+			padding: 4px 0px 4px 5px;
+		}
+		.textarea-add-post-user-inactive {
+			min-height: 26px;
+			background-image: url('/assets/background-placeholder-comment-2-w206-h20.png');
+			background-repeat: no-repeat;
+			background-position: 3px 4px;
+			background-color: #fff;
+		}
+		.textarea-add-post-user-active {
+			background-color: #eee;
+			min-height: 52px;
+		}
+		.textarea-add-post-user {
+			vertical-align: text-top;
+			/*overflow: hidden;*/
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 400;
+			font-size: 13px;
+			color: #1B666B;
+			line-height: 100%;
+			padding: 6px 5px 5px 5px;
+			min-height: 26px;
+			width: 579px;			
+			/*white-space: pre;*/
+		    white-space: pre-wrap;
+		    word-wrap: break-word;
+		    overflow-wrap: break-word;									
+		}
+		.textarea-add-post-user:focus:hover {
+			outline: none;
+		}
+		.textarea-add-post-user:focus {
+			outline: none;
+		}						
+		.textarea-add-post-user:hover {
+			outline: none;
+		}		
+		.render-add-post-user-image {
+			
+		}
+		.textarea-add-post-user-show-text {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 600;
+			font-size: 13px;
+			color: #888;
+		}
+		
+		.resize-none {
+			resize: none;
+		}
+				
+		.submit-edit-story-4-text {
+			margin: 0;
+		}				
+		.submit-edit-story-4-text-2 {
+			margin: 9px 0 0 0;
+		}				
+		.submit-edit-story-4-loader {
+			width: 32px;
+			height: 32px;
+			background-image: url('/assets/loader_ajax_w32_h32_7.gif');
+			background-repeat: no-repeat;
+			display: inline-block;
+			/*margin: 5px 0 0 0;*/
+			margin: 5px 0 0 0;
+		}						
+		.post-user-delete {
+			width: 20px;
+			height: 20px;
+			background-image: url('/assets/button_delete_w20_h20.png');
+			background-repeat: no-repeat;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+		.post-user-delete:hover {
+			cursor: pointer;
+		}
+		.post-user-delete-blank {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+		.post-user-comment-delete-blank {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+
+		.post-user-comment-delete-container {
+			width: 20px;
+			height: 20px;
+			margin: 2px 2px 0 0;			
+		}
+		.post-user-comment-delete {
+			width: 20px;
+			height: 20px;
+			background-image: url('/assets/button_delete_w20_h20.png');
+			background-repeat: no-repeat;
+			display: inline-block;
+		}
+		.post-user-comment-delete:hover {
+			cursor: pointer;
+		}
+		.post-user-comment-delete-blank {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+
+		.story-4-attach {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 400;
+			font-size: 13px;
+			color: #888;
+		}
+		.story-4-attach:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		
+	</style>
+
+	<style>
+
+		.add-comment-container-active {
+			min-height: 52px;
+		}
+		.add-comment-container-inactive {
+			min-height: 26px;
+			background: url('/assets/background-placeholder-comment-1-w98-h18.png') 3px 4px no-repeat;
+			/*background-repeat: no-repeat;*/
+		}
+		.add-comment-container {
+			border-radius: 0px;			
+			/*min-height: 26px;*/
+			width: 100%;			
+		}		
+		.add-comment-container:focus {
+			outline: 0;
+		}		
+		.add-comment-container:hover {
+			outline: 0;
+		}		
+		.add-comment-container:focus:hover {
+			outline: 0;
+		}		
+		.add-comment-container:active {
+			outline: 0;
+		}				
+		.textarea-add-comment-container {
+			border: 1px solid #49853f; 
+			border-radius: 0px;			
+			width: 542px;			
+		}
+		.textarea-add-comment {
+			background-color: #fff;
+			color: #1B666B;						
+			/*resize: none;*/
+			vertical-align: text-top;
+			/*overflow: hidden;*/
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 400;
+			font-size: 13px;
+			line-height: 100%;
+			padding: 6px 5px 5px 5px;
+			min-height: 26px;
+			width: 540px;			
+			/*white-space: pre;*/
+		    white-space: pre-wrap;
+		    word-wrap: break-word;
+		    overflow-wrap: break-word;									
+		}
+		.textarea-add-comment:focus:hover {
+			outline: none;
+		}
+		.textarea-add-comment:focus {
+			outline: none;
+		}						
+		.textarea-add-comment:hover {
+			outline: none;
+		}		
+
+		.btn-add-comment-story-4 {
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 12px;		
+			text-align: center;	
+			padding: 4px 0 0 0;
+		  	color: #fff;
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 50px;
+		  	height: 20px;
+		  	/*background: linear-gradient(#F0A546, #D98D2D);*/
+		  	/*background: linear-gradient(#F0A546, #BD7A26);*/
+		  	/*background: linear-gradient(#1F7C82, #1C7278);*/
+		  	background: linear-gradient(#fbb040, #ca8e33) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		  	border-radius: 3px;
+		}
+		.btn-add-comment-story-4:focus {
+			/*-webkit-box-shadow: 0 0 2px 2px #FAC582;
+			   -moz-box-shadow: 0 0 2px 2px #FAC582;
+			        box-shadow: 0 0 2px 2px #FAC582;*/
+		  	background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		  	outline:none;
+		}
+		.btn-add-comment-story-4:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-add-comment-story-4:active { 
+		  	/*box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	color: #fff;
+			background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);*/  	
+		  	outline:none;
+		}
+
+		/*.btn-story-4-attach-text {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 600;
+			font-size: 18px;
+			color: #fff;			
+		}*/
+		.btn-add-comment-story-4-loader {
+			width: 16px;
+			height: 11px;
+			background-image: url('/assets/loader_ajax_w16_h11_blue.gif');
+			background-repeat: no-repeat;
+			display: inline-block;
+			margin: 5px 0 0 5px;
+		}	
+		.add-comment-text-1 span {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 400;
+			font-size: 13px;
+			color: #1B666B;
+			line-height: 100%;
+		}
+
+		.add-comment-border-top {
+		    background: linear-gradient(to bottom, #49853f 0%, #ffffff 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		    /*border-bottom: 1px solid #eee;*/
+		    height: 8px;
+		    margin-left: 0;
+		    padding-left: 0;
+		    padding-top: 0;
+		    position: relative;
+		    width: 100%;
+		}
+		
+		.textarea-add-comment-parent {
+			width: 100%; 
+			background-color: #eee; 
+			padding: 0 4px 0 4px;	
+		}	
+			
+	</style>	
+
+	<style>
+		
+		/*.add-publisher-plot-container-active {
+			min-height: 52px;
+		}
+		.add-publisher-plot-container-inactive {
+			min-height: 26px;
+			background: url('/assets/background-placeholder-comment-2-w206-h20.png') 3px 4px no-repeat;
+		}*/
+		.textarea-render-1 {
+			position: relative;
+			width: 100%;
+			/*min-height: 26px;*/
+			margin: 0;
+			padding: 0 10px 0 0;
+		}
+		.textarea-render-2 {
+		  	font-family: Arial, Helvetica, sans-serif;
+		  	font-weight: 400;
+		  	/*color: #666;*/
+		  	color: #333;
+			font-size: 13px;
+			width: 579px;
+		    white-space: pre-wrap;
+		    word-wrap: break-word;
+		    overflow-wrap: break-word;		
+		    border: 1px solid transparent;
+			padding: 6px 5px 5px 5px;	    
+		}				
+		.textarea-publisher-plot-container {
+			border: 1px solid #49853f;
+			border-radius: 0px;			
+			min-height: 38px;
+			width: 660px;			
+			background-color: #fff;
+			padding: 5px 0px 4px 5px;
+			margin: 2px 0 0 20px;
+		}
+		.textarea-publisher-plot-container-edit {
+			border: 1px solid #fbb040; 
+			border-radius: 0px;			
+			min-height: 38px;
+			width: 660px;			
+			background-color: #fff;
+			padding: 5px 0px 4px 5px;
+			margin: 2px 0 0 20px;
+		}
+		.textarea-publisher-plot-empty {
+			/*min-height: 26px;*/
+			background-image: url('/assets/background-placeholder-user-plot-1-w115-h18.png');
+			background-repeat: no-repeat;
+			background-position: 3px 5px;
+			/*background-color: #fff;*/
+		}
+		.textarea-publisher-plot-edit {
+			background-color: #eee;
+			/*min-height: 38px;*/
+		}
+		.textarea-publisher-plot-show {
+			background-color: #fff;
+			/*min-height: 38px;*/
+		}		
+		/*.textarea-publisher-plot-inactive {
+			min-height: 26px;
+			background-image: url('/assets/background-placeholder-publisher-plot-1-w115-h18.png');
+			background-repeat: no-repeat;
+			background-position: 3px 5px;
+			background-color: #fff;
+		}
+		.textarea-publisher-plot-active {
+			background-color: #eee;
+			min-height: 38px;
+		}*/
+		.textarea-publisher-plot {
+			vertical-align: text-top;
+			/*overflow: hidden;*/
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 400;
+			font-size: 13px;
+			color: #1B666B;
+			line-height: 100%;
+			padding: 7px 5px 5px 5px;
+			min-height: 26px;
+			width: 648px;			
+			/*white-space: pre;*/
+		    white-space: pre-wrap;
+		    word-wrap: break-word;
+		    overflow-wrap: break-word;									
+		}
+		.textarea-publisher-plot:focus:hover {
+			outline: none;
+		}
+		.textarea-publisher-plot:focus {
+			outline: none;
+		}						
+		.textarea-publisher-plot:hover {
+			outline: none;
+		}		
+		.render-publisher-plot-image {
+			
+		}
+		.textarea-publisher-plot-show-text {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 600;
+			font-size: 13px;
+			color: #888;
+		}
+		
+		.resize-none {
+			resize: none;
+		}
+				
+		.submit-edit-story-2-text {
+			margin: 0;
+		}				
+		.submit-edit-story-2-text-2 {
+			margin: 9px 0 0 0;
+		}				
+		.submit-edit-story-2-loader {
+			width: 32px;
+			height: 32px;
+			background-image: url('/assets/loader_ajax_w32_h32_7.gif');
+			background-repeat: no-repeat;
+			display: inline-block;
+			/*margin: 5px 0 0 0;*/
+			margin: 5px 0 0 0;
+		}	
+		.publisher-plot-delete {
+			width: 20px;
+			height: 20px;
+			background-image: url('/assets/button_delete_w20_h20.png');
+			background-repeat: no-repeat;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+		.publisher-plot-delete:hover {
+			cursor: pointer;
+		}
+		.publisher-plot-delete-blank {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+		.publisher-plot-comment-delete-blank {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+
+		.publisher-plot-comment-delete-container {
+			width: 20px;
+			height: 20px;
+			margin: 2px 2px 0 0;			
+		}
+		.publisher-plot-comment-delete {
+			width: 20px;
+			height: 20px;
+			background-image: url('/assets/button_delete_w20_h20.png');
+			background-repeat: no-repeat;
+			display: inline-block;
+		}
+		.publisher-plot-comment-delete:hover {
+			cursor: pointer;
+		}
+		.publisher-plot-comment-delete-blank {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			margin: 2px 2px 0 0;			
+		}
+
+		.story-2-attach {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 400;
+			font-size: 13px;
+			color: #888;
+		}
+		.story-2-attach:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		.btn-submit-story-2 {
+			position: relative;
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: 20px;		
+			text-align: center;	
+		  	color: #fff;
+		  	display: inline-block;
+		  	text-decoration: none; 
+		  	width: 100px;
+		  	height: 40px;
+		  	/*background: linear-gradient(#F0A546, #D98D2D);*/
+		  	/*background: linear-gradient(#F0A546, #BD7A26);*/
+		  	/*background: linear-gradient(#1F7C82, #1C7278);*/
+		  	background: linear-gradient(#fbb040, #ca8e33) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		  	border-radius: 3px;
+		}
+		.btn-submit-story-2:focus {
+			/*-webkit-box-shadow: 0 0 2px 2px #FAC582;
+			   -moz-box-shadow: 0 0 2px 2px #FAC582;
+			        box-shadow: 0 0 2px 2px #FAC582;*/
+		  	background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		  	outline:none;
+		}
+		.btn-submit-story-2:hover { 
+		  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1),
+		  inset 0 1.5em 1em rgba(255,255,255,0.2);
+		  cursor: pointer;
+		}
+		.btn-submit-story-2:active { 
+		  	/*box-shadow: inset 0 1px 1px rgba(255,255,255,0.0), 
+		  	inset 0 1.5em 1em rgba(0,0,0,0.0);
+		 	color: #fff;
+			background: linear-gradient(#ca8e33, #fbb040) repeat scroll 0 0 rgba(0, 0, 0, 0);*/  	
+		  	outline:none;
+		}
+		
+	</style>
+
+
+			<div class="jqmWindow jqmWindow-1001" id="dialog_1001">
+		   		<div class="table-dl-form-1001">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form1001" class="form-edit-close jqmClose tip-left-center" tabindex="">
+		   						<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
+		   					</div>
+			                <div class="tip-content">
+			                    <div class="tooltiptext">Close</div>
+			                </div>																															   					
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div style="width: 100%; text-align: center;">
+					<div style="height: 20px;"></div>
+					<div id="dialog_1001_content_container" class="">
+						<figure id="profile_figure_dialog_1001" class="dialog-user-image">
+							<img alt="" src="" />
+						</figure>
+					</div>
+					<div style="height: 50px;"></div>
+				</div>
+			</div>
+
+			<div class="jqmWindow jqmWindow-101" id="dialog_101">
+		   		<div class="table-dl-form-101">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form101" class="form-edit-close jqmClose tip-left-center" tabindex="">
+		   						<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
+		   					</div>
+			                <div class="tip-content">
+			                    <div class="tooltiptext">Close</div>
+			                </div>																															   					
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<div style="width: 100%; text-align: center;">
+					<div style="height: 20px;"></div>
+					<div id="dialog_101_content_container" class="">
+						<!-- <figure id="profile_figure_dialog_101" class="dialog-user-image">
+							<img alt="" src="" />
+						</figure> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="jqmWindow jqmWindow-104" id="dialog_104">
+				<div class="dialog-topbar-1" style="margin-top:0px;">
+					<div style="height: 63px; width: 60px; float: left; position: absolute;">
+						<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+					</div>
+					<!-- text goes here -->
+   					<div id="close_form104" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+   						<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+   					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					   					
+   					<div style="clear: both;"></div>
+				</div>
+				<!-- <div style="height: 20px;"></div> -->
+				<div class="background-table-dialog-1">
+			   		<div class="table-dialog-1">
+						<div class="dialog-msg-container">
+							<span>Delete this post?</span>
+						</div>
+	   				</div>
+   				</div>
+   				<div style="height: 16px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+		   				<div class="cell-100percent" style="text-align: center;">
+							<span><input id="btn_dlg_submit_delete_post" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<span><input id="btn_dlg_cancel_delete_post" class="btn-pop-dialog" type="button" value="Cancel" tabindex=""></span>
+		   				</div>
+   					</div>
+				</div>														   				
+				<div style="height: 20px;"></div>
+			</div>
+
+			<div class="jqmWindow jqmWindow-105" id="dialog_105">
+				<div class="dialog-topbar-1" style="margin-top:0px;">
+					<div style="height: 63px; width: 60px; float: left; position: absolute;">
+						<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+					</div>
+					<!-- text goes here -->
+   					<div id="close_form105" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+   						<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+   					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					   					
+   					<div style="clear: both;"></div>
+				</div>
+				<!-- <div style="height: 20px;"></div> -->
+				<div class="background-table-dialog-1">
+			   		<div class="table-dialog-1">
+						<div class="dialog-msg-container">
+							<span>Delete this comment?</span>
+						</div>
+	   				</div>
+   				</div>
+   				<div style="height: 16px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+		   				<div class="cell-100percent" style="text-align: center;">
+							<span><input id="btn_dlg_submit_delete_comment" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<span><input id="btn_dlg_cancel_delete_comment" class="btn-pop-dialog" type="button" value="Cancel" tabindex=""></span>
+		   				</div>
+   					</div>
+				</div>														   				
+				<div style="height: 20px;"></div>
+			</div>
+
+			<!-- logo image - show 11 -->			
+			<div class="jqmWindow jqmWindow-11" id="dialog_11">
+		   		<div class="table-dl-form-1">
+		   			<div class="row">
+		   				<div class="cell-100percent">
+		   					<div id="close_form11" class="form-edit-close jqmClose tip-left-center" tabindex="">
+		   						<img src="/assets/images/global/x_close_white_w20_h20.png" alt="X" height="20px">
+		   					</div>
+			                <div class="tip-content">
+			                    <div class="tooltiptext">Close</div>
+			                </div>																															   					
+		   					<div style="clear: both;"></div>
+		   				</div>
+   					</div>
+				</div>				   				
+				<!-- <div class="pad-left-20"> -->
+				<div style="width: 100%; text-align: center;">
+					<div style="height: 20px;"></div>
+					<!-- <div class="profile-grid profile-cs-style-3"> -->
+					<!-- <div class="container-figure container-figure-1"> -->
+					<div class="">
+						<figure id="profile_figure_dialog_11" class="dialog-user-image">
+							<img alt="" src="" />
+							<!-- <figcaption class="figcaption-2">
+								<div class="tip-top-center"></div>
+				                <div class="tip-content">
+				                    <div class="tooltiptext">Delete</div>
+				                </div>																								
+							</figcaption> -->
+						</figure>
+					</div>
+				</div>
+			</div>
+
+
+	
+			<!-- 
+			jqmWindow-12
+			dialog-topbar-1
+			form-edit-close
+			tip-left-center
+			tip-content
+			background-table-dialog-1
+			table-dialog-1
+			dialog-msg-container
+			btn-pop-dialog
+			dvLoading-12
+			dvLoading-display-none 
+			-->	
+
+			<!-- logo image - upload 12 -->
+			<div class="jqmWindow jqmWindow-12" id="dialog_12">
+				<div class="dialog-topbar-1" style="margin-top:0px;">
+					<div style="height: 63px; width: 60px; float: left; position: absolute;">
+						<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+					</div>
+					<!-- text goes here -->
+   					<div id="close_form12" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+   						<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+   					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					
+   					<div style="clear: both;"></div>
+				</div>
+				<!-- <div style="height: 20px;"></div> -->
+				<div class="background-table-dialog-1">
+			   		<div class="table-dialog-1">
+			   			<div class="row">
+			   				<div class="cell-100percent dialog-msg-container">
+								<span>Upload Photo</span>
+							</div>
+						</div>
+	   				</div>
+   				</div>
+   				<div style="height: 12px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+		   				<div class="cell-100percent dialog-msg-container">
+							<span><input id="btn_dlg_submit_upload_logo_image_primary" class="btn-pop-dialog" type="button" value="Upload" tabindex=""></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<span><input id="btn_dlg_cancel_upload_logo_image_primary" class="btn-pop-dialog" type="button" value="Cancel" tabindex=""></span>
+		   				</div>
+   					</div>
+				</div>														   				
+				<!-- D1yHRJtLZof/HKsEdJSSSVpPC6mAzZfe9CqwtTjzGvs -->
+				<!-- 
+				<form id="new_publisher_user_image" class="new_publisher_user_image" method="post" enctype="multipart/form-data" data-remote="true" action="/publisher_users/upload_publisher_user_image_primary" accept-charset="UTF-8">
+					<div style="margin:0;padding:0;display:inline">
+						<input type="hidden" value="✓" name="utf8">
+						<input type="hidden" value="D1yHRJtLZof/HKsEdJSSSVpPC6mAzZfe9CqwtTjzGvs=" name="authenticity_token">
+					</div>
+					<p>
+						<input id="publisher_user_image_image" type="file" name="publisher_user_image[image]">
+					</p>
+					<p>
+						<input class="btn-submit" type="submit" value="Upload Photo" name="commit">
+					</p>
+				</form> 
+				-->					
+				<div style="height: 4px"></div>
+		   		<div class="table-dialog-1">
+		   			<div class="row">
+		   				<div class="cell-100percent" style="text-align: center; background-color: #f6f6f6;">
+							<div id="dvLoading_12" class="dvLoading-12 dvLoading-display-none"></div>
+						</div>
+					</div>
+				</div>
+				
+				<%= form_for PublisherLogoImage.new, :url => upload_publisher_logo_image_primary_publishers_path(@publisher_logo_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_publisher_logo_image'}, :remote => true do |f| %>
+				  <p><%= f.file_field :image, :id => 'new_publisher_logo_image_image' %></p>
+				  <!-- <#%= f.hidden_field 'publisher_id', :value => @publisher_id %#>
+				  <#%= f.hidden_field 'primary', :value => true %#> -->
+				  <p><%= f.submit :id => 'btn_submit_dialog_12', :class => 'btn-submit hidden', :value => 'Upload Photo' %></p>
+				<% end %>
+				
+			</div>
+
+
+			<!-- logo image - change 13 -->
+			<div class="jqmWindow jqmWindow-13" id="dialog_13">
+				<div class="dialog-topbar-1" style="margin-top:0px;">
+					<div style="height: 63px; width: 60px; float: left; position: absolute;">
+						<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+					</div>
+					<!-- text goes here -->
+   					<div id="close_form13" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+   						<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+   					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					
+   					<div style="clear: both;"></div>
+				</div>
+				<!-- <div style="height: 20px;"></div> -->
+				<div class="background-table-dialog-1">
+			   		<div class="table-dialog-1">
+			   			<div class="row">
+			   				<div class="cell-100percent dialog-msg-container">
+								<span>Change Photo</span>
+							</div>
+						</div>
+	   				</div>
+   				</div>
+   				<div style="height: 12px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+		   				<div class="cell-100percent dialog-msg-container">
+							<span><input id="btn_dlg_submit_upload_logo_image_primary_change" class="btn-pop-dialog" type="button" value="Upload" tabindex=""></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<span><input id="btn_dlg_cancel_upload_logo_image_primary_change" class="btn-pop-dialog" type="button" value="Cancel" tabindex=""></span>
+		   				</div>
+   					</div>
+				</div>														   				
+				<div style="height: 4px"></div>
+		   		<div class="table-dialog-1">
+		   			<div class="row">
+		   				<div class="cell-100percent" style="text-align: center; background-color: #f6f6f6;">
+							<div id="dvLoading_13" class="dvLoading-13 dvLoading-display-none"></div>
+						</div>
+					</div>
+				</div>
+				
+				<%= form_for PublisherLogoImage.new, :url => upload_publisher_logo_image_primary_change_publishers_path(@publisher_logo_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'change_publisher_logo_image'}, :remote => true do |f| %>
+				  <p><%= f.file_field :image, :id => 'change_publisher_logo_image_image' %></p>
+				  <!-- <#%= f.hidden_field 'publisher_id', :value => @publisher_id %#>
+				  <#%= f.hidden_field 'primary', :value => true %#> -->
+				  <p><%= f.submit :id => 'btn_submit_dialog_13', :class => 'btn-submit hidden', :value => 'Upload Photo' %></p>
+				<% end %>
+				
+			</div>
+
+
+
+			<!-- logo image - delete 14 -->
+			<div class="jqmWindow jqmWindow-14" id="dialog_14">
+				<div class="dialog-topbar-1" style="margin-top:0px;">
+					<div style="height: 63px; width: 60px; float: left; position: absolute;">
+						<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+					</div>
+					<!-- text goes here -->
+   					<div id="close_form14" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+   						<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+   					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					   					
+   					<div style="clear: both;"></div>
+				</div>
+				<!-- <div style="height: 20px;"></div> -->
+				<div class="background-table-dialog-1">
+			   		<div class="table-dialog-1">
+						<div class="dialog-msg-container">
+							<span>Delete this photo?</span>
+						</div>
+	   				</div>
+   				</div>
+   				<div style="height: 16px;"></div>
+   				<div class="table-dialog-1">
+		   			<div class="row">
+		   				<div class="cell-100percent" style="text-align: center;">
+							<span><input id="btn_dlg_submit_delete_logo_image_primary" class="btn-pop-dialog" type="button" value="Delete" tabindex=""></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<span><input id="btn_dlg_cancel_delete_logo_image_primary" class="btn-pop-dialog" type="button" value="Cancel" tabindex=""></span>
+		   				</div>
+   					</div>
+				</div>														   				
+				<div style="height: 20px;"></div>
+			</div>
+
+
+			<!-- logo image - crop 15 -->
+			<div class="jqmWindow jqmWindow-15" id="dialog_15">
+				<div class="dialog-topbar-1" style="margin-top:0px;">
+					<div style="height: 63px; width: 60px; float: left; position: absolute;">
+						<img src="../assets_knowstory/knowstory-icon-2-w60-h63.png">
+					</div>
+					<div class="topbar-title">Photo Crop and Center</div>
+   					<div id="close_form15" class="form-edit-close jqmClose tip-left-center" style="height: 20px; width: 20px; float: right;">
+   						<img src="/assets/images/global/x_close_w20_h20.png" alt="X" height="20px">
+   					</div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Close</div>
+	                </div>																															   					   					
+   					<div style="clear: both;"></div>
+				</div>
+				<!-- <div style="height: 20px;"></div> -->
+				<div class="background-table-dialog-3" style="padding: 10px 0 0 0;">
+			   		<div class="table-dialog-1">
+						<div class="dialog-msg-container">
+							<span>600 X 600 pixels available for maximum size. Below, you may crop and center smaller sizes.</span>
+						</div>
+	   				</div>
+   				</div>
+   				<div style="height: 10px;"></div>
+				<div style="width: 100%; padding: 0 0 0 10px;">
+					<div id="render_publisher_logo_image_primary_crop">
+						<%= render 'publishers/publisher_logo_image_primary_crop' %>
+					</div>
+				</div>
+			</div>
+
+<style>
+	
+	.title-container {
+		min-height: 100px;
+		border: 2px solid #999;
+		/*opacity: .45;*/
+	}
+	.title-bar {
+		/*padding: 5px 5px 5px 5px;*/
+		padding: 3px;
+		/*border-bottom: 1px solid #ccc;*/
+		background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
+		background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
+	}
+	.title-grey span {
+		color: #333;
+		float: right;
+	}
+	.title-bar-text-1 {
+	    color: #376340;
+	    font-family: Arial,Helvetica,sans-serif;
+	    font-size: 16px;
+	    font-weight: 700;
+	}
+	.title-grey {
+		padding: 5px;
+		border-bottom: 1px solid #ccc;
+		background: -moz-linear-gradient(top,  #CCC 35%, #ffffff 95%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(35%,#CCC), color-stop(95%,#ffffff));
+		background: -webkit-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -o-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
+		background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
+	}
+	.coming-soon {
+		margin-top: 25px;
+		min-height: 150px;
+		border: 2px solid #999;
+		opacity: .45;
+	}
+	
+</style>
+			
+			
+
+<div class="publishers-index">
+
+	<div style="height: 10px;"></div>
+	
+	<div class="title-container">
+		<div class="title-bar" style="position: relative;">
+			<!-- <p>My Info</p> -->
+			<div style="float: left; width: 100px;">
+				<span class="title-bar-text-1">Our Story</span>
+			</div>		
+			<div style="float: right; width: 200px;">
+				<div class="btn-opt-edit-container-outer">
+					<div class="btn-opt-edit-container">
+						<div id="open_edit_story_1" class="btn-opt-edit" tabindex="">
+							Edit
+						</div>
+						<div id="close_edit_story_1" class="btn-opt-edit hidden" tabindex="">
+							Cancel
+						</div>
+					</div>
+				</div>
+			</div>		
+			<div style="clear: both;"></div>
+		</div>
+
+		<div class="table margin-0" style="height: 225px;">
+			<div class="row" style="height: 225px;">
+				<div class="cell-edit-1" style="height: 225px; padding: 0 0 0 1px;">
+					<div class="drop">
+						<div id="render_publisher_logo_image_primary">
+							<!-- <#%= render 'publisher_users/publisher_user_image_primary' %#> -->
+							<%= render 'publishers/publisher_logo_image_primary' %>
+						</div>
+					</div>
+					<div class="follow-stats-container" style="margin: 0 0 0 10px;">
+						<%= render 'publishers/stats' %>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="table" style="height: 440px; margin: 0;">
+			<div class="row">
+				<div class="cell-475">
+					<div class="table pad-marg-null">
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Company:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_name_company" name="publisher[name_company]" tabindex="12" type="text" value="<%= @publisher.name_company %>" placeholder="Company Name" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_name_company" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Address 1:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_address1" name="publisher[address1]" tabindex="12" type="text" value="<%= @publisher.address1 %>" placeholder="Address 1" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_address1" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>													
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Address 2:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_address2" name="publisher[address2]" tabindex="12" type="text" value="<%= @publisher.address2 %>" placeholder="Address 2" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_address2" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>													
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">City:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_city" name="publisher[city]" tabindex="12" type="text" value="<%= @publisher.city %>" placeholder="City" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_city" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">State:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_state" name="publisher[state]" tabindex="12" type="text" value="<%= @publisher.state %>" placeholder="State" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_state" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Country:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_country" name="publisher[country]" tabindex="12" type="text" value="<%= @publisher.country %>" placeholder="Country" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_country" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Zip:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_zip" name="publisher[zip]" tabindex="12" type="text" value="<%= @publisher.zip %>" placeholder="Zip" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_zip" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Company Phone:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_phone_company" name="publisher[phone_company]" tabindex="12" type="text" value="<%= @publisher.phone_company %>" placeholder="555-555-5555" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_phone_company" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Website:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_website" name="publisher[phone_website]" tabindex="12" type="text" value="<%= @publisher.website %>" placeholder="OurCompany@here.com" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_website" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Info Email:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_email_info" name="publisher[email_info]" tabindex="12" type="text" value="<%= @publisher.email_info %>" placeholder="info@here.com" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_email_info" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Admin Email:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_email_admin" name="publisher[email_admin]" tabindex="12" type="text" value="<%= @publisher.email_admin %>" placeholder="admin@here.com" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_email_admin" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-475">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-195 text-align-left pad-left-20">
+											<span class="profile-label-1">Admin Name:</span>
+										</div>
+										<div class="cell-280 edit-story-1 hidden">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative">
+														<div class="position-absolute top-minus-7 right-0">
+															<input class="input-profile-1 input-profile-color-1 width-280 height-24" id="publisher_name_admin" name="publisher[name_admin]" tabindex="12" type="text" value="<%= @publisher.name_admin %>" placeholder="Admin Name" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell-280 show-story-1">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-280 position-relative text-align-left">
+														<div class="position-absolute top-minus-3">
+															<span id="span_name_admin" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+				
+				<% if false %>							
+				<div class="cell-225" id="container_logo_image">
+					<div id="drop_container_logo_image" class="drop">
+						<div id="render_publisher_logo_image_primary" class="padding-0">
+								<%= render 'publishers/publisher_logo_image_primary' %>
+				        </div>
+					</div>
+					<div class="float-clear"></div>
+					
+					<div class="table pad-marg-null">
+						<div class="row pad-marg-null">
+							<div class="cell-225 edit-story-1 hidden">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-225 position-relative">
+											<!-- <div class="position-absolute top-minus-7 right-0"> -->
+											<!-- <div class="position-absolute" style="top: -7; right: 0;"> -->
+											<div style="margin: 0 0 0 17px;">
+												<input class="input-profile-1 input-profile-color-1 height-24" id="publisher_tagline_logo" style="width: 207px;" name="publisher[tagline_logo]" tabindex="12" type="text" value="<%= @publisher.tagline_logo %>" placeholder="Tagline" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cell-225 show-story-1">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-225 position-relative text-align-left">
+											<!-- <div class="position-absolute top-minus-3"> -->
+											<div style="margin: 2px 0 0 22px;">
+												<span id="span_tagline_logo" class="profile-text-1"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div style="height: 2px;"></div>
+					<div class="follow-stats-container-publisher float-right">
+						<%= render 'publishers/stats' %>
+					</div>
+					<div class="float-clear"></div>																
+				</div>
+				<% end %>
+				
+				
+				
+			</div>
+		</div>
+		
+		<div style="height: 10px;"></div>
+
+		<div style="width: 700px; height: 60px; text-align: center;">
+			<div class="table">
+				<div class="row">
+					<div id="btns_edit_story_1" class="cell-700 visibility-hidden">
+						<div style="display: inline-block;">
+							<div id="cancel_edit_story_1" class="btn-submit-story-1" tabindex="51">Cancel</div>
+						</div>
+						<div style="display: inline-block;">
+							<div id="submit_edit_story_1" class="btn-submit-story-1" tabindex="52">Save</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div style="height: 20px;"></div>					
+		<div  class="pad-left-20">
+			<span class="label-dialog"><a href="<%= @url_corporate_story_public %>">&laquo; View the public page &raquo;</a></span>
+		</div> -->
+		
+		<!-- <div style="height: 30px;"></div> -->
+
+		<!-- <div class="title-bar-profile-1 title-bar-profile-1-top-border">
+			<div class="tbl-title-bar-profile">
+				<div class="row-title-bar-profile">
+					<div class="cell-title-bar-profile-left-long padding-left-8">
+						<div class="position-relative">
+							<div class="position-absolute top-minus-24">												
+								<span>About Us</span>
+							</div>
+						</div>		
+					</div>
+					<div class="cell-title-bar-profile-right">
+						<div class="btn-opt-edit-container-outer">
+							<div class="btn-opt-edit-container">
+								<div id="open_edit_story_2" class="btn-opt-edit" tabindex="">
+									Edit
+								</div>
+								<div id="close_edit_story_2" class="btn-opt-edit hidden" tabindex="">
+									Cancel
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+					
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+</div>
+
+<% if false %>
+
+		<div class="table-profile" style="height: 100%;">
+			<div class="row-profile">
+				<div style="display: table-cell; width: 200px; vertical-align: top; margin: 0; padding: 0; height: 100%;">
+					<%= render 'share/dir_publishers_left' %>
+				</div>
+				<div class="profile-mid-col-700">
+
+					<div class="title-bar-profile-1 title">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<div class="position-relative">
+										<div class="position-absolute top-minus-24">												
+											<span>Our Story</span>
+										</div>
+									</div>		
+								</div>
+								<div class="cell-title-bar-profile-center">
+									<span></span>
+								</div>
+								<div class="cell-title-bar-profile-right">
+									<div class="btn-opt-edit-container-outer">
+										<div class="btn-opt-edit-container">
+											<div id="open_edit_story_1" class="btn-opt-edit" tabindex="">
+												Edit
+											</div>
+											<div id="close_edit_story_1" class="btn-opt-edit hidden" tabindex="">
+												Cancel
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+
+					<div class="table margin-0">
+						<div class="row">
+							<div class="cell-100percent">
+								<div style="height: 10px;"></div>
+								<div class="edit-story-2 hidden">
+									
+									<%= form_for PublisherPlot.new, :url => update_publisher_plot_publishers_path(@publisher_plot_new), :html => {:multipart => true, :class => '', :id => 'new_publisher_plot'}, :remote => true do |f| %>
+										<%= f.hidden_field :plot_text %>
+									  	<%= f.submit :id => 'submit_story_2_hidden', :class => 'btn-submit hidden', :value => '' %>
+									<% end %>
+									
+									<!-- <div id="render_story_2_edit"><#%= render 'publishers/story_2_edit' %#></div> -->
+									<div id="textarea_publisher_plot_containter_edit" class="textarea-publisher-plot-container-edit toggle-publisher-plot" tabindex="">
+										<div id="render_publisher_plot_image_edit" class="render-publisher-plot-image"></div>
+										<div id="textarea_publisher_plot_edit" class="textarea-publisher-plot textarea-publisher-plot-edit toggle-publisher-plot" contenteditable="true" tabindex=""></div>
+									</div>									
+									
+									<div class="btn-textarea-publisher-plot-story-2-container hidden" style="width: 660px; margin: 0 0 0 20px;">
+										<div style="height: 10px;"></div>
+										<div id="drop_container_story_2_attach" class="drop float-left width-200">
+											<% if false %>
+											<%= render 'publishers/publisher_plot_attach_menu' %>
+											<%= form_for PublisherPlotImage.new, :url => upload_publisher_plot_image_publishers_path(@publisher_plot_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_publisher_plot_image'}, :remote => true do |f| %>
+											  <p><%= f.file_field :image, :id => 'new_publisher_plot_image_image' %></p>
+											  <p><%= f.submit :id => 'btn_submit_publisher_plot_image', :class => 'btn-submit hidden', :value => '' %></p>
+											<% end %>
+											<% end %>
+										</div>
+										<div id="submit_story_2" class="btn-submit-story-2 float-right toggle-publisher-plot" tabindex="">
+											<div id="submit_story_2_text" class="submit-edit-story-2-text-2">Save</div>
+											<div id="submit_story_2_loader" class="submit-edit-story-2-loader hidden"></div>
+										</div>
+										<div class="float-right" style="display: inline-block; width: 6px; height: 1px"></div>
+										<div id="cancel_story_2" class="btn-submit-story-1 float-right toggle-publisher-plot" tabindex="">
+											<div id="cancel_story_2_text" class="submit-edit-story-2-text">Cancel</div>
+											<div id="cancel_story_2_loader" class="submit-edit-story-2-loader hidden"></div>
+										</div>
+									</div>
+									
+									<!-- <div style="height: 10px;"></div> -->
+									
+									<!-- <div class="text-align-center" style="width: 700px; height: 60px;">
+										<div class="table">
+											<div class="row">
+												<div id="btns_edit_story_2" class="cell-700">
+													<div style="display: inline-block;">
+														<div id="cancel_edit_story_2" class="btn-submit-story-1" tabindex="">Cancel</div>
+													</div>
+													<div style="display: inline-block;">
+														<div id="submit_edit_story_2" class="btn-submit-story-1" tabindex="">Save</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> -->
+								</div>
+								<div class="show-story-2">
+									<!-- <div class="text-align-left"> -->
+										<!-- <div class="textarea-publisher-plot-container">
+												<#%= render 'publishers/story_2_edit' %#>
+										</div> -->
+										<div class="textarea-publisher-plot-container">
+											<div id="render_publisher_plot_image" class="render-publisher-plot-image"></div>
+											<div id="textarea_publisher_plot" class="textarea-publisher-plot textarea-publisher-plot-show" tabindex=""></div>												
+										</div>
+											<!-- <#%= render 'publishers/story_2'%#> -->
+										<!-- </div> -->
+									<!-- </div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+					<% if false %>
+					<div class="table margin-0">
+						<div class="row">
+							<div class="cell-100percent">
+								<div style="height: 10px;"></div>
+								<div class="edit-story-2 height-250 hidden">
+									<!-- <textarea class="textarea-edit width-660 height-300" tabindex="" type="text" value="" placeholder="Corporate Story" disabled="disabled"> -->
+									<div class="pad-left-20">
+			   							<%= form_tag url_for(:controller => 'publishers', :action => :update_story_2), :remote => true do %>
+											<!-- <#%= text_area_tag :story_corporate, @publisher.story_corporate, :class => 'textarea-edit input-profile-1 input-profile-color-1 profile-text-1 width-660 height-200', :placeholder => 'Corporate Story' %#> -->
+											<%= text_area_tag :story_corporate, @publisher.story_corporate, :class => 'resize-none input-profile-1 input-profile-color-1 profile-text-1 width-660 height-200', :placeholder => 'Corporate Story' %>
+											<!-- :onkeyup => 'countChar(this)' -->
+											<!-- <div id="char_num" class="char_num"></div> -->	
+											<%= submit_tag 'Save', :id => 'submit_edit_story_2_hidden', :class => 'hidden' %>
+										<% end %>
+									</div>
+									<div style="height: 10px;"></div>
+									<div class="text-align-center" style="width: 700px; height: 60px;">
+										<div class="table">
+											<div class="row">
+												<!-- <div id="btns_edit_story_2" class="cell-700 visibility-hidden"> -->
+												<div id="btns_edit_story_2" class="cell-700">
+													<div style="display: inline-block;">
+														<div id="cancel_edit_story_2" class="btn-submit-story-1" tabindex="">Cancel</div>
+													</div>
+													<div style="display: inline-block;">
+														<div id="submit_edit_story_2" class="btn-submit-story-1" tabindex="">Save</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="show-story-2 height-250">
+									<div class="text-align-left pad-left-20">
+										<div id="render_story_2">
+											<%= render 'publishers/story_2' %>
+										</div>
+										<!-- <textarea id="publisher_story_corporate" class="textarea-edit input-profile-1 input-profile-color-1 width-660 height-300" tabindex="" type="text" placeholder="Corporate Story"><#%= @publisher_story_corporate %#></textarea> -->			
+									</div>
+									<!-- <span id="span_story_corporate" class="profile-text-1"></span> -->
+								</div>
+								<!-- <div style="height: 20px;"></div> -->
+							</div>
+						</div>
+					</div>
+					<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<% if false %>			
+					<div class="table margin-0">
+						<div class="row">
+							<div class="cell-100percent">
+								<div style="height: 10px;"></div>
+								<div class="edit-story-2 height-250 hidden">
+									<!-- <textarea class="textarea-edit width-660 height-300" tabindex="" type="text" value="" placeholder="Corporate Story" disabled="disabled"> -->
+									<div class="pad-left-20">
+			   							<%= form_tag url_for(:controller => 'publishers', :action => :update_story_2), :remote => true do %>
+											<%= text_area_tag :story_corporate, @publisher.story_corporate, :class => 'textarea-edit input-profile-1 input-profile-color-1 profile-text-1 width-660 height-200', :placeholder => 'Corporate Story' %>
+											<!-- :onkeyup => 'countChar(this)' -->
+											<!-- <div id="char_num" class="char_num"></div> -->	
+											<%= submit_tag 'Save', :id => 'submit_edit_story_2_hidden', :class => 'hidden' %>
+										<% end %>
+									</div>
+									<div style="height: 10px;"></div>
+									<div class="text-align-center" style="width: 700px; height: 60px;">
+										<div class="table">
+											<div class="row">
+												<!-- <div id="btns_edit_story_2" class="cell-700 visibility-hidden"> -->
+												<div id="btns_edit_story_2" class="cell-700">
+													<div style="display: inline-block;">
+														<div id="cancel_edit_story_2" class="btn-submit-story-1" tabindex="">Cancel</div>
+													</div>
+													<div style="display: inline-block;">
+														<div id="submit_edit_story_2" class="btn-submit-story-1" tabindex="">Save</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="show-story-2 height-250">
+									<div class="text-align-left pad-left-20">
+										<div id="render_story_2">
+											<%= render 'publishers/story_2' %>
+										</div>
+										<!-- <textarea id="publisher_story_corporate" class="textarea-edit input-profile-1 input-profile-color-1 width-660 height-300" tabindex="" type="text" placeholder="Corporate Story"><#%= @publisher_story_corporate %#></textarea> -->			
+									</div>
+									<!-- <span id="span_story_corporate" class="profile-text-1"></span> -->
+								</div>
+								<!-- <div style="height: 20px;"></div> -->
+							</div>
+						</div>
+					</div>
+					<% end %>
+
+					<div style="height: 20px;"></div>
+
+					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<div class="position-relative">
+										<div class="position-absolute top-minus-24">												
+											<span>Connections</span>
+										</div>
+									</div>		
+								</div>
+								<div class="cell-title-bar-profile-center">
+									<span></span>
+								</div>
+								<div class="cell-title-bar-profile-right">
+									<div class="btn-opt-edit-container-outer">
+										<!-- <div class="btn-opt-edit-container">
+											<div id="open_edit_posts" class="btn-opt-edit" tabindex="">
+												Edit
+											</div>
+											<div id="close_edit_posts" class="btn-opt-edit hidden" tabindex="">
+												Cancel
+											</div>
+										</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="table margin-0">
+						<div class="row">
+							<div class="cell-100percent pad-left-20">
+								<div style="height: 20px;"></div>
+								<img src="/assets_knowstory/fills/fill-publisher-mystory-connections-w670-h130.png" style="width: 670px; margin-bottom: 0px;">
+							</div>
+						</div>
+					</div>
+
+					<div style="height: 20px;"></div>
+
+					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<div class="position-relative">
+										<div class="position-absolute top-minus-24">												
+											<span>Groups</span>
+										</div>
+									</div>		
+								</div>
+								<div class="cell-title-bar-profile-center">
+									<span></span>
+								</div>
+								<div class="cell-title-bar-profile-right">
+									<div class="btn-opt-edit-container-outer">
+										<!-- <div class="btn-opt-edit-container">
+											<div id="open_edit_posts" class="btn-opt-edit" tabindex="">
+												Edit
+											</div>
+											<div id="close_edit_posts" class="btn-opt-edit hidden" tabindex="">
+												Cancel
+											</div>
+										</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="table margin-0">
+						<div class="row">
+							<div class="cell-100percent pad-left-20">
+								<div style="height: 20px;"></div>
+								<img src="/assets_knowstory/fills/fill-publisher-corporate-groups-w670-h51.png" style="width: 670px; margin-bottom: 0px;">
+							</div>
+						</div>
+					</div>
+
+					<!-- <div style="height: 20px;"></div>
+					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<div class="position-relative">
+										<div class="position-absolute top-minus-24">												
+											<span>Following</span>
+										</div>
+									</div>		
+								</div>
+								<div class="cell-title-bar-profile-center">
+									<span></span>
+								</div>
+								<div class="cell-title-bar-profile-right">
+									<div class="btn-opt-edit-container-outer">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="table margin-0">
+						<div class="row">
+							<div class="cell-100percent pad-left-20">
+								<div style="height: 20px;"></div>
+								<img src="/assets_knowstory/fills/fill-publisher-corporate-following-w670-h103.png" style="width: 670px; margin-bottom: 0px;">
+							</div>
+						</div>
+					</div>
+					<div style="height: 20px;"></div>
+					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<div class="position-relative">
+										<div class="position-absolute top-minus-24">												
+											<span>Followed</span>
+										</div>
+									</div>		
+								</div>
+								<div class="cell-title-bar-profile-center">
+									<span></span>
+								</div>
+								<div class="cell-title-bar-profile-right">
+									<div class="btn-opt-edit-container-outer">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="table margin-0">
+						<div class="row">
+							<div class="cell-100percent pad-left-20">
+								<div style="height: 20px;"></div>
+								<img src="/assets_knowstory/fills/fill-publisher-corporate-following-w670-h103.png" style="width: 670px; margin-bottom: 0px;">
+							</div>
+						</div>
+					</div> -->
+
+					<div style="height: 20px;"></div>
+
+					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<div class="position-relative">
+										<div class="position-absolute top-minus-24">												
+											<span>Metrics</span>
+										</div>
+									</div>		
+								</div>
+								<div class="cell-title-bar-profile-center">
+									<span></span>
+								</div>
+								<div class="cell-title-bar-profile-right">
+									<div class="btn-opt-edit-container-outer">
+										<!-- <div class="btn-opt-edit-container">
+											<div id="open_edit_posts" class="btn-opt-edit" tabindex="">
+												Edit
+											</div>
+											<div id="close_edit_posts" class="btn-opt-edit hidden" tabindex="">
+												Cancel
+											</div>
+										</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="table">
+						<div class="row">
+							<div class="cell-100percent pad-left-20">
+								<div style="height: 20px;"></div>
+								<img src="/assets_knowstory/fills/fill-publisher-corporate-metrics-w670-h63.png" style="width: 670px; margin-bottom: 0px;">
+							</div>
+						</div>
+					</div>
+
+
+
+					<div style="height: 20px;"></div>
+
+					<div class="title-bar-profile-1 title-bar-profile-1-top-border">
+						<div class="tbl-title-bar-profile">
+							<div class="row-title-bar-profile">
+								<div class="cell-title-bar-profile-left">
+									<div class="position-relative">
+										<div class="position-absolute top-minus-24">												
+											<span>Activity</span>
+										</div>
+									</div>		
+								</div>
+								<div class="cell-title-bar-profile-center">
+									<span></span>
+								</div>
+								<div class="cell-title-bar-profile-right">
+									<div class="btn-opt-edit-container-outer">
+										<!-- <div class="btn-opt-edit-container">
+											<div id="open_edit_posts" class="btn-opt-edit" tabindex="">
+												Add
+											</div>
+											<div id="close_edit_posts" class="btn-opt-edit hidden" tabindex="">
+												Cancel
+											</div>
+										</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="table margin-0" style="height: auto;">
+						<div class="row">
+							<div class="cell-100percent">
+								<div style="height: 10px;"></div>
+								<div class="edit-story-4 textarea-add-post-user-parent" style="float: right; padding: 0 20px 0 0;">
+									
+									<%= form_for PostPublisherComment.new, :url => create_post_publisher_comment_publishers_path(@post_publisher_comment_new), :html => {:multipart => true, :class => '', :id => 'new_post_publisher_comment'}, :remote => true do |f| %>
+										<%= f.hidden_field :comment_text %>
+										<%= f.hidden_field :post_publisher_id %>
+									  	<%= f.submit :id =>'submit_post_publisher_comment_hidden', :class => 'btn-submit hidden toggle-comment', :value => '' %>
+									<% end %>
+									
+									<%= form_for PostPublisher.new, :url => create_post_publisher_publishers_path(@post_publisher_new), :html => {:multipart => true, :class => '', :id => 'new_post_publisher'}, :remote => true do |f| %>
+										<%= f.hidden_field :post_text %>
+									  	<%= f.submit :id => 'submit_story_4_hidden', :class => 'btn-submit hidden', :value => '' %>
+									<% end %>
+									
+									<div class="textarea-add-post-user-container toggle-post-user" tabindex="">
+										<div id="render_post_publisher_image" class="render-post-user-image"></div>
+										<div id="textarea_add_post_publisher" class="textarea-add-post-user toggle-post-user textarea-add-post-user-inactive" contenteditable="true" tabindex="101"><br></div>
+									</div>
+										
+									<div class="btn-textarea-add-post-user-story-4-container hidden">
+										<div style="height: 10px;"></div>
+										<div id="drop_container_story_4_attach" class="drop float-left width-200">
+											<%= render 'publishers/post_publisher_attach_menu' %>
+	
+											<%= form_for PostPublisherImage.new, :url => upload_post_publisher_image_publishers_path(@post_publisher_image_new), :html => {:multipart => true, :class => 'hidden', :id => 'new_post_publisher_image'}, :remote => true do |f| %>
+											  <p><%= f.file_field :image, :id => 'new_post_publisher_image_image' %></p>
+											  <!-- <#%= f.hidden_field :post_publisher_id, :val => nil %#> -->
+											  <p><%= f.submit :id => 'btn_submit_post_publisher_image', :class => 'btn-submit hidden', :value => '' %></p>
+											<% end %>
+										</div>
+										<div id="submit_story_4" class="btn-submit-story-2 float-right toggle-post-user" tabindex="103">
+											<div id="submit_story_4_text" class="submit-edit-story-4-text-2">Add</div>
+											<div id="submit_story_4_loader" class="submit-edit-story-4-loader hidden"></div>
+										</div>
+										<div class="float-right" style="display: inline-block; width: 6px; height: 1px"></div>
+										<div id="cancel_story_4" class="btn-submit-story-1 float-right toggle-post-user" tabindex="102">
+											<div id="cancel_story_4_text" class="submit-edit-story-4-text">Cancel</div>
+											<div id="cancel_story_4_loader" class="submit-edit-story-4-loader hidden"></div>
+										</div>
+									</div>
+								</div>
+								<div style="clear: both;"></div>
+
+								<!-- <div id="btn_test" style="width: 20px; height: 10px; background-color: red;"></div> -->
+
+								<div style="height: 10px;"></div>				
+								
+								<div class="show-story-3">
+									<div class="text-align-left">
+										<div class="post-user-sub-container" id="sub_container" style="width: 700px;">
+											<div style="margin: 0;">													
+												<div class="publisher-product-utility-bar light">
+													<div id="render_story_4_post_publishers_count" style="padding-left: 10px; padding-top: 10px;"></div>
+												</div>
+												<div id="im_top_sh" style="display: block;"></div>
+											</div>
+											<div id="render_story_4" style="height: auto;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<% if false %>
+					<div class="table margin-0" style="height: auto;">
+						<div class="row">
+							<div class="cell-100percent">
+								<div style="height: 10px;"></div>
+								<% if false %>
+								<div class="edit-story-4 height-250">
+									<div class="pad-left-20">
+										<%= form_for PostUser.new, :url => create_post_user_publisher_users_path(@post_user_new), :html => {:multipart => true, :class => '', :id => 'new_post_user'}, :remote => true do |f| %>
+											<%= f.text_area :post_text, :class => 'textarea-show profile-text-1 width-660 height-200', :placeholder => 'Add post' %>
+										  	<%= f.submit :id => 'submit_edit_story_4_hidden', :class => 'btn-submit hidden', :value => '' %>
+										<% end %>
+									</div>
+									<div style="height: 10px;"></div>
+									<div class="text-align-center" style="width: 700px; height: 60px;">
+										<div class="table">
+											<div class="row">
+												<div id="btns_edit_story_4" class="cell-700">
+													<div style="display: inline-block;">
+														<div id="submit_edit_story_4" class="btn-submit-story-1" tabindex="">Add</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div style="height: 20px;"></div>
+								<% end %>
+																			
+								<div class="show-story-3">
+									<div class="text-align-left">
+										<div class="post-user-sub-container" id="sub_container" style="display: table-cell; width: 700px;">
+											<div>													
+												<div class="publisher-product-utility-bar light">
+													<div id="render_story_5_log_publishers_count" style="padding-left: 10px; padding-top: 10px;">
+													</div>
+												</div>
+												<div id="im_top_sh" style="display: block;"></div>
+											</div>
+											<div id="render_story_5" style="height: auto;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% end %>
+					
+					<!-- <div style="width: 700px; border-bottom: 2px solid #eee;"></div> -->
+				</div>
+				
+				<div style="display: table-cell; width: 300px; padding: 0; margin: 0; vertical-align: top; height: 100%;">
+					<div class="" style="width: 300px; height: 50px; position: relative;">
+						<%= render 'share/dir_publishers_right_user_home' %>
+					</div>
+				</div>
+			</div>								
+		</div>
+			
+
+<% end %>	
+
+	<!-- <script>
+		function crop_logo_image_primary() {
+			var input_image_id = $("#image_id_logo").val();
+			var input_crop_x = $("#id_crop_x_logo").val();
+			var input_crop_y = $("#id_crop_y_logo").val();
+			var input_crop_w = $("#id_crop_w_logo").val();
+			var input_crop_h = $("#id_crop_h_logo").val();
+			var formData = { image_id: input_image_id, 
+							 crop_x: input_crop_x, 
+							 crop_y: input_crop_y,
+							 crop_w: input_crop_w, 
+							 crop_h: input_crop_h 
+						   };
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publisher_users/crop_commit_logo',	
+		    	// cache: false,		    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful crop");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+	  		// return false;
+		}
+	</script> -->		
+
+	<script type="text/javascript">
+	
+		// *****
+		// html textarea - user_plot
+
+		var savedRange_publisher_plot,isInFocus_publisher_plot;
+
+ 		function saveSelection_publisher_plot()
+		{
+		    if(window.getSelection)//non IE Browsers
+		    {
+		        savedRange_publisher_plot = window.getSelection().getRangeAt(0);
+		    }
+		    else if(document.selection)//IE
+		    { 
+		        savedRange_publisher_plot = document.selection.createRange();  
+		    } 
+		}
+		
+		function restoreSelection_publisher_plot()
+		{
+		    isInFocus_publisher_plot = true;
+		    document.getElementById("textarea_publisher_plot_edit").focus();
+		    if (savedRange_publisher_plot != null) {
+		        if (window.getSelection)//non IE and there is already a selection
+		        {
+		            var s = window.getSelection();
+		            if (s.rangeCount > 0) 
+		                s.removeAllRanges();
+		            s.addRange(savedRange_publisher_plot);
+		        }
+		        else if (document.createRange)//non IE and no selection
+		        {
+		            window.getSelection().addRange(savedRange_publisher_plot);
+		        }
+		        else if (document.selection)//IE
+		        {
+		            savedRange_publisher_plot.select();
+		        }
+		    }
+		}
+		
+		//this part onwards is only needed if you want to restore selection onclick
+		var isInFocus_publisher_plot = false;
+		function onDivBlur_publisher_plot()
+		{
+		    isInFocus_publisher_plot = false;
+		}
+		
+		function cancelEvent_publisher_plot(e)
+		{
+		    if (isInFocus_publisher_plot == false && savedRange_publisher_plot != null) {
+		        if (e && e.preventDefault) {
+		            //alert("FF");
+		            e.stopPropagation(); // DOM style (return false doesn't always work in FF)
+		            e.preventDefault();
+		        }
+		        else {
+		            window.event.cancelBubble = true;//IE stopPropagation
+		        }
+		        restoreSelection_publisher_plot();
+		        return false; // false = IE style
+		    }
+		}
+		
+		function insertTextAtCursor_publisher_plot(text) {
+		    var sel, range, html;
+		    if (window.getSelection) {
+		        sel = window.getSelection();
+		        if (sel.getRangeAt && sel.rangeCount) {
+		            range = sel.getRangeAt(0);
+		            range.deleteContents();
+		            range.insertNode( document.createTextNode(text) );
+		            range.collapse(false);
+		        }
+		    } else if (document.selection && document.selection.createRange) {
+		        document.selection.createRange().text = text;
+		    }
+		}			  	
+			  	
+		
+	</script>		
+
+	<script>
+
+
+		function closeShowPhotoPrimary() {
+			$("#close_form11").trigger('click');
+		};	  
+		function closeShowImageLogo() {
+			$("#close_form21").trigger('click');
+		};	  
+
+		function closeAddLogoImagePrimary() {
+			// alert('closeAddImagePrimary()');
+			$("#dvLoading_12").addClass("dvLoading-display-none");
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			// $(".dropdownContain").removeClass("hidden");
+			// $(".container-figure figure").removeClass("cursor-pointer");
+			// $("#drop_container_photo_primary").addClass("drop");
+			// $(".dropdownContain").removeClass("hidden");
+			$("#close_form12").trigger('click');
+			$("form#new_publisher_logo_image input#new_publisher_logo_image_image").val('');
+		};	  
+		// function closeAddLogoImage() {
+			// // alert('closeAddLogoImage()');
+			// $("#dvLoading_22").addClass("dvLoading-display-none");
+			// $(".edit-image").fadeIn(200).removeClass("hidden");
+			// $("#drop_container_logo_image").addClass("drop");
+			// $(".dropdownContain").removeClass("hidden");
+			// $("#close_form22").trigger('click');
+			// $("form#new_publisher_user_logo_image input#new_publisher_user_logo_image_image").val('');
+		// };	  
+
+		function closeChangeLogoImagePrimary() {
+			$("#dvLoading_13").addClass("dvLoading-display-none");
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			// $("#drop_container_photo_primary").addClass("drop");
+			// $(".dropdownContain").removeClass("hidden");
+			$("#close_form13").trigger('click');
+			$("form#change_publisher_logo_image input#change_publisher_logo_image_image").val('');
+		};	  
+		// function closeChangeLogoImage() {
+			// $("#dvLoading_23").addClass("dvLoading-display-none");
+			// $(".edit-image").fadeIn(200).removeClass("hidden");
+			// $("#drop_container_logo_image").addClass("drop");
+			// $(".dropdownContain").removeClass("hidden");
+			// $("#close_form23").trigger('click');
+			// $("form#change_publisher_user_logo_image input#change_publisher_user_logo_image_image").val('');
+		// };	  
+		
+		function closeDeleteLogoImagePrimary() {			
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			// $("#drop_container_photo_primary").addClass("drop");
+			// $(".dropdownContain").removeClass("hidden");
+			$("#close_form14").trigger('click');
+		};	  
+		// function closeDeleteLogoImage() {			
+			// $(".edit-image").fadeIn(200).removeClass("hidden");
+			// $("#drop_container_logo_image").addClass("drop");
+			// $(".dropdownContain").removeClass("hidden");
+			// $("#close_form24").trigger('click');
+		// };	  
+		
+		function closeCropLogoImagePrimary() {
+			$(".edit-image").fadeIn(200).removeClass("hidden");
+			// $("#drop_container_photo_primary").addClass("drop");
+			// $(".dropdownContain").removeClass("hidden");
+			$("#close_form15").trigger('click');
+		};	  
+		// function closeCropLogoImage() {
+			// $(".edit-image").fadeIn(200).removeClass("hidden");
+			// $("#drop_container_logo_image").addClass("drop");
+			// $(".dropdownContain").removeClass("hidden");
+			// $("#close_form25").trigger('click');
+		// };	  
+		
+		
+		
+		// function set_control_required(cntrl, b) {
+			// // alert('set_control_required');
+			// var s_cntrl = "#required_" + cntrl;
+			// if(b) {
+				// $(s_cntrl).addClass("check-required").removeClass("display-none");	
+			// }
+			// else {
+				// $(s_cntrl).removeClass("check-required").addClass("display-none");
+			// }
+		// }
+
+		function set_control_span(cntrl, s, b) {
+			var s_cntrl = "#span_" + cntrl;
+			$(s_cntrl).html(s);
+			if (b) {
+				$(s_cntrl).removeClass("color-no-record").addClass("color-record");
+			}
+			else {
+				$(s_cntrl).removeClass("color-record").addClass("color-no-record");				
+			}
+		}
+	  
+		function show_control(cntrl) {
+			var s_edit = "#edit_" + cntrl;
+			var s_show_open = "#show_" + cntrl + ", #open_edit_" + cntrl;		
+    		$(s_edit).fadeOut(300, function(){
+    			$(s_edit).addClass("hidden");
+    			$(s_show_open).fadeIn(200).removeClass("hidden");
+    			$(s_show_open).fadeIn(200).removeClass("hidden").removeClass("visibility-hidden");
+    		});
+		}
+
+
+
+
+
+
+
+
+	  	function show_edit_story_1() {
+			$("#open_edit_story_1, .show-story-1").fadeOut(200, function(){    			
+				$("#open_edit_story_1").addClass("hidden");
+				$("#close_edit_story_1").fadeIn(200).removeClass("hidden");
+				
+    			$(".show-story-1").addClass("hidden");
+    			$(".edit-story-1").fadeIn(300).removeClass("hidden");
+    			
+				// $("#btns_edit_story_1").fadeIn(200).removeClass("hidden");
+				$("#btns_edit_story_1").fadeIn(200).removeClass("visibility-hidden");
+    			
+				$(".edit-image").fadeIn(200).removeClass("hidden");
+				$(".container-figure figure").removeClass("cursor-pointer");
+				$(".container-figure-logo figure").removeClass("cursor-pointer");
+				
+				$(".container-figure-logo").removeClass("container-figure-image-border").addClass("container-figure-image-border-edit");
+				
+				// $("#drop_container_user_image_primary").addClass("drop");
+				// $("#drop_container_logo_image").addClass("drop");
+
+				// $(".container-menu .dropdownContain").removeClass("hidden");
+				
+				// $(".drop-1-container").removeClass("hidden");
+				// $(".drop-2-container").removeClass("hidden");
+				
+    			$("#publisher_name_company").focus();
+				
+    		});
+	  	}
+	  
+	  	function cancel_edit_story_1() {
+	  		$(".edit-story-1").fadeOut(200, function(){
+    			$(".edit-story-1").addClass("hidden");
+    			$(".show-story-1").removeClass("hidden").fadeIn(300);
+
+				$("#open_edit_story_1").removeClass("hidden").fadeIn(200);
+				$("#close_edit_story_1").addClass("hidden");
+
+				// $("#btns_edit_story_1").removeAttr("style");
+				// $("#btns_edit_story_1").addClass("hidden");
+				$("#btns_edit_story_1").addClass("visibility-hidden");
+
+				$(".edit-image").removeAttr("style");				
+				$(".edit-image").fadeIn(200).addClass("hidden");
+				$(".dialog-11-figure").addClass("cursor-pointer");
+				$(".dialog-21-figure").addClass("cursor-pointer");
+				
+				$(".container-figure-logo").removeClass("container-figure-image-border-edit").addClass("container-figure-image-border");
+								
+				// $(".drop-1-container").addClass("hidden");				
+				// $(".drop-2-container").addClass("hidden");				
+
+				// $(".container-menu .dropdownContain").addClass("hidden");
+				// $("#drop_container_user_image_primary").removeClass("drop");
+				// $("#drop_container_logo_image").removeClass("drop");
+			});
+	  	}
+
+
+
+
+
+
+
+
+
+	  	// function show_edit_story_1() {
+			// $("#open_edit_story_1, .show-story-1").fadeOut(200, function(){    			
+				// $("#open_edit_story_1").addClass("hidden");
+				// $("#close_edit_story_1").fadeIn(200).removeClass("hidden");
+    			// $(".show-story-1").addClass("hidden");
+    			// $(".edit-story-1").fadeIn(300).removeClass("hidden");
+				// // $("#btns_edit_story_1").fadeIn(200).removeClass("hidden");
+				// $("#btns_edit_story_1").fadeIn(200).removeClass("visibility-hidden");
+				// $(".edit-image").fadeIn(200).removeClass("hidden");
+				// $(".container-figure figure").removeClass("cursor-pointer");
+				// $("#drop_container_photo_primary").addClass("drop");
+				// $("#drop_container_logo_image").addClass("drop");
+				// $(".container-menu .dropdownContain").removeClass("hidden");
+    			// // $("#user_name_first").focus();
+    		// });
+	  	// }
+	  	// function cancel_edit_story_1() {
+	  		// $(".edit-story-1").fadeOut(200, function(){
+    			// $(".edit-story-1").addClass("hidden");
+    			// $(".show-story-1").removeClass("hidden").fadeIn(300);
+				// $("#open_edit_story_1").removeClass("hidden").fadeIn(200);
+				// $("#close_edit_story_1").addClass("hidden");
+				// // $("#btns_edit_story_1").removeAttr("style");
+				// // $("#btns_edit_story_1").addClass("hidden");
+				// $("#btns_edit_story_1").addClass("visibility-hidden");
+				// $(".edit-image").removeAttr("style");				
+				// $(".edit-image").fadeIn(200).addClass("hidden");
+				// $(".dialog-11-figure").addClass("cursor-pointer");
+				// $(".dialog-21-figure").addClass("cursor-pointer");
+				// // jQuery(document).trigger( click_cancel_edit_story_1 );
+				// $(".container-menu .dropdownContain").addClass("hidden");
+				// $("#drop_container_photo_primary").removeClass("drop");
+				// $("#drop_container_logo_image").removeClass("drop");
+			// });
+	  	// }
+
+	  	function show_edit_story_2() {
+			$("#open_edit_story_2, .show-story-2").fadeOut(200, function(){    			
+				$("#open_edit_story_2").addClass("hidden");
+				$("#close_edit_story_2").fadeIn(200).removeClass("hidden");
+    			$(".show-story-2").addClass("hidden");
+    			$(".edit-story-2").fadeIn(300).removeClass("hidden");
+				// $("#btns_edit_story_2").fadeIn(200).removeClass("visibility-hidden");
+    		});
+	  	}
+	  
+	  	function cancel_edit_story_2() {
+	  		$(".edit-story-2").fadeOut(200, function(){
+    			$(".edit-story-2").addClass("hidden");
+    			$(".show-story-2").removeClass("hidden").fadeIn(300);
+				$("#open_edit_story_2").removeClass("hidden").fadeIn(200);
+				$("#close_edit_story_2").addClass("hidden");
+				// $("#btns_edit_story_1").removeAttr("style");
+				// $("#btns_edit_story_1").addClass("hidden");
+				// $("#btns_edit_story_2").addClass("visibility-hidden");
+			});
+	  	}
+		
+		function delete_logo_image_primary(id_image) {
+			// var input_user_name_first = $("#user_name_first").val();
+			// var obj_list = '{"publisher_product_description_id":' + <#%= @publisher_product_description_id %#> + 
+						   // ', "publisher_product_id":' + <#%= @publisher_product_id %#> + 
+						   // ', "publisher_id":' + <#%= @publisher_id %#> + 
+						   // ', "name_first":"' + input_publisher_product_description_name_first + 
+						   // '"}';      
+			
+			var formData = {id:id_image};
+			 
+			// $.ajax({
+			    // url : "AJAX_POST_URL",
+			    // type: "POST",
+			    // data : formData,
+			    // success: function(data, textStatus, jqXHR)
+			    // {
+			        // //data - response from server
+			    // },
+			    // error: function (jqXHR, textStatus, errorThrown)
+			    // {
+			    // }
+			// });			
+			
+			// var input_user_name_first = "Clyde";
+			// var input_id_image = id_image;
+			// var obj_list = '{"name_first":"' + input_user_name_first + 
+						   // '"}';      
+			// var obj_list = '{"id_image":' + input_id_image + 
+						   // '}';      
+		  	// var obj = '{ "publisher_user": [' +  obj_list + '] }';                  
+		  	$.ajax({
+		    	type: 'POST',
+		    	// data : JSON.stringify(obj),
+		    	// data : obj,
+		    	data : formData,
+		    	url: '/publishers/destroy_publisher_logo_image',			    	
+		    	// dataType: "json",
+		    	// contentType: "application/json",
+		    	dataType: "script",
+		    	// contentType: "application/js",
+		    	// processData: false,
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+	  		// return false;
+		}
+		// function delete_logo_image(id_image) {
+			// var formData = {id:id_image};
+		  	// $.ajax({
+		    	// type: 'POST',
+		    	// data : formData,
+		    	// url: '/publisher_users/destroy_publisher_user_logo_image',			    	
+		    	// dataType: "script",
+		    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	// statusCode: {
+                	// // 200:function() { alert("200"); },
+                	// // 202:function() { alert("202"); }
+            	// },
+            	// success: function(data) {
+					// // alert("successful");
+            	// },
+            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	// });
+		// }
+
+
+		function crop_logo_image_primary() {
+			var input_image_id = $("#image_id").val();
+			var input_crop_x = $("#id_crop_x").val();
+			var input_crop_y = $("#id_crop_y").val();
+			var input_crop_w = $("#id_crop_w").val();
+			var input_crop_h = $("#id_crop_h").val();
+			var formData = { image_id: input_image_id, 
+							 crop_x: input_crop_x, 
+							 crop_y: input_crop_y,
+							 crop_w: input_crop_w, 
+							 crop_h: input_crop_h 
+						   };
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publishers/crop_commit_logo',	
+		    	// cache: false,		    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful crop");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+	  		// return false;
+		}
+		// function crop_image_logo() {
+			// var input_image_id = $("#image_id_logo").val();
+			// var input_crop_x = $("#id_crop_x_logo").val();
+			// var input_crop_y = $("#id_crop_y_logo").val();
+			// var input_crop_w = $("#id_crop_w_logo").val();
+			// var input_crop_h = $("#id_crop_h_logo").val();
+			// var formData = { image_id: input_image_id, 
+							 // crop_x: input_crop_x, 
+							 // crop_y: input_crop_y,
+							 // crop_w: input_crop_w, 
+							 // crop_h: input_crop_h 
+						   // };
+		  	// $.ajax({
+		    	// type: 'POST',
+		    	// data : formData,
+		    	// url: '/publisher_users/crop_commit_logo',	
+		    	// // cache: false,		    	
+		    	// dataType: "script",
+		    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	// statusCode: {
+                	// // 200:function() { alert("200"); },
+                	// // 202:function() { alert("202"); }
+            	// },
+            	// success: function(data) {
+					// // alert("successful crop");
+            	// },
+            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	// });
+	  		// // return false;
+		// }
+
+
+		function create_post_publisher_like(id, nlist) {
+			// alert("create_post_publisher_like(post_publisher_id)");
+			var formData = {post_publisher_id:id, n_list:nlist};
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publishers/create_post_publisher_like',			    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function delete_post_publisher_like(id, nlist) {
+			// alert("delete_post_publisher_like(post_publisher_id)");
+			var formData = {post_publisher_id:id, n_list:nlist};
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publishers/destroy_post_publisher_like',			    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function delete_post_publisher(id) {
+			// alert("delete_post_publisher");
+			var formData = {post_publisher_id:id};
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publishers/destroy_post_publisher',			    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function cancel_post_publisher() {
+			// alert("delete_post_publisher");
+			// var formData = {post_publisher_id:id};
+		  	$.ajax({
+		    	type: 'POST',
+		    	// data : formData,
+		    	url: '/publishers/cancel_post_publisher',			    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function cancel_post_publisher_on_close() {
+			var w = $("#render_post_publisher_image").html();
+			if ( !( (w == "<br>") || (w == "") ) ) {
+				$.ajax({
+					type: 'POST',
+					url: '/publishers/cancel_post_publisher_on_close',			    	
+					dataType: "script",
+					async: false,
+					beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))} // ,
+				});
+			}
+		}
+
+		function delete_post_publisher_comment() {
+			// alert("delete_post_publisher_comment");
+			var formData = { post_publisher_comment_id: post_publisher_comment_comment_id_delete, 
+							 post_publisher_id: post_publisher_comment_post_publisher_id_delete
+						   };
+		  	$.ajax({
+		    	type: 'POST',
+		    	data : formData,
+		    	url: '/publishers/destroy_post_publisher_comment',			    	
+		    	dataType: "script",
+		    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	statusCode: {
+                	// 200:function() { alert("200"); },
+                	// 202:function() { alert("202"); }
+            	},
+            	success: function(data) {
+					// alert("successful");
+            	},
+            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	});
+		}
+
+		function reset_post_publisher_comment_delete() {
+			post_publisher_comment_comment_id_delete = null;
+			post_publisher_comment_post_publisher_id_delete = null;			
+		}
+
+
+
+		var a_comments = [];
+		
+		function edit_textarea_comment($t, $b) {
+			// textarea_add_comment_<#%= post_publisher.id %#>
+			// btn_add_comment_<#%= post_publisher.id %#>
+			b_comments = [];
+			var is_open = false;
+			for ( i = 0; i < a_comments.length; i++ ) {
+				var $t_held = a_comments[i][0];
+				if ( $t.attr("id") == $t_held.attr("id") ) {
+					is_open = true;
+				}
+				else {
+					var $b_held = a_comments[i][1];
+					var v = $t_held.html();
+					if ((v == "<br>") || (v == "")) {
+						$b_held.addClass("hidden");
+						$t_held.removeClass("add-comment-container-active").addClass("add-comment-container-inactive");
+						$t_held.html("<br>");
+					}
+					else {
+						var b = [];
+						b.push($t_held);
+						b.push($b_held);
+						b_comments.push(b);						
+					}
+				}
+			}			
+			var c = [];
+			c.push($t);
+			c.push($b);
+			b_comments.push(c);					
+			if (!is_open) {
+				$t.removeClass("add-comment-container-inactive").addClass("add-comment-container-active");
+				$b.removeClass("hidden");
+			}
+			a_comments = b_comments;
+		}		
+
+		function reset_textarea_comment() {
+			b_comments = [];
+			for ( i = 0; i < a_comments.length; i++ ) {
+				$t = a_comments[i][0];
+				$b = a_comments[i][1];
+				var v = $t.html();
+				if ((v == "<br>") || (v == "")) {
+					$b.addClass("hidden");
+					$t.removeClass("add-comment-container-active").addClass("add-comment-container-inactive");
+					$t.html("<br>");
+				}
+				else {
+					var b = [];
+					b.push($t);
+					b.push($b);
+					b_comments.push(b);					
+				}
+			}
+			a_comments = b_comments;
+		}
+		
+		function reset_textarea_comment_callback( post_publisher_id ) {
+			var t_id = "textarea_add_comment_" + post_publisher_id;
+			b_comments = [];
+			for ( i = 0; i < a_comments.length; i++ ) {
+				var $t_held = a_comments[i][0];
+				if ( !( t_id == $t_held.attr("id") ) ) {
+					var b = [];
+					var $b_held = a_comments[i][1];
+					b.push($t_held);
+					b.push($b_held);
+					b_comments.push(b);					
+				}
+			}			
+			a_comments = b_comments;
+			var $t = $("#" + t_id);						
+			var b_id = "#btn_add_comment_" + post_publisher_id;			
+			var $b = $(b_id);
+			$b.addClass("hidden");
+			$t.removeClass("add-comment-container-active").addClass("add-comment-container-inactive");
+			$t.html("<br>");
+			$t.focus();
+		}
+
+
+
+		var b_edit_post_publisher = false;
+		
+		function edit_textarea_post_publisher() {
+			b_edit_post_publisher = true;
+			$("#textarea_add_post_publisher").removeClass("textarea-add-post-user-inactive").addClass("textarea-add-post-user-active");
+			$(".btn-textarea-add-post-user-story-4-container").removeClass("hidden");
+		}		
+		function reset_textarea_post_publisher() {
+			$("#render_post_publisher_image").html("");
+			$("#textarea_add_post_publisher").html("<br>");
+			$(".btn-textarea-add-post-user-story-4-container").addClass("hidden");
+			$("#textarea_add_post_publisher").removeClass("textarea-add-post-user-active").addClass("textarea-add-post-user-inactive");
+			// $("#textarea_add_post_publisher").focus();
+			// if ($ttpost != null) {
+				b_edit_post_publisher = false;
+				// $bbpost.addClass("hidden");
+				// $ttpost.removeClass("textarea-add-post-user-active").addClass("textarea-add-post-user-inactive");
+				// $ttpost.html("<br>");
+				// $ttpost.focus();
+				// $ttpost = null;
+				// $bbpost = null;				
+			// }
+		}
+		
+		
+		
+		// function getScrollPos() {
+			// return $(window).scrollTop();	
+		// }
+		
+
+		var drop_story_4_attach_visible = false;
+		var btn_1_drop_add_post_publisher_image_clicked = false;
+
+		function drop_story_4_attach_show() {
+			$("#drop_story_4_attach").addClass('drop');
+			$("#container_drop_story_4_attach").removeClass('hidden');
+			$("#drop_story_4_attach div div.dropdownContain div.dropOut").fadeIn(200, function() {
+				$(this).css({ 
+					'margin-top' : 10
+				});
+			});
+			$("#caret_story_4_attach").removeClass("nav-caret-down").addClass("nav-caret-up");
+			drop_story_4_attach_visible = true;			
+		}	
+		function drop_story_4_attach_hide() {
+			// alert('drop_story_4_attach_hide');
+			$("#drop_story_4_attach").removeClass('drop');
+			$("#container_drop_story_4_attach").addClass('hidden');
+			drop_story_4_attach_visible = false;			
+			// $("#render_nav_avatar").removeClass("avatar-focus");
+			// $("#nav_caret_container").removeClass("nav-caret-focus");
+			$("#drop_story_4_attach div div.dropdownContain div.dropOut").css({
+				'margin-top' : 0
+			});
+			$("#caret_story_4_attach").removeClass("nav-caret-up").addClass("nav-caret-down");
+			
+			if( btn_1_drop_add_post_publisher_image_clicked == true ) {
+				btn_1_drop_add_post_publisher_image_clicked = false;
+				// alert('btn_1_drop_add_post_publisher_image_clicked == true');
+				$("form#new_post_publisher_image input#new_post_publisher_image_image").click();
+			}
+		}	
+		function drop_toggle_story_4_attach() {
+			if (drop_story_4_attach_visible) {
+				drop_story_4_attach_hide();
+			}
+			else {
+				drop_story_4_attach_show();
+			}
+		}	
+
+		
+			  	
+		var id_logo_image = null;
+
+		var id_image = null;
+		var id_image_logo = null;
+
+		var publisher_slug = <%= @publisher.slug %>;
+
+		var scroll_top = 0;
+
+		var post_publisher_id_delete = null;
+
+		var post_publisher_comment_comment_id_delete = null;
+		var post_publisher_comment_post_publisher_id_delete = null;
+			  	
+			  	
+			  	
+			  	
+			  	
+		// $(window).load( function() {
+		$(document).ready(function () {				
+
+			// $.ajaxSetup({cache: false});
+			
+			$(document).on("click", ".textarea-add-post-user", function() {
+				if (!b_edit_post_publisher) {
+					// $p = $(this).closest(".textarea-add-post-user-parent");
+					// $b = $p.find(".btn-textarea-add-post-user-story-4-container"); // btn-textarea-add-post-user-story-4-container
+					// edit_textarea_post_publisher($(this), $b);
+					edit_textarea_post_publisher();
+				}
+			});
+			$(document).on("keyup", ".textarea-add-post-user", function() {
+				// var v = $(this).html();
+				// var $p = $(this).parent();
+				// var $q = $p.find(".render-post-user-image");
+				// var w = $q.html();
+				var v = $("#textarea_add_post_publisher").html();
+				var w = $("#render_post_publisher_image").html();
+				if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+					reset_textarea_post_publisher();
+				}
+			});
+			$(document).on("keydown", ".textarea-add-post-user", function() {
+				if (!b_edit_post_publisher) {
+					// $p = $(this).closest(".textarea-add-post-user-parent");
+					// $b = $p.find(".btn-textarea-add-post-user-story-4-container");
+					// edit_textarea_post_publisher($(this), $b);
+					edit_textarea_post_publisher();					
+				}
+			});
+			$(document).on('click', function(e) {
+				var $t = $(e.target);
+				var c = ":" + $t.attr("class") + ":";
+				if ( (c !== ":undefined:") && (c !== ":btn-submit hidden:") ) {
+					if ( !( ($t.hasClass("div-link")) || ($t.hasClass("toggle-post-user"))  || ($t.parents().hasClass("toggle-post-user") ) ) ) {
+						var v = $("#textarea_add_post_publisher").html();
+						var w = $("#render_post_publisher_image").html();
+						if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+							// alert("triggered by = " + c);
+							reset_textarea_post_publisher();
+						}
+					}
+				}
+			});
+
+
+			
+			$(document).on("click", ".textarea-add-comment", function() {
+				// if (!b_edit_comment) {
+					$p = $(this).closest(".textarea-add-comment-parent");
+					$b = $p.find(".btn-add-comment-story-4-container");
+					edit_textarea_comment($(this), $b);
+				// }
+			});
+			$(document).on("keyup", ".textarea-add-comment", function() {
+				// var v = $(this).html();
+				// if ((v == "<br>") || (v == "")) {
+					reset_textarea_comment();
+				// }
+			});
+			$(document).on("keydown", ".textarea-add-comment", function() {
+				// if (!b_edit_comment) {
+					$p = $(this).closest(".textarea-add-comment-parent");
+					$b = $p.find(".btn-add-comment-story-4-container");
+					edit_textarea_comment($(this), $b);					
+				// }
+			});
+			$(document).on('click', function(e) {
+				var $t = $(e.target);
+				if (!$t.hasClass("toggle-comment")) {
+					reset_textarea_comment();
+				}
+			});
+			
+			
+			
+			$(document).on("click", "#btn_dlg_submit_delete_post", function() {
+				delete_post_publisher(post_publisher_id_delete);
+			});
+			$(document).on("click", "#btn_dlg_cancel_delete_post", function() {
+				$("#close_form104").trigger('click');
+			});
+			$(document).on("click", ".post-user-delete", function() {
+				post_publisher_id_delete = $(this).find(".post-user-id").attr("name");				
+				// $("#dialog_104").jqmShow();
+				$(document).trigger('click_104');
+				$("#btn_dlg_cancel_delete_post").focus();
+			});			
+
+
+			$(document).on("click", "#btn_dlg_submit_delete_comment", function() {
+				// var o_target = $(e.target).parents('.nav-drop-1').attr('id');
+				delete_post_publisher_comment();
+			});
+			$(document).on("click", "#btn_dlg_cancel_delete_comment", function() {
+				$("#close_form105").trigger('click');
+			});
+			$(document).on("click", ".post-user-comment-delete", function() {
+				post_publisher_comment_comment_id_delete = $(this).find(".comment-id").attr("name");
+				post_publisher_comment_post_publisher_id_delete = $(this).find(".post-user-id").attr("name");
+				// $("#dialog_104").jqmShow();
+				$(document).trigger('click_105');
+				$("#btn_dlg_cancel_delete_comment").focus();
+			});			
+
+
+
+			document.body.setAttribute('spellcheck', false);
+			
+			
+			
+			id_logo_image = gon.id_logo_image;
+			// id_image_logo = gon.id_image_logo;
+			
+			
+			$(document).on('click_1001', function() {
+				scroll_top = $(window).scrollTop();
+			});
+			
+			
+			// $("#render_story_5").html("<#%= j render("publishers/story_5") %#>");
+			// $("#render_story_5_log_publishers_count").html("<#%= j render("publishers/story_5_log_publishers_count") %#>");
+			// $("#render_story_5_will_paginate").html("<#%= j render("publishers/story_5_will_paginate") %#>");			
+
+			$("#render_story_4").html("<%= j render("publishers/story_4") %>");
+			$("#render_story_4_post_publishers_count").html("<%= j render("publishers/story_4_post_publishers_count") %>");			
+
+			$(document).on("click", ".btn-submit-post-user-like-create", function() {
+				var id = $(this).find("input[name='post_publisher_id_hidden']").attr("value");
+				var nlist = $(this).attr("name");
+				create_post_publisher_like(id, nlist);
+			});
+			
+			$(document).on("click", ".btn-submit-post-user-like-delete", function() {
+				var id = $(this).find("input[name='post_publisher_id_hidden']").attr("value");
+				var nlist = $(this).attr("name");
+				delete_post_publisher_like(id, nlist);
+			});
+
+			
+		  	$("#open_edit_story_1").click(function(){
+				show_edit_story_1();
+		  	});	
+		  	$("#close_edit_story_1").click(function(){
+				cancel_edit_story_1();
+		  	});	
+		
+			// var click_cancel_edit_story_1 = jQuery.Event( "click_cancel_edit_story_1" );
+    		$("#cancel_edit_story_1").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_edit_story_1").click();
+    		});
+			$("#cancel_edit_story_1").on('click', function() {
+				cancel_edit_story_1();
+			});
+		
+
+		  	$("#open_edit_story_2").click(function(){
+				show_edit_story_2();
+		  	});	
+		  	$("#close_edit_story_2").click(function(){
+				cancel_edit_story_2();
+		  	});			
+    		$("#cancel_edit_story_2").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_edit_story_2").click();
+    		});
+			$("#cancel_edit_story_2").on('click', function() {
+				cancel_edit_story_2();
+			});
+    		$("#submit_edit_story_2").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_edit_story_2").click();
+    		});
+			$("#submit_edit_story_2").on('click', function() {
+				$("#submit_edit_story_2_hidden").click();
+			});
+
+
+	
+			$(document).on("click", "#btn_dlg_submit_upload_logo_image_primary", function(e) {
+				$("form#new_publisher_logo_image input#new_publisher_logo_image_image").click();
+			});	
+			$(document).on("change", "form#new_publisher_logo_image input#new_publisher_logo_image_image", function(e) {
+				$("#dvLoading_12").removeClass("dvLoading-display-none");
+				$("form#new_publisher_logo_image input#btn_submit_dialog_12").click();
+			});
+			$(document).on("click", "#figcaption_logo_image_primary_generic", function() {
+				$("form#new_publisher_logo_image input#new_publisher_logo_image_image").val('');
+				$("#dialog_12").jqmShow();
+			});		
+			// $(document).on("click", "#btn_logo_image_primary_new", function() {				
+				// $("form#new_publisher_logo_image input#new_publisher_logo_image_image").val('');
+				// $("#dialog_12").jqmShow();
+			// });		
+				$(document).on("btn_logo_image_primary_new_click", function() {				
+					$("form#new_publisher_logo_image input#new_publisher_logo_image_image").val('');
+					$("#dialog_12").jqmShow();
+				});		
+			$(document).on("click", "#btn_dlg_cancel_upload_logo_image_primary", function() {
+				$("#close_form12").trigger('click');
+			});
+
+			
+			$(document).on("click", "#btn_dlg_submit_upload_logo_image_primary_change", function(e) {
+				$("form#change_publisher_logo_image input#change_publisher_logo_image_image").click();
+			});	
+			$(document).on("change", "form#change_publisher_logo_image input#change_publisher_logo_image_image", function() {
+				$("#dvLoading_13").removeClass("dvLoading-display-none");
+				$("form#change_publisher_logo_image input#btn_submit_dialog_13").click();
+			});
+			// $(document).on("click", "#btn_logo_image_primary_change", function() {				
+				// $("form#change_publisher_logo_image input#change_publisher_logo_image_image").val('');
+				// $("#dialog_13").jqmShow();
+			// });		
+				$(document).on("btn_logo_image_primary_change_click", function() {
+					$("form#change_publisher_logo_image input#change_publisher_logo_image_image").val('');
+					$("#dialog_13").jqmShow();
+					$("#btn_dlg_submit_upload_logo_image_primary_change").focus();
+				});
+			$(document).on("click", "#btn_dlg_cancel_upload_logo_image_primary_change", function() {
+				$("#close_form13").trigger('click');
+			});
+
+
+			$(document).on("click", "#btn_dlg_submit_delete_logo_image_primary", function() {
+				delete_logo_image_primary(id_logo_image);
+			});
+			$(document).on("click", "#btn_dlg_cancel_delete_logo_image_primary", function() {
+				$("#close_form14").trigger('click');
+			});
+			// $(document).on("click", "#btn_logo_image_primary_delete", function() {
+				// $("#dialog_14").jqmShow();
+				// $("#btn_dlg_submit_delete_logo_image_primary").focus();
+			// });			
+				$(document).on("btn_logo_image_primary_delete_click", function() {
+					$("#dialog_14").jqmShow();
+					$("#btn_dlg_submit_delete_logo_image_primary").focus();
+				});
+
+
+			// $(document).on("click", "#btn_logo_image_primary_crop", function() {
+				// $("#dialog_15").jqmShow();
+			// });
+				$(document).on("btn_logo_image_primary_crop_click", function() {
+					$("#dialog_15").jqmShow();
+				});
+			$(document).on("click", "#btn_dlg_submit_crop_logo_image_primary", function() {
+				crop_logo_image_primary();
+			});
+			$(document).on("click", "#btn_dlg_cancel_crop_logo_image_primary", function() {
+				$("#close_form15").trigger('click');
+			});
+
+
+			
+			
+			
+			
+		    $("#textarea_add_post_publisher").on ('blur', function (e) {
+				onDivBlur();
+		    });
+		    $("#textarea_add_post_publisher").on ('mousedown', function (e) {
+				return cancelEvent(e);
+		    });
+		    $("#textarea_add_post_publisher").on ('click', function (e) {
+				return cancelEvent(e);
+		    });
+		    $("#textarea_add_post_publisher").on ('mouseup', function (e) {
+				saveSelection();
+		    });
+		    $("#textarea_add_post_publisher").on ('keyup', function (e) {
+				saveSelection();
+		    });
+		    $("#textarea_add_post_publisher").on ('focus', function (e) {
+				restoreSelection();
+		    });
+		    $("#textarea_add_post_publisher").on ('keydown', function (e) {
+		    	if( e.keyCode == 9) {
+		    		e.preventDefault();
+					insertTextAtCursor("\t");
+		    	}
+		    });
+
+    		$("#submit_story_4").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_story_4").click();
+    		});
+			$("#submit_story_4").on('click', function() {
+				var c = $("#textarea_add_post_publisher").html().replace(/\t/g, '        '); 
+				$("#post_publisher_post_text").val(c);	
+				// $("#post_publisher_id").val(post_publisher_created_id);
+				$("#submit_story_4_text").addClass("hidden");						
+				$("#submit_story_4_loader").removeClass("hidden");
+				$("#submit_story_4_hidden").click();
+			});
+
+    		$("#cancel_story_4").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_story_4").click();
+    		});
+			$("#cancel_story_4").on('click', function() {
+				cancel_post_publisher();
+				// $("#submit_story_4_text").addClass("hidden");						
+				// $("#submit_story_4_loader").removeClass("hidden");
+			});
+			
+			$(document).on('click_101', function(e, id) {
+				var s = "div#" + id;				
+				// scroll_top = $(window).scrollTop();
+				var content = $(this).find(s).html();
+				$("#dialog_101_content_container").html(content);
+				$("#dialog_101").jqmShow();	
+			});
+			$('#dialog_101').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 40);
+					hash.w.css('opacity', 1.0).fadeIn(200);
+				}
+			}); 		
+			
+			$(document).on('click_104', function() {
+				scroll_top = $(window).scrollTop();
+				// var content = $(this).find(s).html();
+				// $("#dialog_101_content_container").html(content);
+				$("#dialog_104").jqmShow();	
+			});
+			$('#dialog_104').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', 40 + scroll_top);
+					hash.w.css('opacity', 1.0).fadeIn(200);
+				}
+			}); 		
+
+			$(document).on('click_105', function() {
+				scroll_top = $(window).scrollTop();
+				// var content = $(this).find(s).html();
+				// $("#dialog_101_content_container").html(content);
+				$("#dialog_105").jqmShow();	
+			});
+			$('#dialog_105').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', 40 + scroll_top);
+					hash.w.css('opacity', 1.0).fadeIn(200);
+				}
+			}); 		
+
+			// $(document).on("click", "#btn_dlg_submit_upload_image_logo", function(e) {
+				// $("form#new_publisher_user_logo_image input#new_publisher_user_logo_image_image").click();
+			// });	
+			// $(document).on("change", "form#new_publisher_user_logo_image input#new_publisher_user_logo_image_image", function(e) {
+				// $("#dvLoading_22").removeClass("dvLoading-display-none");
+				// $("form#new_publisher_user_logo_image input#btn_submit_dialog_22").click();
+			// });
+			// $(document).on("click", "#figcaption_logo_image_generic", function() {
+				// $("form#new_publisher_user_logo_image input#new_publisher_user_logo_image_image").val('');
+				// $("#dialog_22").jqmShow();
+			// });		
+			// $(document).on("click", "#btn_photo_logo_new", function() {				
+				// $("form#new_publisher_user_logo_image input#new_publisher_user_logo_image_image").val('');
+				// $("#dialog_22").jqmShow();
+			// });		
+			// $(document).on("click", "#btn_dlg_cancel_upload_image_logo", function() {
+				// $("#close_form22").trigger('click');
+			// });
+
+			// $(document).on("click", "#btn_dlg_submit_upload_logo_image_change", function(e) {
+				// $("form#change_publisher_user_logo_image input#change_publisher_user_logo_image_image").click();
+			// });	
+			// $(document).on("change", "form#change_publisher_user_logo_image input#change_publisher_user_logo_image_image", function() {
+				// $("#dvLoading_23").removeClass("dvLoading-display-none");
+				// $("form#change_publisher_user_logo_image input#btn_submit_dialog_23").click();
+			// });
+			// $(document).on("click", "#btn_photo_logo_change", function() {				
+				// $("form#change_publisher_user_logo_image input#change_publisher_user_logo_image_image").val('');
+				// $("#dialog_23").jqmShow();
+			// });		
+			// $(document).on("click", "#btn_dlg_cancel_upload_logo_image_change", function() {
+				// $("#close_form23").trigger('click');
+			// });
+
+
+			// $(document).on("click", "#btn_dlg_submit_delete_logo_image", function() {
+				// delete_logo_image(id_image_logo);
+			// });
+			// $(document).on("click", "#btn_dlg_cancel_delete_logo_image", function() {
+				// $("#close_form24").trigger('click');
+			// });
+			// $(document).on("click", "#btn_photo_logo_delete", function() {
+				// $("#dialog_24").jqmShow();
+				// $("#btn_dlg_submit_delete_logo_image").focus();
+			// });			
+
+
+			// $(document).on("click", "#btn_photo_logo_crop", function() {
+				// $("#dialog_25").jqmShow();
+			// });
+			// $(document).on("click", "#btn_dlg_submit_crop_logo_image", function() {
+				// crop_image_logo();
+				// // $("#btn_submit_crop_image_primary").click();
+			// });
+			// $(document).on("click", "#btn_dlg_cancel_crop_logo_image", function() {
+				// $("#close_form25").trigger('click');
+			// });
+
+
+
+			$('#dialog_12').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-220px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_12').animate(
+						{bottom:'-=230', top:'+=230'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_12').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+						}
+					);
+				}
+			}); 		
+
+			// $('#dialog_22').jqm({
+				// onShow: function(hash) {
+					// hash.o.prependTo('body');
+					// hash.w.css('top', '-220px');
+					// hash.w.css('opacity', 1.0).fadeIn(200);
+					// // hash.w.show();
+					// $('#dialog_22').animate(
+						// {bottom:'-=230', top:'+=230'}, 
+						// 500, 
+						// 'easeInOutCirc', 
+						// function() {
+							// $('#dialog_22').animate(
+								// {bottom:'+=4', top:'-=4'}, 
+								// 100, 
+								// 'easeInBounce', 
+								// function() {
+								// }
+							// );
+						// }
+					// );
+				// }
+			// }); 		
+
+			$('#dialog_13').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-220px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_13').animate(
+						{bottom:'-=230', top:'+=230'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_13').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+						}
+					);
+				}
+			}); 		
+
+			// $('#dialog_23').jqm({
+				// onShow: function(hash) {
+					// hash.o.prependTo('body');
+					// hash.w.css('top', '-220px');
+					// hash.w.css('opacity', 1.0).fadeIn(200);
+					// // hash.w.show();
+					// $('#dialog_23').animate(
+						// {bottom:'-=230', top:'+=230'}, 
+						// 500, 
+						// 'easeInOutCirc', 
+						// function() {
+							// $('#dialog_23').animate(
+								// {bottom:'+=4', top:'-=4'}, 
+								// 100, 
+								// 'easeInBounce', 
+								// function() {
+								// }
+							// );
+						// }
+					// );
+				// }
+			// }); 		
+		
+			$('#dialog_14').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					hash.w.css('top', '-200px');
+					hash.w.css('opacity', 1.0).fadeIn(200);
+					// hash.w.show();
+					$('#dialog_14').animate(
+						{bottom:'-=210', top:'+=210'}, 
+						500, 
+						'easeInOutCirc', 
+						function() {
+							$('#dialog_14').animate(
+								{bottom:'+=4', top:'-=4'}, 
+								100, 
+								'easeInBounce', 
+								function() {
+								}
+							);
+						}
+					);
+				}
+			}); 		
+
+			$(document).on('click_2001', function() {
+				var s = "#dialog_2001_content";				
+				// scroll_top = $(window).scrollTop();
+				var content = $(this).find(s).html();
+				$("#dialog_2001_content_container").html(content);
+				$("#dialog_2001").jqmShow();	
+			});
+			$('#dialog_2001').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 20);
+					hash.w.css('opacity', 1.0).fadeIn(200);
+				}
+			}); 		
+
+			$(document).on('click_2002', function() {
+				var s = "#dialog_2002_content";				
+				// scroll_top = $(window).scrollTop();
+				var content = $(this).find(s).html();
+				$("#dialog_2002_content_container").html(content);
+				$("#dialog_2002").jqmShow();	
+			});
+			$('#dialog_2002').jqm({
+				onShow: function(hash) {
+					hash.o.prependTo('body');
+					// hash.w.css('top', 40 + scroll_top);
+					hash.w.css('top', 20);
+					hash.w.css('opacity', 1.0).fadeIn(200);
+				}
+			}); 		
+
+			// $('#dialog_24').jqm({
+				// onShow: function(hash) {
+					// hash.o.prependTo('body');
+					// hash.w.css('top', '-200px');
+					// hash.w.css('opacity', 1.0).fadeIn(200);
+					// // hash.w.show();
+					// $('#dialog_24').animate(
+						// {bottom:'-=210', top:'+=210'}, 
+						// 500, 
+						// 'easeInOutCirc', 
+						// function() {
+							// $('#dialog_24').animate(
+								// {bottom:'+=4', top:'-=4'}, 
+								// 100, 
+								// 'easeInBounce', 
+								// function() {
+								// }
+							// );
+						// }
+					// );
+				// }
+			// }); 		
+
+		
+
+		    // <!-- 
+		    // # name_company                    
+		    // # address1        
+		    // # address2       
+		    // # city            
+		    // # state          
+		    // # country                             
+		    // # zip    
+		    // # phone_company      
+		    // # website       
+		    // # email_info      
+		    // # email_admin     
+		    // # name_admin     
+		    // # tagline_logo  
+		    // # story_corporate 
+		    // -->
+
+			
+			// set_control_required("name_first", gon.b_required_name_first);
+    		$("#submit_edit_story_1").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_edit_story_1").click();
+    		});
+
+			set_control_span("name_company", gon.name_company, gon.b_name_company);
+			set_control_span("address1", gon.address1, gon.b_address1);
+			set_control_span("address2", gon.address2, gon.b_address2);
+			set_control_span("city", gon.city, gon.b_city);
+			set_control_span("state", gon.state, gon.b_state);
+			set_control_span("country", gon.country, gon.b_country);
+			set_control_span("zip", gon.zip, gon.b_zip);
+			set_control_span("phone_company", gon.phone_company, gon.b_phone_company);
+			set_control_span("website", gon.website, gon.b_website);
+			set_control_span("email_info", gon.email_info, gon.b_email_info);
+			set_control_span("email_admin", gon.email_admin, gon.b_email_admin);
+			set_control_span("name_admin", gon.name_admin, gon.b_name_admin);
+			set_control_span("tagline_logo", gon.tagline_logo, gon.b_tagline_logo);
+
+			$("#submit_edit_story_1").on('click', function() {
+				var input_publisher_name_company = $("#publisher_name_company").val();
+				var input_publisher_address1 = $("#publisher_address1").val();
+				var input_publisher_address2 = $("#publisher_address2").val();
+				var input_publisher_city = $("#publisher_city").val();
+				var input_publisher_state = $("#publisher_state").val();
+				var input_publisher_country = $("#publisher_country").val();
+				var input_publisher_zip = $("#publisher_zip").val();
+				var input_publisher_phone_company = $("#publisher_phone_company").val();
+				var input_publisher_website = $("#publisher_website").val();
+				var input_publisher_email_info = $("#publisher_email_info").val();
+				var input_publisher_email_admin = $("#publisher_email_admin").val();
+				var input_publisher_name_admin = $("#publisher_name_admin").val();
+				var input_publisher_tagline_logo = $("#publisher_tagline_logo").val();
+
+				// var obj_list = '{"publisher_product_description_id":' + <#%= @publisher_product_description_id %#> + 
+							   // ', "publisher_product_id":' + <#%= @publisher_product_id %#> + 
+							   // ', "publisher_id":' + <#%= @publisher_id %#> + 
+							   // ', "name_first":"' + input_publisher_product_description_name_first + 
+							   // '"}';      
+				var obj_list = '{  "name_company":"' + input_publisher_name_company +
+							   '", "address1":"' + input_publisher_address1 +
+							   '", "address2":"' + input_publisher_address2 +
+							   '", "city":"' + input_publisher_city +
+							   '", "state":"' + input_publisher_state +
+							   '", "country":"' + input_publisher_country +
+							   '", "zip":"' + input_publisher_zip +
+							   '", "phone_company":"' + input_publisher_phone_company +
+							   '", "website":"' + input_publisher_website +
+							   '", "email_info":"' + input_publisher_email_info +
+							   '", "email_admin":"' + input_publisher_email_admin +
+							   '", "name_admin":"' + input_publisher_name_admin +
+							   '", "tagline_logo":"' + input_publisher_tagline_logo +
+							   '"}';      
+			  	var obj = '{ "publisher": [' +  obj_list + '] }';                  
+			  	$.ajax({
+			    	type: 'POST',
+			    	// data : JSON.stringify(obj),
+			    	data : obj,
+			    	url: '/publishers/update_story_1',			    	
+			    	dataType: "json",
+			    	contentType: "application/json",
+			    	processData: false,
+			    	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	statusCode: {
+	                	// 200:function() { alert("200"); },
+	                	// 202:function() { alert("202"); }
+	            	},
+	            	success: function(data) {
+						// alert(data.name_first);
+						set_control_span("name_company", data.name_company, data.b_name_company);
+						set_control_span("address1", data.address1, data.b_address1);
+						set_control_span("address2", data.address2, data.b_address2);
+						set_control_span("city", data.city, data.b_city);
+						set_control_span("state", data.state, data.b_state);
+						set_control_span("country", data.country, data.b_country);
+						set_control_span("zip", data.zip, data.b_zip);
+						set_control_span("phone_company", data.phone_company, data.b_phone_company);
+						set_control_span("website", data.website, data.b_website);
+						set_control_span("email_info", data.email_info, data.b_email_info);
+						set_control_span("email_admin", data.email_admin, data.b_email_admin);
+						set_control_span("name_admin", data.name_admin, data.b_name_admin);
+						set_control_span("tagline_logo", data.tagline_logo, data.b_tagline_logo);
+						cancel_edit_story_1();
+	            	},
+	            	error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	});
+		  		return false;
+			});
+
+
+
+			// // set_control_required("name_first", gon.b_required_name_first);
+    		// $("#submit_edit_story_2").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#submit_edit_story_2").click();
+    		// });
+			// set_control_span("story_corporate", gon.story_corporate, gon.b_story_corporate);
+			// $("#submit_edit_story_2").on('click', function() {
+				// var input_publisher_story_corporate = $("#publisher_story_corporate").val();
+				// alert(input_publisher_story_corporate);
+// 
+				// var obj_list = '{  "story_corporate":"' + input_publisher_story_corporate +
+							   // '"}';      
+			  	// var obj = '{ "publisher": [' +  obj_list + '] }';                  
+			  	// $.ajax({
+			    	// type: 'POST',
+			    	// // data : JSON.stringify(obj),
+			    	// data : obj,
+			    	// url: '/publishers/update_story_2',			    	
+			    	// dataType: "json",
+			    	// contentType: "application/json",
+			    	// processData: false,
+			    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	            	// statusCode: {
+	                	// // 200:function() { alert("200"); },
+	                	// // 202:function() { alert("202"); }
+	            	// },
+	            	// success: function(data) {
+						// // alert(data.name_first);
+						// set_control_span("story_corporate", data.story_corporate, data.b_story_corporate);
+						// cancel_edit_story_2();
+	            	// },
+	            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+			  	// });
+		  		// return false;
+			// });
+
+
+
+            // $('.tip').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout'
+                // })
+            // });			
+            // $('.tip-bottom-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'top center',
+				        // at: 'bottom center'
+				        // // target: $('.tip-bottom-center')
+    				// }                    
+                // })
+            // });			
+            // $('.tip-top-center').each(function() {
+                // var tipContent = $(this).next('.tip-content').html();
+                // $(this).qtip({
+                	// style: { classes: 'tooltip-text-1' },
+                    // content: tipContent,
+                    // show: 'mouseover',
+                    // hide: 'mouseout',
+				    // position: {
+				        // my: 'bottom center',
+				        // at: 'top center'
+				        // // target: $('.tip-top-center')
+    				// }                    
+                // })
+            // });			
+		
+		
+			// $("#div_pop_dialog_test").on('click', function() {
+				// $("#a_pop_dialog_test").click();
+			// });	
+		
+			// // $(".group1").colorbox({rel:'group1'});
+			// // $(".group2").colorbox({rel:'group2', transition:"fade"});
+			// // $(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
+			// // $(".group4").colorbox({rel:'group4', slideshow:true});
+			// // $(".ajax").colorbox();
+			// // $(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
+			// // $(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
+			// // $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+			// $(".inline").colorbox({inline:true, width:"400px"});
+			// // $(".callbacks").colorbox({
+				// // onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+				// // onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+				// // onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+				// // onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+				// // onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+			// // });
+			// // $('.non-retina').colorbox({rel:'group5', transition:'none'})
+			// // $('.retina').colorbox({rel:'group5', transition:'none', retinaImage:true, retinaUrl:true});
+			// // $("#click").click(function(){ 
+				// // $('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+				// // return false;
+			// // });
+		
+		
+			// $("#btn_pop_dialog_2_test").on('click', function() {
+				// $("#dialog_14").jqmShow();
+				// // $("#primary").val('true');
+			// });			
+			
+			
+			// *****
+			// story 2 publisher_plot
+
+			story_2_publisher_plot_html = "<%= @publisher.publisher_plot.plot_text.html_safe %>";
+			init_render_story_2();
+			
+		  	$("#open_edit_story_2").click(function(){
+				show_edit_story_2();
+		  	});	
+		  	$("#close_edit_story_2").click(function(){
+				cancel_edit_story_2();
+		  	});			
+    		$("#cancel_edit_story_2").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_edit_story_2").click();
+    		});
+			$("#cancel_edit_story_2").on('click', function() {
+				cancel_edit_story_2();
+			});
+
+    		// $("#submit_edit_story_2").keypress(function(e){
+      			// if(e.keyCode==13)
+      			// $("#submit_edit_story_2").click();
+    		// });
+			// $("#submit_edit_story_2").on('click', function() {
+				// $("#submit_edit_story_2_hidden").click();
+			// });
+			
+			// $("#render_story_2").html("<#%= j render("publishers/story_2") %#>");
+			// $(document).on("click", ".textarea-publisher-plot", function() {
+			// $(document).on("click", "#textarea_publisher_plot_container_edit", function() {
+				// // if (!b_edit_publisher_plot) {
+					// // // $p = $(this).closest(".textarea-publisher-plot-parent");
+					// // // $b = $p.find(".btn-textarea-publisher-plot-story-4-container"); // btn-textarea-publisher-plot-story-4-container
+					// // // edit_textarea_publisher_plot($(this), $b);
+					// // edit_textarea_publisher_plot();
+				// // }
+				// partial_init_render_story_2_edit();
+			// });
+			// $(document).on("keydown", "#textarea_publisher_plot_edit", function() {
+				// $("#textarea_publisher_plot_edit").removeClass("textarea-publisher-plot-empty");
+			// });
+			// $(document).on("keyup", "#textarea_publisher_plot_edit", function() {
+				// partial_init_render_story_2_edit();
+			// });			
+			// $(document).on("focus", "#textarea_publisher_plot_edit", function() {
+				// partial_init_render_story_2_edit();
+			// });
+
+			// $(document).on("keydown", ".textarea-publisher-plot", function() {
+				// if (!b_edit_publisher_plot) {
+					// // $p = $(this).closest(".textarea-publisher-plot-parent");
+					// // $b = $p.find(".btn-textarea-publisher-plot-story-4-container");
+					// // edit_textarea_publisher_plot($(this), $b);
+					// edit_textarea_publisher_plot();					
+				// }
+			// });
+			// $(document).on('click', function(e) {
+				// var $t = $(e.target);
+				// var c = ":" + $t.attr("class") + ":";
+				// if ( (c !== ":undefined:") && (c !== ":btn-submit hidden:") ) {
+					// if ( !( ($t.hasClass("div-link")) || ($t.hasClass("toggle-publisher-plot"))  || ($t.parents().hasClass("toggle-publisher-plot") ) ) ) {
+						// var v = $("#textarea_publisher_plot").html();
+						// var w = $("#render_publisher_plot_image").html();
+						// if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+							// // alert("triggered by = " + c);
+							// reset_textarea_publisher_plot();
+						// }
+					// }
+				// }
+			// });
+			
+			// onblur="onDivBlur();" 
+			// onmousedown="return cancelEvent(event);" 
+			// onclick="return cancelEvent(event);" 
+			// contentEditable="true" 
+			// onmouseup="saveSelection();" 
+			// onkeyup="saveSelection();" 
+			// onfocus="restoreSelection();"
+
+		    $("#textarea_publisher_plot_edit").on ('blur', function (e) {
+				onDivBlur_publisher_plot();
+		    });
+		    $("#textarea_publisher_plot_edit").on ('mousedown', function (e) {
+				return cancelEvent_publisher_plot(e);
+		    });
+		    $("#textarea_publisher_plot_edit").on ('click', function (e) {
+				return cancelEvent_publisher_plot(e);
+		    });
+		    $("#textarea_publisher_plot_edit").on ('mouseup', function (e) {
+				saveSelection_publisher_plot();
+		    });
+		    $("#textarea_publisher_plot_edit").on ('keyup', function (e) {
+				saveSelection_publisher_plot();
+		    });
+		    $("#textarea_publisher_plot_edit").on ('focus', function (e) {
+				restoreSelection_publisher_plot();
+		    });
+		    $("#textarea_publisher_plot_edit").on ('keydown', function (e) {
+		    	if( e.keyCode == 9) {
+		    		e.preventDefault();
+					insertTextAtCursor_publisher_plot("\t");
+		    	}
+		    });
+		
+    		$("#submit_story_2").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#submit_story_2").click();
+    		});
+			$("#submit_story_2").on('click', function() {
+				var c = $("#textarea_publisher_plot_edit").html().replace(/\t/g, '        '); 
+				$("#publisher_plot_plot_text").val(c);	
+				$("#submit_story_2_text").addClass("hidden");						
+				$("#submit_story_2_loader").removeClass("hidden");
+				$("#submit_story_2_hidden").click();
+			});
+
+    		$("#cancel_story_2").keypress(function(e){
+      			if(e.keyCode==13)
+      			$("#cancel_story_2").click();
+    		});
+			$("#cancel_story_2").on('click', function() {
+				cancel_edit_story_2();
+			});
+			
+			// story 2 publisher_plot
+			// *****
+			
+			
+			
+		});
+	  
+		$(window).on('beforeunload', function(){
+			cancel_post_publisher_on_close();
+		});
+	  
+	</script>
+
+	<script>
+
+		// *****
+		// story 2 publisher_plot
+		
+		var story_2_publisher_plot_html = null;
+		
+		function partial_init_render_story_2() {
+			var v = $("#textarea_publisher_plot").html();
+			var w = $("#render_publisher_plot_image").html();
+			if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+				$("#textarea_publisher_plot").addClass("textarea-publisher-plot-empty");
+			}
+			else {
+				$("#textarea_publisher_plot").removeClass("textarea-publisher-plot-empty");
+			}			
+		}
+
+		function partial_init_render_story_2_edit() {
+			var v = $("#textarea_publisher_plot_edit").html();
+			var w = $("#render_publisher_plot_image_edit").html();
+			if ( ((v == "<br>") || (v == "")) && ((w == "<br>") || (w == "")) ) {
+				$("#textarea_publisher_plot_edit").addClass("textarea-publisher-plot-empty");
+			}
+			else {
+				$("#textarea_publisher_plot_edit").removeClass("textarea-publisher-plot-empty");
+			}			
+		}
+
+		// function init_render_story_2_edit() {
+			// partial_init_render_story_2_edit();
+		// }
+		
+		function init_render_story_2() {
+			$("#textarea_publisher_plot").html(story_2_publisher_plot_html);
+			partial_init_render_story_2();
+		}
+
+	  	function show_edit_story_2() {
+	  		var textarea_html = $("#textarea_publisher_plot").html();
+			$("#open_edit_story_2, .show-story-2").fadeOut(200, function(){    			
+				$("#open_edit_story_2").addClass("hidden");
+				$("#close_edit_story_2").fadeIn(200).removeClass("hidden");
+    			$(".show-story-2").addClass("hidden");
+    			$(".edit-story-2").fadeIn(300).removeClass("hidden");    	
+    			$("#textarea_publisher_plot_edit").html(textarea_html);
+				$(".btn-textarea-publisher-plot-story-2-container").removeClass("hidden");
+				// init_render_story_2_edit();
+	  			$("#textarea_publisher_plot_edit").focus();								
+    		});
+	  	}
+	  	function cancel_edit_story_2() {
+	  		// $("#render_publisher_plot_image").html(""); Must call db delete on image
+	  		// $("#textarea_publisher_plot").html("");
+			init_render_story_2();
+			hide_edit_story_2();	
+	  	}
+		function close_edit_story_2() {
+			$("#submit_story_2_loader").addClass("hidden");
+			$("#submit_story_2_text").removeClass("hidden");				
+			partial_init_render_story_2();	
+			hide_edit_story_2();	
+		}
+		function hide_edit_story_2() {
+	  		$(".edit-story-2").fadeOut(200, function(){
+    			$(".edit-story-2").addClass("hidden");
+    			$(".show-story-2").removeClass("hidden").fadeIn(300);
+				$("#open_edit_story_2").removeClass("hidden").fadeIn(200);
+				$("#close_edit_story_2").addClass("hidden");
+			});			
+		}
+		
+		// var b_edit_publisher_plot = false;
+		var publisher_plot_id_delete = null;
+		
+		// function edit_textarea_publisher_plot() {
+			// b_edit_publisher_plot = true;
+			// $("#textarea_publisher_plot").removeClass("textarea-publisher-plot-inactive").addClass("textarea-publisher-plot-active");
+			// // $(".btn-textarea-publisher-plot-story-2-container").removeClass("hidden");
+		// }		
+		// function reset_textarea_publisher_plot() {
+			// $("#render_publisher_plot_image").html("");
+			// $("#textarea_publisher_plot").html("<br>");
+			// $(".btn-textarea-publisher-plot-story-2-container").addClass("hidden");
+			// $("#textarea_publisher_plot").removeClass("textarea-publisher-plot-active").addClass("textarea-publisher-plot-inactive");
+			// b_edit_publisher_plot = false;
+		// }
+		
+		// function delete_publisher_plot(id) {
+			// var formData = {publisher_plot_id:id};
+		  	// $.ajax({
+		    	// type: 'POST',
+		    	// data : formData,
+		    	// url: '/publishers/destroy_publisher_plot',			    	
+		    	// dataType: "script",
+		    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	// statusCode: {
+            	// },
+            	// success: function(data) {
+            	// },
+            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	// });
+		// }
+		// function cancel_publisher_plot() {
+		  	// $.ajax({
+		    	// type: 'POST',
+		    	// url: '/publishers/cancel_publisher_plot',			    	
+		    	// dataType: "script",
+		    	// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            	// statusCode: {
+            	// },
+            	// success: function(data) {
+            	// },
+            	// error: function(xhr){  alert("error: " + xhr.statusText); }        
+		  	// });
+		// }
+		// function cancel_publisher_plot_on_close() {
+			// var w = $("#render_publisher_plot_image").html();
+			// if ( !( (w == "<br>") || (w == "") ) ) {
+				// $.ajax({
+					// type: 'POST',
+					// url: '/publishers/cancel_publisher_plot_on_close',			    	
+					// dataType: "script",
+					// async: false,
+					// beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))} // ,
+				// });
+			// }
+		// }
+		
+		var drop_story_2_attach_visible = false;
+		var btn_1_drop_publisher_plot_image_clicked = false;
+
+		function drop_story_2_attach_show() {
+			$("#drop_story_2_attach").addClass('drop');
+			$("#container_drop_story_2_attach").removeClass('hidden');
+			$("#drop_story_2_attach div div.dropdownContain div.dropOut").fadeIn(200, function() {
+				$(this).css({ 
+					'margin-top' : 10
+				});
+			});
+			$("#caret_story_2_attach").removeClass("nav-caret-down").addClass("nav-caret-up");
+			drop_story_2_attach_visible = true;			
+		}	
+		function drop_story_2_attach_hide() {
+			$("#drop_story_2_attach").removeClass('drop');
+			$("#container_drop_story_2_attach").addClass('hidden');
+			drop_story_2_attach_visible = false;			
+			$("#drop_story_2_attach div div.dropdownContain div.dropOut").css({
+				'margin-top' : 0
+			});
+			$("#caret_story_2_attach").removeClass("nav-caret-up").addClass("nav-caret-down");
+			
+			if( btn_1_drop_publisher_plot_image_clicked == true ) {
+				btn_1_drop_publisher_plot_image_clicked = false;
+				$("form#new_publisher_plot_image input#new_publisher_plot_image_image").click();
+			}
+		}	
+		function drop_toggle_story_2_attach() {
+			if (drop_story_2_attach_visible) {
+				drop_story_2_attach_hide();
+			}
+			else {
+				drop_story_2_attach_show();
+			}
+		}	
+		
+	</script>

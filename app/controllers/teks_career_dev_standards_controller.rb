@@ -1,2 +1,0 @@
-class TeksCareerDevStandardsController < ApplicationController
-end

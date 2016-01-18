@@ -267,6 +267,7 @@
 	/*margin: 5px 0 0 0;*/
 	margin: 5px 0 0 0;
 }						
+
 .post-user-delete {
 	width: 20px;
 	height: 20px;
@@ -284,11 +285,23 @@
 	display: inline-block;
 	margin: 2px 2px 0 0;			
 }
-.post-user-comment-delete-blank {
-	width: 20px;
-	height: 20px;
-	display: inline-block;
-	margin: 2px 2px 0 0;			
+
+.post-user-delete-2 {
+  width: 12px;
+  height: 12px;
+  background-image: asset-url('global/button_delete_w12_h12.png');
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin: 2px 2px 0 0;      
+}
+.post-user-delete-2:hover {
+  cursor: pointer;
+}
+.post-user-delete-2-blank {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin: 2px 2px 0 0;      
 }
 
 .post-user-comment-delete-container {

@@ -1,0 +1,7 @@
+// alert('ajax works in post_user_homes/destroy_post_user_image');
+<% if !@post_user.nil? %>
+	$('#render_post_user_image_presave').html("<%= j render('publisher_user_homes/post_user_image_presave') %>");
+	$("#textarea_add_post_user").focus();
+<% else %>
+	alert("Upload error");
+<% end %>

@@ -1,0 +1,10 @@
+// alert('ajax works in upload_post_user_file');
+<% if @post_user.post_user_files.any? %>
+	$('#render_post_user_file_presave').html("<%= j render('publisher_user_homes/post_user_file_presave') %>");
+	$("#btn_story_4_attach_loader").addClass("hidden");
+	$("#btn_story_4_attach_text").removeClass("hidden");
+	$("#textarea_add_post_user").focus();
+	// post_user_files_count += 1;
+<% else %>
+	alert("Upload error");
+<% end %>

@@ -1,2 +1,0 @@
-module Journal4posterPositionsHelper
-end

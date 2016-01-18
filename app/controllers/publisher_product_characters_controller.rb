@@ -1,2 +1,0 @@
-class PublisherProductCharactersController < ApplicationController
-end

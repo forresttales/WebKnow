@@ -1,2 +1,0 @@
-class PublisherProductFileTypesController < ApplicationController
-end

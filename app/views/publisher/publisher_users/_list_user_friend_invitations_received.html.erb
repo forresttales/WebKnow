@@ -1,0 +1,547 @@
+
+<% if false %>
+<style>
+	
+		.jqmWindow-4 {
+		    display: none;
+		    position: fixed;
+		    left: 50%;
+		    margin-left: -350px;
+		    width: 700px;
+			height: 700px;		    
+		    background-color: #EEE;
+		    color: #333;
+		    border: 1px solid black;
+		    padding: 0px;
+		}		
+	
+</style>
+
+
+<div class="jqmWindow jqmWindow-4" id="dialog_4">
+	<div class="table-dl-form">
+		<div class="row">
+			<div class="cell-100percent">
+				<div id="close_form4" class="form-edit-close jqmClose tip-left-center" tabindex="">
+					<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+				</div>
+                <div class="tip-content">
+                    <div class="tooltiptext">Close</div>
+                </div>																								
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+	</div>				   				
+	<div class="pad-left-20">
+		<div style="height: 20px;"></div>
+		<div class="profile-grid profile-cs-style-3">
+			<figure class="" id="profile_figure_list">
+				<img alt="photo not appearing" src="" />
+				<figcaption class="figcaption-2">
+					<div class="tip-top-center"></div>
+	                <div class="tip-content">
+	                    <div class="tooltiptext">Delete</div>
+	                </div>																								
+				</figcaption>
+			</figure>
+		</div>
+	</div>
+</div>
+<% end %>
+
+
+
+
+<style>
+	.drop-publisher-users-indexLUFIR .drop-hidden {
+	display: none !important;
+	visibility: hidden !important;  
+	}
+	.drop-publisher-users-indexLUFIR .drop-clear-both {
+	clear: both;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR {
+	width: 100px;
+	height: 100px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .drop-LUFIR-triangle {
+	width: 0px;
+	height: 0px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #fff;
+	position: relative;
+	left: 3px;
+	float: left;
+	bottom: -1px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .drop-LUFIR-box {
+	width: 96px;
+	float: left;
+	/*position: relative;*/
+	position: absolute;
+	margin-top: 0px;
+	-webkit-transition: all .1s ease-out;
+	-moz-transition: all .1s ease-out;
+	-ms-transition: all .1s ease-out;
+	-o-transition: all .1s ease-out;
+	transition: all .1s ease-out;
+	z-index: 1;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .drop-LUFIR-container-links {
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .margin-top-hide-1 {
+	margin-top: -16px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .margin-top-show-1 {
+	margin-top: -6px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .drop-LUFIR-link-1 {
+	width: 100%;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .drop-LUFIR-link-1:hover .span-1 {
+	}   
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .drop-LUFIR-span-1 {
+	color: #376340; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR a.drop-LUFIR-link-a-1 {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR a.drop-LUFIR-link-a-1:hover {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .drop-LUFIR-border {
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;      
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;     
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-bottom-right-radius: 4px;
+	border-bottom-right-radius: 4px;      
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-bottom-left-radius: 4px;
+	border-bottom-left-radius: 4px;     
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .drop-LUFIR-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .drop-LUFIR-divider-1 {
+	height: 2px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .drop-LUFIR-divider-2 {
+	height: 10px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .background-transparent {
+	background-color: transparent;
+	}
+	.drop-publisher-users-indexLUFIR .background-white {
+	background-color: #fff;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .nav-caret-container {
+	width: 14px;
+	height: 30px;
+	padding: 0 0 0 2px;     
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .nav-caret {
+	width: 0px;
+	height: 0px;
+	position: relative;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	margin: 16px 0 0 0px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .nav-caret-down {
+	border-top: 5px solid #999;
+	border-bottom: 0;     
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .nav-caret-up {
+	border-bottom: 5px solid #999;
+	border-top: 0;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .nav-drop-1:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .nav-drop-1:hover .nav-avatar img {
+	border: 2px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .nav-drop-1:hover .nav-caret-down {
+	border-top: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .nav-drop-1:hover .nav-caret-up {
+	border-bottom: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR .cursor-pointer:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-target-icon {
+	display: inline-block;
+	}	
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-target-text {
+	display: inline-block;
+	}	
+	.drop-publisher-users-indexLUFIR .drop-LUFIR a:focus {
+	outline: none;	
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR a:active {
+	outline: none;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR a:visited {
+	outline: none;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-table {
+	display: table;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-table-row {
+	display: table-row;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-table-cell-1 {
+	display: table-cell;
+	width: 174px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-table-cell-2 {
+	display: table-cell;
+	width: 12px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 {
+	text-align: left;
+	width: auto;
+	height: 24px;
+	padding: 4px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1:hover {
+	background: #f6f6f6;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1-target {
+	position: relative;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 8px 8px 0;
+	border-color: transparent #ffffff transparent transparent;	
+	position: relative;
+	float: left;
+	left: -8px;
+	top: 33px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-container {
+	position: relative;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-box {
+	width: 200px;
+	position: absolute;
+	margin-top: 0px;
+	-webkit-transition: all .1s ease-out;
+	-moz-transition: all .1s ease-out;
+	-ms-transition: all .1s ease-out;
+	-o-transition: all .1s ease-out;
+	transition: all .1s ease-out;
+	z-index: 1;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-container-links {
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .margin-top-hide-1-1 {
+	margin-top: -53px;
+	margin-left: 160px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .margin-top-show-1-1 {
+	margin-top: -53px;
+	margin-left: 180px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-link-1 {
+	width: 100%;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-link-1:hover {
+	background: #f6f6f6;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-link-1:hover .span-1 {
+	}   
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-span-1 {
+	color: #376340; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 a.drop-LUFIR-1-link-a-1 {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 a.drop-LUFIR-1-link-a-1:hover {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-border {
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;      
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;     
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-bottom-right-radius: 4px;
+	border-bottom-right-radius: 4px;      
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-bottom-left-radius: 4px;
+	border-bottom-left-radius: 4px;     
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-divider-1 {
+	height: 2px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .drop-LUFIR-1-divider-2 {
+	height: 10px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .background-transparent {
+	background-color: transparent;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .background-white {
+	background-color: #fff;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .nav-caret-container {
+	width: 14px;
+	height: 30px;
+	padding: 0 0 0 2px;     
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .nav-caret {
+	width: 0px;
+	height: 0px;
+	position: relative;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	margin: 16px 0 0 0px;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .nav-caret-down {
+	border-top: 5px solid #999;
+	border-bottom: 0;     
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .nav-caret-up {
+	border-bottom: 5px solid #999;
+	border-top: 0;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .nav-drop-1:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .nav-drop-1:hover .nav-avatar img {
+	border: 2px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .nav-drop-1:hover .nav-caret-down {
+	border-top: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .nav-drop-1:hover .nav-caret-up {
+	border-bottom: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1 .cursor-pointer:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1-target-icon {
+	display: inline-block;
+	}	
+	.drop-publisher-users-indexLUFIR .drop-LUFIR-1-target-text {
+	display: inline-block;
+	margin: 4px 0px 0px 1px;
+	}	
+
+	.drop-publisher-users-indexLUFIR figure img,
+	 .drop-publisher-users-indexLUFIR figure {
+		border: medium none; 
+		overflow: hidden;
+		height: 100px;
+	}	
+	.drop-publisher-users-indexLUFIR .figure-LUFIR-image-edit {
+		height: 96px;
+		border: 2px solid #fbb040;
+	}	
+	.drop-publisher-users-indexLUFIR .figure-LUFIR-image-edit img {
+		margin: -2px;
+	}	
+    	
+</style>
+
+<style>
+	
+	table.LUFIR-table-1 tbody tr td div {
+		width: 160px;
+	} 
+		
+</style>
+
+
+<div>
+	<table class="LUFIR-table-1">
+		<tbody>
+			<% if @user_friend_invitations_received.any? %>
+				<% user_friend_invitations_received = @user_friend_invitations_received %>
+				<% number_images = user_friend_invitations_received.count %>
+				<% cnt_images = 0 %>
+				<% cnt = 0 %>
+				<% i = 0 %>
+				<% user_friend_invitations_received.each do |user_friend_invitation_received| %>
+					<% user_friend_invitation_id = user_friend_invitation_received.id rescue nil %>
+					<% if !user_friend_invitation_id.nil? %>
+						<% user_friend_from_id = user_friend_invitation_received.user_friend_from_id rescue nil %>
+						<% if !user_friend_from_id.nil? %>
+							<% user = User.find_by_id(user_friend_from_id) rescue nil %>
+							<% if !user.nil? %>
+								<% publisher_user = user.publisher_user rescue nil%>
+								<% if !publisher_user.nil? %>
+									<% user_image_primary = publisher_user.publisher_user_images.where( :primary => true ).first rescue nil %>
+									<% if !user_image_primary.nil? %>
+										<% cnt_images += 1 %>   				
+										<% cnt += 1 %>
+										<% if cnt == 1 %>				
+										<tr>
+										<% end %>
+											<td>
+												<div class="drop-namespaceLUFIR drop-publisher-users-indexLUFIR" style="width: 102px; height: 102px;" data-i="<%= i %>">
+													<div class="container-figure-image container-figure-image-border-load-LUFIR container-figure-LUFIR-image drop-LUFIR" style="position: relative;">	
+														<figure class="dialog-LUFIR-1-figure cursor-pointer" data-width="<%= user_image_primary.width %>" data-src-600="<%= user_image_primary.image_url(:image_600_600) %>">
+															<img id="" class="" alt="" src="<%= user_image_primary.image_url(:image_100_100) + '?' + (rand(10..90) * rand(100..900)).to_s if user_image_primary.image? %>" />
+															<figcaption class="figcaption-edit-LUFIR-image hidden drop-LUFIR-target" data-i="<%= i %>">
+																	<div class="img-1-text">Options</div>
+															</figcaption>
+														</figure>
+												    	<div class="drop-LUFIR-container drop-hidden">
+															<div class="drop-LUFIR-box background-transparent margin-top-hide-1">
+																<div class="drop-LUFIR-triangle"></div>
+																<div style="clear: both;"></div>
+																<div class="drop-LUFIR-container-links background-white drop-LUFIR-border drop-LUFIR-shadow">
+																	<div class="drop-LUFIR-divider-2"></div>
+																	<div class="drop-LUFIR-link-1 cursor-pointer" data-id="2" data-id-lufir-invitation="<%= user_friend_invitation_id %>" data-id-lufir-user="<%= user.id %>">
+																		<div class="drop-LUFIR-1">
+																	    	<div class="drop-LUFIR-1-target">
+																	    		<div class="drop-LUFIR-1-target-text">
+																	    			<span class="drop-LUFIR-1-span-1">Add to friends</span>
+																	    		</div>						    		
+																	    	</div>
+																    	</div>
+																	</div>
+																	<div class="drop-301-divider-2"></div>
+																</div>
+															</div>
+												        </div>
+													</div>
+												</div>
+											</td>
+											<% i += 1 %>
+										<% if cnt_images == number_images   %>
+										<%     if cnt == 1                  %>
+											<td></td><td></td>
+										</tr>
+										<%     elsif cnt == 2               %>
+											<td></td>
+										</tr>
+										<%     elsif cnt == 3               %>
+											</tr>
+										<%     end                          %>
+										<% elsif cnt == 3                   %>
+										</tr>
+										<% cnt = 0                          %>
+										<% end                              %>
+									<% else%>
+										<div>user_image_primary was nil</div>						
+									<% end %>
+								<% else %>
+									<div>publisher_user was nil</div>
+								<% end %>
+							<% else %>
+								<div>user was nil</div>
+							<% end %>
+						<% else %>
+							<div>user_friend_to_id was nil</div>
+						<% end %>
+					<% else %>
+						<div>user_friend_invitation_received_id was nil</div>
+					<% end %>
+				<% end %>
+			<% else %>
+				<div>No friend invitations received</div>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div style="height: 4px;"></div>
+
+
+<script>
+
+		var drop_visible_namespaceLUFIR_i = -1;
+		function drop_show_namespaceLUFIR(i) {
+			if (drop_visible_namespaceLUFIR_i > -1) {
+				drop_hide_namespaceLUFIR(drop_visible_namespaceLUFIR_i);
+			}
+			var s_container = ".drop-namespaceLUFIR[data-i=" + i.toString() + "] .drop-LUFIR-container";
+			$(s_container).removeClass('drop-hidden');
+			var s_box = ".drop-namespaceLUFIR[data-i=" + i.toString() + "] .drop-LUFIR-box";
+			$(s_box).fadeIn(1).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
+			drop_visible_namespaceLUFIR_i = i;			
+		}	
+		function drop_hide_namespaceLUFIR(i) {
+			var s_box = ".drop-namespaceLUFIR[data-i=" + i.toString() + "] .drop-LUFIR-box";
+			$(s_box).addClass("margin-top-hide-1").fadeOut(50);		
+			drop_visible_namespaceLUFIR_i = -1;			
+		}	
+		function drop_hide_namespaceLUFIR() {
+			$(".drop-namespaceLUFIR .drop-LUFIR-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);
+			$(".drop-namespaceLUFIR .drop-LUFIR-box").addClass("margin-top-hide-1").fadeOut(50);		
+			drop_visible_namespaceLUFIR_i = -1;			
+		}	
+		function drop_toggle_namespaceLUFIR(i) {
+			if (drop_visible_namespaceLUFIR_i == i) {
+				drop_hide_namespaceLUFIR(i);
+			}
+			else {
+				drop_show_namespaceLUFIR(i);
+			}
+		}	
+		
+		function dropCloseAll_namespaceLUFIR() {
+			drop_hide_namespaceLUFIR();
+		}
+	
+	
+	$(document).ready(function () {				
+
+			$(document).on('click', function(e) {
+				var target_namespaceLUFIR = $(e.target).parents('.drop-namespaceLUFIR').attr("class");
+				if (target_namespaceLUFIR == null) {
+					dropCloseAll_namespaceLUFIR();
+				}
+			});
+		
+			$(".drop-namespaceLUFIR .drop-LUFIR-target").on('click', function() {
+				var i = $(this).data('i');
+				drop_toggle_namespaceLUFIR(i);
+			});
+
+			$(".drop-namespaceLUFIR .drop-LUFIR-link-1[data-id='2']").on("click", function() {
+				dropCloseAll_namespaceLUFIR();
+				
+				// var id_LUFIR = $(this).data('id-lufir');
+				// $(document).trigger("btn_LUFIR_add_click", id_LUFIR);
+				
+				var id_LUFIR_invitation = $(this).data('id-lufir-invitation');
+				var id_LUFIR_user = $(this).data('id-lufir-user');
+				
+				var a_id_LUFIR = new Array();				
+				a_id_LUFIR.push(id_LUFIR_invitation);
+				a_id_LUFIR.push(id_LUFIR_user);
+				
+				$(document).trigger({
+					type:"btn_LUFIR_add_click",
+				  	id_LUFIR: a_id_LUFIR
+				});								
+			});		
+
+	});
+	
+</script>

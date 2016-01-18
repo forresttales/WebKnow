@@ -1,0 +1,491 @@
+
+<style>
+	.drop-publisher-users-indexLUFIS .drop-hidden {
+	display: none !important;
+	visibility: hidden !important;  
+	}
+	.drop-publisher-users-indexLUFIS .drop-clear-both {
+	clear: both;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS {
+	width: 100px;
+	height: 100px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .drop-LUFIS-triangle {
+	width: 0px;
+	height: 0px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #fff;
+	position: relative;
+	left: 3px;
+	float: left;
+	bottom: -1px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .drop-LUFIS-box {
+	width: 96px;
+	float: left;
+	/*position: relative;*/
+	position: absolute;
+	margin-top: 0px;
+	-webkit-transition: all .1s ease-out;
+	-moz-transition: all .1s ease-out;
+	-ms-transition: all .1s ease-out;
+	-o-transition: all .1s ease-out;
+	transition: all .1s ease-out;
+	z-index: 1;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .drop-LUFIS-container-links {
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .margin-top-hide-1 {
+	margin-top: -16px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .margin-top-show-1 {
+	margin-top: -6px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .drop-LUFIS-link-1 {
+	width: 100%;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .drop-LUFIS-link-1:hover .span-1 {
+	}   
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .drop-LUFIS-span-1 {
+	color: #376340; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS a.drop-LUFIS-link-a-1 {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS a.drop-LUFIS-link-a-1:hover {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .drop-LUFIS-border {
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;      
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;     
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-bottom-right-radius: 4px;
+	border-bottom-right-radius: 4px;      
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-bottom-left-radius: 4px;
+	border-bottom-left-radius: 4px;     
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .drop-LUFIS-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .drop-LUFIS-divider-1 {
+	height: 2px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .drop-LUFIS-divider-2 {
+	height: 10px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .background-transparent {
+	background-color: transparent;
+	}
+	.drop-publisher-users-indexLUFIS .background-white {
+	background-color: #fff;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .nav-caret-container {
+	width: 14px;
+	height: 30px;
+	padding: 0 0 0 2px;     
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .nav-caret {
+	width: 0px;
+	height: 0px;
+	position: relative;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	margin: 16px 0 0 0px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .nav-caret-down {
+	border-top: 5px solid #999;
+	border-bottom: 0;     
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .nav-caret-up {
+	border-bottom: 5px solid #999;
+	border-top: 0;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .nav-drop-1:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .nav-drop-1:hover .nav-avatar img {
+	border: 2px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .nav-drop-1:hover .nav-caret-down {
+	border-top: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .nav-drop-1:hover .nav-caret-up {
+	border-bottom: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS .cursor-pointer:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-target-icon {
+	display: inline-block;
+	}	
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-target-text {
+	display: inline-block;
+	}	
+	.drop-publisher-users-indexLUFIS .drop-LUFIS a:focus {
+	outline: none;	
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS a:active {
+	outline: none;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS a:visited {
+	outline: none;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-table {
+	display: table;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-table-row {
+	display: table-row;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-table-cell-1 {
+	display: table-cell;
+	width: 174px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-table-cell-2 {
+	display: table-cell;
+	width: 12px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 {
+	text-align: left;
+	width: auto;
+	height: 24px;
+	padding: 4px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1:hover {
+	background: #f6f6f6;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1-target {
+	position: relative;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 8px 8px 0;
+	border-color: transparent #ffffff transparent transparent;	
+	position: relative;
+	float: left;
+	left: -8px;
+	top: 33px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-container {
+	position: relative;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-box {
+	width: 200px;
+	position: absolute;
+	margin-top: 0px;
+	-webkit-transition: all .1s ease-out;
+	-moz-transition: all .1s ease-out;
+	-ms-transition: all .1s ease-out;
+	-o-transition: all .1s ease-out;
+	transition: all .1s ease-out;
+	z-index: 1;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-container-links {
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .margin-top-hide-1-1 {
+	margin-top: -53px;
+	margin-left: 160px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .margin-top-show-1-1 {
+	margin-top: -53px;
+	margin-left: 180px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-link-1 {
+	width: 100%;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-link-1:hover {
+	background: #f6f6f6;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-link-1:hover .span-1 {
+	}   
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-span-1 {
+	color: #376340; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 a.drop-LUFIS-1-link-a-1 {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 a.drop-LUFIS-1-link-a-1:hover {
+	text-decoration: none;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-border {
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;      
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;     
+	-webkit-border-bottom-right-radius: 4px;
+	-moz-border-bottom-right-radius: 4px;
+	border-bottom-right-radius: 4px;      
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-bottom-left-radius: 4px;
+	border-bottom-left-radius: 4px;     
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-shadow {
+	-webkit-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.3);
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-divider-1 {
+	height: 2px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .drop-LUFIS-1-divider-2 {
+	height: 10px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .background-transparent {
+	background-color: transparent;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .background-white {
+	background-color: #fff;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .nav-caret-container {
+	width: 14px;
+	height: 30px;
+	padding: 0 0 0 2px;     
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .nav-caret {
+	width: 0px;
+	height: 0px;
+	position: relative;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	margin: 16px 0 0 0px;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .nav-caret-down {
+	border-top: 5px solid #999;
+	border-bottom: 0;     
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .nav-caret-up {
+	border-bottom: 5px solid #999;
+	border-top: 0;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .nav-drop-1:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .nav-drop-1:hover .nav-avatar img {
+	border: 2px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .nav-drop-1:hover .nav-caret-down {
+	border-top: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .nav-drop-1:hover .nav-caret-up {
+	border-bottom: 5px solid #A9D996;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1 .cursor-pointer:hover {
+	cursor: pointer;
+	}
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1-target-icon {
+	display: inline-block;
+	}	
+	.drop-publisher-users-indexLUFIS .drop-LUFIS-1-target-text {
+	display: inline-block;
+	margin: 4px 0px 0px 1px;
+	}	
+
+	.drop-publisher-users-indexLUFIS figure img,
+	 .drop-publisher-users-indexLUFIS figure {
+		border: medium none; 
+		overflow: hidden;
+		height: 100px;
+	}	
+	.drop-publisher-users-indexLUFIS .figure-LUFIS-image-edit {
+		height: 96px;
+		border: 2px solid #fbb040;
+	}	
+	.drop-publisher-users-indexLUFIS .figure-LUFIS-image-edit img {
+		margin: -2px;
+	}	
+    	
+</style>
+
+<style>
+	
+	table.LUFIS-table-1 tbody tr td div {
+		width: 180px;		
+	} 
+		
+</style>
+
+
+<div>
+	<table class="LUFIS-table-1">
+		<tbody>
+			<% if @user_friend_invitations_sent.any? %>
+				<% user_friend_invitations_sent = @user_friend_invitations_sent %>
+				<% number_images = user_friend_invitations_sent.count %>
+				<% cnt_images = 0 %>
+				<% cnt = 0 %>
+				<% i = 0 %>
+				<% user_friend_invitations_sent.each do |user_friend_invitation_sent| %>
+					<% user_friend_invitation_id = user_friend_invitation_sent.id rescue nil %>
+					<% if !user_friend_invitation_id.nil? %>
+						<% user_friend_to_id = user_friend_invitation_sent.user_friend_to_id rescue nil %>
+						<% if !user_friend_to_id.nil? %>
+							<% user = User.find_by_id(user_friend_to_id) rescue nil %>
+							<% if !user.nil? %>
+								<% publisher_user = user.publisher_user rescue nil%>
+								<% if !publisher_user.nil? %>
+									<% user_image_primary = publisher_user.publisher_user_images.where( :primary => true ).first rescue nil %>
+									<% if !user_image_primary.nil? %>
+										<% cnt_images += 1 %>   				
+										<% cnt += 1 %>
+										<% if cnt == 1 %>				
+										<tr>
+										<% end %>
+											<td>
+												<div class="drop-namespaceLUFIS drop-publisher-users-indexLUFIS" style="width: 102px; height: 102px;" data-i="<%= i %>">
+													<div class="container-figure-image container-figure-image-border-load-LUFIS container-figure-LUFIS-image drop-LUFIS" style="position: relative;">	
+														<figure class="dialog-LUFIS-1-figure cursor-pointer" data-width="<%= user_image_primary.width %>" data-src-600="<%= user_image_primary.image_url(:image_600_600) %>">
+															<img id="" class="" alt="" src="<%= user_image_primary.image_url(:image_100_100) + '?' + (rand(10..90) * rand(100..900)).to_s if user_image_primary.image? %>" />
+															<figcaption class="figcaption-edit-LUFIS-image hidden drop-LUFIS-target" data-i="<%= i %>">
+																	<div class="img-1-text">Options</div>
+															</figcaption>
+														</figure>
+												    	<div class="drop-LUFIS-container drop-hidden">
+															<div class="drop-LUFIS-box background-transparent margin-top-hide-1">
+																<div class="drop-LUFIS-triangle"></div>
+																<div style="clear: both;"></div>
+																<div class="drop-LUFIS-container-links background-white drop-LUFIS-border drop-LUFIS-shadow">
+																	<div class="drop-LUFIS-divider-2"></div>
+																	<div class="drop-LUFIS-link-1 cursor-pointer" data-id="4" data-id-lufis-invitation="<%= user_friend_invitation_id %>" data-id-lufis-user="<%= user.id %>">
+																		<div class="drop-LUFIS-1">
+																	    	<div class="drop-LUFIS-1-target">
+																	    		<div class="drop-LUFIS-1-target-text">
+																	    			<span class="drop-LUFIS-1-span-1">Cancel friend request</span>
+																	    		</div>						    		
+																	    	</div>
+																    	</div>
+																	</div>
+																	<div class="drop-301-divider-2"></div>
+																</div>
+															</div>
+												        </div>
+													</div>
+												</div>
+											</td>
+											<% i += 1 %>
+										<% if cnt_images == number_images   %>
+										<%     if cnt == 1                  %>
+											<td></td><td></td>
+										</tr>
+										<%     elsif cnt == 2               %>
+											<td></td>
+										</tr>
+										<%     elsif cnt == 3               %>
+											</tr>
+										<%     end                          %>
+										<% elsif cnt == 3                   %>
+										</tr>
+										<% cnt = 0                          %>
+										<% end                              %>
+									<% else%>
+										<div>user_image_primary was nil</div>						
+									<% end %>
+								<% else %>
+									<div>publisher_user was nil</div>
+								<% end %>
+							<% else %>
+								<div>user was nil</div>
+							<% end %>
+						<% else %>
+							<div>user_friend_to_id was nil</div>
+						<% end %>
+					<% else %>
+						<div>user_friend_invitation_sent_id was nil</div>
+					<% end %>
+				<% end %>
+			<% else %>
+				<div>No friend invitations sent</div>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div style="height: 4px;"></div>
+
+
+<script>
+
+		var drop_visible_namespaceLUFIS_i = -1;
+		function drop_show_namespaceLUFIS(i) {
+			if (drop_visible_namespaceLUFIS_i > -1) {
+				drop_hide_namespaceLUFIS(drop_visible_namespaceLUFIS_i);
+			}
+			var s_container = ".drop-namespaceLUFIS[data-i=" + i.toString() + "] .drop-LUFIS-container";
+			$(s_container).removeClass('drop-hidden');
+			var s_box = ".drop-namespaceLUFIS[data-i=" + i.toString() + "] .drop-LUFIS-box";
+			$(s_box).fadeIn(1).removeClass("margin-top-hide-1").addClass("margin-top-show-1");
+			drop_visible_namespaceLUFIS_i = i;			
+		}	
+		function drop_hide_namespaceLUFIS(i) {
+			var s_box = ".drop-namespaceLUFIS[data-i=" + i.toString() + "] .drop-LUFIS-box";
+			$(s_box).addClass("margin-top-hide-1").fadeOut(50);		
+			drop_visible_namespaceLUFIS_i = -1;			
+		}	
+		function drop_hide_namespaceLUFIS() {
+			$(".drop-namespaceLUFIS .drop-LUFIS-box").removeClass("margin-top-show-1").addClass("margin-top-hide-1").fadeOut(50);
+			$(".drop-namespaceLUFIS .drop-LUFIS-box").addClass("margin-top-hide-1").fadeOut(50);		
+			drop_visible_namespaceLUFIS_i = -1;			
+		}	
+		function drop_toggle_namespaceLUFIS(i) {
+			if (drop_visible_namespaceLUFIS_i == i) {
+				drop_hide_namespaceLUFIS(i);
+			}
+			else {
+				drop_show_namespaceLUFIS(i);
+			}
+		}	
+		
+		function dropCloseAll_namespaceLUFIS() {
+			drop_hide_namespaceLUFIS();
+		}
+	
+	
+	$(document).ready(function () {				
+
+			$(document).on('click', function(e) {
+				var target_namespaceLUFIS = $(e.target).parents('.drop-namespaceLUFIS').attr("class");
+				if (target_namespaceLUFIS == null) {
+					dropCloseAll_namespaceLUFIS();
+				}
+			});
+		
+			$(".drop-namespaceLUFIS .drop-LUFIS-target").on('click', function() {
+				var i = $(this).data('i');
+				drop_toggle_namespaceLUFIS(i);
+			});
+
+			$(".drop-namespaceLUFIS .drop-LUFIS-link-1[data-id='4']").on("click", function() {
+				dropCloseAll_namespaceLUFIS();
+				
+				var id_LUFIS_invitation = $(this).data('id-lufis-invitation');
+				var id_LUFIS_user = $(this).data('id-lufis-user');
+				
+				var a_id_LUFIS = new Array();				
+				a_id_LUFIS.push(id_LUFIS_invitation);
+				a_id_LUFIS.push(id_LUFIS_user);
+				
+				$(document).trigger({
+					type:"btn_LUFIS_cancel_invitation_click",
+				  	id_LUFIS: a_id_LUFIS
+				});				
+			});		
+
+	});
+	
+</script>

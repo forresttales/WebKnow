@@ -1,2 +1,0 @@
-class PublisherPosterPinsController < ApplicationController
-end

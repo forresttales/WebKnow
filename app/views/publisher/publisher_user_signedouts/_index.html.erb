@@ -1,0 +1,458 @@
+    
+<style>
+	
+	/*testing only - not for assets pipline*/
+
+	.boxtemp-red {
+		border-style: solid;
+		border-width: 1px;
+		border-color:red;	
+	}
+	.boxtemp-black {
+		border-style: solid;
+		border-width: 1px;
+		border-color:black;	
+	}
+	.boxtemp-green {
+		border-style: solid;
+		border-width: 1px;
+		border-color:green;	
+	}
+	.boxtemp-blue {
+		border-style: solid;
+		border-width: 1px;
+		border-color:blue;	
+	}
+	.boxtemp-red-d {
+		border-style: solid;
+		border-width: 2px;
+		border-color:red;	
+	}
+	.boxtemp-black-d {
+		border-style: solid;
+		border-width: 2px;
+		border-color:black;	
+	}
+	.boxtemp-green-d {
+		border-style: solid;
+		border-width: 2px;
+		border-color:green;	
+	}
+	.boxtemp-blue-d {
+		border-style: solid;
+		border-width: 2px;
+		border-color:blue;	
+	}
+
+</style>
+
+<style>	
+
+	.cell-1200 {
+		display: table-cell;
+		width: 1200px;
+		vertical-align: top;	
+	}
+	
+</style>
+
+	
+<div style="height: 2px;"></div>
+
+<div style="width: 1200px;">
+	<div class="title-bar" style="position: relative;">
+		<div style="display: table; width: 1192px;">
+			<div style="display: table-row;">
+				<div style="display: table-cell; vertical-align: top; width: 300px; text-align: left;">
+					<span class="title-bar-text-1">Publisher User</span>
+				</div>
+				<div style="display: table-cell; vertical-align: top; width: 594px; text-align: center;">
+					<!-- <span class="title-bar-text-1">id: <#%= @publisher_product_gen_id %#></span> -->
+				</div>
+				<div style="display: table-cell; vertical-align: top; width: 300px;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="width: 1200px;">		
+	<div style="display: table;">
+		<div style="display: table-row;">
+			<div id="render_background_image_1">
+				<%= render 'publisher_user_signedouts/background_1_image' %>
+			</div>
+		</div>			
+	</div>					
+</div>
+		
+<div style="height: 70px;"></div>
+
+<!-- <div style="height: 70px;"></div>
+<div style="width: 1200px;">		
+	<div class="follow-stats-container" style="margin: 0 0 0 10px;">
+		<#%= render 'publisher_users/stats' %#>
+	</div>
+</div> -->
+
+<div style="height: 120px;"></div>
+
+<div style="width: 1200px;">
+	<div class="title-bar" style="position: relative;">
+		<div style="display: table; width: 1192px;">
+			<div style="display: table-row;">
+				<div style="display: table-cell; vertical-align: top; width: 300px; text-align: left;">
+					<span class="title-bar-text-1">Photos</span>
+				</div>
+				<div style="display: table-cell; vertical-align: top; width: 564px; text-align: center;">
+					<!-- <span class="title-bar-text-1">id: <#%= @publisher_product_gen_id %#></span> -->
+				</div>
+				<div style="display: table-cell; vertical-align: top; width: 330px;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="width: 1200px;">		
+	<div style="border: 2px solid #999; min-height: 100px; padding: 3px 2px 2px 2px;">
+		<div id="render_list_1_image">
+			<%= render 'publisher_user_signedouts/list_1_image' %>
+		</div>
+	</div>
+</div>
+
+<div style="height: 10px;"></div>
+
+<div style="width: 1200px;">
+	<div class="title-bar" style="position: relative;">
+		<div style="display: table; width: 1192px;">
+			<div style="display: table-row;">
+				<div style="display: table-cell; vertical-align: top; width: 300px; text-align: left;">
+					<span class="title-bar-text-1">Friends</span>
+				</div>
+				<div style="display: table-cell; vertical-align: top; width: 564px; text-align: center;">
+					<!-- <span class="title-bar-text-1">id: <#%= @publisher_product_gen_id %#></span> -->
+				</div>
+				<div style="display: table-cell; vertical-align: top; width: 330px;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="width: 1200px;">		
+	<div style="border: 2px solid #999; min-height: 100px; padding: 3px 2px 2px 2px;">
+		<!-- <div>Friends count: <#%= @public_user_friends_invited.count %#></div> -->
+		<div id="render_list_user_friends">
+			<%= render 'publisher_user_signedouts/list_user_friends' %>
+		</div>
+	</div>
+</div>
+
+<div style="height: 10px;"></div>
+
+<div style="width: 1200px;">
+	<div class="title-bar" style="position: relative;">
+		<div style="display: table; width: 1192px;">
+			<div style="display: table-row;">
+				<div style="display: table-cell; vertical-align: top; width: 300px; text-align: left;">
+					<span class="title-bar-text-1">Bio</span>
+				</div>
+				<div style="display: table-cell; vertical-align: top; width: 594px; text-align: center;">
+					<!-- <span class="title-bar-text-1">id: <#%= @publisher_product_gen_id %#></span> -->
+				</div>
+				<div style="display: table-cell; vertical-align: top; width: 300px;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="height: 0px;"></div>
+
+<div style="width: 1200px;">		
+	<div class="title-container">
+		<div class="table pad-marg-edit-1" style="height: 130px;">
+			<div class="row">
+				<div class="cell-edit-2">
+					<div class="table pad-marg-null">
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-3 text-align-left">
+								<span class="profile-label-1">Name:</span>
+							</div>
+							<div class="cell-edit-4 show-story-4">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-4 position-relative text-align-left">
+											<div class="position-absolute top-minus-edit-2">
+												<span id="span_publisher_user_name_first" class="profile-text-1"></span>
+												&nbsp;&nbsp;
+												<span id="span_publisher_user_name_last" class="profile-text-1"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+	
+						<div class="row pad-marg-null">
+							<div class="cell-edit-3 text-align-left">
+								<span class="profile-label-1">Email:</span>
+							</div>
+							<div class="cell-edit-4 show-story-4">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-4 position-relative text-align-left">
+											<div class="position-absolute top-minus-edit-2">
+												<span id="span_publisher_user_email" class="profile-text-1"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-3 text-align-left">
+								<span class="profile-label-1">Location:</span>
+							</div>
+							<div class="cell-edit-4 show-story-4">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-4 position-relative text-align-left">
+											<div class="position-absolute top-minus-edit-2">
+												<span id="span_publisher_user_location" class="profile-text-1"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-3 text-align-left">
+								<span class="profile-label-1">Alias:</span>
+							</div>
+							<div class="cell-edit-4 show-story-4">
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-4 position-relative text-align-left">
+											<div class="position-absolute top-minus-edit-2">
+												<span id="span_publisher_user_name_alias" class="profile-text-1"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="height: 4px;"></div>
+	
+		<div class="table pad-marg-edit-1" style="height: 150px;">
+			<div class="row">
+				<div class="cell-edit-2">
+					<div class="table pad-marg-null">
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-2">
+	
+								<div class="table pad-marg-null">
+									<div class="row">
+										<div class="cell-edit-6 text-align-left pad-left-20">
+											<span class="profile-label-1">Job Title:</span>
+										</div>
+										<div class="cell-edit-7 show-story-4">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative text-align-left">
+														<div class="position-absolute top-minus-edit-2">
+															<span id="span_publisher_user_job_title" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+	
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-2">
+	
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-6 text-align-left pad-left-20">
+											<span class="profile-label-1">Company:</span>
+										</div>
+										<div class="cell-edit-7 show-story-4">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative text-align-left">
+														<div class="position-absolute top-minus-edit-2">
+															<span id="span_publisher_user_name_company" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+	
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-2">
+	
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-6 text-align-left pad-left-20">
+											<span class="profile-label-1">Website:</span>
+										</div>
+										<div class="cell-edit-7 show-story-4">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative text-align-left">
+														<div class="position-absolute top-minus-edit-2">
+															<span id="span_publisher_user_website" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+	
+						<div class="row" style="height: 12px;"></div>
+						<div class="row pad-marg-null">
+							<div class="cell-edit-2">
+	
+								<div class="table pad-marg-null">
+									<div class="row pad-marg-null">
+										<div class="cell-edit-6 text-align-left pad-left-20">
+											<span class="profile-label-1">Phone:</span>
+										</div>
+										<div class="cell-edit-7 show-story-4">
+											<div class="table pad-marg-null">
+												<div class="row pad-marg-null">
+													<div class="cell-edit-7 position-relative text-align-left">
+														<div class="position-absolute top-minus-edit-2">
+															<span id="span_publisher_user_phone_company" class="profile-text-1"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+					</div>
+	
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>	
+	
+<div style="height: 10px;"></div>
+
+<div style="width: 1200px;">
+	<div class="title-bar" style="position: relative;">
+		<div style="display: table; width: 1192px;">
+			<div style="display: table-row;">
+				<div style="display: table-cell; vertical-align: top; width: 300px; text-align: left;">
+					<span class="title-bar-text-1">Interests</span>
+				</div>
+				<div style="display: table-cell; vertical-align: top; width: 594px; text-align: center;">
+					<!-- <span class="title-bar-text-1">id: <#%= @publisher_product_gen_id %#></span> -->
+				</div>
+				<div style="display: table-cell; vertical-align: top; width: 300px;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="height: 0px;"></div>
+
+<div style="width: 1200px;">		
+	<div class="title-container">
+		<div class="table margin-0">
+			<div class="row">
+				<div class="cell-100percent">
+					<div style="height: 10px;"></div>
+					<div class="show-story-5" style="min-height: 120px;">
+						<div class="textarea-user-interest-container">
+							<div id="render_publisher_user_interest_image" class="render-user-interest-image"></div>
+							<div id="textarea_publisher_user_interest" class="textarea-user-interest textarea-user-interest-show" tabindex=""></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>		
+		
+<div style="height: 10px;"></div>
+
+<div style="width: 1200px;">		
+	<div class="table-profile" style="height: 100%;">
+		<div class="row-profile">
+			<div class="profile-left-col">
+	
+				<div style="height: 20px;"></div>
+				<div class="publisher-item-border">
+					<div style="height: 20px;"></div>
+				</div>
+				<div style="width: 550px; border-bottom: 2px solid #eee;"></div>
+				<div id="coming-soon">
+					<p class="title-grey">
+						My Connections <span>(Coming Soon)</span>
+					</p>
+				</div>
+				<div id="coming-soon">
+					<p class="title-grey">
+						My Groups <span>(Coming Soon)</span>
+					</p>
+				</div>
+				<div id="coming-soon" style="height:325px;">
+					<p class="title-grey">
+						My Wishlist <span>(Coming Soon)</span>
+					</p>
+				</div>
+				<div id="coming-soon" style="">
+					<p class="title-grey">
+						KnowCred <span>(Coming Soon)</span>
+					</p>
+				</div>
+				<div id="coming-soon" style="">
+					<p class="title-grey">
+						Points &amp; Awards <span>(Coming Soon)</span>
+					</p>
+				</div>
+				<div id="coming-soon" style="height:325px;">
+					<p class="title-grey">
+						My Apps &amp; Things <span>(Coming Soon)</span>
+					</p>
+				</div>
+			</div>
+	
+			<div style="display: table-cell; width:25px;"></div>
+			
+		</div>
+	</div>
+</div>	
+
+<div style="height: 20px;"></div>

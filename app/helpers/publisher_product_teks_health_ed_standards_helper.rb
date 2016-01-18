@@ -1,2 +1,0 @@
-module PublisherProductTeksHealthEdStandardsHelper
-end

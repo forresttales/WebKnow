@@ -1,2 +1,0 @@
-class PublisherJournalposterMetadatatagsController < ApplicationController
-end

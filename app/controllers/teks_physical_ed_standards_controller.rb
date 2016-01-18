@@ -1,2 +1,0 @@
-class TeksPhysicalEdStandardsController < ApplicationController
-end

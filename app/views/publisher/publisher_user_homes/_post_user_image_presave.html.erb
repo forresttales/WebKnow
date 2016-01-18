@@ -1,0 +1,44 @@
+<% if @post_user.post_user_images.any? %>
+	<% post_user_id = @post_user.id %>
+	<% post_user_post_user_images = @post_user.post_user_images %>
+	<% post_user_post_user_images.each do |post_user_image| %>
+		<!-- <div class="container-figure container-figure-1" style=""> -->
+		<div class="" style="width: 587px; text-align: center; padding: 4px 0px 8px 0px;">
+			<!-- <figure id="profile_figure" class="profile-figure dialog-11-figure"> -->
+			<figure class="dialog-1001-figure cursor-pointer">
+			<!-- <figure id="profile_figure"> -->
+				<img class="post-user-image" alt="" style="max-width: 578px;" src="<%= post_user_image.image_url(:image_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if post_user_image.image? %>" />
+				<input class="container-image-hidden" type="hidden" value="<%= post_user_image.image_url(:image_600_600) + '?' + (rand(10..90) * rand(100..900)).to_s if post_user_image.image? %>" />
+				<!-- <figcaption id="figcaption_image_primary" class="edit-image hidden">												
+					<div class="img-1-container">
+						<div class="img-1"></div>
+						<div class="img-1-text">Edit photo</div>
+					</div>
+				</figcaption> -->
+			</figure>
+			
+			<div style="width: auto; height: 16px;">
+				<div style="padding: 0px; position: relative; vertical-align: top;">
+					<div style="display: inline-block; vertical-align: top;">
+						<div class="post-user-presave-span-1" style="margin-top: 1px;">
+							<span><%= post_user_image.image_name.to_s %></span>	
+						</div>
+					</div>
+					<div class="post-user-delete-container ks-tip-container" style="padding: 0px; display: inline-block; position: relative;">
+						<div class="post-user-image-delete-presave post-user-delete-2 ks-tip-target" data-post-user-id="<%= post_user_image.post_user.id %>" data-post-user-image-id="<%= post_user_image.id %>"></div>
+							<!-- <div class="post-user-file hidden"></div> -->
+						<!-- </div> -->
+					    <div class="ks-tip ks-tip-delete-post-user-2">
+					    	<div class="ks-tip-indicator-delete-post-user-2"></div>
+							Delete
+					    </div>				
+				    </div>
+					<div style="clear: both;"></div>
+				</div>					
+			</div>
+			<!-- <div style="height: 8px;"></div> -->
+			
+		</div>
+
+	<% end %>
+<% end %>

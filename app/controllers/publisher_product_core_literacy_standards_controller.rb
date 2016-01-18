@@ -1,3 +1,0 @@
-class PublisherProductCoreLiteracyStandardsController < ApplicationController
-end
-
