@@ -27,9 +27,10 @@ class PublisherProductsController < ApplicationController
   # def index_demo    
   # end
   
-# a http://localhost:3000/374843870017
-# b http://localhost:3000/125713683635
-# b http://localhost:3000/40652738897 corporate  
+  # a http://localhost:3000/374843870017
+  # a http://localhost:3000/80414733029 corporate
+  # b http://localhost:3000/125713683635
+  # b http://localhost:3000/40652738897 corporate  
 
   def index
 

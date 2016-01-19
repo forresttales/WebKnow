@@ -1,2 +1,0 @@
-class IssuedPerIdsController < ApplicationController
-end
