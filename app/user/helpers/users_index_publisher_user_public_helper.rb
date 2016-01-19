@@ -266,7 +266,7 @@ module UsersIndexPublisherUserPublicHelper
               
               # Rails.logger.info('user_friend_invitation_exists = ' + @user_friend_invitation_exists.to_s)
               
-              prepend_view_path 'app/views/publisher'
+              prepend_view_path 'app/views/publisher/user'
               render 'publisher_user_publics/index', :layout => 'publisher_user_publics_index'
           else
               # LogError.create(:user_id => current_user.id, :profile_index => 3, :profile_description => 'publisher', :controller => 'users', :action => 'render_index_public_publisher_user', :description => 'public_publisher_user was nil')

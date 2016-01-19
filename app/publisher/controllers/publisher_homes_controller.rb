@@ -1,2 +1,0 @@
-class PublisherHomesController < ApplicationController
-end

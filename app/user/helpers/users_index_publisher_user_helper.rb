@@ -356,7 +356,7 @@ module UsersIndexPublisherUserHelper
               raise
           end
         
-          prepend_view_path 'app/views/publisher'
+          prepend_view_path 'app/views/publisher/user'
           render 'publisher_users/index', :layout => 'publisher_users_index'
 
       rescue StandardError => e

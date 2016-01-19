@@ -118,7 +118,7 @@ module UsersIndexPublisherUserHomeHelper
                       gon.b_required_name_last = false
                   end
             
-                  prepend_view_path 'app/views/publisher'
+                  prepend_view_path 'app/views/publisher/user'
                   render 'publisher_user_homes/index', :layout => 'publisher_user_homes_index'
         
               else

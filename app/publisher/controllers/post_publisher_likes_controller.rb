@@ -1,2 +1,0 @@
-class PostPublisherLikesController < ApplicationController
-end

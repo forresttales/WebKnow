@@ -1,2 +1,0 @@
-class PostPublisherCommentsController < ApplicationController
-end

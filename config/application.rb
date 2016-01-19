@@ -15,6 +15,13 @@ module Webknow
 
     config.autoload_paths << Rails.root.join('app/publisher/controllers')
     config.autoload_paths << Rails.root.join('app/publisher/helpers')
+    config.autoload_paths << Rails.root.join('app/publisher/user/controllers')
+    config.autoload_paths << Rails.root.join('app/publisher/user/helpers')
+    config.autoload_paths << Rails.root.join('app/publisher/profile/controllers')
+    config.autoload_paths << Rails.root.join('app/publisher/profile/helpers')
+    config.autoload_paths << Rails.root.join('app/publisher/product/controllers')
+    config.autoload_paths << Rails.root.join('app/publisher/product/helpers')
+
     config.autoload_paths << Rails.root.join('app/user/controllers')
     config.autoload_paths << Rails.root.join('app/user/helpers')
 

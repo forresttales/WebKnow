@@ -208,7 +208,7 @@ module UsersIndexPublisherPublicHelper
           end
 
           # render 'publishers/index', :layout => 'publisher'
-          prepend_view_path 'app/views/publisher'
+          prepend_view_path 'app/views/publisher/profile'
           render 'publisher_publics/index', :layout => 'publishers_public'
   
       else

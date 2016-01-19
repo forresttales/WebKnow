@@ -196,7 +196,7 @@ module UsersIndexPublisherHelper
               gon.b_required_story_corporate = false
           end
 
-          prepend_view_path 'app/views/publisher'
+          prepend_view_path 'app/views/publisher/profile'
           render 'publishers/index', :layout => 'publishers_index'
   
       else

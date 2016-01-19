@@ -1,2 +1,0 @@
-class RelateLogPublishersController < ApplicationController
-end

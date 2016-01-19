@@ -1,2 +1,0 @@
-class PostPublisherImagesController < ApplicationController
-end

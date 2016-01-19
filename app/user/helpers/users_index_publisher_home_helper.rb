@@ -200,7 +200,7 @@ module UsersIndexPublisherHomeHelper
               gon.b_required_story_corporate = false
           end
 
-          prepend_view_path 'app/views/publisher'
+          prepend_view_path 'app/views/publisher/profile'
           render 'publisher_homes/index', :layout => 'publisher_homes_index'
       else
           redirect_to '/'      

@@ -37,7 +37,7 @@ module UsersIndexPublisherSignedoutHelper
               gon.b_required_name_company = false
           end
           
-          prepend_view_path 'app/views/publisher'
+          prepend_view_path 'app/views/publisher/profile'
           render 'publisher_signedouts/index', :layout => 'publisher_signedouts_index'
       else
           # Catch error, here, which shouldn't be necessary, as the passed id was already verified.

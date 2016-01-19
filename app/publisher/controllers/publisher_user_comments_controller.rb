@@ -1,2 +1,0 @@
-class PublisherUserCommentsController < ApplicationController
-end
