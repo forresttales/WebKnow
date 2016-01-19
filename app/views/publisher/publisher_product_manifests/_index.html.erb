@@ -1,8 +1,5 @@
-    
-<style>
-	
+<style>	
 	/*testing only - not for assets pipline*/
-
 	.boxtemp-red {
 		border-style: solid;
 		border-width: 1px;
@@ -43,295 +40,217 @@
 		border-width: 2px;
 		border-color:blue;	
 	}
-
 </style>
 
-<style>	
-
-	.cell-1200 {
-		display: table-cell;
-		width: 1200px;
-		vertical-align: top;	
-	}
-	
-</style>
-
-<!-- <style>
-	
-	.background-container-5 {
-		width: 1200px; 
-		height: 300px; 
-		/*background-color: blue;*/ 
-		position: relative;
-		/*background-image: url("/assets/avatars/background-1-w1200-h300.jpg");*/
-	}
-	.background-edit-border {
-		box-shadow: 0 0 0 2px #fbb040 inset;
-	}
-	
-</style> -->
-
-<div style="display: table;">
-	<div style="display: table-row;">
+<div class="table">
+	<div class="row">
 		<div id="render_image_5" style="background-repeat: no-repeat;">
 			<%= render 'publisher_product_manifests/image_5' %>	
 		</div>
-	</div>			
-</div>					
-		
-<div style="display: table; width: 1200px; table-layout: fixed;">
-	<div style="display: table-row;">
-		<div class="" style="display: table-cell; vertical-align: top; width: 425px; table-layout: fixed;">
+	</div>
+</div>
+<div class="table" style="width: 1200px; table-layout: fixed;">
+	<div class="row">
+		<div class="cell-425" style="table-layout: fixed;">
 			<div style="height: 80px;"></div>
-			<div style="display: table; padding-left: 22px; height: 30px;">
-				<div style="display: table-row;">
-					<!-- <div id="edit_product_tagline" class="hidden" style="display: inline-block;"> -->
-					<div id="control_10_edit" class="control-10-edit hidden" style="display: inline-block;">
-						<div style="padding: 0px;">
+			<div class="table spacer-height-30" style="padding-left: 22px;">
+				<div class="row">
+					<div id="control_10_edit" class="control-10-edit hidden display-inline-block">
+						<div>
 							<input class="input-container-1-edit width-show-edit-1" style="height: 18px; padding: 1px 2px 0px 4px;" id="publisher_product_manifest_product_tagline" name="publisher_product_manifest[product_tagline]" tabindex="12" type="text" value="<%= @publisher_product_manifest.product_tagline %>" placeholder="Tagline" />
 						</div>
 						<div style="padding: 2px 0px 6px 0px;">
-							<div style="display: inline-block;">
+							<div class="display-inline-block">
 								<div id="submit_product_tagline" class="control-10-save-button btn-submit-product" tabindex="">Save</div>
 							</div>
-							<div style="display: inline-block;">
+							<div class="display-inline-block">
 								<div id="cancel_product_tagline" class="control-10-cancel-button btn-submit-product" tabindex="">Cancel</div>
-							</div>	
-						</div>												
+							</div>
+						</div>
 					</div>
-					<!-- <div id="show_product_tagline" style="display: inline-block;"> -->
-					<div id="control_10_show" class="control-10-edit" style="display: inline-block;">
+					<div id="control_10_show" class="control-10-edit display-inline-block">
 						<div id="show_product_tagline_container" class="input-container-1 input-container-1-color width-show-1" style="min-height: 24px;">
 							<div class="box-detail-title box-detail-title-color" style="float: left">Tagline</div>
 							<p id="span_product_tagline" class="profile-text-1" style="padding: 5px 4px; display: table-cell"></p>
 						</div>
 					</div>
-					<div class="control-10-edit-options edit-options float-right hidden" style="height: 30px; background-color: #fff; display: inline-block;">
+					<div class="control-10-edit-options edit-options float-right hidden">
 						<div class="edit-options-block-1">
 							<div id="required_product_tagline" class="required-1"></div>
 						</div>
 						<div class="edit-options-block-1 ks-tip-container">
 							<div id="open_info_product_tagline" class="question-icon info-show-20 required-1 ks-tip-target control-10-info-button"></div>
-						    <div class="ks-tip ks-tip-2">
-						    	<div class="ks-tip-indicator-2"></div>
+							<div class="ks-tip ks-tip-2">
+								<div class="ks-tip-indicator-2"></div>
 								What is this?
-						    </div>				
-						</div>																		
-						<!-- <div class="edit-options-block-1 ks-tip-container">
-							<div id="open_edit_product_tagline" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-						    <div class="ks-tip ks-tip-3">
-						    	<div class="ks-tip-indicator-3"></div>
-								Edit
-						    </div>				
-						</div> -->
+							</div>
+						</div>
 					</div>
 					<div class="float-clear"></div>
-				</div>								
+				</div>
 			</div>
-			<div style="height: 30px;"></div>
-			<div style="display: table; height: 30px;">
-				<div style="display: table-row;">
-					<!-- <div id="edit_product_name" class="hidden" style="display: inline-block;"> -->
-					<div id="control_11_edit" class="control-11-edit hidden" style="display: inline-block;">
-						<div style="padding: 0px;">
+			<div class="spacer-height-30"></div>
+			<div class="table spacer-height-30">
+				<div class="row">
+					<div id="control_11_edit" class="control-11-edit hidden display-inline-block">
+						<div>
 							<input class="input-container-1-edit width-show-edit-2" style="height: 18px; padding: 1px 4px 0px 4px;" id="publisher_product_manifest_product_name" name="publisher_product_manifest[product_name]" tabindex="12" type="text" value="<%= @publisher_product_manifest.product_name %>" placeholder="Product Name" />
 						</div>
 						<div style="padding: 2px 0px 6px 0px;">
-							<div style="display: inline-block;">
+							<div class="display-inline-block">
 								<div id="submit_product_name" class="btn-submit-product" tabindex="">Save</div>
 							</div>
-							<div style="display: inline-block;">
+							<div class="display-inline-block">
 								<div id="cancel_product_name" class="control-11-cancel-button btn-submit-product" tabindex="">Cancel</div>
-							</div>	
-						</div>												
+							</div>
+						</div>
 					</div>
-					<!-- <div id="show_product_name" style="display: inline-block;"> -->
-					<div id="control_11_show" class="control-11-edit" style="display: inline-block;">
+					<div id="control_11_show" class="control-11-edit display-inline-block">
 						<div id="show_product_name_container" class="input-container-1 input-container-1-color width-show-2" style="min-height: 24px;">
 							<div class="box-detail-title box-detail-title-color" style="float: left">Product Name Or Title</div>
 							<p id="span_product_name" class="profile-text-1" style="padding: 5px 4px; display: table-cell"></p>
 						</div>
 					</div>
-					<!-- <div class="edit-options float-right hidden" style="height: 30px; background-color: #fff; display: inline-block;"> -->
-					<div class="control-11-edit-options edit-options float-right hidden" style="height: 30px; background-color: #fff; display: inline-block;">
+					<div class="control-11-edit-options edit-options float-right hidden">
 						<div class="edit-options-block-1">
 							<div id="required_product_name" class="required-1"></div>
 						</div>
 						<div class="edit-options-block-1 ks-tip-container">
 							<div id="open_info_product_name" class="question-icon info-show-20 required-1 ks-tip-target"></div>
-						    <div class="ks-tip ks-tip-2">
-						    	<div class="ks-tip-indicator-2"></div>
+							<div class="ks-tip ks-tip-2">
+								<div class="ks-tip-indicator-2"></div>
 								What is this?
-						    </div>				
-						</div>																		
-						<!-- <div class="edit-options-block-1 ks-tip-container">
-							<div id="open_edit_product_name" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-						    <div class="ks-tip ks-tip-3">
-						    	<div class="ks-tip-indicator-3"></div>
-								Edit
-						    </div>				
-						</div> -->
+							</div>
+						</div>
 					</div>
 					<div class="float-clear"></div>
-				</div>								
+				</div>
 			</div>
 			<div style="height: 4px;"></div>
-			<div style="display: table; height: 50px;">
-				<div style="display: table-row;">
-					<!-- <div id="edit_versions" class="hidden" style="display: inline-block;"> -->
-					<div id="control_12_edit" class="control-12-edit hidden" style="display: inline-block;">
-						<div style="padding: 0px;">
+			<div class="table spacer-height-50">
+				<div class="row">
+					<div id="control_12_edit" class="control-12-edit hidden display-inline-block">
+						<div>
 							<input class="input-container-1-edit width-show-edit-2" style="height: 18px; padding: 1px 4px 0px 4px;" id="publisher_product_manifest_versions" name="publisher_product_manifest[versions]" tabindex="12" type="text" value="<%= @publisher_product_manifest.versions %>" placeholder="Version(s)" />
 						</div>
 						<div style="padding: 2px 0px 6px 0px;">
-							<div style="display: inline-block;">
+							<div class="display-inline-block">
 								<div id="submit_versions" class="btn-submit-product" tabindex="">Save</div>
 							</div>
-							<div style="display: inline-block;">
+							<div class="display-inline-block">
 								<div id="cancel_versions" class="control-12-cancel-button btn-submit-product" tabindex="">Cancel</div>
-							</div>	
-						</div>												
+							</div>
+						</div>
 					</div>
-					<!-- <div id="show_versions" style="display: inline-block;"> -->
-					<div id="control_12_show" class="control-12-edit" style="display: inline-block;">
+					<div id="control_12_show" class="control-12-edit display-inline-block">
 						<div id="show_versions_container" class="input-container-1 input-container-1-color width-show-2" style="min-height: 24px;">
 							<div class="box-detail-title box-detail-title-color" style="float: left">Product version(s)</div>
 							<p id="span_versions" class="profile-text-1" style="padding: 5px 4px; display: table-cell"></p>
 						</div>
 					</div>
-					<!-- <div class="edit-options float-right hidden" style="height: 30px; background-color: #fff; display: inline-block;"> -->
-					<div class="control-12-edit-options edit-options float-right hidden" style="height: 30px; background-color: #fff; display: inline-block;">
+					<div class="control-12-edit-options edit-options float-right hidden">
 						<div class="edit-options-block-1">
 							<div id="required_versions" class="required-1"></div>
 						</div>
 						<div class="edit-options-block-1 ks-tip-container">
 							<div id="open_info_versions" class="question-icon info-show-20 required-1 ks-tip-target"></div>
-						    <div class="ks-tip ks-tip-2">
-						    	<div class="ks-tip-indicator-2"></div>
+							<div class="ks-tip ks-tip-2">
+								<div class="ks-tip-indicator-2"></div>
 								What is this?
-						    </div>				
-						</div>																		
-						<!-- <div class="edit-options-block-1 ks-tip-container">
-							<div id="open_edit_versions" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-						    <div class="ks-tip ks-tip-3">
-						    	<div class="ks-tip-indicator-3"></div>
-								Edit
-						    </div>				
-						</div> -->
+							</div>
+						</div>
 					</div>
 					<div class="float-clear"></div>
-				</div>								
+				</div>
 			</div>
-			<div style="height: 20px;"></div>
+			<div class="spacer-height-20"></div>
 			<div id="container_image_2">
 				<div id="drop_container_image_2" class="drop">
 					<div id="render_image_2" class="">
 						<%= render 'image_2' %>
-			        </div>
+					</div>
 				</div>
 			</div>
-			<div style="height: 20px;"></div>
-			<div style="display: table;">
-				<div style="display: table-row;">
-					<!-- <div id="edit_corporate_logo_url" class="hidden" style="display: inline-block;"> -->
-					<div id="control_13_edit" class="control-13-edit hidden" style="display: inline-block;">
-						<div style="padding: 0px;">
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div id="control_13_edit" class="control-13-edit hidden display-inline-block">
+						<div>
 							<input class="input-container-1-edit width-show-edit-2" style="height: 18px; padding: 1px 4px 0px 4px;" id="publisher_product_manifest_corporate_logo_url" name="publisher_product_manifest[corporate_logo_url]" tabindex="12" type="text" value="<%= @publisher_product_manifest.corporate_logo_url %>" placeholder="Corporate URL" />
 						</div>
 						<div style="padding: 2px 0px 6px 0px;">
-							<div style="display: inline-block;">
+							<div class="display-inline-block">
 								<div id="submit_corporate_logo_url" class="btn-submit-product" tabindex="">Save</div>
 							</div>
-							<div style="display: inline-block;">
-								<!-- <div id="cancel_corporate_logo_url" class="btn-submit-product" tabindex="">Cancel</div> -->
+							<div class="display-inline-block">
 								<div id="cancel_corporate_logo_url" class="control-13-cancel-button btn-submit-product" tabindex="">Cancel</div>
-							</div>	
-						</div>												
+							</div>
+						</div>
 					</div>
-					<!-- <div id="show_corporate_logo_url" style="display: inline-block;"> -->
-					<div id="control_13_show" class="control-13-edit" style="display: inline-block;">
+					<div id="control_13_show" class="control-13-edit display-inline-block">
 						<div id="show_corporate_logo_url_container" class="input-container-1 input-container-1-color width-show-2" style="min-height: 24px;">
 							<div class="box-detail-title box-detail-title-color" style="float: left">Corporate URL</div>
 							<p id="span_corporate_logo_url" class="profile-text-1" style="padding: 5px 4px; display: table-cell"></p>
 						</div>
 					</div>
-					<!-- <div class="edit-options float-right hidden" style="height: 30px; background-color: #fff; display: inline-block;"> -->
-					<div class="control-13-edit-options edit-options float-right hidden" style="height: 30px; background-color: #fff; display: inline-block;">
+					<div class="control-13-edit-options edit-options float-right hidden">
 						<div class="edit-options-block-1">
 							<div id="required_corporate_logo_url" class="required-1"></div>
 						</div>
 						<div class="edit-options-block-1 ks-tip-container">
 							<div id="open_info_corporate_logo_url" class="question-icon info-show-20 required-1 ks-tip-target"></div>
-						    <div class="ks-tip ks-tip-2">
-						    	<div class="ks-tip-indicator-2"></div>
+							<div class="ks-tip ks-tip-2">
+								<div class="ks-tip-indicator-2"></div>
 								What is this?
-						    </div>				
-						</div>																		
-						<!-- <div class="edit-options-block-1 ks-tip-container">
-							<div id="open_edit_corporate_logo_url" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-						    <div class="ks-tip ks-tip-3">
-						    	<div class="ks-tip-indicator-3"></div>
-								Edit
-						    </div>				
-						</div> -->
+							</div>
+						</div>
 					</div>
 					<div class="float-clear"></div>
-				</div>								
+				</div>
 			</div>
-			<div style="height: 20px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-400">
-						<!-- <div class="box-detail"> -->
 						<div class="box-detail box-detail-color control-14-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
 									<div class="box-detail-title box-detail-title-color float-left">
 										Pricing Model									
 									</div>
-									<!-- <div class="edit-options float-right hidden"> -->
 									<div class="control-14-edit-options edit-options float-right hidden">
 										<div class="edit-options-block-1">
 											<div id="required_pricing_model" class="required-1"></div>
 										</div>
 										<div class="edit-options-block-1 ks-tip-container">
 											<div id="open_info_pricing_model" class="question-icon info-show-20 required-1 ks-tip-target control-14-info-button"></div>
-										    <div class="ks-tip ks-tip-2">
-										    	<div class="ks-tip-indicator-2"></div>
+											<div class="ks-tip ks-tip-2">
+												<div class="ks-tip-indicator-2"></div>
 												What is this?
-										    </div>				
-										</div>																		
-										<!-- <div class="edit-options-block-1 ks-tip-container">
-											<div id="open_edit_pricing_model" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-										    <div class="ks-tip ks-tip-3">
-										    	<div class="ks-tip-indicator-3"></div>
-												Edit
-										    </div>				
-										</div> -->
+											</div>
+										</div>
 									</div>
 									<div class="float-clear"></div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_pricing_model" class="hidden"> -->
 										<div id="control_14_edit" class="hidden">
-											<div style="padding: 4px;">
-								          		<select id="publisher_product_pricing_model" name="publisher_product[pricing_model]" data-placeholder="-Select-" class="chosen-select" multiple style="width:314px;" tabindex="">
+											<div class="padding-4">
+												<select id="publisher_product_pricing_model" name="publisher_product[pricing_model]" data-placeholder="-Select-" class="chosen-select spacer-width-314" multiple tabindex="">
 													<% @pricing_models.each do|pricing_model| %>
-														<option value="<%= pricing_model.id %>"><%= pricing_model.col_1 %></option>
+													<option value="<%= pricing_model.id %>"><%= pricing_model.col_1 %></option>
 													<% end %>
-								          		</select>
+												</select>
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_pricing_model" class="btn-submit-product control-14-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_pricing_model" class="btn-submit-product control-14-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>												
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_pricing_model"> -->
 										<div id="control_14_show">
 											<div id="box_pricing_model"></div>
 										</div>
@@ -342,46 +261,36 @@
 					</div>
 				</div>
 			</div>
-			<div style="height: 20px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
 					<div style="display: table-cell; min-width: 440px; min-height: 1px;">
-						<!-- <div class="box-detail-2" style="background-color: #fff;"> -->
 						<div class="box-detail box-detail-color control-15-edit">
 							<div class="table box-detail-table-2">
 								<div class="row box-detail-row">
-									<div style="display: table-cell; width: 440px;">
+									<div class="cell-440">
 										<div class="box-detail-title box-detail-title-color float-left">
 											Price									
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-15-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_price" class="required-1"></div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_price" class="question-icon info-show-20 required-1 ks-tip-target control-15-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_price" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
-									<div style="display: table-cell; width: 440px;">
-										<!-- <div id="edit_price" class="hidden"> -->
+									<div class="cell-440">
 										<div id="control_15_edit" class="hidden">
-											<div class="table-product-price" id="table_product_price" tabindex="3100">						
+											<div class="table-product-price" id="table_product_price" tabindex="3100">
 												<div class="row-divider-space-8"></div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
@@ -393,12 +302,14 @@
 														</div>
 														<input id="ch_price_1" name="ch_price_1" type="checkbox" value="" />
 													</div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<input class="input-home-profile-d" id="publisher_product_price_price_1_dec" name="publisher_product_price[price_1_dec]" tabindex="3112" type="text" value="" placeholder="" />
 													</div>
 													<div id="render_price_1" class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
 														<span id="span_price_2" class="price-list" tabindex="3120">Price (subscription -enterprise 1-999 seats)</span>
@@ -409,12 +320,14 @@
 														</div>
 														<input id="ch_price_2" name="ch_price_2" type="checkbox" value="" />
 													</div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<input class="input-home-profile-d" id="publisher_product_price_price_2_dec" name="publisher_product_price[price_2_dec]" tabindex="3122" type="text" value="" placeholder="" />
 													</div>
 													<div id="render_price_2" class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
 														<span id="span_price_3" class="price-list" tabindex="3130">Price (subscription - enterprise 1000-4999 seats)</span>
@@ -425,12 +338,14 @@
 														</div>
 														<input id="ch_price_3" name="ch_price_3" type="checkbox" value="" />
 													</div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<input class="input-home-profile-d" id="publisher_product_price_price_3_dec" name="publisher_product_price[price_3_dec]" tabindex="3132" type="text" value="" placeholder="" />
 													</div>
 													<div id="render_price_3" class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
 														<span id="span_price_4" class="price-list" tabindex="3140">Price (subscription - enterprise 5000-9999 seats)</span>
@@ -441,12 +356,14 @@
 														</div>
 														<input id="ch_price_4" name="ch_price_4" type="checkbox" value="" />
 													</div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<input class="input-home-profile-d" id="publisher_product_price_price_4_dec" name="publisher_product_price[price_4_dec]" tabindex="3142" type="text" value="" placeholder="" />
 													</div>
 													<div id="render_price_4" class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
 														<span id="span_price_5" class="price-list" tabindex="3150">Price (subscription - enterprise 10,000+ seats)</span>
@@ -457,12 +374,14 @@
 														</div>
 														<input id="ch_price_5" name="ch_price_5" type="checkbox" value="" />
 													</div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<input class="input-home-profile-d" id="publisher_product_price_price_5_dec" name="publisher_product_price[price_5_dec]" tabindex="3152" type="text" value="" placeholder="" />
 													</div>
 													<div id="render_price_5" class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
 														<span id="span_price_6" class="price-list" tabindex="3160">Price - Single User</span>
@@ -473,12 +392,14 @@
 														</div>
 														<input id="ch_price_6" name="ch_price_6" type="checkbox" value="" />
 													</div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<input class="input-home-profile-d" id="publisher_product_price_price_6_dec" name="publisher_product_price[price_6_dec]" tabindex="3162" type="text" value="" placeholder="" />
 													</div>
 													<div id="render_price_6" class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
 														<span id="span_price_7" class="price-list" tabindex="3170">Price (server - enterprise 1-999 seats)</span>
@@ -489,12 +410,14 @@
 														</div>
 														<input id="ch_price_7" name="ch_price_7" type="checkbox" value="" />
 													</div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<input class="input-home-profile-d" id="publisher_product_price_price_7_dec" name="publisher_product_price[price_7_dec]" tabindex="3172" type="text" value="" placeholder="" />
 													</div>
 													<div id="render_price_7" class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
 														<span id="span_price_8" class="price-list" tabindex="3180">Price (server - enterprise 1000-4999 seats)</span>
@@ -505,12 +428,14 @@
 														</div>
 														<input id="ch_price_8" name="ch_price_8" type="checkbox" value="" />
 													</div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<input class="input-home-profile-d" id="publisher_product_price_price_8_dec" name="publisher_product_price[price_8_dec]" tabindex="3182" type="text" value="" placeholder="" />
 													</div>
 													<div id="render_price_8" class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
 														<span id="span_price_9" class="price-list" tabindex="3190">Price (server - enterprise 5000-9999 seats)</span>
@@ -521,12 +446,14 @@
 														</div>
 														<input id="ch_price_9" name="ch_price_9" type="checkbox" value="" />
 													</div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<input class="input-home-profile-d" id="publisher_product_price_price_9_dec" name="publisher_product_price[price_9_dec]" tabindex="3192" type="text" value="" placeholder="" />
 													</div>
 													<div id="render_price_9" class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
 														<span id="span_price_10" class="price-list" tabindex="3200">Price (server - enterprise 10,000+ seats)</span>
@@ -537,12 +464,14 @@
 														</div>
 														<input id="ch_price_10" name="ch_price_10" type="checkbox" value="" />
 													</div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<input class="input-home-profile-d" id="publisher_product_price_price_10_dec" name="publisher_product_price[price_10_dec]" tabindex="3202" type="text" value="" placeholder="" />
 													</div>
 													<div id="render_price_10" class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
 														<span id="span_price_11" class="price-list" tabindex="3210">Call for Pricing</span>
@@ -557,156 +486,175 @@
 													<div class="cell-product-price-4">
 													</div>
 													<div id="render_price_11" class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div class="row-divider-space-8"></div>
 												<div class="row-divider-space-8"></div>
 												<div class="row-product-price">
 													<div class="cell-product-price-1">
 														<div style="height:4px;"></div>
-														<div style="display: inline-block;">
+														<div class="display-inline-block">
 															<div id="submit_price" class="btn-submit-product control-15-save-button" tabindex="3220">Save</div>
 														</div>
-														<div style="display: inline-block;">
+														<div class="display-inline-block">
 															<div id="cancel_price" class="btn-submit-product control-15-cancel-button" tabindex="3221">Cancel</div>
-														</div>	
-													</div>										
+														</div>
+													</div>
 													<div class="cell-product-price-2">
 													</div>
 													<div class="cell-product-price-3"></div>
 													<div class="cell-product-price-4">
 													</div>
 													<div class="cell-product-price-5">
-													</div>								
+													</div>
 												</div>
-												<div class="row-divider-space-8"></div>															
+												<div class="row-divider-space-8"></div>
 											</div>
 										</div>
-										<!-- <div id="show_price"> -->
 										<div id="control_15_show">
-											<div class="table-product-price">	
+											<div class="table-product-price">
 												<div id="row_price_1" class="row-product-price">
 													<div class="cell-product-price-1">
 														<span class="price-list">Price (subscription -1)</span>
 													</div>
 													<div class="cell-product-price-2"></div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<div id="price_1_dec"></div>
 													</div>
 													<div class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div id="row_price_2" class="row-product-price">
 													<div class="cell-product-price-1">
 														<span class="price-list">Price (subscription -enterprise 1-999 seats)</span>
 													</div>
 													<div class="cell-product-price-2"></div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<div id="price_2_dec" class="min-w-20 h-24"></div>
 													</div>
 													<div class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div id="row_price_3" class="row-product-price">
 													<div class="cell-product-price-1">
 														<span class="price-list">Price (subscription - enterprise 1000-4999 seats)</span>
 													</div>
 													<div class="cell-product-price-2"></div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<div id="price_3_dec" class="min-w-20 min-h-20"></div>
 													</div>
 													<div class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div id="row_price_4" class="row-product-price">
 													<div class="cell-product-price-1">
 														<span class="price-list">Price (subscription - enterprise 5000-9999 seats)</span>
 													</div>
 													<div class="cell-product-price-2"></div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<div id="price_4_dec" class="min-w-20 min-h-20"></div>
 													</div>
 													<div class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div id="row_price_5" class="row-product-price">
 													<div class="cell-product-price-1">
 														<span class="price-list">Price (subscription - enterprise 10,000+ seats)</span>
 													</div>
 													<div class="cell-product-price-2"></div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<div id="price_5_dec" class="min-w-20 min-h-20"></div>
 													</div>
 													<div class="cell-product-price-5 render-1"></div>
-												</div>	
-
+												</div>
 												<div id="row_price_6" class="row-product-price">
 													<div class="cell-product-price-1">
 														<span class="price-list">Price - Single User</span>
 													</div>
 													<div class="cell-product-price-2"></div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<div id="price_6_dec" class="min-w-20 min-h-20"></div>
 													</div>
 													<div class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div id="row_price_7" class="row-product-price">
 													<div class="cell-product-price-1">
 														<span class="price-list">Price (server - enterprise 1-999 seats)</span>
 													</div>
 													<div class="cell-product-price-2"></div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<div id="price_7_dec" class="min-w-20 min-h-20"></div>
 													</div>
 													<div class="cell-product-price-5 render-1"></div>
-												</div>	
-
+												</div>
 												<div id="row_price_8" class="row-product-price">
 													<div class="cell-product-price-1">
 														<span class="price-list">Price (server - enterprise 1000-4999 seats)</span>
 													</div>
 													<div class="cell-product-price-2"></div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<div id="price_8_dec" class="min-w-20 min-h-20"></div>
 													</div>
 													<div class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div id="row_price_9" class="row-product-price">
 													<div class="cell-product-price-1">
 														<span class="price-list">Price (server - enterprise 5000-9999 seats)</span>
 													</div>
 													<div class="cell-product-price-2"></div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<div id="price_9_dec" class="min-w-20 min-h-20"></div>
 													</div>
 													<div class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div id="row_price_10" class="row-product-price">
 													<div class="cell-product-price-1">
 														<span class="price-list">Price (server - enterprise 10,000+ seats)</span>
 													</div>
 													<div class="cell-product-price-2"></div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign">$</div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign">$</div>
+													</div>
 													<div class="cell-product-price-4">
 														<div id="price_10_dec" class="min-w-20 min-h-20"></div>
 													</div>
 													<div class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 												<div id="row_price_11" class="row-product-price">
 													<div class="cell-product-price-1">
 														<span class="price-list">Call for Pricing</span>
 													</div>
 													<div class="cell-product-price-2"></div>
-													<div class="cell-product-price-3"><div class="container-dollar-sign"></div></div>
+													<div class="cell-product-price-3">
+														<div class="container-dollar-sign"></div>
+													</div>
 													<div class="cell-product-price-4">
 														<div id="price_11_dec" class="min-w-20 min-h-20"></div>
 													</div>
 													<div class="cell-product-price-5 render-1"></div>
-												</div>	
+												</div>
 											</div>
 										</div>
 									</div>
@@ -717,13 +665,11 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="" style="display: table-cell; width: 426px; vertical-align: top; table-layout: fixed;">
-			<div style="height: 20px;"></div>
+		<div class="cell-425" style="table-layout: fixed;">
+			<div class="spacer-height-20"></div>
 			<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail control-edit"> -->
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-101-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -734,48 +680,41 @@
 										<div class="control-101-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_description" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_description" class="question-icon info-show-20 required-1 ks-tip-target control-101-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_description" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row box-detail-row">
-									<div style="display: table-cell; width: 300px; padding: 4px;" class="">
+									<div class="cell-300 padding-4">
 										<div id="control_101_edit" class="hidden">
 											<div id="textarea_description_containter_edit" class="textarea-description-container-edit toggle-description" tabindex="">
 												<div id="render_publisher_product_description_image_edit" class="render-description-image"></div>
 												<div id="textarea_description_edit" class="textarea-description textarea-description-edit toggle-description" contenteditable="true" tabindex=""></div>
-											</div>		
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											</div>
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_description" class="btn-submit-product control-101-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_description" class="btn-submit-product control-101-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>					
+												</div>
+											</div>
 										</div>
 										<div id="control_101_show">
 											<div class="textarea-description-container">
 												<div id="render_publisher_product_description_image" class="render-description-image"></div>
-												<div id="textarea_description" class="textarea-description textarea-description-show" tabindex=""></div>												
+												<div id="textarea_description" class="textarea-description textarea-description-show" tabindex=""></div>
 											</div>
 										</div>
 									</div>
@@ -785,11 +724,10 @@
 					</div>
 				</div>
 			</div>
-			<div style="height: 20px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-104-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -797,58 +735,48 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Content Type											
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-104-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_content_type" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_content_type" class="question-icon info-show-20 required-1 ks-tip-target control-104-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_content_type" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_content_type" class="hidden"> -->
 										<div id="control_104_edit" class="hidden">
-											<div style="padding: 4px;">
-								          		<select id="publisher_product_content_type" name="publisher_product[content_type]" data-placeholder="-Select-" class="chosen-select" multiple style="width:314px;" tabindex="">
+											<div class="padding-4">
+												<select id="publisher_product_content_type" name="publisher_product[content_type]" data-placeholder="-Select-" class="chosen-select spacer-width-314" multiple tabindex="">
 													<% @content_types.each do|content_type| %>
-														<option value="<%= content_type.id %>">
-															<%= content_type.col_1 %>
-														</option>
+													<option value="<%= content_type.id %>">
+														<%= content_type.col_1 %>
+													</option>
 													<% end %>
-								          		</select>
-							          		</div>
-											<div id="other_content_type" class="hidden" style="padding: 4px;">
-												<input style="width: 314px;" class="input-product height-24" id="publisher_product_content_type_other" name="publisher_product[content_type_other]" tabindex="10" type="text" value="<%= @publisher_product_content_type.content_type_other %>" placeholder="Other" />
+												</select>
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div id="other_content_type" class="hidden padding-4">
+												<input class="input-product height-24 spacer-width-314" id="publisher_product_content_type_other" name="publisher_product[content_type_other]" tabindex="10" type="text" value="<%= @publisher_product_content_type.content_type_other %>" placeholder="Other" />
+											</div>
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_content_type" class="btn-submit-product control-104-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_content_type" class="btn-submit-product control-104-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>																													
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_content_type"> -->
 										<div id="control_104_show">
 											<div id="box_content_type"></div>
 										</div>
@@ -858,12 +786,11 @@
 						</div>
 					</div>
 				</div>
-			</div>						
-			<div style="height: 20px; width: 410px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			</div>
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-105-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -871,56 +798,46 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Subject								
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-105-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_category_subject" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_category_subject" class="question-icon info-show-20 required-1 ks-tip-target control-105-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_category_subject" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
-								<div style="display: table-row;">
+								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_category_subject" class="hidden"> -->
 										<div id="control_105_edit" class="hidden">
-											<div style="padding: 4px;">
-								          		<select id="publisher_product_category_subject" name="publisher_product[category_subject]" data-placeholder="-Select-" class="chosen-select" multiple style="width:314px;" tabindex="">
+											<div class="padding-4">
+												<select id="publisher_product_category_subject" name="publisher_product[category_subject]" data-placeholder="-Select-" class="chosen-select spacer-width-314" multiple tabindex="">
 													<% @category_subjects.each do|category_subject| %>
-														<option value="<%= category_subject.id %>"><%= category_subject.col_1 %></option>
+													<option value="<%= category_subject.id %>"><%= category_subject.col_1 %></option>
 													<% end %>
-								          		</select>
-							          		</div>
-											<div id="other_category_subject" class="hidden" style="padding: 4px;">
-												<input style="width: 314px;" class="input-product height-24" id="publisher_product_category_subject_other" name="publisher_product[category_subject_other]" tabindex="10" type="text" value="<%= @publisher_product_category_subject.category_subject_other %>" placeholder="Other" />
+												</select>
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div id="other_category_subject" class="hidden padding-4">
+												<input class="input-product height-24 spacer-width-314" id="publisher_product_category_subject_other" name="publisher_product[category_subject_other]" tabindex="10" type="text" value="<%= @publisher_product_category_subject.category_subject_other %>" placeholder="Other" />
+											</div>
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_category_subject" class="btn-submit-product control-105-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_category_subject" class="btn-submit-product control-105-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>												
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_category_subject"> -->
 										<div id="control_105_show">
 											<div id="box_category_subject"></div>
 										</div>
@@ -931,11 +848,10 @@
 					</div>
 				</div>
 			</div>
-			<div style="height: 20px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-102-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -943,52 +859,42 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Topic								
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-102-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_topic" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_topic" class="question-icon info-show-20 required-1 ks-tip-target control-102-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_topic" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row box-detail-row">
 									<div class="cell-325 box-detail-padding">
-										<!-- <div id="edit_topic" class="hidden"> -->
 										<div id="control_102_edit" class="hidden">
 											<div id="textarea_topic_containter_edit" class="textarea-topic-container-edit toggle-topic" tabindex="">
 												<div id="textarea_topic_edit" class="textarea-topic textarea-topic-edit toggle-topic" contenteditable="true" tabindex=""></div>
-											</div>		
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											</div>
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_topic" class="btn-submit-product control-102-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_topic" class="btn-submit-product control-102-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>					
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_topic"> -->
 										<div id="control_102_show">
 											<div class="textarea-topic-container">
-												<div id="textarea_topic" class="textarea-topic textarea-topic-show" tabindex=""></div>												
+												<div id="textarea_topic" class="textarea-topic textarea-topic-show" tabindex=""></div>
 											</div>
 										</div>
 									</div>
@@ -998,11 +904,10 @@
 					</div>
 				</div>
 			</div>
-			<div style="height: 20px; width: 410px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-106-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1010,105 +915,83 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Age Range								
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-106-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_age_range" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_age_range" class="question-icon info-show-20 required-1 ks-tip-target control-106-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_age_range" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_age_range" class="hidden"> -->
 										<div id="control_106_edit" class="hidden">
-											
 											<% if false %>
 											<div>
 												<label style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 14px; color: #555;">Age:</label>
 												<div style="height: 4px"></div>
 												<div>
-							
 													<div style="display: inline-block; padding: 0px;">
-														<!-- <div style="width: 40px;"><span>From:</span></div> -->
 														<%= hidden_field_tag :search_from_age, value = nil %>
-										          		<select id="publisher_product_from_age" name="publisher_product[from_age]" data-placeholder="From" class="chosen-select-age-range" style="width:110px;" tabindex="">
+														<select id="publisher_product_from_age" name="publisher_product[from_age]" data-placeholder="From" class="chosen-select-age-range" style="width:110px;" tabindex="">
 															<option value=""></option>
 															<% @from_ages.each do|from_age| %>
-																<option value="<%= from_age.id %>"><%= from_age.col_1 %></option>
+															<option value="<%= from_age.id %>"><%= from_age.col_1 %></option>
 															<% end %>
-										          		</select>
+														</select>
 													</div>
 													<div style="display: inline-block; width: 4px; text-align: center;"> - </div>
 													<div style="display: inline-block; padding: 0px;">
-														<!-- <div style="width: 40px;"><span>To:</span></div> -->
 														<%= hidden_field_tag :search_to_age, value = nil %>
-										          		<select id="publisher_product_to_age" name="publisher_product[to_age]" data-placeholder="To" class="chosen-select-age-range" style="width:110px;" tabindex="">
+														<select id="publisher_product_to_age" name="publisher_product[to_age]" data-placeholder="To" class="chosen-select-age-range" style="width:110px;" tabindex="">
 															<option value=""></option>
 															<% @to_ages.each do|to_age| %>
-																<option value="<%= to_age.id %>"><%= to_age.col_1 %></option>
+															<option value="<%= to_age.id %>"><%= to_age.col_1 %></option>
 															<% end %>
-										          		</select>
+														</select>
 													</div>
 												</div>
 											</div>
 											<% end %>
-											
-											
 											<div style="display: inline-block; padding: 4px;">
-												<!-- <div style="display: inline-block; width: 40px;"><span>From:</span></div> -->
-								          		<!-- <select id="publisher_product_from_age" name="publisher_product[from_age]" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex=""> -->
-								          		<select data-placeholder="From" id="publisher_product_from_age" name="publisher_product[from_age]" class="chosen-select-age-range" style="width: 110px;">
-													<!-- <option value="0">-Select-</option> -->
+												<select data-placeholder="From" id="publisher_product_from_age" name="publisher_product[from_age]" class="chosen-select-age-range" style="width: 110px;">
 													<option value=""></option>
 													<% @from_ages.each do|from_age| %>
-														<option value="<%= from_age.id %>"><%= from_age.col_1 %></option>
+													<option value="<%= from_age.id %>"><%= from_age.col_1 %></option>
 													<% end %>
-								          		</select>
+												</select>
 											</div>
 											<div style="display: inline-block; width: 4px; text-align: center;"> - </div>
 											<div style="display: inline-block; padding: 4px;">
-												<!-- <div style="display: inline-block; width: 40px;"><span>To:</span></div> -->
-								          		<!-- <select id="publisher_product_to_age" name="publisher_product[to_age]" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex=""> -->
-								          		<select data-placeholder="To" id="publisher_product_to_age" name="publisher_product[to_age]" class="chosen-select-age-range" style="width: 110px;">
+												<select data-placeholder="To" id="publisher_product_to_age" name="publisher_product[to_age]" class="chosen-select-age-range" style="width: 110px;">
 													<option value=""></option>
 													<% @to_ages.each do|to_age| %>
-														<option value="<%= to_age.id %>"><%= to_age.col_1 %></option>
+													<option value="<%= to_age.id %>"><%= to_age.col_1 %></option>
 													<% end %>
-								          		</select>
+												</select>
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_age_range" class="btn-submit-product control-106-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_age_range" class="btn-submit-product control-106-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>			
-													
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_age_range" style="padding: 0 0 0 0px;"> -->
 										<div id="control_106_show">
 											<div id="box_age_range"></div>
-										</div>																
+										</div>
 									</div>
 								</div>
 							</div>
@@ -1116,11 +999,10 @@
 					</div>
 				</div>
 			</div>
-			<div style="height: 20px; width: 410px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-107-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1128,64 +1010,54 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Grade Range								
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-107-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_grade_range" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_grade_range" class="question-icon info-show-20 required-1 ks-tip-target control-107-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_grade_range" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_grade_range" class="hidden"> -->
 										<div id="control_107_edit" class="hidden">
-											<div style="padding: 4px;">
+											<div class="padding-4">
 												<div style="display: inline-block; width: 40px;"><span>From:</span></div>
-								          		<select id="publisher_product_from_grade" name="publisher_product[from_grade]" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex="">
+												<select id="publisher_product_from_grade" name="publisher_product[from_grade]" data-placeholder="-Select-" class="chosen-select spacer-width-314" tabindex="">
 													<option value="0">-Select-</option>
 													<% @from_grades_ordered.each do|from_grade| %>
-														<option value="<%= from_grade.id %>"><%= from_grade.col_1 %></option>
+													<option value="<%= from_grade.id %>"><%= from_grade.col_1 %></option>
 													<% end %>
-								          		</select>
+												</select>
 											</div>
-											<div style="padding: 4px;">
+											<div class="padding-4">
 												<div style="display: inline-block; width: 40px;"><span>To:</span></div>
-								          		<select id="publisher_product_to_grade" name="publisher_product[to_grade]" data-placeholder="-Select-" class="chosen-select" style="width:314px;" tabindex="">
+												<select id="publisher_product_to_grade" name="publisher_product[to_grade]" data-placeholder="-Select-" class="chosen-select spacer-width-314" tabindex="">
 													<option value="0">-Select-</option>
 													<% @to_grades_ordered.each do|to_grade| %>
-														<option value="<%= to_grade.id %>"><%= to_grade.col_1 %></option>
+													<option value="<%= to_grade.id %>"><%= to_grade.col_1 %></option>
 													<% end %>
-								          		</select>
+												</select>
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_grade_range" class="btn-submit-product control-107-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_grade_range" class="btn-submit-product control-107-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>					
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_grade_range"> -->
 										<div id="control_107_show">
 											<div id="box_grade_range"></div>
 										</div>
@@ -1196,11 +1068,10 @@
 					</div>
 				</div>
 			</div>
-			<div style="height: 20px; width: 410px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-108-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1208,67 +1079,42 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Market Target								
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-108-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_market_target" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_market_target" class="question-icon info-show-20 required-1 ks-tip-target control-108-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_market_target" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_market_target" class="hidden"> -->
 										<div id="control_108_edit" class="hidden">
-											<div style="padding: 4px;">
-								          		<select id="publisher_product_market_target" name="publisher_product[market_target]" data-placeholder="-Select-" class="chosen-select" multiple style="width:380px;" tabindex="">
-								            		<!-- <option value="0">-Select-</option> -->
+											<div class="padding-4">
+												<select id="publisher_product_market_target" name="publisher_product[market_target]" data-placeholder="-Select-" class="chosen-select" multiple style="width:380px;" tabindex="">
 													<option value="1">Consumer</option>
 													<option value="2">Institutions</option>
-								          		</select>
+												</select>
 											</div>
-											
-										  	<!-- <script type="text/javascript">
-										    	var config = {
-										      	'.chosen-select'           : {},
-										      	'.chosen-select-deselect'  : {allow_single_deselect:true},
-										      	'.chosen-select-no-single' : {disable_search_threshold:10},
-										      	'.chosen-select-no-results': {no_results_text:'-nothing found-'},
-										      	'.chosen-select-width'     : {width:"95%"}
-										    	}
-										    	for (var selector in config) {
-										      		$(selector).chosen(config[selector]);
-										    	}
-										  	</script> -->
-
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_market_target" class="btn-submit-product control-108-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_market_target" class="btn-submit-product control-108-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>																													
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_market_target"> -->
 										<div id="control_108_show">
 											<div id="box_market_target"></div>
 										</div>
@@ -1279,11 +1125,10 @@
 					</div>
 				</div>
 			</div>
-			<div style="height: 20px; width: 410px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-103-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1291,52 +1136,42 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Lesson Plan Subject								
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-103-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_lesson_plan_subject" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_lesson_plan_subject" class="question-icon info-show-20 required-1 ks-tip-target control-103-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_lesson_plan_subject" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row box-detail-row">
 									<div class="cell-325 box-detail-padding">
-										<!-- <div id="edit_lesson_plan_subject" class="hidden"> -->
 										<div id="control_103_edit" class="hidden">
 											<div id="textarea_lesson_plan_subject_containter_edit" class="textarea-subject-container-edit toggle-subject" tabindex="">
 												<div id="textarea_lesson_plan_subject_edit" class="textarea-subject textarea-subject-edit toggle-subject" contenteditable="true" tabindex=""></div>
-											</div>		
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											</div>
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_lesson_plan_subject" class="btn-submit-product control-103-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_lesson_plan_subject" class="btn-submit-product control-103-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>					
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_lesson_plan_subject"> -->
 										<div id="control_103_show">
 											<div class="textarea-subject-container">
-												<div id="textarea_lesson_plan_subject" class="textarea-subject textarea-subject-show" tabindex=""></div>												
+												<div id="textarea_lesson_plan_subject" class="textarea-subject textarea-subject-show" tabindex=""></div>
 											</div>
 										</div>
 									</div>
@@ -1346,11 +1181,10 @@
 					</div>
 				</div>
 			</div>
-			<div style="height: 20px; width: 410px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-109-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1358,35 +1192,26 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Lesson/Course Time Used						
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-109-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_lesson_time" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_lesson_time" class="question-icon info-show-20 required-1 ks-tip-target control-109-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_lesson_time" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_lesson_time" class="hidden"> -->
 										<div id="control_109_edit" class="hidden">
 											<div style="height: 16px"></div>
 											<div style="width: 100%; padding: 0 0 0 20px;">
@@ -1402,25 +1227,25 @@
 													</div>
 												</div>
 											</div>
-											<div style="height: 20px"></div>
+											<div class="spacer-height-20"></div>
 											<div style="width: 100%; padding: 0 10px 0 0;">
 												<div class="table">
 													<div class="row">
 														<div class="cell-125" style="text-align: right;">
-										                	<span id="label_lesson_time_hours" class="label-lesson-time-enabled">Hours</span>
-										                	<input id="number_lesson_time_hours" type="number" max="500" min="0" class="number-lesson-time number-lesson-time-enabled" />
+															<span id="label_lesson_time_hours" class="label-lesson-time-enabled">Hours</span>
+															<input id="number_lesson_time_hours" type="number" max="500" min="0" class="number-lesson-time number-lesson-time-enabled" />
 														</div>
 														<div class="cell-10 lesson-time-colon">
-										                	<span>:</span>
+															<span>:</span>
 														</div>
 														<div class="cell-125">
-										                	<input id="number_lesson_time_minutes" type="number" max="59" min="0" class="number-lesson-time number-lesson-time-enabled" />
-										                	<span id="label_lesson_time_minutes" class="label-lesson-time-enabled">Minutes</span>
+															<input id="number_lesson_time_minutes" type="number" max="59" min="0" class="number-lesson-time number-lesson-time-enabled" />
+															<span id="label_lesson_time_minutes" class="label-lesson-time-enabled">Minutes</span>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div style="height: 10px"></div>
+											<div class="spacer-height-10"></div>
 											<div style="width: 100%; padding: 0 0 0 20px;">
 												<div style="text-align: left; width: 270px; padding: 4px 0 0 0; border-top: 1px solid #FBB040;">
 													<div class="cb-container-1" id="cb_container_time_per_course">
@@ -1434,35 +1259,34 @@
 													</div>
 												</div>
 											</div>
-											<div style="height: 20px"></div>
+											<div class="spacer-height-20"></div>
 											<div style="width: 100%; padding: 0 10px 0 0;">
 												<div class="table">
 													<div class="row">
 														<div class="cell-125" style="text-align: right;">
-										                	<span id="label_course_time_months" class="label-lesson-time-enabled">Months</span>
-										                	<input id="number_course_time_months" type="number" max="500" min="0" class="number-lesson-time number-lesson-time-enabled" />
+															<span id="label_course_time_months" class="label-lesson-time-enabled">Months</span>
+															<input id="number_course_time_months" type="number" max="500" min="0" class="number-lesson-time number-lesson-time-enabled" />
 														</div>
 														<div class="cell-10 lesson-time-colon">
-										                	<span>:</span>
+															<span>:</span>
 														</div>
 														<div class="cell-125">
-										                	<input id="number_course_time_days" type="number" max="500" min="0" class="number-lesson-time number-lesson-time-enabled" />
-										                	<span id="label_course_time_days" class="label-lesson-time-enabled">Days</span>
+															<input id="number_course_time_days" type="number" max="500" min="0" class="number-lesson-time number-lesson-time-enabled" />
+															<span id="label_course_time_days" class="label-lesson-time-enabled">Days</span>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div style="height: 6px;"></div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_lesson_time" class="btn-submit-product control-109-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_lesson_time" class="btn-submit-product control-109-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>					
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_lesson_time"> -->
 										<div id="control_109_show">
 											<div id="box_lesson_time"></div>
 											<div id="box_course_time"></div>
@@ -1474,11 +1298,10 @@
 					</div>
 				</div>
 			</div>
-			<div style="height: 20px; width: 410px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-110-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1486,56 +1309,46 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Platform				
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-110-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_platform" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_platform" class="question-icon info-show-20 required-1 ks-tip-target control-110-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_platform" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_platform" class="hidden"> -->
 										<div id="control_110_edit" class="hidden">
-											<div style="padding: 4px;">
-								          		<select id="publisher_product_platform" name="publisher_product[platform]" data-placeholder="-Select-" class="chosen-select" multiple style="width:314px;" tabindex="">
+											<div class="padding-4">
+												<select id="publisher_product_platform" name="publisher_product[platform]" data-placeholder="-Select-" class="chosen-select spacer-width-314" multiple tabindex="">
 													<% @platforms.each do|platform| %>
-														<option value="<%= platform.id %>"><%= platform.col_1 %></option>
+													<option value="<%= platform.id %>"><%= platform.col_1 %></option>
 													<% end %>
-								          		</select>
-							          		</div>
-											<div id="other_platform" class="hidden" style="padding: 4px;">
-												<input style="width: 314px;" class="input-product height-24" id="publisher_product_platform_other" name="publisher_product[platform_other]" tabindex="10" type="text" value="<%= @publisher_product_platform.platform_other %>" placeholder="Other" />
+												</select>
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div id="other_platform" class="hidden padding-4">
+												<input class="input-product height-24 spacer-width-314" id="publisher_product_platform_other" name="publisher_product[platform_other]" tabindex="10" type="text" value="<%= @publisher_product_platform.platform_other %>" placeholder="Other" />
+											</div>
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_platform" class="btn-submit-product control-110-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_platform" class="btn-submit-product control-110-cancel-button" tabindex="">Cancel</div>
 												</div>
-											</div>	
+											</div>
 										</div>
-										<!-- <div id="show_platform"> -->
 										<div id="control_110_show">
 											<div id="box_platform"></div>
 										</div>
@@ -1546,11 +1359,10 @@
 					</div>
 				</div>
 			</div>
-			<div style="height: 20px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-111-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1558,71 +1370,60 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											File Type			
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-111-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_file_type" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_file_type" class="question-icon info-show-20 required-1 ks-tip-target control-111-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_file_type" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_file_type" class="hidden"> -->
 										<div id="control_111_edit" class="hidden">
-											<div style="padding: 4px;">
-								          		<select id="publisher_product_file_type" name="publisher_product[file_type]" data-placeholder="-Select-" class="chosen-select" multiple style="width:314px;" tabindex="">
+											<div class="padding-4">
+												<select id="publisher_product_file_type" name="publisher_product[file_type]" data-placeholder="-Select-" class="chosen-select spacer-width-314" multiple tabindex="">
 													<% @file_types.each do|file_type| %>
-														<option value="<%= file_type.id %>"><%= file_type.col_1 %></option>
+													<option value="<%= file_type.id %>"><%= file_type.col_1 %></option>
 													<% end %>
-								          		</select>
+												</select>
 											</div>
-											<div id="other_file_type" class="hidden" style="padding: 4px;">
-												<input style="width: 314px;" class="input-product height-24" id="publisher_product_file_type_other" name="publisher_product[file_type_other]" tabindex="10" type="text" value="<%= @publisher_product_file_type.file_type_other %>" placeholder="Other" />
+											<div id="other_file_type" class="hidden padding-4">
+												<input class="input-product height-24 spacer-width-314" id="publisher_product_file_type_other" name="publisher_product[file_type_other]" tabindex="10" type="text" value="<%= @publisher_product_file_type.file_type_other %>" placeholder="Other" />
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_file_type" class="btn-submit-product control-111-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_file_type" class="btn-submit-product control-111-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>					
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_file_type"> -->
 										<div id="control_111_show">
 											<div id="box_file_type"></div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div> 
+						</div>
 					</div>
 				</div>
-			</div>					
-			<div style="height: 20px; width: 410px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			</div>
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-112-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1630,56 +1431,46 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Enhancements			
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-112-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_enhancement" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_enhancement" class="question-icon info-show-20 required-1 ks-tip-target control-112-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_enhancement" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_enhancement" class="hidden"> -->
 										<div id="control_112_edit" class="hidden">
-											<div style="padding: 4px;">
-								          		<select id="publisher_product_enhancement" name="publisher_product[enhancement]" data-placeholder="-Select-" class="chosen-select" multiple style="width:314px;" tabindex="">
+											<div class="padding-4">
+												<select id="publisher_product_enhancement" name="publisher_product[enhancement]" data-placeholder="-Select-" class="chosen-select spacer-width-314" multiple tabindex="">
 													<% @enhancements.each do|enhancement| %>
-														<option value="<%= enhancement.id %>"><%= enhancement.col_1 %></option>
+													<option value="<%= enhancement.id %>"><%= enhancement.col_1 %></option>
 													<% end %>
-								          		</select>
+												</select>
 											</div>
-											<div id="other_enhancement" class="hidden" style="padding: 4px;">
-												<input style="width: 314px;" class="input-product height-24" id="publisher_product_enhancement_other" name="publisher_product[enhancement_other]" tabindex="10" type="text" value="<%= @publisher_product_enhancement.enhancement_other %>" placeholder="Other" />
+											<div id="other_enhancement" class="hidden padding-4">
+												<input class="input-product height-24 spacer-width-314" id="publisher_product_enhancement_other" name="publisher_product[enhancement_other]" tabindex="10" type="text" value="<%= @publisher_product_enhancement.enhancement_other %>" placeholder="Other" />
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_enhancement" class="btn-submit-product control-112-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_enhancement" class="btn-submit-product control-112-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>					
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_enhancement"> -->
 										<div id="control_112_show">
 											<div id="box_enhancement"></div>
 										</div>
@@ -1689,12 +1480,11 @@
 						</div>
 					</div>
 				</div>
-			</div>					
-			<div style="height: 20px; width: 410px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			</div>
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-113-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1702,56 +1492,46 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Reviewed By			
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-113-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_by_review" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_by_review" class="question-icon info-show-20 required-1 ks-tip-target control-113-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_by_review" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_by_review" class="hidden"> -->
 										<div id="control_113_edit" class="hidden">
-											<div style="padding: 4px;">
-								          		<select id="publisher_product_by_review" name="publisher_product[by_review]" data-placeholder="-Select-" class="chosen-select" multiple style="width:314px;" tabindex="">
+											<div class="padding-4">
+												<select id="publisher_product_by_review" name="publisher_product[by_review]" data-placeholder="-Select-" class="chosen-select spacer-width-314" multiple tabindex="">
 													<% @by_reviews.each do|by_review| %>
-														<option value="<%= by_review.id %>"><%= by_review.col_1 %></option>
+													<option value="<%= by_review.id %>"><%= by_review.col_1 %></option>
 													<% end %>
-								          		</select>
+												</select>
 											</div>
-											<div id="other_by_review" class="hidden" style="padding: 4px;">
-												<input style="width: 314px;" class="input-product height-24" id="publisher_product_by_review_other" name="publisher_product[by_review_other]" tabindex="10" type="text" value="<%= @publisher_product_by_review.by_review_other %>" placeholder="Other" />
+											<div id="other_by_review" class="hidden padding-4">
+												<input class="input-product height-24 spacer-width-314" id="publisher_product_by_review_other" name="publisher_product[by_review_other]" tabindex="10" type="text" value="<%= @publisher_product_by_review.by_review_other %>" placeholder="Other" />
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_by_review" class="btn-submit-product control-113-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_by_review" class="btn-submit-product control-113-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>					
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_by_review"> -->
 										<div id="control_113_show">
 											<div id="box_by_review"></div>
 										</div>
@@ -1761,12 +1541,11 @@
 						</div>
 					</div>
 				</div>
-			</div>					
-			<div style="height: 20px; width: 410px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			</div>
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-114-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1774,35 +1553,26 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Allow Teacher Ratings	
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-114-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_allow_teacher_rating" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_allow_teacher_rating" class="question-icon info-show-20 required-1 ks-tip-target control-114-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_allow_teacher_rating" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_allow_teacher_rating" class="hidden"> -->
 										<div id="control_114_edit" class="hidden">
 											<div>
 												<div class="cb-cell-1">
@@ -1811,22 +1581,23 @@
 												<div class="cb-cell-2">
 													<div class="cb-container-1" id="cb_container_allow_teacher_rating">
 														<div class="cb-container-1a"><span>Yes/No</span></div>
-														<div class="cb-container-1b"><div id="cb_allow_teacher_rating" class="cb-button cb-align"></div></div>
+														<div class="cb-container-1b">
+															<div id="cb_allow_teacher_rating" class="cb-button cb-align"></div>
+														</div>
 														<input id="cb_publisher_product_manifest_allow_teacher_rating" name="cb_publisher_product_manifest[allow_teacher_rating]" type="checkbox" value="" />
 													</div>
 												</div>
 												<div class="cb-cell-3"></div>
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_allow_teacher_rating" class="btn-submit-product control-114-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_allow_teacher_rating" class="btn-submit-product control-114-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>																													
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_allow_teacher_rating"> -->
 										<div id="control_114_show">
 											<div class="cb-cell-1"><span class="allow-label">Allow teacher ratings: </span></div>
 											<div id="box_allow_teacher_rating" class="cb-cell-2"><span class="allow-label"></span></div>
@@ -1838,12 +1609,11 @@
 						</div>
 					</div>
 				</div>
-			</div>			
-			<div style="height: 20px; width: 410px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			</div>
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-115-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1851,35 +1621,26 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Allow Comments	
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-115-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_allow_comments" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_allow_comments" class="question-icon info-show-20 required-1 ks-tip-target control-115-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_allow_comments" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_allow_comments" class="hidden"> -->
 										<div id="control_115_edit" class="hidden">
 											<div>
 												<div class="cb-cell-1">
@@ -1888,22 +1649,23 @@
 												<div class="cb-cell-2">
 													<div class="cb-container-1" id="cb_container_allow_comments">
 														<div class="cb-container-1a"><span>Yes/No</span></div>
-														<div class="cb-container-1b"><div id="cb_allow_comments" class="cb-button cb-align"></div></div>
+														<div class="cb-container-1b">
+															<div id="cb_allow_comments" class="cb-button cb-align"></div>
+														</div>
 														<input id="cb_publisher_product_manifest_allow_comments" name="cb_publisher_product_manifest[allow_comments]" type="checkbox" value="" />
 													</div>
 												</div>
 												<div class="cb-cell-3"></div>
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_allow_comments" class="btn-submit-product control-115-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_allow_comments" class="btn-submit-product control-115-save-button" tabindex="">Cancel</div>
-												</div>	
-											</div>																													
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_allow_comments"> -->
 										<div id="control_115_show">
 											<div class="cb-cell-1"><span class="allow-label">Allow comments: </span></div>
 											<div id="box_allow_comments" class="cb-cell-2"><span class="allow-label"></span></div>
@@ -1915,12 +1677,11 @@
 						</div>
 					</div>
 				</div>
-			</div>			
-			<div style="height: 20px;"></div>
-	   		<div class="table">
-	   			<div class="row">
-					<div style="display: table-cell; width: 400px;">
-						<!-- <div class="box-detail box-detail-color"> -->
+			</div>
+			<div class="spacer-height-20"></div>
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail box-detail-color control-116-edit">
 							<div class="table box-detail-table-1">
 								<div class="row box-detail-row">
@@ -1928,35 +1689,26 @@
 										<div class="box-detail-title box-detail-title-color float-left">
 											Allow Student Likes
 										</div>
-										<!-- <div class="edit-options float-right hidden"> -->
 										<div class="control-116-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_allow_student_likes" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_allow_student_likes" class="question-icon info-show-20 required-1 ks-tip-target control-116-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_allow_student_likes" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="cell-325">
-										<!-- <div id="edit_allow_student_likes" class="hidden"> -->
 										<div id="control_116_edit" class="hidden">
 											<div>
 												<div class="cb-cell-1">
@@ -1965,22 +1717,23 @@
 												<div class="cb-cell-2">
 													<div class="cb-container-1" id="cb_container_allow_student_likes">
 														<div class="cb-container-1a"><span>Yes/No</span></div>
-														<div class="cb-container-1b"><div id="cb_allow_student_likes" class="cb-button cb-align"></div></div>
+														<div class="cb-container-1b">
+															<div id="cb_allow_student_likes" class="cb-button cb-align"></div>
+														</div>
 														<input id="cb_publisher_product_manifest_allow_student_likes" name="cb_publisher_product_manifest[allow_student_likes]" type="checkbox" value="" />
 													</div>
 												</div>
 												<div class="cb-cell-3"></div>
 											</div>
-											<div style="padding: 4px;">
-												<div style="display: inline-block;">
+											<div class="padding-4">
+												<div class="display-inline-block">
 													<div id="submit_allow_student_likes" class="btn-submit-product control-116-save-button" tabindex="">Save</div>
 												</div>
-												<div style="display: inline-block;">
+												<div class="display-inline-block">
 													<div id="cancel_allow_student_likes" class="btn-submit-product control-116-cancel-button" tabindex="">Cancel</div>
-												</div>	
-											</div>																													
+												</div>
+											</div>
 										</div>
-										<!-- <div id="show_allow_student_likes"> -->
 										<div id="control_116_show">
 											<div class="cb-cell-1"><span class="allow-label">Allow Student Likes: </span></div>
 											<div id="box_allow_student_likes" class="cb-cell-2"><span class="allow-label"></span></div>
@@ -1992,41 +1745,35 @@
 						</div>
 					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
-			
-		<div class="" style="display: table-cell; width: 380px; vertical-align: top; table-layout: fixed;">
-			<div style="height: 20px;"></div>
+		<div class="cell-350" style="table-layout: fixed;">
+			<div class="spacer-height-20"></div>
 			<div id="container_image_3">
 				<div id="drop_container_image_3" class="drop">
 					<div id="render_image_3" class="">
 						<%= render 'image_3' %>
-			        </div>
+					</div>
 				</div>
 			</div>
-			<div style="height: 20px;"></div>
+			<div class="spacer-height-20"></div>
 			<div id="container_image_4">
 				<div id="drop_container_image_4" class="drop">
 					<div id="render_image_4" class="">
 						<%= render 'image_4' %>
-			        </div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
-
-
-
-<div style="height: 30px;"></div>
-<div style="display: table;">
-	<div style="display: table-row;">
-		<div class="" style="display: table-cell; vertical-align: top; width: 850px;">
-	   		<div class="table">
-	   			<div class="row">
-					<div class="" style="display: table-cell; vertical-align: top; width: 670px;">
+<div class="spacer-height-30"></div>
+<div class="table">
+	<div class="row">
+		<div class="cell-850">
+			<div class="table">
+				<div class="row">
+					<div class="cell-670">
 						<div class="box-detail-title-large">
 							Core Standards											
 						</div>
@@ -2036,15 +1783,13 @@
 		</div>
 	</div>
 </div>
-
-<div style="height: 10px;"></div>
-<div style="display: table;">
-	<div style="display: table-row;">
-		<div class="" style="display: table-cell; vertical-align: top; width: 850px;">
-	   		<div class="table">
-	   			<div class="row">
+<div class="spacer-height-10"></div>
+<div class="table">
+	<div class="row">
+		<div class="cell-850">
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
-						<!-- <div id="box_detail_core_literacy_standard" class="box-detail-3" style="background-color: #fff;"> -->
 						<div id="box_detail_core_literacy_standard" class="box-detail-3 control-117-edit" style="background-color: #fff;">
 							<div id="box_detail_table_core_literacy_standard" class="table box-detail-table-3">
 								<div class="row box-detail-row">
@@ -2052,30 +1797,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Core Literacy Standards											
-											</div>														
-										</div>													
-										<!-- <div class="edit-options float-right hidden"> -->
+											</div>
+										</div>
 										<div class="control-117-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_core_literacy_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_core_literacy_standard" class="question-icon info-show-20 required-1 ks-tip-target control-117-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_core_literacy_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2084,22 +1821,20 @@
 							<div class="table box-detail-table-3">
 								<div class="row">
 									<div class="cell-670">
-										<!-- <div id="edit_core_literacy_standard" class="hidden"> -->
 										<div id="control_117_edit" class="hidden">
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_core_literacy_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_core_literacy_standard" class="btn-submit-product control-117-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_core_literacy_standard" class="btn-submit-product control-117-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
-										<!-- <div id="show_core_literacy_standard"> -->
 										<div id="control_117_show">
 											<div id="box_core_literacy_standard"></div>
 										</div>
@@ -2110,11 +1845,10 @@
 					</div>
 				</div>
 			</div>
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
-						<!-- <div id="box_detail_core_math_standard" class="box-detail-3" style="background-color: #fff;"> -->
 						<div id="box_detail_core_math_standard" class="box-detail-3 control-118-edit" style="background-color: #fff;">
 							<div id="box_detail_table_core_math_standard" class="table box-detail-table-3">
 								<div class="row box-detail-row">
@@ -2122,30 +1856,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Core Math Standards											
-											</div>														
-										</div>													
-										<!-- <div class="edit-options float-right hidden"> -->
+											</div>
+										</div>
 										<div class="control-118-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_core_math_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_core_math_standard" class="question-icon info-show-20 required-1 ks-tip-target control-118-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_core_math_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2154,22 +1880,20 @@
 							<div class="table box-detail-table-3">
 								<div class="row">
 									<div class="cell-670">
-										<!-- <div id="edit_core_math_standard" class="hidden"> -->
 										<div id="control_118_edit" class="hidden">
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_core_math_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_core_math_standard" class="btn-submit-product control-118-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_core_math_standard" class="btn-submit-product control-118-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
-										<!-- <div id="show_core_math_standard"> -->
 										<div id="control_118_show">
 											<div id="box_core_math_standard"></div>
 										</div>
@@ -2179,70 +1903,66 @@
 						</div>
 					</div>
 				</div>
-	   			<div class="row">
+				<div class="row">
 					<div class="cell-20"></div>
 					<div class="cell-670">
-					   	<div id="form_info_core_math_standard" class="form-info-outer-core-math-standard" style="width: 670px;">
-					   		<div style="height: 10px;"></div>
-					   		<div class="form-info-inner form-info-inner-core-math-standard">
-					   			<div id="form_info_core_math_standard_a">
-							   		<div class="table">
-							   			<div class="row">
-							   				<div class="cell-100percent form-edit-background">
-							   					<div id="close_info_core_math_standard" class="form-edit-close tip-left-center">
-							   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
-							   					</div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Close</div>
-								                </div>													   																		   					
-							   					<div style="clear: both;"></div>
-							   				</div>
-					   					</div>
-									</div>				   				
-							   		<div class="table">
-							   			<div class="row">
-							   				<div class="cell-100percent form-edit-background">
+						<div id="form_info_core_math_standard" class="form-info-outer-core-math-standard" style="width: 670px;">
+							<div class="spacer-height-10"></div>
+							<div class="form-info-inner form-info-inner-core-math-standard">
+								<div id="form_info_core_math_standard_a">
+									<div class="table">
+										<div class="row">
+											<div class="cell-100percent form-edit-background">
+												<div id="close_info_core_math_standard" class="form-edit-close tip-left-center">
+													<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+												</div>
+												<div class="tip-content">
+													<div class="tooltiptext">Close</div>
+												</div>
+												<div class="float-clear"></div>
+											</div>
+										</div>
+									</div>
+									<div class="table">
+										<div class="row">
+											<div class="cell-100percent form-edit-background">
 												<span class="info-text-2">
-													Core Math Standards																		
+												Core Math Standards																		
 												</span>
-							   				</div>
-					   					</div>
-									</div>				   				
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
-</div>			
-
-<div style="height: 30px;"></div>
-
+</div>
+<div class="spacer-height-30"></div>
 <!-- 
-122 english
-123 math							
-124 science
-125 social_studies
-126 languages_non_eng
-127 health_ed
-128 physical_ed
-129 fine_arts
-130 economics
-131 technology 		  	
-132 career_dev
-133 second_language_eng_span		  	
-134 career_tech_ed
--->
-
-<div style="display: table;">
-	<div style="display: table-row;">
-		<div class="" style="display: table-cell; vertical-align: top; width: 850px;">
-	   		<div class="table">
-	   			<div class="row">
-					<div class="" style="display: table-cell; vertical-align: top; width: 670px;">
+	122 english
+	123 math							
+	124 science
+	125 social_studies
+	126 languages_non_eng
+	127 health_ed
+	128 physical_ed
+	129 fine_arts
+	130 economics
+	131 technology 		  	
+	132 career_dev
+	133 second_language_eng_span		  	
+	134 career_tech_ed
+	-->
+<div class="table">
+	<div class="row">
+		<div class="cell-850">
+			<div class="table">
+				<div class="row">
+					<div class="cell-670">
 						<div class="box-detail-title-large">
 							Texas Essential Knowledge and Skills									
 						</div>
@@ -2252,15 +1972,12 @@
 		</div>
 	</div>
 </div>
-
-<div style="height: 10px;"></div>
-
-<div style="display: table;">
-	<div style="display: table-row;">
-		<div class="" style="display: table-cell; vertical-align: top; width: 850px;">
-	   		<div class="table">
-
-	   			<div class="row">
+<div class="spacer-height-10"></div>
+<div class="table">
+	<div class="row">
+		<div class="cell-850">
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_english_standard" class="box-detail-3 control-122-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_english_standard" class="table box-detail-table-3">
@@ -2269,29 +1986,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												English Language Arts and Reading										
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-122-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_english_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_english_standard" class="question-icon info-show-20 required-1 ks-tip-target control-122-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_english_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2304,15 +2014,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_english_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_english_standard" class="btn-submit-product control-122-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_english_standard" class="btn-submit-product control-122-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_122_show">
 											<div id="box_teks_english_standard"></div>
@@ -2323,45 +2033,10 @@
 						</div>
 					</div>
 				</div>
-	   			<!-- <div class="row">
-					<div class="cell-20"></div>
-					<div class="cell-670">
-					   	<div id="form_info_teks_english_standard" class="form-info-outer-teks-english-standard" style="width: 670px;">
-					   		<div style="height: 10px;"></div>
-					   		<div class="form-info-inner form-info-inner-teks-english-standard">
-					   			<div id="form_info_teks_english_standard_a">
-							   		<div class="table">
-							   			<div class="row">
-							   				<div class="cell-100percent form-edit-background">
-							   					<div id="close_info_teks_english_standard" class="form-edit-close tip-left-center">
-							   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
-							   					</div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Close</div>
-								                </div>													   																		   					
-							   					<div style="clear: both;"></div>
-							   				</div>
-					   					</div>
-									</div>				   				
-							   		<div class="table">
-							   			<div class="row">
-							   				<div class="cell-100percent form-edit-background">
-												<span class="info-text-2">
-													TEKS English Standards																		
-												</span>
-							   				</div>
-					   					</div>
-									</div>				   				
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
 			</div>
-			
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_math_standard" class="box-detail-3 control-123-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_math_standard" class="table box-detail-table-3">
@@ -2370,29 +2045,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Mathematics									
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-123-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_math_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_math_standard" class="question-icon info-show-20 required-1 ks-tip-target control-123-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_math_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2405,15 +2073,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_math_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_math_standard" class="btn-submit-product control-123-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_math_standard" class="btn-submit-product control-123-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_123_show">
 											<div id="box_teks_math_standard"></div>
@@ -2425,10 +2093,9 @@
 					</div>
 				</div>
 			</div>
-
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_science_standard" class="box-detail-3 control-124-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_science_standard" class="table box-detail-table-3">
@@ -2437,29 +2104,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Science									
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-124-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_science_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_science_standard" class="question-icon info-show-20 required-1 ks-tip-target control-124-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_science_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2472,15 +2132,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_science_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_science_standard" class="btn-submit-product control-124-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_science_standard" class="btn-submit-product control-124-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_124_show">
 											<div id="box_teks_science_standard"></div>
@@ -2492,10 +2152,9 @@
 					</div>
 				</div>
 			</div>
-
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_social_studies_standard" class="box-detail-3 control-125-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_social_studies_standard" class="table box-detail-table-3">
@@ -2504,29 +2163,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Social Studies									
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-125-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_social_studies_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_social_studies_standard" class="question-icon info-show-20 required-1 ks-tip-target control-125-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_social_studies_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2539,15 +2191,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_social_studies_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_social_studies_standard" class="btn-submit-product control-125-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_social_studies_standard" class="btn-submit-product control-125-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_125_show">
 											<div id="box_teks_social_studies_standard"></div>
@@ -2559,10 +2211,9 @@
 					</div>
 				</div>
 			</div>
-
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_languages_non_eng_standard" class="box-detail-3 control-126-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_languages_non_eng_standard" class="table box-detail-table-3">
@@ -2571,29 +2222,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Languages Other Than English										
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-126-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_languages_non_eng_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_languages_non_eng_standard" class="question-icon info-show-20 required-1 ks-tip-target control-126-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_languages_non_eng_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2606,15 +2250,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_languages_non_eng_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_languages_non_eng_standard" class="btn-submit-product control-126-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_languages_non_eng_standard" class="btn-submit-product control-126-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_126_show">
 											<div id="box_teks_languages_non_eng_standard"></div>
@@ -2626,10 +2270,9 @@
 					</div>
 				</div>
 			</div>
-
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_health_ed_standard" class="box-detail-3 control-127-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_health_ed_standard" class="table box-detail-table-3">
@@ -2638,29 +2281,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Health Education									
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-127-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_health_ed_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_health_ed_standard" class="question-icon info-show-20 required-1 ks-tip-target control-127-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_health_ed_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2673,15 +2309,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_health_ed_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_health_ed_standard" class="btn-submit-product control-127-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_health_ed_standard" class="btn-submit-product control-127-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_127_show">
 											<div id="box_teks_health_ed_standard"></div>
@@ -2693,10 +2329,9 @@
 					</div>
 				</div>
 			</div>
-
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_physical_ed_standard" class="box-detail-3 control-128-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_physical_ed_standard" class="table box-detail-table-3">
@@ -2705,29 +2340,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Physical Education								
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-128-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_physical_ed_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_physical_ed_standard" class="question-icon info-show-20 required-1 ks-tip-target control-128-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_physical_ed_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2740,15 +2368,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_physical_ed_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_physical_ed_standard" class="btn-submit-product control-128-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_physical_ed_standard" class="btn-submit-product control-128-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_128_show">
 											<div id="box_teks_physical_ed_standard"></div>
@@ -2760,10 +2388,9 @@
 					</div>
 				</div>
 			</div>
-
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_fine_arts_standard" class="box-detail-3 control-129-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_fine_arts_standard" class="table box-detail-table-3">
@@ -2772,29 +2399,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Fine Arts							
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-129-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_fine_arts_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_fine_arts_standard" class="question-icon info-show-20 required-1 ks-tip-target control-129-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_fine_arts_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2807,15 +2427,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_fine_arts_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_fine_arts_standard" class="btn-submit-product control-129-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_fine_arts_standard" class="btn-submit-product control-129-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_129_show">
 											<div id="box_teks_fine_arts_standard"></div>
@@ -2827,10 +2447,9 @@
 					</div>
 				</div>
 			</div>
-
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_economics_standard" class="box-detail-3 control-130-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_economics_standard" class="table box-detail-table-3">
@@ -2839,29 +2458,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Economics with Emphasis on the Free Enterprise System and Its Benefits								
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-130-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_economics_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_economics_standard" class="question-icon info-show-20 required-1 ks-tip-target control-130-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_economics_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2874,15 +2486,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_economics_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_economics_standard" class="btn-submit-product control-130-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_economics_standard" class="btn-submit-product control-130-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_130_show">
 											<div id="box_teks_economics_standard"></div>
@@ -2894,10 +2506,9 @@
 					</div>
 				</div>
 			</div>
-
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_technology_standard" class="box-detail-3 control-131-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_technology_standard" class="table box-detail-table-3">
@@ -2906,29 +2517,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Technology Applications										
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-131-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_technology_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_technology_standard" class="question-icon info-show-20 required-1 ks-tip-target control-131-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_technology_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -2941,15 +2545,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_technology_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_technology_standard" class="btn-submit-product control-131-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_technology_standard" class="btn-submit-product control-131-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_131_show">
 											<div id="box_teks_technology_standard"></div>
@@ -2961,10 +2565,9 @@
 					</div>
 				</div>
 			</div>
-
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_career_dev_standard" class="box-detail-3 control-132-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_career_dev_standard" class="table box-detail-table-3">
@@ -2973,29 +2576,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Career Development											
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-132-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_career_dev_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_career_dev_standard" class="question-icon info-show-20 required-1 ks-tip-target control-132-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_career_dev_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -3008,15 +2604,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_career_dev_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_career_dev_standard" class="btn-submit-product control-132-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_career_dev_standard" class="btn-submit-product control-132-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_132_show">
 											<div id="box_teks_career_dev_standard"></div>
@@ -3028,10 +2624,9 @@
 					</div>
 				</div>
 			</div>
-
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_second_language_eng_span_standard" class="box-detail-3 control-133-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_second_language_eng_span_standard" class="table box-detail-table-3">
@@ -3040,29 +2635,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Spanish Language Arts and English as a Second Language											
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-133-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_second_language_eng_span_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_second_language_eng_span_standard" class="question-icon info-show-20 required-1 ks-tip-target control-133-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_second_language_eng_span_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -3075,15 +2663,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_second_language_eng_span_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_second_language_eng_span_standard" class="btn-submit-product control-133-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_second_language_eng_span_standard" class="btn-submit-product control-133-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_133_show">
 											<div id="box_teks_second_language_eng_span_standard"></div>
@@ -3095,10 +2683,9 @@
 					</div>
 				</div>
 			</div>
-
-	   		<div style="height: 10px;"></div>
-	   		<div class="table">
-	   			<div class="row">
+			<div class="spacer-height-10"></div>
+			<div class="table">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div id="box_detail_teks_career_tech_ed_standard" class="box-detail-3 control-134-edit" style="background-color: #fff;">
 							<div id="box_detail_table_teks_career_tech_ed_standard" class="table box-detail-table-3">
@@ -3107,29 +2694,22 @@
 										<div id="cell_inner_core_literacy_standard" class="float-left">
 											<div class="box-detail-title box-detail-title-color">
 												Career and Technical Education											
-											</div>														
-										</div>													
+											</div>
+										</div>
 										<div class="control-134-edit-options edit-options float-right hidden">
 											<div class="edit-options-block-1">
 												<div id="required_teks_career_tech_ed_standard" class="required-1"></div>
-								                <div class="tip-content">
-								                    <div class="tooltiptext">Required</div>
-								                </div>																								
+												<div class="tip-content">
+													<div class="tooltiptext">Required</div>
+												</div>
 											</div>
 											<div class="edit-options-block-1 ks-tip-container">
 												<div id="open_info_teks_career_tech_ed_standard" class="question-icon info-show-20 required-1 ks-tip-target control-134-info-button"></div>
-											    <div class="ks-tip ks-tip-2">
-											    	<div class="ks-tip-indicator-2"></div>
+												<div class="ks-tip ks-tip-2">
+													<div class="ks-tip-indicator-2"></div>
 													What is this?
-											    </div>				
-											</div>																		
-											<!-- <div class="edit-options-block-1 ks-tip-container">
-												<div id="open_edit_teks_career_tech_ed_standard" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-											    <div class="ks-tip ks-tip-3">
-											    	<div class="ks-tip-indicator-3"></div>
-													Edit
-											    </div>				
-											</div> -->
+												</div>
+											</div>
 										</div>
 										<div class="float-clear"></div>
 									</div>
@@ -3142,15 +2722,15 @@
 											<div class="row-divider-space-8"></div>
 											<div id="tablets" style="margin-left: 20px;">
 												<%= render 'publisher_product_manifests/list_teks_career_tech_ed_standards' %>
-											</div>		
-											<div style="height:30px;"></div>
+											</div>
+											<div class="spacer-height-30"></div>
 											<div style="display: inline-block; margin-left: 20px;">
 												<div id="submit_teks_career_tech_ed_standard" class="btn-submit-product control-134-save-button" tabindex="">Save</div>
 											</div>
-											<div style="display: inline-block;">
+											<div class="display-inline-block">
 												<div id="cancel_teks_career_tech_ed_standard" class="btn-submit-product control-134-cancel-button" tabindex="">Cancel</div>
-											</div>	
-											<div style="height:8px;"></div>
+											</div>
+											<div class="spacer-height-8"></div>
 										</div>
 										<div id="control_134_show">
 											<div id="box_teks_career_tech_ed_standard"></div>
@@ -3162,90 +2742,86 @@
 					</div>
 				</div>
 			</div>
-
-		  	<!-- 
-		  	122 english
-		  	123 math							
-		  	124 science
-		  	125 social_studies
-		  	126 languages_non_eng
-		  	127 health_ed
-		  	128 physical_ed
-		  	129 fine_arts
-		  	130 economics
-		  	131 technology 		  	
-		  	132 career_dev
-		  	133 second_language_eng_span		  	
-		  	134 career_tech_ed
-		  	-->
-
-			
-			
+			<!-- 
+				122 english
+				123 math							
+				124 science
+				125 social_studies
+				126 languages_non_eng
+				127 health_ed
+				128 physical_ed
+				129 fine_arts
+				130 economics
+				131 technology 		  	
+				132 career_dev
+				133 second_language_eng_span		  	
+				134 career_tech_ed
+				-->
 			<div style="height: 70px;"></div>
 			<div class="table">
-	   			<div class="row">
+				<div class="row">
 					<div class="cell-670" style="min-width: 670px; min-height: 1px;">
 						<div class="edit-options hidden" style="position: relative; width: 100%; height: 30px; text-align: center;">
-				   			<div id="title_pdfs" class="title-pdfs" style="display: inline-block; vertical-align: top;">
-				   				<span>Upload PDF of White Papers here</span>
+							<div id="title_pdfs" class="title-pdfs display-inline-block" style="vertical-align: top;">
+								<span>Upload PDF of White Papers here</span>
 							</div>
 							<div style="display: inline-block; width: 20px; height: 20px; margin-left: 20px;">
 								<div class="edit-options-block-1 ks-tip-container">
 									<div id="open_info_name_pdf" class="question-icon info-show-20 required-1 ks-tip-target"></div>
-								    <div class="ks-tip ks-tip-2">
-								    	<div class="ks-tip-indicator-2"></div>
+									<div class="ks-tip ks-tip-2">
+										<div class="ks-tip-indicator-2"></div>
 										What is this?
-								    </div>				
-								</div>																		
+									</div>
+								</div>
 							</div>
-						</div>				
-			   			<div id="render_pdfs">
-			   				<%= render 'publisher_product_manifests/list_pdfs'%>							
 						</div>
-						<div style="height: 20px;"></div>						
-					   	<div id="form4" class="form-edit-outer form-edit-outer-4">
-					   		<div style="height: 10px;"></div>
-					   		<div class="form-edit-inner form-edit-inner-4">
-					   			<div id="form4a">
-							   		<div class="table">
-							   			<div class="row">
-							   				<div class="cell-100percent">
-							   					<div id="close_form4" class="form-edit-close">
-							   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
-							   					</div>
-							   					<div style="clear: both;"></div>
-							   				</div>
-					   					</div>
-									</div>				   				
-									<div class="table">			
+						<div id="render_pdfs">
+							<%= render 'publisher_product_manifests/list_pdfs'%>							
+						</div>
+						<div class="spacer-height-20"></div>
+						<div id="form4" class="form-edit-outer form-edit-outer-4">
+							<div class="spacer-height-10"></div>
+							<div class="form-edit-inner form-edit-inner-4">
+								<div id="form4a">
+									<div class="table">
+										<div class="row">
+											<div class="cell-100percent">
+												<div id="close_form4" class="form-edit-close">
+													<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+												</div>
+												<div class="float-clear"></div>
+											</div>
+										</div>
+									</div>
+									<div class="table">
 										<div class="row">
 											<div class="cell-25"></div>
 											<div class="cell-650">
 												<%= render 'publisher_product_manifests/new_pdf' %>
 											</div>
 											<div class="cell-25">
-												<div id="render_" class="render-1"></div>	
+												<div id="render_" class="render-1"></div>
 											</div>
-										</div>							
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					   	<div id="form8" class="form-edit-outer form-edit-outer-8">
-					   		<div style="height: 10px;"></div>
-					   		<div class="form-edit-inner form-edit-inner-8">
-					   			<div id="form8a">
-							   		<div class="table">
-							   			<div class="row">
-							   				<div class="cell-100percent">
-							   					<div id="close_form8" class="form-edit-close">
-							   						<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
-							   					</div>
-							   					<div style="clear: both;"></div>
-							   				</div>
-					   					</div>
-									</div>				   				
-									<div class="table">			
+						<div id="form8" class="form-edit-outer form-edit-outer-8">
+							<div class="spacer-height-10"></div>
+							<div class="form-edit-inner form-edit-inner-8">
+								<div id="form8a">
+									<div class="table">
+										<div class="row">
+											<div class="cell-100percent">
+												<div id="close_form8" class="form-edit-close">
+													<img src="/assets/x_close_w20_h20.png" alt="X" height="20px">
+												</div>
+												<div class="float-clear"></div>
+											</div>
+										</div>
+									</div>
+									<div class="table">
 										<div class="row">
 											<div class="cell-25"></div>
 											<div class="cell-650">
@@ -3255,9 +2831,9 @@
 												<input type="hidden" id="id_publisher_product_pdf" value="">
 											</div>
 											<div class="cell-25">
-												<div id="render_" class="render-1"></div>	
+												<div id="render_" class="render-1"></div>
 											</div>
-										</div>							
+										</div>
 									</div>
 								</div>
 							</div>
@@ -3266,18 +2842,17 @@
 				</div>
 			</div>
 		</div>
-		<div class="" style="display: table-cell; width: 250px;"></div>
+		<div class="cell-250"></div>
 	</div>
 </div>
-<div style="height: 50px;"></div>
-
+<div class="spacer-height-50"></div>
 <% if false %>
-<div style="display: table;">
-	<div style="display: table-row;">
-		<div class="" style="display: table-cell; vertical-align: top; width: 850px;">
-	   		<div class="table">
-	   			<div class="row">
-					<div class="" style="display: table-cell; vertical-align: top; width: 400px;">
+<div class="table">
+	<div class="row">
+		<div class="cell-850">
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail-title-large">
 							Square Listing											
 						</div>
@@ -3285,10 +2860,10 @@
 							<img src="../assets_knowstory/generic-product-ad-box-w137-h134.png" alt="generic-product-ad-box-w137-h134.png">
 						</div>
 					</div>
-					<div class="" style="display: table-cell; vertical-align: top; width: 400px;">
-				   		<div class="table">
-				   			<div class="row">
-								<div style="display: table-cell; width: 400px;">
+					<div class="cell-400">
+						<div class="table">
+							<div class="row">
+								<div class="cell-400">
 									<!-- <div class="box-detail box-detail-color"> -->
 									<div class="box-detail box-detail-color control-119-edit">
 										<div class="table box-detail-table-1">
@@ -3301,24 +2876,24 @@
 													<div class="control-119-edit-options edit-options float-right hidden">
 														<div class="edit-options-block-1">
 															<div id="required_poster_print_purchase" class="required-1"></div>
-											                <div class="tip-content">
-											                    <div class="tooltiptext">Required</div>
-											                </div>																								
+															<div class="tip-content">
+																<div class="tooltiptext">Required</div>
+															</div>
 														</div>
 														<div class="edit-options-block-1 ks-tip-container">
 															<div id="open_info_poster_print_purchase" class="question-icon info-show-20 required-1 ks-tip-target control-119-info-button"></div>
-														    <div class="ks-tip ks-tip-2">
-														    	<div class="ks-tip-indicator-2"></div>
+															<div class="ks-tip ks-tip-2">
+																<div class="ks-tip-indicator-2"></div>
 																What is this?
-														    </div>				
-														</div>																		
+															</div>
+														</div>
 														<!-- <div class="edit-options-block-1 ks-tip-container">
 															<div id="open_edit_poster_print_purchase" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-														    <div class="ks-tip ks-tip-3">
-														    	<div class="ks-tip-indicator-3"></div>
+															   <div class="ks-tip ks-tip-3">
+															   	<div class="ks-tip-indicator-3"></div>
 																Edit
-														    </div>				
-														</div> -->
+															   </div>				
+															</div> -->
 													</div>
 													<div class="float-clear"></div>
 												</div>
@@ -3334,20 +2909,22 @@
 															<div class="cb-cell-2">
 																<div class="cb-container-1" id="cb_container_poster_print_purchase">
 																	<div class="cb-container-1a"><span>Yes/No</span></div>
-																	<div class="cb-container-1b"><div id="cb_poster_print_purchase" class="cb-button cb-align"></div></div>
+																	<div class="cb-container-1b">
+																		<div id="cb_poster_print_purchase" class="cb-button cb-align"></div>
+																	</div>
 																	<input id="cb_publisher_product_manifest_poster_print_purchase" name="cb_publisher_product_manifest[poster_print_purchase]" type="checkbox" value="" />
 																</div>
 															</div>
 															<div class="cb-cell-3"></div>
 														</div>
-														<div style="padding: 4px;">
-															<div style="display: inline-block;">
+														<div class="padding-4">
+															<div class="display-inline-block">
 																<div id="submit_poster_print_purchase" class="btn-submit-product control-119-save-button" tabindex="">Save</div>
 															</div>
-															<div style="display: inline-block;">
+															<div class="display-inline-block">
 																<div id="cancel_poster_print_purchase" class="btn-submit-product control-119-cancel-button" tabindex="">Cancel</div>
-															</div>	
-														</div>																													
+															</div>
+														</div>
 													</div>
 													<!-- <div id="show_poster_print_purchase"> -->
 													<div id="control_119_show">
@@ -3358,7 +2935,7 @@
 												</div>
 											</div>
 										</div>
-									</div> 
+									</div>
 								</div>
 							</div>
 						</div>
@@ -3368,24 +2945,24 @@
 		</div>
 	</div>
 </div>
-<div style="height: 50px;"></div>
-<div style="display: table;">
-	<div style="display: table-row;">
-		<div class="" style="display: table-cell; vertical-align: top; width: 850px;">
-	   		<div class="table">
-	   			<div class="row">
-					<div class="" style="display: table-cell; vertical-align: top; width: 400px;">
+<div class="spacer-height-50"></div>
+<div class="table">
+	<div class="row">
+		<div class="cell-850">
+			<div class="table">
+				<div class="row">
+					<div class="cell-400">
 						<div class="box-detail-title-large">
 							Poster Pin											
-						</div>				   					
+						</div>
 						<div>
 							<img src="../assets_knowstory/generic-product-poster-pin-w167-h93.png" alt="generic-product-poster-pin-w167-h93.png">
 						</div>
 					</div>
-					<div class="" style="display: table-cell; vertical-align: top; width: 400px;">
-				   		<div class="table">
-				   			<div class="row">
-								<div style="display: table-cell; width: 400px;">
+					<div class="cell-400">
+						<div class="table">
+							<div class="row">
+								<div class="cell-400">
 									<!-- <div class="box-detail box-detail-color"> -->
 									<div class="box-detail box-detail-color control-120-edit">
 										<div class="table box-detail-table-1">
@@ -3398,24 +2975,24 @@
 													<div class="control-120-edit-options edit-options float-right hidden">
 														<div class="edit-options-block-1">
 															<div id="required_poster_pin_web" class="required-1"></div>
-											                <div class="tip-content">
-											                    <div class="tooltiptext">Required</div>
-											                </div>																								
+															<div class="tip-content">
+																<div class="tooltiptext">Required</div>
+															</div>
 														</div>
 														<div class="edit-options-block-1 ks-tip-container">
 															<div id="open_info_poster_pin_web" class="question-icon info-show-20 required-1 ks-tip-target control-120-info-button"></div>
-														    <div class="ks-tip ks-tip-2">
-														    	<div class="ks-tip-indicator-2"></div>
+															<div class="ks-tip ks-tip-2">
+																<div class="ks-tip-indicator-2"></div>
 																What is this?
-														    </div>				
-														</div>																		
+															</div>
+														</div>
 														<!-- <div class="edit-options-block-1 ks-tip-container">
 															<div id="open_edit_poster_pin_web" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-														    <div class="ks-tip ks-tip-3">
-														    	<div class="ks-tip-indicator-3"></div>
+															   <div class="ks-tip ks-tip-3">
+															   	<div class="ks-tip-indicator-3"></div>
 																Edit
-														    </div>				
-														</div> -->
+															   </div>				
+															</div> -->
 													</div>
 													<div class="float-clear"></div>
 												</div>
@@ -3431,20 +3008,22 @@
 															<div class="cb-cell-2">
 																<div class="cb-container-1" id="cb_container_poster_pin_web">
 																	<div class="cb-container-1a"><span>Yes/No</span></div>
-																	<div class="cb-container-1b"><div id="cb_poster_pin_web" class="cb-button cb-align"></div></div>
+																	<div class="cb-container-1b">
+																		<div id="cb_poster_pin_web" class="cb-button cb-align"></div>
+																	</div>
 																	<input id="cb_publisher_product_manifest_poster_pin_web" name="cb_publisher_product_manifest[poster_pin_web]" type="checkbox" value="" />
 																</div>
 															</div>
 															<div class="cb-cell-3"></div>
 														</div>
-														<div style="padding: 4px;">
-															<div style="display: inline-block;">
+														<div class="padding-4">
+															<div class="display-inline-block">
 																<div id="submit_poster_pin_web" class="btn-submit-product control-120-save-button" tabindex="">Save</div>
 															</div>
-															<div style="display: inline-block;">
+															<div class="display-inline-block">
 																<div id="cancel_poster_pin_web" class="btn-submit-product control-120-cancel-button" tabindex="">Cancel</div>
-															</div>	
-														</div>																													
+															</div>
+														</div>
 													</div>
 													<!-- <div id="show_poster_pin_web"> -->
 													<div id="control_120_show">
@@ -3459,10 +3038,10 @@
 								</div>
 							</div>
 						</div>
-						<div style="height: 20px;"></div>
-				   		<div class="table">
-				   			<div class="row">
-								<div style="display: table-cell; width: 400px;">
+						<div class="spacer-height-20"></div>
+						<div class="table">
+							<div class="row">
+								<div class="cell-400">
 									<!-- <div class="box-detail box-detail-color"> -->
 									<div class="box-detail box-detail-color control-121-edit">
 										<div class="table box-detail-table-1">
@@ -3475,24 +3054,24 @@
 													<div class="control-121-edit-options edit-options float-right hidden">
 														<div class="edit-options-block-1">
 															<div id="required_poster_pin_purchase" class="required-1"></div>
-											                <div class="tip-content">
-											                    <div class="tooltiptext">Required</div>
-											                </div>																								
+															<div class="tip-content">
+																<div class="tooltiptext">Required</div>
+															</div>
 														</div>
 														<div class="edit-options-block-1 ks-tip-container">
 															<div id="open_info_poster_pin_purchase" class="question-icon info-show-20 required-1 ks-tip-target control-121-info-button"></div>
-														    <div class="ks-tip ks-tip-2">
-														    	<div class="ks-tip-indicator-2"></div>
+															<div class="ks-tip ks-tip-2">
+																<div class="ks-tip-indicator-2"></div>
 																What is this?
-														    </div>				
-														</div>																		
+															</div>
+														</div>
 														<!-- <div class="edit-options-block-1 ks-tip-container">
 															<div id="open_edit_poster_pin_purchase" class="edit-icon-right form-edit-open-20 ks-tip-target" tabindex=""></div>
-														    <div class="ks-tip ks-tip-3">
-														    	<div class="ks-tip-indicator-3"></div>
+															   <div class="ks-tip ks-tip-3">
+															   	<div class="ks-tip-indicator-3"></div>
 																Edit
-														    </div>				
-														</div> -->
+															   </div>				
+															</div> -->
 													</div>
 													<div class="float-clear"></div>
 												</div>
@@ -3508,20 +3087,22 @@
 															<div class="cb-cell-2">
 																<div class="cb-container-1" id="cb_container_poster_pin_purchase">
 																	<div class="cb-container-1a"><span>Yes/No</span></div>
-																	<div class="cb-container-1b"><div id="cb_poster_pin_purchase" class="cb-button cb-align"></div></div>
+																	<div class="cb-container-1b">
+																		<div id="cb_poster_pin_purchase" class="cb-button cb-align"></div>
+																	</div>
 																	<input id="cb_publisher_product_manifest_poster_pin_purchase" name="cb_publisher_product_manifest[poster_pin_purchase]" type="checkbox" value="" />
 																</div>
 															</div>
 															<div class="cb-cell-3"></div>
 														</div>
-														<div style="padding: 4px;">
-															<div style="display: inline-block;">
+														<div class="padding-4">
+															<div class="display-inline-block">
 																<div id="submit_poster_pin_purchase" class="btn-submit-product control-121-save-button" tabindex="">Save</div>
 															</div>
-															<div style="display: inline-block;">
+															<div class="display-inline-block">
 																<div id="cancel_poster_pin_purchase" class="btn-submit-product control-121-cancel-button" tabindex="">Cancel</div>
-															</div>	
-														</div>																													
+															</div>
+														</div>
 													</div>
 													<!-- <div id="show_poster_pin_purchase"> -->
 													<div id="control_121_show">
@@ -3535,7 +3116,7 @@
 									</div>
 								</div>
 							</div>
-						</div>	
+						</div>
 					</div>
 				</div>
 			</div>
@@ -3544,4 +3125,3 @@
 </div>
 <div style="height: 100px;"></div>
 <% end %>
-

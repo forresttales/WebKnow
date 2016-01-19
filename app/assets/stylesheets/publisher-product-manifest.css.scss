@@ -2052,6 +2052,8 @@ span.color-no-record {
 	width:20px;
 	height:20px;
 	float: right;
+	margin-right: 8px;
+    margin-top: 4px;
 }		
 .form-edit-close:hover {
 	cursor: pointer;
@@ -3323,13 +3325,6 @@ figure.dialog-user-image-2 {
 }   
 figure.dialog-user-image-2 img {
 }
-figcaption.expand-image {   
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  height: 100%;
-  width: 100%;
-}
 figcaption.expand-image div.img-2-container {
   position: relative;
   width: 100%;
@@ -3361,13 +3356,6 @@ figure.dialog-user-image-3 {
 }   
 figure.dialog-user-image-3 img {
 }
-figcaption.expand-image {   
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  height: 100%;
-  width: 100%;
-}
 figcaption.expand-image div.img-3-container {
   position: relative;
   width: 100%;
@@ -3398,13 +3386,6 @@ figure.dialog-user-image-4 {
   margin: 0 auto;
 }   
 figure.dialog-user-image-4 img {
-}
-figcaption.expand-image {   
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  height: 100%;
-  width: 100%;
 }
 figcaption.expand-image div.img-4-container {
   position: relative;
@@ -3716,7 +3697,8 @@ figure.dialog-user-image-4 figcaption:hover div a div.img-4 {
       // margin: 2px 0 0 20px;
     }
     .textarea-description-empty {
-      background-image: url('/assets/background-placeholder-description-2-w70-h18.png');
+      // background-image: url('/assets/background-placeholder-description-2-w70-h18.png');
+      background-image: asset-url("background-placeholder-description-2-w70-h18.png");
       background-repeat: no-repeat;
       background-position: 3px 5px;
     }
@@ -3821,7 +3803,8 @@ figure.dialog-user-image-4 figcaption:hover div a div.img-4 {
       margin: 0px;
     }
     .textarea-topic-empty {
-      background-image: url('/assets/background-placeholder-topic-1-w34-h18.png');
+      // background-image: url('/assets/background-placeholder-topic-1-w34-h18.png');
+      background-image: asset-url("background-placeholder-topic-1-w34-h18.png");
       background-repeat: no-repeat;
       background-position: 3px 5px;
     }
@@ -4119,6 +4102,7 @@ figure.dialog-user-image-4 figcaption:hover div a div.img-4 {
     background: -ms-linear-gradient(top,  #CCC 35%,#ffffff 95%);
     background: linear-gradient(to bottom,  #CCC 35%,#ffffff 95%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCC', endColorstr='#ffffff',GradientType=0 );
+    position: relative;
   }
   .title-grey span {
     color: #333;
@@ -4216,3 +4200,82 @@ span.bkgrnd-text-1 {
   cursor: pointer;
 } 
 
+.btn-edit-options-container-outer {
+	position: relative;
+  	width: 100%;
+  	height: 24px;
+}
+.btn-edit-options-container {
+  	background: linear-gradient(#FBB040, #CA8E33);
+  	border-radius: 10px;
+  	width: 150px;
+  	height: 24px;
+}
+.btn-edit-options {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 700;		
+  	color: #eee;
+	text-align: center;	
+  	width: 150px;
+  	height: 24px;
+  	padding-top: 4px;
+  	text-decoration:none;
+  	outline: none;
+}
+.btn-edit-options:focus {
+}
+.btn-edit-options-container:hover { 
+  	box-shadow: 0 1px 1px rgba(255,255,255,0.1), 0 1.5em 1em rgba(255,255,255,0.2) inset;
+  	cursor: pointer;
+}
+.btn-edit-options-container:active .btn-opt-edit { 
+	color: transparent;
+	text-shadow: 1px 1px #fff;
+}
+.dialog-topbar-1-image {
+	height: 63px;
+	width: 60px;
+	float: left;
+	position: absolute;
+}
+.spacer-height-4 {
+	height: 4px;
+}
+.spacer-height-8 {
+	height: 8px;
+}
+.spacer-height-10 {
+	height: 10px;
+}
+.spacer-height-12 {
+	height: 12px;
+}
+.spacer-height-16 {
+	height: 16px;
+}
+.spacer-height-20 {
+	height: 20px;
+}
+.spacer-height-30 {
+	height: 30px;
+}
+.spacer-height-50 {
+	height: 50px;
+}
+.spacer-width-314 {
+	width: 314px;
+}
+.float-clear {
+	clear: both;
+}
+.padding-4 {
+	padding: 4px;
+}
+.display-inline-block {
+	display: inline-block;
+}
+.dvLoading-container {
+	text-align: center;
+	background-color: #f6f6f6;
+}
